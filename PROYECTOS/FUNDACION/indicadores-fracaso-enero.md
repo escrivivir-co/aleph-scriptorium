@@ -84,7 +84,7 @@ Ensamblar herramientas (sorteo, commons, límites) en arquitecturas instituciona
 | Señal | Descripción | Umbral de alarma |
 |-------|-------------|------------------|
 | **Casta de representantes** | Los "representantes de los ausentes" se profesionalizan y autolegitiman | >30% rechazo del cargo por sorteados; homogeneización socioeconómica |
-| **Veto como bloqueo** | El veto suspensivo se usa para paralizar, no para proteger | >X vetos/período sin decisión alternativa |
+| **Veto como bloqueo** | El veto suspensivo se usa para paralizar, no para proteger | >3 vetos consecutivos sobre el mismo tema sin propuesta alternativa en 6 meses, o ratio vetos/decisiones >25% sostenido durante 2 períodos |
 | **Fideicomiso oligárquico** | Los fideicomisarios actúan sin accountability efectiva | Auditorías no producen consecuencias |
 
 #### Arquitectura 2: Soberanía sin territorio
@@ -115,6 +115,19 @@ Estos indicadores aplican a todo el plan de enero:
 | **Ingenuidad sobre el poder** | Asumir que los poderosos cumplirán por convicción | Verificar que cada propuesta incluye enforcement |
 | **Nostalgia encubierta** | Idealización del pasado sin análisis de fracaso | Revisar tratamiento de "futuros cancelados" |
 | **Tecnofetichismo** | Delegar problemas políticos en soluciones técnicas | Verificar que la técnica es medio, no fin |
+
+---
+
+## Método para umbrales adaptativos
+
+Algunos indicadores no pueden fijarse a priori (dependen de contexto, escala, madurez institucional). Para estos casos:
+
+1. **Baseline del primer año**: registrar valores durante el primer ciclo completo sin intervención correctiva.
+2. **Umbral = baseline + 1.5 desviaciones estándar**: alerta amarilla.
+3. **Umbral crítico = baseline + 2.5 desviaciones estándar**: alerta roja, revisión obligatoria del mecanismo.
+4. **Revisión del baseline cada 3 años**: los umbrales no son eternos; las condiciones cambian.
+
+Este método aplica a: ratio de rechazo de sorteo, frecuencia de vetos, concentración de auditorías, etc.
 
 ---
 

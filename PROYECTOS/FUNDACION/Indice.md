@@ -16,12 +16,12 @@
 
 ## Capítulos por mes
 
-| Mes | Capítulo | Archivo |
-|-----|----------|--------|
-| Enero | 1. Anacronismo productivo | [01-enero.md](01-enero.md) |
-| Enero | 2. El autómata soberano | [01-enero.md](01-enero.md) |
-| Enero | 3. El problema de la escala | [01-enero.md](01-enero.md) |
-| Enero | 4. El repertorio y sus arquitecturas | [01-enero.md](01-enero.md) |
+| Mes | Capítulo | Archivo | Borrador |
+|-----|----------|--------|----------|
+| Enero | 1. Anacronismo productivo | [01-enero.md](01-enero.md) | [→ Capítulo](CAPITULOS/cap01-anacronismo-productivo.md) |
+| Enero | 2. El autómata soberano | [01-enero.md](01-enero.md) | [→ Capítulo](CAPITULOS/cap02-automata-soberano.md) |
+| Enero | 3. El problema de la escala | [01-enero.md](01-enero.md) | [→ Capítulo](CAPITULOS/cap03-problema-escala.md) |
+| Enero | 4. El repertorio y sus arquitecturas | [01-enero.md](01-enero.md) | [→ Capítulo](CAPITULOS/cap04-repertorio-arquitecturas.md) |
 | Febrero | *Por definir* | — |
 | Marzo | *Por definir* | — |
 | Abril | *Por definir* | — |

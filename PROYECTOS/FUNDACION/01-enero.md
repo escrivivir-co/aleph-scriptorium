@@ -4,6 +4,33 @@
 
 ---
 
+
+## Gancho final
+Tenemos las coordenadas, las herramientas y las arquitecturas. Pero todo diseño institucional puede ser capturado. El resto del año debe preguntar: ¿cómo fallarán estas arquitecturas? ¿Qué indicadores lo detectarán? ¿Qué sacrificamos al elegirlas?
+
+---
+
+## Resumen de enero
+
+| Capítulo | Título | Función |
+|----------|--------|--------|
+| 1 | Anacronismo productivo | Desplazamiento temporal: futuros cancelados como repertorio |
+| 2 | El autómata soberano | Desplazamiento antropológico: actores no-humanos en la polis |
+| 3 | El problema de la escala | Desplazamiento jurisdiccional: decisiones sin demos legítimo |
+| 4 | El repertorio y sus arquitecturas | Herramientas (sorteo, commons, límites) + tres arquitecturas institucionales |
+
+### Entregables de enero
+- [ ] Borrador capítulo 1: [Anacronismo productivo](CAPITULOS/cap01-anacronismo-productivo.md)
+- [ ] Borrador capítulo 2: [El autómata soberano](CAPITULOS/cap02-automata-soberano.md)
+- [ ] Borrador capítulo 3: [El problema de la escala](CAPITULOS/cap03-problema-escala.md)
+- [ ] Borrador capítulo 4: [El repertorio y sus arquitecturas](CAPITULOS/cap04-repertorio-arquitecturas.md)
+- [ ] Revisión cruzada de los cuatro capítulos
+- [ ] Verificación de coherencia interna
+- [ ] **Documento de indicadores de fracaso**: [indicadores-fracaso-enero.md](indicadores-fracaso-enero.md)
+
+
+---
+
 ## CAPÍTULO 1
 
 ### Título
@@ -16,6 +43,9 @@
 La historia no es una línea de progreso ni una cadena de necesidades. Está llena de **bifurcaciones cerradas**: caminos que existieron, funcionaron, y fueron clausurados por el poder, no por su ineficacia. Recuperar esos futuros cancelados no es nostalgia: es **ampliar el repertorio de lo políticamente imaginable**.
 
 El presente se presenta como inevitable porque ha borrado las alternativas que lo hicieron contingente. Desenterrarlas es un acto político.
+
+### Anclaje tardío
+Este desplazamiento es necesario *ahora* porque el régimen tardío se sostiene precisamente en la clausura del repertorio: si no hay alternativas imaginables, la resignación es racional. La fractura del mundo común no se repara con nostalgia, sino ampliando el horizonte de lo posible. La posverdad prospera donde el futuro parece cerrado.
 
 ### Conflicto
 - **Progresismo lineal**: el pasado está superado; solo el futuro importa (ceguera al repertorio perdido).
@@ -57,6 +87,9 @@ Si el pasado está lleno de futuros que no fueron, ¿quién decidió cerrarlos? 
 El constitucionalismo clásico asume que el sujeto político es humano: vota, delibera, consiente. Pero en 2025, decisiones que afectan a millones son tomadas por **algoritmos, infraestructuras, ecosistemas, patógenos**. Ninguno "decide" en sentido rousseauniano, pero todos **condicionan** el espacio de decisión de formas que ningún texto fundacional ha sabido capturar.
 
 No se trata de dar "derechos a la naturaleza" (eco-romanticismo) ni de celebrar la IA (tecnofetichismo). Se trata de **diseñar instituciones que incluyan lo que no puede hablar** en el cálculo político.
+
+### Anclaje tardío
+La técnica ya gobierna afectos a escala masiva: el algoritmo de recomendación produce polarización sin mandato, la infraestructura condiciona toda acción posible. Ignorar estos actores no es neutralidad, es ceguera ante el gobierno técnico que ya opera. En régimen tardío, la política que no incluye lo no-humano es política amputada.
 
 ### Conflicto
 - **Antropocentrismo jurídico**: solo los humanos son sujetos de derecho (ignora la agencia sistémica no-humana).
@@ -106,6 +139,17 @@ Si reconocemos actores no-humanos, debemos reconocer también **daños no-humano
 Rousseau sabía que la voluntad general solo funciona en comunidades pequeñas. Marx/Engels escribían para Estados-nación industriales. El constitucionalismo liberal asume soberanía territorial. **Ninguno de estos marcos escala** al sistema-mundo de 2025, donde las decisiones críticas (clima, finanzas, tecnología, pandemias) no caben en ninguna jurisdicción.
 
 El problema no es técnico (cómo coordinar); es político (quién tiene legitimidad para decidir). No hay "pueblo" planetario que pueda constituirse como sujeto soberano. Pero las decisiones se toman igual —por defecto, por acumulación, por quienes tienen poder—. Un texto fundacional que ignore esto es parroquial.
+
+### Anclaje tardío
+La fractura del mundo común es también fractura de escala: no hay "nosotros" planetario que pueda mirarse a los ojos. La posverdad explota esta ausencia: si no hay demos global, cualquier decisión planetaria puede presentarse como imposición tecnocrática o como farsa cosmopolita. El diseño debe operar *con* ese vacío, no fingir llenarlo.
+
+### Sacrificio (lo que se pierde)
+Cada mecanismo de escala propuesto tiene un coste en soberanía democrática clásica:
+- Los **umbrales no-negociables** sustituyen deliberación por prohibición: ganan en protección, pierden en autodeterminación.
+- El **veto de mínimos** es poder negativo sin mandato positivo: protege contra lo peor, pero no autoriza lo mejor.
+- La **representación de generaciones futuras** es representación sin representado: legítima por función, no por origen.
+
+No hay forma de escalar sin pagar este precio. La honestidad está en declararlo.
 
 ### Conflicto
 - **Cosmopolitismo ilustrado**: una comunidad humana universal es posible y deseable (ignora que no hay demos global).
@@ -160,6 +204,9 @@ Hemos establecido las tres coordenadas: el pasado está lleno de futuros cancela
 Los tres desplazamientos (anacronismo, no-humano, escala) abren el espacio. Pero el espacio vacío no basta: necesitamos **herramientas concretas**. La arqueología de instituciones olvidadas nos ofrece tres mecanismos que interrumpen la acumulación: **sorteo** (distribuye poder), **commons** (distribuye recursos), **límites** (confina la hybris).
 
 No son modelos a copiar. Son **principios de diseño** trasladables.
+
+### Anclaje tardío
+En régimen tardío, la hybris tiene nombre técnico: crematística sin límite, acumulación que no reconoce fin. Los mecanismos del repertorio no son curiosidades históricas: son las instituciones que las sociedades que duraron inventaron para confinar el infinito. Recuperarlas no es nostalgia, es supervivencia.
 
 ### I. El sorteo: cuando elegir era aristocrático
 
@@ -270,9 +317,20 @@ Si responden ante la generación presente, no son intergeneracionales. Si no res
 3. **Rotación obligatoria**: nadie puede representar a los ausentes más de un período.
 4. **Transparencia radical**: todas las deliberaciones públicas, todas las decisiones justificadas.
 
+**Módulo de sostenimiento material** (condición de posibilidad):
+El sorteo solo funciona si los sorteados pueden aceptar sin destruir sus vidas. Sin este módulo, el sorteo reproduce desigualdad: solo aceptan quienes ya tienen colchón.
+
+- **Compensación equivalente**: salario igual al ingreso previo del sorteado (con mínimo digno y tope razonable), más compensación por costes indirectos (cuidados, desplazamiento).
+- **Protección laboral**: derecho a reincorporación al puesto previo, prohibición de represalias.
+- **Servicios de cuidado**: acceso garantizado a cuidado de dependientes durante el mandato.
+- **Formación y acompañamiento**: período de formación inicial + acceso a asesoría técnica independiente.
+- **Protección post-mandato**: período de "enfriamiento" con protección contra presiones de actores afectados por decisiones.
+
+Sin estas condiciones materiales, el indicador de fracaso "30% de rechazo" no mide legitimidad del mecanismo, sino desigualdad de acceso.
+
 **Sombra de esta arquitectura**:
 - **Fallará cuando**: los "representantes de los ausentes" se conviertan en una casta profesional que define los intereses de sus representados según sus propios sesgos. O cuando el veto suspensivo se use como arma de bloqueo sistemático por facciones que no representan a nadie.
-- **Indicadores de fracaso**: (1) más del 30% de los sorteados rechaza el cargo; (2) el perfil socioeconómico de quienes aceptan se homogeneiza; (3) el veto se activa más de X veces por período sin que ninguna decisión alternativa prospere.
+- **Indicadores de fracaso**: (1) más del 30% de los sorteados rechaza el cargo; (2) el perfil socioeconómico de quienes aceptan se homogeneiza; (3) más de 3 vetos consecutivos sobre el mismo tema sin propuesta alternativa en 6 meses, o ratio vetos/decisiones >25% sostenido durante 2 períodos.
 
 #### Arquitectura 2: Soberanía sin territorio
 
@@ -302,41 +360,35 @@ Si responden ante la generación presente, no son intergeneracionales. Si no res
 
 **Enforcement técnico: el problema del actor hegemónico**
 
-El veto de mínimos es inútil si quien viola el umbral es un actor hegemónico (EE.UU., China, Google). La moralina no es enforcement. Propuesta de mecanismo técnico basado en **smart contracts**:
+El veto de mínimos es inútil si quien viola el umbral es un actor hegemónico (EE.UU., China, Google). La moralina no es enforcement. Propuesta de mecanismo técnico basado en **garantías ejecutables automáticamente**:
 
-**Principio**: La captura requiere control central. Los smart contracts eliminan ese punto único de falla: son código inmutable ejecutado por una red global de nodos sin control central. Violar el umbral no es "ignorar una regla"; es **quebrar el protocolo públicamente**.
+**Principio funcional**: Reducir la discrecionalidad política en la ejecución de consecuencias. No se trata de eliminar puntos de falla (imposible), sino de hacerlos múltiples, visibles y costosos de capturar simultáneamente.
 
-**Arquitectura técnica**:
+**Arquitectura funcional**:
 
-1. **Bonos de cumplimiento (compliance bonds)**: todo actor que opera a escala planetaria deposita garantía en un contrato inteligente. La garantía se ejecuta automáticamente si se cruza el umbral, sin necesidad de decisión política. El código es ley: `require(emissiones <= umbral, "Violación")` → ejecución automática.
+1. **Bonos de cumplimiento (compliance bonds)**: todo actor que opera a escala planetaria deposita garantía en escrow gestionado por múltiples custodios (Estados, organismos internacionales, entidades financieras). La garantía se ejecuta si se cruza el umbral, con activación automática cuando hay consenso verificable de custodios.
 
-2. **Protocolos públicos verificables**: los umbrales se codifican en smart contracts desplegados en blockchain pública. Características clave:
-   - **Inmutabilidad post-despliegue**: el código no se puede modificar una vez desplegado.
-   - **Ejecución determinística**: todos los nodos ejecutan el mismo código y llegan al mismo resultado.
-   - **Transparencia total**: cualquiera puede auditar el código y verificar su cumplimiento.
+2. **Verificación distribuida de umbrales**: los datos de cumplimiento provienen de múltiples fuentes independientes (agencias estatales, satélites, sensores públicos, auditorías cruzadas). No hay "oráculo único": la verificación requiere convergencia de fuentes con incentivos distintos.
 
-3. **Timelocks para cambios críticos**: cualquier modificación de umbrales requiere un período de espera (ej. 48-72 horas) que permite objeción comunitaria. Bloquea ataques "flash" donde un actor captura y modifica antes de que nadie reaccione.
+3. **Períodos de objeción para cambios críticos**: cualquier modificación de umbrales requiere período de espera (mínimo 90 días) que permite objeción pública y judicial. Bloquea cambios oportunistas.
 
-4. **Multisig distribuido**: las decisiones críticas requieren múltiples firmas (ej. 5/9 de nodos geográficamente distribuidos). La colusión es costosa y visible.
+4. **Consecuencias escalonadas**: 
+   - (a) Alerta pública verificable (múltiples canales, no censurable por un solo actor)
+   - (b) Activación de garantía (con verificación cruzada de custodios)
+   - (c) Exclusión de infraestructuras comunes: bloqueo de acceso a redes financieras, logísticas, de datos gestionadas como commons
 
-5. **Consecuencias automáticas escalonadas**: 
-   - (a) Alerta pública on-chain (inmediata, no censurable)
-   - (b) Activación de garantía (automática, sin intervención humana)
-   - (c) Exclusión de infraestructuras comunes vía smart contracts que verifican cumplimiento antes de permitir interacción
+**Punto ciego central: oráculos, infraestructura y jurisdicción**
 
-**Patrón de diseño anti-captura** (checks-effects-interactions):
-```
-1. Verificar condiciones (¿se cumple el umbral?)
-2. Actualizar estado (registrar violación)
-3. Ejecutar consecuencias (antes de cualquier interacción externa)
-```
+Todo mecanismo de enforcement automático tiene tres puntos de captura que *no* se eliminan con diseño técnico:
 
-**Gobernanza de actualizaciones**: si los umbrales deben revisarse (cambio climático, nuevos datos), se usa el patrón proxy con timelock + votación ponderada por stake histórico (no por stake actual, para evitar manipulación por préstamos flash).
+- **Oráculos**: ¿quién certifica que el umbral se ha cruzado? Los datos no son neutrales. Quien controla la medición controla la consecuencia. Por eso: múltiples fuentes con incentivos divergentes, nunca oráculo único.
+- **Infraestructura**: ¿quién opera las redes de exclusión? Si la infraestructura es privada y concentrada, el enforcement depende de la voluntad de sus propietarios. Por eso: infraestructuras críticas como bien político (Cap 2).
+- **Jurisdicción real**: ¿quién ejecuta físicamente cuando el custodio no coopera? Un actor hegemónico puede ignorar la exclusión si controla su propia infraestructura. El diseño asume interdependencia; la autarquía lo rompe.
 
 **Limitaciones reconocidas**: 
-- Este mecanismo funciona para actores **integrados en el sistema**. Un actor dispuesto a salir (autarquía, guerra) no está sujeto a él. El diseño asume interdependencia.
-- Los smart contracts tienen vulnerabilidades (reentrancy, overflow). Requieren auditorías rigurosas y bug bounties.
-- La inmutabilidad es espada de doble filo: errores en el código son permanentes. De ahí la importancia de proxy patterns con gobernanza distribuida.
+- Este mecanismo funciona para actores **integrados en el sistema**. Un actor dispuesto a salir (autarquía, guerra) no está sujeto a él.
+- La "automaticidad" es siempre relativa: requiere custodios que ejecuten, verificadores que certifiquen, infraestructuras que excluyan. No hay enforcement sin instituciones que lo sostengan.
+- El coste de las garantías puede convertirse en barrera de entrada que consolida a los grandes actores.
 
 **Sombra de esta arquitectura**:
 - **Fallará cuando**: un actor hegemónico decida que el coste de salir del sistema es menor que el coste de cumplir. O cuando los bonos de cumplimiento se conviertan en un "coste de hacer negocios" que solo las grandes potencias pueden pagar.
@@ -355,7 +407,7 @@ El veto de mínimos es inútil si quien viola el umbral es un actor hegemónico 
 | **Trazabilidad** | Todo sistema autónomo debe poder explicar cada decisión que afecte derechos |
 | **Auditoría pública** | Código fuente accesible para auditores (no necesariamente público general) |
 | **Responsabilidad del desplegador** | Quien despliega responde por efectos, aunque no los haya "decidido" |
-| **Límites de escala** | Ningún sistema puede afectar a más de X usuarios sin revisión |
+| **Límites de escala** | Ningún sistema puede afectar a más de un umbral público de usuarios sin revisión (definido por baseline + umbrales adaptativos) |
 | **Derecho a la desconexión** | Posibilidad de optar por alternativa humana en decisiones críticas |
 | **Límites a la inferencia** | Prohibición de inferir categorías protegidas (salud, orientación, ideología) |
 
@@ -406,26 +458,3 @@ El veto de mínimos es inútil si quien viola el umbral es un actor hegemónico 
 
 **Eje Diagnóstico** (tono y orientación):
 - [04-fe-lucida-epica.md](../../ARCHIVO/diagnostico/04-fe-lucida-epica.md): diseñar sin garantía de éxito, evitar las cuatro trampas (rencor, desesperación, melancolía, ilusionismo).
-
-### Gancho final
-Tenemos las coordenadas, las herramientas y las arquitecturas. Pero todo diseño institucional puede ser capturado. El resto del año debe preguntar: ¿cómo fallarán estas arquitecturas? ¿Qué indicadores lo detectarán? ¿Qué sacrificamos al elegirlas?
-
----
-
-## Resumen de enero
-
-| Capítulo | Título | Función |
-|----------|--------|--------|
-| 1 | Anacronismo productivo | Desplazamiento temporal: futuros cancelados como repertorio |
-| 2 | El autómata soberano | Desplazamiento antropológico: actores no-humanos en la polis |
-| 3 | El problema de la escala | Desplazamiento jurisdiccional: decisiones sin demos legítimo |
-| 4 | El repertorio y sus arquitecturas | Herramientas (sorteo, commons, límites) + tres arquitecturas institucionales |
-
-### Entregables de enero
-- [ ] Borrador capítulo 1: Anacronismo productivo
-- [ ] Borrador capítulo 2: El autómata soberano
-- [ ] Borrador capítulo 3: El problema de la escala
-- [ ] Borrador capítulo 4: El repertorio y sus arquitecturas
-- [ ] Revisión cruzada de los cuatro capítulos
-- [ ] Verificación de coherencia interna
-- [ ] **Documento de indicadores de fracaso**: [indicadores-fracaso-enero.md](indicadores-fracaso-enero.md)
