@@ -10,6 +10,8 @@
 
 ## Qué es esto
 
+![](./aleph-scriptorium-banner.png)
+
 **Aleph Scriptorium** es un sistema de escritura asistida por IA para proyectos de largo aliento: libros, ensayos serializados, investigaciones extensas, cualquier texto que requiera coherencia sostenida a lo largo del tiempo.
 
 Este repositorio contiene:
@@ -82,6 +84,14 @@ Perfiles de IA preconfigurados para tareas específicas:
 
 Los agentes no inventan: **consultan tu ARCHIVO**. No improvisan estilo: **siguen tus instrucciones**. No deciden por ti: **te presentan opciones**.
 
+### La IA como herramienta, no como autor
+
+Este sistema parte de una premisa: **la inteligencia artificial es extraordinariamente útil para tareas que los humanos hacemos mal** (organizar grandes volúmenes de información, mantener coherencia a lo largo de textos extensos, detectar contradicciones, iterar rápidamente).
+
+Pero la IA no piensa. No decide. No tiene nada que decir.
+
+El sistema está diseñado para que la IA haga trabajo *logístico* mientras el humano hace trabajo *intelectual*. La IA organiza tu material; tú decides qué material importa. La IA genera borradores; tú decides qué vale la pena. La IA detecta incoherencias; tú decides cómo resolverlas.
+
 ### Las herramientas MCP (extensiones de contexto)
 
 El sistema puede conectarse a herramientas externas mediante el protocolo MCP:
@@ -94,7 +104,9 @@ El sistema puede conectarse a herramientas externas mediante el protocolo MCP:
 
 ## Proyecto de demostración: "Fundación"
 
-Este repositorio incluye un proyecto completo como ejemplo: **Fundación**, un texto político serializado en 12 capítulos para el año 2026.
+Este repositorio incluye un plan de proyecto como ejemplo: **Fundación**, un texto político serializado en 12 capítulos para el año 2026.
+
+![](./fundacion-banner.png)
 
 ### El problema que aborda
 
@@ -168,14 +180,6 @@ Fundacion/
 
 ## Filosofía del proyecto
 
-### La IA como herramienta, no como autor
-
-Este sistema parte de una premisa: **la inteligencia artificial es extraordinariamente útil para tareas que los humanos hacemos mal** (organizar grandes volúmenes de información, mantener coherencia a lo largo de textos extensos, detectar contradicciones, iterar rápidamente).
-
-Pero la IA no piensa. No decide. No tiene nada que decir.
-
-El sistema está diseñado para que la IA haga trabajo *logístico* mientras el humano hace trabajo *intelectual*. La IA organiza tu material; tú decides qué material importa. La IA genera borradores; tú decides qué vale la pena. La IA detecta incoherencias; tú decides cómo resolverlas.
-
 ### Contra el "malmenorismo"
 
 El proyecto "Fundación" nace de una frustración específica: la sensación de que el pensamiento político contemporáneo está atrapado en el *malmenorismo* — la defensa de un sistema que sabemos injusto porque tememos que cualquier alternativa sea peor.
@@ -189,6 +193,8 @@ No es optimismo ingenuo. Es **fe lúcida**: la convicción de que es posible dis
 ## Origen: Forjado en los Astilleros de VibeBitacora
 
 **Aleph Scriptorium no nació de la nada.** Es la última *nave* botada por los [Astilleros de VibeBitacora](https://github.com/escrivivir-co/vibe-bitacora), el meta-framework más ambicioso de Escrivivir.co.
+
+![](./vibe-bitacora-banner.png)
 
 ### Un linaje de cuatro generaciones
 
