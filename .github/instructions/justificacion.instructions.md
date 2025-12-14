@@ -3,45 +3,43 @@ name: Eje Justificación
 description: Guía para usar el eje de justificación del ARCHIVO.
 applyTo: "**/*.md"
 ---
-# Eje Justificación: ¿por qué un nuevo texto?
+# Eje Justificación: memoria, no punto de partida
 
 > **Fuente de verdad**: `ARCHIVO/justificacion/`  
-> **Este documento es una guía de uso, no un duplicado del contenido.**
 
-## Cuándo consultar este eje
+## Rol en el proyecto 
 
-Consulta `ARCHIVO/justificacion/` cuando necesites:
-- Formular la **pregunta de época** de un capítulo.
-- Justificar la **necesidad de defensas institucionales** contra manipulación.
-- Evitar la nostalgia: entender que el mundo común no se "perdió".
-- Recordar que la crítica debe desembocar en **diseño**, no en sermón.
+**Este eje NO es el primer paso del viaje.** Es la memoria de lo que sabemos.
+
+El texto de 2026 **asume que el lector ya conoce** (o puede conocer) este material:
+- Lo tardío como régimen
+- La secuencia afectiva (asco → huida → odio)
+- La posverdad como gobierno técnico
+- La fractura del mundo común
+
+**No dedicamos capítulos a esto.** El diagnóstico está hecho y es archiconocido.
+
+## Cuándo consultar (excepcionalmente)
+
+Consulta `ARCHIVO/justificacion/` solo cuando necesites:
+- Fundamentar **puntualmente** por qué una propuesta es necesaria.
+- Citar para recordar qué errores evitar (nostalgia, moralina).
+- Responder a objeciones del tipo "¿por qué hace falta esto?".
+
+**Nunca** para estructurar capítulos ni como secuencia inicial.
 
 ## Documentos disponibles
 
-| Documento | Contenido | Cuándo usarlo |
-|-----------|-----------|---------------|
-| `01-lo-tardio-regimen.md` | Taubes, Benjamin, hipótesis Kolnai | Definir el régimen afectivo de un capítulo |
-| `02-secuencia-asco-huida-odio.md` | Gramática emocional, exhibición como fractura | Analizar dinámicas de desafección |
-| `03-posverdad-gobierno-tecnico.md` | Laura K. Field, técnica capturada, mentes furiosas | Diseñar defensas contra manipulación |
-| `04-fractura-mundo-comun.md` | Inversión de causalidad, producción de "patriotas" | Evitar idealización del pasado |
-
-## Conceptos clave (leer en el ARCHIVO)
-
-- **Lo tardío**: no cronología sino régimen; experiencia de final con leyes propias.
-- **Asco** (Kolnai): percepción de descomposición activa; lo vivo exhibe su corrupción.
-- **Secuencia afectiva**: asco → huida → odio.
-- **Posverdad**: gobierno técnico de afectos, no error ni ignorancia.
-- **Fractura del mundo común**: los portadores producen asco; la posverdad ocupa el hueco.
-
-## Uso en el método de trabajo
-
-En el paso 1 del método (Diagnóstico), este eje responde:
-- ¿Qué régimen afectivo gobierna este capítulo?
-- ¿Qué produce el asco institucional aquí?
-- ¿Cómo se manipula la furia resultante?
+| Documento | Contenido | Uso  |
+|-----------|-----------|----------|
+| `01-lo-tardio-regimen.md` | Taubes, Benjamin, hipótesis Kolnai | Cita puntual si se necesita |
+| `02-secuencia-asco-huida-odio.md` | Gramática emocional, exhibición | Referencia para diseño anticaptura |
+| `03-posverdad-gobierno-tecnico.md` | Laura K. Field, técnica capturada | Fundamentar capítulo 2 (no-humanos) |
+| `04-fractura-mundo-comun.md` | Inversión de causalidad | Recordar que no hay mundo común que "restaurar" |
 
 ## Lo que NO hacer
 
-- No duplicar el contenido del ARCHIVO en los borradores.
-- No citar sin leer: abrir el documento y extraer la cita exacta.
-- No caer en la nostalgia que el propio eje critica.
+- **No recorrer este eje** como si fuera el inicio del texto.
+- **No repetir** el diagnóstico en los capítulos (el lector ya lo sabe).
+- **No estructurar** ningún capítulo alrededor de estos documentos.
+- El texto de 2026 **parte de aquí pero no lo cuenta de nuevo**.

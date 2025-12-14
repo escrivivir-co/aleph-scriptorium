@@ -6,33 +6,19 @@ Este workspace es un **proyecto de escritura política**: planificar y redactar 
 
 Cuando se te pida que hagas cambios en la carpeta .github deberás asegurarte de usar la documentación oficial y actualizada https://code.visualstudio.com/docs/copilot/overview.
 
+> **IMPORTANTE**: El contenido doctrinal completo está en `ARCHIVO/`. Las instrucciones de `.github/instructions/` solo indican **cómo usar** ese contenido, no lo duplican. Maximizar el uso de DRY (don't repeat yourself) dentro de la carpeta .github. Estos archivos no contienen información del qué sino solo del cómo. Todas las referencias deberán apuntar a ARCHIVO O PROYECTOS.
+
 ## Misión
 - Diseñar un plan anual en 12 capítulos que desemboque en una obra final tipo **Constitución/Contrato/Manifiesto**.
 - Redactar borradores de capítulos y revisiones sucesivas manteniendo coherencia doctrinal.
 
-## Punto de partida (2025)
-- No se trata de glosar tres clásicos ni de hacer divulgación.
-- Se parte de tábula rasa, pero con memoria crítica: el texto debe **superar** brechas históricas entre constitucionalismo liberal, legitimidad rousseauniana y crítica materialista.
+## ARCHIVO
 
----
+El ARCHIVO tiene **tres ejes** que SIRVEN COMO BASE del proyecto pero no son el proyecto, sino que este se extiende a partir de estas asumciones:
 
-## ARCHIVO: fuente de verdad doctrinal
-
-> **IMPORTANTE**: El contenido doctrinal completo está en `ARCHIVO/`. Las instrucciones de `.github/instructions/` solo indican **cómo usar** ese contenido, no lo duplican.
-
-El ARCHIVO tiene **tres ejes** que estructuran el proyecto:
-
-| Eje | Carpeta | Pregunta que responde | Documentos |
-|-----|---------|----------------------|------------|
-| **Justificación** | `ARCHIVO/justificacion/` | ¿Por qué ahora? ¿Qué nos trajo aquí? | Lo tardío, secuencia afectiva, posverdad, fractura |
-| **Diagnóstico** | `ARCHIVO/diagnostico/` | ¿Cómo estamos? ¿Hacia dónde? | SOTA, estructura de sentimiento, patrón reaccionario, fe lúcida |
-| **Marco** | `ARCHIVO/marco/` | ¿Con qué herramientas? | Selección sistémica, injusticias emergentes, acción colectiva, geopolítica, método materialista, soberanía, hybris |
-
-### Cómo usar el ARCHIVO
-
-1. **Antes de redactar**: lee el README de cada carpeta para orientarte.
-2. **Para fundamentar**: cita documentos específicos del ARCHIVO, no inventes.
-3. **Para extender**: si el material fuente aporta ideas nuevas, usa el prompt `extraer-archivar.prompt.md` para incorporarlas.
+1. **Justificación y Diagnóstico**: son **memoria**, no guía. Consultar solo para fundamentar puntualmente, nunca para estructurar capítulos. El lector del texto final no necesita ese recorrido.
+2. **Marco**: es la **caja de herramientas activa**. Selección sistémica, hybris, soberanía, acción colectiva → usar para diseño institucional.
+3. **Para extender**: si el material fuente aporta ideas nuevas, usa el prompt `extraer-archivar.prompt.md` para incorporarlas al eje Marco.
 
 > **Herramientas MCP**: Las herramientas de contexto extendido disponibles (Web Search, Playwright, etc.) están documentadas en `.github/instructions/mcp-tools.instructions.md`. Consultar antes de procesar documentos con referencias externas.
 
@@ -48,10 +34,11 @@ El ARCHIVO tiene **tres ejes** que estructuran el proyecto:
 
 ## Método de trabajo (cada capítulo)
 
-1. **Diagnóstico**: ¿qué régimen gobierna (instituciones, afectos, técnica)? → consultar `ARCHIVO/justificacion/`
-2. **Decisión**: ¿qué principio se declara (y cuál se sacrifica)? → consultar `ARCHIVO/diagnostico/`
-3. **Mecanismo**: ¿qué arquitectura lo hace estable contra captura? → consultar `ARCHIVO/marco/`
-4. **Prueba de realidad**: ¿cómo se corrompería? ¿qué lo repara?
+1. **Desplazamiento**: ¿qué coordenada nueva introduce este capítulo? (temporal, antropológica, escalar)
+2. **Repertorio**: ¿qué institución olvidada o futuro cancelado recupera? → consultar investigación + `ARCHIVO/marco/`
+3. **Mecanismo**: ¿qué arquitectura concreta propone? ¿cómo evita captura?
+4. **Sacrificio**: ¿qué pierde el texto al decidir esto? Declararlo explícitamente.
+5. **Sombra**: ¿cómo fallaría esta propuesta? ¿qué indicador lo detectaría?
 
 ---
 
@@ -60,10 +47,10 @@ El ARCHIVO tiene **tres ejes** que estructuran el proyecto:
 - Cada capítulo debe: formular pregunta de época, declarar tesis, proponer mecanismo, anticipar objeciones.
 - Priorizar mecanismos y arquitectura sobre moralina.
 - Anticipar "posverdad técnica": incluir defensas institucionales contra manipulación a escala.
+- No usar limitaciones temporales como "semana" para el diseño del texto. Usar puntos de esfuerzo si fuera necesario.
 
 ## Lo que está prohibido
 
-- No proponer fraude, violencia, ni instrucciones para daños o ilícitos.
 - No caer en nostalgia: evitar "antes había mundo común" como idealización simple.
 - No convertir el texto en sermón: la crítica debe desembocar en diseño.
 - No esconder decisiones duras detrás de metáforas: las metáforas deben abrir, no tapar.

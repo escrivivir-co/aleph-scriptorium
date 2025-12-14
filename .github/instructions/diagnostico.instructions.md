@@ -3,45 +3,51 @@ name: Eje Diagnóstico
 description: Guía para usar el eje de diagnóstico del ARCHIVO.
 applyTo: "**/*.md"
 ---
-# Eje Diagnóstico: ¿cómo estamos y hacia dónde?
+# Eje Diagnóstico: memoria, no punto de partida
 
 > **Fuente de verdad**: `ARCHIVO/diagnostico/`  
-> **Este documento es una guía de uso, no un duplicado del contenido.**
+> **ROL EN V2**: Este eje es **PASADO** — el estado de la cuestión. Archiconocido; no se recorre.
 
-## Cuándo consultar este eje
+## Rol en el proyecto 
 
-Consulta `ARCHIVO/diagnostico/` cuando necesites:
-- Establecer el **tono** de un capítulo: sin rencor, sin melancolía, sin ilusionismo.
-- Recordar dónde está la **fuerza histórica**: en la estructura de sentimiento.
-- Mantener los **binarios brújula** sin caer en simplificación.
-- Identificar el **patrón reaccionario**: miedo a la agencia de los de abajo.
-- Definir la **épica lúcida**: resistencia sin ilusión de pureza.
+**Este eje NO estructura los capítulos.** Es la memoria de dónde estamos.
+
+El texto de 2026 **asume que el lector ya conoce** (o puede conocer) este material:
+- El SOTA del lado izquierdo
+- La estructura de sentimiento como fuerza oculta
+- El patrón reaccionario (miedo a la agencia)
+- La fe lúcida y la épica sin heroísmo
+
+**No dedicamos capítulos a diagnosticar.** El diagnóstico está hecho.
+
+## Cuándo consultar (excepcionalmente)
+
+Consulta `ARCHIVO/diagnostico/` solo cuando necesites:
+- **Tono**: recordar qué evitar (rencor, melancolía, ilusionismo).
+- **Binarios brújula**: mantener la orientación sin simplificar.
+- **Patrón reaccionario**: fundamentar capítulo 11 (el sacrificio) o diseño anticaptura.
+- **Fe lúcida**: para el capítulo 12 (sombra del texto) y cierres.
+
+**Nunca** como secuencia inicial ni como estructura de capítulos.
 
 ## Documentos disponibles
 
-| Documento | Contenido | Cuándo usarlo |
-|-----------|-----------|---------------|
-| `01-estado-cuestion.md` | SOTA del lado izquierdo, dónde no/sí está la fuerza | Contextualizar el presente del capítulo |
-| `02-estructura-sentimiento.md` | Raymond Williams, física social de resistencia | Identificar fuerzas no visibles |
-| `03-patron-reaccionario.md` | Miedo a la agencia, etiquetas como distracción | Caracterizar al adversario |
-| `04-fe-lucida-epica.md` | Las cuatro trampas, binarios brújula, épica sin lemas | Definir el tono aspiracional |
+| Documento | Contenido | Uso  |
+|-----------|-----------|----------|
+| `01-estado-cuestion.md` | SOTA, dónde no/sí está la fuerza | Solo referencia puntual |
+| `02-estructura-sentimiento.md` | Raymond Williams, física social | Fundamentar cap. 10 (formas de vida) |
+| `03-patron-reaccionario.md` | Miedo a la agencia | Fundamentar cap. 11 (sacrificio) |
+| `04-fe-lucida-epica.md` | Trampas, binarios, épica | Cap. 12 (sombra) y cierres |
 
-## Conceptos clave (leer en el ARCHIVO)
+## Conceptos que se asumen conocidos
 
-- **Estructura de sentimiento**: tono afectivo compartido; lo que se siente antes de que se nombre.
-- **Patrón reaccionario**: miedo a la agencia de los subordinados; negación a compartir poder.
-- **Fe lúcida**: esperanza desilusionada; ni rencor, ni desesperación, ni melancolía, ni ilusionismo.
-- **Binarios brújula**: luz/sombra, resistencia/dominación, épica/lema vacío.
-
-## Uso en el método de trabajo
-
-En el paso 2 del método (Decisión), este eje responde:
-- ¿Desde qué posición ética se toma la decisión?
-- ¿Qué trampas evitar (rencor, melancolía, ilusionismo)?
-- ¿Cómo mantener la épica sin caer en lema vacío?
+- **Estructura de sentimiento**: existe, empuja, no se ve — no hace falta explicarlo.
+- **Patrón reaccionario**: miedo a la agencia — se nombra, no se desarrolla.
+- **Fe lúcida**: esperanza desilusionada — es el tono, no el tema.
 
 ## Lo que NO hacer
 
-- No confundir visibilidad con existencia (la estructura de sentimiento no se ve).
-- No depositar esperanza en líderes o instituciones.
-- No perder los binarios brújula en nombre de la "complejidad".
+- **No recorrer** este eje como inicio del texto.
+- **No repetir** el diagnóstico en los capítulos.
+- **No convertir** la fe lúcida en tema de capítulo (es el **tono**, no el contenido).
+- El texto **parte de aquí pero mira hacia otro lado**: los tres desplazamientos, el repertorio olvidado, la arquitectura.
