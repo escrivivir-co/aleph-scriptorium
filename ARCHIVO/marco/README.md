@@ -27,6 +27,9 @@ Rousseau en 2025. Por qué la revolución clásica no encuentra objeto. Re-polit
 ### [07. Hybris y crematística: el infinito como enemigo de la ciudad](07-hybris-crematistica-infinito.md)
 Aristóteles en 2025. La crematística introduce el infinito en la polis. La hybris como pretensión de actuar como dioses. Por qué la lógica del negocio pervierte los fines naturales (sanidad, educación, justicia). Diseño institucional para confinar la crematística.
 
+### [08. El trabajo como campo de batalla](08-trabajo-campo-batalla.md)
+La siniestralidad laboral como indicador material de la subordinación. La acumulación originaria no terminó: se desplazó. Conquistas obreras y sus límites estructurales. La división internacional del sufrimiento. Mecanismos contra el poder despótico del empleador.
+
 ---
 
 ## Uso en el proyecto
