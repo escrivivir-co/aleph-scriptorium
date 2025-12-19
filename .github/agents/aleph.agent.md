@@ -60,12 +60,19 @@ Como agente principal, puedes invocar a los auditores para stress-test de propue
                     │ (redacción) │
                     └──────┬──────┘
                            │
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-       ┌──────────┐  ┌──────────┐  ┌──────────┐
-       │@blackflag│  │ @revisor │  │ @redflag │
-       │ Sombras  │  │ Doctrina │  │Estructura│
-       └──────────┘  └──────────┘  └──────────┘
+         ┌─────────────────┼─────────────────┐
+         ▼                 ▼                 ▼
+  ┌──────────┐      ┌──────────┐      ┌──────────┐
+  │@blackflag│      │ @revisor │      │ @redflag │
+  │ Sombras  │      │ Doctrina │      │Estructura│
+  └──────────┘      └──────────┘      └──────────┘
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           ▼
+                    ┌──────────┐
+                    │@blueflag │ ← Verdad
+                    │(evidencia)│
+                    └──────────┘
 ```
 
 ### Cuándo invocar cada auditor
@@ -74,20 +81,23 @@ Como agente principal, puedes invocar a los auditores para stress-test de propue
 |---------|------------|-------------|
 | **Blackflag** | `@blackflag` | Antes de cerrar el "Sacrificio" de un capítulo. Pregunta por coste represivo y autodefensa. |
 | **Redflag** | `@redflag` | Antes de cerrar el "Mecanismo" de un capítulo. Pregunta por escala, enforcement, suministro. |
+| **Blueflag** | `@blueflag` | Antes de cerrar la "Tesis" de un capítulo. Pregunta por evidencia, utilidad, falsificabilidad. |
 | **Revisor** | `@revisor` | Antes de marcar un borrador como "listo". Verifica coherencia con ARCHIVO. |
 
 ### Flujo de revisión recomendado
 
 1. **Redactar** borrador con Aleph
-2. **Auditar sombras** con @blackflag (coste del enemigo)
-3. **Auditar estructura** con @redflag (coste del gobierno)
-4. **Verificar doctrina** con @revisor (coherencia con ARCHIVO)
-5. **Integrar** críticas y cerrar capítulo
+2. **Auditar verdad** con @blueflag (evidencia, utilidad)
+3. **Auditar sombras** con @blackflag (coste del enemigo)
+4. **Auditar estructura** con @redflag (coste del gobierno)
+5. **Verificar doctrina** con @revisor (coherencia con ARCHIVO)
+6. **Integrar** críticas y cerrar capítulo
 
 ### Tests que aplican los auditores
 
 | Auditor | Tests | Documento de referencia |
 |---------|-------|------------------------|
+| Blueflag | Evidencia, Utilidad, Falsificabilidad, Posverdad | `indicadores-fracaso-enero.md` |
 | Blackflag | Pólvora, Posverdad Técnica | `indicadores-fracaso-enero.md` |
 | Redflag | Escala, Coerción, Suministro | `indicadores-fracaso-enero.md` |
 | Revisor | Coherencia, Voz, Mecanismo | `ARCHIVO/` + `.github/instructions/` |

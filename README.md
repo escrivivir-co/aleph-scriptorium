@@ -33,15 +33,18 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 |-----------|--------|------|
 | Protocolo DevOps (commits, sprints, backlogs) | ✅ | [`.github/DEVOPS.md`](.github/DEVOPS.md) |
 | Backlog Scriptorium | ✅ | [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md) |
-| Agente **Aleph** (planifica, redacta, gestiona) | 🔄 | [`.github/agents/aleph.agent.md`](.github/agents/aleph.agent.md) |
-| Agente **Revisor** (evalúa, detecta incoherencias) | ✅ | [`.github/agents/revisor.agent.md`](.github/agents/revisor.agent.md) |
+| Agente **Aleph** (planifica, redacta, orquesta) | ✅ | [`.github/agents/aleph.agent.md`](.github/agents/aleph.agent.md) |
+| Agente **Revisor** (evalúa coherencia doctrinal) | ✅ | [`.github/agents/revisor.agent.md`](.github/agents/revisor.agent.md) |
+| Agente **Blackflag** (audita sombras: enemigo, represión) | ✅ | [`.github/agents/blackflag.agent.md`](.github/agents/blackflag.agent.md) |
+| Agente **Redflag** (audita estructura: escala, gobierno) | ✅ | [`.github/agents/redflag.agent.md`](.github/agents/redflag.agent.md) |
+| Agente **Blueflag** (audita verdad: evidencia, utilidad) | ✅ | [`.github/agents/blueflag.agent.md`](.github/agents/blueflag.agent.md) |
 | Prompt de extracción y archivo | ✅ | [`.github/prompts/extraer-archivar.prompt.md`](.github/prompts/extraer-archivar.prompt.md) |
 | Prompt de convención de commits | ✅ | [`.github/prompts/commit-message.prompt.md`](.github/prompts/commit-message.prompt.md) |
 | Prompt de ejecución de commits | ✅ | [`.github/prompts/ejecutar-commits.prompt.md`](.github/prompts/ejecutar-commits.prompt.md) |
 | Prompt de foto de estado | ✅ | [`.github/prompts/foto-estado-y-discurso-motivacional.prompt.md`](.github/prompts/foto-estado-y-discurso-motivacional.prompt.md) |
 | Instrucciones de contexto (voz, marco, diagnóstico) | ✅ | `.github/instructions/` |
 
-**Pendiente para cerrar Sprint 0**: integrar trazabilidad completa en el agente Aleph.
+**Pendiente para cerrar Sprint 0**: ~~integrar trazabilidad completa en el agente Aleph~~ ✅ Completado.
 
 ---
 
@@ -173,9 +176,36 @@ En el proyecto de demostración usamos tres ejes:
 
 Perfiles de IA preconfigurados para tareas específicas:
 
-- **Extractor**: Procesa material fuente y lo distribuye en tu ARCHIVO ([extraer-archivar.prompt.md](.github/prompts/extraer-archivar.prompt.md))
-- **Aleph**: Redacta borradores usando el ARCHIVO como base doctrinal ([aleph.agent.md](.github/agents/aleph.agent.md))
-- **Revisor**: Evalúa textos, detecta incoherencias, propone mejoras ([revisor.agent.md](.github/agents/revisor.agent.md))
+| Agente | Rol | Invocación |
+|--------|-----|------------|
+| **Aleph** | Productor principal. Redacta, planifica, orquesta. | `@aleph` |
+| **Revisor** | Auditor doctrinal. Verifica coherencia con ARCHIVO. | `@revisor` |
+| **Blackflag** | Auditor de sombras. Coste represivo, autodefensa. | `@blackflag` |
+| **Redflag** | Auditor de estructura. Escala, enforcement, gobierno. | `@redflag` |
+| **Blueflag** | Auditor de verdad. Evidencia, utilidad, falsificabilidad. | `@blueflag` |
+
+**Arquitectura de tensión productiva:**
+
+```
+                    ┌─────────────┐
+                    │   ALEPH     │ ← Producción
+                    │ (redacción) │
+                    └──────┬──────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         ▼                 ▼                 ▼
+  ┌──────────┐      ┌──────────┐      ┌──────────┐
+  │BLACKFLAG │      │ REVISOR  │      │ REDFLAG  │
+  │ Sombras  │      │ Doctrina │      │Estructura│
+  └──────────┘      └──────────┘      └──────────┘
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           ▼
+                    ┌──────────┐
+                    │ BLUEFLAG │ ← Verdad
+                    │(evidencia)│
+                    └──────────┘
+```
 
 Los agentes no inventan: **consultan tu ARCHIVO**. No improvisan estilo: **siguen tus instrucciones**. No deciden por ti: **te presentan opciones**.
 

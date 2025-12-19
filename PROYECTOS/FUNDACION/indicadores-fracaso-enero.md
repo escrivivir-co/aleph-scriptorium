@@ -118,6 +118,123 @@ Estos indicadores aplican a todo el plan de enero:
 
 ---
 
+## Auditoría de Sombras (Bandera Negra)
+
+> Inyección de realidad: indicadores de "dientes afilados" para detectar si el texto se ha vuelto inofensivo.
+
+### 1. El test de la pólvora (Autodefensa)
+**Pregunta**: ¿El diseño institucional asume que el Estado protegerá a la organización, o incluye mecanismos de autoprotección?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Pacifismo suicida** | El texto asume que la legalidad es suficiente escudo contra la violencia reaccionaria. |
+| **Ausencia de coste** | Las propuestas no mencionan el coste represivo de implementarlas. |
+| **Delegación total** | Se delega la seguridad exclusivamente en cuerpos estatales existentes. |
+
+**Corrección obligatoria**: Si se detecta, incluir explícitamente el dilema de la autodefensa (ver `12-dilemas-accion-revolucionaria.md`).
+
+### 2. El test de la posverdad técnica
+**Pregunta**: ¿El diseño es robusto frente a la manipulación cognitiva a escala industrial?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Racionalismo ingenuo** | Asumir que "la verdad se impone por su peso" en el debate público. |
+| **Transparencia mágica** | Creer que publicar datos crudos genera accountability automática. |
+| **Silencio sobre el ruido** | No incluir mecanismos activos de filtrado de ruido/desinformación en las asambleas. |
+
+**Corrección obligatoria**: Definir "cortafuegos cognitivos" en cada arquitectura del Cap 4.
+
+---
+
+## Auditoría de Estructura (Bandera Roja)
+
+> Inyección de realismo: indicadores para detectar si las propuestas son operativas o solo correctas.
+
+### 1. El test de escala
+**Pregunta**: ¿La propuesta especifica en qué escala opera y demuestra viabilidad en esa escala?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Escala no declarada** | La propuesta no especifica si aplica a 1.000, 1.000.000 o 8.000.000.000 de personas. |
+| **Salto mágico** | Se asume que lo que funciona en un barrio funciona para un país sin explicar cómo. |
+| **Federación como palabra mágica** | Se invoca "federación" sin describir mecanismos de coordinación, arbitraje y redistribución. |
+
+**Corrección obligatoria**: Declarar escala operativa y mecanismos de escalado en cada arquitectura.
+
+### 2. El test de coerción
+**Pregunta**: ¿La propuesta incluye mecanismos de enforcement o depende de buena voluntad?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Consenso espontáneo** | Asumir que todos cumplirán porque es "lo correcto". |
+| **Enforcement sin recursos** | Declarar sanciones sin especificar quién las ejecuta ni con qué medios. |
+| **Deserción ignorada** | No responder qué pasa con quien no quiere participar. |
+
+**Corrección obligatoria**: Cada mecanismo debe especificar: quién ejecuta, con qué recursos, bajo qué control, qué pasa si alguien no cumple.
+
+### 3. El test de suministro
+**Pregunta**: ¿La propuesta responde quién produce los bienes necesarios mientras deliberamos?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Olvido de la producción** | Diseñar instituciones políticas sin mencionar la base material. |
+| **Abundancia asumida** | Proponer distribución sin explicar producción. |
+| **Logística invisible** | Ignorar cómo llegan los recursos del punto A al punto B. |
+
+**Corrección obligatoria**: Vincular cada arquitectura política a su régimen material (propiedad, trabajo, energía, datos).
+
+---
+
+## Auditoría de Verdad (Bandera Azul)
+
+> Inyección de rigor: indicadores para detectar si las propuestas se basan en evidencia o en deseo.
+
+### 1. El test de evidencia
+**Pregunta**: ¿Las afirmaciones del texto se basan en datos, análisis o historia verificable?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Fuente ausente** | Afirmaciones sin respaldo ("es obvio que...", "todos saben que..."). |
+| **Dato no verificable** | Estadísticas o hechos sin fuente comprobable. |
+| **Autoridad como argumento** | "X lo dijo" sin explicar por qué X tiene razón. |
+
+**Corrección obligatoria**: Cada afirmación empírica debe tener fuente o declarar explícitamente que es hipótesis.
+
+### 2. El test de utilidad
+**Pregunta**: ¿La propuesta resuelve un problema concreto para alguien identificable?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Problema abstracto** | "Resolver la crisis de legitimidad" sin especificar para quién ni cómo se mide. |
+| **Beneficiario difuso** | "La humanidad" o "el pueblo" sin segmentar. |
+| **Éxito no medible** | No hay forma de saber si la propuesta ha funcionado. |
+
+**Corrección obligatoria**: Cada propuesta debe declarar problema concreto, beneficiario identificable y métrica de éxito.
+
+### 3. El test de falsificabilidad
+**Pregunta**: ¿Cómo sabríamos si esta propuesta ha fallado?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Irrefutabilidad** | La propuesta "siempre tiene razón" porque se redefine ante cualquier objeción. |
+| **Sin indicador de fracaso** | No hay señal que indique que algo va mal. |
+| **Sin mecanismo de corrección** | Si falla, no hay forma de ajustar. |
+
+**Corrección obligatoria**: Cada arquitectura debe tener indicadores de fracaso explícitos (ya cubiertos en secciones anteriores) y mecanismos de iteración.
+
+### 4. El test de posverdad
+**Pregunta**: ¿La propuesta sobrevive en un entorno de manipulación cognitiva a escala industrial?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Racionalismo ingenuo** | Asumir que "la verdad se impone por su peso". |
+| **Transparencia mágica** | Creer que publicar datos genera accountability automática. |
+| **Dependencia de buena fe** | Asumir que los participantes quieren deliberar honestamente. |
+
+**Corrección obligatoria**: Diseñar "cortafuegos cognitivos" y mecanismos de verificación que no dependan de la buena fe del receptor.
+
+---
+
 ## Método para umbrales adaptativos
 
 Algunos indicadores no pueden fijarse a priori (dependen de contexto, escala, madurez institucional). Para estos casos:

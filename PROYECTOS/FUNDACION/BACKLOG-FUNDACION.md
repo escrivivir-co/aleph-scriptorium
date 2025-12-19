@@ -65,6 +65,29 @@
 
 ---
 
+### FUND-0.1.0-S01: Auditoría de Sombras (Bandera Negra)
+**Estado**: ⏳ Pendiente (Sprint 1)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T015 | Auditoría de Sombras y afilado de dilemas (Arco Enero) | ⏳ |
+| T016 | Validación de `indicadores-fracaso-enero.md` (Posverdad técnica) | ✅ |
+
+---
+
+### FUND-0.1.0-S02: Auditoría de Estructura (Bandera Roja)
+**Estado**: ⏳ Pendiente (Sprint 1)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Auditoría de Estructura y Viabilidad (Arco Enero) | ⏳ |
+| T018 | Inyección de Tests de Escala y Coerción en `indicadores-fracaso-enero.md` | ✅ |
+| T019 | Crear agente `redflag.agent.md` | ✅ |
+| T020 | Crear agente `blueflag.agent.md` | ✅ |
+| T021 | Inyección de Tests de Verdad (Blueflag) en `indicadores-fracaso-enero.md` | ✅ |
+
+---
+
 ### FUND-0.0.1-S05: Banderas Roja y Negra (Hibridación)
 **Estado**: ✅ Completada
 
@@ -78,11 +101,11 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 13 |
-| Completadas | 11 |
+| Tasks totales | 21 |
+| Completadas | 17 |
 | En progreso | 1 |
-| Pendientes | 2 |
-| % Avance | 85% |
+| Pendientes | 3 |
+| % Avance | 81% |
 
 ---
 
@@ -91,8 +114,9 @@
 | Dependencia | Estado |
 |-------------|--------|
 | Protocolo DevOps | ✅ |
-| Agente Aleph actualizado | 🔄 |
+| Agente Aleph actualizado | ✅ |
 | Prompt de extracción | ✅ |
+| Agentes auditores (Blackflag, Redflag) | ✅ |
 
 ---
 
@@ -105,3 +129,9 @@
 | 2024-12-19 | Completar diagnostico 05 | Aleph |
 | 2024-12-19 | Refinar tecnofeudalismo (dos capas) | Aleph |
 | 2024-12-19 | Hibridar "Banderas Roja y Negra" en el ARCHIVO | Aleph |
+| 2025-12-19 | Crear agente Bandera Roja (`redflag.agent.md`) | Aleph |
+| 2025-12-19 | Añadir Auditoría de Sombras (T015-T016) | Blackflag |
+| 2025-12-19 | Añadir Auditoría de Estructura (T017-T019) | Redflag |
+| 2025-12-19 | Crear agente Bandera Azul (`blueflag.agent.md`) | Aleph |
+| 2025-12-19 | Inyectar Tests de Escala, Coerción, Suministro (T018) | Redflag |
+| 2025-12-19 | Inyectar Tests de Evidencia, Utilidad, Falsificabilidad (T021) | Blueflag |
