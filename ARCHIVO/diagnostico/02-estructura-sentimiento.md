@@ -59,7 +59,25 @@ La fe que conservamos está nutrida de tantas formas de **nuevos e insólitos im
 
 ---
 
-## 5. Implicaciones para el diseño institucional
+## 5. La distancia entre el análisis y la calle
+
+Hay una tensión recurrente en la historia de la izquierda: quienes teorizan sobre la resistencia y quienes la practican rara vez son los mismos.
+
+> "Los que viven en las nubes no entienden a los que viven en la calle."
+
+Esta acusación —que atraviesa desde el sindicalismo revolucionario hasta los movimientos actuales— señala un problema real: el análisis que no desemboca en acción se convierte en **contemplación estéril**. Pero la acción sin análisis es **aventurerismo**.
+
+La estructura de sentimiento no la crean los teóricos. Emerge de la experiencia compartida del daño. Pero los teóricos pueden:
+
+1. **Nombrarla** sin capturarla.
+2. **Conectar** experiencias dispersas que no se reconocen entre sí.
+3. **Traducir** el malestar difuso en mecanismos accionables.
+
+El error no es teorizar. El error es teorizar **sin escuchar** la estructura de sentimiento que ya existe. La arrogancia intelectual que cree inventar lo que solo debería articular.
+
+---
+
+## 6. Implicaciones para el diseño institucional
 
 Desde el proyecto, este diagnóstico implica:
 
@@ -67,10 +85,11 @@ Desde el proyecto, este diagnóstico implica:
 - **Diseñar para lo que opera por debajo**: mecanismos que no dependan de lemas ni de campañas.
 - **Conectar con la consciencia del daño**: ahí está la energía que empuja.
 - **Evitar el ilusionismo teórico**: la fe lúcida no es teoría correcta, es apertura a lo insólito.
+- **Cerrar la brecha teoría/calle**: el diseño debe emerger del diálogo con quienes viven la resistencia, no de gabinetes aislados.
 
 ---
 
-## 6. Cierre de tensión
+## 7. Cierre de tensión
 
 La estructura de sentimiento no es programa ni garantía. Es **lo que queda** cuando los líderes decepcionan, las instituciones fallan y los lemas se vacían.
 

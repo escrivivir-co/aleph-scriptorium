@@ -65,15 +65,24 @@
 
 ---
 
+### FUND-0.0.1-S05: Banderas Roja y Negra (Hibridación)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T014 | Hibridar arquetipos de praxis en los tres ejes | ✅ |
+
+---
+
 ## Métricas Sprint 0
 
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 13 |
-| Completadas | 10 |
+| Completadas | 11 |
 | En progreso | 1 |
 | Pendientes | 2 |
-| % Avance | 77% |
+| % Avance | 85% |
 
 ---
 
@@ -95,3 +104,4 @@
 | 2024-12-19 | Completar docs marco 08–11 | Aleph |
 | 2024-12-19 | Completar diagnostico 05 | Aleph |
 | 2024-12-19 | Refinar tecnofeudalismo (dos capas) | Aleph |
+| 2024-12-19 | Hibridar "Banderas Roja y Negra" en el ARCHIVO | Aleph |

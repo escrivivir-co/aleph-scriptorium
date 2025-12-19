@@ -98,6 +98,40 @@ La gente no percibe "me han quitado X hoy", sino "todo es un poco peor que antes
 
 ## 5. Implicaciones para el diseño institucional
 
+### 5.1 Contra la selección sistémica
+
+Desde el proyecto, la tarea es diseñar mecanismos que **contrarresten la selección sistémica**:
+
+- Límites al tamaño que convierte a un actor en "too big to fail".
+- Separación entre reguladores y regulados.
+- Responsabilidad personal extendida en entidades sistémicas.
+- Transparencia sobre interdependencias.
+
+### 5.2 El dilema de la colaboración táctica
+
+Hay un dilema recurrente: ¿puede una fuerza transformadora **entrar en el sistema** (gobierno, instituciones, regulación) sin ser absorbida por él?
+
+La historia ofrece un arquetipo: el revolucionario que acepta ser ministro. La paradoja es real:
+
+- Desde dentro, puede destruir "los ficheros de la vergüenza" (archivos de control social).
+- Desde dentro, puede frenar excesos que deslegitimarían la causa.
+- Pero desde dentro, también acepta las reglas del juego que limitan el horizonte.
+
+> "El revolucionario consciente a veces tiene que ser un reaccionario" —para canalizar el desbordamiento, evitar el caos que llevaría a la derrota.
+
+Esta frase, que podría pronunciarse en cualquier transición o gobierno de coalición, señala el núcleo del dilema: **la colaboración táctica tiene un coste estructural**, aunque sea menor que la alternativa.
+
+### 5.3 Mecanismos contra la captura
+
+Si la colaboración es inevitable, el diseño debe incluir:
+
+1. **Límites temporales**: cuándo termina la colaboración.
+2. **Líneas rojas**: qué nunca se acepta.
+3. **Mecanismos de salida**: cómo retirarse sin destruir lo construido.
+4. **Registro del coste**: documentar qué se ha perdido, para que las generaciones futuras sepan qué compromisos heredan.
+
+La captura no es traición; es el precio de la efectividad dentro del sistema. Pero ese precio debe **declararse**, no ocultarse.
+
 Desde el proyecto, la tarea no es moralizar sobre el privilegio, sino **traducir el análisis en arquitectura**:
 
 - **Identificar actores por posición**, no por maldad: nodos sistémicos, redes, estructuras jurídicas.

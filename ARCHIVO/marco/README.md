@@ -39,6 +39,9 @@ Superar la "Imperiofilia". Isomorfismo entre el campesino del sur de Europa y el
 ### [11. Tecnofeudalismo: crítica y puentes](11-tecnofeudalismo-critica-puentes.md)
 Reconstrucción de la tesis popular (Varoufakis) y contraste con marxismo‑leninismo clásico para aclarar qué es metáfora, qué es revisionismo y cómo aproximar posturas sin diluir la economía política.
 
+### [12. Dilemas de la acción revolucionaria](12-dilemas-accion-revolucionaria.md)
+Repertorio de dilemas extraídos de la experiencia histórica del sindicalismo revolucionario (1920-1939). Autodefensa organizativa, gimnasia revolucionaria vs. bases estables, el momento decisivo, colaboración táctica sin captura, sacrificio como decisión política, memoria como infraestructura. Arquetipos para el diseño institucional.
+
 ---
 
 ## Uso en el proyecto

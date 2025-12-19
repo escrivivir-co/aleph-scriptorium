@@ -70,10 +70,30 @@ Desde el proyecto, este diagnóstico implica:
 
 ---
 
-## 7. Cierre de tensión
+## 7. La amnesia pactada como fractura institucionalizada
 
-El mundo común no se pierde por ataque externo. Se pierde cuando sus portadores producen asco y siguen ahí sin sentir la queja.
+Hay una forma específica de fractura que merece análisis: el **pacto de silencio**. Ocurre cuando, tras un conflicto profundo, se construye un "mundo común" falso basado en el olvido deliberado.
+
+El mecanismo es claro:
+
+1. El conflicto produce heridas que no se procesan.
+2. Las élites pactan no nombrar las heridas a cambio de estabilidad.
+3. Se construye una narrativa oficial que excluye la memoria del daño.
+4. Las generaciones siguientes heredan un mundo común **sin sustrato**: no saben por qué las cosas son como son.
+5. Cuando la fractura reaparece, no hay lenguaje común para procesarla.
+
+La amnesia pactada es **captura preventiva**: evitar que la memoria se convierta en base de movilización. Funciona durante décadas. Pero deja el terreno preparado para que, cuando las grietas reaparezcan, la posverdad ocupe el vacío sin resistencia.
+
+> "Se está vendiendo la memoria a cambio de una democracia que no nombra sus deudas."
+
+Esta frase, que podría pronunciarse en cualquier transición pactada del siglo XX, señala el problema: **no hay mundo común sin memoria compartida de los daños**. Sin reconocimiento de deudas, no hay legitimidad para reparaciones. Y sin reparaciones, el asco vuelve.
+
+---
+
+## 8. Cierre de tensión
+
+El mundo común no se pierde por ataque externo. Se pierde cuando sus portadores producen asco y siguen ahí sin sentir la queja. O cuando se pacta olvidar los daños para seguir funcionando.
 
 La posverdad no es la causa de la fractura. Es el **sustituto técnico** que ocupa el hueco. Y ese sustituto está diseñado para servir a sus dueños.
 
-La pregunta que queda abierta: **¿es posible reconstruir un mundo común cuando el asco ya ha hecho su trabajo?** No está claro. Pero al menos hay que nombrar el problema sin confundir causa y efecto.
+La pregunta que queda abierta: **¿es posible reconstruir un mundo común cuando el asco ya ha hecho su trabajo y la amnesia ha borrado las palabras para nombrarlo?** No está claro. Pero al menos hay que distinguir entre el olvido que sana y el silencio que pudre.

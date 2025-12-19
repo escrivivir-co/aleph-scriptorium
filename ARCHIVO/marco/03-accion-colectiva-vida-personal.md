@@ -125,17 +125,53 @@ Entender:
 
 ---
 
-## 7. Implicaciones para el diseño institucional
+## 7. La tensión desestabilización vs. construcción de bases
+
+Hay un debate histórico no resuelto: ¿la transformación viene de **mantener la crisis permanente** (impedir que el sistema se estabilice) o de **construir bases estables** desde las cuales sostener el conflicto?
+
+### El argumento de la desestabilización
+
+La "gimnasia revolucionaria" —insurrecciones periódicas, huelgas generales, sabotaje— asume que:
+
+1. El sistema se legitima por su funcionamiento normal.
+2. Interrumpir la normalidad expone su fragilidad.
+3. Cada crisis es una oportunidad de radicalización.
+
+Esta lógica tuvo sentido cuando existía un **sujeto político masivo y organizado** (sindicatos de millones de afiliados, partidos de masas). La gimnasia no creaba el sujeto; lo movilizaba.
+
+### El argumento de las bases estables
+
+El proyecto sostiene que "la precariedad no genera transformación, genera agotamiento". Esto implica:
+
+1. Sin estabilidad material, no hay capacidad de sostener el conflicto.
+2. La desestabilización permanente destruye a quienes la practican antes que al sistema.
+3. El sujeto político debe constituirse antes de poder movilizarse.
+
+### Síntesis: dos fases, no dos estrategias
+
+La tensión se resuelve distinguiendo **fases históricas**:
+
+- **Fase de constitución**: construir bases materiales, organizativas, educativas. Priorizar estabilidad.
+- **Fase de movilización**: usar la fuerza constituida. Aquí tiene sentido la presión sostenida.
+
+El error es aplicar la lógica de una fase a la otra: desestabilizar sin base (aventurerismo) o construir base sin voluntad de usarla (reformismo que se pudre).
+
+**Implicación para el diseño**: Las arquitecturas institucionales deben ser **bifásicas**: acumular fuerza en tiempos de normalidad, activarla cuando las condiciones lo permitan.
+
+---
+
+## 8. Implicaciones para el diseño institucional
 
 Desde el proyecto, la tarea es diseñar **condiciones materiales** que permitan la acción sostenida:
 
 - No se puede exigir heroísmo permanente.
 - El sistema que aspira a transformarse debe incluir **mecanismos de sostenibilidad** para quienes lo intentan.
 - La acción colectiva eficaz requiere **bases materiales estables**, no sacrificio.
+- El diseño debe contemplar **ambas fases**: construcción paciente + activación cuando proceda.
 
 ---
 
-## 8. Cierre de tensión
+## 9. Cierre de tensión
 
 La diferencia con otros siglos es que hoy el sistema es global, el margen de ruptura es pequeño, y el coste del error es masivo. Por eso la épica revolucionaria clásica pierde viabilidad, y gana peso la **estabilidad individual + presión colectiva incremental**.
 

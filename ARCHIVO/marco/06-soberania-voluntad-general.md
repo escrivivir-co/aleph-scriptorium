@@ -76,6 +76,28 @@ En 2025:
 
 Por tanto: **la insurrección no encuentra objeto**. Esto no es conservadurismo: es diagnóstico.
 
+### Pero hubo momentos
+
+El diagnóstico de 2025 no puede borrar la historia. Hubo momentos —julio de 1936 en Barcelona, mayo de 1968 en París, la caída del Muro— en que la maquinaria del Estado colapsó y el poder estuvo "en la calle".
+
+Las condiciones de esos momentos fueron excepcionales:
+
+1. **Colapso institucional visible**: el Estado no podía ejercer su función básica.
+2. **Sujeto político constituido**: organizaciones masivas previas que podían actuar.
+3. **Concentración territorial**: el conflicto tenía un lugar físico.
+4. **Visibilidad del enemigo**: se sabía contra quién se luchaba.
+
+Cuando estas condiciones se dieron, "ir a por el todo" —instaurar un nuevo orden inmediatamente— era una opción real, no fantasía. Que se decidiera no hacerlo (en favor de la colaboración táctica) fue una **decisión política**, no una imposibilidad estructural.
+
+### La lección para el diseño
+
+El "momento decisivo" no es una categoría universal ni una promesa. Es una **singularidad histórica** que puede o no presentarse. El doble error:
+
+1. **Esperar el momento** como si fuera inevitable (ilusionismo revolucionario).
+2. **Negar que pueda existir** y diseñar solo para la normalidad (conformismo).
+
+**Implicación para el diseño**: Las arquitecturas deben funcionar en tiempos normales pero incluir **protocolos de activación constituyente** que no requieran improvisación si las condiciones cambian.
+
 ---
 
 ## 5. Líneas de futuro realistas (qué haría Rousseau hoy)

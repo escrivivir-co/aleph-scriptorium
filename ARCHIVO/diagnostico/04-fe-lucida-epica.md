@@ -57,7 +57,25 @@ La épica lúcida es otra:
 
 ---
 
-## 5. Implicaciones para el diseño institucional
+## 5. El sacrificio como decisión política
+
+Hay momentos en que la fe lúcida exige **renunciar a algo valioso** para preservar algo más valioso aún. No por cobardía, sino por cálculo trágico.
+
+El arquetipo histórico: pedir alto el fuego cuando tu bando tiene la fuerza, porque la alternativa —guerra civil dentro de la guerra civil— destruiría todo. Quienes lo hacen son llamados traidores. Pero a veces la traición aparente es la única forma de responsabilidad adulta.
+
+El sacrificio político legítimo cumple tres condiciones:
+
+1. **Se declara**: no se oculta bajo retórica triunfalista. Se dice qué se pierde.
+2. **Se registra**: para que las generaciones futuras sepan qué compromisos heredan.
+3. **Se asume**: sin rencor ni melancolía, como decisión de quien mira la realidad a la cara.
+
+> "No reniego de nada. Hicimos lo que teníamos que hacer."
+
+Esta frase —que podría pronunciar cualquier protagonista de decisiones trágicas— es la voz de la fe lúcida. No es justificación ni disculpa. Es aceptación de que la acción política tiene costes, y que negarlos es ilusionismo.
+
+---
+
+## 6. Implicaciones para el diseño institucional
 
 Desde el proyecto, este diagnóstico implica:
 
@@ -65,13 +83,16 @@ Desde el proyecto, este diagnóstico implica:
 - **Evitar las cuatro trampas**: ni rencor, ni desesperación, ni melancolía, ni ilusionismo.
 - **Mantener los binarios brújula**: sin ellos, el diseño pierde orientación.
 - **Cultivar la épica sin heroísmo**: la transformación sostenida no es espectacular, pero es épica.
+- **Incluir el sacrificio en el diseño**: toda arquitectura institucional debe declarar qué se pierde al elegirla.
 
 ---
 
-## 6. Cierre de tensión
+## 7. Cierre de tensión
 
 La fe lúcida no es una posición cómoda. Exige **sostener la tensión** entre esperanza y decepción, entre acción y límite, entre lo posible y lo necesario.
 
 Pero es la única posición que no colapsa en rencor, desesperación, melancolía o ilusión. Y es la única que permite **seguir diseñando** cuando todo parece perdido.
+
+Quien vivió "el corto verano" de una revolución —cualquier revolución, cualquier momento de máxima potencia— y sobrevivió a su derrota sabe algo que los teóricos no pueden enseñar: que la fe lúcida no es teoría, sino **cicatriz que sigue viva**.
 
 La pregunta que queda abierta: **¿cómo transmitir la fe lúcida sin convertirla en otro lema, otra consigna, otra teoría correcta?**

@@ -16,6 +16,14 @@ El pensamiento reaccionario, bajo cualquier etiqueta, tiene siempre el mismo nú
 
 No importa el nombre que le pongan —anti-woke, anti-sanchismo, patriotismo, sentido común—. El patrón es el mismo: **pánico ante la posibilidad de que los subordinados dejen de serlo**.
 
+### El pistolerismo como arquetipo
+
+El patrón tiene manifestaciones extremas que conviene recordar. En contextos de alta conflictividad laboral, la reacción patronal ha recurrido históricamente al **terrorismo de clase**: asesinato selectivo de líderes sindicales, bandas armadas financiadas por empresarios, complicidad policial.
+
+Este "pistolerismo" no es anomalía histórica. Es la **forma pura** del patrón reaccionario cuando el miedo alcanza cierta intensidad. La diferencia entre el pistolerismo y la reacción "civilizada" actual es de grado, no de naturaleza.
+
+Cuando una organización obrera "no puede defender la vida de sus militantes, está condenada a desaparecer". Esta frase, pronunciada en contextos de máxima violencia, recuerda algo que el análisis político olvida: **la reacción puede matar**. No solo despedir, no solo difamar, no solo empobrecer. Matar.
+
 ---
 
 ## 2. El miedo está de su lado
