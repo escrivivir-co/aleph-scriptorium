@@ -30,6 +30,12 @@ El ARCHIVO tiene **tres ejes** que SIRVEN COMO BASE del proyecto pero no son el 
 - Referencias culturales (Benjamin/Taubes/Kolnai) como palancas, no como ornamento.
 - Evitar el tono "manual" o "powerpoint": usar ritmo, contraste, imágenes, pero con economía.
 
+## Cartas-puerta (presentación)
+
+Existe un mecanismo de **4 cartas-puerta** para presentar el proyecto según el tipo de lector (tutoría, evidencia, poder, viabilidad).
+
+No duplicar contenido: seguir las instrucciones en `.github/instructions/cartas-puerta.instructions.md` y referir al lector a `ARCHIVO/CARTAS/`.
+
 ---
 
 ## Método de trabajo (cada capítulo)

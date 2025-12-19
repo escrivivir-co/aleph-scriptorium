@@ -18,6 +18,15 @@
 
 Este repositorio está en fase de **arranque controlado**: se prioriza dejar un método repetible (Scriptorium) y una base doctrinal sólida (ARCHIVO) antes de acelerar la producción del texto serializado (Fundación).
 
+Si has llegado aquí por una razón concreta, entra por tu puerta:
+
+| Si eres... | Empieza por |
+|---|---|
+| **Tutor/maestro** (dirección de TFG) | [`ARCHIVO/CARTAS/`](ARCHIVO/CARTAS/) → [`PROYECTOS/FUNDACION/Indice.md`](PROYECTOS/FUNDACION/Indice.md) |
+| **Lector del método** (cómo se gobierna el proyecto) | [`.github/DEVOPS.md`](.github/DEVOPS.md) |
+| **Lector del texto en producción** | [`PROYECTOS/FUNDACION/CAPITULOS/`](PROYECTOS/FUNDACION/CAPITULOS/) |
+| **Lector de la base doctrinal** (herramientas, no diagnóstico) | [`ARCHIVO/marco/README.md`](ARCHIVO/marco/README.md) |
+
 El proyecto tiene dos productos paralelos:
 
 1. **Aleph Scriptorium** — el kit de herramientas (agentes, prompts, instrucciones, protocolo).
@@ -99,6 +108,7 @@ Fundación es el "qué": un texto político serializado en 12 capítulos (uno po
 
 | Interés | Empieza por |
 |---------|-------------|
+| Presentación para **tutoría/TFG** | [`ARCHIVO/CARTAS/`](ARCHIVO/CARTAS/) → índice 2026 |
 | El **método** (cómo trabaja la IA) | [`DEVOPS.md`](.github/DEVOPS.md) → backlog Scriptorium → agente Aleph |
 | La **doctrina** (de qué habla el texto) | [`ARCHIVO/marco/README.md`](ARCHIVO/marco/README.md) → marco 01–11 |
 | El **texto en producción** | [`Indice.md`](PROYECTOS/FUNDACION/Indice.md) → capítulos 1–4 → indicadores de fracaso |

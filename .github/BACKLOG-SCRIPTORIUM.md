@@ -63,15 +63,33 @@
 
 ---
 
+### SCRIPT-0.0.1-S05: Puertas de entrada (README)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Añadir “puertas” por perfil en `README.md` | ✅ |
+
+---
+
+### SCRIPT-0.0.1-S06: Cartas-puerta (instrucciones)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T013 | Documentar mecanismo de cartas-puerta en `.github/instructions/` | ✅ |
+
+---
+
 ## Métricas Sprint 0
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 11 |
-| Completadas | 8 |
+| Tasks totales | 13 |
+| Completadas | 10 |
 | En progreso | 1 |
 | Pendientes | 2 |
-| % Avance | 73% |
+| % Avance | 77% |
 
 ---
 
