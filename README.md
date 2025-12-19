@@ -8,6 +8,101 @@
 
 ---
 
+## Status (para visitantes)
+
+| | |
+|---|---|
+| **Fecha** | 2025-12-19 |
+| **Sprint** | 0 (Bootstrap) |
+| **Ciclo previsto** | 12 sprints × 4 iteraciones = 48 iteraciones (2026) |
+
+Este repositorio está en fase de **arranque controlado**: se prioriza dejar un método repetible (Scriptorium) y una base doctrinal sólida (ARCHIVO) antes de acelerar la producción del texto serializado (Fundación).
+
+El proyecto tiene dos productos paralelos:
+
+1. **Aleph Scriptorium** — el kit de herramientas (agentes, prompts, instrucciones, protocolo).
+2. **Fundación** — el texto fundacional en 12 capítulos que demuestra el kit en acción.
+
+---
+
+### 1. Aleph Scriptorium (v0.0.1) — Avance Sprint 0: 73%
+
+El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que la IA trabaje bajo las reglas del proyecto.
+
+| Artefacto | Estado | Ruta |
+|-----------|--------|------|
+| Protocolo DevOps (commits, sprints, backlogs) | ✅ | [`.github/DEVOPS.md`](.github/DEVOPS.md) |
+| Backlog Scriptorium | ✅ | [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md) |
+| Agente **Aleph** (planifica, redacta, gestiona) | 🔄 | [`.github/agents/aleph.agent.md`](.github/agents/aleph.agent.md) |
+| Agente **Revisor** (evalúa, detecta incoherencias) | ✅ | [`.github/agents/revisor.agent.md`](.github/agents/revisor.agent.md) |
+| Prompt de extracción y archivo | ✅ | [`.github/prompts/extraer-archivar.prompt.md`](.github/prompts/extraer-archivar.prompt.md) |
+| Prompt de convención de commits | ✅ | [`.github/prompts/commit-message.prompt.md`](.github/prompts/commit-message.prompt.md) |
+| Prompt de ejecución de commits | ✅ | [`.github/prompts/ejecutar-commits.prompt.md`](.github/prompts/ejecutar-commits.prompt.md) |
+| Prompt de foto de estado | ✅ | [`.github/prompts/foto-estado-y-discurso-motivacional.prompt.md`](.github/prompts/foto-estado-y-discurso-motivacional.prompt.md) |
+| Instrucciones de contexto (voz, marco, diagnóstico) | ✅ | `.github/instructions/` |
+
+**Pendiente para cerrar Sprint 0**: integrar trazabilidad completa en el agente Aleph.
+
+---
+
+### 2. Fundación (v0.0.1) — Avance Sprint 0: 77%
+
+Fundación es el "qué": un texto político serializado en 12 capítulos (uno por mes en 2026) que aspira a ser una obra tipo Constitución/Contrato/Manifiesto.
+
+#### Base doctrinal (ARCHIVO/)
+
+| Eje | Docs | Contenido | Ruta |
+|-----|------|-----------|------|
+| **Justificación** | 4 | Por qué este proyecto: lo tardío, asco→huida→odio, posverdad, fractura | [`ARCHIVO/justificacion/`](ARCHIVO/justificacion/) |
+| **Diagnóstico** | 5 | Cómo estamos: SOTA izquierdo, estructura de sentimiento, patrón reaccionario, fe lúcida, carisma vs responsabilidad | [`ARCHIVO/diagnostico/`](ARCHIVO/diagnostico/) |
+| **Marco** | 11 | Herramientas: selección sistémica, injusticias, acción colectiva, geopolítica, método materialista, soberanía, hybris, trabajo, teología política, Euroamérica, tecnofeudalismo | [`ARCHIVO/marco/`](ARCHIVO/marco/) |
+
+#### Plan 2026
+
+| Mes | Capítulos | Estado |
+|-----|-----------|--------|
+| Enero | 1. Anacronismo productivo · 2. Autómata soberano · 3. Problema de la escala · 4. Repertorio y arquitecturas | Borradores (plantilla + estructura) |
+| Feb–Oct | Por definir | — |
+| Nov | Ensamblaje y revisión | — |
+| Dic | Cierre y publicación | — |
+
+**Rutas clave**:
+- Índice 2026: [`PROYECTOS/FUNDACION/Indice.md`](PROYECTOS/FUNDACION/Indice.md)
+- Borradores enero: [`PROYECTOS/FUNDACION/CAPITULOS/`](PROYECTOS/FUNDACION/CAPITULOS/)
+- Indicadores de fracaso enero: [`PROYECTOS/FUNDACION/indicadores-fracaso-enero.md`](PROYECTOS/FUNDACION/indicadores-fracaso-enero.md)
+- Backlog Fundación: [`PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`](PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md)
+
+**Pendiente para cerrar Sprint 0**: validar la estructura de los 12 capítulos y convertir los borradores de enero de "plantilla" a "texto" (con sacrificio y sombra explícitos).
+
+---
+
+### 3. Plan inmediato
+
+#### Cerrar Sprint 0 (Bootstrap)
+
+- [ ] Completar el agente Aleph con trazabilidad end-to-end.
+- [ ] Validar el índice anual (12 capítulos, 3 arcos, desplazamientos asignados).
+- [ ] Verificar que cada capítulo de enero tiene: tesis, mecanismo, sacrificio, sombra.
+
+#### Abrir Sprint 1 (Enero 2026)
+
+- [ ] Convertir cap01–cap04 de "plantilla" a "prosa": apertura → tesis → núcleo de diseño → sacrificio → sombra → cierre.
+- [ ] Aplicar los indicadores de fracaso como checklist de revisión, no como apéndice.
+- [ ] Definir indicadores de fracaso para febrero.
+
+---
+
+### 4. Cómo leer esto en 5 minutos
+
+| Interés | Empieza por |
+|---------|-------------|
+| El **método** (cómo trabaja la IA) | [`DEVOPS.md`](.github/DEVOPS.md) → backlog Scriptorium → agente Aleph |
+| La **doctrina** (de qué habla el texto) | [`ARCHIVO/marco/README.md`](ARCHIVO/marco/README.md) → marco 01–11 |
+| El **texto en producción** | [`Indice.md`](PROYECTOS/FUNDACION/Indice.md) → capítulos 1–4 → indicadores de fracaso |
+| El **linaje** (de dónde viene esto) | Sección "Origen: VibeBitacora" más abajo |
+
+---
+
 ## Qué es esto
 
 ![](./aleph-scriptorium-banner.png)

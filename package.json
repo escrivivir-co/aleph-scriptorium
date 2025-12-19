@@ -1,0 +1,107 @@
+{
+  "name": "aleph-scriptorium",
+  "version": "0.0.0",
+  "description": "Sistema de escritura asistida por IA para proyectos de largo aliento: libros, ensayos serializados, investigaciones extensas.",
+  "keywords": [
+    "escritura",
+    "ai-assisted-writing",
+    "github-copilot",
+    "agentes",
+    "long-form-writing",
+    "vscode",
+    "scriptorium",
+    "knowledge-base",
+    "serialized-writing",
+    "political-theory",
+    "vibe-bitacora"
+  ],
+  "homepage": "https://github.com/escrivivir-co/aleph-scriptorium#readme",
+  "bugs": {
+    "url": "https://github.com/escrivivir-co/aleph-scriptorium/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/escrivivir-co/aleph-scriptorium.git"
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": {
+    "name": "Escrivivir.co",
+    "url": "https://escrivivir.co"
+  },
+  "contributors": [
+    {
+      "name": "Enrique Morente",
+      "url": "https://github.com/escrivivir-co"
+    }
+  ],
+  "scripts": {
+    "status": "echo '📊 Sprint 0 (Bootstrap) | Scriptorium: 73% | Fundación: 77%'",
+    "lint:md": "markdownlint '**/*.md' --ignore node_modules",
+    "lint:links": "markdown-link-check ./README.md",
+    "pdf:extract": "python3 -c \"import fitz; print('PyMuPDF ready')\" || pip3 install pymupdf",
+    "commit:check": "git status --short",
+    "archive:list": "find ARCHIVO -name '*.md' -type f | wc -l | xargs echo 'Documentos en ARCHIVO:'",
+    "caps:list": "find PROYECTOS/FUNDACION/CAPITULOS -name '*.md' -type f | wc -l | xargs echo 'Capítulos en progreso:'"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "private": false,
+  "funding": {
+    "type": "aipl",
+    "url": "mailto:secretaria@escrivivir.co"
+  },
+  "config": {
+    "sprint": 0,
+    "iteration": "0.0.1",
+    "opportunities": {
+      "scriptorium": {
+        "version": "0.0.1",
+        "progress": 73,
+        "scope": ".github/"
+      },
+      "fundacion": {
+        "version": "0.0.1",
+        "progress": 77,
+        "scope": "ARCHIVO/, PROYECTOS/"
+      }
+    },
+    "plan2026": {
+      "sprints": 12,
+      "iterationsPerSprint": 4,
+      "totalIterations": 48,
+      "chaptersPlanned": 12,
+      "chaptersInProgress": 4
+    }
+  },
+  "alephScriptorium": {
+    "agents": [
+      ".github/agents/aleph.agent.md",
+      ".github/agents/revisor.agent.md"
+    ],
+    "prompts": [
+      ".github/prompts/extraer-archivar.prompt.md",
+      ".github/prompts/commit-message.prompt.md",
+      ".github/prompts/ejecutar-commits.prompt.md",
+      ".github/prompts/foto-estado-y-discurso-motivacional.prompt.md"
+    ],
+    "instructions": [
+      ".github/instructions/diagnostico.instructions.md",
+      ".github/instructions/justificacion.instructions.md",
+      ".github/instructions/marco-conceptual.instructions.md",
+      ".github/instructions/mcp-tools.instructions.md",
+      ".github/instructions/voz-manifiesto.instructions.md"
+    ],
+    "archivo": {
+      "justificacion": 4,
+      "diagnostico": 5,
+      "marco": 11
+    }
+  }
+}
