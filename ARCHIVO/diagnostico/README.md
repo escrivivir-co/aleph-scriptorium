@@ -18,6 +18,9 @@ Miedo a la agencia de los subordinados. Terror por la insolencia de los de abajo
 ### [04. Fe lúcida y épica sin ilusión](04-fe-lucida-epica.md)
 Lo que no es la fe lúcida (rencor, desesperación, melancolía, ilusionismo). Lo que sí es (esperanza desilusionada, apertura a lo insólito). Los binarios necesarios. No perder nunca el sentido de la épica.
 
+### [05. Contra la razón carismática (Weber vs. Heidegger)](05-carisma-vs-responsabilidad.md)
+El peligro de la "ontología política" y los líderes salvadores. La responsabilidad weberiana como vacuna anti-naïf. Por qué la "victoria de Heidegger" fue una derrota política. La ética de la responsabilidad como heroísmo sobrio.
+
 ---
 
 ## Tesis central

@@ -30,6 +30,15 @@ Aristóteles en 2025. La crematística introduce el infinito en la polis. La hyb
 ### [08. El trabajo como campo de batalla](08-trabajo-campo-batalla.md)
 La siniestralidad laboral como indicador material de la subordinación. La acumulación originaria no terminó: se desplazó. Conquistas obreras y sus límites estructurales. La división internacional del sufrimiento. Mecanismos contra el poder despótico del empleador.
 
+### [09. Teología política imperial vs. Comunidades de salvación](09-teologia-politica-imperial.md)
+La estructura esquizoide de Occidente como virtud. Por qué el poder total siempre intenta ser teológico y por qué la resistencia eficaz es "de salvación" (rompe la inmanencia del poder). El Sattelzeit y la modernidad como tensión.
+
+### [10. Euroamérica: la deuda histórica como vínculo](10-euroamerica-deuda.md)
+Superar la "Imperiofilia". Isomorfismo entre el campesino del sur de Europa y el subalterno americano. Una alianza basada en la responsabilidad y la deuda histórica, no en la gloria imperial.
+
+### [11. Tecnofeudalismo: crítica y puentes](11-tecnofeudalismo-critica-puentes.md)
+Reconstrucción de la tesis popular (Varoufakis) y contraste con marxismo‑leninismo clásico para aclarar qué es metáfora, qué es revisionismo y cómo aproximar posturas sin diluir la economía política.
+
 ---
 
 ## Uso en el proyecto

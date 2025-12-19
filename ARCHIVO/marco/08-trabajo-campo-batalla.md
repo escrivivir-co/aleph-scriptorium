@@ -113,6 +113,21 @@ No es que no se pueda evitar. Es que **estructuralmente no interesa evitarlo**.
 
 Los datos empíricos no son solo estadística: son **cartografía del poder**.
 
+### Qué llamamos siniestralidad (y qué se escapa)
+
+La siniestralidad laboral nombra el daño en la salud producido por la relación con el trabajo. Conviene distinguir:
+
+- **Accidente de trabajo**: suceso que produce una lesión derivada o relacionada con el trabajo, incluyendo el trayecto de ida o vuelta (**in itinere**).
+- **Enfermedad laboral**: enfermedad contraída por exposición prolongada a factores de riesgo derivados del trabajo.
+
+Esta distinción no es académica: cambia lo que el sistema reconoce, registra y, por tanto, lo que puede o no puede volverse conflicto.
+
+### El problema del registro: mutuas y subestimación
+
+Incluso en un país con marco legal, sistema sanitario y estadísticas, el daño laboral tiende a infravalorarse. El reconocimiento depende de múltiples mediaciones (jurídicas, administrativas, médicas) y, en la práctica, existe un actor central que sesga el resultado: las **mutuas**, que operan como gestión privada de la salud laboral y empujan hacia el recorte del reconocimiento y de la duración de bajas.
+
+Por eso, cuando usamos datos de muertes laborales, usamos sobre todo aquello que menos escapa al registro: **muertes por accidentes de trabajo**. No porque lo demás sea menos real, sino porque lo demás se vuelve con facilidad invisible, y lo invisible no entra en la contabilidad pública del conflicto.
+
 ### Distribución sectorial
 
 | Sector | % Muertes | % Empleo |
