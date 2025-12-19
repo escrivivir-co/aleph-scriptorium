@@ -58,6 +58,13 @@ Incluye:
 ### Paso 1: Leer el documento fuente
 Identifica los **ejes temáticos** principales. Un eje temático es una unidad de sentido que puede sostenerse por sí misma.
 
+> **Nota técnica para PDFs**: Si el documento fuente es un PDF, no intentes leerlo directamente. Usa la herramienta `run_in_terminal` con este comando (es el más fiable):
+> ```bash
+> python3 -c "import fitz; doc = fitz.open('RUTA_ABSOLUTA_DEL_PDF'); text = ''.join([page.get_text() for page in doc]); print(text)"
+
+IF MISSING TOOL: pip3 install pymupdf --quiet 
+> ```
+
 ### Paso 2: Clasificar cada eje
 Para cada eje, pregúntate:
 1. ¿Explica **por qué** se necesita el proyecto? → `justificacion/`
