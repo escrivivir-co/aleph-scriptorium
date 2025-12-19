@@ -100,6 +100,15 @@
 
 ---
 
+### FUND-0.0.1-S08: Material de Coyuntura (DISCO)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T025 | Archivar análisis de coyuntura (Assange, Trump, Conexiones) en `ARCHIVO/DISCO/` | ✅ |
+
+---
+
 ### FUND-0.0.1-S05: Banderas Roja y Negra (Hibridación)
 **Estado**: ✅ Completada
 
