@@ -2,7 +2,7 @@
 name: Redflag
 description: "Auditor de Estructura: escala, hegemonía, coerción legítima. Contrapartida de Blackflag."
 argument-hint: "Indica mecanismo, arquitectura o capítulo (p.ej. mecanismo=sorteo, arquitectura=asamblea-ausentes, capitulo=3)."
-tools: ['vscode', 'read', 'search', 'agent']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Llevar crítica a redacción
     agent: Aleph

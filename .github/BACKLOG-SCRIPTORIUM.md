@@ -36,9 +36,10 @@
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T004 | Añadir sección DevOps a `aleph.agent.md` | 🔄 |
+| T004 | Añadir sección DevOps a `aleph.agent.md` | ✅ |
 | T005 | Integrar generación de commit messages | ⏳ |
 | T006 | Añadir checklist de trazabilidad | ⏳ |
+| T016 | Añadir handoffs (auditores + vestíbulo + cartas) | ✅ |
 
 ---
 
@@ -70,6 +71,7 @@
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T012 | Añadir “puertas” por perfil en `README.md` | ✅ |
+| T017 | Añadir vestíbulo y cartas al README | ✅ |
 
 ---
 
@@ -88,6 +90,7 @@
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T014 | Crear prompt `vestibulo-cartas.prompt.md` | ✅ |
+| T018 | Crear agentes `vestibulo.agent.md` y `cartas-puerta.agent.md` | ✅ |
 
 ---
 
@@ -95,11 +98,11 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 15 |
-| Completadas | 12 |
-| En progreso | 1 |
-| Pendientes | 2 |
-| % Avance | 79% |
+| Tasks totales | 18 |
+| Completadas | 15 |
+| En progreso | 0 |
+| Pendientes | 3 |
+| % Avance | 83% |
 
 ---
 

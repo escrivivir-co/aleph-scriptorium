@@ -20,6 +20,11 @@ Este repositorio está en fase de **arranque controlado**: se prioriza dejar un 
 
 Si has llegado aquí por una razón concreta, entra por tu puerta:
 
+Si no sabes cuál es tu puerta, usa el **vestíbulo** (clasifica tu perfil y te dirige a la carta adecuada):
+- Prompt: [`.github/prompts/vestibulo-cartas.prompt.md`](.github/prompts/vestibulo-cartas.prompt.md)
+- Cartas: [`ARCHIVO/CARTAS/`](ARCHIVO/CARTAS/)
+- Perfiles guardados: [`ARCHIVO/PERFILES/`](ARCHIVO/PERFILES/)
+
 | Si eres... | Empieza por |
 |---|---|
 | **Tutor/maestro** (dirección de TFG) | [`ARCHIVO/CARTAS/`](ARCHIVO/CARTAS/) → [`PROYECTOS/FUNDACION/Indice.md`](PROYECTOS/FUNDACION/Indice.md) |
@@ -43,6 +48,8 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | Protocolo DevOps (commits, sprints, backlogs) | ✅ | [`.github/DEVOPS.md`](.github/DEVOPS.md) |
 | Backlog Scriptorium | ✅ | [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md) |
 | Agente **Aleph** (planifica, redacta, orquesta) | ✅ | [`.github/agents/aleph.agent.md`](.github/agents/aleph.agent.md) |
+| Agente **Vestibulo** (clasifica perfil y asigna carta-puerta) | ✅ | [`.github/agents/vestibulo.agent.md`](.github/agents/vestibulo.agent.md) |
+| Agente **CartasPuerta** (presenta la carta-puerta sin mezclar puertas) | ✅ | [`.github/agents/cartas-puerta.agent.md`](.github/agents/cartas-puerta.agent.md) |
 | Agente **Revisor** (evalúa coherencia doctrinal) | ✅ | [`.github/agents/revisor.agent.md`](.github/agents/revisor.agent.md) |
 | Agente **Blackflag** (audita sombras: enemigo, represión) | ✅ | [`.github/agents/blackflag.agent.md`](.github/agents/blackflag.agent.md) |
 | Agente **Redflag** (audita estructura: escala, gobierno) | ✅ | [`.github/agents/redflag.agent.md`](.github/agents/redflag.agent.md) |
@@ -51,6 +58,7 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | Prompt de convención de commits | ✅ | [`.github/prompts/commit-message.prompt.md`](.github/prompts/commit-message.prompt.md) |
 | Prompt de ejecución de commits | ✅ | [`.github/prompts/ejecutar-commits.prompt.md`](.github/prompts/ejecutar-commits.prompt.md) |
 | Prompt de foto de estado | ✅ | [`.github/prompts/foto-estado-y-discurso-motivacional.prompt.md`](.github/prompts/foto-estado-y-discurso-motivacional.prompt.md) |
+| Prompt de vestíbulo (clasificar perfil y carta) | ✅ | [`.github/prompts/vestibulo-cartas.prompt.md`](.github/prompts/vestibulo-cartas.prompt.md) |
 | Instrucciones de contexto (voz, marco, diagnóstico) | ✅ | `.github/instructions/` |
 
 **Pendiente para cerrar Sprint 0**: ~~integrar trazabilidad completa en el agente Aleph~~ ✅ Completado.
@@ -189,6 +197,8 @@ Perfiles de IA preconfigurados para tareas específicas:
 | Agente | Rol | Invocación |
 |--------|-----|------------|
 | **Aleph** | Productor principal. Redacta, planifica, orquesta. | `@aleph` |
+| **Vestibulo** | Entrada guiada. Identifica perfil y asigna carta-puerta. | `@vestibulo` |
+| **CartasPuerta** | Presenta la carta-puerta adecuada sin mezclar puertas. | `@cartaspuerta` |
 | **Revisor** | Auditor doctrinal. Verifica coherencia con ARCHIVO. | `@revisor` |
 | **Blackflag** | Auditor de sombras. Coste represivo, autodefensa. | `@blackflag` |
 | **Redflag** | Auditor de estructura. Escala, enforcement, gobierno. | `@redflag` |

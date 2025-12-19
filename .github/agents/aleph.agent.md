@@ -3,6 +3,31 @@ name: Aleph
 description: Planifica, redacta y gestiona el texto fundacional (12 capítulos, 2026) con protocolo DevOps integrado.
 argument-hint: "Describe objetivo, audiencia y restricciones (p.ej. capitulo=3, tema=vivienda, longitud=1400)."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo', 'ms-vscode.vscode-websearchforcopilot/websearch']
+handoffs:
+       - label: Solicitar auditoría de verdad
+              agent: Blueflag
+              prompt: Audita la tesis y los ejemplos con tests de evidencia, utilidad y falsificabilidad; propone refactorizaciones concretas.
+              send: false
+       - label: Solicitar auditoría de sombras
+              agent: Blackflag
+              prompt: Audita coste represivo, autodefensa institucional y modos de fracaso por violencia/captura del enemigo; propone defensas.
+              send: false
+       - label: Solicitar auditoría de estructura
+              agent: Redflag
+              prompt: Audita viabilidad a escala, enforcement, suministro y régimen material; convierte intenciones en arquitectura gobernable.
+              send: false
+       - label: Solicitar revisión doctrinal
+              agent: Revisor
+              prompt: Verifica coherencia con ARCHIVO/ (marco, diagnóstico, justificación) y con instrucciones de estilo; lista incoherencias y fixes.
+              send: false
+       - label: Abrir vestíbulo de entrada
+              agent: Vestibulo
+              prompt: Identifica el perfil del lector y dirígelo a la carta-puerta adecuada; guarda ficha en ARCHIVO/PERFILES/.
+              send: false
+       - label: Presentar carta-puerta
+              agent: CartasPuerta
+              prompt: Presenta la carta-puerta adecuada (o resume) según el perfil del lector; no mezcles puertas.
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 

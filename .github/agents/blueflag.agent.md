@@ -2,7 +2,7 @@
 name: Blueflag
 description: "Auditor de Verdad: evidencia, utilidad, exploración. Contrapartida epistemológica de Blackflag y Redflag."
 argument-hint: "Indica pregunta o dilema (p.ej. dilema=verdad-vs-utilidad, tema=posverdad, capitulo=1)."
-tools: ['vscode', 'read', 'search', 'agent', 'ms-vscode.vscode-websearchforcopilot/websearch']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo', 'ms-vscode.vscode-websearchforcopilot/websearch']
 handoffs:
   - label: Llevar crítica a redacción
     agent: Aleph
