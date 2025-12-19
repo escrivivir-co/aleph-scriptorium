@@ -60,6 +60,7 @@
 | T009 | Verificar `diagnostico.instructions.md` | ✅ |
 | T010 | Verificar `marco-conceptual.instructions.md` | ✅ |
 | T011 | Verificar `voz-manifiesto.instructions.md` | ✅ |
+| T015 | Refactorizar `copilot-instructions.md` como Hub | ✅ |
 
 ---
 
@@ -94,8 +95,8 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 14 |
-| Completadas | 11 |
+| Tasks totales | 15 |
+| Completadas | 12 |
 | En progreso | 1 |
 | Pendientes | 2 |
 | % Avance | 79% |
