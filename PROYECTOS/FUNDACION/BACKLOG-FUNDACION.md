@@ -106,15 +106,24 @@
 
 ---
 
+### FUND-0.0.1-S07: Perfiles de lector
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T023 | Crear `ARCHIVO/PERFILES/` con README | ✅ |
+
+---
+
 ## Métricas Sprint 0
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 22 |
-| Completadas | 18 |
+| Tasks totales | 23 |
+| Completadas | 19 |
 | En progreso | 1 |
 | Pendientes | 3 |
-| % Avance | 82% |
+| % Avance | 83% |
 
 ---
 
