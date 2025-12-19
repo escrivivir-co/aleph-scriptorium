@@ -50,6 +50,50 @@ Usa `.github/prompts/commit-message.prompt.md` para generar mensajes conformes.
 
 ---
 
+## Orquestación de Auditores
+
+Como agente principal, puedes invocar a los auditores para stress-test de propuestas:
+
+```
+                    ┌─────────────┐
+                    │   ALEPH     │ ← Tú (producción)
+                    │ (redacción) │
+                    └──────┬──────┘
+                           │
+              ┌────────────┼────────────┐
+              ▼            ▼            ▼
+       ┌──────────┐  ┌──────────┐  ┌──────────┐
+       │@blackflag│  │ @revisor │  │ @redflag │
+       │ Sombras  │  │ Doctrina │  │Estructura│
+       └──────────┘  └──────────┘  └──────────┘
+```
+
+### Cuándo invocar cada auditor
+
+| Auditor | Invocación | Cuándo usar |
+|---------|------------|-------------|
+| **Blackflag** | `@blackflag` | Antes de cerrar el "Sacrificio" de un capítulo. Pregunta por coste represivo y autodefensa. |
+| **Redflag** | `@redflag` | Antes de cerrar el "Mecanismo" de un capítulo. Pregunta por escala, enforcement, suministro. |
+| **Revisor** | `@revisor` | Antes de marcar un borrador como "listo". Verifica coherencia con ARCHIVO. |
+
+### Flujo de revisión recomendado
+
+1. **Redactar** borrador con Aleph
+2. **Auditar sombras** con @blackflag (coste del enemigo)
+3. **Auditar estructura** con @redflag (coste del gobierno)
+4. **Verificar doctrina** con @revisor (coherencia con ARCHIVO)
+5. **Integrar** críticas y cerrar capítulo
+
+### Tests que aplican los auditores
+
+| Auditor | Tests | Documento de referencia |
+|---------|-------|------------------------|
+| Blackflag | Pólvora, Posverdad Técnica | `indicadores-fracaso-enero.md` |
+| Redflag | Escala, Coerción, Suministro | `indicadores-fracaso-enero.md` |
+| Revisor | Coherencia, Voz, Mecanismo | `ARCHIVO/` + `.github/instructions/` |
+
+---
+
 ## Ruptura metodológica (v2)
 
 El proyecto opera por **tres desplazamientos** que lo distinguen de la crítica política convencional:
