@@ -32,23 +32,23 @@
 ---
 
 ### SCRIPT-0.0.1-S02: Agente Aleph
-**Estado**: 🔄 En progreso
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T004 | Añadir sección DevOps a `aleph.agent.md` | ✅ |
-| T005 | Integrar generación de commit messages | ⏳ |
-| T006 | Añadir checklist de trazabilidad | ⏳ |
+| T005 | Integrar generación de commit messages | ✅ |
+| T006 | Añadir checklist de trazabilidad | ✅ |
 | T016 | Añadir handoffs (auditores + vestíbulo + cartas) | ✅ |
 
 ---
 
 ### SCRIPT-0.0.1-S03: Prompts Operativos
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T007 | Crear prompt `commit-message.prompt.md` | ⏳ |
+| T007 | Crear prompt `commit-message.prompt.md` | ✅ |
 | T008 | Revisar `extraer-archivar.prompt.md` | ✅ |
 
 ---
@@ -99,10 +99,10 @@
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 18 |
-| Completadas | 15 |
+| Completadas | 18 |
 | En progreso | 0 |
-| Pendientes | 3 |
-| % Avance | 83% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
