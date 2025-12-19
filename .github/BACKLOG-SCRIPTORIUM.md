@@ -81,15 +81,24 @@
 
 ---
 
+### SCRIPT-0.0.1-S07: Vestíbulo de entrada
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T014 | Crear prompt `vestibulo-cartas.prompt.md` | ✅ |
+
+---
+
 ## Métricas Sprint 0
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 13 |
-| Completadas | 10 |
+| Tasks totales | 14 |
+| Completadas | 11 |
 | En progreso | 1 |
 | Pendientes | 2 |
-| % Avance | 77% |
+| % Avance | 79% |
 
 ---
 
