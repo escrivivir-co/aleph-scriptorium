@@ -97,15 +97,24 @@
 
 ---
 
+### FUND-0.0.1-S06: Cartas-puerta (tutoría)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T022 | Crear cartas-puerta en `ARCHIVO/CARTAS/` | ✅ |
+
+---
+
 ## Métricas Sprint 0
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 21 |
-| Completadas | 17 |
+| Tasks totales | 22 |
+| Completadas | 18 |
 | En progreso | 1 |
 | Pendientes | 3 |
-| % Avance | 81% |
+| % Avance | 82% |
 
 ---
 
