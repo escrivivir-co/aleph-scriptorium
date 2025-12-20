@@ -56,6 +56,7 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | Agente **Blackflag** (audita sombras: enemigo, represión) | ✅ | [`.github/agents/blackflag.agent.md`](.github/agents/blackflag.agent.md) |
 | Agente **Redflag** (audita estructura: escala, gobierno) | ✅ | [`.github/agents/redflag.agent.md`](.github/agents/redflag.agent.md) |
 | Agente **Blueflag** (audita verdad: evidencia, utilidad) | ✅ | [`.github/agents/blueflag.agent.md`](.github/agents/blueflag.agent.md) |
+| Agente **Periodico** (produce planas noticieras 5W + Banderas) | ✅ | [`.github/agents/periodico.agent.md`](.github/agents/periodico.agent.md) |
 | Prompt de extracción y archivo | ✅ | [`.github/prompts/extraer-archivar.prompt.md`](.github/prompts/extraer-archivar.prompt.md) |
 | Prompt de convención de commits | ✅ | [`.github/prompts/commit-message.prompt.md`](.github/prompts/commit-message.prompt.md) |
 | Prompt de ejecución de commits | ✅ | [`.github/prompts/ejecutar-commits.prompt.md`](.github/prompts/ejecutar-commits.prompt.md) |
@@ -98,11 +99,29 @@ Fundación es el "qué": un texto político serializado en 12 capítulos (uno po
 
 ---
 
-### 3. Plan inmediato
+### 3. Noticias (Periódico)
+
+El proyecto incluye un sistema de **producción periodística** que combina las 5W del periodismo clásico con la auditoría doctrinal de las Banderas.
+
+| Elemento | Descripción | Ruta |
+|----------|-------------|------|
+| **Agente Periódico** | Coordina el proceso de edición y publicación | [`.github/agents/periodico.agent.md`](.github/agents/periodico.agent.md) |
+| **DISCO** (memoria) | Carpeta de trabajo con borradores y conversaciones | [`ARCHIVO/DISCO/`](ARCHIVO/DISCO/) |
+| **NOTICIAS** (publicación) | Planas noticieras finales | [`ARCHIVO/NOTICIAS/`](ARCHIVO/NOTICIAS/) |
+
+**Flujo de trabajo**:
+1. **Editar**: Usuario aporta archivos .md → Alice y Bob analizan con 5W + Banderas → conversación en DISCO
+2. **Publicar**: Conversación completa → plana final en NOTICIAS
+
+**Ejemplo de referencia**: [`ARCHIVO/DISCO/Diciembre_25_Geopolitica/`](ARCHIVO/DISCO/Diciembre_25_Geopolitica/)
+
+---
+
+### 4. Plan inmediato
 
 #### Cerrar Sprint 0 (Bootstrap)
 
-- [ ] Completar el agente Aleph con trazabilidad end-to-end.
+- [x] Completar el agente Aleph con trazabilidad end-to-end.
 - [ ] Validar el índice anual (12 capítulos, 3 arcos, desplazamientos asignados).
 - [ ] Verificar que cada capítulo de enero tiene: tesis, mecanismo, sacrificio, sombra.
 
@@ -114,7 +133,7 @@ Fundación es el "qué": un texto político serializado en 12 capítulos (uno po
 
 ---
 
-### 4. Cómo leer esto en 5 minutos
+### 5. Cómo leer esto en 5 minutos
 
 | Interés | Empieza por |
 |---------|-------------|
@@ -122,6 +141,7 @@ Fundación es el "qué": un texto político serializado en 12 capítulos (uno po
 | El **método** (cómo trabaja la IA) | [`DEVOPS.md`](.github/DEVOPS.md) → backlog Scriptorium → agente Aleph |
 | La **doctrina** (de qué habla el texto) | [`ARCHIVO/marco/README.md`](ARCHIVO/marco/README.md) → marco 01–11 |
 | El **texto en producción** | [`Indice.md`](PROYECTOS/FUNDACION/Indice.md) → capítulos 1–4 → indicadores de fracaso |
+| Las **noticias** (periodismo doctrinal) | [`ARCHIVO/NOTICIAS/README.md`](ARCHIVO/NOTICIAS/README.md) → agente Periódico |
 | El **linaje** (de dónde viene esto) | Sección "Origen: VibeBitacora" más abajo |
 
 ---

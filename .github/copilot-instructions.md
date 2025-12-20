@@ -29,6 +29,11 @@ Este es un proyecto de **escritura política** dividido en dos "Opportunities":
 - `@blueflag` (Verdad/Evidencia), `@blackflag` (Sombra/Coste), `@redflag` (Estructura/Viabilidad), `@revisor` (Doctrina).
 - Consultar `aleph.agent.md` para el flujo de invocación.
 
+**Agente Periódico** (Noticias):
+- **Definición**: [agents/periodico.agent.md](agents/periodico.agent.md)
+- **Responsabilidad**: Producción de planas noticieras con método 5W + Banderas.
+- **Handoffs**: `editar` (inicia/continúa en DISCO) y `publicar` (genera plana en NOTICIAS).
+
 ## 4. Instrucciones de Contenido (Doctrina)
 
 El contenido se rige por instrucciones específicas. **No improvisar** estilos ni estructuras.
@@ -40,6 +45,7 @@ El contenido se rige por instrucciones específicas. **No improvisar** estilos n
 | **Justificación** | [instructions/justificacion.instructions.md](instructions/justificacion.instructions.md) (Memoria, no guía) |
 | **Marco Conceptual** | [instructions/marco-conceptual.instructions.md](instructions/marco-conceptual.instructions.md) (Herramientas activas) |
 | **Presentación** | [instructions/cartas-puerta.instructions.md](instructions/cartas-puerta.instructions.md) (Cartas de entrada) |
+| **Noticias (Periódico)** | [instructions/periodico.instructions.md](instructions/periodico.instructions.md) (5W + Banderas) |
 | **Herramientas MCP** | [instructions/mcp-tools.instructions.md](instructions/mcp-tools.instructions.md) |
 
 ## 5. Flujo de Trabajo (Resumen)

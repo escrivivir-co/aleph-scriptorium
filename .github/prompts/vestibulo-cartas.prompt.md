@@ -175,3 +175,19 @@ Guarda la ficha en `ARCHIVO/PERFILES/perfil-{nombre-o-id}.md` usando esta planti
 - Cartas: `ARCHIVO/CARTAS/`
 - Perfiles: `ARCHIVO/PERFILES/`
 - Instrucciones del mecanismo: `.github/instructions/cartas-puerta.instructions.md`
+
+---
+
+## Integración con Noticias (Periódico)
+
+Si el usuario tiene perfil guardado y quiere usar el **agente Periódico**:
+
+1. **Detectar perfil**: Leer la ficha existente
+2. **Informar al Periódico**: El perfil afecta el énfasis de las planas:
+   - `blueflag` → énfasis en contradicciones y evidencia
+   - `blackflag` → énfasis en poder y sombras
+   - `redflag` → énfasis en base material y escala
+3. **Ofrecer opción**: 
+   > También puedes usar el **Periódico** para producir planas noticieras con tu perfil. ¿Te interesa?
+
+Si el usuario acepta, derivar al agente `@periodico` con el perfil detectado.

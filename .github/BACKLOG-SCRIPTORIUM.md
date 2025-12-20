@@ -94,12 +94,28 @@
 
 ---
 
+### SCRIPT-0.0.1-S08: Feature Noticias (Periódico)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T019 | Crear carpeta `ARCHIVO/NOTICIAS/` con README | ✅ |
+| T020 | Crear instrucciones `periodico.instructions.md` | ✅ |
+| T021 | Crear agente `periodico.agent.md` con handoffs | ✅ |
+| T022 | Crear prompt `periodico-editar.prompt.md` | ✅ |
+| T023 | Crear prompt `periodico-publicar.prompt.md` | ✅ |
+| T024 | Actualizar `copilot-instructions.md` con Periódico | ✅ |
+| T025 | Integrar Periódico en `vestibulo-cartas.prompt.md` | ✅ |
+| T026 | Actualizar README.md con sección Noticias | ✅ |
+
+---
+
 ## Métricas Sprint 0
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 18 |
-| Completadas | 18 |
+| Tasks totales | 26 |
+| Completadas | 26 |
 | En progreso | 0 |
 | Pendientes | 0 |
 | % Avance | 100% |
@@ -112,3 +128,4 @@
 |-------|--------|-------|
 | 2024-12-19 | Creación inicial del backlog | Aleph |
 | 2024-12-19 | Completar DEVOPS.md | Aleph |
+| 2024-12-20 | Añadir feature Noticias (Periódico) — S08 | Aleph |
