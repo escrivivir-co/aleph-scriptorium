@@ -124,3 +124,27 @@ La regla de uso podría formularse así:
 2. Si “tecnofeudalismo” se usa como **teoría de ruptura**, hay que exigir prueba de ruptura: ¿cambió el fundamento de apropiación del excedente o solo cambió la forma visible de extracción?
 
 **Cierre de tensión**: el proyecto no puede permitirse un nombre que consuele. Necesita un nombre que obligue a decidir: ¿vamos a administrar el peaje o a disputar el mando?
+
+---
+
+## Addendum: Infraestructura crítica como cuello de botella
+
+> **Fuente**: Caso OpenAI 2023-2025 (ver [13-bicefalia-semantica-cobertura](13-bicefalia-semantica-cobertura.md)).
+
+El debate tecnofeudalismo/capitalismo puede oscurecer un punto material decisivo: **quién controla los cuellos de botella de la infraestructura**.
+
+En la economía digital de 2025, los cuellos de botella no son solo las plataformas (el "peaje" de Varoufakis), sino la **capa física** que las sostiene:
+
+- **Compute**: capacidad de procesamiento concentrada en pocos proveedores cloud.
+- **Energía**: datacenters que requieren acceso privilegiado a red eléctrica.
+- **Chips**: cadena de suministro global con nodos críticos (fabricación, diseño, materiales).
+- **Permisos**: régimen regulatorio que acelera o frena despliegue.
+
+El punto no es que las plataformas sean "los nuevos señores". Es que **quien controla compute/energía/permisos controla la condición de posibilidad** de cualquier actor digital, incluidas las plataformas.
+
+Esto complica la metáfora feudal:
+
+- El "señor" visible (la plataforma) puede depender de un habilitador menos visible (el proveedor cloud, el Estado que acelera permisos).
+- El poder real está en el **triángulo capital-infraestructura-Estado**, no en la plataforma como actor aislado.
+
+**Implicación para el proyecto**: la disputa no es solo "regular plataformas" ni solo "disputar relaciones de producción". Es también **controlar la capa de infraestructura crítica** que determina quién puede operar a escala y quién no.

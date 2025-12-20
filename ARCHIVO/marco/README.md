@@ -42,6 +42,9 @@ Reconstrucción de la tesis popular (Varoufakis) y contraste con marxismo‑leni
 ### [12. Dilemas de la acción revolucionaria](12-dilemas-accion-revolucionaria.md)
 Repertorio de dilemas extraídos de la experiencia histórica del sindicalismo revolucionario (1920-1939). Autodefensa organizativa, gimnasia revolucionaria vs. bases estables, el momento decisivo, colaboración táctica sin captura, sacrificio como decisión política, memoria como infraestructura. Arquetipos para el diseño institucional.
 
+### [13. Bicefalia semántica: la misión como cobertura](13-bicefalia-semantica-cobertura.md)
+Arquitectura institucional donde una cabeza de misión (nonprofit, fundación) legitima un cuerpo de mercado (escala, valoración). La semántica de "safety" o "bien público" como blindaje. El playbook TBTF: probar narrativa, reculer símbolo, avanzar suelo. Captura sin responsabilidad: el socio que extrae valor sin gobernar. Caso OpenAI (2023-2025) como cristalización del patrón.
+
 ---
 
 ## Uso en el proyecto

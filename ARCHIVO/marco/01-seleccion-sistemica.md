@@ -132,6 +132,20 @@ Si la colaboración es inevitable, el diseño debe incluir:
 
 La captura no es traición; es el precio de la efectividad dentro del sistema. Pero ese precio debe **declararse**, no ocultarse.
 
+### 5.4 Captura sin responsabilidad: el socio habilitador
+
+Hay una variante de captura que no pasa por el regulador, sino por el **socio externo** que habilita sin gobernar:
+
+- El inversor con equity pero sin asiento en gobernanza de misión.
+- El proveedor de infraestructura crítica (cloud, compute) con dependencia mutua.
+- El Estado que acelera permisos sin participar en las decisiones.
+
+Este socio habilitador extrae valor (retorno financiero, posición de mercado, estabilidad) **sin asumir responsabilidad** sobre la misión declarada. Cuando hay crisis de legitimidad, puede distanciarse ("nosotros solo proveemos infraestructura") mientras conserva los beneficios.
+
+La diferencia con la captura regulatoria clásica: no es el regulador quien queda capturado, sino que **el habilitador no aparece como tal**. Es captura por omisión de responsabilidad.
+
+> Ver desarrollo completo en [13-bicefalia-semantica-cobertura](13-bicefalia-semantica-cobertura.md).
+
 Desde el proyecto, la tarea no es moralizar sobre el privilegio, sino **traducir el análisis en arquitectura**:
 
 - **Identificar actores por posición**, no por maldad: nodos sistémicos, redes, estructuras jurídicas.
