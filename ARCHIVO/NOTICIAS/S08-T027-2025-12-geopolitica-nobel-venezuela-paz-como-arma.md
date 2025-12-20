@@ -5,10 +5,13 @@ categoria: geopolitica
 tema: nobel-venezuela
 perfil_recomendado: blackflag
 fuente_disco: DISCO/Diciembre_25_Geopolitica/
+imagen_cabecera: DISCO/Diciembre_25_Geopolitica/imagen-cabecera.png
 estado: publicado
 ---
 
 # La Paz como Arma: Nobel, Assange y la militarización del símbolo
+
+![Imagen de cabecera](../DISCO/Diciembre_25_Geopolitica/imagen-cabecera.png)
 
 > **Código**: `S08-T027`  
 > **Fecha**: 2025-12-20  

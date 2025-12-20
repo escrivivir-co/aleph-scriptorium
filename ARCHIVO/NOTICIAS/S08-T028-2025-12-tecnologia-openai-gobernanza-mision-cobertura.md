@@ -5,10 +5,13 @@ categoria: tecnologia
 tema: openai-gobernanza
 perfil_recomendado: redflag
 fuente_disco: DISCO/Diciembre_25_Alineamiento/
+imagen_cabecera: DISCO/Diciembre_25_Alineamiento/imagen-cabecera.png
 estado: publicado
 ---
 
 # Misión como Cobertura: OpenAI y la captura institucional del alineamiento
+
+![Imagen de cabecera](../DISCO/Diciembre_25_Alineamiento/imagen-cabecera.png)
 
 > **Código**: `S08-T028`  
 > **Fecha**: 2025-12-20  
