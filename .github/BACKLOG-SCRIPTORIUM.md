@@ -122,6 +122,89 @@
 
 ---
 
+# Épica: SCRIPT-0.1.0 — Sistema de Plugins
+
+**Objetivo**: Implementar protocolo de extensibilidad mediante plugins para Scriptorium.
+
+**Entregables**:
+- Protocolo de plugins (PLUGINS.md)
+- Agente plugin-manager
+- Estructura plugins/ con registry
+- Plugin ARG Board instalado
+
+---
+
+## Stories
+
+### SCRIPT-0.1.0-S01: Protocolo de Plugins
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T027 | Crear `.github/PLUGINS.md` con especificación completa | ✅ |
+| T028 | Definir estructura de manifest.md | ✅ |
+| T029 | Documentar ciclo de vida de plugins | ✅ |
+
+---
+
+### SCRIPT-0.1.0-S02: Agente Plugin Manager
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T030 | Crear `agents/plugin-manager.agent.md` | ✅ |
+| T031 | Implementar handoffs de instalación/desinstalación | ✅ |
+| T032 | Crear `prompts/plugin-install.prompt.md` | ✅ |
+
+---
+
+### SCRIPT-0.1.0-S03: Infraestructura de Plugins
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T033 | Crear directorio `.github/plugins/` | ✅ |
+| T034 | Inicializar `registry.json` | ✅ |
+| T035 | Actualizar `copilot-instructions.md` con sección Plugins | ✅ |
+
+---
+
+### SCRIPT-0.1.0-S04: Plugin ARG Board (Conversión)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T036 | Crear manifest.md para ARG Board | ✅ |
+| T037 | Convertir chatmodes a agents/ | ✅ |
+| T038 | Migrar prompts relevantes | ✅ |
+| T039 | Copiar documentación AS_DOCS/ a docs/ | ✅ |
+| T040 | Migrar META/ builders a meta/ | ✅ |
+
+---
+
+### SCRIPT-0.1.0-S05: Integración con Aleph
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T041 | Añadir handoffs de ARG Board a aleph.agent.md | ✅ |
+| T042 | Registrar plugin en registry.json | ✅ |
+| T043 | Crear informe de implementación | ✅ |
+
+---
+
+## Métricas Sprint 0.1
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 17 |
+| Completadas | 17 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -129,3 +212,5 @@
 | 2024-12-19 | Creación inicial del backlog | Aleph |
 | 2024-12-19 | Completar DEVOPS.md | Aleph |
 | 2024-12-20 | Añadir feature Noticias (Periódico) — S08 | Aleph |
+| 2025-12-20 | Añadir Épica SCRIPT-0.1.0 — Sistema de Plugins | Aleph |
+| 2025-12-20 | Completar instalación plugin ARG Board | Aleph |
