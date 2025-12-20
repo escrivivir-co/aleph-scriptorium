@@ -126,3 +126,52 @@ Entender esto no obliga a resignarse, pero sí a abandonar:
 - Modelos heroicos fuera de escala.
 
 La pregunta correcta no es "¿cómo derrocamos el sistema?" sino **"¿dónde están las contradicciones materiales efectivas?"** y **"¿qué rupturas parciales son plausibles hoy?"**.
+
+---
+
+## 8. Coerción extra-económica: el bloqueo como herramienta
+
+> **Fuente**: Caso Venezuela 2025 (plana `S08-T027`).
+
+El sistema-mundo de 2025 no opera solo mediante competencia económica o presión diplomática. Dispone de un repertorio de **coerción extra-económica** que disciplina actores mediante fuerza, no mediante mercado.
+
+### 8.1 El bloqueo como asedio medieval modernizado
+
+El bloqueo total (naval, aéreo, financiero) no es "presión diplomática". Es un **asedio**: cortar suministros (comida, medicina, combustible) para forzar colapso interno.
+
+La lógica es medieval, pero la escala es planetaria:
+
+- **Objetivo declarado**: "lucha contra el narcotráfico", "defensa de la democracia".
+- **Objetivo real**: cambio de régimen sin invasión formal; apropiación de recursos (petróleo, minerales).
+- **Mecanismo**: hacer que el coste de resistir sea mayor que el coste de ceder.
+
+### 8.2 Coerción vs. competencia
+
+El bloqueo marca una diferencia cualitativa:
+
+| Competencia económica | Coerción extra-económica |
+|-----------------------|--------------------------|
+| Ganas si produces mejor/más barato | Ganas si impides que el otro produzca |
+| Operas dentro del mercado | Operas fuera del mercado (fuerza) |
+| El perdedor puede adaptarse | El perdedor colapsa o cede |
+
+El bloqueo **disciplina el mercado energético global**: quien controla el acceso a recursos (no solo su producción) controla el sistema.
+
+### 8.3 Legitimación mediante instituciones de paz
+
+La coerción extra-económica requiere **cobertura de legitimidad** para operar sin coste reputacional:
+
+- Un premio Nobel al aliado local transforma "agresor" en "libertador".
+- El vocabulario de derechos humanos encubre el asedio como "defensa de la democracia".
+- La institución de paz funciona como **infraestructura de guerra** (ver [13-bicefalia-semantica-cobertura](13-bicefalia-semantica-cobertura.md)).
+
+### 8.4 Implicación para el diseño institucional
+
+El proyecto debe anticipar que la coerción extra-económica:
+
+- No se combate solo con argumentos económicos.
+- Requiere **defensas jurídicas internacionales** (impugnación de bloqueos ilegales).
+- Requiere **desacoplamiento de instituciones de legitimación** (que el Nobel no pueda funcionar como nodo de guerra).
+- Requiere **autosuficiencia estratégica** en sectores críticos (energía, alimentos, medicinas).
+
+La pregunta no es "¿cómo competimos mejor?". Es: **¿cómo sobrevivimos al asedio mientras se construye alternativa?**

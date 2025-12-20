@@ -97,3 +97,41 @@ Combatir la posverdad sin reconstruir las condiciones del mundo común es tratar
 Ahora añadimos una capa: el gobierno técnico de afectos ha alcanzado tal eficacia que lo aberrante puede proclamarse sin vergüenza. No es que hayan desaparecido los límites morales: es que **se ha producido una población incapaz de reconocerlos**.
 
 La pregunta que queda abierta: ¿es posible un mundo común sin portadores que lo representen? ¿O es precisamente la representación lo que está en crisis terminal? Y si la población ya ha sido gobernada para aceptar lo inaceptable, **¿qué queda por defender?**
+
+---
+
+## 9. Captura de instituciones de verdad
+
+> **Fuente**: Caso Nobel/Venezuela 2025 (plana `S08-T027`).
+
+Hay una forma de posverdad que no opera desde fuera de las instituciones de verdad, sino **desde dentro**: la captura de las propias instituciones que certifican qué es verdad, qué es paz, qué es justicia.
+
+### 9.1 La inversión institucional
+
+Cuando una institución de paz (Nobel) premia a quien promueve la guerra, no estamos ante "error de juicio". Estamos ante **posverdad institucionalizada**: la institución que debería certificar la paz se convierte en nodo de legitimación de la guerra.
+
+El mecanismo es preciso:
+
+- La institución conserva el **prestigio histórico** ("Premio Nobel de la Paz").
+- Ese prestigio se transfiere a la operación legitimada.
+- La contradicción se oculta bajo vocabulario de misión ("promoción de la democracia").
+
+### 9.2 "Guerra es Paz": la inversión semántica
+
+Orwell lo anticipó: el gobierno de las mentes furiosas puede llegar a un punto donde **las palabras significan lo contrario**.
+
+- "Paz" = intervención militar.
+- "Democracia" = cambio de régimen por fuerza externa.
+- "Derechos humanos" = bloqueo que priva de alimentos y medicinas.
+
+Esto no es propaganda burda. Es **posverdad técnica de alto nivel**: usa las instituciones de verdad como vehículo, no como objetivo.
+
+### 9.3 Implicación para el proyecto
+
+El diseño institucional debe anticipar que **las instituciones de verdad pueden ser capturadas**:
+
+- No basta con crear instituciones con buenas misiones.
+- Hay que diseñar mecanismos de **auditoría de coherencia mandato-acción**.
+- Hay que habilitar **vías de impugnación** cuando el mandato se invierte.
+
+La demanda de Assange (denuncia penal por violación del testamento de Nobel) es un intento de activar esa vía. El proyecto debe preguntarse: **¿qué arquitectura hace que una institución de verdad no pueda ser capturada para validar su contrario?**
