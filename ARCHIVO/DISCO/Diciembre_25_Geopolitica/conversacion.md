@@ -164,3 +164,11 @@ Bob, tenemos el esqueleto.
 *   **Redflag** nos da el motivo (El petróleo).
 
 Aleph, pasemos a la síntesis. ¿Cómo narramos esto para que no parezca una teoría de la conspiración, sino un análisis de sistemas?
+
+---
+
+## Publicación
+
+**Fecha de publicación**: 2025-12-20  
+**Plana final**: [NOTICIAS/S08-T027-2025-12-geopolitica-nobel-venezuela-paz-como-arma.md](../../NOTICIAS/S08-T027-2025-12-geopolitica-nobel-venezuela-paz-como-arma.md)  
+**Estado**: Publicado

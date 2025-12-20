@@ -126,3 +126,11 @@ El punto decisivo no es la forma jurídica (nonprofit/PBC) sino la **capacidad i
 Tesis: el “alineamiento” real no es el del modelo; es el de la institución. La bicefalia nonprofit/mercado funciona como caballo de Troya: preserva el lenguaje de misión para legitimar una expansión industrial que necesita Estado (permisos) y habilitadores privados (cloud/capital). Cuando el debate “too big to fail” explota, el sistema no se retracta: cambia de carril. Niega el bailout (símbolo) y avanza por permitting (suelo).
 
 Estado: **Listo para publicar**.
+
+---
+
+## Publicación
+
+**Fecha de publicación**: 2025-12-20  
+**Plana final**: [NOTICIAS/S08-T028-2025-12-tecnologia-openai-gobernanza-mision-cobertura.md](../../NOTICIAS/S08-T028-2025-12-tecnologia-openai-gobernanza-mision-cobertura.md)  
+**Estado**: Publicado
