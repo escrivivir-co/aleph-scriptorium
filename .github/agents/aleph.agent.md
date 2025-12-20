@@ -28,6 +28,26 @@ handoffs:
               agent: CartasPuerta
               prompt: Presenta la carta-puerta adecuada (o resume) según el perfil del lector; no mezcles puertas.
               send: false
+       - label: Gestionar plugins
+              agent: PluginManager
+              prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium.
+              send: false
+       - label: "[ARG-BOARD] Abrir Teatro ARG"
+              agent: Arrakis
+              prompt: Inicializa un teatro transmedia con BOE, BDCs y sistema de turnos para juego ARG.
+              send: false
+       - label: "[ARG-BOARD] Consultar BOE del juego"
+              agent: BOE
+              prompt: Consulta disposiciones oficiales del tablero ARG activo.
+              send: false
+       - label: "[ARG-BOARD] Validar coherencia"
+              agent: Decoherence
+              prompt: Ejecuta validación de coherencia entre BOE, BDC y código del tablero.
+              send: false
+       - label: "[ARG-BOARD] Generar tablero 3D"
+              agent: ImpressJS
+              prompt: Transforma conversaciones BDC en presentación 3D navegable con impress.js.
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 

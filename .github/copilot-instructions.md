@@ -63,3 +63,37 @@ El contenido se rige por instrucciones específicas. **No improvisar** estilos n
   - El *qué* (contenido) está en `ARCHIVO/`.
   - El *cómo* (reglas) está en `.github/instructions/`.
   - El *cuándo* (plan) está en los Backlogs.
+
+## 7. Sistema de Plugins
+
+**Fuente de verdad**: [PLUGINS.md](PLUGINS.md)
+
+Los plugins extienden las capacidades de Scriptorium sin modificar el core.
+
+**Agente Gestor**: **Plugin Manager**
+- **Definición**: [agents/plugin-manager.agent.md](agents/plugin-manager.agent.md)
+- **Responsabilidad**: Instalar, activar, desactivar y desinstalar plugins.
+
+**Registro de Plugins**: [plugins/registry.json](plugins/registry.json)
+
+### Plugins Instalados
+
+| Plugin | Versión | Descripción |
+|--------|---------|-------------|
+| **ARG Board** | 1.0.0 | Motor de juego ARG transmedia (AlephScript 7GL) |
+
+### Plugin: ARG Board
+
+Motor conversacional para juegos de Realidad Alternativa transmedia.
+
+**Agentes disponibles**:
+- `Arrakis`: Director de Teatro ARG
+- `BOE`: Gestor de Boletín Oficial del juego
+- `GitARG`: Orquestador de turnos Git
+- `Decoherence`: Validador de coherencia
+- `AutomataHeroe`: Jugador autónomo (Camino del Héroe)
+- `ImpressJS`: Generador de tableros 3D
+- `MBox`: Extractor de emails a BDC
+- `PlatformCom`: Comunicación multi-plataforma
+
+**Documentación**: [plugins/arg-board/docs/](plugins/arg-board/docs/)
