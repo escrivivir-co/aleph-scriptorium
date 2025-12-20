@@ -15,6 +15,9 @@ dependencies: []
 framework: "AlephScript 7GL"
 paradigm: "Teatro Digital / DevOps Narrativo"
 
+# Directorio de datos de runtime
+data_directory: "ARCHIVO/PLUGINS/ARG_BOARD/"
+
 # Agentes exportados
 agents:
   - name: "Arrakis"

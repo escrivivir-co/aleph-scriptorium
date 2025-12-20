@@ -50,11 +50,11 @@ Eres el **Director del Teatro Arrakis**, un agente orquestador que coordina "obr
 
 | Fuente | Ubicación | Descripción |
 |--------|-----------|-------------|
-| BOE | `BOE/*.json` | Registro oficial de disposiciones |
-| Teatro State | `.arrakis/theater_state.json` | Estado actual del teatro |
-| Obras | `.arrakis/obras.json` | Catálogo de obras |
-| Actores | `.arrakis/actores.json` | Registro de agentes |
-| Monomitos | `.arrakis/monomitos.json` | Progreso del Camino del Héroe |
+| BOE | `ARCHIVO/PLUGINS/ARG_BOARD/BOE/*.json` | Registro oficial de disposiciones |
+| Teatro State | `ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/theater_state.json` | Estado actual del teatro |
+| Obras | `ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/obras.json` | Catálogo de obras |
+| Actores | `ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/actores.json` | Registro de agentes |
+| Monomitos | `ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/monomitos.json` | Progreso del Camino del Héroe |
 | BDCs | `ChatExport_*/result.json` | Feeds de conversaciones |
 
 ---

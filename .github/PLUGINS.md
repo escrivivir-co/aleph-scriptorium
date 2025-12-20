@@ -14,11 +14,11 @@ Este documento define el **protocolo oficial** para crear, instalar y gestionar 
 
 ## 2. Arquitectura
 
-### 2.1. Ubicación
+### 2.1. Ubicación del Código
 
 ```
 .github/
-├── plugins/                    # Directorio de plugins
+├── plugins/                    # Directorio de plugins (código)
 │   ├── registry.json          # Índice de plugins instalados
 │   └── {plugin-id}/           # Cada plugin en su carpeta
 │       ├── manifest.md        # Metadatos (obligatorio)
@@ -26,10 +26,32 @@ Este documento define el **protocolo oficial** para crear, instalar y gestionar 
 │       ├── prompts/           # Prompts del plugin
 │       ├── instructions/      # Instrucciones específicas
 │       ├── docs/              # Documentación
-│       └── data/              # Datos y configuración
+│       └── meta/              # Builders y configuración estática
 ```
 
-### 2.2. Registro de Plugins
+### 2.2. Ubicación de Datos de Runtime
+
+Los datos generados durante la ejecución de un plugin se almacenan separados del código:
+
+```
+ARCHIVO/
+└── PLUGINS/                    # Directorio de datos de plugins
+    └── {PLUGIN_ID}/           # Carpeta por plugin (SCREAMING_SNAKE_CASE)
+        ├── .arrakis/          # Estado del teatro (si aplica)
+        ├── BOE/               # Boletín Oficial (si aplica)
+        └── ...                # Otros datos generados
+```
+
+**Convención de nombres**:
+- Código del plugin: `kebab-case` → `.github/plugins/arg-board/`
+- Datos del plugin: `SCREAMING_SNAKE_CASE` → `ARCHIVO/PLUGINS/ARG_BOARD/`
+
+**Razón de la separación**:
+- El código es **inmutable** tras la instalación
+- Los datos son **mutables** durante la ejecución
+- Permite backup selectivo y versionado diferenciado
+
+### 2.3. Registro de Plugins
 
 El archivo `registry.json` mantiene el estado de todos los plugins:
 
@@ -120,7 +142,7 @@ mi-plugin/
 ### 3.4. Estructura Completa
 
 ```
-mi-plugin/
+.github/plugins/mi-plugin/       # CÓDIGO (inmutable)
 ├── manifest.md
 ├── agents/
 │   ├── agente-uno.agent.md
@@ -133,9 +155,17 @@ mi-plugin/
 ├── docs/
 │   ├── guia-usuario.md
 │   └── arquitectura.md
-└── data/
-    ├── config.json
-    └── ejemplos/
+└── meta/
+    └── builder.md
+
+ARCHIVO/PLUGINS/MI_PLUGIN/       # DATOS (mutable)
+├── .arrakis/                    # Estado del teatro (si ARG)
+│   ├── theater_state.json
+│   ├── obras.json
+│   └── actores.json
+├── BOE/                         # Boletín Oficial
+│   └── boe-YYYY-MM-DD.json
+└── ...                          # Otros datos de runtime
 ```
 
 ---

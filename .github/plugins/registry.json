@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-20T10:00:00Z",
+  "last_updated": "2025-12-20T12:30:00Z",
   "plugins": {
     "arg-board": {
       "name": "Tablero de Juego ARG Transmedia",
@@ -10,7 +10,8 @@
       "installed_at": "2025-12-20T10:00:00Z",
       "enabled": true,
       "agents_count": 8,
-      "prompts_count": 67,
+      "prompts_count": 7,
+      "data_directory": "ARCHIVO/PLUGINS/ARG_BOARD/",
       "handoffs": [
         {
           "label": "Abrir Teatro ARG",
