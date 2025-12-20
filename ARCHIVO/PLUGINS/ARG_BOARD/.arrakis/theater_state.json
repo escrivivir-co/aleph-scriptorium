@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "estado": "CASTING",
+  "modo": "auto",
+  "timeout_turno": 10,
+  "temporada_actual": 1,
+  "juego": "Scriptorium Transmedia",
+  "fecha_genesis": "2025-12-20T12:00:00Z",
+  "lore": {
+    "universo": "Aleph Scriptorium",
+    "descripcion": "Un texto fundacional serializado en 12 capítulos durante 2026, escrito desde una izquierda no ingenua que sabe que la indignación sin mecanismo se pudre en resentimiento.",
+    "desplazamientos": [
+      "Anacronismo productivo: recuperar futuros cancelados como repertorio",
+      "Actores no-humanos: IA, ecosistemas, infraestructuras como actores políticos",
+      "Problema de la escala: decisiones planetarias sin demos legítimo"
+    ],
+    "auditores": ["Blueflag (Verdad)", "Blackflag (Sombras)", "Redflag (Estructura)"]
+  },
+  "obras_activas": [],
+  "obras_clausuradas": [],
+  "actores_registrados": [],
+  "plataformas_conectadas": ["vscode", "github"],
+  "ultimo_turno": null,
+  "turnos_totales": 0
+}

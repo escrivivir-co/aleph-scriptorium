@@ -1,0 +1,52 @@
+{
+  "FUND-001": {
+    "titulo": "Completar borrador Cap01",
+    "obra": "call4fundacion",
+    "tipo": "story",
+    "estado": "en_progreso",
+    "asignado": "aleph",
+    "prioridad": "alta",
+    "etapa_heroe": 5,
+    "descripcion": "Finalizar el borrador del capítulo 'Anacronismo productivo'",
+    "criterios_aceptacion": [
+      "Apertura con desplazamiento temporal",
+      "Tesis clara sobre futuros cancelados",
+      "Repertorio de instituciones olvidadas",
+      "Mecanismo concreto de recuperación",
+      "Sacrificio declarado",
+      "Sombra identificada"
+    ],
+    "referencias": [
+      "PROYECTOS/FUNDACION/CAPITULOS/cap01-anacronismo-productivo.md",
+      "PROYECTOS/FUNDACION/01-enero.md"
+    ]
+  },
+  "FUND-002": {
+    "titulo": "Auditoría triple Cap01",
+    "obra": "call4fundacion",
+    "tipo": "task",
+    "estado": "pendiente",
+    "asignado": ["blueflag", "blackflag", "redflag"],
+    "prioridad": "alta",
+    "etapa_heroe": 5,
+    "descripcion": "Ejecutar auditoría de las tres banderas antes de publicar Cap01",
+    "criterios_aceptacion": [
+      "Blueflag: Evidencia, Utilidad, Falsificabilidad verificados",
+      "Blackflag: Coste represivo y autodefensa evaluados",
+      "Redflag: Escala, enforcement, suministro validados"
+    ]
+  },
+  "NEWS-001": {
+    "titulo": "Próxima plana noticiera",
+    "obra": "call4noticias",
+    "tipo": "story",
+    "estado": "pendiente",
+    "asignado": "periodico",
+    "prioridad": "media",
+    "descripcion": "Producir siguiente plana con método 5W + Banderas",
+    "meta": {
+      "fuentes_disco": "ARCHIVO/DISCO/",
+      "destino": "ARCHIVO/NOTICIAS/"
+    }
+  }
+}

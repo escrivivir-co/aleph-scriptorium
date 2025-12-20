@@ -1,0 +1,74 @@
+{
+  "call4fundacion": {
+    "nombre": "Call for Fundación",
+    "descripcion": "El camino del héroe para completar el texto fundacional de 12 capítulos",
+    "fase_actual": 1,
+    "etapa_actual": 5,
+    "heroe_principal": "aleph",
+    "fases": {
+      "1": {
+        "nombre": "PARTIDA",
+        "descripcion": "Bootstrap del proyecto, establecer infraestructura y primer capítulo",
+        "meses": [1, 2, 3, 4],
+        "etapas": {
+          "1": { "nombre": "Mundo Ordinario", "estado": "completado", "evidencia": "ARCHIVO/ consolidado" },
+          "2": { "nombre": "Llamada a la Aventura", "estado": "completado", "evidencia": "Decisión de escribir texto fundacional" },
+          "3": { "nombre": "Rechazo de la Llamada", "estado": "completado", "evidencia": "diagnostico/03-patron-reaccionario.md" },
+          "4": { "nombre": "Encuentro con el Mentor", "estado": "completado", "evidencia": "marco/ como vacuna anti-naïf" },
+          "5": { "nombre": "Cruce del Umbral", "estado": "en_progreso", "evidencia": "Cap01 Anacronismo productivo en borrador" }
+        },
+        "en_progreso": true
+      },
+      "2": {
+        "nombre": "INICIACIÓN",
+        "descripcion": "Desarrollo de capítulos centrales con auditorías de las tres banderas",
+        "meses": [5, 6, 7, 8],
+        "etapas": {
+          "6": { "nombre": "Pruebas, Aliados, Enemigos", "estado": "pendiente" },
+          "7": { "nombre": "Acercamiento a la Cueva", "estado": "pendiente" },
+          "8": { "nombre": "Ordalía", "estado": "pendiente" }
+        },
+        "pendiente": true
+      },
+      "3": {
+        "nombre": "RETORNO",
+        "descripcion": "Cierre del texto, capítulo del sacrificio y la sombra",
+        "meses": [9, 10, 11, 12],
+        "etapas": {
+          "9": { "nombre": "Recompensa", "estado": "pendiente" },
+          "10": { "nombre": "Camino de Regreso", "estado": "pendiente" },
+          "11": { "nombre": "Resurrección", "estado": "pendiente", "capitulo": "El sacrificio" },
+          "12": { "nombre": "Retorno con el Elixir", "estado": "pendiente", "capitulo": "La sombra del texto" }
+        },
+        "pendiente": true
+      }
+    },
+    "criterios_cumplidos": [
+      "ARCHIVO/ consolidado con marco, diagnóstico, justificación",
+      "Sistema de auditores (3 banderas) operativo",
+      "Protocolo DevOps establecido",
+      "Índice de 12 capítulos validado",
+      "Indicadores de fracaso definidos para Enero"
+    ],
+    "criterios_pendientes": [
+      "Completar Cap01 Anacronismo productivo",
+      "Auditoría Blueflag final Cap01",
+      "Auditoría Blackflag final Cap01",
+      "Auditoría Redflag final Cap01",
+      "Publicar Cap01 en release"
+    ]
+  },
+  "call4noticias": {
+    "nombre": "Call for Noticias",
+    "descripcion": "Producción continua de análisis noticiero con método doctrinal",
+    "estado": "activo",
+    "ciclo": "semanal",
+    "planas_publicadas": 3,
+    "ultima_plana": "S08-T029-2025-12-sociedad-sentido-vida-humanismo-extremo-repliegue.md",
+    "metodo": {
+      "fase1": "5W (Who, What, Where, When, Why)",
+      "fase2": "3 Banderas (Blue, Black, Red)",
+      "actores": ["Alice (Editora)", "Bob (Escritor)", "Aleph (Orquestador)"]
+    }
+  }
+}

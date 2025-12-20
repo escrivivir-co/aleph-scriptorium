@@ -1,0 +1,142 @@
+{
+  "fecha": "2025-12-20",
+  "numero": 1,
+  "temporada": 1,
+  "teatro": "Scriptorium Transmedia",
+  "sumario": [
+    {
+      "seccion": "I. Disposiciones generales",
+      "items": [
+        "ARRAKIS-GENESIS-20251220: Resolución de inicialización del Teatro Arrakis para Scriptorium Transmedia"
+      ]
+    },
+    {
+      "seccion": "II. Registro de Actores",
+      "items": [
+        "ARRAKIS-ACTOR-ALEPH-20251220: Registro del agente Aleph como héroe principal",
+        "ARRAKIS-ACTOR-BLUEFLAG-20251220: Registro del auditor Blueflag",
+        "ARRAKIS-ACTOR-BLACKFLAG-20251220: Registro del auditor Blackflag",
+        "ARRAKIS-ACTOR-REDFLAG-20251220: Registro del auditor Redflag",
+        "ARRAKIS-ACTOR-PERIODICO-20251220: Registro del agente Periódico"
+      ]
+    },
+    {
+      "seccion": "III. Registro de Obras",
+      "items": [
+        "ARRAKIS-OBRA-FUNDACION-20251220: Registro de la obra 'Call for Fundación'",
+        "ARRAKIS-OBRA-NOTICIAS-20251220: Registro de la obra 'Call for Noticias'"
+      ]
+    }
+  ],
+  "secciones": {
+    "I. Disposiciones generales": {
+      "CASA ARRAKIS (TEATRO)": [
+        {
+          "identificador": "ARRAKIS-GENESIS-20251220",
+          "titulo": "Resolución de inicialización del Teatro Arrakis y juego 'Scriptorium Transmedia'",
+          "texto": "Se inicia el Teatro Arrakis como plataforma de obras digitales transmedia del Aleph Scriptorium. El juego inaugural 'Scriptorium Transmedia' adapta el proyecto de texto fundacional (12 capítulos en 2026) al formato de juego de Realidad Alternativa. El teatro operará en modo AUTO con timeout de 10 turnos. El lore del juego se basa en los tres desplazamientos metodológicos: (1) Anacronismo productivo — recuperar futuros cancelados como repertorio; (2) Actores no-humanos — IA, ecosistemas e infraestructuras como actores políticos; (3) Problema de la escala — decisiones planetarias sin demos legítimo. Los auditores doctrinales (Blueflag, Blackflag, Redflag) funcionan como guardianes del umbral narrativo.",
+          "metadata": {
+            "tipo": "genesis",
+            "juego": "Scriptorium Transmedia",
+            "fecha_genesis": "2025-12-20T12:00:00Z",
+            "modo": "auto",
+            "timeout_turno": 10,
+            "temporada": 1,
+            "monomitos": ["Call4Fundacion", "Call4Noticias"],
+            "lore_source": "ARCHIVO/"
+          }
+        }
+      ]
+    },
+    "II. Registro de Actores": {
+      "AGENTES PRINCIPALES": [
+        {
+          "identificador": "ARRAKIS-ACTOR-ALEPH-20251220",
+          "titulo": "Registro del agente Aleph como héroe principal del monomito Call4Fundacion",
+          "texto": "Se registra al agente Aleph con arquetipo HERALD (Product Owner narrativo). Responsabilidades: planificar, redactar y gestionar el texto fundacional de 12 capítulos. Handoffs disponibles hacia los tres auditores (Blueflag, Blackflag, Redflag), el Revisor doctrinal y el agente Periódico. Etapa actual del Camino del Héroe: 5 (Cruce del Umbral).",
+          "metadata": {
+            "tipo": "registro_actor",
+            "actor": "aleph",
+            "arquetipo": "HERALD",
+            "monomito": "call4fundacion",
+            "etapa_heroe": 5
+          }
+        },
+        {
+          "identificador": "ARRAKIS-ACTOR-BLUEFLAG-20251220",
+          "titulo": "Registro del auditor Blueflag (Guardián de Verdad)",
+          "texto": "Se registra al agente Blueflag con arquetipo MENTOR. Función: auditar propuestas con tests de Evidencia, Utilidad, Falsificabilidad y defensa contra Posverdad técnica. Opera como guardián epistémico del proyecto.",
+          "metadata": {
+            "tipo": "registro_actor",
+            "actor": "blueflag",
+            "arquetipo": "MENTOR",
+            "tests": ["Evidencia", "Utilidad", "Falsificabilidad", "Posverdad"]
+          }
+        },
+        {
+          "identificador": "ARRAKIS-ACTOR-BLACKFLAG-20251220",
+          "titulo": "Registro del auditor Blackflag (Guardián de Sombras)",
+          "texto": "Se registra al agente Blackflag con arquetipo SHADOW. Función: auditar coste represivo, autodefensa institucional y modos de fracaso por violencia o captura enemiga. Opera como adversario lúcido del proyecto.",
+          "metadata": {
+            "tipo": "registro_actor",
+            "actor": "blackflag",
+            "arquetipo": "SHADOW",
+            "tests": ["Pólvora", "Posverdad técnica", "Captura enemiga"]
+          }
+        },
+        {
+          "identificador": "ARRAKIS-ACTOR-REDFLAG-20251220",
+          "titulo": "Registro del auditor Redflag (Guardián de Estructura)",
+          "texto": "Se registra al agente Redflag con arquetipo THRESHOLD_GUARDIAN. Función: auditar viabilidad a escala, enforcement, suministro y régimen material. Convierte intenciones en arquitectura gobernable.",
+          "metadata": {
+            "tipo": "registro_actor",
+            "actor": "redflag",
+            "arquetipo": "THRESHOLD_GUARDIAN",
+            "tests": ["Escala", "Coerción", "Suministro", "Régimen material"]
+          }
+        },
+        {
+          "identificador": "ARRAKIS-ACTOR-PERIODICO-20251220",
+          "titulo": "Registro del agente Periódico",
+          "texto": "Se registra al agente Periódico con arquetipo ALLY. Función: producir planas noticieras combinando periodismo clásico (5W) con auditoría doctrinal (3 Banderas). Simula redacción periodística con actores Alice (Editora) y Bob (Escritor).",
+          "metadata": {
+            "tipo": "registro_actor",
+            "actor": "periodico",
+            "arquetipo": "ALLY",
+            "monomito": "call4noticias"
+          }
+        }
+      ]
+    },
+    "III. Registro de Obras": {
+      "MONOMITOS": [
+        {
+          "identificador": "ARRAKIS-OBRA-FUNDACION-20251220",
+          "titulo": "Registro de la obra 'Call for Fundación'",
+          "texto": "Se registra la obra principal del teatro: completar el texto fundacional de 12 capítulos durante 2026. Estructura en tres fases del monomito: PARTIDA (Ene-Abr, capítulos 1-4), INICIACIÓN (May-Ago, capítulos 5-8), RETORNO (Sep-Dic, capítulos 9-12). El héroe principal es el agente Aleph. Los guardianes del umbral son los tres auditores de bandera.",
+          "metadata": {
+            "tipo": "registro_obra",
+            "obra": "call4fundacion",
+            "tipo_obra": "monomito",
+            "heroe": "aleph",
+            "capitulos": 12,
+            "fases": 3
+          }
+        },
+        {
+          "identificador": "ARRAKIS-OBRA-NOTICIAS-20251220",
+          "titulo": "Registro de la obra 'Call for Noticias'",
+          "texto": "Se registra la obra periodística del teatro: producción continua de planas noticieras con método doctrinal 5W + 3 Banderas. Ciclo semanal. Material se acumula en ARCHIVO/DISCO/ y se publica en ARCHIVO/NOTICIAS/.",
+          "metadata": {
+            "tipo": "registro_obra",
+            "obra": "call4noticias",
+            "tipo_obra": "periodico",
+            "ciclo": "semanal"
+          }
+        }
+      ]
+    }
+  },
+  "publicado": true,
+  "fecha_publicacion": "2025-12-20T12:00:00Z"
+}

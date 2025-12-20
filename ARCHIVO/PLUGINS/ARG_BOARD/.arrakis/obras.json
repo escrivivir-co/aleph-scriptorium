@@ -1,0 +1,42 @@
+{
+  "call4fundacion": {
+    "titulo": "Call for Fundación",
+    "tipo": "monomito",
+    "estado": "registrada",
+    "descripcion": "Completar los 12 capítulos del texto fundacional durante 2026",
+    "etapa_actual": 1,
+    "actores": [],
+    "capitulos": [
+      { "id": 1, "nombre": "Anacronismo productivo", "desplazamiento": "temporal", "estado": "en_progreso" },
+      { "id": 2, "nombre": "Autómata soberano", "desplazamiento": "antropológico", "estado": "pendiente" },
+      { "id": 3, "nombre": "Problema de la escala", "desplazamiento": "escalar", "estado": "pendiente" },
+      { "id": 4, "nombre": "Repertorio de arquitecturas", "desplazamiento": "temporal", "estado": "pendiente" },
+      { "id": 5, "nombre": "Formas de vida", "desplazamiento": "temporal", "estado": "pendiente" },
+      { "id": 6, "nombre": "Futuros cancelados", "desplazamiento": "temporal", "estado": "pendiente" },
+      { "id": 7, "nombre": "Infraestructuras como actores", "desplazamiento": "antropológico", "estado": "pendiente" },
+      { "id": 8, "nombre": "Demos sin demos", "desplazamiento": "escalar", "estado": "pendiente" },
+      { "id": 9, "nombre": "Ecosistemas políticos", "desplazamiento": "antropológico", "estado": "pendiente" },
+      { "id": 10, "nombre": "Régimen material", "desplazamiento": "escalar", "estado": "pendiente" },
+      { "id": 11, "nombre": "El sacrificio", "desplazamiento": "escalar", "estado": "pendiente" },
+      { "id": 12, "nombre": "La sombra del texto", "desplazamiento": "meta", "estado": "pendiente" }
+    ],
+    "meta": {
+      "fuente_archivo": "ARCHIVO/",
+      "fuente_capitulos": "PROYECTOS/FUNDACION/CAPITULOS/",
+      "indice": "PROYECTOS/FUNDACION/Indice.md"
+    }
+  },
+  "call4noticias": {
+    "titulo": "Call for Noticias",
+    "tipo": "periodico",
+    "estado": "registrada",
+    "descripcion": "Producir planas noticieras con método 5W + Banderas",
+    "etapa_actual": 1,
+    "actores": [],
+    "meta": {
+      "disco": "ARCHIVO/DISCO/",
+      "noticias": "ARCHIVO/NOTICIAS/",
+      "metodo": "5W + 3 Banderas (Blue, Black, Red)"
+    }
+  }
+}
