@@ -10,6 +10,27 @@ Si el texto usa referencias a la actualidad, a noticias o a fuentes que no dispo
 
 ---
 
+## Principio rector: extensión respetuosa
+
+El ARCHIVO es **memoria acumulativa**, no documento vivo que se reescribe. El protocolo opera en dos modos:
+
+| Modo | Cuándo | Qué hace |
+|------|--------|----------|
+| **Crear** | El eje es nuevo y distinto | Crea archivo nuevo con estructura completa |
+| **Extender** | El eje complementa uno existente | Añade secciones al final, antes del "Cierre de tensión" |
+
+### Regla de oro para extensiones
+
+> **No canibalizar**: una extensión **añade** secciones nuevas al archivo existente. Nunca reescribe, sustituye ni reorganiza el contenido previo.
+
+Esto significa:
+- Leer el archivo existente **antes** de modificarlo.
+- Identificar dónde termina el contenido actual (antes del "Cierre de tensión").
+- Insertar la nueva sección **después** del contenido existente.
+- Actualizar la sección "Origen" si existe, añadiendo la nueva fuente.
+
+---
+
 ## Estructura de destino (no crear carpetas nuevas)
 
 El contenido debe distribuirse en una de estas tres subcarpetas de `ARCHIVO/`:
@@ -79,7 +100,15 @@ Si un eje encaja en más de una categoría, prioriza por este orden: `marco/` > 
 
 Revisa los `README.md` de cada subcarpeta para conocer el contenido actual.
 
-### Paso 4: Reescribir conforme al estilo del proyecto
+### Paso 4: Leer archivos a extender (CRÍTICO)
+
+**Antes de modificar cualquier archivo existente**, léelo completo para:
+- Conocer la estructura de secciones actual.
+- Identificar dónde insertar (antes del "Cierre de tensión").
+- Evitar duplicaciones o contradicciones.
+- Preservar el tono y nivel de detalle del documento.
+
+### Paso 5: Reescribir conforme al estilo del proyecto
 
 Cada archivo debe seguir esta estructura:
 
@@ -108,8 +137,61 @@ Cada archivo debe seguir esta estructura:
 [Pregunta abierta o síntesis que no cierra en falso]
 ```
 
-### Paso 5: Actualizar el README de la subcarpeta
-Añade el nuevo archivo o la extensión al índice correspondiente.
+#### Para extensiones: estructura de sección añadida
+
+```markdown
+---
+
+## N. [Título de la nueva sección]
+
+> **Fuente**: [Nombre del documento fuente] (plana/PDF/etc).
+
+[Contenido de la extensión]
+
+### N.1 [Subsección si necesaria]
+[...]
+
+### N.M Implicación para el proyecto
+[Traducción a diseño institucional]
+```
+
+### Paso 6: Actualizar metadatos
+
+#### Si el archivo tiene sección "Origen"
+Añade la nueva fuente a la lista:
+
+```markdown
+## Origen
+
+Material extraído de:
+- [Fuente previa]
+- [Nueva fuente añadida]
+```
+
+#### Actualizar el README de la subcarpeta
+Solo si se crea archivo nuevo. Las extensiones no requieren actualizar el README.
+
+### Paso 7: Trazabilidad (backlog y commit)
+
+#### Actualizar el backlog
+Añade entrada al changelog de `PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`:
+
+```markdown
+| YYYY-MM-DD | Extraer [fuente] → crear/extender [archivos] | Aleph |
+```
+
+#### Generar commit propuesto
+Formato:
+
+```
+archive(fund/archivo): [descripción corta]
+
+- [Acción 1]: [archivo]
+- [Acción 2]: [archivo]
+[...]
+
+Fuente: [nombre del documento fuente]
+```
 
 ---
 
@@ -178,3 +260,36 @@ Antes de crear o modificar archivos, presenta:
 4. **Títulos propuestos**: nombre de los archivos a crear.
 
 Espera confirmación del usuario antes de proceder.
+
+Si el usuario dice "procede" o similar, ejecuta el plan completo incluyendo trazabilidad.
+
+---
+
+## Reporte de sesión (al finalizar)
+
+Al completar la extracción, genera un reporte estructurado:
+
+```markdown
+## Resumen de sesión
+
+### Opportunity: Fundación
+**Sprint**: [N]
+
+### Archivos creados
+- [ruta]: [descripción breve]
+
+### Archivos modificados (extensiones)
+| Archivo | Extensión añadida |
+|---------|-------------------|
+| [ruta] | [sección añadida] |
+
+### Ejes extraídos
+1. **[Eje 1]** → [destino]
+2. **[Eje 2]** → [destino]
+[...]
+
+### Commit propuesto
+\`\`\`
+[mensaje de commit conforme al protocolo]
+\`\`\`
+```

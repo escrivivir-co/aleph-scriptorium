@@ -177,4 +177,10 @@
 | 2025-12-19 | Completar Auditoría Blackflag Cap01 (T015.1) — 5 refactorizaciones propuestas | Blackflag |
 | 2025-12-19 | Completar Auditoría Redflag Cap01 (T017.1) — escala/enforcement/base material | Redflag |
 | 2025-12-19 | Completar Auditoría Blueflag Cap01 (T024) — evidencia/utilidad/falsificabilidad | Blueflag |
-| 2025-12-19 | Integración Aleph Cap01 (T011.1) — plan de refactorización | Aleph |
+| 2025-12-19 | Integración Aleph Cap01 (T011.1) — plan de refactorización | Aleph || 2025-12-20 | Extraer plana S08-T028 (OpenAI) → crear marco/13-bicefalia-semantica-cobertura.md | Aleph |
+| 2025-12-20 | Extender marco/01-seleccion-sistemica.md (captura sin responsabilidad) | Aleph |
+| 2025-12-20 | Extender marco/11-tecnofeudalismo.md (infraestructura crítica como cuello de botella) | Aleph |
+| 2025-12-20 | Extraer plana S08-T027 (Nobel/Venezuela) → extender 3 documentos | Aleph |
+| 2025-12-20 | Extender marco/13-bicefalia-semantica.md (instituciones internacionales) | Aleph |
+| 2025-12-20 | Extender justificacion/03-posverdad.md (captura de instituciones de verdad) | Aleph |
+| 2025-12-20 | Extender marco/04-geopolitica.md (coerción extra-económica: bloqueo) | Aleph |
