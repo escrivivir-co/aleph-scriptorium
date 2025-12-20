@@ -113,10 +113,13 @@ categoria: {categoria}
 tema: {tema}
 perfil_recomendado: {blueflag/blackflag/redflag/base}
 fuente_disco: DISCO/{carpeta}/
+imagen_cabecera: DISCO/{carpeta}/imagen-cabecera.png
 estado: publicado
 ---
 
 # {Título}
+
+![Imagen de cabecera](../DISCO/{carpeta}/imagen-cabecera.png)
 
 > **Código**: `{codigo_scrum}`  
 > **Fecha**: {YYYY-MM-DD}  
