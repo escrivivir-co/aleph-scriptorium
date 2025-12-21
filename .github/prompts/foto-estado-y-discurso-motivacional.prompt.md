@@ -84,6 +84,86 @@ Entrega en Markdown con estos encabezados exactos:
 
 ---
 
+## Almacenamiento del informe
+
+Una vez generado el informe, guárdalo en:
+
+```
+ARCHIVO/FOTOS_ESTADO/{YYYY-MM-DD}_Sprint{N}_{Descriptor}.md
+```
+
+**Convención de nombres**:
+- `YYYY-MM-DD`: Fecha ISO-8601 (ej. `2025-12-21`)
+- `Sprint{N}`: Número de sprint (ej. `Sprint0`, `Sprint1`)
+- `{Descriptor}`: Identificador breve del sprint (ej. `Bootstrap`, `Anacronismo`, `Automata`)
+
+**Ejemplos válidos**:
+- `2025-12-21_Sprint0_Bootstrap.md` — Foto de cierre Sprint 0
+- `2026-01-31_Sprint1_Anacronismo.md` — Foto de cierre Sprint 1 (Capítulos 1-4)
+- `2026-02-28_Sprint2_Actores.md` — Foto de cierre Sprint 2
+
+**Instrucción para el agente**:
+1. Genera el informe según las instrucciones previas
+2. Guarda el archivo en `ARCHIVO/FOTOS_ESTADO/` con el nombre conforme
+3. Actualiza la sección "Status (para visitantes)" en `README.md` (ver abajo)
+4. Informa al usuario de ambas rutas modificadas
+
+---
+
+## Actualización del README.md
+
+Después de generar y guardar el informe, actualiza la sección **Status (para visitantes)** en el archivo `README.md` (líneas ~15-28).
+
+### Qué actualizar
+
+**Tabla de status**:
+```markdown
+| | |
+|---|---|
+| **Fecha** | {{FECHA}} |
+| **Sprint** | {{SPRINT}} ({{Descriptor}}) |
+| **Ciclo previsto** | 12 sprints × 4 iteraciones = 48 iteraciones (2026) |
+```
+
+**Párrafo de estado** (después de "Estado detallado (DRY)"):
+- Sintetiza el estado actual en 1-2 frases basándote en la "Comprensión del estado" del informe
+- Mantén el tono sobrio y orientado a visitantes externos
+- Ejemplo: *"Este repositorio está en fase de **arranque controlado**: se prioriza dejar un método repetible (Scriptorium) y una base doctrinal sólida (ARCHIVO) antes de acelerar la producción del texto serializado (Fundación)."*
+
+### Qué NO modificar
+
+- Enlaces a backlogs
+- Tabla de "Si eres..." (puertas de entrada)
+- Estructura general del README
+
+### Ejemplo de cambio
+
+**Antes** (Sprint 0):
+```markdown
+| **Fecha** | 2025-12-21 |
+| **Sprint** | 0 (Bootstrap) |
+
+Este repositorio está en fase de **arranque controlado**: [...]
+```
+
+**Después** (Sprint 1):
+```markdown
+| **Fecha** | 2026-01-31 |
+| **Sprint** | 1 (Anacronismo) |
+
+Este repositorio ha completado el bootstrap y está en producción activa del Sprint 1: redacción de los capítulos 1-4 con auditoría de las 5 banderas.
+```
+
+### Instrucción para el agente
+
+1. Lee la sección Status actual en `README.md`
+2. Actualiza la fecha y el sprint en la tabla
+3. Reescribe el párrafo de estado basándote en la foto generada
+4. Usa `replace_string_in_file` para hacer el cambio
+5. Informa al usuario de la actualización realizada
+
+---
+
 ## Autocontrol (antes de responder)
 
 Verifica:
