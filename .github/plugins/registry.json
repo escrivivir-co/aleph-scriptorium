@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-20T12:30:00Z",
+  "last_updated": "2025-12-21T00:00:00Z",
   "plugins": {
     "arg-board": {
       "name": "Tablero de Juego ARG Transmedia",
@@ -28,6 +28,34 @@
         {
           "label": "Generar tablero 3D",
           "agent": "ImpressJS"
+        }
+      ]
+    },
+    "enciclopedia": {
+      "name": "Biblioteca de Tomos Enciclopédicos",
+      "version": "1.0.0",
+      "description": "Motor de consulta para tomos enciclopédicos con búsquedas temporales y temáticas",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-21T00:00:00Z",
+      "enabled": true,
+      "agents_count": 2,
+      "prompts_count": 3,
+      "data_directory": "ARCHIVO/PLUGINS/ENCICLOPEDIA/",
+      "handoffs": [
+        {
+          "label": "Consultar biblioteca de tomos",
+          "agent": "Bibliotecario"
+        },
+        {
+          "label": "Buscar en Historia de la Filosofía",
+          "agent": "HDF-ErnestoCastro"
+        }
+      ],
+      "tomos_cargados": [
+        {
+          "id": "hdf-ernesto-castro",
+          "nombre": "Historia de la Filosofía",
+          "capitulos": 61
         }
       ]
     }
