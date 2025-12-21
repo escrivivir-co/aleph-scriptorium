@@ -1,7 +1,7 @@
 # Conversación Editorial: Humanismo extremo como repliegue político
 
 **Fecha**: 2025-12-20
-**Fuentes**: `01_hilo_encuesta.md` (Forocoches, nov. 2025)
+**Fuentes**: `01_hilo_encuesta.md` (Foro, nov. 2025)
 **Estado**: En edición
 
 ---
@@ -47,7 +47,7 @@ Una pregunta filosófica fundamental ("¿qué es lo más importante en la vida?"
 ### 3. WHERE (¿Dónde?)
 
 **Geografía**:
-- **Espacio**: Forocoches, foro español de discusión general (audiencia masiva, no especializada).
+- **Espacio**: Foro, foro español de discusión general (audiencia masiva, no especializada).
 - **Contexto cultural**: España, noviembre 2025. Momento de múltiples crisis (política, económica, climática) pero sin catalizador específico que motive la pregunta.
 
 **Significado del espacio**:

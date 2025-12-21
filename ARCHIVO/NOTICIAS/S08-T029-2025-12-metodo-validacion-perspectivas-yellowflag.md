@@ -39,7 +39,7 @@ Si el sistema escribe su tesis y se aplaude, solo produce estética. Si la tesis
 
 ### WHERE — El taller
 
-- **Origen del ruido**: Forocoches (foro español). La fragmentación ocurre en la plaza pública, no en una torre de marfil.
+- **Origen del ruido**: Foro (foro español). La fragmentación ocurre en la plaza pública, no en una torre de marfil.
 - **Edición**: `ARCHIVO/DISCO/` (memoria de trabajo con trazabilidad).
 - **Publicación**: `ARCHIVO/NOTICIAS/` (plana final).
 

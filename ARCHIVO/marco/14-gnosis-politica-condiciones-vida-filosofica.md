@@ -208,7 +208,7 @@ Ninguna es satisfactoria. **Ese hueco es el que cartografiamos.**
 ## Origen
 
 Material extraído y procesado de:
-- `ARCHIVO/DISCO/Diciembre_25_humanismo_extremo.md/01_hilo_encuesta.md` (debate Forocoches, nov. 2025)
+- `ARCHIVO/DISCO/Diciembre_25_humanismo_extremo.md/01_hilo_encuesta.md` (debate Foro, nov. 2025)
 - `ARCHIVO/DISCO/Diciembre_25_humanismo_extremo.md/02_revision.md` (análisis Alice-Bob-Aleph con Banderas)
 
 La posición de @focusrait (gnosis advaítica) fue sometida a auditoría con el método del proyecto. Este documento no adopta esa posición; extrae de ella una herramienta analítica (la distinción condiciones/contenido) y cartografía un hueco político (la defensa de la vida filosófica como derecho).

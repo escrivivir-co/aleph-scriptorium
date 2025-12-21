@@ -1,7 +1,7 @@
 **Aleph**: Recuperando sesión de redacción.
 
 **Tema**: Humanismo extremo / Gnosis y Política\
-**Fuentes**: `01_hilo_encuesta.md` (Forocoches, nov. 2025) + crítica de @focusrait\
+**Fuentes**: `01_hilo_encuesta.md` (Foro, nov. 2025) + crítica de @focusrait\
 **Estado anterior**: Refactorización completada. Plana publicada v2.
 
 * * * * *
