@@ -52,6 +52,14 @@ handoffs:
               agent: ImpressJS
               prompt: Transforma conversaciones BDC en presentación 3D navegable con impress.js.
               send: false
+       - label: "[ENCICLOPEDIA] Consultar biblioteca"
+              agent: Bibliotecario
+              prompt: Lista los tomos disponibles en la enciclopedia y permite búsquedas globales por tema o período.
+              send: false
+       - label: "[ENCICLOPEDIA] Buscar en Historia de la Filosofía"
+              agent: HDF-ErnestoCastro
+              prompt: Busca en el tomo 'Historia de la Filosofía' (Ernesto Castro, 2017) por período, filósofo o temática.
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 

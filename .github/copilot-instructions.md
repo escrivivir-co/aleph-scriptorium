@@ -81,6 +81,7 @@ Los plugins extienden las capacidades de Scriptorium sin modificar el core.
 | Plugin | Versión | Descripción |
 |--------|---------|-------------|
 | **ARG Board** | 1.0.0 | Motor de juego ARG transmedia (AlephScript 7GL) |
+| **Enciclopedia** | 1.0.0 | Biblioteca de tomos enciclopédicos con búsquedas temporales y temáticas |
 
 ### Plugin: ARG Board
 
@@ -97,3 +98,16 @@ Motor conversacional para juegos de Realidad Alternativa transmedia.
 - `PlatformCom`: Comunicación multi-plataforma
 
 **Documentación**: [plugins/arg-board/docs/](plugins/arg-board/docs/)
+
+### Plugin: Enciclopedia
+
+Biblioteca de tomos enciclopédicos con motor de búsqueda temporal y temática.
+
+**Agentes disponibles**:
+- `Bibliotecario`: Gestor principal de tomos
+- `HDF-ErnestoCastro`: Especialista en "Historia de la Filosofía" (61 caps.)
+
+**Tomos cargados**:
+- Historia de la Filosofía (Ernesto Castro, 2017-2018)
+
+**Documentación**: [plugins/enciclopedia/docs/](plugins/enciclopedia/docs/)

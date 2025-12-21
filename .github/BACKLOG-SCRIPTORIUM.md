@@ -266,6 +266,89 @@
 
 ---
 
+# Épica: SCRIPT-0.3.0 — Plugin Enciclopedia
+
+**Objetivo**: Implementar plugin de biblioteca enciclopédica con búsquedas temporales y temáticas sobre tomos académicos.
+
+**Entregables**:
+- Plugin enciclopedia con manifest, agentes, prompts e instrucciones
+- Agente Bibliotecario (gestor principal)
+- Agente HDF-ErnestoCastro (tomo cargado)
+- Directorio de datos en ARCHIVO/PLUGINS/ENCICLOPEDIA/
+- Documentación del sistema de plugins en README.md principal
+
+---
+
+## Stories
+
+### SCRIPT-0.3.0-S01: Estructura del Plugin
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T053 | Crear `plugins/enciclopedia/manifest.md` | ✅ |
+| T054 | Crear estructura de carpetas (agents/, prompts/, instructions/, docs/) | ✅ |
+
+---
+
+### SCRIPT-0.3.0-S02: Agentes de la Enciclopedia
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T055 | Crear `agents/bibliotecario.agent.md` | ✅ |
+| T056 | Crear `agents/tomos/hdf-ernesto-castro.agent.md` con índice embebido | ✅ |
+
+---
+
+### SCRIPT-0.3.0-S03: Prompts e Instrucciones
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T057 | Crear `prompts/cargar-tomo.prompt.md` | ✅ |
+| T058 | Crear `prompts/buscar-temporal.prompt.md` | ✅ |
+| T059 | Crear `prompts/buscar-tematica.prompt.md` | ✅ |
+| T060 | Crear `instructions/enciclopedia.instructions.md` | ✅ |
+
+---
+
+### SCRIPT-0.3.0-S04: Datos e Integración
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T061 | Crear `ARCHIVO/PLUGINS/ENCICLOPEDIA/` con README | ✅ |
+| T062 | Crear `tomos/hdf-ernesto-castro/index-cache.json` | ✅ |
+| T063 | Actualizar `registry.json` con plugin enciclopedia | ✅ |
+| T064 | Añadir handoffs a `aleph.agent.md` | ✅ |
+| T065 | Actualizar `copilot-instructions.md` | ✅ |
+
+---
+
+### SCRIPT-0.3.0-S05: Documentación Pública
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T066 | Crear `plugins/enciclopedia/docs/README.md` | ✅ |
+| T067 | Añadir sección de Plugins al README.md principal | ✅ |
+| T068 | Crear índice del tomo HDF en ARCHIVO/ENCICLOPEDIA/ | ✅ |
+
+---
+
+## Métricas Sprint 0.3
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 16 |
+| Completadas | 16 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -277,3 +360,6 @@
 | 2025-12-20 | Completar instalación plugin ARG Board | Aleph |
 | 2025-12-21 | Añadir Épica SCRIPT-0.2.0 — Agente Yellowflag | Aleph |
 | 2025-12-21 | Completar integración Yellowflag en el sistema | Aleph |
+| 2025-12-21 | Añadir Épica SCRIPT-0.3.0 — Plugin Enciclopedia | Aleph |
+| 2025-12-21 | Completar plugin Enciclopedia con tomo HDF | Aleph |
+| 2025-12-21 | Documentar sistema de plugins en README.md principal | Aleph |

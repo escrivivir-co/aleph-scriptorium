@@ -133,7 +133,72 @@ El proyecto incluye un sistema de **producción periodística** que combina las 
 
 ---
 
-### 4. Plan inmediato
+### 4. Sistema de Plugins
+
+El Scriptorium es **extensible mediante plugins**. Los plugins añaden capacidades sin modificar el núcleo: nuevos agentes, prompts, instrucciones y fuentes de conocimiento.
+
+```
+.github/plugins/           ← Código de plugins (inmutable)
+├── registry.json          ← Índice de plugins instalados
+├── arg-board/             ← Plugin ARG Board
+└── enciclopedia/          ← Plugin Enciclopedia
+
+ARCHIVO/PLUGINS/           ← Datos de plugins (mutable)
+├── ARG_BOARD/             ← Estado del teatro ARG
+└── ENCICLOPEDIA/          ← Cache de índices
+```
+
+#### Plugins Instalados
+
+| Plugin | Versión | Descripción | Agentes |
+|--------|---------|-------------|---------|
+| **ARG Board** | 1.0.0 | Motor de juegos ARG transmedia | `@Arrakis`, `@BOE`, `@Decoherence` |
+| **Enciclopedia** | 1.0.0 | Biblioteca de tomos con búsquedas temporales y temáticas | `@Bibliotecario`, `@HDF-ErnestoCastro` |
+
+#### Plugin: ARG Board
+
+Motor conversacional para juegos de **Realidad Alternativa (ARG)** sobre tableros transmedia con repositorios Git, BOE y BDCs.
+
+**Uso**:
+```
+@Arrakis /arrakis-genesis              # Iniciar teatro
+@BOE /boe-consultar                    # Consultar boletín oficial
+@Decoherence /deco-scan-lite           # Validar coherencia
+```
+
+**Documentación**: [`.github/plugins/arg-board/docs/`](.github/plugins/arg-board/docs/)
+
+#### Plugin: Enciclopedia
+
+Biblioteca de **tomos enciclopédicos** con motor de búsqueda temporal (por período histórico) y temática (por concepto transversal).
+
+**Tomos cargados**:
+- Historia de la Filosofía (Ernesto Castro, 2017) — 61 conferencias
+
+**Uso**:
+```
+@Bibliotecario listar-tomos                    # Ver tomos disponibles
+@HDF-ErnestoCastro ¿Quién habla de ética?      # Búsqueda temática
+@HDF-ErnestoCastro filosofía del siglo XVII    # Búsqueda temporal
+@HDF-ErnestoCastro Spinoza                     # Búsqueda directa
+```
+
+**Documentación**: [`.github/plugins/enciclopedia/docs/`](.github/plugins/enciclopedia/docs/)
+
+#### Crear o Instalar Plugins
+
+El sistema de plugins sigue un **protocolo documentado** que permite:
+- Instalar plugins externos
+- Crear plugins propios
+- Activar/desactivar plugins sin eliminarlos
+
+**Protocolo completo**: [`.github/PLUGINS.md`](.github/PLUGINS.md)
+
+**Agente gestor**: `@PluginManager` (instalar, listar, activar, desactivar)
+
+---
+
+### 5. Plan inmediato
 
 #### Cerrar Sprint 0 (Bootstrap)
 
@@ -149,7 +214,7 @@ El proyecto incluye un sistema de **producción periodística** que combina las 
 
 ---
 
-### 5. Cómo leer esto en 5 minutos
+### 6. Cómo leer esto en 5 minutos
 
 | Interés | Empieza por |
 |---------|-------------|
@@ -158,6 +223,7 @@ El proyecto incluye un sistema de **producción periodística** que combina las 
 | La **doctrina** (de qué habla el texto) | [`ARCHIVO/marco/README.md`](ARCHIVO/marco/README.md) → marco 01–11 |
 | El **texto en producción** | [`Indice.md`](PROYECTOS/FUNDACION/Indice.md) → capítulos 1–4 → indicadores de fracaso |
 | Las **noticias** (periodismo doctrinal) | [`ARCHIVO/NOTICIAS/README.md`](ARCHIVO/NOTICIAS/README.md) → agente Periódico |
+| Los **plugins** (extensiones) | [`.github/PLUGINS.md`](.github/PLUGINS.md) → registry.json → docs/ de cada plugin |
 | El **linaje** (de dónde viene esto) | Sección "Origen: VibeBitacora" más abajo |
 
 ---
