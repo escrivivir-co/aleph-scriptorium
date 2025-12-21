@@ -15,38 +15,35 @@ Este prompt guía la inicialización de GitHub Pages para el repositorio Aleph S
 ### 1. Verificar Estado Actual
 
 ```bash
-# Verificar si existe branch gh-pages
-git branch -a | grep gh-pages
+# Verificar que existe la carpeta del sitio
+ls -la docs
 
 # Verificar configuración de GitHub Pages en el repo
-# (esto requiere verificar en GitHub Settings)
+# (esto requiere verificar en GitHub Settings: Source = main /docs)
 ```
 
-### 2. Crear Branch gh-pages (si no existe)
+### 2. Establecer Mecanismo de Publicación
 
-```bash
-# Crear branch huérfano (sin historial de main)
-git checkout --orphan gh-pages
+El sitio se edita siempre en `docs/` (branch `main`).
 
-# Limpiar archivos del working directory
-git rm -rf .
-
-# El branch está listo para recibir la plantilla
-```
+En GitHub Settings → Pages:
+- **Source**: `Deploy from a branch`
+- **Branch**: `main`
+- **Folder**: `/docs`
 
 ### 3. Desplegar Plantilla Jekyll
 
-Copiar estructura desde `.github/plugins/gh-pages/meta/jekyll-template/`:
+Copiar estructura desde `.github/plugins/gh-pages/meta/jekyll-template/` hacia `docs/`:
 
 ```
-_config.yml          → Configurar con datos del proyecto
+_config.yml          → Configurar con datos del proyecto (en docs/_config.yml)
 _layouts/            → Copiar tal cual
 _includes/           → Copiar tal cual
 assets/css/main.css  → Copiar tal cual
 index.md             → Personalizar con contenido inicial
 ```
 
-### 4. Configurar `_config.yml`
+### 4. Configurar `docs/_config.yml`
 
 ```yaml
 title: Aleph Scriptorium
@@ -65,8 +62,8 @@ Crear `ARCHIVO/PLUGINS/GH_PAGES/config.json`:
   "initialized": true,
   "initialized_at": "2025-12-21T00:00:00Z",
   "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
-  "branch": "gh-pages",
-  "source_folder": null,
+  "pages_source": "main/docs",
+  "docs_folder": "docs",
   "last_publish": null,
   "publish_count": 0
 }
@@ -80,11 +77,11 @@ Añadir en la sección de Status:
 | **Sitio Web** | [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/) |
 ```
 
-### 7. Commit y Push
+### 7. Commit
 
 ```bash
 git add .
-git commit -m "feat(gh-pages): inicializar GitHub Pages con plantilla Jekyll
+git commit -m "feat(gh-pages): inicializar GitHub Pages con plantilla Jekyll (docs)
 
 - Crear branch gh-pages con plantilla minimalista B/N
 - Configurar Jekyll para colecciones (capítulos, marco, noticias)
@@ -92,7 +89,7 @@ git commit -m "feat(gh-pages): inicializar GitHub Pages con plantilla Jekyll
 
 refs #SCRIPT-0.5.0-T087"
 
-git push -u origin gh-pages
+git push origin main
 ```
 
 ### 8. Verificar en GitHub
@@ -109,7 +106,7 @@ git push -u origin gh-pages
 ✅ GitHub Pages inicializado correctamente
 
 Configuración:
-- Branch: gh-pages
+- Source: main /docs
 - URL: https://escrivivir-co.github.io/aleph-scriptorium/
 - Plantilla: Jekyll minimalista B/N
 

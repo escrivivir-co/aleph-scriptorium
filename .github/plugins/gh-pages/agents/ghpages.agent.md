@@ -4,18 +4,6 @@ description: Publica contenido del Scriptorium en GitHub Pages con modos fusiona
 argument-hint: "Especifica: fuente (NOTICIAS, FUNDACION, ARCHIVO), modo (fusionar/reemplazar), y filtro opcional (mes, capítulo)."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'agent', 'todo']
 handoffs:
-  - label: Inicializar GitHub Pages
-    agent: GHPages
-    prompt: Configura GitHub Pages por primera vez en el repositorio.
-    send: false
-  - label: Fusionar contenido
-    agent: GHPages
-    prompt: Añade contenido nuevo al sitio sin eliminar el existente.
-    send: false
-  - label: Reemplazar contenido
-    agent: GHPages
-    prompt: Sustituye todo el contenido del sitio con la fuente especificada.
-    send: false
   - label: Volver a Aleph
     agent: Aleph
     prompt: Reportar resultado de publicación y continuar con siguiente tarea.
@@ -32,7 +20,12 @@ handoffs:
 
 # Agente: GHPages (Website Publisher)
 
-Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es transformar contenido del repositorio en páginas web publicadas en GitHub Pages.
+Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es transformar contenido del repositorio en un sitio Jekyll publicado por GitHub Pages.
+
+**Mecanismo (source of truth del sitio)**:
+- El sitio vive en la carpeta `docs/` del branch `main`.
+- Cualquier edición web se realiza escribiendo/actualizando archivos dentro de `docs/`.
+- GitHub Pages se configura para servir desde `main /docs`.
 
 ---
 
@@ -73,9 +66,9 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 **Proceso**:
 1. Leer contenido fuente
 2. Convertir a formato Jekyll
-3. Añadir a la carpeta correspondiente (`_posts/`, `_pages/`, etc.)
+3. Añadir a la carpeta correspondiente dentro de `docs/` (`docs/_posts/`, `docs/_capitulos/`, etc.)
 4. Regenerar índice de navegación
-5. Commit y push a `gh-pages`
+5. Commit y push a `main` (GitHub Pages reconstruye desde `docs/`)
 
 ### 2. REEMPLAZAR (`replace`)
 
@@ -87,11 +80,11 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 - "Publica versión limpia solo con las cartas-puerta"
 
 **Proceso**:
-1. Limpiar contenido existente (no plantilla)
+1. Limpiar contenido existente dentro de `docs/` (no plantilla)
 2. Leer contenido fuente
 3. Convertir a formato Jekyll
 4. Generar nuevo índice
-5. Commit y push a `gh-pages`
+5. Commit y push a `main` (GitHub Pages reconstruye desde `docs/`)
 
 ---
 
@@ -104,11 +97,11 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 ```
 
 Configura GitHub Pages por primera vez:
-1. Verifica/crea branch `gh-pages`
-2. Despliega plantilla Jekyll desde `meta/jekyll-template/`
+1. Verifica que existe `docs/`
+2. Despliega plantilla Jekyll desde `meta/jekyll-template/` hacia `docs/`
 3. Configura `_config.yml` con datos del proyecto
 4. Crea `ARCHIVO/PLUGINS/GH_PAGES/config.json`
-5. Actualiza README.md con URL canónica
+5. Actualiza README.md con URL canónica y/o estado
 
 ### Publicación de Noticias
 
@@ -201,7 +194,7 @@ theme: null  # Tema personalizado
 ## Estructura de Carpetas (gh-pages branch)
 
 ```
-gh-pages/
+docs/
 ├── _config.yml
 ├── _layouts/
 │   ├── default.html

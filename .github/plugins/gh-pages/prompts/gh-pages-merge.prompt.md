@@ -29,8 +29,8 @@ Este prompt guía la fusión de nuevo contenido en GitHub Pages **sin eliminar**
 ### 1. Verificar Prerrequisitos
 
 ```bash
-# Verificar que gh-pages existe
-git branch -a | grep gh-pages
+# Verificar que el sitio existe en docs/
+ls -la docs
 
 # Si no existe, sugerir inicialización
 # → @GHPages inicializar
@@ -94,25 +94,19 @@ toc: true
 [Contenido del capítulo]
 ```
 
-### 4. Cambiar a Branch gh-pages
-
-```bash
-git checkout gh-pages
-```
-
-### 5. Añadir Archivos Convertidos
+### 4. Añadir Archivos Convertidos
 
 ```bash
 # Copiar archivos convertidos a sus carpetas
-cp converted/_posts/* _posts/
-cp converted/_capitulos/* _capitulos/
+cp converted/_posts/* docs/_posts/
+cp converted/_capitulos/* docs/_capitulos/
 
 # NO eliminar archivos existentes
 ```
 
 ### 6. Actualizar Índice de Navegación
 
-Actualizar `index.md` o `_data/navigation.yml` para incluir nuevo contenido.
+Actualizar `docs/index.md` (o equivalente) para incluir nuevo contenido.
 
 ### 7. Registrar Publicación
 
@@ -146,13 +140,7 @@ git commit -m "feat(gh-pages): añadir noticias dic-2025 (fusión)
 
 refs #SCRIPT-0.5.0"
 
-git push origin gh-pages
-```
-
-### 9. Volver a Main
-
-```bash
-git checkout main
+git push origin main
 ```
 
 ---

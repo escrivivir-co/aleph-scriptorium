@@ -129,9 +129,9 @@ Antes de cualquier publicación:
    Si no → Sugerir: @GHPages inicializar
    ```
 
-2. **¿Branch gh-pages existe?**
+2. **¿Existe el sitio en docs/?**
    ```
-   Si no → Ejecutar inicialización
+   Si no existe docs/ → Ejecutar inicialización
    ```
 
 3. **¿Fuente válida?**

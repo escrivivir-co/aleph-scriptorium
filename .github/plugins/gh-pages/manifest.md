@@ -124,8 +124,8 @@ Plugin para publicar contenido del Aleph Scriptorium en GitHub Pages. Separa cla
 │    └── Generador de índices y navegación               │
 ├─────────────────────────────────────────────────────────┤
 │  PUBLICACIÓN (dónde ir)                                │
-│    ├── Branch: gh-pages                                │
-│    ├── Carpeta: docs/ (configuración GitHub)           │
+│    ├── Source: main (branch)                           │
+│    ├── Carpeta: docs/ (GitHub Pages)                   │
 │    └── URL: escrivivir-co.github.io/aleph-scriptorium  │
 └─────────────────────────────────────────────────────────┘
 ```

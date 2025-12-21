@@ -59,29 +59,23 @@ Se MANTENDRÁ:
 ### 2. Verificar Prerrequisitos
 
 ```bash
-# Verificar que gh-pages existe
-git branch -a | grep gh-pages
+# Verificar que el sitio existe en docs/
+ls -la docs
 ```
 
-### 3. Cambiar a Branch gh-pages
-
-```bash
-git checkout gh-pages
-```
-
-### 4. Limpiar Contenido Existente
+### 3. Limpiar Contenido Existente
 
 ```bash
 # Eliminar contenido (NO plantilla)
-rm -rf _posts/*
-rm -rf _capitulos/*
-rm -rf _marco/*
-rm -rf _cartas/*
-rm -rf _diagnostico/*
-rm -rf _justificacion/*
+rm -rf docs/_posts/*
+rm -rf docs/_capitulos/*
+rm -rf docs/_marco/*
+rm -rf docs/_cartas/*
+rm -rf docs/_diagnostico/*
+rm -rf docs/_justificacion/*
 
-# Preservar plantilla
-# _layouts/, _includes/, _config.yml, assets/ → INTACTOS
+# Preservar plantilla (dentro de docs/)
+# docs/_layouts/, docs/_includes/, docs/_config.yml, docs/assets/ → INTACTOS
 ```
 
 ### 5. Procesar Nueva Fuente
@@ -118,12 +112,15 @@ title: Aleph Scriptorium
 
 Bienvenido al primer capítulo del texto fundacional.
 
-[Leer capítulo completo →](/fundacion/01-anacronismo-productivo/)
+URL del capítulo:
+https://escrivivir-co.github.io/aleph-scriptorium/fundacion/01-anacronismo-productivo/
 
 ---
 
 *Publicado mediante [Aleph Scriptorium](https://github.com/escrivivir-co/aleph-scriptorium)*
 ```
+
+Guardar como `docs/index.md`.
 
 ### 7. Registrar Publicación
 
@@ -162,13 +159,7 @@ git commit -m "feat(gh-pages): publicar Capítulo 1 (reemplazo)
 
 refs #SCRIPT-0.5.0"
 
-git push origin gh-pages
-```
-
-### 9. Volver a Main
-
-```bash
-git checkout main
+git push origin main
 ```
 
 ---

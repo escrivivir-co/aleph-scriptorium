@@ -31,6 +31,11 @@ El plugin **GH-Pages** permite publicar contenido del Aleph Scriptorium en GitHu
 
 Esto crea el branch `gh-pages`, despliega la plantilla Jekyll y configura el sitio.
 
+**Actualización (mecanismo actual)**:
+- El sitio vive en `docs/` (branch `main`).
+- GitHub Pages se configura como `main /docs`.
+- El agente publica editando `docs/` y haciendo commit/push a `main`.
+
 ### 2. Publicar Noticias
 
 ```
@@ -144,7 +149,7 @@ ARCHIVO/PLUGINS/GH_PAGES/
 ### Sitio (branch gh-pages)
 
 ```
-gh-pages branch/
+docs/ (main)
 ├── _config.yml
 ├── _layouts/
 ├── _includes/
@@ -164,7 +169,8 @@ gh-pages branch/
 {
   "initialized": true,
   "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
-  "branch": "gh-pages",
+  "pages_source": "main/docs",
+  "docs_folder": "docs",
   "last_publish": "2025-12-21T10:00:00Z"
 }
 ```
@@ -188,17 +194,11 @@ Registro de todas las publicaciones realizadas.
 ## Comandos Útiles
 
 ```bash
-# Ver branch gh-pages
-git branch -a | grep gh-pages
+# Ver archivos del sitio
+ls -la docs
 
-# Cambiar a gh-pages
-git checkout gh-pages
-
-# Volver a main
-git checkout main
-
-# Ver historial de publicaciones
-git log --oneline gh-pages
+# Ver cambios pendientes del sitio
+git status
 ```
 
 ---
