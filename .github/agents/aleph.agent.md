@@ -24,6 +24,10 @@ handoffs:
               agent: yellowflag
               prompt: Audita si la propuesta confunde condiciones con contenido, si pretende capturar lo que escapa al diseño, o si fuerza traducciones entre marcos inconmensurables.
               send: false
+       - label: Solicitar auditoría de registro
+              agent: Orangeflag
+              prompt: Audita si el registro es adecuado al auditorio y al fin (dialéctica vs retórica, género, estilo, ethos/pathos).
+              send: false
        - label: Abrir vestíbulo de entrada
               agent: Vestibulo
               prompt: Identifica el perfil del lector y dirígelo a la carta-puerta adecuada; guarda ficha en ARCHIVO/PERFILES/.
