@@ -1,15 +1,29 @@
 {
-  "initialized": false,
-  "initialized_at": null,
+  "initialized": true,
+  "initialized_at": "2025-12-21T14:00:00Z",
   "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
   "repository": "escrivivir-co/aleph-scriptorium",
   "branch": "gh-pages",
-  "source_folder": null,
+  "source_folder": "ARCHIVO/",
   "last_publish": null,
   "publish_count": 0,
   "settings": {
     "default_mode": "merge",
-    "auto_commit": false,
+    "auto_commit": true,
     "preserve_history": true
+  },
+  "jekyll_config": {
+    "title": "Aleph Scriptorium",
+    "description": "El taller de escritura donde la IA trabaja para ti, no al revés.",
+    "lang": "es",
+    "theme": "custom",
+    "markdown": "kramdown",
+    "collections": {
+      "capitulos": "/fundacion/",
+      "marco": "/archivo/marco/",
+      "cartas": "/cartas/",
+      "diagnostico": "/archivo/diagnostico/",
+      "justificacion": "/archivo/justificacion/"
+    }
   }
 }
