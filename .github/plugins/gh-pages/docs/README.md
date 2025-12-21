@@ -181,6 +181,70 @@ Registro de todas las publicaciones realizadas.
 
 ---
 
+## ⚠️ Protocolo de Actualización del Sitio
+
+### Arquitectura de publicación (crítico)
+
+El sistema de GH-Pages tiene **dos capas**:
+
+| Capa | Ubicación | Función |
+|------|-----------|---------|
+| **Plantilla** | `.github/plugins/gh-pages/meta/jekyll-template/` | Modelo de referencia (no se publica directamente) |
+| **Producción** | `docs/` (branch `main`) | Sitio real que sirve GitHub Pages |
+
+**Punto clave**: GitHub Pages está configurado como `main /docs`. Los cambios en la plantilla (`meta/jekyll-template/`) **no se reflejan automáticamente** en el sitio publicado. Hay que portarlos manualmente a `docs/`.
+
+### Flujo para actualizar estilos o estructura
+
+1. **Hacer cambios en la plantilla** (opcional, para mantener el modelo):
+   ```
+   .github/plugins/gh-pages/meta/jekyll-template/assets/css/main.css
+   .github/plugins/gh-pages/meta/jekyll-template/_includes/footer.html
+   ```
+
+2. **Portar los cambios a producción** (obligatorio para que se vean):
+   ```
+   docs/assets/css/main.css
+   docs/_includes/footer.html
+   ```
+
+3. **Commit y push a `main`**:
+   ```bash
+   git add docs/
+   git commit -m "fix(gh-pages): <descripción del cambio>"
+   git push origin main
+   ```
+
+4. **Esperar rebuild de Pages** (~40s):
+   - Verificar en: `https://github.com/<owner>/<repo>/actions/workflows/pages/pages-build-deployment`
+
+5. **Validar en producción**:
+   - Navegar al sitio y verificar que los cambios se reflejan.
+
+### Diagnóstico cuando el sitio no refleja cambios
+
+| Síntoma | Causa probable | Solución |
+|---------|----------------|----------|
+| Cambios en plantilla no aparecen | Plantilla ≠ producción | Portar cambios a `docs/` |
+| Push hecho pero no se ve | Build aún corriendo | Esperar ~40s y refrescar |
+| Build exitoso pero igual | Cache del navegador | Hard refresh (Cmd+Shift+R) |
+| Build falló | Error en Jekyll | Revisar logs en Actions |
+
+### Verificar estado de sincronización
+
+```bash
+# ¿Qué commit tiene origin/main?
+git fetch origin && git log -1 --oneline origin/main
+
+# ¿Cuándo fue el último build de Pages?
+# → Ver en GitHub Actions
+
+# ¿El commit está en origin?
+git branch -r --contains <commit-sha>
+```
+
+---
+
 ## Troubleshooting
 
 | Problema | Solución |
@@ -188,6 +252,8 @@ Registro de todas las publicaciones realizadas.
 | Sitio no actualiza | Verificar que GitHub Pages está habilitado en Settings → Pages |
 | CSS no carga | Revisar `baseurl` en `_config.yml` |
 | Branch no existe | Ejecutar `@GHPages inicializar` |
+| Cambios en plantilla no se ven | Portar cambios de `meta/jekyll-template/` a `docs/` |
+| Enlaces de GitHub rotos | Usar `{% assign github_url = "https://github.com/" | append: site.repository %}` en Liquid |
 
 ---
 
@@ -199,6 +265,12 @@ ls -la docs
 
 # Ver cambios pendientes del sitio
 git status
+
+# Ver diff entre plantilla y producción (footer)
+diff .github/plugins/gh-pages/meta/jekyll-template/_includes/footer.html docs/_includes/footer.html
+
+# Ver diff entre plantilla y producción (CSS)
+diff .github/plugins/gh-pages/meta/jekyll-template/assets/css/main.css docs/assets/css/main.css
 ```
 
 ---

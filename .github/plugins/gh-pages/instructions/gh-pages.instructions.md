@@ -338,3 +338,41 @@ git checkout main
 | "Conflicto de merge" | Usar modo `reemplazar` para limpiar |
 | "Página no se actualiza" | Verificar que GitHub Pages está habilitado en Settings |
 | "CSS no carga" | Revisar `baseurl` en `_config.yml` |
+| "Cambios en plantilla no se ven" | La plantilla (`meta/jekyll-template/`) es solo modelo. Portar cambios a `docs/` manualmente. |
+| "Enlaces de GitHub rotos en footer" | `site.repository` es `owner/repo`, no URL. Usar: `{% assign github_url = "https://github.com/" | append: site.repository %}` |
+
+---
+
+## ⚠️ Protocolo de Actualización del Sitio
+
+### Arquitectura de dos capas
+
+| Capa | Ubicación | Rol |
+|------|-----------|-----|
+| **Plantilla** | `.github/plugins/gh-pages/meta/jekyll-template/` | Modelo de referencia (inmutable en runtime) |
+| **Producción** | `docs/` (branch `main`) | Sitio real servido por GitHub Pages |
+
+**Regla crítica**: Los cambios en `meta/jekyll-template/` **no se despliegan automáticamente**. Deben portarse a `docs/`.
+
+### Flujo para actualizar estilos/estructura
+
+1. **(Opcional)** Editar plantilla en `meta/jekyll-template/` para mantener el modelo.
+2. **(Obligatorio)** Portar los mismos cambios a `docs/`:
+   - `docs/assets/css/main.css`
+   - `docs/_includes/footer.html`, `header.html`, etc.
+3. Commit y push a `main`.
+4. Esperar rebuild de Pages (~40s).
+5. Validar en producción (hard refresh si es necesario).
+
+### Diagnóstico
+
+```bash
+# ¿El commit está en origin?
+git fetch origin && git branch -r --contains <sha>
+
+# ¿Cuándo fue el último build?
+# → Ver en GitHub Actions: pages-build-deployment
+
+# ¿Hay diferencias entre plantilla y producción?
+diff .github/plugins/gh-pages/meta/jekyll-template/_includes/footer.html docs/_includes/footer.html
+```
