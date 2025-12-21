@@ -1,7 +1,7 @@
 ---
 name: CartasPuerta
-description: "Entrega de cartas-puerta: presenta el proyecto según perfil (vista-total/blueflag/blackflag/redflag) sin mezclar puertas."
-argument-hint: "Indica perfil o ruta de carta (p.ej. perfil=blackflag, carta=ARCHIVO/CARTAS/carta-maestro-blackflag.md)."
+description: "Entrega de cartas-puerta: presenta el proyecto según perfil (vista-total/blueflag/blackflag/redflag/yellowflag) sin mezclar puertas."
+argument-hint: "Indica perfil o ruta de carta (p.ej. perfil=yellowflag, carta=ARCHIVO/CARTAS/carta-maestro-yellowflag.md)."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Volver a vestíbulo

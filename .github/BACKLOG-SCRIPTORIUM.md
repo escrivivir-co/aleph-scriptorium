@@ -250,6 +250,7 @@
 | T049 | Añadir handoff a Yellowflag en `aleph.agent.md` | ✅ |
 | T050 | Actualizar `copilot-instructions.md` con Yellowflag | ✅ |
 | T051 | Añadir tests de Yellowflag a `indicadores-fracaso-enero.md` | ✅ |
+| T052 | Crear carta-puerta Yellowflag y actualizar vestíbulo | ✅ |
 
 ---
 
@@ -257,8 +258,8 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 8 |
-| Completadas | 8 |
+| Tasks totales | 9 |
+| Completadas | 9 |
 | En progreso | 0 |
 | Pendientes | 0 |
 | % Avance | 100% |
