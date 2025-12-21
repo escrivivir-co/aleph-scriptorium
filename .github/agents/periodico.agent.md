@@ -2,11 +2,11 @@
 name: Periodico
 description: Agente de producción de planas noticieras con método 5W + Banderas.
 argument-hint: "Describe el tema, fuentes disponibles y tipo de análisis deseado."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
        - label: Editar noticia
               agent: Periodico
-              prompt: Inicia o continúa el proceso de edición en DISCO/. Usa el prompt periodico-editar para guiar la conversación Alice-Bob con las 5W y las Banderas.
+              prompt: Inicia o continúa el proceso de edición en DISCO/. Usa el prompt periodico-editar para guiar la conversación Alice-Bob con las 5W y las Banderas, y genera el prompt de imagen de cabecera al finalizar.
               send: false
        - label: Publicar plana
               agent: Periodico
@@ -105,7 +105,8 @@ Cuando el usuario quiera **editar** una noticia:
    - Bob responde con las 5W estructuradas
    - Aleph invoca Banderas cuando sea necesario
    - Alice cierra con tesis
-5. **Guardar progreso**: Actualizar `conversacion.md`
+5. **Generar imagen**: Crear `imagen-cabecera.prompt.md` con concepto visual editorial.
+6. **Guardar progreso**: Actualizar `conversacion.md`
 
 ### Handoff: PUBLICAR
 
@@ -144,7 +145,9 @@ ARCHIVO/
 │       ├── 01_xxx.md         # Fuentes originales
 │       ├── 02_xxx.md
 │       ├── 03_analisis.md    # Análisis (si se genera)
-│       └── conversacion.md   # Diálogo Alice-Bob
+       ├── conversacion.md   # Diálogo Alice-Bob
+       └── imagen-cabecera.prompt.md # Prompt para generación de imagen
+
 │
 └── NOTICIAS/                 # Planas publicadas
     └── {YYYY-MM}_{slug}.md

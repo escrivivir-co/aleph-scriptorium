@@ -100,7 +100,12 @@ El proceso de edición simula una **redacción periodística**:
    **Alice**: [cierre con tesis]
    ```
 
-4. **Iterar**: La conversación se desarrolla hasta que Alice declare "listo para publicar"
+5. **Generar Prompt de Imagen**:
+   - Crear `imagen-cabecera.prompt.md` en la misma carpeta.
+   - Debe traducir la tesis y las banderas a una **ilustración editorial conceptual**.
+   - Estructura: Concepto, Prompt (Midjourney/DALL-E), Explicación semiótica (capas), Variantes.
+
+6. **Iterar**: La conversación se desarrolla hasta que Alice declare "listo para publicar"
 
 ### Handoff: PUBLICAR
 
@@ -160,6 +165,20 @@ Si el usuario tiene ficha en `ARCHIVO/PERFILES/`, la plana puede personalizarse:
 | `blackflag` | Mayor peso en mapa de poder y sombras |
 | `redflag` | Mayor peso en base material y escala |
 | `base` | Formato estándar sin énfasis |
+
+---
+
+## Imagen de Cabecera
+
+Cada noticia debe ir acompañada de un **prompt de imagen editorial**.
+
+- **Objetivo**: Visualizar la tesis abstracta mediante metáforas visuales.
+- **Estilo**: "Dark Enlightenment", collage digital, ilustración editorial seria.
+- **Capas semióticas**:
+  - **Centro**: El concepto principal.
+  - **Capa Azul (Verdad)**: Elementos de evidencia, documentos, fórmulas.
+  - **Capa Roja (Materialidad)**: Infraestructura, recursos, base física.
+  - **Capa Negra (Poder)**: Redes ocultas, sombras, mapas de influencia.
 
 ---
 

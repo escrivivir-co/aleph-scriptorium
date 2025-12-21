@@ -168,7 +168,7 @@ Entro. Blackflag mira el poder; yo miro el suelo.
 
 ---
 
-### Paso 6: Cerrar conversación
+### Paso 6: Cerrar conversación y Generar Imagen
 
 **Alice cierra** con síntesis:
 > Tenemos las 5W y las 3 Banderas. La tesis es clara: [formulación de tesis]. 
@@ -177,6 +177,14 @@ Entro. Blackflag mira el poder; yo miro el suelo.
 **Actualizar `conversacion.md`**:
 - Cambiar `Estado: En edición` a `Estado: Listo para publicar`
 - Añadir la síntesis de Alice
+
+**Generar `imagen-cabecera.prompt.md`**:
+Crea un archivo nuevo en la carpeta de trabajo con el prompt para la imagen editorial.
+- **Concepto**: Metáfora visual de la tesis.
+- **Capas**: Azul (Verdad), Roja (Material), Negra (Poder).
+- **Prompt**: Descripción detallada para Midjourney/DALL-E.
+- **Variantes**: Incluir 2-3 variantes alternativas de composición.
+- **Banderas dominantes**: Indicar qué banderas tienen más peso visual.
 
 ---
 
