@@ -100,6 +100,10 @@ exclude:
   - .github
   - ARCHIVO
   - PROYECTOS
+  - .vscode
+  - "*.png"
+  - ARCHIVO
+  - PROYECTOS
   - package.json
 
 # Incluir explícitamente

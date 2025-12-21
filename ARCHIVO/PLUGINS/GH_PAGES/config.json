@@ -4,7 +4,8 @@
   "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
   "repository": "escrivivir-co/aleph-scriptorium",
   "branch": "gh-pages",
-  "source_folder": "ARCHIVO/",
+  "source_folder": "docs/",
+  "serve_from": "docs",
   "last_publish": null,
   "publish_count": 0,
   "settings": {
