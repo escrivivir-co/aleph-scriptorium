@@ -32,15 +32,13 @@ El plugin GH-Pages permite publicar contenido del Aleph Scriptorium en GitHub Pa
 
 **Pasos automáticos**:
 
-1. **Verificar branch `gh-pages`**:
-   ```bash
-   git checkout --orphan gh-pages
-   git rm -rf .
-   ```
+1. **Verificar el mecanismo de publicación**:
+  - El sitio vive en `docs/` dentro del branch `main`.
+  - GitHub Pages debe estar configurado como: `main /docs`.
 
-2. **Desplegar plantilla Jekyll**:
-   - Copiar `meta/jekyll-template/` a la raíz del branch
-   - Configurar `_config.yml` con datos del proyecto
+2. **Desplegar plantilla Jekyll en `docs/`**:
+  - Copiar `meta/jekyll-template/` a `docs/`
+  - Configurar `docs/_config.yml` con datos del proyecto
 
 3. **Crear configuración runtime**:
    ```json
@@ -76,10 +74,10 @@ GHPages:
 2. Para cada archivo:
    a. Extraer frontmatter (fecha, categoría, tema)
    b. Convertir a formato Jekyll post
-   c. Guardar en _posts/YYYY-MM-DD-slug.md
+  c. Guardar en docs/_posts/YYYY-MM-DD-slug.md
 3. Actualizar índice de navegación
 4. Commit: "feat(gh-pages): añadir noticias dic-2025"
-5. Push a gh-pages
+5. Push a main
 6. Reportar URLs publicadas
 ```
 
@@ -122,16 +120,16 @@ source: S08-T027
 Usuario: @GHPages reemplazar FUNDACION cap01
 
 GHPages:
-1. Limpiar contenido existente (NO plantilla):
-   - Eliminar _posts/*
-   - Eliminar _capitulos/*
-   - Eliminar _marco/*
+1. Limpiar contenido existente dentro de docs/ (NO plantilla):
+  - Eliminar docs/_posts/*
+  - Eliminar docs/_capitulos/*
+  - Eliminar docs/_marco/*
 2. Leer PROYECTOS/FUNDACION/CAPITULOS/cap01-*.md
 3. Convertir a formato Jekyll page
-4. Guardar en _capitulos/01-anacronismo-productivo.md
-5. Regenerar index.md con solo este capítulo
+4. Guardar en docs/_capitulos/01-anacronismo-productivo.md
+5. Regenerar docs/index.md con solo este capítulo
 6. Commit: "feat(gh-pages): publicar Capítulo 1 (reemplazo)"
-7. Push a gh-pages
+7. Push a main
 8. Reportar URL
 ```
 
@@ -172,10 +170,10 @@ toc: true
 
 ---
 
-## Estructura del Branch gh-pages
+## Estructura del Sitio (docs/)
 
 ```
-gh-pages/
+docs/
 ├── _config.yml              # Configuración Jekyll
 ├── _layouts/
 │   ├── default.html         # Layout base
