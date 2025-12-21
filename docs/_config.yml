@@ -1,42 +1,17 @@
 # Aleph Scriptorium - Jekyll Config
-# Generado por plugin gh-pages
+# Sitio simplificado: 3 páginas con enlaces a GitHub main
 
 # Metadatos del sitio
 title: Aleph Scriptorium
 description: >
   El taller de escritura donde la IA trabaja para ti, no al revés.
-  Texto fundacional serializado en 12 capítulos (2026).
 url: https://escrivivir-co.github.io
 baseurl: /aleph-scriptorium
 author: Escrivivir.co
 lang: es
 
-# Repositorio
-repository: escrivivir-co/aleph-scriptorium
-
-# Colecciones personalizadas
-collections:
-  capitulos:
-    output: true
-    permalink: /fundacion/:name/
-    sort_by: nav_order
-  marco:
-    output: true
-    permalink: /archivo/marco/:name/
-  cartas:
-    output: true
-    permalink: /cartas/:name/
-  diagnostico:
-    output: true
-    permalink: /archivo/diagnostico/:name/
-  justificacion:
-    output: true
-    permalink: /archivo/justificacion/:name/
-
-# Configuración de posts (noticias)
-permalink: /:year/:month/:day/:title/
-paginate: 10
-paginate_path: "/noticias/page:num/"
+# Repositorio (para enlaces)
+repository: https://github.com/escrivivir-co/aleph-scriptorium
 
 # Build
 markdown: kramdown
@@ -47,22 +22,18 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
-# Plugins
+# Plugins (mínimos)
 plugins:
-  - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-sitemap
 
 # Navegación principal
 navigation:
   - title: Inicio
     url: /
-  - title: Noticias
-    url: /noticias/
   - title: Fundación
     url: /fundacion/
-  - title: Archivo
-    url: /archivo/
+  - title: Periódico
+    url: /periodico/
   - title: GitHub
     url: https://github.com/escrivivir-co/aleph-scriptorium
     external: true
@@ -71,21 +42,8 @@ navigation:
 defaults:
   - scope:
       path: ""
-      type: "posts"
     values:
-      layout: "post"
-  - scope:
-      path: ""
-      type: "capitulos"
-    values:
-      layout: "page"
-      parent: "Fundación"
-  - scope:
-      path: ""
-      type: "marco"
-    values:
-      layout: "page"
-      parent: "Marco"
+      layout: "default"
 
 # Excluir del build
 exclude:
@@ -98,14 +56,6 @@ exclude:
   - vendor
   - .git
   - .github
-  - ARCHIVO
-  - PROYECTOS
   - .vscode
   - "*.png"
-  - ARCHIVO
-  - PROYECTOS
   - package.json
-
-# Incluir explícitamente
-include:
-  - _pages
