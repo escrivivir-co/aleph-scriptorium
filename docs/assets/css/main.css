@@ -12,9 +12,9 @@
   /* Paleta B/N */
   --bg: #ffffff;
   --fg: #1a1a1a;
-  --accent: #333333;
-  --muted: #666666;
-  --subtle: #999999;
+  --accent: #1a1a1a;
+  --muted: #444444;
+  --subtle: #666666;
   --border: #e5e5e5;
   --border-dark: #cccccc;
   
@@ -214,14 +214,17 @@ hr {
 
 .site-nav a {
   text-decoration: none;
-  color: var(--muted);
+  color: var(--fg);
   font-size: 0.9rem;
+  font-weight: 500;
   transition: color 0.2s;
 }
 
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .menu-toggle {
