@@ -43,6 +43,20 @@ El proyecto tiene dos productos paralelos:
 
 ### 1. Aleph Scriptorium (v0.0.1) — Avance Sprint 0: 73%
 
+```
+                    ┌─────────────┐
+                    │   ALEPH     │ ← Producción
+                    │ (redacción) │
+                    └──────┬──────┘
+                           │
+    ┌──────────────────────┼──────────────────────┐
+    ▼            ▼         ▼         ▼            ▼
+┌────────┐ ┌──────────┐ ┌────────┐ ┌──────────┐ ┌────────┐
+│BLUEFLAG│ │BLACKFLAG │ │REVISOR │ │ REDFLAG  │ │YELLOW- │
+│ Verdad │ │ Sombras  │ │Doctrina│ │Estructura│ │ FLAG   │
+└────────┘ └──────────┘ └────────┘ └──────────┘ │Límites │
+                                                └────────┘
+```
 El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que la IA trabaje bajo las reglas del proyecto.
 
 | Artefacto | Estado | Ruta |
@@ -114,6 +128,8 @@ El proyecto incluye un sistema de **producción periodística** que combina las 
 2. **Publicar**: Conversación completa → plana final en NOTICIAS
 
 **Ejemplo de referencia**: [`ARCHIVO/DISCO/Diciembre_25_Geopolitica/`](ARCHIVO/DISCO/Diciembre_25_Geopolitica/)
+
+**Última plana publicada**: [`ARCHIVO/NOTICIAS/S08-T029-2025-12-metodo-validacion-perspectivas-yellowflag.md`](ARCHIVO/NOTICIAS/S08-T029-2025-12-metodo-validacion-perspectivas-yellowflag.md)
 
 ---
 

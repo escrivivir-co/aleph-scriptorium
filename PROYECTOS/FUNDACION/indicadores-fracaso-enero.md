@@ -235,6 +235,56 @@ Estos indicadores aplican a todo el plan de enero:
 
 ---
 
+## Auditoría de Límites (Bandera Amarilla)
+
+> Inyección de humildad: indicadores para detectar si el diseño pretende capturar lo que escapa a la política.
+
+### 1. El test de condiciones vs. contenido
+**Pregunta**: ¿El diseño garantiza condiciones materiales o pretende definir fines existenciales?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Ministerio de Gnosis** | El Estado define qué es "vida buena", "autoconocimiento correcto" o "espiritualidad legítima". |
+| **Currículo existencial** | Se obliga a prácticas de "bienestar" o "mindfulness" definidas por el Estado. |
+| **Certificación de maestros** | El Estado decide quién puede enseñar tradiciones contemplativas. |
+
+**Corrección obligatoria**: Reformular como infraestructura de libertad negativa (quitar obstáculos, no poner contenido).
+
+### 2. El test de inconmensurabilidad
+**Pregunta**: ¿Se está forzando traducción entre marcos ontológicos incompatibles?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Fusión de planos** | "La gnosis es la verdadera política" o "la política es el camino de despertar". |
+| **Traducción forzada** | Convertir experiencia contemplativa en programa político o viceversa. |
+| **Milenarismo secular** | La revolución como soteriología, el partido como iglesia. |
+
+**Corrección obligatoria**: Aceptar alianza táctica sin fusión; respetar la inconmensurabilidad.
+
+### 3. El test de organización imposible
+**Pregunta**: ¿Se pretende organizar lo que disuelve al organizador?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Sindicato de contemplativos** | Pretender organizar una "masa crítica" de despiertos. |
+| **Movimiento gnóstico** | Partido o colectivo cuyo fin es la iluminación colectiva. |
+| **Jerarquía espiritual institucionalizada** | Grados de realización certificados por el Estado. |
+
+**Corrección obligatoria**: Defender espacios y condiciones, no organizar la práctica.
+
+### 4. El test de mercantilización de lo sagrado
+**Pregunta**: ¿El diseño protege contra la captura comercial de la búsqueda?
+
+| Señal de alarma | Descripción |
+|-----------------|-------------|
+| **Mercado espiritual sin regulación** | Gurús depredadores, retiros explotadores, coaching tóxico. |
+| **Tradiciones como commodity** | Acceso sólo para quien puede pagar. |
+| **Wellness industrial** | La búsqueda de sentido convertida en producto de consumo. |
+
+**Corrección obligatoria**: Liberar textos como bien común, regular contra explotación, no definir ortodoxia.
+
+---
+
 ## Método para umbrales adaptativos
 
 Algunos indicadores no pueden fijarse a priori (dependen de contexto, escala, madurez institucional). Para estos casos:

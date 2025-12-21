@@ -45,6 +45,9 @@ Repertorio de dilemas extraídos de la experiencia histórica del sindicalismo r
 ### [13. Bicefalia semántica: la misión como cobertura](13-bicefalia-semantica-cobertura.md)
 Arquitectura institucional donde una cabeza de misión (nonprofit, fundación) legitima un cuerpo de mercado (escala, valoración). La semántica de "safety" o "bien público" como blindaje. El playbook TBTF: probar narrativa, reculer símbolo, avanzar suelo. Captura sin responsabilidad: el socio que extrae valor sin gobernar. Caso OpenAI (2023-2025) como cristalización del patrón.
 
+### [14. Gnosis y política: la inconmensurabilidad y sus puentes](14-gnosis-politica-condiciones-vida-filosofica.md)
+Choque entre realismo político y tradición contemplativa. La distinción condiciones/contenido: el Estado puede garantizar tiempo, silencio y subsistencia, pero no definir qué hacer con ellos. Infraestructura de libertad negativa para la vida filosófica. Por qué no puede haber "organización gnóstica". Hueco político identificado: nadie defiende explícitamente las condiciones de la vida contemplativa como derecho.
+
 ---
 
 ## Uso en el proyecto
