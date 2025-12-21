@@ -110,10 +110,11 @@ permalink: /periodico/
 }
 .article-body p {
   line-height: 1.7;
-  color: #ccc;
+  color: #1a1a1a;
 }
 .article-body strong {
-  color: #fff;
+  color: #000;
+  font-weight: 700;
 }
 .article-link {
   display: block;
@@ -124,10 +125,12 @@ permalink: /periodico/
   font-size: 0.85rem;
 }
 .article-link a {
-  color: #888;
+  color: #1a1a1a;
+  text-decoration: underline;
 }
 .article-link a:hover {
-  color: #fff;
+  color: #000;
+  text-decoration-thickness: 2px;
 }
 .article-img {
   width: 100%;
