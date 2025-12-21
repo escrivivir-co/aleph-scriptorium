@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Fundación
+permalink: /fundacion/
 ---
 
 <div style="text-align: center; margin: 2rem 0;">

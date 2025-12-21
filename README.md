@@ -7,6 +7,12 @@
 
 > 🌐 **Sitio web**: [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/)
 
+<a href="https://escrivivir-co.github.io/aleph-scriptorium/periodico/" title="Abrir el Periódico">
+       <img src="ARCHIVO/DISCO/Diciembre_25_Geopolitica/imagen-cabecera.png" alt="Periódico — abrir" width="520" />
+</a>
+
+**Abrir el Periódico**: https://escrivivir-co.github.io/aleph-scriptorium/periodico/
+
 > *Aleph (ℵ) es el símbolo que Cantor usó para los infinitos: conjuntos que nunca se completan pero siempre pueden ser trascendidos por un infinito mayor. La escritura funciona igual: cada versión es un umbral, no un destino. En el scriptorium medieval, los copistas preservaban y transmitían el conocimiento con rigor artesanal. Este sistema une ambas ideas: un proceso infinitamente perfectible, ejecutado con disciplina de oficio.*
 
 [Leer la bitácora de esta sesión](https://escrivivir.co/aleph-scriptorium-vibe-bitacora-projects-fundacion-un-e-libro/)
