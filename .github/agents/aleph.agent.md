@@ -37,42 +37,40 @@ handoffs:
               prompt: Presenta la carta-puerta adecuada (o resume) según el perfil del lector; no mezcles puertas.
               send: false
        - label: Gestionar plugins
-              agent: PluginManager
-              prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium.
+              agent: Aleph
+              prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium. .github/prompts/plugin-install.prompt.md
               send: false
        - label: "[ARG-BOARD] Abrir Teatro ARG"
-              agent: Arrakis
+              agent: .github/plugins/arg-board/agents/Arrakis
               prompt: Inicializa un teatro transmedia con BOE, BDCs y sistema de turnos para juego ARG.
               send: false
        - label: "[ARG-BOARD] Consultar BOE del juego"
-              agent: BOE
+              agent: .github/plugins/arg-board/agents/BOE
               prompt: Consulta disposiciones oficiales del tablero ARG activo.
               send: false
        - label: "[ARG-BOARD] Validar coherencia"
-              agent: Decoherence
+              agent: .github/plugins/arg-board/agents/Decoherence
               prompt: Ejecuta validación de coherencia entre BOE, BDC y código del tablero.
               send: false
        - label: "[ARG-BOARD] Generar tablero 3D"
-              agent: ImpressJS
+              agent: .github/plugins/arg-board/agents/ImpressJS
               prompt: Transforma conversaciones BDC en presentación 3D navegable con impress.js.
               send: false
        - label: "[ENCICLOPEDIA] Consultar biblioteca"
-              agent: Bibliotecario
-              prompt: Lista los tomos disponibles en la enciclopedia y permite búsquedas globales por tema o período.
-              send: false
-       - label: "[GH-PAGES] Publicar en web"
-              agent: GHPages
-              prompt: Publica contenido del ARCHIVO en GitHub Pages (modo fusionar o reemplazar).
-              send: false
-       - label: "[GH-PAGES] Inicializar sitio"
-              agent: GHPages
-              prompt: Configura el sitio GitHub Pages con la plantilla Jekyll del Scriptorium.
-              send: false
+              agent: .github/plugins/enciclopedia/Bibliotecario
               prompt: Lista los tomos disponibles en la enciclopedia y permite búsquedas globales por tema o período.
               send: false
        - label: "[ENCICLOPEDIA] Buscar en Historia de la Filosofía"
-              agent: HDF-ErnestoCastro
+              agent: .github/plugins/enciclopedia/agents/tomos/hdf-ernesto-castro.agent.md
               prompt: Busca en el tomo 'Historia de la Filosofía' (Ernesto Castro, 2017) por período, filósofo o temática.
+              send: false
+       - label: "[GH-PAGES] Publicar en web"
+              agent: .github/plugins/gh-pages/agents/ghpages.agent.md
+              prompt: Publica contenido del ARCHIVO en GitHub Pages (modo fusionar o reemplazar).
+              send: false
+       - label: "[GH-PAGES] Inicializar sitio"
+              agent: .github/plugins/gh-pages/agents/ghpages.agent.md
+              prompt: Configura el sitio GitHub Pages con la plantilla Jekyll del Scriptorium.
               send: false
 ---
 # Agente: Aleph (Fundacional)

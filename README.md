@@ -24,8 +24,9 @@
 **Estado detallado (DRY)**:
 - Scriptorium (backlog + métricas): [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md)
 - Fundación (backlog + métricas): [`PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`](PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md)
+- Fotos de estado: [`ARCHIVO/FOTOS_ESTADO/`](ARCHIVO/FOTOS_ESTADO/)
 
-Este repositorio está en fase de **arranque controlado**: se prioriza dejar un método repetible (Scriptorium) y una base doctrinal sólida (ARCHIVO) antes de acelerar la producción del texto serializado (Fundación).
+**Sprint 0 en cierre** (Scriptorium 100%, Fundación 85%): infraestructura DevOps completada, 13 agentes operativos, 3 plugins instalados (ARG Board, Enciclopedia, GH-Pages), ARCHIVO doctrinal consolidado (24 docs), sistema de producción periodística activo (5W + 4 Banderas). Próximo: convertir plantillas de enero (caps 1-4) en texto redactado y abrir Sprint 1.
 
 Si has llegado aquí por una razón concreta, entra por tu puerta:
 
