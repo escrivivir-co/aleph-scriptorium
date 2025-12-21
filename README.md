@@ -14,9 +14,13 @@
 
 | | |
 |---|---|
-| **Fecha** | 2025-12-19 |
+| **Fecha** | 2025-12-21 |
 | **Sprint** | 0 (Bootstrap) |
 | **Ciclo previsto** | 12 sprints × 4 iteraciones = 48 iteraciones (2026) |
+
+**Estado detallado (DRY)**:
+- Scriptorium (backlog + métricas): [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md)
+- Fundación (backlog + métricas): [`PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`](PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md)
 
 Este repositorio está en fase de **arranque controlado**: se prioriza dejar un método repetible (Scriptorium) y una base doctrinal sólida (ARCHIVO) antes de acelerar la producción del texto serializado (Fundación).
 
@@ -41,7 +45,7 @@ El proyecto tiene dos productos paralelos:
 
 ---
 
-### 1. Aleph Scriptorium (v0.0.1) — Avance Sprint 0: 73%
+### 1. Aleph Scriptorium (v0.0.1) — Avance Sprint 0: 100%
 
 ```
                     ┌─────────────┐
@@ -70,7 +74,9 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | Agente **Blackflag** (audita sombras: enemigo, represión) | ✅ | [`.github/agents/blackflag.agent.md`](.github/agents/blackflag.agent.md) |
 | Agente **Redflag** (audita estructura: escala, gobierno) | ✅ | [`.github/agents/redflag.agent.md`](.github/agents/redflag.agent.md) |
 | Agente **Blueflag** (audita verdad: evidencia, utilidad) | ✅ | [`.github/agents/blueflag.agent.md`](.github/agents/blueflag.agent.md) |
+| Agente **Yellowflag** (audita límites: condiciones vs contenido) | ✅ | [`.github/agents/yellowflag.agent.md`](.github/agents/yellowflag.agent.md) |
 | Agente **Periodico** (produce planas noticieras 5W + Banderas) | ✅ | [`.github/agents/periodico.agent.md`](.github/agents/periodico.agent.md) |
+| Agente **PluginManager** (instala, activa, desinstala plugins) | ✅ | [`.github/agents/plugin-manager.agent.md`](.github/agents/plugin-manager.agent.md) |
 | Prompt de extracción y archivo | ✅ | [`.github/prompts/extraer-archivar.prompt.md`](.github/prompts/extraer-archivar.prompt.md) |
 | Prompt de convención de commits | ✅ | [`.github/prompts/commit-message.prompt.md`](.github/prompts/commit-message.prompt.md) |
 | Prompt de ejecución de commits | ✅ | [`.github/prompts/ejecutar-commits.prompt.md`](.github/prompts/ejecutar-commits.prompt.md) |
@@ -78,11 +84,20 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | Prompt de vestíbulo (clasificar perfil y carta) | ✅ | [`.github/prompts/vestibulo-cartas.prompt.md`](.github/prompts/vestibulo-cartas.prompt.md) |
 | Instrucciones de contexto (voz, marco, diagnóstico) | ✅ | `.github/instructions/` |
 
-**Pendiente para cerrar Sprint 0**: ~~integrar trazabilidad completa en el agente Aleph~~ ✅ Completado.
+**Estado Sprint 0 (Scriptorium)**: cerrado. Épicas completadas:
+
+| Épica | Descripción | Entregables clave |
+|-------|-------------|-------------------|
+| **SCRIPT-0.0.1** | Kit mínimo | DevOps, Aleph, prompts, instrucciones |
+| **SCRIPT-0.1.0** | Sistema de Plugins | Protocolo, PluginManager, ARG Board instalado |
+| **SCRIPT-0.2.0** | Agente Yellowflag | Auditor de límites, marco/14, carta-puerta |
+| **SCRIPT-0.3.0** | Plugin Enciclopedia | Bibliotecario, tomo HDF (61 caps.) |
+
+Métricas vivas: [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md)
 
 ---
 
-### 2. Fundación (v0.0.1) — Avance Sprint 0: 77%
+### 2. Fundación (v0.0.1) — Avance Sprint 0: 85%
 
 Fundación es el "qué": un texto político serializado en 12 capítulos (uno por mes en 2026) que aspira a ser una obra tipo Constitución/Contrato/Manifiesto.
 
@@ -92,7 +107,7 @@ Fundación es el "qué": un texto político serializado en 12 capítulos (uno po
 |-----|------|-----------|------|
 | **Justificación** | 4 | Por qué este proyecto: lo tardío, asco→huida→odio, posverdad, fractura | [`ARCHIVO/justificacion/`](ARCHIVO/justificacion/) |
 | **Diagnóstico** | 5 | Cómo estamos: SOTA izquierdo, estructura de sentimiento, patrón reaccionario, fe lúcida, carisma vs responsabilidad | [`ARCHIVO/diagnostico/`](ARCHIVO/diagnostico/) |
-| **Marco** | 11 | Herramientas: selección sistémica, injusticias, acción colectiva, geopolítica, método materialista, soberanía, hybris, trabajo, teología política, Euroamérica, tecnofeudalismo | [`ARCHIVO/marco/`](ARCHIVO/marco/) |
+| **Marco** | 14 | Herramientas: selección sistémica, injusticias, acción colectiva, geopolítica, método materialista, soberanía, hybris, trabajo, teología política, Euroamérica, tecnofeudalismo, dilemas revolucionarios, bicefalia semántica, gnosis/política | [`ARCHIVO/marco/`](ARCHIVO/marco/) |
 
 #### Plan 2026
 
@@ -109,7 +124,7 @@ Fundación es el "qué": un texto político serializado en 12 capítulos (uno po
 - Indicadores de fracaso enero: [`PROYECTOS/FUNDACION/indicadores-fracaso-enero.md`](PROYECTOS/FUNDACION/indicadores-fracaso-enero.md)
 - Backlog Fundación: [`PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`](PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md)
 
-**Pendiente para cerrar Sprint 0**: validar la estructura de los 12 capítulos y convertir los borradores de enero de "plantilla" a "texto" (con sacrificio y sombra explícitos).
+**Pendiente (Fundación)**: cerrar validación de estructura anual (T010) y pasar los capítulos de enero de plantilla a texto. Estado vivo en [`PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`](PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md).
 
 ---
 
@@ -129,7 +144,11 @@ El proyecto incluye un sistema de **producción periodística** que combina las 
 
 **Ejemplo de referencia**: [`ARCHIVO/DISCO/Diciembre_25_Geopolitica/`](ARCHIVO/DISCO/Diciembre_25_Geopolitica/)
 
-**Última plana publicada**: [`ARCHIVO/NOTICIAS/S08-T029-2025-12-metodo-validacion-perspectivas-yellowflag.md`](ARCHIVO/NOTICIAS/S08-T029-2025-12-metodo-validacion-perspectivas-yellowflag.md)
+**Últimas planas publicadas** (dic-2025):
+- [S08-T030: Epistemología — demarcación y falsabilidad](ARCHIVO/NOTICIAS/S08-T030-2025-12-epistemologia-demarcacion-falsabilidad-frontera-plebeya.md)
+- [S08-T029: Método — validación de perspectivas (Yellowflag)](ARCHIVO/NOTICIAS/S08-T029-2025-12-metodo-validacion-perspectivas-yellowflag.md)
+- [S08-T028: OpenAI — gobernanza y misión como cobertura](ARCHIVO/NOTICIAS/S08-T028-2025-12-tecnologia-openai-gobernanza-mision-cobertura.md)
+- [S08-T027: Geopolítica — Nobel/Venezuela, la paz como arma](ARCHIVO/NOTICIAS/S08-T027-2025-12-geopolitica-nobel-venezuela-paz-como-arma.md)
 
 ---
 
@@ -200,11 +219,18 @@ El sistema de plugins sigue un **protocolo documentado** que permite:
 
 ### 5. Plan inmediato
 
-#### Cerrar Sprint 0 (Bootstrap)
+#### Sprint 0 (Bootstrap) — Estado al 21-dic-2025
 
-- [x] Completar el agente Aleph con trazabilidad end-to-end.
-- [ ] Validar el índice anual (12 capítulos, 3 arcos, desplazamientos asignados).
-- [ ] Verificar que cada capítulo de enero tiene: tesis, mecanismo, sacrificio, sombra.
+| Opportunity | Estado | Siguiente |
+|-------------|--------|-----------|
+| **Scriptorium** | ✅ Cerrado (100%) | Mantenimiento; abrir épica 0.4.0 si surge necesidad |
+| **Fundación** | 🔄 En cierre (85%) | Cerrar T010 (validar índice) y T011 (borrador cap01) |
+
+**Hitos completados esta semana** (19→21 dic):
+- 4 épicas cerradas en Scriptorium (0.0.1, 0.1.0, 0.2.0, 0.3.0)
+- 4 planas noticieras publicadas en NOTICIAS/
+- 3 docs nuevos en marco/ (12, 13, 14)
+- Auditorías Blueflag, Blackflag y Redflag completadas para Cap01
 
 #### Abrir Sprint 1 (Enero 2026)
 
