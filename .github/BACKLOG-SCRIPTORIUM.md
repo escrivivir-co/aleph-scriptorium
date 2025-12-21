@@ -489,6 +489,7 @@
 | T094 | Crear layouts (default, page, post) | ✅ |
 | T095 | Crear includes (header, footer, nav) | ✅ |
 | T096 | Crear `assets/css/main.css` (B/N + banderas) | ✅ |
+| T105 | Mejorar legibilidad (tipografía/enlaces) y footer (AIPL) | ✅ |
 | T097 | Crear `index.md` con secciones | ✅ |
 
 ---

@@ -6,17 +6,19 @@
         El taller de escritura donde la IA trabaja para ti, no al revés.
       </p>
       <p class="license">
-        © {{ site.time | date: '%Y' }} <a href="https://escrivivir.co">Escrivivir.co</a><br>
-        Todo izquierdos, SIN derechos reservados.
+        {% assign github_url = "https://github.com/" | append: site.repository %}
+        Licencia: <a href="{{ github_url }}/blob/main/LICENSE.md">AIPL v1.0</a><br>
+        <a href="https://escrivivir.co">Escrivivir.co</a>
       </p>
     </div>
     
     <div class="footer-links">
       <h4>Enlaces</h4>
       <ul>
-        <li><a href="{{ site.repository }}">GitHub</a></li>
-        <li><a href="{{ site.repository }}/blob/main/README.md">README</a></li>
-        <li><a href="{{ site.repository }}/blob/main/LICENSE.md">Licencia</a></li>
+        {% assign github_url = "https://github.com/" | append: site.repository %}
+        <li><a href="{{ github_url }}">GitHub</a></li>
+        <li><a href="{{ github_url }}/blob/main/README.md">README</a></li>
+        <li><a href="{{ github_url }}/blob/main/LICENSE.md">Licencia (AIPL)</a></li>
         <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
       </ul>
     </div>
@@ -33,7 +35,8 @@
   
   <div class="footer-bottom">
     <p>
-      Publicado con <a href="{{ site.repository }}/blob/main/.github/plugins/gh-pages/">Plugin GH-Pages</a>
+      {% assign github_url = "https://github.com/" | append: site.repository %}
+      Publicado con <a href="{{ github_url }}/tree/main/.github/plugins/gh-pages/">Plugin GH-Pages</a>
       del Aleph Scriptorium.
     </p>
   </div>
