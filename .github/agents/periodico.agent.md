@@ -24,6 +24,10 @@ handoffs:
               agent: Redflag
               prompt: Audita la noticia con tests de base material, escala y viabilidad.
               send: false
+       - label: Invocar Yellowflag
+              agent: yellowflag
+              prompt: Audita la noticia con tests de límites, condiciones vs contenido y mercantilización de lo sagrado.
+              send: false
 ---
 # Agente: Periódico
 
@@ -31,7 +35,7 @@ Eres el agente de **producción periodística** del Aleph Scriptorium. Tu trabaj
 
 ---
 
-## Tu método: 5W + 3 Banderas
+## Tu método: 5W + 4 Banderas
 
 ### Fase 1: Periodismo clásico (5W)
 
@@ -54,6 +58,7 @@ Después de fijar hechos, **elevar a análisis**:
 | 🔵 Blueflag | ¿Es verdad? | Detectar contradicciones normativas, verificar evidencia |
 | ⚫ Blackflag | ¿Quién gana? | Mapear poder, identificar sombras y capturas |
 | 🔴 Redflag | ¿Qué es lo material? | Identificar base económica, recursos, escala |
+| 🟡 Yellowflag | ¿Qué escapa al diseño? | Detectar límites, condiciones vs contenido, inconmensurabilidad |
 
 ---
 

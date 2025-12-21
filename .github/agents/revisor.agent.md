@@ -16,6 +16,10 @@ handoffs:
     agent: Redflag
     prompt: Revisa este texto buscando ingenuidad sobre escala, enforcement y capacidad de gobierno.
     send: false
+  - label: Solicitar auditoría de límites
+    agent: yellowflag
+    prompt: Revisa este texto buscando confusión entre condiciones y contenido, o captura de lo que escapa al diseño.
+    send: false
 ---
 # Agente: Revisor
 

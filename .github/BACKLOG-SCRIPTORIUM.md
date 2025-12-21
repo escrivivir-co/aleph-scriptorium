@@ -205,6 +205,66 @@
 
 ---
 
+# Épica: SCRIPT-0.2.0 — Agente Yellowflag (Auditoría de Límites)
+
+**Objetivo**: Implementar el cuarto auditor del sistema Scriptorium, especializado en detectar cuándo el diseño político pretende capturar lo que escapa a la política.
+
+**Origen**: Debate gnosis/política extraído de `DISCO/Diciembre_25_humanismo_extremo.md/`.
+
+**Entregables**:
+- Agente `yellowflag.agent.md`
+- Documento de marco `14-gnosis-politica-condiciones-vida-filosofica.md`
+- Tests de Yellowflag en `indicadores-fracaso-enero.md`
+- Integración con Aleph y sistema de auditores
+
+---
+
+## Stories
+
+### SCRIPT-0.2.0-S01: Agente Yellowflag
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T044 | Crear `agents/yellowflag.agent.md` | ✅ |
+| T045 | Definir tests de auditoría de límites | ✅ |
+| T046 | Añadir handoffs a otros auditores | ✅ |
+
+---
+
+### SCRIPT-0.2.0-S02: Fundamentación Doctrinal
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T047 | Crear `marco/14-gnosis-politica-condiciones-vida-filosofica.md` | ✅ |
+| T048 | Actualizar `README.md` de marco/ | ✅ |
+
+---
+
+### SCRIPT-0.2.0-S03: Integración en el Sistema
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T049 | Añadir handoff a Yellowflag en `aleph.agent.md` | ✅ |
+| T050 | Actualizar `copilot-instructions.md` con Yellowflag | ✅ |
+| T051 | Añadir tests de Yellowflag a `indicadores-fracaso-enero.md` | ✅ |
+
+---
+
+## Métricas Sprint 0.2
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 8 |
+| Completadas | 8 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -214,3 +274,5 @@
 | 2024-12-20 | Añadir feature Noticias (Periódico) — S08 | Aleph |
 | 2025-12-20 | Añadir Épica SCRIPT-0.1.0 — Sistema de Plugins | Aleph |
 | 2025-12-20 | Completar instalación plugin ARG Board | Aleph |
+| 2025-12-21 | Añadir Épica SCRIPT-0.2.0 — Agente Yellowflag | Aleph |
+| 2025-12-21 | Completar integración Yellowflag en el sistema | Aleph |

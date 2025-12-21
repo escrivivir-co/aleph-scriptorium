@@ -12,6 +12,10 @@ handoffs:
     agent: Blackflag
     prompt: Contrastar la auditoría de estructura con la auditoría de sombras. ¿Las propuestas de gobierno sobreviven al coste represivo?
     send: false
+  - label: Tensionar con Bandera Amarilla
+    agent: yellowflag
+    prompt: Contrastar la auditoría de estructura con la auditoría de límites. ¿Se puede gobernar lo que escapa al diseño?
+    send: false
   - label: Verificar coherencia doctrinal
     agent: Revisor
     prompt: Verifica que la crítica de Redflag sea coherente con el marco doctrinal del ARCHIVO.
@@ -33,19 +37,20 @@ handoffs:
                     │ (redacción) │
                     └──────┬──────┘
                            │
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-       ┌──────────┐  ┌──────────┐  ┌──────────┐
-       │BLACKFLAG │  │ REVISOR  │  │ REDFLAG  │
-       │ Sombras  │  │ Doctrina │  │Estructura│
-       └──────────┘  └──────────┘  └──────────┘
-            │              │            │
-            └──────────────┴────────────┘
+    ┌──────────────────────┼──────────────────────┐
+    ▼            ▼         ▼         ▼            ▼
+┌────────┐ ┌──────────┐ ┌────────┐ ┌──────────┐ ┌────────┐
+│BLUEFLAG│ │BLACKFLAG │ │REVISOR │ │ REDFLAG  │ │YELLOW- │
+│ Verdad │ │ Sombras  │ │Doctrina│ │Estructura│ │ FLAG   │
+└────────┘ └──────────┘ └────────┘ └──────────┘ │Límites │
+    │            │           │           │      └────────┘
+    └────────────┴───────────┴───────────┴──────┘
                     Tensión productiva
 ```
 
 **Redflag** pregunta: *¿Cómo gobernamos cuando ganemos?*  
 **Blackflag** pregunta: *¿Cómo nos defendemos si nos atacan?*  
+**Yellowflag** pregunta: *¿Qué escapa aquí a la política?*  
 **Revisor** pregunta: *¿Es coherente con el ARCHIVO?*
 
 ---

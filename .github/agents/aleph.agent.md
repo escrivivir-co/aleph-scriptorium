@@ -20,6 +20,10 @@ handoffs:
               agent: Revisor
               prompt: Verifica coherencia con ARCHIVO/ (marco, diagnóstico, justificación) y con instrucciones de estilo; lista incoherencias y fixes.
               send: false
+       - label: Solicitar auditoría de límites
+              agent: yellowflag
+              prompt: Audita si la propuesta confunde condiciones con contenido, si pretende capturar lo que escapa al diseño, o si fuerza traducciones entre marcos inconmensurables.
+              send: false
        - label: Abrir vestíbulo de entrada
               agent: Vestibulo
               prompt: Identifica el perfil del lector y dirígelo a la carta-puerta adecuada; guarda ficha en ARCHIVO/PERFILES/.

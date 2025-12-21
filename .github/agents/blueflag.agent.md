@@ -16,6 +16,10 @@ handoffs:
     agent: Redflag
     prompt: Contrastar la auditoría de verdad con la auditoría de estructura. ¿Cómo se implementa la verdad a escala?
     send: false
+  - label: Tensionar con Bandera Amarilla
+    agent: yellowflag
+    prompt: Contrastar la auditoría de verdad con la auditoría de límites. ¿Estamos pretendiendo verificar lo inverificable?
+    send: false
   - label: Verificar coherencia doctrinal
     agent: Revisor
     prompt: Verifica que la crítica de Blueflag sea coherente con el marco doctrinal del ARCHIVO.
@@ -37,24 +41,21 @@ handoffs:
                     │ (redacción) │
                     └──────┬──────┘
                            │
-         ┌─────────────────┼─────────────────┐
-         ▼                 ▼                 ▼
-  ┌──────────┐      ┌──────────┐      ┌──────────┐
-  │BLACKFLAG │      │ REVISOR  │      │ REDFLAG  │
-  │ Sombras  │      │ Doctrina │      │Estructura│
-  └──────────┘      └──────────┘      └──────────┘
-         │                 │                 │
-         └─────────────────┼─────────────────┘
-                           │
-                    ┌──────────┐
-                    │ BLUEFLAG │ ← Verdad
-                    │(evidencia)│
-                    └──────────┘
+    ┌──────────────────────┼──────────────────────┐
+    ▼            ▼         ▼         ▼            ▼
+┌────────┐ ┌──────────┐ ┌────────┐ ┌──────────┐ ┌────────┐
+│BLUEFLAG│ │BLACKFLAG │ │REVISOR │ │ REDFLAG  │ │YELLOW- │
+│ Verdad │ │ Sombras  │ │Doctrina│ │Estructura│ │ FLAG   │
+└────────┘ └──────────┘ └────────┘ └──────────┘ │Límites │
+    │            │           │           │      └────────┘
+    └────────────┴───────────┴───────────┴──────┘
+                    Tensión productiva
 ```
 
 **Blueflag** pregunta: *¿Es esto verdad? ¿Es útil? ¿Explora lo desconocido?*  
 **Blackflag** pregunta: *¿Cómo nos defendemos si nos atacan?*  
 **Redflag** pregunta: *¿Cómo gobernamos cuando ganemos?*  
+**Yellowflag** pregunta: *¿Qué escapa aquí a la política?*  
 **Revisor** pregunta: *¿Es coherente con el ARCHIVO?*
 
 ---

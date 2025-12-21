@@ -26,7 +26,7 @@ Este es un proyecto de **escritura política** dividido en dos "Opportunities":
 - **Responsabilidad**: Producción, orquestación y gestión del ciclo de vida.
 
 **Sistema de Auditores**:
-- `@blueflag` (Verdad/Evidencia), `@blackflag` (Sombra/Coste), `@redflag` (Estructura/Viabilidad), `@revisor` (Doctrina).
+- `@blueflag` (Verdad/Evidencia), `@blackflag` (Sombra/Coste), `@redflag` (Estructura/Viabilidad), `@yellowflag` (Límites/Condiciones), `@revisor` (Doctrina).
 - Consultar `aleph.agent.md` para el flujo de invocación.
 
 **Agente Periódico** (Noticias):

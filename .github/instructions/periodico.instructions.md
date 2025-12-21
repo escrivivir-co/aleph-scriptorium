@@ -16,7 +16,7 @@ El agente Periódico produce **planas noticieras** que combinan periodismo clás
 
 ---
 
-## Método: 5W + 3 Banderas
+## Método: 5W + 4 Banderas
 
 ### Las 5W del periodismo
 
@@ -28,13 +28,14 @@ El agente Periódico produce **planas noticieras** que combinan periodismo clás
 | **WHEN** | ¿Cuándo? Cronología, secuencia, momento |
 | **WHY** | ¿Por qué? Motivos oficiales vs. reales |
 
-### Las 3 Banderas de auditoría
+### Las 4 Banderas de auditoría
 
 | Bandera | Pregunta | Enfoque |
 |---------|----------|---------|
 | 🔵 **Blueflag** | ¿Es verdad? | Contradicciones normativas, evidencia, falsificabilidad |
 | ⚫ **Blackflag** | ¿Quién gana? | Mapa de poder, enemigos, sombras, captura |
 | 🔴 **Redflag** | ¿Qué es lo material? | Base económica, recursos, viabilidad, escala |
+| 🟡 **Yellowflag** | ¿Qué escapa al diseño? | Límites, condiciones vs contenido, inconmensurabilidad |
 
 ---
 
