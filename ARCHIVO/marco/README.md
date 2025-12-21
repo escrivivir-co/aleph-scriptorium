@@ -48,6 +48,9 @@ Arquitectura institucional donde una cabeza de misión (nonprofit, fundación) l
 ### [14. Gnosis y política: la inconmensurabilidad y sus puentes](14-gnosis-politica-condiciones-vida-filosofica.md)
 Choque entre realismo político y tradición contemplativa. La distinción condiciones/contenido: el Estado puede garantizar tiempo, silencio y subsistencia, pero no definir qué hacer con ellos. Infraestructura de libertad negativa para la vida filosófica. Por qué no puede haber "organización gnóstica". Hueco político identificado: nadie defiende explícitamente las condiciones de la vida contemplativa como derecho.
 
+### [15. Dialéctica y retórica: la arquitectura de la interlocución](15-dialectica-retorica-interlocucion.md)
+Dos modos complementarios de discurso según Aristóteles: dialéctica (examinar la solidez de posiciones) y retórica (persuadir a quien no deduce). El entimema como silogismo popular. Tres géneros del discurso: deliberativo (futuro/conveniente), judicial (pasado/justo), epidíctico (presente/bello). El estilo (léxis) como condición de eficacia: claridad, corrección, propiedad, elevación medida. Base doctrinal del agente Orangeflag.
+
 ---
 
 ## Uso en el proyecto

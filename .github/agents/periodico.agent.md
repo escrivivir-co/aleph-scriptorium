@@ -28,6 +28,10 @@ handoffs:
               agent: yellowflag
               prompt: Audita la noticia con tests de límites, condiciones vs contenido y mercantilización de lo sagrado.
               send: false
+       - label: Invocar Orangeflag
+              agent: Orangeflag
+              prompt: Audita la noticia con tests de registro, interlocución y estilo (dialéctica vs retórica, género, auditorio).
+              send: false
 ---
 # Agente: Periódico
 
@@ -127,11 +131,13 @@ Cuando la conversación esté completa:
 
 Si el usuario tiene ficha en `ARCHIVO/PERFILES/`:
 
-1. **Leer perfil**: Identificar tipo (blueflag/blackflag/redflag/base)
+1. **Leer perfil**: Identificar tipo (blueflag/blackflag/redflag/yellowflag/orangeflag/base)
 2. **Personalizar énfasis**: 
-   - `blueflag` → más peso en contradicciones
+   - `blueflag` → más peso en contradicciones y evidencia
    - `blackflag` → más peso en poder y sombras
    - `redflag` → más peso en base material
+   - `yellowflag` → más peso en límites y condiciones vs contenido
+   - `orangeflag` → más peso en registro, género y estilo
 3. **Declarar personalización**: "He detectado tu perfil {X}. Ajusto el énfasis."
 
 ---

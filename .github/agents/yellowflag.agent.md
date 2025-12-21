@@ -21,6 +21,10 @@ handoffs:
     agent: Blackflag
     prompt: Contrastar la auditoría de límites con la auditoría de sombras. ¿Cómo se defienden las condiciones contemplativas del enemigo?
     send: false
+  - label: Tensionar con Bandera Naranja
+    agent: Orangeflag
+    prompt: Contrastar la auditoría de límites con la auditoría de registro. ¿Se usa dialéctica (examinar) o retórica (persuadir) cuando la materia es inconmensurable?
+    send: false
   - label: Verificar coherencia doctrinal
     agent: Revisor
     prompt: Verifica que la crítica de Yellowflag sea coherente con el marco doctrinal del ARCHIVO.

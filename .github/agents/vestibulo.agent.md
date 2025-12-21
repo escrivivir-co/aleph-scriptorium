@@ -28,6 +28,6 @@ Este agente abre el **vestíbulo de entrada** al proyecto Fundación.
 
 1. Identificar si existe ficha en `ARCHIVO/PERFILES/`.
 2. Ofrecer **visión objetiva** o **entrada guiada**.
-3. Clasificar perfil (vista-total / blueflag / blackflag / redflag / yellowflag).
+3. Clasificar perfil (vista-total / blueflag / blackflag / redflag / yellowflag / orangeflag).
 4. Guardar/actualizar ficha.
 5. Entregar la carta-puerta o derivar a `CartasPuerta`.

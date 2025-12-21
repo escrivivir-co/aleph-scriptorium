@@ -20,6 +20,10 @@ handoffs:
     agent: yellowflag
     prompt: Revisa este texto buscando confusión entre condiciones y contenido, o captura de lo que escapa al diseño.
     send: false
+  - label: Solicitar auditoría de registro
+    agent: Orangeflag
+    prompt: Revisa este texto verificando que el registro (dialéctica/retórica), género (deliberativo/judicial/epidíctico) y estilo sean adecuados al auditorio y fin.
+    send: false
 ---
 # Agente: Revisor
 

@@ -16,6 +16,10 @@ handoffs:
     agent: yellowflag
     prompt: Contrastar la auditoría de sombras con la auditoría de límites. ¿Qué escapa a la autodefensa institucional?
     send: false
+  - label: Tensionar con Bandera Naranja
+    agent: Orangeflag
+    prompt: Contrastar la auditoría de sombras con la auditoría de registro. ¿El discurso de autodefensa usa el registro adecuado (dialéctica para examinar, retórica para movilizar)?
+    send: false
   - label: Verificar coherencia doctrinal
     agent: Revisor
     prompt: Verifica que la crítica de Blackflag sea coherente con el marco doctrinal del ARCHIVO.

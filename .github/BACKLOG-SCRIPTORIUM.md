@@ -349,6 +349,81 @@
 
 ---
 
+# Épica: SCRIPT-0.4.0 — Agente Orangeflag (Interlocución Aristotélica)
+
+**Objetivo**: Implementar el quinto auditor del sistema Scriptorium, especializado en registro, interlocución y estilo según base aristotélica (dialéctica/retórica).
+
+**Origen**: Análisis de `DISCO/Diciembre_25_Poesía_como_vias_alternativas.md/` (archivos 04-06).
+
+**Entregables**:
+- Agente `orangeflag.agent.md`
+- Documento de marco `15-dialectica-retorica-interlocucion.md`
+- Tests de Orangeflag en indicadores de fracaso
+- Integración con Aleph y sistema de auditores
+- Actualización de handoffs bidireccionales
+
+---
+
+## Stories
+
+### SCRIPT-0.4.0-S01: Agente Orangeflag
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T069 | Crear `agents/orangeflag.agent.md` | ✅ |
+| T070 | Definir tests de registro/interlocución/estilo | ✅ |
+| T071 | Añadir handoffs bidireccionales con otros flags | ✅ |
+
+---
+
+### SCRIPT-0.4.0-S02: Fundamentación Doctrinal
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T072 | Crear `marco/15-dialectica-retorica-interlocucion.md` | ✅ |
+| T073 | Actualizar `README.md` de marco/ | ✅ |
+
+---
+
+### SCRIPT-0.4.0-S03: Integración en el Sistema
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T074 | Añadir handoff a Orangeflag en `aleph.agent.md` | ✅ |
+| T075 | Actualizar `copilot-instructions.md` con Orangeflag | ✅ |
+| T076 | Añadir handoffs desde otros flags hacia Orangeflag | ✅ |
+| T077 | Actualizar `periodico.agent.md` con invocación Orangeflag | ✅ |
+| T081 | Crear carta-puerta Orangeflag | ✅ |
+| T082 | Actualizar README.md con Orangeflag | ✅ |
+
+---
+
+### SCRIPT-0.4.0-S04: Extensiones de capacidad
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T078 | Crear prompt `orangeflag-dialectico.prompt.md` (modo examen) | ⏳ |
+| T079 | Crear prompt `orangeflag-retorico.prompt.md` (modo persuasión) | ⏳ |
+| T080 | Crear `instructions/orangeflag.instructions.md` | ⏳ |
+
+---
+
+## Métricas Sprint 0.4
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 14 |
+| Completadas | 11 |
+| En progreso | 0 |
+| Pendientes | 3 |
+| % Avance | 79% |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -363,3 +438,5 @@
 | 2025-12-21 | Añadir Épica SCRIPT-0.3.0 — Plugin Enciclopedia | Aleph |
 | 2025-12-21 | Completar plugin Enciclopedia con tomo HDF | Aleph |
 | 2025-12-21 | Documentar sistema de plugins en README.md principal | Aleph |
+| 2025-12-21 | Añadir Épica SCRIPT-0.4.0 — Agente Orangeflag | Aleph |
+| 2025-12-21 | Crear orangeflag.agent.md y marco/15 | Aleph |

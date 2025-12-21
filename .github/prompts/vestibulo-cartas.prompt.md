@@ -87,8 +87,10 @@ Cuenta las respuestas:
 | (b) | `blueflag` | `ARCHIVO/CARTAS/carta-maestro-blueflag.md` |
 | (c) | `blackflag` | `ARCHIVO/CARTAS/carta-maestro-blackflag.md` |
 | (d) | `redflag` | `ARCHIVO/CARTAS/carta-maestro-redflag.md` |
+| (e) | `yellowflag` | `ARCHIVO/CARTAS/carta-maestro-yellowflag.md` |
+| (f) | `orangeflag` | `ARCHIVO/CARTAS/carta-maestro-orangeflag.md` |
 
-En caso de empate, prioriza en este orden: vista-total > blackflag > redflag > blueflag.
+En caso de empate, prioriza en este orden: vista-total > blackflag > redflag > blueflag > yellowflag > orangeflag.
 
 ---
 
@@ -103,7 +105,7 @@ Guarda la ficha en `ARCHIVO/PERFILES/perfil-{nombre-o-id}.md` usando esta planti
 |-------|-------|
 | **Identificador** | {nombre o "anónimo-YYYYMMDD-HHMM"} |
 | **Fecha** | {fecha de creación} |
-| **Perfil** | {base / vista-total / blueflag / blackflag / redflag} |
+| **Perfil** | {base / vista-total / blueflag / blackflag / redflag / yellowflag / orangeflag} |
 | **Carta asignada** | {ruta a la carta} |
 
 ## Respuestas al cuestionario

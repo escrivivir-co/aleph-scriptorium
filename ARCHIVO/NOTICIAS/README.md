@@ -11,7 +11,7 @@
 Esta carpeta contiene **planas noticieras publicadas** (release) producidas mediante el sistema Aleph Scriptorium. Cada plana combina:
 
 1. **Periodismo clásico** (5W: Who, What, Where, When, Why)
-2. **Auditoría doctrinal** (Banderas: Blueflag, Blackflag, Redflag)
+2. **Auditoría doctrinal** (Banderas: Blueflag, Blackflag, Redflag, Yellowflag, Orangeflag)
 3. **Diálogo editorial** (Alice y Bob simulan una redacción)
 
 ---

@@ -20,6 +20,10 @@ handoffs:
     agent: yellowflag
     prompt: Contrastar la auditoría de verdad con la auditoría de límites. ¿Estamos pretendiendo verificar lo inverificable?
     send: false
+  - label: Tensionar con Bandera Naranja
+    agent: Orangeflag
+    prompt: Contrastar la auditoría de verdad con la auditoría de registro. ¿El modo de decir es adecuado al auditorio y al fin?
+    send: false
   - label: Verificar coherencia doctrinal
     agent: Revisor
     prompt: Verifica que la crítica de Blueflag sea coherente con el marco doctrinal del ARCHIVO.

@@ -111,7 +111,7 @@ codigo_scrum: {codigo_scrum}
 fecha: {YYYY-MM-DD}
 categoria: {categoria}
 tema: {tema}
-perfil_recomendado: {blueflag/blackflag/redflag/base}
+perfil_recomendado: {blueflag/blackflag/redflag/yellowflag/orangeflag/base}
 fuente_disco: DISCO/{carpeta}/
 imagen_cabecera: DISCO/{carpeta}/imagen-cabecera.png
 estado: publicado
@@ -125,7 +125,7 @@ estado: publicado
 > **Fecha**: {YYYY-MM-DD}  
 > **Categoría**: {categoria} / {tema}  
 > **Fuentes**: {lista de archivos originales}  
-> **Perfil recomendado**: {blueflag/blackflag/redflag/base}  
+> **Perfil recomendado**: {blueflag/blackflag/redflag/yellowflag/orangeflag/base}  
 > **Conversación**: `DISCO/{carpeta}/conversacion.md`
 
 ---

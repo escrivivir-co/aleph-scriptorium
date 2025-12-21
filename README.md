@@ -60,6 +60,11 @@ El proyecto tiene dos productos paralelos:
 │ Verdad │ │ Sombras  │ │Doctrina│ │Estructura│ │ FLAG   │
 └────────┘ └──────────┘ └────────┘ └──────────┘ │Límites │
                                                 └────────┘
+                           │
+                    ┌──────────┐
+                    │ORANGE- │ ← Registro
+                    │ FLAG   │
+                    └──────────┘
 ```
 El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que la IA trabaje bajo las reglas del proyecto.
 
@@ -75,6 +80,7 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | Agente **Redflag** (audita estructura: escala, gobierno) | ✅ | [`.github/agents/redflag.agent.md`](.github/agents/redflag.agent.md) |
 | Agente **Blueflag** (audita verdad: evidencia, utilidad) | ✅ | [`.github/agents/blueflag.agent.md`](.github/agents/blueflag.agent.md) |
 | Agente **Yellowflag** (audita límites: condiciones vs contenido) | ✅ | [`.github/agents/yellowflag.agent.md`](.github/agents/yellowflag.agent.md) |
+| Agente **Orangeflag** (audita registro: dialéctica/retórica, género, estilo) | ✅ | [`.github/agents/orangeflag.agent.md`](.github/agents/orangeflag.agent.md) |
 | Agente **Periodico** (produce planas noticieras 5W + Banderas) | ✅ | [`.github/agents/periodico.agent.md`](.github/agents/periodico.agent.md) |
 | Agente **PluginManager** (instala, activa, desinstala plugins) | ✅ | [`.github/agents/plugin-manager.agent.md`](.github/agents/plugin-manager.agent.md) |
 | Prompt de extracción y archivo | ✅ | [`.github/prompts/extraer-archivar.prompt.md`](.github/prompts/extraer-archivar.prompt.md) |
@@ -333,6 +339,7 @@ Perfiles de IA preconfigurados para tareas específicas:
 | **Blackflag** | Auditor de sombras. Coste represivo, autodefensa. | `@blackflag` |
 | **Redflag** | Auditor de estructura. Escala, enforcement, gobierno. | `@redflag` |
 | **Blueflag** | Auditor de verdad. Evidencia, utilidad, falsificabilidad. | `@blueflag` |
+| **Orangeflag** | Auditor de registro. Dialéctica/retórica, género, estilo. | `@orangeflag` |
 
 **Arquitectura de tensión productiva:**
 
@@ -351,10 +358,10 @@ Perfiles de IA preconfigurados para tareas específicas:
          │                 │                 │
          └─────────────────┼─────────────────┘
                            ▼
-                    ┌──────────┐
-                    │ BLUEFLAG │ ← Verdad
-                    │(evidencia)│
-                    └──────────┘
+  ┌──────────┐      ┌──────────┐      ┌──────────┐
+  │ BLUEFLAG │      │YELLOWFLAG│      │ORANGEFLAG│
+  │ (verdad) │      │ (límites)│      │(registro)│
+  └──────────┘      └──────────┘      └──────────┘
 ```
 
 Los agentes no inventan: **consultan tu ARCHIVO**. No improvisan estilo: **siguen tus instrucciones**. No deciden por ti: **te presentan opciones**.

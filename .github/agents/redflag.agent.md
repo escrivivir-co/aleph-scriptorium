@@ -16,6 +16,10 @@ handoffs:
     agent: yellowflag
     prompt: Contrastar la auditoría de estructura con la auditoría de límites. ¿Se puede gobernar lo que escapa al diseño?
     send: false
+  - label: Tensionar con Bandera Naranja
+    agent: Orangeflag
+    prompt: Contrastar la auditoría de estructura con la auditoría de registro. ¿El género discursivo (deliberativo/judicial/epidíctico) es el correcto para el fin propuesto?
+    send: false
   - label: Verificar coherencia doctrinal
     agent: Revisor
     prompt: Verifica que la crítica de Redflag sea coherente con el marco doctrinal del ARCHIVO.

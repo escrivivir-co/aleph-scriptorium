@@ -117,7 +117,7 @@ El proceso de edición simula una **redacción periodística**:
    
    > **Fecha**: {YYYY-MM-DD}
    > **Fuentes**: {lista}
-   > **Perfil recomendado**: {blueflag/blackflag/redflag/base}
+   > **Perfil recomendado**: {blueflag/blackflag/redflag/yellowflag/orangeflag/base}
    
    ---
    
@@ -136,6 +136,12 @@ El proceso de edición simula una **redacción periodística**:
    [Síntesis]
    
    ### 🔴 Material (Redflag)
+   [Síntesis]
+   
+   ### 🟡 Límites (Yellowflag)
+   [Síntesis]
+   
+   ### 🟠 Registro (Orangeflag)
    [Síntesis]
    
    ---
