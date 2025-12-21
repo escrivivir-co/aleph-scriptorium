@@ -2,7 +2,7 @@
 name: Aleph
 description: Planifica, redacta y gestiona el texto fundacional (12 capítulos, 2026) con protocolo DevOps integrado.
 argument-hint: "Describe objetivo, audiencia y restricciones (p.ej. capitulo=3, tema=vivienda, longitud=1400)."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo', 'ms-vscode.vscode-websearchforcopilot/websearch']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
        - label: Solicitar auditoría de verdad
               agent: Blueflag
@@ -58,6 +58,16 @@ handoffs:
               send: false
        - label: "[ENCICLOPEDIA] Consultar biblioteca"
               agent: Bibliotecario
+              prompt: Lista los tomos disponibles en la enciclopedia y permite búsquedas globales por tema o período.
+              send: false
+       - label: "[GH-PAGES] Publicar en web"
+              agent: GHPages
+              prompt: Publica contenido del ARCHIVO en GitHub Pages (modo fusionar o reemplazar).
+              send: false
+       - label: "[GH-PAGES] Inicializar sitio"
+              agent: GHPages
+              prompt: Configura el sitio GitHub Pages con la plantilla Jekyll del Scriptorium.
+              send: false
               prompt: Lista los tomos disponibles en la enciclopedia y permite búsquedas globales por tema o período.
               send: false
        - label: "[ENCICLOPEDIA] Buscar en Historia de la Filosofía"

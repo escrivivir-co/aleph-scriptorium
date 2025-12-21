@@ -1,8 +1,11 @@
 # Aleph Scriptorium
 
 [![VibeBitacora](https://img.shields.io/badge/Powered%20by-VibeBitacora-blue)](https://github.com/escrivivir-co/vibe-bitacora)
+[![GitHub Pages](https://img.shields.io/badge/Web-GitHub%20Pages-success)](https://escrivivir-co.github.io/aleph-scriptorium/)
 
 **El taller de escritura donde la IA trabaja para ti, no al revés.**
+
+> 🌐 **Sitio web**: [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/)
 
 > *Aleph (ℵ) es el símbolo que Cantor usó para los infinitos: conjuntos que nunca se completan pero siempre pueden ser trascendidos por un infinito mayor. La escritura funciona igual: cada versión es un umbral, no un destino. En el scriptorium medieval, los copistas preservaban y transmitían el conocimiento con rigor artesanal. Este sistema une ambas ideas: un proceso infinitamente perfectible, ejecutado con disciplina de oficio.*
 
@@ -223,7 +226,48 @@ El sistema de plugins sigue un **protocolo documentado** que permite:
 
 ---
 
-### 5. Plan inmediato
+### 5. Publicación Web (GitHub Pages)
+
+El proyecto se publica automáticamente en **GitHub Pages** mediante el plugin **GH-Pages**.
+
+| Elemento | Valor |
+|----------|-------|
+| **URL canónica** | [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/) |
+| **Branch** | `gh-pages` |
+| **Plantilla** | Jekyll minimalista (blanco/negro + banderas) |
+| **Plugin** | [`.github/plugins/gh-pages/`](.github/plugins/gh-pages/) |
+
+#### Modos de publicación
+
+| Modo | Comando | Efecto |
+|------|---------|--------|
+| **Fusionar** | `@GHPages fusionar NOTICIAS/` | Añade nuevas noticias sin eliminar las existentes |
+| **Reemplazar** | `@GHPages reemplazar FUNDACION/cap01` | Sustituye todo el contenido de la sección |
+
+#### Flujo típico (Periódico → Web)
+
+```
+Usuario: "Publica las últimas 3 noticias en la web"
+
+@Periodico → (genera planas en NOTICIAS/)
+@GHPages → (convierte a Jekyll, hace merge en gh-pages, pushea)
+
+→ Noticias visibles en https://escrivivir-co.github.io/aleph-scriptorium/noticias/
+```
+
+#### Uso directo
+
+```
+@GHPages /gh-pages-init                    # Inicializar sitio (primera vez)
+@GHPages /gh-pages-merge NOTICIAS/         # Fusionar noticias
+@GHPages /gh-pages-replace cap01           # Reemplazar capítulo
+```
+
+**Documentación**: [`.github/plugins/gh-pages/docs/`](.github/plugins/gh-pages/docs/)
+
+---
+
+### 6. Plan inmediato
 
 #### Sprint 0 (Bootstrap) — Estado al 21-dic-2025
 

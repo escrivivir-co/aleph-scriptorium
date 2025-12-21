@@ -24,6 +24,10 @@ handoffs:
     agent: Orangeflag
     prompt: Revisa este texto verificando que el registro (dialéctica/retórica), género (deliberativo/judicial/epidíctico) y estilo sean adecuados al auditorio y fin.
     send: false
+  - label: Publicar capítulo revisado
+    agent: GHPages
+    prompt: Publica el capítulo revisado en GitHub Pages (modo reemplazar para actualizar versión anterior).
+    send: false
 ---
 # Agente: Revisor
 

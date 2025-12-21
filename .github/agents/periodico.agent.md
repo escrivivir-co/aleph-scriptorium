@@ -32,6 +32,10 @@ handoffs:
               agent: Orangeflag
               prompt: Audita la noticia con tests de registro, interlocución y estilo (dialéctica vs retórica, género, auditorio).
               send: false
+       - label: Publicar noticias en web
+              agent: GHPages
+              prompt: Publica las noticias seleccionadas de ARCHIVO/NOTICIAS/ en GitHub Pages (modo fusionar).
+              send: false
 ---
 # Agente: Periódico
 

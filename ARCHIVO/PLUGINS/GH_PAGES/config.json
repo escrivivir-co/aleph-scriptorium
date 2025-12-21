@@ -1,0 +1,15 @@
+{
+  "initialized": false,
+  "initialized_at": null,
+  "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
+  "repository": "escrivivir-co/aleph-scriptorium",
+  "branch": "gh-pages",
+  "source_folder": null,
+  "last_publish": null,
+  "publish_count": 0,
+  "settings": {
+    "default_mode": "merge",
+    "auto_commit": false,
+    "preserve_history": true
+  }
+}

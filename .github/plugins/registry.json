@@ -1,7 +1,37 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-21T00:00:00Z",
+  "last_updated": "2025-12-21T12:00:00Z",
   "plugins": {
+    "gh-pages": {
+      "name": "Website Publisher (GitHub Pages)",
+      "version": "1.0.0",
+      "description": "Plugin para publicar contenido del Scriptorium en GitHub Pages. Soporta modos fusionar y reemplazar.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-21T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/GH_PAGES/",
+      "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
+      "handoffs": [
+        {
+          "label": "Publicar en GitHub Pages",
+          "agent": "GHPages"
+        },
+        {
+          "label": "Inicializar GitHub Pages",
+          "agent": "GHPages"
+        },
+        {
+          "label": "Fusionar contenido web",
+          "agent": "GHPages"
+        },
+        {
+          "label": "Reemplazar contenido web",
+          "agent": "GHPages"
+        }
+      ]
+    },
     "arg-board": {
       "name": "Tablero de Juego ARG Transmedia",
       "version": "1.0.0",

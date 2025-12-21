@@ -80,8 +80,24 @@ Los plugins extienden las capacidades de Scriptorium sin modificar el core.
 
 | Plugin | Versión | Descripción |
 |--------|---------|-------------|
+| **GH-Pages** | 1.0.0 | Publicación en GitHub Pages (modos fusionar/reemplazar) |
 | **ARG Board** | 1.0.0 | Motor de juego ARG transmedia (AlephScript 7GL) |
 | **Enciclopedia** | 1.0.0 | Biblioteca de tomos enciclopédicos con búsquedas temporales y temáticas |
+
+### Plugin: GH-Pages
+
+Publicador de contenido en GitHub Pages con dos modos de operación.
+
+**Agentes disponibles**:
+- `GHPages`: Orquestador de publicación
+
+**Modos**:
+- `fusionar`: Añade contenido sin eliminar lo existente
+- `reemplazar`: Sustituye todo el contenido de la sección
+
+**URL canónica**: [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/)
+
+**Documentación**: [plugins/gh-pages/docs/](plugins/gh-pages/docs/)
 
 ### Plugin: ARG Board
 

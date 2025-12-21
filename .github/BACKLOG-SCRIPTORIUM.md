@@ -424,6 +424,118 @@
 
 ---
 
+# Épica: SCRIPT-0.5.0 — Plugin GH-Pages (Publicación Web)
+
+**Objetivo**: Implementar plugin de publicación en GitHub Pages con dos modos (fusionar/reemplazar) y plantilla Jekyll minimalista.
+
+**Entregables**:
+- Plugin gh-pages con manifest, agente, prompts e instrucciones
+- Plantilla Jekyll blanco/negro con banderas
+- Integración con agentes Aleph, Periodico y Revisor
+- URL canónica: https://escrivivir-co.github.io/aleph-scriptorium/
+
+---
+
+## Stories
+
+### SCRIPT-0.5.0-S01: Estructura del Plugin
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T083 | Crear carpeta `.github/plugins/gh-pages/` | ✅ |
+| T084 | Crear `manifest.md` con metadatos | ✅ |
+| T085 | Crear subcarpetas (agents, prompts, instructions, meta, docs) | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S02: Agente GHPages
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T086 | Crear `agents/ghpages.agent.md` con handoffs | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S03: Prompts de Publicación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T087 | Crear `prompts/gh-pages-init.prompt.md` | ✅ |
+| T088 | Crear `prompts/gh-pages-merge.prompt.md` | ✅ |
+| T089 | Crear `prompts/gh-pages-replace.prompt.md` | ✅ |
+| T090 | Crear `prompts/gh-pages-publish.prompt.md` | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S04: Instrucciones y Documentación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T091 | Crear `instructions/gh-pages.instructions.md` | ✅ |
+| T092 | Crear `docs/README.md` | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S05: Plantilla Jekyll
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T093 | Crear `_config.yml` | ✅ |
+| T094 | Crear layouts (default, page, post) | ✅ |
+| T095 | Crear includes (header, footer, nav) | ✅ |
+| T096 | Crear `assets/css/main.css` (B/N + banderas) | ✅ |
+| T097 | Crear `index.md` con secciones | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S06: Integración con Agentes Core
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T098 | Añadir handoff a `aleph.agent.md` | ✅ |
+| T099 | Añadir handoff a `periodico.agent.md` | ✅ |
+| T100 | Añadir handoff a `revisor.agent.md` | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S07: Datos e Integración
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T101 | Crear `ARCHIVO/PLUGINS/GH_PAGES/` con config.json | ✅ |
+| T102 | Actualizar `registry.json` | ✅ |
+
+---
+
+### SCRIPT-0.5.0-S08: Documentación Pública
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T103 | Actualizar README.md con sección GH-Pages | ✅ |
+| T104 | Añadir URL canónica al README.md | ✅ |
+
+---
+
+## Métricas Sprint 0.5
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 22 |
+| Completadas | 22 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -440,3 +552,5 @@
 | 2025-12-21 | Documentar sistema de plugins en README.md principal | Aleph |
 | 2025-12-21 | Añadir Épica SCRIPT-0.4.0 — Agente Orangeflag | Aleph |
 | 2025-12-21 | Crear orangeflag.agent.md y marco/15 | Aleph |
+| 2025-12-21 | Añadir Épica SCRIPT-0.5.0 — Plugin GH-Pages | Aleph |
+| 2025-12-21 | Completar plugin GH-Pages con Jekyll template | Aleph |
