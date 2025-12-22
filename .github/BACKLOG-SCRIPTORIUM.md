@@ -382,15 +382,15 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S05: Visualizador Impress.js (MVP)
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T014 | Crear \`docs/assets/js/teatro.js\` con navegación básica | ⏳ |
-| T015 | Crear \`docs/assets/css/teatro.css\` con estilos de anillos | ⏳ |
-| T016 | Implementar slider de anillos (JavaScript vanilla) | ⏳ |
-| T017 | Implementar árbol-índice lateral (HTML + CSS) | ⏳ |
-| T018 | Documentar limitaciones MVP vs aspiración Angular | ⏳ |
+| T014 | Crear `docs/assets/js/teatro.js` con navegación básica | ✅ |
+| T015 | Crear `docs/assets/css/teatro.css` con estilos de anillos | ✅ |
+| T016 | Implementar slider de anillos (JavaScript vanilla) | ✅ |
+| T017 | Implementar árbol-índice lateral (HTML + CSS) | ✅ |
+| T018 | Documentar limitaciones MVP vs aspiración Angular | ✅ |
 
 ---
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 18 |
+| Completadas | 23 |
 | En progreso | 4 |
-| Pendientes | 22 |
-| % Avance | 41% |
+| Pendientes | 17 |
+| % Avance | 52% |
 
 ---
 
