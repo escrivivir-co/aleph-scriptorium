@@ -83,6 +83,7 @@ Los plugins extienden las capacidades de Scriptorium sin modificar el core.
 | **GH-Pages** | 1.0.0 | Publicación en GitHub Pages (modos fusionar/reemplazar) |
 | **ARG Board** | 1.0.0 | Motor de juego ARG transmedia (AlephScript 7GL) |
 | **Enciclopedia** | 1.0.0 | Biblioteca de tomos enciclopédicos con búsquedas temporales y temáticas |
+| **Foro Scraper** | 1.0.0 | Scraping de foros con MCP Playwright (pausable/reanudable) |
 
 ### Plugin: GH-Pages
 
@@ -127,3 +128,22 @@ Biblioteca de tomos enciclopédicos con motor de búsqueda temporal y temática.
 - Historia de la Filosofía (Ernesto Castro, 2017-2018)
 
 **Documentación**: [plugins/enciclopedia/docs/](plugins/enciclopedia/docs/)
+
+### Plugin: Foro Scraper
+
+Scraping de hilos de foros con gestión de estado pausable/reanudable.
+
+**Agentes disponibles**:
+- `ForoScraper`: Gestor de trabajos de scraping
+
+**Foros soportados**:
+- Foro / vBulletin (`showthread.php?t=X&page=N`)
+- phpBB (`viewtopic.php?t=X&start=N`)
+- Discourse (`/t/slug/id/N`)
+
+**Comandos**:
+- Iniciar scraping con URL de muestra
+- Pausar/Reanudar trabajos
+- Ver estado de todos los jobs
+
+**Documentación**: [plugins/foro-scraper/docs/](plugins/foro-scraper/docs/)

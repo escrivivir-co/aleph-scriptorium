@@ -72,6 +72,22 @@ handoffs:
               agent: .github/plugins/gh-pages/agents/ghpages.agent.md
               prompt: Configura el sitio GitHub Pages con la plantilla Jekyll del Scriptorium.
               send: false
+       - label: "[FORO-SCRAPER] Iniciar scraping"
+              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
+              prompt: Inicia un nuevo trabajo de scraping con la URL proporcionada. Extrae patrón, crea carpeta en DISCO/, inicia descarga.
+              send: false
+       - label: "[FORO-SCRAPER] Pausar scraping"
+              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
+              prompt: Pausa el trabajo de scraping activo guardando el estado actual.
+              send: false
+       - label: "[FORO-SCRAPER] Reanudar scraping"
+              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
+              prompt: Reanuda un trabajo de scraping pausado desde la última página descargada.
+              send: false
+       - label: "[FORO-SCRAPER] Ver estado"
+              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
+              prompt: Muestra el estado de todos los trabajos de scraping (activos, pausados, completados).
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 
