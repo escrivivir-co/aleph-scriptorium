@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'es' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.titulo }} | Teatro | {{ site.title }}</title>
+  <meta name="description" content="{{ page.descripcion | strip_html | truncate: 160 }}">
+  
+  <!-- Teatro Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/teatro.css' | relative_url }}">
+  
+  <!-- Impress.js -->
+  <script src="https://cdn.jsdelivr.net/npm/impress.js@2.0.0/js/impress.min.js"></script>
+  
+  {% seo %}
+</head>
+<body class="impress-not-supported">
+  
+  <!-- Fallback para navegadores sin soporte -->
+  <div class="fallback-message">
+    <p>Tu navegador <b>no soporta las características</b> necesarias para esta presentación.</p>
+    <p>Por favor, usa <b>Chrome</b>, <b>Firefox</b> o <b>Safari</b> actualizado.</p>
+  </div>
+
+  <!-- Canvas de Impress.js -->
+  <div id="impress" 
+       data-transition-duration="1000"
+       data-width="1920"
+       data-height="1080"
+       data-max-scale="3"
+       data-min-scale="0.5">
+    
+    <!-- Paso de inicio (Overview) -->
+    <div id="overview" class="step" 
+         data-x="0" 
+         data-y="0" 
+         data-z="3000" 
+         data-scale="10">
+      <h1>{{ page.titulo }}</h1>
+      <blockquote>{{ page.descripcion }}</blockquote>
+      <p><small>Presiona <kbd>Espacio</kbd> o <kbd>→</kbd> para comenzar</small></p>
+    </div>
+
+    {% comment %}
+    Generar pasos desde las escenas definidas en el frontmatter.
+    Cada escena se convierte en un "step" de impress.js.
+    {% endcomment %}
+    
+    {% for escena in page.escenas %}
+    {% assign step_id = escena.id %}
+    {% assign anillo = escena.anillo | default: 1 %}
+    {% assign angulo = step_id | times: 30 %}
+    {% assign radio = 0 %}
+    
+    {% comment %}Calcular radio según anillo{% endcomment %}
+    {% if anillo == 0 %}
+      {% assign radio = 0 %}
+    {% elsif anillo == 1 %}
+      {% assign radio = 1000 %}
+    {% elsif anillo == 2 %}
+      {% assign radio = 2000 %}
+    {% else %}
+      {% assign radio = 3000 %}
+    {% endif %}
+    
+    {% comment %}Calcular posición X,Y con trigonometría{% endcomment %}
+    {% assign angulo_rad = angulo | times: 0.0174533 %}
+    {% assign x = radio | times: 1 %}
+    {% assign y = 0 %}
+    
+    <div id="step-{{ step_id }}" 
+         class="step" 
+         data-x="{{ x }}" 
+         data-y="{{ y }}" 
+         data-z="0"
+         data-rotate-z="{{ angulo }}"
+         data-ring="{{ anillo }}"
+         data-scale="1">
+      
+      <h2>{{ escena.nombre }}</h2>
+      
+      {% if escena.contenido_ref %}
+        {% comment %}Cargar contenido desde archivo markdown{% endcomment %}
+        {% capture contenido_path %}{{ page.taller_path }}/{{ escena.contenido_ref }}{% endcapture %}
+        {% include_relative {{ contenido_path }} %}
+      {% else %}
+        <p>{{ escena.descripcion }}</p>
+      {% endif %}
+      
+      {% if escena.prueba %}
+      <div class="prueba">
+        <h3>🎯 Prueba</h3>
+        <p><strong>Tarea:</strong> {{ escena.prueba.tarea }}</p>
+        <p><strong>Éxito:</strong> {{ escena.prueba.exito }}</p>
+      </div>
+      {% endif %}
+      
+      <div class="meta">
+        <span class="badge">Anillo {{ anillo }}</span>
+        <span class="badge">{{ escena.tipo }}</span>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <!-- Paso final -->
+    <div id="step-final" class="step" 
+         data-x="0" 
+         data-y="0" 
+         data-z="1000" 
+         data-scale="5">
+      <h1>Fin</h1>
+      <p>Presiona <kbd>O</kbd> para volver al resumen general.</p>
+      <p><a href="{{ '/teatro' | relative_url }}">← Volver a la cartelera</a></p>
+    </div>
+  </div>
+
+  <!-- UI de controles -->
+  <div id="theater-ui">
+    <label for="ring-slider">Anillo:</label>
+    <input type="range" id="ring-slider" min="0" max="3" value="0" step="1">
+    <span id="ring-label">0</span>
+  </div>
+
+  <!-- Índice lateral (árbol de navegación) -->
+  <nav class="theater-index">
+    <h3>Índice</h3>
+    <ul>
+      <li><a href="#overview">🎭 Inicio</a></li>
+      {% for escena in page.escenas %}
+      <li><a href="#step-{{ escena.id }}">{{ escena.id }}. {{ escena.nombre }}</a></li>
+      {% endfor %}
+      <li><a href="#step-final">🎬 Fin</a></li>
+    </ul>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="{{ '/assets/js/teatro.js' | relative_url }}"></script>
+</body>
+</html>

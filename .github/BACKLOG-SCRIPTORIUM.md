@@ -395,14 +395,14 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S06: Generador de Páginas Impress.js
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T019 | Crear template Jekyll para páginas de obra | ⏳ |
-| T020 | Implementar layout de anillos desde YAML | ⏳ |
-| T021 | Generar diapositivas por estadio | ⏳ |
-| T022 | Implementar navegación entre diapositivas | ⏳ |
+| T019 | Crear template Jekyll para páginas de obra | ✅ |
+| T020 | Implementar layout de anillos desde YAML | ✅ |
+| T021 | Generar diapositivas por estadio | ✅ |
+| T022 | Implementar navegación entre diapositivas | ✅ |
 
 ---
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 23 |
+| Completadas | 27 |
 | En progreso | 4 |
-| Pendientes | 17 |
-| % Avance | 52% |
+| Pendientes | 13 |
+| % Avance | 61% |
 
 ---
 
@@ -539,3 +539,5 @@ meta:
 | 2025-12-22 | Instalar plugin Teatro (S01, S02, S03, S04 parcial, S10 parcial) | Aleph |
 | 2025-12-22 | Documentar conceptos clave (BOE, Monomito, Elenco, TALLER) | Aleph |
 | 2025-12-22 | Crear TALLER con plantilla y proyecto hola-mundo formalizado (S11) | Aleph |
+| 2025-12-22 | Implementar visualizador Impress.js MVP (S05) | Aleph |
+| 2025-12-22 | Crear generador de páginas Jekyll para obras (S06) | Aleph |

@@ -24,7 +24,23 @@ description: Teatro Interactivo - Experiencias transmedia guiadas
 
 ## 📋 En Cartel
 
-*No hay obras en cartelera. Las obras instaladas aparecerán aquí.*
+### Hola Mundo
+
+<div class="obra-card">
+
+**Tipo**: Laboratorio  
+**Nivel**: Introductorio  
+**Duración**: 15-30 minutos
+
+> Obra de demostración para el plugin AGENT_CREATOR.
+> Primer despliegue de agente creado como personaje teatral.
+> El Tarotista se presenta y demuestra sus capacidades.
+
+**Personaje guía**: Tarotista (demarcacion-yellowflag)
+
+[▶️ Ver obra](/aleph-scriptorium/teatro/hola-mundo/)
+
+</div>
 
 ---
 
