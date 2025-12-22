@@ -89,14 +89,27 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 │ Verdad       │ Sombras      │ Estructura  │ Límites     │ Registro    │
 └───────────────────────────────────────────────────────────────────┘
         │
-        │ ← extienden capacidades
+        │ ← invocan vía bridges
         ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│                        🔌 PLUGINS (por plugin)                    │
+│                      🔌 PLUGIN BRIDGES (5)                        │
+│           (en .github/agents/, detectables por VS Code)           │
 ├───────────────────────────────────────────────────────────────────┤
-│ ARG-BOARD      │ ENCICLOPEDIA  │ GH-PAGES   │ FORO-SCRAPER │ AGENT-CREATOR │
-│ @arrakis       │ @bibliotecario│ @ghpages   │ @foroscraper │ @agentcreator │
-│ +7 más         │ @hdf-ec       │            │              │               │
+│ @plugin_ox_argboard      │ @plugin_ox_enciclopedia                │
+│ @plugin_ox_ghpages       │ @plugin_ox_foroscraper                 │
+│ @plugin_ox_agentcreator  │                                        │
+└───────────────────────────────────────────────────────────────────┘
+        │
+        │ ← delegan a agentes reales
+        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                    🔌 PLUGIN AGENTS (reales)                      │
+│              (en .github/plugins/{id}/agents/)                    │
+├───────────────────────────────────────────────────────────────────┤
+│ ARG-BOARD (8) │ ENCICLOPEDIA (2) │ GH-PAGES (1) │ FORO-SCRAPER (1)│
+│ Arrakis, BOE  │ Bibliotecario    │ GHPages      │ ForoScraper     │
+│ Decoherence   │ HDF-EC           │              │                 │
+│ +5 más        │                  │              │ AGENT-CREATOR(1)│
 └───────────────────────────────────────────────────────────────────┘
 ```
 
@@ -138,6 +151,16 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 
 Los plugins añaden agentes especializados. Detalle en [Sección 4: Sistema de Plugins](#4-sistema-de-plugins).
 
+> **Plugin Bridges**: VS Code solo detecta agentes en `.github/agents/`. Los plugins usan **agentes bridge** (`plugin_ox_{nombre}`) que delegan a los agentes reales en `.github/plugins/{id}/agents/`.
+
+| Bridge | Plugin | Agentes que expone |
+|--------|--------|--------------------|
+| `@plugin_ox_argboard` | ARG Board | Arrakis, BOE, Decoherence, GitARG, Heroe, ImpressJS, MBox, PlatformCom |
+| `@plugin_ox_enciclopedia` | Enciclopedia | Bibliotecario, HDF-ErnestoCastro |
+| `@plugin_ox_ghpages` | GH-Pages | GHPages |
+| `@plugin_ox_foroscraper` | Foro Scraper | ForoScraper |
+| `@plugin_ox_agentcreator` | Agent Creator | AgentCreator |
+
 #### Otros Artefactos
 
 | Artefacto | Estado | Ruta |
@@ -163,6 +186,7 @@ Los plugins añaden agentes especializados. Detalle en [Sección 4: Sistema de P
 | **SCRIPT-0.8.0** | Plugin Agent Creator | Creación de agentes especializados |
 | **SCRIPT-0.9.0** | Handoffs Extensibles | Patrón `[nombre]` en ARG + Agent Creator |
 | **SCRIPT-0.10.0** | Agente Ox | Oráculo, índice de agentes, documentación |
+| **SCRIPT-0.11.0** | Plugin Bridges | Agentes bridge para detectabilidad VS Code |
 
 Métricas vivas: [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md)
 

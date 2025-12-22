@@ -402,13 +402,13 @@
 ---
 
 ### SCRIPT-0.4.0-S04: Extensiones de capacidad
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T078 | Crear prompt `orangeflag-dialectico.prompt.md` (modo examen) | ⏳ |
-| T079 | Crear prompt `orangeflag-retorico.prompt.md` (modo persuasión) | ⏳ |
-| T080 | Crear `instructions/orangeflag.instructions.md` | ⏳ |
+| T078 | Crear prompt `orangeflag-dialectico.prompt.md` (modo examen) | ✅ |
+| T079 | Crear prompt `orangeflag-retorico.prompt.md` (modo persuasión) | ✅ |
+| T080 | Crear `instructions/orangeflag.instructions.md` | ✅ |
 
 ---
 
@@ -417,10 +417,10 @@
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 14 |
-| Completadas | 11 |
+| Completadas | 14 |
 | En progreso | 0 |
-| Pendientes | 3 |
-| % Avance | 79% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
@@ -988,18 +988,18 @@
 ---
 
 ### SCRIPT-0.10.0-S02: Prompts de Documentación
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T191 | Crear `prompts/ox-generar-readme.prompt.md` | ⏳ |
-| T192 | Crear `prompts/ox-generar-manual.prompt.md` | ⏳ |
-| T193 | Crear `prompts/ox-diagnostico-agentes.prompt.md` | ⏳ |
+| T191 | Crear `prompts/ox-generar-readme.prompt.md` | ✅ |
+| T192 | Crear `prompts/ox-generar-manual.prompt.md` | ✅ |
+| T193 | Crear `prompts/ox-diagnostico-agentes.prompt.md` | ✅ |
 
 ---
 
 ### SCRIPT-0.10.0-S03: Refactorización README.md
-**Estado**: 🔄 En progreso
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
@@ -1016,19 +1016,19 @@
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T198 | Refactorizar `copilot-instructions.md` con taxonomía Ox | ✅ |
-| T199 | Crear `instructions/ox-ontologia.instructions.md` | ⏳ |
+| T199 | Crear `instructions/ox-ontologia.instructions.md` | ✅ |
 | T200 | Añadir handoff de Ox a `aleph.agent.md` | ✅ |
 
 ---
 
 ### SCRIPT-0.10.0-S05: Integración y Validación
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T201 | Test: generar README desde Ox y comparar | ⏳ |
-| T202 | Test: generar manual de usuario desde Ox | ⏳ |
-| T203 | Documentar flujo de actualización de agentes | ⏳ |
+| T201 | Test: generar README desde Ox y comparar | ✅ |
+| T202 | Test: generar manual de usuario desde Ox | ✅ |
+| T203 | Documentar flujo de actualización de agentes | ✅ |
 
 ---
 
@@ -1037,10 +1037,10 @@
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 16 |
-| Completadas | 9 |
+| Completadas | 16 |
 | En progreso | 0 |
-| Pendientes | 7 |
-| % Avance | 56% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
@@ -1267,13 +1267,13 @@ El agente interpreta `[nombre]` como variable que el usuario proporciona:
 ---
 
 ### SCRIPT-0.11.0-S02: Actualizar Plugin Manager
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T207 | Añadir paso "Crear bridge agent" al flujo de instalación | ⏳ |
-| T208 | Añadir handoff "Crear bridge para plugin [id]" | ⏳ |
-| T209 | Añadir handoff "Listar bridges existentes" | ⏳ |
+| T207 | Añadir paso "Crear bridge agent" al flujo de instalación | ✅ |
+| T208 | Añadir handoff "Crear bridge para plugin [id]" | ✅ |
+| T209 | Añadir handoff "Listar bridges existentes" | ✅ |
 
 ---
 
@@ -1315,14 +1315,14 @@ El agente interpreta `[nombre]` como variable que el usuario proporciona:
 ---
 
 ### SCRIPT-0.11.0-S06: Documentación y Validación
-**Estado**: 🔄 En progreso
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T223 | Actualizar README.md con sección Plugin Bridges | ⏳ |
-| T224 | Actualizar copilot-instructions.md con bridges | ⏳ |
+| T223 | Actualizar README.md con sección Plugin Bridges | ✅ |
+| T224 | Actualizar copilot-instructions.md con bridges | ✅ |
 | T225 | Verificar que VS Code reconoce todos los bridges | ✅ |
-| T226 | Test: handoff desde Aleph → bridge → plugin agent | ⏳ |
+| T226 | Test: handoff desde Aleph → bridge → plugin agent | ✅ |
 
 ---
 
@@ -1331,10 +1331,10 @@ El agente interpreta `[nombre]` como variable que el usuario proporciona:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 23 |
-| Completadas | 17 |
-| En progreso | 1 |
-| Pendientes | 5 |
-| % Avance | 74% |
+| Completadas | 23 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 

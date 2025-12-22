@@ -25,6 +25,14 @@ handoffs:
     agent: PluginManager
     prompt: "Elimina completamente un plugin del sistema, verificando dependencias."
     send: false
+  - label: Crear bridge agent para plugin
+    agent: PluginManager
+    prompt: "Crea un agente bridge (plugin_ox_{id}) en .github/agents/ que conecta VS Code con los agentes del plugin."
+    send: false
+  - label: Listar bridges instalados
+    agent: PluginManager
+    prompt: "Lista todos los agentes bridge de plugins instalados (plugin_ox_*)."
+    send: false
 ---
 
 # Agente: Plugin Manager
@@ -98,18 +106,37 @@ cp -r /ruta/plugin/  .github/plugins/{id}/
 }
 ```
 
-### 6. Integrar Handoffs
+### 6. Crear Bridge Agent
 
-Añadir al agente Aleph:
+> **Nuevo paso (SCRIPT-0.11.0)**: VS Code solo carga agentes desde `.github/agents/`.
+
+Crear `.github/agents/plugin_ox_{id}.agent.md`:
+
+```yaml
+---
+name: plugin_ox_{id}
+description: "Bridge: conecta VS Code con agentes de {nombre}."
+handoffs:
+  - label: Invocar {Agente1}
+    agent: .github/plugins/{id}/agents/{agente1}.agent.md
+    prompt: {descripción}
+    send: false
+  # ... un handoff por cada agente del plugin
+---
+```
+
+### 7. Integrar Handoffs en Aleph
+
+Añadir al agente Aleph (apuntando al bridge):
 
 ```yaml
 handoffs:
-  - label: "[{ID}] {label}"
-    agent: {AgentName}
-    prompt: {prompt}
+  - label: "[{ID}] Acceder plugin"
+    agent: plugin_ox_{id}
+    prompt: "Accede al plugin {nombre} a través de su bridge."
 ```
 
-### 7. Generar Commit
+### 8. Generar Commit
 
 ```
 feat(script/plugins): instalar plugin "{name}" v{version}
@@ -140,7 +167,9 @@ refs #SCRIPT-0.1.0-Txx
 |---------|-----------|
 | `.github/plugins/registry.json` | CRUD |
 | `.github/plugins/{id}/` | Crear/Eliminar |
-| `.github/agents/aleph.agent.md` | Modificar handoffs |
+| `.github/agents/plugin_ox_{id}.agent.md` | Crear bridge |
+| `.github/agents/aleph.agent.md` | Modificar handoffs (apuntar a bridge) |
+| `.github/agents/ox.agent.md` | Actualizar índice de bridges |
 | `.github/copilot-instructions.md` | Actualizar índice |
 
 ---
@@ -193,8 +222,10 @@ PluginManager:
 2. ✅ Scriptorium >=0.0.1 compatible
 3. ✅ Sin dependencias
 4. ✅ Copiado a .github/plugins/arg-board/
-5. ✅ Registry actualizado (8 agentes, 67 prompts)
-6. ✅ Handoffs integrados en Aleph
+5. ✅ Bridge creado: plugin_ox_argboard.agent.md
+6. ✅ Registry actualizado (8 agentes, 67 prompts)
+7. ✅ Handoffs integrados en Aleph (vía bridge)
+8. ✅ Índice de Ox actualizado
 
 Commit sugerido:
 feat(script/plugins): instalar plugin "Tablero ARG" v1.0.0
