@@ -1,7 +1,49 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-21T12:00:00Z",
+  "last_updated": "2025-12-22T12:00:00Z",
   "plugins": {
+    "foro-scraper": {
+      "name": "Web Scraper (Foros y Blogs)",
+      "version": "1.1.0",
+      "description": "Plugin de scraping de foros y blogs con gestión de estado pausable/reanudable usando MCP Playwright",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-22T10:00:00Z",
+      "updated_at": "2025-12-22T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 6,
+      "data_directory": "ARCHIVO/PLUGINS/FORO_SCRAPER/",
+      "handoffs": [
+        {
+          "label": "Iniciar scraping de foro",
+          "agent": "ForoScraper"
+        },
+        {
+          "label": "Iniciar scraping de blog",
+          "agent": "ForoScraper"
+        },
+        {
+          "label": "Pausar scraping",
+          "agent": "ForoScraper"
+        },
+        {
+          "label": "Reanudar scraping",
+          "agent": "ForoScraper"
+        },
+        {
+          "label": "Ver estado del scraping",
+          "agent": "ForoScraper"
+        },
+        {
+          "label": "Descargar entradas de blog",
+          "agent": "ForoScraper"
+        }
+      ],
+      "supported_sources": {
+        "forums": ["vBulletin", "phpBB", "Discourse", "SMF"],
+        "blogs": ["WordPress", "Blogger", "Medium", "Ghost", "Substack", "Hugo/Jekyll"]
+      }
+    },
     "gh-pages": {
       "name": "Website Publisher (GitHub Pages)",
       "version": "1.0.0",

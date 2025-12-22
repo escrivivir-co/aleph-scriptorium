@@ -12,6 +12,18 @@ handoffs:
               agent: Periodico
               prompt: Genera la plana final en NOTICIAS/. Usa el prompt periodico-publicar para sintetizar la conversación en formato publicable.
               send: false
+       - label: Scraping de blog como fuente
+              agent: ForoScraper
+              prompt: Descarga entradas de un blog para usar como fuente de noticias. Navega a la portada, indexa entradas, y descarga las relevantes.
+              send: false
+       - label: Scraping de foro como fuente
+              agent: ForoScraper
+              prompt: Descarga un hilo de foro para usar como fuente de noticias. Extrae el patrón y descarga páginas secuencialmente.
+              send: false
+       - label: Crear noticia desde scraping
+              agent: Periodico
+              prompt: Procesa una carpeta de scraping (DISCO/{fecha}_{tema}_{titulo}/) como fuente para generar una noticia con el método 5W + Banderas.
+              send: false
        - label: Invocar Blueflag
               agent: Blueflag
               prompt: Audita la noticia con tests de verdad, evidencia y contradicciones normativas.
