@@ -88,6 +88,22 @@ handoffs:
               agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
               prompt: Muestra el estado de todos los trabajos de scraping (activos, pausados, completados).
               send: false
+       - label: "[AGENT-CREATOR] Crear agente especializado"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: Crea un nuevo agente combinando agentes base (yellowflag, blueflag, etc.) con fuentes de datos de DISCO/ARCHIVO.
+              send: false
+       - label: "[AGENT-CREATOR] Editar agente"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: Modifica un agente creado añadiendo fuentes o actualizando conocimiento.
+              send: false
+       - label: "[AGENT-CREATOR] Fusionar agentes"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: Combina las capacidades de múltiples agentes en uno nuevo especializado.
+              send: false
+       - label: "[DEMARCACION] Auditar demarcación científica"
+              agent: ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/demarcacion-yellowflag.agent.md
+              prompt: Audita propuestas desde la perspectiva del criterio de demarcación científica (Popper/Kuhn/Feyerabend) + cuadrantes de Wilber.
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 

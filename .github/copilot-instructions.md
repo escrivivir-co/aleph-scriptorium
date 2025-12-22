@@ -147,3 +147,21 @@ Scraping de hilos de foros con gestión de estado pausable/reanudable.
 - Ver estado de todos los jobs
 
 **Documentación**: [plugins/foro-scraper/docs/](plugins/foro-scraper/docs/)
+
+### Plugin: Agent Creator
+
+Creador de agentes especializados combinando agentes base con fuentes de datos.
+
+**Agentes disponibles**:
+- `AgentCreator`: Orquestador de creación de agentes
+
+**Agentes creados**:
+- `demarcacion-yellowflag`: Yellowflag + criterio de demarcación científica (Foro_t8941392)
+
+**Capacidades**:
+- Crear agentes combinando base + fuentes
+- Editar agentes añadiendo conocimiento
+- Fusionar múltiples agentes
+- Conectar con FORO_SCRAPER para más datos
+
+**Documentación**: [plugins/agent-creator/docs/](plugins/agent-creator/docs/)

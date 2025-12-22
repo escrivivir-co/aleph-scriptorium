@@ -1,0 +1,64 @@
+{
+  "name": "demarcacion-yellowflag",
+  "version": "1.1.0",
+  "created_at": "2025-12-22T12:00:00Z",
+  "updated_at": "2025-12-22T15:00:00Z",
+  "created_by": "AgentCreator",
+  "agentes_base": [
+    {
+      "id": "yellowflag",
+      "file": ".github/agents/yellowflag.agent.md",
+      "elementos_heredados": [
+        "cuadrantes_wilber",
+        "pre_trans_falacia",
+        "condiciones_vs_contenido",
+        "gnosis_como_luz"
+      ]
+    }
+  ],
+  "fuentes_datos": [
+    {
+      "ruta": "DISCO/Foro_t8941392/",
+      "tipo": "scraping",
+      "job_id": "Foro-t8941392",
+      "paginas_usadas": [1],
+      "paginas_disponibles": 51,
+      "conceptos_extraidos": [
+        "criterio_demarcacion",
+        "falsificabilidad_popper",
+        "paradigmas_kuhn",
+        "sincronicidades_pauli_jung",
+        "tarot_marsella"
+      ]
+    }
+  ],
+  "especialidad": "Criterio de demarcación científica y límites del conocimiento",
+  "tests_especificos": [
+    "cientificismo",
+    "falsificabilidad_espuria",
+    "paradigma_oculto",
+    "programa_degenerativo",
+    "sincronicidad_descartada",
+    "cuadrante_ignorado"
+  ],
+  "handoffs_añadidos": [
+    "solicitar_mas_paginas_foro"
+  ],
+  "arg_deployment": {
+    "deployed": true,
+    "deployed_at": "2025-12-22T15:00:00Z",
+    "target_plugin": "arg-board",
+    "obra": {
+      "id": "hola_mundo",
+      "titulo": "Hola Mundo",
+      "tipo": "laboratorio"
+    },
+    "personaje": {
+      "id": "tarotista",
+      "nombre": "Tarotista",
+      "arquetipo": "SHAPESHIFTER",
+      "rol": "Oráculo epistémico"
+    },
+    "trazabilidad": "FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD"
+  }
+}

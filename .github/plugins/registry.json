@@ -1,7 +1,53 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-22T12:00:00Z",
+  "last_updated": "2025-12-22T14:00:00Z",
   "plugins": {
+    "agent-creator": {
+      "name": "Creador de Agentes Especializados",
+      "version": "1.1.0",
+      "description": "Plugin para crear, editar e instalar agentes personalizados combinando agentes base con fuentes de datos del ARCHIVO/DISCO. Integración con ARG_BOARD para despliegue como personajes.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-22T14:00:00Z",
+      "updated_at": "2025-12-22T15:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "data_directory": "ARCHIVO/PLUGINS/AGENT_CREATOR/",
+      "optional_dependencies": ["arg-board", "foro-scraper"],
+      "handoffs": [
+        {
+          "label": "Crear nuevo agente especializado",
+          "agent": "AgentCreator"
+        },
+        {
+          "label": "Editar agente existente",
+          "agent": "AgentCreator"
+        },
+        {
+          "label": "Fusionar agentes",
+          "agent": "AgentCreator"
+        },
+        {
+          "label": "Conectar fuente de datos",
+          "agent": "AgentCreator"
+        },
+        {
+          "label": "Desplegar en Teatro ARG",
+          "agent": "AgentCreator"
+        }
+      ],
+      "agents_created": [
+        {
+          "name": "demarcacion-yellowflag",
+          "base": ["yellowflag"],
+          "source": "DISCO/Foro_t8941392/",
+          "arg_deployment": {
+            "obra": "hola_mundo",
+            "personaje": "tarotista"
+          }
+        }
+      ]
+    },
     "foro-scraper": {
       "name": "Web Scraper (Foros y Blogs)",
       "version": "1.1.0",

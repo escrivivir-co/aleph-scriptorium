@@ -725,6 +725,128 @@
 
 ---
 
+# Épica: SCRIPT-0.8.0 — Plugin Agent Creator
+
+**Objetivo**: Implementar plugin para crear agentes especializados combinando agentes base del Scriptorium con fuentes de datos de DISCO/ARCHIVO.
+
+**Caso de uso inicial**: Crear `@demarcacion-yellowflag` a partir de `@yellowflag` + `DISCO/Foro_t8941392/` (criterio de demarcación científica).
+
+**Entregables**:
+- Plugin agent-creator con manifest, agente, prompts e instrucciones
+- Agente AgentCreator (orquestador)
+- Primer agente creado: demarcacion-yellowflag
+- Integración con plugin FORO_SCRAPER para solicitar más datos
+- Documentación y recetas reproducibles
+
+---
+
+## Stories
+
+### SCRIPT-0.8.0-S01: Estructura del Plugin
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T143 | Crear carpeta `.github/plugins/agent-creator/` | ✅ |
+| T144 | Crear `manifest.md` con metadatos y handoffs | ✅ |
+| T145 | Crear subcarpetas (agents, prompts, instructions, docs) | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S02: Agente AgentCreator
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T146 | Crear `agents/agent-creator.agent.md` | ✅ |
+| T147 | Definir proceso de creación de agentes | ✅ |
+| T148 | Implementar handoffs a ForoScraper | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S03: Prompts de Operación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T149 | Crear `prompts/crear-agente.prompt.md` | ✅ |
+| T150 | Crear `prompts/editar-agente.prompt.md` | ✅ |
+| T151 | Crear `prompts/fusionar-agentes.prompt.md` | ✅ |
+| T152 | Crear `prompts/conectar-fuente.prompt.md` | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S04: Instrucciones y Documentación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T153 | Crear `instructions/agent-creator.instructions.md` | ✅ |
+| T154 | Crear `docs/README.md` con guía de uso | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S05: Datos e Integración
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T155 | Crear `ARCHIVO/PLUGINS/AGENT_CREATOR/` con README | ✅ |
+| T156 | Crear estructura agents/created/, recipes/, logs/ | ✅ |
+| T157 | Actualizar `registry.json` con plugin | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S06: Primer Agente Creado
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T158 | Analizar yellowflag.agent.md (agente base) | ✅ |
+| T159 | Analizar DISCO/Foro_t8941392/ (fuente de datos) | ✅ |
+| T160 | Crear `demarcacion-yellowflag.agent.md` | ✅ |
+| T161 | Crear receta `demarcacion-yellowflag.recipe.json` | ✅ |
+| T162 | Registrar en `creation-log.json` | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S07: Integración con Aleph
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T163 | Añadir handoffs de AgentCreator a `aleph.agent.md` | ✅ |
+| T164 | Actualizar `copilot-instructions.md` con Agent Creator | ✅ |
+| T165 | Actualizar README.md principal con documentación | ✅ |
+
+---
+
+### SCRIPT-0.8.0-S08: Integración con ARG_BOARD
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T166 | Añadir dependencia opcional con ARG_BOARD en manifest | ✅ |
+| T167 | Crear prompt `desplegar-en-arg.prompt.md` | ✅ |
+| T168 | Actualizar AgentCreator con handoff a ARG_BOARD | ✅ |
+| T169 | Crear obra demo "Hola Mundo" con personaje Tarotista | ✅ |
+| T170 | Registrar personaje en actores.json del teatro | ✅ |
+| T171 | Actualizar creation-log con trazabilidad a ARG | ✅ |
+
+---
+
+## Métricas Sprint 0.8
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 29 |
+| Completadas | 29 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
 ## Especificación Técnica
 
 ### Esquema de Estado (`state.json`)
@@ -809,3 +931,5 @@
 | 2025-12-21 | Completar plugin GH-Pages con Jekyll template | Aleph |
 | 2025-12-22 | Añadir Épica SCRIPT-0.6.0 — Plugin Foro Scraper | Aleph |
 | 2025-12-22 | Añadir Épica SCRIPT-0.7.0 — Extensión Blogs + Integración Periódico | Aleph |
+| 2025-12-22 | Añadir Épica SCRIPT-0.8.0 — Plugin Agent Creator | Aleph |
+| 2025-12-22 | Crear agente demarcacion-yellowflag (Foro_t8941392) | AgentCreator |

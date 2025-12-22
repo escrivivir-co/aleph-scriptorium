@@ -59,5 +59,31 @@
     "plataformas": ["vscode", "github"],
     "monomito": null,
     "delegaciones": ["BOE", "Decoherence", "GitARG"]
+  },
+  "tarotista": {
+    "nombre": "Tarotista",
+    "tipo": "personaje",
+    "arquetipo": "SHAPESHIFTER",
+    "descripcion": "Auditor de demarcación científica que usa metáforas del tarot para evaluar propuestas. Integra criterios de Popper, Kuhn, Feyerabend y los cuadrantes de Wilber.",
+    "rol": "Oráculo epistémico",
+    "plataformas": ["vscode", "email"],
+    "monomito": "hola_mundo",
+    "origen": {
+      "plugin": "agent-creator",
+      "agente_base": "yellowflag",
+      "fuente_datos": "DISCO/Foro_t8941392/",
+      "agente_creado": "demarcacion-yellowflag",
+      "ruta_agente": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/demarcacion-yellowflag.agent.md"
+    },
+    "capacidades": [
+      "Auditar demarcación científica vs pseudociencia",
+      "Evaluar propuestas con cuadrantes de Wilber",
+      "Detectar confusión entre condiciones y contenido",
+      "Tiradas de tarot epistemológico"
+    ],
+    "cartas_tarot": {
+      "arcanos_mayores": ["El Loco (Feyerabend)", "El Mago (Popper)", "La Sacerdotisa (Kuhn)", "El Emperador (Wilber)"],
+      "arcanos_menores": ["Copas (Sentido)", "Bastos (Acción)", "Espadas (Verdad)", "Oros (Materia)"]
+    }
   }
 }

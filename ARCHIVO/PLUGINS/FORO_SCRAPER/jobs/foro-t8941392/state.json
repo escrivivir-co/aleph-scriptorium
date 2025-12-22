@@ -1,0 +1,27 @@
+{
+  "job_id": "Foro-t8941392",
+  "status": "running",
+  "created_at": "2025-12-22T10:00:00Z",
+  "url_pattern": {
+    "type": "vbulletin",
+    "base": "https://Foro.com/foro/showthread.php",
+    "thread_param": "t",
+    "thread_id": "8941392",
+    "page_param": "page"
+  },
+  "progress": {
+    "current_page": 1,
+    "total_pages": 51,
+    "pages_downloaded": [1],
+    "last_updated": "2025-12-22T10:35:00Z"
+  },
+  "output": {
+    "directory": "ARCHIVO/DISCO/Foro_t8941392/",
+    "format": "md"
+  },
+  "config": {
+    "delay_ms": 2000,
+    "max_pages": 10
+  },
+  "errors": []
+}
