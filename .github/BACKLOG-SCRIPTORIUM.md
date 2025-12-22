@@ -939,6 +939,9 @@
 | 2025-12-22 | Crear ox.agent.md con índice maestro de agentes | Ox |
 | 2025-12-22 | Refactorizar README.md con taxonomía unificada de agentes | Ox |
 | 2025-12-22 | Añadir Épica SCRIPT-0.11.0 — Plugin Bridge Agents | Ox |
+| 2025-12-22 | Añadir Épica SCRIPT-0.12.0 — Página Promocional de Agentes | Aleph |
+| 2025-12-22 | Crear agentes.md con showcase "Del Clippy al Colectivo" | Aleph |
+| 2025-12-22 | Añadir Épica SCRIPT-0.11.0 — Plugin Bridge Agents | Ox |
 
 ---
 
@@ -1434,3 +1437,96 @@ Ver: `.github/plugins/{id}/manifest.md`
 │ AGENT-CREATOR: AgentCreator                                       │
 └───────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+# Épica: SCRIPT-0.12.0 — Página Promocional de Agentes
+
+**Objetivo**: Crear página showcase "Del Clippy al Colectivo" para promocionar la taxonomía de agentes del Scriptorium en el sitio web.
+
+**Concepto creativo**: Evolución del asistente de Word (Clippy, 1997) hacia un colectivo de agentes inteligentes coordinados por Ox. El paradigma del procesador de textos (Word/Office) da paso al VibeCoding + AI Agents.
+
+**Metáfora central**: "¿Recuerdas al asistente que preguntaba '¿Parece que estás escribiendo una carta?' Ahora escriben ellos."
+
+**Entregables**:
+- Página Jekyll `agentes.md` con diseño promocional dark
+- SVGs inline para avatares de 15+ agentes
+- CSS custom con animaciones y hover effects
+- Integración en navegación del sitio
+- Timeline evolutivo (Clippy → GPT → Copilot → Scriptorium)
+
+---
+
+## Stories
+
+### SCRIPT-0.12.0-S01: Diseño y Contenido
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T227 | Diseñar concepto creativo "Del Clippy al Colectivo" | ✅ |
+| T228 | Crear página `agentes.md` con estructura completa | ✅ |
+| T229 | Diseñar SVGs para avatares de agentes (15+) | ✅ |
+| T230 | Implementar CSS custom (cards, animaciones, responsive) | ✅ |
+
+---
+
+### SCRIPT-0.12.0-S02: Integración
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T231 | Añadir enlace en _config.yml (navegación) | ✅ |
+| T232 | Verificar responsive en móvil | ✅ |
+| T233 | Test de accesibilidad básico | ✅ |
+
+---
+
+### SCRIPT-0.12.0-S03: Publicación
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T234 | Deploy a GitHub Pages | ⏳ |
+| T235 | Verificar URL /agentes/ funciona | ⏳ |
+| T236 | Actualizar backlog con épica completada | ⏳ |
+
+---
+
+## Métricas Sprint 0.12
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 10 |
+| Completadas | 7 |
+| En progreso | 0 |
+| Pendientes | 3 |
+| % Avance | 70% |
+
+---
+
+## Especificación Técnica
+
+### Taxonomía de Agentes Presentada
+
+| Capa | Color | Agentes | Cards |
+|------|-------|---------|-------|
+| 🟢 UI | Verde | @aleph, @revisor, @periodico | 3 |
+| 🏴 Backend | Multi | @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag | 5 |
+| ⚪ Sistema | Gris | @vestibulo, @cartaspuerta | 2 |
+| ⚙️ Meta | Cyan | @ox, @pluginmanager | 2 |
+| 🔌 Plugins | Púrpura | ARG Board (8), Enciclopedia (2), GH-Pages (1), Foro Scraper (1), Agent Creator (1) | 5 |
+
+### Timeline de Evolución
+
+```
+1997 📎 Clippy → 2020 🤖 GPT-3 → 2023 💬 Copilot → 2025 🐂 Scriptorium
+```
+
+### Archivos Creados/Modificados
+
+| Archivo | Acción |
+|---------|--------|
+| `.github/plugins/gh-pages/meta/jekyll-template/agentes.md` | Crear |
+| `.github/plugins/gh-pages/meta/jekyll-template/_config.yml` | Editar (nav) |
+| `.github/BACKLOG-SCRIPTORIUM.md` | Editar (épica) |

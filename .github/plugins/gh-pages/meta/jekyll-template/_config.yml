@@ -57,6 +57,8 @@ plugins:
 navigation:
   - title: Inicio
     url: /
+  - title: Agentes
+    url: /agentes/
   - title: Noticias
     url: /noticias/
   - title: Fundación
