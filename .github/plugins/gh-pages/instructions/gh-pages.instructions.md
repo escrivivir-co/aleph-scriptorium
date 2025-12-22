@@ -331,6 +331,155 @@ git push origin main
 
 ---
 
+## Sistema de Diseño CSS
+
+> **Fuente de verdad**: `docs/assets/css/main.css`
+
+El sitio usa un sistema de diseño modular con variables CSS y clases prefijadas por contexto.
+
+### Variables CSS (paleta global)
+
+```css
+:root {
+  /* Base */
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --accent: #1a1a1a;
+  --muted: #666666;
+  --border: #e5e5e5;
+  
+  /* Banderas */
+  --blue: #2563eb;
+  --red: #dc2626;
+  --yellow: #ca8a04;
+  --orange: #ea580c;
+  --black: #1a1a1a;
+  --green: #22c55e;
+  
+  /* Promocionales (dark theme) */
+  --promo-bg: #0d1117;
+  --promo-fg: #e6edf3;
+  --promo-card-bg: rgba(255, 255, 255, 0.03);
+  --promo-card-border: rgba(255, 255, 255, 0.08);
+  --promo-muted: rgba(255, 255, 255, 0.6);
+  --promo-accent: #00d4ff;
+}
+```
+
+### Arquitectura de clases prefijadas
+
+El sistema usa **prefijos por página** para evitar colisiones:
+
+| Página | Prefijo | Tema | Ejemplo |
+|--------|---------|------|---------|
+| `index.md` | `.home-*` | Light | `.home-hero`, `.home-product-card` |
+| `agentes.md` | `.agentes-*` | Dark | `.agentes-hero`, `.agentes-card` |
+| `fundacion.md` | `.fundacion-*` | Dark | `.fundacion-hero`, `.fundacion-timeline` |
+| `periodico.md` | `.periodico-*` | Dark (hacker) | `.periodico-article`, `.periodico-flag` |
+| `leeme.md` | `.leeme-*` | Light | `.leeme-section`, `.leeme-card` |
+| `roadmap.md` | `.roadmap-*` | Light | `.roadmap-badge`, `.roadmap-section` |
+| `archivo.md` | `.archivo-*` | Light | `.archivo-section`, `.archivo-card` |
+| `acerca.md` | `.acerca-*` | Light | `.acerca-card`, `.acerca-section` |
+
+### Clases base compartidas
+
+```css
+/* Páginas promocionales (dark) */
+.promo-page {
+  background: var(--promo-bg);
+  color: var(--promo-fg);
+}
+
+/* Cards reutilizables */
+.promo-card {
+  background: var(--promo-card-bg);
+  border: 1px solid var(--promo-card-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+/* Grids responsivos */
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+```
+
+### Cómo crear una nueva página
+
+1. **Elegir tema**: Light (fondo blanco) o Dark (promo-bg)
+2. **Definir prefijo**: `{nombre-pagina}-*`
+3. **Estructura mínima**:
+
+```markdown
+---
+layout: page
+title: Mi Página
+permalink: /mi-pagina/
+---
+
+<style>
+.mi-pagina-page { /* wrapper */ }
+.mi-pagina-section { /* secciones */ }
+.mi-pagina-card { /* tarjetas */ }
+</style>
+
+<div class="mi-pagina-page">
+  <div class="mi-pagina-section">
+    <!-- contenido -->
+  </div>
+</div>
+```
+
+4. **Para tema dark, añadir**:
+
+```css
+.mi-pagina-page {
+  background: var(--promo-bg);
+  color: var(--promo-fg);
+}
+```
+
+### Estilos para código en citas
+
+Para evitar ilegibilidad de código inline dentro de citas:
+
+```css
+blockquote code {
+  background: rgba(0, 0, 0, 0.1);
+  color: inherit;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+/* En tema dark */
+.promo-page blockquote code {
+  background: rgba(255, 255, 255, 0.1);
+}
+```
+
+### Reglas de legibilidad
+
+1. **Contraste mínimo**: 4.5:1 para texto normal, 3:1 para texto grande
+2. **Código en citas**: siempre con fondo diferenciado
+3. **Enlaces**: usar `--accent` o colores de bandera, nunca gris puro
+4. **Texto secundario**: `--muted` (no más claro que #666 en light, #999 en dark)
+
+### Migración de estilos embebidos
+
+> **Deuda técnica**: Algunas páginas (acerca, leeme, roadmap, archivo) tienen `<style>` embebido. 
+> Plan para Sprint 1: extraer a main.css con sus prefijos correspondientes.
+
+**Patrón de extracción**:
+1. Copiar bloque `<style>` de la página
+2. Añadir al final de `main.css` con comentario de sección
+3. Verificar que no hay colisiones de nombres
+4. Eliminar `<style>` embebido de la página
+5. Testear responsive
+
+---
+
 ## Referencias
 
 - [Documentación del plugin](../docs/README.md)

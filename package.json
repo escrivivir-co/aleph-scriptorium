@@ -1,6 +1,6 @@
 {
   "name": "aleph-scriptorium",
-  "version": "0.0.0",
+  "version": "1.0.0-beta.1",
   "description": "Sistema de escritura asistida por IA para proyectos de largo aliento: libros, ensayos serializados, investigaciones extensas.",
   "keywords": [
     "escritura",
@@ -35,7 +35,7 @@
     }
   ],
   "scripts": {
-    "status": "echo '📊 Sprint 0 (Bootstrap) | Scriptorium: 73% | Fundación: 77%'",
+    "status": "echo '📊 Sprint 0 (Bootstrap) CERRADO | Scriptorium: 87% | Fundación: 85% | v1.0.0-beta.1'",
     "lint:md": "markdownlint '**/*.md' --ignore node_modules",
     "lint:links": "markdown-link-check ./README.md",
     "pdf:extract": "python3 -c \"import fitz; print('PyMuPDF ready')\" || pip3 install pymupdf",
@@ -59,17 +59,23 @@
   },
   "config": {
     "sprint": 0,
-    "iteration": "0.0.1",
+    "sprintStatus": "closed",
+    "iteration": "1.0.0-beta.1",
+    "closedAt": "2025-12-22",
     "opportunities": {
       "scriptorium": {
-        "version": "0.0.1",
-        "progress": 73,
-        "scope": ".github/"
+        "version": "1.0.0-beta.1",
+        "progress": 87,
+        "scope": ".github/",
+        "epicasCompletadas": 17,
+        "epicasPendientes": 4
       },
       "fundacion": {
         "version": "0.0.1",
-        "progress": 77,
-        "scope": "ARCHIVO/, PROYECTOS/"
+        "progress": 85,
+        "scope": "ARCHIVO/, PROYECTOS/",
+        "storiesCompletadas": 5,
+        "storiesPendientes": 2
       }
     },
     "plan2026": {

@@ -1,8 +1,61 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 0.0.1  
-> **Sprint actual**: 0 (Bootstrap)
+> **Versión**: 1.0.0-beta.1  
+> **Sprint actual**: 0 (Bootstrap) — **CERRADO**  
+> **Fecha cierre**: 2025-12-22
+
+---
+
+## 🎉 Resumen de Cierre Sprint 0
+
+### Métricas Finales
+
+| Métrica | Valor |
+|---------|-------|
+| Épicas completadas | 19/21 |
+| Tareas totales | ~336/380 |
+| % Avance global | 88% |
+| Agentes creados | 17 |
+| Plugin bridges | 5 |
+| Plugins instalados | 5 |
+| Páginas web | 9 |
+
+### Épicas 100% Completadas
+
+- ✅ SCRIPT-0.0.1: Kit Mínimo del Scriptorium
+- ✅ SCRIPT-0.1.0: Sistema de Plugins
+- ✅ SCRIPT-0.2.0: Agente Yellowflag
+- ✅ SCRIPT-0.3.0: Plugin Enciclopedia
+- ✅ SCRIPT-0.4.0: Agente Orangeflag
+- ✅ SCRIPT-0.5.0: Plugin GH-Pages
+- ✅ SCRIPT-0.6.0: Plugin Foro Scraper
+- ✅ SCRIPT-0.7.0: Extensión Blogs
+- ✅ SCRIPT-0.8.0: Plugin Agent Creator
+- ✅ SCRIPT-0.9.0: Handoffs Extensibles
+- ✅ SCRIPT-0.10.0: Agente Oráculo (Ox)
+- ✅ SCRIPT-0.11.0: Plugin Bridge Agents
+- ✅ SCRIPT-0.12.0: Página Promocional de Agentes
+- ✅ SCRIPT-0.14.0: Bug Fix Duplicación GH-Pages
+- ✅ SCRIPT-0.15.0: Rediseño Periódico
+- ✅ SCRIPT-0.16.0: Rediseño Fundación (Teatro ARG)
+- ✅ SCRIPT-0.17.0: Página LEEME (Guía Usuario)
+- ✅ SCRIPT-0.18.0: Rediseño Página ARCHIVO
+- ✅ SCRIPT-0.20.0: README FOSS-Oriented
+
+### Épicas Parciales (Sprint 1)
+
+- 🔄 SCRIPT-0.13.0: Rediseño Web UX (0%) — Diferido a Sprint 1
+- 🔄 SCRIPT-0.19.0: Roadmap + Euler (74%)
+
+### Hitos Alcanzados
+
+1. **Infraestructura completa**: Protocolo DevOps, agentes, plugins
+2. **Taxonomía de agentes**: 5 capas (UI, Backend, Sistema, Meta, Plugins)
+3. **5 Banderas operativas**: Blue, Black, Red, Yellow, Orange
+4. **5 Plugins instalados**: ARG-Board, Enciclopedia, GH-Pages, Foro-Scraper, Agent-Creator
+5. **Sitio web operativo**: 9 páginas en GitHub Pages
+6. **Documentación FOSS**: README, CONTRIBUTING, templates
 
 ---
 
@@ -617,11 +670,11 @@
 ---
 
 ### SCRIPT-0.6.0-S06: Documentación Scriptorium
-**Estado**: 🔄 En progreso
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T126 | Actualizar README.md principal con sección Foro Scraper | ⏳ |
+| T126 | Actualizar README.md principal con sección Foro Scraper | ✅ |
 | T127 | Añadir ejemplo de uso en docs/ del plugin | ✅ |
 
 ---
@@ -2416,13 +2469,13 @@ Simplificar y mejorar la página del Periódico:
 ---
 
 ### SCRIPT-0.15.0-S03: Homogeneizar estilos
-**Estado**: ⏳ Pendiente (parcial en fundacion.md)
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T292 | Extraer estilos comunes a main.css (reutilizables) | ⏳ |
-| T293 | Crear clases compartidas con fundacion.md | ⏳ |
-| T294 | Documentar paleta de colores y componentes | ⏳ |
+| T292 | Extraer estilos comunes a main.css (reutilizables) | ✅ |
+| T293 | Crear clases compartidas con fundacion.md | ✅ |
+| T294 | Documentar paleta de colores y componentes | ✅ |
 
 ---
 
@@ -2431,10 +2484,10 @@ Simplificar y mejorar la página del Periódico:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 9 |
-| Completadas | 6 |
+| Completadas | 9 |
 | En progreso | 0 |
-| Pendientes | 3 |
-| % Avance | 67% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
@@ -2572,13 +2625,13 @@ Transformar la página de Fundación en un **showcase promocional** que presente
 ---
 
 ### SCRIPT-0.16.0-S06: Homogeneización con Periódico
-**Estado**: ⏳ Pendiente (CSS embebido, no extraído a main.css)
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T312 | Compartir variables CSS entre ambas páginas | ⏳ |
-| T313 | Crear componentes reutilizables (cards, headers, badges) | ⏳ |
-| T314 | Documentar sistema de diseño en main.css | ⏳ |
+| T312 | Compartir variables CSS entre ambas páginas | ✅ |
+| T313 | Crear componentes reutilizables (cards, headers, badges) | ✅ |
+| T314 | Documentar sistema de diseño en main.css | ✅ |
 
 ---
 
@@ -2587,10 +2640,10 @@ Transformar la página de Fundación en un **showcase promocional** que presente
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 20 |
-| Completadas | 17 |
+| Completadas | 20 |
 | En progreso | 0 |
-| Pendientes | 3 |
-| % Avance | 85% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
@@ -3251,7 +3304,7 @@ Transformar la página Archivo en un **portal de datos completo** que sirva como
 |---------|-------------|--------|
 | T357 | Verificar enlaces a GitHub y páginas internas | ✅ |
 | T358 | Test responsive (móvil) | ✅ |
-| T359 | Commit y deploy | ⏳ |
+| T359 | Commit y deploy | ✅ |
 
 ---
 
@@ -3260,10 +3313,10 @@ Transformar la página Archivo en un **portal de datos completo** que sirva como
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 23 |
-| Completadas | 22 |
+| Completadas | 23 |
 | En progreso | 0 |
-| Pendientes | 1 |
-| % Avance | 96% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
@@ -3427,7 +3480,7 @@ Contenía:
 |---------|-------------|--------|
 | T402 | Verificar links entre README y web | ✅ |
 | T403 | Verificar navegación completa | ✅ |
-| T404 | Commit según protocolo DevOps | ⏳ |
+| T404 | Commit según protocolo DevOps | ✅ |
 
 ---
 
@@ -3436,10 +3489,10 @@ Contenía:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 22 |
-| Completadas | 21 |
-| En progreso | 1 |
+| Completadas | 22 |
+| En progreso | 0 |
 | Pendientes | 0 |
-| % Avance | 95% |
+| % Avance | 100% |
 
 ---
 
