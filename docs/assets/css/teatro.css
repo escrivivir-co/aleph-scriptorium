@@ -155,3 +155,136 @@ blockquote {
     border-radius: 10px;
     background: #EEDC94;
 }
+
+/* ============================================
+   Cards de Obras (Cartelera)
+   ============================================ */
+
+/* Card destacada: Obra en escena */
+.obra-destacada {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(20, 20, 20, 0.95) 100%);
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 4px 20px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.obra-destacada::before {
+    content: "🎬 EN ESCENA";
+    position: absolute;
+    top: 12px;
+    right: -35px;
+    background: var(--accent-color);
+    color: #0a0a0a;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 40px;
+    transform: rotate(45deg);
+    letter-spacing: 1px;
+}
+
+.obra-destacada h3 {
+    color: var(--accent-color);
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.obra-destacada a {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #0a0a0a;
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.obra-destacada a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+/* Card estándar: Obras en cartel */
+.obra-card {
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.obra-card:hover {
+    border-color: #666;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.obra-card h4,
+.obra-card + h3 {
+    color: #e0e0e0;
+    margin-top: 0;
+}
+
+.obra-card strong {
+    color: #888;
+    font-weight: 500;
+}
+
+.obra-card blockquote {
+    border-left-color: #555;
+    margin: 12px 0;
+    padding-left: 16px;
+    font-size: 0.95em;
+}
+
+.obra-card a {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 12px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.obra-card a:hover {
+    background: var(--accent-color);
+    color: #0a0a0a;
+}
+
+/* Metadatos de obra */
+.obra-destacada p,
+.obra-card p {
+    margin: 6px 0;
+    font-size: 0.9em;
+}
+
+/* Archivo (obras clausuradas) */
+.obra-archivada {
+    background: rgba(20, 20, 20, 0.6);
+    border: 1px dashed #333;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    opacity: 0.7;
+}
+
+.obra-archivada h4 {
+    color: #666;
+}
+
+.obra-archivada a {
+    color: #555;
+}
+

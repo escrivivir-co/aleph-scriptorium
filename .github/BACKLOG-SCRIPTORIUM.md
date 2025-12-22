@@ -370,12 +370,12 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S04: Página Cartelera (teatro.md)
-**Estado**: 🔄 En progreso
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T010 | Crear `docs/teatro.md` con estructura de cartelera | ✅ |
-| T011 | Diseñar cards de obras (poster, sinopsis, estado) | ⏳ |
+| T011 | Diseñar cards de obras (poster, sinopsis, estado) | ✅ |
 | T012 | Añadir sección "En escena" (obra activa destacada) | ✅ |
 | T013 | Añadir "Teatro" a navegación en `_config.yml` | ✅ |
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 43 |
+| Completadas | **44** |
 | En progreso | 0 |
-| Pendientes | 1 |
-| % Avance | 98% |
+| Pendientes | 0 |
+| % Avance | **100%** 🎉 |
 
 ---
 
@@ -545,3 +545,4 @@ meta:
 | 2025-12-22 | Consolidar pipeline AGENT_CREATOR → ARG_BOARD (S08) | Aleph |
 | 2025-12-22 | Integrar Teatro con GH-Pages y limpiar cartelera (S09) | Aleph |
 | 2025-12-22 | Completar documentación y tests del Teatro (S10) | Aleph |
+| 2025-12-22 | Diseñar cards de obras y cerrar Sprint 1 (S04-T011) | Aleph |
