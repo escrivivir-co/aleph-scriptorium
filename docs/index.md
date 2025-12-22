@@ -340,7 +340,7 @@ permalink: /
 | Producto | Descripción |
 |----------|-------------|
 | [**Fundación**]({{ site.baseurl }}/fundacion/) | Texto fundacional en 12 capítulos (2026) |
-| [**Periódico**]({{ site.baseurl }}/periodico/) | Noticias posicionadas con método 5W + Banderas |
+| [**Periódico**]({{ site.baseurl }}/periodico/) | periodico posicionadas con método 5W + Banderas |
 
 ---
 

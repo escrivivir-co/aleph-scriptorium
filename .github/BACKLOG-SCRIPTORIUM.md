@@ -915,6 +915,8 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-22 | **RESUELTO**: Eliminar duplicación noticias/periódico | GHPages |
+|-------|--------|-------|
 | 2024-12-19 | Creación inicial del backlog | Aleph |
 | 2024-12-19 | Completar DEVOPS.md | Aleph |
 | 2024-12-20 | Añadir feature Noticias (Periódico) — S08 | Aleph |
@@ -1922,12 +1924,23 @@ docs/                                    meta/jekyll-template/
 
 ---
 
+### SCRIPT-0.14.0-S05: Resolver duplicación Noticias/Periódico
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T283 | Verificar que noticias.md no existe (ya eliminado previamente) | ✅ |
+| T284 | Actualizar navegación en _config.yml: "periodico" → "Periódico" | ✅ |
+| T285 | Registrar resolución en BACKLOG changelog | ✅ |
+
+---
+
 ## Métricas Sprint 0.14
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 14 |
-| Completadas | 14 |
+| Tasks totales | 17 |
+| Completadas | 17 |
 | En progreso | 0 |
 | Pendientes | 0 |
 | % Avance | 100% |
@@ -1990,3 +2003,6 @@ Flujo simplificado:
 | 2025-12-22 | Actualizar manifest.md, instructions, prompts, agent, docs | Aleph |
 | 2025-12-22 | Actualizar registry.json a v1.1.0 | Aleph |
 | 2025-12-22 | Marcar todas las tareas como completadas | Aleph |
+| 2025-12-22 | **RESUELTO**: Eliminar duplicación noticias/periódico | GHPages |
+| 2025-12-22 | Actualizar navegación _config.yml: "periodico" → "Periódico" | GHPages |
+

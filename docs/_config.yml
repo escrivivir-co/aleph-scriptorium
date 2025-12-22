@@ -33,10 +33,10 @@ collections:
     output: true
     permalink: /archivo/justificacion/:name/
 
-# Configuración de posts (noticias)
+# Configuración de posts (periodico)
 permalink: /:year/:month/:day/:title/
 paginate: 10
-paginate_path: "/noticias/page:num/"
+paginate_path: "/periodico/page:num/"
 
 # Build
 markdown: kramdown
@@ -59,8 +59,8 @@ navigation:
     url: /
   - title: Agentes
     url: /agentes/
-  - title: Noticias
-    url: /noticias/
+  - title: Periódico
+    url: /periodico/
   - title: Fundación
     url: /fundacion/
   - title: Archivo
