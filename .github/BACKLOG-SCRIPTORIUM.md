@@ -600,3 +600,82 @@ meta:
 | Tasks totales | 14 |
 | Completadas | **14** |
 | % Avance | **100%** 🎉 |
+
+---
+
+# 🐛 Bugs
+
+## BUG-001: Jekyll include_relative con variable falla en GitHub Actions
+
+**Estado**: 🔴 Abierto  
+**Severidad**: Alta (bloquea deploy)  
+**Detectado**: 2025-12-22  
+**Referencia**: [GitHub Actions Run #20444700841](https://github.com/escrivivir-co/aleph-scriptorium/actions/runs/20444700841/job/58745506389)
+
+### Descripción
+
+El layout `docs/_layouts/obra.html` usa sintaxis inválida de Jekyll en la línea ~80:
+
+```liquid
+{% include_relative {{ contenido_path }} %}
+```
+
+Jekyll **no soporta variables** como argumento de `include_relative`. El tag requiere un nombre de archivo estático.
+
+### Error en logs
+
+```
+Liquid Exception: Invalid syntax for include tag. 
+File contains invalid characters or sequences: 
+../ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/01-vestibulo.md 
+Valid syntax: {% include_relative file.ext param='value' param2='value' %} 
+in /_layouts/obra.html
+```
+
+### Causa raíz
+
+1. `include_relative` no acepta interpolación de variables `{{ var }}`
+2. La ruta contiene `../` (parent directory), lo cual Jekyll prohíbe por seguridad
+3. Los archivos de escenas están fuera de `docs/`, en `ARCHIVO/DISCO/TALLER/`
+
+### Soluciones propuestas
+
+| Opción | Descripción | Pros | Contras |
+|--------|-------------|------|---------|
+| **A** | Mover escenas a `docs/_includes/escenas/` | Sintaxis Jekyll nativa | Duplicación de contenido |
+| **B** | Pre-procesar: copiar escenas a `docs/` en build | Automatizable | Añade paso de build |
+| **C** | Usar plugin Jekyll (jekyll-include-dynamic) | Soporta variables | Requiere plugin |
+| **D** | Incrustar contenido en frontmatter del YAML | Sin includes externos | YAML muy largo |
+| **E** | Renderizar contenido con JavaScript (fetch) | Flexibilidad total | No SSG puro |
+
+### Decisión recomendada
+
+**✅ IMPLEMENTADA: Opción A** — Mover escenas a `docs/_includes/teatro/escenas/{obra}/`
+
+### Tasks para fix
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| BUG-001-T001 | Decidir estrategia (A, B, C, D o E) | ✅ Opción A |
+| BUG-001-T002 | Implementar fix en `obra.html` | ✅ |
+| BUG-001-T003 | Mover/copiar escenas según estrategia | ✅ |
+| BUG-001-T004 | Verificar build en GitHub Actions | ⏳ |
+
+### Implementación
+
+Se movieron las escenas de `ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/` a `docs/_includes/teatro/escenas/camino-del-tarotista/`.
+
+**Cambio en `obra.html`** (línea ~80):
+
+```liquid
+{% capture include_path %}teatro/escenas/{{ page.obra_id }}/{{ escena.contenido_ref }}{% endcapture %}
+{% include {{ include_path }} %}
+```
+
+Esto usa la sintaxis nativa de Jekyll que soporta variables con `{% include %}` (no `include_relative`).
+
+### Archivos afectados
+
+- `docs/_layouts/obra.html` (línea ~80)
+- `docs/teatro/camino-del-tarotista/index.html`
+- `ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/*.md`

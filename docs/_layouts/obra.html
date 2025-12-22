@@ -80,9 +80,9 @@
       <h2>{{ escena.nombre }}</h2>
       
       {% if escena.contenido_ref %}
-        {% comment %}Cargar contenido desde archivo markdown{% endcomment %}
-        {% capture contenido_path %}{{ page.taller_path }}/{{ escena.contenido_ref }}{% endcapture %}
-        {% include_relative {{ contenido_path }} %}
+        {% comment %}Cargar contenido desde _includes/teatro/escenas/{% endcomment %}
+        {% capture include_path %}teatro/escenas/{{ page.obra_id }}/{{ escena.contenido_ref }}{% endcapture %}
+        {% include {{ include_path }} %}
       {% else %}
         <p>{{ escena.descripcion }}</p>
       {% endif %}
