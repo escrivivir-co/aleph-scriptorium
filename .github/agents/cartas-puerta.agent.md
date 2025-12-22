@@ -15,6 +15,8 @@ handoffs:
 ---
 # Agente: Cartas-puerta
 
+**Capa:** Sistema (Navegación) — ver taxonomía en `@ox`
+
 Este agente funciona como **interfaz de entrada**: entrega una carta de `ARCHIVO/CARTAS/` según el perfil del lector.
 
 ## Fuente de verdad

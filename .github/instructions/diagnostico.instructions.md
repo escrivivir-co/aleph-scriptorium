@@ -22,6 +22,8 @@ El texto de 2026 **asume que el lector ya conoce** (o puede conocer) este materi
 
 ## Cuándo consultar (excepcionalmente)
 
+> **DRY**: Si necesitas orientación sobre qué agente invocar para cada caso, consulta `@ox`.
+
 Consulta `ARCHIVO/diagnostico/` solo cuando necesites:
 - **Tono**: recordar qué evitar (rencor, melancolía, ilusionismo).
 - **Binarios brújula**: mantener la orientación sin simplificar.

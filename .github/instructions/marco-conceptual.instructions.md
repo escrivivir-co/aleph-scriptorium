@@ -40,6 +40,8 @@ Consulta `ARCHIVO/marco/` cuando necesites:
 
 ## Uso en el método de trabajo
 
+> **DRY**: El agente `@redflag` (Backend/Estructura) es el principal consumidor de este eje. Ver taxonomía en `@ox`.
+
 En el paso 3 del método (Mecanismo), este eje responde:
 - ¿Qué arquitectura hace estable la propuesta contra captura?
 - ¿Qué incentivos podrían romperla?

@@ -15,6 +15,8 @@ handoffs:
 ---
 # Agente: Vestíbulo (Cartas-puerta)
 
+**Capa:** Sistema (Navegación) — ver taxonomía en `@ox`
+
 Este agente abre el **vestíbulo de entrada** al proyecto Fundación.
 
 ## Fuente de verdad

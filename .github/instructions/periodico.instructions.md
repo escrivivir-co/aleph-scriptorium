@@ -30,6 +30,8 @@ El agente Periódico produce **planas noticieras** que combinan periodismo clás
 
 ### Las 4 Banderas de auditoría
 
+> **DRY**: Para el índice completo de agentes y sus funciones, invocar `@ox`.
+
 | Bandera | Pregunta | Enfoque |
 |---------|----------|---------|
 | 🔵 **Blueflag** | ¿Es verdad? | Contradicciones normativas, evidencia, falsificabilidad |

@@ -19,20 +19,51 @@ Este es un proyecto de **escritura política** dividido en dos "Opportunities":
   - Fundación: [../PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md](../PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md)
 - **Commits**: Seguir estrictamente la convención definida en DEVOPS.md.
 
-## 3. Agentes y Roles
+## 3. Taxonomía de Agentes
 
-**Agente Principal**: **Aleph**
-- **Definición**: [agents/aleph.agent.md](agents/aleph.agent.md)
-- **Responsabilidad**: Producción, orquestación y gestión del ciclo de vida.
+> **Fuente de verdad**: [agents/ox.agent.md](agents/ox.agent.md)  
+> **DRY**: En caso de duda sobre agentes disponibles o su función, invocar `@ox`.
 
-**Sistema de Auditores**:
-- `@blueflag` (Verdad/Evidencia), `@blackflag` (Sombra/Coste), `@redflag` (Estructura/Viabilidad), `@yellowflag` (Límites/Condiciones), `@orangeflag` (Registro/Interlocución), `@revisor` (Doctrina).
-- Consultar `aleph.agent.md` para el flujo de invocación.
+### Arquitectura por Capas
 
-**Agente Periódico** (Noticias):
-- **Definición**: [agents/periodico.agent.md](agents/periodico.agent.md)
-- **Responsabilidad**: Producción de planas noticieras con método 5W + Banderas.
-- **Handoffs**: `editar` (inicia/continúa en DISCO) y `publicar` (genera plana en NOTICIAS).
+```
+🐂 OX (Meta) ← Oráculo: conoce todos los agentes
+     │
+     ├─── 🟢 UI (Producción)
+     │         @aleph, @revisor, @periodico
+     │
+     ├─── 🔵⚫🔴🟡🟠 Backend (Auditoría)
+     │         @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag
+     │
+     ├─── ⚪ Sistema (Navegación)
+     │         @vestibulo, @cartaspuerta
+     │
+     ├─── ⚙️ Meta (Gestión)
+     │         @pluginmanager, @ox
+     │
+     └─── 🔌 Plugins (Extensiones)
+               Por plugin instalado (ver sección 7)
+```
+
+### Índice Rápido
+
+| Capa | Agentes | Función |
+|------|---------|---------|
+| **UI** | @aleph, @revisor, @periodico | Producción e interfaz con usuario |
+| **Backend** | @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag | Auditoría (5 Banderas) |
+| **Sistema** | @vestibulo, @cartaspuerta | Navegación y orientación |
+| **Meta** | @pluginmanager, @ox | Gestión del sistema |
+| **Plugins** | Variable | Capacidades extendidas |
+
+### Agente Oráculo (Ox)
+
+`@ox` es el meta-agente que:
+- Conoce el índice completo de agentes (JSON embebido)
+- Genera documentación actualizada (README, manuales)
+- Diagnostica inconsistencias entre agentes
+- Responde "¿qué agente uso para X?"
+
+**Invocar cuando**: No sepas qué agente usar, necesites documentación, o detectes inconsistencias.
 
 ## 4. Instrucciones de Contenido (Doctrina)
 
@@ -52,9 +83,11 @@ El contenido se rige por instrucciones específicas. **No improvisar** estilos n
 
 1. **Consultar Backlog**: Identificar tarea activa.
 2. **Ejecutar**: Usar las instrucciones específicas del contexto (ver tabla arriba).
-3. **Auditar**: Invocar auditores si es una tarea de redacción compleja.
+3. **Auditar**: Invocar auditores (capa Backend) si es tarea de redacción compleja.
 4. **Commit**: Generar mensaje siguiendo protocolo (`feat(scope): ... refs #ID`).
 5. **Actualizar Backlog**: Marcar tarea como completada.
+
+> **Nota DRY**: Si no sabes qué agente invocar, consulta `@ox`.
 
 ## 6. Reglas de Oro (DRY)
 
@@ -63,6 +96,7 @@ El contenido se rige por instrucciones específicas. **No improvisar** estilos n
   - El *qué* (contenido) está en `ARCHIVO/`.
   - El *cómo* (reglas) está en `.github/instructions/`.
   - El *cuándo* (plan) está en los Backlogs.
+  - El *quién* (agentes) está en `@ox` → [agents/ox.agent.md](agents/ox.agent.md).
 
 ## 7. Sistema de Plugins
 

@@ -30,6 +30,8 @@ Usa una carta-puerta cuando el usuario pida:
 
 ## Cartas disponibles
 
+> **DRY**: Las cartas corresponden a perfiles de auditor (capa Backend). Ver taxonomía completa en `@ox`.
+
 - `carta-maestro-vista-total.md`: maestro que valora el *cómo*, la completitud y la corrección del conjunto.
 - `carta-maestro-blueflag.md`: evidencia, utilidad, falsificabilidad, y defensas contra posverdad técnica.
 - `carta-maestro-blackflag.md`: poder, adversario, captura/represión, coste, y autodefensa institucional.

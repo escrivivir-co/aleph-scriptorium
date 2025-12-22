@@ -1010,13 +1010,13 @@
 ---
 
 ### SCRIPT-0.10.0-S04: Actualización Ontología .github
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T198 | Refactorizar `copilot-instructions.md` con taxonomía Ox | ⏳ |
+| T198 | Refactorizar `copilot-instructions.md` con taxonomía Ox | ✅ |
 | T199 | Crear `instructions/ox-ontologia.instructions.md` | ⏳ |
-| T200 | Añadir handoff de Ox a `aleph.agent.md` | ⏳ |
+| T200 | Añadir handoff de Ox a `aleph.agent.md` | ✅ |
 
 ---
 
@@ -1036,10 +1036,10 @@
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 16 |
-| Completadas | 7 |
+| Completadas | 9 |
 | En progreso | 0 |
-| Pendientes | 9 |
-| % Avance | 44% |
+| Pendientes | 7 |
+| % Avance | 56% |
 
 ---
 
