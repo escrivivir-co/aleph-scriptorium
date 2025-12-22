@@ -934,6 +934,167 @@
 | 2025-12-22 | Añadir Épica SCRIPT-0.8.0 — Plugin Agent Creator | Aleph |
 | 2025-12-22 | Crear agente demarcacion-yellowflag (Foro_t8941392) | AgentCreator |
 | 2025-12-22 | Añadir Épica SCRIPT-0.9.0 — Handoffs Extensibles ARG + Agent Creator | Aleph |
+| 2025-12-22 | Completar handoffs extensibles en Aleph, Revisor, Periodico | Aleph |
+| 2025-12-22 | Añadir Épica SCRIPT-0.10.0 — Agente Oráculo (Ox) | Aleph |
+| 2025-12-22 | Crear ox.agent.md con índice maestro de agentes | Ox |
+| 2025-12-22 | Refactorizar README.md con taxonomía unificada de agentes | Ox |
+
+---
+
+# Épica: SCRIPT-0.10.0 — Agente Oráculo (Ox)
+
+**Objetivo**: Crear un agente meta-coordinador que conoce y gestiona el índice de todos los agentes del sistema, funcionando como oráculo para documentación de usuario y configuración de Copilot.
+
+**Filosofía**: Ox ("buey" en griego, símbolo de trabajo metódico) es el agente que sabe dónde está todo. No produce contenido doctrinal sino **documentación técnica** y **orquestación de agentes**.
+
+**Taxonomía de agentes que gestiona**:
+
+| Capa | Agentes | Función |
+|------|---------|---------|
+| **UI (Producción)** | Aleph, Revisor, Periódico | Interfaz principal con el usuario |
+| **Backend (Auditoría)** | Blueflag, Blackflag, Redflag, Yellowflag, Orangeflag | Tests y validación doctrinal |
+| **Sistema (Navegación)** | Vestíbulo, CartasPuerta | Entrada y orientación |
+| **Plugins** | Por plugin (ARG, Enciclopedia, GH-Pages, etc.) | Capacidades extendidas |
+| **Meta** | PluginManager, Ox | Gestión del sistema |
+
+**Casos de uso**:
+1. Generar secciones del README.md con información actualizada de agentes
+2. Producir manuales de usuario por perfil (desarrollador, escritor, tutor)
+3. Actualizar `.github/copilot-instructions.md` con ontología de agentes
+4. Responder consultas tipo "¿qué agente uso para X?"
+5. Detectar inconsistencias entre agentes declarados y documentados
+
+**Entregables**:
+- Agente `ox.agent.md` con handoffs a todos los demás
+- Prompt `ox-generar-readme.prompt.md`
+- Prompt `ox-generar-manual.prompt.md`
+- README.md refactorizado con taxonomía unificada
+- Actualización de `copilot-instructions.md`
+
+---
+
+## Stories
+
+### SCRIPT-0.10.0-S01: Diseño del Agente Ox
+**Estado**: 🔄 En progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T188 | Crear `agents/ox.agent.md` con taxonomía de agentes | ✅ |
+| T189 | Definir índice maestro de agentes (JSON embebido) | ✅ |
+| T190 | Añadir handoffs bidireccionales con todos los agentes | ✅ |
+
+---
+
+### SCRIPT-0.10.0-S02: Prompts de Documentación
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T191 | Crear `prompts/ox-generar-readme.prompt.md` | ⏳ |
+| T192 | Crear `prompts/ox-generar-manual.prompt.md` | ⏳ |
+| T193 | Crear `prompts/ox-diagnostico-agentes.prompt.md` | ⏳ |
+
+---
+
+### SCRIPT-0.10.0-S03: Refactorización README.md
+**Estado**: 🔄 En progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T194 | Unificar sección de agentes con taxonomía (UI/Backend/Sistema/Plugins) | ✅ |
+| T195 | Crear tabla maestra de agentes con capas y handoffs | ✅ |
+| T196 | Actualizar diagramas de arquitectura | ✅ |
+| T197 | Eliminar duplicidades en documentación de agentes | ✅ |
+
+---
+
+### SCRIPT-0.10.0-S04: Actualización Ontología .github
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T198 | Refactorizar `copilot-instructions.md` con taxonomía Ox | ⏳ |
+| T199 | Crear `instructions/ox-ontologia.instructions.md` | ⏳ |
+| T200 | Añadir handoff de Ox a `aleph.agent.md` | ⏳ |
+
+---
+
+### SCRIPT-0.10.0-S05: Integración y Validación
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T201 | Test: generar README desde Ox y comparar | ⏳ |
+| T202 | Test: generar manual de usuario desde Ox | ⏳ |
+| T203 | Documentar flujo de actualización de agentes | ⏳ |
+
+---
+
+## Métricas Sprint 0.10
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 16 |
+| Completadas | 7 |
+| En progreso | 0 |
+| Pendientes | 9 |
+| % Avance | 44% |
+
+---
+
+## Especificación Técnica: Índice Maestro de Agentes
+
+### Esquema del índice (embebido en ox.agent.md)
+
+```json
+{
+  "version": "1.0.0",
+  "capas": {
+    "ui": {
+      "descripcion": "Agentes de producción e interfaz con usuario",
+      "agentes": ["aleph", "revisor", "periodico"]
+    },
+    "backend": {
+      "descripcion": "Agentes de auditoría y validación doctrinal",
+      "agentes": ["blueflag", "blackflag", "redflag", "yellowflag", "orangeflag"]
+    },
+    "sistema": {
+      "descripcion": "Agentes de navegación y orientación",
+      "agentes": ["vestibulo", "cartas-puerta"]
+    },
+    "meta": {
+      "descripcion": "Agentes de gestión del propio sistema",
+      "agentes": ["plugin-manager", "ox"]
+    },
+    "plugins": {
+      "descripcion": "Agentes añadidos por plugins",
+      "por_plugin": {
+        "arg-board": ["arrakis", "boe", "decoherence", "gitarg", "automata-heroe", "impressjs", "mbox", "platformcom"],
+        "enciclopedia": ["bibliotecario", "hdf-ernesto-castro"],
+        "gh-pages": ["ghpages"],
+        "foro-scraper": ["foro-scraper"],
+        "agent-creator": ["agent-creator"]
+      }
+    }
+  }
+}
+```
+
+### Flujo de actualización
+
+```
+1. Se crea/modifica un agente
+   ↓
+2. Ox detecta cambio (o se invoca manualmente)
+   ↓
+3. Ox actualiza su índice interno
+   ↓
+4. Ox regenera documentación afectada:
+   - README.md (sección agentes)
+   - copilot-instructions.md (ontología)
+   - Manual de usuario (si existe)
+```
 
 ---
 

@@ -57,48 +57,96 @@ El proyecto tiene dos productos paralelos:
 
 ### 1. Aleph Scriptorium (v0.0.1) — Avance Sprint 0: 100%
 
-```
-                    ┌─────────────┐
-                    │   ALEPH     │ ← Producción
-                    │ (redacción) │
-                    └──────┬──────┘
-                           │
-    ┌──────────────────────┼──────────────────────┐
-    ▼            ▼         ▼         ▼            ▼
-┌────────┐ ┌──────────┐ ┌────────┐ ┌──────────┐ ┌────────┐
-│BLUEFLAG│ │BLACKFLAG │ │REVISOR │ │ REDFLAG  │ │YELLOW- │
-│ Verdad │ │ Sombras  │ │Doctrina│ │Estructura│ │ FLAG   │
-└────────┘ └──────────┘ └────────┘ └──────────┘ │Límites │
-                                                └────────┘
-                           │
-                    ┌──────────┐
-                    │ORANGE- │ ← Registro
-                    │ FLAG   │
-                    └──────────┘
-```
 El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que la IA trabaje bajo las reglas del proyecto.
+
+#### Arquitectura de Agentes (Taxonomía)
+
+```
+                         ┌─────────────────────────────────────┐
+                         │            🐂 OX (Meta)             │
+                         │   Oráculo · Documentación · Índice  │
+                         └─────────────────┬───────────────────┘
+                                           │
+        ┌──────────────────────────────────┼──────────────────────────────────┐
+        │                                  │                                  │
+        ▼                                  ▼                                  ▼
+┌───────────────┐                 ┌────────────────┐                ┌─────────────────┐
+│  🟢 UI (3)    │                 │ ⚪ Sistema (2) │                │  ⚙️ Meta (2)    │
+│ Producción    │                 │  Navegación    │                │   Gestión       │
+├───────────────┤                 ├────────────────┤                ├─────────────────┤
+│ @aleph        │                 │ @vestibulo     │                │ @pluginmanager  │
+│ @revisor      │                 │ @cartaspuerta  │                │ @ox             │
+│ @periodico    │                 └────────────────┘                └─────────────────┘
+└───────────────┘
+        │
+        │ ← invocan para auditoría
+        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                     🔵⚫🔴🟡🟠 BACKEND (5 Banderas)               │
+│                     Auditoría y Validación Doctrinal              │
+├───────────────────────────────────────────────────────────────────┤
+│ @blueflag    │ @blackflag   │ @redflag    │ @yellowflag │ @orangeflag │
+│ Verdad       │ Sombras      │ Estructura  │ Límites     │ Registro    │
+└───────────────────────────────────────────────────────────────────┘
+        │
+        │ ← extienden capacidades
+        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                        🔌 PLUGINS (por plugin)                    │
+├───────────────────────────────────────────────────────────────────┤
+│ ARG-BOARD      │ ENCICLOPEDIA  │ GH-PAGES   │ FORO-SCRAPER │ AGENT-CREATOR │
+│ @arrakis       │ @bibliotecario│ @ghpages   │ @foroscraper │ @agentcreator │
+│ +7 más         │ @hdf-ec       │            │              │               │
+└───────────────────────────────────────────────────────────────────┘
+```
+
+#### Índice de Agentes por Capa
+
+##### 🟢 Capa UI (Producción) — 3 agentes
+
+| Agente | Rol | Invocación | Archivo |
+|--------|-----|------------|---------|
+| **Aleph** | Productor principal. Planifica, redacta, orquesta. | `@aleph` | [aleph.agent.md](.github/agents/aleph.agent.md) |
+| **Revisor** | Auditor doctrinal. Verifica coherencia con ARCHIVO. | `@revisor` | [revisor.agent.md](.github/agents/revisor.agent.md) |
+| **Periodico** | Producción periodística. Método 5W + Banderas. | `@periodico` | [periodico.agent.md](.github/agents/periodico.agent.md) |
+
+##### 🔵⚫🔴🟡🟠 Capa Backend (Auditoría) — 5 agentes (las Banderas)
+
+| Agente | Rol | Tests | Invocación |
+|--------|-----|-------|------------|
+| **Blueflag** | Verdad. Evidencia, utilidad, falsificabilidad. | Evidencia, Utilidad, Posverdad | `@blueflag` |
+| **Blackflag** | Sombras. Coste represivo, autodefensa, enemigo. | Pólvora, Captura enemiga | `@blackflag` |
+| **Redflag** | Estructura. Escala, enforcement, gobierno. | Escala, Coerción, Suministro | `@redflag` |
+| **Yellowflag** | Límites. Condiciones vs contenido, gnosis. | Pre/Trans, Cuadrantes | `@yellowflag` |
+| **Orangeflag** | Registro. Dialéctica/retórica, género, estilo. | Género, Auditorio | `@orangeflag` |
+
+##### ⚪ Capa Sistema (Navegación) — 2 agentes
+
+| Agente | Rol | Invocación |
+|--------|-----|------------|
+| **Vestibulo** | Menú de entrada. Identifica perfil, asigna carta-puerta. | `@vestibulo` |
+| **CartasPuerta** | Área de contenido. Presenta carta-puerta adecuada. | `@cartaspuerta` |
+
+##### ⚙️ Capa Meta (Gestión) — 2 agentes
+
+| Agente | Rol | Invocación |
+|--------|-----|------------|
+| **PluginManager** | Gestión de plugins. Instalar, activar, desinstalar. | `@pluginmanager` |
+| **Ox** | Oráculo. Índice de agentes, documentación, diagnóstico. | `@ox` |
+
+##### 🔌 Capa Plugins — N agentes (ver sección Plugins)
+
+Los plugins añaden agentes especializados. Detalle en [Sección 4: Sistema de Plugins](#4-sistema-de-plugins).
+
+#### Otros Artefactos
 
 | Artefacto | Estado | Ruta |
 |-----------|--------|------|
-| Protocolo DevOps (commits, sprints, backlogs) | ✅ | [`.github/DEVOPS.md`](.github/DEVOPS.md) |
-| Backlog Scriptorium | ✅ | [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md) |
-| Agente **Aleph** (planifica, redacta, orquesta) | ✅ | [`.github/agents/aleph.agent.md`](.github/agents/aleph.agent.md) |
-| Agente **Vestibulo** (clasifica perfil y asigna carta-puerta) | ✅ | [`.github/agents/vestibulo.agent.md`](.github/agents/vestibulo.agent.md) |
-| Agente **CartasPuerta** (presenta la carta-puerta sin mezclar puertas) | ✅ | [`.github/agents/cartas-puerta.agent.md`](.github/agents/cartas-puerta.agent.md) |
-| Agente **Revisor** (evalúa coherencia doctrinal) | ✅ | [`.github/agents/revisor.agent.md`](.github/agents/revisor.agent.md) |
-| Agente **Blackflag** (audita sombras: enemigo, represión) | ✅ | [`.github/agents/blackflag.agent.md`](.github/agents/blackflag.agent.md) |
-| Agente **Redflag** (audita estructura: escala, gobierno) | ✅ | [`.github/agents/redflag.agent.md`](.github/agents/redflag.agent.md) |
-| Agente **Blueflag** (audita verdad: evidencia, utilidad) | ✅ | [`.github/agents/blueflag.agent.md`](.github/agents/blueflag.agent.md) |
-| Agente **Yellowflag** (audita límites: condiciones vs contenido) | ✅ | [`.github/agents/yellowflag.agent.md`](.github/agents/yellowflag.agent.md) |
-| Agente **Orangeflag** (audita registro: dialéctica/retórica, género, estilo) | ✅ | [`.github/agents/orangeflag.agent.md`](.github/agents/orangeflag.agent.md) |
-| Agente **Periodico** (produce planas noticieras 5W + Banderas) | ✅ | [`.github/agents/periodico.agent.md`](.github/agents/periodico.agent.md) |
-| Agente **PluginManager** (instala, activa, desinstala plugins) | ✅ | [`.github/agents/plugin-manager.agent.md`](.github/agents/plugin-manager.agent.md) |
-| Prompt de extracción y archivo | ✅ | [`.github/prompts/extraer-archivar.prompt.md`](.github/prompts/extraer-archivar.prompt.md) |
-| Prompt de convención de commits | ✅ | [`.github/prompts/commit-message.prompt.md`](.github/prompts/commit-message.prompt.md) |
-| Prompt de ejecución de commits | ✅ | [`.github/prompts/ejecutar-commits.prompt.md`](.github/prompts/ejecutar-commits.prompt.md) |
-| Prompt de foto de estado | ✅ | [`.github/prompts/foto-estado-y-discurso-motivacional.prompt.md`](.github/prompts/foto-estado-y-discurso-motivacional.prompt.md) |
-| Prompt de vestíbulo (clasificar perfil y carta) | ✅ | [`.github/prompts/vestibulo-cartas.prompt.md`](.github/prompts/vestibulo-cartas.prompt.md) |
-| Instrucciones de contexto (voz, marco, diagnóstico) | ✅ | `.github/instructions/` |
+| Protocolo DevOps | ✅ | [DEVOPS.md](.github/DEVOPS.md) |
+| Backlog Scriptorium | ✅ | [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md) |
+| Protocolo de Plugins | ✅ | [PLUGINS.md](.github/PLUGINS.md) |
+| Instrucciones de contexto | ✅ | [.github/instructions/](.github/instructions/) |
+| Prompts reutilizables | ✅ | [.github/prompts/](.github/prompts/) |
 
 **Estado Sprint 0 (Scriptorium)**: cerrado. Épicas completadas:
 
@@ -108,6 +156,13 @@ El Scriptorium es el "cómo": método, agentes, prompts e instrucciones para que
 | **SCRIPT-0.1.0** | Sistema de Plugins | Protocolo, PluginManager, ARG Board instalado |
 | **SCRIPT-0.2.0** | Agente Yellowflag | Auditor de límites, marco/14, carta-puerta |
 | **SCRIPT-0.3.0** | Plugin Enciclopedia | Bibliotecario, tomo HDF (61 caps.) |
+| **SCRIPT-0.4.0** | Agente Orangeflag | Auditor de registro, marco/15 |
+| **SCRIPT-0.5.0** | Plugin GH-Pages | Publicación web Jekyll |
+| **SCRIPT-0.6.0** | Plugin Foro Scraper | Scraping foros/blogs |
+| **SCRIPT-0.7.0** | Extensión Blogs | Integración Periódico |
+| **SCRIPT-0.8.0** | Plugin Agent Creator | Creación de agentes especializados |
+| **SCRIPT-0.9.0** | Handoffs Extensibles | Patrón `[nombre]` en ARG + Agent Creator |
+| **SCRIPT-0.10.0** | Agente Ox | Oráculo, índice de agentes, documentación |
 
 Métricas vivas: [`.github/BACKLOG-SCRIPTORIUM.md`](.github/BACKLOG-SCRIPTORIUM.md)
 
@@ -187,10 +242,11 @@ ARCHIVO/PLUGINS/           ← Datos de plugins (mutable)
 
 | Plugin | Versión | Descripción | Agentes |
 |--------|---------|-------------|---------|
-| **ARG Board** | 1.0.0 | Motor de juegos ARG transmedia | `@Arrakis`, `@BOE`, `@Decoherence` |
+| **ARG Board** | 1.0.0 | Motor de juegos ARG transmedia | `@Arrakis`, `@BOE`, `@Decoherence`, +5 más |
 | **Enciclopedia** | 1.0.0 | Biblioteca de tomos con búsquedas temporales y temáticas | `@Bibliotecario`, `@HDF-ErnestoCastro` |
 | **GH-Pages** | 1.0.0 | Publicación en GitHub Pages (fusionar/reemplazar) | `@GHPages` |
 | **Web Scraper** | 1.1.0 | Scraping de foros y blogs con estado pausable | `@ForoScraper` |
+| **Agent Creator** | 1.1.0 | Creación de agentes especializados (agente base + fuente) | `@AgentCreator` |
 
 #### Plugin: ARG Board
 
@@ -249,6 +305,28 @@ Plugin de **scraping web** para descargar hilos de foros y entradas de blogs, co
 ```
 
 **Documentación**: [`.github/plugins/foro-scraper/docs/`](.github/plugins/foro-scraper/docs/)
+
+#### Plugin: Agent Creator
+
+Plugin para **crear agentes especializados** combinando agentes base (las Banderas) con fuentes de datos de DISCO/ARCHIVO.
+
+**Flujo típico**:
+```
+Fuente (DISCO/) + Agente Base (Bandera) → Agente Especializado
+                                       → Despliegue en obra ARG (opcional)
+```
+
+**Agentes creados** (ejemplo):
+- `@demarcacion-yellowflag`: Yellowflag + criterio de demarcación científica (Foro_t8941392)
+
+**Uso**:
+```
+@AgentCreator crear yellowflag DISCO/Foro_t8941392/    # Crear agente
+@AgentCreator editar demarcacion-yellowflag            # Añadir fuentes
+@AgentCreator desplegar demarcacion-yellowflag hola_mundo tarotista  # En obra ARG
+```
+
+**Documentación**: [`.github/plugins/agent-creator/docs/`](.github/plugins/agent-creator/docs/)
 
 #### Crear o Instalar Plugins
 
@@ -409,40 +487,42 @@ En el proyecto de demostración usamos tres ejes:
 
 #### Los Agentes (tus asistentes especializados)
 
-Perfiles de IA preconfigurados para tareas específicas:
+Los agentes son perfiles de IA preconfigurados para tareas específicas, organizados en **5 capas**:
 
-| Agente | Rol | Invocación |
-|--------|-----|------------|
-| **Aleph** | Productor principal. Redacta, planifica, orquesta. | `@aleph` |
-| **Vestibulo** | Entrada guiada. Identifica perfil y asigna carta-puerta. | `@vestibulo` |
-| **CartasPuerta** | Presenta la carta-puerta adecuada sin mezclar puertas. | `@cartaspuerta` |
-| **Revisor** | Auditor doctrinal. Verifica coherencia con ARCHIVO. | `@revisor` |
-| **Blackflag** | Auditor de sombras. Coste represivo, autodefensa. | `@blackflag` |
-| **Redflag** | Auditor de estructura. Escala, enforcement, gobierno. | `@redflag` |
-| **Blueflag** | Auditor de verdad. Evidencia, utilidad, falsificabilidad. | `@blueflag` |
-| **Orangeflag** | Auditor de registro. Dialéctica/retórica, género, estilo. | `@orangeflag` |
+| Capa | Agentes | Función |
+|------|---------|---------|
+| 🟢 **UI** | @aleph, @revisor, @periodico | Producción e interfaz con usuario |
+| 🔵⚫🔴🟡🟠 **Backend** | @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag | Auditoría y validación doctrinal |
+| ⚪ **Sistema** | @vestibulo, @cartaspuerta | Navegación y orientación |
+| ⚙️ **Meta** | @pluginmanager, @ox | Gestión del sistema |
+| 🔌 **Plugins** | Según plugin instalado | Capacidades extendidas |
+
+> Ver [Índice completo de agentes](#índice-de-agentes-por-capa) para detalle de cada uno.
 
 **Arquitectura de tensión productiva:**
 
 ```
-                    ┌─────────────┐
-                    │   ALEPH     │ ← Producción
-                    │ (redacción) │
-                    └──────┬──────┘
-                           │
-         ┌─────────────────┼─────────────────┐
-         ▼                 ▼                 ▼
-  ┌──────────┐      ┌──────────┐      ┌──────────┐
-  │BLACKFLAG │      │ REVISOR  │      │ REDFLAG  │
-  │ Sombras  │      │ Doctrina │      │Estructura│
-  └──────────┘      └──────────┘      └──────────┘
-         │                 │                 │
-         └─────────────────┼─────────────────┘
-                           ▼
-  ┌──────────┐      ┌──────────┐      ┌──────────┐
-  │ BLUEFLAG │      │YELLOWFLAG│      │ORANGEFLAG│
-  │ (verdad) │      │ (límites)│      │(registro)│
-  └──────────┘      └──────────┘      └──────────┘
+        ┌─────────────┐
+        │   ALEPH     │ ← UI: Producción
+        │ (redacción) │
+        └──────┬──────┘
+               │ invoca
+        ┌──────┴──────┐
+        ▼             ▼
+  ┌──────────┐  ┌──────────┐
+  │ REVISOR  │  │PERIODICO │
+  │ Doctrina │  │ Noticias │
+  └────┬─────┘  └────┬─────┘
+       │             │
+       └──────┬──────┘
+              │ auditan con
+              ▼
+  ┌───────────────────────────────────────┐
+  │         BACKEND (5 Banderas)          │
+  ├─────┬─────┬─────┬─────────┬───────────┤
+  │BLUE │BLACK│ RED │ YELLOW  │  ORANGE   │
+  │Verdad│Sombra│Escala│Límites │ Registro │
+  └─────┴─────┴─────┴─────────┴───────────┘
 ```
 
 Los agentes no inventan: **consultan tu ARCHIVO**. No improvisan estilo: **siguen tus instrucciones**. No deciden por ti: **te presentan opciones**.

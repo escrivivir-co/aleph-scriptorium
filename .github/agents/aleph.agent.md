@@ -36,6 +36,10 @@ handoffs:
               agent: CartasPuerta
               prompt: Presenta la carta-puerta adecuada (o resume) según el perfil del lector; no mezcles puertas.
               send: false
+       - label: Consultar oráculo de agentes
+              agent: Ox
+              prompt: Consulta el índice de agentes, genera documentación o diagnostica inconsistencias en el sistema.
+              send: false
        - label: Gestionar plugins
               agent: Aleph
               prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium. .github/prompts/plugin-install.prompt.md
