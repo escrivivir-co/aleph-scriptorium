@@ -1,0 +1,136 @@
+# Plantilla de Obra Teatral
+# Edita este archivo con tu trama
+
+titulo: "Título de tu obra"
+slug: tu-obra  # kebab-case, será la URL
+tipo: original  # onboarding | original | adaptacion
+estado: borrador  # borrador | ensayo | estreno | archivo
+
+descripcion: |
+  Breve descripción de la obra.
+  Puede ocupar varias líneas.
+
+personaje_guia: protagonista  # Nombre del personaje principal
+
+# Metadatos
+meta:
+  autor: Tu Nombre
+  fecha_creacion: 2025-12-22
+  duracion_estimada: "1-2 horas"
+  nivel: intermedio  # introductorio | intermedio | avanzado
+  prerequisitos:
+    - VS Code
+    - GitHub Copilot
+
+# Los 12 estadios del Camino del Héroe
+estadios:
+  # === FASE 1: PARTIDA (Anillo 1) ===
+  - id: 1
+    nombre: "Mundo Ordinario"
+    anillo: 1
+    tipo: inicio
+    descripcion: |
+      El héroe en su mundo cotidiano antes de la aventura.
+    prueba: null  # Opcional: tarea interactiva para el usuario
+    feature: null  # Opcional: feature del Scriptorium que se muestra
+
+  - id: 2
+    nombre: "Llamada a la Aventura"
+    anillo: 1
+    tipo: llamada
+    descripcion: |
+      Algo rompe la rutina e invita al héroe a actuar.
+    prueba: null
+    feature: null
+
+  - id: 3
+    nombre: "Rechazo de la Llamada"
+    anillo: 1
+    tipo: rechazo
+    descripcion: |
+      El héroe duda, teme, se resiste.
+    prueba: null
+    feature: null
+
+  - id: 4
+    nombre: "Encuentro con el Mentor"
+    anillo: 1
+    tipo: mentor
+    descripcion: |
+      Una figura sabia ofrece guía, herramientas o confianza.
+    prueba: null
+    feature: null
+
+  # === FASE 2: INICIACIÓN (Anillo 2) ===
+  - id: 5
+    nombre: "Cruce del Umbral"
+    anillo: 2
+    tipo: umbral
+    descripcion: |
+      El héroe abandona el mundo ordinario y entra en lo desconocido.
+    prueba: null
+    feature: null
+
+  - id: 6
+    nombre: "Pruebas, Aliados, Enemigos"
+    anillo: 2
+    tipo: pruebas
+    descripcion: |
+      El héroe aprende las reglas del nuevo mundo.
+    prueba: null
+    feature: null
+
+  - id: 7
+    nombre: "Acercamiento a la Cueva"
+    anillo: 2
+    tipo: cueva
+    descripcion: |
+      Preparación para el gran desafío.
+    prueba: null
+    feature: null
+
+  - id: 8
+    nombre: "Ordalía"
+    anillo: 2
+    tipo: ordalia
+    descripcion: |
+      El momento más oscuro. Muerte simbólica y renacimiento.
+    prueba: null
+    feature: null
+
+  # === FASE 3: RETORNO (Anillo 3) ===
+  - id: 9
+    nombre: "Recompensa"
+    anillo: 3
+    tipo: recompensa
+    descripcion: |
+      El héroe obtiene lo que buscaba (o algo inesperado).
+    prueba: null
+    feature: null
+
+  - id: 10
+    nombre: "Camino de Regreso"
+    anillo: 3
+    tipo: retorno
+    descripcion: |
+      El héroe inicia el regreso, pero hay persecución o tentación.
+    prueba: null
+    feature: null
+
+  - id: 11
+    nombre: "Resurrección"
+    anillo: 3
+    tipo: resurreccion
+    descripcion: |
+      Última prueba. El héroe renace transformado.
+    prueba: null
+    feature: null
+
+  - id: 12
+    nombre: "Retorno con el Elixir"
+    anillo: 3
+    tipo: elixir
+    descripcion: |
+      El héroe comparte lo aprendido con su mundo de origen.
+    prueba: null
+    feature: null

@@ -1,0 +1,73 @@
+# Obra: Hola Mundo
+# Primera demostración del pipeline AGENT_CREATOR → ARG_BOARD
+
+titulo: "Hola Mundo"
+slug: hola-mundo
+tipo: laboratorio
+estado: registrada
+
+descripcion: |
+  Obra de demostración para el plugin AGENT_CREATOR.
+  Primer despliegue de agente creado como personaje teatral.
+  El Tarotista se presenta y demuestra sus capacidades.
+
+personaje_guia: tarotista
+
+meta:
+  autor: Aleph Scriptorium
+  fecha_creacion: 2025-12-22
+  duracion_estimada: "15-30 minutos"
+  nivel: introductorio
+  prerequisitos:
+    - VS Code
+    - Conocimiento básico del proyecto
+  origen:
+    plugin: agent-creator
+    agente_base: yellowflag
+    fuente_datos: DISCO/Foro_t8941392/
+    agente_creado: demarcacion-yellowflag
+  proposito: "Demostrar pipeline: FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD"
+
+# Esta obra tiene solo 3 escenas (demo corta)
+# No sigue el monomito completo de 12 estadios
+
+escenas:
+  - id: 1
+    nombre: "Presentación"
+    anillo: 0
+    tipo: inicio
+    descripcion: |
+      El Tarotista se presenta y explica su rol: 
+      auditor de demarcación científica.
+    contenido_ref: escenas/01-presentacion.md
+    
+  - id: 2
+    nombre: "Tirada de cartas"
+    anillo: 1
+    tipo: prueba
+    descripcion: |
+      Usando metáforas del tarot, evalúa una propuesta 
+      del usuario con criterios de demarcación.
+    prueba:
+      tarea: "El usuario propone una afirmación para evaluar"
+      exito: "El Tarotista entrega su lectura completa"
+    contenido_ref: escenas/02-tirada.md
+    
+  - id: 3
+    nombre: "Lectura"
+    anillo: 1
+    tipo: cierre
+    descripcion: |
+      Entrega su análisis integrando Popper, Kuhn, 
+      Feyerabend y los cuadrantes de Wilber.
+    feature: "@yellowflag especializado"
+    contenido_ref: escenas/03-lectura.md
+
+# Registro en ARG_BOARD
+arg_board:
+  obra_id: hola_mundo
+  estado: registrada
+  etapa_actual: 1
+  actores:
+    - tarotista
+  fecha_registro: 2025-12-22T14:00:00Z

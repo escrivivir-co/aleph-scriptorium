@@ -1,0 +1,41 @@
+# Plantilla de Personaje
+# Define un personaje del elenco de tu obra
+
+nombre: Protagonista
+slug: protagonista  # kebab-case
+
+# Rol en la obra
+rol: guia  # guia | mentor | aliado | enemigo | trickster | shapeshifter
+arquetipo: HERALD  # Según Jung/Campbell
+
+# Descripción
+descripcion: |
+  Breve descripción del personaje.
+  Su motivación, conflicto interno, arco de transformación.
+
+# Origen del personaje
+origen:
+  tipo: original  # original | agente | adaptacion
+  # Si es un agente existente:
+  # agente_base: yellowflag
+  # agente_creado: demarcacion-yellowflag
+  # fuente_datos: DISCO/Foro_t8941392/
+
+# Capacidades (qué puede hacer en la obra)
+capacidades:
+  - Narrar escenas
+  - Proponer pruebas al usuario
+  - Evaluar respuestas
+
+# Diálogos clave (opcional)
+dialogos:
+  saludo: "Bienvenido, viajero. Me llamo Protagonista."
+  despedida: "Hasta que nuestros caminos se crucen de nuevo."
+
+# Visual (opcional)
+visual:
+  estilo: "Ilustración editorial, collage digital"
+  elementos:
+    - capa con capucha
+    - libro antiguo
+    - mirada penetrante

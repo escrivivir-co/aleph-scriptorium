@@ -228,9 +228,15 @@ Sistema unificado para experiencias de teatro transmedia interactivo.
 
 **Dependencias**: ARG_BOARD, AGENT_CREATOR, GH_PAGES
 
+**Conceptos clave**:
+- **BOE**: Boletín Oficial del Estado Escénico = mapa de diapositivas impress.js
+- **Monomito**: Ciclo de 12 etapas (Camino del Héroe) en 3 anillos
+- **Elenco**: Personajes inyectados desde AGENT_CREATOR
+- **TALLER**: Espacio de desarrollo de obras (`ARCHIVO/DISCO/TALLER/`)
+
 **Flujo**:
-1. Generar obra (YAML con 12 estadios)
-2. Instalar obra (registro en cartelera)
-3. Ejecutar obra (publicar página interactiva)
+1. Desarrollar en TALLER (YAML + personajes + escenas)
+2. Instalar obra (registro en ARG_BOARD)
+3. Ejecutar obra (publicar página impress.js)
 
 **Documentación**: [plugins/teatro/docs/](plugins/teatro/docs/)

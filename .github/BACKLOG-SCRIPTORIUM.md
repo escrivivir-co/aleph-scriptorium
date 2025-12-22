@@ -25,6 +25,67 @@ Ver [README del archivo](../ARCHIVO/DISCO/Backlogs_Sprint0_Archivado/README.md) 
 
 ---
 
+## Feature Cycle 1: Core Concepts
+
+> **Ciclo actual**: Feature Cycle 1  
+> **Objetivo**: Establecer conceptos fundamentales e infraestructura del Teatro
+
+---
+
+## Conceptos Clave del Teatro
+
+### 1. BOE (Boletín Oficial del Estado Escénico)
+
+El **BOE** es una **cadena hipervinculada** que registra todo lo que ocurre en el teatro:
+
+```
+BOE → Mapa de diapositivas impress.js en la UI/UX
+```
+
+Cada entrada del BOE se convierte en una diapositiva navegable. El BOE es la **fuente de verdad** del estado escénico.
+
+**Ubicación**: `ARCHIVO/PLUGINS/ARG_BOARD/BOE/`
+
+### 2. Monomito (Ciclo de 12 Etapas)
+
+El ARG_BOARD organiza obras en **ciclos de 12 etapas** siguiendo el Camino del Héroe:
+
+| Fase | Estadios | Anillo | Descripción |
+|------|----------|--------|-------------|
+| **PARTIDA** | 1-4 | 1 | Mundo ordinario → Cruce del umbral |
+| **INICIACIÓN** | 5-8 | 2 | Pruebas → Ordalía |
+| **RETORNO** | 9-12 | 3 | Recompensa → Elixir |
+
+**Ubicación**: `ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/monomitos.json`
+
+### 3. Elenco (Inyección de Personajes)
+
+Los personajes se crean en **AGENT_CREATOR** y se inyectan en las obras:
+
+```
+AGENT_CREATOR                    ARG_BOARD
+─────────────                    ─────────
+recipe.json  ───────────────→   actores.json
+agente.agent.md  ───────────→   obras.json (campo actores)
+```
+
+**Pipeline completo**: `FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO`
+
+### 4. TALLER (Proyectos de Usuario)
+
+Espacio de trabajo para desarrollar obras antes de publicarlas:
+
+**Ubicación**: `ARCHIVO/DISCO/TALLER/`
+
+```
+TALLER/
+├── _plantilla/          # Plantilla para nuevos proyectos
+├── hola-mundo/          # Ejemplo: primera demo del pipeline
+└── camino-del-tarotista/ # Showcase de features (pendiente)
+```
+
+---
+
 ## Contexto y Visión
 
 ### El problema
@@ -394,15 +455,28 @@ meta:
 
 ---
 
+### SCRIPT-1.0.0-S11: TALLER (Proyectos de Usuario)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T040 | Crear `ARCHIVO/DISCO/TALLER/README.md` con documentación | ✅ |
+| T041 | Crear `_plantilla/` con estructura base (obra.yaml, personajes/, escenas/) | ✅ |
+| T042 | Formalizar proyecto `hola-mundo/` como ejemplo de referencia | ✅ |
+| T043 | Documentar pipeline `FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO` | ✅ |
+| T044 | Crear escenas completas de Hola Mundo (3 escenas) | ✅ |
+
+---
+
 ## Métricas Sprint 1
 
 | Métrica | Valor |
 |---------|-------|
-| Tasks totales | 39 |
-| Completadas | 13 |
+| Tasks totales | 44 |
+| Completadas | 18 |
 | En progreso | 4 |
 | Pendientes | 22 |
-| % Avance | 33% |
+| % Avance | 41% |
 
 ---
 
@@ -446,8 +520,10 @@ meta:
 | ARG_BOARD plugin | ✅ Instalado | obras.json, actores.json funcionando |
 | AGENT_CREATOR plugin | ✅ Instalado | demarcacion-yellowflag creado |
 | GH_PAGES plugin | ✅ Instalado | docs/ funcional |
+| TEATRO plugin | ✅ Instalado | Orquestador de experiencias transmedia |
 | impress.js | ⏳ Por integrar | CDN o local |
 | Tarotista (personaje) | ✅ Creado | En actores.json |
+| TALLER (estructura) | ✅ Creado | Plantilla + hola-mundo formalizado |
 
 ---
 
@@ -461,3 +537,5 @@ meta:
 | 2025-12-22 | Diseñar obra demo "Camino del Tarotista" | Aleph |
 | 2025-12-22 | Análisis de viabilidad MVP vs framework | Aleph |
 | 2025-12-22 | Instalar plugin Teatro (S01, S02, S03, S04 parcial, S10 parcial) | Aleph |
+| 2025-12-22 | Documentar conceptos clave (BOE, Monomito, Elenco, TALLER) | Aleph |
+| 2025-12-22 | Crear TALLER con plantilla y proyecto hola-mundo formalizado (S11) | Aleph |
