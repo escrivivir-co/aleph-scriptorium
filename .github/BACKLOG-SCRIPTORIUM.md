@@ -3333,3 +3333,144 @@ Transformar la página Archivo en un **portal de datos completo** que sirva como
 | 2025-12-22 | Crear épica SCRIPT-0.18.0 — Rediseño Página ARCHIVO (Portal de Datos) | Aleph |
 | 2025-12-22 | **IMPLEMENTADO**: archivo.md - Vestíbulo, Ciclos de Datos, Agentes, Componentes | Aleph |
 
+---
+
+# Épica: SCRIPT-0.20.0 — Refactorización README (FOSS-Oriented)
+
+**Tipo**: 📝 Documentación / Arquitectura de Información  
+**Fecha**: 2025-12-22
+
+---
+
+## Objetivo
+
+Refactorizar README.md para orientarlo a la **comunidad FOSS** (contribuidores/desarrolladores) y trasladar información de usuario a la web de GitHub Pages.
+
+**Principios**:
+- README clásico de proyecto open source (~150 líneas)
+- Información de usuario → Web (gh-pages)
+- Estilo sobrio (B/W) siguiendo main.css
+- No canibalizar contenido existente en web, distribuir
+
+---
+
+## Diagnóstico
+
+### README original (719 líneas)
+Contenía:
+- Arquitectura detallada (ASCII diagrams)
+- Taxonomía de agentes (tablas extensas)
+- Documentación de plugins
+- Filosofía del proyecto
+- Origen VibeBitacora
+- Guías de uso
+- Plan inmediato
+- Status detallado
+
+### Distribución propuesta
+
+| Contenido | Origen | Destino |
+|-----------|--------|---------|
+| Quick start | README | README (condensado) |
+| Arquitectura (resumen) | README | README |
+| Agentes (tabla) | README | README + web /agentes/ |
+| Plugins (tabla) | README | README + web /leeme/ |
+| Filosofía | README | Nueva: /acerca/ |
+| Origen VibeBitacora | README | Nueva: /acerca/ |
+| Guía de uso | README | Web: /leeme/ |
+| Plan inmediato | README | Web: /roadmap/ |
+| Contributing | README | CONTRIBUTING.md + README |
+
+---
+
+## Stories
+
+### SCRIPT-0.20.0-S01: Nuevo README FOSS-Oriented
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T383 | Reescribir README.md (~150 líneas, estilo clásico FOSS) | ✅ |
+| T384 | Incluir badges (License, Web, VibeBitacora) | ✅ |
+| T385 | Sección "Qué es" (breve) | ✅ |
+| T386 | Sección "Quick Start" (3 comandos) | ✅ |
+| T387 | Sección "Arquitectura" (tree condensado) | ✅ |
+| T388 | Sección "Agentes" (tabla resumen + link a web) | ✅ |
+| T389 | Sección "Plugins" (tabla resumen + link a docs) | ✅ |
+| T390 | Sección "Contribuir" (FOSS workflow + links) | ✅ |
+| T391 | Sección "Estado" (tabla + link a backlog) | ✅ |
+| T392 | Sección "Documentación" (tabla de recursos) | ✅ |
+| T393 | Sección "Licencia" (AIPL breve) | ✅ |
+| T394 | Footer con símbolo ℵ | ✅ |
+
+---
+
+### SCRIPT-0.20.0-S02: Nueva Página "Acerca de"
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T395 | Crear docs/acerca.md con estilo B/W | ✅ |
+| T396 | Sección "El nombre" (ℵ + scriptorium) | ✅ |
+| T397 | Sección "Filosofía" (cards: coherencia, auditoría, mecanismo, separación) | ✅ |
+| T398 | Sección "El proyecto demo: Fundación" | ✅ |
+| T399 | Sección "La vacuna anti-naïf" | ✅ |
+| T400 | Sección "Origen: VibeBitacora" | ✅ |
+| T401 | Añadir "Acerca de" a navegación (_config.yml) | ✅ |
+
+---
+
+### SCRIPT-0.20.0-S03: Integración
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T402 | Verificar links entre README y web | ✅ |
+| T403 | Verificar navegación completa | ✅ |
+| T404 | Commit según protocolo DevOps | ⏳ |
+
+---
+
+## Métricas Sprint 0.20
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 22 |
+| Completadas | 21 |
+| En progreso | 1 |
+| Pendientes | 0 |
+| % Avance | 95% |
+
+---
+
+## Resultado
+
+### README.md (antes → después)
+
+| Métrica | Antes | Después |
+|---------|-------|---------|
+| Líneas | 719 | ~170 |
+| Secciones | 15+ | 10 |
+| ASCII diagrams | 3 | 1 |
+| Links a web | 2 | 8+ |
+
+### Nueva página docs/acerca.md
+
+- Filosofía del proyecto (cards visuales)
+- Origen VibeBitacora
+- Vacuna anti-naïf
+- Licencia extendida
+- Footer con símbolo ℵ
+
+---
+
+## Changelog Épica
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | Crear épica SCRIPT-0.20.0 | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: README.md FOSS-oriented (~170 líneas) | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: docs/acerca.md (filosofía, origen, licencia) | Aleph |
+| 2025-12-22 | Añadir "Acerca de" a navegación | Aleph |
+
+
