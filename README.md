@@ -13,6 +13,12 @@
 
 **Abrir el Periódico**: https://escrivivir-co.github.io/aleph-scriptorium/periodico/
 
+<a href="https://escrivivir-co.github.io/aleph-scriptorium/agentes/" title="Del Clippy al Colectivo">
+       <img src="https://img.shields.io/badge/Showcase-Del_Clippy_al_Colectivo-7289da?style=for-the-badge&logo=robot&logoColor=white" alt="Agentes — abrir" height="40" />
+</a>
+
+**Conoce al Colectivo**: https://escrivivir-co.github.io/aleph-scriptorium/agentes/
+
 > *Aleph (ℵ) es el símbolo que Cantor usó para los infinitos: conjuntos que nunca se completan pero siempre pueden ser trascendidos por un infinito mayor. La escritura funciona igual: cada versión es un umbral, no un destino. En el scriptorium medieval, los copistas preservaban y transmitían el conocimiento con rigor artesanal. Este sistema une ambas ideas: un proceso infinitamente perfectible, ejecutado con disciplina de oficio.*
 
 [Leer la bitácora de esta sesión](https://escrivivir.co/aleph-scriptorium-vibe-bitacora-projects-fundacion-un-e-libro/)

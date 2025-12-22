@@ -1483,13 +1483,13 @@ Ver: `.github/plugins/{id}/manifest.md`
 ---
 
 ### SCRIPT-0.12.0-S03: Publicación
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T234 | Deploy a GitHub Pages | ⏳ |
-| T235 | Verificar URL /agentes/ funciona | ⏳ |
-| T236 | Actualizar backlog con épica completada | ⏳ |
+| T234 | Deploy a GitHub Pages | ✅ |
+| T235 | Verificar URL /agentes/ funciona | ✅ |
+| T236 | Actualizar backlog con épica completada | ✅ |
 
 ---
 
@@ -1498,10 +1498,10 @@ Ver: `.github/plugins/{id}/manifest.md`
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 10 |
-| Completadas | 7 |
+| Completadas | 10 |
 | En progreso | 0 |
-| Pendientes | 3 |
-| % Avance | 70% |
+| Pendientes | 0 |
+| % Avance | 100% |
 
 ---
 
