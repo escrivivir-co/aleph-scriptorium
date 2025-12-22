@@ -48,7 +48,7 @@ code .
 ```
 .github/
 ├── agents/              # 12 agentes core + bridges
-├── plugins/             # 5 plugins (ARG, Enciclopedia, GH-Pages, Scraper, Creator)
+├── plugins/             # 7 plugins (ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum)
 ├── prompts/             # Prompts reutilizables
 ├── instructions/        # Instrucciones de contexto
 ├── DEVOPS.md            # Protocolo de desarrollo
@@ -94,6 +94,8 @@ Detalle: [escrivivir-co.github.io/aleph-scriptorium/agentes/](https://escrivivir
 | **GH-Pages** | 1.1.0 | Publicación en GitHub Pages |
 | **Foro Scraper** | 1.1.0 | Scraping de foros y blogs |
 | **Agent Creator** | 1.1.0 | Creación de agentes especializados |
+| **Teatro** | 1.0.0 | Experiencias transmedia interactivas |
+| **Scrum** | 1.0.0 | Gestión ágil de backlogs (5 fases) |
 
 Protocolo: [.github/PLUGINS.md](.github/PLUGINS.md)
 
@@ -166,10 +168,10 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 
 | Componente | Versión | Estado |
 |------------|---------|--------|
-| Scriptorium | **1.0.0-beta.1** | 🔄 Sprint 1 (89%) |
+| Scriptorium | **1.0.0-beta.1** | 🔄 Sprint 1 (100%) |
 | Fundación | 0.0.1 | ⏸️ Pausa (Sprint 0 completo) |
 | Web (GH-Pages) | 1.1.0 | ✅ 11 páginas + Teatro |
-| Plugins | 6 instalados | ✅ Incluye Teatro |
+| Plugins | 7 instalados | ✅ Incluye Teatro + Scrum |
 | Teatro | 1.0.0 | 🎬 2 obras (1 en escena) |
 
 **Backlog activo**: [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md)
@@ -223,7 +225,7 @@ Esta es la primera versión pública estable de Aleph Scriptorium.
 
 **Lo que hay:**
 - 17 agentes operativos (UI + Backend + Sistema + Meta)
-- 5 plugins instalados (ARG, Enciclopedia, GH-Pages, Scraper, Creator)
+- 7 plugins instalados (ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum)
 - Sistema de 5 banderas para auditoría doctrinal
 - Sitio web con 9 páginas
 - Protocolo DevOps completo

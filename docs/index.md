@@ -101,10 +101,10 @@ permalink: /
 <h2>// Status</h2>
 <dl class="status-list">
   <div><dt>Versión</dt><dd><strong>1.0.0-beta.1</strong></dd></div>
-  <div><dt>Sprint</dt><dd>0 ✓ Cerrado</dd></div>
-  <div><dt>Scriptorium</dt><dd>100% · 19 épicas</dd></div>
+  <div><dt>Sprint</dt><dd>1 ✓ Teatro + Scrum</dd></div>
+  <div><dt>Scriptorium</dt><dd>100% · 21 épicas</dd></div>
   <div><dt>Fundación</dt><dd>85% · 4 caps</dd></div>
-  <div><dt>Plugins</dt><dd>5 instalados</dd></div>
+  <div><dt>Plugins</dt><dd>7 instalados</dd></div>
   <div><dt>Agentes</dt><dd>17 operativos</dd></div>
 </dl>
 </section>

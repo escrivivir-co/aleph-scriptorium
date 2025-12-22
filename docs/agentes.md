@@ -904,6 +904,53 @@ permalink: /agentes/
         Crea agentes especializados combinando agentes base con fuentes de datos. Permite editar, fusionar y desplegar en Teatro ARG.
       </p>
     </div>
+    
+    <!-- TEATRO -->
+    <div class="agente-card plugin">
+      <div class="agente-header">
+        <div class="agente-avatar">
+          <svg viewBox="0 0 28 28" fill="none">
+            <path d="M4 8C4 6 6 4 14 4C22 4 24 6 24 8" stroke="#9c27b0" stroke-width="2"/>
+            <path d="M4 8V20C4 22 6 24 14 24C22 24 24 22 24 20V8" stroke="#9c27b0" stroke-width="2" fill="none"/>
+            <circle cx="10" cy="12" r="2" fill="#9c27b0"/>
+            <circle cx="18" cy="12" r="2" fill="#9c27b0"/>
+            <path d="M10 18C10 18 12 20 14 20C16 20 18 18 18 18" stroke="#9c27b0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="agente-info">
+          <h3 class="agente-name">Teatro</h3>
+          <span class="plugin-count">1 agente</span>
+          <span class="agente-role">Experiencias Transmedia</span>
+        </div>
+      </div>
+      <p class="agente-desc">
+        Orquesta experiencias de teatro interactivo con visualización 3D basada en impress.js. Conecta ARG_BOARD, AGENT_CREATOR y GH-PAGES.
+      </p>
+    </div>
+    
+    <!-- SCRUM -->
+    <div class="agente-card plugin">
+      <div class="agente-header">
+        <div class="agente-avatar">
+          <svg viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="4" width="20" height="20" rx="3" stroke="#9c27b0" stroke-width="2" fill="none"/>
+            <path d="M4 10H24" stroke="#9c27b0" stroke-width="2"/>
+            <path d="M10 10V24" stroke="#9c27b0" stroke-width="1.5"/>
+            <rect x="12" y="13" width="4" height="3" rx="0.5" fill="#00c853"/>
+            <rect x="18" y="13" width="4" height="3" rx="0.5" fill="#ffc107"/>
+            <rect x="12" y="18" width="4" height="3" rx="0.5" fill="#2196f3"/>
+          </svg>
+        </div>
+        <div class="agente-info">
+          <h3 class="agente-name">Scrum</h3>
+          <span class="plugin-count">1 agente</span>
+          <span class="agente-role">Gestión Ágil</span>
+        </div>
+      </div>
+      <p class="agente-desc">
+        Protocolo de 5 fases para backlogs: Planificar, Borrador, Aprobar, Tracking y Cerrar. Separa DISCO (borradores) de oficiales.
+      </p>
+    </div>
   </div>
 </section>
 

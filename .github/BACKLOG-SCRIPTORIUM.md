@@ -1,8 +1,8 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.0.0  
-> **Sprint actual**: 1 (Teatro Interactivo)  
+> **Versión**: 1.1.0  
+> **Sprint actual**: 1 (Teatro Interactivo + Scrum)  
 > **Fecha inicio**: 2025-12-22
 
 ---
@@ -546,3 +546,57 @@ meta:
 | 2025-12-22 | Integrar Teatro con GH-Pages y limpiar cartelera (S09) | Aleph |
 | 2025-12-22 | Completar documentación y tests del Teatro (S10) | Aleph |
 | 2025-12-22 | Diseñar cards de obras y cerrar Sprint 1 (S04-T011) | Aleph |
+| 2025-12-22 | Instalar plugin Scrum v1.0.0 (SCRIPT-1.1.0) | Aleph |
+
+---
+
+# Épica: SCRIPT-1.1.0 — Plugin Scrum
+
+**Objetivo**: Crear un plugin de gestión ágil de backlogs con protocolo formal de 5 fases.
+
+**Estado**: ✅ Completada
+
+---
+
+## Story: SCRIPT-1.1.0-S01 — Estructura del Plugin
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `manifest.md` del plugin | ✅ |
+| T002 | Crear `scrum.agent.md` (Scrum Master) | ✅ |
+| T003 | Crear `scrum-protocol.instructions.md` | ✅ |
+
+---
+
+## Story: SCRIPT-1.1.0-S02 — Prompts del Protocolo
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T004 | Crear `planificar-sprint.prompt.md` (Fase 1) | ✅ |
+| T005 | Crear `crear-backlog-borrador.prompt.md` (Fase 2) | ✅ |
+| T006 | Crear `aprobar-backlog.prompt.md` (Fase 3) | ✅ |
+| T007 | Crear `tracking-sprint.prompt.md` (Fase 4) | ✅ |
+| T008 | Crear `retrospectiva.prompt.md` (Fase 5) | ✅ |
+
+---
+
+## Story: SCRIPT-1.1.0-S03 — Integración
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T009 | Crear bridge `plugin_ox_scrum.agent.md` | ✅ |
+| T010 | Actualizar `registry.json` | ✅ |
+| T011 | Actualizar `ox.agent.md` (índice v1.2.0) | ✅ |
+| T012 | Actualizar `aleph.agent.md` (handoff) | ✅ |
+| T013 | Actualizar `copilot-instructions.md` | ✅ |
+| T014 | Crear `ARCHIVO/PLUGINS/SCRUM/README.md` | ✅ |
+
+---
+
+## Métricas SCRIPT-1.1.0
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 14 |
+| Completadas | **14** |
+| % Avance | **100%** 🎉 |
