@@ -9,8 +9,8 @@
   <!-- Teatro Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/teatro.css' | relative_url }}">
   
-  <!-- Impress.js -->
-  <script src="https://cdn.jsdelivr.net/npm/impress.js@2.0.0/js/impress.min.js"></script>
+  <!-- Impress.js (copia local - BUG-002 fix) -->
+  <script src="{{ '/assets/js/impress.min.js' | relative_url }}"></script>
   
   {% seo %}
 </head>
@@ -44,29 +44,58 @@
     {% comment %}
     Generar pasos desde las escenas definidas en el frontmatter.
     Cada escena se convierte en un "step" de impress.js.
+    
+    Sistema de coordenadas:
+    - Anillo 0: Centro (0,0)
+    - Anillo 1: Radio 1000px, estadios 1-4 distribuidos a 90° cada uno
+    - Anillo 2: Radio 2000px, estadios 5-8 distribuidos a 90° cada uno
+    - Anillo 3: Radio 3000px, estadios 9-12 distribuidos a 90° cada uno
     {% endcomment %}
     
     {% for escena in page.escenas %}
     {% assign step_id = escena.id %}
     {% assign anillo = escena.anillo | default: 1 %}
-    {% assign angulo = step_id | times: 30 %}
-    {% assign radio = 0 %}
     
     {% comment %}Calcular radio según anillo{% endcomment %}
     {% if anillo == 0 %}
       {% assign radio = 0 %}
+      {% assign x = 0 %}
+      {% assign y = 0 %}
     {% elsif anillo == 1 %}
       {% assign radio = 1000 %}
+      {% assign pos_en_anillo = step_id | minus: 1 %}
+      {% comment %}Posiciones: 0=arriba, 1=derecha, 2=abajo, 3=izquierda{% endcomment %}
+      {% case pos_en_anillo %}
+        {% when 0 %}{% assign x = 0 %}{% assign y = -1000 %}
+        {% when 1 %}{% assign x = 1000 %}{% assign y = 0 %}
+        {% when 2 %}{% assign x = 0 %}{% assign y = 1000 %}
+        {% when 3 %}{% assign x = -1000 %}{% assign y = 0 %}
+        {% else %}{% assign x = 1000 %}{% assign y = 0 %}
+      {% endcase %}
     {% elsif anillo == 2 %}
       {% assign radio = 2000 %}
+      {% assign pos_en_anillo = step_id | minus: 5 %}
+      {% case pos_en_anillo %}
+        {% when 0 %}{% assign x = 0 %}{% assign y = -2000 %}
+        {% when 1 %}{% assign x = 2000 %}{% assign y = 0 %}
+        {% when 2 %}{% assign x = 0 %}{% assign y = 2000 %}
+        {% when 3 %}{% assign x = -2000 %}{% assign y = 0 %}
+        {% else %}{% assign x = 2000 %}{% assign y = 0 %}
+      {% endcase %}
     {% else %}
       {% assign radio = 3000 %}
+      {% assign pos_en_anillo = step_id | minus: 9 %}
+      {% case pos_en_anillo %}
+        {% when 0 %}{% assign x = 0 %}{% assign y = -3000 %}
+        {% when 1 %}{% assign x = 3000 %}{% assign y = 0 %}
+        {% when 2 %}{% assign x = 0 %}{% assign y = 3000 %}
+        {% when 3 %}{% assign x = -3000 %}{% assign y = 0 %}
+        {% else %}{% assign x = 3000 %}{% assign y = 0 %}
+      {% endcase %}
     {% endif %}
     
-    {% comment %}Calcular posición X,Y con trigonometría{% endcomment %}
-    {% assign angulo_rad = angulo | times: 0.0174533 %}
-    {% assign x = radio | times: 1 %}
-    {% assign y = 0 %}
+    {% comment %}Rotación basada en posición para mirar hacia el centro{% endcomment %}
+    {% assign angulo = step_id | minus: 1 | times: 30 %}
     
     <div id="step-{{ step_id }}" 
          class="step" 
@@ -95,6 +124,23 @@
       </div>
       {% endif %}
       
+      <!-- Navegación prev/next -->
+      <nav class="step-nav">
+        {% assign prev_id = step_id | minus: 1 %}
+        {% assign next_id = step_id | plus: 1 %}
+        {% if prev_id >= 1 %}
+          <a href="#step-{{ prev_id }}" class="nav-prev" title="Anterior">← Anterior</a>
+        {% else %}
+          <a href="#overview" class="nav-prev" title="Inicio">← Inicio</a>
+        {% endif %}
+        <span class="nav-progress">{{ step_id }} / {{ page.escenas | size }}</span>
+        {% if next_id <= page.escenas.size %}
+          <a href="#step-{{ next_id }}" class="nav-next" title="Siguiente">Siguiente →</a>
+        {% else %}
+          <a href="#step-final" class="nav-next" title="Fin">Fin →</a>
+        {% endif %}
+      </nav>
+      
       <div class="meta">
         <span class="badge">Anillo {{ anillo }}</span>
         <span class="badge">{{ escena.tipo }}</span>
@@ -121,19 +167,58 @@
     <span id="ring-label">0</span>
   </div>
 
+  <!-- Volver a cartelera -->
+  <div class="back-to-cartelera">
+    <a href="{{ '/teatro' | relative_url }}">← Cartelera</a>
+  </div>
+
   <!-- Índice lateral (árbol de navegación) -->
   <nav class="theater-index">
     <h3>Índice</h3>
     <ul>
       <li><a href="#overview">🎭 Inicio</a></li>
       {% for escena in page.escenas %}
-      <li><a href="#step-{{ escena.id }}">{{ escena.id }}. {{ escena.nombre }}</a></li>
+      <li data-step="step-{{ escena.id }}"><a href="#step-{{ escena.id }}">{{ escena.id }}. {{ escena.nombre }}</a></li>
       {% endfor %}
       <li><a href="#step-final">🎬 Fin</a></li>
     </ul>
   </nav>
 
+  <!-- Botón de ayuda -->
+  <button class="help-toggle" title="Ayuda de navegación">?</button>
+
+  <!-- Help Overlay -->
+  <div class="help-overlay" id="help-overlay">
+    <div class="help-content">
+      <h2>🎭 Navegación del Teatro</h2>
+      <table>
+        <tr><td><kbd>→</kbd> <kbd>Espacio</kbd></td><td>Siguiente diapositiva</td></tr>
+        <tr><td><kbd>←</kbd></td><td>Diapositiva anterior</td></tr>
+        <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Cambiar de anillo</td></tr>
+        <tr><td><kbd>O</kbd></td><td>Vista general (overview)</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Cerrar ayuda</td></tr>
+      </table>
+      <p style="margin-top: 20px; color: #888; font-size: 14px;">
+        Usa el <strong>slider de anillos</strong> en la parte inferior para navegar entre niveles del monomito.
+      </p>
+      <div class="help-close">
+        <button onclick="document.getElementById('help-overlay').classList.remove('active')">Entendido</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="{{ '/assets/js/teatro.js' | relative_url }}"></script>
+  <script>
+    // Toggle help overlay
+    document.querySelector('.help-toggle').addEventListener('click', function() {
+      document.getElementById('help-overlay').classList.add('active');
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('help-overlay').classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>

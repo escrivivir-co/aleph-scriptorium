@@ -1,8 +1,8 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.1.0  
-> **Sprint actual**: 1 (Teatro Interactivo + Scrum)  
+> **Versión**: 1.3.0  
+> **Sprint actual**: 1 (Teatro Interactivo + Scrum + Refactorización Impress.js)  
 > **Fecha inicio**: 2025-12-22
 
 ---
@@ -549,6 +549,8 @@ meta:
 | 2025-12-22 | Instalar plugin Scrum v1.0.0 (SCRIPT-1.1.0) | Aleph |
 | 2025-12-22 | Añadir épica SCRIPT-1.2.0: Galería de Fotos de Estado | Aleph |
 | 2025-12-23 | Añadir S03: Anexo Visual con 12 capturas y tutorial "Como Word" | Aleph |
+| 2025-12-23 | Añadir épica SCRIPT-1.3.0: Refactorización Teatro (Impress.js + BOE) | Aleph |
+| 2025-12-23 | Registrar BUG-002: impress.js no inicializa | Aleph |
 
 ---
 
@@ -677,7 +679,230 @@ https://escrivivir-co.github.io/aleph-scriptorium/roadmap/#galeria-fotos
 
 ---
 
+# Épica: SCRIPT-1.3.0 — Refactorización Teatro (Impress.js + BOE)
+
+**Objetivo**: Corregir el visualizador impress.js, estructurar la página teatro con 3 zonas claras (Galería, Escena, Pantalla) e integrar el BOE como fuente de verdad para el mapa de diapositivas.
+
+**Estado**: 🔄 En Progreso
+
+**Detectado**: 2025-12-23  
+**Referencia**: Navegación a https://escrivivir-co.github.io/aleph-scriptorium/teatro/
+
+---
+
+## Contexto del Problema
+
+### Errores detectados en producción
+
+1. **Error crítico**: `TypeError: impress is not a function` — La librería impress.js no se inicializa correctamente
+2. **Página teatro.md**: Falta estructura clara de 3 zonas
+3. **Integración BOE**: El BOE no se usa para generar el mapa de navegación
+4. **Navegación**: Teclas (→, ←, Espacio) no funcionan sin impress.js activo
+
+### Arquitectura objetivo
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                     docs/teatro.md (CARTELERA)                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌─────────────────┐  ┌────────────────────────────────────────┐    │
+│  │   🎬 GALERÍA    │  │           🎭 EN ESCENA                  │    │
+│  │   (Cartel)      │  │   Obra activa con acceso al visor      │    │
+│  │                 │  │                                         │    │
+│  │ - Hola Mundo    │  │  [El Camino del Tarotista]              │    │
+│  │ - Obra Futura   │  │  ▶️ Abrir Pantalla Impress.js           │    │
+│  │ - Archivo       │  │                                         │    │
+│  └─────────────────┘  └────────────────────────────────────────┘    │
+│                                                                       │
+│  ┌─────────────────────────────────────────────────────────────────┐ │
+│  │                    🖥️ PANTALLA IMPRESS.JS                       │ │
+│  │                                                                   │ │
+│  │  Navegación con teclas:  ← → ↑ ↓ Espacio O                       │ │
+│  │                                                                   │ │
+│  │  ┌─────────────────────────────────────────────────────────┐     │ │
+│  │  │                   VIEWPORT 3D                            │     │ │
+│  │  │     ┌────────────────────────────────────┐               │     │ │
+│  │  │     │  Centro (Anillo 0)                 │               │     │ │
+│  │  │     │    → Partida (Anillo 1, estadios 1-4)              │     │ │
+│  │  │     │    → Iniciación (Anillo 2, estadios 5-8)           │     │ │
+│  │  │     │    → Retorno (Anillo 3, estadios 9-12)             │     │ │
+│  │  │     └────────────────────────────────────┘               │     │ │
+│  │  └─────────────────────────────────────────────────────────┘     │ │
+│  │                                                                   │ │
+│  │  Índice lateral (árbol de navegación desde BOE)                  │ │
+│  └─────────────────────────────────────────────────────────────────┘ │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Flujo BOE → Impress.js
+
+```
+ARG_BOARD/.arrakis/obras.json  →  Estructura de escenas
+                    ↓
+ARCHIVO/PLUGINS/ARG_BOARD/BOE/  →  Registro de cambios
+                    ↓
+docs/teatro/{obra}.md (frontmatter)  →  YAML con escenas
+                    ↓
+docs/_layouts/obra.html  →  Genera <div id="step-N"> para impress.js
+                    ↓
+impress().init()  →  Habilita navegación 3D
+```
+
+---
+
+## Story: SCRIPT-1.3.0-S01 — Fix Crítico Impress.js
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Diagnosticar por qué `impress()` falla (CDN, defer, orden de carga) | ✅ |
+| T002 | Cambiar de CDN a copia local de impress.js si CDN es inestable | ✅ |
+| T003 | Añadir fallback robusto: si impress falla, mostrar HTML legible | ✅ |
+| T004 | Verificar en navegador local antes de push | ⏳ |
+| T005 | Verificar en GitHub Actions después de push | ⏳ |
+
+---
+
+## Story: SCRIPT-1.3.0-S02 — Refactorizar teatro.md (3 Zonas)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Diseñar layout HTML/CSS para 3 zonas en teatro.md | ✅ |
+| T007 | Zona 1: Galería (cards de obras en cartel) | ✅ |
+| T008 | Zona 2: En Escena (obra activa con destaque visual) | ✅ |
+| T009 | Zona 3: Pantalla (embed o enlace a visualizador impress.js) | ✅ |
+| T010 | Actualizar CSS teatro.css con estilos de zonas | ✅ |
+| T011 | Añadir sección Archivo para obras clausuradas | ✅ |
+
+---
+
+## Story: SCRIPT-1.3.0-S03 — Integración BOE → Mapa de Diapositivas
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Documentar schema de BOE para entradas de escenas | ✅ |
+| T013 | Crear prompt para generar BOE desde obras.json | ✅ |
+| T014 | Añadir hipervinculación entre diapositivas (prev/next/branch) | ✅ |
+| T015 | Generar data-x, data-y, data-z desde posición en BOE | ✅ |
+| T016 | Sincronizar árbol-índice lateral con estructura BOE | ✅ |
+
+---
+
+## Story: SCRIPT-1.3.0-S04 — Navegación Mejorada
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Añadir teclas de navegación documentadas (overlay de ayuda) | ✅ |
+| T018 | Slider de anillos funcional con feedback visual | ✅ |
+| T019 | Indicador de progreso (estadio N de 12) | ✅ |
+| T020 | Botón "Volver al inicio" y "Volver a cartelera" siempre visible | ✅ |
+| T021 | Modo responsive para móviles (swipe gestures) | ⏳ |
+
+---
+
+## Story: SCRIPT-1.3.0-S05 — Actualizar Protocolo Teatro
+**Estado**: 🔄 En Progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T022 | Actualizar `teatro-ejecutar-obra.prompt.md` con nuevo flujo | ⏳ |
+| T023 | Actualizar `teatro-interactivo.instructions.md` | ✅ |
+| T024 | Documentar schema de BOE en instrucciones | ✅ |
+| T025 | Añadir validación local antes de publicar (script) | ⏳ |
+
+---
+
+## Story: SCRIPT-1.3.0-S06 — Tests y Verificación
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T026 | Test local: servidor Jekyll y navegación completa | ⏳ |
+| T027 | Test en Chrome, Firefox, Safari | ⏳ |
+| T028 | Test en móvil (responsive) | ⏳ |
+| T029 | Verificar que GitHub Actions pasa sin errores | ⏳ |
+| T030 | Documentar hallazgos y limitaciones MVP | ⏳ |
+
+---
+
+## Métricas SCRIPT-1.3.0
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 30 |
+| Completadas | **22** |
+| En progreso | 1 |
+| Pendientes | **7** |
+| % Avance | **0%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| BUG-001 (Jekyll include) | 🟡 Parcialmente resuelto | Falta verificar en Actions |
+| BUG-002 (impress.js) | 🔴 Nuevo | Creado como parte de esta épica |
+| impress.js CDN | 🔴 Inestable | Considerar copia local |
+
+---
+
 # 🐛 Bugs
+
+## BUG-002: impress.js no inicializa — TypeError: impress is not a function
+
+**Estado**: 🔴 Abierto  
+**Severidad**: Crítica (bloquea toda la funcionalidad del Teatro)  
+**Detectado**: 2025-12-23  
+**Relacionado con**: SCRIPT-1.3.0-S01
+
+### Descripción
+
+Al navegar a cualquier obra del teatro (ej. `/teatro/camino-del-tarotista/`), la consola muestra:
+
+```
+🎭 Teatro Interactivo: Inicializando...
+TypeError: impress is not a function
+```
+
+El layout `docs/_layouts/obra.html` carga impress.js desde CDN pero la función `impress()` no está disponible cuando `teatro.js` intenta ejecutarla.
+
+### Causa probable
+
+1. **Orden de carga**: `teatro.js` se ejecuta antes de que impress.js termine de cargar
+2. **CDN inestable**: jsDelivr puede tener problemas de disponibilidad
+3. **Conflicto de scope**: impress.js no expone la función globalmente
+4. **Error en el CDN**: El archivo puede estar corrupto o incompleto
+
+### Soluciones propuestas
+
+| Opción | Descripción | Pros | Contras |
+|--------|-------------|------|---------|
+| **A** | Añadir `defer` o mover script al final del `<body>` | Simple | Puede no resolver |
+| **B** | Copiar impress.js a `docs/assets/js/` (local) | Control total | Mantenimiento manual |
+| **C** | Usar evento `load` en vez de `DOMContentLoaded` | Más tardío | UX más lenta |
+| **D** | Verificar que CDN devuelve 200 y contenido válido | Diagnóstico | No es fix |
+
+### Decisión recomendada
+
+**Opción B**: Copiar impress.js localmente para control total.
+
+### Tasks
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| BUG-002-T001 | Verificar respuesta del CDN (200, contenido) | ⏳ |
+| BUG-002-T002 | Descargar impress.js a `docs/assets/js/impress.min.js` | ⏳ |
+| BUG-002-T003 | Actualizar `obra.html` para usar copia local | ⏳ |
+| BUG-002-T004 | Añadir fallback en `teatro.js` si impress no existe | ⏳ |
+| BUG-002-T005 | Verificar en local y en GitHub Actions | ⏳ |
+
+---
 
 ## BUG-001: Jekyll include_relative con variable falla en GitHub Actions
 

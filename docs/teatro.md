@@ -1,14 +1,20 @@
 ---
 layout: default
 title: Teatro
-description: Teatro Interactivo - Experiencias transmedia guiadas
+description: Teatro Interactivo - Experiencias transmedia guiadas con navegación 3D
 ---
 
 # 🎭 Teatro Interactivo
 
 > Experiencias transmedia navegables en el Scriptorium
 
----
+<div class="teatro-container">
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ZONA 1: EN ESCENA (Obra activa destacada)
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<section class="zona-escena">
 
 ## 🎬 En Escena
 
@@ -16,60 +22,97 @@ description: Teatro Interactivo - Experiencias transmedia guiadas
 
 ### El Camino del Tarotista
 
-**Tipo**: Onboarding  
-**Nivel**: Introductorio  
-**Duración**: 2-3 horas
+<div class="obra-meta">
+  <span class="badge badge-tipo">Onboarding</span>
+  <span class="badge badge-nivel">Introductorio</span>
+  <span class="badge badge-duracion">2-3 horas</span>
+</div>
 
 > Recorrido guiado por todas las features del Scriptorium.
-> 12 estadios con pruebas prácticas (vestíbulo, banderas, scraping, agentes, publicación).
+> 12 estadios siguiendo el Camino del Héroe: vestíbulo, biblioteca, hemeroteca, scriptorium, foro, laboratorio, teatro, ordalía, publicación, mapa, integración y elixir.
 
-**Personaje guía**: Tarotista (demarcacion-yellowflag)
+**Personaje guía**: 🧙 Tarotista (demarcacion-yellowflag)
 
-[▶️ Ir a la obra](/aleph-scriptorium/teatro/camino-del-tarotista/)
+<div class="obra-acciones">
+  <a href="{{ '/teatro/camino-del-tarotista/' | relative_url }}" class="btn-primario">▶️ Abrir Pantalla</a>
+  <a href="#pantalla-info" class="btn-secundario">ℹ️ Cómo navegar</a>
+</div>
 
 </div>
 
----
+</section>
 
-## 📋 En Cartel
+<!-- ═══════════════════════════════════════════════════════════════════
+     ZONA 2: GALERÍA (Cartel de obras)
+     ═══════════════════════════════════════════════════════════════════ -->
 
-### Hola Mundo
+<section class="zona-galeria">
+
+## 📋 Galería
+
+<div class="galeria-grid">
 
 <div class="obra-card">
 
-**Tipo**: Laboratorio  
-**Nivel**: Introductorio  
-**Duración**: 15-30 minutos
+### Hola Mundo
 
-> Obra de demostración para el plugin AGENT_CREATOR.
-> Primer despliegue de agente creado como personaje teatral.
-> El Tarotista se presenta y demuestra sus capacidades.
+<div class="obra-meta">
+  <span class="badge badge-tipo">Laboratorio</span>
+  <span class="badge badge-nivel">Introductorio</span>
+  <span class="badge badge-duracion">15-30 min</span>
+</div>
 
-**Personaje guía**: Tarotista (demarcacion-yellowflag)
+> Obra de demostración del pipeline AGENT_CREATOR → ARG_BOARD.
+> El Tarotista se presenta y demuestra el método de auditoría.
 
-[▶️ Ver obra](/aleph-scriptorium/teatro/hola-mundo/)
+**Personaje guía**: 🧙 Tarotista
+
+<a href="{{ '/teatro/hola-mundo/' | relative_url }}" class="btn-terciario">▶️ Ver obra</a>
 
 </div>
 
----
+<!-- Placeholder para futuras obras -->
+<div class="obra-card obra-placeholder">
 
-## 📚 Archivo
+### + Nueva Obra
 
-*Las obras clausuradas se archivarán en esta sección.*
+> Usa `@aleph quiero crear una obra de teatro` para diseñar tu propia experiencia de 12 estadios.
 
----
+<a href="#crear-obra" class="btn-terciario">📝 Crear obra</a>
 
-## ¿Qué es el Teatro?
+</div>
 
-El Teatro Interactivo transforma el Scriptorium en un **espacio navegable** donde puedes:
+</div>
 
-- 🎭 **Visionar obras**: Experiencias guiadas de 12 estadios
-- 🧙 **Interactuar con personajes**: Agentes especializados como guías
-- 🗺️ **Recorrer caminos**: Estructura de monomito (Camino del Héroe)
+### 📚 Archivo
+
+<div class="archivo-obras">
+<em>Las obras clausuradas se archivarán aquí.</em>
+</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     ZONA 3: PANTALLA (Información del visualizador)
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<section class="zona-pantalla" id="pantalla-info">
+
+## 🖥️ Pantalla Impress.js
+
+El visualizador 3D te permite navegar las obras como un espacio tridimensional organizado en **anillos concéntricos**.
+
+### Navegación con teclado
+
+| Tecla | Acción |
+|-------|--------|
+| `→` o `Espacio` | Siguiente diapositiva |
+| `←` | Diapositiva anterior |
+| `↑` `↓` | Navegar entre anillos |
+| `O` | Vista general (overview) |
+| `Esc` | Salir de overview |
 
 ### Sistema de Anillos
-
-Cada obra se visualiza en un espacio 3D con navegación por anillos:
 
 ```
         ┌─────────────────────┐
@@ -84,7 +127,26 @@ Cada obra se visualiza en un espacio 3D con navegación por anillos:
        \_____________________ /
 ```
 
+| Anillo | Estadios | Fase del Monomito |
+|--------|----------|-------------------|
+| **0** | Inicio | Centro (bienvenida) |
+| **1** | 1-4 | Partida (mundo ordinario → umbral) |
+| **2** | 5-8 | Iniciación (pruebas → ordalía) |
+| **3** | 9-12 | Retorno (recompensa → elixir) |
+
+### Controles adicionales
+
+- **Slider de anillo**: Salta directamente a un anillo
+- **Índice lateral**: Acceso directo a cualquier estadio
+- **Modo fallback**: Si tu navegador no soporta 3D, verás navegación lineal
+
+</section>
+
+</div>
+
 ---
+
+<section id="crear-obra">
 
 ## Cómo crear una obra
 
@@ -94,7 +156,7 @@ Cada obra se visualiza en un espacio 3D con navegación por anillos:
 @aleph quiero crear una obra de teatro sobre [tema]
 ```
 
-El sistema te guiará para diseñar los 12 estadios.
+El sistema te guiará para diseñar los 12 estadios con pruebas y personajes.
 
 ### 2. Instalar
 
@@ -102,7 +164,7 @@ El sistema te guiará para diseñar los 12 estadios.
 @aleph instala la obra [nombre]
 ```
 
-La obra aparecerá en la cartelera.
+La obra aparecerá en la galería (en cartel).
 
 ### 3. Ejecutar
 
@@ -110,11 +172,14 @@ La obra aparecerá en la cartelera.
 @aleph pon en escena la obra [nombre]
 ```
 
-Se generará la página interactiva y se publicará.
+Se generará la página impress.js y se publicará. La obra pasará a "En Escena".
+
+</section>
 
 ---
 
 ## Recursos
 
-- [Documentación del plugin →](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/.github/plugins/teatro)
-- [Backlog Sprint 1 →](roadmap)
+- [Documentación del plugin Teatro →](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/.github/plugins/teatro)
+- [Limitaciones del MVP →]({{ '/teatro-mvp-limitations' | relative_url }})
+- [Backlog Sprint 1 →]({{ '/roadmap' | relative_url }})

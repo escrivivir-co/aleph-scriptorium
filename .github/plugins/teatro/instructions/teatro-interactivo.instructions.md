@@ -242,3 +242,133 @@ Las tareas de Teatro están en `BACKLOG-SCRIPTORIUM.md` bajo la épica **SCRIPT-
 - **No crear páginas sin instalar obra**: El flujo es generar → instalar → ejecutar
 - **No mezclar actores de distintas obras** sin registro
 - **No publicar sin pasar por GH-PAGES**: Mantener coherencia del sitio
+
+---
+
+## Integración BOE → Mapa de Diapositivas (Impress.js)
+
+> **Referencia**: SCRIPT-1.3.0
+
+### Concepto
+
+El **BOE (Boletín Oficial del Estado Escénico)** es la fuente de verdad para el mapa de navegación de impress.js. Cada entrada del BOE representa una diapositiva o grupo de diapositivas.
+
+### Schema BOE para Escenas
+
+```json
+{
+  "seccion": "IV. Registro de Escenas",
+  "items": [
+    {
+      "identificador": "ARRAKIS-ESCENA-{obra}-{escena}-{fecha}",
+      "titulo": "Escena N: {nombre}",
+      "texto": "Descripción narrativa de la escena.",
+      "metadata": {
+        "tipo": "registro_escena",
+        "obra": "{obra_id}",
+        "escena_id": N,
+        "anillo": M,
+        "tipo_monomito": "{inicio|llamada|mentor|umbral|...}",
+        "posicion_3d": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "rotate_z": 30
+        },
+        "hipervinculaciones": {
+          "prev": "step-{N-1}",
+          "next": "step-{N+1}",
+          "branch": []
+        }
+      }
+    }
+  ]
+}
+```
+
+### Mapeo BOE → Impress.js
+
+| BOE | Impress.js | Descripción |
+|-----|------------|-------------|
+| `escena_id` | `id="step-{N}"` | Identificador del paso |
+| `anillo` | Radio calculado | 0=0px, 1=1000px, 2=2000px, 3=3000px |
+| `escena_id × 30` | `data-rotate-z` | Rotación angular |
+| `posicion_3d.x` | `data-x` | Posición horizontal |
+| `posicion_3d.y` | `data-y` | Posición vertical |
+| `hipervinculaciones.prev` | Link ← | Navegación hacia atrás |
+| `hipervinculaciones.next` | Link → | Navegación hacia adelante |
+
+### Flujo de Generación
+
+```
+1. Obra definida en YAML (escenas con anillo/tipo)
+     ↓
+2. Teatro.instalar() genera entrada BOE
+     ↓
+3. BOE registra cada escena con metadata 3D
+     ↓
+4. Teatro.ejecutar() lee BOE
+     ↓
+5. Layout obra.html genera <div class="step"> desde BOE
+     ↓
+6. teatro.js inicializa impress() con los pasos
+```
+
+### Árbol-Índice Lateral
+
+El índice lateral (`nav.theater-index`) se genera desde el BOE:
+
+```html
+<nav class="theater-index">
+  <h3>Índice</h3>
+  <ul>
+    {% for escena in boe.escenas %}
+    <li data-anillo="{{ escena.anillo }}">
+      <a href="#step-{{ escena.id }}">
+        {{ escena.id }}. {{ escena.nombre }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>
+```
+
+### Resolución de BUG-002
+
+Para que impress.js funcione:
+
+1. **Carga local**: Copiar `impress.min.js` a `docs/assets/js/`
+2. **Orden correcto**: Cargar impress.js ANTES de teatro.js
+3. **Inicialización**: Usar `DOMContentLoaded` + verificación `typeof impress`
+4. **Fallback**: Si impress falla, mostrar HTML lineal navegable
+
+```html
+<!-- Orden de carga correcto -->
+<script src="/assets/js/impress.min.js"></script>
+<script src="/assets/js/teatro.js"></script>
+```
+
+```javascript
+// teatro.js - verificación robusta
+document.addEventListener("DOMContentLoaded", function() {
+    if (typeof impress === "function") {
+        const api = impress();
+        api.init();
+        setupControls(api);
+    } else {
+        console.error("impress.js no disponible");
+        document.body.classList.add('fallback-mode');
+    }
+});
+```
+
+### Validación Local
+
+Antes de publicar, ejecutar:
+
+```bash
+cd docs
+bundle exec jekyll serve
+# Navegar a http://localhost:4000/teatro/{obra}/
+# Verificar que las teclas ← → Espacio funcionan
+```
