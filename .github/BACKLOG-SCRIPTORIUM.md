@@ -1763,12 +1763,350 @@ Ver: `.github/plugins/{id}/manifest.md`
 
 ---
 
+---
+
+# Épica: SCRIPT-0.19.0 — Página Roadmap + Euler Scriptorium
+
+**Tipo**: ✨ Feature / Estrategia de Producto  
+**Plugin**: gh-pages  
+**Página**: `docs/roadmap.md`
+
+---
+
+## Objetivo
+
+Crear una página **Mapa de Ruta** (Roadmap) que presente:
+
+1. **Presente**: Backlogs públicos en modo FOSS con invitación a contribuir (Pull Requests)
+2. **Futuro**: Visión de producto **Euler Scriptorium** (extensión cloud Azure/GitHub)
+
+---
+
+## Visión de Producto: Aleph → Euler
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                          ECOSISTEMA SCRIPTORIUM                              │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──────────────────┐                    ┌──────────────────┐               │
+│  │ ALEPH SCRIPTORIUM│                    │ EULER SCRIPTORIUM│               │
+│  │    (Local)       │ ═══ evoluciona ═══▶│    (Cloud)       │               │
+│  │   VS Code +      │                    │  Azure/GitHub    │               │
+│  │   Copilot Chat   │                    │     Cloud        │               │
+│  └──────────────────┘                    └──────────────────┘               │
+│           │                                       │                          │
+│           ▼                                       ▼                          │
+│  ┌──────────────────┐                    ┌──────────────────┐               │
+│  │     DISCO        │ ═══════════════════▶│  Azure Data Lake │               │
+│  │  (local files)   │   migración/sync    │  Storage Account │               │
+│  └──────────────────┘                    │  Blob Containers │               │
+│                                          └──────────────────┘               │
+│           │                                       │                          │
+│           ▼                                       ▼                          │
+│  ┌──────────────────┐                    ┌──────────────────┐               │
+│  │   GH-PAGES       │ ═══════════════════▶│  Azure Static    │               │
+│  │  (static site)   │   escalar           │  Web Apps /      │               │
+│  └──────────────────┘                    │  App Service     │               │
+│                                          └──────────────────┘               │
+│           │                                       │                          │
+│           ▼                                       ▼                          │
+│  ┌──────────────────┐                    ┌──────────────────┐               │
+│  │   ARG-BOARD      │ ═══════════════════▶│  Azure SignalR   │               │
+│  │  (local theater) │   tiempo real       │  Cosmos DB       │               │
+│  └──────────────────┘                    │  Functions       │               │
+│                                          └──────────────────┘               │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Análisis de Componentes
+
+### Componente 1: DISCO → Azure Data Lakes
+
+| Aspecto | Aleph (Local) | Euler (Cloud) |
+|---------|---------------|---------------|
+| **Storage** | Carpetas locales | Azure Blob Storage / Data Lake Gen2 |
+| **Capacidad** | Limitada por disco | Virtualmente ilimitada |
+| **Acceso** | Solo local | Multi-dispositivo, compartido |
+| **Backup** | Manual | Automático con retención |
+| **Búsqueda** | Filesystem | Azure Cognitive Search |
+
+**Servicios Azure recomendados**:
+- **Azure Blob Storage** (básico): $0.0184/GB/mes (Hot tier)
+- **Azure Data Lake Storage Gen2**: +$0.0036/GB analytics
+- **Azure Cognitive Search**: $0.101/hora (Free tier: 50MB)
+
+**Extensiones VS Code a integrar**:
+- Azure Storage (ms-azuretools.vscode-azurestorage)
+- Azure Data Lake Tools
+- Azure Account
+
+### Componente 2: GH-PAGES → Azure Web Services
+
+| Nivel | Servicio | Precio | Capacidades |
+|-------|----------|--------|-------------|
+| **0. GitHub Pages** | GitHub | Gratis | Static, 1GB, HTTPS |
+| **1. Azure Static Web Apps** | Azure | Gratis - $9/mes | Static + Functions, custom domain |
+| **2. Azure App Service** | Azure | $13-$55/mes | Full backend, scaling |
+| **3. Azure Front Door** | Azure | $35/mes+ | CDN global, WAF |
+
+**Guía de selección**:
+```
+¿Necesitas solo static?
+├── Sí → ¿Volumen alto?
+│         ├── Sí → Azure Static Web Apps ($9/mes)
+│         └── No → GitHub Pages (gratis)
+└── No → ¿Necesitas backend?
+          ├── Functions → Azure Static Web Apps + Functions
+          └── Full → Azure App Service (desde $13/mes)
+```
+
+### Componente 3: ARG-BOARD → Azure Real-Time
+
+| Capacidad | Aleph (Local) | Euler (Cloud) |
+|-----------|---------------|---------------|
+| **Jugadores** | 1 (local) | Múltiples simultáneos |
+| **Canales** | Markdown files | WebSockets (SignalR) |
+| **Estado** | JSON local | Cosmos DB (serverless) |
+| **Multimedia** | Archivos locales | Azure Media Services |
+| **Bot turnos** | Local script | Azure Functions (timer) |
+
+**Arquitectura Azure para ARG multiplayer**:
+```
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│   Client    │────▶│  SignalR    │────▶│  Functions  │
+│  (Browser)  │◀────│   Service   │◀────│  (Game Hub) │
+└─────────────┘     └─────────────┘     └──────┬──────┘
+                                               │
+                                               ▼
+                    ┌─────────────┐     ┌─────────────┐
+                    │  Blob       │◀────│  Cosmos DB  │
+                    │  Storage    │     │  (State)    │
+                    └─────────────┘     └─────────────┘
+```
+
+**Costes estimados ARG Cloud**:
+- SignalR Service: $0.001/unidad/día (Free: 20 conexiones)
+- Cosmos DB Serverless: $0.25/1M RU
+- Functions: 1M ejecuciones gratis/mes
+- **Total estimado**: $5-20/mes para uso moderado
+
+---
+
+## Disclaimer Euler Scriptorium
+
+> **IMPORTANTE**: Euler Scriptorium proveerá únicamente:
+> - Configuración y scripts de integración
+> - Guías de selección de servicios
+> - Templates de infraestructura como código (ARM/Bicep)
+> 
+> **Escrivivir.co NO es responsable de**:
+> - Costes incurridos en Azure/GitHub
+> - Configuración de suscripciones del usuario
+> - Soporte técnico de servicios Microsoft
+> - Seguridad de datos del usuario
+>
+> El usuario debe proveerse por su cuenta mediante suscripciones o pago por uso con Microsoft.
+
+---
+
+## Stories
+
+### SCRIPT-0.19.0-S01: Página Roadmap (Presente)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T360 | Crear `docs/roadmap.md` con estructura base | ✅ |
+| T361 | Sección "Presente": Backlogs públicos con tabla de estado | ✅ |
+| T362 | Sección "Cómo contribuir": guía FOSS clásica (fork, PR, issues) | ✅ |
+| T363 | Badges de estado (shields.io) para métricas | ✅ |
+| T364 | Añadir enlace "Roadmap" a navegación (_config.yml) | ✅ |
+
+---
+
+### SCRIPT-0.19.0-S02: Página Roadmap (Futuro: Euler)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T365 | Sección "Visión Euler Scriptorium" con diagrama ASCII | ✅ |
+| T366 | Sección "DISCO → Azure Data Lakes" con guía de selección | ✅ |
+| T367 | Sección "GH-PAGES → Azure Web" con matriz de opciones | ✅ |
+| T368 | Sección "ARG-BOARD → Azure Real-Time" con arquitectura | ✅ |
+| T369 | Disclaimer legal completo | ✅ |
+| T370 | Timeline visual de hitos | ✅ |
+
+---
+
+### SCRIPT-0.19.0-S03: Integración FOSS
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T371 | Crear CONTRIBUTING.md en raíz del repo | ✅ |
+| T372 | Crear plantilla de issues (.github/ISSUE_TEMPLATE/) | ✅ |
+| T373 | Crear plantilla de PRs (.github/PULL_REQUEST_TEMPLATE.md) | ✅ |
+| T374 | Configurar GitHub Actions para validación básica | ⏳ |
+
+---
+
+### SCRIPT-0.19.0-S04: Documentación Técnica Euler
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T375 | Crear docs/euler/ con arquitectura detallada | ⏳ |
+| T376 | Guía: "De DISCO a Azure Data Lake" paso a paso | ⏳ |
+| T377 | Guía: "Escalar GH-Pages a Azure" paso a paso | ⏳ |
+| T378 | Guía: "ARG-BOARD multiplayer con SignalR" paso a paso | ⏳ |
+| T379 | Matriz de costes actualizable | ⏳ |
+
+---
+
+### SCRIPT-0.19.0-S05: Actualización Portada
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T380 | Añadir card "Roadmap" a navegación de index.md | ✅ |
+| T381 | Añadir sección "Futuro: Euler" al ecosistema | ✅ |
+| T382 | Actualizar status con hitos de Euler | ✅ |
+
+---
+
+## Métricas Sprint 0.19
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 23 |
+| Completadas | 17 |
+| En progreso | 0 |
+| Pendientes | 6 |
+| % Avance | 74% |
+
+---
+
+## Especificación de Diseño
+
+### Wireframe de roadmap.md
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  HEADER                                                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  🗺️ MAPA DE RUTA                                               │
+│  "El camino de Aleph a Euler"                                   │
+│                                                                 │
+│  ═══════ PRESENTE: DESARROLLO ABIERTO ═══════                  │
+│                                                                 │
+│  ┌─────────────────────┬─────────────────────┐                 │
+│  │ SCRIPTORIUM         │ FUNDACIÓN           │                 │
+│  │ ████████████ 100%   │ ████████░░░░ 85%    │                 │
+│  │ Sprint 0 completo   │ Sprint 1 en curso   │                 │
+│  │ [Ver Backlog]       │ [Ver Backlog]       │                 │
+│  └─────────────────────┴─────────────────────┘                 │
+│                                                                 │
+│  ┌───────────────────────────────────────────┐                 │
+│  │ 📋 Cómo Contribuir                        │                 │
+│  │ 1. Fork del repositorio                   │                 │
+│  │ 2. Crear rama feature/mi-cambio           │                 │
+│  │ 3. Seguir protocolo DEVOPS.md             │                 │
+│  │ 4. Abrir Pull Request                     │                 │
+│  │ [CONTRIBUTING.md] [Issues] [PRs]          │                 │
+│  └───────────────────────────────────────────┘                 │
+│                                                                 │
+│  ═══════ FUTURO: EULER SCRIPTORIUM ═══════                     │
+│                                                                 │
+│  [Diagrama ASCII de evolución]                                  │
+│                                                                 │
+│  ┌─────────────┬─────────────┬─────────────┐                   │
+│  │ DISCO       │ GH-PAGES    │ ARG-BOARD   │                   │
+│  │     ↓       │     ↓       │     ↓       │                   │
+│  │ Data Lake   │ Azure Web   │ Real-Time   │                   │
+│  │ [Guía]      │ [Guía]      │ [Guía]      │                   │
+│  └─────────────┴─────────────┴─────────────┘                   │
+│                                                                 │
+│  ═══════ TIMELINE ═══════                                      │
+│                                                                 │
+│  Q1 2026 ─────── Q2 2026 ─────── Q3 2026 ─────── Q4 2026       │
+│     │               │               │               │           │
+│  Aleph 1.0      DISCO Cloud     Web Scale      ARG Multi       │
+│  Fundación      Data Lakes      Azure Static   SignalR         │
+│                                                                 │
+│  ═══════ DISCLAIMER ═══════                                    │
+│  [Aviso legal sobre responsabilidad y costes]                   │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  FOOTER                                                         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Paleta Visual
+
+| Elemento | Color | Significado |
+|----------|-------|-------------|
+| Presente | Verde (#22c55e) | En desarrollo activo |
+| Futuro planificado | Azul (#3b82f6) | Diseñado, pendiente |
+| Futuro investigación | Púrpura (#a855f7) | En estudio |
+| Azure | Azul corporativo (#0078d4) | Servicios Microsoft |
+
+---
+
+## Extensiones VS Code para Euler
+
+### Paquete recomendado (Azure)
+
+| Extensión | ID | Propósito |
+|-----------|----|----|
+| Azure Account | ms-vscode.azure-account | Autenticación |
+| Azure Storage | ms-azuretools.vscode-azurestorage | Gestión Blob/Lake |
+| Azure Functions | ms-azuretools.vscode-azurefunctions | Serverless |
+| Azure Static Web Apps | ms-azuretools.vscode-azurestaticwebapps | Deploy web |
+| Azure Databases | ms-azuretools.vscode-cosmosdb | Cosmos DB |
+
+### Flujo de instalación Euler
+
+```
+1. Instalar Aleph Scriptorium (VS Code + Copilot)
+   ↓
+2. Configurar Azure Account (suscripción activa)
+   ↓
+3. Instalar extensiones Azure Pack
+   ↓
+4. Ejecutar script de setup Euler
+   ↓
+5. Conectar DISCO a Blob Storage
+   ↓
+6. Migrar GH-Pages a Azure Static (opcional)
+   ↓
+7. Habilitar ARG-BOARD Cloud (opcional)
+```
+
+---
+
 ## Changelog Épica
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
-| 2025-12-22 | Crear épica SCRIPT-0.13.0 | Aleph |
-| 2025-12-22 | Diagnóstico completo de UX | Aleph |
+| 2025-12-22 | Crear épica SCRIPT-0.19.0 | Aleph |
+| 2025-12-22 | Diseñar visión Euler Scriptorium | Aleph |
+| 2025-12-22 | Analizar componentes Azure | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: roadmap.md completo con presente/futuro | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: Integración FOSS (CONTRIBUTING.md, templates) | Aleph |
+| 2025-12-22 | Actualizar navegación y portada con Roadmap | Aleph |
+
+---
+
+## Changelog
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | **RESUELTO**: Eliminar duplicación noticias/periódico | GHPages |
 
 ---
 

@@ -41,6 +41,11 @@ permalink: /
     <span class="card-title">Archivo</span>
     <span class="card-desc">Marco · Diagnóstico · DISCO</span>
   </a>
+  <a href="{{ site.baseurl }}/roadmap/" class="nav-card">
+    <span class="card-icon">🗺️</span>
+    <span class="card-title">Roadmap</span>
+    <span class="card-desc">De Aleph a Euler</span>
+  </a>
   <a href="https://github.com/escrivivir-co/aleph-scriptorium" class="nav-card nav-card-external">
     <span class="card-icon">⌨️</span>
     <span class="card-title">GitHub</span>
@@ -58,13 +63,13 @@ permalink: /
   </a>
   <span class="eco-arrow">→</span>
   <a href="https://github.com/escrivivir-co/aleph-scriptorium" class="eco-item eco-current">
-    <strong>Scriptorium</strong>
-    <span>Taller</span>
+    <strong>Aleph</strong>
+    <span>Local</span>
   </a>
   <span class="eco-arrow">→</span>
-  <a href="{{ site.baseurl }}/fundacion/" class="eco-item">
-    <strong>Fundación</strong>
-    <span>Texto</span>
+  <a href="{{ site.baseurl }}/roadmap/" class="eco-item eco-future">
+    <strong>Euler</strong>
+    <span>Cloud ☁️</span>
   </a>
 </div>
 </section>
