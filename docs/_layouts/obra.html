@@ -81,7 +81,7 @@
       
       {% if escena.contenido_ref %}
         {% comment %}Cargar contenido desde _includes/teatro/escenas/{% endcomment %}
-        {% capture include_path %}teatro/escenas/{{ page.obra_id }}/{{ escena.contenido_ref }}{% endcapture %}
+        {% capture include_path %}teatro/escenas/{{ page.slug }}/{{ escena.contenido_ref }}{% endcapture %}
         {% include {{ include_path }} %}
       {% else %}
         <p>{{ escena.descripcion }}</p>
