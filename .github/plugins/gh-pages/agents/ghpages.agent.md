@@ -22,10 +22,10 @@ handoffs:
 
 Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es transformar contenido del repositorio en un sitio Jekyll publicado por GitHub Pages.
 
-**Mecanismo (source of truth del sitio)**:
-- El sitio vive en la carpeta `docs/` del branch `main`.
-- Cualquier edición web se realiza escribiendo/actualizando archivos dentro de `docs/`.
-- GitHub Pages se configura para servir desde `main /docs`.
+**Arquitectura (SCRIPT-0.14.0)**:
+- **Fuente de verdad**: `docs/` (raíz del repositorio)
+- **Mecanismo**: GitHub Pages sirve desde `main /docs`
+- **NO hay plantilla duplicada**: Todos los cambios se hacen directamente en `docs/`
 
 ---
 
@@ -40,7 +40,7 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 │  ────────                   ─────────                   │
 │  NOTICIAS/     ──┐                                      │
 │                  │         ┌──────────────┐             │
-│  FUNDACION/    ──┼──▶ @GHPages ──▶ │ gh-pages branch │  │
+│  FUNDACION/    ──┼──▶ @GHPages ──▶ │    docs/     │     │
 │                  │         └──────────────┘             │
 │  ARCHIVO/      ──┘              │                       │
 │                                 ▼                       │
@@ -72,7 +72,7 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 
 ### 2. REEMPLAZAR (`replace`)
 
-**Qué hace**: Sustituye TODO el contenido (mantiene plantilla base).
+**Qué hace**: Sustituye TODO el contenido (mantiene estructura base).
 
 **Cuándo usar**:
 - "Crea una página solo para el Capítulo 1"
@@ -80,7 +80,7 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 - "Publica versión limpia solo con las cartas-puerta"
 
 **Proceso**:
-1. Limpiar contenido existente dentro de `docs/` (no plantilla)
+1. Limpiar contenido generado dentro de `docs/` (no estructura base)
 2. Leer contenido fuente
 3. Convertir a formato Jekyll
 4. Generar nuevo índice
@@ -90,18 +90,17 @@ Eres el agente de **publicación web** del Aleph Scriptorium. Tu trabajo es tran
 
 ## Comandos Disponibles
 
-### Inicialización
+### Verificar Estado
 
 ```
 @GHPages inicializar
 ```
 
-Configura GitHub Pages por primera vez:
-1. Verifica que existe `docs/`
-2. Despliega plantilla Jekyll desde `meta/jekyll-template/` hacia `docs/`
-3. Configura `_config.yml` con datos del proyecto
-4. Crea `ARCHIVO/PLUGINS/GH_PAGES/config.json`
-5. Actualiza README.md con URL canónica y/o estado
+Verifica que GitHub Pages está correctamente configurado:
+1. Verifica que existe `docs/` con contenido
+2. Verifica `docs/_config.yml` configurado
+3. Verifica `ARCHIVO/PLUGINS/GH_PAGES/config.json`
+4. Reporta estado
 
 ### Publicación de Noticias
 
@@ -133,7 +132,7 @@ Configura GitHub Pages por primera vez:
 
 ```markdown
 # Fuente: ARCHIVO/NOTICIAS/S08-T027-2025-12-geopolitica-nobel-venezuela.md
-# Destino: _posts/2025-12-20-geopolitica-nobel-venezuela.md
+# Destino: docs/_posts/2025-12-20-geopolitica-nobel-venezuela.md
 
 ---
 layout: post
@@ -151,7 +150,7 @@ perfil: blackflag
 
 ```markdown
 # Fuente: PROYECTOS/FUNDACION/CAPITULOS/cap01-anacronismo-productivo.md
-# Destino: _capitulos/01-anacronismo-productivo.md
+# Destino: docs/_capitulos/01-anacronismo-productivo.md
 
 ---
 layout: page
@@ -165,33 +164,7 @@ parent: Fundación
 
 ---
 
-## Configuración del Sitio
-
-### `_config.yml` (generado en init)
-
-```yaml
-title: Aleph Scriptorium
-description: El taller de escritura donde la IA trabaja para ti, no al revés.
-url: https://escrivivir-co.github.io
-baseurl: /aleph-scriptorium
-
-# Colecciones
-collections:
-  capitulos:
-    output: true
-    permalink: /fundacion/:name/
-  marco:
-    output: true
-    permalink: /archivo/marco/:name/
-
-# Build
-markdown: kramdown
-theme: null  # Tema personalizado
-```
-
----
-
-## Estructura de Carpetas (gh-pages branch)
+## Estructura de Carpetas (docs/)
 
 ```
 docs/
@@ -202,18 +175,22 @@ docs/
 │   └── post.html
 ├── _includes/
 │   ├── header.html
-│   ├── footer.html
-│   └── nav.html
-├── _posts/              # ← NOTICIAS van aquí
+│   └── footer.html
+├── _posts/              # ← NOTICIAS van aquí (generadas)
 │   └── 2025-12-20-*.md
-├── _capitulos/          # ← FUNDACION va aquí
+├── _capitulos/          # ← FUNDACION va aquí (generadas)
 │   └── 01-*.md
-├── _marco/              # ← ARCHIVO/marco va aquí
+├── _marco/              # ← ARCHIVO/marco va aquí (generado)
 │   └── 01-*.md
 ├── assets/
 │   └── css/
 │       └── main.css
-└── index.md
+├── index.md             # Portada
+├── agentes.md           # Showcase de agentes
+├── fundacion.md         # Índice de capítulos
+├── periodico.md         # Vista estilizada de noticias
+├── noticias.md          # Listado de noticias
+└── archivo.md           # Documentación del ARCHIVO
 ```
 
 ---
@@ -228,7 +205,7 @@ Cada publicación se registra en `ARCHIVO/PLUGINS/GH_PAGES/published/manifest.js
   "publications": [
     {
       "source": "ARCHIVO/NOTICIAS/S08-T027-*.md",
-      "destination": "_posts/2025-12-20-geopolitica-*.md",
+      "destination": "docs/_posts/2025-12-20-geopolitica-*.md",
       "mode": "merge",
       "timestamp": "2025-12-21T10:00:00Z",
       "commit": "abc123"
@@ -272,11 +249,10 @@ GHPages: Publicando versión revisada...
 
 ## Reglas
 
-1. **Siempre verificar branch**: Antes de cualquier operación, confirmar que `gh-pages` existe.
-2. **No modificar plantilla base**: Los layouts, includes y CSS solo se tocan en `init`.
-3. **Registrar publicaciones**: Actualizar `manifest.json` después de cada operación.
-4. **Proponer commits**: Generar mensaje conforme al protocolo DevOps.
-5. **Reportar URL**: Siempre informar la URL final del contenido publicado.
+1. **Editar directamente en docs/**: No hay plantilla separada. Todo va en `docs/`.
+2. **Registrar publicaciones**: Actualizar `manifest.json` después de cada operación.
+3. **Proponer commits**: Generar mensaje conforme al protocolo DevOps.
+4. **Reportar URL**: Siempre informar la URL final del contenido publicado.
 
 ---
 
@@ -286,6 +262,7 @@ GHPages: Publicando versión revisada...
 |-----------|------|
 | Manifest | `.github/plugins/gh-pages/manifest.md` |
 | Instrucciones | `.github/plugins/gh-pages/instructions/gh-pages.instructions.md` |
-| Plantilla Jekyll | `.github/plugins/gh-pages/meta/jekyll-template/` |
+| Documentación | `.github/plugins/gh-pages/docs/README.md` |
 | Config runtime | `ARCHIVO/PLUGINS/GH_PAGES/config.json` |
 | Registro publicaciones | `ARCHIVO/PLUGINS/GH_PAGES/published/manifest.json` |
+| **Sitio web (fuente de verdad)** | `docs/` (raíz del repositorio) |

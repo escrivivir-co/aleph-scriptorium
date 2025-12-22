@@ -1,14 +1,18 @@
-# Prompt: Inicializar GitHub Pages
+# Prompt: Verificar Inicialización de GitHub Pages
 
 > **Plugin**: gh-pages  
 > **Agente**: @GHPages  
-> **Uso**: Primera configuración de GitHub Pages en el repositorio
+> **Uso**: Verificar que GitHub Pages está correctamente configurado
 
 ---
 
 ## Contexto
 
-Este prompt guía la inicialización de GitHub Pages para el repositorio Aleph Scriptorium. Solo debe ejecutarse **una vez** por repositorio.
+Este prompt verifica que GitHub Pages está correctamente configurado para el repositorio Aleph Scriptorium. El sitio ya está inicializado; este prompt solo verifica el estado.
+
+**Decisión arquitectural (SCRIPT-0.14.0)**: No hay plantilla duplicada. `docs/` (raíz) es la única fuente de verdad.
+
+---
 
 ## Instrucciones para el Agente
 
@@ -16,34 +20,22 @@ Este prompt guía la inicialización de GitHub Pages para el repositorio Aleph S
 
 ```bash
 # Verificar que existe la carpeta del sitio
-ls -la docs
+ls -la docs/
 
-# Verificar configuración de GitHub Pages en el repo
-# (esto requiere verificar en GitHub Settings: Source = main /docs)
+# Verificar archivos esenciales
+ls docs/_config.yml docs/_includes/ docs/_layouts/ docs/assets/
 ```
 
-### 2. Establecer Mecanismo de Publicación
+### 2. Verificar Configuración de GitHub Pages
 
-El sitio se edita siempre en `docs/` (branch `main`).
-
-En GitHub Settings → Pages:
+En GitHub Settings → Pages, debe estar configurado:
 - **Source**: `Deploy from a branch`
 - **Branch**: `main`
 - **Folder**: `/docs`
 
-### 3. Desplegar Plantilla Jekyll
+### 3. Verificar `docs/_config.yml`
 
-Copiar estructura desde `.github/plugins/gh-pages/meta/jekyll-template/` hacia `docs/`:
-
-```
-_config.yml          → Configurar con datos del proyecto (en docs/_config.yml)
-_layouts/            → Copiar tal cual
-_includes/           → Copiar tal cual
-assets/css/main.css  → Copiar tal cual
-index.md             → Personalizar con contenido inicial
-```
-
-### 4. Configurar `docs/_config.yml`
+Debe contener:
 
 ```yaml
 title: Aleph Scriptorium
@@ -53,78 +45,68 @@ baseurl: /aleph-scriptorium
 repository: escrivivir-co/aleph-scriptorium
 ```
 
-### 5. Crear Configuración Runtime
+### 4. Verificar Configuración Runtime
 
-Crear `ARCHIVO/PLUGINS/GH_PAGES/config.json`:
+Verificar que existe `ARCHIVO/PLUGINS/GH_PAGES/config.json`:
 
 ```json
 {
   "initialized": true,
-  "initialized_at": "2025-12-21T00:00:00Z",
   "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
   "pages_source": "main/docs",
-  "docs_folder": "docs",
-  "last_publish": null,
-  "publish_count": 0
+  "docs_folder": "docs"
 }
 ```
-
-### 6. Actualizar README.md Principal
-
-Añadir en la sección de Status:
-
-```markdown
-| **Sitio Web** | [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/) |
-```
-
-### 7. Commit
-
-```bash
-git add .
-git commit -m "feat(gh-pages): inicializar GitHub Pages con plantilla Jekyll (docs)
-
-- Crear branch gh-pages con plantilla minimalista B/N
-- Configurar Jekyll para colecciones (capítulos, marco, noticias)
-- Establecer URL canónica del proyecto
-
-refs #SCRIPT-0.5.0-T087"
-
-git push origin main
-```
-
-### 8. Verificar en GitHub
-
-1. Ir a Settings → Pages
-2. Confirmar Source: `gh-pages` branch
-3. Verificar URL publicada
 
 ---
 
 ## Output Esperado
 
+### Si está correctamente inicializado:
+
 ```
-✅ GitHub Pages inicializado correctamente
+✅ GitHub Pages configurado correctamente
 
 Configuración:
 - Source: main /docs
 - URL: https://escrivivir-co.github.io/aleph-scriptorium/
-- Plantilla: Jekyll minimalista B/N
+- Fuente de verdad: docs/ (raíz del repositorio)
+
+Páginas disponibles:
+- index.md (portada)
+- agentes.md
+- fundacion.md
+- periodico.md
+- noticias.md
+- archivo.md
 
 Próximos pasos:
 - @GHPages fusionar NOTICIAS diciembre
 - @GHPages reemplazar FUNDACION cap01
+```
 
-Commit: feat(gh-pages): inicializar GitHub Pages con plantilla Jekyll
+### Si falta configuración:
+
+```
+⚠️ Configuración incompleta
+
+Faltantes:
+- [ ] config.json no existe
+- [ ] _config.yml no configurado
+
+Acciones correctivas:
+1. Crear ARCHIVO/PLUGINS/GH_PAGES/config.json
+2. Verificar docs/_config.yml
 ```
 
 ---
 
-## Checklist de Inicialización
+## Checklist de Verificación
 
-- [ ] Branch gh-pages creado
-- [ ] Plantilla Jekyll desplegada
-- [ ] `_config.yml` configurado
-- [ ] `config.json` creado en ARCHIVO/PLUGINS/GH_PAGES/
-- [ ] README.md actualizado con URL
-- [ ] Push realizado
-- [ ] GitHub Pages habilitado en Settings
+- [ ] Carpeta `docs/` existe con contenido
+- [ ] `docs/_config.yml` configurado
+- [ ] `docs/_layouts/` existe
+- [ ] `docs/_includes/` existe  
+- [ ] `docs/assets/css/main.css` existe
+- [ ] `ARCHIVO/PLUGINS/GH_PAGES/config.json` existe
+- [ ] GitHub Pages habilitado en Settings (main /docs)

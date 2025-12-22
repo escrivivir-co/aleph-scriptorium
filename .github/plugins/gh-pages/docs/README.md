@@ -1,7 +1,7 @@
 # 🌐 Plugin GH-Pages — Documentación
 
 > **Plugin**: gh-pages  
-> **Versión**: 1.0.0  
+> **Versión**: 1.1.0  
 > **URL del sitio**: [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/)
 
 ---
@@ -9,6 +9,36 @@
 ## Descripción
 
 El plugin **GH-Pages** permite publicar contenido del Aleph Scriptorium en GitHub Pages. Separa claramente la **orquestación** (qué publicar) de la **presentación** (cómo mostrar).
+
+---
+
+## Arquitectura (Fuente Única de Verdad)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PLUGIN GH-PAGES                               │
+├─────────────────────────────────────────────────────────────────┤
+│  .github/plugins/gh-pages/         ← CÓDIGO (inmutable)         │
+│  ├── manifest.md                   Metadatos del plugin          │
+│  ├── agents/ghpages.agent.md       Agente orquestador            │
+│  ├── prompts/                      Comandos disponibles          │
+│  ├── instructions/                 Flujos de trabajo             │
+│  ├── docs/README.md                Este archivo                  │
+│  └── meta/README.md                Explicación arquitectural     │
+├─────────────────────────────────────────────────────────────────┤
+│  docs/                             ← FUENTE DE VERDAD (web)      │
+│  ├── _config.yml                   Configuración Jekyll          │
+│  ├── _includes/                    Headers, footers              │
+│  ├── _layouts/                     Plantillas Jekyll             │
+│  ├── assets/css/main.css           Estilos globales              │
+│  └── *.md                          Páginas del sitio             │
+├─────────────────────────────────────────────────────────────────┤
+│  ARCHIVO/PLUGINS/GH_PAGES/         ← DATOS (runtime)             │
+│  └── config.json                   Estado de publicación         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Punto clave**: `docs/` en la raíz del repositorio es la **única fuente de verdad** para el sitio web. No hay plantillas duplicadas.
 
 ---
 
@@ -23,18 +53,11 @@ El plugin **GH-Pages** permite publicar contenido del Aleph Scriptorium en GitHu
 
 ## Inicio Rápido
 
-### 1. Inicializar (primera vez)
+### 1. Verificar estado
 
-```
-@GHPages inicializar
-```
-
-Esto crea el branch `gh-pages`, despliega la plantilla Jekyll y configura el sitio.
-
-**Actualización (mecanismo actual)**:
-- El sitio vive en `docs/` (branch `main`).
-- GitHub Pages se configura como `main /docs`.
-- El agente publica editando `docs/` y haciendo commit/push a `main`.
+El sitio ya está inicializado. Verificar en GitHub Settings → Pages:
+- **Source**: `main /docs`
+- **URL**: https://escrivivir-co.github.io/aleph-scriptorium/
 
 ### 2. Publicar Noticias
 
@@ -56,8 +79,8 @@ Crea una página dedicada solo al capítulo 1 (limpia contenido anterior).
 
 ## Fuentes Soportadas
 
-| Fuente | Comando | Destino Jekyll |
-|--------|---------|----------------|
+| Fuente | Comando | Destino en docs/ |
+|--------|---------|------------------|
 | Noticias | `NOTICIAS` | `_posts/` |
 | Fundación | `FUNDACION cap01` | `_capitulos/` |
 | Marco | `ARCHIVO/marco` | `_marco/` |
@@ -89,7 +112,7 @@ El plugin se integra con tres agentes del core:
 
 ---
 
-## Plantilla Jekyll
+## Plantilla Jekyll (en docs/)
 
 La plantilla incluye:
 
@@ -134,8 +157,24 @@ La plantilla incluye:
 │   ├── gh-pages-replace.prompt.md
 │   └── gh-pages-publish.prompt.md
 ├── instructions/gh-pages.instructions.md
-├── docs/README.md (este archivo)
-└── meta/jekyll-template/
+├── docs/README.md              ← (este archivo)
+└── meta/README.md              ← (explicación arquitectural)
+```
+
+### Sitio Web (fuente de verdad)
+
+```
+docs/                           ← Raíz del repositorio
+├── _config.yml
+├── _layouts/
+├── _includes/
+├── assets/css/main.css
+├── index.md
+├── agentes.md
+├── fundacion.md
+├── periodico.md
+├── noticias.md
+└── archivo.md
 ```
 
 ### Datos (runtime)
@@ -146,102 +185,23 @@ ARCHIVO/PLUGINS/GH_PAGES/
 └── published/manifest.json
 ```
 
-### Sitio (branch gh-pages)
-
-```
-docs/ (main)
-├── _config.yml
-├── _layouts/
-├── _includes/
-├── _posts/
-├── _capitulos/
-├── assets/css/main.css
-└── index.md
-```
-
 ---
 
-## Configuración
+## Flujo de Actualización del Sitio
 
-### config.json
+### Para modificar contenido
 
-```json
-{
-  "initialized": true,
-  "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
-  "pages_source": "main/docs",
-  "docs_folder": "docs",
-  "last_publish": "2025-12-21T10:00:00Z"
-}
-```
+1. Editar directamente en `docs/` (raíz)
+2. Commit y push a `main`
+3. GitHub Pages reconstruye automáticamente (~40s)
+4. Verificar en producción
 
-### published/manifest.json
+### Para modificar estilos o estructura
 
-Registro de todas las publicaciones realizadas.
-
----
-
-## ⚠️ Protocolo de Actualización del Sitio
-
-### Arquitectura de publicación (crítico)
-
-El sistema de GH-Pages tiene **dos capas**:
-
-| Capa | Ubicación | Función |
-|------|-----------|---------|
-| **Plantilla** | `.github/plugins/gh-pages/meta/jekyll-template/` | Modelo de referencia (no se publica directamente) |
-| **Producción** | `docs/` (branch `main`) | Sitio real que sirve GitHub Pages |
-
-**Punto clave**: GitHub Pages está configurado como `main /docs`. Los cambios en la plantilla (`meta/jekyll-template/`) **no se reflejan automáticamente** en el sitio publicado. Hay que portarlos manualmente a `docs/`.
-
-### Flujo para actualizar estilos o estructura
-
-1. **Hacer cambios en la plantilla** (opcional, para mantener el modelo):
-   ```
-   .github/plugins/gh-pages/meta/jekyll-template/assets/css/main.css
-   .github/plugins/gh-pages/meta/jekyll-template/_includes/footer.html
-   ```
-
-2. **Portar los cambios a producción** (obligatorio para que se vean):
-   ```
-   docs/assets/css/main.css
-   docs/_includes/footer.html
-   ```
-
-3. **Commit y push a `main`**:
-   ```bash
-   git add docs/
-   git commit -m "fix(gh-pages): <descripción del cambio>"
-   git push origin main
-   ```
-
-4. **Esperar rebuild de Pages** (~40s):
-   - Verificar en: `https://github.com/<owner>/<repo>/actions/workflows/pages/pages-build-deployment`
-
-5. **Validar en producción**:
-   - Navegar al sitio y verificar que los cambios se reflejan.
-
-### Diagnóstico cuando el sitio no refleja cambios
-
-| Síntoma | Causa probable | Solución |
-|---------|----------------|----------|
-| Cambios en plantilla no aparecen | Plantilla ≠ producción | Portar cambios a `docs/` |
-| Push hecho pero no se ve | Build aún corriendo | Esperar ~40s y refrescar |
-| Build exitoso pero igual | Cache del navegador | Hard refresh (Cmd+Shift+R) |
-| Build falló | Error en Jekyll | Revisar logs en Actions |
-
-### Verificar estado de sincronización
-
-```bash
-# ¿Qué commit tiene origin/main?
-git fetch origin && git log -1 --oneline origin/main
-
-# ¿Cuándo fue el último build de Pages?
-# → Ver en GitHub Actions
-
-# ¿El commit está en origin?
-git branch -r --contains <commit-sha>
-```
+1. Editar `docs/assets/css/main.css` o `docs/_includes/*.html`
+2. Commit y push a `main`
+3. GitHub Pages reconstruye
+4. Hard refresh si es necesario (Cmd+Shift+R)
 
 ---
 
@@ -250,10 +210,9 @@ git branch -r --contains <commit-sha>
 | Problema | Solución |
 |----------|----------|
 | Sitio no actualiza | Verificar que GitHub Pages está habilitado en Settings → Pages |
-| CSS no carga | Revisar `baseurl` en `_config.yml` |
-| Branch no existe | Ejecutar `@GHPages inicializar` |
-| Cambios en plantilla no se ven | Portar cambios de `meta/jekyll-template/` a `docs/` |
-| Enlaces de GitHub rotos | Usar `{% assign github_url = "https://github.com/" | append: site.repository %}` en Liquid |
+| CSS no carga | Revisar `baseurl` en `docs/_config.yml` |
+| Build falló | Revisar logs en GitHub Actions |
+| Cache del navegador | Hard refresh (Cmd+Shift+R) |
 
 ---
 
@@ -261,16 +220,13 @@ git branch -r --contains <commit-sha>
 
 ```bash
 # Ver archivos del sitio
-ls -la docs
+ls -la docs/
 
-# Ver cambios pendientes del sitio
+# Ver cambios pendientes
 git status
 
-# Ver diff entre plantilla y producción (footer)
-diff .github/plugins/gh-pages/meta/jekyll-template/_includes/footer.html docs/_includes/footer.html
-
-# Ver diff entre plantilla y producción (CSS)
-diff .github/plugins/gh-pages/meta/jekyll-template/assets/css/main.css docs/assets/css/main.css
+# Verificar estado de GitHub Pages
+# → GitHub Settings → Pages
 ```
 
 ---

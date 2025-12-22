@@ -1530,3 +1530,463 @@ Ver: `.github/plugins/{id}/manifest.md`
 | `.github/plugins/gh-pages/meta/jekyll-template/agentes.md` | Crear |
 | `.github/plugins/gh-pages/meta/jekyll-template/_config.yml` | Editar (nav) |
 | `.github/BACKLOG-SCRIPTORIUM.md` | Editar (épica) |
+
+---
+
+# Épica: SCRIPT-0.13.0 — Rediseño Sitio Web (UX Homogénea)
+
+**Objetivo**: Rediseñar el sitio web de GitHub Pages para una experiencia de usuario homogénea, efectista y sin duplicación de información entre header/footer y contenido de páginas.
+
+**Origen**: Auditoría de UX que detectó:
+1. Portada demasiado larga con información duplicada respecto al footer
+2. Páginas noticias.md y archivo.md faltantes (enlaces rotos)
+3. Estilos inconsistentes entre páginas (agentes usa dark theme, resto usa light theme)
+4. Footer repite enlaces que ya están en la navegación principal
+5. Cada página tiene su propio footer manual que compite con el global
+
+**Principios de diseño**:
+- **DRY**: No repetir información entre header, footer y contenido
+- **Homogeneidad**: Todas las páginas con el mismo estilo base
+- **Efectismo**: Portada impactante con hero prominente
+- **Jerarquía**: Navegación clara → Contenido específico → Footer mínimo
+
+**Entregables**:
+- Portada rediseñada (hero + cards producto, sin duplicar footer)
+- Header/Footer unificados (navegación principal, sin redundancias)
+- 6 páginas internas con estilo consistente
+- CSS refactorizado para tema unificado (light + accent colors)
+- Eliminación de footers manuales en cada página
+
+---
+
+## Diagnóstico Detallado
+
+### Problemas encontrados en la portada (`index.md`)
+
+| Problema | Ubicación | Impacto |
+|----------|-----------|---------|
+| Sección "Repositorio" duplica enlaces del footer | Líneas 370-385 | Redundancia |
+| Sección "Licencia" duplica info del footer | Líneas 350-365 | Redundancia |
+| Portal-footer duplica navegación del header | Líneas 390-395 | Confusión |
+| Tabla "Productos" es escueta vs las cards | Líneas 325-330 | Incoherencia |
+| Tabla "Status" debería estar en footer o separada | Líneas 335-345 | Fuera de lugar |
+| Estilos embebidos (200+ líneas CSS) | Líneas 1-200 | Mantenimiento difícil |
+
+### Problemas en header/footer
+
+| Componente | Problema |
+|------------|----------|
+| Header | Navegación correcta, pero "Noticias" y "Archivo" apuntan a páginas que no existían |
+| Footer | Columna "Proyecto" repite lo mismo que la navegación principal |
+| Footer | Columna "Enlaces" repite GitHub que ya está en nav |
+| Footer | "Archivo (GitHub)" usa ruta relativa incorrecta |
+
+### Problemas en páginas internas
+
+| Página | Problema |
+|--------|----------|
+| `agentes.md` | Tema dark embebido (inconsistente con resto del sitio) |
+| `fundacion.md` | Footer manual (`<footer>`) compite con footer global |
+| `periodico.md` | Estilos embebidos masivos, sin usar CSS global |
+| `noticias.md` | Recién creada, estilo básico sin integración visual |
+| `archivo.md` | Recién creada, footer manual inline |
+
+---
+
+## Stories
+
+### SCRIPT-0.13.0-S01: Refactorizar Header/Footer
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T237 | Simplificar footer: solo licencia + links esenciales (GitHub, RSS) | ⏳ |
+| T238 | Eliminar columna "Proyecto" del footer (ya está en nav) | ⏳ |
+| T239 | Corregir ruta "Archivo (GitHub)" en footer | ⏳ |
+| T240 | Verificar todos los enlaces de navegación funcionan | ⏳ |
+
+---
+
+### SCRIPT-0.13.0-S02: Rediseñar Portada
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T241 | Simplificar hero: banner + tagline + CTA buttons | ⏳ |
+| T242 | Convertir sección "Productos" en cards prominentes (Fundación, Periódico, Agentes) | ⏳ |
+| T243 | Eliminar sección "Repositorio" (mover a footer o GitHub) | ⏳ |
+| T244 | Eliminar sección "Licencia" (ya está en footer) | ⏳ |
+| T245 | Eliminar portal-footer duplicado | ⏳ |
+| T246 | Mantener sección "Ecosistema" y "Arquitectura Auditores" | ⏳ |
+| T247 | Mover "Status" a una card pequeña o badge | ⏳ |
+
+---
+
+### SCRIPT-0.13.0-S03: Unificar Estilos CSS
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T248 | Mover estilos de index.md a main.css (clases reutilizables) | ⏳ |
+| T249 | Crear tema unificado: light base + accent colors para banderas | ⏳ |
+| T250 | Refactorizar agentes.md para usar tema light (mantener cards dark) | ⏳ |
+| T251 | Extraer estilos de periodico.md a main.css | ⏳ |
+| T252 | Crear clases CSS compartidas: .hero, .card-grid, .section-header | ⏳ |
+
+---
+
+### SCRIPT-0.13.0-S04: Homogeneizar Páginas Internas
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T253 | Eliminar footer manual de fundacion.md | ⏳ |
+| T254 | Eliminar footer manual de archivo.md | ⏳ |
+| T255 | Eliminar footer manual de noticias.md | ⏳ |
+| T256 | Aplicar estructura consistente: título + intro + contenido | ⏳ |
+| T257 | Añadir breadcrumbs o "← Volver" como link en lugar de footer | ⏳ |
+
+---
+
+### SCRIPT-0.13.0-S05: Mejorar Página Noticias
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T258 | Rediseñar noticias.md con cards de preview (como periodico.md) | ⏳ |
+| T259 | Añadir filtros por bandera (tabs o sidebar) | ⏳ |
+| T260 | Integrar estilos de periodico.md para consistencia | ⏳ |
+
+---
+
+### SCRIPT-0.13.0-S06: Mejorar Página Archivo
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T261 | Rediseñar archivo.md con cards para cada eje | ⏳ |
+| T262 | Añadir iconos/colores distintivos por tipo (marco, diagnóstico, etc.) | ⏳ |
+| T263 | Crear visual hierarchy clara | ⏳ |
+
+---
+
+### SCRIPT-0.13.0-S07: Testing y Deploy
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T264 | Verificar navegación completa sin errores 404 | ⏳ |
+| T265 | Test responsive en móvil | ⏳ |
+| T266 | Commit y push a main | ⏳ |
+| T267 | Verificar deploy en GitHub Pages | ⏳ |
+
+---
+
+## Métricas Sprint 0.13
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 31 |
+| Completadas | 0 |
+| En progreso | 0 |
+| Pendientes | 31 |
+| % Avance | 0% |
+
+---
+
+## Especificación de Diseño
+
+### Nueva Estructura de Portada
+
+```
+┌────────────────────────────────────────────────────────┐
+│                     HEADER (nav)                       │
+├────────────────────────────────────────────────────────┤
+│                                                        │
+│  ┌──────────────────────────────────────────────────┐  │
+│  │                 HERO                              │  │
+│  │  [Banner] ℵ Aleph Scriptorium                     │  │
+│  │  Tagline + Terminal prompt                        │  │
+│  │  [CTA: Fundación] [CTA: Agentes] [CTA: GitHub]   │  │
+│  └──────────────────────────────────────────────────┘  │
+│                                                        │
+│  ┌────────────┬────────────┬────────────┐             │
+│  │ FUNDACIÓN  │ PERIÓDICO  │  AGENTES   │  ← Cards   │
+│  │ 12 caps    │ Noticias   │  Colectivo │  producto  │
+│  └────────────┴────────────┴────────────┘             │
+│                                                        │
+│  ══════════════ ECOSISTEMA ═══════════════           │
+│  [VibeBitacora] [Scriptorium] [...]                   │
+│                                                        │
+│  ══════════ ARQUITECTURA AUDITORES ═══════           │
+│  [Diagrama ASCII] + [Grid de banderas]                │
+│                                                        │
+│  ═════════════ STATUS (badge) ════════════           │
+│  Sprint 0 · 100% Scriptorium · 85% Fundación          │
+│                                                        │
+├────────────────────────────────────────────────────────┤
+│            FOOTER (licencia + GitHub + RSS)            │
+└────────────────────────────────────────────────────────┘
+```
+
+### Nuevo Footer (simplificado)
+
+```html
+<footer>
+  <div class="footer-content">
+    <p><strong>Aleph Scriptorium</strong> · AIPL v1.0</p>
+    <p>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium">GitHub</a> ·
+      <a href="/feed.xml">RSS</a> ·
+      <a href="https://escrivivir.co">Escrivivir.co</a>
+    </p>
+  </div>
+</footer>
+```
+
+### Paleta de Colores Unificada
+
+| Elemento | Color | Uso |
+|----------|-------|-----|
+| Fondo base | `#ffffff` | Todas las páginas |
+| Texto | `#1a1a1a` | Cuerpo |
+| Accent | `#1a1a1a` | Enlaces, bordes |
+| Muted | `#666666` | Texto secundario |
+| 🔵 Blueflag | `#2563eb` | Cards, badges |
+| ⚫ Blackflag | `#1a1a1a` | Cards, badges |
+| 🔴 Redflag | `#dc2626` | Cards, badges |
+| 🟡 Yellowflag | `#ca8a04` | Cards, badges |
+| 🟠 Orangeflag | `#ea580c` | Cards, badges |
+| Cards dark | `#0d1117` | Solo página agentes (opcional) |
+
+---
+
+## Changelog Épica
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | Crear épica SCRIPT-0.13.0 | Aleph |
+| 2025-12-22 | Diagnóstico completo de UX | Aleph |
+
+---
+
+# Épica: SCRIPT-0.14.0 — Bug Fix: Duplicación de Web en Plugin GH-Pages
+
+**Tipo**: 🐛 Bug / Deuda técnica  
+**Prioridad**: Alta  
+**Origen**: Auditoría de arquitectura del plugin gh-pages
+
+---
+
+## Diagnóstico del Bug
+
+### Situación actual
+
+El plugin GH-Pages tiene **dos copias** del sitio web:
+
+| Ubicación | Contenido | Rol actual |
+|-----------|-----------|------------|
+| `docs/` | Web real (6 páginas) | Servida por GitHub Pages |
+| `.github/plugins/gh-pages/meta/jekyll-template/` | Plantilla (4 páginas) | ¿Template inicial? |
+
+### Archivos duplicados
+
+```
+docs/                                    meta/jekyll-template/
+├── _config.yml                    ≠     ├── _config.yml
+├── _includes/                     ≈     ├── _includes/
+│   ├── header.html                      │   ├── header.html
+│   └── footer.html                      │   ├── footer.html
+├── _layouts/                      ≈     │   └── nav.html
+│   ├── default.html                     ├── _layouts/
+│   ├── page.html                        │   ├── default.html
+│   └── post.html                        │   ├── page.html
+├── assets/css/main.css            ≠     │   └── post.html
+├── index.md                       ≠     ├── assets/css/main.css
+├── agentes.md                     ≠     ├── index.md
+├── archivo.md                     ✗     └── agentes.md
+├── fundacion.md                   ✗
+├── noticias.md                    ✗
+└── periodico.md                   ✗
+
+≠ = diferentes versiones
+≈ = similares pero no idénticos
+✗ = no existe en template
+```
+
+### Problemas identificados
+
+1. **Duplicación de código**: Cambios en `docs/` no se reflejan en `meta/jekyll-template/`
+2. **Inconsistencia**: El template tiene versiones desactualizadas (ej: footer de 3 columnas vs simplificado)
+3. **Confusión de responsabilidad**: ¿Cuál es la fuente de verdad?
+4. **Flujo de inicialización roto**: El prompt dice "copiar meta/jekyll-template/ a docs/" pero docs/ ya existe y evoluciona
+5. **Mantenimiento doble**: Cada mejora de UX debe hacerse en dos lugares
+
+---
+
+## Opciones de Solución
+
+### Opción A: `meta/` como plantilla desechable (RECOMENDADA)
+
+**Concepto**: `meta/jekyll-template/` es solo un template inicial para repos nuevos. Una vez copiado a `docs/`, evoluciona independientemente.
+
+**Cambios necesarios**:
+- Renombrar `meta/jekyll-template/` → `meta/jekyll-template-v1.0.0/` (versionado)
+- Documentar que es solo para "bootstrap" de nuevos proyectos
+- El flujo "inicializar" solo aplica si `docs/` NO existe
+- Actualizar instrucciones para aclarar el ciclo de vida
+
+**Pros**: Mínimo cambio, clarifica intención  
+**Cons**: Template se queda obsoleto con el tiempo
+
+### Opción B: Eliminar `meta/jekyll-template/`
+
+**Concepto**: No hay plantilla embebida. El agente GHPages genera archivos desde cero o usa un repo template externo.
+
+**Cambios necesarios**:
+- Eliminar `.github/plugins/gh-pages/meta/jekyll-template/`
+- Actualizar prompts de inicialización para generar archivos mínimos inline
+- O referenciar un repo template externo (ej: `escrivivir-co/jekyll-scriptorium-template`)
+
+**Pros**: Sin duplicación, un solo lugar de verdad  
+**Cons**: Más complejo inicializar nuevos proyectos
+
+### Opción C: `docs/` es derivado de `meta/`
+
+**Concepto**: `meta/jekyll-template/` es la fuente de verdad. `docs/` se regenera completamente desde el template + contenido dinámico.
+
+**Cambios necesarios**:
+- Mover todo el contenido personalizado a `ARCHIVO/SITE/`
+- El agente GHPages siempre: 1) copia template, 2) inyecta contenido de ARCHIVO/SITE/
+- `docs/` se vuelve un "build output"
+
+**Pros**: Separación limpia entre estructura y contenido  
+**Cons**: Mayor refactorización, flujo más complejo
+
+---
+
+## Decisión: Opción B (eliminar plantilla)
+
+**Razón**: La solución más limpia. La plantilla duplicada solo genera confusión y mantenimiento doble. `docs/` (raíz) es la única fuente de verdad. Si se necesita inicializar un nuevo repo, se puede hacer manualmente o con un repo template externo.
+
+**Cambio respecto al plan inicial**: Se eliminó `meta/jekyll-template/` completamente en lugar de renombrarlo. Esto simplifica aún más la arquitectura.
+
+---
+
+## Stories
+
+### SCRIPT-0.14.0-S01: Eliminar plantilla duplicada
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T268 | ~~Renombrar~~ → Eliminar `meta/jekyll-template/` completamente | ✅ |
+| T269 | Crear README.md en meta/ explicando que está vacío intencionalmente | ✅ |
+| T270 | Actualizar manifest.md con nota sobre ausencia de template | ✅ |
+
+---
+
+### SCRIPT-0.14.0-S02: Actualizar flujo de inicialización
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T271 | Modificar `prompts/gh-pages-init.prompt.md` para solo verificar config existente | ✅ |
+| T272 | Eliminar flujo de "copiar template" (ya no existe) | ✅ |
+| T273 | Actualizar `instructions/gh-pages.instructions.md` con arquitectura simplificada | ✅ |
+
+---
+
+### SCRIPT-0.14.0-S03: Sincronizar documentación
+**Estado**: ✅ Completada (N/A - no hay template que sincronizar)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T274 | ~~Copiar footer.html~~ → N/A (template eliminado) | ✅ |
+| T275 | ~~Copiar main.css~~ → N/A (template eliminado) | ✅ |
+| T276 | ~~Actualizar _config.yml del template~~ → N/A | ✅ |
+| T277 | Actualizar version a v1.1.0 en manifest y registry | ✅ |
+
+---
+
+### SCRIPT-0.14.0-S04: Documentación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T278 | Reescribir docs/README.md del plugin con arquitectura simplificada | ✅ |
+| T279 | Reescribir instructions con single source of truth | ✅ |
+| T280 | Actualizar agents/ghpages.agent.md eliminando refs a template | ✅ |
+| T281 | Actualizar ARCHIVO/PLUGINS/GH_PAGES/README.md | ✅ |
+| T282 | Actualizar registry.json con v1.1.0 y notas | ✅ |
+
+---
+
+## Métricas Sprint 0.14
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 14 |
+| Completadas | 14 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
+## Diagrama de Arquitectura (Simplificado v1.1.0)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PLUGIN GH-PAGES v1.1.0                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  .github/plugins/gh-pages/                                       │
+│  ├── manifest.md              ← Metadatos del plugin             │
+│  ├── agents/ghpages.agent.md  ← Agente orquestador               │
+│  ├── prompts/                 ← Comandos disponibles             │
+│  ├── instructions/            ← Flujos de trabajo                │
+│  ├── docs/README.md           ← Documentación del plugin         │
+│  └── meta/                                                       │
+│      └── README.md            ← Explica por qué está vacío       │
+│                               (SCRIPT-0.14.0: sin plantilla)     │
+│                                                                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  docs/                        ← ÚNICA FUENTE DE VERDAD           │
+│  ├── _config.yml              ← Configuración Jekyll             │
+│  ├── _includes/               ← Headers, footers                 │
+│  ├── _layouts/                ← Plantillas Jekyll                │
+│  ├── assets/css/main.css      ← Estilos globales                 │
+│  ├── index.md                 ← Portada                          │
+│  ├── agentes.md               ← Showcase de agentes              │
+│  ├── fundacion.md             ← Índice de capítulos              │
+│  ├── periodico.md             ← Vista estilizada de noticias     │
+│  ├── noticias.md              ← Listado de noticias              │
+│  └── archivo.md               ← Documentación del ARCHIVO        │
+│                                                                  │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  ARCHIVO/PLUGINS/GH_PAGES/    ← Datos de runtime                 │
+│  └── config.json              ← Estado de publicación            │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+Flujo simplificado:
+1. docs/ (raíz) es la única fuente de verdad
+2. GitHub Pages sirve desde main /docs
+3. NO hay plantilla interna - editar docs/ directamente
+```
+
+---
+
+## Changelog Épica
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | Crear bug report SCRIPT-0.14.0 | Aleph |
+| 2025-12-22 | Documentar diagnóstico y opciones de solución | Aleph |
+| 2025-12-22 | **RESUELTO**: Eliminar meta/jekyll-template/ completamente | Aleph |
+| 2025-12-22 | Actualizar manifest.md, instructions, prompts, agent, docs | Aleph |
+| 2025-12-22 | Actualizar registry.json a v1.1.0 | Aleph |
+| 2025-12-22 | Marcar todas las tareas como completadas | Aleph |

@@ -6,8 +6,37 @@ applyTo: "ARCHIVO/PLUGINS/GH_PAGES/**/*"
 
 # Instrucciones: Plugin GH-Pages
 
-> **Fuente de verdad**: `.github/plugins/gh-pages/manifest.md`  
+> **Fuente de verdad del sitio**: `docs/` (raíz del repositorio)  
 > **URL del sitio**: `https://escrivivir-co.github.io/aleph-scriptorium/`
+
+---
+
+## Arquitectura (Fuente Única de Verdad)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PLUGIN GH-PAGES                               │
+├─────────────────────────────────────────────────────────────────┤
+│  .github/plugins/gh-pages/         ← CÓDIGO (inmutable)         │
+│  ├── manifest.md                   Metadatos del plugin          │
+│  ├── agents/ghpages.agent.md       Agente orquestador            │
+│  ├── prompts/                      Comandos disponibles          │
+│  ├── instructions/                 Este archivo                  │
+│  └── docs/README.md                Documentación del plugin      │
+├─────────────────────────────────────────────────────────────────┤
+│  docs/                             ← FUENTE DE VERDAD (web)      │
+│  ├── _config.yml                   Configuración Jekyll          │
+│  ├── _includes/                    Headers, footers              │
+│  ├── _layouts/                     Plantillas Jekyll             │
+│  ├── assets/css/main.css           Estilos globales              │
+│  └── *.md                          Páginas del sitio             │
+├─────────────────────────────────────────────────────────────────┤
+│  ARCHIVO/PLUGINS/GH_PAGES/         ← DATOS (runtime)             │
+│  └── config.json                   Estado de publicación         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Decisión arquitectural (SCRIPT-0.14.0)**: No hay plantilla duplicada. `docs/` es la única fuente de verdad.
 
 ---
 
@@ -22,43 +51,25 @@ El plugin GH-Pages permite publicar contenido del Aleph Scriptorium en GitHub Pa
 
 ---
 
-## Flujo de Inicialización
+## Flujo de Publicación
 
-### Primera vez (obligatorio)
+### Mecanismo
+
+El sitio web vive en `docs/` (raíz del repositorio). GitHub Pages está configurado para servir desde `main /docs`.
+
+**Para publicar contenido**:
+1. El agente @GHPages transforma fuentes (NOTICIAS, FUNDACION, etc.) a formato Jekyll
+2. Escribe los archivos en `docs/`
+3. Hace commit y push a `main`
+4. GitHub Pages reconstruye el sitio (~40s)
+
+### Comandos disponibles
 
 ```
-@GHPages inicializar
+@GHPages fusionar NOTICIAS diciembre     # Añadir noticias
+@GHPages fusionar FUNDACION cap01        # Añadir capítulo
+@GHPages reemplazar ARCHIVO/marco        # Reemplazar con marco
 ```
-
-**Pasos automáticos**:
-
-1. **Verificar el mecanismo de publicación**:
-  - El sitio vive en `docs/` dentro del branch `main`.
-  - GitHub Pages debe estar configurado como: `main /docs`.
-
-2. **Desplegar plantilla Jekyll en `docs/`**:
-  - Copiar `meta/jekyll-template/` a `docs/`
-  - Configurar `docs/_config.yml` con datos del proyecto
-
-3. **Crear configuración runtime**:
-   ```json
-   // ARCHIVO/PLUGINS/GH_PAGES/config.json
-   {
-     "initialized": true,
-     "site_url": "https://escrivivir-co.github.io/aleph-scriptorium/",
-     "branch": "gh-pages",
-     "last_publish": null
-   }
-   ```
-
-4. **Actualizar README.md**:
-   - Añadir URL canónica en sección de Status
-   - Añadir badge de GitHub Pages
-
-5. **Commit inicial**:
-   ```
-   feat(gh-pages): inicializar GitHub Pages con plantilla Jekyll
-   ```
 
 ---
 
@@ -74,7 +85,7 @@ GHPages:
 2. Para cada archivo:
    a. Extraer frontmatter (fecha, categoría, tema)
    b. Convertir a formato Jekyll post
-  c. Guardar en docs/_posts/YYYY-MM-DD-slug.md
+   c. Guardar en docs/_posts/YYYY-MM-DD-slug.md
 3. Actualizar índice de navegación
 4. Commit: "feat(gh-pages): añadir noticias dic-2025"
 5. Push a main
@@ -96,7 +107,7 @@ perfil_recomendado: blackflag
 [contenido...]
 ```
 
-**Salida** (_posts/):
+**Salida** (docs/_posts/):
 ```yaml
 ---
 layout: post
@@ -120,10 +131,11 @@ source: S08-T027
 Usuario: @GHPages reemplazar FUNDACION cap01
 
 GHPages:
-1. Limpiar contenido existente dentro de docs/ (NO plantilla):
-  - Eliminar docs/_posts/*
-  - Eliminar docs/_capitulos/*
-  - Eliminar docs/_marco/*
+1. Limpiar contenido generado dentro de docs/:
+   - Eliminar docs/_posts/*
+   - Eliminar docs/_capitulos/*
+   - Eliminar docs/_marco/*
+   (Mantener estructura base: _config.yml, _layouts/, _includes/, assets/)
 2. Leer PROYECTOS/FUNDACION/CAPITULOS/cap01-*.md
 3. Convertir a formato Jekyll page
 4. Guardar en docs/_capitulos/01-anacronismo-productivo.md
@@ -133,40 +145,18 @@ GHPages:
 8. Reportar URL
 ```
 
-### Conversión FUNDACION → Pages
-
-**Entrada** (PROYECTOS/FUNDACION/CAPITULOS/):
-```markdown
-# Capítulo 1: Anacronismo Productivo
-
-## Apertura
-[contenido...]
-```
-
-**Salida** (_capitulos/):
-```yaml
----
-layout: page
-title: "Capítulo 1: Anacronismo Productivo"
-nav_order: 1
-parent: Fundación
-toc: true
----
-[contenido convertido...]
-```
-
 ---
 
 ## Fuentes Soportadas
 
 | Fuente | Tipo Jekyll | Destino | Ejemplo |
 |--------|-------------|---------|---------|
-| `ARCHIVO/NOTICIAS/` | posts | `_posts/` | Planas noticieras |
-| `PROYECTOS/FUNDACION/CAPITULOS/` | pages | `_capitulos/` | Capítulos del libro |
-| `ARCHIVO/marco/` | collection | `_marco/` | Marco conceptual |
-| `ARCHIVO/CARTAS/` | pages | `_cartas/` | Cartas-puerta |
-| `ARCHIVO/diagnostico/` | collection | `_diagnostico/` | Diagnóstico |
-| `ARCHIVO/justificacion/` | collection | `_justificacion/` | Justificación |
+| `ARCHIVO/NOTICIAS/` | posts | `docs/_posts/` | Planas noticieras |
+| `PROYECTOS/FUNDACION/CAPITULOS/` | pages | `docs/_capitulos/` | Capítulos del libro |
+| `ARCHIVO/marco/` | collection | `docs/_marco/` | Marco conceptual |
+| `ARCHIVO/CARTAS/` | pages | `docs/_cartas/` | Cartas-puerta |
+| `ARCHIVO/diagnostico/` | collection | `docs/_diagnostico/` | Diagnóstico |
+| `ARCHIVO/justificacion/` | collection | `docs/_justificacion/` | Justificación |
 
 ---
 
@@ -181,23 +171,27 @@ docs/
 │   └── post.html            # Para noticias
 ├── _includes/
 │   ├── header.html          # Cabecera con navegación
-│   ├── footer.html          # Pie con metadata
-│   └── nav.html             # Navegación lateral
-├── _posts/                  # Noticias (automático)
-├── _capitulos/              # Capítulos Fundación
-├── _marco/                  # Marco conceptual
-├── _cartas/                 # Cartas-puerta
+│   └── footer.html          # Pie con metadata
+├── _posts/                  # Noticias (generadas)
+├── _capitulos/              # Capítulos Fundación (generados)
+├── _marco/                  # Marco conceptual (generado)
+├── _cartas/                 # Cartas-puerta (generadas)
 ├── assets/
 │   ├── css/
 │   │   └── main.css         # Estilos B/N
 │   └── images/              # Imágenes (si las hay)
 ├── index.md                 # Página principal
+├── agentes.md               # Showcase de agentes
+├── fundacion.md             # Índice de capítulos
+├── periodico.md             # Vista estilizada de noticias
+├── noticias.md              # Listado de noticias
+├── archivo.md               # Documentación del ARCHIVO
 └── 404.html                 # Página de error
 ```
 
 ---
 
-## Configuración Jekyll (`_config.yml`)
+## Configuración Jekyll (docs/_config.yml)
 
 ```yaml
 # Metadatos del sitio
@@ -276,7 +270,7 @@ Cada publicación se registra en `ARCHIVO/PLUGINS/GH_PAGES/published/manifest.js
     {
       "id": "pub-001",
       "source": "ARCHIVO/NOTICIAS/S08-T027-*.md",
-      "destination": "_posts/2025-12-20-*.md",
+      "destination": "docs/_posts/2025-12-20-*.md",
       "mode": "merge",
       "timestamp": "2025-12-21T10:00:00Z",
       "commit_sha": "abc123def",
@@ -290,40 +284,36 @@ Cada publicación se registra en `ARCHIVO/PLUGINS/GH_PAGES/published/manifest.js
 
 ---
 
-## Comandos de Terminal
+## Flujo de Actualización del Sitio
 
-### Verificar estado de gh-pages
+### Para modificar contenido o estructura
 
-```bash
-git branch -a | grep gh-pages
-```
+1. Editar directamente en `docs/`
+2. Commit y push a `main`
+3. GitHub Pages reconstruye (~40s)
+4. Verificar en producción (hard refresh si es necesario)
 
-### Cambiar a branch gh-pages
-
-```bash
-git checkout gh-pages
-```
-
-### Publicar cambios
+### Comandos de Terminal
 
 ```bash
-git add .
+# Ver archivos del sitio
+ls -la docs/
+
+# Ver cambios pendientes
+git status
+
+# Publicar cambios
+git add docs/
 git commit -m "feat(gh-pages): <descripción>"
-git push origin gh-pages
-```
-
-### Volver a main
-
-```bash
-git checkout main
+git push origin main
 ```
 
 ---
 
 ## Lo que NO hacer
 
-1. **No modificar plantilla en publicaciones**: Solo en `init`.
-2. **No publicar sin verificar branch**: Siempre confirmar `gh-pages` existe.
+1. **No crear plantillas separadas**: Solo existe `docs/` como fuente de verdad.
+2. **No modificar _posts, _capitulos, etc. manualmente**: Son generados por el agente.
 3. **No mezclar modos**: `fusionar` y `reemplazar` son mutuamente excluyentes.
 4. **No publicar borradores**: Solo contenido en carpetas oficiales.
 5. **No olvidar el registro**: Siempre actualizar `manifest.json`.
@@ -334,45 +324,15 @@ git checkout main
 
 | Problema | Solución |
 |----------|----------|
-| "Branch gh-pages no existe" | Ejecutar `@GHPages inicializar` |
-| "Conflicto de merge" | Usar modo `reemplazar` para limpiar |
-| "Página no se actualiza" | Verificar que GitHub Pages está habilitado en Settings |
-| "CSS no carga" | Revisar `baseurl` en `_config.yml` |
-| "Cambios en plantilla no se ven" | La plantilla (`meta/jekyll-template/`) es solo modelo. Portar cambios a `docs/` manualmente. |
-| "Enlaces de GitHub rotos en footer" | `site.repository` es `owner/repo`, no URL. Usar: `{% assign github_url = "https://github.com/" | append: site.repository %}` |
+| Sitio no actualiza | Verificar GitHub Pages en Settings |
+| CSS no carga | Revisar `baseurl` en `docs/_config.yml` |
+| Build falló | Revisar logs en GitHub Actions |
+| Cache del navegador | Hard refresh (Cmd+Shift+R) |
 
 ---
 
-## ⚠️ Protocolo de Actualización del Sitio
+## Referencias
 
-### Arquitectura de dos capas
-
-| Capa | Ubicación | Rol |
-|------|-----------|-----|
-| **Plantilla** | `.github/plugins/gh-pages/meta/jekyll-template/` | Modelo de referencia (inmutable en runtime) |
-| **Producción** | `docs/` (branch `main`) | Sitio real servido por GitHub Pages |
-
-**Regla crítica**: Los cambios en `meta/jekyll-template/` **no se despliegan automáticamente**. Deben portarse a `docs/`.
-
-### Flujo para actualizar estilos/estructura
-
-1. **(Opcional)** Editar plantilla en `meta/jekyll-template/` para mantener el modelo.
-2. **(Obligatorio)** Portar los mismos cambios a `docs/`:
-   - `docs/assets/css/main.css`
-   - `docs/_includes/footer.html`, `header.html`, etc.
-3. Commit y push a `main`.
-4. Esperar rebuild de Pages (~40s).
-5. Validar en producción (hard refresh si es necesario).
-
-### Diagnóstico
-
-```bash
-# ¿El commit está en origin?
-git fetch origin && git branch -r --contains <sha>
-
-# ¿Cuándo fue el último build?
-# → Ver en GitHub Actions: pages-build-deployment
-
-# ¿Hay diferencias entre plantilla y producción?
-diff .github/plugins/gh-pages/meta/jekyll-template/_includes/footer.html docs/_includes/footer.html
-```
+- [Documentación del plugin](../docs/README.md)
+- [Agente GHPages](../agents/ghpages.agent.md)
+- [Manifest](../manifest.md)

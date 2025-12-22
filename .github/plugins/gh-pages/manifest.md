@@ -1,8 +1,8 @@
 ---
 id: gh-pages
 name: "Website Publisher (GitHub Pages)"
-version: "1.0.0"
-description: "Plugin para publicar contenido del Scriptorium en GitHub Pages. Soporta dos modos: fusionar (añadir contenido) y reemplazar (sustituir todo)."
+version: "1.1.0"
+description: "Plugin para publicar contenido del Scriptorium en GitHub Pages. Fuente de verdad: docs/ (raíz). Soporta dos modos: fusionar (añadir contenido) y reemplazar (sustituir todo)."
 author: "Aleph Scriptorium"
 license: "MIT"
 
@@ -12,6 +12,10 @@ dependencies: []
 
 # Directorio de datos de runtime
 data_directory: "ARCHIVO/PLUGINS/GH_PAGES/"
+
+# Fuente de verdad del sitio web
+site_source: "docs/"
+site_note: "SCRIPT-0.14.0: No hay plantilla duplicada. docs/ (raíz) es la única fuente de verdad."
 
 # URL canónica del sitio publicado
 site_url: "https://escrivivir-co.github.io/aleph-scriptorium/"

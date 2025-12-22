@@ -1,43 +1,20 @@
 <footer class="site-footer">
-  <div class="footer-container">
+  <div class="footer-container footer-simple">
     <div class="footer-info">
       <p>
-        <strong>{{ site.title }}</strong><br>
-        El taller de escritura donde la IA trabaja para ti, no al revés.
-      </p>
-      <p class="license">
+        <strong>{{ site.title }}</strong> · 
         {% assign github_url = "https://github.com/" | append: site.repository %}
-        Licencia: <a href="{{ github_url }}/blob/main/LICENSE.md">AIPL v1.0</a><br>
-        <a href="https://escrivivir.co">Escrivivir.co</a>
+        Licencia <a href="{{ github_url }}/blob/main/LICENSE.md">AIPL v1.0</a>
       </p>
     </div>
     
-    <div class="footer-links">
-      <h4>Enlaces</h4>
-      <ul>
-        {% assign github_url = "https://github.com/" | append: site.repository %}
-        <li><a href="{{ github_url }}">GitHub</a></li>
-        <li><a href="{{ github_url }}/blob/main/README.md">README</a></li>
-        <li><a href="{{ github_url }}/blob/main/LICENSE.md">Licencia (AIPL)</a></li>
-        <li><a href="{{ '/feed.xml' | relative_url }}">RSS Feed</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-project">
-      <h4>Proyecto</h4>
-      <ul>
-        <li><a href="{{ site.baseurl }}/fundacion/">Fundación (12 caps)</a></li>
-        <li><a href="{{ site.baseurl }}/periodico/">Periódico</a></li>
-        <li><a href="{{ site.repository }}/tree/main/ARCHIVO">Archivo (GitHub)</a></li>
-      </ul>
-    </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <p>
+    <div class="footer-links-inline">
       {% assign github_url = "https://github.com/" | append: site.repository %}
-      Publicado con <a href="{{ github_url }}/tree/main/.github/plugins/gh-pages/">Plugin GH-Pages</a>
-      del Aleph Scriptorium.
-    </p>
+      <a href="{{ github_url }}">GitHub</a>
+      <span class="sep">·</span>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      <span class="sep">·</span>
+      <a href="https://escrivivir.co">Escrivivir.co</a>
+    </div>
   </div>
 </footer>
