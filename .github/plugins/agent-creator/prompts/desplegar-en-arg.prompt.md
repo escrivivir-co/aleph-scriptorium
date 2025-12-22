@@ -10,7 +10,21 @@ tools: ['read', 'edit', 'search']
 
 Convertir un agente creado por AGENT_CREATOR en un **personaje** de una obra del Teatro ARG (plugin ARG_BOARD), estableciendo trazabilidad bidireccional.
 
-## Flujo
+## Pipeline Automatizado
+
+> **Referencia completa**: `.github/prompts/pipeline-agentcreator-argboard.prompt.md`
+
+El despliegue sigue el algoritmo documentado en el pipeline central:
+1. Leer receta desde `ARCHIVO/PLUGINS/AGENT_CREATOR/recipes/`
+2. Extraer datos para actor (nombre, arquetipo, descripción, rol, tests)
+3. Generar ID de actor (slugify del nombre)
+4. Construir entrada JSON para `actores.json`
+5. Escribir en `ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/actores.json`
+6. Actualizar `obras.json` si existe obra asociada
+7. Actualizar receta con trazabilidad (`arg_deployment`)
+8. Registrar en `logs/creation-log.json`
+
+## Flujo Interactivo
 
 ### Paso 1: Seleccionar agente a desplegar
 

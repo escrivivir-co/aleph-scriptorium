@@ -421,13 +421,13 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S08: Consolidación AGENT_CREATOR → ARG_BOARD
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T029 | Automatizar creación de actor en \`actores.json\` desde receta | ⏳ |
-| T030 | Actualizar prompt \`desplegar-en-arg.prompt.md\` | ⏳ |
-| T031 | Validar pipeline: receta → agente → actor → obra | ⏳ |
+| T029 | Automatizar creación de actor en \`actores.json\` desde receta | ✅ |
+| T030 | Actualizar prompt \`desplegar-en-arg.prompt.md\` | ✅ |
+| T031 | Validar pipeline: receta → agente → actor → obra | ✅ |
 
 ---
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 33 |
+| Completadas | 36 |
 | En progreso | 4 |
-| Pendientes | 7 |
-| % Avance | 75% |
+| Pendientes | 4 |
+| % Avance | 82% |
 
 ---
 
@@ -542,3 +542,4 @@ meta:
 | 2025-12-22 | Implementar visualizador Impress.js MVP (S05) | Aleph |
 | 2025-12-22 | Crear generador de páginas Jekyll para obras (S06) | Aleph |
 | 2025-12-22 | Publicar obra demo "Camino del Tarotista" (S07) | Aleph |
+| 2025-12-22 | Consolidar pipeline AGENT_CREATOR → ARG_BOARD (S08) | Aleph |

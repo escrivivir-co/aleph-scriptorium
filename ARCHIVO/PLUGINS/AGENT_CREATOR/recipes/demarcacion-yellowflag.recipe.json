@@ -46,12 +46,12 @@
   ],
   "arg_deployment": {
     "deployed": true,
-    "deployed_at": "2025-12-22T15:00:00Z",
+    "deployed_at": "2025-12-22T18:30:00Z",
     "target_plugin": "arg-board",
     "obra": {
-      "id": "hola_mundo",
-      "titulo": "Hola Mundo",
-      "tipo": "laboratorio"
+      "id": "camino_del_tarotista",
+      "titulo": "El Camino del Tarotista",
+      "tipo": "onboarding"
     },
     "personaje": {
       "id": "tarotista",
@@ -59,6 +59,14 @@
       "arquetipo": "SHAPESHIFTER",
       "rol": "Oráculo epistémico"
     },
-    "trazabilidad": "FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD"
+    "trazabilidad": "FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO",
+    "obras_anteriores": [
+      {
+        "id": "hola_mundo",
+        "titulo": "Hola Mundo",
+        "tipo": "laboratorio",
+        "deployed_at": "2025-12-22T15:00:00Z"
+      }
+    ]
   }
 }
