@@ -537,6 +537,258 @@
 
 ---
 
+# Épica: SCRIPT-0.6.0 — Plugin Foro Scraper
+
+**Objetivo**: Implementar plugin de scraping de foros usando herramientas MCP Playwright con gestión de estado pausable/reanudable.
+
+**Caso de uso**: Descargar hilos de foros (Foro, etc.) página por página para archivo en DISCO/.
+
+**Tecnología**: MCP Playwright (browser_navigate, browser_snapshot, browser_click)
+
+**Entregables**:
+- Plugin foro-scraper con manifest, agente, prompts e instrucciones
+- Sistema de gestión de estado (pausa/reanudación)
+- Parser de patrones URL de foros
+- Integración con ARCHIVO/DISCO/
+- Documentación y ejemplo de uso
+
+---
+
+## Stories
+
+### SCRIPT-0.6.0-S01: Diseño del Plugin
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T106 | Crear carpeta `.github/plugins/foro-scraper/` | ✅ |
+| T107 | Crear `manifest.md` con metadatos y handoffs | ✅ |
+| T108 | Diseñar esquema de estado (`state.json`) | ✅ |
+| T109 | Definir parser de patrones URL (t=, page=, etc.) | ✅ |
+
+---
+
+### SCRIPT-0.6.0-S02: Agente ForoScraper
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T110 | Crear `agents/foro-scraper.agent.md` | ✅ |
+| T111 | Implementar handoff "Iniciar scraping" | ✅ |
+| T112 | Implementar handoff "Pausar scraping" | ✅ |
+| T113 | Implementar handoff "Reanudar scraping" | ✅ |
+| T114 | Implementar handoff "Ver estado" | ✅ |
+
+---
+
+### SCRIPT-0.6.0-S03: Prompts de Operación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T115 | Crear `prompts/foro-init.prompt.md` (inicializar con URL) | ✅ |
+| T116 | Crear `prompts/foro-scrape-page.prompt.md` (descargar página) | ✅ |
+| T117 | Crear `prompts/foro-parse-pattern.prompt.md` (extraer patrón) | ✅ |
+| T118 | Crear `prompts/foro-state.prompt.md` (gestión de estado) | ✅ |
+
+---
+
+### SCRIPT-0.6.0-S04: Instrucciones y Documentación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T119 | Crear `instructions/foro-scraper.instructions.md` | ✅ |
+| T120 | Crear `docs/README.md` con guía de uso | ✅ |
+| T121 | Documentar patrones de URL soportados | ✅ |
+
+---
+
+### SCRIPT-0.6.0-S05: Instalación e Integración
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T122 | Actualizar `registry.json` con plugin | ✅ |
+| T123 | Añadir handoffs a `aleph.agent.md` | ✅ |
+| T124 | Actualizar `copilot-instructions.md` | ✅ |
+| T125 | Crear `ARCHIVO/PLUGINS/FORO_SCRAPER/` con README | ✅ |
+
+---
+
+### SCRIPT-0.6.0-S06: Documentación Scriptorium
+**Estado**: 🔄 En progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T126 | Actualizar README.md principal con sección Foro Scraper | ⏳ |
+| T127 | Añadir ejemplo de uso en docs/ del plugin | ✅ |
+
+---
+
+### SCRIPT-0.6.0-S07: Validación — Caso Foro
+**Estado**: ✅ Completada (1 página suficiente)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T128 | Crear carpeta `DISCO/Foro_t8941392/` | ✅ |
+| T129 | Inicializar scraper con URL de muestra | ✅ |
+| T130 | Descargar página 1 del hilo | ✅ |
+| T131 | Validar formato de salida `page_001.md` | ✅ |
+| T132 | Confirmar integridad del contenido descargado | ✅ |
+
+---
+
+## Métricas Sprint 0.6
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 27 |
+| Completadas | 27 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
+# Épica: SCRIPT-0.7.0 — Extensión Blogs + Integración Periódico
+
+**Objetivo**: Extender plugin Foro Scraper para soportar blogs y mejorar integración con el flujo periodístico.
+
+**Mejoras**:
+- Soporte para blogs (WordPress, Blogger, Medium, Ghost, Substack, Hugo/Jekyll)
+- Nueva convención de naming: `{fecha}_{tema}_{titulo}` (sin nombres propios)
+- Integración con @Periódico para crear noticias desde carpetas de scraping
+
+**Entregables**:
+- Prompts para blogs (init, scrape-entry)
+- Agente actualizado con flujos de blog
+- Instrucciones actualizadas
+- Handoffs en @Periódico
+- Documentación actualizada
+
+---
+
+## Stories
+
+### SCRIPT-0.7.0-S01: Prompts de Blog
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T133 | Crear `prompts/blog-init.prompt.md` | ✅ |
+| T134 | Crear `prompts/blog-scrape-entry.prompt.md` | ✅ |
+
+---
+
+### SCRIPT-0.7.0-S02: Actualizar Plugin
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T135 | Actualizar `manifest.md` a v1.1.0 | ✅ |
+| T136 | Actualizar `agents/foro-scraper.agent.md` con blogs | ✅ |
+| T137 | Actualizar `instructions/foro-scraper.instructions.md` | ✅ |
+
+---
+
+### SCRIPT-0.7.0-S03: Integración con Periódico
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T138 | Añadir handoffs de scraping a `periodico.agent.md` | ✅ |
+| T139 | Añadir handoff "Crear noticia desde scraping" | ✅ |
+
+---
+
+### SCRIPT-0.7.0-S04: Documentación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T140 | Actualizar README.md principal | ✅ |
+| T141 | Actualizar registry.json | ✅ |
+| T142 | Actualizar docs/README.md del plugin | ✅ |
+
+---
+
+## Métricas Sprint 0.7
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 10 |
+| Completadas | 10 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
+## Especificación Técnica
+
+### Esquema de Estado (`state.json`)
+
+```json
+{
+  "job_id": "Foro-t8941392",
+  "status": "paused|running|completed|error",
+  "url_pattern": {
+    "base": "https://Foro.com/foro/showthread.php",
+    "thread_param": "t",
+    "thread_id": "8941392",
+    "page_param": "page"
+  },
+  "progress": {
+    "current_page": 5,
+    "total_pages": null,
+    "pages_downloaded": [1, 2, 3, 4, 5],
+    "last_updated": "2025-12-22T10:00:00Z"
+  },
+  "output": {
+    "directory": "ARCHIVO/DISCO/Foro_t8941392/",
+    "format": "md"
+  },
+  "config": {
+    "delay_ms": 2000,
+    "max_pages": 10
+  }
+}
+```
+
+### Patrones URL Soportados
+
+| Foro | Patrón | Ejemplo |
+|------|--------|---------|
+| Foro | `?t={id}&page={n}` | `showthread.php?t=123&page=1` |
+| vBulletin | `?t={id}&page={n}` | Similar a Foro |
+| phpBB | `?t={id}&start={n*posts}` | `viewtopic.php?t=123&start=20` |
+| Discourse | `/t/{slug}/{id}/{n}` | `/t/tema/123/2` |
+
+### Flujo de Operación
+
+```
+1. INIT: Usuario proporciona URL de muestra
+   ↓
+2. PARSE: Extraer patrón (base, thread_param, page_param)
+   ↓
+3. SETUP: Crear carpeta en DISCO/, inicializar state.json
+   ↓
+4. LOOP: Para cada página:
+   a. Navegar con browser_navigate
+   b. Capturar con browser_snapshot
+   c. Parsear contenido relevante
+   d. Guardar como .md
+   e. Actualizar state.json
+   f. Aplicar delay
+   ↓
+5. PAUSE/RESUME: Leer state.json, continuar desde current_page
+   ↓
+6. COMPLETE: Marcar status=completed
+```
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -555,3 +807,5 @@
 | 2025-12-21 | Crear orangeflag.agent.md y marco/15 | Aleph |
 | 2025-12-21 | Añadir Épica SCRIPT-0.5.0 — Plugin GH-Pages | Aleph |
 | 2025-12-21 | Completar plugin GH-Pages con Jekyll template | Aleph |
+| 2025-12-22 | Añadir Épica SCRIPT-0.6.0 — Plugin Foro Scraper | Aleph |
+| 2025-12-22 | Añadir Épica SCRIPT-0.7.0 — Extensión Blogs + Integración Periódico | Aleph |

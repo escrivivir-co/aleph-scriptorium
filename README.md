@@ -189,6 +189,8 @@ ARCHIVO/PLUGINS/           ← Datos de plugins (mutable)
 |--------|---------|-------------|---------|
 | **ARG Board** | 1.0.0 | Motor de juegos ARG transmedia | `@Arrakis`, `@BOE`, `@Decoherence` |
 | **Enciclopedia** | 1.0.0 | Biblioteca de tomos con búsquedas temporales y temáticas | `@Bibliotecario`, `@HDF-ErnestoCastro` |
+| **GH-Pages** | 1.0.0 | Publicación en GitHub Pages (fusionar/reemplazar) | `@GHPages` |
+| **Web Scraper** | 1.1.0 | Scraping de foros y blogs con estado pausable | `@ForoScraper` |
 
 #### Plugin: ARG Board
 
@@ -219,6 +221,34 @@ Biblioteca de **tomos enciclopédicos** con motor de búsqueda temporal (por per
 ```
 
 **Documentación**: [`.github/plugins/enciclopedia/docs/`](.github/plugins/enciclopedia/docs/)
+
+#### Plugin: Web Scraper (Foros y Blogs)
+
+Plugin de **scraping web** para descargar hilos de foros y entradas de blogs, con gestión de estado pausable/reanudable.
+
+**Tipos de contenido**:
+| Tipo | Proceso | Plataformas |
+|------|---------|-------------|
+| **Foros** | Descarga páginas secuenciales | ForoCoches, vBulletin, phpBB, Discourse |
+| **Blogs** | Indexa portada, descarga entradas | WordPress, Blogger, Medium, Ghost, Substack |
+
+**Convención de naming**: `{YYYY-MM}_{tema}_{titulo-descriptivo}` (sin nombres propios)
+
+**Uso**:
+```
+@ForoScraper iniciar foro https://ejemplo.com/hilo?t=123    # Foro
+@ForoScraper iniciar blog https://blog.ejemplo.com/archivo # Blog
+@ForoScraper pausar                                         # Pausar trabajo
+@ForoScraper reanudar                                       # Continuar
+@ForoScraper estado                                         # Ver todos los jobs
+```
+
+**Integración con Periódico**:
+```
+@Periodico crear noticia desde ARCHIVO/DISCO/2025-12_filosofia_demarcacion/
+```
+
+**Documentación**: [`.github/plugins/foro-scraper/docs/`](.github/plugins/foro-scraper/docs/)
 
 #### Crear o Instalar Plugins
 
