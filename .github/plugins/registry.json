@@ -1,7 +1,42 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-22T14:00:00Z",
+  "last_updated": "2025-12-22T18:00:00Z",
   "plugins": {
+    "teatro": {
+      "name": "Teatro Interactivo",
+      "version": "1.0.0",
+      "description": "Sistema unificado para experiencias de teatro transmedia interactivo. Conecta ARG_BOARD, AGENT_CREATOR y GH-PAGES con visualización 3D basada en impress.js.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-22T18:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 3,
+      "data_directory": "ARCHIVO/PLUGINS/TEATRO/",
+      "bridge_agent": "plugin_ox_teatro",
+      "dependencies": ["arg-board", "agent-creator", "gh-pages"],
+      "handoffs": [
+        {
+          "label": "Generar nueva obra",
+          "agent": "Teatro"
+        },
+        {
+          "label": "Instalar obra en cartelera",
+          "agent": "Teatro"
+        },
+        {
+          "label": "Ejecutar obra (poner en escena)",
+          "agent": "Teatro"
+        },
+        {
+          "label": "Ver cartelera",
+          "agent": "Teatro"
+        },
+        {
+          "label": "Crear personaje para obra",
+          "agent": "Teatro"
+        }
+      ]
+    },
     "agent-creator": {
       "name": "Creador de Agentes Especializados",
       "version": "1.1.0",

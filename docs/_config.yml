@@ -62,6 +62,9 @@ navigation:
     highlight: true
   - title: Agentes
     url: /agentes/
+  - title: Teatro
+    url: /teatro/
+    highlight: true
   - title: Periódico
     url: /periodico/
   - title: Fundación

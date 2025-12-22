@@ -64,6 +64,10 @@ handoffs:
     agent: plugin_ox_agentcreator
     prompt: Accede al plugin Agent Creator a través de su bridge.
     send: false
+  - label: Invocar bridge Teatro
+    agent: plugin_ox_teatro
+    prompt: Accede al plugin Teatro Interactivo a través de su bridge.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
@@ -193,6 +197,10 @@ handoffs:
         "agent-creator": {
           "directorio": ".github/plugins/agent-creator/agents/",
           "agentes": ["AgentCreator"]
+        },
+        "teatro": {
+          "directorio": ".github/plugins/teatro/agents/",
+          "agentes": ["Teatro"]
         }
       },
       "bridges": {
@@ -222,6 +230,11 @@ handoffs:
           "plugin_ox_agentcreator": {
             "archivo": ".github/agents/plugin_ox_agentcreator.agent.md",
             "plugin": "agent-creator",
+            "delega_a": 1
+          },
+          "plugin_ox_teatro": {
+            "archivo": ".github/agents/plugin_ox_teatro.agent.md",
+            "plugin": "teatro",
             "delega_a": 1
           }
         }

@@ -214,3 +214,23 @@ Creador de agentes especializados combinando agentes base con fuentes de datos.
 - Conectar con FORO_SCRAPER para más datos
 
 **Documentación**: [plugins/agent-creator/docs/](plugins/agent-creator/docs/)
+### Plugin: Teatro Interactivo
+
+Sistema unificado para experiencias de teatro transmedia interactivo.
+
+**Agentes disponibles**:
+- `Teatro`: Orquestador del teatro transmedia
+
+**Prompts**:
+- `teatro-generar-obra.prompt.md`: UC1 - Generar YAML de obra
+- `teatro-instalar-obra.prompt.md`: UC2 - Registrar en cartelera
+- `teatro-ejecutar-obra.prompt.md`: UC3 - Publicar página impress.js
+
+**Dependencias**: ARG_BOARD, AGENT_CREATOR, GH_PAGES
+
+**Flujo**:
+1. Generar obra (YAML con 12 estadios)
+2. Instalar obra (registro en cartelera)
+3. Ejecutar obra (publicar página interactiva)
+
+**Documentación**: [plugins/teatro/docs/](plugins/teatro/docs/)

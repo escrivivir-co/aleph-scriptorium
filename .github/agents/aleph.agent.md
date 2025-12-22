@@ -64,6 +64,10 @@ handoffs:
               agent: plugin_ox_agentcreator
               prompt: Accede al plugin Agent Creator. Crea, edita, fusiona agentes especializados.
               send: false
+       - label: "[TEATRO] Experiencias transmedia"
+              agent: plugin_ox_teatro
+              prompt: Accede al plugin Teatro Interactivo. Genera, instala y ejecuta obras transmedia con visualización 3D.
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 
