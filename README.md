@@ -229,7 +229,7 @@ Plugin de **scraping web** para descargar hilos de foros y entradas de blogs, co
 **Tipos de contenido**:
 | Tipo | Proceso | Plataformas |
 |------|---------|-------------|
-| **Foros** | Descarga páginas secuenciales | ForoCoches, vBulletin, phpBB, Discourse |
+| **Foros** | Descarga páginas secuenciales | Foro, vBulletin, phpBB, Discourse |
 | **Blogs** | Indexa portada, descarga entradas | WordPress, Blogger, Medium, Ghost, Substack |
 
 **Convención de naming**: `{YYYY-MM}_{tema}_{titulo-descriptivo}` (sin nombres propios)
