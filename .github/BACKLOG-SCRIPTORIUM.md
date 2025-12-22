@@ -2731,6 +2731,256 @@ Para que Scriptorium funcione en otro IDE necesita:
 
 ---
 
+# Épica: SCRIPT-0.18.0 — Rediseño Página ARCHIVO (Portal de Datos)
+
+**Tipo**: ✨ Feature / Mejora UX  
+**Plugin**: gh-pages  
+**Página**: `docs/archivo.md`
+
+---
+
+## Objetivo
+
+Transformar la página Archivo en un **portal de datos completo** que sirva como:
+1. **Puerta de entrada** al contenido doctrinal (Vestíbulo → Cartas-Puerta según visión)
+2. **Centro de operaciones** para flujos de datos DISCO ↔ ARCHIVO ↔ Plugins
+3. **Documentación viva** de los ciclos de integración/extracción
+
+## Filosofía
+
+> **ARCHIVO** es la memoria permanente del Scriptorium (doctrina, noticias, perfiles).  
+> **DISCO** son las carpetas del usuario que conecta/desconecta para traer o volcar información.
+
+## Arquitectura de Flujos
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    FUENTES EXTERNAS                             │
+│       Foros · Blogs · PDFs · Transcripciones · Tomos            │
+└───────────────────────────┬─────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                         DISCO                                    │
+│     Carpetas temporales del usuario (conectar/desconectar)      │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐           │
+│  │ Geopolít.│ │ Alineam. │ │ Materia  │ │ Foro_t...│           │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘           │
+└───────────────────────────┬─────────────────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ▼                   ▼                   ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ FORO-SCRAPER │    │ ENCICLOPEDIA │    │AGENT-CREATOR │
+│  Descargar   │    │  Consultar   │    │   Encarnar   │
+│  hilos/blogs │    │    tomos     │    │   agentes    │
+└──────┬───────┘    └──────┬───────┘    └──────┬───────┘
+       │                   │                   │
+       └───────────────────┼───────────────────┘
+                           ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              extraer-archivar.prompt.md                         │
+│         Clasificar por eje: marco / diagnóstico / justificación │
+└───────────────────────────┬─────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                        ARCHIVO                                   │
+│  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐        │
+│  │ marco  │ │diagnóst│ │justif. │ │NOTICIAS│ │CARTAS  │        │
+│  └────────┘ └────────┘ └────────┘ └────────┘ └────────┘        │
+│  ┌────────┐ ┌────────┐ ┌────────┐                               │
+│  │PERFILES│ │ENCICL. │ │PLUGINS │                               │
+│  └────────┘ └────────┘ └────────┘                               │
+└───────────────────────────┬─────────────────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        │                   │                   │
+        ▼                   ▼                   ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│  PERIÓDICO   │    │  ARG-BOARD   │    │   GH-PAGES   │
+│  5W+Banderas │    │    Teatro    │    │   Publicar   │
+│   Noticias   │    │  transmedia  │    │     Web      │
+└──────────────┘    └──────────────┘    └──────────────┘
+```
+
+---
+
+## Diseño Propuesto
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  HEADER (sobrio, sin iconos excesivos)                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ARCHIVO                                                        │
+│  Memoria permanente del Scriptorium                             │
+│                                                                 │
+│  ═══════ VESTÍBULO ═══════                                      │
+│  [Explicación del sistema de puertas según perfil]              │
+│  [6 cards: Vista Total, Blueflag, Blackflag, Redflag,           │
+│            Yellowflag, Orangeflag]                              │
+│                                                                 │
+│  ═══════ EJES DOCTRINALES ═══════                               │
+│  [3 cards: Marco (activo), Diagnóstico (pasado),                │
+│            Justificación (pasado)]                              │
+│                                                                 │
+│  ═══════ CICLOS DE DATOS ═══════                                │
+│  Diagrama ASCII del flujo DISCO → ARCHIVO → Salidas             │
+│  [Cards por proceso: Extracción, Enciclopedia,                  │
+│   Agent Creator, Periódico, Publicación]                        │
+│                                                                 │
+│  ═══════ AGENTES DEL CICLO ═══════                              │
+│  [Grid de agentes involucrados por capa]                        │
+│                                                                 │
+│  ═══════ COMPONENTES ═══════                                    │
+│  [Cards: DISCO, NOTICIAS, CARTAS, PERFILES, ENCICLOPEDIA]       │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  FOOTER                                                         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Stories
+
+### SCRIPT-0.18.0-S01: Estructura y Vestíbulo
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T337 | Rediseñar estructura base de archivo.md (CSS sobrio) | ✅ |
+| T338 | Crear sección Vestíbulo con 6 cartas-puerta | ✅ |
+| T339 | Explicar sistema de perfiles y navegación | ✅ |
+
+---
+
+### SCRIPT-0.18.0-S02: Ejes Doctrinales
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T340 | Cards para Marco (activo) con lista de 15 documentos | ✅ |
+| T341 | Cards para Diagnóstico (pasado) con nota de memoria | ✅ |
+| T342 | Cards para Justificación (pasado) con nota de memoria | ✅ |
+
+---
+
+### SCRIPT-0.18.0-S03: Ciclos de Datos (Parte 2)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T343 | Diagrama ASCII de flujo DISCO ↔ ARCHIVO ↔ Salidas | ✅ |
+| T344 | Card: Proceso estándar extraer-archivar.prompt.md | ✅ |
+| T345 | Card: Conexión Enciclopedia (tomos, búsqueda condicionada) | ✅ |
+| T346 | Card: Agent Creator (encarnar agentes con fuente remota) | ✅ |
+| T347 | Card: Periódico (5W + Banderas → Noticias) | ✅ |
+| T348 | Card: Publicación GH-Pages (periodico.md → web) | ✅ |
+
+---
+
+### SCRIPT-0.18.0-S04: Agentes del Ciclo (Parte 3)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T349 | Identificar agentes de Ox no mencionados | ✅ |
+| T350 | Grid de agentes por capa (UI, Backend, Sistema, Meta, Plugins) | ✅ |
+| T351 | Documentar rol de cada agente en el ciclo de datos | ✅ |
+
+---
+
+### SCRIPT-0.18.0-S05: Componentes del ARCHIVO
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T352 | Card: DISCO (carpetas temporales, conectar/desconectar) | ✅ |
+| T353 | Card: NOTICIAS (planas con método 5W + Banderas) | ✅ |
+| T354 | Card: CARTAS (6 cartas-puerta por perfil) | ✅ |
+| T355 | Card: PERFILES (fichas de lector) | ✅ |
+| T356 | Card: ENCICLOPEDIA (tomos académicos) | ✅ |
+
+---
+
+### SCRIPT-0.18.0-S06: Integración y QA
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T357 | Verificar enlaces a GitHub y páginas internas | ✅ |
+| T358 | Test responsive (móvil) | ✅ |
+| T359 | Commit y deploy | ⏳ |
+
+---
+
+## Métricas Sprint 0.18
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 23 |
+| Completadas | 22 |
+| En progreso | 0 |
+| Pendientes | 1 |
+| % Avance | 96% |
+
+---
+
+## Agentes Identificados para el Ciclo
+
+### UI (Producción)
+| Agente | Rol en el ciclo |
+|--------|-----------------|
+| @aleph | Orquestador principal, coordina extracción y redacción |
+| @revisor | Verifica coherencia de extracciones con ARCHIVO existente |
+| @periodico | Produce noticias desde DISCO con método 5W + Banderas |
+
+### Backend (Auditoría)
+| Agente | Rol en el ciclo |
+|--------|-----------------|
+| @blueflag | Audita evidencia en extracciones |
+| @blackflag | Audita sombras y captura en noticias |
+| @redflag | Audita viabilidad material |
+| @yellowflag | Audita límites y condiciones |
+| @orangeflag | Audita registro e interlocución |
+
+### Sistema (Navegación)
+| Agente | Rol en el ciclo |
+|--------|-----------------|
+| @vestibulo | Identifica perfil del lector, asigna carta-puerta |
+| @cartaspuerta | Entrega carta según perfil |
+
+### Meta (Gestión)
+| Agente | Rol en el ciclo |
+|--------|-----------------|
+| @ox | Oráculo: consulta qué agente usar, genera documentación |
+| @pluginmanager | Instala/activa plugins para el ciclo |
+
+### Plugins
+| Plugin | Agentes | Rol en el ciclo |
+|--------|---------|-----------------|
+| FORO-SCRAPER | ForoScraper | Descarga hilos de foros/blogs a DISCO |
+| ENCICLOPEDIA | Bibliotecario, HDF-EC | Consulta tomos para conversaciones condicionadas |
+| AGENT-CREATOR | AgentCreator | Crea agentes especializados con fuente DISCO |
+| ARG-BOARD | Arrakis, BOE, Decoherence, GitARG, AutomataHeroe, ImpressJS, MBox, PlatformCom | Teatro transmedia para agentes creados |
+| GH-PAGES | GHPages | Publica contenido en web |
+
+---
+
+## Changelog Épica
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | Crear épica SCRIPT-0.18.0 | Aleph |
+| 2025-12-22 | Definir arquitectura de flujos de datos | Aleph |
+| 2025-12-22 | Identificar agentes del ciclo completo | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: archivo.md - Portal de datos completo | Aleph |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -2742,4 +2992,6 @@ Para que Scriptorium funcione en otro IDE necesita:
 | 2025-12-22 | **IMPLEMENTADO**: fundacion.md - rediseño completo estilo agentes.md | Aleph |
 | 2025-12-22 | Crear épica SCRIPT-0.17.0 — Página LEEME (Guía de Usuario) | Aleph |
 | 2025-12-22 | **IMPLEMENTADO**: leeme.md - Guía completa de instalación, uso y costes | Aleph |
+| 2025-12-22 | Crear épica SCRIPT-0.18.0 — Rediseño Página ARCHIVO (Portal de Datos) | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: archivo.md - Vestíbulo, Ciclos de Datos, Agentes, Componentes | Aleph |
 
