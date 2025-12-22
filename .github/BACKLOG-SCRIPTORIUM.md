@@ -407,16 +407,16 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S07: Obra Demo "Camino del Tarotista"
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T023 | Crear YAML de la obra \`camino-del-tarotista.yaml\` | ⏳ |
-| T024 | Generar página impress.js de la obra | ⏳ |
-| T025 | Integrar personaje Tarotista (demarcacion-yellowflag) | ⏳ |
-| T026 | Documentar cada prueba con instrucciones interactivas | ⏳ |
-| T027 | Registrar obra en \`obras.json\` | ⏳ |
-| T028 | Publicar en cartelera | ⏳ |
+| T023 | Crear YAML de la obra \`camino-del-tarotista.yaml\` | ✅ |
+| T024 | Generar página impress.js de la obra | ✅ |
+| T025 | Integrar personaje Tarotista (demarcacion-yellowflag) | ✅ |
+| T026 | Documentar cada prueba con instrucciones interactivas | ✅ |
+| T027 | Registrar obra en \`obras.json\` | ✅ |
+| T028 | Publicar en cartelera | ✅ |
 
 ---
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 27 |
+| Completadas | 33 |
 | En progreso | 4 |
-| Pendientes | 13 |
-| % Avance | 61% |
+| Pendientes | 7 |
+| % Avance | 75% |
 
 ---
 
@@ -521,7 +521,7 @@ meta:
 | AGENT_CREATOR plugin | ✅ Instalado | demarcacion-yellowflag creado |
 | GH_PAGES plugin | ✅ Instalado | docs/ funcional |
 | TEATRO plugin | ✅ Instalado | Orquestador de experiencias transmedia |
-| impress.js | ⏳ Por integrar | CDN o local |
+| impress.js | ✅ Integrado | CDN (impress.js@2.0.0) |
 | Tarotista (personaje) | ✅ Creado | En actores.json |
 | TALLER (estructura) | ✅ Creado | Plantilla + hola-mundo formalizado |
 
@@ -541,3 +541,4 @@ meta:
 | 2025-12-22 | Crear TALLER con plantilla y proyecto hola-mundo formalizado (S11) | Aleph |
 | 2025-12-22 | Implementar visualizador Impress.js MVP (S05) | Aleph |
 | 2025-12-22 | Crear generador de páginas Jekyll para obras (S06) | Aleph |
+| 2025-12-22 | Publicar obra demo "Camino del Tarotista" (S07) | Aleph |

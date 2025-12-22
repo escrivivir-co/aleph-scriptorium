@@ -1,0 +1,161 @@
+# Obra demo: Camino del Tarotista
+# Recorrido completo de features del Scriptorium (12 estadios)
+
+titulo: "El Camino del Tarotista"
+slug: camino-del-tarotista
+tipo: onboarding
+estado: registrada
+
+descripcion: |
+  El Tarotista ofrece una visita guiada al Scriptorium.
+  Cada estadio es una prueba práctica que activa una feature distinta
+  (vestíbulo, cartas-puerta, enciclopedia, periódico, scraping, agentes,
+  tablero ARG, banderas, publicación y contribución).
+
+personaje_guia: tarotista
+
+taller_path: "../ARCHIVO/DISCO/TALLER/camino-del-tarotista"
+
+meta:
+  autor: Aleph Scriptorium
+  fecha_creacion: 2025-12-22
+  duracion_estimada: "2-3 horas"
+  nivel: introductorio
+  prerequisitos:
+    - VS Code
+    - GitHub Copilot
+    - Navegador actualizado
+
+# 12 estadios (monomito)
+estadios:
+  - id: 1
+    nombre: "El Vestíbulo"
+    anillo: 0
+    tipo: inicio
+    descripcion: "Reconocer el vestíbulo y elegir la carta-puerta adecuada."
+    feature: "@vestibulo, @cartaspuerta"
+    prueba:
+      tarea: "Identifica tu perfil y abre la carta-puerta que te corresponda."
+      exito: "Ficha creada en PERFILES/ con carta asignada."
+    contenido_ref: escenas/01-vestibulo.md
+
+  - id: 2
+    nombre: "La Biblioteca"
+    anillo: 1
+    tipo: encuentro
+    descripcion: "Consultar un tomo enciclopédico desde el plugin Enciclopedia."
+    feature: "@plugin_ox_enciclopedia"
+    prueba:
+      tarea: "Busca un capítulo relevante en Historia de la Filosofía."
+      exito: "Registrar en la bitácora qué capítulo usarás como referencia."
+    contenido_ref: escenas/02-biblioteca.md
+
+  - id: 3
+    nombre: "La Hemeroteca"
+    anillo: 1
+    tipo: prueba
+    descripcion: "Producir una nota con método 5W + Banderas usando @periodico."
+    feature: "@periodico"
+    prueba:
+      tarea: "Completa la estructura 5W de un evento real."
+      exito: "Generar borrador en DISCO/ con 5W y banderas invocadas."
+    contenido_ref: escenas/03-hemeroteca.md
+
+  - id: 4
+    nombre: "El Scriptorium"
+    anillo: 1
+    tipo: mentor
+    descripcion: "Conocer a los 5 auditores (Banderas) y cuándo invocarlos."
+    feature: "@blueflag, @blackflag, @redflag, @yellowflag, @orangeflag"
+    prueba:
+      tarea: "Asignar una bandera principal a tu proyecto."
+      exito: "Mapa de auditoría inicial guardado en tu proyecto."
+    contenido_ref: escenas/04-scriptorium.md
+
+  - id: 5
+    nombre: "El Foro"
+    anillo: 2
+    tipo: umbral
+    descripcion: "Descargar material externo con Foro Scraper."
+    feature: "@plugin_ox_foroscraper"
+    prueba:
+      tarea: "Configurar un scraping de foro o blog de prueba."
+      exito: "Job creado/pausado con estado registrado en ARCHIVO/PLUGINS/FORO_SCRAPER/."
+    contenido_ref: escenas/05-foro.md
+
+  - id: 6
+    nombre: "El Laboratorio"
+    anillo: 2
+    tipo: aliados
+    descripcion: "Crear un agente especializado con Agent Creator."
+    feature: "@plugin_ox_agentcreator"
+    prueba:
+      tarea: "Definir receta y generar agente a partir de una fuente."
+      exito: "Receta guardada y agente generado en plugins/agent-creator."
+    contenido_ref: escenas/06-laboratorio.md
+
+  - id: 7
+    nombre: "El Teatro"
+    anillo: 2
+    tipo: cueva
+    descripcion: "Desplegar un personaje en el tablero ARG."
+    feature: "@plugin_ox_argboard"
+    prueba:
+      tarea: "Registrar el agente como actor en actores.json."
+      exito: "Actor disponible para obras en ARG_BOARD."
+    contenido_ref: escenas/07-teatro.md
+
+  - id: 8
+    nombre: "La Ordalía"
+    anillo: 2
+    tipo: ordalia
+    descripcion: "Auditar una propuesta con las 5 Banderas."
+    feature: "Método de auditoría (5 banderas)"
+    prueba:
+      tarea: "Ejecutar las 5 auditorías sobre tu tesis inicial."
+      exito: "Checklist completado y revisado por al menos 2 banderas."
+    contenido_ref: escenas/08-ordalia.md
+
+  - id: 9
+    nombre: "La Publicación"
+    anillo: 3
+    tipo: recompensa
+    descripcion: "Publicar en GitHub Pages usando GH-Pages."
+    feature: "@plugin_ox_ghpages"
+    prueba:
+      tarea: "Generar build y publicar en modo fusionar."
+      exito: "Contenido visible en la URL de GH-Pages."
+    contenido_ref: escenas/09-publicacion.md
+
+  - id: 10
+    nombre: "El Mapa"
+    anillo: 3
+    tipo: retorno
+    descripcion: "Leer el roadmap y ubicar siguientes features."
+    feature: "docs/roadmap.md"
+    prueba:
+      tarea: "Identificar la siguiente historia que te corresponde."
+      exito: "Ticket seleccionado en el backlog personal."
+    contenido_ref: escenas/10-mapa.md
+
+  - id: 11
+    nombre: "La Integración"
+    anillo: 3
+    tipo: resurreccion
+    descripcion: "Entender el flujo DISCO → ARCHIVO → Web."
+    feature: "docs/archivo.md"
+    prueba:
+      tarea: "Subir un cambio propio pasando por las tres capas."
+      exito: "Cambio publicado y referenciado en la web."
+    contenido_ref: escenas/11-integracion.md
+
+  - id: 12
+    nombre: "El Elixir"
+    anillo: 3
+    tipo: elixir
+    descripcion: "Proponer una contribución al proyecto."
+    feature: "CONTRIBUTING.md"
+    prueba:
+      tarea: "Redactar y proponer una mejora (issue/PR)."
+      exito: "Propuesta registrada con referencia doctrinal."
+    contenido_ref: escenas/12-elixir.md

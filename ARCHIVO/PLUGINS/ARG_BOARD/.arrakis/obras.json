@@ -59,5 +59,33 @@
       "fecha_creacion": "2025-12-22T14:00:00Z",
       "proposito": "Demostrar pipeline completo: FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD"
     }
+  },
+  "camino_del_tarotista": {
+    "titulo": "El Camino del Tarotista",
+    "tipo": "onboarding",
+    "estado": "en_escena",
+    "descripcion": "Ruta guiada de 12 estadios para recorrer todas las features del Scriptorium.",
+    "etapa_actual": 1,
+    "actores": ["tarotista"],
+    "escenas": [
+      { "id": 1, "nombre": "El Vestíbulo", "estado": "pendiente", "descripcion": "Elegir carta-puerta y perfil." },
+      { "id": 2, "nombre": "La Biblioteca", "estado": "pendiente", "descripcion": "Consultar un tomo enciclopédico." },
+      { "id": 3, "nombre": "La Hemeroteca", "estado": "pendiente", "descripcion": "Producir 5W + banderas." },
+      { "id": 4, "nombre": "El Scriptorium", "estado": "pendiente", "descripcion": "Asignar auditores y plan de revisión." },
+      { "id": 5, "nombre": "El Foro", "estado": "pendiente", "descripcion": "Lanzar scraping de foro/blog." },
+      { "id": 6, "nombre": "El Laboratorio", "estado": "pendiente", "descripcion": "Crear agente especializado." },
+      { "id": 7, "nombre": "El Teatro", "estado": "pendiente", "descripcion": "Registrar actor en ARG_BOARD." },
+      { "id": 8, "nombre": "La Ordalía", "estado": "pendiente", "descripcion": "Auditar con las 5 banderas." },
+      { "id": 9, "nombre": "La Publicación", "estado": "pendiente", "descripcion": "Publicar vía GH-Pages." },
+      { "id": 10, "nombre": "El Mapa", "estado": "pendiente", "descripcion": "Revisar roadmap y próximos pasos." },
+      { "id": 11, "nombre": "La Integración", "estado": "pendiente", "descripcion": "Ejecutar flujo DISCO → ARCHIVO → Web." },
+      { "id": 12, "nombre": "El Elixir", "estado": "pendiente", "descripcion": "Registrar una propuesta de contribución." }
+    ],
+    "meta": {
+      "fuente": "ARCHIVO/DISCO/TALLER/camino-del-tarotista/obra.yaml",
+      "personaje_guia": "tarotista",
+      "duracion_estimada": "2-3 horas",
+      "nivel": "introductorio"
+    }
   }
 }

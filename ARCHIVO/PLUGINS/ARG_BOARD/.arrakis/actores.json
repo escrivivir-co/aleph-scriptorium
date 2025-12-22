@@ -67,7 +67,7 @@
     "descripcion": "Auditor de demarcación científica que usa metáforas del tarot para evaluar propuestas. Integra criterios de Popper, Kuhn, Feyerabend y los cuadrantes de Wilber.",
     "rol": "Oráculo epistémico",
     "plataformas": ["vscode", "email"],
-    "monomito": "hola_mundo",
+    "monomito": "camino_del_tarotista",
     "origen": {
       "plugin": "agent-creator",
       "agente_base": "yellowflag",
