@@ -4,6 +4,10 @@ description: Publica contenido del Scriptorium en GitHub Pages con modos fusiona
 argument-hint: "Especifica: fuente (NOTICIAS, FUNDACION, ARCHIVO, TEATRO), modo (fusionar/reemplazar), y filtro opcional (mes, capítulo, obra)."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'agent', 'todo']
 handoffs:
+  - label: Validar sitio localmente
+    agent: plugin_ox_ghpages
+    prompt: Guiar al usuario para validar Jekyll localmente antes de publicar (evitar loop de errores).
+    send: false
   - label: Volver a Aleph
     agent: Aleph
     prompt: Reportar resultado de publicación y continuar con siguiente tarea.
@@ -261,10 +265,46 @@ GHPages: Publicando versión revisada...
 
 ## Reglas
 
-1. **Editar directamente en docs/**: No hay plantilla separada. Todo va en `docs/`.
-2. **Registrar publicaciones**: Actualizar `manifest.json` después de cada operación.
-3. **Proponer commits**: Generar mensaje conforme al protocolo DevOps.
-4. **Reportar URL**: Siempre informar la URL final del contenido publicado.
+1. **Validar antes de publicar**: Pregunta "¿Validaste localmente?" Si no, invoca `gh-pages-validate-local.prompt.md`
+2. **Editar directamente en docs/**: No hay plantilla separada. Todo va en `docs/`.
+3. **Registrar publicaciones**: Actualizar `manifest.json` después de cada operación.
+4. **Proponer commits**: Generar mensaje conforme al protocolo DevOps.
+5. **Reportar URL**: Siempre informar la URL final del contenido publicado.
+
+---
+
+## Flujo de Validación Local (NUEVO)
+
+**Objetivo**: Evitar loop "push → error en Actions → fix → repeat"
+
+### Antes de cada publicación que afecte docs/:
+
+```
+@GHPages: ¿Modificaste layouts, includes o páginas?
+
+Usuario: Sí, edité _layouts/obra.html
+
+@GHPages: ¿Validaste localmente con ./scripts/validate-site.sh?
+
+Usuario: No
+
+@GHPages: Te recomiendo validar primero:
+1. Ejecuta: ./scripts/validate-site.sh
+2. Si pasa, continúa con la publicación
+3. Si falla, corrige y vuelve a validar
+
+¿Quieres que te guíe en la validación? [invoca gh-pages-validate-local.prompt.md]
+```
+
+### Scripts disponibles:
+
+| Script | Propósito |
+|--------|-----------|
+| `scripts/setup-jekyll.sh` | Instalar Jekyll (solo primera vez) |
+| `scripts/validate-site.sh` | Compilar Jekyll sin servidor (validación rápida) |
+| `scripts/serve-site.sh` | Servidor local con hot-reload (`http://localhost:4000`) |
+
+Ver: `prompts/gh-pages-validate-local.prompt.md`
 
 ---
 
@@ -275,6 +315,7 @@ GHPages: Publicando versión revisada...
 | Manifest | `.github/plugins/gh-pages/manifest.md` |
 | Instrucciones | `.github/plugins/gh-pages/instructions/gh-pages.instructions.md` |
 | Documentación | `.github/plugins/gh-pages/docs/README.md` |
+| Validación local | `prompts/gh-pages-validate-local.prompt.md` |
 | Config runtime | `ARCHIVO/PLUGINS/GH_PAGES/config.json` |
 | Registro publicaciones | `ARCHIVO/PLUGINS/GH_PAGES/published/manifest.json` |
 | **Sitio web (fuente de verdad)** | `docs/` (raíz del repositorio) |

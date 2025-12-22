@@ -3,3 +3,8 @@
 ARCHIVO/ENCICLOPEDIA/Historia de la filosofía (Ernesto Castro, Madrid, 2017)/**/*.mp3
 ARCHIVO/PLUGINS/LAB/WEBSITE_PUBLISHER.md
 .playwright-mcp/**
+docs/_site/
+docs/.bundle/
+docs/vendor/bundle/
+docs/Gemfile.lock
+

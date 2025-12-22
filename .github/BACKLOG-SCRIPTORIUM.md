@@ -659,7 +659,7 @@ in /_layouts/obra.html
 | BUG-001-T001 | Decidir estrategia (A, B, C, D o E) | ✅ Opción A |
 | BUG-001-T002 | Implementar fix en `obra.html` | ✅ |
 | BUG-001-T003 | Mover/copiar escenas según estrategia | ✅ |
-| BUG-001-T004 | Verificar build en GitHub Actions | ⏳ |
+| BUG-001-T004 | Verificar build en GitHub Actions | 🔄 |
 
 ### Implementación
 
@@ -668,14 +668,21 @@ Se movieron las escenas de `ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/` 
 **Cambio en `obra.html`** (línea ~80):
 
 ```liquid
-{% capture include_path %}teatro/escenas/{{ page.obra_id }}/{{ escena.contenido_ref }}{% endcapture %}
+{% capture include_path %}teatro/escenas/{{ page.slug }}/{{ escena.contenido_ref }}{% endcapture %}
 {% include {{ include_path }} %}
 ```
 
 Esto usa la sintaxis nativa de Jekyll que soporta variables con `{% include %}` (no `include_relative`).
 
+Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a nombres de archivo directos (sin prefijo `escenas/`), alineado con el include en `_includes/teatro/escenas/{slug}/`.
+
+### Verificación
+
+- Se añadió flujo de validación local (scripts + prompt) para reducir el loop de errores en Actions.
+- Pendiente: confirmar que el próximo run de GitHub Actions pasa (BUG-001-T004).
+
 ### Archivos afectados
 
 - `docs/_layouts/obra.html` (línea ~80)
-- `docs/teatro/camino-del-tarotista/index.html`
+- `docs/teatro/camino-del-tarotista.md`
 - `ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/*.md`
