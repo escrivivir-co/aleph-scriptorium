@@ -432,13 +432,13 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S09: Integración GH-Pages
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T032 | Actualizar \`ghpages.agent.md\` con handoffs de Teatro | ⏳ |
-| T033 | Crear prompt para actualizar cartelera desde obras.json | ⏳ |
-| T034 | Implementar "obra en escena" como página destacada | ⏳ |
+| T032 | Actualizar \`ghpages.agent.md\` con handoffs de Teatro | ✅ |
+| T033 | Crear prompt para actualizar cartelera desde obras.json | ✅ |
+| T034 | Implementar "obra en escena" como página destacada | ✅ |
 
 ---
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 36 |
-| En progreso | 4 |
+| Completadas | 39 |
+| En progreso | 1 |
 | Pendientes | 4 |
-| % Avance | 82% |
+| % Avance | 89% |
 
 ---
 
@@ -543,3 +543,4 @@ meta:
 | 2025-12-22 | Crear generador de páginas Jekyll para obras (S06) | Aleph |
 | 2025-12-22 | Publicar obra demo "Camino del Tarotista" (S07) | Aleph |
 | 2025-12-22 | Consolidar pipeline AGENT_CREATOR → ARG_BOARD (S08) | Aleph |
+| 2025-12-22 | Integrar Teatro con GH-Pages y limpiar cartelera (S09) | Aleph |

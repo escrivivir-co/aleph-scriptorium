@@ -33,23 +33,6 @@ description: Teatro Interactivo - Experiencias transmedia guiadas
 
 ## 📋 En Cartel
 
-### El Camino del Tarotista
-
-<div class="obra-card">
-
-**Tipo**: Onboarding  
-**Nivel**: Introductorio  
-**Duración**: 2-3 horas
-
-> Ruta completa por las features del Scriptorium con 12 estadios.
-> Cada escena contiene una prueba práctica y una feature asociada.
-
-**Personaje guía**: Tarotista (demarcacion-yellowflag)
-
-[▶️ Ver obra](/aleph-scriptorium/teatro/camino-del-tarotista/)
-
-</div>
-
 ### Hola Mundo
 
 <div class="obra-card">
@@ -128,12 +111,6 @@ La obra aparecerá en la cartelera.
 ```
 
 Se generará la página interactiva y se publicará.
-
----
-
-## Obra Demo: El Camino del Tarotista
-
-Próximamente disponible: un tour guiado por todas las features del Scriptorium.
 
 ---
 

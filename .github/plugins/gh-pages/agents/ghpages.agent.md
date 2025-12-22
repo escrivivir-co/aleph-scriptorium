@@ -1,7 +1,7 @@
 ---
 name: GHPages
 description: Publica contenido del Scriptorium en GitHub Pages con modos fusionar/reemplazar.
-argument-hint: "Especifica: fuente (NOTICIAS, FUNDACION, ARCHIVO), modo (fusionar/reemplazar), y filtro opcional (mes, capítulo)."
+argument-hint: "Especifica: fuente (NOTICIAS, FUNDACION, ARCHIVO, TEATRO), modo (fusionar/reemplazar), y filtro opcional (mes, capítulo, obra)."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'agent', 'todo']
 handoffs:
   - label: Volver a Aleph
@@ -15,6 +15,18 @@ handoffs:
   - label: Volver a Revisor
     agent: Revisor
     prompt: Reportar que el contenido revisado ha sido publicado.
+    send: false
+  - label: Publicar obra de Teatro
+    agent: plugin_ox_ghpages
+    prompt: Genera la página impress.js de una obra y actualiza la cartelera.
+    send: false
+  - label: Actualizar cartelera desde obras.json
+    agent: plugin_ox_ghpages
+    prompt: Sincroniza docs/teatro.md con el estado de obras en ARG_BOARD.
+    send: false
+  - label: Destacar obra en escena
+    agent: plugin_ox_ghpages
+    prompt: Marca una obra como "en escena" y la destaca en la cartelera.
     send: false
 ---
 
