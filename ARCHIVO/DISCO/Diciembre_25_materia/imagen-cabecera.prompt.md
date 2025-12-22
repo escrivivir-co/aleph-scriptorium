@@ -60,7 +60,7 @@
 
 - **Tono**: Epistemología crítica, no burla. El foro es un espacio legítimo de negociación epistémica, aunque imperfecto.
 - **Contraste clave**: Entre el criterio declarado (falsabilidad, rigor) y la dinámica real (atención, entretenimiento, estatus).
-- **Evitar**: Logos de Forocoches o referencias demasiado literales. La imagen debe funcionar como concepto abstracto sobre demarcación epistémica.
+- **Evitar**: Logos de Foro o referencias demasiado literales. La imagen debe funcionar como concepto abstracto sobre demarcación epistémica.
 - **Objetivo**: Visualizar la tesis de que los espacios plebeyos reproducen (y distorsionan) jerarquías académicas. La pregunta "¿qué es la materia?" es un test de admisión, no una pregunta técnica.
 
 ---
@@ -70,6 +70,6 @@
 | Campo | Valor |
 |-------|-------|
 | Tema | Demarcación epistémica en espacios no institucionales |
-| Fuente | Hilos de Forocoches (noviembre 2025) |
+| Fuente | Hilos de Foro (noviembre 2025) |
 | Banderas dominantes | 🔵 Blueflag (verdad), 🟡 Yellowflag (límites), ⚫ Blackflag (poder) |
 | Estética | Epistemología crítica + cultura de foros |
