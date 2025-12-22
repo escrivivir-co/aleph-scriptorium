@@ -48,6 +48,10 @@ handoffs:
     agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
     prompt: "Audita el recipe.json de un agente creado. Verifica trazabilidad, elementos heredados y conceptos extraídos."
     send: false
+  - label: "Tomar foto de estado del sprint"
+    agent: Aleph
+    prompt: Genera foto de estado + discurso motivacional del sprint actual. Usa el prompt foto-estado-y-discurso-motivacional.prompt.md.
+    send: false
 ---
 # Agente: Revisor
 

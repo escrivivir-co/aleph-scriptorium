@@ -140,6 +140,98 @@ permalink: /roadmap/
   padding: 2rem;
 }
 
+/* Fotos Gallery */
+.fotos-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.foto-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.foto-card:hover {
+  border-color: #8b5cf6;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.foto-header {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.foto-header.sprint-0 {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+}
+
+.foto-header.sprint-1 {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+}
+
+.foto-header.sprint-2 {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+}
+
+.foto-header .foto-icon {
+  font-size: 1.25rem;
+}
+
+.foto-header .foto-date {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
+.foto-body {
+  padding: 1.25rem;
+}
+
+.foto-body h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+.foto-body .foto-summary {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.foto-body .foto-metrics {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.foto-body .foto-metrics .metric {
+  font-size: 0.75rem;
+  background: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: #374151;
+}
+
+.foto-body .foto-link {
+  font-size: 0.875rem;
+  color: #8b5cf6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.foto-body .foto-link:hover {
+  text-decoration: underline;
+}
+
 .contributing-box h3 {
   color: #166534;
   margin: 0 0 1rem;
@@ -653,6 +745,53 @@ permalink: /roadmap/
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/DEVOPS.md">📖 Protocolo DevOps</a>
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/issues/new">🐛 Nuevo Issue</a>
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/pulls">🔀 Pull Requests</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     GALERÍA DE FOTOS DE ESTADO
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="roadmap-section" id="galeria-fotos">
+  <h2>Fotos de Estado</h2>
+  
+  <p style="color: #6b7280; margin-bottom: 1.5rem;">Registro histórico del progreso del proyecto. Cada foto captura el estado al cierre de un sprint.</p>
+  
+  <!-- GALERÍA DE FOTOS DE ESTADO -->
+  <div class="fotos-gallery">
+    <!-- Más reciente primero -->
+    <div class="foto-card">
+      <div class="foto-header sprint-1">
+        <span class="foto-icon">📸</span>
+        <span class="foto-date">2025-12-22</span>
+      </div>
+      <div class="foto-body">
+        <h4>Sprint 1: Teatro Interactivo</h4>
+        <p class="foto-summary">7 plugins operativos, 34 agentes, visualizador 3D con impress.js, 2 obras en cartelera</p>
+        <div class="foto-metrics">
+          <span class="metric">✅ 58 tasks</span>
+          <span class="metric">📦 7 plugins</span>
+          <span class="metric">🤖 34 agentes</span>
+        </div>
+        <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-22_Sprint1_TeatroInteractivo.md" class="foto-link">Ver foto completa →</a>
+      </div>
+    </div>
+    
+    <div class="foto-card">
+      <div class="foto-header sprint-0">
+        <span class="foto-icon">📸</span>
+        <span class="foto-date">2025-12-21</span>
+      </div>
+      <div class="foto-body">
+        <h4>Sprint 0: Bootstrap</h4>
+        <p class="foto-summary">Infraestructura base, protocolo DevOps, 5 plugins iniciales, ARCHIVO consolidado</p>
+        <div class="foto-metrics">
+          <span class="metric">✅ 336 tasks</span>
+          <span class="metric">📦 5 plugins</span>
+          <span class="metric">🤖 17 agentes</span>
+        </div>
+        <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-21_Sprint0_Bootstrap.md" class="foto-link">Ver foto completa →</a>
+      </div>
     </div>
   </div>
 </section>

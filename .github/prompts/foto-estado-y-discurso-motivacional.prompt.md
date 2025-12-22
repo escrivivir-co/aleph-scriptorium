@@ -164,6 +164,74 @@ Este repositorio ha completado el bootstrap y está en producción activa del Sp
 
 ---
 
+## Publicación en Galería Web (GH-Pages)
+
+Después de guardar el informe en `ARCHIVO/FOTOS_ESTADO/`, publícalo en la galería web del roadmap.
+
+### Ubicación de la galería
+
+**Archivo**: `docs/roadmap.md`  
+**Sección**: `<!-- GALERÍA DE FOTOS DE ESTADO -->`  
+**URL pública**: `https://escrivivir-co.github.io/aleph-scriptorium/roadmap/#galeria-fotos`
+
+### Formato de entrada en la galería
+
+Cada foto de estado se representa como una card en la galería:
+
+```html
+<div class="foto-card">
+  <div class="foto-header sprint-N">
+    <span class="foto-icon">📸</span>
+    <span class="foto-date">YYYY-MM-DD</span>
+  </div>
+  <div class="foto-body">
+    <h4>Sprint N: {Descriptor}</h4>
+    <p class="foto-summary">{Resumen de 1-2 líneas extraído de "Qué hemos hecho"}</p>
+    <div class="foto-metrics">
+      <span class="metric">✅ {N} tasks</span>
+      <span class="metric">📦 {N} plugins</span>
+      <span class="metric">🤖 {N} agentes</span>
+    </div>
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/{filename}.md" class="foto-link">Ver foto completa →</a>
+  </div>
+</div>
+```
+
+### Instrucción para el agente
+
+1. Lee la sección `<!-- GALERÍA DE FOTOS DE ESTADO -->` en `docs/roadmap.md`
+2. Añade una nueva card al inicio de la galería (orden cronológico inverso: más reciente primero)
+3. Extrae métricas de la foto generada (tasks, plugins, agentes)
+4. Usa `replace_string_in_file` para insertar la nueva card
+5. Informa al usuario de la URL pública de la galería
+
+### Ejemplo de galería
+
+```html
+<!-- GALERÍA DE FOTOS DE ESTADO -->
+<div class="fotos-gallery">
+  <!-- Más reciente primero -->
+  <div class="foto-card">
+    <div class="foto-header sprint-1">
+      <span class="foto-icon">📸</span>
+      <span class="foto-date">2025-12-22</span>
+    </div>
+    <div class="foto-body">
+      <h4>Sprint 1: Teatro Interactivo</h4>
+      <p class="foto-summary">7 plugins operativos, 34 agentes, visualizador 3D con impress.js</p>
+      <div class="foto-metrics">
+        <span class="metric">✅ 58 tasks</span>
+        <span class="metric">📦 7 plugins</span>
+        <span class="metric">🤖 34 agentes</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-22_Sprint1_TeatroInteractivo.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
+</div>
+```
+
+---
+
 ## Autocontrol (antes de responder)
 
 Verifica:

@@ -547,6 +547,57 @@ meta:
 | 2025-12-22 | Completar documentación y tests del Teatro (S10) | Aleph |
 | 2025-12-22 | Diseñar cards de obras y cerrar Sprint 1 (S04-T011) | Aleph |
 | 2025-12-22 | Instalar plugin Scrum v1.0.0 (SCRIPT-1.1.0) | Aleph |
+| 2025-12-22 | Añadir épica SCRIPT-1.2.0: Galería de Fotos de Estado | Aleph |
+
+---
+
+# Épica: SCRIPT-1.2.0 — Galería de Fotos de Estado
+
+**Objetivo**: Publicar automáticamente las fotos de estado de cada sprint en una galería visual en el roadmap de GH-Pages.
+
+**Estado**: ✅ Completada
+
+---
+
+## Contexto
+
+Las fotos de estado (`ARCHIVO/FOTOS_ESTADO/`) documentan el progreso del proyecto al cierre de cada sprint. Esta épica integra esas fotos en una galería pública en el roadmap, visible en:
+
+```
+https://escrivivir-co.github.io/aleph-scriptorium/roadmap/#galeria-fotos
+```
+
+---
+
+## Story: SCRIPT-1.2.0-S01 — Protocolo de Publicación
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Añadir protocolo de publicación en `foto-estado-y-discurso-motivacional.prompt.md` | ✅ |
+| T002 | Definir formato de card para galería (HTML template) | ✅ |
+| T003 | Documentar flujo de actualización de roadmap.md | ✅ |
+
+---
+
+## Story: SCRIPT-1.2.0-S02 — Implementación en Roadmap
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T004 | Crear sección `<!-- GALERÍA DE FOTOS DE ESTADO -->` en roadmap.md | ✅ |
+| T005 | Añadir estilos CSS para `.fotos-gallery` y `.foto-card` | ✅ |
+| T006 | Poblar galería con fotos existentes (Sprint 0 y Sprint 1) | ✅ |
+| T007 | Verificar renderizado en GH-Pages | ✅ |
+
+---
+
+## Métricas SCRIPT-1.2.0
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 7 |
+| Completadas | **7** |
+| Pendientes | 0 |
+| % Avance | **100%** 🎉 |
 
 ---
 

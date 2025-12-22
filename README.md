@@ -73,13 +73,69 @@ docs/                    # Sitio web (Jekyll/GitHub Pages)
 
 ## Agentes
 
+```
+                     ┌─────────────────────────────┐
+                     │         🐂 OX (Meta)        │
+                     │   Oráculo · Documentación   │
+                     └──────────────┬──────────────┘
+                                    │
+       ┌────────────────────────────┼────────────────────────────┐
+       │                            │                            │
+       ▼                            ▼                            ▼
+┌─────────────┐            ┌────────────────┐           ┌────────────────┐
+│  🟢 UI (3)  │            │ ⚪ Sistema (2) │           │  ⚙️ Meta (2)   │
+│  Producción │            │   Navegación   │           │    Gestión     │
+└─────────────┘            └────────────────┘           └────────────────┘
+       │
+       │ invocan para auditoría
+       ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   🔵⚫🔴🟡🟠 BACKEND (5 Banderas)                       │
+│                    Auditoría y Validación Doctrinal                     │
+└─────────────────────────────────────────────────────────────────────────┘
+       │
+       │ invocan vía bridges
+       ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        🔌 PLUGINS (7 bridges)                           │
+│              ARG · Enciclopedia · GH-Pages · Scraper · Creator          │
+│                           Teatro · Scrum                                │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Por capa
+
 | Capa | Agentes | Función |
 |------|---------|---------|
-| **UI** | \`@aleph\`, \`@revisor\`, \`@periodico\` | Producción |
-| **Backend** | \`@blueflag\`, \`@blackflag\`, \`@redflag\`, \`@yellowflag\`, \`@orangeflag\` | Auditoría (5 Banderas) |
-| **Sistema** | \`@vestibulo\`, \`@cartaspuerta\` | Navegación |
-| **Meta** | \`@pluginmanager\`, \`@ox\` | Gestión |
-| **Plugins** | 13 agentes vía bridges | Extensiones |
+| 🟢 **UI** | `@aleph`, `@revisor`, `@periodico` | Producción de contenido |
+| 🔵⚫🔴🟡🟠 **Backend** | `@blueflag`, `@blackflag`, `@redflag`, `@yellowflag`, `@orangeflag` | Auditoría (5 Banderas) |
+| ⚪ **Sistema** | `@vestibulo`, `@cartaspuerta` | Navegación y orientación |
+| ⚙️ **Meta** | `@pluginmanager`, `@ox` | Gestión del sistema |
+| 🔌 **Plugins** | 7 bridges → 15 agentes | Extensiones |
+
+### Las 5 Banderas (Backend)
+
+| Bandera | Agente | Tests |
+|---------|--------|-------|
+| 🔵 Verdad | `@blueflag` | Evidencia, Utilidad, Falsificabilidad, Posverdad |
+| ⚫ Sombras | `@blackflag` | Pólvora, Posverdad técnica, Captura enemiga |
+| 🔴 Estructura | `@redflag` | Escala, Coerción, Suministro, Régimen material |
+| 🟡 Límites | `@yellowflag` | Pre/Trans, Cuadrantes, Mercantilización, Inconmensurabilidad |
+| 🟠 Registro | `@orangeflag` | Registro, Género, Estilo, Auditorio |
+
+### Plugin Bridges
+
+| Bridge | Plugin | Agentes |
+|--------|--------|---------|
+| `@plugin_ox_argboard` | ARG Board | Arrakis, BOE, Decoherence, GitARG, Heroe, ImpressJS, MBox, PlatformCom (8) |
+| `@plugin_ox_enciclopedia` | Enciclopedia | Bibliotecario, HDF-ErnestoCastro (2) |
+| `@plugin_ox_ghpages` | GH-Pages | GHPages (1) |
+| `@plugin_ox_foroscraper` | Foro Scraper | ForoScraper (1) |
+| `@plugin_ox_agentcreator` | Agent Creator | AgentCreator (1) |
+| `@plugin_ox_teatro` | Teatro | Teatro (1) |
+| `@plugin_ox_scrum` | Scrum | Scrum (1) |
+
+**Total**: 12 agentes core + 7 bridges + 15 agentes de plugins = **34 agentes**
 
 Detalle: [escrivivir-co.github.io/aleph-scriptorium/agentes/](https://escrivivir-co.github.io/aleph-scriptorium/agentes/)
 
@@ -162,17 +218,19 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 │  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝                     │
 │                                                              │
 │  v1.0.0-beta.1 · Primera piedra · 2025-12-22                 │
-│  Sprint 1 en progreso · Teatro Interactivo · 89%             │
+│  Sprint 1 completado · Teatro Interactivo + Scrum · 100%     │
 └──────────────────────────────────────────────────────────────┘
 ```
 
 | Componente | Versión | Estado |
 |------------|---------|--------|
-| Scriptorium | **1.0.0-beta.1** | 🔄 Sprint 1 (100%) |
-| Fundación | 0.0.1 | ⏸️ Pausa (Sprint 0 completo) |
+| Scriptorium | **1.0.0-beta.1** | ✅ Sprint 1 (100%) |
+| Fundación | 0.0.1 | ⏸️ Pendiente Sprint 2 |
 | Web (GH-Pages) | 1.1.0 | ✅ 11 páginas + Teatro |
-| Plugins | 7 instalados | ✅ Incluye Teatro + Scrum |
+| Plugins | 7 instalados | ✅ ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum |
 | Teatro | 1.0.0 | 🎬 2 obras (1 en escena) |
+
+Sprint 1 cerrado: **Teatro Interactivo + Scrum**. 58 tasks completadas. Próximo objetivo: Sprint 2 con foco en Fundación (4 capítulos de enero).
 
 **Backlog activo**: [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md)
 

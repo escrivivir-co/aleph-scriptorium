@@ -72,6 +72,10 @@ handoffs:
     agent: plugin_ox_scrum
     prompt: Accede al plugin Scrum de gestión ágil de backlogs a través de su bridge.
     send: false
+  - label: Tomar foto de estado del sprint
+    agent: Aleph
+    prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
