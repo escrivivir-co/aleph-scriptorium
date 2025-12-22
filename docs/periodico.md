@@ -360,44 +360,111 @@ permalink: /periodico/
 
 ---
 
-<div class="section-header">Método editorial</div>
+<div class="section-header">Redacción — Material de trabajo</div>
 
-Cada pieza sigue el método **5W + 4 Banderas**:
+<style>
+.redaccion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.redaccion-card {
+  border: 1px solid #333;
+  background: #0a0a0a;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+.redaccion-card:hover {
+  border-color: #fff;
+  background: #111;
+}
+.redaccion-card h4 {
+  font-family: monospace;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+}
+.redaccion-card p {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+.redaccion-card .flag {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.redaccion-card a {
+  color: #888;
+  text-decoration: none;
+  display: block;
+}
+.redaccion-card a:hover {
+  color: #fff;
+}
+.archivo-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+.archivo-link:hover {
+  border-color: #fff;
+  color: #fff;
+}
+</style>
 
-<table class="method-table">
-  <tr>
-    <th>Fase</th>
-    <th>Operación</th>
-  </tr>
-  <tr>
-    <td><strong>5W</strong></td>
-    <td>WHO, WHAT, WHERE, WHEN, WHY — fijar los hechos</td>
-  </tr>
-  <tr>
-    <td>🔵 Blueflag</td>
-    <td>¿Es verdad? — contradicciones, evidencia, falsificabilidad</td>
-  </tr>
-  <tr>
-    <td>⚫ Blackflag</td>
-    <td>¿Quién gana? — poder, sombras, captura</td>
-  </tr>
-  <tr>
-    <td>🔴 Redflag</td>
-    <td>¿Qué es lo material? — recursos, escala, viabilidad</td>
-  </tr>
-  <tr>
-    <td>🟡 Yellowflag</td>
-    <td>¿Qué escapa al diseño? — límites, inconmensurabilidad</td>
-  </tr>
-</table>
+<div class="redaccion-grid">
+  <div class="redaccion-card">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_Geopolitica">
+      <div class="flag">⚫</div>
+      <h4>Geopolítica</h4>
+      <p>Nobel, Venezuela, Assange. La paz como arma.</p>
+    </a>
+  </div>
+  <div class="redaccion-card">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_Alineamiento">
+      <div class="flag">🔴</div>
+      <h4>Alineamiento</h4>
+      <p>OpenAI, gobernanza IA, misión como cobertura.</p>
+    </a>
+  </div>
+  <div class="redaccion-card">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_humanismo_extremo.md">
+      <div class="flag">🟡</div>
+      <h4>Humanismo Extremo</h4>
+      <p>Gnosis, política, condiciones de vida filosófica.</p>
+    </a>
+  </div>
+  <div class="redaccion-card">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_materia">
+      <div class="flag">🔵</div>
+      <h4>Materia</h4>
+      <p>Falsabilidad, demarcación, frontera epistémica.</p>
+    </a>
+  </div>
+  <div class="redaccion-card">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_Poesía_como_vias_alternativas.md">
+      <div class="flag">🟠</div>
+      <h4>Poesía</h4>
+      <p>Aristóteles, Nietzsche, Bueno. Vías alternativas.</p>
+    </a>
+  </div>
+  <div class="redaccion-card">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Foro_t8941392">
+      <div class="flag">📁</div>
+      <h4>Foro Scraping</h4>
+      <p>Criterio de demarcación científica (hilos).</p>
+    </a>
+  </div>
+</div>
 
----
-
-<div class="section-header">Archivo completo</div>
-
-Todas las noticias en el repositorio:
-
-→ **[ARCHIVO/NOTICIAS/](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/NOTICIAS)**
+<a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/NOTICIAS" class="archivo-link">
+  📰 Ver todas las planas publicadas →
+</a>
 
 ---
 

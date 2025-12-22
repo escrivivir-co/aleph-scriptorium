@@ -2006,3 +2006,300 @@ Flujo simplificado:
 | 2025-12-22 | **RESUELTO**: Eliminar duplicación noticias/periódico | GHPages |
 | 2025-12-22 | Actualizar navegación _config.yml: "periodico" → "Periódico" | GHPages |
 
+---
+
+# Épica: SCRIPT-0.15.0 — Rediseño Página Periódico
+
+**Tipo**: ✨ Feature / Mejora UX  
+**Plugin**: gh-pages  
+**Página**: `docs/periodico.md`
+
+---
+
+## Objetivo
+
+Simplificar y mejorar la página del Periódico:
+- **Mantener**: Zona de noticias con banners + Zona de tesis (alta calidad visual)
+- **Eliminar**: Zona de método editorial (redundante, ya documentado en instrucciones)
+- **Mejorar**: Zona de archivo → enlaces navegables a NOTICIAS y carpetas de trabajo DISCO
+
+## Diseño Propuesto
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  CABECERA PERIÓDICO (masthead)                                  │
+│  ESCRIVIVIR.CO · tagline · ISSN · edición                       │
+├─────────────────────────────────────────────────────────────────┤
+│  TITULAR PRINCIPAL (headline-box)                               │
+│  «Cita editorial del número»                                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ COLLAGE EDITORIAL ═══════                              │
+│  [5 artículos con banners por bandera]                          │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ TESIS DEL NÚMERO ═══════                               │
+│  [3 tesis convergentes]                                         │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ REDACCIÓN (nuevo) ═══════                              │
+│  Grid de carpetas DISCO con thumbnails                          │
+│  Enlaces a material de trabajo                                  │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  FOOTER → Volver                                                │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Stories
+
+### SCRIPT-0.15.0-S01: Limpiar secciones redundantes
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T286 | Eliminar sección "Método editorial" (tabla 5W+Banderas) | ✅ |
+| T287 | Eliminar sección "Archivo completo" (simple enlace GitHub) | ✅ |
+
+---
+
+### SCRIPT-0.15.0-S02: Nueva sección Redacción
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T288 | Crear sección "Redacción" con grid de carpetas DISCO | ✅ |
+| T289 | Diseñar cards para cada carpeta de trabajo (thumbnail + título + enlace) | ✅ |
+| T290 | Enlazar a ARCHIVO/NOTICIAS/ con índice de planas publicadas | ✅ |
+| T291 | Añadir estilos CSS para grid de redacción | ✅ |
+
+---
+
+### SCRIPT-0.15.0-S03: Homogeneizar estilos
+**Estado**: ⏳ Pendiente (parcial en fundacion.md)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T292 | Extraer estilos comunes a main.css (reutilizables) | ⏳ |
+| T293 | Crear clases compartidas con fundacion.md | ⏳ |
+| T294 | Documentar paleta de colores y componentes | ⏳ |
+
+---
+
+## Métricas Sprint 0.15
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 9 |
+| Completadas | 6 |
+| En progreso | 0 |
+| Pendientes | 3 |
+| % Avance | 67% |
+
+---
+
+# Épica: SCRIPT-0.16.0 — Rediseño Página Fundación (Teatro ARG)
+
+**Tipo**: ✨ Feature / Mejora UX  
+**Plugin**: gh-pages  
+**Página**: `docs/fundacion.md`
+
+---
+
+## Objetivo
+
+Transformar la página de Fundación en un **showcase promocional** que presente:
+1. **Fundación como Obra de Teatro ARG** que se puede experimentar en teatros digitales
+2. **Ecosistema VibeCoding**: Suite de herramientas donde Scriptorium produce agentes
+3. **ARG_BOARD como Teatro**: Motor que ejecuta obras transmedia con personajes IA
+4. **AGENT_CREATOR como Fábrica**: Plugin que crea personajes para las obras
+
+## Concepto Creativo
+
+> "De la página al escenario: FUNDACIÓN no es solo un texto, es una obra de teatro transmedia donde los agentes son los actores."
+
+### Metáfora Visual
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    🎭 ECOSISTEMA VIBECODING                     │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│     SCRIPTORIUM              ARG_BOARD              FUNDACIÓN   │
+│    ┌──────────┐            ┌──────────┐           ┌──────────┐  │
+│    │  Taller  │ ─produces→ │  Teatro  │ ─stages─→ │   Obra   │  │
+│    │ (agentes)│            │ (escenas)│           │(capítulos│  │
+│    └──────────┘            └──────────┘           └──────────┘  │
+│         │                       ↑                               │
+│         └───── AGENT_CREATOR ───┘                               │
+│              (crea personajes)                                  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Diseño Propuesto (estilo agentes.md)
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  HERO SECTION (dark, animado)                                   │
+│  🎭 FUNDACIÓN                                                   │
+│  "Un texto que se convierte en obra de teatro transmedia"       │
+│  [CTA: Ver Índice] [CTA: Entrar al Teatro]                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ ECOSISTEMA ═══════                                     │
+│  3 cards: Scriptorium → ARG_BOARD → Fundación                   │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ LA OBRA ═══════                                        │
+│  Timeline visual de 12 capítulos por arco                       │
+│  Estado: Borrador / En progreso / Publicado                     │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ EL TEATRO ═══════                                      │
+│  Card ARG_BOARD: 8 agentes, obras activas, BOE                  │
+│  Card AGENT_CREATOR: agentes creados, recetas                   │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ═══════ RECURSOS ═══════                                       │
+│  Grid: Backlog, Indicadores, Marco conceptual                   │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  FOOTER                                                         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## Stories
+
+### SCRIPT-0.16.0-S01: Hero Section (estilo agentes.md)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T295 | Crear hero section con tema dark y animaciones | ✅ |
+| T296 | Diseñar icono/ilustración de teatro (SVG inline) | ✅ |
+| T297 | Añadir CTAs: "Ver Índice" + "Entrar al Teatro" | ✅ |
+| T298 | Implementar tagline animado | ✅ |
+
+---
+
+### SCRIPT-0.16.0-S02: Sección Ecosistema
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T299 | Crear 3 cards conectadas: Scriptorium → ARG_BOARD → Fundación | ✅ |
+| T300 | Diseñar flechas/conexiones entre cards | ✅ |
+| T301 | Añadir descripción breve de cada componente | ✅ |
+
+---
+
+### SCRIPT-0.16.0-S03: Sección La Obra (Índice visual)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T302 | Convertir índice de capítulos en timeline visual | ✅ |
+| T303 | Añadir badges de estado (Borrador/En progreso/Publicado) | ✅ |
+| T304 | Crear indicadores de desplazamiento (Temporal/Antropológico/Escalar) | ✅ |
+| T305 | Agrupar por arcos con separadores visuales | ✅ |
+
+---
+
+### SCRIPT-0.16.0-S04: Sección El Teatro (ARG_BOARD + AGENT_CREATOR)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T306 | Crear card ARG_BOARD con métricas (8 agentes, obras, BOE) | ✅ |
+| T307 | Crear card AGENT_CREATOR con agentes creados | ✅ |
+| T308 | Enlazar a documentación de plugins | ✅ |
+| T309 | Mostrar "obras.json" y "actores.json" como preview | ✅ |
+
+---
+
+### SCRIPT-0.16.0-S05: Sección Recursos
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T310 | Grid de recursos: Backlog, Indicadores, Marco | ✅ |
+| T311 | Enlaces a GitHub con descripción | ✅ |
+
+---
+
+### SCRIPT-0.16.0-S06: Homogeneización con Periódico
+**Estado**: ⏳ Pendiente (CSS embebido, no extraído a main.css)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T312 | Compartir variables CSS entre ambas páginas | ⏳ |
+| T313 | Crear componentes reutilizables (cards, headers, badges) | ⏳ |
+| T314 | Documentar sistema de diseño en main.css | ⏳ |
+
+---
+
+## Métricas Sprint 0.16
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 20 |
+| Completadas | 17 |
+| En progreso | 0 |
+| Pendientes | 3 |
+| % Avance | 85% |
+
+---
+
+## Especificación de Diseño Compartido
+
+### Variables CSS Comunes (a añadir en main.css)
+
+```css
+/* ═══════════════════════════════════════════════════════════════
+   PÁGINAS PROMOCIONALES (agentes, periodico, fundacion)
+   ═══════════════════════════════════════════════════════════════ */
+
+.promo-page {
+  --promo-bg: #0d1117;
+  --promo-card-bg: rgba(255, 255, 255, 0.03);
+  --promo-card-border: rgba(255, 255, 255, 0.08);
+  --promo-text: #e6edf3;
+  --promo-muted: rgba(255, 255, 255, 0.6);
+  --promo-accent: #00d4ff;
+}
+
+.promo-hero { /* hero común */ }
+.promo-card { /* card común */ }
+.promo-grid { /* grid común */ }
+.promo-section { /* sección común */ }
+```
+
+### Componentes Compartidos
+
+| Componente | Uso | Páginas |
+|------------|-----|---------|
+| `.promo-hero` | Hero section con gradiente y animación | agentes, fundacion |
+| `.promo-card` | Card con borde y hover | agentes, fundacion, periodico |
+| `.promo-grid` | Grid responsive 2-3 columnas | agentes, fundacion, periodico |
+| `.promo-section` | Sección con header decorado | periodico (ya tiene), fundacion |
+| `.promo-badge` | Badge de estado | fundacion, periodico |
+| `.promo-timeline` | Timeline de evolución | agentes, fundacion |
+
+---
+
+## Changelog
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | Crear épicas SCRIPT-0.15.0 y SCRIPT-0.16.0 | GHPages |
+| 2025-12-22 | Definir diseño propuesto para ambas páginas | GHPages |
+| 2025-12-22 | Especificar sistema de componentes compartidos | GHPages |
+| 2025-12-22 | **IMPLEMENTADO**: periodico.md - nueva sección Redacción con grid DISCO | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: fundacion.md - rediseño completo estilo agentes.md | Aleph |
+
