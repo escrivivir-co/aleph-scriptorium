@@ -548,6 +548,7 @@ meta:
 | 2025-12-22 | Diseñar cards de obras y cerrar Sprint 1 (S04-T011) | Aleph |
 | 2025-12-22 | Instalar plugin Scrum v1.0.0 (SCRIPT-1.1.0) | Aleph |
 | 2025-12-22 | Añadir épica SCRIPT-1.2.0: Galería de Fotos de Estado | Aleph |
+| 2025-12-23 | Añadir S03: Anexo Visual con 12 capturas y tutorial "Como Word" | Aleph |
 
 ---
 
@@ -596,6 +597,28 @@ https://escrivivir-co.github.io/aleph-scriptorium/roadmap/#galeria-fotos
 |---------|-------|
 | Tasks totales | 7 |
 | Completadas | **7** |
+| Pendientes | 0 |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Story: SCRIPT-1.2.0-S03 — Anexo Visual (Manual de Usuario)
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T008 | Crear README.md en Sprint1/ con índice de capturas | ✅ |
+| T009 | Añadir enlaces a GitHub para cada imagen (12 capturas) | ✅ |
+| T010 | Añadir enlace "Galería visual" en card de roadmap.md | ✅ |
+| T011 | Documentar tutorial "Como Word" con 4 pasos visuales | ✅ |
+
+---
+
+## Métricas SCRIPT-1.2.0 (Actualizado)
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 11 |
+| Completadas | **11** |
 | Pendientes | 0 |
 | % Avance | **100%** 🎉 |
 

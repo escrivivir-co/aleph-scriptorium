@@ -772,8 +772,12 @@ permalink: /roadmap/
           <span class="metric">✅ 58 tasks</span>
           <span class="metric">📦 7 plugins</span>
           <span class="metric">🤖 34 agentes</span>
+          <span class="metric">🖼️ 12 capturas</span>
         </div>
-        <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-22_Sprint1_TeatroInteractivo.md" class="foto-link">Ver foto completa →</a>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-22_Sprint1_TeatroInteractivo.md" class="foto-link">Ver foto completa →</a>
+          <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/FOTOS_ESTADO/Sprint1" class="foto-link" style="color: #22c55e;">📷 Galería visual →</a>
+        </div>
       </div>
     </div>
     
