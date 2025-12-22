@@ -680,6 +680,279 @@ li {
 }
 
 /* ========================================
+   HOME PAGE (Portada)
+   Monocromo (B/N) — el color lo aportan solo iconos/emoji.
+   ======================================== */
+
+.home-page {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+/* --- Hero --- */
+.home-hero {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-lg);
+}
+
+.home-hero .hero-symbol {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: var(--space-md);
+}
+
+.home-hero h1 {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.home-hero .hero-tagline {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin: 0 0 var(--space-md) 0;
+}
+
+.home-hero .hero-prompt {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--subtle);
+  margin: 0;
+}
+
+.home-hero .prompt-symbol {
+  color: var(--muted);
+}
+
+/* --- Navegación principal --- */
+.home-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg) var(--space-md);
+  border: 2px solid var(--border);
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.nav-card:hover {
+  border-color: var(--fg);
+  transform: translateY(-2px);
+}
+
+.nav-card .card-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.nav-card .card-title {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nav-card .card-desc {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: var(--space-xs);
+  text-align: center;
+}
+
+.nav-card-external {
+  border-style: dashed;
+}
+
+/* --- Secciones --- */
+.home-section {
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+
+.home-section h2 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 var(--space-md) 0;
+}
+
+/* --- Ecosistema strip --- */
+.eco-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.eco-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--fg);
+  min-width: 120px;
+  transition: border-color 0.2s;
+}
+
+.eco-item:hover {
+  border-color: var(--fg);
+}
+
+.eco-item strong {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.eco-item span {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.eco-current {
+  border-color: var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.eco-current span {
+  color: var(--border);
+}
+
+.eco-arrow {
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+/* --- Auditores strip --- */
+.auditors-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.auditor-chip {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.auditors-note {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: var(--space-md);
+}
+
+/* --- Status --- */
+.status-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+}
+
+.status-list > div {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-sm);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.status-list dt {
+  color: var(--muted);
+}
+
+.status-list dd {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* --- Aviso legal --- */
+.home-legal {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  border: 2px dashed var(--border);
+  position: relative;
+}
+
+.home-legal h3 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  position: absolute;
+  top: -0.6em;
+  left: var(--space-md);
+  background: var(--bg);
+  padding: 0 var(--space-sm);
+  margin: 0;
+}
+
+.legal-content {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.legal-content p {
+  margin: 0 0 var(--space-sm) 0;
+}
+
+.legal-content ul {
+  margin: var(--space-sm) 0;
+  padding-left: var(--space-lg);
+}
+
+.legal-content li {
+  margin-bottom: var(--space-xs);
+}
+
+.legal-disclaimer {
+  font-size: 0.85rem;
+  color: var(--subtle);
+}
+
+.legal-link {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.legal-link a {
+  color: var(--fg);
+}
+
+/* ========================================
    LEEME (Guía de inicio)
    Monocromo (B/N) — el color lo aportan solo iconos/emoji.
    ======================================== */
