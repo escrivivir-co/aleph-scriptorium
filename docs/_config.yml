@@ -57,6 +57,9 @@ plugins:
 navigation:
   - title: Inicio
     url: /
+  - title: Léeme
+    url: /leeme/
+    highlight: true
   - title: Agentes
     url: /agentes/
   - title: Periódico

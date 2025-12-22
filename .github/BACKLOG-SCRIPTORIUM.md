@@ -2293,6 +2293,444 @@ Transformar la página de Fundación en un **showcase promocional** que presente
 
 ---
 
+# Épica: SCRIPT-0.17.0 — Página LEEME (Guía de Usuario)
+
+**Tipo**: ✨ Feature / Documentación Usuario  
+**Plugin**: gh-pages  
+**Coordinador**: @aleph  
+**Página**: `docs/leeme.md`
+
+---
+
+## Objetivo
+
+Crear una página de **guía de usuario profesional** que explique:
+1. **Cómo instalar** el ecosistema (VS Code, Copilot, Scriptorium)
+2. **Cómo usar** el producto (modos de escritor, plugins, ARG-BOARD)
+3. **Cuánto cuesta** y licencia (AIPL v1.0, planes de GitHub Copilot, compatibilidad)
+
+**Filosofía**: Documento técnico-didáctico, profesional y directo. El usuario debe entender qué componentes necesita, cómo reunirlos, y cuál es el modelo de costes.
+
+---
+
+## Contexto Técnico
+
+### Componentes del Ecosistema
+
+| Componente | Proveedor | Rol |
+|------------|-----------|-----|
+| **VS Code** | Microsoft | IDE base (multiplataforma) |
+| **GitHub Copilot Chat** | Microsoft/GitHub | Motor de IA conversacional |
+| **Aleph Scriptorium** | Escrivivir.co | Framework de agentes (este repo) |
+
+### IDEs Compatibles (roadmap)
+
+| IDE | Estado | Notas |
+|-----|--------|-------|
+| VS Code | ✅ Soportado | Plataforma principal |
+| Cursor | 🔄 En desarrollo | Fork de VS Code |
+| Windsurf | 🔄 En desarrollo | Codeium |
+| Claude Code | 🔄 Investigación | Anthropic |
+| Antigravity | 🔄 Investigación | - |
+
+### Modelo de Costes GitHub Copilot
+
+| Modo | Descuento | Notas |
+|------|-----------|-------|
+| Auto | 10% descuento | Selección automática de modelo |
+| Claude Sonnet | Base | Recomendado para tareas complejas |
+| GPT-4o | Base | Alternativa rápida |
+| o1-preview | Premium | Razonamiento profundo |
+
+---
+
+## Stories
+
+### SCRIPT-0.17.0-S01: Estructura y Navegación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T315 | Crear `docs/leeme.md` con estructura base | ✅ |
+| T316 | Añadir enlace en `_config.yml` (navegación principal) | ✅ |
+| T317 | Añadir anuncio/banner en `index.md` (portada) | ✅ |
+| T318 | Diseñar estilos CSS para página tutorial | ✅ |
+
+---
+
+### SCRIPT-0.17.0-S02: Parte 1 — Instalación
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T319 | Sección "VS Code": enlaces de descarga (Windows, macOS, Linux) | ✅ |
+| T320 | Sección "GitHub Copilot": instalación de extensión, planes, autenticación | ✅ |
+| T321 | Sección "Scriptorium": clone del repo, estructura de carpetas, inicialización | ✅ |
+| T322 | Añadir capturas/diagramas del proceso de instalación | ✅ |
+
+---
+
+### SCRIPT-0.17.0-S03: Parte 2 — Uso
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T323 | Sección "Modo Escritor": Vestíbulo, Cartas-Puerta, invocación de agentes | ✅ |
+| T324 | Sección "Mapa de Agentes": invocar @ox, taxonomía UI/Backend/Sistema | ✅ |
+| T325 | Sección "Plugins": ENCICLOPEDIA, FORO-SCRAPER, AGENT-CREATOR | ✅ |
+| T326 | Sección "ARG-BOARD": UI/UX dinámica, obras, personajes | ✅ |
+| T327 | Crear diagramas de flujo de uso | ✅ |
+
+---
+
+### SCRIPT-0.17.0-S04: Parte 3 — Costes y Licencia
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T328 | Sección "Licencia AIPL v1.0": explicación técnica, ámbito académico | ✅ |
+| T329 | Sección "Modelo de Costes": GitHub Copilot, modo Auto vs modelos específicos | ✅ |
+| T330 | Tabla comparativa de modelos (coste/capacidad) | ✅ |
+| T331 | Disclaimer: Escrivivir.co no vende, solo provee código de investigación | ✅ |
+| T332 | Sección "Compatibilidad": otros IDEs (Cursor, Windsurf, Claude, etc.) | ✅ |
+
+---
+
+### SCRIPT-0.17.0-S05: Integración y QA
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T333 | Revisar coherencia con README.md del repositorio | ✅ |
+| T334 | Test de navegación desde portada | ✅ |
+| T335 | Test responsive (móvil) | ✅ |
+| T336 | Commit y deploy a GitHub Pages | ✅ |
+
+---
+
+## Métricas Sprint 0.17
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 22 |
+| Completadas | 22 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
+## Especificación de Contenido
+
+### Parte 1: ¿Cómo instalar...?
+
+#### 1.1 VS Code (IDE)
+
+```markdown
+## Paso 1: Instalar Visual Studio Code
+
+VS Code es el IDE gratuito de Microsoft donde funciona Aleph Scriptorium.
+
+### Descargar
+
+| Plataforma | Enlace |
+|------------|--------|
+| Windows | [Descargar](https://code.visualstudio.com/download) |
+| macOS | [Descargar](https://code.visualstudio.com/download) |
+| Linux | [Descargar](https://code.visualstudio.com/download) |
+
+> **Nota**: También funciona en navegador via [vscode.dev](https://vscode.dev)
+```
+
+#### 1.2 GitHub Copilot Chat
+
+```markdown
+## Paso 2: Instalar GitHub Copilot Chat
+
+### Requisitos
+- Cuenta de GitHub
+- Suscripción a GitHub Copilot (Individual, Business o Enterprise)
+
+### Instalación
+1. Abrir VS Code
+2. Ir a Extensions (Ctrl+Shift+X)
+3. Buscar "GitHub Copilot Chat"
+4. Instalar extensión oficial de Microsoft
+5. Autenticar con tu cuenta de GitHub
+
+### Planes disponibles
+| Plan | Precio | Uso |
+|------|--------|-----|
+| Individual | $10/mes | Desarrolladores independientes |
+| Business | $19/mes | Equipos |
+| Enterprise | Personalizado | Organizaciones grandes |
+```
+
+#### 1.3 Clone del Scriptorium
+
+```markdown
+## Paso 3: Clonar Aleph Scriptorium
+
+### Opción A: Git (recomendado)
+\`\`\`bash
+git clone https://github.com/escrivivir-co/aleph-scriptorium.git
+cd aleph-scriptorium
+\`\`\`
+
+### Opción B: Descarga directa
+1. Ir a [GitHub](https://github.com/escrivivir-co/aleph-scriptorium)
+2. Click en "Code" → "Download ZIP"
+3. Extraer en carpeta de trabajo
+
+### Verificar instalación
+1. Abrir carpeta en VS Code
+2. Abrir Copilot Chat (Ctrl+Shift+I)
+3. Escribir: `@aleph hola`
+4. Si responde, ¡instalación completa!
+```
+
+### Parte 2: ¿Cómo usar...?
+
+#### 2.1 Modo Escritor
+
+```markdown
+## Modo Escritor de Textos Digitales
+
+### Entrada por Vestíbulo
+El Vestíbulo es el punto de entrada para nuevos usuarios.
+
+\`\`\`
+@vestibulo ¿por dónde empiezo?
+\`\`\`
+
+El agente identificará tu perfil y te dirigirá a la **carta-puerta** adecuada.
+
+### Cartas-Puerta disponibles
+| Carta | Perfil | Enfoque |
+|-------|--------|---------|
+| Vista Total | Completitud | El *cómo* del proyecto |
+| Blueflag | Evidencia | Falsificabilidad, utilidad |
+| Blackflag | Poder | Adversarios, captura |
+| Redflag | Viabilidad | Escala, enforcement |
+| Yellowflag | Integración | Cuadrantes, límites |
+```
+
+#### 2.2 Mapa de Agentes
+
+```markdown
+## Consultar Mapa de Agentes
+
+El agente **Ox** es el oráculo del sistema:
+
+\`\`\`
+@ox ¿qué agentes tengo disponibles?
+\`\`\`
+
+### Taxonomía de Agentes
+
+| Capa | Agentes | Función |
+|------|---------|---------|
+| 🟢 UI | @aleph, @revisor, @periodico | Producción |
+| 🔵⚫🔴🟡🟠 Backend | Las 5 banderas | Auditoría |
+| ⚪ Sistema | @vestibulo, @cartaspuerta | Navegación |
+| ⚙️ Meta | @ox, @pluginmanager | Gestión |
+| 🔌 Plugins | Variable | Extensiones |
+```
+
+#### 2.3 Plugins
+
+```markdown
+## Usar Plugins
+
+### ENCICLOPEDIA
+Consulta tomos académicos:
+\`\`\`
+@plugin_ox_enciclopedia buscar "Aristóteles" en Historia de la Filosofía
+\`\`\`
+
+### FORO-SCRAPER
+Descarga hilos de foros:
+\`\`\`
+@plugin_ox_foroscraper iniciar scraping [URL]
+\`\`\`
+
+### AGENT-CREATOR
+Crea agentes especializados:
+\`\`\`
+@plugin_ox_agentcreator crear agente desde DISCO/mi_fuente/
+\`\`\`
+```
+
+#### 2.4 ARG-BOARD
+
+```markdown
+## ARG-BOARD: Teatro Transmedia
+
+ARG-BOARD permite crear **obras de teatro transmedia** con personajes IA.
+
+### Abrir Teatro
+\`\`\`
+@plugin_ox_argboard abrir teatro
+\`\`\`
+
+### Crear Obra
+\`\`\`
+@plugin_ox_argboard crear obra "Mi_Obra"
+\`\`\`
+
+### Desplegar Personaje
+Los agentes creados con AGENT-CREATOR pueden desplegarse como personajes en obras ARG.
+```
+
+### Parte 3: ¿Cuánto cuesta?
+
+#### 3.1 Licencia AIPL v1.0
+
+```markdown
+## Licencia AIPL v1.0 (Animus Iocandi Public License)
+
+### Resumen Técnico
+
+**Aleph Scriptorium** se distribuye bajo licencia AIPL v1.0, heredada de VibeBitacora.
+
+| Aspecto | Términos |
+|---------|----------|
+| **Uso** | Libre para uso académico y experimental |
+| **Modificación** | Permitida sin restricciones |
+| **Distribución** | Permitida con o sin atribución |
+| **Comercialización** | El framework es libre; el contenido demo no |
+
+### Lo que SÍ puedes hacer
+- Usar, copiar, modificar el framework
+- Crear tus propios scriptoriums
+- Adaptar agentes a tu voz y método
+
+### Lo que NO incluye
+- Soporte técnico garantizado
+- Responsabilidad por resultados
+- Contenido del proyecto "Fundación" (© Escrivivir.co)
+
+> **Importante**: Este repositorio es un **proyecto de investigación académica**. 
+> Escrivivir.co no vende productos ni servicios. Solo se provee código fuente 
+> para experimentación sin garantías.
+```
+
+#### 3.2 Costes de GitHub Copilot
+
+```markdown
+## Modelo de Costes: GitHub Copilot
+
+**Escrivivir.co NO cobra por usar Aleph Scriptorium.**
+
+Los únicos costes son los de tu suscripción a GitHub Copilot.
+
+### Planes de GitHub Copilot
+
+| Plan | Precio | Incluye |
+|------|--------|---------|
+| **Free** | $0 | 2000 completions/mes, 50 chats/mes |
+| **Pro** | $10/mes | Ilimitado |
+| **Business** | $19/mes | + Gestión de organización |
+
+### Modos de Chat y Costes
+
+| Modo | Descuento | Recomendación |
+|------|-----------|---------------|
+| **Auto** | 10% | Para tareas generales |
+| **Claude Sonnet** | Base | Tareas complejas, análisis |
+| **GPT-4o** | Base | Rapidez, código |
+| **o1-preview** | Premium (mayor coste) | Razonamiento profundo |
+
+### Consejo de Optimización
+
+Para **minimizar costes**:
+1. Usa modo **Auto** para tareas rutinarias (10% descuento)
+2. Cambia a **Claude Sonnet** para auditorías complejas
+3. Usa **o1-preview** solo cuando necesites razonamiento paso a paso
+
+Para **maximizar calidad**:
+1. Usa **Claude Sonnet** como modelo principal
+2. Activa **o1-preview** para capítulos finales o revisiones críticas
+```
+
+#### 3.3 Compatibilidad con otros IDEs
+
+```markdown
+## Compatibilidad con Otros IDEs
+
+Aleph Scriptorium está diseñado para VS Code, pero el sistema de agentes 
+es **agnóstico de plataforma**.
+
+### Estado de Compatibilidad
+
+| IDE | Estado | Notas |
+|-----|--------|-------|
+| **VS Code** | ✅ Completo | Plataforma principal |
+| **Cursor** | 🔄 En desarrollo | Fork de VS Code, alta compatibilidad esperada |
+| **Windsurf** | 🔄 En desarrollo | Codeium, arquitectura diferente |
+| **Claude Code** | 🔄 Investigación | Anthropic, integración nativa posible |
+| **Antigravity** | 🔄 Investigación | Evaluando |
+| **JetBrains** | ⏳ Futuro | Requiere adaptación de agentes |
+
+### Requisitos Mínimos para Otros IDEs
+
+Para que Scriptorium funcione en otro IDE necesita:
+1. Soporte para archivos `.agent.md` (o equivalente)
+2. Sistema de chat con IA conversacional
+3. Acceso a filesystem del workspace
+4. Capacidad de invocar herramientas (tools)
+```
+
+---
+
+## Wireframe de la Página
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  HEADER (nav con enlace "LEEME" destacado)                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                 HERO SECTION                              │   │
+│  │  📖 GUÍA DE INICIO RÁPIDO                                │   │
+│  │  "Todo lo que necesitas para empezar con Scriptorium"    │   │
+│  │  [Tiempo estimado: 15 minutos]                           │   │
+│  └──────────────────────────────────────────────────────────┘   │
+│                                                                 │
+│  ═══════ ÍNDICE ═══════                                         │
+│  1. ¿Cómo instalar? → VS Code, Copilot, Scriptorium             │
+│  2. ¿Cómo usar? → Escritor, Plugins, ARG-BOARD                  │
+│  3. ¿Cuánto cuesta? → Licencia, Planes, Compatibilidad          │
+│                                                                 │
+│  ═══════ PARTE 1: INSTALACIÓN ═══════                           │
+│  [Cards con pasos 1.1, 1.2, 1.3]                                │
+│                                                                 │
+│  ═══════ PARTE 2: USO ═══════                                   │
+│  [Cards con modos de uso]                                       │
+│                                                                 │
+│  ═══════ PARTE 3: COSTES ═══════                                │
+│  [Tablas de planes y disclaimers]                               │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│  FOOTER                                                         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Changelog Épica
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-22 | Crear épica SCRIPT-0.17.0 | Aleph |
+| 2025-12-22 | Definir estructura de 3 partes | Aleph |
+| 2025-12-22 | Especificar contenido de cada sección | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: leeme.md completa (instalación, uso, costes) | Aleph |
+| 2025-12-22 | Añadir "Léeme" a navegación _config.yml | Aleph |
+| 2025-12-22 | Añadir banner de anuncio en index.md | Aleph |
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
@@ -2302,4 +2740,6 @@ Transformar la página de Fundación en un **showcase promocional** que presente
 | 2025-12-22 | Especificar sistema de componentes compartidos | GHPages |
 | 2025-12-22 | **IMPLEMENTADO**: periodico.md - nueva sección Redacción con grid DISCO | Aleph |
 | 2025-12-22 | **IMPLEMENTADO**: fundacion.md - rediseño completo estilo agentes.md | Aleph |
+| 2025-12-22 | Crear épica SCRIPT-0.17.0 — Página LEEME (Guía de Usuario) | Aleph |
+| 2025-12-22 | **IMPLEMENTADO**: leeme.md - Guía completa de instalación, uso y costes | Aleph |
 

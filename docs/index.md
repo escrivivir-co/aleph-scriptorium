@@ -241,7 +241,65 @@ permalink: /
   color: #fff;
   border-color: #fff;
 }
+
+/* ANNOUNCEMENT BANNER */
+.announcement {
+  background: linear-gradient(90deg, #0d1117 0%, #1a1a2e 50%, #0d1117 100%);
+  border: 1px solid #00d4ff;
+  padding: 1rem 2rem;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.announcement::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+.announcement .badge {
+  display: inline-block;
+  background: #00d4ff;
+  color: #000;
+  padding: 0.2rem 0.6rem;
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-right: 0.8rem;
+}
+.announcement span {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+.announcement a {
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.announcement a:hover {
+  text-decoration: underline;
+}
 </style>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- ANNOUNCEMENT -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
+<div class="announcement">
+  <span class="badge">Nuevo</span>
+  <span>¿Primera vez aquí? Lee la <a href="{{ site.baseurl }}/leeme/">Guía de Inicio Rápido</a> — instalación, uso y costes en 15 minutos.</span>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- HERO -->
