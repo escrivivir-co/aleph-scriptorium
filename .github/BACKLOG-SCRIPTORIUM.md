@@ -933,3 +933,128 @@
 | 2025-12-22 | Añadir Épica SCRIPT-0.7.0 — Extensión Blogs + Integración Periódico | Aleph |
 | 2025-12-22 | Añadir Épica SCRIPT-0.8.0 — Plugin Agent Creator | Aleph |
 | 2025-12-22 | Crear agente demarcacion-yellowflag (Foro_t8941392) | AgentCreator |
+| 2025-12-22 | Añadir Épica SCRIPT-0.9.0 — Handoffs Extensibles ARG + Agent Creator | Aleph |
+
+---
+
+# Épica: SCRIPT-0.9.0 — Handoffs Extensibles ARG + Agent Creator
+
+**Objetivo**: Extender handoffs en agentes core (Aleph, Revisor, Periódico) para aprovechar al máximo la sinergia entre ARG_BOARD y AGENT_CREATOR.
+
+**Filosofía**: Los handoffs deben ser **extensibles**. En lugar de crear un handoff por cada obra, se usa un patrón `[Obra]` que el agente interpreta dinámicamente.
+
+**Casos de uso**:
+- Arrancar obra ARG desde cualquier agente
+- Revisar agentes desplegados en obras
+- Publicar contenido generado en obras
+- Crear agentes especializados desde cualquier contexto
+- Pipeline completo: Scraping → Agente → Obra → Publicación
+
+**Entregables**:
+- Handoffs extensibles en aleph.agent.md
+- Handoffs extensibles en revisor.agent.md
+- Handoffs extensibles en periodico.agent.md
+- Documentación de patrones de uso
+
+---
+
+## Stories
+
+### SCRIPT-0.9.0-S01: Handoffs ARG en Aleph
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T172 | Añadir handoff "Arrancar Obra [nombre]" extensible | ✅ |
+| T173 | Añadir handoff "Listar obras activas" | ✅ |
+| T174 | Añadir handoff "Invocar personaje de obra" | ✅ |
+| T175 | Añadir handoff "Cerrar/Archivar obra" | ✅ |
+
+---
+
+### SCRIPT-0.9.0-S02: Handoffs Agent Creator en Aleph
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T176 | Añadir handoff "Crear agente desde fuente" | ✅ |
+| T177 | Añadir handoff "Desplegar agente en obra" | ✅ |
+| T178 | Añadir handoff "Listar agentes creados" | ✅ |
+
+---
+
+### SCRIPT-0.9.0-S03: Handoffs ARG en Revisor
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T179 | Añadir handoff "Revisar agente de obra [nombre]" | ✅ |
+| T180 | Añadir handoff "Auditar coherencia de obra" | ✅ |
+| T181 | Añadir handoff "Validar personaje vs agente base" | ✅ |
+
+---
+
+### SCRIPT-0.9.0-S04: Handoffs en Periódico
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T182 | Añadir handoff "Publicar obra como noticia" | ✅ |
+| T183 | Añadir handoff "Crear agente periodístico" | ✅ |
+| T184 | Añadir handoff "Invocar personaje para análisis" | ✅ |
+
+---
+
+### SCRIPT-0.9.0-S05: Documentación de Patrones
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T185 | Documentar patrón "[Obra]" en docs de ARG | ✅ |
+| T186 | Crear ejemplos de pipelines multi-plugin | ✅ |
+| T187 | Actualizar copilot-instructions.md | ✅ |
+
+---
+
+## Métricas Sprint 0.9
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 16 |
+| Completadas | 16 |
+| En progreso | 0 |
+| Pendientes | 0 |
+| % Avance | 100% |
+
+---
+
+## Patrón de Handoffs Extensibles
+
+### Convención `[nombre]`
+
+Los handoffs que aceptan parámetros usan la convención `[nombre]`:
+
+```yaml
+- label: "[ARG] Arrancar Obra [nombre]"
+  prompt: "Arranca la obra especificada. Si no existe, ofrece crearla. Obras disponibles: consulta obras.json"
+```
+
+El agente interpreta `[nombre]` como variable que el usuario proporciona:
+- "Arrancar Obra Hola_Mundo" → obra=hola_mundo
+- "Arrancar Obra nueva llamada MiObra" → crea obra=mi_obra
+
+### Pipeline típico
+
+```
+1. [FORO-SCRAPER] Scraping de fuente
+   ↓
+2. [AGENT-CREATOR] Crear agente desde fuente
+   ↓
+3. [ARG] Arrancar Obra [laboratorio]
+   ↓
+4. [ARG] Desplegar agente en obra
+   ↓
+5. [PERIODICO] Publicar obra como noticia
+   ↓
+6. [GH-PAGES] Publicar en web
+```

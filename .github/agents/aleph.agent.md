@@ -40,21 +40,49 @@ handoffs:
               agent: Aleph
               prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium. .github/prompts/plugin-install.prompt.md
               send: false
-       - label: "[ARG-BOARD] Abrir Teatro ARG"
+       - label: "[ARG] Arrancar Obra [nombre]"
               agent: .github/plugins/arg-board/agents/Arrakis
-              prompt: Inicializa un teatro transmedia con BOE, BDCs y sistema de turnos para juego ARG.
+              prompt: "Arranca la obra especificada del Teatro ARG. Si [nombre] no existe, ofrece crearla. Consulta obras.json para ver disponibles. Ejemplo: 'Arrancar Obra Hola_Mundo'."
               send: false
-       - label: "[ARG-BOARD] Consultar BOE del juego"
+       - label: "[ARG] Listar obras activas"
+              agent: .github/plugins/arg-board/agents/Arrakis
+              prompt: Lista todas las obras activas en el Teatro ARG con sus personajes y estado actual.
+              send: false
+       - label: "[ARG] Invocar personaje [nombre]"
+              agent: .github/plugins/arg-board/agents/Arrakis
+              prompt: "Invoca al personaje especificado de una obra activa. Consulta actores.json. El personaje actúa según su agente base y conocimiento especializado."
+              send: false
+       - label: "[ARG] Cerrar/Archivar obra [nombre]"
+              agent: .github/plugins/arg-board/agents/Arrakis
+              prompt: "Cierra la obra especificada, archiva su estado y genera resumen de la partida."
+              send: false
+       - label: "[ARG] Consultar BOE del juego"
               agent: .github/plugins/arg-board/agents/BOE
               prompt: Consulta disposiciones oficiales del tablero ARG activo.
               send: false
-       - label: "[ARG-BOARD] Validar coherencia"
+       - label: "[ARG] Validar coherencia"
               agent: .github/plugins/arg-board/agents/Decoherence
               prompt: Ejecuta validación de coherencia entre BOE, BDC y código del tablero.
               send: false
-       - label: "[ARG-BOARD] Generar tablero 3D"
+       - label: "[ARG] Generar tablero 3D"
               agent: .github/plugins/arg-board/agents/ImpressJS
               prompt: Transforma conversaciones BDC en presentación 3D navegable con impress.js.
+              send: false
+       - label: "[AGENT-CREATOR] Crear agente desde fuente"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: "Crea un nuevo agente especializado. Indica: agente_base (yellowflag, blueflag, etc.) + fuente (carpeta en DISCO/)."
+              send: false
+       - label: "[AGENT-CREATOR] Desplegar agente en obra [nombre]"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: "Despliega un agente creado como personaje en la obra ARG especificada. Si la obra no existe, la crea."
+              send: false
+       - label: "[AGENT-CREATOR] Listar agentes creados"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: "Lista todos los agentes creados con Agent Creator, sus fuentes y despliegues en ARG."
+              send: false
+       - label: "[AGENT-CREATOR] Editar agente [nombre]"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: "Modifica un agente creado añadiendo fuentes o actualizando su especialización."
               send: false
        - label: "[ENCICLOPEDIA] Consultar biblioteca"
               agent: .github/plugins/enciclopedia/Bibliotecario

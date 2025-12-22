@@ -48,6 +48,26 @@ handoffs:
               agent: GHPages
               prompt: Publica las noticias seleccionadas de ARCHIVO/NOTICIAS/ en GitHub Pages (modo fusionar).
               send: false
+       - label: "[ARG] Publicar obra como noticia"
+              agent: Periodico
+              prompt: "Genera una plana noticiera a partir de una obra ARG. Extrae eventos, personajes, y acciones como 'hechos' para el método 5W."
+              send: false
+       - label: "[ARG] Invocar personaje para análisis [nombre]"
+              agent: .github/plugins/arg-board/agents/Arrakis
+              prompt: "Invoca a un personaje de una obra activa para que aporte su perspectiva especializada al análisis de la noticia."
+              send: false
+       - label: "[ARG] Crear noticia desde escena [obra]"
+              agent: Periodico
+              prompt: "Extrae una escena específica de una obra ARG y la convierte en plana noticiera con el método 5W + Banderas."
+              send: false
+       - label: "[AGENT-CREATOR] Crear agente periodístico"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: "Crea un agente especializado para un tema periodístico recurrente. Base: alguna bandera. Fuente: carpeta de noticias o scraping temático."
+              send: false
+       - label: "[AGENT-CREATOR] Añadir fuente a agente"
+              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+              prompt: "Añade nuevas fuentes (scraping, DISCO) a un agente periodístico existente para ampliar su conocimiento."
+              send: false
 ---
 # Agente: Periódico
 

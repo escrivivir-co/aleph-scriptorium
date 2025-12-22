@@ -28,6 +28,26 @@ handoffs:
     agent: GHPages
     prompt: Publica el capítulo revisado en GitHub Pages (modo reemplazar para actualizar versión anterior).
     send: false
+  - label: "[ARG] Revisar agente de obra [nombre]"
+    agent: .github/plugins/arg-board/agents/Decoherence
+    prompt: "Revisa el agente/personaje de la obra especificada. Valida coherencia entre agente base, fuente de datos y comportamiento en obra."
+    send: false
+  - label: "[ARG] Auditar coherencia de obra [nombre]"
+    agent: .github/plugins/arg-board/agents/Decoherence
+    prompt: "Audita coherencia global de la obra: BOE, personajes, estado del teatro. Detecta contradicciones o inconsistencias."
+    send: false
+  - label: "[ARG] Validar personaje vs agente base"
+    agent: .github/plugins/arg-board/agents/Decoherence
+    prompt: "Compara el comportamiento de un personaje teatral con su agente base original. Detecta derivas o desviaciones doctrinales."
+    send: false
+  - label: "[AGENT-CREATOR] Revisar agente creado [nombre]"
+    agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+    prompt: "Revisa un agente creado verificando: coherencia con agente base, calidad de fuentes, tests específicos definidos."
+    send: false
+  - label: "[AGENT-CREATOR] Auditar receta de agente"
+    agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
+    prompt: "Audita el recipe.json de un agente creado. Verifica trazabilidad, elementos heredados y conceptos extraídos."
+    send: false
 ---
 # Agente: Revisor
 
