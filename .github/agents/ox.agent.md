@@ -68,6 +68,10 @@ handoffs:
     agent: plugin_ox_teatro
     prompt: Accede al plugin Teatro Interactivo a través de su bridge.
     send: false
+  - label: Invocar bridge Scrum
+    agent: plugin_ox_scrum
+    prompt: Accede al plugin Scrum de gestión ágil de backlogs a través de su bridge.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
@@ -82,8 +86,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.1.0",
-  "ultima_actualizacion": "2025-12-22",
+  "version": "1.2.0",
+  "ultima_actualizacion": "2025-12-23",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -201,6 +205,10 @@ handoffs:
         "teatro": {
           "directorio": ".github/plugins/teatro/agents/",
           "agentes": ["Teatro"]
+        },
+        "scrum": {
+          "directorio": ".github/plugins/scrum/agents/",
+          "agentes": ["Scrum"]
         }
       },
       "bridges": {
@@ -235,6 +243,11 @@ handoffs:
           "plugin_ox_teatro": {
             "archivo": ".github/agents/plugin_ox_teatro.agent.md",
             "plugin": "teatro",
+            "delega_a": 1
+          },
+          "plugin_ox_scrum": {
+            "archivo": ".github/agents/plugin_ox_scrum.agent.md",
+            "plugin": "scrum",
             "delega_a": 1
           }
         }

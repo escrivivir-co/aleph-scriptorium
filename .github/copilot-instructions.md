@@ -77,6 +77,7 @@ Este es un proyecto de **escritura política** dividido en dos "Opportunities":
 | `@plugin_ox_ghpages` | GH-Pages | GHPages (1) |
 | `@plugin_ox_foroscraper` | Foro Scraper | ForoScraper (1) |
 | `@plugin_ox_agentcreator` | Agent Creator | AgentCreator (1) |
+| `@plugin_ox_scrum` | Scrum | Scrum (1) |
 
 **Invocar plugins a través de bridges**: Los handoffs de @aleph apuntan a bridges detectables por VS Code.
 
@@ -240,3 +241,31 @@ Sistema unificado para experiencias de teatro transmedia interactivo.
 3. Ejecutar obra (publicar página impress.js)
 
 **Documentación**: [plugins/teatro/docs/](plugins/teatro/docs/)
+
+### Plugin: Scrum
+
+Gestión ágil de backlogs con protocolo formal de 5 fases.
+
+**Agentes disponibles**:
+- `Scrum`: Scrum Master / coordinador del ciclo
+
+**Prompts**:
+- `planificar-sprint.prompt.md`: Fase 1 - Conversación PO-SM
+- `crear-backlog-borrador.prompt.md`: Fase 2 - Generar backlog en DISCO
+- `aprobar-backlog.prompt.md`: Fase 3 - Publicar en backlogs oficiales
+- `tracking-sprint.prompt.md`: Fase 4 - Actualizar estado de tasks
+- `retrospectiva.prompt.md`: Fase 5 - Cierre, foto de estado, next sprint
+
+**Principios**:
+- **Puntos de esfuerzo**: 1-13 sin correlación cronológica
+- **Separación espacial**: DISCO (borradores) → .github/ (oficial)
+- **Roles**: PO (usuario), SM (@scrum), DevOps (@aleph)
+
+**Flujo**:
+1. Planificar en DISCO (conversación PO-SM)
+2. Generar backlog borrador
+3. Aprobar y publicar en backlogs oficiales
+4. Tracking durante desarrollo
+5. Cerrar sprint (retro + foto de estado)
+
+**Documentación**: [plugins/scrum/instructions/scrum-protocol.instructions.md](plugins/scrum/instructions/scrum-protocol.instructions.md)

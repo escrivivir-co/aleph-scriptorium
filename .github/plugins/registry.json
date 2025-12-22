@@ -1,7 +1,46 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-22T18:00:00Z",
+  "last_updated": "2025-12-23T10:00:00Z",
   "plugins": {
+    "scrum": {
+      "name": "Gestión Ágil de Backlogs",
+      "version": "1.0.0",
+      "description": "Protocolo formal para gestión de sprints: planificación en DISCO, borradores, aprobación, tracking y retrospectiva. Implementa ciclo PO-SM-DevOps.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-23T10:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "data_directory": "ARCHIVO/PLUGINS/SCRUM/",
+      "bridge_agent": "plugin_ox_scrum",
+      "dependencies": [],
+      "handoffs": [
+        {
+          "label": "Planificar nuevo sprint",
+          "agent": "Scrum"
+        },
+        {
+          "label": "Crear backlog borrador",
+          "agent": "Scrum"
+        },
+        {
+          "label": "Aprobar y publicar backlog",
+          "agent": "Scrum"
+        },
+        {
+          "label": "Actualizar tracking",
+          "agent": "Scrum"
+        },
+        {
+          "label": "Cerrar sprint",
+          "agent": "Scrum"
+        },
+        {
+          "label": "Ver status del sprint",
+          "agent": "Scrum"
+        }
+      ]
+    },
     "teatro": {
       "name": "Teatro Interactivo",
       "version": "1.0.0",

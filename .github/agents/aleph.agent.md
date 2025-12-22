@@ -68,6 +68,10 @@ handoffs:
               agent: plugin_ox_teatro
               prompt: Accede al plugin Teatro Interactivo. Genera, instala y ejecuta obras transmedia con visualización 3D.
               send: false
+       - label: "[SCRUM] Gestión ágil de backlogs"
+              agent: plugin_ox_scrum
+              prompt: Accede al plugin Scrum. Planifica sprints, genera borradores en DISCO, aprueba backlogs, tracking y cierre.
+              send: false
 ---
 # Agente: Aleph (Fundacional)
 
