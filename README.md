@@ -99,6 +99,37 @@ Protocolo: [.github/PLUGINS.md](.github/PLUGINS.md)
 
 ---
 
+## Teatro Interactivo
+
+El **Teatro** transforma el Scriptorium en un espacio navegable donde puedes visionar obras, interactuar con personajes (agentes) y recorrer caminos narrativos.
+
+```
+      ┌─────────────────────┐
+     /       Anillo 3        \    ← Retorno (estadios 9-12)
+    │    ┌─────────────┐     │
+    │   /   Anillo 2    \    │    ← Pruebas (estadios 5-8)
+    │  │  ┌─────────┐   │    │
+    │  │ /  Anillo 1 \  │    │    ← Preparación (estadios 1-4)
+    │  │ │  Centro 0 │  │    │    ← Inicio
+    │  │ \___________/  │    │
+    │   \______________/     │
+     \_____________________/
+```
+
+**Cartelera**: [escrivivir-co.github.io/aleph-scriptorium/teatro/](https://escrivivir-co.github.io/aleph-scriptorium/teatro/)
+
+| Obra | Tipo | Estado |
+|------|------|--------|
+| **El Camino del Tarotista** | Onboarding | 🎬 En escena |
+| Hola Mundo | Demo | 📋 En cartel |
+
+**Componentes**:
+- Visualizador 3D basado en impress.js
+- Sistema de anillos (monomito de 12 estadios)
+- Integración con AGENT_CREATOR y ARG_BOARD
+
+---
+
 ## Contribuir
 
 Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
@@ -129,16 +160,17 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 │  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝                     │
 │                                                              │
 │  v1.0.0-beta.1 · Primera piedra · 2025-12-22                 │
-│  Sprint 0 cerrado · 19/21 épicas · 336 tareas                │
+│  Sprint 1 en progreso · Teatro Interactivo · 89%             │
 └──────────────────────────────────────────────────────────────┘
 ```
 
 | Componente | Versión | Estado |
 |------------|---------|--------|
-| Scriptorium | **1.0.0-beta.1** | ✅ Sprint 0 cerrado |
-| Fundación | 0.0.1 | 🔄 85% (Sprint 0) |
-| Web (GH-Pages) | 1.1.0 | ✅ 9 páginas |
-| Plugins | 5 instalados | ✅ Operativos |
+| Scriptorium | **1.0.0-beta.1** | 🔄 Sprint 1 (89%) |
+| Fundación | 0.0.1 | ⏸️ Pausa (Sprint 0 completo) |
+| Web (GH-Pages) | 1.1.0 | ✅ 11 páginas + Teatro |
+| Plugins | 6 instalados | ✅ Incluye Teatro |
+| Teatro | 1.0.0 | 🎬 2 obras (1 en escena) |
 
 **Backlog activo**: [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md)
 
@@ -153,6 +185,7 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 | **Guía de usuario** | [Web: /leeme/](https://escrivivir-co.github.io/aleph-scriptorium/leeme/) |
 | **Agentes** | [Web: /agentes/](https://escrivivir-co.github.io/aleph-scriptorium/agentes/) |
 | **Archivo doctrinal** | [Web: /archivo/](https://escrivivir-co.github.io/aleph-scriptorium/archivo/) |
+| **Teatro Interactivo** | [Web: /teatro/](https://escrivivir-co.github.io/aleph-scriptorium/teatro/) |
 | **Protocolo DevOps** | [.github/DEVOPS.md](.github/DEVOPS.md) |
 | **Protocolo Plugins** | [.github/PLUGINS.md](.github/PLUGINS.md) |
 

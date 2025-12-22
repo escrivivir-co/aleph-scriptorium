@@ -443,15 +443,15 @@ meta:
 ---
 
 ### SCRIPT-1.0.0-S10: Documentación y Tests
-**Estado**: 🔄 En progreso
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T035 | Actualizar README.md con sección Teatro | ⏳ |
+| T035 | Actualizar README.md con sección Teatro | ✅ |
 | T036 | Actualizar `copilot-instructions.md` con Teatro | ✅ |
-| T037 | Test: flujo completo de generación de obra | ⏳ |
-| T038 | Test: visualizador impress.js en desktop y móvil | ⏳ |
-| T039 | Documentar hoja de ruta para Angular/React | ⏳ |
+| T037 | Test: flujo completo de generación de obra | ✅ |
+| T038 | Test: visualizador impress.js en desktop y móvil | ✅ |
+| T039 | Documentar hoja de ruta para Angular/React | ✅ |
 
 ---
 
@@ -473,10 +473,10 @@ meta:
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 44 |
-| Completadas | 39 |
-| En progreso | 1 |
-| Pendientes | 4 |
-| % Avance | 89% |
+| Completadas | 43 |
+| En progreso | 0 |
+| Pendientes | 1 |
+| % Avance | 98% |
 
 ---
 
@@ -544,3 +544,4 @@ meta:
 | 2025-12-22 | Publicar obra demo "Camino del Tarotista" (S07) | Aleph |
 | 2025-12-22 | Consolidar pipeline AGENT_CREATOR → ARG_BOARD (S08) | Aleph |
 | 2025-12-22 | Integrar Teatro con GH-Pages y limpiar cartelera (S09) | Aleph |
+| 2025-12-22 | Completar documentación y tests del Teatro (S10) | Aleph |
