@@ -40,6 +40,30 @@ handoffs:
     agent: plugin-manager
     prompt: Delega gestión de plugins al PluginManager.
     send: false
+  - label: Listar plugin bridges
+    agent: Ox
+    prompt: Lista todos los agentes bridge de plugins instalados (plugin_ox_*).
+    send: false
+  - label: Invocar bridge ARG Board
+    agent: plugin_ox_argboard
+    prompt: Accede al plugin ARG Board a través de su bridge.
+    send: false
+  - label: Invocar bridge Enciclopedia
+    agent: plugin_ox_enciclopedia
+    prompt: Accede al plugin Enciclopedia a través de su bridge.
+    send: false
+  - label: Invocar bridge GH-Pages
+    agent: plugin_ox_ghpages
+    prompt: Accede al plugin GH-Pages a través de su bridge.
+    send: false
+  - label: Invocar bridge Foro Scraper
+    agent: plugin_ox_foroscraper
+    prompt: Accede al plugin Foro Scraper a través de su bridge.
+    send: false
+  - label: Invocar bridge Agent Creator
+    agent: plugin_ox_agentcreator
+    prompt: Accede al plugin Agent Creator a través de su bridge.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
@@ -54,7 +78,7 @@ handoffs:
 
 ```json
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "ultima_actualizacion": "2025-12-22",
   "capas": {
     "ui": {
@@ -170,6 +194,37 @@ handoffs:
           "directorio": ".github/plugins/agent-creator/agents/",
           "agentes": ["AgentCreator"]
         }
+      },
+      "bridges": {
+        "descripcion": "Agentes bridge en .github/agents/ que conectan con plugins",
+        "nota": "VS Code solo detecta agentes en .github/agents/",
+        "agentes": {
+          "plugin_ox_argboard": {
+            "archivo": ".github/agents/plugin_ox_argboard.agent.md",
+            "plugin": "arg-board",
+            "delega_a": 8
+          },
+          "plugin_ox_enciclopedia": {
+            "archivo": ".github/agents/plugin_ox_enciclopedia.agent.md",
+            "plugin": "enciclopedia",
+            "delega_a": 2
+          },
+          "plugin_ox_ghpages": {
+            "archivo": ".github/agents/plugin_ox_ghpages.agent.md",
+            "plugin": "gh-pages",
+            "delega_a": 1
+          },
+          "plugin_ox_foroscraper": {
+            "archivo": ".github/agents/plugin_ox_foroscraper.agent.md",
+            "plugin": "foro-scraper",
+            "delega_a": 1
+          },
+          "plugin_ox_agentcreator": {
+            "archivo": ".github/agents/plugin_ox_agentcreator.agent.md",
+            "plugin": "agent-creator",
+            "delega_a": 1
+          }
+        }
       }
     }
   }
@@ -208,16 +263,27 @@ handoffs:
 │ Verdad       │ Sombras      │ Estructura  │ Límites     │ Registro    │
 └───────────────────────────────────────────────────────────────────┘
         │
-        │ ← extienden capacidades
+        │ ← invocan vía bridges
         ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│                        🔌 PLUGINS (por plugin)                    │
+│                      🔌 PLUGIN BRIDGES (5)                        │
+│           (en .github/agents/, detectables por VS Code)           │
 ├───────────────────────────────────────────────────────────────────┤
-│ ARG-BOARD      │ ENCICLOPEDIA  │ GH-PAGES   │ FORO-SCRAPER │ AGENT-CREATOR │
-│ @arrakis       │ @bibliotecario│ @ghpages   │ @foroscraper │ @agentcreator │
-│ @boe           │ @hdf-ec       │            │              │               │
-│ @decoherence   │               │            │              │               │
-│ +5 más         │               │            │              │               │
+│ @plugin_ox_argboard      │ @plugin_ox_enciclopedia                │
+│ @plugin_ox_ghpages       │ @plugin_ox_foroscraper                 │
+│ @plugin_ox_agentcreator  │                                        │
+└───────────────────────────────────────────────────────────────────┘
+        │
+        │ ← delegan a agentes reales
+        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                    🔌 PLUGIN AGENTS (reales)                      │
+│              (en .github/plugins/{id}/agents/)                    │
+├───────────────────────────────────────────────────────────────────┤
+│ ARG-BOARD (8) │ ENCICLOPEDIA (2) │ GH-PAGES (1) │ FORO-SCRAPER (1)│
+│ Arrakis, BOE  │ Bibliotecario    │ GHPages      │ ForoScraper     │
+│ Decoherence   │ HDF-EC           │              │                 │
+│ +5 más        │                  │              │ AGENT-CREATOR(1)│
 └───────────────────────────────────────────────────────────────────┘
 ```
 

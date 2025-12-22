@@ -382,6 +382,124 @@ Ver: [plugins/arg-board/manifest.md](plugins/arg-board/manifest.md)
 
 ---
 
+## 11. Bridge Agents (Plugin Ox)
+
+> **Problema**: VS Code solo carga agentes desde `.github/agents/`, no desde carpetas de plugins.
+
+> **Solución**: Crear **agentes bridge** mínimos que conectan VS Code con los agentes reales de cada plugin.
+
+### 11.1. Filosofía
+
+Igual que `@ox` es el oráculo del sistema que conoce todos los agentes, cada `plugin_ox_{nombre}` es el **oráculo de su plugin**:
+
+- Vive en `.github/agents/` (donde VS Code lo detecta)
+- Sigue patrón **DRY**: no duplica lógica, solo referencia
+- Expone handoffs que delegan a los agentes reales
+- Documenta el índice de agentes del plugin
+
+### 11.2. Nomenclatura
+
+```
+plugin_ox_{nombrePlugin}.agent.md
+```
+
+Ejemplos:
+- `plugin_ox_argboard.agent.md`
+- `plugin_ox_enciclopedia.agent.md`
+- `plugin_ox_ghpages.agent.md`
+- `plugin_ox_foroscraper.agent.md`
+- `plugin_ox_agentcreator.agent.md`
+
+### 11.3. Plantilla de Bridge Agent
+
+```yaml
+---
+name: plugin_ox_{NombrePlugin}
+description: "Bridge: conecta VS Code con agentes de {nombre}. Ver .github/plugins/{id}/agents/"
+argument-hint: "Invoca agentes del plugin {nombre} o consulta su índice."
+tools: ['agent']
+handoffs:
+  - label: Listar agentes de {nombre}
+    agent: plugin_ox_{nombre}
+    prompt: Lista agentes disponibles en este plugin.
+    send: false
+  - label: Invocar {Agente1}
+    agent: .github/plugins/{id}/agents/{agente1}.agent.md
+    prompt: {descripción}
+    send: false
+  # ... un handoff por cada agente del plugin
+---
+
+# Plugin Ox: {NombrePlugin}
+
+**Capa:** 🔌 Plugins (Bridge) — ver taxonomía en @ox
+
+> Agente bridge que conecta VS Code con `.github/plugins/{id}/agents/`.
+
+## Agentes disponibles
+
+| Agente | Archivo | Descripción |
+|--------|---------|-------------|
+| ... | ... | ... |
+
+## Referencia
+
+- Manifest: `.github/plugins/{id}/manifest.md`
+- Agentes: `.github/plugins/{id}/agents/`
+```
+
+### 11.4. Flujo de Instalación (actualizado)
+
+Al instalar un plugin con agentes, el Plugin Manager debe:
+
+```
+1. VALIDAR manifest.md
+   ↓
+2. COPIAR a .github/plugins/{id}/
+   ↓
+3. CREAR plugin_ox_{id}.agent.md en .github/agents/  ← NUEVO
+   ↓
+4. REGISTRAR en registry.json (incluir bridge: true)
+   ↓
+5. ACTUALIZAR handoffs en aleph.agent.md (apuntar al bridge)
+   ↓
+6. COMMIT
+```
+
+### 11.5. Arquitectura de Capas
+
+```
+┌─────────────────────────────────────────┐
+│              🐂 OX (Meta)               │
+│     Oráculo · Documentación · Índice    │
+└───────────────────┬─────────────────────┘
+                    │
+    ┌───────────────┴───────────────┐
+    ▼                               ▼
+┌──────────┐                 ┌──────────────┐
+│ 🟢 UI    │ ───────────────▶│ 🔌 BRIDGES   │
+│ @aleph   │   invoca        │ (detectables)│
+└──────────┘                 └──────┬───────┘
+                                    │ delega
+                                    ▼
+                            ┌──────────────┐
+                            │ 🔌 PLUGINS   │
+                            │  (reales)    │
+                            └──────────────┘
+```
+
+### 11.6. Bridges Instalados
+
+| Bridge | Plugin | Agentes |
+|--------|--------|---------|
+| `plugin_ox_argboard` | arg-board | Arrakis, BOE, Decoherence, GitARG, Heroe, ImpressJS, MBox, PlatformCom |
+| `plugin_ox_enciclopedia` | enciclopedia | Bibliotecario |
+| `plugin_ox_ghpages` | gh-pages | GHPages |
+| `plugin_ox_foroscraper` | foro-scraper | ForoScraper |
+| `plugin_ox_agentcreator` | agent-creator | AgentCreator |
+
+---
+
 ## Referencias
 
 - [DEVOPS.md](DEVOPS.md) — Protocolo de commits

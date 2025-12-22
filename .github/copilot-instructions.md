@@ -65,6 +65,21 @@ Este es un proyecto de **escritura política** dividido en dos "Opportunities":
 
 **Invocar cuando**: No sepas qué agente usar, necesites documentación, o detectes inconsistencias.
 
+### Plugin Bridges
+
+> **Problema**: VS Code solo carga agentes desde `.github/agents/`, no desde carpetas de plugins.
+> **Solución**: Agentes bridge (`plugin_ox_{nombre}`) que delegan a los agentes reales.
+
+| Bridge | Plugin | Agentes |
+|--------|--------|---------|
+| `@plugin_ox_argboard` | ARG Board | Arrakis, BOE, Decoherence... (8) |
+| `@plugin_ox_enciclopedia` | Enciclopedia | Bibliotecario, HDF-EC (2) |
+| `@plugin_ox_ghpages` | GH-Pages | GHPages (1) |
+| `@plugin_ox_foroscraper` | Foro Scraper | ForoScraper (1) |
+| `@plugin_ox_agentcreator` | Agent Creator | AgentCreator (1) |
+
+**Invocar plugins a través de bridges**: Los handoffs de @aleph apuntan a bridges detectables por VS Code.
+
 ## 4. Instrucciones de Contenido (Doctrina)
 
 El contenido se rige por instrucciones específicas. **No improvisar** estilos ni estructuras.

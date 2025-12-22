@@ -938,6 +938,7 @@
 | 2025-12-22 | Añadir Épica SCRIPT-0.10.0 — Agente Oráculo (Ox) | Aleph |
 | 2025-12-22 | Crear ox.agent.md con índice maestro de agentes | Ox |
 | 2025-12-22 | Refactorizar README.md con taxonomía unificada de agentes | Ox |
+| 2025-12-22 | Añadir Épica SCRIPT-0.11.0 — Plugin Bridge Agents | Ox |
 
 ---
 
@@ -1218,4 +1219,218 @@ El agente interpreta `[nombre]` como variable que el usuario proporciona:
 5. [PERIODICO] Publicar obra como noticia
    ↓
 6. [GH-PAGES] Publicar en web
+```
+
+---
+
+# Épica: SCRIPT-0.11.0 — Plugin Bridge Agents
+
+**Objetivo**: Resolver la limitación de VS Code que solo carga agentes desde `.github/agents/`, no desde carpetas de plugins.
+
+**Problema detectado**: Los handoffs a agentes de plugins muestran advertencias "unknown agent" porque VS Code no escanea `.github/plugins/{plugin}/agents/`.
+
+**Solución**: Crear **Plugin Ox Agents** — agentes bridge mínimos que:
+1. Viven en `.github/agents/` (donde VS Code los detecta)
+2. Siguen el patrón DRY: no duplican lógica, solo referencian
+3. Hacen handoff a los agentes reales del plugin
+4. Exponen el índice de agentes del plugin
+
+**Filosofía**: Igual que `@ox` es el oráculo del sistema, cada `plugin_ox_{nombre}` es el oráculo de su plugin.
+
+**Nomenclatura**: `plugin_ox_{nombrePlugin}.agent.md`
+- `plugin_ox_argboard.agent.md`
+- `plugin_ox_enciclopedia.agent.md`
+- `plugin_ox_ghpages.agent.md`
+- `plugin_ox_foroscraper.agent.md`
+- `plugin_ox_agentcreator.agent.md`
+
+**Entregables**:
+- Actualización de PLUGINS.md con protocolo de bridge agents
+- Actualización de plugin-manager.agent.md
+- Creación de 5 plugin_ox agents para plugins existentes
+- Actualización del índice en ox.agent.md
+- Refactorización de handoffs en aleph.agent.md
+
+---
+
+## Stories
+
+### SCRIPT-0.11.0-S01: Protocolo de Plugin Bridge Agents
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T204 | Añadir sección "Bridge Agents" a PLUGINS.md | ✅ |
+| T205 | Definir plantilla de plugin_ox agent | ✅ |
+| T206 | Documentar flujo de instalación con bridge | ✅ |
+
+---
+
+### SCRIPT-0.11.0-S02: Actualizar Plugin Manager
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T207 | Añadir paso "Crear bridge agent" al flujo de instalación | ⏳ |
+| T208 | Añadir handoff "Crear bridge para plugin [id]" | ⏳ |
+| T209 | Añadir handoff "Listar bridges existentes" | ⏳ |
+
+---
+
+### SCRIPT-0.11.0-S03: Crear Plugin Ox Agents (5 plugins)
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T210 | Crear `plugin_ox_argboard.agent.md` | ✅ |
+| T211 | Crear `plugin_ox_enciclopedia.agent.md` | ✅ |
+| T212 | Crear `plugin_ox_ghpages.agent.md` | ✅ |
+| T213 | Crear `plugin_ox_foroscraper.agent.md` | ✅ |
+| T214 | Crear `plugin_ox_agentcreator.agent.md` | ✅ |
+
+---
+
+### SCRIPT-0.11.0-S04: Integración con Ox
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T215 | Actualizar índice JSON en ox.agent.md con bridges | ✅ |
+| T216 | Añadir handoff "Listar plugin bridges" en Ox | ✅ |
+| T217 | Actualizar taxonomía visual con capa de bridges | ✅ |
+
+---
+
+### SCRIPT-0.11.0-S05: Refactorizar Handoffs en Aleph
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T218 | Cambiar handoffs [ARG] para usar plugin_ox_argboard | ✅ |
+| T219 | Cambiar handoffs [ENCICLOPEDIA] para usar plugin_ox_enciclopedia | ✅ |
+| T220 | Cambiar handoffs [GH-PAGES] para usar plugin_ox_ghpages | ✅ |
+| T221 | Cambiar handoffs [FORO-SCRAPER] para usar plugin_ox_foroscraper | ✅ |
+| T222 | Cambiar handoffs [AGENT-CREATOR] para usar plugin_ox_agentcreator | ✅ |
+
+---
+
+### SCRIPT-0.11.0-S06: Documentación y Validación
+**Estado**: 🔄 En progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T223 | Actualizar README.md con sección Plugin Bridges | ⏳ |
+| T224 | Actualizar copilot-instructions.md con bridges | ⏳ |
+| T225 | Verificar que VS Code reconoce todos los bridges | ✅ |
+| T226 | Test: handoff desde Aleph → bridge → plugin agent | ⏳ |
+
+---
+
+## Métricas Sprint 0.11
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 23 |
+| Completadas | 17 |
+| En progreso | 1 |
+| Pendientes | 5 |
+| % Avance | 74% |
+
+---
+
+## Especificación Técnica
+
+### Plantilla de Plugin Ox Agent
+
+```yaml
+---
+name: plugin_ox_{NombrePlugin}
+description: "Bridge agent para plugin {nombre}. Delega a agentes en .github/plugins/{id}/agents/"
+argument-hint: "Invoca agentes del plugin {nombre} o consulta su índice."
+tools: ['agent']
+handoffs:
+  - label: Listar agentes de {nombre}
+    agent: plugin_ox_{nombre}
+    prompt: Lista todos los agentes disponibles en este plugin.
+    send: false
+  # Un handoff por cada agente del plugin
+  - label: Invocar {AgenteName}
+    agent: .github/plugins/{id}/agents/{agente}.agent.md
+    prompt: {descripción del agente}
+    send: false
+---
+
+# Plugin Ox: {NombrePlugin}
+
+**Capa:** 🔌 Plugins (Bridge) — ver taxonomía en @ox
+
+> Este es un **agente bridge** que conecta VS Code con los agentes del plugin `{id}`.
+> Los agentes reales están en `.github/plugins/{id}/agents/`.
+
+## Agentes disponibles
+
+| Agente | Archivo | Descripción |
+|--------|---------|-------------|
+| {Agente1} | `agents/{agente1}.agent.md` | {descripción} |
+| ... | ... | ... |
+
+## Índice (referencia al manifest)
+
+Ver: `.github/plugins/{id}/manifest.md`
+```
+
+### Flujo de Instalación Actualizado
+
+```
+1. VALIDAR manifest.md
+   ↓
+2. COPIAR a .github/plugins/{id}/
+   ↓
+3. CREAR plugin_ox_{id}.agent.md en .github/agents/  ← NUEVO
+   ↓
+4. REGISTRAR en registry.json
+   ↓
+5. ACTUALIZAR handoffs en aleph.agent.md (usando bridge)
+   ↓
+6. COMMIT
+```
+
+### Arquitectura de Capas (actualizada)
+
+```
+                         ┌─────────────────────────────────────┐
+                         │            🐂 OX (Meta)             │
+                         │   Oráculo · Documentación · Índice  │
+                         └─────────────────┬───────────────────┘
+                                           │
+        ┌──────────────────────────────────┼──────────────────────────────────┐
+        │                                  │                                  │
+        ▼                                  ▼                                  ▼
+┌───────────────┐                 ┌────────────────┐                ┌─────────────────┐
+│  🟢 UI (3)    │                 │ ⚪ Sistema (2) │                │  ⚙️ Meta (2)    │
+│ Producción    │                 │  Navegación    │                │   Gestión       │
+└───────────────┘                 └────────────────┘                └─────────────────┘
+        │
+        │ ← invocan
+        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                        🔌 PLUGIN BRIDGES                          │
+│              (en .github/agents/, detectables por VS Code)        │
+├───────────────────────────────────────────────────────────────────┤
+│ plugin_ox_argboard │ plugin_ox_enciclopedia │ plugin_ox_ghpages   │
+│ plugin_ox_foroscraper │ plugin_ox_agentcreator │                  │
+└───────────────────────────────────────────────────────────────────┘
+        │
+        │ ← delegan a
+        ▼
+┌───────────────────────────────────────────────────────────────────┐
+│                     🔌 PLUGIN AGENTS (reales)                     │
+│               (en .github/plugins/{id}/agents/)                   │
+├───────────────────────────────────────────────────────────────────┤
+│ ARG: Arrakis, BOE, Decoherence, GitARG, AutomataHeroe...         │
+│ ENCICLOPEDIA: Bibliotecario, HDF-ErnestoCastro                    │
+│ GH-PAGES: GHPages                                                 │
+│ FORO-SCRAPER: ForoScraper                                         │
+│ AGENT-CREATOR: AgentCreator                                       │
+└───────────────────────────────────────────────────────────────────┘
 ```

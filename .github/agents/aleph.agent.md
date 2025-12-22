@@ -41,100 +41,28 @@ handoffs:
               prompt: Consulta el índice de agentes, genera documentación o diagnostica inconsistencias en el sistema.
               send: false
        - label: Gestionar plugins
-              agent: Aleph
-              prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium. .github/prompts/plugin-install.prompt.md
+              agent: plugin-manager
+              prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium.
               send: false
-       - label: "[ARG] Arrancar Obra [nombre]"
-              agent: .github/plugins/arg-board/agents/Arrakis
-              prompt: "Arranca la obra especificada del Teatro ARG. Si [nombre] no existe, ofrece crearla. Consulta obras.json para ver disponibles. Ejemplo: 'Arrancar Obra Hola_Mundo'."
-              send: false
-       - label: "[ARG] Listar obras activas"
-              agent: .github/plugins/arg-board/agents/Arrakis
-              prompt: Lista todas las obras activas en el Teatro ARG con sus personajes y estado actual.
-              send: false
-       - label: "[ARG] Invocar personaje [nombre]"
-              agent: .github/plugins/arg-board/agents/Arrakis
-              prompt: "Invoca al personaje especificado de una obra activa. Consulta actores.json. El personaje actúa según su agente base y conocimiento especializado."
-              send: false
-       - label: "[ARG] Cerrar/Archivar obra [nombre]"
-              agent: .github/plugins/arg-board/agents/Arrakis
-              prompt: "Cierra la obra especificada, archiva su estado y genera resumen de la partida."
-              send: false
-       - label: "[ARG] Consultar BOE del juego"
-              agent: .github/plugins/arg-board/agents/BOE
-              prompt: Consulta disposiciones oficiales del tablero ARG activo.
-              send: false
-       - label: "[ARG] Validar coherencia"
-              agent: .github/plugins/arg-board/agents/Decoherence
-              prompt: Ejecuta validación de coherencia entre BOE, BDC y código del tablero.
-              send: false
-       - label: "[ARG] Generar tablero 3D"
-              agent: .github/plugins/arg-board/agents/ImpressJS
-              prompt: Transforma conversaciones BDC en presentación 3D navegable con impress.js.
-              send: false
-       - label: "[AGENT-CREATOR] Crear agente desde fuente"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: "Crea un nuevo agente especializado. Indica: agente_base (yellowflag, blueflag, etc.) + fuente (carpeta en DISCO/)."
-              send: false
-       - label: "[AGENT-CREATOR] Desplegar agente en obra [nombre]"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: "Despliega un agente creado como personaje en la obra ARG especificada. Si la obra no existe, la crea."
-              send: false
-       - label: "[AGENT-CREATOR] Listar agentes creados"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: "Lista todos los agentes creados con Agent Creator, sus fuentes y despliegues en ARG."
-              send: false
-       - label: "[AGENT-CREATOR] Editar agente [nombre]"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: "Modifica un agente creado añadiendo fuentes o actualizando su especialización."
+       - label: "[ARG] Abrir Teatro ARG"
+              agent: plugin_ox_argboard
+              prompt: Accede al plugin ARG Board. Desde ahí puedes arrancar obras, invocar personajes, consultar BOE, validar coherencia, etc.
               send: false
        - label: "[ENCICLOPEDIA] Consultar biblioteca"
-              agent: .github/plugins/enciclopedia/Bibliotecario
-              prompt: Lista los tomos disponibles en la enciclopedia y permite búsquedas globales por tema o período.
-              send: false
-       - label: "[ENCICLOPEDIA] Buscar en Historia de la Filosofía"
-              agent: .github/plugins/enciclopedia/agents/tomos/hdf-ernesto-castro.agent.md
-              prompt: Busca en el tomo 'Historia de la Filosofía' (Ernesto Castro, 2017) por período, filósofo o temática.
+              agent: plugin_ox_enciclopedia
+              prompt: Accede al plugin Enciclopedia. Consulta tomos, busca por período o tema.
               send: false
        - label: "[GH-PAGES] Publicar en web"
-              agent: .github/plugins/gh-pages/agents/ghpages.agent.md
-              prompt: Publica contenido del ARCHIVO en GitHub Pages (modo fusionar o reemplazar).
+              agent: plugin_ox_ghpages
+              prompt: Accede al plugin GH-Pages. Publica contenido en GitHub Pages (fusionar o reemplazar).
               send: false
-       - label: "[GH-PAGES] Inicializar sitio"
-              agent: .github/plugins/gh-pages/agents/ghpages.agent.md
-              prompt: Configura el sitio GitHub Pages con la plantilla Jekyll del Scriptorium.
+       - label: "[FORO-SCRAPER] Scraping web"
+              agent: plugin_ox_foroscraper
+              prompt: Accede al plugin Foro Scraper. Inicia, pausa, reanuda scraping de foros y blogs.
               send: false
-       - label: "[FORO-SCRAPER] Iniciar scraping"
-              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
-              prompt: Inicia un nuevo trabajo de scraping con la URL proporcionada. Extrae patrón, crea carpeta en DISCO/, inicia descarga.
-              send: false
-       - label: "[FORO-SCRAPER] Pausar scraping"
-              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
-              prompt: Pausa el trabajo de scraping activo guardando el estado actual.
-              send: false
-       - label: "[FORO-SCRAPER] Reanudar scraping"
-              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
-              prompt: Reanuda un trabajo de scraping pausado desde la última página descargada.
-              send: false
-       - label: "[FORO-SCRAPER] Ver estado"
-              agent: .github/plugins/foro-scraper/agents/foro-scraper.agent.md
-              prompt: Muestra el estado de todos los trabajos de scraping (activos, pausados, completados).
-              send: false
-       - label: "[AGENT-CREATOR] Crear agente especializado"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: Crea un nuevo agente combinando agentes base (yellowflag, blueflag, etc.) con fuentes de datos de DISCO/ARCHIVO.
-              send: false
-       - label: "[AGENT-CREATOR] Editar agente"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: Modifica un agente creado añadiendo fuentes o actualizando conocimiento.
-              send: false
-       - label: "[AGENT-CREATOR] Fusionar agentes"
-              agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
-              prompt: Combina las capacidades de múltiples agentes en uno nuevo especializado.
-              send: false
-       - label: "[DEMARCACION] Auditar demarcación científica"
-              agent: ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/demarcacion-yellowflag.agent.md
-              prompt: Audita propuestas desde la perspectiva del criterio de demarcación científica (Popper/Kuhn/Feyerabend) + cuadrantes de Wilber.
+       - label: "[AGENT-CREATOR] Crear agente"
+              agent: plugin_ox_agentcreator
+              prompt: Accede al plugin Agent Creator. Crea, edita, fusiona agentes especializados.
               send: false
 ---
 # Agente: Aleph (Fundacional)
