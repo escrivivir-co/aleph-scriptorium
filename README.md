@@ -1,8 +1,10 @@
 # Aleph Scriptorium
 
+[![Version](https://img.shields.io/badge/version-1.0.0--beta.1-blueviolet)](https://github.com/escrivivir-co/aleph-scriptorium/releases/tag/v1.0.0-beta.1)
 [![License: AIPL](https://img.shields.io/badge/License-AIPL%20v1.0-blue.svg)](LICENSE.md)
 [![GitHub Pages](https://img.shields.io/badge/Web-GitHub%20Pages-success)](https://escrivivir-co.github.io/aleph-scriptorium/)
 [![VibeBitacora](https://img.shields.io/badge/Powered%20by-VibeBitacora-7289da)](https://github.com/escrivivir-co/vibe-bitacora)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 Framework de escritura asistida por IA para proyectos de largo aliento.
 
@@ -117,11 +119,26 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 
 ## Estado
 
+```
+┌──────────────────────────────────────────────────────────────┐
+│  ██████╗ ███████╗████████╗ █████╗    ██╗                     │
+│  ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗  ███║                     │
+│  ██████╔╝█████╗     ██║   ███████║  ╚██║                     │
+│  ██╔══██╗██╔══╝     ██║   ██╔══██║   ██║                     │
+│  ██████╔╝███████╗   ██║   ██║  ██║   ██║                     │
+│  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝   ╚═╝                     │
+│                                                              │
+│  v1.0.0-beta.1 · Primera piedra · 2025-12-22                 │
+│  Sprint 0 cerrado · 19/21 épicas · 336 tareas                │
+└──────────────────────────────────────────────────────────────┘
+```
+
 | Componente | Versión | Estado |
 |------------|---------|--------|
-| Scriptorium | 0.0.1 | ✅ Sprint 0 completado |
+| Scriptorium | **1.0.0-beta.1** | ✅ Sprint 0 cerrado |
 | Fundación | 0.0.1 | 🔄 85% (Sprint 0) |
-| Web (GH-Pages) | 1.1.0 | ✅ Publicada |
+| Web (GH-Pages) | 1.1.0 | ✅ 9 páginas |
+| Plugins | 5 instalados | ✅ Operativos |
 
 **Backlog activo**: [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md)
 
@@ -158,7 +175,53 @@ Forjado en los [Astilleros de VibeBitacora](https://github.com/escrivivir-co/vib
 
 ---
 
+---
+
+## Release Notes · v1.0.0-beta.1
+
+```
+$ git log --oneline releases/1.0.0-beta.1 | head -1
+cf3c52d feat(gh-pages): homogeneizar CSS y cerrar Sprint 0
+```
+
+### 🎉 Primera piedra del camino
+
+Esta es la primera versión pública estable de Aleph Scriptorium.
+
+**Lo que hay:**
+- 17 agentes operativos (UI + Backend + Sistema + Meta)
+- 5 plugins instalados (ARG, Enciclopedia, GH-Pages, Scraper, Creator)
+- Sistema de 5 banderas para auditoría doctrinal
+- Sitio web con 9 páginas
+- Protocolo DevOps completo
+- Documentación FOSS (CONTRIBUTING, templates)
+
+**Lo que viene (Sprint 1):**
+- Redacción del Capítulo 1 de Fundación
+- Mejoras UX en el sitio web
+- Documentación técnica de Euler (cloud)
+
+### Contribuir
+
+```bash
+# Fork + clone
+git clone https://github.com/TU_USUARIO/aleph-scriptorium.git
+
+# Branch
+git checkout -b feature/mi-aporte
+
+# Hack, commit, push
+git push origin feature/mi-aporte
+
+# PR → main
+```
+
+Cada contribución cuenta. Cada PR es una piedra más.
+
+---
+
 <p align="center">
   <strong>ℵ</strong><br>
-  <em>Cada versión es un umbral, no un destino.</em>
+  <em>v1.0.0-beta.1 · Primera piedra · 2025-12-22</em><br>
+  <code>$ echo "El código es poesía compilada" >> /dev/future</code>
 </p>

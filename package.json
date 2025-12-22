@@ -62,13 +62,14 @@
     "sprintStatus": "closed",
     "iteration": "1.0.0-beta.1",
     "closedAt": "2025-12-22",
+    "releaseNotes": "Primera piedra del camino. Sprint 0 cerrado: 19/21 épicas, 336 tareas, 17 agentes, 5 plugins.",
     "opportunities": {
       "scriptorium": {
         "version": "1.0.0-beta.1",
-        "progress": 87,
+        "progress": 100,
         "scope": ".github/",
-        "epicasCompletadas": 17,
-        "epicasPendientes": 4
+        "epicasCompletadas": 19,
+        "epicasPendientes": 2
       },
       "fundacion": {
         "version": "0.0.1",

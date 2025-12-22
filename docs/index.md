@@ -6,6 +6,15 @@ permalink: /
 
 <div class="home-page" markdown="1">
 
+<!-- RELEASE BANNER -->
+<div class="release-banner">
+  <div class="release-badge">🎉 v1.0.0-beta.1</div>
+  <div class="release-text">
+    <strong>Primera piedra del camino</strong> · Sprint 0 cerrado · 
+    <a href="{{ site.baseurl }}/roadmap/">Ver roadmap →</a>
+  </div>
+</div>
+
 <!-- HERO -->
 <div class="home-hero">
   <div class="hero-symbol">ℵ</div>
@@ -91,11 +100,31 @@ permalink: /
 <section class="home-section home-status">
 <h2>// Status</h2>
 <dl class="status-list">
-  <div><dt>Sprint</dt><dd>0 (Bootstrap)</dd></div>
-  <div><dt>Scriptorium</dt><dd>100% ✓</dd></div>
-  <div><dt>Fundación</dt><dd>85%</dd></div>
-  <div><dt>Periódico</dt><dd>Nº 1</dd></div>
+  <div><dt>Versión</dt><dd><strong>1.0.0-beta.1</strong></dd></div>
+  <div><dt>Sprint</dt><dd>0 ✓ Cerrado</dd></div>
+  <div><dt>Scriptorium</dt><dd>100% · 19 épicas</dd></div>
+  <div><dt>Fundación</dt><dd>85% · 4 caps</dd></div>
+  <div><dt>Plugins</dt><dd>5 instalados</dd></div>
+  <div><dt>Agentes</dt><dd>17 operativos</dd></div>
 </dl>
+</section>
+
+<!-- ÚNETE -->
+<section class="home-section home-join">
+<h2>// Únete al camino</h2>
+<div class="join-content">
+<p>Aleph Scriptorium es <strong>software libre</strong>. Cada PR es una piedra más en el camino.</p>
+<div class="join-actions">
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/fork" class="join-btn join-btn-primary">🍴 Fork</a>
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/issues" class="join-btn">📋 Issues</a>
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/CONTRIBUTING.md" class="join-btn">📖 Contribuir</a>
+</div>
+<pre class="join-code">
+$ git clone https://github.com/escrivivir-co/aleph-scriptorium.git
+$ cd aleph-scriptorium && code .
+$ # En Copilot Chat: @aleph hola
+</pre>
+</div>
 </section>
 
 <!-- AVISO LEGAL -->

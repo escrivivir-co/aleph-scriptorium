@@ -698,6 +698,43 @@ li {
   margin-bottom: var(--space-lg);
 }
 
+/* --- Release Banner --- */
+.release-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.release-badge {
+  background: #7c3aed;
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  font-weight: 700;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.release-text a {
+  color: var(--bg);
+  text-decoration: underline;
+}
+
+.release-text a:hover {
+  color: var(--border);
+}
+
 .home-hero .hero-symbol {
   font-size: 4rem;
   line-height: 1;
@@ -894,6 +931,57 @@ li {
 .status-list dd {
   margin: 0;
   font-weight: 600;
+}
+
+/* --- Únete / Join --- */
+.home-join {
+  background: #fafafa;
+  padding: var(--space-lg);
+  border: 2px solid var(--fg);
+}
+
+.join-content {
+  text-align: center;
+}
+
+.join-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin: var(--space-lg) 0;
+  flex-wrap: wrap;
+}
+
+.join-btn {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-lg);
+  border: 2px solid var(--fg);
+  text-decoration: none;
+  color: var(--fg);
+  transition: all 0.2s;
+}
+
+.join-btn:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.join-btn-primary {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.join-btn-primary:hover {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.join-code {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 0.8rem;
 }
 
 /* --- Aviso legal --- */
