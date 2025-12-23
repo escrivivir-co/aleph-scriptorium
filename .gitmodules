@@ -1,0 +1,3 @@
+[submodule "vscode-alephscript-extension"]
+	path = vscode-alephscript-extension
+	url = https://github.com/escrivivir-co/vscode-alephscript-extension.git
