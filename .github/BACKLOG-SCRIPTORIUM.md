@@ -557,6 +557,8 @@ meta:
 | 2025-12-23 | Añadir épica SCRIPT-1.6.0: Rediseño Index Web (Splash) | Aleph |
 | 2025-12-23 | Completar SCRIPT-1.6.0: menú hamburguesa, prisma auditores, status, galería | Aleph |
 | 2025-12-23 | Aprobar y publicar épica SCRIPT-1.7.0: Plugin MCP-PRESETS | Aleph |
+| 2025-12-24 | Añadir submódulo as-utils-sdk (VibeCoding Connector) | Aleph |
+| 2025-12-24 | Crear épica SCRIPT-1.9.0: Integración AS-Utils-SDK | Aleph |
 
 ---
 
@@ -2094,3 +2096,249 @@ El agente @periodico:
 4. Documenta decisiones
 5. Redacta textos finales
 6. Entrega ENTREGABLE-FINAL.md para integración
+
+---
+
+# Épica: SCRIPT-1.9.0 — Integración AS-Utils-SDK (VibeCoding Connector)
+
+**Objetivo**: Integrar el submódulo `as-utils-sdk` como punto de fuga del Teatro, conectando AlephScriptorium con la suite VibeCoding y la extensión Arrakis Theater. Habilitar runtime dinámico Matrix como alternativa al visualizador impress.js estático.
+
+**Estado**: 🆕 Nueva (Feature Cycle 1)
+
+**Submódulo**: `as-utils-sdk` (https://github.com/escrivivir-co/as-utils-sdk.code-workspace)  
+**Rama de integración**: `integration/beta/scriptorium`  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-UTILS-SDK/conversacion-po-sm.md`
+
+---
+
+## Contexto
+
+### El problema
+
+El Teatro actual (SCRIPT-1.0.0) genera páginas estáticas con Jekyll + impress.js:
+- No hay runtime dinámico
+- No hay tracking en tiempo real del progreso
+- No hay soporte para sesiones de hacklab en vivo
+- Las capacidades quedan limitadas a nuestra codebase
+
+### La solución
+
+Integrar `as-utils-sdk` que proporciona:
+- **Matrix Theater**: Interfaz cyberpunk con tracking en tiempo real
+- **mission-state.json**: Estado de 12 pasos sincronizable con BOE
+- **Maestro de Ceremonias**: Teleprompter para sesiones en vivo
+- **Infraestructura MCP**: Zeus (3012) → SLMo42 (4001) → MCPGaia (3003)
+- **Framework Retro v0.5**: Sistema de orquestación de expediciones
+
+### Arquitectura del submódulo
+
+```
+as-utils-sdk/
+├── .github/
+│   ├── copilot-instructions.md    # Arquitectura del ecosistema
+│   └── chatmodes/                  # Agentes especializados
+│       ├── agente-interactivo-mcp.chatmode.md
+│       └── agente-operador.chatmode.md
+├── theater/                        # Runtime visual Matrix
+│   ├── index.html                 # Interfaz en tiempo real
+│   ├── matrix-theater.js          # Lógica de tracking
+│   ├── mission-state.json         # Estado de 12 pasos + 4 equipos
+│   └── api/update-progress.js     # API de progreso
+├── vibe-bitacora/                  # 9 bitácoras de sesiones
+├── ARRAKIS_THEATER.md             # Roles: Casa Arrakis, Elenco, Público
+├── ECOSYSTEM_OVERVIEW.md          # Diagrama Mermaid del ecosistema
+├── MAESTRO_CEREMONIAS.md          # Teleprompter (328 líneas)
+└── RELATO_CANONICO_OASIS42.md     # Historia del Camino del Héroe
+```
+
+### Mapeo ontológico con Scriptorium
+
+| as-utils-sdk | Scriptorium | Función |
+|--------------|-------------|---------|
+| Astillero Backend | @redflag | Infraestructura, puertos |
+| Astillero Frontend | @orangeflag | UI/UX, registro |
+| Astillero Integration | @blueflag | Conexiones, evidencia |
+| Astillero Validation | @revisor | Coherencia, tests |
+| Agente Operador | @aleph | Orquestación |
+| Agente Interactivo MCP | @plugin_ox_mcppresets | Gestión de presets |
+| Maestro Ceremonias | @plugin_ox_teatro | Conductor de sesiones |
+| mission-state.json | BOE | Estado del teatro |
+| 12 steps | Monomito | Estructura narrativa |
+
+---
+
+## Story: SCRIPT-1.9.0-S01 — Inicialización del Submódulo
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Añadir submódulo `as-utils-sdk` al workspace | ✅ |
+| T002 | Crear rama `integration/beta/scriptorium` | ✅ |
+| T003 | Documentar estructura en conversación PO-SM | ✅ |
+| T004 | Añadir épica al backlog | ✅ |
+
+---
+
+## Story: SCRIPT-1.9.0-S02 — Sincronización BOE ↔ mission-state
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Crear adaptador bidireccional entre el BOE del Teatro y el mission-state.json de as-utils-sdk.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Analizar schema de mission-state.json (12 steps, 4 teams) | ⏳ |
+| T006 | Crear prompt `sincronizar-boe-mission.prompt.md` | ⏳ |
+| T007 | Implementar mapeo BOE → mission-state | ⏳ |
+| T008 | Implementar mapeo mission-state → BOE | ⏳ |
+| T009 | Documentar protocolo de sincronización | ⏳ |
+
+**Definition of Done**: Cambios en BOE se reflejan en mission-state y viceversa.
+
+---
+
+## Story: SCRIPT-1.9.0-S03 — Modo Matrix para Teatro
+**Puntos**: 5  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Habilitar interfaz Matrix como runtime alternativo al visualizador impress.js.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T010 | Crear ruta `docs/teatro/{obra}/matrix/` | ⏳ |
+| T011 | Adaptar `matrix-theater.js` para datos de obra | ⏳ |
+| T012 | Añadir switch en cartelera: "Modo impress.js" / "Modo Matrix" | ⏳ |
+| T013 | Implementar fallback si Matrix no carga | ⏳ |
+| T014 | Documentar requisitos del modo Matrix | ⏳ |
+
+**Definition of Done**: Usuario puede elegir entre impress.js y Matrix al abrir una obra.
+
+---
+
+## Story: SCRIPT-1.9.0-S04 — Maestro de Ceremonias
+**Puntos**: 3  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Integrar el Teleprompter del Maestro de Ceremonias para sesiones de hacklab en vivo.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T015 | Crear handoff `@plugin_ox_teatro → lanzar sesión en vivo` | ⏳ |
+| T016 | Adaptar MAESTRO_CEREMONIAS.md a formato de prompt | ⏳ |
+| T017 | Crear vista de teleprompter en docs/teatro/{obra}/mc/ | ⏳ |
+| T018 | Integrar controles de avance de estadio | ⏳ |
+
+**Definition of Done**: El Teatro puede lanzar sesiones en vivo con teleprompter guiado.
+
+---
+
+## Story: SCRIPT-1.9.0-S05 — Modo Híbrido (Ligero/Completo)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Implementar dos modos de operación según recursos disponibles.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T019 | Definir requisitos de modo ligero (sin MCP) | ⏳ |
+| T020 | Definir requisitos de modo completo (con MCP) | ⏳ |
+| T021 | Implementar detección automática de disponibilidad | ⏳ |
+| T022 | Documentar diferencias entre modos | ⏳ |
+
+**Definition of Done**: Teatro funciona sin backend MCP (degrada graceful).
+
+---
+
+## Story: SCRIPT-1.9.0-S06 — Bridge Agéntico
+**Puntos**: 3  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Crear agente bridge para acceder a capacidades de as-utils-sdk.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T023 | Crear `plugin_ox_asutilssdk.agent.md` | ⏳ |
+| T024 | Mapear chatmodes a handoffs | ⏳ |
+| T025 | Integrar con @aleph | ⏳ |
+| T026 | Actualizar registry.json | ⏳ |
+
+**Definition of Done**: `@aleph → [AS-UTILS-SDK]` funciona como handoff.
+
+---
+
+## Story: SCRIPT-1.9.0-S07 — Documentación y Tests
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Documentar integración y validar funcionamiento.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T027 | Actualizar README.md con submódulo | ⏳ |
+| T028 | Actualizar copilot-instructions.md | ⏳ |
+| T029 | Test: Teatro en modo Matrix | ⏳ |
+| T030 | Test: Sincronización BOE ↔ mission-state | ⏳ |
+| T031 | Test: Fallback a modo ligero | ⏳ |
+
+**Definition of Done**: Documentación completa y tests pasan.
+
+---
+
+## Métricas SCRIPT-1.9.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 7 |
+| Tasks totales | 31 |
+| Puntos totales | 23 |
+| Prioridad Must | 4 stories (12 pts) |
+| Prioridad Should | 3 stories (11 pts) |
+| Completadas | **1** (S01) |
+| % Avance | **14%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| Submódulo as-utils-sdk | ✅ Añadido | Rama integration/beta/scriptorium |
+| Plugin Teatro | ✅ Instalado | SCRIPT-1.0.0 completado |
+| Plugin MCP-Presets | ✅ Instalado | Para presets de as-utils-sdk |
+| Infraestructura MCP (opcional) | ⚠️ Externa | Zeus, SLMo42, MCPGaia |
+
+---
+
+## Riesgos Identificados
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Dependencia de infraestructura externa | Alta | Medio | Modo híbrido ligero/completo |
+| Conflicto ontológico (dos estructuras) | Media | Bajo | Mapeo documentado |
+| Registro alienante (narrativa épica) | Media | Bajo | Ofrecer modo técnico sin narrativa |
+| Superficie de ataque (puertos abiertos) | Baja | Alto | Abstracción vía bridges |
+
+---
+
+## Changelog SCRIPT-1.9.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Añadir submódulo as-utils-sdk | @aleph |
+| 2025-12-24 | Crear rama integration/beta/scriptorium | @aleph |
+| 2025-12-24 | Crear conversación PO-SM con análisis de agentes | @scrum |
+| 2025-12-24 | Aprobar épica SCRIPT-1.9.0 | @scrum |

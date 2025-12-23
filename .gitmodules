@@ -4,3 +4,6 @@
 [submodule "alephscript-mcp-presets-site"]
 	path = alephscript-mcp-presets-site
 	url = https://github.com/escrivivir-co/alephscript-mcp-presets-site.git
+[submodule "as-utils-sdk"]
+	path = as-utils-sdk
+	url = https://github.com/escrivivir-co/as-utils-sdk.code-workspace
