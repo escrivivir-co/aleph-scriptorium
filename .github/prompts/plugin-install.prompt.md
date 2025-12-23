@@ -55,22 +55,55 @@ Añadir entrada en `.github/plugins/registry.json`:
 }
 ```
 
-### 5. Integrar Handoffs
+### 5. Registrar en Settings de Workspace
 
-Si el manifest define `handoffs`, añadirlos a `aleph.agent.md`:
+Añadir rutas del plugin a `.vscode/settings.json`:
+
+```json
+{
+  "chat.promptFilesLocations": {
+    ".github/plugins/{id}/prompts": true
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/plugins/{id}/instructions": true
+  }
+}
+```
+
+> **Formato**: Usar objeto con claves de ruta y valores booleanos (`true`).
+
+### 6. Crear Bridge Agent
+
+Crear `.github/agents/plugin_ox_{id}.agent.md` para que VS Code detecte el plugin:
+
+```yaml
+---
+name: plugin_ox_{id}
+description: "Bridge: conecta VS Code con agentes de {nombre}."
+handoffs:
+  - label: Invocar {Agente1}
+    agent: .github/plugins/{id}/agents/{agente1}.agent.md
+    prompt: "{descripción}"
+    send: false
+---
+```
+
+### 7. Integrar Handoffs en Aleph
+
+Si el manifest define `handoffs`, añadirlos a `aleph.agent.md` apuntando al bridge:
 
 ```yaml
 - label: "[{ID}] {label original}"
-  agent: {AgentName}
-  prompt: "{prompt}"
+  agent: plugin_ox_{id}
+  prompt: "Accede al plugin {nombre}."
   send: false
 ```
 
-### 6. Actualizar Índice
+### 8. Actualizar Índice
 
 Añadir referencia en `copilot-instructions.md` sección Plugins.
 
-### 7. Generar Commit
+### 9. Generar Commit
 
 ```
 feat(script/plugins): instalar plugin "{name}" v{version}

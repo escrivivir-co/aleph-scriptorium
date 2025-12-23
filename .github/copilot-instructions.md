@@ -77,9 +77,25 @@ Este es un proyecto de **escritura política** dividido en dos "Opportunities":
 | `@plugin_ox_ghpages` | GH-Pages | GHPages (1) |
 | `@plugin_ox_foroscraper` | Foro Scraper | ForoScraper (1) |
 | `@plugin_ox_agentcreator` | Agent Creator | AgentCreator (1) |
+| `@plugin_ox_teatro` | Teatro | Teatro (1) |
 | `@plugin_ox_scrum` | Scrum | Scrum (1) |
 
 **Invocar plugins a través de bridges**: Los handoffs de @aleph apuntan a bridges detectables por VS Code.
+
+### Plugin Discovery (Settings de Workspace)
+
+> **SCRIPT-1.5.0**: Los prompts e instructions de plugins ahora son accesibles vía `.vscode/settings.json`.
+
+Los settings de workspace añaden carpetas adicionales para detectar recursos de plugins:
+
+| Setting | Propósito |
+|---------|-----------|
+| `chat.promptFilesLocations` | Detecta prompts de plugins (33 adicionales) |
+| `chat.instructionsFilesLocations` | Detecta instructions de plugins (7 adicionales) |
+| `chat.useNestedAgentsMdFiles` | Busca AGENTS.md en subcarpetas |
+| `chat.promptFilesRecommendations` | Muestra prompts sugeridos |
+
+**Resultado**: Los prompts de plugins aparecen al escribir `/` en el chat.
 
 ## 4. Instrucciones de Contenido (Doctrina)
 

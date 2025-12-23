@@ -51,7 +51,32 @@ ARCHIVO/
 - Los datos son **mutables** durante la ejecución
 - Permite backup selectivo y versionado diferenciado
 
-### 2.3. Registro de Plugins
+### 2.3. Settings de Workspace para Plugin Discovery
+
+> **SCRIPT-1.5.0**: VS Code solo detecta automáticamente recursos en las carpetas canónicas (`.github/prompts/`, `.github/instructions/`). Los plugins requieren settings adicionales.
+
+El archivo `.vscode/settings.json` debe incluir las rutas de cada plugin instalado:
+
+```json
+{
+  "chat.promptFilesLocations": {
+    ".github/prompts": true,
+    ".github/plugins/{id}/prompts": true
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".github/plugins/{id}/instructions": true
+  }
+}
+```
+
+**Al instalar un plugin**, el Plugin Manager debe añadir automáticamente las rutas del nuevo plugin a estos settings.
+
+**Documentación oficial**:
+- [Prompt Files Locations](https://code.visualstudio.com/docs/copilot/customization/prompt-files)
+- [Instructions Files Locations](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+
+### 2.4. Registro de Plugins
 
 El archivo `registry.json` mantiene el estado de todos los plugins:
 

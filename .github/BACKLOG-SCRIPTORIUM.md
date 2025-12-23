@@ -553,6 +553,7 @@ meta:
 | 2025-12-23 | Registrar BUG-002: impress.js no inicializa | Aleph |
 | 2025-12-23 | Crear personaje NonsiAuditor (blackflag + redflag + fuente ELENCO/nonsi) | Aleph |
 | 2025-12-23 | Añadir épica SCRIPT-1.4.0: Sistema de Avatares para Personajes | Aleph |
+| 2025-12-23 | Añadir épica SCRIPT-1.5.0: Plugin Bridge Discovery | Aleph |
 
 ---
 
@@ -1054,3 +1055,147 @@ Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a 
 - `docs/_layouts/obra.html` (línea ~80)
 - `docs/teatro/camino-del-tarotista.md`
 - `ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/*.md`
+
+---
+
+# Épica: SCRIPT-1.5.0 — Plugin Bridge Discovery
+
+**Objetivo**: Habilitar la detección automática de prompts e instructions desde carpetas de plugins, y actualizar el protocolo de instalación para mantener los settings sincronizados.
+
+**Estado**: 🔄 En Progreso
+
+**Detectado**: 2025-12-23
+
+---
+
+## Contexto del Problema
+
+VS Code Copilot solo detecta automáticamente:
+- `.github/agents/*.agent.md`
+- `.github/prompts/*.prompt.md`
+- `.github/instructions/*.instructions.md`
+
+Los plugins tienen 33 prompts y 7 instructions "ocultos" en `.github/plugins/{id}/`.
+
+### Inventario de Recursos Ocultos
+
+| Plugin | Prompts | Instructions |
+|--------|---------|--------------|
+| arg-board | 7 | 1 |
+| agent-creator | 5 | 1 |
+| teatro | 4 | 1 |
+| scrum | 5 | 1 |
+| foro-scraper | 6 | 1 |
+| enciclopedia | 3 | 1 |
+| gh-pages | 5 | 1 |
+| **TOTAL** | **33** | **7** |
+
+### Solución
+
+Usar settings de workspace:
+- `chat.promptFilesLocations`: Añade carpetas de prompts de plugins
+- `chat.instructionsFilesLocations`: Añade carpetas de instructions de plugins
+
+---
+
+## Story: SCRIPT-1.5.0-S01 — Configurar Settings de Workspace
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `.vscode/settings.json` con rutas de plugins | ✅ |
+| T002 | Añadir `chat.promptFilesLocations` con 8 rutas | ✅ |
+| T003 | Añadir `chat.instructionsFilesLocations` con 8 rutas | ✅ |
+| T004 | Habilitar `chat.useNestedAgentsMdFiles` | ✅ |
+| T005 | Habilitar `chat.promptFilesRecommendations` | ✅ |
+
+---
+
+## Story: SCRIPT-1.5.0-S02 — Validar Discovery de Prompts
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Reiniciar VS Code y verificar carga de settings | ⏳ |
+| T007 | Listar prompts disponibles con `/` en Chat | ⏳ |
+| T008 | Documentar prompts detectados vs esperados | ⏳ |
+| T009 | Reportar bugs si hay prompts no detectados | ⏳ |
+
+---
+
+## Story: SCRIPT-1.5.0-S03 — Validar Discovery de Instructions
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T010 | Verificar aplicación automática por `applyTo` | ⏳ |
+| T011 | Probar adjuntar instructions manualmente | ⏳ |
+| T012 | Documentar comportamiento observado | ⏳ |
+
+---
+
+## Story: SCRIPT-1.5.0-S04 — Actualizar Protocolo de Plugins
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T013 | Actualizar `plugin-manager.agent.md` con paso de settings | ✅ |
+| T014 | Actualizar `plugin-install.prompt.md` con pasos de settings y bridge | ✅ |
+| T015 | Actualizar `PLUGINS.md` con documentación de settings (formato correcto) | ✅ |
+| T016 | Añadir validación: settings incluye plugin | ✅ |
+
+---
+
+## Story: SCRIPT-1.5.0-S05 — Optimizar Namespace de Prompts
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Auditar nombres de prompts duplicados | ⏳ |
+| T018 | Proponer convención de prefijos | ⏳ |
+| T019 | Renombrar prompts si hay conflictos | ⏳ |
+| T020 | Documentar convención en PLUGINS.md | ⏳ |
+
+---
+
+## Story: SCRIPT-1.5.0-S06 — AGENTS.md por Plugin (opcional)
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T021 | Crear AGENTS.md de prueba en un plugin | ⏳ |
+| T022 | Verificar detección con `chat.useNestedAgentsMdFiles` | ⏳ |
+| T023 | Documentar ventajas/desventajas vs bridges | ⏳ |
+| T024 | Decidir si adoptar como estándar | ⏳ |
+
+---
+
+## Métricas SCRIPT-1.5.0
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 24 |
+| Completadas | **9** |
+| En progreso | 0 |
+| Pendientes | 15 |
+| % Avance | **38%** |
+
+---
+
+## Métricas de Éxito
+
+| Métrica | Antes | Target |
+|---------|-------|--------|
+| Prompts detectables | 16 | **49** (16 + 33) |
+| Instructions detectables | 9 | **16** (9 + 7) |
+| % de prompts accesibles | 33% | **100%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| VS Code 1.107+ | ✅ | Soporte para settings de ubicaciones |
+| Copilot Extension | ✅ | Habilitada |
+| Settings aplicados | ⏳ | Requiere reinicio de VS Code |
