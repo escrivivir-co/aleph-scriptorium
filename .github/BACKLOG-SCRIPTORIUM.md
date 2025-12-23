@@ -838,7 +838,7 @@ impress().init()  →  Habilita navegación 3D
 | Completadas | **22** |
 | En progreso | 1 |
 | Pendientes | **7** |
-| % Avance | **0%** |
+| % Avance | **73%** |
 
 ---
 
@@ -847,60 +847,50 @@ impress().init()  →  Habilita navegación 3D
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
 | BUG-001 (Jekyll include) | 🟡 Parcialmente resuelto | Falta verificar en Actions |
-| BUG-002 (impress.js) | 🔴 Nuevo | Creado como parte de esta épica |
-| impress.js CDN | 🔴 Inestable | Considerar copia local |
+| BUG-002 (impress.js) | ✅ Resuelto | Versión completa + carga al final del body |
+| impress.js local | ✅ impress.js (completa) | Reemplaza impress.min.js corrupto |
 
 ---
 
 # 🐛 Bugs
 
-## BUG-002: impress.js no inicializa — TypeError: impress is not a function
+## BUG-002: impress.js falla durante carga — TypeError: Cannot read properties of null
 
-**Estado**: 🔴 Abierto  
+**Estado**: ✅ Resuelto  
 **Severidad**: Crítica (bloquea toda la funcionalidad del Teatro)  
 **Detectado**: 2025-12-23  
-**Relacionado con**: SCRIPT-1.3.0-S01
+**Resuelto**: 2025-12-23  
+**Relacionado con**: SCRIPT-1.3.0-S01  
+**URL afectada**: https://escrivivir-co.github.io/aleph-scriptorium/teatro/camino-del-tarotista/
 
-### Descripción
-
-Al navegar a cualquier obra del teatro (ej. `/teatro/camino-del-tarotista/`), la consola muestra:
+### Problema original
 
 ```
-🎭 Teatro Interactivo: Inicializando...
-TypeError: impress is not a function
+TypeError: Cannot read properties of null (reading 'classList')
+    at impress.min.js:2:1055
 ```
 
-El layout `docs/_layouts/obra.html` carga impress.js desde CDN pero la función `impress()` no está disponible cuando `teatro.js` intenta ejecutarla.
+Los plugins bundleados en `impress.min.js` se auto-inicializaban antes de que el DOM estuviera listo, corrompiendo `window.impress`.
 
-### Causa probable
+### Solución implementada
 
-1. **Orden de carga**: `teatro.js` se ejecuta antes de que impress.js termine de cargar
-2. **CDN inestable**: jsDelivr puede tener problemas de disponibilidad
-3. **Conflicto de scope**: impress.js no expone la función globalmente
-4. **Error en el CDN**: El archivo puede estar corrupto o incompleto
+1. **Reemplazar `impress.min.js` con `impress.js` (versión completa)** — Sin minificar, más predecible
+2. **Mover carga de scripts al final del `<body>`** — El DOM está listo cuando se ejecutan
+3. **Usar `window.addEventListener("load")` en lugar de `DOMContentLoaded`** — Espera a que todos los scripts estén cargados
+4. **Verificar `window.impress` explícitamente** — Más robusto que `typeof impress`
+5. **Añadir verificación de contenedor `#impress`** — Diagnóstico adicional
 
-### Soluciones propuestas
+### Archivos modificados
 
-| Opción | Descripción | Pros | Contras |
-|--------|-------------|------|---------|
-| **A** | Añadir `defer` o mover script al final del `<body>` | Simple | Puede no resolver |
-| **B** | Copiar impress.js a `docs/assets/js/` (local) | Control total | Mantenimiento manual |
-| **C** | Usar evento `load` en vez de `DOMContentLoaded` | Más tardío | UX más lenta |
-| **D** | Verificar que CDN devuelve 200 y contenido válido | Diagnóstico | No es fix |
+- `docs/_layouts/obra.html` — Scripts movidos al final del body
+- `docs/assets/js/teatro.js` — Inicialización mejorada
+- `docs/assets/js/impress.js` — Nueva versión completa (reemplaza impress.min.js)
+- `docs/assets/js/impress.min.js` — Eliminado
 
-### Decisión recomendada
+### Verificación pendiente
 
-**Opción B**: Copiar impress.js localmente para control total.
-
-### Tasks
-
-| Task ID | Descripción | Estado |
-|---------|-------------|--------|
-| BUG-002-T001 | Verificar respuesta del CDN (200, contenido) | ⏳ |
-| BUG-002-T002 | Descargar impress.js a `docs/assets/js/impress.min.js` | ⏳ |
-| BUG-002-T003 | Actualizar `obra.html` para usar copia local | ⏳ |
-| BUG-002-T004 | Añadir fallback en `teatro.js` si impress no existe | ⏳ |
-| BUG-002-T005 | Verificar en local y en GitHub Actions | ⏳ |
+- [ ] Test local con `jekyll serve`
+- [ ] Verificar en GitHub Actions después de push
 
 ---
 

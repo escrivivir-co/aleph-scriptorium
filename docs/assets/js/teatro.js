@@ -28,25 +28,36 @@
         api: null
     };
 
-    // Inicialización robusta (BUG-002 fix)
+    // Inicialización robusta (BUG-002 fix v2)
+    // Usa window.onload para asegurar que impress.js está completamente cargado
     function initImpress() {
         console.log("🎭 Teatro Interactivo: Inicializando...");
         
         // Verificar si impress está cargado como función
-        if (typeof impress !== "function") {
-            console.error("❌ impress.js no disponible como función. Activando modo fallback.");
+        if (typeof window.impress !== "function") {
+            console.error("❌ impress.js no disponible como función (tipo: " + typeof window.impress + "). Activando modo fallback.");
+            activateFallbackMode();
+            return false;
+        }
+
+        // Verificar que el contenedor #impress existe
+        const impressRoot = document.getElementById('impress');
+        if (!impressRoot) {
+            console.error("❌ Contenedor #impress no encontrado. Activando modo fallback.");
             activateFallbackMode();
             return false;
         }
 
         try {
-            // Inicializar impress
-            state.api = impress();
+            // Inicializar impress con el ID del contenedor
+            state.api = window.impress('impress');
             state.api.init();
             console.log("✅ impress.js inicializado correctamente");
+            document.body.classList.remove('impress-not-supported');
+            document.body.classList.add('impress-supported');
             return true;
         } catch (error) {
-            console.error("❌ Error al inicializar impress.js:", error);
+            console.error("❌ Error al inicializar impress.js:", error.message);
             activateFallbackMode();
             return false;
         }
@@ -76,8 +87,9 @@
         console.log("📄 Modo fallback activado: navegación lineal");
     }
 
-    // Inicialización al cargar DOM
-    document.addEventListener("DOMContentLoaded", function () {
+    // Inicialización al cargar completamente la página (incluyendo scripts)
+    // Usamos window.onload en lugar de DOMContentLoaded para asegurar que impress.js está listo
+    window.addEventListener("load", function () {
         if (!initImpress()) return;
         
         const api = state.api;

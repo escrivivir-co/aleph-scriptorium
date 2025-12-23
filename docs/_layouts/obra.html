@@ -9,9 +9,6 @@
   <!-- Teatro Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/teatro.css' | relative_url }}">
   
-  <!-- Impress.js (copia local - BUG-002 fix) -->
-  <script src="{{ '/assets/js/impress.min.js' | relative_url }}"></script>
-  
   {% seo %}
 </head>
 <body class="impress-not-supported">
@@ -211,7 +208,8 @@
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Scripts: impress.js debe cargarse antes de teatro.js -->
+  <script src="{{ '/assets/js/impress.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/teatro.js' | relative_url }}"></script>
   <script>
     // Toggle help overlay
