@@ -9,9 +9,14 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
 VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
-SUBMODULE_DIR="$ROOT_DIR/vscode-alephscript-extension"
-EXT_REMOTE_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
+
+# Submódulos del proyecto
+SUBMODULE_EXTENSION_DIR="$ROOT_DIR/vscode-alephscript-extension"
+SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
+
+SUBMODULE_MCP_PRESETS_DIR="$ROOT_DIR/alephscript-mcp-presets-site"
+SUBMODULE_MCP_PRESETS_URL="https://github.com/escrivivir-co/alephscript-mcp-presets-site.git"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -47,61 +52,82 @@ JSON
 
 echo "[setup] VS Code settings creados/actualizados: $SETTINGS_FILE"
 
-# 2) Submódulo de la extensión: init/sync/update
-if [[ ! -d "$SUBMODULE_DIR" ]]; then
-  echo "[setup] Submódulo no encontrado. Añadiendo: $EXT_REMOTE_URL"
-  pushd "$ROOT_DIR" >/dev/null
-  git submodule add "$EXT_REMOTE_URL" "vscode-alephscript-extension"
-  popd >/dev/null
-else
-  echo "[setup] Submódulo encontrado: $SUBMODULE_DIR"
-fi
+# ============================================================
+# FUNCIÓN: Configurar submódulo con rama de integración
+# ============================================================
+setup_submodule() {
+  local SUBMODULE_DIR="$1"
+  local SUBMODULE_URL="$2"
+  local SUBMODULE_NAME="$3"
 
+  echo "[setup] ─────────────────────────────────────────"
+  echo "[setup] Configurando submódulo: $SUBMODULE_NAME"
+  echo "[setup] ─────────────────────────────────────────"
+
+  # Añadir submódulo si no existe
+  if [[ ! -d "$SUBMODULE_DIR" ]]; then
+    echo "[setup] Submódulo no encontrado. Añadiendo: $SUBMODULE_URL"
+    pushd "$ROOT_DIR" >/dev/null
+    git submodule add "$SUBMODULE_URL" "$(basename "$SUBMODULE_DIR")"
+    popd >/dev/null
+  else
+    echo "[setup] Submódulo encontrado: $SUBMODULE_DIR"
+  fi
+
+  # Preparar rama de integración dentro del submódulo
+  if [[ -d "$SUBMODULE_DIR/.git" ]] || [[ -f "$SUBMODULE_DIR/.git" ]]; then
+    echo "[setup] Preparando rama $INTEGRATION_BRANCH en $SUBMODULE_NAME"
+    pushd "$SUBMODULE_DIR" >/dev/null
+
+    # Obtener remotos
+    git fetch --all --tags || true
+
+    # Detectar rama base (preferir dev/astilleros o dev/astillador, si no main)
+    BASE_BRANCH="main"
+    if git show-ref --verify --quiet refs/remotes/origin/dev/astilleros; then
+      BASE_BRANCH="dev/astilleros"
+    elif git show-ref --verify --quiet refs/remotes/origin/dev/astillador; then
+      BASE_BRANCH="dev/astillador"
+    fi
+
+    # Crear la rama si no existe; si existe, sólo cambiar
+    if ! git show-ref --verify --quiet "refs/heads/$INTEGRATION_BRANCH"; then
+      echo "[setup] Creando rama $INTEGRATION_BRANCH desde $BASE_BRANCH"
+      git checkout -B "$INTEGRATION_BRANCH" "origin/$BASE_BRANCH" || git checkout -b "$INTEGRATION_BRANCH"
+    else
+      git checkout "$INTEGRATION_BRANCH"
+    fi
+
+    # Intentar configurar upstream si el remoto existe (no obligatorio)
+    if git ls-remote --exit-code --heads origin "$INTEGRATION_BRANCH" >/dev/null 2>&1; then
+      git branch --set-upstream-to="origin/$INTEGRATION_BRANCH" "$INTEGRATION_BRANCH" || true
+    else
+      echo "[setup] Upstream remoto aún no existe. Podrás publicar con: git push -u origin $INTEGRATION_BRANCH"
+    fi
+
+    echo "[setup] $SUBMODULE_NAME listo en rama: $(git branch --show-current)"
+    popd >/dev/null
+  else
+    echo "[setup] Aviso: el submódulo $SUBMODULE_NAME no parece inicializado correctamente. Revisa el estado."
+  fi
+}
+
+# 2) Sincronizar todos los submódulos
 echo "[setup] Sincronizando submódulos"
 pushd "$ROOT_DIR" >/dev/null
 git submodule sync
 git submodule update --init --recursive
 popd >/dev/null
 
-# 3) Preparar rama de integración dentro del submódulo
-if [[ -d "$SUBMODULE_DIR/.git" ]]; then
-  echo "[setup] Preparando rama $INTEGRATION_BRANCH en el submódulo"
-  pushd "$SUBMODULE_DIR" >/dev/null
-
-  # Obtener remotos
-  git fetch --all --tags || true
-
-  # Preferir dev/astilleros como base si existe, si no main
-  BASE_BRANCH="main"
-  if git show-ref --verify --quiet refs/remotes/origin/dev/astilleros; then
-    BASE_BRANCH="dev/astilleros"
-  fi
-
-  # Crear la rama si no existe; si existe, sólo cambiar
-  if ! git show-ref --verify --quiet "refs/heads/$INTEGRATION_BRANCH"; then
-    echo "[setup] Creando rama $INTEGRATION_BRANCH desde $BASE_BRANCH"
-    git checkout -B "$INTEGRATION_BRANCH" "origin/$BASE_BRANCH" || git checkout -b "$INTEGRATION_BRANCH"
-  else
-    git checkout "$INTEGRATION_BRANCH"
-  fi
-
-  # Intentar configurar upstream si el remoto existe (no obligatorio)
-  if git ls-remote --exit-code --heads origin "$INTEGRATION_BRANCH" >/dev/null 2>&1; then
-    git branch --set-upstream-to="origin/$INTEGRATION_BRANCH" "$INTEGRATION_BRANCH" || true
-  else
-    echo "[setup] Upstream remoto aún no existe. Podrás publicar con: git push -u origin $INTEGRATION_BRANCH"
-  fi
-
-  echo "[setup] Submódulo listo en rama: $(git branch --show-current)"
-  popd >/dev/null
-else
-  echo "[setup] Aviso: el submódulo no parece inicializado correctamente (no .git). Revisa el estado."
-fi
+# 3) Configurar cada submódulo con su rama de integración
+setup_submodule "$SUBMODULE_EXTENSION_DIR" "$SUBMODULE_EXTENSION_URL" "vscode-alephscript-extension"
+setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL" "alephscript-mcp-presets-site"
 
 echo "[setup] ✔ Setup completado"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
 echo "  2) (Opcional) Ejecuta scripts/setup-jekyll.sh para dependencias del sitio"
-echo "  3) Publica la rama del submódulo si lo deseas:"
+echo "  3) Publica las ramas de los submódulos si lo deseas:"
 echo "     cd vscode-alephscript-extension && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd alephscript-mcp-presets-site && git push -u origin $INTEGRATION_BRANCH"
