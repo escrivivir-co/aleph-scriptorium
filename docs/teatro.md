@@ -8,17 +8,13 @@ description: Teatro Interactivo - Experiencias transmedia guiadas con navegació
 
 > Experiencias transmedia navegables en el Scriptorium
 
-<div class="teatro-container">
+<div class="teatro-container" markdown="1">
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     ZONA 1: EN ESCENA (Obra activa destacada)
-     ═══════════════════════════════════════════════════════════════════ -->
-
-<section class="zona-escena">
+<section class="zona-escena" markdown="1">
 
 ## 🎬 En Escena
 
-<div class="obra-destacada">
+<div class="obra-destacada" markdown="1">
 
 ### El Camino del Tarotista
 
@@ -42,17 +38,13 @@ description: Teatro Interactivo - Experiencias transmedia guiadas con navegació
 
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     ZONA 2: GALERÍA (Cartel de obras)
-     ═══════════════════════════════════════════════════════════════════ -->
-
-<section class="zona-galeria">
+<section class="zona-galeria" markdown="1">
 
 ## 📋 Galería
 
-<div class="galeria-grid">
+<div class="galeria-grid" markdown="1">
 
-<div class="obra-card">
+<div class="obra-card" markdown="1">
 
 ### Hola Mundo
 
@@ -71,8 +63,7 @@ description: Teatro Interactivo - Experiencias transmedia guiadas con navegació
 
 </div>
 
-<!-- Placeholder para futuras obras -->
-<div class="obra-card obra-placeholder">
+<div class="obra-card obra-placeholder" markdown="1">
 
 ### + Nueva Obra
 
@@ -86,17 +77,15 @@ description: Teatro Interactivo - Experiencias transmedia guiadas con navegació
 
 ### 📚 Archivo
 
-<div class="archivo-obras">
-<em>Las obras clausuradas se archivarán aquí.</em>
+<div class="archivo-obras" markdown="1">
+
+*Las obras clausuradas se archivarán aquí.*
+
 </div>
 
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     ZONA 3: PANTALLA (Información del visualizador)
-     ═══════════════════════════════════════════════════════════════════ -->
-
-<section class="zona-pantalla" id="pantalla-info">
+<section class="zona-pantalla" id="pantalla-info" markdown="1">
 
 ## 🖥️ Pantalla Impress.js
 
@@ -146,7 +135,7 @@ El visualizador 3D te permite navegar las obras como un espacio tridimensional o
 
 ---
 
-<section id="crear-obra">
+<section id="crear-obra" markdown="1">
 
 ## Cómo crear una obra
 
