@@ -2,11 +2,19 @@
 name: Ox
 description: "Oráculo del Scriptorium: conoce y gestiona el índice de todos los agentes. Genera documentación técnica y de usuario."
 argument-hint: "Pregunta sobre agentes, solicita documentación (README, manual), o pide diagnóstico del sistema."
-tools: ['vscode', 'read', 'edit', 'search', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Generar sección de agentes para README
     agent: Ox
     prompt: Genera la sección de agentes del README.md con la taxonomía actualizada (UI/Backend/Sistema/Plugins/Meta).
+    send: false
+  - label: Auditar integración con extensión VS Code
+    agent: Ox
+    prompt: Audita la propuesta de integración Scriptorium ↔ vscode-alephscript-extension. Verifica ontología, mapeo de ChatParticipants y preservación de handoffs.
+    send: false
+  - label: Mapear agentes a ChatParticipants
+    agent: Ox
+    prompt: Genera el mapeo de agentes del Scriptorium (19) a ChatParticipants de VS Code con IDs, prioridades y systemPrompts.
     send: false
   - label: Generar manual de usuario
     agent: Ox
