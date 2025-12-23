@@ -2,7 +2,7 @@
 name: plugin_ox_scrum
 description: "Bridge: conecta VS Code con el agente Scrum del plugin de gestión ágil. Ver .github/plugins/scrum/agents/"
 argument-hint: "planificar | borrador | aprobar | tracking | cerrar | status"
-tools: ['agent']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Listar capacidades de Scrum
     agent: plugin_ox_scrum
