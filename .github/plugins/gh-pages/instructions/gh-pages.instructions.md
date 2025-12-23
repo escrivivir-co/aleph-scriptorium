@@ -569,6 +569,107 @@ No mezclar HTML y Markdown en la misma línea:
 
 ---
 
+## Protocolo de Actualización de Portada del Periódico
+
+> **Flujo**: Sesión editorial → Ticket → Decisión → Implementación → Commit
+
+### Cuándo usar
+
+Cuando se necesite actualizar:
+- **Cabecera** (titular principal del número): `<div class="periodico-headline">`
+- **Tesis del número** (diagnóstico convergente): `<div class="periodico-thesis">`
+
+### Estructura de trabajo
+
+```
+ARCHIVO/DISCO/{Mes}_{Año}_Portada/
+├── 01_Cabecera.md              # Sesión editorial para titular
+├── 02_Pie.md                   # Sesión editorial para tesis
+├── 03_Tarea.md                 # Notas del usuario (opcional)
+└── TICKET-TESIS-NUMERO.md      # Ticket formal con propuestas
+```
+
+### Flujo detallado
+
+#### Paso 1: Sesiones editoriales
+Convocar a los agentes para debatir propuestas:
+- Sesión Cabecera: @ox, @aleph, @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag
+- Sesión Pie (BIS): Los mismos + personajes del Teatro (@tarotista, @nonsi)
+
+#### Paso 2: Generar ticket
+Crear `TICKET-TESIS-NUMERO.md` con:
+- Propuestas alternativas (Actual, A, B, etc.)
+- Sacrificios declarados de cada opción
+- Tests de calidad a aplicar
+
+#### Paso 3: Invocar auditor de registro
+```
+@orangeflag Audita las propuestas de cabecera y pie para el periódico.
+Adjunto: ARCHIVO/DISCO/{Mes}_{Año}_Portada/TICKET-TESIS-NUMERO.md
+```
+
+Tests que aplica Orangeflag:
+| Test | Pregunta |
+|------|----------|
+| Modo | ¿Examinamos o persuadimos? → Periódico = persuadir (retórico) |
+| Auditorio | ¿Quién lee? → Comunidad plural |
+| Género | ¿Deliberativo, judicial, epidíctico? → Deliberativo |
+| Estilo | ¿Claridad, corrección, propiedad, elevación? |
+| Entimema | ¿Premisas compartidas por el auditorio? |
+
+#### Paso 4: Decisión editorial
+El usuario decide:
+1. Cabecera: ¿Opción Actual, A, B?
+2. Pie: ¿3 tesis, 5 tesis, refinamiento?
+
+#### Paso 5: Implementar cambios
+@aleph o @GHPages aplica los cambios en `docs/periodico.md`:
+- Zona Cabecera: líneas ~15-20
+- Zona Pie: líneas ~95-110
+
+#### Paso 6: Validar localmente
+```bash
+cd docs && bundle exec jekyll serve
+# Verificar en http://localhost:4000/aleph-scriptorium/periodico/
+```
+
+#### Paso 7: Commit
+```
+feat(ghpages/periodico): actualizar tesis del número {Mes} {Año}
+
+- [Cabecera: describir cambio]
+- [Pie: describir cambio]
+- Basado en sesiones editoriales en ARCHIVO/DISCO/{Mes}_{Año}_Portada/
+
+refs #{ID-TICKET}
+```
+
+### Zonas en periodico.md
+
+```html
+<!-- ZONA CABECERA (líneas ~15-20) -->
+<div class="periodico-section-header">Tesis del número</div>
+<div class="periodico-headline">
+  <h2>«{TITULAR}»</h2>
+</div>
+
+<!-- ZONA PIE (líneas ~95-110) -->
+<div class="periodico-section-header">Tesis del número</div>
+<div class="periodico-thesis">
+  <h3>// diagnóstico convergente</h3>
+  <ol>
+    <li><strong>{Tesis 1}</strong> {Desarrollo}</li>
+    <!-- ... -->
+  </ol>
+</div>
+```
+
+### Ejemplo de ticket
+
+Ver modelo en: `ARCHIVO/DISCO/Diciembre_25_Portada/TICKET-TESIS-NUMERO.md`
+
+---
+
 ## Referencias
 
 - [Documentación del plugin](../docs/README.md)

@@ -32,6 +32,14 @@ handoffs:
     agent: plugin_ox_ghpages
     prompt: Marca una obra como "en escena" y la destaca en la cartelera.
     send: false
+  - label: Actualizar portada del periódico
+    agent: plugin_ox_ghpages
+    prompt: Actualiza la cabecera y/o tesis del número en docs/periodico.md usando el ticket y sesiones editoriales de ARCHIVO/DISCO/Diciembre_25_Portada/.
+    send: false
+  - label: Invocar Orangeflag para auditar portada
+    agent: Orangeflag
+    prompt: Audita las propuestas de cabecera y pie del periódico con tests de registro, género y estilo.
+    send: false
 ---
 
 # Agente: GHPages (Website Publisher)

@@ -68,6 +68,18 @@ handoffs:
               agent: .github/plugins/agent-creator/agents/agent-creator.agent.md
               prompt: "Añade nuevas fuentes (scraping, DISCO) a un agente periodístico existente para ampliar su conocimiento."
               send: false
+       - label: Actualizar portada del número
+              agent: Periodico
+              prompt: Actualiza la cabecera (titular) y/o tesis del número en docs/periodico.md. Usa el protocolo de sesión editorial en DISCO/{Mes}_{Año}_Portada/ y el ticket TICKET-TESIS-NUMERO.md.
+              send: false
+       - label: Invocar Orangeflag para auditar portada
+              agent: Orangeflag
+              prompt: Audita las propuestas de cabecera y pie del periódico con tests de registro (dialéctica vs retórica, género, estilo, auditorio).
+              send: false
+       - label: Publicar portada actualizada
+              agent: GHPages
+              prompt: Aplica los cambios aprobados en docs/periodico.md y genera commit según protocolo DevOps.
+              send: false
 ---
 # Agente: Periódico
 

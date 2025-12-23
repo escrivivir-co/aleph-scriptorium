@@ -208,3 +208,55 @@ Cada noticia debe ir acompañada de un **prompt de imagen editorial**.
 | Prompt Editar | `.github/prompts/periodico-editar.prompt.md` |
 | Prompt Publicar | `.github/prompts/periodico-publicar.prompt.md` |
 | Ejemplo | `ARCHIVO/DISCO/Diciembre_25_Geopolitica/` |
+
+---
+
+## Protocolo de Actualización de Portada del Número
+
+> **Cuándo usar**: Para actualizar el titular (cabecera) y/o las tesis del número en `docs/periodico.md`.
+
+### Diferencia con edición de noticias
+
+| Flujo | Trabaja sobre | Produce |
+|-------|---------------|---------|
+| **Editar noticia** | Fuentes brutas → DISCO → NOTICIAS | Plana individual |
+| **Actualizar portada** | Sesiones editoriales → Ticket | Cambio en periodico.md |
+
+### Estructura de trabajo
+
+```
+ARCHIVO/DISCO/{Mes}_{Año}_Portada/
+├── 01_Cabecera.md              # Sesión editorial para titular
+├── 02_Pie.md                   # Sesión editorial para tesis
+├── 03_Tarea.md                 # Notas del usuario (opcional)
+└── TICKET-TESIS-NUMERO.md      # Ticket formal con propuestas
+```
+
+### Flujo
+
+1. **Sesiones editoriales**: Convocar a @ox y las 5 banderas + personajes del Teatro si es necesario
+2. **Generar ticket**: `TICKET-TESIS-NUMERO.md` con propuestas alternativas y sacrificios
+3. **Auditar registro**: Invocar @orangeflag para validar modo, auditorio, género, estilo
+4. **Decisión editorial**: El usuario elige entre las opciones
+5. **Implementar**: Aplicar cambios en `docs/periodico.md`
+6. **Validar**: Verificar localmente con Jekyll
+7. **Commit**: Seguir protocolo DevOps
+
+### Zonas en periodico.md
+
+| Zona | Ubicación | Contenido |
+|------|-----------|-----------|
+| Cabecera | `<div class="periodico-headline">` | Titular poético/dialéctico |
+| Pie | `<div class="periodico-thesis">` | Diagnóstico convergente (3-5 tesis) |
+
+### Ejemplo de ticket
+
+Ver: `ARCHIVO/DISCO/Diciembre_25_Portada/TICKET-TESIS-NUMERO.md`
+
+### Tests de calidad (@orangeflag)
+
+- **Modo**: ¿Retórico (persuadir) o dialéctico (examinar)?
+- **Auditorio**: ¿Comunidad plural o expertos?
+- **Género**: ¿Deliberativo (futuro), judicial (pasado), epidíctico (presente)?
+- **Estilo**: ¿Claridad, corrección, propiedad, elevación medida?
+- **Entimema**: ¿Las premisas presupuestas son compartidas?
