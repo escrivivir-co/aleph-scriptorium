@@ -1,9 +1,10 @@
 # Borrador Backlog: Plugin MCP-PRESETS
 
 > **Código**: MCP-PRESETS-SITE  
-> **Sprint target**: 2  
-> **Estado**: Borrador (pendiente aprobación)  
-> **Fecha**: 2025-12-23  
+> **Sprint target**: 1  
+> **Estado**: ✅ APROBADO Y PUBLICADO  
+> **Fecha aprobación**: 2025-12-23  
+> **Publicado en**: `.github/BACKLOG-SCRIPTORIUM.md` (épica SCRIPT-1.7.0)  
 > **Conversación PO-SM**: [conversacion-po-sm.md](conversacion-po-sm.md)
 
 ---

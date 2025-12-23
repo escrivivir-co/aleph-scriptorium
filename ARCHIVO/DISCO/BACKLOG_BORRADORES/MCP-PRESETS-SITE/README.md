@@ -1,17 +1,18 @@
 # Borrador: Plugin MCP-PRESETS
 
 > **Código**: MCP-PRESETS-SITE  
-> **Estado**: Borrador (pendiente aprobación)  
-> **Sprint target**: 2
+> **Estado**: ✅ APROBADO Y PUBLICADO  
+> **Fecha aprobación**: 2025-12-23  
+> **Publicado en**: `.github/BACKLOG-SCRIPTORIUM.md` (épica SCRIPT-1.7.0)
 
 ---
 
 ## Contenido
 
-| Archivo | Descripción |
-|---------|-------------|
-| [conversacion-po-sm.md](conversacion-po-sm.md) | Conversación de planificación entre PO y SM |
-| [backlog-borrador.md](backlog-borrador.md) | Borrador del backlog con épica SCRIPT-1.7.0 |
+| Archivo | Descripción | Estado |
+|---------|-------------|--------|
+| [conversacion-po-sm.md](conversacion-po-sm.md) | Conversación de planificación entre PO y SM | ✅ Archivado |
+| [backlog-borrador.md](backlog-borrador.md) | Borrador del backlog con épica SCRIPT-1.7.0 | ✅ Aprobado |
 
 ---
 
@@ -22,6 +23,8 @@ Este borrador define el plugin `mcp-presets` para Scriptorium, que permite:
 1. **Importar/Exportar presets MCP** desde/hacia el proyecto Zeus
 2. **Gestionar catálogo local** de herramientas/recursos/prompts MCP
 3. **Asignar presets a agentes** creados con AGENT_CREATOR
+
+**Stories aprobadas**: 7 (23 puntos, 33 tasks)
 
 ---
 
@@ -36,11 +39,12 @@ Este borrador define el plugin `mcp-presets` para Scriptorium, que permite:
 
 ---
 
-## Próximos Pasos
+## Decisiones Clave
 
-1. [ ] Revisar borrador con el equipo
-2. [ ] Aprobar backlog → mover a BACKLOG-SCRIPTORIUM.md como SCRIPT-1.7.0
-3. [ ] Iniciar implementación del plugin
+1. **Modo MVP**: Offline primero, API después
+2. **Esquemas compatibles**: Usamos PresetModel y MCPModel de Zeus
+3. **Integración con AGENT_CREATOR**: Via campo `mcpPresets` en recipes
+4. **Sin conexión directa a extensión VS Code** en Sprint 1
 
 ---
 
