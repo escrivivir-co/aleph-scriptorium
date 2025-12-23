@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.7.0  
-> **Sprint actual**: 1 (Teatro Interactivo + Scrum + Refactorización Impress.js + Avatares + MCP-Presets)  
-> **Fecha inicio**: 2025-12-22
+> **Versión**: 2.0.0  
+> **Sprint actual**: 2 (Extensión VS Code + Feature Cycle 1)  
+> **Fecha inicio**: 2025-12-23
 
 ---
 
@@ -1581,3 +1581,233 @@ Los 5 auditores (banderas) son prismas que descomponen la luz del conocimiento e
 | `docs/index.md` | Rediseño completo de secciones |
 | `docs/_includes/header.html` | Añadir script toggle menú |
 | `docs/assets/css/main.css` | Estilos para prisma y nueva sección status |
+
+---
+
+# Épica: SCRIPT-2.0.0 — Extensión VS Code para Scriptorium
+
+**Objetivo**: Refactorizar `vscode-alephscript-extension` (Arrakis Theater) para crear una extensión especializada que integre el sistema de agentes, plugins y backlogs de ALEPH Scriptorium con VS Code y GitHub Copilot Chat.
+
+**Estado**: 🔄 En Progreso (Feature Cycle 1)
+
+**Rama de trabajo**: `integration/beta/scriptorium`  
+**Submódulo**: `vscode-alephscript-extension`  
+**Planificación completa**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/VS-CODE-EXTENSION/`
+
+---
+
+## Contexto
+
+### El problema
+
+Los agentes del Scriptorium (20+) y plugins (8) solo son accesibles vía Copilot Chat con invocación manual. No hay:
+- Vista visual de agentes por capas
+- Detección dinámica de agentes desde `.github/agents/`
+- Vista de plugins con estado enabled/disabled
+- Vista de backlogs con progreso de tasks
+- ChatParticipants personalizados para agentes principales
+
+### La solución
+
+Refactorizar la extensión Arrakis Theater para:
+1. **Carga dinámica**: Escanear y mostrar agentes/plugins del workspace
+2. **TreeViews**: Vistas laterales para Agentes, Plugins, Backlogs
+3. **ChatParticipants**: Registrar agentes como participantes de Copilot Chat
+4. **Panel de Sprint**: Estado actual del sprint con métricas
+
+### Arquitectura propuesta
+
+```
+src/scriptorium/
+├── services/
+│   ├── AgentLoaderService.ts
+│   ├── PluginLoaderService.ts
+│   └── BacklogLoaderService.ts
+├── parsers/
+│   ├── AgentParser.ts
+│   └── PluginParser.ts
+├── views/
+│   ├── AgentesTreeDataProvider.ts
+│   ├── PluginsTreeDataProvider.ts
+│   └── BacklogTreeDataProvider.ts
+└── participants/
+    ├── AlephChatParticipant.ts
+    └── OxChatParticipant.ts
+```
+
+---
+
+## Feature Cycle 1: Configuración y Carga Dinámica
+
+> **Ciclo actual**: Feature Cycle 1  
+> **Effort total asignado**: 21 pts  
+> **Objetivo**: Establecer base de código y carga dinámica de agentes/plugins
+
+---
+
+## Story: SCRIPT-2.0.0-S01 — Configuración Inicial
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: 🔄 En Progreso
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T001 | Crear rama `integration/beta/scriptorium` | 0.5 | ✅ |
+| T002 | Renombrar extensión: `scriptorium-vscode-extension` | 0.5 | ✅ |
+| T003 | Actualizar `package.json` (nombre, ID, descripción, keywords) | 0.5 | ✅ |
+| T004 | Crear `README.md` específico para Scriptorium | 0.5 | ✅ |
+
+**Definition of Done**: Extensión compila con nuevo nombre, sin conflictos con original.
+
+---
+
+## Story: SCRIPT-2.0.0-S02 — Limpieza de Módulos
+**Effort**: 3 pts  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T005 | Eliminar `MCPServerManager` (no usado en Scriptorium) | 0.5 | ⏳ |
+| T006 | Eliminar `SocketMonitor` (no usado) | 0.5 | ⏳ |
+| T007 | Simplificar `HackerPanels` (mantener 1 de 3) | 1 | ⏳ |
+| T008 | Refactorizar imports en `extensionBootstrap.ts` | 0.5 | ⏳ |
+| T009 | Actualizar `package.json` (eliminar comandos MCP/Socket) | 0.5 | ⏳ |
+
+**Definition of Done**: Código compila sin módulos eliminados.
+
+---
+
+## Story: SCRIPT-2.0.0-S03 — Parser de Agentes
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T010 | Crear `AgentParser.ts` para leer frontmatter YAML | 1 | ⏳ |
+| T011 | Definir interfaz `ScriptoriumAgent` | 0.5 | ⏳ |
+| T012 | Implementar extracción de handoffs | 0.5 | ⏳ |
+| T013 | Implementar detección de capa (UI/Backend/Sistema/Plugins) | 0.5 | ⏳ |
+| T014 | Tests unitarios para parser | 0.5 | ⏳ |
+
+**Definition of Done**: Parser extrae metadata de 20+ agentes sin errores.
+
+---
+
+## Story: SCRIPT-2.0.0-S04 — AgentLoader Service
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T015 | Crear `AgentLoaderService.ts` | 0.5 | ⏳ |
+| T016 | Implementar scan de `.github/agents/*.agent.md` | 0.5 | ⏳ |
+| T017 | Implementar caché de agentes | 0.5 | ⏳ |
+| T018 | Implementar refresh on file change (FileWatcher) | 0.5 | ⏳ |
+
+**Definition of Done**: Service carga todos los agentes del workspace.
+
+---
+
+## Story: SCRIPT-2.0.0-S05 — AgentesTreeDataProvider
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T019 | Crear `AgentesTreeDataProvider.ts` | 1 | ⏳ |
+| T020 | Implementar agrupación por capa (UI/Backend/Sistema/Plugins/Meta) | 0.5 | ⏳ |
+| T021 | Mostrar icono según capa (🟢/🔵⚫🔴🟡🟠/⚪/🔌/⚙️) | 0.5 | ⏳ |
+| T022 | Implementar tooltips con descripción y handoffs | 0.5 | ⏳ |
+| T023 | Implementar acciones contextuales (abrir, invocar chat) | 0.5 | ⏳ |
+
+**Definition of Done**: TreeView muestra 20+ agentes agrupados por capa.
+
+---
+
+## Story: SCRIPT-2.0.0-S06 — PluginLoader Service
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T024 | Crear `PluginLoaderService.ts` | 0.5 | ⏳ |
+| T025 | Parsear `.github/plugins/registry.json` | 0.5 | ⏳ |
+| T026 | Leer manifest.md de cada plugin | 0.5 | ⏳ |
+| T027 | Extraer agentes, prompts, instructions por plugin | 0.5 | ⏳ |
+
+**Definition of Done**: Service carga 8 plugins con sus recursos.
+
+---
+
+## Story: SCRIPT-2.0.0-S07 — PluginsTreeDataProvider
+**Effort**: 3 pts  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T028 | Crear `PluginsTreeDataProvider.ts` | 1 | ⏳ |
+| T029 | Mostrar plugins con estado (enabled/disabled) | 0.5 | ⏳ |
+| T030 | Expandir para ver agentes/prompts/instructions | 0.5 | ⏳ |
+| T031 | Acción contextual: Activar/Desactivar plugin | 0.5 | ⏳ |
+| T032 | Acción contextual: Abrir manifest.md | 0.5 | ⏳ |
+
+**Definition of Done**: TreeView muestra 8 plugins expandibles.
+
+---
+
+## Story: SCRIPT-2.0.0-S08 — ScriptoriumChatManager
+**Effort**: 3 pts  
+**Prioridad**: Could  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T033 | Crear `ScriptoriumChatManager.ts` | 1 | ⏳ |
+| T034 | Definir interfaz `ScriptoriumChatAgent` | 0.5 | ⏳ |
+| T035 | Implementar factory de ChatParticipants | 0.5 | ⏳ |
+| T036 | Registrar @aleph como ChatParticipant | 0.5 | ⏳ |
+| T037 | Registrar @ox como ChatParticipant | 0.5 | ⏳ |
+
+**Definition of Done**: 2+ ChatParticipants operativos en Copilot Chat.
+
+---
+
+## Métricas Feature Cycle 1
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 8 |
+| Tasks totales | 37 |
+| Effort total | 21 pts |
+| Prioridad Must | 5 stories (13 pts) |
+| Prioridad Should | 2 stories (6 pts) |
+| Prioridad Could | 1 story (3 pts) |
+| Completadas | **4** |
+| % Avance | **11%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| vscode-alephscript-extension | ✅ Submódulo | Rama `integration/beta/scriptorium` |
+| ALEPH/.github/agents/ | ✅ | 20+ agentes definidos |
+| ALEPH/.github/plugins/ | ✅ | 8 plugins instalados |
+| VS Code ^1.95.0 | ✅ | API ChatParticipant |
+
+---
+
+## Changelog
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-23 | Aprobar épica SCRIPT-2.0.0 desde borrador | @scrum |
+| 2025-12-23 | Completar S01 (T001-T004): configuración inicial | @aleph |
+
