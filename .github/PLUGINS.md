@@ -51,6 +51,39 @@ ARCHIVO/
 - Los datos son **mutables** durante la ejecución
 - Permite backup selectivo y versionado diferenciado
 
+
+#### Plugin Bridges
+
+> **Problema**: VS Code solo carga agentes desde `.github/agents/`, no desde carpetas de plugins.
+> **Solución**: Agentes bridge (`plugin_ox_{nombre}`) que delegan a los agentes reales.
+
+| Bridge | Plugin | Agentes |
+|--------|--------|---------|
+| `@plugin_ox_argboard` | ARG Board | Arrakis, BOE, Decoherence... (8) |
+| `@plugin_ox_enciclopedia` | Enciclopedia | Bibliotecario, HDF-EC (2) |
+| `@plugin_ox_ghpages` | GH-Pages | GHPages (1) |
+| `@plugin_ox_foroscraper` | Foro Scraper | ForoScraper (1) |
+| `@plugin_ox_agentcreator` | Agent Creator | AgentCreator (1) |
+| `@plugin_ox_teatro` | Teatro | Teatro (1) |
+| `@plugin_ox_scrum` | Scrum | Scrum (1) |
+
+**Invocar plugins a través de bridges**: Los handoffs de @aleph apuntan a bridges detectables por VS Code.
+
+#### Plugin Discovery (Settings de Workspace)
+
+> **SCRIPT-1.5.0**: Los prompts e instructions de plugins ahora son accesibles vía `.vscode/settings.json`.
+
+Los settings de workspace añaden carpetas adicionales para detectar recursos de plugins:
+
+| Setting | Propósito |
+|---------|-----------|
+| `chat.promptFilesLocations` | Detecta prompts de plugins (33 adicionales) |
+| `chat.instructionsFilesLocations` | Detecta instructions de plugins (7 adicionales) |
+| `chat.useNestedAgentsMdFiles` | Busca AGENTS.md en subcarpetas |
+| `chat.promptFilesRecommendations` | Muestra prompts sugeridos |
+
+**Resultado**: Los prompts de plugins aparecen al escribir `/` en el chat.
+
 ### 2.3. Settings de Workspace para Plugin Discovery
 
 > **SCRIPT-1.5.0**: VS Code solo detecta automáticamente recursos en las carpetas canónicas (`.github/prompts/`, `.github/instructions/`). Los plugins requieren settings adicionales.

@@ -5,6 +5,7 @@
 > **Fecha**: 2025-12-20  
 > **Epic**: SCRIPT-0.1.0  
 
+
 ---
 
 ## 1. Resumen Ejecutivo
