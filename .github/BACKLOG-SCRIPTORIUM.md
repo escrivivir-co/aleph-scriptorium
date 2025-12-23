@@ -559,6 +559,8 @@ meta:
 | 2025-12-23 | Aprobar y publicar épica SCRIPT-1.7.0: Plugin MCP-PRESETS | Aleph |
 | 2025-12-24 | Añadir submódulo as-utils-sdk (VibeCoding Connector) | Aleph |
 | 2025-12-24 | Crear épica SCRIPT-1.9.0: Integración AS-Utils-SDK | Aleph |
+| 2025-12-24 | Añadir submódulo as-gym (Almas para Agentes) | Aleph |
+| 2025-12-24 | Crear épica SCRIPT-1.10.0: Integración AS-Gym | Aleph |
 
 ---
 
@@ -2342,3 +2344,214 @@ Documentar integración y validar funcionamiento.
 | 2025-12-24 | Crear rama integration/beta/scriptorium | @aleph |
 | 2025-12-24 | Crear conversación PO-SM con análisis de agentes | @scrum |
 | 2025-12-24 | Aprobar épica SCRIPT-1.9.0 | @scrum |
+
+---
+
+# Épica: SCRIPT-1.10.0 — Integración AS-Gym (Almas para Agentes)
+
+**Objetivo**: Integrar el submódulo `as-gym` como repositorio de "almas" (lógicas y autómatas) para agentes, extendiendo el plugin AGENT_CREATOR con paradigmas de IA formales: lógica clásica, conexionista, simbólica, sistemas basados en reglas/casos, y más.
+
+**Estado**: 🆕 Inicializada (pendiente de análisis profundo)
+
+**Submódulo**: `as-gym` (https://github.com/escrivivir-co/as-gym)  
+**Rama origen**: `dev/001`  
+**Rama de integración**: `integration/beta/scriptorium`  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-GYM/conversacion-po-sm.md`
+
+---
+
+## Contexto
+
+### El problema
+
+El plugin AGENT_CREATOR crea agentes con personalidad y conocimiento, pero:
+- No tienen **motor de razonamiento formal**
+- No pueden aplicar **lógica estructurada**
+- Dependen 100% de prompts sin estado interno persistente
+
+### La solución
+
+Integrar `as-gym/alephscript/src/FIA/` (Fundamentos de Inteligencia Artificial):
+- **10 paradigmas** de IA disponibles como "almas"
+- **Interfaz iFIA** compatible con nuestra arquitectura
+- **Motor de ejecución** con kernel y caché
+- Integración ONNX para modelos pre-entrenados
+
+### Arquitectura del submódulo
+
+```
+as-gym/
+├── alephscript/src/FIA/           # 🎯 OBJETIVO PRINCIPAL
+│   ├── iFIA.ts                    # Interfaz base
+│   ├── paradigmas/                # 10 paradigmas de IA
+│   │   ├── conexionista/          # Redes neuronales
+│   │   ├── logica/                # Lógica formal
+│   │   ├── simbolica/             # IA simbólica
+│   │   ├── sbc/                   # Sistemas basados en casos
+│   │   ├── sbr/                   # Sistemas basados en reglas
+│   │   ├── situada/               # IA embodied
+│   │   ├── hibrido/               # Combinaciones
+│   │   ├── cientifica/            # Método científico
+│   │   ├── gramaticas/            # Gramáticas formales
+│   │   └── sistemas/              # Teoría de sistemas
+│   ├── engine/                    # Motor de ejecución
+│   │   ├── kernel/                # Núcleo
+│   │   └── onnx/                  # Modelos ONNX
+│   ├── mundos/                    # Entornos/mundos
+│   └── agents/                    # Agentes predefinidos
+├── as-core/                       # Core compartido
+├── ws-server/                     # WebSocket server
+└── webapp/                        # Aplicación web
+```
+
+### Mapeo paradigmas ↔ banderas (preliminar)
+
+| Paradigma | Bandera | Afinidad |
+|-----------|---------|----------|
+| `logica/` | @blueflag | Verdad formal, proposiciones |
+| `sbr/` | @blackflag | Reglas de poder, condiciones |
+| `situada/` | @redflag | Contexto material, embodied |
+| `conexionista/` | @yellowflag | Patrones emergentes, límites |
+| `sbc/` | @revisor | Casos precedentes, coherencia |
+| `simbolica/` | @aleph | Producción, manipulación |
+| `gramaticas/` | @orangeflag | Registro, estructura formal |
+
+---
+
+## Story: SCRIPT-1.10.0-S01 — Inicialización del Submódulo
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Añadir submódulo `as-gym` desde rama dev/001 | ✅ |
+| T002 | Crear rama `integration/beta/scriptorium` | ✅ |
+| T003 | Documentar estructura en conversación PO-SM | ✅ |
+| T004 | Añadir épica al backlog | ✅ |
+
+---
+
+## Story: SCRIPT-1.10.0-S02 — Análisis de Paradigmas FIA
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente (próxima sesión)
+
+### Descripción
+Inspección profunda de cada paradigma en `paradigmas/`.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Analizar `paradigmas/logica/` | ⏳ |
+| T006 | Analizar `paradigmas/conexionista/` | ⏳ |
+| T007 | Analizar `paradigmas/simbolica/` | ⏳ |
+| T008 | Analizar `paradigmas/sbr/` y `paradigmas/sbc/` | ⏳ |
+| T009 | Analizar `paradigmas/situada/` | ⏳ |
+| T010 | Analizar `paradigmas/hibrido/` | ⏳ |
+| T011 | Documentar catálogo de paradigmas disponibles | ⏳ |
+
+**Definition of Done**: Catálogo documentado con capacidades de cada paradigma.
+
+---
+
+## Story: SCRIPT-1.10.0-S03 — Integración con AGENT_CREATOR
+**Puntos**: 8  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Conectar paradigmas FIA como opción de "alma" en la creación de agentes.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Añadir campo `paradigma` al schema de recipes | ⏳ |
+| T013 | Crear selector de paradigma en flujo de creación | ⏳ |
+| T014 | Implementar carga de paradigma en agente generado | ⏳ |
+| T015 | Documentar paradigmas disponibles en AGENT_CREATOR | ⏳ |
+
+**Definition of Done**: Usuario puede elegir paradigma al crear agente.
+
+---
+
+## Story: SCRIPT-1.10.0-S04 — Motor de Ejecución
+**Puntos**: 5  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Habilitar el motor de ejecución (`engine/`) para agentes con paradigma.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Analizar `engine/kernel/` | ⏳ |
+| T017 | Evaluar integración ONNX | ⏳ |
+| T018 | Definir requisitos de runtime | ⏳ |
+| T019 | Documentar modos de ejecución | ⏳ |
+
+**Definition of Done**: Motor ejecutable en entorno Scriptorium.
+
+---
+
+## Story: SCRIPT-1.10.0-S05 — Documentación y Bridge
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+Crear bridge agéntico y documentar integración.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T020 | Crear `plugin_ox_asgym.agent.md` | ⏳ |
+| T021 | Actualizar AGENT_CREATOR/README.md | ⏳ |
+| T022 | Actualizar registry.json | ⏳ |
+| T023 | Documentar paradigmas en copilot-instructions | ⏳ |
+
+**Definition of Done**: Bridge funcional y documentación completa.
+
+---
+
+## Métricas SCRIPT-1.10.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 23 |
+| Puntos totales | 23 |
+| Prioridad Must | 4 stories (18 pts) |
+| Prioridad Should | 1 story (5 pts) |
+| Completadas | **1** (S01) |
+| % Avance | **20%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| Submódulo as-gym | ✅ Añadido | Rama integration/beta/scriptorium |
+| Plugin AGENT_CREATOR | ✅ Instalado | Target de integración |
+| TypeScript runtime | ⚠️ Evaluar | FIA está en TypeScript |
+| ONNX runtime (opcional) | ⚠️ Evaluar | Para modelos pre-entrenados |
+
+---
+
+## Riesgos Identificados
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Complejidad de TypeScript | Media | Medio | Abstraer vía interfaces |
+| ONNX requiere binarios | Media | Alto | Modo con/sin ONNX |
+| Paradigmas incompletos | Baja | Medio | Catálogo con niveles de madurez |
+| Conflicto de dependencias | Baja | Medio | Aislamiento de runtime |
+
+---
+
+## Changelog SCRIPT-1.10.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Añadir submódulo as-gym desde dev/001 | @aleph |
+| 2025-12-24 | Crear rama integration/beta/scriptorium | @aleph |
+| 2025-12-24 | Crear conversación PO-SM preliminar | @scrum |
+| 2025-12-24 | Inicializar épica SCRIPT-1.10.0 | @scrum |

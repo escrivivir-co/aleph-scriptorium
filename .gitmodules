@@ -7,3 +7,7 @@
 [submodule "as-utils-sdk"]
 	path = as-utils-sdk
 	url = https://github.com/escrivivir-co/as-utils-sdk.code-workspace
+[submodule "as-gym"]
+	path = as-gym
+	url = https://github.com/escrivivir-co/as-gym
+	branch = dev/001
