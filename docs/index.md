@@ -8,9 +8,9 @@ permalink: /
 
 <!-- RELEASE BANNER -->
 <div class="release-banner">
-  <div class="release-badge">🎉 v1.0.0-beta.1</div>
+  <div class="release-badge">🚀 v1.0.0-beta.2</div>
   <div class="release-text">
-    <strong>Primera piedra del camino</strong> · Sprint 1 cerrado · 
+    <strong>8 plugins · 36 agentes · Tu ejército de IA listo</strong> · 
     <a href="{{ site.baseurl }}/roadmap/">Ver roadmap →</a>
   </div>
 </div>
@@ -123,28 +123,46 @@ permalink: /
 <section class="home-section">
 <div class="home-status-simple">
   <div class="status-simple-header">
-    <h2>📸 Sprint 1 — Teatro Interactivo</h2>
-    <span class="status-simple-date">22 dic 2025</span>
+    <h2>� Lo que puedes hacer HOY</h2>
+    <span class="status-simple-date">23 dic 2025</span>
   </div>
   <div class="status-simple-metrics">
     <div class="status-metric">
-      <span class="status-metric-value">7</span>
-      <span class="status-metric-label">Plugins</span>
+      <span class="status-metric-value">8</span>
+      <span class="status-metric-label">Plugins listos</span>
     </div>
     <div class="status-metric">
-      <span class="status-metric-value">30</span>
-      <span class="status-metric-label">Agentes</span>
+      <span class="status-metric-value">36</span>
+      <span class="status-metric-label">Agentes IA</span>
     </div>
     <div class="status-metric">
-      <span class="status-metric-value">11</span>
-      <span class="status-metric-label">Páginas</span>
+      <span class="status-metric-value">5</span>
+      <span class="status-metric-label">Auditores</span>
     </div>
     <div class="status-metric">
-      <span class="status-metric-value">2</span>
-      <span class="status-metric-label">Obras</span>
+      <span class="status-metric-value">∞</span>
+      <span class="status-metric-label">Posibilidades</span>
     </div>
   </div>
-  <a href="{{ site.baseurl }}/roadmap/#galería-de-fotos-de-estado" class="status-simple-link">Ver galería completa en roadmap →</a>
+  <div class="status-features-grid">
+    <div class="feature-highlight">
+      <span class="feature-icon">📰</span>
+      <span class="feature-text"><strong>Escribe noticias</strong> con método 5W + auditoría</span>
+    </div>
+    <div class="feature-highlight">
+      <span class="feature-icon">🎭</span>
+      <span class="feature-text"><strong>Crea experiencias</strong> transmedia en 3D</span>
+    </div>
+    <div class="feature-highlight">
+      <span class="feature-icon">🤖</span>
+      <span class="feature-text"><strong>Diseña agentes</strong> especializados para tu proyecto</span>
+    </div>
+    <div class="feature-highlight">
+      <span class="feature-icon">📚</span>
+      <span class="feature-text"><strong>Consulta tomos</strong> enciclopédicos con IA</span>
+    </div>
+  </div>
+  <a href="{{ site.baseurl }}/roadmap/#galeria-fotos" class="status-simple-link">Ver progreso completo →</a>
 </div>
 </section>
 

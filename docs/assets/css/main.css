@@ -2474,3 +2474,50 @@ li {
   font-size: 0.9rem;
 }
 
+/* Features Grid para STATUS */
+.status-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.feature-highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.feature-highlight:hover {
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.feature-highlight .feature-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.feature-highlight .feature-text {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+.feature-highlight .feature-text strong {
+  color: #1a1a1a;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .status-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

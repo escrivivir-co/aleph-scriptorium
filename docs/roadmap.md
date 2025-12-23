@@ -761,6 +761,23 @@ permalink: /roadmap/
   <div class="fotos-gallery">
     <!-- Más reciente primero -->
     <div class="foto-card">
+      <div class="foto-header sprint-2">
+        <span class="foto-icon">�</span>
+        <span class="foto-date">2025-12-23</span>
+      </div>
+      <div class="foto-body">
+        <h4>Sprint 2: Tu ejército de IA, listo</h4>
+        <p class="foto-summary">8 plugins, 36 agentes, 5 auditores. Todo lo que necesitas para escribir con IA que trabaja para ti.</p>
+        <div class="foto-metrics">
+          <span class="metric">🔌 8 plugins</span>
+          <span class="metric">🤖 36 agentes</span>
+          <span class="metric">🎯 5 auditores</span>
+        </div>
+        <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-23_Sprint2_FeatureCycle1.md" class="foto-link">Ver foto completa →</a>
+      </div>
+    </div>
+    
+    <div class="foto-card">
       <div class="foto-header sprint-1">
         <span class="foto-icon">📸</span>
         <span class="foto-date">2025-12-22</span>
