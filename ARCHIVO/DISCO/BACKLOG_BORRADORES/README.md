@@ -8,6 +8,8 @@
 
 ## Contenido
 
+### Ciclo 1: Integración de Agentes Core (Rondas 1-4)
+
 | Archivo | Descripción | Agente | Estado |
 |---------|-------------|--------|--------|
 | `01_planificacion-extension-vscode.md` | Conversación PO-SM de planificación | @scrum | ✅ |
@@ -17,17 +19,37 @@
 | `05_periodico-comunicacion-extension.md` | Plana noticiera de la integración | @periodico | ✅ |
 | `06_revisor-auditoria-extension.md` | Revisión doctrinal de la propuesta | @revisor | ✅ |
 
+### Ciclo 2: Integración de Plugins (Rondas 7-10)
+
+| Archivo | Descripción | Agente | Estado |
+|---------|-------------|--------|--------|
+| `07_ox-plugins-extension.md` | Matriz Plugin × Capacidad, 8 épicas | @ox | ✅ |
+| `08_aleph-plugins-extension.md` | API de registro dinámico, systemPrompts | @aleph | ✅ |
+| `09_periodico-plugins-extension.md` | Análisis 5W + 4 Banderas de plugins | @periodico | ✅ |
+| `10_revisor-plugins-extension.md` | Auditoría doctrinal de plugins | @revisor | ✅ |
+
 ---
 
 ## Rondas de Intervención — COMPLETADAS
 
-El proceso de integración siguió un protocolo de rondas con 4 agentes:
+### Ciclo 1: Agentes Core
 
 ```
 Ronda 1: @ox (Oráculo)       → Auditoría de ontología ✅
 Ronda 2: @aleph (Producción) → Perspectiva doctrinal y prioridades ✅
 Ronda 3: @periodico (Comunicación) → Plana noticiera del cambio ✅
 Ronda 4: @revisor (Auditoría) → Revisión final ✅
+
+Estado: APROBADO CON OBSERVACIONES
+```
+
+### Ciclo 2: Plugins
+
+```
+Ronda 7: @ox (Oráculo)       → Matriz Plugin × Capacidad ✅
+Ronda 8: @aleph (Producción) → API de registro dinámico ✅
+Ronda 9: @periodico (Comunicación) → 5W + 4 Banderas ✅
+Ronda 10: @revisor (Auditoría) → Auditoría doctrinal ✅
 
 Estado: APROBADO CON OBSERVACIONES
 ```
