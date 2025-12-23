@@ -1,6 +1,6 @@
 # Borradores de Backlog — Sprint 2
 
-> **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`
+> **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/CARPETA_TRABAJO`
 > **Estado**: ✅ REVISADO (pendiente aprobación final PO)
 > **Fecha**: 2025-12-23
 
