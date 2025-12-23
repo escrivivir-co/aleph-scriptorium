@@ -109,9 +109,13 @@
       <h2>{{ escena.nombre }}</h2>
       
       {% if escena.contenido_ref %}
-        {% comment %}Cargar contenido desde _includes/teatro/escenas/{% endcomment %}
+        {% comment %}
+        Cargar contenido desde _includes/teatro/escenas/
+        Usamos capture + markdownify para procesar el Markdown incluido
+        {% endcomment %}
         {% capture include_path %}teatro/escenas/{{ page.slug }}/{{ escena.contenido_ref }}{% endcapture %}
-        {% include {{ include_path }} %}
+        {% capture escena_content %}{% include {{ include_path }} %}{% endcapture %}
+        {{ escena_content | markdownify }}
       {% else %}
         <p>{{ escena.descripcion }}</p>
       {% endif %}
