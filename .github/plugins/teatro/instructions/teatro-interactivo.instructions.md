@@ -372,3 +372,91 @@ bundle exec jekyll serve
 # Navegar a http://localhost:4000/teatro/{obra}/
 # Verificar que las teclas ← → Espacio funcionan
 ```
+
+---
+
+## Reglas de Kramdown (Jekyll) — CRÍTICO
+
+> **Lección aprendida**: BUG-002 + hotfixes de 2025-12-23
+
+Jekyll usa **kramdown** como procesador Markdown. Kramdown tiene reglas específicas que **rompen el Markdown si no se respetan**.
+
+### Regla 1: `markdown="1"` en elementos HTML
+
+Kramdown **NO procesa Markdown dentro de etiquetas HTML** por defecto. Si escribes:
+
+```html
+<!-- ❌ INCORRECTO: Markdown no se procesará -->
+<div class="container">
+## Título
+- Item 1
+- Item 2
+</div>
+```
+
+El resultado será texto plano: `## Título - Item 1 - Item 2`
+
+**Solución**: Añadir `markdown="1"` al elemento contenedor:
+
+```html
+<!-- ✅ CORRECTO: Kramdown procesará el Markdown -->
+<div class="container" markdown="1">
+
+## Título
+
+- Item 1
+- Item 2
+
+</div>
+```
+
+**Reglas adicionales**:
+- Dejar **línea en blanco** después del tag de apertura
+- Dejar **línea en blanco** antes del tag de cierre
+- Aplicar a TODOS los contenedores: `<div>`, `<section>`, `<article>`, etc.
+
+### Regla 2: `markdownify` para contenido incluido
+
+Cuando usas `{% include %}` para insertar archivos Markdown dentro de un layout HTML, el contenido **NO se procesa automáticamente**.
+
+```liquid
+<!-- ❌ INCORRECTO: Contenido raw -->
+{% include teatro/escenas/mi-escena.md %}
+```
+
+**Solución**: Usar `capture` + `markdownify`:
+
+```liquid
+<!-- ✅ CORRECTO: Markdown procesado -->
+{% capture content %}{% include teatro/escenas/mi-escena.md %}{% endcapture %}
+{{ content | markdownify }}
+```
+
+### Regla 3: Evitar HTML inline con Markdown
+
+No mezclar HTML y Markdown en la misma línea:
+
+```html
+<!-- ❌ INCORRECTO -->
+<em>Las obras clausuradas se archivarán aquí.</em>
+
+<!-- ✅ CORRECTO -->
+*Las obras clausuradas se archivarán aquí.*
+```
+
+### Checklist antes de publicar con GH-PAGES
+
+- [ ] Todo `<div>`, `<section>` con Markdown interno tiene `markdown="1"`
+- [ ] Línea en blanco después de cada tag de apertura
+- [ ] Línea en blanco antes de cada tag de cierre
+- [ ] Contenido de `{% include %}` pasa por `| markdownify`
+- [ ] No hay HTML inline (`<em>`, `<strong>`) donde funciona Markdown
+
+### Archivos afectados por estas reglas
+
+| Archivo | Requiere atención |
+|---------|-------------------|
+| `docs/teatro.md` | Sí — contenedores con `markdown="1"` |
+| `docs/_layouts/obra.html` | Sí — usar `markdownify` en includes |
+| `docs/_includes/teatro/**/*.md` | No — ya son Markdown puro |
+| `docs/teatro/*.md` | Depende — revisar si usan HTML |
