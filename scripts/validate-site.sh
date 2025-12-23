@@ -1,8 +1,14 @@
 #!/bin/bash
 # Script de validación local de Jekyll (sin servidor)
 # Uso: ./scripts/validate-site.sh
+# Requiere: rbenv con Ruby 3.0.1+
 
 set -e
+
+# Inicializar rbenv si está disponible
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init -)"
+fi
 
 echo "🔍 Validando sitio Jekyll localmente..."
 echo ""

@@ -1,48 +1,43 @@
 #!/bin/bash
 # Script de instalación de Jekyll para validación local
 # Uso: ./scripts/setup-jekyll.sh
+# Requiere: rbenv con Ruby 3.0.1+
 
 set -e
 
 echo "🔧 Instalando Jekyll para validación local..."
 echo ""
 
+# Inicializar rbenv si está disponible
+if command -v rbenv &> /dev/null; then
+    eval "$(rbenv init -)"
+fi
+
 # Verificar Ruby
 echo "✓ Verificando Ruby..."
 ruby_version=$(ruby --version)
 echo "  $ruby_version"
 
-# Instalar bundler (versión compatible con Ruby 2.6)
+# Verificar versión mínima (3.0+)
+if [[ "$ruby_version" == *"2.6"* ]] || [[ "$ruby_version" == *"2.7"* ]]; then
+    echo ""
+    echo "⚠️  Ruby 2.x detectado. Se requiere Ruby 3.0+"
+    echo "   Ejecuta: rbenv global 3.0.1 && exec \$SHELL"
+    exit 1
+fi
+
+# Instalar bundler
 echo ""
 echo "📦 Instalando Bundler..."
-gem install bundler -v 2.4.22 --user-install
-
-# Añadir al PATH si no está
-if [[ ":$PATH:" != *":$HOME/.gem/ruby/2.6.0/bin:"* ]]; then
-    export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-    echo "export PATH=\"\$HOME/.gem/ruby/2.6.0/bin:\$PATH\"" >> ~/.zshrc
-    echo "  ✓ Añadido ~/.gem/ruby/2.6.0/bin al PATH"
-fi
+gem install bundler --user-install
 
 # Navegar a docs/
 cd docs/
 
-# Crear Gemfile si no existe
-if [ ! -f "Gemfile" ]; then
-    echo ""
-    echo "📝 Creando Gemfile..."
-    cat > Gemfile << 'EOF'
-source "https://rubygems.org"
-
-gem "jekyll", "~> 4.2.0"
-gem "jekyll-seo-tag"
-gem "webrick", "~> 1.7"
-
-group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-sitemap"
-end
-EOF
+# Eliminar Gemfile.lock antiguo si existe (para evitar conflictos)
+if [ -f "Gemfile.lock" ]; then
+    echo "🗑️  Eliminando Gemfile.lock antiguo..."
+    rm Gemfile.lock
 fi
 
 # Instalar dependencias
