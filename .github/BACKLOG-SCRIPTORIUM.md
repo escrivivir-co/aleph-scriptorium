@@ -1810,4 +1810,287 @@ src/scriptorium/
 |-------|--------|-------|
 | 2025-12-23 | Aprobar épica SCRIPT-2.0.0 desde borrador | @scrum |
 | 2025-12-23 | Completar S01 (T001-T004): configuración inicial | @aleph |
+| 2025-12-23 | Añadir épica SCRIPT-1.8.0: Actualización Portada Periódico Diciembre 2025 | @scrum |
 
+
+---
+
+# Épica: SCRIPT-1.8.0 — Actualización Portada Periódico Diciembre 2025
+
+**Objetivo**: Actualizar la cabecera (titular) y las tesis del número en `docs/periodico.md` mediante conversación editorial con el usuario, aplicando el protocolo de sesiones editoriales documentado en `ARCHIVO/DISCO/Diciembre_25_Portada/`.
+
+**Agente responsable**: @periodico  
+**Estado**: 🔄 En Progreso (Feature Cycle 1)
+
+**Ticket fuente**: `ARCHIVO/DISCO/Diciembre_25_Portada/TICKET-TESIS-NUMERO.md`  
+**Material de sesiones**: `ARCHIVO/DISCO/Diciembre_25_Portada/01_Cabecera.md`, `02_Pie.md`
+
+---
+
+## Contexto
+
+### El problema
+
+El periódico Nº 1 (Diciembre 2025) tiene:
+- **Cabecera**: Titular dialéctico actual que puede mejorarse con gancho poético
+- **Tesis**: 3 tesis que las sesiones editoriales proponen expandir a 5
+
+### La solución
+
+Conversación editorial estructurada donde @periodico:
+1. Presenta las opciones al usuario editor
+2. Guía la decisión con tests de @orangeflag
+3. Redacta textos finales
+4. Entrega conversación + textos para publicar
+
+### Zonas a modificar en periodico.md
+
+| Zona | Ubicación | Contenido actual |
+|------|-----------|------------------|
+| Cabecera | `<div class="periodico-headline">` | Titular dialéctico |
+| Pie | `<div class="periodico-thesis">` | 3 tesis |
+
+---
+
+## Propuestas disponibles (del ticket)
+
+### A. Cabecera — Titular
+
+| Opción | Registro | Contenido resumido |
+|--------|----------|-------------------|
+| **Actual** | Dialéctico | «La verdad ya no es un dato...» |
+| **A** | Poético | «Han capturado las palabras...» |
+| **B** | Mixto | «Han capturado las palabras.» + subtítulo dialéctico |
+
+### B. Pie — Tesis
+
+| Opción | Nº tesis | Cambio principal |
+|--------|----------|------------------|
+| **Actual** | 3 | Diagnóstico convergente |
+| **5T** | 5 | Añadir tesis 0 (posición) y tesis 4 (interior) |
+| **3T+** | 3 | Mantener estructura, refinar contenido |
+
+---
+
+## Stories
+
+### SCRIPT-1.8.0-S01 — Preparación y Análisis
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+#### Descripción
+Revisar material de sesiones editoriales y preparar contexto para conversación.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T001 | Leer y sintetizar 01_Cabecera.md | 0.5 | ✅ |
+| T002 | Leer y sintetizar 02_Pie.md | 0.5 | ✅ |
+| T003 | Crear TICKET-TESIS-NUMERO.md con propuestas | 0.5 | ✅ |
+| T004 | Documentar protocolo en instrucciones | 0.5 | ✅ |
+
+**Definition of Done**: Ticket creado con propuestas estructuradas y sacrificios declarados.
+
+---
+
+### SCRIPT-1.8.0-S02 — Conversación Editorial: Cabecera
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+@periodico conversa con el usuario editor para decidir el titular.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T005 | Presentar las 3 opciones de cabecera al usuario | 0.5 | ⏳ |
+| T006 | Invocar @orangeflag para auditar registro (modo, auditorio, género) | 1 | ⏳ |
+| T007 | Recoger decisión del usuario con justificación | 0.5 | ⏳ |
+| T008 | Documentar decisión en conversacion-cabecera.md | 0.5 | ⏳ |
+| T009 | Redactar texto final de cabecera | 0.5 | ⏳ |
+
+**Definition of Done**: Decisión tomada, documentada y texto final redactado.
+
+**Entregables**:
+- `ARCHIVO/DISCO/Diciembre_25_Portada/conversacion-cabecera.md`
+- Texto HTML final para `<div class="periodico-headline">`
+
+---
+
+### SCRIPT-1.8.0-S03 — Conversación Editorial: Tesis
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+@periodico conversa con el usuario editor para decidir las tesis del número.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T010 | Presentar las 3 opciones de tesis al usuario (Actual, 5T, 3T+) | 0.5 | ⏳ |
+| T011 | Explicar sacrificios de cada opción | 0.5 | ⏳ |
+| T012 | Si elige 5T: revisar tesis 0 (posición) con usuario | 0.5 | ⏳ |
+| T013 | Si elige 5T: revisar tesis 4 (interior) con usuario | 0.5 | ⏳ |
+| T014 | Invocar @orangeflag para auditar estilo (claridad, entimema) | 1 | ⏳ |
+| T015 | Recoger decisión del usuario con justificación | 0.5 | ⏳ |
+| T016 | Documentar decisión en conversacion-tesis.md | 0.5 | ⏳ |
+| T017 | Redactar texto final de tesis (HTML) | 1 | ⏳ |
+
+**Definition of Done**: Decisión tomada, documentada y texto final redactado.
+
+**Entregables**:
+- `ARCHIVO/DISCO/Diciembre_25_Portada/conversacion-tesis.md`
+- Texto HTML final para `<div class="periodico-thesis">`
+
+---
+
+### SCRIPT-1.8.0-S04 — Redacción Final y Revisión
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+Consolidar textos finales y preparar para publicación.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T018 | Consolidar textos de cabecera y tesis en un entregable | 0.5 | ⏳ |
+| T019 | Revisar coherencia entre cabecera y tesis | 0.5 | ⏳ |
+| T020 | Invocar @revisor para verificar voz/estilo | 1 | ⏳ |
+| T021 | Crear ENTREGABLE-FINAL.md con conversaciones + textos | 1 | ⏳ |
+
+**Definition of Done**: Entregable listo para integración.
+
+**Entregables**:
+- `ARCHIVO/DISCO/Diciembre_25_Portada/ENTREGABLE-FINAL.md`
+
+---
+
+### SCRIPT-1.8.0-S05 — Integración y Publicación
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+Aplicar cambios en periodico.md y publicar.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T022 | Aplicar cambios en docs/periodico.md (cabecera) | 0.5 | ⏳ |
+| T023 | Aplicar cambios en docs/periodico.md (tesis) | 0.5 | ⏳ |
+| T024 | Validar localmente con Jekyll | 0.5 | ⏳ |
+| T025 | Generar commit según protocolo DevOps | 0.5 | ⏳ |
+
+**Definition of Done**: periodico.md actualizado y commit realizado.
+
+**Commit esperado**:
+```
+feat(ghpages/periodico): actualizar tesis del número Diciembre 2025
+
+- Cabecera: [describir cambio elegido]
+- Pie: [describir cambio elegido]
+- Basado en sesiones editoriales en ARCHIVO/DISCO/Diciembre_25_Portada/
+
+refs #GHPAGES-1.0.0-T001
+```
+
+---
+
+## Métricas SCRIPT-1.8.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 25 |
+| Puntos totales | 15 |
+| Prioridad Must | 5 stories (15 pts) |
+| Completadas | **1** (S01) |
+| % Avance | **20%** |
+
+---
+
+## Flujo de Conversación Editorial
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    FLUJO @PERIODICO                                  │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│   S01 (✅)              S02                    S03                    │
+│   Preparación    →    Cabecera    →    Tesis                         │
+│   TICKET               Conversación     Conversación                  │
+│                        con Usuario      con Usuario                   │
+│                             │                 │                       │
+│                             ▼                 ▼                       │
+│                        @orangeflag       @orangeflag                  │
+│                        (registro)        (estilo)                     │
+│                             │                 │                       │
+│                             ▼                 ▼                       │
+│                        Decisión           Decisión                    │
+│                             │                 │                       │
+│                             └────────┬────────┘                       │
+│                                      ▼                                │
+│                                    S04                                │
+│                              Redacción Final                          │
+│                              @revisor (voz)                           │
+│                                      │                                │
+│                                      ▼                                │
+│                                    S05                                │
+│                              Integración                              │
+│                              docs/periodico.md                        │
+│                              Commit                                   │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Entregables Esperados
+
+| Entregable | Ubicación | Contenido |
+|------------|-----------|-----------|
+| Conversación Cabecera | `DISCO/Diciembre_25_Portada/conversacion-cabecera.md` | Diálogo @periodico ↔ Usuario |
+| Conversación Tesis | `DISCO/Diciembre_25_Portada/conversacion-tesis.md` | Diálogo @periodico ↔ Usuario |
+| Entregable Final | `DISCO/Diciembre_25_Portada/ENTREGABLE-FINAL.md` | Textos HTML listos + resumen |
+| Periódico Actualizado | `docs/periodico.md` | Cabecera + Tesis modificados |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| Ticket GHPAGES-1.0.0-T001 | ✅ Creado | Propuestas documentadas |
+| Sesión 01_Cabecera.md | ✅ Completada | Material para S02 |
+| Sesión 02_Pie.md | ✅ Completada | Material para S03 |
+| Protocolo en instrucciones | ✅ Documentado | periodico.instructions.md |
+| CSS .periodico-thesis | ⚠️ Verificar | Soporte para 5 items y `<ol start="0">` |
+
+---
+
+## Riesgos Identificados
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Tesis 4 suena a autoayuda | Media | Medio | Vigilar registro con @orangeflag |
+| Usuario indeciso | Baja | Bajo | Ofrecer recomendación fundamentada |
+| CSS no soporta 5 items | Baja | Bajo | Verificar antes de publicar |
+
+---
+
+## Protocolo de Invocación
+
+Para iniciar la conversación editorial:
+
+```
+@periodico Actualizar portada del número Diciembre 2025.
+Adjunto: ARCHIVO/DISCO/Diciembre_25_Portada/TICKET-TESIS-NUMERO.md
+```
+
+El agente @periodico:
+1. Lee el ticket y las sesiones editoriales
+2. Presenta opciones al usuario
+3. Invoca @orangeflag para auditar registro
+4. Documenta decisiones
+5. Redacta textos finales
+6. Entrega ENTREGABLE-FINAL.md para integración
