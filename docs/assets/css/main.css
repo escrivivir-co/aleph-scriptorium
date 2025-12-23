@@ -2292,3 +2292,185 @@ li {
   .fundacion-ecosistema-flow { flex-direction: column; }
   .fundacion-eco-arrow { transform: rotate(90deg); }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   INDEX SPLASH - Rediseño SCRIPT-1.6.0
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Menú hamburguesa activo */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.menu-toggle span {
+  transition: all 0.3s ease;
+}
+
+/* Sección Prisma del Conocimiento */
+.home-prism {
+  text-align: center;
+  padding: var(--space-lg) 0;
+}
+
+.prism-container {
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+}
+
+.prism-visual {
+  position: relative;
+  height: 120px;
+  margin-bottom: var(--space-md);
+}
+
+.prism-light-in {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 30%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #fff, #fff);
+  transform: translateY(-50%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.prism-shape {
+  position: absolute;
+  left: 28%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid rgba(255, 255, 255, 0.15);
+  transform: translateY(-50%);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.prism-spectrum {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  width: 55%;
+  height: 60px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.spectrum-ray {
+  height: 3px;
+  border-radius: 2px;
+  box-shadow: 0 0 10px currentColor;
+  animation: ray-pulse 2s ease-in-out infinite;
+}
+
+.spectrum-ray:nth-child(1) { background: #2563eb; color: #2563eb; animation-delay: 0s; }
+.spectrum-ray:nth-child(2) { background: #1a1a1a; color: #666; animation-delay: 0.2s; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+.spectrum-ray:nth-child(3) { background: #dc2626; color: #dc2626; animation-delay: 0.4s; }
+.spectrum-ray:nth-child(4) { background: #ca8a04; color: #ca8a04; animation-delay: 0.6s; }
+.spectrum-ray:nth-child(5) { background: #ea580c; color: #ea580c; animation-delay: 0.8s; }
+
+@keyframes ray-pulse {
+  0%, 100% { opacity: 0.7; transform: scaleX(0.95); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+.prism-labels {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-sm);
+}
+
+.prism-label {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.prism-label.blue { background: rgba(37, 99, 235, 0.2); color: #2563eb; }
+.prism-label.black { background: rgba(26, 26, 26, 0.3); color: #666; }
+.prism-label.red { background: rgba(220, 38, 38, 0.2); color: #dc2626; }
+.prism-label.yellow { background: rgba(202, 138, 4, 0.2); color: #ca8a04; }
+.prism-label.orange { background: rgba(234, 88, 12, 0.2); color: #ea580c; }
+
+.prism-copy {
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+  font-style: italic;
+}
+
+/* Sección Status Simplificada */
+.home-status-simple {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.status-simple-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.status-simple-header h2 {
+  margin: 0;
+  border: none;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+.status-simple-date {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.status-simple-metrics {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.status-metric {
+  text-align: center;
+}
+
+.status-metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  display: block;
+}
+
+.status-metric-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-simple-link {
+  font-size: 0.9rem;
+}
+

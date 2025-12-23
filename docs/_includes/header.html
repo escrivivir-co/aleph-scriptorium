@@ -4,7 +4,7 @@
       <span class="aleph">ℵ</span> {{ site.title }}
     </a>
     
-    <nav class="site-nav">
+    <nav class="site-nav" id="site-nav">
       {% for item in site.navigation %}
       <a href="{% if item.external %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"
          {% if item.external %}target="_blank" rel="noopener"{% endif %}
@@ -14,10 +14,44 @@
       {% endfor %}
     </nav>
     
-    <button class="menu-toggle" aria-label="Menú">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menú" aria-expanded="false" aria-controls="site-nav">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </div>
 </header>
+
+<script>
+(function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const siteNav = document.getElementById('site-nav');
+  
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener('click', function() {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggle.classList.toggle('active');
+      siteNav.classList.toggle('active');
+    });
+    
+    // Cerrar menú al hacer click en un enlace
+    siteNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('active');
+        siteNav.classList.remove('active');
+      });
+    });
+    
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', function(e) {
+      if (!menuToggle.contains(e.target) && !siteNav.contains(e.target)) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('active');
+        siteNav.classList.remove('active');
+      }
+    });
+  }
+})();
+</script>

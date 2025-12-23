@@ -554,6 +554,8 @@ meta:
 | 2025-12-23 | Crear personaje NonsiAuditor (blackflag + redflag + fuente ELENCO/nonsi) | Aleph |
 | 2025-12-23 | Añadir épica SCRIPT-1.4.0: Sistema de Avatares para Personajes | Aleph |
 | 2025-12-23 | Añadir épica SCRIPT-1.5.0: Plugin Bridge Discovery | Aleph |
+| 2025-12-23 | Añadir épica SCRIPT-1.6.0: Rediseño Index Web (Splash) | Aleph |
+| 2025-12-23 | Completar SCRIPT-1.6.0: menú hamburguesa, prisma auditores, status, galería | Aleph |
 
 ---
 
@@ -1199,3 +1201,117 @@ Usar settings de workspace:
 | VS Code 1.107+ | ✅ | Soporte para settings de ubicaciones |
 | Copilot Extension | ✅ | Habilitada |
 | Settings aplicados | ⏳ | Requiere reinicio de VS Code |
+
+---
+
+# Épica: SCRIPT-1.6.0 — Rediseño Index Web (Splash)
+
+**Objetivo**: Refactorizar la página de inicio (`docs/index.md`) según las directrices de diseño en `ARCHIVO/DISCO/SPLASH/index.md`.
+
+**Estado**: 🔄 En Progreso
+
+**Detectado**: 2025-12-23  
+**Referencia**: `ARCHIVO/DISCO/SPLASH/index.md`
+
+---
+
+## Contexto
+
+La landing page actual tiene áreas de mejora detectadas:
+
+1. **Cabecera**: Menú hamburguesa no funciona (falta JS para toggle)
+2. **Galería secciones**: Desincronizada del menú de cabecera
+3. **Auditores**: Sección descriptiva sin impacto visual
+4. **Status**: Datos manuales que deberían venir de Fotos de Estado
+5. **Únete al cambio**: Título no transmite la propuesta de valor
+
+### Idea fuerza para Auditores
+
+> "La verdad es luz blanca: no existe como tal sino como suma de la proporción de rayos de colores."
+
+Los 5 auditores (banderas) son prismas que descomponen la luz del conocimiento en espectros verificables.
+
+---
+
+## Story: SCRIPT-1.6.0-S01 — Fix Menú Hamburguesa
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Añadir JavaScript para toggle del menú móvil | ✅ |
+| T002 | Añadir clase `.active` al botón cuando está abierto | ✅ |
+| T003 | Mejorar accesibilidad (aria-expanded) | ✅ |
+
+---
+
+## Story: SCRIPT-1.6.0-S02 — Sincronizar Galería con Menú
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T004 | Actualizar `home-nav` con items de `_config.yml` | ✅ |
+| T005 | Añadir Teatro a la galería | ✅ |
+| T006 | Añadir Acerca de a la galería | ✅ |
+
+---
+
+## Story: SCRIPT-1.6.0-S03 — Rediseño Sección Auditores
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T007 | Nuevo título: "El Prisma del Conocimiento" | ✅ |
+| T008 | Visual de espectro: luz blanca → 5 colores | ✅ |
+| T009 | Copy persuasivo sobre descomposición en banderas | ✅ |
+| T010 | Estilo CSS con degradado y animación sutil | ✅ |
+
+---
+
+## Story: SCRIPT-1.6.0-S04 — Reemplazar Sección STATUS
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Traer última foto de estado desde FOTOS_ESTADO/ | ✅ |
+| T012 | Formato monocromo simplificado | ✅ |
+| T013 | Enlace a roadmap para galería completa | ✅ |
+
+---
+
+## Story: SCRIPT-1.6.0-S05 — Renombrar ÚNETE AL CAMBIO
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T014 | Nuevo título: "El Procesador de Texto del Futuro" | ✅ |
+| T015 | Copy enfocado en IA que trabaja para ti | ✅ |
+| T016 | Mantener CTAs de Fork/Issues/Contribuir | ✅ |
+
+---
+
+## Story: SCRIPT-1.6.0-S06 — Footer Branding
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Añadir enlace VibeBitacora al footer | ✅ |
+
+---
+
+## Métricas SCRIPT-1.6.0
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 17 |
+| Completadas | **17** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Archivos Modificados
+
+| Archivo | Cambios |
+|---------|---------|
+| `docs/index.md` | Rediseño completo de secciones |
+| `docs/_includes/header.html` | Añadir script toggle menú |
+| `docs/assets/css/main.css` | Estilos para prisma y nueva sección status |

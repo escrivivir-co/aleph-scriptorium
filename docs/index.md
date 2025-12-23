@@ -10,7 +10,7 @@ permalink: /
 <div class="release-banner">
   <div class="release-badge">🎉 v1.0.0-beta.1</div>
   <div class="release-text">
-    <strong>Primera piedra del camino</strong> · Sprint 0 cerrado · 
+    <strong>Primera piedra del camino</strong> · Sprint 1 cerrado · 
     <a href="{{ site.baseurl }}/roadmap/">Ver roadmap →</a>
   </div>
 </div>
@@ -23,27 +23,32 @@ permalink: /
   <p class="hero-prompt"><span class="prompt-symbol">$</span> cat /dev/brain | grep insight > ARCHIVO/</p>
 </div>
 
-<!-- NAVEGACIÓN PRINCIPAL -->
+<!-- NAVEGACIÓN PRINCIPAL (sincronizada con _config.yml) -->
 <nav class="home-nav">
   <a href="{{ site.baseurl }}/leeme/" class="nav-card">
     <span class="card-icon">📖</span>
     <span class="card-title">Léeme</span>
     <span class="card-desc">Guía de inicio · 15 min</span>
   </a>
-  <a href="{{ site.baseurl }}/fundacion/" class="nav-card">
+  <a href="{{ site.baseurl }}/agentes/" class="nav-card">
+    <span class="card-icon">🐂</span>
+    <span class="card-title">Agentes</span>
+    <span class="card-desc">Del Clippy al Colectivo</span>
+  </a>
+  <a href="{{ site.baseurl }}/teatro/" class="nav-card">
     <span class="card-icon">🎭</span>
-    <span class="card-title">Fundación</span>
-    <span class="card-desc">Texto en 12 capítulos</span>
+    <span class="card-title">Teatro</span>
+    <span class="card-desc">Obras transmedia 3D</span>
   </a>
   <a href="{{ site.baseurl }}/periodico/" class="nav-card">
     <span class="card-icon">📰</span>
     <span class="card-title">Periódico</span>
     <span class="card-desc">Noticias · 5W + Banderas</span>
   </a>
-  <a href="{{ site.baseurl }}/agentes/" class="nav-card">
-    <span class="card-icon">🐂</span>
-    <span class="card-title">Agentes</span>
-    <span class="card-desc">Del Clippy al Colectivo</span>
+  <a href="{{ site.baseurl }}/fundacion/" class="nav-card">
+    <span class="card-icon">📜</span>
+    <span class="card-title">Fundación</span>
+    <span class="card-desc">Texto en 12 capítulos</span>
   </a>
   <a href="{{ site.baseurl }}/archivo/" class="nav-card">
     <span class="card-icon">🗄️</span>
@@ -54,6 +59,11 @@ permalink: /
     <span class="card-icon">🗺️</span>
     <span class="card-title">Roadmap</span>
     <span class="card-desc">De Aleph a Euler</span>
+  </a>
+  <a href="{{ site.baseurl }}/acerca/" class="nav-card">
+    <span class="card-icon">ℹ️</span>
+    <span class="card-title">Acerca de</span>
+    <span class="card-desc">El proyecto y su filosofía</span>
   </a>
   <a href="https://github.com/escrivivir-co/aleph-scriptorium" class="nav-card nav-card-external">
     <span class="card-icon">⌨️</span>
@@ -83,37 +93,66 @@ permalink: /
 </div>
 </section>
 
-<!-- AUDITORES -->
-<section class="home-section">
-<h2>// Auditores</h2>
-<div class="auditors-strip">
-  <span class="auditor-chip">🔵 Verdad</span>
-  <span class="auditor-chip">⚫ Sombras</span>
-  <span class="auditor-chip">🔴 Viabilidad</span>
-  <span class="auditor-chip">🟡 Límites</span>
-  <span class="auditor-chip">🟠 Registro</span>
+<!-- EL PRISMA DEL CONOCIMIENTO (antes: Auditores) -->
+<section class="home-section home-prism">
+<h2>// El Prisma del Conocimiento</h2>
+<div class="prism-container">
+  <div class="prism-visual">
+    <div class="prism-light-in"></div>
+    <div class="prism-shape"></div>
+    <div class="prism-spectrum">
+      <div class="spectrum-ray"></div>
+      <div class="spectrum-ray"></div>
+      <div class="spectrum-ray"></div>
+      <div class="spectrum-ray"></div>
+      <div class="spectrum-ray"></div>
+    </div>
+  </div>
+  <div class="prism-labels">
+    <span class="prism-label blue">Verdad</span>
+    <span class="prism-label black">Sombras</span>
+    <span class="prism-label red">Viabilidad</span>
+    <span class="prism-label yellow">Límites</span>
+    <span class="prism-label orange">Registro</span>
+  </div>
 </div>
-<p class="auditors-note">5 banderas que auditan cada propuesta antes de publicar.</p>
+<p class="prism-copy">La verdad es luz blanca: no existe como tal, sino como suma de sus espectros. Cinco banderas descomponen cada propuesta en rayos verificables.</p>
 </section>
 
-<!-- STATUS -->
-<section class="home-section home-status">
-<h2>// Status</h2>
-<dl class="status-list">
-  <div><dt>Versión</dt><dd><strong>1.0.0-beta.1</strong></dd></div>
-  <div><dt>Sprint</dt><dd>1 ✓ Teatro + Scrum</dd></div>
-  <div><dt>Scriptorium</dt><dd>100% · 21 épicas</dd></div>
-  <div><dt>Fundación</dt><dd>85% · 4 caps</dd></div>
-  <div><dt>Plugins</dt><dd>7 instalados</dd></div>
-  <div><dt>Agentes</dt><dd>17 operativos</dd></div>
-</dl>
+<!-- STATUS (última foto de estado) -->
+<section class="home-section">
+<div class="home-status-simple">
+  <div class="status-simple-header">
+    <h2>📸 Sprint 1 — Teatro Interactivo</h2>
+    <span class="status-simple-date">22 dic 2025</span>
+  </div>
+  <div class="status-simple-metrics">
+    <div class="status-metric">
+      <span class="status-metric-value">7</span>
+      <span class="status-metric-label">Plugins</span>
+    </div>
+    <div class="status-metric">
+      <span class="status-metric-value">30</span>
+      <span class="status-metric-label">Agentes</span>
+    </div>
+    <div class="status-metric">
+      <span class="status-metric-value">11</span>
+      <span class="status-metric-label">Páginas</span>
+    </div>
+    <div class="status-metric">
+      <span class="status-metric-value">2</span>
+      <span class="status-metric-label">Obras</span>
+    </div>
+  </div>
+  <a href="{{ site.baseurl }}/roadmap/#galería-de-fotos-de-estado" class="status-simple-link">Ver galería completa en roadmap →</a>
+</div>
 </section>
 
-<!-- ÚNETE -->
+<!-- EL PROCESADOR DE TEXTO DEL FUTURO (antes: Únete al camino) -->
 <section class="home-section home-join">
-<h2>// Únete al camino</h2>
+<h2>// El Procesador de Texto del Futuro</h2>
 <div class="join-content">
-<p>Aleph Scriptorium es <strong>software libre</strong>. Cada PR es una piedra más en el camino.</p>
+<p>Imagina un procesador de texto donde <strong>la IA no te interrumpe, sino que produce</strong>. Donde puedes decir <code>@aleph redacta el capítulo 3</code> y recibir un borrador auditado por 5 filtros de calidad. Eso es Aleph Scriptorium.</p>
 <div class="join-actions">
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/fork" class="join-btn join-btn-primary">🍴 Fork</a>
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/issues" class="join-btn">📋 Issues</a>
