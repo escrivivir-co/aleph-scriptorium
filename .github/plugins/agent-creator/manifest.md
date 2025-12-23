@@ -137,7 +137,7 @@ Cuando una fuente de datos proviene de un job de scraping activo:
 Agente base: @yellowflag (auditoría de límites, gnosis, cuadrantes)
 Fuente: DISCO/Foro_t8941392/ (criterio de demarcación, Popper, sincronicidades)
 
-Resultado: @demarcacion-yellowflag
+Resultado: @tarotista
 - Especialista en límites del conocimiento científico
 - Conoce el debate Popper/Kuhn/Feyerabend
 - Puede auditar propuestas desde la perspectiva de demarcación

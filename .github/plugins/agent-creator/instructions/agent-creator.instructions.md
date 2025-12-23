@@ -47,7 +47,7 @@ Si la fuente es un scraping activo:
 Cada agente creado genera una receta en `recipes/`:
 ```json
 {
-  "name": "demarcacion-yellowflag",
+  "name": "tarotista",
   "version": "1.0.0",
   "created_at": "2025-12-22T12:00:00Z",
   "agentes_base": ["yellowflag"],

@@ -1,8 +1,8 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.3.0  
-> **Sprint actual**: 1 (Teatro Interactivo + Scrum + Refactorización Impress.js)  
+> **Versión**: 1.4.0  
+> **Sprint actual**: 1 (Teatro Interactivo + Scrum + Refactorización Impress.js + Avatares)  
 > **Fecha inicio**: 2025-12-22
 
 ---
@@ -413,7 +413,7 @@ meta:
 |---------|-------------|--------|
 | T023 | Crear YAML de la obra \`camino-del-tarotista.yaml\` | ✅ |
 | T024 | Generar página impress.js de la obra | ✅ |
-| T025 | Integrar personaje Tarotista (demarcacion-yellowflag) | ✅ |
+| T025 | Integrar personaje Tarotista (tarotista) | ✅ |
 | T026 | Documentar cada prueba con instrucciones interactivas | ✅ |
 | T027 | Registrar obra en \`obras.json\` | ✅ |
 | T028 | Publicar en cartelera | ✅ |
@@ -518,7 +518,7 @@ meta:
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
 | ARG_BOARD plugin | ✅ Instalado | obras.json, actores.json funcionando |
-| AGENT_CREATOR plugin | ✅ Instalado | demarcacion-yellowflag creado |
+| AGENT_CREATOR plugin | ✅ Instalado | tarotista creado |
 | GH_PAGES plugin | ✅ Instalado | docs/ funcional |
 | TEATRO plugin | ✅ Instalado | Orquestador de experiencias transmedia |
 | impress.js | ✅ Integrado | CDN (impress.js@2.0.0) |
@@ -551,6 +551,85 @@ meta:
 | 2025-12-23 | Añadir S03: Anexo Visual con 12 capturas y tutorial "Como Word" | Aleph |
 | 2025-12-23 | Añadir épica SCRIPT-1.3.0: Refactorización Teatro (Impress.js + BOE) | Aleph |
 | 2025-12-23 | Registrar BUG-002: impress.js no inicializa | Aleph |
+| 2025-12-23 | Crear personaje NonsiAuditor (blackflag + redflag + fuente ELENCO/nonsi) | Aleph |
+| 2025-12-23 | Añadir épica SCRIPT-1.4.0: Sistema de Avatares para Personajes | Aleph |
+
+---
+
+# Épica: SCRIPT-1.4.0 — Sistema de Avatares para Personajes
+
+**Objetivo**: Estandarizar la gestión de avatares para personajes creados en AGENT_CREATOR, integrando con ARG_BOARD y Teatro.
+
+**Estado**: ✅ Completada
+
+---
+
+## Contexto
+
+Los personajes del Teatro necesitan representación visual (avatares) para:
+- Cartelera de obras (`docs/teatro.md`)
+- Visualizador impress.js (diapositivas con personajes)
+- Fichas de elenco en ARG_BOARD
+
+### Estructura estándar
+
+```
+ARCHIVO/DISCO/TALLER/ELENCO/{personaje}/
+├── {personaje}.agent.md    # Definición del personaje
+└── avatar.png              # Imagen del personaje (256x256 recomendado)
+```
+
+### Campos añadidos
+
+| Archivo | Campo | Ejemplo |
+|---------|-------|---------|
+| `*.agent.md` (frontmatter) | `avatar:` | `"ARCHIVO/DISCO/TALLER/ELENCO/nonsi/avatar.png"` |
+| `*.recipe.json` | `"avatar":` | `"ARCHIVO/DISCO/TALLER/ELENCO/nonsi/avatar.png"` |
+| `actores.json` | `"avatar":` | `"ARCHIVO/DISCO/TALLER/ELENCO/tarotista/avatar.png"` |
+
+---
+
+## Story: SCRIPT-1.4.0-S01 — Definir Estándar de Avatares
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Definir estructura de carpeta ELENCO/{personaje}/ | ✅ |
+| T002 | Añadir campo `avatar` al frontmatter de agentes | ✅ |
+| T003 | Añadir campo `avatar` al schema de recipes | ✅ |
+| T004 | Añadir campo `avatar` al schema de actores.json | ✅ |
+
+---
+
+## Story: SCRIPT-1.4.0-S02 — Implementar en Personajes Existentes
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Añadir avatar a personaje Tarotista | ✅ |
+| T006 | Añadir avatar a personaje NonsiAuditor | ✅ |
+| T007 | Actualizar actores.json con avatares | ✅ |
+| T008 | Actualizar recetas con campo avatar | ✅ |
+| T009 | Registrar NonsiAuditor en creation-log.json | ✅ |
+
+---
+
+## Métricas SCRIPT-1.4.0
+
+| Métrica | Valor |
+|---------|-------|
+| Tasks totales | 9 |
+| Completadas | **9** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Personajes con Avatar
+
+| Personaje | Avatar | Ubicación |
+|-----------|--------|-----------|
+| Tarotista | ✅ | `ARCHIVO/DISCO/TALLER/ELENCO/tarotista/avatar.png` |
+| NonsiAuditor | ✅ | `ARCHIVO/DISCO/TALLER/ELENCO/nonsi/avatar.png` |
 
 ---
 

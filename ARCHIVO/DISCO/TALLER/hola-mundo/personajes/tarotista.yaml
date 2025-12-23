@@ -20,9 +20,9 @@ descripcion: |
 origen:
   tipo: agente
   agente_base: yellowflag
-  agente_creado: demarcacion-yellowflag
+  agente_creado: tarotista
   fuente_datos: DISCO/Foro_t8941392/
-  ruta_agente: ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/demarcacion-yellowflag.agent.md
+  ruta_agente: ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/tarotista.agent.md
   fecha_creacion: 2025-12-22T14:00:00Z
   
 # Plataformas donde puede operar

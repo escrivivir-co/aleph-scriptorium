@@ -206,7 +206,7 @@ Creador de agentes especializados combinando agentes base con fuentes de datos.
 - `AgentCreator`: Orquestador de creación de agentes
 
 **Agentes creados**:
-- `demarcacion-yellowflag`: Yellowflag + criterio de demarcación científica (Foro_t8941392)
+- `tarotista`: Yellowflag + criterio de demarcación científica (Foro_t8941392)
 
 **Capacidades**:
 - Crear agentes combinando base + fuentes

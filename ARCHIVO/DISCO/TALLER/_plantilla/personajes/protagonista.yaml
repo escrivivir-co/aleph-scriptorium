@@ -18,7 +18,7 @@ origen:
   tipo: original  # original | agente | adaptacion
   # Si es un agente existente:
   # agente_base: yellowflag
-  # agente_creado: demarcacion-yellowflag
+  # agente_creado: tarotista
   # fuente_datos: DISCO/Foro_t8941392/
 
 # Capacidades (qué puede hacer en la obra)

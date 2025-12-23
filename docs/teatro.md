@@ -27,7 +27,7 @@ description: Teatro Interactivo - Experiencias transmedia guiadas con navegació
 > Recorrido guiado por todas las features del Scriptorium.
 > 12 estadios siguiendo el Camino del Héroe: vestíbulo, biblioteca, hemeroteca, scriptorium, foro, laboratorio, teatro, ordalía, publicación, mapa, integración y elixir.
 
-**Personaje guía**: 🧙 Tarotista (demarcacion-yellowflag)
+**Personaje guía**: 🧙 Tarotista
 
 <div class="obra-acciones">
   <a href="{{ '/teatro/camino-del-tarotista/' | relative_url }}" class="btn-primario">▶️ Abrir Pantalla</a>

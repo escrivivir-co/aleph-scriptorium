@@ -26,7 +26,7 @@ El plugin se instala automáticamente al seguir el protocolo de `PLUGINS.md`.
 ### Editar un agente existente
 
 ```
-@AgentCreator Editar agente demarcacion-yellowflag
+@AgentCreator Editar agente tarotista
 
 - Añadir fuente: ARCHIVO/marco/07-hybris-crematistica.md
 ```
@@ -53,7 +53,7 @@ El plugin se instala automáticamente al seguir el protocolo de `PLUGINS.md`.
 - Sincronicidades (Pauli/Jung)
 - Límites de lo que la ciencia puede decir sobre fenómenos "anómalos"
 
-### Output: demarcacion-yellowflag.agent.md
+### Output: tarotista.agent.md
 
 Un agente que:
 1. Hereda la metodología de cuadrantes de Yellowflag
@@ -65,7 +65,7 @@ Un agente que:
 ### Uso del agente creado
 
 ```
-@demarcacion-yellowflag Audita esta propuesta:
+@tarotista Audita esta propuesta:
 "Implementar RBU basada en principios de física cuántica"
 
 Respuesta:
@@ -87,7 +87,7 @@ Recomendación: Reformular sin invocar física cuántica como autoridad epistém
 Si la fuente es un scraping activo:
 
 ```
-@demarcacion-yellowflag Esta pregunta requiere más contexto del hilo
+@tarotista Esta pregunta requiere más contexto del hilo
 
 AgentCreator: Detectado que solo tengo 1/51 páginas.
 ¿Solicito más al Scraper?

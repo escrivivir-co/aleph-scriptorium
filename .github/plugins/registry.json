@@ -112,7 +112,7 @@
       ],
       "agents_created": [
         {
-          "name": "demarcacion-yellowflag",
+          "name": "tarotista",
           "base": ["yellowflag"],
           "source": "DISCO/Foro_t8941392/",
           "arg_deployment": {

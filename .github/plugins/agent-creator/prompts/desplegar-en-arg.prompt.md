@@ -120,10 +120,10 @@ Registrar en `creation-log.json`:
 ## Ejemplo
 
 ```
-Usuario: Desplegar demarcacion-yellowflag en una obra nueva
+Usuario: Desplegar tarotista en una obra nueva
 
 AgentCreator: 
-Analizando agente: demarcacion-yellowflag
+Analizando agente: tarotista
 - Base: Yellowflag (auditoría de límites)
 - Especialidad: Criterio de demarcación científica
 - Fuente: Foro de tarot y filosofía de la ciencia

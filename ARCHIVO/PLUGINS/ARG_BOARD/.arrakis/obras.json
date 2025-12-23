@@ -45,7 +45,7 @@
     "estado": "registrada",
     "descripcion": "Obra de demostración para el plugin AGENT_CREATOR. Primer despliegue de agente creado como personaje teatral.",
     "etapa_actual": 1,
-    "actores": ["tarotista"],
+    "actores": ["tarotista", "nonsi"],
     "escenas": [
       { "id": 1, "nombre": "Presentación", "estado": "pendiente", "descripcion": "El Tarotista se presenta y explica su rol: auditor de demarcación científica." },
       { "id": 2, "nombre": "Tirada de cartas", "estado": "pendiente", "descripcion": "Usando metáforas del tarot, evalúa una propuesta del usuario con criterios de demarcación." },
@@ -55,7 +55,7 @@
       "plugin_origen": "agent-creator",
       "agente_base": "yellowflag",
       "fuente_datos": "DISCO/Foro_t8941392/",
-      "agente_creado": "demarcacion-yellowflag",
+      "agente_creado": "tarotista",
       "fecha_creacion": "2025-12-22T14:00:00Z",
       "proposito": "Demostrar pipeline completo: FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD"
     }
@@ -66,7 +66,7 @@
     "estado": "en_escena",
     "descripcion": "Ruta guiada de 12 estadios para recorrer todas las features del Scriptorium.",
     "etapa_actual": 1,
-    "actores": ["tarotista"],
+    "actores": ["tarotista", "nonsi"],
     "escenas": [
       { "id": 1, "nombre": "El Vestíbulo", "estado": "pendiente", "descripcion": "Elegir carta-puerta y perfil." },
       { "id": 2, "nombre": "La Biblioteca", "estado": "pendiente", "descripcion": "Consultar un tomo enciclopédico." },

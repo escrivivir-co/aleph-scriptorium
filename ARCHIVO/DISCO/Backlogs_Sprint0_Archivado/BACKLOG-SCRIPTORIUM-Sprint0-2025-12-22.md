@@ -782,12 +782,12 @@
 
 **Objetivo**: Implementar plugin para crear agentes especializados combinando agentes base del Scriptorium con fuentes de datos de DISCO/ARCHIVO.
 
-**Caso de uso inicial**: Crear `@demarcacion-yellowflag` a partir de `@yellowflag` + `DISCO/Foro_t8941392/` (criterio de demarcación científica).
+**Caso de uso inicial**: Crear `@tarotista` a partir de `@yellowflag` + `DISCO/Foro_t8941392/` (criterio de demarcación científica).
 
 **Entregables**:
 - Plugin agent-creator con manifest, agente, prompts e instrucciones
 - Agente AgentCreator (orquestador)
-- Primer agente creado: demarcacion-yellowflag
+- Primer agente creado: tarotista
 - Integración con plugin FORO_SCRAPER para solicitar más datos
 - Documentación y recetas reproducibles
 
@@ -857,8 +857,8 @@
 |---------|-------------|--------|
 | T158 | Analizar yellowflag.agent.md (agente base) | ✅ |
 | T159 | Analizar DISCO/Foro_t8941392/ (fuente de datos) | ✅ |
-| T160 | Crear `demarcacion-yellowflag.agent.md` | ✅ |
-| T161 | Crear receta `demarcacion-yellowflag.recipe.json` | ✅ |
+| T160 | Crear `tarotista.agent.md` | ✅ |
+| T161 | Crear receta `tarotista.recipe.json` | ✅ |
 | T162 | Registrar en `creation-log.json` | ✅ |
 
 ---
@@ -987,7 +987,7 @@
 | 2025-12-22 | Añadir Épica SCRIPT-0.6.0 — Plugin Foro Scraper | Aleph |
 | 2025-12-22 | Añadir Épica SCRIPT-0.7.0 — Extensión Blogs + Integración Periódico | Aleph |
 | 2025-12-22 | Añadir Épica SCRIPT-0.8.0 — Plugin Agent Creator | Aleph |
-| 2025-12-22 | Crear agente demarcacion-yellowflag (Foro_t8941392) | AgentCreator |
+| 2025-12-22 | Crear agente tarotista (Foro_t8941392) | AgentCreator |
 | 2025-12-22 | Añadir Épica SCRIPT-0.9.0 — Handoffs Extensibles ARG + Agent Creator | Aleph |
 | 2025-12-22 | Completar handoffs extensibles en Aleph, Revisor, Periodico | Aleph |
 | 2025-12-22 | Añadir Épica SCRIPT-0.10.0 — Agente Oráculo (Ox) | Aleph |

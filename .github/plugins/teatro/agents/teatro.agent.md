@@ -4,7 +4,6 @@ description: "Orquestador del teatro transmedia. Coordina ARG_BOARD (obras), AGE
 argument-hint: "Indica la acción: generar <tema>, instalar <obra>, ejecutar <obra>, cartelera, crear-personaje <nombre>"
 tools: ['vscode', 'read', 'edit', 'search', 'agent']
 handoffs:
-  # Acciones principales
   - label: Generar obra nueva
     agent: Teatro
     prompt: "Genera una obra de teatro con estructura de monomito (12 estadios). Pide al usuario: tema, personaje guía, pruebas por estadio."

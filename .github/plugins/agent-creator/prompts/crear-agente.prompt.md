@@ -122,7 +122,7 @@ He encontrado estos conceptos clave en el foro:
 
 Usuario: La opción 1
 
-AgentCreator: Generando `demarcacion-yellowflag.agent.md`...
+AgentCreator: Generando `tarotista.agent.md`...
 
 El nuevo agente:
 - Hereda la metodología de cuadrantes de Yellowflag

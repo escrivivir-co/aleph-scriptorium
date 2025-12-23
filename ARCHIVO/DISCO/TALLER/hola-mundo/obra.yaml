@@ -25,7 +25,7 @@ meta:
     plugin: agent-creator
     agente_base: yellowflag
     fuente_datos: DISCO/Foro_t8941392/
-    agente_creado: demarcacion-yellowflag
+    agente_creado: tarotista
   proposito: "Demostrar pipeline: FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD"
 
 # Esta obra tiene solo 3 escenas (demo corta)

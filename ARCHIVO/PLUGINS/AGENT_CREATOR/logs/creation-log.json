@@ -4,17 +4,17 @@
     {
       "timestamp": "2025-12-22T12:00:00Z",
       "operation": "create",
-      "agent_name": "demarcacion-yellowflag",
+      "agent_name": "tarotista",
       "agentes_base": ["yellowflag"],
       "fuentes_datos": ["DISCO/Foro_t8941392/"],
-      "recipe_file": "recipes/demarcacion-yellowflag.recipe.json",
-      "output_file": "agents/created/demarcacion-yellowflag.agent.md",
+      "recipe_file": "recipes/tarotista.recipe.json",
+      "output_file": "agents/created/tarotista.agent.md",
       "status": "success"
     },
     {
       "timestamp": "2025-12-22T15:00:00Z",
       "operation": "deploy_to_arg",
-      "agent_name": "demarcacion-yellowflag",
+      "agent_name": "tarotista",
       "target_plugin": "arg-board",
       "obra": "hola_mundo",
       "personaje": "tarotista",
@@ -29,7 +29,7 @@
     {
       "timestamp": "2025-12-22T18:30:00Z",
       "operation": "deploy_to_arg",
-      "agent_name": "demarcacion-yellowflag",
+      "agent_name": "tarotista",
       "target_plugin": "arg-board",
       "obra": "camino_del_tarotista",
       "personaje": "tarotista",
@@ -39,6 +39,33 @@
       ],
       "status": "success",
       "notas": "Reasignación de monomito principal a obra de onboarding completa"
+    }
+  ],
+  {
+      "timestamp": "2025-12-23T12:00:00Z",
+      "operation": "create",
+      "agent_name": "nonsi",
+      "agentes_base": ["blackflag", "redflag"],
+      "fuentes_datos": ["DISCO/TALLER/ELENCO/nonsi/"],
+      "recipe_file": "recipes/nonsi.json",
+      "output_file": "agents/created/nonsi.agent.md",
+      "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/nonsi/avatar.png",
+      "status": "success",
+      "notas": "Auditora marxista con 3 épocas evolutivas (artística → marxista → militante)"
+    },
+    {
+      "timestamp": "2025-12-23T12:30:00Z",
+      "operation": "deploy_to_arg",
+      "agent_name": "nonsi",
+      "target_plugin": "arg-board",
+      "obras": ["hola_mundo", "camino_del_tarotista"],
+      "personaje": "nonsi",
+      "archivos_modificados": [
+        "ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/obras.json",
+        "ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/actores.json"
+      ],
+      "status": "success",
+      "notas": "Segundo personaje desplegado. Auditora dual (estructura + sombras) con voz catalana."
     }
   ],
   "pipeline_validado": {

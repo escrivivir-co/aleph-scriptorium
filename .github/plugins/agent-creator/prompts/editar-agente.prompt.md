@@ -75,7 +75,7 @@ Según la opción:
 ## Ejemplo
 
 ```
-Usuario: Quiero añadir más páginas del foro al agente demarcacion-yellowflag
+Usuario: Quiero añadir más páginas del foro al agente tarotista
 
 AgentCreator: Comprobando estado del scraping...
 

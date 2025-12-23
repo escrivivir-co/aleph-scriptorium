@@ -19,7 +19,7 @@ FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO
 ```
 
 1. **Fuente**: Hilo de foro sobre tarot y demarcación científica
-2. **Agente**: demarcacion-yellowflag (especialista en criterio de demarcación)
+2. **Agente**: tarotista (especialista en criterio de demarcación)
 3. **Personaje**: Tarotista (arquetipo SHAPESHIFTER)
 4. **Obra**: 3 escenas de presentación
 
@@ -44,8 +44,8 @@ FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO
 | Plugin origen | agent-creator |
 | Agente base | @yellowflag |
 | Fuente de datos | `DISCO/Foro_t8941392/` (1/51 páginas) |
-| Agente creado | demarcacion-yellowflag |
-| Ruta | `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/demarcacion-yellowflag.agent.md` |
+| Agente creado | tarotista |
+| Ruta | `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/tarotista.agent.md` |
 
 ## Próximos Pasos
 

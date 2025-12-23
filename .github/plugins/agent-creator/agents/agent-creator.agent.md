@@ -57,7 +57,7 @@ inputs:
   agentes_base: [lista de agentes]     # Ej: [yellowflag, blueflag]
   fuentes_datos: [lista de rutas]      # Ej: [DISCO/Foro_t8941392/]
   especialidad: string                 # Ej: "criterio de demarcación científica"
-  nombre: string                       # Ej: "demarcacion-yellowflag"
+  nombre: string                       # Ej: "tarotista"
 ```
 
 ### Fase 2: Análisis de agentes base
@@ -209,7 +209,7 @@ Especialidad: Criterio de demarcación y límites del conocimiento
 5. Instalar en ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/
 
 **Output:**
-`demarcacion-yellowflag.agent.md` — Un agente que:
+`tarotista.agent.md` — Un agente que:
 - Aplica los cuadrantes de Wilber al debate de demarcación
 - Conoce la crítica a Popper (Kuhn, Feyerabend, Lakatos)
 - Integra sincronicidades (Pauli/Jung) sin caer en pseudociencia

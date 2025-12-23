@@ -224,7 +224,7 @@ permalink: /fundacion/
         Los personajes del teatro nacen aquí.
       </p>
       <div class="fundacion-teatro-stats">
-        <div class="fundacion-teatro-stat"><strong>Creados:</strong> demarcacion-yellowflag</div>
+        <div class="fundacion-teatro-stat"><strong>Creados:</strong> tarotista</div>
         <div class="fundacion-teatro-stat"><strong>Fuente:</strong> Foro_t8941392</div>
       </div>
     </div>

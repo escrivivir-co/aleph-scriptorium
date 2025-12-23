@@ -109,7 +109,7 @@ function validar_despliegue(receta) {
 ### Input: Receta
 ```json
 {
-  "name": "demarcacion-yellowflag",
+  "name": "tarotista",
   "especialidad": "Criterio de demarcación científica",
   "agentes_base": [{"id": "yellowflag"}],
   "tests_especificos": ["cientificismo", "falsificabilidad_espuria"],
@@ -139,7 +139,7 @@ function validar_despliegue(receta) {
       "plugin": "agent-creator",
       "agente_base": "yellowflag",
       "fuente_datos": "DISCO/Foro_t8941392/",
-      "agente_creado": "demarcacion-yellowflag"
+      "agente_creado": "tarotista"
     }
   }
 }

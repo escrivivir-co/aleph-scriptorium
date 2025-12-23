@@ -2,7 +2,7 @@
 name: plugin_ox_agentcreator
 description: "Bridge: conecta VS Code con agentes del plugin Agent Creator. Ver .github/plugins/agent-creator/agents/"
 argument-hint: "Crea agentes especializados combinando agentes base con fuentes de datos de DISCO/ARCHIVO."
-tools: ['agent']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Listar agentes de Agent Creator
     agent: plugin_ox_agentcreator
@@ -55,7 +55,7 @@ handoffs:
 
 | Nombre | Base | Fuente | Despliegue ARG |
 |--------|------|--------|----------------|
-| `demarcacion-yellowflag` | @yellowflag | `DISCO/Foro_t8941392/` | hola_mundo/tarotista |
+| `tarotista` | @yellowflag | `DISCO/Foro_t8941392/` | hola_mundo/tarotista |
 
 ---
 

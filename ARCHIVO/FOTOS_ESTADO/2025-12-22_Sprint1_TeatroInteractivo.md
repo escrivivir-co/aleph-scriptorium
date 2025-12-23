@@ -15,7 +15,7 @@
 - **Sistema de agentes completo**: 17 agentes en núcleo (UI + Backend + Sistema + Meta) + 13 agentes de plugins vía bridges. Total: 30 agentes invocables desde VS Code.
 - **Teatro Interactivo implementado**: visualizador 3D con impress.js, sistema de anillos (monomito de 12 estadios), cartelera con 2 obras ("Camino del Tarotista" en escena, "Hola Mundo" en cartel).
 - **Sitio web consolidado**: 11 páginas publicadas en GitHub Pages (`escrivivir-co.github.io/aleph-scriptorium/`), navegación completa, documentación de agentes, archivo y teatro.
-- **Pipeline de personajes validado**: flujo `FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO` probado con agente `demarcacion-yellowflag` (Tarotista).
+- **Pipeline de personajes validado**: flujo `FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO` probado con agente `tarotista` (Tarotista).
 - **TALLER de obras creado**: plantilla de proyecto + demo `hola-mundo` formalizado + estructura para desarrollar obras en `ARCHIVO/DISCO/TALLER/`.
 - **Plugin Scrum instalado**: protocolo de 5 fases (planificar → borrador → aprobar → tracking → cerrar) con separación DISCO/oficial.
 

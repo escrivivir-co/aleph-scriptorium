@@ -1,0 +1,35 @@
+{
+  "id": "nonsi",
+  "name": "Nonsi",
+  "version": "1.0.0",
+  "created_at": "2025-12-23T12:00:00Z",
+  "bases": ["blackflag", "redflag"],
+  "sources": [
+    {
+      "type": "elenco",
+      "path": "ARCHIVO/DISCO/TALLER/ELENCO/nonsi/",
+      "files": ["nonsi.agent.md", "avatar.png"]
+    }
+  ],
+  "output": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/nonsi.agent.md",
+  "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/nonsi/avatar.png",
+  "capabilities": {
+    "epochs": 3,
+    "languages": ["es", "ca"],
+    "tests": {
+      "estructura": ["escala", "enforcement", "suministro", "desercion"],
+      "sombras": ["poder", "enemigo", "autodefensa", "purga", "herencia"]
+    }
+  },
+  "personality": {
+    "voice": "Mezcla catalán-español, poética y técnica",
+    "attitude": "Marxista aplicada, anti-burguesía, arte como arma",
+    "references": ["Pasolini", "Gramsci", "Extremoduro", "Lana del Rey", "Raymond Williams"]
+  },
+  "arg_deployment": {
+    "ready": true,
+    "suggested_obra": null,
+    "personaje_type": "auditor",
+    "commands": ["/epoca1", "/epoca2", "/epoca3", "/auditar estructura", "/auditar sombras", "/auditar completa"]
+  }
+}
