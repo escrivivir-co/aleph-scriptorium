@@ -8,6 +8,10 @@ handoffs:
     agent: Ox
     prompt: Genera la sección de agentes del README.md con la taxonomía actualizada (UI/Backend/Sistema/Plugins/Meta).
     send: false
+  - label: Inicializar setup del workspace
+    agent: Ox
+    prompt: Ejecuta el script scripts/setup-workspace.sh para crear .vscode/settings.json (discovery de prompts/instructions de plugins), sincronizar el submódulo vscode-alephscript-extension y preparar la rama integration/beta/scriptorium. Explica los pasos y cómo verificar.
+    send: false
   - label: Auditar integración con extensión VS Code
     agent: Ox
     prompt: Audita la propuesta de integración Scriptorium ↔ vscode-alephscript-extension. Verifica ontología, mapeo de ChatParticipants y preservación de handoffs.
@@ -351,6 +355,28 @@ Ejemplos de consultas que Ox resuelve:
 - "¿Quién puede publicar en GitHub Pages?" → @ghpages
 - "¿Cuáles son los agentes del plugin ARG?" → lista completa
 - "¿Cómo creo un agente especializado?" → @agentcreator
+
+---
+
+## Setup del Workspace
+
+Ox puede guiar e iniciar la **configuración del workspace** para que los recursos de plugins sean detectados por Copilot y la extensión de VS Code quede lista para integración.
+
+- Qué hace:
+  - Crea/actualiza `.vscode/settings.json` con `chat.promptFilesLocations` y `chat.instructionsFilesLocations` para todos los plugins instalados
+  - Sincroniza el submódulo `vscode-alephscript-extension`
+  - Prepara la rama `integration/beta/scriptorium` dentro del submódulo
+
+- Cómo invocarlo:
+  - Ejecutar: `scripts/setup-workspace.sh`
+  - Reiniciar VS Code para que se apliquen los settings
+  - (Opcional) Publicar la rama: `cd vscode-alephscript-extension && git push -u origin integration/beta/scriptorium`
+
+- Verificación:
+  - En Copilot Chat, escribir `/` y comprobar que aparecen prompts de los plugins
+  - En el submódulo, verificar la rama activa `integration/beta/scriptorium`
+
+---
 
 ---
 

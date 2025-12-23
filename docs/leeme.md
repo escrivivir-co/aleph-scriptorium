@@ -221,6 +221,26 @@ El ecosistema Aleph Scriptorium se compone de **tres capas** que necesitas reuni
 <span class="comment"># Si el agente responde, ¡instalación completa!</span></code>
 </div>
 
+### Paso 1.4: Inicializar el setup del workspace
+
+Este paso configura **VS Code** para detectar prompts e instrucciones de los plugins y prepara la extensión como submódulo para trabajo de integración.
+
+<div class="code-block">
+<code><span class="comment"># Desde la raíz del repositorio</span>
+<span class="command">./scripts/setup-workspace.sh</span>
+
+<span class="comment"># Luego reinicia VS Code para aplicar los settings</span></code>
+</div>
+
+Qué hace:
+- Crea/actualiza `.vscode/settings.json` con `chat.promptFilesLocations` y `chat.instructionsFilesLocations` para todos los plugins
+- Sincroniza el submódulo `vscode-alephscript-extension`
+- Prepara la rama `integration/beta/scriptorium` en el submódulo (lista para publicar)
+
+Verificación:
+- En Copilot Chat, escribe `/` y confirma que aparecen prompts de los plugins
+- En `vscode-alephscript-extension`, comprueba la rama activa `integration/beta/scriptorium`
+
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
