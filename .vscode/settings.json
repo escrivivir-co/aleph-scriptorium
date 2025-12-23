@@ -22,7 +22,8 @@
 		 ".github/plugins/scrum/prompts": true,
 		 ".github/plugins/foro-scraper/prompts": true,
 		 ".github/plugins/enciclopedia/prompts": true,
-		".github/plugins/gh-pages/prompts": true
+		".github/plugins/gh-pages/prompts": true,
+		".github/plugins/mcp-presets/prompts": true
 	}	,
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
@@ -35,7 +36,8 @@
 		 ".github/plugins/scrum/instructions": true,
 			".github/plugins/foro-scraper/instructions": true,
 			".github/plugins/enciclopedia/instructions": true,
-		".github/plugins/gh-pages/instructions": true
+		".github/plugins/gh-pages/instructions": true,
+		".github/plugins/mcp-presets/instructions": true
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas

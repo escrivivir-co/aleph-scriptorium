@@ -1,0 +1,21 @@
+{
+  "id": "example-devops-status",
+  "name": "DevOps Status Preset",
+  "description": "Herramientas para monitoreo de estado de servidores y aplicaciones. Incluye comandos para verificar salud, logs y métricas.",
+  "category": "Development",
+  "prompt": "Analiza el estado del servidor especificado. Verifica la salud del servicio, revisa logs recientes y reporta cualquier anomalía detectada.",
+  "parameters": {
+    "server": "string - Nombre o URL del servidor a analizar",
+    "depth": "string - Nivel de detalle: quick|standard|deep"
+  },
+  "serverId": null,
+  "items": [
+    "get_server_info",
+    "get_server_status",
+    "read_logs",
+    "check_health",
+    "get_metrics"
+  ],
+  "createdAt": "2025-12-23T10:00:00Z",
+  "updatedAt": "2025-12-23T10:00:00Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "example-code-analysis",
+  "name": "Code Analysis Preset",
+  "description": "Herramientas para análisis estático y revisión de código fuente. Detecta patrones, complejidad y posibles mejoras.",
+  "category": "Analysis",
+  "prompt": "Analiza el código fuente proporcionado. Identifica complejidad ciclomática, patrones de diseño utilizados, posibles code smells y sugerencias de refactorización.",
+  "parameters": {
+    "language": "string - Lenguaje del código: typescript|python|javascript|java",
+    "focus": "string - Área de enfoque: security|performance|maintainability|all"
+  },
+  "serverId": null,
+  "items": [
+    "analyze_complexity",
+    "detect_patterns",
+    "find_code_smells",
+    "suggest_refactoring",
+    "check_security"
+  ],
+  "createdAt": "2025-12-23T10:00:00Z",
+  "updatedAt": "2025-12-23T10:00:00Z"
+}

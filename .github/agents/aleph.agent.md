@@ -72,6 +72,10 @@ handoffs:
               agent: plugin_ox_scrum
               prompt: Accede al plugin Scrum. Planifica sprints, genera borradores en DISCO, aprueba backlogs, tracking y cierre.
               send: false
+       - label: "[MCP-PRESETS] Gestionar presets MCP"
+              agent: plugin_ox_mcppresets
+              prompt: Accede al plugin MCP-Presets. Importa, exporta, lista y asigna presets MCP a agentes especializados.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

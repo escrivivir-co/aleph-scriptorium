@@ -951,6 +951,32 @@ permalink: /agentes/
         Protocolo de 5 fases para backlogs: Planificar, Borrador, Aprobar, Tracking y Cerrar. Separa DISCO (borradores) de oficiales.
       </p>
     </div>
+    
+    <!-- MCP-PRESETS -->
+    <div class="agente-card plugin">
+      <div class="agente-header">
+        <div class="agente-avatar">
+          <svg viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="6" width="20" height="16" rx="2" stroke="#9c27b0" stroke-width="2" fill="none"/>
+            <path d="M4 11H24" stroke="#9c27b0" stroke-width="1.5"/>
+            <circle cx="8" cy="8.5" r="1" fill="#00c853"/>
+            <circle cx="11" cy="8.5" r="1" fill="#ffc107"/>
+            <circle cx="14" cy="8.5" r="1" fill="#f44336"/>
+            <rect x="7" y="14" width="6" height="5" rx="1" stroke="#9c27b0" stroke-width="1.5" fill="rgba(156, 39, 176, 0.2)"/>
+            <rect x="15" y="14" width="6" height="5" rx="1" stroke="#9c27b0" stroke-width="1.5" fill="rgba(156, 39, 176, 0.2)"/>
+            <path d="M10 16V17.5M18 16V17.5" stroke="#9c27b0" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="agente-info">
+          <h3 class="agente-name">MCP-Presets</h3>
+          <span class="plugin-count">1 agente</span>
+          <span class="agente-role">Toolkits MCP</span>
+        </div>
+      </div>
+      <p class="agente-desc">
+        Gestiona presets MCP (packs de herramientas/recursos/prompts). Importa, exporta y asigna toolkits a agentes especializados.
+      </p>
+    </div>
   </div>
 </section>
 

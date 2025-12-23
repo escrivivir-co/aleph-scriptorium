@@ -51,7 +51,7 @@ code .
 ```
 .github/
 ├── agents/              # 12 agentes core + bridges
-├── plugins/             # 7 plugins (ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum)
+├── plugins/             # 8 plugins (ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum, MCP-Presets)
 ├── prompts/             # Prompts reutilizables
 ├── instructions/        # Instrucciones de contexto
 ├── DEVOPS.md            # Protocolo de desarrollo
@@ -115,9 +115,9 @@ Referencias técnicas:
        │ invocan vía bridges
        ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                        🔌 PLUGINS (7 bridges)                           │
+│                        🔌 PLUGINS (8 bridges)                           │
 │              ARG · Enciclopedia · GH-Pages · Scraper · Creator          │
-│                           Teatro · Scrum                                │
+│                        Teatro · Scrum · MCP-Presets                     │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -152,8 +152,9 @@ Referencias técnicas:
 | `@plugin_ox_agentcreator` | Agent Creator | AgentCreator (1) |
 | `@plugin_ox_teatro` | Teatro | Teatro (1) |
 | `@plugin_ox_scrum` | Scrum | Scrum (1) |
+| `@plugin_ox_mcppresets` | MCP-Presets | McpPresets (1) |
 
-**Total**: 12 agentes core + 7 bridges + 15 agentes de plugins = **34 agentes**
+**Total**: 12 agentes core + 8 bridges + 16 agentes de plugins = **36 agentes**
 
 Detalle: [escrivivir-co.github.io/aleph-scriptorium/agentes/](https://escrivivir-co.github.io/aleph-scriptorium/agentes/)
 
@@ -170,6 +171,7 @@ Detalle: [escrivivir-co.github.io/aleph-scriptorium/agentes/](https://escrivivir
 | **Agent Creator** | 1.1.0 | Creación de agentes especializados |
 | **Teatro** | 1.0.0 | Experiencias transmedia interactivas |
 | **Scrum** | 1.0.0 | Gestión ágil de backlogs (5 fases) |
+| **MCP-Presets** | 1.0.0 | Gestión de presets MCP para agentes |
 
 Protocolo: [.github/PLUGINS.md](.github/PLUGINS.md)
 
@@ -245,7 +247,7 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 | Scriptorium | **1.0.0-beta.1** | ✅ Sprint 1 (100%) |
 | Fundación | 0.0.1 | ⏸️ Pendiente Sprint 2 |
 | Web (GH-Pages) | 1.1.0 | ✅ 11 páginas + Teatro |
-| Plugins | 7 instalados | ✅ ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum |
+| Plugins | 8 instalados | ✅ ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum, MCP-Presets |
 | Teatro | 1.0.0 | 🎬 2 obras (1 en escena) |
 
 Sprint 1 cerrado: **Teatro Interactivo + Scrum**. 58 tasks completadas. Próximo objetivo: Sprint 2 con foco en Fundación (4 capítulos de enero).

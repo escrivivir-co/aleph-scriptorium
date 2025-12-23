@@ -610,43 +610,43 @@ Un plugin que:
 ## Story: SCRIPT-1.7.0-S01 — Estructura del Plugin
 **Puntos**: 3  
 **Prioridad**: Must  
-**Estado**: 🔄 En Progreso
+**Estado**: ✅ Completada
 
 ### Descripción
 Crear la estructura base del plugin siguiendo el protocolo de PLUGINS.md.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T001 | Crear `.github/plugins/mcp-presets/manifest.md` con metadatos | ⏳ |
-| T002 | Crear `agents/mcp-presets.agent.md` (agente principal) | ⏳ |
-| T003 | Crear `instructions/mcp-presets.instructions.md` | ⏳ |
-| T004 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/` con estructura de datos | ⏳ |
-| T005 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/presets/` (vacío) | ⏳ |
-| T006 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/catalog.json` (esqueleto) | ⏳ |
-| T007 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/agent-assignments.json` (esqueleto) | ⏳ |
+| T001 | Crear `.github/plugins/mcp-presets/manifest.md` con metadatos | ✅ |
+| T002 | Crear `agents/mcp-presets.agent.md` (agente principal) | ✅ |
+| T003 | Crear `instructions/mcp-presets.instructions.md` | ✅ |
+| T004 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/` con estructura de datos | ✅ |
+| T005 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/presets/` (vacío) | ✅ |
+| T006 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/catalog.json` (esqueleto) | ✅ |
+| T007 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/agent-assignments.json` (esqueleto) | ✅ |
 
 ### Criterios de Aceptación
-- [ ] El plugin tiene manifest.md válido con frontmatter YAML
-- [ ] La estructura sigue las convenciones de PLUGINS.md
-- [ ] El agente tiene handoffs para cada operación CRUD
+- [x] El plugin tiene manifest.md válido con frontmatter YAML
+- [x] La estructura sigue las convenciones de PLUGINS.md
+- [x] El agente tiene handoffs para cada operación CRUD
 
 ---
 
 ## Story: SCRIPT-1.7.0-S02 — Importar Preset (Offline)
 **Puntos**: 5  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 ### Descripción
 Permitir importar un preset desde archivo JSON al Scriptorium.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T008 | Crear `prompts/importar-preset.prompt.md` | ⏳ |
-| T009 | Implementar validación de esquema PresetModel | ⏳ |
-| T010 | Guardar preset en `presets/{id}.json` | ⏳ |
-| T011 | Actualizar catálogo local si es necesario | ⏳ |
-| T012 | Gestionar conflictos (preset existente) | ⏳ |
+| T008 | Crear `prompts/importar-preset.prompt.md` | ✅ |
+| T009 | Implementar validación de esquema PresetModel | ✅ |
+| T010 | Guardar preset en `presets/{id}.json` | ✅ |
+| T011 | Actualizar catálogo local si es necesario | ✅ |
+| T012 | Gestionar conflictos (preset existente) | ✅ |
 
 ### Criterios de Aceptación
 - [ ] AC1: Si el JSON no cumple el esquema, rechazar con mensaje claro
@@ -658,17 +658,17 @@ Permitir importar un preset desde archivo JSON al Scriptorium.
 ## Story: SCRIPT-1.7.0-S03 — Listar Presets Locales
 **Puntos**: 3  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 ### Descripción
 Listar todos los presets disponibles en el Scriptorium con su metadata.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T013 | Crear `prompts/listar-presets.prompt.md` | ⏳ |
-| T014 | Leer todos los archivos de `presets/` | ⏳ |
-| T015 | Mostrar resumen: nombre, descripción, items, asignaciones | ⏳ |
-| T016 | Indicar si el preset está asignado a algún agente | ⏳ |
+| T013 | Crear `prompts/listar-presets.prompt.md` | ✅ |
+| T014 | Leer todos los archivos de `presets/` | ✅ |
+| T015 | Mostrar resumen: nombre, descripción, items, asignaciones | ✅ |
+| T016 | Indicar si el preset está asignado a algún agente | ✅ |
 
 ### Criterios de Aceptación
 - [ ] El listado muestra todos los presets con metadata básica
@@ -680,17 +680,17 @@ Listar todos los presets disponibles en el Scriptorium con su metadata.
 ## Story: SCRIPT-1.7.0-S04 — Exportar Preset
 **Puntos**: 3  
 **Prioridad**: Should  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 ### Descripción
 Exportar uno o más presets en formato JSON compatible con Zeus.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T017 | Crear `prompts/exportar-preset.prompt.md` | ⏳ |
-| T018 | Generar JSON con formato Zeus-compatible | ⏳ |
-| T019 | Opción de exportar múltiples como bundle | ⏳ |
-| T020 | Sugerir nombre de archivo basado en preset | ⏳ |
+| T017 | Crear `prompts/exportar-preset.prompt.md` | ✅ |
+| T018 | Generar JSON con formato Zeus-compatible | ✅ |
+| T019 | Opción de exportar múltiples como bundle | ✅ |
+| T020 | Sugerir nombre de archivo basado en preset | ✅ |
 
 ### Criterios de Aceptación
 - [ ] El JSON exportado es válido según PresetModel de Zeus
@@ -702,18 +702,18 @@ Exportar uno o más presets en formato JSON compatible con Zeus.
 ## Story: SCRIPT-1.7.0-S05 — Asignar Preset a Agente
 **Puntos**: 5  
 **Prioridad**: Should  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 ### Descripción
 Vincular presets MCP con agentes creados en AGENT_CREATOR.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T021 | Crear `prompts/asignar-a-agente.prompt.md` | ⏳ |
-| T022 | Actualizar `agent-assignments.json` con mapeo | ⏳ |
-| T023 | Integrar con AGENT_CREATOR: inyectar campo `mcpPresets` en recipe | ⏳ |
-| T024 | Validar que el agente y preset existen | ⏳ |
-| T025 | Permitir desasignar preset de agente | ⏳ |
+| T021 | Crear `prompts/asignar-a-agente.prompt.md` | ✅ |
+| T022 | Actualizar `agent-assignments.json` con mapeo | ✅ |
+| T023 | Integrar con AGENT_CREATOR: inyectar campo `mcpPresets` en recipe | ✅ |
+| T024 | Validar que el agente y preset existen | ✅ |
+| T025 | Permitir desasignar preset de agente | ✅ |
 
 ### Criterios de Aceptación
 - [ ] AC1: Un agente puede tener múltiples presets
@@ -736,44 +736,44 @@ Vincular presets MCP con agentes creados en AGENT_CREATOR.
 ## Story: SCRIPT-1.7.0-S06 — Bridge Agent + Registry
 **Puntos**: 2  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 ### Descripción
 Crear el agente bridge y registrar el plugin en el sistema.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T026 | Crear `.github/agents/plugin_ox_mcppresets.agent.md` | ⏳ |
-| T027 | Actualizar `registry.json` con el nuevo plugin | ⏳ |
-| T028 | Actualizar `aleph.agent.md` con handoff al bridge | ⏳ |
-| T029 | Actualizar `ox.agent.md` con índice del plugin | ⏳ |
+| T026 | Crear `.github/agents/plugin_ox_mcppresets.agent.md` | ✅ |
+| T027 | Actualizar `registry.json` con el nuevo plugin | ✅ |
+| T028 | Actualizar `aleph.agent.md` con handoff al bridge | ✅ |
+| T029 | Actualizar `ox.agent.md` con índice del plugin | ✅ |
 
 ### Criterios de Aceptación
-- [ ] El bridge está en `.github/agents/` (detectable por VS Code)
-- [ ] El plugin aparece en `registry.json` con estado enabled
-- [ ] @aleph tiene handoff `[MCP-PRESETS]` funcional
+- [x] El bridge está en `.github/agents/` (detectable por VS Code)
+- [x] El plugin aparece en `registry.json` con estado enabled
+- [x] @aleph tiene handoff `[MCP-PRESETS]` funcional
 
 ---
 
 ## Story: SCRIPT-1.7.0-S07 — Documentación
 **Puntos**: 2  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 ### Descripción
 Documentar el plugin y su uso.
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T030 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/README.md` | ⏳ |
-| T031 | Actualizar `.github/PLUGINS.md` con sección mcp-presets | ⏳ |
-| T032 | Crear ejemplos de presets en `presets/examples/` | ⏳ |
-| T033 | Documentar integración con AGENT_CREATOR | ⏳ |
+| T030 | Crear `ARCHIVO/PLUGINS/MCP_PRESETS/README.md` | ✅ |
+| T031 | Actualizar `.github/PLUGINS.md` con sección mcp-presets | ✅ |
+| T032 | Crear ejemplos de presets en `presets/examples/` | ✅ |
+| T033 | Documentar integración con AGENT_CREATOR | ✅ |
 
 ### Criterios de Aceptación
-- [ ] README explica el propósito y uso del plugin
-- [ ] PLUGINS.md incluye el nuevo plugin en la tabla de bridges
-- [ ] Hay al menos 2 presets de ejemplo
+- [x] README explica el propósito y uso del plugin
+- [x] PLUGINS.md incluye el nuevo plugin en la tabla de bridges
+- [x] Hay al menos 2 presets de ejemplo
 
 ---
 
@@ -786,8 +786,8 @@ Documentar el plugin y su uso.
 | Puntos totales | 23 |
 | Prioridad Must | 5 stories (13 puntos) |
 | Prioridad Should | 2 stories (10 puntos) |
-| Completadas | **0** |
-| % Avance | **0%** |
+| Completadas | **7** |
+| % Avance | **100%** 🎉 |
 
 ---
 

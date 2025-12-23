@@ -555,6 +555,9 @@ Al instalar un plugin con agentes, el Plugin Manager debe:
 | `plugin_ox_ghpages` | gh-pages | GHPages |
 | `plugin_ox_foroscraper` | foro-scraper | ForoScraper |
 | `plugin_ox_agentcreator` | agent-creator | AgentCreator |
+| `plugin_ox_teatro` | teatro | Teatro |
+| `plugin_ox_scrum` | scrum | Scrum |
+| `plugin_ox_mcppresets` | mcp-presets | McpPresets |
 
 ---
 

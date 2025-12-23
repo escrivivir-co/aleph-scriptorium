@@ -225,6 +225,10 @@ handoffs:
         "scrum": {
           "directorio": ".github/plugins/scrum/agents/",
           "agentes": ["Scrum"]
+        },
+        "mcp-presets": {
+          "directorio": ".github/plugins/mcp-presets/agents/",
+          "agentes": ["McpPresets"]
         }
       },
       "bridges": {
@@ -264,6 +268,11 @@ handoffs:
           "plugin_ox_scrum": {
             "archivo": ".github/agents/plugin_ox_scrum.agent.md",
             "plugin": "scrum",
+            "delega_a": 1
+          },
+          "plugin_ox_mcppresets": {
+            "archivo": ".github/agents/plugin_ox_mcppresets.agent.md",
+            "plugin": "mcp-presets",
             "delega_a": 1
           }
         }
