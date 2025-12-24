@@ -1659,6 +1659,32 @@ Los 5 auditores (banderas) son prismas que descomponen la luz del conocimiento e
 
 ---
 
+# Épica: SCRIPT-1.12.0 — Protocolo de Submódulos
+
+**Objetivo**: Estandarizar el proceso de inspección e integración de submódulos, definiendo un set común de backlog items para garantizar consistencia y calidad en la incorporación de código externo.
+
+**Estado**: ✅ Completada
+
+## Story: SCRIPT-1.12.0-S01 — Items Comunes de Inspección
+**Estado**: ✅ Completada
+
+### Checklist de Inspección
+Para cada nuevo submódulo, se deben generar las siguientes tareas de inspección:
+
+1. **Análisis de Arquitectura**: Identificar patrones (MVC, Hexagonal, etc.), lenguajes y frameworks.
+2. **Inventario de Recursos**: Listar agentes, prompts, instrucciones y herramientas existentes.
+3. **Análisis de Dependencias**: Identificar librerías externas, requisitos de sistema y conflictos potenciales.
+4. **Puntos de Integración**: Detectar APIs, webhooks, esquemas de datos y puntos de extensión.
+5. **Mapeo Ontológico**: Alinear conceptos del submódulo con la taxonomía del Scriptorium (UI, Backend, Sistema).
+6. **Evaluación de Calidad**: Revisar cobertura de tests, linter rules y documentación.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Documentar checklist de inspección en `submodulo-integracion.instructions.md` | ✅ |
+| T002 | Crear plantilla de issue/ticket para inspección de submódulos | ✅ |
+
+---
+
 # Épica: SCRIPT-2.0.0 — Extensión VS Code para Scriptorium
 
 **Objetivo**: Refactorizar `vscode-alephscript-extension` (Arrakis Theater) para crear una extensión especializada que integre el sistema de agentes, plugins y backlogs de ALEPH Scriptorium con VS Code y GitHub Copilot Chat.
@@ -1715,8 +1741,24 @@ src/scriptorium/
 ## Feature Cycle 1: Configuración y Carga Dinámica
 
 > **Ciclo actual**: Feature Cycle 1  
-> **Effort total asignado**: 21 pts  
+> **Effort total asignado**: 24 pts  
 > **Objetivo**: Establecer base de código y carga dinámica de agentes/plugins
+
+---
+
+## Story: SCRIPT-2.0.0-S00 — Análisis y Planificación
+**Effort**: 3 pts
+**Prioridad**: Must
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T000 | Realizar análisis profundo de `vscode-alephscript-extension` y generar plan de refactorización (ver `ARCHIVO/DISCO/BACKLOG_BORRADORES/VS-CODE-EXTENSION/`) | 3 | ✅ |
+
+**Entregables**:
+- Planificación Épica (`01_planificacion-extension-vscode.md`)
+- Backlog Detallado (`02_backlog-extension-vscode.md`)
+- Informes de Integración por Agente (`03` a `10`)
 
 ---
 
