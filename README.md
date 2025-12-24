@@ -239,27 +239,26 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│  ██████╗ ███████╗████████╗ █████╗    ██████╗                 │
-│  ██╔══██╗██╔════╝╚══██╔══╝██╔══██╗  ╚════██╗                 │
-│  ██████╔╝█████╗     ██║   ███████║   █████╔╝                 │
-│  ██╔══██╗██╔══╝     ██║   ██╔══██║  ██╔═══╝                  │
-│  ██████╔╝███████╗   ██║   ██║  ██║  ███████╗                 │
-│  ╚═════╝ ╚══════╝   ╚═╝   ╚═╝  ╚═╝  ╚══════╝                 │
+│  ███████╗ ██████╗   ██╗                                      │
+│  ██╔════╝██╔════╝  ███║                                      │
+│  █████╗  ██║       ╚██║  ← Feature Cycle 1                   │
+│  ██╔══╝  ██║        ██║    Rama activa: fc1                  │
+│  ██║     ╚██████╗   ██║    Main: 🧊 congelada                │
+│  ╚═╝      ╚═════╝   ╚═╝                                      │
 │                                                              │
-│  v1.0.0-beta.2 · Feature Cycle 1 · 2025-12-23                │
-│  Sprint 2 en curso · MCP-Presets + VS Code Extension         │
+│  v2.0.0-dev · 2025-12-24 · 14 submódulos · 18 plugins        │
 └──────────────────────────────────────────────────────────────┘
 ```
 
 | Componente | Versión | Estado |
 |------------|---------|--------|
-| Scriptorium | **1.0.0-beta.2** | 🔄 Sprint 2 (Feature Cycle 1) |
-| Fundación | 0.0.1 | ⏸️ Pendiente planificación |
-| Web (GH-Pages) | 1.1.0 | ✅ 11 páginas + Teatro |
-| Plugins | 8 instalados | ✅ ARG, Enciclopedia, GH-Pages, Scraper, Creator, Teatro, Scrum, MCP-Presets |
-| Teatro | 1.0.0 | 🎬 2 obras (1 en escena) |
+| Scriptorium | **2.0.0-dev** | 🔥 FC1 activo (rama `fc1`) |
+| Submódulos | 14 integrados | 🔄 integration/beta/scriptorium |
+| Plugins | 18 registrados | ✅ 8 operativos + 10 borradores |
+| Agentes | 36 invocables | ✅ 12 core + 8 bridges + 16 plugins |
+| Fundación | 0.0.1 | ⏸️ Pendiente FC2 |
 
-Sprint 2 activo: **Feature Cycle 1** completó MCP-Presets (100%), avanza Extensión VS Code (11%). 8 plugins operativos, 36 agentes. Próximo objetivo: verificar deploy y planificar Fundación.
+**Rama de trabajo: `fc1`** — Main congelada para releases. Feature Cycle 1 integra 14 submódulos y 18 plugins en un ecosistema unificado: teatro dinámico, paradigmas FIA, flujos visuales, sincronización P2P. [Foto de futuro](ARCHIVO/FOTOS_ESTADO/2025-12-24_FC1_VisionFuturo.md).
 
 **Backlog activo**: [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md)
 
