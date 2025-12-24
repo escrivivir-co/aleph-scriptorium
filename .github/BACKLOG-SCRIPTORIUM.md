@@ -1331,11 +1331,12 @@ Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a 
 
 ---
 
-## BUG-003: Renombrar submódulos a patrón `ah-{tipo}-{nombre}`
+## BUG-003: Renombrar submódulos a convención PascalCase descriptiva
 
 **Estado**: 🟡 Aprobado (pendiente implementación)  
 **Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)  
 **Detectado**: 2025-01-01  
+**Actualizado**: 2025-12-24 (nuevo naming PascalCase)  
 **Borrador completo**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/SUBMODULOS_AH_NAMING/BUG-003-renombrar-submodulos-a-ah.md`
 
 ### Problema
@@ -1347,40 +1348,40 @@ Los 14 submódulos usan naming inconsistente (`alephscript-*`, `*-alephscript-*`
 
 ### Solución
 
-Renombrar **path local** (no URL remota) a patrón `ah-{tipo}-{nombre}`:
+Renombrar **path local** (no URL remota) a **PascalCase descriptivo** que indique función:
 
-| Tipo | Descripción | Ejemplos |
-|------|-------------|----------|
-| `mcp` | Servidor/gestor MCP | `ah-mcp-presets`, `ah-mcp-novelist` |
-| `editor` | Editor visual/código | `ah-editor-workflow`, `ah-editor-blockly` |
-| `sdk` | SDK de integración | `ah-sdk-network`, `ah-sdk-souls` |
-| `stream` | Bot de streaming | `ah-stream-kick` |
-| `ext` | Extensión IDE | `ah-ext-vscode` |
+| Categoría | Descripción | Ejemplos |
+|-----------|-------------|----------|
+| `Gallery` | Galerías/catálogos de recursos | MCPGallery, AAIAGallery |
+| `Editor` | Editores visuales o de código | WorkflowEditor, BlocklyEditor, PrologEditor |
+| `Suite` | Suites de integración o SDKs | VibeCodingSuite, BlockchainComPort |
+| `Desktop` | Aplicaciones de escritorio/streaming | StreamDesktop, StreamDesktopAppCronos |
+| `Extension` | Extensiones de IDE | VsCodeExtension |
 
-### Mapeo Completo
+### Mapeo Completo (v2 — Diciembre 2025)
 
-| Path actual | Path propuesto |
-|-------------|----------------|
-| `alephscript-mcp-presets-site` | `ah-mcp-presets` |
-| `alephscript-n8n-like-editor` | `ah-editor-workflow` |
-| `alephscript-network-sdk` | `ah-sdk-network` |
-| `alephscript-typed-prompting` | `ah-editor-typed` |
-| `as-gym` | `ah-sdk-souls` |
-| `as-utils-sdk` | `ah-sdk-theater` |
-| `blockly-alephscript-sdk` | `ah-editor-blockly` |
-| `iot-sbr-logica-para-bots` | `ah-editor-prolog` |
-| `kick-aleph-bot` | `ah-stream-kick` |
-| `kick-aleph-crono-bot` | `ah-stream-kick-crono` |
-| `mcp-novelist` | `ah-mcp-novelist` |
-| `node-red-alephscript-sdk` | `ah-editor-wire` |
-| `vscode-alephscript-extension` | `ah-ext-vscode` |
-| `wiki-racer` | `ah-editor-hypergraph` |
+| Path actual | Path propuesto | Función |
+|-------------|----------------|---------|
+| `alephscript-mcp-presets-site` | `MCPGallery` | Gestor de presets MCP (Zeus) |
+| `alephscript-n8n-like-editor` | `WorkflowEditor` | Editor visual de workflows |
+| `alephscript-network-sdk` | `BlockchainComPort` | SDK de sincronización P2P |
+| `alephscript-typed-prompting` | `TypedPromptsEditor` | Editor de ontologías NL↔JSON |
+| `as-gym` | `AAIAGallery` | Galería IA/ML (10 paradigmas FIA) |
+| `as-utils-sdk` | `VibeCodingSuite` | Conector VibeCoding Suite padre |
+| `blockly-alephscript-sdk` | `BlocklyEditor` | Editor de lógica visual Blockly |
+| `iot-sbr-logica-para-bots` | `PrologEditor` | Editor de lógica Prolog |
+| `kick-aleph-bot` | `StreamDesktop` | Bot de Kick.com |
+| `kick-aleph-crono-bot` | `StreamDesktopAppCronos` | Bot cronómetro de Kick.com |
+| `mcp-novelist` | `NovelistEditor` | Servidor MCP de narrativas |
+| `node-red-alephscript-sdk` | `WiringEditor` | Editor de flujos Node-RED |
+| `vscode-alephscript-extension` | `VsCodeExtension` | Extensión VS Code |
+| `wiki-racer` | `WiringAppHypergraphEditor` | Navegador de hipergrafos |
 
 ### Tasks
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| BUG-003-T001 | Renombrar 14 submódulos según mapeo | ⏳ |
+| BUG-003-T001 | Renombrar 14 submódulos según mapeo PascalCase | ⏳ |
 | BUG-003-T002 | Actualizar `.gitmodules` | ⏳ |
 | BUG-003-T003 | Actualizar `setup-workspace.sh` | ⏳ |
 | BUG-003-T004 | Actualizar `.vscode/settings.json` | ⏳ |
@@ -1393,7 +1394,7 @@ Renombrar **path local** (no URL remota) a patrón `ah-{tipo}-{nombre}`:
 
 ### Definition of Done
 
-- [ ] Todos los submódulos usan paths `ah-{tipo}-{nombre}`
+- [ ] Todos los submódulos usan paths PascalCase descriptivos
 - [ ] `.gitmodules`, `setup-workspace.sh`, `.vscode/settings.json` actualizados
 - [ ] Convención documentada en `instalar-submodulo.prompt.md` sección 1.2.1
 - [ ] Script de verificación creado

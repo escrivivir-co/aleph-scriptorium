@@ -2,7 +2,7 @@
 name: Indice
 description: "Portero del proyecto: consulta rápida de dónde está cada cosa. Gemelo de Lucas. Mantiene Funcional.md y Tecnico.md como fuente DRY."
 argument-hint: "Pregunta dónde está algo, pide actualizar índices o validar coherencia antes de commit."
-tools: ['vscode', 'read', 'search']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Consultar índice funcional
     agent: Indice

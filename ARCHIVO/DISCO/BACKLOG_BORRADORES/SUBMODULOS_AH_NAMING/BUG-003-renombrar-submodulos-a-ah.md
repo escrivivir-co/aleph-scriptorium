@@ -1,9 +1,9 @@
-# BUG-003 — Renombrar paths de submódulos a convención `ah-{tipo}-{nombre}`
+# BUG-003 — Renombrar paths de submódulos a convención PascalCase descriptiva
 
-> **Fecha**: 2025-01-01
-> **Opportunity**: Aleph Scriptorium
-> **Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)
-> **Estado**: ✅ Aprobado para backlog oficial
+> **Fecha**: 2025-01-01 (actualizado 2025-12-24)  
+> **Opportunity**: Aleph Scriptorium  
+> **Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)  
+> **Estado**: ✅ Aprobado para backlog oficial  
 > **Fuente**: petición de mantenimiento de naming (eliminar prefijo `alephscript-` en paths locales)
 
 ---
@@ -20,52 +20,55 @@ Los submódulos se crean/registran con el nombre del repositorio remoto como car
 
 Renombrar **solo el path local** de cada submódulo para que siga:
 
-- Eliminar referencia `alephscript` en el nombre de carpeta.
-- Nuevo patrón: `ah-{tipo}-{nombre}`
-- Ejemplo: `alephscript-n8n-like-editor` → `ah-editor-workflow`
+- Eliminar referencias `alephscript`, `as-`, prefijos técnicos.
+- Nuevo patrón: **PascalCase descriptivo** que indique función.
+- Ejemplo: `alephscript-n8n-like-editor` → `WorkflowEditor`
 
 **Nota importante**: esto **no debe romper el vínculo con los repos remotos**. El vínculo se mantiene por `url` en `.gitmodules` + config; el `path` puede cambiar.
 
 ---
 
-## Taxonomía de Tipos
+## Taxonomía por Función
 
 > Definida a partir del análisis de `BACKLOG_BORRADORES/*/conversacion-po-sm.md`.
 
-| Tipo | Descripción | Submódulos |
-|------|-------------|------------|
-| `mcp` | Servidor o gestor MCP | presets, novelist |
-| `editor` | Editor visual o de código | workflow, blockly, prolog, wire, typed, hypergraph |
-| `sdk` | SDK de integración | souls, theater, network |
-| `stream` | Bot de streaming | kick |
-| `ext` | Extensión VS Code | vscode |
+| Categoría | Descripción | Submódulos |
+|-----------|-------------|------------|
+| **Gallery** | Galerías/catálogos de recursos | MCPGallery, AAIAGallery |
+| **Editor** | Editores visuales o de código | WorkflowEditor, BlocklyEditor, PrologEditor, TypedPromptsEditor, NovelistEditor, WiringEditor, WiringAppHypergraphEditor |
+| **Suite/SDK** | Suites de integración o SDKs | VibeCodingSuite, BlockchainComPort |
+| **Desktop** | Aplicaciones de escritorio/streaming | StreamDesktop, StreamDesktopAppCronos |
+| **Extension** | Extensiones de IDE | VsCodeExtension |
 
 ---
 
-## Mapeo Completo (Basado en Análisis de Borradores)
+## Mapeo Completo (v2 — Diciembre 2025)
 
 > Función real de cada submódulo determinada por análisis de `conversacion-po-sm.md`.
 
-| Path actual | Path propuesto | Tipo | Función Real (de borradores) |
-|-------------|----------------|------|------------------------------|
-| `alephscript-mcp-presets-site` | `ah-mcp-presets` | mcp | Gestor de presets MCP (Zeus) — CRUD de colecciones de herramientas |
-| `alephscript-n8n-like-editor` | `ah-editor-workflow` | editor | Editor visual de workflows Angular + D3 — Conector a n8n, MCP nativo |
-| `alephscript-network-sdk` | `ah-sdk-network` | sdk | SDK de sincronización P2P — Oasis/Scuttlebutt, BOE distribuido |
-| `alephscript-typed-prompting` | `ah-editor-typed` | editor | Editor de ontologías NL↔JSON — TypeScript→JSON Schema, validación |
-| `as-gym` | `ah-sdk-souls` | sdk | Repositorio de "almas" FIA — 10 paradigmas de IA para agentes |
-| `as-utils-sdk` | `ah-sdk-theater` | sdk | Conector VibeCoding — Teatro Matrix, Maestro de Ceremonias |
-| `blockly-alephscript-sdk` | `ah-editor-blockly` | editor | Editor de lógica visual — Bloques Blockly → JavaScript |
-| `iot-sbr-logica-para-bots` | `ah-editor-prolog` | editor | Editor de lógica Prolog — SWI-Prolog, reglas declarativas |
-| `kick-aleph-bot` | `ah-stream-kick` | stream | Bot de Kick.com — Chat en tiempo real |
-| `kick-aleph-crono-bot` | `ah-stream-kick-crono` | stream | Bot cronómetro de Kick.com — Temporizador de streams |
-| `mcp-novelist` | `ah-mcp-novelist` | mcp | Servidor MCP de narrativas — Memoria a largo plazo, novelas |
-| `node-red-alephscript-sdk` | `ah-editor-wire` | editor | Editor de flujos Node-RED — 13 nodos, Socket.IO, Dashboard |
-| `vscode-alephscript-extension` | `ah-ext-vscode` | ext | Extensión VS Code — Arrakis Theater, ChatParticipants |
-| `wiki-racer` | `ah-editor-hypergraph` | editor | Navegador de hipergrafos — Mapas de enlaces, preset MediaWiki |
+| Path actual | Path propuesto | Categoría | Función Real |
+|-------------|----------------|-----------|--------------|
+| `alephscript-mcp-presets-site` | `MCPGallery` | Gallery | Gestor de presets MCP (Zeus) — CRUD de colecciones de herramientas |
+| `alephscript-n8n-like-editor` | `WorkflowEditor` | Editor | Editor visual de workflows Angular + D3 — Conector a n8n, MCP nativo |
+| `alephscript-network-sdk` | `BlockchainComPort` | Suite | SDK de sincronización P2P — Oasis/Scuttlebutt, BOE distribuido |
+| `alephscript-typed-prompting` | `TypedPromptsEditor` | Editor | Editor de ontologías NL↔JSON — TypeScript→JSON Schema, validación |
+| `as-gym` | `AAIAGallery` | Gallery | Galería Aprendizaje Automático e Inteligencia Artificial — 10 paradigmas FIA |
+| `as-utils-sdk` | `VibeCodingSuite` | Suite | Conector VibeCoding — Teatro Matrix, Maestro de Ceremonias, conexión Suite padre |
+| `blockly-alephscript-sdk` | `BlocklyEditor` | Editor | Editor de lógica visual — Bloques Blockly → JavaScript |
+| `iot-sbr-logica-para-bots` | `PrologEditor` | Editor | Editor de lógica Prolog — SWI-Prolog, reglas declarativas |
+| `kick-aleph-bot` | `StreamDesktop` | Desktop | Bot de Kick.com — Chat en tiempo real |
+| `kick-aleph-crono-bot` | `StreamDesktopAppCronos` | Desktop | Bot cronómetro de Kick.com — Temporizador de streams |
+| `mcp-novelist` | `NovelistEditor` | Editor | Servidor MCP de narrativas — Memoria a largo plazo, novelas |
+| `node-red-alephscript-sdk` | `WiringEditor` | Editor | Editor de flujos Node-RED — 13 nodos, Socket.IO, Dashboard |
+| `vscode-alephscript-extension` | `VsCodeExtension` | Extension | Extensión VS Code — Arrakis Theater, ChatParticipants |
+| `wiki-racer` | `WiringAppHypergraphEditor` | Editor | Navegador de hipergrafos — Mapas de enlaces, preset MediaWiki |
 
-### Resultado: 14 submódulos con naming coherente
+### Resultado: 14 submódulos con naming PascalCase descriptivo
 
-**Observación**: Los bots de Kick (`kick-aleph-bot` y `kick-aleph-crono-bot`) podrían fusionarse en futuro en un solo repositorio `ah-stream-kick`. Por ahora se mantienen separados.
+**Ventajas del nuevo naming**:
+- Auto-documentado: el nombre indica la función
+- Consistente con naming de clases/componentes
+- Fácil de recordar y referenciar
 
 ---
 
@@ -109,13 +112,13 @@ git submodule deinit -f --all
 ### Paso 3: Renombrar paths (por cada submódulo)
 
 ```bash
-# Ejemplo para alephscript-n8n-like-editor → ah-editor-workflow
-git mv alephscript-n8n-like-editor ah-editor-workflow
+# Ejemplo para alephscript-n8n-like-editor → WorkflowEditor
+git mv alephscript-n8n-like-editor WorkflowEditor
 ```
 
 ### Paso 4: Actualizar .gitmodules
 
-Cambiar cada línea `path = alephscript-*` por `path = ah-*` (URL permanece igual).
+Cambiar cada línea `path = alephscript-*` (o similar) por `path = NuevoNombre` (URL permanece igual).
 
 ### Paso 5: Sincronizar
 
@@ -133,8 +136,8 @@ git submodule update --init --recursive
 ### Paso 7: Verificación
 
 ```bash
-git submodule status  # Todos aparecen con nuevo nombre
-grep -r "alephscript-" scripts/ docs/ --include="*.md" --include="*.sh"  # Debe estar vacío
+git submodule status  # Todos aparecen con nuevo nombre PascalCase
+grep -r "alephscript-\|as-gym\|as-utils" scripts/ docs/ --include="*.md" --include="*.sh"  # Debe estar vacío
 ```
 
 ---
@@ -143,7 +146,7 @@ grep -r "alephscript-" scripts/ docs/ --include="*.md" --include="*.sh"  # Debe 
 
 | Task ID | Descripción | Prioridad |
 |---------|-------------|-----------|
-| T001 | Renombrar 14 submódulos según mapeo | Must |
+| T001 | Renombrar 14 submódulos según mapeo PascalCase | Must |
 | T002 | Actualizar `.gitmodules` con paths correctos | Must |
 | T003 | Actualizar `setup-workspace.sh` variables | Must |
 | T004 | Actualizar `.vscode/settings.json` rutas | Must |
@@ -164,27 +167,38 @@ grep -r "alephscript-" scripts/ docs/ --include="*.md" --include="*.sh"  # Debe 
 ### Contenido a añadir
 
 ````markdown
-### 1.2.1 Convención de Naming `ah-{tipo}-{nombre}`
+### 1.2.1 Convención de Naming PascalCase Descriptivo
 
 > **Obligatorio desde BUG-003**: Todos los submódulos deben seguir este patrón.
 
-**Patrón**: `ah-{tipo}-{nombre}`
+**Patrón**: `{Categoría}{Función}` en PascalCase
 
-| Componente | Regla | Ejemplos |
-|------------|-------|----------|
-| `ah-` | Prefijo fijo (Aleph) | — |
-| `{tipo}` | Categoría funcional (3-6 letras) | `mcp`, `editor`, `sdk`, `ext`, `stream` |
-| `{nombre}` | Identificador único (kebab-case) | `workflow`, `network`, `souls` |
+| Categoría | Descripción | Ejemplos |
+|-----------|-------------|----------|
+| `Gallery` | Galerías/catálogos de recursos | MCPGallery, AAIAGallery |
+| `Editor` | Editores visuales o de código | WorkflowEditor, BlocklyEditor, PrologEditor |
+| `Suite` | Suites de integración o SDKs | VibeCodingSuite, BlockchainComPort |
+| `Desktop` | Aplicaciones de escritorio/streaming | StreamDesktop, StreamDesktopAppCronos |
+| `Extension` | Extensiones de IDE | VsCodeExtension |
 
-**Tipos válidos**:
+**Mapeo oficial**:
 
-| Tipo | Descripción | Ejemplo |
-|------|-------------|---------|
-| `mcp` | Servidor o gestor MCP | `ah-mcp-presets` |
-| `editor` | Editor visual o de código | `ah-editor-workflow` |
-| `sdk` | SDK de integración | `ah-sdk-network` |
-| `stream` | Bot de streaming | `ah-stream-kick` |
-| `ext` | Extensión de IDE | `ah-ext-vscode` |
+| Función | Nombre Local |
+|---------|--------------|
+| Presets MCP | MCPGallery |
+| Workflows n8n | WorkflowEditor |
+| Red P2P | BlockchainComPort |
+| Ontologías NL↔JSON | TypedPromptsEditor |
+| Paradigmas IA | AAIAGallery |
+| VibeCoding | VibeCodingSuite |
+| Lógica visual | BlocklyEditor |
+| Lógica Prolog | PrologEditor |
+| Bot Kick | StreamDesktop |
+| Bot Kick Crono | StreamDesktopAppCronos |
+| Narrativas MCP | NovelistEditor |
+| Flujos Node-RED | WiringEditor |
+| Extensión VS Code | VsCodeExtension |
+| Hipergrafos | WiringAppHypergraphEditor |
 
 **Al añadir submódulo (OBLIGATORIO especificar nombre local)**:
 
@@ -192,8 +206,8 @@ grep -r "alephscript-" scripts/ docs/ --include="*.md" --include="*.sh"  # Debe 
 # ❌ MAL: usar nombre del repo remoto
 git submodule add https://github.com/escrivivir-co/nuevo-proyecto.git
 
-# ✅ BIEN: especificar path con convención
-git submodule add https://github.com/escrivivir-co/nuevo-proyecto.git ah-{tipo}-{nombre}
+# ✅ BIEN: especificar path con convención PascalCase
+git submodule add https://github.com/escrivivir-co/nuevo-proyecto.git NuevoEditor
 ```
 ````
 
