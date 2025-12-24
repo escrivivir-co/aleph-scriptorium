@@ -1331,6 +1331,76 @@ Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a 
 
 ---
 
+## BUG-003: Renombrar submódulos a patrón `ah-{tipo}-{nombre}`
+
+**Estado**: 🟡 Aprobado (pendiente implementación)  
+**Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)  
+**Detectado**: 2025-01-01  
+**Borrador completo**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/SUBMODULOS_AH_NAMING/BUG-003-renombrar-submodulos-a-ah.md`
+
+### Problema
+
+Los 14 submódulos usan naming inconsistente (`alephscript-*`, `*-alephscript-*`, `as-*`, otros) que:
+- Dificulta escanear el workspace
+- Complica documentación coherente
+- Costoso referenciar rutas en scripts/docs
+
+### Solución
+
+Renombrar **path local** (no URL remota) a patrón `ah-{tipo}-{nombre}`:
+
+| Tipo | Descripción | Ejemplos |
+|------|-------------|----------|
+| `mcp` | Servidor/gestor MCP | `ah-mcp-presets`, `ah-mcp-novelist` |
+| `editor` | Editor visual/código | `ah-editor-workflow`, `ah-editor-blockly` |
+| `sdk` | SDK de integración | `ah-sdk-network`, `ah-sdk-souls` |
+| `stream` | Bot de streaming | `ah-stream-kick` |
+| `ext` | Extensión IDE | `ah-ext-vscode` |
+
+### Mapeo Completo
+
+| Path actual | Path propuesto |
+|-------------|----------------|
+| `alephscript-mcp-presets-site` | `ah-mcp-presets` |
+| `alephscript-n8n-like-editor` | `ah-editor-workflow` |
+| `alephscript-network-sdk` | `ah-sdk-network` |
+| `alephscript-typed-prompting` | `ah-editor-typed` |
+| `as-gym` | `ah-sdk-souls` |
+| `as-utils-sdk` | `ah-sdk-theater` |
+| `blockly-alephscript-sdk` | `ah-editor-blockly` |
+| `iot-sbr-logica-para-bots` | `ah-editor-prolog` |
+| `kick-aleph-bot` | `ah-stream-kick` |
+| `kick-aleph-crono-bot` | `ah-stream-kick-crono` |
+| `mcp-novelist` | `ah-mcp-novelist` |
+| `node-red-alephscript-sdk` | `ah-editor-wire` |
+| `vscode-alephscript-extension` | `ah-ext-vscode` |
+| `wiki-racer` | `ah-editor-hypergraph` |
+
+### Tasks
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| BUG-003-T001 | Renombrar 14 submódulos según mapeo | ⏳ |
+| BUG-003-T002 | Actualizar `.gitmodules` | ⏳ |
+| BUG-003-T003 | Actualizar `setup-workspace.sh` | ⏳ |
+| BUG-003-T004 | Actualizar `.vscode/settings.json` | ⏳ |
+| BUG-003-T005 | Actualizar `scripts/README.md` | ⏳ |
+| BUG-003-T006 | Añadir convención en `submodulo-integracion.instructions.md` | ⏳ |
+| BUG-003-T007 | Añadir sección 1.2.1 en `instalar-submodulo.prompt.md` | ⏳ |
+| BUG-003-T008 | Crear script `verify-submodule-naming.sh` | ⏳ |
+| BUG-003-T009 | Verificar `git submodule status` funciona | ⏳ |
+| BUG-003-T010 | Documentar en `docs/leeme.md` | ⏳ |
+
+### Definition of Done
+
+- [ ] Todos los submódulos usan paths `ah-{tipo}-{nombre}`
+- [ ] `.gitmodules`, `setup-workspace.sh`, `.vscode/settings.json` actualizados
+- [ ] Convención documentada en `instalar-submodulo.prompt.md` sección 1.2.1
+- [ ] Script de verificación creado
+- [ ] No quedan referencias a nombres antiguos
+
+---
+
 # Épica: SCRIPT-1.5.0 — Plugin Bridge Discovery
 
 **Objetivo**: Habilitar la detección automática de prompts e instructions desde carpetas de plugins, y actualizar el protocolo de instalación para mantener los settings sincronizados.
