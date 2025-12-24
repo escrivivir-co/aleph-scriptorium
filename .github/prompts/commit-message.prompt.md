@@ -61,6 +61,110 @@ git diff --stat
 - ¿Los cambios afectan a `ARCHIVO/` o `PROYECTOS/`? → **Fundación**
 - ¿Ambos? → Hacer commits separados
 
+### Paso 2.5: Validar Índice DRY (opcional pero recomendado)
+
+Antes de generar el mensaje, ejecutar validación de coherencia:
+
+```
+@indice validar
+```
+
+O invocar el prompt `.github/prompts/indice-validar.prompt.md` para verificar:
+- ¿Los índices están sincronizados con el codebase?
+- ¿Hay archivos nuevos no documentados?
+- ¿El commit cumple el protocolo DevOps?
+
+**Este paso genera warnings informativos, NO bloquea el commit.**
+
+Si hay warnings:
+```
+⚠️ VALIDACIÓN DE ÍNDICE
+
+1. [indice_desactualizado] Tecnico.md no menciona plugin "X"
+
+Sugerencia: @indice actualizar
+Este warning es informativo y no bloquea el commit.
+```
+
+El usuario decide si corregir ahora o después.
+
+### Paso 2.6: Validar Índice SPLASH (si hay cambios en docs/)
+
+Si los cambios afectan a `docs/`, verificar coherencia con el índice estructural:
+
+```bash
+# Detectar cambios en docs/
+git diff --stat | grep "docs/"
+```
+
+**Criterios de warning**:
+
+| Cambio detectado | Warning | Acción sugerida |
+|------------------|---------|------------------|
+| Nueva sección en `index.md` | ⚠️ SPLASH | Actualizar tabla §2.2 |
+| Nueva página `docs/*.md` | ⚠️ SPLASH | Actualizar tabla §4 |
+| Modificación `_layouts/` o `_includes/` | ⚠️ SPLASH | Actualizar §1 |
+| Nuevas variables CSS | ⚠️ SPLASH | Actualizar §3.1 |
+| Cambios en navegación (`_config.yml`) | ⚠️ SPLASH | Actualizar §1.3 |
+| Solo contenido textual | ✅ OK | No requiere actualización |
+| Solo `_posts/` o colecciones | ✅ OK | No requiere actualización |
+
+**Formato del warning**:
+
+```
+⚠️ VALIDACIÓN SPLASH (docs/)
+
+1. [estructura_modificada] Se detectaron cambios estructurales en docs/:
+   - {archivo1}
+   - {archivo2}
+
+El índice SPLASH puede estar desactualizado.
+Ruta: ARCHIVO/DISCO/SPLASH/index.md
+
+Sugerencia: @GHPages actualizar índice SPLASH
+Este warning es informativo y no bloquea el commit.
+```
+
+**Nota**: Este paso solo se ejecuta si hay cambios en `docs/`.
+
+### Paso 2.7: Validar Índice README (si hay cambios que afecten al README)
+
+Si los cambios afectan a archivos que deberían reflejarse en `README.md`, verificar coherencia con el índice estructural:
+
+```bash
+# Detectar cambios en archivos relacionados con README
+git diff --stat | grep -E "(registry\.json|\.gitmodules|package\.json|workspace-config\.json|agents/.*\.agent\.md)"
+```
+
+**Criterios de warning**:
+
+| Cambio detectado | Warning | Acción sugerida |
+|------------------|---------|------------------|
+| Nuevo plugin en `registry.json` | ⚠️ README | Actualizar tabla Plugins |
+| Nuevo submódulo en `.gitmodules` | ⚠️ README | Actualizar tabla Submódulos |
+| Nuevo agente en `.github/agents/` | ⚠️ README | Actualizar sección Agentes |
+| Cambio de versión en `package.json` | ⚠️ README | Actualizar badges y Estado |
+| Cambio de rama en `workspace-config.json` | ⚠️ README | Actualizar sección Estado |
+| Cambios internos sin impacto público | ✅ OK | No requiere actualización |
+
+**Formato del warning**:
+
+```
+⚠️ VALIDACIÓN README
+
+1. [readme_desactualizado] Se detectaron cambios que pueden afectar al README:
+   - {archivo1}: {tipo de cambio}
+   - {archivo2}: {tipo de cambio}
+
+El README puede necesitar actualización.
+Índice: ARCHIVO/DISCO/README/index.md
+
+Sugerencia: @indice consultar README o actualizar manualmente
+Este warning es informativo y no bloquea el commit.
+```
+
+**Nota**: Este paso verifica cambios en archivos que típicamente requieren actualización del README público.
+
 ### Paso 3: Generar mensaje
 
 Ejemplo para cambios en Scriptorium:

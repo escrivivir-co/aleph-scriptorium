@@ -1,0 +1,554 @@
+# Índice Técnico — Aleph Scriptorium
+
+> **Agente responsable**: @ox  
+> **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
+> **Última actualización**: 2025-12-24  
+> **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
+
+---
+
+## 1. Arquitectura General
+
+### 1.1. Diagrama de Capas
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         USUARIOS                                     │
+└─────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    CAPA UI (Producción)                              │
+│               @aleph · @revisor · @periodico                         │
+└─────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                  CAPA BACKEND (Auditoría)                            │
+│    @blueflag · @blackflag · @redflag · @yellowflag · @orangeflag     │
+└─────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                  CAPA PLUGINS (18 bridges)                           │
+│        plugin_ox_* → .github/plugins/{id}/agents/                    │
+└─────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                  CAPA SUBMÓDULOS (14 repos)                          │
+│              Infraestructura externa (Git submodules)                │
+└─────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│                    CAPA META (Gestión)                               │
+│                   @ox · @pluginmanager · @indice                     │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### 1.2. Tecnologías Base
+
+| Componente | Tecnología | Versión |
+|------------|------------|---------|
+| Editor | VS Code | Latest |
+| IA | GitHub Copilot Chat | Latest |
+| Agentes | Markdown + YAML frontmatter | — |
+| Web | Jekyll + GitHub Pages | 4.x |
+| Control versiones | Git + Submodules | 2.x |
+| Runtime plugins | Variable por plugin | — |
+
+---
+
+## 2. Ontología Copilot (.github/)
+
+### 2.1. Estructura de Directorios
+
+```
+.github/
+├── agents/                 # 31 agentes (13 core + 18 bridges)
+│   ├── aleph.agent.md
+│   ├── plugin_ox_*.agent.md
+│   └── ...
+├── instructions/           # 10+ instrucciones de contexto
+│   ├── voz-manifiesto.instructions.md
+│   ├── cartas-puerta.instructions.md
+│   └── ...
+├── prompts/               # 18+ prompts reutilizables
+│   ├── commit-message.prompt.md
+│   ├── instalar-submodulo.prompt.md
+│   └── ...
+├── plugins/               # 18 plugins instalados
+│   ├── registry.json      # Índice maestro
+│   └── {plugin-id}/
+│       ├── manifest.md
+│       ├── agents/
+│       ├── prompts/
+│       ├── instructions/
+│       └── docs/
+├── tests/                 # Tests automatizados
+├── BACKLOG-SCRIPTORIUM.md
+├── copilot-instructions.md # Hub de instrucciones
+├── DEVOPS.md              # Protocolo DevOps
+├── PLUGINS.md             # Protocolo de plugins
+└── workspace-config.json  # Configuración del workspace
+```
+
+### 2.2. Archivos Críticos
+
+| Archivo | Propósito | Actualizar cuando... |
+|---------|-----------|---------------------|
+| `registry.json` | Índice de plugins | Instalar/desinstalar plugin |
+| `workspace-config.json` | Config rama/workspace | Cambiar rama de trabajo |
+| `copilot-instructions.md` | Hub de contexto | Añadir instrucciones |
+| `DEVOPS.md` | Protocolo de commits | Cambiar metodología |
+| `PLUGINS.md` | Protocolo de plugins | Cambiar estructura |
+| `BACKLOG-SCRIPTORIUM.md` | Estado del sprint | Cada sesión |
+
+### 2.3. Anatomía de un Agente
+
+```yaml
+---
+name: NombreAgente
+description: "Descripción breve"
+argument-hint: "Guía de uso"
+tools: ['vscode', 'read', 'edit', 'search', ...]
+handoffs:
+  - label: "Acción X"
+    agent: OtroAgente
+    prompt: "Instrucción..."
+    send: false
+---
+
+# Contenido Markdown del agente
+```
+
+### 2.4. Anatomía de una Instrucción
+
+```yaml
+---
+name: Nombre
+description: Descripción
+applyTo: "**/*.md"  # Glob de archivos
+---
+
+# Contenido de la instrucción
+```
+
+---
+
+## 3. Sistema de Plugins
+
+### 3.1. Registro Maestro
+
+**Ubicación**: `.github/plugins/registry.json`
+
+```json
+{
+  "version": "1.0.0",
+  "plugins": {
+    "{id}": {
+      "name": "...",
+      "version": "...",
+      "enabled": true,
+      "agents_count": N,
+      "prompts_count": M,
+      "data_directory": "ARCHIVO/PLUGINS/{ID}/",
+      "bridge_agent": "plugin_ox_{id}",
+      "dependencies": [...],
+      "submodule": "nombre-submodulo"  // opcional
+    }
+  }
+}
+```
+
+### 3.2. Plugins Instalados (18)
+
+| Plugin | Versión | Submódulo | Bridge |
+|--------|---------|-----------|--------|
+| arg-board | 1.0.0 | — | plugin_ox_argboard |
+| enciclopedia | 1.0.0 | — | plugin_ox_enciclopedia |
+| gh-pages | 1.1.0 | — | plugin_ox_ghpages |
+| foro-scraper | 1.1.0 | — | plugin_ox_foroscraper |
+| agent-creator | 1.1.0 | — | plugin_ox_agentcreator |
+| teatro | 1.0.0 | — | plugin_ox_teatro |
+| scrum | 1.0.0 | — | plugin_ox_scrum |
+| mcp-presets | 1.0.0 | alephscript-mcp-presets-site | plugin_ox_mcppresets |
+| network | 1.0.0 | alephscript-network-sdk | plugin_ox_network |
+| novelist | 1.0.0 | mcp-novelist | plugin_ox_novelist |
+| blockly-editor | 1.0.0 | blockly-alephscript-sdk | plugin_ox_blocklyeditor |
+| wire-editor | 1.0.0 | node-red-alephscript-sdk | plugin_ox_wireeditor |
+| prolog-editor | 1.0.0 | iot-sbr-logica-para-bots | plugin_ox_prologeditor |
+| typed-prompting | 1.0.0 | alephscript-typed-prompting | plugin_ox_typedprompting |
+| n8n-editor | 1.0.0 | alephscript-n8n-like-editor | plugin_ox_n8neditor |
+| wiring-app | 1.0.0 | wiki-racer | plugin_ox_wiringapp |
+| arg-board-app | 1.0.0 | wiki-racer | plugin_ox_argboardapp |
+| hypergraph-editor | 1.0.0 | wiki-racer | plugin_ox_hypergrapheditor |
+
+### 3.3. Estructura de un Plugin
+
+```
+.github/plugins/{id}/        # CÓDIGO (inmutable)
+├── manifest.md              # Metadatos obligatorios
+├── agents/                  # Agentes del plugin
+├── prompts/                 # Prompts del plugin
+├── instructions/            # Instrucciones del plugin
+├── docs/                    # Documentación
+└── meta/                    # Builders, config estática
+
+ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
+├── .arrakis/               # Estado teatro (si ARG)
+├── BOE/                    # Boletín Oficial (si aplica)
+└── ...                     # Datos de runtime
+```
+
+### 3.4. Plugin Discovery
+
+**VS Code Settings** (`.vscode/settings.json`):
+
+```json
+{
+  "chat.promptFilesLocations": {
+    ".github/prompts": true,
+    ".github/plugins/*/prompts": true
+  },
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    ".github/plugins/*/instructions": true
+  }
+}
+```
+
+> **Script**: `scripts/setup-workspace.sh` genera estos settings.
+
+---
+
+## 4. Sistema de Submódulos
+
+### 4.1. Submódulos Instalados (14)
+
+| Submódulo | Rama | Plugin asociado | Runtime |
+|-----------|------|-----------------|---------|
+| alephscript-mcp-presets-site | dev/astillador | mcp-presets | Next.js |
+| alephscript-n8n-like-editor | integration/beta/scriptorium | n8n-editor | Angular 18 |
+| alephscript-network-sdk | integration/beta/scriptorium | network | Docker |
+| alephscript-typed-prompting | integration/beta/scriptorium | typed-prompting | Vite |
+| as-gym | integration/beta/scriptorium | — | TypeScript |
+| as-utils-sdk | feature/astillero | — | Node.js |
+| blockly-alephscript-sdk | integration/beta/scriptorium | blockly-editor | Angular |
+| iot-sbr-logica-para-bots | integration/beta/scriptorium | prolog-editor | SWI-Prolog |
+| kick-aleph-bot | integration/beta/scriptorium | — | Node.js |
+| kick-aleph-crono-bot | integration/beta/scriptorium | — | Node.js |
+| mcp-novelist | integration/beta/scriptorium | novelist | Node.js |
+| node-red-alephscript-sdk | integration/beta/scriptorium | wire-editor | Node-RED |
+| vscode-alephscript-extension | integration/beta/scriptorium | — | TypeScript |
+| wiki-racer | integration/beta/scriptorium | wiring-app, arg-board-app, hypergraph-editor | TypeScript |
+
+### 4.2. Protocolo de Integración
+
+**Fuente de verdad**: `.github/instructions/submodulo-integracion.instructions.md`
+
+**Fases**:
+1. Instalar submódulo (`git submodule add`)
+2. Inspección de codebase
+3. Casar con instrucciones
+4. Conversación Scrum (PO ↔ SM)
+5. Generar backlog borrador
+6. Inicializar plugin y rama
+7. Integrar en sistema (6 archivos críticos)
+8. Publicar y anunciar
+
+### 4.3. Archivos a Actualizar (Integración)
+
+| Archivo | Zonas a modificar |
+|---------|-------------------|
+| `registry.json` | 1 entrada de plugin |
+| `aleph.agent.md` | 1 handoff nuevo |
+| `ox.agent.md` | 4 zonas (versión, plugin, bridge, handoff) |
+| `setup-workspace.sh` | 4 zonas (comentario, vars, settings, llamada) |
+| `scripts/README.md` | 2 zonas (contador, lista) |
+| `.gitmodules` | 1 entrada (automático) |
+
+### 4.4. Comandos de Submódulos
+
+```bash
+# Estado actual
+git submodule status
+
+# Actualizar todos
+git submodule update --remote --merge
+
+# Inicializar tras clonar
+git submodule update --init --recursive
+
+# Añadir nuevo
+git submodule add {URL} [{nombre}]
+cd {nombre}
+git checkout -b integration/beta/scriptorium
+```
+
+---
+
+## 5. Configuración del Workspace
+
+### 5.1. Rama de Trabajo
+
+**Fuente de verdad**: `.github/workspace-config.json`
+
+```json
+{
+  "workspace": {
+    "branch": "fc1",
+    "commit_policy": {
+      "protected_branches": ["main", "master"]
+    }
+  },
+  "git": {
+    "submodule_branch": "integration/beta/scriptorium"
+  }
+}
+```
+
+### 5.2. Scripts Disponibles
+
+| Script | Propósito |
+|--------|-----------|
+| `setup-workspace.sh` | Genera settings, sincroniza submódulos |
+| `setup-jekyll.sh` | Instala dependencias Jekyll |
+| `serve-site.sh` | Levanta servidor local |
+| `validate-site.sh` | Valida build antes de push |
+
+---
+
+## 6. Flujo DevOps
+
+### 6.1. Metodología
+
+**Base**: Agile/Scrum adaptado  
+**Ciclo**: Sprints × Feature Cycles
+
+### 6.2. Convención de Commits
+
+```
+<tipo>(<scope>): <descripción>
+
+[cuerpo]
+
+refs #TASK-ID
+```
+
+**Tipos**: `feat`, `fix`, `docs`, `refactor`, `style`, `chore`, `archive`
+
+**Scopes Scriptorium**: `script/agents`, `script/prompts`, `script/plugins`, `script/devops`
+
+**Scopes Fundación**: `fund/archivo`, `fund/caps`, `fund/plan`
+
+### 6.3. Verificación de Rama
+
+```bash
+# Antes de CUALQUIER commit
+BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+CURRENT=$(git branch --show-current)
+
+if [ "$CURRENT" != "$BRANCH" ]; then
+  echo "⚠️ Rama incorrecta: $CURRENT (esperado: $BRANCH)"
+  exit 1
+fi
+```
+
+### 6.4. Backlogs
+
+| Backlog | Ubicación |
+|---------|-----------|
+| Scriptorium | `.github/BACKLOG-SCRIPTORIUM.md` |
+| Fundación | `PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md` |
+| Borradores | `ARCHIVO/DISCO/BACKLOG_BORRADORES/` |
+
+---
+
+## 7. Datos de Runtime (ARCHIVO/)
+
+### 7.1. Estructura
+
+```
+ARCHIVO/
+├── CARTAS/            # Cartas-puerta (estático)
+├── DEVOPS/            # Este documento + Funcional.md
+├── DISCO/             # Memoria de trabajo (activo)
+│   ├── BACKLOG_BORRADORES/
+│   ├── TALLER/        # Proyectos de usuario
+│   └── ...
+├── ENCICLOPEDIA/      # Tomos consultables
+├── FOTOS_ESTADO/      # Capturas de sprint
+├── NOTICIAS/          # Planas publicadas
+├── PERFILES/          # Fichas de usuarios
+├── PLUGINS/           # Datos de runtime por plugin
+│   ├── AGENT_CREATOR/
+│   ├── ARG_BOARD/
+│   ├── ...
+│   └── README.md
+├── SITE/              # Assets adicionales
+├── diagnostico/       # Eje pasado (memoria)
+├── justificacion/     # Eje pasado (memoria)
+└── marco/             # Eje activo (herramientas)
+```
+
+### 7.2. Datos por Plugin
+
+| Plugin | Carpeta ARCHIVO | Contenido principal |
+|--------|-----------------|---------------------|
+| ARG_BOARD | `PLUGINS/ARG_BOARD/` | `.arrakis/`, BOE/ |
+| AGENT_CREATOR | `PLUGINS/AGENT_CREATOR/` | recipes/, creation-log.json |
+| GH_PAGES | `PLUGINS/GH_PAGES/` | published/ |
+| SCRUM | `PLUGINS/SCRUM/` | sprints/ |
+| TEATRO | `PLUGINS/TEATRO/` | obras/, cartelera.json |
+| MCP_PRESETS | `PLUGINS/MCP_PRESETS/` | presets/, catalog.json |
+| ... | ... | ... |
+
+---
+
+## 8. Web (docs/)
+
+### 8.1. Estructura Jekyll
+
+```
+docs/
+├── _config.yml        # Configuración Jekyll
+├── _includes/         # Partials HTML
+├── _layouts/          # Templates
+├── _site/             # Build (ignorado)
+├── assets/
+│   ├── css/
+│   └── js/
+├── teatro/            # Obras impress.js
+├── index.md           # Landing
+├── ecosistema.md      # Agentes + Plugins + Submódulos
+├── teatro.md          # Cartelera
+├── periodico.md       # Noticias
+└── ...
+```
+
+### 8.2. Despliegue
+
+**Rama**: GitHub Pages desde `docs/` en branch configurado  
+**URL**: `https://escrivivir-co.github.io/aleph-scriptorium/`
+
+### 8.3. Desarrollo Local
+
+```bash
+# Instalar dependencias
+cd docs && bundle install
+
+# Levantar servidor
+bundle exec jekyll serve --livereload
+
+# Validar antes de push
+../scripts/validate-site.sh
+```
+
+---
+
+## 9. Mapeo de Puertos (Submódulos)
+
+| Submódulo | Puerto | Servicio |
+|-----------|--------|----------|
+| alephscript-n8n-like-editor | 4200 | Angular dev |
+| alephscript-n8n-like-editor | 4000 | SSR |
+| alephscript-typed-prompting | 5000 | Vite editor |
+| mcp-novelist | 3066 | MCP server |
+| node-red-alephscript-sdk | 1880 | Node-RED |
+| alephscript-network-sdk | — | Docker compose |
+
+---
+
+## 10. Tests y Validación
+
+### 10.1. Ubicación
+
+`.github/tests/`
+
+### 10.2. Validaciones Críticas
+
+| Validación | Comando/Ubicación |
+|------------|-------------------|
+| Build Jekyll | `scripts/validate-site.sh` |
+| Agentes coherentes | `@ox diagnosticar agentes` |
+| Plugins registrados | `grep en registry.json` |
+| Submódulos sync | `git submodule status` |
+
+---
+
+## 11. Flujo de Release
+
+**Fuente de verdad**: `.github/prompts/crear-release.prompt.md`
+
+### 11.1. Pasos
+
+1. Actualizar README.md (badge, métricas)
+2. Actualizar docs/roadmap.md (fotos, estado)
+3. Commit en rama de desarrollo
+4. Merge a main (con indicador `-preview` si continúa)
+5. Crear tag anotado
+6. Push: main + rama + tag
+
+### 11.2. Versionado
+
+```
+v{major}.{minor}.{patch}[-{prerelease}]
+
+Ejemplos:
+- v1.0.0-beta.1 — Primera piedra
+- v1.0.0-beta.3 — Semillas de Futuro
+```
+
+---
+
+## 12. Checklists de Mantenimiento
+
+### 12.1. Añadir Plugin
+
+- [ ] Crear estructura en `.github/plugins/{id}/`
+- [ ] Crear `manifest.md` con frontmatter
+- [ ] Crear agente(s) en `agents/`
+- [ ] Crear bridge en `.github/agents/plugin_ox_{id}.agent.md`
+- [ ] Añadir a `registry.json`
+- [ ] Añadir handoff en `aleph.agent.md`
+- [ ] Actualizar `ox.agent.md` (índice)
+- [ ] Crear `ARCHIVO/PLUGINS/{ID}/README.md`
+- [ ] Actualizar `setup-workspace.sh` (settings)
+
+### 12.2. Añadir Submódulo
+
+- [ ] `git submodule add {URL}`
+- [ ] Crear rama `integration/beta/scriptorium`
+- [ ] Crear `README-SCRIPTORIUM.md` en submódulo
+- [ ] Crear plugin asociado (si aplica)
+- [ ] Actualizar 6 archivos críticos
+- [ ] Documentar en `docs/leeme.md`
+- [ ] Añadir a `docs/roadmap.md`
+
+### 12.3. Nueva Versión
+
+- [ ] Cerrar sprint en backlog
+- [ ] Actualizar contadores en README
+- [ ] Generar foto de estado
+- [ ] Actualizar roadmap
+- [ ] Merge + tag + push
+
+---
+
+## 13. Referencias Rápidas
+
+| Recurso | Ubicación |
+|---------|-----------|
+| Hub de instrucciones | `.github/copilot-instructions.md` |
+| Protocolo DevOps | `.github/DEVOPS.md` |
+| Protocolo Plugins | `.github/PLUGINS.md` |
+| Protocolo Submódulos | `.github/instructions/submodulo-integracion.instructions.md` |
+| Índice de agentes | `.github/agents/ox.agent.md` (JSON embebido) |
+| Registro de plugins | `.github/plugins/registry.json` |
+| Config workspace | `.github/workspace-config.json` |
+
+---
+
+> **Regla DRY**: Este índice es un mapa de navegación. No duplica contenido. Si necesitas detalle, navega al archivo referenciado.

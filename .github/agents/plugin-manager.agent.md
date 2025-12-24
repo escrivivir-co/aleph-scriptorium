@@ -1,8 +1,8 @@
 ````chatagent
 ---
 name: PluginManager
-description: Gestiona la instalación, activación y desinstalación de plugins en Scriptorium.
-argument-hint: "Indica la acción: instalar <ruta>, listar, activar <id>, desactivar <id>, desinstalar <id>"
+description: Gestiona la instalación, activación y desinstalación de plugins en Scriptorium. Optimiza settings de VS Code.
+argument-hint: "Indica la acción: instalar <ruta>, listar, activar <id>, desactivar <id>, desinstalar <id>, status"
 tools: ['vscode', 'read', 'edit', 'search']
 handoffs:
   - label: Instalar plugin desde ruta
@@ -13,17 +13,29 @@ handoffs:
     agent: PluginManager
     prompt: "Muestra el estado de todos los plugins en registry.json."
     send: false
-  - label: Activar plugin
+  - label: Activar plugin en settings
     agent: PluginManager
-    prompt: "Habilita un plugin desactivado para que sus agentes y prompts estén disponibles."
+    prompt: "Activa un plugin en .vscode/settings.json para que sus prompts e instructions sean visibles."
     send: false
-  - label: Desactivar plugin
+  - label: Desactivar plugin en settings
     agent: PluginManager
-    prompt: "Deshabilita un plugin sin eliminarlo, ocultando sus recursos."
+    prompt: "Desactiva un plugin en .vscode/settings.json para ocultar sus prompts e instructions."
+    send: false
+  - label: Activar plugin en registry
+    agent: PluginManager
+    prompt: "Habilita un plugin desactivado en registry.json para que sus agentes estén disponibles."
+    send: false
+  - label: Desactivar plugin en registry
+    agent: PluginManager
+    prompt: "Deshabilita un plugin en registry.json sin eliminarlo."
     send: false
   - label: Desinstalar plugin
     agent: PluginManager
     prompt: "Elimina completamente un plugin del sistema, verificando dependencias."
+    send: false
+  - label: Ver status de plugins
+    agent: PluginManager
+    prompt: "Muestra diagnóstico: plugins activos en settings, umbrales, recomendaciones."
     send: false
   - label: Crear bridge agent para plugin
     agent: PluginManager
@@ -32,6 +44,10 @@ handoffs:
   - label: Listar bridges instalados
     agent: PluginManager
     prompt: "Lista todos los agentes bridge de plugins instalados (plugin_ox_*)."
+    send: false
+  - label: Resolver problema de plugins
+    agent: PluginManager
+    prompt: "FAQ: diagnostica por qué no aparecen prompts, el chat está lento, etc."
     send: false
 ---
 
@@ -175,10 +191,135 @@ refs #SCRIPT-0.1.0-Txx
 |---------|-------------|
 | `instalar <ruta>` | Instala plugin desde ruta local |
 | `listar` | Muestra plugins con estado |
-| `activar <id>` | Habilita plugin desactivado |
-| `desactivar <id>` | Deshabilita sin eliminar |
+| `activar <id>` | Activa plugin en settings.json (prompts visibles) |
+| `desactivar <id>` | Desactiva plugin en settings.json (prompts ocultos) |
+| `status` | Diagnóstico: plugins activos, umbrales, recomendaciones |
 | `desinstalar <id>` | Elimina completamente |
 | `info <id>` | Muestra detalles del manifest |
+
+---
+
+## Gestión de Settings (SCRIPT-1.15.0)
+
+### Distinción Importante
+
+| Archivo | Campo | Controla |
+|---------|-------|----------|
+| `registry.json` | `enabled` | Si el plugin está **funcional** (agentes disponibles) |
+| `settings.json` | `true/false` | Si los prompts/instructions son **visibles** en Chat |
+
+Un plugin puede estar:
+- `registry.enabled: true` + `settings: false` → Funcional pero prompts ocultos
+- `registry.enabled: true` + `settings: true` → Funcional y prompts visibles
+- `registry.enabled: false` → Plugin deshabilitado completamente
+
+### Umbrales de Plugins Activos
+
+| Plugins Activos | Estado | Mensaje |
+|-----------------|--------|---------|
+| 0-3 | 🟢 Óptimo | Sin aviso |
+| 4-6 | 🟡 Aceptable | "Sistema funciona bien, considera desactivar los no usados" |
+| 7-10 | 🟠 Cargado | "Puede afectar velocidad del autocompletado" |
+| 11+ | 🔴 Sobrecargado | "Recomendamos desactivar al menos {N-5} plugins" |
+
+### Comando Status
+
+```
+@pluginmanager status
+
+📊 DIAGNÓSTICO DE PLUGINS
+═══════════════════════════
+
+Plugins en registry.json: 18
+Plugins activos en settings: 8
+
+Estado: 🟠 CARGADO
+
+Plugins activos:
+ ✓ arg-board (prompts: 7, instructions: 1)
+ ✓ agent-creator (prompts: 5, instructions: 1)
+ ✓ teatro (prompts: 3, instructions: 1)
+ ...
+
+Plugins instalados pero desactivados:
+ ○ network
+ ○ novelist
+ ...
+
+Recomendación: Considera desactivar 2-3 plugins para rendimiento óptimo.
+```
+
+---
+
+## FAQ de Resolución de Problemas
+
+### "No me aparecen los prompts del plugin X"
+
+**Causa más común**: El plugin está instalado pero **desactivado** en settings.
+
+**Diagnóstico**:
+1. Ejecutar `@pluginmanager status`
+2. Verificar si el plugin aparece en "desactivados"
+
+**Solución**:
+```
+@pluginmanager activar {id}
+```
+
+Esto cambiará el valor a `true` en `.vscode/settings.json`.
+
+---
+
+### "El chat está muy lento al autocompletar"
+
+**Causa**: Demasiados plugins activos. VS Code indexa todas las carpetas.
+
+**Diagnóstico**:
+```
+@pluginmanager status
+```
+
+**Solución**:
+```
+@pluginmanager desactivar {id}
+```
+
+Desactiva plugins que no uses en esta sesión. Seguirán instalados.
+
+---
+
+### "¿Cómo sé qué plugins tengo activos?"
+
+```
+@pluginmanager status
+```
+
+Muestra lista completa con estado de cada uno.
+
+---
+
+### "¿Por qué los plugins nuevos no se activan automáticamente?"
+
+**Diseño intencional (SCRIPT-1.15.0)**: Los plugins se instalan desactivados para:
+- Evitar sobrecarga del sistema
+- Dar control al usuario
+- Mantener el chat ágil
+
+Activa solo los que necesites en cada sesión.
+
+---
+
+### "¿Cuáles son los plugins recomendados para empezar?"
+
+Para usuarios nuevos:
+1. `teatro` — Experiencias transmedia
+2. `scrum` — Gestión de backlogs
+3. `gh-pages` — Publicación web
+
+Para desarrolladores:
+1. `agent-creator` — Crear agentes
+2. `mcp-presets` — Gestión de herramientas MCP
+3. `foro-scraper` — Extracción de contenido
 
 ---
 

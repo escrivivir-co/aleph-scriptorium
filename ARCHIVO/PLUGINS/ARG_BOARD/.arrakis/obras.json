@@ -45,7 +45,7 @@
     "estado": "registrada",
     "descripcion": "Obra de demostración para el plugin AGENT_CREATOR. Primer despliegue de agente creado como personaje teatral. Incluye demostración del sistema de épocas FIA.",
     "etapa_actual": 1,
-    "actores": ["tarotista", "nonsi", "tutatix"],
+    "actores": ["tarotista", "nonsi", "tutatix", "lucas"],
     "escenas": [
       { "id": 1, "nombre": "Presentación", "estado": "pendiente", "descripcion": "El Tarotista se presenta y explica su rol: auditor de demarcación científica." },
       { "id": 2, "nombre": "Tirada de cartas", "estado": "pendiente", "descripcion": "Usando metáforas del tarot, evalúa una propuesta del usuario con criterios de demarcación." },
@@ -67,7 +67,7 @@
     "estado": "en_escena",
     "descripcion": "Ruta guiada de 12 estadios para recorrer todas las features del Scriptorium.",
     "etapa_actual": 1,
-    "actores": ["tarotista", "nonsi"],
+    "actores": ["tarotista", "nonsi", "lucas"],
     "escenas": [
       { "id": 1, "nombre": "El Vestíbulo", "estado": "pendiente", "descripcion": "Elegir carta-puerta y perfil." },
       { "id": 2, "nombre": "La Biblioteca", "estado": "pendiente", "descripcion": "Consultar un tomo enciclopédico." },

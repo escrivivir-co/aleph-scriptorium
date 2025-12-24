@@ -40,6 +40,14 @@ handoffs:
               agent: Ox
               prompt: Consulta el índice de agentes, genera documentación o diagnostica inconsistencias en el sistema.
               send: false
+       - label: Consultar índice DRY
+              agent: Indice
+              prompt: Consulta los índices Funcional.md o Tecnico.md para encontrar dónde está algo o cómo hacer una tarea.
+              send: false
+       - label: Validar índice antes de commit
+              agent: Indice
+              prompt: Ejecuta los 5 tests de coherencia DRY y reporta warnings no bloqueantes antes de commitear.
+              send: false
        - label: Gestionar plugins
               agent: plugin-manager
               prompt: Instala, activa, desactiva o desinstala plugins del sistema Scriptorium.

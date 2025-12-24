@@ -13,6 +13,7 @@
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
+| `verify-submodule-naming.sh` | Verifica convención PascalCase de submódulos |
 
 ---
 
@@ -32,20 +33,20 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `chat.useNestedAgentsMdFiles`: busca agentes anidados
    
 2. **Sincroniza los 14 submódulos** con rama `integration/beta/scriptorium`:
-   - `vscode-alephscript-extension` — Extensión VS Code / Arrakis Theater
-   - `alephscript-mcp-presets-site` — Zeus MCP Presets (UI web)
-   - `as-utils-sdk` — VibeCoding Connector / Matrix Theater
-   - `as-gym` — FIA (Fundamentos de IA) / Almas para Agentes
-   - `alephscript-network-sdk` — Oasis/Scuttlebutt P2P Network
-   - `kick-aleph-bot` — Bot Kick para streaming (chat commands)
-   - `kick-aleph-crono-bot` — Bot Kick para cronología (time tracking)
-   - `mcp-novelist` — Servidor MCP para edición de narrativas
-   - `blockly-alephscript-sdk` — Editor visual Blockly para lógica de personajes
-   - `node-red-alephscript-sdk` — Diseñador de flujos Node-RED
-   - `iot-sbr-logica-para-bots` — Editor de Lógica Prolog (SWI-Prolog)
-   - `alephscript-typed-prompting` — TypedPrompting (Ontologías NL↔JSON)
-   - `alephscript-n8n-like-editor` — Editor visual de workflows (n8n connector)
-   - `wiki-racer` — Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
+   - `VsCodeExtension` — Extensión VS Code / Arrakis Theater
+   - `MCPGallery` — Zeus MCP Presets (UI web)
+   - `VibeCodingSuite` — VibeCoding Connector / Matrix Theater
+   - `AAIAGallery` — FIA (Fundamentos de IA) / Almas para Agentes
+   - `BlockchainComPort` — Oasis/Scuttlebutt P2P Network
+   - `StreamDesktop` — Bot Kick para streaming (chat commands)
+   - `StreamDesktopAppCronos` — Bot Kick para cronología (time tracking)
+   - `NovelistEditor` — Servidor MCP para edición de narrativas
+   - `BlocklyEditor` — Editor visual Blockly para lógica de personajes
+   - `WiringEditor` — Diseñador de flujos Node-RED
+   - `PrologEditor` — Editor de Lógica Prolog (SWI-Prolog)
+   - `TypedPromptsEditor` — TypedPrompting (Ontologías NL↔JSON)
+   - `WorkflowEditor` — Editor visual de workflows (n8n connector)
+   - `WiringAppHypergraphEditor` — Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
 
 ### Output esperado
 
@@ -53,31 +54,37 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Aleph Scriptorium — inicialización del workspace
 [setup] VS Code settings creados/actualizados
 [setup] Sincronizando submódulos
-[setup] Configurando submódulo: vscode-alephscript-extension
-[setup] Configurando submódulo: alephscript-mcp-presets-site
-[setup] Configurando submódulo: as-utils-sdk
-[setup] Configurando submódulo: as-gym
-[setup] Configurando submódulo: alephscript-network-sdk
-[setup] Configurando submódulo: kick-aleph-bot
-[setup] Configurando submódulo: kick-aleph-crono-bot
-[setup] Configurando submódulo: mcp-novelist
-[setup] Configurando submódulo: blockly-alephscript-sdk
-[setup] Configurando submódulo: node-red-alephscript-sdk
-[setup] Configurando submódulo: iot-sbr-logica-para-bots
-[setup] ✔ Setup completado (11 submódulos)
+[setup] Configurando submódulo: VsCodeExtension
+[setup] Configurando submódulo: MCPGallery
+[setup] Configurando submódulo: VibeCodingSuite
+[setup] Configurando submódulo: AAIAGallery
+[setup] Configurando submódulo: BlockchainComPort
+[setup] Configurando submódulo: StreamDesktop
+[setup] Configurando submódulo: StreamDesktopAppCronos
+[setup] Configurando submódulo: NovelistEditor
+[setup] Configurando submódulo: BlocklyEditor
+[setup] Configurando submódulo: WiringEditor
+[setup] Configurando submódulo: PrologEditor
+[setup] Configurando submódulo: TypedPromptsEditor
+[setup] Configurando submódulo: WorkflowEditor
+[setup] Configurando submódulo: WiringAppHypergraphEditor
+[setup] ✔ Setup completado (14 submódulos)
 
-Submódulos configurados (11):
-  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater
-  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)
-  - as-utils-sdk: VibeCoding Connector / Matrix Theater
-  - as-gym: FIA (Fundamentos de IA) / Almas para Agentes
-  - alephscript-network-sdk: Oasis/Scuttlebutt P2P Network
-  - kick-aleph-bot: Bot Kick para streaming (chat commands)
-  - kick-aleph-crono-bot: Bot Kick para cronología (time tracking)
-  - mcp-novelist: Servidor MCP para edición de narrativas
-  - blockly-alephscript-sdk: Editor visual Blockly
-  - node-red-alephscript-sdk: Diseñador de flujos Node-RED
-  - iot-sbr-logica-para-bots: Editor de Lógica Prolog (SWI-Prolog)
+Submódulos configurados (14):
+  - VsCodeExtension: Extensión VS Code / Arrakis Theater
+  - MCPGallery: Zeus MCP Presets (UI web)
+  - VibeCodingSuite: VibeCoding Connector / Matrix Theater
+  - AAIAGallery: FIA (Fundamentos de IA) / Almas para Agentes
+  - BlockchainComPort: Oasis/Scuttlebutt P2P Network
+  - StreamDesktop: Bot Kick para streaming (chat commands)
+  - StreamDesktopAppCronos: Bot Kick para cronología (time tracking)
+  - NovelistEditor: Servidor MCP para edición de narrativas
+  - BlocklyEditor: Editor visual Blockly
+  - WiringEditor: Diseñador de flujos Node-RED
+  - PrologEditor: Editor de Lógica Prolog (SWI-Prolog)
+  - TypedPromptsEditor: TypedPrompting (Ontologías NL↔JSON)
+  - WorkflowEditor: Editor visual de workflows (n8n connector)
+  - WiringAppHypergraphEditor: Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
 ```
 
 ---

@@ -1113,8 +1113,8 @@ impress().init()  →  Habilita navegación 3D
 | T001 | Diagnosticar por qué `impress()` falla (CDN, defer, orden de carga) | ✅ |
 | T002 | Cambiar de CDN a copia local de impress.js si CDN es inestable | ✅ |
 | T003 | Añadir fallback robusto: si impress falla, mostrar HTML legible | ✅ |
-| T004 | Verificar en navegador local antes de push | ⏳ |
-| T005 | Verificar en GitHub Actions después de push | ⏳ |
+| T004 | Verificar en navegador local antes de push | ✅ |
+| T005 | Verificar en GitHub Actions después de push | ✅ |
 
 ---
 
@@ -1178,7 +1178,7 @@ impress().init()  →  Habilita navegación 3D
 | T026 | Test local: servidor Jekyll y navegación completa | ⏳ |
 | T027 | Test en Chrome, Firefox, Safari | ⏳ |
 | T028 | Test en móvil (responsive) | ⏳ |
-| T029 | Verificar que GitHub Actions pasa sin errores | ⏳ |
+| T029 | Verificar que GitHub Actions pasa sin errores | ✅ |
 | T030 | Documentar hallazgos y limitaciones MVP | ⏳ |
 
 ---
@@ -1188,10 +1188,10 @@ impress().init()  →  Habilita navegación 3D
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 30 |
-| Completadas | **22** |
+| Completadas | **25** |
 | En progreso | 1 |
-| Pendientes | **7** |
-| % Avance | **73%** |
+| Pendientes | **4** |
+| % Avance | **83%** |
 
 ---
 
@@ -1199,7 +1199,7 @@ impress().init()  →  Habilita navegación 3D
 
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
-| BUG-001 (Jekyll include) | 🟡 Parcialmente resuelto | Falta verificar en Actions |
+| BUG-001 (Jekyll include) | ✅ Resuelto | Verificado en Actions (pages-build-deployment #42) |
 | BUG-002 (impress.js) | ✅ Resuelto | Versión completa + carga al final del body |
 | impress.js local | ✅ impress.js (completa) | Reemplaza impress.min.js corrupto |
 
@@ -1240,16 +1240,16 @@ Los plugins bundleados en `impress.min.js` se auto-inicializaban antes de que el
 - `docs/assets/js/impress.js` — Nueva versión completa (reemplaza impress.min.js)
 - `docs/assets/js/impress.min.js` — Eliminado
 
-### Verificación pendiente
+### Verificación
 
 - [ ] Test local con `jekyll serve`
-- [ ] Verificar en GitHub Actions después de push
+- [x] Verificar en GitHub Actions después de push (pages-build-deployment #42 ✅)
 
 ---
 
 ## BUG-001: Jekyll include_relative con variable falla en GitHub Actions
 
-**Estado**: 🔴 Abierto  
+**Estado**: ✅ Resuelto  
 **Severidad**: Alta (bloquea deploy)  
 **Detectado**: 2025-12-22  
 **Referencia**: [GitHub Actions Run #20444700841](https://github.com/escrivivir-co/aleph-scriptorium/actions/runs/20444700841/job/58745506389)
@@ -1301,7 +1301,7 @@ in /_layouts/obra.html
 | BUG-001-T001 | Decidir estrategia (A, B, C, D o E) | ✅ Opción A |
 | BUG-001-T002 | Implementar fix en `obra.html` | ✅ |
 | BUG-001-T003 | Mover/copiar escenas según estrategia | ✅ |
-| BUG-001-T004 | Verificar build en GitHub Actions | 🔄 |
+| BUG-001-T004 | Verificar build en GitHub Actions | ✅ |
 
 ### Implementación
 
@@ -1321,13 +1321,84 @@ Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a 
 ### Verificación
 
 - Se añadió flujo de validación local (scripts + prompt) para reducir el loop de errores en Actions.
-- Pendiente: confirmar que el próximo run de GitHub Actions pasa (BUG-001-T004).
+- Confirmado: los builds de GitHub Actions pasan (pages-build-deployment #42, verde). (BUG-001-T004)
 
 ### Archivos afectados
 
 - `docs/_layouts/obra.html` (línea ~80)
 - `docs/teatro/camino-del-tarotista.md`
 - `ARCHIVO/DISCO/TALLER/camino-del-tarotista/escenas/*.md`
+
+---
+
+## BUG-003: Renombrar submódulos a convención PascalCase descriptiva
+
+**Estado**: ✅ Resuelto  
+**Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)  
+**Detectado**: 2025-01-01  
+**Resuelto**: 2025-01-01  
+**Borrador completo**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/SUBMODULOS_AH_NAMING/BUG-003-renombrar-submodulos-a-ah.md`
+
+### Problema
+
+Los 14 submódulos usan naming inconsistente (`alephscript-*`, `*-alephscript-*`, `as-*`, otros) que:
+- Dificulta escanear el workspace
+- Complica documentación coherente
+- Costoso referenciar rutas en scripts/docs
+
+### Solución
+
+Renombrar **path local** (no URL remota) a **PascalCase descriptivo** que indique función:
+
+| Categoría | Descripción | Ejemplos |
+|-----------|-------------|----------|
+| `Gallery` | Galerías/catálogos de recursos | MCPGallery, AAIAGallery |
+| `Editor` | Editores visuales o de código | WorkflowEditor, BlocklyEditor, PrologEditor |
+| `Suite` | Suites de integración o SDKs | VibeCodingSuite, BlockchainComPort |
+| `Desktop` | Aplicaciones de escritorio/streaming | StreamDesktop, StreamDesktopAppCronos |
+| `Extension` | Extensiones de IDE | VsCodeExtension |
+
+### Mapeo Completo (v2 — Diciembre 2025)
+
+| Path actual | Path propuesto | Función |
+|-------------|----------------|---------|
+| `alephscript-mcp-presets-site` | `MCPGallery` | Gestor de presets MCP (Zeus) |
+| `alephscript-n8n-like-editor` | `WorkflowEditor` | Editor visual de workflows |
+| `alephscript-network-sdk` | `BlockchainComPort` | SDK de sincronización P2P |
+| `alephscript-typed-prompting` | `TypedPromptsEditor` | Editor de ontologías NL↔JSON |
+| `as-gym` | `AAIAGallery` | Galería IA/ML (10 paradigmas FIA) |
+| `as-utils-sdk` | `VibeCodingSuite` | Conector VibeCoding Suite padre |
+| `blockly-alephscript-sdk` | `BlocklyEditor` | Editor de lógica visual Blockly |
+| `iot-sbr-logica-para-bots` | `PrologEditor` | Editor de lógica Prolog |
+| `kick-aleph-bot` | `StreamDesktop` | Bot de Kick.com |
+| `kick-aleph-crono-bot` | `StreamDesktopAppCronos` | Bot cronómetro de Kick.com |
+| `mcp-novelist` | `NovelistEditor` | Servidor MCP de narrativas |
+| `node-red-alephscript-sdk` | `WiringEditor` | Editor de flujos Node-RED |
+| `vscode-alephscript-extension` | `VsCodeExtension` | Extensión VS Code |
+| `wiki-racer` | `WiringAppHypergraphEditor` | Navegador de hipergrafos |
+
+### Tasks
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| BUG-003-T001 | Renombrar 14 submódulos según mapeo PascalCase | ✅ |
+| BUG-003-T002 | Actualizar `.gitmodules` | ✅ |
+| BUG-003-T003 | Actualizar `setup-workspace.sh` | ✅ |
+| BUG-003-T004 | Actualizar `.vscode/settings.json` | ✅ (no requería cambios) |
+| BUG-003-T005 | Actualizar `scripts/README.md` | ✅ |
+| BUG-003-T006 | Añadir convención en `submodulo-integracion.instructions.md` | ✅ |
+| BUG-003-T007 | Añadir sección 1.2.1 en `instalar-submodulo.prompt.md` | ✅ |
+| BUG-003-T008 | Crear script `verify-submodule-naming.sh` | ✅ |
+| BUG-003-T009 | Verificar `git submodule status` funciona | ✅ |
+| BUG-003-T010 | Documentar en `docs/leeme.md` | ✅ |
+
+### Definition of Done
+
+- [x] Todos los submódulos usan paths PascalCase descriptivos
+- [x] `.gitmodules`, `setup-workspace.sh`, `.vscode/settings.json` actualizados
+- [x] Convención documentada en `instalar-submodulo.prompt.md` sección 1.2.1
+- [x] Script de verificación creado
+- [x] No quedan referencias a nombres antiguos
 
 ---
 
@@ -1589,6 +1660,32 @@ Los 5 auditores (banderas) son prismas que descomponen la luz del conocimiento e
 
 ---
 
+# Épica: SCRIPT-1.12.0 — Protocolo de Submódulos
+
+**Objetivo**: Estandarizar el proceso de inspección e integración de submódulos, definiendo un set común de backlog items para garantizar consistencia y calidad en la incorporación de código externo.
+
+**Estado**: ✅ Completada
+
+## Story: SCRIPT-1.12.0-S01 — Items Comunes de Inspección
+**Estado**: ✅ Completada
+
+### Checklist de Inspección
+Para cada nuevo submódulo, se deben generar las siguientes tareas de inspección:
+
+1. **Análisis de Arquitectura**: Identificar patrones (MVC, Hexagonal, etc.), lenguajes y frameworks.
+2. **Inventario de Recursos**: Listar agentes, prompts, instrucciones y herramientas existentes.
+3. **Análisis de Dependencias**: Identificar librerías externas, requisitos de sistema y conflictos potenciales.
+4. **Puntos de Integración**: Detectar APIs, webhooks, esquemas de datos y puntos de extensión.
+5. **Mapeo Ontológico**: Alinear conceptos del submódulo con la taxonomía del Scriptorium (UI, Backend, Sistema).
+6. **Evaluación de Calidad**: Revisar cobertura de tests, linter rules y documentación.
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Documentar checklist de inspección en `submodulo-integracion.instructions.md` | ✅ |
+| T002 | Crear plantilla de issue/ticket para inspección de submódulos | ✅ |
+
+---
+
 # Épica: SCRIPT-2.0.0 — Extensión VS Code para Scriptorium
 
 **Objetivo**: Refactorizar `vscode-alephscript-extension` (Arrakis Theater) para crear una extensión especializada que integre el sistema de agentes, plugins y backlogs de ALEPH Scriptorium con VS Code y GitHub Copilot Chat.
@@ -1645,8 +1742,24 @@ src/scriptorium/
 ## Feature Cycle 1: Configuración y Carga Dinámica
 
 > **Ciclo actual**: Feature Cycle 1  
-> **Effort total asignado**: 21 pts  
+> **Effort total asignado**: 24 pts  
 > **Objetivo**: Establecer base de código y carga dinámica de agentes/plugins
+
+---
+
+## Story: SCRIPT-2.0.0-S00 — Análisis y Planificación
+**Effort**: 3 pts
+**Prioridad**: Must
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T000 | Realizar análisis profundo de `vscode-alephscript-extension` y generar plan de refactorización (ver `ARCHIVO/DISCO/BACKLOG_BORRADORES/VS-CODE-EXTENSION/`) | 3 | ✅ |
+
+**Entregables**:
+- Planificación Épica (`01_planificacion-extension-vscode.md`)
+- Backlog Detallado (`02_backlog-extension-vscode.md`)
+- Informes de Integración por Agente (`03` a `10`)
 
 ---
 
@@ -2883,3 +2996,1195 @@ refs #SCRIPT-1.11.0
 | 2025-12-24 | Implementar S01-S05: crear ecosistema.md con 3 galerías + guía | @aleph |
 | 2025-12-24 | Actualizar navegación index.md (card Ecosistema) | @aleph |
 | 2025-12-24 | Crear redirect /agentes/ → /ecosistema/ | @aleph |
+
+---
+
+# Épica: SCRIPT-1.13.0 — Índices DRY y Agente Lucas
+
+**Objetivo**: Crear índices de navegación separados para visión funcional (@aleph) y técnica (@ox), y un agente Lucas que combine ambas perspectivas como Scrum Master del Índice.
+
+**Estado**: ✅ Completada
+
+**Fecha**: 2025-12-24 (Nochebuena)  
+**Rama de trabajo**: `fc1`
+
+---
+
+## Contexto
+
+### El problema
+
+Los agentes @aleph y @ox tienen documentación dispersa:
+- @aleph: Orientado a usuarios, necesita un frontal funcional ("qué puedo hacer")
+- @ox: Orientado a Scrum team, necesita un frontal técnico ("cómo está construido")
+- No hay un agente que valide coherencia DRY entre ambas visiones
+
+### La solución
+
+1. **Funcional.md**: Índice para usuarios (capacidades, flujos, invocaciones)
+2. **Tecnico.md**: Índice para equipo técnico (arquitectura, ontología, checklists)
+3. **Agente Lucas**: Scrum Master que mantiene coherencia entre índices
+
+---
+
+## Stories
+
+### SCRIPT-1.13.0-S01 — Índice Funcional (Aleph)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear ARCHIVO/DEVOPS/Funcional.md | ✅ |
+| T002 | Documentar 5 capacidades principales | ✅ |
+| T003 | Documentar agentes por capa (UI, Backend, Sistema, Plugins, Meta) | ✅ |
+| T004 | Documentar 4 flujos principales (redacción, auditoría, extracción, publicación) | ✅ |
+| T005 | Documentar memoria ARCHIVO y ejemplos de invocación | ✅ |
+
+**Definition of Done**: Usuario puede navegar desde Funcional.md a cualquier capacidad.
+
+---
+
+### SCRIPT-1.13.0-S02 — Índice Técnico (Ox)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Crear ARCHIVO/DEVOPS/Tecnico.md | ✅ |
+| T007 | Documentar arquitectura de 5 capas con diagrama | ✅ |
+| T008 | Documentar ontología .github/ (6 categorías) | ✅ |
+| T009 | Documentar sistema de plugins (18) y submódulos (14) | ✅ |
+| T010 | Documentar flujo DevOps y checklists de validación | ✅ |
+
+**Definition of Done**: Scrum team puede navegar desde Tecnico.md a cualquier componente.
+
+---
+
+### SCRIPT-1.13.0-S03 — Agente Lucas (Scrum Master del Índice)
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Crear recipe lucas.recipe.json (base: aleph + ox) | ✅ |
+| T012 | Crear agents/created/lucas.agent.md con 8 handoffs | ✅ |
+| T013 | Definir 5 tests de coherencia (DRY, sincronización, commits) | ✅ |
+| T014 | Crear ELENCO/lucas/lucas.agent.md (ficha de personaje) | ✅ |
+| T015 | Registrar en actores.json con arquetipo MENTOR | ✅ |
+| T016 | Añadir a obras hola_mundo y camino_del_tarotista | ✅ |
+| T017 | Registrar operaciones en creation-log.json | ✅ |
+| T018 | Corregir JSON malformado en creation-log.json | ✅ |
+
+**Definition of Done**: Lucas desplegado en Teatro ARG, invocable desde ambas obras.
+
+---
+
+## Métricas SCRIPT-1.13.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 3 |
+| Tasks totales | 18 |
+| Puntos totales | 11 |
+| Prioridad Must | 3 stories (11 pts) |
+| Completadas | **3** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| [ARCHIVO/DEVOPS/Funcional.md](ARCHIVO/DEVOPS/Funcional.md) | Índice para usuarios | ✅ |
+| [ARCHIVO/DEVOPS/Tecnico.md](ARCHIVO/DEVOPS/Tecnico.md) | Índice para Scrum team | ✅ |
+| [recipes/lucas.recipe.json](ARCHIVO/PLUGINS/AGENT_CREATOR/recipes/lucas.recipe.json) | Receta de Lucas | ✅ |
+| [agents/created/lucas.agent.md](ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/lucas.agent.md) | Agente principal | ✅ |
+| [ELENCO/lucas/](ARCHIVO/DISCO/TALLER/ELENCO/lucas/) | Ficha de personaje | ✅ |
+
+---
+
+## Archivos Actualizados
+
+| Archivo | Cambio |
+|---------|--------|
+| actores.json | Entrada `lucas` añadida |
+| obras.json | Lucas en hola_mundo y camino_del_tarotista |
+| creation-log.json | 2 entradas + corrección JSON |
+
+---
+
+## Características de Lucas
+
+| Campo | Valor |
+|-------|-------|
+| **Arquetipo** | MENTOR |
+| **Rol** | Scrum Master del Índice |
+| **Agentes base** | @aleph (funcional) + @ox (técnico) |
+| **Fuente datos** | ARCHIVO/DEVOPS/ |
+| **Obras** | hola_mundo, camino_del_tarotista |
+
+### Capacidades
+
+1. Validar ediciones de índice (Funcional.md, Tecnico.md)
+2. Mantener coherencia DRY entre visión funcional y técnica
+3. Actuar como oráculo de commits
+4. Auditar sincronización índice ↔ codebase
+5. Guiar dónde documentar información nueva
+
+### Tests
+
+| Test | Pregunta |
+|------|----------|
+| coherencia_funcional_tecnico | ¿Ambos índices reflejan la misma realidad? |
+| dry_violation | ¿Hay duplicación entre índices? |
+| indice_desactualizado | ¿El índice menciona algo que ya no existe? |
+| archivo_huerfano | ¿Hay archivos no mencionados en ningún índice? |
+| commit_sin_trazabilidad | ¿El commit sigue protocolo DevOps? |
+
+---
+
+## Pendientes
+
+- **Avatar**: ✅ `ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png` (256×256 creado)
+
+---
+
+## Changelog SCRIPT-1.13.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear épica SCRIPT-1.13.0 | @scrum |
+| 2025-12-24 | Crear Funcional.md y Tecnico.md (S01, S02) | @aleph |
+| 2025-12-24 | Crear agente Lucas y desplegar en Teatro (S03) | @aleph |
+| 2025-12-24 | Corregir creation-log.json y cerrar épica | @aleph |
+
+---
+
+# Épica: SCRIPT-1.14.0 — Agente Índice (@indice)
+
+**Objetivo**: Crear un agente `@indice` integrado en `.github/agents/` que sirva como "portero" del proyecto, consultado antes de cada intervención para determinar qué leer. Gemelo funcional del personaje Lucas, mantiene los índices `Funcional.md` y `Tecnico.md` como única fuente de verdad DRY.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-12-24  
+**Fecha cierre**: 2025-01-01
+**Rama de trabajo**: `fc1`  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/AGENTE_INDICE/conversacion-po-sm.md`  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/AGENTE_INDICE/01_backlog-borrador.md`
+
+---
+
+## Contexto
+
+### El problema
+
+Los agentes @aleph y @ox no tienen un "mapa" rápido del proyecto:
+- Cada intervención requiere exploración
+- No hay validación de coherencia índice ↔ codebase
+- Los índices pueden desincronizarse silenciosamente
+
+### La solución
+
+Crear `@indice` que:
+1. Sea consultado ANTES de cada intervención
+2. Mantenga `Funcional.md` y `Tecnico.md` actualizados
+3. Ejecute validación pre-commit (warning no bloqueante)
+4. Combine visión @aleph (usuario) + @ox (técnica)
+
+### Arquitectura
+
+```
+.github/
+├── agents/
+│   └── indice.agent.md          # ✅ CREADO
+├── prompts/
+│   ├── commit-message.prompt.md # ✅ MODIFICADO (Paso 2.5)
+│   ├── indice-consultar.prompt.md   # ✅ CREADO
+│   ├── indice-actualizar.prompt.md  # ✅ CREADO
+│   └── indice-validar.prompt.md     # ✅ CREADO
+├── instructions/
+│   └── indice-dry.instructions.md   # ✅ CREADO
+└── copilot-instructions.md      # ✅ MODIFICADO (§8)
+
+ARCHIVO/DEVOPS/
+├── Funcional.md                 # Fuente de verdad (usuario)
+└── Tecnico.md                   # Fuente de verdad (técnico)
+```
+
+---
+
+## Stories
+
+### SCRIPT-1.14.0-S01 — Agente Índice Base
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `.github/agents/indice.agent.md` con frontmatter | ✅ |
+| T002 | Definir 8 handoffs (consultar, actualizar, validar por índice) | ✅ |
+| T003 | Documentar relación gemelo con personaje Lucas | ✅ |
+| T004 | Definir 5 tests de coherencia | ✅ |
+| T005 | Añadir sección "Flujo de consulta" con ejemplos | ✅ |
+| T006 | Añadir sección "Contrato DRY" | ✅ |
+
+---
+
+### SCRIPT-1.14.0-S02 — Instrucciones DRY
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T007 | Crear `.github/instructions/indice-dry.instructions.md` | ✅ |
+| T008 | Documentar estructura esperada de Funcional.md | ✅ |
+| T009 | Documentar estructura esperada de Tecnico.md | ✅ |
+| T010 | Definir reglas de actualización | ✅ |
+| T011 | Definir applyTo: ARCHIVO/DEVOPS/*.md | ✅ |
+
+---
+
+### SCRIPT-1.14.0-S03 — Prompts del Índice
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Crear `indice-consultar.prompt.md` | ✅ |
+| T013 | Crear `indice-actualizar.prompt.md` | ✅ |
+| T014 | Crear `indice-validar.prompt.md` | ✅ |
+| T015 | Documentar ejemplos de uso en cada prompt | ✅ |
+
+---
+
+### SCRIPT-1.14.0-S04 — Integración con Sistema
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Añadir handoff @indice en aleph.agent.md | ✅ |
+| T017 | Actualizar ox.agent.md con @indice en índice | ✅ |
+| T018 | Actualizar copilot-instructions.md con @indice | ✅ |
+| T019 | Documentar en Tecnico.md | ✅ |
+
+---
+
+### SCRIPT-1.14.0-S05 — Integración Pre-Commit
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T020 | Añadir sección §8 en copilot-instructions.md | ✅ |
+| T021 | Modificar commit-message.prompt.md: Paso 2.5 | ✅ |
+| T022 | Implementar lógica de warning no bloqueante | ✅ |
+| T023 | Definir formato de warning accionable | ✅ |
+| T024 | Documentar flujo en indice-dry.instructions.md | ✅ |
+
+---
+
+## Métricas SCRIPT-1.14.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 24 |
+| Puntos totales | 18 |
+| Prioridad Must | 5 stories (18 pts) |
+| Completadas | **5** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| `.github/agents/indice.agent.md` | Agente principal | ✅ |
+| `.github/instructions/indice-dry.instructions.md` | Contrato DRY | ✅ |
+| `.github/prompts/indice-consultar.prompt.md` | Consulta rápida | ✅ |
+| `.github/prompts/indice-actualizar.prompt.md` | Sincronización | ✅ |
+| `.github/prompts/indice-validar.prompt.md` | Pre-commit | ✅ |
+
+---
+
+## Archivos Modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `aleph.agent.md` | Handoffs @indice añadidos |
+| `ox.agent.md` | @indice en índice maestro |
+| `copilot-instructions.md` | Sección §8 añadida |
+| `commit-message.prompt.md` | Paso 2.5 añadido |
+| `Tecnico.md` | @indice en capa Meta |
+
+---
+
+## Relación @indice ↔ lucas
+
+```
+@indice (agente .github/)  ←→  lucas (personaje Teatro)
+         │                           │
+         └───── MISMA FUENTE ────────┘
+               ARCHIVO/DEVOPS/
+            Funcional.md + Tecnico.md
+```
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SCRIPT-1.13.0 (Lucas + Índices) | ✅ Completada |
+| Funcional.md | ✅ Creado |
+| Tecnico.md | ✅ Creado |
+| Personaje Lucas | ✅ Desplegado |
+
+---
+
+## Changelog SCRIPT-1.14.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear conversación PO-SM | @scrum |
+| 2025-12-24 | Añadir Fase 6: Integración Pre-Commit | @scrum |
+| 2025-12-24 | Generar backlog borrador (5 stories, 24 tasks) | @scrum |
+| 2025-12-24 | Aprobar y publicar épica | @scrum |
+| 2025-01-01 | Implementar S01-S05 completas | @aleph |
+| 2025-01-01 | Cerrar épica al 100% | @aleph |
+
+---
+
+# Épica: SCRIPT-1.15.0 — Optimización de Settings para Plugins
+
+**Objetivo**: Mejorar el protocolo de PLUGINS.md para que los plugins se instalen desactivados por defecto en `.vscode/settings.json`, evitando sobrecarga del sistema. Incluir FAQ, comandos de activación/desactivación y sistema de avisos por umbrales.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-01-02  
+**Fecha cierre**: 2025-01-02  
+**Rama de trabajo**: `fc1`  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/PLUGIN_SETTINGS_OPTIMIZER/conversacion-po-sm.md`
+
+---
+
+## Contexto
+
+### El problema
+
+Los plugins se instalaban con `true` por defecto en settings.json:
+- Todos los prompts e instructions de todos los plugins quedaban indexados
+- VS Code perdía velocidad al autocompletar con muchos plugins activos
+- Los usuarios no sabían que podían desactivar plugins sin desinstalarlos
+- No había FAQ para problemas comunes ("no me aparecen los prompts")
+
+### La solución
+
+1. **Instalación con `false`**: Los plugins nuevos se añaden desactivados en settings
+2. **FAQ**: Documentar problemas comunes y soluciones en plugin-manager
+3. **Comandos**: Añadir `activar`, `desactivar` y `status` al PluginManager
+4. **Umbrales**: Sistema de avisos cuando hay demasiados plugins activos
+
+### Distinción registry vs settings
+
+| Archivo | Campo | Controla |
+|---------|-------|----------|
+| `registry.json` | `enabled` | Si el plugin está **funcional** (agentes disponibles) |
+| `settings.json` | `true/false` | Si los prompts/instructions son **visibles** en Chat |
+
+---
+
+## Stories
+
+### SCRIPT-1.15.0-S01 — Instalación por Defecto con false
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Modificar plugin-install.prompt.md paso 5: cambiar true → false | ✅ |
+| T002 | Añadir mensaje post-instalación explicando que está desactivado | ✅ |
+| T003 | Actualizar plugin-manager.agent.md con nuevo comportamiento | ✅ |
+| T004 | Actualizar PLUGINS.md sección 2.3 con nota SCRIPT-1.15.0 | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S02 — FAQ de Resolución de Problemas
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Crear sección "FAQ de Resolución de Problemas" en plugin-manager | ✅ |
+| T006 | FAQ: "No me aparecen los prompts del plugin X" | ✅ |
+| T007 | FAQ: "El chat está muy lento al autocompletar" | ✅ |
+| T008 | FAQ: "¿Cómo sé qué plugins tengo activos?" | ✅ |
+| T009 | FAQ: "¿Por qué los plugins nuevos no se activan automáticamente?" | ✅ |
+| T010 | FAQ: "¿Cuáles son los plugins recomendados para empezar?" | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S03 — Handoffs de Activación/Desactivación
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Añadir handoff "Activar plugin en settings" | ✅ |
+| T012 | Añadir handoff "Desactivar plugin en settings" | ✅ |
+| T013 | Documentar lógica de activación (settings.json) | ✅ |
+| T014 | Documentar lógica de desactivación (settings.json) | ✅ |
+| T015 | Distinguir de "Activar/Desactivar plugin en registry" | ✅ |
+| T016 | Añadir tabla explicativa en plugin-manager | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S04 — Sistema de Avisos por Umbrales
+**Puntos**: 5  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Definir umbrales: 0-3 óptimo, 4-6 aceptable, 7-10 cargado, 11+ sobrecargado | ✅ |
+| T018 | Crear tabla de umbrales con iconos y mensajes | ✅ |
+| T019 | Documentar en sección "Gestión de Settings" | ✅ |
+| T020 | Añadir mensajes específicos por nivel | ✅ |
+| T021 | Documentar en PLUGINS.md | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S05 — Comando Status
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T022 | Añadir handoff "Ver status de plugins" | ✅ |
+| T023 | Documentar formato de output del comando | ✅ |
+| T024 | Incluir: plugins en registry, activos en settings, nivel, lista, recomendación | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S06 — Documentación y Publicación
+**Puntos**: 1  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T025 | Actualizar PLUGINS.md sección 2.3 completa | ✅ |
+| T026 | Referenciar FAQ desde PLUGINS.md | ✅ |
+| T027 | Publicar épica en BACKLOG-SCRIPTORIUM.md | ✅ |
+| T028 | Marcar épica como completada | ✅ |
+
+---
+
+## Métricas SCRIPT-1.15.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 6 |
+| Tasks totales | 28 |
+| Puntos totales | 18 |
+| Prioridad Must | 5 stories (13 pts) |
+| Prioridad Should | 1 story (5 pts) |
+| Completadas | **6** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Archivos Modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `.github/prompts/plugin-install.prompt.md` | Paso 5: default `false`, mensaje post-instalación |
+| `.github/agents/plugin-manager.agent.md` | Handoffs, FAQ, status, umbrales, tabla distinción |
+| `.github/PLUGINS.md` | Sección 2.3 actualizada con SCRIPT-1.15.0 |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SCRIPT-1.5.0 (Plugin Discovery) | ✅ Completada |
+| Plugin Manager | ✅ Funcional |
+| .vscode/settings.json | ✅ Configurado |
+
+---
+
+## Changelog SCRIPT-1.15.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-01-02 | Crear conversación PO-SM | @scrum |
+| 2025-01-02 | Generar backlog borrador (6 stories, 28 tasks) | @scrum |
+| 2025-01-02 | Implementar S01-S06 completas | @aleph |
+| 2025-01-02 | Cerrar épica al 100% | @aleph |
+
+---
+
+# Épica: SCRIPT-1.16.0 — Índice SPLASH y Vinculación GH-Pages
+
+**Objetivo**: Crear un índice estructural del sitio web (`docs/`) que permita orquestar refactorizaciones, vincular el plugin GH-Pages con este índice y generar warnings en commits cuando haya discrepancias.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-12-24  
+**Fecha cierre**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/SPLASH_INDEX/01_backlog-borrador.md`
+
+---
+
+## Contexto
+
+### El problema
+
+El plugin GH-Pages no tenía un índice estructural que:
+- Documentara la arquitectura del sitio web
+- Sirviera de mapa para refactorizaciones
+- Se mantuviera sincronizado con cambios en `docs/`
+- Generara warnings en commits cuando hubiera discrepancias
+
+### La solución
+
+1. **Índice SPLASH**: `ARCHIVO/DISCO/SPLASH/index.md` — mapa técnico-funcional de `docs/`
+2. **Vinculación**: Instrucciones del plugin GH-Pages referencian el índice
+3. **Interceptación**: Prompts del plugin verifican coherencia antes de operar
+4. **Warning en commits**: `commit-message.prompt.md` Paso 2.6 valida cambios en `docs/`
+5. **Conexión con @indice**: @indice puede delegar a @GHPages para índice SPLASH
+
+---
+
+## Story: SCRIPT-1.16.0-S01 — Creación del Índice SPLASH
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `ARCHIVO/DISCO/SPLASH/index.md` con arquitectura Jekyll | ✅ |
+| T002 | Documentar 8 secciones de index.md con líneas y clases CSS | ✅ |
+| T003 | Mapear sistema CSS (variables, banderas, ubicaciones) | ✅ |
+| T004 | Documentar páginas del sitio y operaciones | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S02 — Vinculación con Instrucciones GH-Pages
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Añadir sección "Índice SPLASH" en instrucciones | ✅ |
+| T006 | Documentar flujo de consulta del índice | ✅ |
+| T007 | Añadir regla: "Actualizar índice si se modifica estructura" | ✅ |
+| T008 | Añadir referencia cruzada en §8 del índice SPLASH | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S03 — Interceptación de Operaciones
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T009 | Modificar `gh-pages-publish.prompt.md`: añadir paso de validación | ✅ |
+| T010 | Documentar operaciones que requieren actualización del índice | ✅ |
+| T011 | Crear lógica: si cambia estructura → sugerir actualizar índice | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S04 — Warning en Commit-Message
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Añadir "Paso 2.6: Validar índice SPLASH" en commit-message.prompt | ✅ |
+| T013 | Definir criterios de warning (nuevas secciones, CSS, páginas) | ✅ |
+| T014 | Documentar formato del warning (informativo, no bloqueante) | ✅ |
+| T015 | Añadir sugerencia de actualización si hay discrepancia | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S05 — Actualización de Agente GHPages
+**Puntos**: 2  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Añadir handoff "Consultar índice SPLASH" | ✅ |
+| T017 | Añadir handoff "Actualizar índice SPLASH" | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S06 — Conexión con @indice
+**Puntos**: 2  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T018 | Añadir handoff en @indice para delegar SPLASH a @GHPages | ✅ |
+| T019 | Documentar relación entre índices DRY y SPLASH | ✅ |
+
+---
+
+## Métricas SCRIPT-1.16.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 6 |
+| Tasks totales | 19 |
+| Puntos totales | 18 |
+| Prioridad Must | 4 stories (14 pts) |
+| Prioridad Should | 2 stories (4 pts) |
+| Completadas | **6** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| `ARCHIVO/DISCO/SPLASH/index.md` | Índice estructural de docs/ | ✅ |
+| `.github/plugins/gh-pages/instructions/gh-pages.instructions.md` | Sección "Índice SPLASH" | ✅ |
+| `.github/plugins/gh-pages/prompts/gh-pages-publish.prompt.md` | Paso de validación SPLASH | ✅ |
+| `.github/plugins/gh-pages/agents/ghpages.agent.md` | Handoffs SPLASH | ✅ |
+| `.github/prompts/commit-message.prompt.md` | Paso 2.6 warning SPLASH | ✅ |
+| `.github/agents/indice.agent.md` | Handoff delegación SPLASH | ✅ |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| Plugin GH-Pages | ✅ Instalado |
+| @indice | ✅ Operativo |
+| SCRIPT-1.14.0 (Agente Índice) | ✅ Completada |
+
+---
+
+## Changelog SCRIPT-1.16.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear índice SPLASH | @aleph |
+| 2025-12-24 | Vincular con instrucciones GH-Pages | @aleph |
+| 2025-12-24 | Añadir Paso 2.6 en commit-message.prompt | @aleph |
+| 2025-12-24 | Añadir handoffs en GHPages | @aleph |
+| 2025-12-24 | Conectar @indice con SPLASH | @aleph |
+| 2025-12-24 | Publicar épica en backlog principal | @aleph |
+
+---
+
+# Épica: SCRIPT-1.17.0 — Índice README y Vinculación @indice
+
+**Objetivo**: Crear un índice estructural del README.md que permita orquestar refactorizaciones, vincular con el agente @indice y generar warnings en commits cuando cambios en el codebase deberían reflejarse en el README.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-12-24  
+**Fecha cierre**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Patrón seguido**: SCRIPT-1.16.0 (Índice SPLASH)
+
+---
+
+## Contexto
+
+### El problema
+
+El README.md es el punto de entrada público del proyecto, pero:
+- No hay índice estructural que documente sus secciones
+- Los cambios en plugins, agentes o submódulos no generan warnings
+- Es fácil que el README quede desactualizado respecto al codebase
+
+### La solución
+
+1. **Índice README**: `ARCHIVO/DISCO/README/index.md` — mapa estructural del README.md
+2. **Vinculación**: @indice puede consultar y actualizar este índice
+3. **Warning en commits**: `commit-message.prompt.md` Paso 2.7 valida cambios que afectan al README
+4. **Criterios claros**: Definir qué cambios requieren actualización del README
+
+---
+
+## Story: SCRIPT-1.17.0-S01 — Creación del Índice README
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `ARCHIVO/DISCO/README/index.md` con estructura del README | ✅ |
+| T002 | Documentar 12 secciones del README con líneas y dependencias | ✅ |
+| T003 | Mapear fuentes de verdad (registry.json, .gitmodules, package.json) | ✅ |
+| T004 | Documentar operaciones de refactorización | ✅ |
+
+---
+
+## Story: SCRIPT-1.17.0-S02 — Vinculación con @indice
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Añadir handoff "Consultar índice README" en indice.agent.md | ✅ |
+| T006 | Añadir handoff "Actualizar índice README" en indice.agent.md | ✅ |
+
+---
+
+## Story: SCRIPT-1.17.0-S03 — Warning en Commit-Message
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T007 | Añadir "Paso 2.7: Validar índice README" en commit-message.prompt | ✅ |
+| T008 | Definir criterios de warning (plugins, submódulos, agentes, versión) | ✅ |
+| T009 | Documentar formato del warning (informativo, no bloqueante) | ✅ |
+| T010 | Añadir sugerencia de actualización si hay discrepancia | ✅ |
+
+---
+
+## Story: SCRIPT-1.17.0-S04 — Documentación y Publicación
+**Puntos**: 1  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Añadir referencia cruzada en §8 del índice README | ✅ |
+| T012 | Publicar épica en BACKLOG-SCRIPTORIUM.md | ✅ |
+
+---
+
+## Métricas SCRIPT-1.17.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 4 |
+| Tasks totales | 12 |
+| Puntos totales | 9 |
+| Prioridad Must | 4 stories (9 pts) |
+| Completadas | **4** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| `ARCHIVO/DISCO/README/index.md` | Índice estructural de README.md | ✅ |
+| `.github/agents/indice.agent.md` | Handoffs README añadidos | ✅ |
+| `.github/prompts/commit-message.prompt.md` | Paso 2.7 warning README | ✅ |
+
+---
+
+## Criterios de Warning
+
+| Archivo modificado | Sección README afectada |
+|--------------------|-------------------------|
+| `registry.json` (nuevo plugin) | Plugins, Plugin Bridges, contadores |
+| `.gitmodules` (nuevo submódulo) | Submódulos, contadores |
+| `.github/agents/*.agent.md` (nuevo) | Agentes, contadores |
+| `package.json` (versión) | Badges, Estado |
+| `workspace-config.json` (rama) | Estado |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| @indice | ✅ Operativo |
+| SCRIPT-1.14.0 (Agente Índice) | ✅ Completada |
+| SCRIPT-1.16.0 (Patrón SPLASH) | ✅ Completada |
+
+---
+
+## Changelog SCRIPT-1.17.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear índice README | @aleph |
+| 2025-12-24 | Añadir handoffs en @indice | @aleph |
+| 2025-12-24 | Añadir Paso 2.7 en commit-message.prompt | @aleph |
+| 2025-12-24 | Publicar épica en backlog principal | @aleph |
+
+---
+
+# Épica: SCRIPT-1.18.0 — Cobertura y Homogeneización de Índices
+
+**Objetivo**: Refactorizar los índices SPLASH y README para mejorar cobertura, homogeneizar estilo y establecer referencias a DEVOPS como fuente de verdad.
+
+**Estado**: 🆕 Nueva (Feature Cycle 1)
+
+**Fecha inicio**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA/`
+
+---
+
+## Arquitectura de Índices
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DEVOPS (Funcional.md + Tecnico.md)                 │
+│            ═══════════════════════════════════                   │
+│                 ÚNICA FUENTE DE VERDAD DEL SISTEMA               │
+│                        (NO SE MODIFICA)                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   ┌──────────────────────────┐    ┌──────────────────────────┐  │
+│   │     ÍNDICE SPLASH        │    │     ÍNDICE README        │  │
+│   │    (Mapa de docs/)       │    │   (Mapa de README.md)    │  │
+│   │                          │    │                          │  │
+│   │  Cobertura: Funcional    │    │  Cobertura: Técnica      │  │
+│   │  Agente: @GHPages        │    │  Agente: @indice         │  │
+│   │  Refactoriza: Web        │    │  Refactoriza: README.md  │  │
+│   └──────────────────────────┘    └──────────────────────────┘  │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Principios
+
+1. **DEVOPS es intocable**: Funcional.md y Tecnico.md son la fuente de verdad
+2. **SPLASH describe cómo editar docs/**: Mapa para @GHPages
+3. **README describe cómo sincronizar README.md**: Mapa para @indice
+
+---
+
+## Stories
+
+### SCRIPT-1.18.0-S01: Refactorizar SPLASH
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Añadir ecosistema.md a tabla de páginas (§4) | ✅ |
+| T002 | Homogeneizar checklist §6 al formato estándar | ✅ |
+| T003 | Mover TODOs §7 a épica formal | ✅ |
+| T004 | Añadir sección Referencias con enlace a DEVOPS | ✅ |
+
+**Definition of Done**:
+- [x] SPLASH referencia DEVOPS como fuente de verdad
+- [x] Checklist usa formato tabla estándar
+- [x] No hay TODOs sueltos
+
+---
+
+### SCRIPT-1.18.0-S02: Refactorizar README Index
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Simplificar §4: quitar duplicados, referenciar DEVOPS | ✅ |
+| T006 | Homogeneizar checklist §7 al formato estándar | ✅ |
+| T007 | Añadir sección Referencias con enlace a DEVOPS | ✅ |
+
+**Definition of Done**:
+- [x] README index referencia DEVOPS como fuente de verdad
+- [x] Checklist usa formato tabla estándar
+- [x] §4 no duplica contadores de DEVOPS
+
+---
+
+### SCRIPT-1.18.0-S03: Validación y Cierre
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T008 | Ejecutar @indice para validar coherencia | ✅ |
+| T009 | Verificar que GH-Pages compila sin errores | ✅ (GitHub Actions) |
+| T010 | Actualizar README.md con cambios si aplica | ✅ |
+
+**Definition of Done**:
+- [x] @indice no reporta warnings
+- [x] jekyll build pasa (vía GitHub Actions)
+- [x] Commit generado
+
+---
+
+## Métricas SCRIPT-1.18.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 3 |
+| Tasks totales | 10 |
+| Puntos totales | 8 |
+| Prioridad Must | 3 stories (8 pts) |
+| Completadas | **3** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| DEVOPS/Funcional.md | ✅ Existe (no se modifica) |
+| DEVOPS/Tecnico.md | ✅ Existe (no se modifica) |
+| SPLASH/index.md | ✅ Existe (target de S01) |
+| README/index.md | ✅ Existe (target de S02) |
+| @indice | ✅ Operativo |
+| @GHPages | ✅ Operativo |
+
+---
+
+## Changelog SCRIPT-1.18.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear conversación PO-SM y análisis de cobertura | @scrum |
+| 2025-12-24 | Crear backlog borrador fusionado | @scrum |
+| 2025-12-24 | Aprobar y publicar épica | @scrum |
+| 2025-12-24 | Implementar S01-S03: refactorizar índices SPLASH y README | @aleph |
+| 2025-12-24 | Actualizar README.md y docs/ con contadores corregidos (19 plugins, 31 agentes) | @aleph |
+| 2025-12-24 | Cerrar épica al 100% | @aleph |
+| 2025-12-24 | Refactorizar README.md: 366→112 líneas (-69%), eliminar repeticiones | @aleph |
+| 2025-12-24 | Actualizar índice README/index.md con nueva estructura | @aleph |
+| 2025-12-24 | Crear épica SCRIPT-1.19.0: Coherencia GH-Pages | @scrum |
+
+---
+
+# Épica: SCRIPT-1.19.0 — Coherencia Funcional GH-Pages
+
+**Objetivo**: Aplicar principios de diseño DRY a las páginas web (docs/) para eliminar redundancias, distribuir contenido correctamente y lograr coherencia entre index, ecosistema, archivo, roadmap, leeme y acerca.
+
+**Estado**: 🔄 En Progreso
+
+**Fecha inicio**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Principios aplicados**: Los mismos de SCRIPT-1.18.0 (README compacto)
+
+---
+
+## Diagnóstico
+
+### Estado Actual (líneas)
+
+| Página | Líneas | Problema principal |
+|--------|--------|-------------------|
+| `ecosistema.md` | 1283 | Demasiado larga, CSS inline excesivo |
+| `roadmap.md` | 1006 | Galería de fotos muy larga |
+| `archivo.md` | 747 | Repite estructura que está en DEVOPS |
+| `leeme.md` | 574 | Tablas repetidas, información duplicada |
+| `fundacion.md` | 278 | OK, pero puede simplificarse |
+| `acerca.md` | 239 | Estilos inline, información redundante |
+| `index.md` | 204 | OK, bien estructurada |
+| `periodico.md` | 198 | OK |
+| `teatro.md` | 174 | OK |
+
+### Principios de Coherencia
+
+| Principio | Descripción |
+|-----------|-------------|
+| **DRY** | Cada dato aparece UNA vez |
+| **Responsabilidad única** | Cada página tiene UN propósito claro |
+| **CSS externo** | Estilos en main.css, no inline |
+| **Tablas compactas** | Máximo 10 filas, enlace a detalle |
+| **Links no contenido** | Referencia a fuentes, no copia |
+
+### Distribución Funcional Propuesta
+
+| Página | Responsabilidad | NO incluir |
+|--------|-----------------|------------|
+| `index.md` | Navegación rápida, status | Detalles de plugins/agentes |
+| `ecosistema.md` | Catálogo visual de capacidades | CSS inline extenso |
+| `archivo.md` | Mapa de navegación ARCHIVO/ | Contenido completo |
+| `roadmap.md` | Estado sprints, próximos pasos | Galería completa de fotos |
+| `leeme.md` | Tutorial de instalación | Tablas repetidas |
+| `acerca.md` | Filosofía, licencia | Estilos inline |
+
+---
+
+## Stories
+
+### SCRIPT-1.19.0-S01: Refactorizar ecosistema.md
+**Effort**: 5 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Mover CSS inline a main.css | ✅ |
+| T002 | Colapsar galería submódulos (tabla compacta + link a detalle) | ✅ |
+| T003 | Colapsar galería plugins (tabla compacta + link a PLUGINS.md) | ✅ |
+| T004 | Colapsar galería agentes (tabla compacta por capa) | ✅ |
+| T005 | Reducir a ~400 líneas máximo | ✅ |
+
+**Resultado**: 1284 → 178 líneas (-86%)
+
+---
+
+### SCRIPT-1.19.0-S02: Refactorizar archivo.md
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Mover CSS inline a main.css | ✅ |
+| T007 | Simplificar a mapa de navegación (no contenido) | ✅ |
+| T008 | Enlazar a DEVOPS/Funcional.md y Tecnico.md | ✅ |
+| T009 | Reducir a ~200 líneas | ✅ |
+
+**Resultado**: 748 → 123 líneas (-84%)
+
+---
+
+### SCRIPT-1.19.0-S03: Refactorizar leeme.md
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T010 | Eliminar tablas de plataformas repetidas | ✅ |
+| T011 | Consolidar Quick Start en sección única | ✅ |
+| T012 | Reducir a ~250 líneas | ✅ |
+
+**Resultado**: 575 → 175 líneas (-70%)
+
+---
+
+### SCRIPT-1.19.0-S04: Refactorizar roadmap.md
+**Effort**: 3 pts  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T013 | Mover CSS a main.css | ✅ |
+| T014 | Colapsar galería de fotos (últimas 3 + link a archivo) | ✅ |
+| T015 | Simplificar secciones de sprints | ✅ |
+| T016 | Reducir a ~400 líneas | ✅ |
+
+**Resultado**: 1006 → 93 líneas (-91%)
+
+---
+
+### SCRIPT-1.19.0-S05: Refactorizar acerca.md
+**Effort**: 2 pts  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Mover estilos inline a main.css | ✅ |
+| T018 | Simplificar contenido | ✅ |
+| T019 | Reducir a ~120 líneas | ✅ |
+
+**Resultado**: 239 → 69 líneas (-71%)
+
+---
+
+### SCRIPT-1.19.0-S06: Actualizar SPLASH Index
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T020 | Actualizar §4 con nuevos conteos de líneas | ✅ |
+| T021 | Añadir §8 Principios de Coherencia | ✅ |
+| T022 | Documentar distribución funcional | ✅ |
+
+---
+
+### SCRIPT-1.19.0-S07: Validación y Cierre
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: 🔄 En Progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T023 | Ejecutar `bundle exec jekyll build` sin errores | ⏳ |
+| T024 | Verificar responsive (320/768/1200px) | ⏳ |
+| T025 | Commit según protocolo DevOps | ⏳ |
+
+---
+
+## Métricas SCRIPT-1.19.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 7 |
+| Tasks totales | 25 |
+| Effort total | 20 pts |
+| Prioridad Must | 5 stories (15 pts) |
+| Prioridad Should | 2 stories (5 pts) |
+| Completadas | **6** |
+| En progreso | 1 (S07) |
+| % Avance | **86%** |
+
+---
+
+## Targets de Reducción
+
+| Página | Antes | Target | Reducción |
+|--------|-------|--------|-----------|
+| ecosistema.md | 1283 | 400 | -69% |
+| roadmap.md | 1006 | 400 | -60% |
+| archivo.md | 747 | 200 | -73% |
+| leeme.md | 574 | 250 | -56% |
+| acerca.md | 239 | 120 | -50% |
+| **Total** | **3849** | **1370** | **-64%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SPLASH/index.md | ✅ Base para ediciones |
+| main.css | ✅ Target de CSS consolidado |
+| @GHPages | ✅ Plugin operativo |
+| SCRIPT-1.18.0 | ✅ Completada (principios establecidos) |
+
+---
+
+## Changelog SCRIPT-1.19.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear épica con diagnóstico y 7 stories | @scrum |
+| 2025-12-24 | Implementar S01-S06: refactorizar 5 páginas (-83% total) | @aleph |
+| 2025-12-24 | Actualizar SPLASH index con resultados y principios | @aleph |
+| 2025-12-24 | Corregir navegación: Agentes → Ecosistema en _config.yml | @aleph |

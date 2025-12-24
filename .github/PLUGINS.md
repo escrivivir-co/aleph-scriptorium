@@ -88,22 +88,39 @@ Los settings de workspace añaden carpetas adicionales para detectar recursos de
 
 > **SCRIPT-1.5.0**: VS Code solo detecta automáticamente recursos en las carpetas canónicas (`.github/prompts/`, `.github/instructions/`). Los plugins requieren settings adicionales.
 
+> **SCRIPT-1.15.0**: Los plugins se instalan **desactivados por defecto** en settings para evitar sobrecarga del sistema. El usuario activa solo los que necesita en cada sesión.
+
 El archivo `.vscode/settings.json` debe incluir las rutas de cada plugin instalado:
 
 ```json
 {
   "chat.promptFilesLocations": {
     ".github/prompts": true,
-    ".github/plugins/{id}/prompts": true
+    ".github/plugins/{id}/prompts": false
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
-    ".github/plugins/{id}/instructions": true
+    ".github/plugins/{id}/instructions": false
   }
 }
 ```
 
-**Al instalar un plugin**, el Plugin Manager debe añadir automáticamente las rutas del nuevo plugin a estos settings.
+**Comportamiento por defecto (SCRIPT-1.15.0)**:
+- Los plugins se añaden con valor `false` (desactivados)
+- El usuario activa con `@pluginmanager activar {id}`
+- Los plugins activados funcionan normalmente
+- Ver [FAQ en plugin-manager.agent.md](agents/plugin-manager.agent.md) para resolución de problemas
+
+**Umbrales de plugins activos**:
+
+| Plugins Activos | Estado | Efecto |
+|-----------------|--------|--------|
+| 0-3 | 🟢 Óptimo | Sin impacto |
+| 4-6 | 🟡 Aceptable | Mínimo impacto |
+| 7-10 | 🟠 Cargado | Posible lentitud en autocompletado |
+| 11+ | 🔴 Sobrecargado | Recomendado desactivar algunos |
+
+**Al instalar un plugin**, el Plugin Manager debe añadir automáticamente las rutas del nuevo plugin a estos settings con valor `false`.
 
 **Documentación oficial**:
 - [Prompt Files Locations](https://code.visualstudio.com/docs/copilot/customization/prompt-files)

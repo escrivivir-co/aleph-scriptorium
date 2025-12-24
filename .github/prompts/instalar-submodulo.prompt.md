@@ -140,6 +140,31 @@ ls -la {nombre-submodulo}/
 - Repositorio: `alephscript-{nombre}-{tipo}`
 - Ejemplos: `alephscript-mcp-presets-site`, `alephscript-network-sdk`
 
+### 1.2.1. Convención de Nombres PascalCase (Path Local)
+
+> **Referencia**: Sección 2.1 de `submodulo-integracion.instructions.md`
+
+El **path local** del submódulo (lo que aparece en el workspace) debe usar **PascalCase descriptivo** según la función:
+
+| Categoría | Patrón | Ejemplos |
+|-----------|--------|----------|
+| `Gallery` | Catálogos de recursos | MCPGallery, AAIAGallery |
+| `Editor` | Editores visuales/código | WorkflowEditor, BlocklyEditor, PrologEditor |
+| `Suite` | SDKs/integraciones | VibeCodingSuite, BlockchainComPort |
+| `Desktop` | Apps de escritorio/streaming | StreamDesktop, StreamDesktopAppCronos |
+| `Extension` | Extensiones de IDE | VsCodeExtension |
+
+**Ejemplo de mapeo**:
+```bash
+# URL remota (upstream) → path local (workspace)
+git submodule add https://github.com/escrivivir-co/alephscript-n8n-like-editor WorkflowEditor
+```
+
+**Verificación**:
+```bash
+scripts/verify-submodule-naming.sh
+```
+
 ### 1.3. Crear Rama de Integración
 
 ```bash

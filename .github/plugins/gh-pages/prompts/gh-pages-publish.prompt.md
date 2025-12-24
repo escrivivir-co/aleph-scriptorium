@@ -49,7 +49,24 @@ Detecté que quieres publicar: ARCHIVO/marco
 Responde 1 o 2:
 ```
 
-### 3. Delegar al Prompt Específico
+### 3. Verificar Índice SPLASH (si afecta estructura)
+
+Antes de ejecutar, consultar el mapa estructural:
+
+```
+Índice SPLASH: ARCHIVO/DISCO/SPLASH/index.md
+```
+
+**Cuándo consultar**:
+- Si se va a añadir nueva sección a index.md → Ver §2.2
+- Si se va a crear nueva página → Ver §4
+- Si se van a modificar estilos → Ver §3
+
+**Cuándo NO es necesario**:
+- Publicar posts/noticias existentes
+- Fusionar contenido sin cambiar estructura
+
+### 4. Delegar al Prompt Específico
 
 **Si FUSIONAR**:
 → Ejecutar `gh-pages-merge.prompt.md`

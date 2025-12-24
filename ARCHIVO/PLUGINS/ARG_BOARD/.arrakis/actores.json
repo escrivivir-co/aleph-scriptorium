@@ -164,5 +164,38 @@
       "red_path": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/tutatix/fia/red_semantica.json",
       "schema": "as-gym/red_semantica.schema.json"
     }
+  },
+  "lucas": {
+    "nombre": "Lucas",
+    "tipo": "personaje",
+    "arquetipo": "MENTOR",
+    "descripcion": "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY.",
+    "rol": "Scrum Master del Índice",
+    "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png",
+    "plataformas": ["vscode"],
+    "monomito": ["hola_mundo", "camino_del_tarotista"],
+    "origen": {
+      "plugin": "agent-creator",
+      "agentes_base": ["aleph", "ox"],
+      "fuente_datos": "ARCHIVO/DEVOPS/",
+      "agente_creado": "lucas",
+      "ruta_agente": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/lucas.agent.md"
+    },
+    "capacidades": [
+      "Validar ediciones de índice (Funcional.md, Tecnico.md)",
+      "Mantener coherencia DRY entre índices",
+      "Actuar como oráculo de commits",
+      "Auditar sincronización índice ↔ codebase",
+      "Guiar dónde documentar información nueva"
+    ],
+    "tests": {
+      "coherencia": ["coherencia_funcional_tecnico", "dry_violation"],
+      "actualizacion": ["indice_desactualizado", "archivo_huerfano"],
+      "commits": ["commit_sin_trazabilidad"]
+    },
+    "indices": {
+      "funcional": "ARCHIVO/DEVOPS/Funcional.md",
+      "tecnico": "ARCHIVO/DEVOPS/Tecnico.md"
+    }
   }
 }
