@@ -32,3 +32,6 @@
 [submodule "iot-sbr-logica-para-bots"]
 	path = iot-sbr-logica-para-bots
 	url = https://github.com/escrivivir-co/iot-sbr-logica-para-bots.git
+[submodule "alephscript-typed-prompting"]
+	path = alephscript-typed-prompting
+	url = https://github.com/escrivivir-co/alephscript-typed-prompting

@@ -104,6 +104,10 @@ handoffs:
     agent: plugin_ox_prologeditor
     prompt: Accede al plugin PrologEditor para diseño y ejecución de lógica Prolog (SWI-Prolog).
     send: false
+  - label: Invocar bridge TypedPrompting
+    agent: plugin_ox_typedprompting
+    prompt: Accede al plugin TypedPrompting para diseño de ontologías NL↔JSON y validación de mensajes.
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -269,6 +273,10 @@ handoffs:
         "prolog-editor": {
           "directorio": ".github/plugins/prolog-editor/agents/",
           "agentes": ["PrologEditor"]
+        },
+        "typed-prompting": {
+          "directorio": ".github/plugins/typed-prompting/agents/",
+          "agentes": ["TypedPrompting"]
         }
       },
       "bridges": {
@@ -338,6 +346,11 @@ handoffs:
           "plugin_ox_prologeditor": {
             "archivo": ".github/agents/plugin_ox_prologeditor.agent.md",
             "plugin": "prolog-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_typedprompting": {
+            "archivo": ".github/agents/plugin_ox_typedprompting.agent.md",
+            "plugin": "typed-prompting",
             "delega_a": 1
           }
         }

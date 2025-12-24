@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "ejemplo-consulta-usuario",
+  "name": "Consulta de Usuario",
+  "description": "Schema para validar consultas de usuarios a agentes del Scriptorium",
+  "category": "Scriptorium",
+  "labels": ["usuario", "consulta", "agente", "ejemplo"],
+  "typeScript": "interface ConsultaUsuario {\n  pregunta: string;\n  contexto?: string;\n  urgencia: 'baja' | 'media' | 'alta';\n  timestamp?: string;\n}",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "pregunta": {
+        "type": "string",
+        "description": "La pregunta o consulta del usuario"
+      },
+      "contexto": {
+        "type": "string",
+        "description": "Contexto adicional opcional"
+      },
+      "urgencia": {
+        "type": "string",
+        "enum": ["baja", "media", "alta"],
+        "description": "Nivel de urgencia de la consulta"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Momento de la consulta (ISO 8601)"
+      }
+    },
+    "required": ["pregunta", "urgencia"],
+    "additionalProperties": false
+  },
+  "createdAt": "2025-12-24T12:00:00Z",
+  "libraryId": null
+}

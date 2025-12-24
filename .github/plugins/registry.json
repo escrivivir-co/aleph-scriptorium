@@ -1,7 +1,57 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-28T18:00:00Z",
+  "last_updated": "2025-12-29T12:00:00Z",
   "plugins": {
+    "typed-prompting": {
+      "name": "TypedPrompting (Ontologías NL↔JSON)",
+      "version": "1.0.0",
+      "description": "Plugin transversal para diseñar ontologías (TypeScript → JSON Schema), validar mensajes de LLM y crear contratos de comunicación entre agentes. Dos modos: Asistente (guía interactiva) y Gestor (instalación en agentes/ARG).",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-29T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/TYPED_PROMPTING/",
+      "bridge_agent": "plugin_ox_typedprompting",
+      "dependencies": [],
+      "optional_dependencies": ["agent-creator", "arg-board", "mcp-presets"],
+      "submodule": "alephscript-typed-prompting",
+      "validation": {
+        "engines": ["AJV (JSON Schema)", "Zod"],
+        "ai_providers": ["OpenAI", "Anthropic", "DeepSeek", "Ollama"],
+        "editor_port": 5000
+      },
+      "handoffs": [
+        {
+          "label": "[Asistente] Estudiar caso de uso",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "[Asistente] Sugerir ontología existente",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "[Gestor] Instalar schema en agente",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "[Gestor] Instalar protocolo en flujo ARG",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "Validar mensaje contra schema",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "Crear schema desde TypeScript",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "Abrir editor web",
+          "agent": "TypedPrompting"
+        }
+      ]
+    },
     "prolog-editor": {
       "name": "Editor de Lógica Prolog",
       "version": "1.0.0",
