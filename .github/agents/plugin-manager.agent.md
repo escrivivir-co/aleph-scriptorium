@@ -138,6 +138,27 @@ handoffs:
 
 ### 8. Generar Commit
 
+**IMPORTANTE**: Verificar rama de trabajo antes de commit:
+
+```bash
+# 1. Leer rama configurada
+BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+CURRENT=$(git branch --show-current)
+
+# 2. Verificar coincidencia
+if [ "$CURRENT" != "$BRANCH" ]; then
+  echo "⚠️ ADVERTENCIA: Rama incorrecta"
+  echo "Configurado: $BRANCH, Actual: $CURRENT"
+  echo "Cambiar con: git checkout $BRANCH"
+  exit 1
+fi
+
+# 3. Generar commit
+git commit -m "..."
+```
+
+Mensaje de commit:
+
 ```
 feat(script/plugins): instalar plugin "{name}" v{version}
 

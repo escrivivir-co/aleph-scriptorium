@@ -2,11 +2,57 @@
 
 > **Versión**: 0.0.1  
 > **Metodología**: Agile/Scrum adaptado a producción textual  
-> **Ciclo**: 12 sprints × 4 iteraciones = 48 iteraciones anuales
+> **Ciclo**: 12 sprints × 4 iteraciones = 48 iteraciones anuales  
+> **Rama de trabajo**: Ver `.github/workspace-config.json`
 
 ---
 
-## 1. Ontología del proyecto
+## 1. Rama de Trabajo
+
+### Configuración Actual
+
+**Fuente de verdad**: `.github/workspace-config.json`
+
+Los agentes DEBEN consultar este archivo antes de hacer commits para verificar la rama de trabajo activa.
+
+```bash
+# Verificar rama configurada
+cat .github/workspace-config.json | grep '"branch"'
+
+# Verificar rama actual
+git branch --show-current
+```
+
+### Protocolo de Cambio de Rama
+
+Cuando se cambie la rama de trabajo:
+
+1. **Actualizar** `.github/workspace-config.json`:
+   - Campo `workspace.branch`
+   - Campo `workspace.branch_note`
+   - Añadir entrada en `changelog`
+
+2. **Crear rama** (si no existe):
+   ```bash
+   git checkout -b {nueva-rama}
+   ```
+
+3. **Notificar** a todos los agentes que hacen commits:
+   - @aleph
+   - @plugin-manager
+   - Cualquier script automatizado
+
+### Política de Ramas Protegidas
+
+**Ramas protegidas** (definidas en `workspace-config.json`):
+- `main` — No commits directos (desde 2025-12-24)
+- `master` — No commits directos
+
+**Rama de desarrollo actual**: Consultar `workspace.branch` en config
+
+---
+
+## 2. Ontología del proyecto
 
 ### Opportunities (Productos)
 
@@ -192,9 +238,21 @@ Cuando Aleph realice cambios, debe:
 
 ### Comando de commit asistido
 
-Aleph puede generar el mensaje de commit ejecutando:
+**IMPORTANTE**: Antes de hacer commit, verificar rama de trabajo:
 
 ```bash
+# 1. Leer configuración
+BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+
+# 2. Verificar que estamos en la rama correcta
+CURRENT=$(git branch --show-current)
+if [ "$CURRENT" != "$BRANCH" ]; then
+  echo "⚠️  ADVERTENCIA: Rama actual ($CURRENT) no coincide con configuración ($BRANCH)"
+  echo "Cambiar a: git checkout $BRANCH"
+  exit 1
+fi
+
+# 3. Hacer commit
 git add -A && git commit -m "<mensaje generado>"
 ```
 

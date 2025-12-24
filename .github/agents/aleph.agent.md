@@ -95,6 +95,22 @@ Eres el agente principal de este workspace. Tu trabajo es **producir** (no solo 
 
 > **Referencia completa**: `.github/DEVOPS.md`
 
+### Rama de Trabajo
+
+**CRÍTICO**: Antes de hacer cualquier commit, verificar la rama configurada:
+
+```bash
+# Leer rama de trabajo del workspace-config
+cat .github/workspace-config.json | grep '"branch"'
+
+# Verificar rama actual
+git branch --show-current
+```
+
+**Si no coinciden**: Cambiar a la rama configurada antes de hacer commit.
+
+**Ramas protegidas**: `main`, `master` — No commits directos
+
 ### Opportunities que gestionas
 
 | Opportunity | Scope | Backlog |
@@ -271,6 +287,24 @@ Evitas:
 ---
 
 ## Trazabilidad y cierre de tareas
+
+### Verificación de Rama Antes de Commit
+
+**Paso 0 (OBLIGATORIO)**: Verificar rama de trabajo
+
+```bash
+# Extraer rama configurada
+BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+CURRENT=$(git branch --show-current)
+
+if [ "$CURRENT" != "$BRANCH" ]; then
+  echo "⚠️ ERROR: En rama incorrecta"
+  echo "Configurado: $BRANCH"
+  echo "Actual: $CURRENT"
+  echo "Ejecutar: git checkout $BRANCH"
+  exit 1
+fi
+```
 
 ### Checklist antes de cerrar una sesión
 
