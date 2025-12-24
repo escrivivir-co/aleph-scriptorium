@@ -3,7 +3,8 @@
 > **Sprint**: SCRIPT-1.10.0 — Almas para Agentes  
 > **Feature Cycle**: 1  
 > **Modelo**: Extensión del plugin AGENT_CREATOR con catálogo FIA  
-> **Effort total**: 34 puntos
+> **Effort total**: 45 puntos  
+> **Última actualización**: 2025-12-24
 
 ---
 
@@ -18,49 +19,72 @@ El resultado es un **protocolo unificado DRY** de creación de personajes que in
 
 ---
 
+## Estado Actual
+
+| Métrica | Valor |
+|---------|-------|
+| **Iteraciones** | 5 |
+| **Stories** | 10 |
+| **Tasks totales** | 51 |
+| **Completadas** | 15 (T001-T004, T050, Tutatix) |
+| **En progreso** | 0 |
+| **Pendientes** | 36 |
+| **% Avance** | **29%** |
+
+---
+
 ## Épicas
 
 | ID | Nombre | Opportunity | Effort | Prioridad |
 |----|--------|-------------|--------|-----------|
-| SCRIPT-1.10.0 | Integración AS-GYM | Scriptorium | 34 pts | P0 |
+| SCRIPT-1.10.0 | Integración AS-GYM | Scriptorium | 45 pts | P0 |
 
 ---
 
 ## Feature Cycle 1: Estructura
 
-| Iteración | Nombre | Objetivo | Effort |
-|-----------|--------|----------|--------|
-| FC1-I1 | Catálogo FIA | Exponer paradigmas en formato consultable | 18% |
-| FC1-I2 | Extensión AGENT_CREATOR | Añadir FIA + MCP-Presets al flujo | 27% |
-| FC1-I3 | Protocolo DRY | Documentar flujo unificado de creación | 15% |
-| FC1-I4 | Documentación Web | README técnico + docs/ usuario | 18% |
-| FC1-I5 | **Sistema de Épocas** | Permitir personajes con modos de operación diferenciados | 22% |
+| Iteración | Nombre | Objetivo | Effort | Estado |
+|-----------|--------|----------|--------|--------|
+| FC1-I1 | Catálogo FIA | Exponer paradigmas en formato consultable | 18% | ✅ |
+| FC1-I2 | Extensión AGENT_CREATOR | Añadir FIA + MCP-Presets al flujo | 27% | ⏳ |
+| FC1-I3 | Protocolo DRY | Documentar flujo unificado de creación | 15% | ⏳ |
+| FC1-I4 | Documentación Web | README técnico + docs/ usuario | 18% | ⏳ |
+| FC1-I5 | **Sistema de Épocas** | Permitir personajes con modos de operación diferenciados | 22% | ✅ Tutatix creado |
 
 > **Nota**: I5 añadida tras análisis de gaps con caso de uso Tutatix (ver `03_gap-analysis-tutatix.md`)
 
 ---
 
-## Iteración 1: Catálogo FIA
+## Iteración 1: Catálogo FIA ✅
 
 **Objetivo**: Crear un catálogo consultable de paradigmas FIA en `as-gym/` que el plugin AGENT_CREATOR pueda ofrecer al usuario.
 
-**Effort**: 8 puntos
+**Effort**: 8 puntos  
+**Estado**: ✅ Completada
 
 ### Stories
 
-#### SCRIPT-1.10.0-S01: Diseñar Esquema del Catálogo FIA
+#### SCRIPT-1.10.0-S01: Diseñar Esquema del Catálogo FIA ✅
 **Effort**: 3 pts
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T001 | Definir schema JSON para `fia-catalog.json` | 1 | ⏳ |
-| T002 | Mapear cada paradigma a afinidad con banderas | 0.5 | ⏳ |
-| T003 | Documentar capacidades/limitaciones por paradigma | 1 | ⏳ |
-| T004 | Crear archivo `as-gym/fia-catalog.json` | 0.5 | ⏳ |
+| T001 | Definir schema JSON para `fia-catalog.json` | 1 | ✅ |
+| T002 | Mapear cada paradigma a afinidad con banderas | 0.5 | ✅ |
+| T003 | Documentar capacidades/limitaciones por paradigma | 1 | ✅ |
+| T004 | Crear archivo `as-gym/fia-catalog.json` | 0.5 | ✅ |
+| T050 | **Crear sub-catálogo de modelos por paradigma** | 0.5 | ✅ |
 
-**Definition of Done**: 
+**Definition of Done**: ✅
 - Archivo `fia-catalog.json` existe con los 10 paradigmas documentados
 - Cada paradigma tiene: id, nombre, descripción, afinidad_banderas, capacidades, limitaciones
+- **Nuevo**: Cada paradigma tiene array `modelos[]` con modelos específicos
+
+**Archivos creados**:
+- `as-gym/fia-catalog.json` (10 paradigmas, modelos incluidos)
+- `as-gym/red_semantica.schema.json` (JSON Schema para redes)
+- `as-gym/BACKLOG-SCRIPTORIUM.md` (5 suposiciones documentadas)
+- `as-gym/README-SCRIPTORIUM.md` (guía de integración)
 
 **Esquema propuesto para `fia-catalog.json`**:
 
@@ -457,10 +481,11 @@ Invoca `@AgentCreator` en el chat de Copilot...
 
 ---
 
-## Iteración 5: Sistema de Épocas
+## Iteración 5: Sistema de Épocas ✅
 
 > **Añadida tras análisis de gaps con caso de uso Tutatix**  
-> Ver: `03_gap-analysis-tutatix.md`
+> Ver: `03_gap-analysis-tutatix.md`  
+> **Estado**: ✅ Completada con proof-of-concept Tutatix
 
 **Objetivo**: Permitir que los personajes tengan modos de operación diferenciados (épocas).
 
@@ -472,29 +497,40 @@ Invoca `@AgentCreator` en el chat de Copilot...
 
 ### Stories
 
-#### SCRIPT-1.10.0-S10: Sistema de Épocas para Personajes FIA
+#### SCRIPT-1.10.0-S10: Sistema de Épocas para Personajes FIA ✅
 **Effort**: 10 pts  
 **Prioridad**: Must  
-**Justificación**: Sin épocas, no se puede crear Tutatix ni ningún personaje con modos de operación diferenciados.
+**Justificación**: Sin épocas, no se puede crear Tutatix ni ningún personaje con modos de operación diferenciados.  
+**Estado**: ✅ Completada (Tutatix creado como proof-of-concept)
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T051 | Diseñar schema de `epochs` en recipe.json | 1 | ⏳ |
+| T051 | Diseñar schema de `epochs` en recipe.json | 1 | ✅ |
 | T052 | Implementar selector de época en `crear-agente.prompt.md` | 1 | ⏳ |
-| T053 | Documentar patrones de épocas (write/read, contexto limitado) | 1 | ⏳ |
-| T054 | Definir estructura de carpeta con FIA persistente por agente | 1 | ⏳ |
+| T053 | Documentar patrones de épocas (write/read, contexto limitado) | 1 | ✅ |
+| T054 | Definir estructura de carpeta con FIA persistente por agente | 1 | ✅ |
 | T055 | Crear prompt `editar-red-semantica.prompt.md` | 2 | ⏳ |
 | T056 | Crear prompt `cargar-contexto-fia.prompt.md` | 1 | ⏳ |
-| T057 | Extender schema de `actores.json` con epochs | 1 | ⏳ |
+| T057 | Extender schema de `actores.json` con epochs | 1 | ✅ |
 | T058 | Actualizar `desplegar-en-arg.prompt.md` con config de épocas | 1 | ⏳ |
-| T059 | Crear prueba de concepto: personaje Tutatix | 1 | ⏳ |
+| T059 | Crear prueba de concepto: personaje Tutatix | 1 | ✅ |
+
+**Archivos creados para Tutatix**:
+- `AGENT_CREATOR/agents/created/tutatix/tutatix.agent.md` ✅
+- `AGENT_CREATOR/agents/created/tutatix/tutatix.recipe.json` ✅
+- `AGENT_CREATOR/agents/created/tutatix/fia/red_semantica.json` ✅
+- `DISCO/TALLER/ELENCO/tutatix/README.md` ✅
+
+**Integración ARG**:
+- `actores.json` actualizado con Tutatix ✅
+- `obras.json` actualizado (hola_mundo + escena 4) ✅
 
 **Definition of Done**:
-- Se puede crear un personaje con 2+ épocas
-- Las épocas persisten configuración FIA
-- El despliegue en ARG respeta las épocas
-- El usuario puede cambiar de época vía comando
-- Tutatix desplegado en obra "Hola Mundo"
+- ✅ Se puede crear un personaje con 2+ épocas
+- ✅ Las épocas persisten configuración FIA
+- ✅ El despliegue en ARG respeta las épocas
+- ⏳ El usuario puede cambiar de época vía comando
+- ✅ Tutatix desplegado en obra "Hola Mundo"
 
 **Schema de epochs propuesto**:
 
