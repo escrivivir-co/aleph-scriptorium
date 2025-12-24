@@ -579,6 +579,94 @@
           "capitulos": 61
         }
       ]
+    },
+    "wiring-app": {
+      "name": "WiringApp (Wiki-Racer Flows)",
+      "version": "1.0.0",
+      "description": "Plugin de ejemplo de aplicación Node-RED basado en wiki-racer. Extiende WireEditor con templates de juegos de navegación.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-01T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/WIRING_APP/",
+      "bridge_agent": "plugin_ox_wiringapp",
+      "dependencies": ["wire-editor"],
+      "optional_dependencies": ["typed-prompting"],
+      "submodule": "wiki-racer",
+      "handoffs": [
+        {
+          "label": "Crear flow de juego",
+          "agent": "WiringApp"
+        },
+        {
+          "label": "Importar template wiki-racer",
+          "agent": "WiringApp"
+        },
+        {
+          "label": "Exportar a Node-RED",
+          "agent": "WiringApp"
+        }
+      ]
+    },
+    "arg-board-app": {
+      "name": "ArgBoardApp (Wiki-Racer State Machine)",
+      "version": "1.0.0",
+      "description": "Plugin que implementa wiki-racer como máquina de estados para obras del Teatro ARG. Navegación interactiva sobre mapas de enlaces.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-01T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/ARG_BOARD_APP/",
+      "bridge_agent": "plugin_ox_argboardapp",
+      "dependencies": ["arg-board", "teatro"],
+      "optional_dependencies": ["hypergraph-editor"],
+      "submodule": "wiki-racer",
+      "handoffs": [
+        {
+          "label": "Crear obra de navegación",
+          "agent": "ArgBoardApp"
+        },
+        {
+          "label": "Configurar mapa de enlaces",
+          "agent": "ArgBoardApp"
+        },
+        {
+          "label": "Ejecutar partida",
+          "agent": "ArgBoardApp"
+        }
+      ]
+    },
+    "hypergraph-editor": {
+      "name": "HyperGraphEditor (Navegador de Grafos Hipervinculados)",
+      "version": "1.0.0",
+      "description": "Plugin para visualizar y navegar mapas de enlaces hipervinculados. Usa el motor wiki-racer con fuentes abstractas (IGraphSource). Incluye preset MediaWiki.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-01T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 3,
+      "data_directory": "ARCHIVO/PLUGINS/HYPERGRAPH_EDITOR/",
+      "bridge_agent": "plugin_ox_hypergrapheditor",
+      "dependencies": [],
+      "optional_dependencies": ["arg-board", "mcp-presets", "typed-prompting"],
+      "submodule": "wiki-racer",
+      "presets": ["mediawiki"],
+      "handoffs": [
+        {
+          "label": "Crear mapa de enlaces",
+          "agent": "HyperGraphEditor"
+        },
+        {
+          "label": "Navegar grafo",
+          "agent": "HyperGraphEditor"
+        },
+        {
+          "label": "Cargar preset MediaWiki",
+          "agent": "HyperGraphEditor"
+        }
+      ]
     }
   }
 }

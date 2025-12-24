@@ -112,6 +112,18 @@ handoffs:
     agent: plugin_ox_n8neditor
     prompt: Accede al plugin N8N Editor para diseño visual de workflows y exportación a n8n.
     send: false
+  - label: Invocar bridge WiringApp
+    agent: plugin_ox_wiringapp
+    prompt: Accede al plugin WiringApp (wiki-racer flows) para juegos de navegación Node-RED.
+    send: false
+  - label: Invocar bridge ArgBoardApp
+    agent: plugin_ox_argboardapp
+    prompt: Accede al plugin ArgBoardApp (wiki-racer state machine) para obras de navegación ARG.
+    send: false
+  - label: Invocar bridge HyperGraphEditor
+    agent: plugin_ox_hypergrapheditor
+    prompt: Accede al plugin HyperGraphEditor para navegación de grafos hipervinculados (incluye preset MediaWiki).
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -130,8 +142,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.8.0",
-  "ultima_actualizacion": "2025-12-29",
+  "version": "1.9.0",
+  "ultima_actualizacion": "2025-01-01",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -285,6 +297,18 @@ handoffs:
         "n8n-editor": {
           "directorio": ".github/plugins/n8n-editor/agents/",
           "agentes": ["N8NEditor"]
+        },
+        "wiring-app": {
+          "directorio": ".github/plugins/wiring-app/agents/",
+          "agentes": ["WiringApp"]
+        },
+        "arg-board-app": {
+          "directorio": ".github/plugins/arg-board-app/agents/",
+          "agentes": ["ArgBoardApp"]
+        },
+        "hypergraph-editor": {
+          "directorio": ".github/plugins/hypergraph-editor/agents/",
+          "agentes": ["HyperGraphEditor"]
         }
       },
       "bridges": {
@@ -364,6 +388,21 @@ handoffs:
           "plugin_ox_n8neditor": {
             "archivo": ".github/agents/plugin_ox_n8neditor.agent.md",
             "plugin": "n8n-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_wiringapp": {
+            "archivo": ".github/agents/plugin_ox_wiringapp.agent.md",
+            "plugin": "wiring-app",
+            "delega_a": 1
+          },
+          "plugin_ox_argboardapp": {
+            "archivo": ".github/agents/plugin_ox_argboardapp.agent.md",
+            "plugin": "arg-board-app",
+            "delega_a": 1
+          },
+          "plugin_ox_hypergrapheditor": {
+            "archivo": ".github/agents/plugin_ox_hypergrapheditor.agent.md",
+            "plugin": "hypergraph-editor",
             "delega_a": 1
           }
         }

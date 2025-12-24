@@ -52,6 +52,9 @@ SUBMODULE_TYPED_PROMPTING_URL="https://github.com/escrivivir-co/alephscript-type
 SUBMODULE_N8N_EDITOR_DIR="$ROOT_DIR/alephscript-n8n-like-editor"
 SUBMODULE_N8N_EDITOR_URL="https://github.com/escrivivir-co/alephscript-n8n-like-editor.git"
 
+SUBMODULE_WIKI_RACER_DIR="$ROOT_DIR/wiki-racer"
+SUBMODULE_WIKI_RACER_URL="https://github.com/escrivivir-co/wiki-racer.git"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -75,7 +78,10 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wire-editor/prompts": true,
     ".github/plugins/prolog-editor/prompts": true,
     ".github/plugins/typed-prompting/prompts": true,
-    ".github/plugins/n8n-editor/prompts": true
+    ".github/plugins/n8n-editor/prompts": true,
+    ".github/plugins/wiring-app/prompts": true,
+    ".github/plugins/arg-board-app/prompts": true,
+    ".github/plugins/hypergraph-editor/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -93,7 +99,10 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wire-editor/instructions": true,
     ".github/plugins/prolog-editor/instructions": true,
     ".github/plugins/typed-prompting/instructions": true,
-    ".github/plugins/n8n-editor/instructions": true
+    ".github/plugins/n8n-editor/instructions": true,
+    ".github/plugins/wiring-app/instructions": true,
+    ".github/plugins/arg-board-app/instructions": true,
+    ".github/plugins/hypergraph-editor/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -183,8 +192,9 @@ setup_submodule "$SUBMODULE_NODE_RED_SDK_DIR" "$SUBMODULE_NODE_RED_SDK_URL" "nod
 setup_submodule "$SUBMODULE_PROLOG_SBR_DIR" "$SUBMODULE_PROLOG_SBR_URL" "iot-sbr-logica-para-bots"
 setup_submodule "$SUBMODULE_TYPED_PROMPTING_DIR" "$SUBMODULE_TYPED_PROMPTING_URL" "alephscript-typed-prompting"
 setup_submodule "$SUBMODULE_N8N_EDITOR_DIR" "$SUBMODULE_N8N_EDITOR_URL" "alephscript-n8n-like-editor"
+setup_submodule "$SUBMODULE_WIKI_RACER_DIR" "$SUBMODULE_WIKI_RACER_URL" "wiki-racer"
 
-echo "[setup] ✔ Setup completado (13 submódulos)"
+echo "[setup] ✔ Setup completado (14 submódulos)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -200,8 +210,9 @@ echo "     cd node-red-alephscript-sdk && git push -u origin $INTEGRATION_BRANCH
 echo "     cd iot-sbr-logica-para-bots && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd alephscript-typed-prompting && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd alephscript-n8n-like-editor && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd wiki-racer && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "Submódulos configurados (13):"
+echo "Submódulos configurados (14):"
 echo "  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater"
 echo "  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)"
 echo "  - as-utils-sdk: VibeCoding Connector / Matrix Theater"
@@ -215,3 +226,4 @@ echo "  - node-red-alephscript-sdk: Diseñador de flujos Node-RED"
 echo "  - iot-sbr-logica-para-bots: Editor de Lógica Prolog (SWI-Prolog)"
 echo "  - alephscript-typed-prompting: TypedPrompting (Ontologías NL↔JSON)"
 echo "  - alephscript-n8n-like-editor: Editor visual de workflows (n8n connector)"
+echo "  - wiki-racer: Motor de navegación wiki-racer (WiringApp, ArgBoardApp, HyperGraphEditor)"

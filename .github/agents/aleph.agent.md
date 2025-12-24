@@ -104,6 +104,18 @@ handoffs:
               agent: plugin_ox_n8neditor
               prompt: Accede al plugin N8N Editor. Diseña workflows visuales, importa/exporta JSON compatible con n8n, integra con TypedPrompting.
               send: false
+       - label: "[WIRING-APP] Flows Node-RED wiki-racer"
+              agent: plugin_ox_wiringapp
+              prompt: Accede al plugin WiringApp. Crea flows de juego estilo wiki-racer, importa templates de navegación, exporta a Node-RED.
+              send: false
+       - label: "[ARG-BOARD-APP] Máquina de estados wiki-racer"
+              agent: plugin_ox_argboardapp
+              prompt: Accede al plugin ArgBoardApp. Crea obras de navegación interactiva, configura mapas de enlaces, ejecuta partidas ARG.
+              send: false
+       - label: "[HYPERGRAPH-EDITOR] Navegador de grafos"
+              agent: plugin_ox_hypergrapheditor
+              prompt: Accede al plugin HyperGraphEditor. Crea mapas de enlaces, navega grafos hipervinculados, carga presets (MediaWiki).
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.
