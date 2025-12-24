@@ -3839,3 +3839,138 @@ El README.md es el punto de entrada público del proyecto, pero:
 | 2025-12-24 | Añadir handoffs en @indice | @aleph |
 | 2025-12-24 | Añadir Paso 2.7 en commit-message.prompt | @aleph |
 | 2025-12-24 | Publicar épica en backlog principal | @aleph |
+
+---
+
+# Épica: SCRIPT-1.18.0 — Cobertura y Homogeneización de Índices
+
+**Objetivo**: Refactorizar los índices SPLASH y README para mejorar cobertura, homogeneizar estilo y establecer referencias a DEVOPS como fuente de verdad.
+
+**Estado**: 🆕 Nueva (Feature Cycle 1)
+
+**Fecha inicio**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA/`
+
+---
+
+## Arquitectura de Índices
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              DEVOPS (Funcional.md + Tecnico.md)                 │
+│            ═══════════════════════════════════                   │
+│                 ÚNICA FUENTE DE VERDAD DEL SISTEMA               │
+│                        (NO SE MODIFICA)                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   ┌──────────────────────────┐    ┌──────────────────────────┐  │
+│   │     ÍNDICE SPLASH        │    │     ÍNDICE README        │  │
+│   │    (Mapa de docs/)       │    │   (Mapa de README.md)    │  │
+│   │                          │    │                          │  │
+│   │  Cobertura: Funcional    │    │  Cobertura: Técnica      │  │
+│   │  Agente: @GHPages        │    │  Agente: @indice         │  │
+│   │  Refactoriza: Web        │    │  Refactoriza: README.md  │  │
+│   └──────────────────────────┘    └──────────────────────────┘  │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Principios
+
+1. **DEVOPS es intocable**: Funcional.md y Tecnico.md son la fuente de verdad
+2. **SPLASH describe cómo editar docs/**: Mapa para @GHPages
+3. **README describe cómo sincronizar README.md**: Mapa para @indice
+
+---
+
+## Stories
+
+### SCRIPT-1.18.0-S01: Refactorizar SPLASH
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Añadir ecosistema.md a tabla de páginas (§4) | ⏳ |
+| T002 | Homogeneizar checklist §6 al formato estándar | ⏳ |
+| T003 | Mover TODOs §7 a épica formal | ⏳ |
+| T004 | Añadir sección Referencias con enlace a DEVOPS | ⏳ |
+
+**Definition of Done**:
+- [ ] SPLASH referencia DEVOPS como fuente de verdad
+- [ ] Checklist usa formato tabla estándar
+- [ ] No hay TODOs sueltos
+
+---
+
+### SCRIPT-1.18.0-S02: Refactorizar README Index
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Simplificar §4: quitar duplicados, referenciar DEVOPS | ⏳ |
+| T006 | Homogeneizar checklist §7 al formato estándar | ⏳ |
+| T007 | Añadir sección Referencias con enlace a DEVOPS | ⏳ |
+
+**Definition of Done**:
+- [ ] README index referencia DEVOPS como fuente de verdad
+- [ ] Checklist usa formato tabla estándar
+- [ ] §4 no duplica contadores de DEVOPS
+
+---
+
+### SCRIPT-1.18.0-S03: Validación y Cierre
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T008 | Ejecutar @indice para validar coherencia | ⏳ |
+| T009 | Verificar que GH-Pages compila sin errores | ⏳ |
+| T010 | Actualizar README.md con cambios si aplica | ⏳ |
+
+**Definition of Done**:
+- [ ] @indice no reporta warnings
+- [ ] jekyll build pasa
+- [ ] Commit generado
+
+---
+
+## Métricas SCRIPT-1.18.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 3 |
+| Tasks totales | 10 |
+| Puntos totales | 8 |
+| Prioridad Must | 3 stories (8 pts) |
+| Completadas | 0 |
+| % Avance | 0% |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| DEVOPS/Funcional.md | ✅ Existe (no se modifica) |
+| DEVOPS/Tecnico.md | ✅ Existe (no se modifica) |
+| SPLASH/index.md | ✅ Existe (target de S01) |
+| README/index.md | ✅ Existe (target de S02) |
+| @indice | ✅ Operativo |
+| @GHPages | ✅ Operativo |
+
+---
+
+## Changelog SCRIPT-1.18.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear conversación PO-SM y análisis de cobertura | @scrum |
+| 2025-12-24 | Crear backlog borrador fusionado | @scrum |
+| 2025-12-24 | Aprobar y publicar épica | @scrum |
