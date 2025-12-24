@@ -25,6 +25,9 @@ SUBMODULE_AS_GYM_DIR="$ROOT_DIR/as-gym"
 SUBMODULE_AS_GYM_URL="https://github.com/escrivivir-co/as-gym.git"
 SUBMODULE_AS_GYM_BRANCH="dev/001"
 
+SUBMODULE_NETWORK_SDK_DIR="$ROOT_DIR/alephscript-network-sdk"
+SUBMODULE_NETWORK_SDK_URL="https://github.com/escrivivir-co/alephscript-network-sdk.git"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -40,7 +43,9 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/foro-scraper/prompts": true,
     ".github/plugins/agent-creator/prompts": true,
     ".github/plugins/teatro/prompts": true,
-    ".github/plugins/scrum/prompts": true
+    ".github/plugins/scrum/prompts": true,
+    ".github/plugins/mcp-presets/prompts": true,
+    ".github/plugins/network/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -50,7 +55,9 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/foro-scraper/instructions": true,
     ".github/plugins/agent-creator/instructions": true,
     ".github/plugins/teatro/instructions": true,
-    ".github/plugins/scrum/instructions": true
+    ".github/plugins/scrum/instructions": true,
+    ".github/plugins/mcp-presets/instructions": true,
+    ".github/plugins/network/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -131,6 +138,7 @@ setup_submodule "$SUBMODULE_EXTENSION_DIR" "$SUBMODULE_EXTENSION_URL" "vscode-al
 setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL" "alephscript-mcp-presets-site"
 setup_submodule "$SUBMODULE_AS_UTILS_SDK_DIR" "$SUBMODULE_AS_UTILS_SDK_URL" "as-utils-sdk"
 setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL" "as-gym"
+setup_submodule "$SUBMODULE_NETWORK_SDK_DIR" "$SUBMODULE_NETWORK_SDK_URL" "alephscript-network-sdk"
 
 echo "[setup] ✔ Setup completado"
 echo
@@ -142,9 +150,11 @@ echo "     cd vscode-alephscript-extension && git push -u origin $INTEGRATION_BR
 echo "     cd alephscript-mcp-presets-site && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd as-utils-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd as-gym && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd alephscript-network-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "Submódulos configurados (4):"
+echo "Submódulos configurados (5):"
 echo "  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater"
 echo "  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)"
 echo "  - as-utils-sdk: VibeCoding Connector / Matrix Theater"
 echo "  - as-gym: FIA (Fundamentos de IA) / Almas para Agentes"
+echo "  - alephscript-network-sdk: Oasis/Scuttlebutt P2P Network"

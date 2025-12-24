@@ -11,3 +11,6 @@
 	path = as-gym
 	url = https://github.com/escrivivir-co/as-gym
 	branch = dev/001
+[submodule "alephscript-network-sdk"]
+	path = alephscript-network-sdk
+	url = https://github.com/escrivivir-co/alephscript-network-sdk.git

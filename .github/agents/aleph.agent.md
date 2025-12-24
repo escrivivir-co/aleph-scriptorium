@@ -76,6 +76,10 @@ handoffs:
               agent: plugin_ox_mcppresets
               prompt: Accede al plugin MCP-Presets. Importa, exporta, lista y asigna presets MCP a agentes especializados.
               send: false
+       - label: "[NETWORK] Sincronización P2P de BOEs"
+              agent: plugin_ox_network
+              prompt: Accede al plugin Network (Oasis/Scuttlebutt). Publica, recibe y sincroniza BOEs entre Scriptoriums.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

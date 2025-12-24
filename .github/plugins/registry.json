@@ -1,7 +1,39 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-23T12:00:00Z",
+  "last_updated": "2025-12-24T12:00:00Z",
   "plugins": {
+    "network": {
+      "name": "Network (Oasis/Scuttlebutt)",
+      "version": "1.0.0",
+      "description": "Plugin para sincronización de BOEs entre Scriptoriums mediante la red Oasis (Scuttlebutt P2P). Habilita teatro distribuido y colaboración sin servidor central.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-24T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/NETWORK/",
+      "bridge_agent": "plugin_ox_network",
+      "dependencies": ["arg-board", "teatro"],
+      "submodule": "alephscript-network-sdk",
+      "handoffs": [
+        {
+          "label": "Publicar BOE a Oasis",
+          "agent": "Network"
+        },
+        {
+          "label": "Recibir BOE de Oasis",
+          "agent": "Network"
+        },
+        {
+          "label": "Sincronizar BOEs",
+          "agent": "Network"
+        },
+        {
+          "label": "Configurar Oasis",
+          "agent": "Network"
+        }
+      ]
+    },
     "mcp-presets": {
       "name": "Gestor de Presets MCP",
       "version": "1.0.0",

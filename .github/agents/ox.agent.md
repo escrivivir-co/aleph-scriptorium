@@ -84,6 +84,10 @@ handoffs:
     agent: plugin_ox_scrum
     prompt: Accede al plugin Scrum de gestión ágil de backlogs a través de su bridge.
     send: false
+  - label: Invocar bridge Network
+    agent: plugin_ox_network
+    prompt: Accede al plugin Network (Oasis/Scuttlebutt) para sincronización P2P de BOEs.
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -102,8 +106,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.2.0",
-  "ultima_actualizacion": "2025-12-23",
+  "version": "1.3.0",
+  "ultima_actualizacion": "2025-12-24",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -229,6 +233,10 @@ handoffs:
         "mcp-presets": {
           "directorio": ".github/plugins/mcp-presets/agents/",
           "agentes": ["McpPresets"]
+        },
+        "network": {
+          "directorio": ".github/plugins/network/agents/",
+          "agentes": ["Network"]
         }
       },
       "bridges": {
@@ -273,6 +281,11 @@ handoffs:
           "plugin_ox_mcppresets": {
             "archivo": ".github/agents/plugin_ox_mcppresets.agent.md",
             "plugin": "mcp-presets",
+            "delega_a": 1
+          },
+          "plugin_ox_network": {
+            "archivo": ".github/agents/plugin_ox_network.agent.md",
+            "plugin": "network",
             "delega_a": 1
           }
         }
