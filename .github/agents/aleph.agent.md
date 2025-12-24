@@ -88,6 +88,10 @@ handoffs:
               agent: plugin_ox_blocklyeditor
               prompt: Accede al plugin Blockly Editor. Crea, edita y exporta rutinas JavaScript para personajes usando bloques visuales.
               send: false
+       - label: "[WIRE-EDITOR] Diseñar flujos Node-RED"
+              agent: plugin_ox_wireeditor
+              prompt: Accede al plugin WireEditor. Crea proyectos Node-RED, importa/exporta flows, asesora sobre nodos y configura feeds asíncronos.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

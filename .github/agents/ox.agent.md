@@ -96,6 +96,10 @@ handoffs:
     agent: plugin_ox_blocklyeditor
     prompt: Accede al plugin Blockly Editor para lógica visual de personajes.
     send: false
+  - label: Invocar bridge Wire Editor
+    agent: plugin_ox_wireeditor
+    prompt: Accede al plugin WireEditor para diseño de flujos Node-RED.
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -114,8 +118,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.5.0",
-  "ultima_actualizacion": "2025-12-27",
+  "version": "1.6.0",
+  "ultima_actualizacion": "2025-12-28",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -253,6 +257,10 @@ handoffs:
         "blockly-editor": {
           "directorio": ".github/plugins/blockly-editor/agents/",
           "agentes": ["BlocklyEditor"]
+        },
+        "wire-editor": {
+          "directorio": ".github/plugins/wire-editor/agents/",
+          "agentes": ["WireEditor"]
         }
       },
       "bridges": {
@@ -312,6 +320,11 @@ handoffs:
           "plugin_ox_blocklyeditor": {
             "archivo": ".github/agents/plugin_ox_blocklyeditor.agent.md",
             "plugin": "blockly-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_wireeditor": {
+            "archivo": ".github/agents/plugin_ox_wireeditor.agent.md",
+            "plugin": "wire-editor",
             "delega_a": 1
           }
         }

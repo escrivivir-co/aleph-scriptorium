@@ -1,7 +1,55 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-27T12:00:00Z",
+  "last_updated": "2025-12-28T12:00:00Z",
   "plugins": {
+    "wire-editor": {
+      "name": "Diseñador de Flujos Node-RED",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar flujos de datos asíncronos con Node-RED. Gestiona flows, subflows y nodos personalizados. Transversal al Scriptorium.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-28T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "data_directory": "ARCHIVO/DISCO/WIRING/",
+      "bridge_agent": "plugin_ox_wireeditor",
+      "dependencies": [],
+      "optional_dependencies": ["arg-board", "agent-creator", "blockly-editor"],
+      "submodule": "node-red-alephscript-sdk",
+      "node_red": {
+        "default_port": 1880,
+        "nodes_count": 13,
+        "nodes_by_category": {
+          "bot": ["aleph-kick-bot-in", "aleph-kick-bot-out"],
+          "channel": ["aleph-channel-filter", "aleph-channel-merge", "aleph-channel-split"],
+          "format": ["aleph-message-format", "aleph-json-transform", "aleph-template"],
+          "orchestration": ["aleph-flow-control", "aleph-state-manager"],
+          "dashboard": ["aleph-widget-config", "aleph-dashboard-layout", "aleph-live-view"]
+        }
+      },
+      "handoffs": [
+        {
+          "label": "Crear proyecto Node-RED",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Importar flow desde archivo",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Exportar flow a JSON",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Asesorar sobre nodos",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Conectar feed asíncrono",
+          "agent": "WireEditor"
+        }
+      ]
+    },
     "blockly-editor": {
       "name": "Editor de Lógica Visual (Blockly)",
       "version": "1.0.0",

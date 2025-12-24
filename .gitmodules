@@ -26,3 +26,6 @@
 [submodule "blockly-alephscript-sdk"]
 	path = blockly-alephscript-sdk
 	url = https://github.com/escrivivir-co/blockly-alephscript-sdk.git
+[submodule "node-red-alephscript-sdk"]
+	path = node-red-alephscript-sdk
+	url = https://github.com/escrivivir-co/node-red-alephscript-sdk.git
