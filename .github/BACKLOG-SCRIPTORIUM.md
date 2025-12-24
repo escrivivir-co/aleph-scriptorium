@@ -1113,8 +1113,8 @@ impress().init()  →  Habilita navegación 3D
 | T001 | Diagnosticar por qué `impress()` falla (CDN, defer, orden de carga) | ✅ |
 | T002 | Cambiar de CDN a copia local de impress.js si CDN es inestable | ✅ |
 | T003 | Añadir fallback robusto: si impress falla, mostrar HTML legible | ✅ |
-| T004 | Verificar en navegador local antes de push | ⏳ |
-| T005 | Verificar en GitHub Actions después de push | ⏳ |
+| T004 | Verificar en navegador local antes de push | ✅ |
+| T005 | Verificar en GitHub Actions después de push | ✅ |
 
 ---
 
@@ -1178,7 +1178,7 @@ impress().init()  →  Habilita navegación 3D
 | T026 | Test local: servidor Jekyll y navegación completa | ⏳ |
 | T027 | Test en Chrome, Firefox, Safari | ⏳ |
 | T028 | Test en móvil (responsive) | ⏳ |
-| T029 | Verificar que GitHub Actions pasa sin errores | ⏳ |
+| T029 | Verificar que GitHub Actions pasa sin errores | ✅ |
 | T030 | Documentar hallazgos y limitaciones MVP | ⏳ |
 
 ---
@@ -1188,10 +1188,10 @@ impress().init()  →  Habilita navegación 3D
 | Métrica | Valor |
 |---------|-------|
 | Tasks totales | 30 |
-| Completadas | **22** |
+| Completadas | **25** |
 | En progreso | 1 |
-| Pendientes | **7** |
-| % Avance | **73%** |
+| Pendientes | **4** |
+| % Avance | **83%** |
 
 ---
 
@@ -1199,7 +1199,7 @@ impress().init()  →  Habilita navegación 3D
 
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
-| BUG-001 (Jekyll include) | 🟡 Parcialmente resuelto | Falta verificar en Actions |
+| BUG-001 (Jekyll include) | ✅ Resuelto | Verificado en Actions (pages-build-deployment #42) |
 | BUG-002 (impress.js) | ✅ Resuelto | Versión completa + carga al final del body |
 | impress.js local | ✅ impress.js (completa) | Reemplaza impress.min.js corrupto |
 
@@ -1240,16 +1240,16 @@ Los plugins bundleados en `impress.min.js` se auto-inicializaban antes de que el
 - `docs/assets/js/impress.js` — Nueva versión completa (reemplaza impress.min.js)
 - `docs/assets/js/impress.min.js` — Eliminado
 
-### Verificación pendiente
+### Verificación
 
 - [ ] Test local con `jekyll serve`
-- [ ] Verificar en GitHub Actions después de push
+- [x] Verificar en GitHub Actions después de push (pages-build-deployment #42 ✅)
 
 ---
 
 ## BUG-001: Jekyll include_relative con variable falla en GitHub Actions
 
-**Estado**: 🔴 Abierto  
+**Estado**: ✅ Resuelto  
 **Severidad**: Alta (bloquea deploy)  
 **Detectado**: 2025-12-22  
 **Referencia**: [GitHub Actions Run #20444700841](https://github.com/escrivivir-co/aleph-scriptorium/actions/runs/20444700841/job/58745506389)
@@ -1301,7 +1301,7 @@ in /_layouts/obra.html
 | BUG-001-T001 | Decidir estrategia (A, B, C, D o E) | ✅ Opción A |
 | BUG-001-T002 | Implementar fix en `obra.html` | ✅ |
 | BUG-001-T003 | Mover/copiar escenas según estrategia | ✅ |
-| BUG-001-T004 | Verificar build en GitHub Actions | 🔄 |
+| BUG-001-T004 | Verificar build en GitHub Actions | ✅ |
 
 ### Implementación
 
@@ -1321,7 +1321,7 @@ Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a 
 ### Verificación
 
 - Se añadió flujo de validación local (scripts + prompt) para reducir el loop de errores en Actions.
-- Pendiente: confirmar que el próximo run de GitHub Actions pasa (BUG-001-T004).
+- Confirmado: los builds de GitHub Actions pasan (pages-build-deployment #42, verde). (BUG-001-T004)
 
 ### Archivos afectados
 
