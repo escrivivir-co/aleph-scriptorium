@@ -44,6 +44,14 @@ handoffs:
     agent: plugin_ox_ghpages
     prompt: Actualiza el índice SPLASH para reflejar cambios estructurales en docs/.
     send: false
+  - label: Consultar índice README
+    agent: Indice
+    prompt: Consulta el índice estructural del README en ARCHIVO/DISCO/README/index.md para verificar qué secciones necesitan actualización.
+    send: false
+  - label: Actualizar índice README
+    agent: Indice
+    prompt: Actualiza el índice README para reflejar cambios en la estructura del proyecto (agentes, plugins, submódulos, versión).
+    send: false
 ---
 
 # Agente: Índice (Portero del Proyecto)

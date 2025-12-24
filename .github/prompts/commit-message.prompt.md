@@ -127,6 +127,44 @@ Este warning es informativo y no bloquea el commit.
 
 **Nota**: Este paso solo se ejecuta si hay cambios en `docs/`.
 
+### Paso 2.7: Validar Índice README (si hay cambios que afecten al README)
+
+Si los cambios afectan a archivos que deberían reflejarse en `README.md`, verificar coherencia con el índice estructural:
+
+```bash
+# Detectar cambios en archivos relacionados con README
+git diff --stat | grep -E "(registry\.json|\.gitmodules|package\.json|workspace-config\.json|agents/.*\.agent\.md)"
+```
+
+**Criterios de warning**:
+
+| Cambio detectado | Warning | Acción sugerida |
+|------------------|---------|------------------|
+| Nuevo plugin en `registry.json` | ⚠️ README | Actualizar tabla Plugins |
+| Nuevo submódulo en `.gitmodules` | ⚠️ README | Actualizar tabla Submódulos |
+| Nuevo agente en `.github/agents/` | ⚠️ README | Actualizar sección Agentes |
+| Cambio de versión en `package.json` | ⚠️ README | Actualizar badges y Estado |
+| Cambio de rama en `workspace-config.json` | ⚠️ README | Actualizar sección Estado |
+| Cambios internos sin impacto público | ✅ OK | No requiere actualización |
+
+**Formato del warning**:
+
+```
+⚠️ VALIDACIÓN README
+
+1. [readme_desactualizado] Se detectaron cambios que pueden afectar al README:
+   - {archivo1}: {tipo de cambio}
+   - {archivo2}: {tipo de cambio}
+
+El README puede necesitar actualización.
+Índice: ARCHIVO/DISCO/README/index.md
+
+Sugerencia: @indice consultar README o actualizar manualmente
+Este warning es informativo y no bloquea el commit.
+```
+
+**Nota**: Este paso verifica cambios en archivos que típicamente requieren actualización del README público.
+
 ### Paso 3: Generar mensaje
 
 Ejemplo para cambios en Scriptorium:

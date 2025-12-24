@@ -3700,3 +3700,142 @@ El plugin GH-Pages no tenía un índice estructural que:
 | 2025-12-24 | Añadir handoffs en GHPages | @aleph |
 | 2025-12-24 | Conectar @indice con SPLASH | @aleph |
 | 2025-12-24 | Publicar épica en backlog principal | @aleph |
+
+---
+
+# Épica: SCRIPT-1.17.0 — Índice README y Vinculación @indice
+
+**Objetivo**: Crear un índice estructural del README.md que permita orquestar refactorizaciones, vincular con el agente @indice y generar warnings en commits cuando cambios en el codebase deberían reflejarse en el README.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-12-24  
+**Fecha cierre**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Patrón seguido**: SCRIPT-1.16.0 (Índice SPLASH)
+
+---
+
+## Contexto
+
+### El problema
+
+El README.md es el punto de entrada público del proyecto, pero:
+- No hay índice estructural que documente sus secciones
+- Los cambios en plugins, agentes o submódulos no generan warnings
+- Es fácil que el README quede desactualizado respecto al codebase
+
+### La solución
+
+1. **Índice README**: `ARCHIVO/DISCO/README/index.md` — mapa estructural del README.md
+2. **Vinculación**: @indice puede consultar y actualizar este índice
+3. **Warning en commits**: `commit-message.prompt.md` Paso 2.7 valida cambios que afectan al README
+4. **Criterios claros**: Definir qué cambios requieren actualización del README
+
+---
+
+## Story: SCRIPT-1.17.0-S01 — Creación del Índice README
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `ARCHIVO/DISCO/README/index.md` con estructura del README | ✅ |
+| T002 | Documentar 12 secciones del README con líneas y dependencias | ✅ |
+| T003 | Mapear fuentes de verdad (registry.json, .gitmodules, package.json) | ✅ |
+| T004 | Documentar operaciones de refactorización | ✅ |
+
+---
+
+## Story: SCRIPT-1.17.0-S02 — Vinculación con @indice
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Añadir handoff "Consultar índice README" en indice.agent.md | ✅ |
+| T006 | Añadir handoff "Actualizar índice README" en indice.agent.md | ✅ |
+
+---
+
+## Story: SCRIPT-1.17.0-S03 — Warning en Commit-Message
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T007 | Añadir "Paso 2.7: Validar índice README" en commit-message.prompt | ✅ |
+| T008 | Definir criterios de warning (plugins, submódulos, agentes, versión) | ✅ |
+| T009 | Documentar formato del warning (informativo, no bloqueante) | ✅ |
+| T010 | Añadir sugerencia de actualización si hay discrepancia | ✅ |
+
+---
+
+## Story: SCRIPT-1.17.0-S04 — Documentación y Publicación
+**Puntos**: 1  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Añadir referencia cruzada en §8 del índice README | ✅ |
+| T012 | Publicar épica en BACKLOG-SCRIPTORIUM.md | ✅ |
+
+---
+
+## Métricas SCRIPT-1.17.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 4 |
+| Tasks totales | 12 |
+| Puntos totales | 9 |
+| Prioridad Must | 4 stories (9 pts) |
+| Completadas | **4** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| `ARCHIVO/DISCO/README/index.md` | Índice estructural de README.md | ✅ |
+| `.github/agents/indice.agent.md` | Handoffs README añadidos | ✅ |
+| `.github/prompts/commit-message.prompt.md` | Paso 2.7 warning README | ✅ |
+
+---
+
+## Criterios de Warning
+
+| Archivo modificado | Sección README afectada |
+|--------------------|-------------------------|
+| `registry.json` (nuevo plugin) | Plugins, Plugin Bridges, contadores |
+| `.gitmodules` (nuevo submódulo) | Submódulos, contadores |
+| `.github/agents/*.agent.md` (nuevo) | Agentes, contadores |
+| `package.json` (versión) | Badges, Estado |
+| `workspace-config.json` (rama) | Estado |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| @indice | ✅ Operativo |
+| SCRIPT-1.14.0 (Agente Índice) | ✅ Completada |
+| SCRIPT-1.16.0 (Patrón SPLASH) | ✅ Completada |
+
+---
+
+## Changelog SCRIPT-1.17.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear índice README | @aleph |
+| 2025-12-24 | Añadir handoffs en @indice | @aleph |
+| 2025-12-24 | Añadir Paso 2.7 en commit-message.prompt | @aleph |
+| 2025-12-24 | Publicar épica en backlog principal | @aleph |
