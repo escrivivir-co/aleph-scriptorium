@@ -11,12 +11,19 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto
+# Submódulos del proyecto (4 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/vscode-alephscript-extension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
 SUBMODULE_MCP_PRESETS_DIR="$ROOT_DIR/alephscript-mcp-presets-site"
 SUBMODULE_MCP_PRESETS_URL="https://github.com/escrivivir-co/alephscript-mcp-presets-site.git"
+
+SUBMODULE_AS_UTILS_SDK_DIR="$ROOT_DIR/as-utils-sdk"
+SUBMODULE_AS_UTILS_SDK_URL="https://github.com/escrivivir-co/as-utils-sdk.code-workspace"
+
+SUBMODULE_AS_GYM_DIR="$ROOT_DIR/as-gym"
+SUBMODULE_AS_GYM_URL="https://github.com/escrivivir-co/as-gym.git"
+SUBMODULE_AS_GYM_BRANCH="dev/001"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -122,6 +129,8 @@ popd >/dev/null
 # 3) Configurar cada submódulo con su rama de integración
 setup_submodule "$SUBMODULE_EXTENSION_DIR" "$SUBMODULE_EXTENSION_URL" "vscode-alephscript-extension"
 setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL" "alephscript-mcp-presets-site"
+setup_submodule "$SUBMODULE_AS_UTILS_SDK_DIR" "$SUBMODULE_AS_UTILS_SDK_URL" "as-utils-sdk"
+setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL" "as-gym"
 
 echo "[setup] ✔ Setup completado"
 echo
@@ -131,3 +140,11 @@ echo "  2) (Opcional) Ejecuta scripts/setup-jekyll.sh para dependencias del siti
 echo "  3) Publica las ramas de los submódulos si lo deseas:"
 echo "     cd vscode-alephscript-extension && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd alephscript-mcp-presets-site && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd as-utils-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd as-gym && git push -u origin $INTEGRATION_BRANCH"
+echo
+echo "Submódulos configurados (4):"
+echo "  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater"
+echo "  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)"
+echo "  - as-utils-sdk: VibeCoding Connector / Matrix Theater"
+echo "  - as-gym: FIA (Fundamentos de IA) / Almas para Agentes"

@@ -1,11 +1,64 @@
-# Scripts de Jekyll — Guía de Usuario
+# Scripts — Guía de Usuario
 
 > **Requisitos**: macOS con rbenv y Ruby 3.0.1+
-> **Última validación**: 2025-12-23
+> **Última validación**: 2025-12-24
 
 ---
 
-## Requisitos Previos
+## Scripts Disponibles
+
+| Script | Propósito |
+|--------|-----------|
+| `setup-workspace.sh` | Inicializa VS Code settings y los 4 submódulos |
+| `setup-jekyll.sh` | Instala Jekyll y dependencias |
+| `validate-site.sh` | Compila el sitio sin servidor |
+| `serve-site.sh` | Inicia servidor local con live reload |
+
+---
+
+## Setup del Workspace
+
+Inicializa el workspace completo con discovery de plugins y submódulos:
+
+```bash
+./scripts/setup-workspace.sh
+```
+
+### Qué hace
+
+1. **Crea `.vscode/settings.json`** con:
+   - `chat.promptFilesLocations`: detecta prompts de plugins
+   - `chat.instructionsFilesLocations`: detecta instructions de plugins
+   - `chat.useNestedAgentsMdFiles`: busca agentes anidados
+   
+2. **Sincroniza los 4 submódulos** con rama `integration/beta/scriptorium`:
+   - `vscode-alephscript-extension` — Extensión VS Code / Arrakis Theater
+   - `alephscript-mcp-presets-site` — Zeus MCP Presets (UI web)
+   - `as-utils-sdk` — VibeCoding Connector / Matrix Theater
+   - `as-gym` — FIA (Fundamentos de IA) / Almas para Agentes
+
+### Output esperado
+
+```
+[setup] Aleph Scriptorium — inicialización del workspace
+[setup] VS Code settings creados/actualizados
+[setup] Sincronizando submódulos
+[setup] Configurando submódulo: vscode-alephscript-extension
+[setup] Configurando submódulo: alephscript-mcp-presets-site
+[setup] Configurando submódulo: as-utils-sdk
+[setup] Configurando submódulo: as-gym
+[setup] ✔ Setup completado
+
+Submódulos configurados (4):
+  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater
+  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)
+  - as-utils-sdk: VibeCoding Connector / Matrix Theater
+  - as-gym: FIA (Fundamentos de IA) / Almas para Agentes
+```
+
+---
+
+## Requisitos Previos (Jekyll)
 
 ### 1. Instalar rbenv (si no lo tienes)
 

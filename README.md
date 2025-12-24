@@ -77,15 +77,24 @@ docs/                    # Sitio web (Jekyll/GitHub Pages)
 ## Setup del Workspace (técnico)
 
 - **Discovery de plugins en VS Code**: `.vscode/settings.json` incluye `chat.promptFilesLocations` y `chat.instructionsFilesLocations` apuntando a `.github/plugins/{id}/prompts|instructions` y a las carpetas canónicas.
-- **Script de inicialización**: `scripts/setup-workspace.sh` crea/actualiza los settings, sincroniza el submódulo `vscode-alephscript-extension` y prepara la rama `integration/beta/scriptorium`.
+- **Script de inicialización**: `scripts/setup-workspace.sh` crea/actualiza los settings y sincroniza los 4 submódulos en rama `integration/beta/scriptorium`.
 - **Verificación**:
        - Reinicia VS Code y escribe `/` en Copilot Chat para listar prompts de plugins
-       - En `vscode-alephscript-extension`, confirma que la rama activa es `integration/beta/scriptorium` y publícala si procede (`git push -u origin integration/beta/scriptorium`).
+       - En cada submódulo, confirma que la rama activa es `integration/beta/scriptorium` y publícala si procede.
+
+### Submódulos del proyecto (4)
+
+| Submódulo | Propósito | Rama origen |
+|-----------|-----------|-------------|
+| `vscode-alephscript-extension` | Extensión VS Code / Arrakis Theater | main |
+| `alephscript-mcp-presets-site` | Zeus MCP Presets (UI web) | main |
+| `as-utils-sdk` | VibeCoding Connector / Matrix Theater | main |
+| `as-gym` | FIA (Fundamentos de IA) / Almas para Agentes | dev/001 |
 
 Referencias técnicas:
 - Protocolo de plugins: [.github/PLUGINS.md](.github/PLUGINS.md)
 - Oráculo del sistema: [.github/agents/ox.agent.md](.github/agents/ox.agent.md)
-- Extensión VS Code (submódulo): [vscode-alephscript-extension/README.md](vscode-alephscript-extension/README.md)
+- Scripts de entorno: [scripts/README.md](scripts/README.md)
 
 ---
 
