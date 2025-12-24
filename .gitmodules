@@ -38,3 +38,6 @@
 [submodule "alephscript-n8n-like-editor"]
 	path = alephscript-n8n-like-editor
 	url = https://github.com/escrivivir-co/alephscript-n8n-like-editor
+[submodule "wiki-racer"]
+	path = wiki-racer
+	url = https://github.com/escrivivir-co/wiki-racer.git
