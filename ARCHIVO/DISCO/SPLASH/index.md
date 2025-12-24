@@ -2,7 +2,7 @@
 
 > **Propósito**: Mapa técnico-funcional para orquestar ediciones en `docs/`  
 > **Fuente de verdad**: `docs/index.md` + `docs/assets/css/main.css`  
-> **Actualizado**: 2025-12-24
+> **Actualizado**: 2025-12-24 (SCRIPT-1.19.0: Refactorización Coherencia)
 
 ---
 
@@ -119,17 +119,20 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 
 ## 4. Páginas del Sitio
 
-| Página | Archivo | Clase wrapper | Secciones principales |
-|--------|---------|---------------|----------------------|
-| Home | `index.md` | `.home-page` | 8 secciones (ver §2) |
-| Léeme | `leeme.md` | `.leeme-page` | Quick Start, instalación |
-| Ecosistema | `ecosistema.md` | `.ecosistema-page` | 3 galerías + guía interacción |
-| Teatro | `teatro.md` | `.teatro-page` | Galería, En Escena, Pantalla |
-| Periódico | `periodico.md` | `.periodico-*` | Cabecera, Tesis, Noticias |
-| Fundación | `fundacion.md` | — | Índice de 12 capítulos |
-| Archivo | `archivo.md` | — | Navegación ARCHIVO/ |
-| Roadmap | `roadmap.md` | `.roadmap-*` | Sprints, Fotos, Changelog |
-| Acerca | `acerca.md` | — | Licencia, Origen |
+> **SCRIPT-1.19.0**: Refactorización aplicada. CSS inline eliminado, tablas markdown.
+
+| Página | Archivo | Líneas | Estado |
+|--------|---------|--------|--------|
+| Home | `index.md` | 204 | ✅ Base |
+| Léeme | `leeme.md` | 175 | ✅ Refactorizado (575→175) |
+| Ecosistema | `ecosistema.md` | 178 | ✅ Refactorizado (1284→178) |
+| Teatro | `teatro.md` | 174 | ✅ Base |
+| Periódico | `periodico.md` | 198 | ✅ Base |
+| Fundación | `fundacion.md` | 278 | ✅ Base |
+| Archivo | `archivo.md` | 123 | ✅ Refactorizado (748→123) |
+| Roadmap | `roadmap.md` | 93 | ✅ Refactorizado (1006→93) |
+| Acerca | `acerca.md` | 69 | ✅ Refactorizado (239→69) |
+| **Total** | — | **~1500** | **-64% vs original** |
 
 ---
 
@@ -191,7 +194,31 @@ navigation:
 
 ---
 
-## 8. Referencias
+## 9. Principios de Coherencia (SCRIPT-1.19.0)
+
+| Principio | Descripción |
+|-----------|-------------|
+| **Compacto** | Máximo ~200 líneas por página |
+| **Sin repetición** | Cada dato aparece UNA vez |
+| **Links no contenido** | Referencia a fuentes, no copia |
+| **CSS externo** | Estilos en main.css, no inline |
+| **Markdown puro** | Tablas markdown, no HTML cards |
+| **Escaneable** | Headers claros, tablas para datos |
+
+### Distribución Funcional
+
+| Página | Responsabilidad Única | NO incluir |
+|--------|----------------------|------------|
+| `index.md` | Landing, navegación rápida | Detalles de plugins/agentes |
+| `ecosistema.md` | Catálogo visual de capacidades | CSS inline extenso |
+| `archivo.md` | Mapa de navegación ARCHIVO/ | Contenido completo |
+| `roadmap.md` | Estado sprints, próximos pasos | Galería completa de fotos |
+| `leeme.md` | Tutorial de instalación | Tablas repetidas |
+| `acerca.md` | Filosofía, licencia | Estilos inline |
+
+---
+
+## 9. Referencias
 
 ### Fuentes de Verdad
 

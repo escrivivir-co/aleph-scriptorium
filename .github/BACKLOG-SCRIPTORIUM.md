@@ -3979,3 +3979,212 @@ El README.md es el punto de entrada público del proyecto, pero:
 | 2025-12-24 | Cerrar épica al 100% | @aleph |
 | 2025-12-24 | Refactorizar README.md: 366→112 líneas (-69%), eliminar repeticiones | @aleph |
 | 2025-12-24 | Actualizar índice README/index.md con nueva estructura | @aleph |
+| 2025-12-24 | Crear épica SCRIPT-1.19.0: Coherencia GH-Pages | @scrum |
+
+---
+
+# Épica: SCRIPT-1.19.0 — Coherencia Funcional GH-Pages
+
+**Objetivo**: Aplicar principios de diseño DRY a las páginas web (docs/) para eliminar redundancias, distribuir contenido correctamente y lograr coherencia entre index, ecosistema, archivo, roadmap, leeme y acerca.
+
+**Estado**: 🔄 En Progreso
+
+**Fecha inicio**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Principios aplicados**: Los mismos de SCRIPT-1.18.0 (README compacto)
+
+---
+
+## Diagnóstico
+
+### Estado Actual (líneas)
+
+| Página | Líneas | Problema principal |
+|--------|--------|-------------------|
+| `ecosistema.md` | 1283 | Demasiado larga, CSS inline excesivo |
+| `roadmap.md` | 1006 | Galería de fotos muy larga |
+| `archivo.md` | 747 | Repite estructura que está en DEVOPS |
+| `leeme.md` | 574 | Tablas repetidas, información duplicada |
+| `fundacion.md` | 278 | OK, pero puede simplificarse |
+| `acerca.md` | 239 | Estilos inline, información redundante |
+| `index.md` | 204 | OK, bien estructurada |
+| `periodico.md` | 198 | OK |
+| `teatro.md` | 174 | OK |
+
+### Principios de Coherencia
+
+| Principio | Descripción |
+|-----------|-------------|
+| **DRY** | Cada dato aparece UNA vez |
+| **Responsabilidad única** | Cada página tiene UN propósito claro |
+| **CSS externo** | Estilos en main.css, no inline |
+| **Tablas compactas** | Máximo 10 filas, enlace a detalle |
+| **Links no contenido** | Referencia a fuentes, no copia |
+
+### Distribución Funcional Propuesta
+
+| Página | Responsabilidad | NO incluir |
+|--------|-----------------|------------|
+| `index.md` | Navegación rápida, status | Detalles de plugins/agentes |
+| `ecosistema.md` | Catálogo visual de capacidades | CSS inline extenso |
+| `archivo.md` | Mapa de navegación ARCHIVO/ | Contenido completo |
+| `roadmap.md` | Estado sprints, próximos pasos | Galería completa de fotos |
+| `leeme.md` | Tutorial de instalación | Tablas repetidas |
+| `acerca.md` | Filosofía, licencia | Estilos inline |
+
+---
+
+## Stories
+
+### SCRIPT-1.19.0-S01: Refactorizar ecosistema.md
+**Effort**: 5 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Mover CSS inline a main.css | ✅ |
+| T002 | Colapsar galería submódulos (tabla compacta + link a detalle) | ✅ |
+| T003 | Colapsar galería plugins (tabla compacta + link a PLUGINS.md) | ✅ |
+| T004 | Colapsar galería agentes (tabla compacta por capa) | ✅ |
+| T005 | Reducir a ~400 líneas máximo | ✅ |
+
+**Resultado**: 1284 → 178 líneas (-86%)
+
+---
+
+### SCRIPT-1.19.0-S02: Refactorizar archivo.md
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Mover CSS inline a main.css | ✅ |
+| T007 | Simplificar a mapa de navegación (no contenido) | ✅ |
+| T008 | Enlazar a DEVOPS/Funcional.md y Tecnico.md | ✅ |
+| T009 | Reducir a ~200 líneas | ✅ |
+
+**Resultado**: 748 → 123 líneas (-84%)
+
+---
+
+### SCRIPT-1.19.0-S03: Refactorizar leeme.md
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T010 | Eliminar tablas de plataformas repetidas | ✅ |
+| T011 | Consolidar Quick Start en sección única | ✅ |
+| T012 | Reducir a ~250 líneas | ✅ |
+
+**Resultado**: 575 → 175 líneas (-70%)
+
+---
+
+### SCRIPT-1.19.0-S04: Refactorizar roadmap.md
+**Effort**: 3 pts  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T013 | Mover CSS a main.css | ✅ |
+| T014 | Colapsar galería de fotos (últimas 3 + link a archivo) | ✅ |
+| T015 | Simplificar secciones de sprints | ✅ |
+| T016 | Reducir a ~400 líneas | ✅ |
+
+**Resultado**: 1006 → 93 líneas (-91%)
+
+---
+
+### SCRIPT-1.19.0-S05: Refactorizar acerca.md
+**Effort**: 2 pts  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Mover estilos inline a main.css | ✅ |
+| T018 | Simplificar contenido | ✅ |
+| T019 | Reducir a ~120 líneas | ✅ |
+
+**Resultado**: 239 → 69 líneas (-71%)
+
+---
+
+### SCRIPT-1.19.0-S06: Actualizar SPLASH Index
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T020 | Actualizar §4 con nuevos conteos de líneas | ✅ |
+| T021 | Añadir §8 Principios de Coherencia | ✅ |
+| T022 | Documentar distribución funcional | ✅ |
+
+---
+
+### SCRIPT-1.19.0-S07: Validación y Cierre
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: 🔄 En Progreso
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T023 | Ejecutar `bundle exec jekyll build` sin errores | ⏳ |
+| T024 | Verificar responsive (320/768/1200px) | ⏳ |
+| T025 | Commit según protocolo DevOps | ⏳ |
+
+---
+
+## Métricas SCRIPT-1.19.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 7 |
+| Tasks totales | 25 |
+| Effort total | 20 pts |
+| Prioridad Must | 5 stories (15 pts) |
+| Prioridad Should | 2 stories (5 pts) |
+| Completadas | **6** |
+| En progreso | 1 (S07) |
+| % Avance | **86%** |
+
+---
+
+## Targets de Reducción
+
+| Página | Antes | Target | Reducción |
+|--------|-------|--------|-----------|
+| ecosistema.md | 1283 | 400 | -69% |
+| roadmap.md | 1006 | 400 | -60% |
+| archivo.md | 747 | 200 | -73% |
+| leeme.md | 574 | 250 | -56% |
+| acerca.md | 239 | 120 | -50% |
+| **Total** | **3849** | **1370** | **-64%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SPLASH/index.md | ✅ Base para ediciones |
+| main.css | ✅ Target de CSS consolidado |
+| @GHPages | ✅ Plugin operativo |
+| SCRIPT-1.18.0 | ✅ Completada (principios establecidos) |
+
+---
+
+## Changelog SCRIPT-1.19.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear épica con diagnóstico y 7 stories | @scrum |
+| 2025-12-24 | Implementar S01-S06: refactorizar 5 páginas (-83% total) | @aleph |
+| 2025-12-24 | Actualizar SPLASH index con resultados y principios | @aleph |
+| 2025-12-24 | Corregir navegación: Agentes → Ecosistema en _config.yml | @aleph |
