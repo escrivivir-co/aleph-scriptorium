@@ -3161,3 +3161,178 @@ Los agentes @aleph y @ox tienen documentación dispersa:
 | 2025-12-24 | Crear Funcional.md y Tecnico.md (S01, S02) | @aleph |
 | 2025-12-24 | Crear agente Lucas y desplegar en Teatro (S03) | @aleph |
 | 2025-12-24 | Corregir creation-log.json y cerrar épica | @aleph |
+
+---
+
+# Épica: SCRIPT-1.14.0 — Agente Índice (@indice)
+
+**Objetivo**: Crear un agente `@indice` integrado en `.github/agents/` que sirva como "portero" del proyecto, consultado antes de cada intervención para determinar qué leer. Gemelo funcional del personaje Lucas, mantiene los índices `Funcional.md` y `Tecnico.md` como única fuente de verdad DRY.
+
+**Estado**: 🔄 En Progreso (Feature Cycle 1)
+
+**Fecha inicio**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/AGENTE_INDICE/conversacion-po-sm.md`  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/AGENTE_INDICE/01_backlog-borrador.md`
+
+---
+
+## Contexto
+
+### El problema
+
+Los agentes @aleph y @ox no tienen un "mapa" rápido del proyecto:
+- Cada intervención requiere exploración
+- No hay validación de coherencia índice ↔ codebase
+- Los índices pueden desincronizarse silenciosamente
+
+### La solución
+
+Crear `@indice` que:
+1. Sea consultado ANTES de cada intervención
+2. Mantenga `Funcional.md` y `Tecnico.md` actualizados
+3. Ejecute validación pre-commit (warning no bloqueante)
+4. Combine visión @aleph (usuario) + @ox (técnica)
+
+### Arquitectura
+
+```
+.github/
+├── agents/
+│   └── indice.agent.md          # NUEVO
+├── prompts/
+│   ├── commit-message.prompt.md # MODIFICAR (Paso 2.5)
+│   ├── indice-consultar.prompt.md   # NUEVO
+│   ├── indice-actualizar.prompt.md  # NUEVO
+│   └── indice-validar.prompt.md     # NUEVO
+├── instructions/
+│   └── indice-dry.instructions.md   # NUEVO
+└── copilot-instructions.md      # MODIFICAR (§8)
+
+ARCHIVO/DEVOPS/
+├── Funcional.md                 # Fuente de verdad (usuario)
+└── Tecnico.md                   # Fuente de verdad (técnico)
+```
+
+---
+
+## Stories
+
+### SCRIPT-1.14.0-S01 — Agente Índice Base
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `.github/agents/indice.agent.md` con frontmatter | ⏳ |
+| T002 | Definir 8 handoffs (consultar, actualizar, validar por índice) | ⏳ |
+| T003 | Documentar relación gemelo con personaje Lucas | ⏳ |
+| T004 | Definir 5 tests de coherencia | ⏳ |
+| T005 | Añadir sección "Flujo de consulta" con ejemplos | ⏳ |
+| T006 | Añadir sección "Contrato DRY" | ⏳ |
+
+---
+
+### SCRIPT-1.14.0-S02 — Instrucciones DRY
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T007 | Crear `.github/instructions/indice-dry.instructions.md` | ⏳ |
+| T008 | Documentar estructura esperada de Funcional.md | ⏳ |
+| T009 | Documentar estructura esperada de Tecnico.md | ⏳ |
+| T010 | Definir reglas de actualización | ⏳ |
+| T011 | Definir applyTo: ARCHIVO/DEVOPS/*.md | ⏳ |
+
+---
+
+### SCRIPT-1.14.0-S03 — Prompts del Índice
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Crear `indice-consultar.prompt.md` | ⏳ |
+| T013 | Crear `indice-actualizar.prompt.md` | ⏳ |
+| T014 | Crear `indice-validar.prompt.md` | ⏳ |
+| T015 | Documentar ejemplos de uso en cada prompt | ⏳ |
+
+---
+
+### SCRIPT-1.14.0-S04 — Integración con Sistema
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Añadir handoff @indice en aleph.agent.md | ⏳ |
+| T017 | Actualizar ox.agent.md con @indice en índice | ⏳ |
+| T018 | Actualizar copilot-instructions.md con @indice | ⏳ |
+| T019 | Documentar en Tecnico.md | ⏳ |
+
+---
+
+### SCRIPT-1.14.0-S05 — Integración Pre-Commit
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T020 | Añadir sección §8 en copilot-instructions.md | ⏳ |
+| T021 | Modificar commit-message.prompt.md: Paso 2.5 | ⏳ |
+| T022 | Implementar lógica de warning no bloqueante | ⏳ |
+| T023 | Definir formato de warning accionable | ⏳ |
+| T024 | Documentar flujo en indice-dry.instructions.md | ⏳ |
+
+---
+
+## Métricas SCRIPT-1.14.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 24 |
+| Puntos totales | 18 |
+| Prioridad Must | 5 stories (18 pts) |
+| Completadas | 0 |
+| % Avance | 0% |
+
+---
+
+## Relación @indice ↔ lucas
+
+```
+@indice (agente .github/)  ←→  lucas (personaje Teatro)
+         │                           │
+         └───── MISMA FUENTE ────────┘
+               ARCHIVO/DEVOPS/
+            Funcional.md + Tecnico.md
+```
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SCRIPT-1.13.0 (Lucas + Índices) | ✅ Completada |
+| Funcional.md | ✅ Creado |
+| Tecnico.md | ✅ Creado |
+| Personaje Lucas | ✅ Desplegado |
+
+---
+
+## Changelog SCRIPT-1.14.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear conversación PO-SM | @scrum |
+| 2025-12-24 | Añadir Fase 6: Integración Pre-Commit | @scrum |
+| 2025-12-24 | Generar backlog borrador (5 stories, 24 tasks) | @scrum |
+| 2025-12-24 | Aprobar y publicar épica | @scrum |
