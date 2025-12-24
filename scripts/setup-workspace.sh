@@ -11,7 +11,7 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto (9 en total)
+# Submódulos del proyecto (11 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/vscode-alephscript-extension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
@@ -43,6 +43,9 @@ SUBMODULE_BLOCKLY_SDK_URL="https://github.com/escrivivir-co/blockly-alephscript-
 SUBMODULE_NODE_RED_SDK_DIR="$ROOT_DIR/node-red-alephscript-sdk"
 SUBMODULE_NODE_RED_SDK_URL="https://github.com/escrivivir-co/node-red-alephscript-sdk.git"
 
+SUBMODULE_PROLOG_SBR_DIR="$ROOT_DIR/iot-sbr-logica-para-bots"
+SUBMODULE_PROLOG_SBR_URL="https://github.com/escrivivir-co/iot-sbr-logica-para-bots.git"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -63,7 +66,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/network/prompts": true,
     ".github/plugins/novelist/prompts": true,
     ".github/plugins/blockly-editor/prompts": true,
-    ".github/plugins/wire-editor/prompts": true
+    ".github/plugins/wire-editor/prompts": true,
+    ".github/plugins/prolog-editor/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -78,7 +82,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/network/instructions": true,
     ".github/plugins/novelist/instructions": true,
     ".github/plugins/blockly-editor/instructions": true,
-    ".github/plugins/wire-editor/instructions": true
+    ".github/plugins/wire-editor/instructions": true,
+    ".github/plugins/prolog-editor/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -165,8 +170,9 @@ setup_submodule "$SUBMODULE_KICK_CRONO_BOT_DIR" "$SUBMODULE_KICK_CRONO_BOT_URL" 
 setup_submodule "$SUBMODULE_MCP_NOVELIST_DIR" "$SUBMODULE_MCP_NOVELIST_URL" "mcp-novelist"
 setup_submodule "$SUBMODULE_BLOCKLY_SDK_DIR" "$SUBMODULE_BLOCKLY_SDK_URL" "blockly-alephscript-sdk"
 setup_submodule "$SUBMODULE_NODE_RED_SDK_DIR" "$SUBMODULE_NODE_RED_SDK_URL" "node-red-alephscript-sdk"
+setup_submodule "$SUBMODULE_PROLOG_SBR_DIR" "$SUBMODULE_PROLOG_SBR_URL" "iot-sbr-logica-para-bots"
 
-echo "[setup] ✔ Setup completado (10 submódulos)"
+echo "[setup] ✔ Setup completado (11 submódulos)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -179,8 +185,9 @@ echo "     cd as-gym && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd alephscript-network-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd blockly-alephscript-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd node-red-alephscript-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd iot-sbr-logica-para-bots && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "Submódulos configurados (10):"
+echo "Submódulos configurados (11):"
 echo "  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater"
 echo "  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)"
 echo "  - as-utils-sdk: VibeCoding Connector / Matrix Theater"
@@ -191,3 +198,4 @@ echo "  - kick-aleph-crono-bot: Bot cronológico Kick"
 echo "  - mcp-novelist: Editor MCP de narrativas"
 echo "  - blockly-alephscript-sdk: Editor visual Blockly"
 echo "  - node-red-alephscript-sdk: Diseñador de flujos Node-RED"
+echo "  - iot-sbr-logica-para-bots: Editor de Lógica Prolog (SWI-Prolog)"

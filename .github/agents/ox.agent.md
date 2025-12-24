@@ -100,6 +100,10 @@ handoffs:
     agent: plugin_ox_wireeditor
     prompt: Accede al plugin WireEditor para diseño de flujos Node-RED.
     send: false
+  - label: Invocar bridge Prolog Editor
+    agent: plugin_ox_prologeditor
+    prompt: Accede al plugin PrologEditor para diseño y ejecución de lógica Prolog (SWI-Prolog).
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -118,7 +122,7 @@ handoffs:
 
 ```json
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "ultima_actualizacion": "2025-12-28",
   "capas": {
     "ui": {
@@ -261,6 +265,10 @@ handoffs:
         "wire-editor": {
           "directorio": ".github/plugins/wire-editor/agents/",
           "agentes": ["WireEditor"]
+        },
+        "prolog-editor": {
+          "directorio": ".github/plugins/prolog-editor/agents/",
+          "agentes": ["PrologEditor"]
         }
       },
       "bridges": {
@@ -325,6 +333,11 @@ handoffs:
           "plugin_ox_wireeditor": {
             "archivo": ".github/agents/plugin_ox_wireeditor.agent.md",
             "plugin": "wire-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_prologeditor": {
+            "archivo": ".github/agents/plugin_ox_prologeditor.agent.md",
+            "plugin": "prolog-editor",
             "delega_a": 1
           }
         }

@@ -1,7 +1,49 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-28T12:00:00Z",
+  "last_updated": "2025-12-28T18:00:00Z",
   "plugins": {
+    "prolog-editor": {
+      "name": "Editor de Lógica Prolog",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar y ejecutar reglas Prolog (SWI-Prolog). Genera templates, ejecuta consultas, exporta Blockly a Prolog. Orientado a usuarios académicos.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-28T18:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "data_directory": "ARCHIVO/PLUGINS/PROLOG_EDITOR/",
+      "bridge_agent": "plugin_ox_prologeditor",
+      "dependencies": [],
+      "optional_dependencies": ["blockly-editor", "agent-creator", "arg-board", "as-gym"],
+      "submodule": "iot-sbr-logica-para-bots",
+      "prolog": {
+        "runtime": "SWI-Prolog 9.x",
+        "npm_binding": "swipl@1.0.6",
+        "templates": ["state-machine", "iot-app", "simu"]
+      },
+      "handoffs": [
+        {
+          "label": "Crear template Prolog",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Ejecutar consulta Prolog",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Exportar Blockly a Prolog",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Listar templates",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Importar reglas",
+          "agent": "PrologEditor"
+        }
+      ]
+    },
     "wire-editor": {
       "name": "Diseñador de Flujos Node-RED",
       "version": "1.0.0",

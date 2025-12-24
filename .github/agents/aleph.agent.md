@@ -92,6 +92,10 @@ handoffs:
               agent: plugin_ox_wireeditor
               prompt: Accede al plugin WireEditor. Crea proyectos Node-RED, importa/exporta flows, asesora sobre nodos y configura feeds asíncronos.
               send: false
+       - label: "[PROLOG-EDITOR] Lógica declarativa Prolog"
+              agent: plugin_ox_prologeditor
+              prompt: Accede al plugin PrologEditor. Crea templates Prolog, ejecuta consultas SWI-Prolog, exporta Blockly a Prolog, importa reglas.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

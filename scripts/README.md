@@ -9,7 +9,7 @@
 
 | Script | Propósito |
 |--------|-----------|
-| `setup-workspace.sh` | Inicializa VS Code settings y los 10 submódulos |
+| `setup-workspace.sh` | Inicializa VS Code settings y los 11 submódulos |
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
@@ -31,7 +31,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `chat.instructionsFilesLocations`: detecta instructions de plugins
    - `chat.useNestedAgentsMdFiles`: busca agentes anidados
    
-2. **Sincroniza los 10 submódulos** con rama `integration/beta/scriptorium`:
+2. **Sincroniza los 11 submódulos** con rama `integration/beta/scriptorium`:
    - `vscode-alephscript-extension` — Extensión VS Code / Arrakis Theater
    - `alephscript-mcp-presets-site` — Zeus MCP Presets (UI web)
    - `as-utils-sdk` — VibeCoding Connector / Matrix Theater
@@ -42,6 +42,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `mcp-novelist` — Servidor MCP para edición de narrativas
    - `blockly-alephscript-sdk` — Editor visual Blockly para lógica de personajes
    - `node-red-alephscript-sdk` — Diseñador de flujos Node-RED
+   - `iot-sbr-logica-para-bots` — Editor de Lógica Prolog (SWI-Prolog)
 
 ### Output esperado
 
@@ -59,9 +60,10 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: mcp-novelist
 [setup] Configurando submódulo: blockly-alephscript-sdk
 [setup] Configurando submódulo: node-red-alephscript-sdk
-[setup] ✔ Setup completado (10 submódulos)
+[setup] Configurando submódulo: iot-sbr-logica-para-bots
+[setup] ✔ Setup completado (11 submódulos)
 
-Submódulos configurados (10):
+Submódulos configurados (11):
   - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater
   - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)
   - as-utils-sdk: VibeCoding Connector / Matrix Theater
@@ -72,6 +74,7 @@ Submódulos configurados (10):
   - mcp-novelist: Servidor MCP para edición de narrativas
   - blockly-alephscript-sdk: Editor visual Blockly
   - node-red-alephscript-sdk: Diseñador de flujos Node-RED
+  - iot-sbr-logica-para-bots: Editor de Lógica Prolog (SWI-Prolog)
 ```
 
 ---
