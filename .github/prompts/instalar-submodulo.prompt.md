@@ -1,37 +1,79 @@
 ---
 name: Instalar Submódulo
-description: Protocolo completo para añadir un nuevo submódulo al Scriptorium con plugin, backlog y configuración.
+description: Protocolo de 8 fases para integrar submódulos externos en el Scriptorium. Incluye análisis, planificación Scrum y configuración completa.
 applyTo: "scripts/**, .github/plugins/**, ARCHIVO/DISCO/BACKLOG_BORRADORES/**"
 ---
 
-# Prompt: Instalar Submódulo con Plugin
+# Prompt: Instalar Submódulo (Protocolo de 8 Fases)
 
-Este prompt documenta el protocolo completo para instalar un nuevo submódulo en ALEPH Scriptorium, incluyendo plugin asociado, backlog de planificación y configuración del workspace.
+> **Instrucciones vinculadas**: `.github/instructions/submodulo-integracion.instructions.md`  
+> **Agente orquestador**: `@aleph` → delega a `@scrum` para borradores
+
+Este prompt ejecuta el **protocolo completo de integración** de submódulos externos.
 
 ---
 
-## Contexto
+## Invocación
 
-El Scriptorium integra **submódulos externos** que extienden sus capacidades.
+```
+@aleph Instalar submódulo desde {URL_REPOSITORIO}
 
-> **IMPORTANTE**: El número de submódulos es **dinámico**. Antes de iniciar, ejecutar:
+Instrucciones:
+- Crear plugin: {sí/no/consultar}
+- Modo: {autónomo/consultivo}
+- Scope: {minimal/completo}
+- {Notas adicionales del usuario}
+```
+
+**Ejemplos de invocación**:
+
+| Caso | Instrucciones |
+|------|---------------|
+| Instalación completa | `Crear plugin: sí, Modo: autónomo, Scope: completo` |
+| Solo análisis | `Crear plugin: consultar, Modo: consultivo, Scope: Fases 1-3` |
+| Minimal técnico | `Crear plugin: no, Modo: autónomo, Scope: minimal` |
+
+---
+
+## Resumen de las 8 Fases
+
+| Fase | Nombre | Output Principal | Punto de Decisión |
+|------|--------|------------------|-------------------|
+| **0** | Verificación previa | Estado limpio | Si hay discrepancias → corregir |
+| **1** | Instalar submódulo | `.gitmodules` actualizado | — |
+| **2** | Inspección codebase | `README-SCRIPTORIUM.md` | — |
+| **3** | Casar instrucciones | Scope confirmado | Si conflicto → escalar |
+| **4** | Scrum PO↔SM | `conversacion-po-sm.md` | **Modo consultivo: PAUSA** |
+| **5** | Backlog borrador | `01_backlog-borrador.md` | — |
+| **6** | Inicializar plugin | Plugin + Bridge | — |
+| **7** | Integrar sistema | 6 archivos actualizados | — |
+| **8** | Publicar y commit | 2 commits separados | — |
+
+---
+
+## Contexto Técnico
+
+> **IMPORTANTE**: El número de submódulos es **dinámico**. Antes de iniciar:
 > ```bash
 > git submodule status | wc -l
 > ```
-> Esto devuelve el número actual (ej: 8). El nuevo submódulo será el N+1.
+> Esto devuelve N actual. El nuevo submódulo será **N+1**.
 
-Cada submódulo:
+**Cada submódulo**:
 - Se integra en rama `integration/beta/scriptorium`
-- Genera un **plugin** en `.github/plugins/{id}/`
+- Puede generar un **plugin** en `.github/plugins/{id}/`
 - Tiene **backlog de planificación** en `ARCHIVO/DISCO/BACKLOG_BORRADORES/`
 - Se configura en `scripts/setup-workspace.sh`
 - Se registra en `.vscode/settings.json` (discovery de prompts/instructions)
+
+**⚠️ Submódulos son para usuarios expertos**: Documentar siempre en `docs/leeme.md` sección avanzada.
 
 ---
 
 ## Fase 0: Verificación de Estado Actual (OBLIGATORIA)
 
 > **Propósito**: Evitar desincronizaciones entre submódulos reales y configuración documentada.
+> **Referencia**: `.github/instructions/submodulo-integracion.instructions.md` § Principio 4
 
 ### 0.1. Auditoría de Submódulos
 
@@ -70,21 +112,11 @@ Si hay discrepancias:
 
 ---
 
-## Fase 1: Revisión de Protocolo
+## Fase 1: Instalar Submódulo
 
-### 1.1. Leer Documentación Existente
+> **Input**: URL del repositorio remoto + instrucciones del usuario
 
-```bash
-# Revisar protocolo de scripts
-cat scripts/README.md
-
-# Revisar setup-workspace.sh
-cat scripts/setup-workspace.sh
-```
-
-**Objetivo**: Entender la estructura de submódulos existentes y el patrón de instalación.
-
-### 1.2. Calcular Número de Orden
+### 1.1. Calcular Número de Orden
 
 ```bash
 # El nuevo submódulo será el N+1
@@ -92,17 +124,13 @@ NUEVO_ORDEN=$(($(git submodule status | wc -l) + 1))
 echo "El nuevo submódulo será el número: $NUEVO_ORDEN"
 ```
 
----
-
-## Fase 2: Instalación del Submódulo
-
-### 2.1. Añadir Submódulo con Git
+### 1.2. Añadir Submódulo con Git
 
 ```bash
 cd /ruta/al/SCRIPTORIUM/ALEPH
 
 # Añadir submódulo (reemplazar URL)
-git submodule add https://github.com/escrivivir-co/{nombre-submodulo}.git
+git submodule add {URL_REPOSITORIO}
 
 # Verificar instalación
 ls -la {nombre-submodulo}/
@@ -112,7 +140,7 @@ ls -la {nombre-submodulo}/
 - Repositorio: `alephscript-{nombre}-{tipo}`
 - Ejemplos: `alephscript-mcp-presets-site`, `alephscript-network-sdk`
 
-### 2.2. Crear Rama de Integración
+### 1.3. Crear Rama de Integración
 
 ```bash
 cd {nombre-submodulo}
@@ -126,11 +154,18 @@ git branch
 
 **Nombre de rama estándar**: `integration/beta/scriptorium` (consistente en todos los submódulos)
 
-### 2.3. Explorar Estructura del Submódulo
+---
+
+## Fase 2: Inspección de Codebase
+
+> **Propósito**: Entender qué contiene el submódulo antes de integrarlo.
+> **Referencia**: `.github/instructions/submodulo-integracion.instructions.md` § Fase 2
+
+### 2.1. Explorar Estructura del Submódulo
 
 ```bash
 # Listar estructura
-ls -R
+ls -R {nombre-submodulo}/
 
 # Identificar:
 # - Arquitectura del proyecto
@@ -139,17 +174,45 @@ ls -R
 # - Dependencias externas (Docker, Node, Python, etc.)
 ```
 
-**Crear**: `README-SCRIPTORIUM.md` en la raíz del submódulo documentando:
-- Propósito de la integración
-- Arquitectura del submódulo
-- Mapeo ontológico con Scriptorium
-- Dependencias técnicas
-- Supuestos/gaps conocidos
+### 2.2. Análisis Técnico
+
+| Aspecto | Preguntas Clave |
+|---------|-----------------|
+| **Arquitectura** | ¿Monorepo? ¿Frontend/Backend? ¿Microservicios? |
+| **Tecnología** | ¿Node? ¿Python? ¿Docker? ¿TypeScript? |
+| **Dependencias** | ¿Qué instalar? ¿Puertos? ¿Variables de entorno? |
+| **Puntos de integración** | ¿APIs? ¿Schemas? ¿Prompts existentes? |
+| **Mapeo ontológico** | ¿Qué agentes del Scriptorium corresponden? |
+
+### 2.3. Crear README de Integración
+
+**Archivo**: `{submódulo}/README-SCRIPTORIUM.md`
+
+```markdown
+# Integración con ALEPH Scriptorium
+
+## Arquitectura del Submódulo
+{Diagrama o descripción}
+
+## Tecnologías
+- {Lista}
+
+## Mapeo Ontológico
+| Submódulo | Scriptorium |
+|-----------|-------------|
+| {componente} | @{agente} |
+
+## Dependencias Externas
+- {Lista con instrucciones de instalación}
+
+## Supuestos y Gaps
+- {Lista de lo que falta resolver}
+```
 
 ### 2.4. Commit en Submódulo
 
 ```bash
-# Desde directorio del submódulo
+cd {nombre-submodulo}
 git add README-SCRIPTORIUM.md
 git commit -m "docs: añadir README de integración con Scriptorium
 
@@ -161,9 +224,43 @@ refs #SCRIPT-{version}-T002"
 
 ---
 
-## Fase 3: Backlog de Planificación
+## Fase 3: Casar con Instrucciones del Usuario
 
-### 3.1. Crear Carpeta de Borrador
+> **Propósito**: Alinear lo descubierto con lo que el usuario pidió.
+
+### 3.1. Revisar Instrucciones Originales
+
+Extraer de la invocación:
+- ¿Crear plugin? → `sí/no/consultar`
+- ¿Modo? → `autónomo/consultivo`
+- ¿Scope? → `minimal/completo`
+- Notas adicionales
+
+### 3.2. Matriz de Decisión
+
+| Si el usuario pidió... | Entonces... |
+|------------------------|-------------|
+| "Solo instalar" | Fases 0-2 + commit, PAUSA |
+| "Crear plugin: sí" | Continuar a Fases 4-8 |
+| "Crear plugin: consultar" | Fases 0-3, PAUSA para decisión |
+| "Modo: consultivo" | PAUSA después de Fase 4 |
+| "Scope: minimal" | Fases 0-2, commit básico |
+| "Scope: completo" | Flujo completo Fases 0-8 |
+
+### 3.3. Identificar Conflictos
+
+Si la codebase revela algo no anticipado:
+- Documentar en `README-SCRIPTORIUM.md` sección "Supuestos y Gaps"
+- **Escalar al usuario** antes de continuar
+
+---
+
+## Fase 4: Conversación Scrum (PO ↔ SM)
+
+> **Agente**: `@scrum` → usa `crear-backlog-borrador.prompt.md`  
+> **Referencia**: `.github/plugins/scrum/prompts/crear-backlog-borrador.prompt.md`
+
+### 4.1. Crear Carpeta de Borrador
 
 ```bash
 cd ARCHIVO/DISCO/BACKLOG_BORRADORES/
@@ -173,7 +270,7 @@ cd {NOMBRE_SUBMODULO_SCREAMING_SNAKE}/
 
 **Convención**: `SCREAMING_SNAKE_CASE` para carpetas de datos.
 
-### 3.2. Conversación PO-SM
+### 4.2. Conversación PO-SM
 
 **Archivo**: `conversacion-po-sm.md`
 
@@ -188,36 +285,38 @@ cd {NOMBRE_SUBMODULO_SCREAMING_SNAKE}/
 
 ---
 
-## Diálogo
+## Análisis Técnico (SM)
 
-### Product Owner (PO)
+### Inventario del submódulo
 
-**PO**: "Hemos integrado el submódulo `{nombre}`. ¿Qué necesitamos para
-convertirlo en un plugin funcional del Scriptorium?"
+{Lo descubierto en Fase 2: arquitectura, tecnologías, dependencias}
 
-### Scrum Master (SM)
-
-**SM**: "Revisemos el código y hagamos inventario..."
-
-[Análisis de la estructura]
-
-**SM**: "He identificado N gaps principales..."
-
----
-
-## Gaps Identificados
+### Gaps identificados
 
 | Gap | Descripción | Prioridad | Sprint |
 |-----|-------------|-----------|--------|
 | G1 | ... | Must | 1 |
 | G2 | ... | Should | 1 |
+
+### Riesgos técnicos
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
 | ... | ... | ... | ... |
 
 ---
 
-## Arquitectura Propuesta
+## Visión de Producto (PO)
 
-[Diagrama de integración]
+### Casos de uso objetivo
+
+1. **UC1**: {Descripción del caso de uso}
+2. **UC2**: ...
+
+### Criterios de éxito
+
+- [ ] {Criterio 1}
+- [ ] {Criterio 2}
 
 ---
 
@@ -228,24 +327,32 @@ convertirlo en un plugin funcional del Scriptorium?"
 
 ---
 
-## Riesgos Técnicos
+## Próximos Pasos
 
-| Riesgo | Probabilidad | Impacto | Mitigación |
-|--------|--------------|---------|------------|
-| ... | ... | ... | ... |
+- [ ] Generar backlog borrador
+- [ ] Consultar al usuario (si modo consultivo)
+- [ ] Aprobar con `@scrum aprobar`
+```
+
+### 4.3. Punto de Decisión
+
+| Modo | Acción |
+|------|--------|
+| **Autónomo** | Continuar a Fase 5 |
+| **Consultivo** | **PAUSA** — Esperar aprobación del usuario |
+
+**Si PAUSA**: Mostrar resumen de gaps y decisiones propuestas al usuario.
 
 ---
 
-## Próximos Pasos
+## Fase 5: Generar Backlog Borrador
 
-1. Crear backlog borrador
-2. Implementar plugin base (I1)
-3. ...
-```
+> **Agente**: `@scrum`  
+> **Referencia**: `.github/plugins/scrum/prompts/crear-backlog-borrador.prompt.md`
 
-### 3.3. Backlog Borrador
+### 5.1. Archivo de Backlog
 
-**Archivo**: `01_backlog-borrador.md`
+**Archivo**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/{NOMBRE}/01_backlog-borrador.md`
 
 **Estructura**:
 
@@ -267,15 +374,10 @@ convertirlo en un plugin funcional del Scriptorium?"
 
 ## Feature Cycles / Iteraciones
 
-### Iteración 1: {Nombre}
-**Effort**: {X} pts  
-**Objetivo**: {Descripción}
-
-### Iteración 2: {Nombre}
-**Effort**: {X} pts  
-**Objetivo**: {Descripción}
-
-[... más iteraciones]
+| Ciclo | Objetivo | Effort |
+|-------|----------|--------|
+| FC1 | {Configuración inicial} | {N} pts |
+| FC2 | {Features core} | {M} pts |
 
 ---
 
@@ -300,11 +402,6 @@ convertirlo en un plugin funcional del Scriptorium?"
 
 ---
 
-### SCRIPT-{version}-S02 — {Nombre Story}
-[...]
-
----
-
 ## Métricas
 
 | Métrica | Valor |
@@ -312,9 +409,6 @@ convertirlo en un plugin funcional del Scriptorium?"
 | Stories totales | {N} |
 | Tasks totales | {N} |
 | Effort total | {X} pts |
-| Prioridad Must | {N} stories ({X} pts) |
-| Prioridad Should | {N} stories ({X} pts) |
-| Prioridad Could | {N} stories ({X} pts) |
 
 ---
 
@@ -323,22 +417,33 @@ convertirlo en un plugin funcional del Scriptorium?"
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
 | Submódulo {nombre} | ✅ Instalado | ... |
-| ... | ... | ... |
 
 ---
 
-## Riesgos
+## Pendiente aprobación
 
-| Riesgo | Probabilidad | Impacto | Mitigación |
-|--------|--------------|---------|------------|
-| ... | ... | ... | ... |
+Usuario debe revisar y aprobar con `@scrum aprobar`.
 ```
 
+### 5.2. Tabla de Effort
+
+| Effort | Complejidad | Ejemplos |
+|--------|-------------|----------|
+| 1 pt | Trivial | Renombrar, mover archivo |
+| 2 pts | Simple | Crear doc con plantilla, fix menor |
+| 3 pts | Moderado | Feature pequeña, prompt nuevo |
+| 5 pts | Complejo | Story completa, integración |
+| 8 pts | Muy complejo | Capítulo, plugin nuevo |
+| 13 pts | Épico | Sistema completo |
+
 ---
 
-## Fase 4: Crear Plugin
+## Fase 6: Inicializar Plugin y Rama
 
-### 4.1. Estructura del Plugin
+> **Protocolo**: `.github/PLUGINS.md` + `plugin-install.prompt.md`  
+> **Referencia**: `.github/prompts/plugin-install.prompt.md`
+
+### 6.1. Estructura del Plugin
 
 ```bash
 cd .github/plugins/
@@ -349,7 +454,7 @@ cd {plugin-id}/
 mkdir -p agents prompts instructions docs
 ```
 
-### 4.2. Manifest del Plugin
+### 6.2. Manifest del Plugin
 
 **Archivo**: `.github/plugins/{plugin-id}/manifest.md`
 
@@ -417,7 +522,7 @@ handoffs:
 {Ejemplos de invocación}
 ```
 
-### 4.3. Agente Principal
+### 6.3. Agente Principal
 
 **Archivo**: `.github/plugins/{plugin-id}/agents/{nombre-agente}.agent.md`
 
@@ -458,7 +563,7 @@ handoffs:
 {Cómo usa el submódulo}
 ```
 
-### 4.4. Prompts del Plugin
+### 6.4. Prompts del Plugin
 
 **Por cada acción principal**, crear: `.github/plugins/{plugin-id}/prompts/{accion}.prompt.md`
 
@@ -496,7 +601,7 @@ applyTo: "ARCHIVO/PLUGINS/{ID}/**/*"
 {Caso de uso concreto}
 ```
 
-### 4.5. Instrucciones del Plugin
+### 6.5. Instrucciones del Plugin
 
 **Archivo**: `.github/plugins/{plugin-id}/instructions/{plugin-id}.instructions.md`
 
@@ -530,7 +635,7 @@ applyTo: "ARCHIVO/PLUGINS/{ID}/**/*"
 - {Anti-patrón 2}
 ```
 
-### 4.6. Documentación del Plugin
+### 6.6. Documentación del Plugin
 
 **Archivo**: `.github/plugins/{plugin-id}/docs/README.md`
 
@@ -559,11 +664,9 @@ applyTo: "ARCHIVO/PLUGINS/{ID}/**/*"
 - Manifest: `manifest.md`
 ```
 
----
+### 6.7. Crear Bridge Agent
 
-## Fase 5: Bridge Agent
-
-### 5.1. Crear Bridge en .github/agents/
+> **Protocolo**: `.github/PLUGINS.md` sección 11 (Bridge Agents)
 
 **Archivo**: `.github/agents/plugin_ox_{pluginid}.agent.md`
 
@@ -610,11 +713,7 @@ handoffs:
 - Submódulo: `{nombre-submodulo}`
 ```
 
----
-
-## Fase 6: Directorio de Datos Runtime
-
-### 6.1. Crear ARCHIVO/PLUGINS/{ID}/
+### 6.8. Directorio de Datos Runtime
 
 ```bash
 cd ARCHIVO/PLUGINS/
@@ -622,7 +721,7 @@ mkdir {ID_SCREAMING_SNAKE}
 cd {ID_SCREAMING_SNAKE}/
 ```
 
-### 6.2. README de Datos
+**README de Datos**
 
 **Archivo**: `ARCHIVO/PLUGINS/{ID}/README.md`
 
@@ -900,7 +999,11 @@ echo "Settings instructions: $SETTINGS_INSTR"
 
 ---
 
-## Fase 8: Commits
+## Fase 8: Publicar y Commits
+
+> **Propósito**: Crear commits separados (instalación + backlog) y documentar para usuarios avanzados.
+>
+> **⚠️ IMPORTANTE**: Los submódulos son para usuarios expertos. No recomendado para usuarios básicos.
 
 ### 8.1. Verificar Estado
 
@@ -985,42 +1088,70 @@ Dependencias: {lista}, {tecnologías externas}
 refs #SCRIPT-{version}-T001"
 ```
 
----
+### 8.4. Commit del Backlog Borrador (SEPARADO)
 
-## Fase 9: Verificación
-
-### 9.1. Ejecutar Setup Script
+> **Propósito**: Separar la instalación (infraestructura) del backlog (planificación).
 
 ```bash
-./scripts/setup-workspace.sh
+# Si el backlog está en un commit separado
+git add ARCHIVO/DISCO/BACKLOG_BORRADORES/{NOMBRE}/
+
+git commit -m "docs(script/backlog): crear borrador SCRIPT-{version} — {Nombre}
+
+Backlog borrador para integración de {nombre-submodulo}:
+- Conversación PO-SM: {N} gaps identificados
+- Épica SCRIPT-{version}: {Título}
+- {M} stories, {P} tasks
+- Effort total: {X} pts
+
+Pendiente aprobación con @scrum aprobar.
+
+refs #SCRIPT-{version}"
 ```
 
-**Verificar**:
-- `.vscode/settings.json` creado/actualizado
-- Submódulo sincronizado
-- Rama `integration/beta/scriptorium` activa en submódulo
+### 8.5. Advertencia para Usuarios
 
-### 9.2. Reiniciar VS Code
+> **⚠️ Los submódulos son para usuarios expertos o avanzados.**
+> 
+> Para usuarios básicos, recomendar usar los plugins ya instalados o esperar releases estables.
 
-**Acción**: Recargar ventana de VS Code para aplicar settings.
+**Actualizar `docs/leeme.md`** (sección correspondiente):
 
-### 9.3. Verificar Discovery de Prompts
+```markdown
+## Submódulos (Solo Usuarios Avanzados)
 
-**En Copilot Chat**:
-- Escribir `/`
-- Buscar prompts del nuevo plugin
-- Verificar que aparecen
+> ⚠️ **ADVERTENCIA**: Los submódulos requieren conocimientos de Git avanzados.
+> Si eres un usuario nuevo, usa las funcionalidades ya integradas.
 
-### 9.4. Verificar Agente Bridge
+| Submódulo | Propósito | Requiere |
+|-----------|-----------|----------|
+| {nombre} | {desc} | Git, {tecnología} |
+```
 
-**En Copilot Chat**:
-- Escribir `@`
-- Buscar `plugin_ox_{pluginid}`
-- Verificar que aparece
+### 8.6. Verificación Post-Instalación
+
+```bash
+# 1. Ejecutar setup script
+./scripts/setup-workspace.sh
+
+# 2. Verificar settings creado
+cat .vscode/settings.json | grep "{plugin-id}"
+
+# 3. Verificar submódulo activo
+cd {nombre-submodulo} && git branch --show-current
+# Debe ser: integration/beta/scriptorium
+```
+
+**En VS Code**:
+- Reiniciar/recargar ventana
+- En Copilot Chat escribir `/` → verificar prompts del nuevo plugin
+- Escribir `@` → verificar bridge `plugin_ox_{pluginid}`
 
 ---
 
 ## Checklist Final
+
+> **Protocolo de 8 fases**: Ver `.github/instructions/submodulo-integracion.instructions.md`
 
 Antes de considerar la instalación completa:
 
@@ -1030,34 +1161,42 @@ Antes de considerar la instalación completa:
 - [ ] Verificado que `scripts/README.md` documenta N submódulos
 - [ ] Corregidas discrepancias (si las había)
 
-### Fase 1-2: Submódulo
+### Fase 1: Instalar Submódulo
 - [ ] Submódulo clonado con `git submodule add`
 - [ ] Rama `integration/beta/scriptorium` creada
+- [ ] `.gitmodules` actualizado correctamente
+
+### Fase 2: Inspección de Codebase
 - [ ] Estructura explorada y documentada
 - [ ] `README-SCRIPTORIUM.md` creado en raíz del submódulo
-- [ ] Commit en submódulo realizado
+- [ ] Tabla de análisis completada
 
-### Fase 3: Backlog
+### Fase 3: Match con Instrucciones
+- [ ] Instrucciones del usuario cotejadas
+- [ ] Decisión tomada (plugin sí/no, features sí/no)
+- [ ] Gaps documentados
+
+### Fase 4: Conversación Scrum (PO ↔ SM)
 - [ ] Carpeta `BACKLOG_BORRADORES/{NOMBRE}/` creada
 - [ ] `conversacion-po-sm.md` con gaps identificados
-- [ ] `01_backlog-borrador.md` con épica/stories/tasks
+- [ ] **PAUSA** en modo consultivo respetada
 
-### Fase 4: Plugin
+### Fase 5: Backlog Borrador
+- [ ] `01_backlog-borrador.md` con épica/stories/tasks
+- [ ] Effort estimado según tabla de puntos
+- [ ] Pendiente aprobación con `@scrum aprobar`
+
+### Fase 6: Plugin y Rama
 - [ ] Carpeta `.github/plugins/{plugin-id}/` creada
 - [ ] `manifest.md` con metadatos completos
 - [ ] Agente principal en `agents/`
 - [ ] Al menos 1 prompt en `prompts/`
 - [ ] Instructions en `instructions/`
 - [ ] `docs/README.md` creado
-
-### Fase 5: Bridge
-- [ ] Bridge `plugin_ox_{pluginid}.agent.md` creado en `.github/agents/`
-- [ ] Handoffs del bridge apuntan a agentes reales del plugin
-
-### Fase 6: Datos Runtime
+- [ ] Bridge `plugin_ox_{pluginid}.agent.md` creado
 - [ ] `ARCHIVO/PLUGINS/{ID}/README.md` creado
 
-### Fase 7: Configuración del Sistema (⚠️ CRÍTICO)
+### Fase 7: Integrar Sistema (⚠️ CRÍTICO)
 
 #### 7.1 registry.json
 - [ ] Plugin añadido con todos los campos
@@ -1093,18 +1232,15 @@ Antes de considerar la instalación completa:
 - [ ] Settings prompts = número de plugins
 - [ ] Settings instructions = número de plugins
 
-### Fase 8: Commits
+### Fase 8: Publicar y Commits
 - [ ] Rama de trabajo verificada (`workspace-config.json`)
-- [ ] Commit en submódulo ejecutado
-- [ ] Commit en repositorio principal ejecutado
-- [ ] Commits siguen protocolo DevOps
-
-### Fase 9: Verificación Post-Instalación
-- [ ] `./scripts/setup-workspace.sh` ejecutado sin errores
-- [ ] `.vscode/settings.json` generado con rutas del nuevo plugin
+- [ ] Commit de instalación (infraestructura)
+- [ ] Commit de backlog (borrador) — **SEPARADO**
+- [ ] Advertencia de usuarios expertos añadida
+- [ ] `docs/leeme.md` actualizado
+- [ ] Verificación post-instalación pasada
 - [ ] VS Code reiniciado
-- [ ] Prompts del plugin detectados (`/` en Chat)
-- [ ] Bridge detectado (`@` en Chat)
+- [ ] Prompts y bridge detectados
 
 ---
 
