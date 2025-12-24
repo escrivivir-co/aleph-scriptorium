@@ -10,7 +10,6 @@
 [submodule "as-gym"]
 	path = AAIAGallery
 	url = https://github.com/escrivivir-co/as-gym
-	branch = dev/001
 [submodule "alephscript-network-sdk"]
 	path = BlockchainComPort
 	url = https://github.com/escrivivir-co/alephscript-network-sdk.git

@@ -34,6 +34,21 @@ Este documento **fija el protocolo oficial** para integrar submódulos externos 
 |------|-----------|------------|-------------|
 | Código | `.github/plugins/{id}/` | `kebab-case` | Inmutable |
 | Datos | `ARCHIVO/PLUGINS/{ID}/` | `SCREAMING_SNAKE` | Mutable |
+| Submódulo path | `/{NombrePascalCase}/` | `PascalCase` | Inmutable |
+
+### 2.1 Convención de Naming para Submódulos (PascalCase)
+
+Los paths locales de submódulos usan **PascalCase descriptivo** que indica su función:
+
+| Categoría | Descripción | Ejemplos |
+|-----------|-------------|----------|
+| `Gallery` | Galerías/catálogos de recursos | MCPGallery, AAIAGallery |
+| `Editor` | Editores visuales o de código | WorkflowEditor, BlocklyEditor, PrologEditor |
+| `Suite` | Suites de integración o SDKs | VibeCodingSuite, BlockchainComPort |
+| `Desktop` | Aplicaciones de escritorio/streaming | StreamDesktop, StreamDesktopAppCronos |
+| `Extension` | Extensiones de IDE | VsCodeExtension |
+
+**Verificación**: Ejecutar `./scripts/verify-submodule-naming.sh` para validar convención.
 
 ### 3. Discovery explícito
 

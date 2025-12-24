@@ -234,12 +234,14 @@ Este paso configura **VS Code** para detectar prompts e instrucciones de los plu
 
 Qué hace:
 - Crea/actualiza `.vscode/settings.json` con `chat.promptFilesLocations` y `chat.instructionsFilesLocations` para todos los plugins
-- Sincroniza el submódulo `vscode-alephscript-extension`
+- Sincroniza el submódulo `VsCodeExtension` (extensión de VS Code)
 - Prepara la rama `integration/beta/scriptorium` en el submódulo (lista para publicar)
+
+**Nota sobre submódulos:** El workspace incluye 14 submódulos con **nombres PascalCase descriptivos** (ej. `MCPGallery`, `WorkflowEditor`, `BlocklyEditor`). Consulta el [ecosistema]({{ site.baseurl }}/ecosistema/) para ver la lista completa.
 
 Verificación:
 - En Copilot Chat, escribe `/` y confirma que aparecen prompts de los plugins
-- En `vscode-alephscript-extension`, comprueba la rama activa `integration/beta/scriptorium`
+- En `VsCodeExtension`, comprueba la rama activa `integration/beta/scriptorium`
 
 ---
 

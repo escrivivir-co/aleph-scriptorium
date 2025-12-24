@@ -1333,10 +1333,10 @@ Además, se simplificó `contenido_ref` en el YAML de la obra para que apunte a 
 
 ## BUG-003: Renombrar submódulos a convención PascalCase descriptiva
 
-**Estado**: 🟡 Aprobado (pendiente implementación)  
+**Estado**: ✅ Resuelto  
 **Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)  
 **Detectado**: 2025-01-01  
-**Actualizado**: 2025-12-24 (nuevo naming PascalCase)  
+**Resuelto**: 2025-01-01  
 **Borrador completo**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/SUBMODULOS_AH_NAMING/BUG-003-renombrar-submodulos-a-ah.md`
 
 ### Problema
@@ -1381,24 +1381,24 @@ Renombrar **path local** (no URL remota) a **PascalCase descriptivo** que indiqu
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| BUG-003-T001 | Renombrar 14 submódulos según mapeo PascalCase | ⏳ |
-| BUG-003-T002 | Actualizar `.gitmodules` | ⏳ |
-| BUG-003-T003 | Actualizar `setup-workspace.sh` | ⏳ |
-| BUG-003-T004 | Actualizar `.vscode/settings.json` | ⏳ |
-| BUG-003-T005 | Actualizar `scripts/README.md` | ⏳ |
-| BUG-003-T006 | Añadir convención en `submodulo-integracion.instructions.md` | ⏳ |
-| BUG-003-T007 | Añadir sección 1.2.1 en `instalar-submodulo.prompt.md` | ⏳ |
-| BUG-003-T008 | Crear script `verify-submodule-naming.sh` | ⏳ |
-| BUG-003-T009 | Verificar `git submodule status` funciona | ⏳ |
-| BUG-003-T010 | Documentar en `docs/leeme.md` | ⏳ |
+| BUG-003-T001 | Renombrar 14 submódulos según mapeo PascalCase | ✅ |
+| BUG-003-T002 | Actualizar `.gitmodules` | ✅ |
+| BUG-003-T003 | Actualizar `setup-workspace.sh` | ✅ |
+| BUG-003-T004 | Actualizar `.vscode/settings.json` | ✅ (no requería cambios) |
+| BUG-003-T005 | Actualizar `scripts/README.md` | ✅ |
+| BUG-003-T006 | Añadir convención en `submodulo-integracion.instructions.md` | ✅ |
+| BUG-003-T007 | Añadir sección 1.2.1 en `instalar-submodulo.prompt.md` | ✅ |
+| BUG-003-T008 | Crear script `verify-submodule-naming.sh` | ✅ |
+| BUG-003-T009 | Verificar `git submodule status` funciona | ✅ |
+| BUG-003-T010 | Documentar en `docs/leeme.md` | ✅ |
 
 ### Definition of Done
 
-- [ ] Todos los submódulos usan paths PascalCase descriptivos
-- [ ] `.gitmodules`, `setup-workspace.sh`, `.vscode/settings.json` actualizados
-- [ ] Convención documentada en `instalar-submodulo.prompt.md` sección 1.2.1
-- [ ] Script de verificación creado
-- [ ] No quedan referencias a nombres antiguos
+- [x] Todos los submódulos usan paths PascalCase descriptivos
+- [x] `.gitmodules`, `setup-workspace.sh`, `.vscode/settings.json` actualizados
+- [x] Convención documentada en `instalar-submodulo.prompt.md` sección 1.2.1
+- [x] Script de verificación creado
+- [x] No quedan referencias a nombres antiguos
 
 ---
 
