@@ -52,6 +52,10 @@ handoffs:
     agent: plugin-manager
     prompt: Delega gestión de plugins al PluginManager.
     send: false
+  - label: Invocar agente Índice
+    agent: Indice
+    prompt: Consulta rápida de índices DRY (Funcional.md, Tecnico.md) o validación pre-commit.
+    send: false
   - label: Listar plugin bridges
     agent: Ox
     prompt: Lista todos los agentes bridge de plugins instalados (plugin_ox_*).
@@ -235,6 +239,12 @@ handoffs:
           "archivo": ".github/agents/ox.agent.md",
           "rol": "Oráculo. Índice de agentes, documentación, diagnóstico.",
           "invocacion": "@ox"
+        },
+        "indice": {
+          "archivo": ".github/agents/indice.agent.md",
+          "rol": "Navegador DRY. Consulta, actualiza y valida índices.",
+          "invocacion": "@indice",
+          "gemelo": "lucas (personaje Teatro)"
         }
       }
     },

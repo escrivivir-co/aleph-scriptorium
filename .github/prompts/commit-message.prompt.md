@@ -61,6 +61,33 @@ git diff --stat
 - ¿Los cambios afectan a `ARCHIVO/` o `PROYECTOS/`? → **Fundación**
 - ¿Ambos? → Hacer commits separados
 
+### Paso 2.5: Validar Índice DRY (opcional pero recomendado)
+
+Antes de generar el mensaje, ejecutar validación de coherencia:
+
+```
+@indice validar
+```
+
+O invocar el prompt `.github/prompts/indice-validar.prompt.md` para verificar:
+- ¿Los índices están sincronizados con el codebase?
+- ¿Hay archivos nuevos no documentados?
+- ¿El commit cumple el protocolo DevOps?
+
+**Este paso genera warnings informativos, NO bloquea el commit.**
+
+Si hay warnings:
+```
+⚠️ VALIDACIÓN DE ÍNDICE
+
+1. [indice_desactualizado] Tecnico.md no menciona plugin "X"
+
+Sugerencia: @indice actualizar
+Este warning es informativo y no bloquea el commit.
+```
+
+El usuario decide si corregir ahora o después.
+
 ### Paso 3: Generar mensaje
 
 Ejemplo para cambios en Scriptorium:

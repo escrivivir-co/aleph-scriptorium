@@ -114,3 +114,31 @@ Los plugins extienden las capacidades de Scriptorium sin modificar el core.
 - **Responsabilidad**: Instalar, activar, desactivar y desinstalar plugins.
 
 **Registro de Plugins**: [plugins/registry.json](plugins/registry.json)
+
+## 8. Índice DRY y Navegación Rápida
+
+**Fuente de verdad**: `ARCHIVO/DEVOPS/Funcional.md` y `ARCHIVO/DEVOPS/Tecnico.md`
+
+Los índices son el **mapa de navegación rápida** del proyecto. Consultar antes de buscar manualmente.
+
+**Agente Índice**: `@indice`
+- **Definición**: [agents/indice.agent.md](agents/indice.agent.md)
+- **Gemelo Teatro**: `lucas` (personaje en obras hola_mundo y camino_del_tarotista)
+- **Responsabilidad**: Consultar, actualizar y validar índices DRY
+
+### Cuándo invocar @indice
+
+| Situación | Acción |
+|-----------|--------|
+| "¿Dónde está X?" | `@indice consultar` |
+| "Acabo de instalar un plugin" | `@indice actualizar` |
+| "Antes de commitear" | `@indice validar` |
+
+### Validación Pre-Commit
+
+El prompt `commit-message.prompt.md` incluye **Paso 2.5** que invoca validación de índice:
+- Ejecuta 5 tests de coherencia
+- Genera warnings informativos (no bloqueantes)
+- Sugiere `@indice actualizar` si hay discrepancias
+
+**Regla**: Los warnings de índice NO bloquean commits. Son informativos.
