@@ -2633,15 +2633,15 @@ Renombrar y expandir a **Ecosistema** con tres galerías:
 ### SCRIPT-1.11.0-S01 — Diseño de Plana y Navegación
 **Puntos**: 3  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T001 | Renombrar `docs/agentes.md` → `docs/ecosistema.md` | ⏳ |
-| T002 | Actualizar `docs/_config.yml`: permalink `/ecosistema/` | ⏳ |
-| T003 | Actualizar `docs/index.md`: card "Agentes" → "Ecosistema" con nuevo icono 🧬 | ⏳ |
-| T004 | Actualizar navegación header si existe | ⏳ |
-| T005 | Crear redirect de `/agentes/` a `/ecosistema/` (Jekyll redirect) | ⏳ |
+| T001 | Renombrar `docs/agentes.md` → `docs/ecosistema.md` | ✅ |
+| T002 | Actualizar `docs/_config.yml`: permalink `/ecosistema/` | ✅ |
+| T003 | Actualizar `docs/index.md`: card "Agentes" → "Ecosistema" con nuevo icono 🧬 | ✅ |
+| T004 | Actualizar navegación header si existe | ✅ |
+| T005 | Crear redirect de `/agentes/` a `/ecosistema/` (Jekyll redirect) | ✅ |
 
 **Criterios de aceptación**:
 - [ ] URL `/ecosistema/` funciona
@@ -2653,15 +2653,15 @@ Renombrar y expandir a **Ecosistema** con tres galerías:
 ### SCRIPT-1.11.0-S02 — Galería de Submódulos
 **Puntos**: 5  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T006 | Crear sección "📦 Infraestructura (Submódulos)" | ⏳ |
-| T007 | Diseñar card de submódulo: nombre, repo, rama, descripción, runtime | ⏳ |
-| T008 | Generar 14 cards desde inventario | ⏳ |
-| T009 | Añadir badges de estado (operational, draft, deprecated) | ⏳ |
-| T010 | Añadir enlace a README-SCRIPTORIUM.md de cada submódulo | ⏳ |
+| T006 | Crear sección "📦 Infraestructura (Submódulos)" | ✅ |
+| T007 | Diseñar card de submódulo: nombre, repo, rama, descripción, runtime | ✅ |
+| T008 | Generar 14 cards desde inventario | ✅ |
+| T009 | Añadir badges de estado (operational, draft, deprecated) | ✅ |
+| T010 | Añadir enlace a README-SCRIPTORIUM.md de cada submódulo | ✅ |
 
 **Inventario de submódulos**:
 | Submódulo | Descripción breve | Runtime |
@@ -2691,15 +2691,15 @@ Renombrar y expandir a **Ecosistema** con tres galerías:
 ### SCRIPT-1.11.0-S03 — Galería de Plugins
 **Puntos**: 5  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T011 | Crear sección "🔌 Plugins" con dos subsecciones: Operativos + Borradores | ⏳ |
-| T012 | Diseñar card de plugin: nombre, versión, agentes, handoffs clave, dependencias | ⏳ |
-| T013 | Generar 8 cards de plugins operativos | ⏳ |
-| T014 | Generar 10 cards de plugins borrador (estilo diferenciado) | ⏳ |
-| T015 | Añadir "Cómo invocar" con ejemplo de handoff para cada plugin | ⏳ |
+| T011 | Crear sección "🔌 Plugins" con dos subsecciones: Operativos + Borradores | ✅ |
+| T012 | Diseñar card de plugin: nombre, versión, agentes, handoffs clave, dependencias | ✅ |
+| T013 | Generar 8 cards de plugins operativos | ✅ |
+| T014 | Generar 10 cards de plugins borrador (estilo diferenciado) | ✅ |
+| T015 | Añadir "Cómo invocar" con ejemplo de handoff para cada plugin | ✅ |
 
 **Plugins operativos (8)**:
 - ARG Board, Enciclopedia, GH-Pages, Foro Scraper
@@ -2720,15 +2720,15 @@ Renombrar y expandir a **Ecosistema** con tres galerías:
 ### SCRIPT-1.11.0-S04 — Galería de Agentes (Actualizada)
 **Puntos**: 3  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T016 | Mantener estructura de capas: UI, Backend, Sistema, Meta | ⏳ |
-| T017 | Añadir nueva capa "Bridges" con los 18 plugin_ox_* | ⏳ |
-| T018 | Actualizar contador en hero: "36 agentes" | ⏳ |
-| T019 | Añadir tooltip/popover con handoffs de cada agente | ⏳ |
-| T020 | Vincular cada agente a su archivo .agent.md en GitHub | ⏳ |
+| T016 | Mantener estructura de capas: UI, Backend, Sistema, Meta | ✅ |
+| T017 | Añadir nueva capa "Bridges" con los 18 plugin_ox_* | ✅ |
+| T018 | Actualizar contador en hero: "36 agentes" | ✅ |
+| T019 | Añadir tooltip/popover con handoffs de cada agente | ✅ |
+| T020 | Vincular cada agente a su archivo .agent.md en GitHub | ✅ |
 
 **Criterios de aceptación**:
 - [ ] 5 capas renderizadas (UI, Backend, Sistema, Meta, Bridges)
@@ -2740,15 +2740,15 @@ Renombrar y expandir a **Ecosistema** con tres galerías:
 ### SCRIPT-1.11.0-S05 — Guía de Interacción (Nueva Sección)
 **Puntos**: 3  
 **Prioridad**: Should  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T021 | Crear sección "💬 Cómo Interactuar" | ⏳ |
-| T022 | Explicar concepto de handoffs con diagrama | ⏳ |
-| T023 | Explicar concepto de prompts con ejemplos | ⏳ |
-| T024 | Tabla resumen: "Si quieres X, invoca @Y con prompt Z" | ⏳ |
-| T025 | Añadir bloque de código con ejemplos de invocación | ⏳ |
+| T021 | Crear sección "💬 Cómo Interactuar" | ✅ |
+| T022 | Explicar concepto de handoffs con diagrama | ✅ |
+| T023 | Explicar concepto de prompts con ejemplos | ✅ |
+| T024 | Tabla resumen: "Si quieres X, invoca @Y con prompt Z" | ✅ |
+| T025 | Añadir bloque de código con ejemplos de invocación | ✅ |
 
 **Ejemplo de tabla**:
 | Quiero... | Invoco a... | Prompt sugerido |
@@ -2808,8 +2808,8 @@ refs #SCRIPT-1.11.0
 | Puntos totales | 21 |
 | Prioridad Must | 5 stories (18 pts) |
 | Prioridad Should | 1 story (3 pts) |
-| Completadas | **0** |
-| % Avance | **0%** |
+| Completadas | **5** (S01-S05) |
+| % Avance | **83%** |
 
 ---
 
@@ -2880,3 +2880,6 @@ refs #SCRIPT-1.11.0
 |-------|--------|-------|
 | 2025-12-24 | Crear épica SCRIPT-1.11.0 | @scrum |
 | 2025-12-24 | Definir 6 stories, 30 tasks | @scrum |
+| 2025-12-24 | Implementar S01-S05: crear ecosistema.md con 3 galerías + guía | @aleph |
+| 2025-12-24 | Actualizar navegación index.md (card Ecosistema) | @aleph |
+| 2025-12-24 | Crear redirect /agentes/ → /ecosistema/ | @aleph |
