@@ -35,3 +35,6 @@
 [submodule "alephscript-typed-prompting"]
 	path = alephscript-typed-prompting
 	url = https://github.com/escrivivir-co/alephscript-typed-prompting
+[submodule "alephscript-n8n-like-editor"]
+	path = alephscript-n8n-like-editor
+	url = https://github.com/escrivivir-co/alephscript-n8n-like-editor

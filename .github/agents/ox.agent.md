@@ -108,6 +108,10 @@ handoffs:
     agent: plugin_ox_typedprompting
     prompt: Accede al plugin TypedPrompting para diseño de ontologías NL↔JSON y validación de mensajes.
     send: false
+  - label: Invocar bridge N8N Editor
+    agent: plugin_ox_n8neditor
+    prompt: Accede al plugin N8N Editor para diseño visual de workflows y exportación a n8n.
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -126,8 +130,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.7.0",
-  "ultima_actualizacion": "2025-12-28",
+  "version": "1.8.0",
+  "ultima_actualizacion": "2025-12-29",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -277,6 +281,10 @@ handoffs:
         "typed-prompting": {
           "directorio": ".github/plugins/typed-prompting/agents/",
           "agentes": ["TypedPrompting"]
+        },
+        "n8n-editor": {
+          "directorio": ".github/plugins/n8n-editor/agents/",
+          "agentes": ["N8NEditor"]
         }
       },
       "bridges": {
@@ -351,6 +359,11 @@ handoffs:
           "plugin_ox_typedprompting": {
             "archivo": ".github/agents/plugin_ox_typedprompting.agent.md",
             "plugin": "typed-prompting",
+            "delega_a": 1
+          },
+          "plugin_ox_n8neditor": {
+            "archivo": ".github/agents/plugin_ox_n8neditor.agent.md",
+            "plugin": "n8n-editor",
             "delega_a": 1
           }
         }

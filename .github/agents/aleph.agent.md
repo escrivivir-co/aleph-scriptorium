@@ -100,6 +100,10 @@ handoffs:
               agent: plugin_ox_typedprompting
               prompt: Accede al plugin TypedPrompting. Diseña ontologías TypeScript→JSON Schema, valida mensajes, instala contratos en agentes y flujos ARG.
               send: false
+       - label: "[N8N-EDITOR] Editor visual de workflows"
+              agent: plugin_ox_n8neditor
+              prompt: Accede al plugin N8N Editor. Diseña workflows visuales, importa/exporta JSON compatible con n8n, integra con TypedPrompting.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

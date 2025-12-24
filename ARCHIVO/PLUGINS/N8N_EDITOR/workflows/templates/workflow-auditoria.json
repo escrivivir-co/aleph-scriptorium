@@ -1,0 +1,140 @@
+{
+  "id": "template-auditoria",
+  "name": "Auditoría de 5 Banderas",
+  "description": "Flujo completo de auditoría doctrinal usando las 5 banderas del Scriptorium",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "input-1",
+      "type": "trigger",
+      "name": "Documento a auditar",
+      "position": { "x": 100, "y": 300 },
+      "parameters": {
+        "inputType": "text",
+        "description": "Texto o documento para auditar"
+      },
+      "connections": {
+        "input": [],
+        "output": ["blueflag-1"]
+      }
+    },
+    {
+      "id": "blueflag-1",
+      "type": "ai-decision",
+      "name": "🔵 Blueflag: Verdad",
+      "position": { "x": 300, "y": 300 },
+      "parameters": {
+        "prompt": "Audita el documento con los tests de Blueflag:\n1. EVIDENCIA: ¿Se basa en hechos verificables?\n2. UTILIDAD: ¿Produce conocimiento aplicable?\n3. FALSIFICABILIDAD: ¿Qué lo haría falso?\n4. POSVERDAD: ¿Hay manipulación emocional?",
+        "outputFormat": "json",
+        "model": "gpt-4"
+      },
+      "connections": {
+        "input": ["input-1"],
+        "output": ["blackflag-1"]
+      }
+    },
+    {
+      "id": "blackflag-1",
+      "type": "ai-decision",
+      "name": "⚫ Blackflag: Sombras",
+      "position": { "x": 500, "y": 300 },
+      "parameters": {
+        "prompt": "Audita el documento con los tests de Blackflag:\n1. PÓLVORA: ¿Qué poder oculto habilita?\n2. POSVERDAD TÉCNICA: ¿Hay captura por jerga?\n3. CAPTURA ENEMIGA: ¿Puede el enemigo apropiárselo?",
+        "outputFormat": "json",
+        "model": "gpt-4"
+      },
+      "connections": {
+        "input": ["blueflag-1"],
+        "output": ["redflag-1"]
+      }
+    },
+    {
+      "id": "redflag-1",
+      "type": "ai-decision",
+      "name": "🔴 Redflag: Estructura",
+      "position": { "x": 700, "y": 300 },
+      "parameters": {
+        "prompt": "Audita el documento con los tests de Redflag:\n1. ESCALA: ¿Funciona a escala municipal, regional, estatal?\n2. COERCIÓN: ¿Cómo se hace cumplir?\n3. SUMINISTRO: ¿De dónde vienen los recursos?\n4. RÉGIMEN MATERIAL: ¿Qué propiedad/renta toca?",
+        "outputFormat": "json",
+        "model": "gpt-4"
+      },
+      "connections": {
+        "input": ["blackflag-1"],
+        "output": ["yellowflag-1"]
+      }
+    },
+    {
+      "id": "yellowflag-1",
+      "type": "ai-decision",
+      "name": "🟡 Yellowflag: Límites",
+      "position": { "x": 900, "y": 300 },
+      "parameters": {
+        "prompt": "Audita el documento con los tests de Yellowflag:\n1. PRE/TRANS: ¿Confunde condiciones con contenido?\n2. CUADRANTES: ¿Reduce holones a su interior?\n3. MERCANTILIZACIÓN: ¿Cuantifica lo no-cuantificable?\n4. INCONMENSURABILIDAD: ¿Fuerza traducciones imposibles?",
+        "outputFormat": "json",
+        "model": "gpt-4"
+      },
+      "connections": {
+        "input": ["redflag-1"],
+        "output": ["orangeflag-1"]
+      }
+    },
+    {
+      "id": "orangeflag-1",
+      "type": "ai-decision",
+      "name": "🟠 Orangeflag: Registro",
+      "position": { "x": 1100, "y": 300 },
+      "parameters": {
+        "prompt": "Audita el documento con los tests de Orangeflag:\n1. REGISTRO: ¿Dialéctico (examinar) o retórico (persuadir)?\n2. GÉNERO: ¿Deliberativo, judicial, epidíctico?\n3. ESTILO: ¿Claridad, corrección, elevación?\n4. AUDITORIO: ¿A quién habla realmente?",
+        "outputFormat": "json",
+        "model": "gpt-4"
+      },
+      "connections": {
+        "input": ["yellowflag-1"],
+        "output": ["consolidate-1"]
+      }
+    },
+    {
+      "id": "consolidate-1",
+      "type": "data-transformer",
+      "name": "Consolidar Auditorías",
+      "position": { "x": 1300, "y": 300 },
+      "parameters": {
+        "operation": "merge",
+        "format": "json"
+      },
+      "connections": {
+        "input": ["orangeflag-1"],
+        "output": ["report-1"]
+      }
+    },
+    {
+      "id": "report-1",
+      "type": "output",
+      "name": "Reporte Final",
+      "position": { "x": 1500, "y": 300 },
+      "parameters": {
+        "format": "markdown",
+        "template": "## Reporte de Auditoría\n\n### 🔵 Verdad\n{{blueflag}}\n\n### ⚫ Sombras\n{{blackflag}}\n\n### 🔴 Estructura\n{{redflag}}\n\n### 🟡 Límites\n{{yellowflag}}\n\n### 🟠 Registro\n{{orangeflag}}\n\n---\n\n**Veredicto**: {{veredicto}}"
+      },
+      "connections": {
+        "input": ["consolidate-1"],
+        "output": []
+      }
+    }
+  ],
+  "connections": [
+    { "source": "input-1", "target": "blueflag-1" },
+    { "source": "blueflag-1", "target": "blackflag-1" },
+    { "source": "blackflag-1", "target": "redflag-1" },
+    { "source": "redflag-1", "target": "yellowflag-1" },
+    { "source": "yellowflag-1", "target": "orangeflag-1" },
+    { "source": "orangeflag-1", "target": "consolidate-1" },
+    { "source": "consolidate-1", "target": "report-1" }
+  ],
+  "settings": {
+    "executionOrder": "sequential",
+    "createdAt": "2025-12-29T12:00:00Z",
+    "author": "Aleph Scriptorium",
+    "tags": ["auditoria", "banderas", "doctrinal"]
+  }
+}

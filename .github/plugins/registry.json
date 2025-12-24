@@ -1,7 +1,55 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-29T12:00:00Z",
+  "last_updated": "2025-12-29T14:00:00Z",
   "plugins": {
+    "n8n-editor": {
+      "name": "Editor Visual de Workflows (n8n Connector)",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar workflows visuales estilo n8n. CONECTOR a n8n, no reemplazo. Integra con TypedPrompting para validación JSON y MCP-Presets para nodos disponibles. Dos modos: Asistente y Gestor.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-29T14:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/N8N_EDITOR/",
+      "bridge_agent": "plugin_ox_n8neditor",
+      "dependencies": [],
+      "optional_dependencies": ["typed-prompting", "mcp-presets", "foro-scraper"],
+      "submodule": "alephscript-n8n-like-editor",
+      "angular": {
+        "version": "18.2.x",
+        "dev_port": 4200,
+        "ssr_port": 4000,
+        "canvas": "D3.js 7.9.x",
+        "editor": "Monaco 0.52.x"
+      },
+      "handoffs": [
+        {
+          "label": "Abrir editor de workflows",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Crear workflow",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Importar workflow",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Exportar workflow para n8n",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Asesorar sobre nodos MCP",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Listar templates",
+          "agent": "N8NEditor"
+        }
+      ]
+    },
     "typed-prompting": {
       "name": "TypedPrompting (Ontologías NL↔JSON)",
       "version": "1.0.0",

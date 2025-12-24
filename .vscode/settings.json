@@ -24,7 +24,8 @@
 		 ".github/plugins/enciclopedia/prompts": true,
 		".github/plugins/gh-pages/prompts": true,
 		".github/plugins/mcp-presets/prompts": true,
-		".github/plugins/typed-prompting/prompts": true
+		".github/plugins/typed-prompting/prompts": true,
+		".github/plugins/n8n-editor/prompts": true
 	}	,
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
@@ -39,7 +40,8 @@
 			".github/plugins/enciclopedia/instructions": true,
 		".github/plugins/gh-pages/instructions": true,
 		".github/plugins/mcp-presets/instructions": true,
-		".github/plugins/typed-prompting/instructions": true
+		".github/plugins/typed-prompting/instructions": true,
+		".github/plugins/n8n-editor/instructions": true
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas
