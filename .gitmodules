@@ -20,3 +20,6 @@
 [submodule "kick-aleph-crono-bot"]
 	path = kick-aleph-crono-bot
 	url = https://github.com/escrivivir-co/kick-aleph-crono-bot.git
+[submodule "mcp-novelist"]
+	path = mcp-novelist
+	url = https://github.com/escrivivir-co/mcp-novelist.git
