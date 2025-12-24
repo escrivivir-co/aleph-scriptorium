@@ -14,3 +14,9 @@
 [submodule "alephscript-network-sdk"]
 	path = alephscript-network-sdk
 	url = https://github.com/escrivivir-co/alephscript-network-sdk.git
+[submodule "kick-aleph-bot"]
+	path = kick-aleph-bot
+	url = https://github.com/escrivivir-co/kick-aleph-bot.git
+[submodule "kick-aleph-crono-bot"]
+	path = kick-aleph-crono-bot
+	url = https://github.com/escrivivir-co/kick-aleph-crono-bot.git
