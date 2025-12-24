@@ -209,7 +209,11 @@ ls -R {nombre-submodulo}/
 - {Lista de lo que falta resolver}
 ```
 
-### 2.4. Commit en Submódulo
+### 2.4. Commit en Submódulo (INMEDIATO)
+
+> **⚠️ IMPORTANTE**: El commit en el submódulo se hace **AHORA**, no en la Fase 8.
+> El submódulo tiene su propio repositorio Git y sus cambios deben registrarse
+> antes de continuar con la integración en el repositorio principal.
 
 ```bash
 cd {nombre-submodulo}
@@ -220,7 +224,13 @@ Documenta arquitectura, mapeo ontológico y dependencias para
 integración con ALEPH Scriptorium.
 
 refs #SCRIPT-{version}-T002"
+
+# Opcional (si tienes permisos de push):
+git push -u origin integration/beta/scriptorium
 ```
+
+> **Nota**: Este commit quedará referenciado cuando el repositorio principal
+> registre el submódulo en su commit de la Fase 8.
 
 ---
 
@@ -1012,19 +1022,27 @@ cd /ruta/al/SCRIPTORIUM/ALEPH
 git status --short
 ```
 
-### 8.2. Commit en Submódulo (si hay cambios)
+### 8.2. Verificar Commit en Submódulo
+
+> **Nota**: El commit del submódulo ya se hizo en la **Fase 2.4**.
+> Este paso es solo de verificación.
 
 ```bash
 cd {nombre-submodulo}
-git add README-SCRIPTORIUM.md  # o archivos modificados
-git commit -m "docs: añadir README de integración con Scriptorium
 
-Documenta arquitectura, mapeo ontológico y dependencias para
-integración con ALEPH Scriptorium.
+# Verificar que el commit existe
+git log --oneline -1
+# Debe mostrar: "docs: añadir README de integración con Scriptorium"
 
-refs #SCRIPT-{version}-T002"
+# Verificar rama
+git branch --show-current
+# Debe ser: integration/beta/scriptorium
 
-# Opcional: publicar rama
+# Si NO se hizo el commit en Fase 2, hacerlo ahora:
+# git add README-SCRIPTORIUM.md
+# git commit -m "docs: añadir README de integración con Scriptorium..."
+
+# Opcional: publicar rama (si tienes permisos)
 git push -u origin integration/beta/scriptorium
 ```
 
