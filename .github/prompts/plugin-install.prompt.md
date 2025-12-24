@@ -57,20 +57,32 @@ Añadir entrada en `.github/plugins/registry.json`:
 
 ### 5. Registrar en Settings de Workspace
 
-Añadir rutas del plugin a `.vscode/settings.json`:
+Añadir rutas del plugin a `.vscode/settings.json` **desactivadas por defecto**:
 
 ```json
 {
   "chat.promptFilesLocations": {
-    ".github/plugins/{id}/prompts": true
+    ".github/plugins/{id}/prompts": false
   },
   "chat.instructionsFilesLocations": {
-    ".github/plugins/{id}/instructions": true
+    ".github/plugins/{id}/instructions": false
   }
 }
 ```
 
-> **Formato**: Usar objeto con claves de ruta y valores booleanos (`true`).
+> **SCRIPT-1.15.0**: Los plugins se instalan **desactivados** para optimizar rendimiento.
+> Para activar: `@pluginmanager activar {id}`
+
+**Mensaje post-instalación**:
+```
+✅ Plugin "{name}" v{version} instalado correctamente.
+
+⚠️ El plugin está DESACTIVADO en settings.
+Para ver sus prompts en el chat, ejecuta:
+  @pluginmanager activar {id}
+
+Plugins activos actualmente: {N}
+```
 
 ### 6. Crear Bridge Agent
 

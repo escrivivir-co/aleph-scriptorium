@@ -3364,3 +3364,177 @@ ARCHIVO/DEVOPS/
 | 2025-12-24 | Aprobar y publicar épica | @scrum |
 | 2025-01-01 | Implementar S01-S05 completas | @aleph |
 | 2025-01-01 | Cerrar épica al 100% | @aleph |
+
+---
+
+# Épica: SCRIPT-1.15.0 — Optimización de Settings para Plugins
+
+**Objetivo**: Mejorar el protocolo de PLUGINS.md para que los plugins se instalen desactivados por defecto en `.vscode/settings.json`, evitando sobrecarga del sistema. Incluir FAQ, comandos de activación/desactivación y sistema de avisos por umbrales.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-01-02  
+**Fecha cierre**: 2025-01-02  
+**Rama de trabajo**: `fc1`  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/PLUGIN_SETTINGS_OPTIMIZER/conversacion-po-sm.md`
+
+---
+
+## Contexto
+
+### El problema
+
+Los plugins se instalaban con `true` por defecto en settings.json:
+- Todos los prompts e instructions de todos los plugins quedaban indexados
+- VS Code perdía velocidad al autocompletar con muchos plugins activos
+- Los usuarios no sabían que podían desactivar plugins sin desinstalarlos
+- No había FAQ para problemas comunes ("no me aparecen los prompts")
+
+### La solución
+
+1. **Instalación con `false`**: Los plugins nuevos se añaden desactivados en settings
+2. **FAQ**: Documentar problemas comunes y soluciones en plugin-manager
+3. **Comandos**: Añadir `activar`, `desactivar` y `status` al PluginManager
+4. **Umbrales**: Sistema de avisos cuando hay demasiados plugins activos
+
+### Distinción registry vs settings
+
+| Archivo | Campo | Controla |
+|---------|-------|----------|
+| `registry.json` | `enabled` | Si el plugin está **funcional** (agentes disponibles) |
+| `settings.json` | `true/false` | Si los prompts/instructions son **visibles** en Chat |
+
+---
+
+## Stories
+
+### SCRIPT-1.15.0-S01 — Instalación por Defecto con false
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Modificar plugin-install.prompt.md paso 5: cambiar true → false | ✅ |
+| T002 | Añadir mensaje post-instalación explicando que está desactivado | ✅ |
+| T003 | Actualizar plugin-manager.agent.md con nuevo comportamiento | ✅ |
+| T004 | Actualizar PLUGINS.md sección 2.3 con nota SCRIPT-1.15.0 | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S02 — FAQ de Resolución de Problemas
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Crear sección "FAQ de Resolución de Problemas" en plugin-manager | ✅ |
+| T006 | FAQ: "No me aparecen los prompts del plugin X" | ✅ |
+| T007 | FAQ: "El chat está muy lento al autocompletar" | ✅ |
+| T008 | FAQ: "¿Cómo sé qué plugins tengo activos?" | ✅ |
+| T009 | FAQ: "¿Por qué los plugins nuevos no se activan automáticamente?" | ✅ |
+| T010 | FAQ: "¿Cuáles son los plugins recomendados para empezar?" | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S03 — Handoffs de Activación/Desactivación
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Añadir handoff "Activar plugin en settings" | ✅ |
+| T012 | Añadir handoff "Desactivar plugin en settings" | ✅ |
+| T013 | Documentar lógica de activación (settings.json) | ✅ |
+| T014 | Documentar lógica de desactivación (settings.json) | ✅ |
+| T015 | Distinguir de "Activar/Desactivar plugin en registry" | ✅ |
+| T016 | Añadir tabla explicativa en plugin-manager | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S04 — Sistema de Avisos por Umbrales
+**Puntos**: 5  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T017 | Definir umbrales: 0-3 óptimo, 4-6 aceptable, 7-10 cargado, 11+ sobrecargado | ✅ |
+| T018 | Crear tabla de umbrales con iconos y mensajes | ✅ |
+| T019 | Documentar en sección "Gestión de Settings" | ✅ |
+| T020 | Añadir mensajes específicos por nivel | ✅ |
+| T021 | Documentar en PLUGINS.md | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S05 — Comando Status
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T022 | Añadir handoff "Ver status de plugins" | ✅ |
+| T023 | Documentar formato de output del comando | ✅ |
+| T024 | Incluir: plugins en registry, activos en settings, nivel, lista, recomendación | ✅ |
+
+---
+
+### SCRIPT-1.15.0-S06 — Documentación y Publicación
+**Puntos**: 1  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T025 | Actualizar PLUGINS.md sección 2.3 completa | ✅ |
+| T026 | Referenciar FAQ desde PLUGINS.md | ✅ |
+| T027 | Publicar épica en BACKLOG-SCRIPTORIUM.md | ✅ |
+| T028 | Marcar épica como completada | ✅ |
+
+---
+
+## Métricas SCRIPT-1.15.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 6 |
+| Tasks totales | 28 |
+| Puntos totales | 18 |
+| Prioridad Must | 5 stories (13 pts) |
+| Prioridad Should | 1 story (5 pts) |
+| Completadas | **6** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Archivos Modificados
+
+| Archivo | Cambio |
+|---------|--------|
+| `.github/prompts/plugin-install.prompt.md` | Paso 5: default `false`, mensaje post-instalación |
+| `.github/agents/plugin-manager.agent.md` | Handoffs, FAQ, status, umbrales, tabla distinción |
+| `.github/PLUGINS.md` | Sección 2.3 actualizada con SCRIPT-1.15.0 |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SCRIPT-1.5.0 (Plugin Discovery) | ✅ Completada |
+| Plugin Manager | ✅ Funcional |
+| .vscode/settings.json | ✅ Configurado |
+
+---
+
+## Changelog SCRIPT-1.15.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-01-02 | Crear conversación PO-SM | @scrum |
+| 2025-01-02 | Generar backlog borrador (6 stories, 28 tasks) | @scrum |
+| 2025-01-02 | Implementar S01-S06 completas | @aleph |
+| 2025-01-02 | Cerrar épica al 100% | @aleph |
