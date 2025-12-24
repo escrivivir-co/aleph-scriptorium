@@ -1,0 +1,66 @@
+{
+  "id": "mediawiki-preset",
+  "name": "MediaWiki",
+  "description": "Fuente de datos para APIs MediaWiki (Wikipedia, Wikidata, etc.)",
+  "category": "Data Science",
+  "version": "1.0.0",
+  "type": "graph-source",
+  
+  "parameters": {
+    "language": {
+      "type": "string",
+      "default": "es",
+      "description": "Código de idioma (es, en, fr, de, etc.)"
+    },
+    "project": {
+      "type": "string",
+      "default": "wikipedia",
+      "description": "Proyecto Wikimedia (wikipedia, wikidata, etc.)"
+    }
+  },
+  
+  "api": {
+    "baseUrl": "https://{language}.{project}.org/w/api.php",
+    "format": "json",
+    "origin": "*"
+  },
+  
+  "endpoints": {
+    "getNode": {
+      "action": "query",
+      "titles": "{id}",
+      "prop": "extracts|info",
+      "exintro": true,
+      "explaintext": true
+    },
+    "getLinks": {
+      "action": "query",
+      "titles": "{id}",
+      "prop": "links",
+      "pllimit": "max"
+    },
+    "search": {
+      "action": "query",
+      "list": "search",
+      "srsearch": "{query}",
+      "srlimit": 10
+    }
+  },
+  
+  "mappings": {
+    "node": {
+      "id": "pageid",
+      "title": "title",
+      "content": "extract"
+    },
+    "link": {
+      "target": "title"
+    }
+  },
+  
+  "metadata": {
+    "createdAt": "2025-01-01T00:00:00Z",
+    "author": "Aleph Scriptorium",
+    "source": "wiki-racer submodule"
+  }
+}
