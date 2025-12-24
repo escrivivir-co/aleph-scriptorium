@@ -679,14 +679,14 @@ permalink: /roadmap/
         <div class="progress-fill" style="width: 100%"></div>
       </div>
       <div class="progress-text">
-        <span>Sprint 0</span>
+        <span>Feature Cycle 1</span>
         <span>100%</span>
       </div>
-      <p class="status">✅ Bootstrap completado · 18 épicas implementadas</p>
+      <p class="status">✅ FC1 cerrado · 14 submódulos · 18 plugins</p>
       <div class="badges">
-        <img src="https://img.shields.io/badge/Sprint_0-Complete-22c55e?style=flat-square" alt="Sprint 0 Complete">
-        <img src="https://img.shields.io/badge/Plugins-5_installed-3b82f6?style=flat-square" alt="5 Plugins">
-        <img src="https://img.shields.io/badge/Agents-15+-a855f7?style=flat-square" alt="15+ Agents">
+        <img src="https://img.shields.io/badge/v1.0.0--beta.3-Semillas_de_Futuro-8b5cf6?style=flat-square" alt="v1.0.0-beta.3">
+        <img src="https://img.shields.io/badge/Plugins-18_registrados-3b82f6?style=flat-square" alt="18 Plugins">
+        <img src="https://img.shields.io/badge/Agents-36_invocables-a855f7?style=flat-square" alt="36 Agents">
       </div>
       <div class="links">
         <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/BACKLOG-SCRIPTORIUM.md">📋 Ver Backlog</a>
