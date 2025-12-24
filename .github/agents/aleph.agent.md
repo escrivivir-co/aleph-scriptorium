@@ -80,6 +80,42 @@ handoffs:
               agent: plugin_ox_network
               prompt: Accede al plugin Network (Oasis/Scuttlebutt). Publica, recibe y sincroniza BOEs entre Scriptoriums.
               send: false
+       - label: "[NOVELIST] Edición de narrativas"
+              agent: plugin_ox_novelist
+              prompt: Accede al plugin Novelist (MCP). Crea, edita y exporta obras narrativas con memoria a largo plazo.
+              send: false
+       - label: "[BLOCKLY-EDITOR] Lógica visual para personajes"
+              agent: plugin_ox_blocklyeditor
+              prompt: Accede al plugin Blockly Editor. Crea, edita y exporta rutinas JavaScript para personajes usando bloques visuales.
+              send: false
+       - label: "[WIRE-EDITOR] Diseñar flujos Node-RED"
+              agent: plugin_ox_wireeditor
+              prompt: Accede al plugin WireEditor. Crea proyectos Node-RED, importa/exporta flows, asesora sobre nodos y configura feeds asíncronos.
+              send: false
+       - label: "[PROLOG-EDITOR] Lógica declarativa Prolog"
+              agent: plugin_ox_prologeditor
+              prompt: Accede al plugin PrologEditor. Crea templates Prolog, ejecuta consultas SWI-Prolog, exporta Blockly a Prolog, importa reglas.
+              send: false
+       - label: "[TYPED-PROMPTING] Ontologías NL↔JSON"
+              agent: plugin_ox_typedprompting
+              prompt: Accede al plugin TypedPrompting. Diseña ontologías TypeScript→JSON Schema, valida mensajes, instala contratos en agentes y flujos ARG.
+              send: false
+       - label: "[N8N-EDITOR] Editor visual de workflows"
+              agent: plugin_ox_n8neditor
+              prompt: Accede al plugin N8N Editor. Diseña workflows visuales, importa/exporta JSON compatible con n8n, integra con TypedPrompting.
+              send: false
+       - label: "[WIRING-APP] Flows Node-RED wiki-racer"
+              agent: plugin_ox_wiringapp
+              prompt: Accede al plugin WiringApp. Crea flows de juego estilo wiki-racer, importa templates de navegación, exporta a Node-RED.
+              send: false
+       - label: "[ARG-BOARD-APP] Máquina de estados wiki-racer"
+              agent: plugin_ox_argboardapp
+              prompt: Accede al plugin ArgBoardApp. Crea obras de navegación interactiva, configura mapas de enlaces, ejecuta partidas ARG.
+              send: false
+       - label: "[HYPERGRAPH-EDITOR] Navegador de grafos"
+              agent: plugin_ox_hypergrapheditor
+              prompt: Accede al plugin HyperGraphEditor. Crea mapas de enlaces, navega grafos hipervinculados, carga presets (MediaWiki).
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.
@@ -94,6 +130,22 @@ Eres el agente principal de este workspace. Tu trabajo es **producir** (no solo 
 ## Protocolo DevOps (Scrum adaptado)
 
 > **Referencia completa**: `.github/DEVOPS.md`
+
+### Rama de Trabajo
+
+**CRÍTICO**: Antes de hacer cualquier commit, verificar la rama configurada:
+
+```bash
+# Leer rama de trabajo del workspace-config
+cat .github/workspace-config.json | grep '"branch"'
+
+# Verificar rama actual
+git branch --show-current
+```
+
+**Si no coinciden**: Cambiar a la rama configurada antes de hacer commit.
+
+**Ramas protegidas**: `main`, `master` — No commits directos
 
 ### Opportunities que gestionas
 
@@ -271,6 +323,24 @@ Evitas:
 ---
 
 ## Trazabilidad y cierre de tareas
+
+### Verificación de Rama Antes de Commit
+
+**Paso 0 (OBLIGATORIO)**: Verificar rama de trabajo
+
+```bash
+# Extraer rama configurada
+BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+CURRENT=$(git branch --show-current)
+
+if [ "$CURRENT" != "$BRANCH" ]; then
+  echo "⚠️ ERROR: En rama incorrecta"
+  echo "Configurado: $BRANCH"
+  echo "Actual: $CURRENT"
+  echo "Ejecutar: git checkout $BRANCH"
+  exit 1
+fi
+```
 
 ### Checklist antes de cerrar una sesión
 

@@ -561,6 +561,7 @@ meta:
 | 2025-12-24 | Crear épica SCRIPT-1.9.0: Integración AS-Utils-SDK | Aleph |
 | 2025-12-24 | Añadir submódulo as-gym (Almas para Agentes) | Aleph |
 | 2025-12-24 | Crear épica SCRIPT-1.10.0: Integración AS-Gym | Aleph |
+| 2025-12-24 | Crear épica SCRIPT-1.11.0: Rediseño Ecosistema (Agentes → Plugins → Submódulos) | @scrum |
 
 ---
 
@@ -2555,3 +2556,330 @@ Crear bridge agéntico y documentar integración.
 | 2025-12-24 | Crear rama integration/beta/scriptorium | @aleph |
 | 2025-12-24 | Crear conversación PO-SM preliminar | @scrum |
 | 2025-12-24 | Inicializar épica SCRIPT-1.10.0 | @scrum |
+
+---
+
+# Épica: SCRIPT-1.11.0 — Rediseño Ecosistema (Agentes → Plugins → Submódulos)
+
+**Objetivo**: Rediseñar la página "Agentes" como "Ecosistema" con tres galerías interactivas: Agentes (12 core + bridges), Plugins (18), y Submódulos (14). Orientada al usuario: cómo invocar, qué handoffs expone, qué prompts disponibles.
+
+**Estado**: 🔄 En Progreso (Feature Cycle 1)
+
+**Fecha inicio**: 2025-12-24 (Nochebuena)  
+**Rama de trabajo**: `fc1`
+
+---
+
+## Contexto
+
+### El problema
+
+La página `docs/agentes.md` actual:
+- Solo muestra agentes, ignorando el ecosistema completo (plugins, submódulos)
+- No explica cómo el usuario interactúa (handoffs, prompts)
+- No refleja el inventario real: 14 submódulos + 18 plugins + 36 agentes
+
+### La solución
+
+Renombrar y expandir a **Ecosistema** con tres galerías:
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│                    docs/ecosistema.md                               │
+├────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  🧬 HERO: "El Ecosistema Aleph"                              │   │
+│  │  Diagrama visual: Submódulos → Plugins → Agentes → Usuario  │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  📦 GALERÍA SUBMÓDULOS (14)                                  │   │
+│  │  Cards: nombre, descripción, puerto/runtime, estado         │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  🔌 GALERÍA PLUGINS (18)                                     │   │
+│  │  Cards: nombre, agentes, handoffs, prompts, dependencias    │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  🐂 GALERÍA AGENTES (por capa)                               │   │
+│  │  UI → Backend → Sistema → Meta → Bridges                    │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  💬 GUÍA DE INTERACCIÓN                                      │   │
+│  │  Cómo invocar, handoffs, prompts, ejemplos                  │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                     │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+### Inventario a documentar
+
+| Capa | Cantidad | Fuente de verdad |
+|------|----------|------------------|
+| Submódulos | 14 | `git submodule status` |
+| Plugins | 18 | `.github/plugins/registry.json` |
+| Agentes Core | 12 | `.github/agents/*.agent.md` |
+| Agentes Bridge | 18 | `.github/agents/plugin_ox_*.agent.md` |
+| Agentes Plugin | 16+ | `.github/plugins/*/agents/` |
+
+---
+
+## Stories
+
+### SCRIPT-1.11.0-S01 — Diseño de Plana y Navegación
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Renombrar `docs/agentes.md` → `docs/ecosistema.md` | ✅ |
+| T002 | Actualizar `docs/_config.yml`: permalink `/ecosistema/` | ✅ |
+| T003 | Actualizar `docs/index.md`: card "Agentes" → "Ecosistema" con nuevo icono 🧬 | ✅ |
+| T004 | Actualizar navegación header si existe | ✅ |
+| T005 | Crear redirect de `/agentes/` a `/ecosistema/` (Jekyll redirect) | ✅ |
+
+**Criterios de aceptación**:
+- [ ] URL `/ecosistema/` funciona
+- [ ] `/agentes/` redirige a `/ecosistema/`
+- [ ] Navegación actualizada en index.md
+
+---
+
+### SCRIPT-1.11.0-S02 — Galería de Submódulos
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Crear sección "📦 Infraestructura (Submódulos)" | ✅ |
+| T007 | Diseñar card de submódulo: nombre, repo, rama, descripción, runtime | ✅ |
+| T008 | Generar 14 cards desde inventario | ✅ |
+| T009 | Añadir badges de estado (operational, draft, deprecated) | ✅ |
+| T010 | Añadir enlace a README-SCRIPTORIUM.md de cada submódulo | ✅ |
+
+**Inventario de submódulos**:
+| Submódulo | Descripción breve | Runtime |
+|-----------|------------------|---------|
+| vscode-alephscript-extension | Extensión VS Code | TypeScript |
+| alephscript-mcp-presets-site | Gestor de presets MCP (Zeus) | Next.js |
+| as-utils-sdk | VibeCoding Connector + Teatro Matrix | Node.js |
+| as-gym | Almas para agentes (paradigmas IA) | TypeScript |
+| blockly-alephscript-sdk | Editor visual de lógica | Angular |
+| iot-sbr-logica-para-bots | Motor Prolog | SWI-Prolog |
+| node-red-alephscript-sdk | SDK de nodos Node-RED | Node-RED |
+| alephscript-n8n-like-editor | Editor visual de workflows | Angular 18 |
+| alephscript-network-sdk | Red P2P Oasis/Scuttlebutt | Docker |
+| alephscript-typed-prompting | Ontologías NL↔JSON | Vite + Drizzle |
+| mcp-novelist | Editor de narrativas MCP | Node.js |
+| wiki-racer | Navegación de grafos | TypeScript |
+| kick-aleph-bot | Bot de Kick | Node.js |
+| kick-aleph-crono-bot | Bot cronológico de Kick | Node.js |
+
+**Criterios de aceptación**:
+- [ ] 14 cards renderizadas
+- [ ] Información de runtime visible
+- [ ] Enlaces a repos funcionan
+
+---
+
+### SCRIPT-1.11.0-S03 — Galería de Plugins
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Crear sección "🔌 Plugins" con dos subsecciones: Operativos + Borradores | ✅ |
+| T012 | Diseñar card de plugin: nombre, versión, agentes, handoffs clave, dependencias | ✅ |
+| T013 | Generar 8 cards de plugins operativos | ✅ |
+| T014 | Generar 10 cards de plugins borrador (estilo diferenciado) | ✅ |
+| T015 | Añadir "Cómo invocar" con ejemplo de handoff para cada plugin | ✅ |
+
+**Plugins operativos (8)**:
+- ARG Board, Enciclopedia, GH-Pages, Foro Scraper
+- Agent Creator, Teatro, Scrum, MCP-Presets
+
+**Plugins borrador (10)**:
+- Network, Novelist, Blockly Editor, Wire Editor
+- Prolog Editor, Typed Prompting, N8N Editor
+- Wiring App, ARG Board App, HyperGraph Editor
+
+**Criterios de aceptación**:
+- [ ] 18 cards renderizadas
+- [ ] Distinción visual operativo vs borrador
+- [ ] Handoffs visibles para cada plugin
+
+---
+
+### SCRIPT-1.11.0-S04 — Galería de Agentes (Actualizada)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Mantener estructura de capas: UI, Backend, Sistema, Meta | ✅ |
+| T017 | Añadir nueva capa "Bridges" con los 18 plugin_ox_* | ✅ |
+| T018 | Actualizar contador en hero: "36 agentes" | ✅ |
+| T019 | Añadir tooltip/popover con handoffs de cada agente | ✅ |
+| T020 | Vincular cada agente a su archivo .agent.md en GitHub | ✅ |
+
+**Criterios de aceptación**:
+- [ ] 5 capas renderizadas (UI, Backend, Sistema, Meta, Bridges)
+- [ ] 36 agentes visibles
+- [ ] Handoffs accesibles
+
+---
+
+### SCRIPT-1.11.0-S05 — Guía de Interacción (Nueva Sección)
+**Puntos**: 3  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T021 | Crear sección "💬 Cómo Interactuar" | ✅ |
+| T022 | Explicar concepto de handoffs con diagrama | ✅ |
+| T023 | Explicar concepto de prompts con ejemplos | ✅ |
+| T024 | Tabla resumen: "Si quieres X, invoca @Y con prompt Z" | ✅ |
+| T025 | Añadir bloque de código con ejemplos de invocación | ✅ |
+
+**Ejemplo de tabla**:
+| Quiero... | Invoco a... | Prompt sugerido |
+|-----------|-------------|-----------------|
+| Redactar un capítulo | @aleph | "Redacta capítulo 3 sobre vivienda" |
+| Auditar evidencia | @blueflag | "Audita las afirmaciones de este texto" |
+| Crear un agente | @plugin_ox_agentcreator | "Crea un agente basado en yellowflag" |
+| Publicar en web | @plugin_ox_ghpages | "Publica docs/periodico.md" |
+
+**Criterios de aceptación**:
+- [ ] Diagrama de handoffs visible
+- [ ] Tabla de 10+ ejemplos
+- [ ] Bloques de código copiables
+
+---
+
+### SCRIPT-1.11.0-S06 — Publicación vía GH-Pages
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T026 | Validar localmente con `bundle exec jekyll serve` | ⏳ |
+| T027 | Verificar que no hay errores Liquid | ⏳ |
+| T028 | Actualizar `ARCHIVO/PLUGINS/GH_PAGES/published/manifest.json` | ⏳ |
+| T029 | Commit según protocolo DevOps | ⏳ |
+| T030 | Verificar despliegue en GitHub Actions | ⏳ |
+
+**Commit propuesto**:
+```
+feat(ghpages/ecosistema): rediseñar página Agentes como Ecosistema
+
+- Renombrar agentes.md → ecosistema.md
+- Añadir galería de 14 submódulos
+- Añadir galería de 18 plugins (8 operativos + 10 borrador)
+- Actualizar galería de 36 agentes (5 capas)
+- Añadir guía de interacción (handoffs, prompts)
+- Actualizar navegación en index.md
+
+refs #SCRIPT-1.11.0
+```
+
+**Criterios de aceptación**:
+- [ ] Página visible en https://escrivivir-co.github.io/aleph-scriptorium/ecosistema/
+- [ ] Sin errores en GitHub Actions
+- [ ] Manifest actualizado
+
+---
+
+## Métricas SCRIPT-1.11.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 6 |
+| Tasks totales | 30 |
+| Puntos totales | 21 |
+| Prioridad Must | 5 stories (18 pts) |
+| Prioridad Should | 1 story (3 pts) |
+| Completadas | **6** (S01-S06) |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| Plugin GH-Pages | ✅ Instalado | Para publicación |
+| Jekyll bundle | ✅ Configurado | docs/Gemfile |
+| registry.json | ✅ Actualizado | 18 plugins |
+| git submodule status | ✅ | 14 submódulos |
+
+---
+
+## Diseño Visual (Boceto)
+
+```
+┌────────────────────────────────────────────────────────────────────┐
+│  ┌──────────────────────────────────────────────────────────────┐  │
+│  │  🧬 EL ECOSISTEMA ALEPH                                      │  │
+│  │                                                               │  │
+│  │     [Submódulos]  →  [Plugins]  →  [Agentes]  →  [Tú]        │  │
+│  │         14            18            36                        │  │
+│  │                                                               │  │
+│  │  "De la infraestructura a la interfaz: cómo trabajan para ti"│  │
+│  └──────────────────────────────────────────────────────────────┘  │
+│                                                                     │
+│  ═══════════════════════════════════════════════════════════════   │
+│                                                                     │
+│  📦 INFRAESTRUCTURA (14 Submódulos)                                │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐                   │
+│  │Extension│ │MCP Zeus │ │AS-Utils │ │ AS-Gym  │  ...              │
+│  │ TypeScript│ Next.js  │ Node.js  │TypeScript│                   │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘                   │
+│                                                                     │
+│  ═══════════════════════════════════════════════════════════════   │
+│                                                                     │
+│  🔌 PLUGINS                                                         │
+│  ┌─ Operativos (8) ─────────────────────────────────────────────┐  │
+│  │ [ARG Board] [Enciclopedia] [GH-Pages] [Foro Scraper] ...     │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+│  ┌─ Borradores (10) ────────────────────────────────────────────┐  │
+│  │ [Network] [Novelist] [Blockly] [Wire Editor] ...              │  │
+│  └──────────────────────────────────────────────────────────────┘  │
+│                                                                     │
+│  ═══════════════════════════════════════════════════════════════   │
+│                                                                     │
+│  🐂 AGENTES (36 total)                                              │
+│  [🟢 UI] [🔵⚫🔴🟡🟠 Backend] [⚪ Sistema] [⚙️ Meta] [🔌 Bridges]  │
+│                                                                     │
+│  ═══════════════════════════════════════════════════════════════   │
+│                                                                     │
+│  💬 CÓMO INTERACTUAR                                                │
+│  | Si quieres...        | Invoca a...         | Ejemplo          | │
+│  |----------------------|---------------------|------------------| │
+│  | Redactar capítulo    | @aleph              | @aleph cap 3     | │
+│  | Auditar evidencia    | @blueflag           | @blueflag audita | │
+│  | Crear agente         | @plugin_ox_agent... | ...              | │
+│                                                                     │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Changelog SCRIPT-1.11.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear épica SCRIPT-1.11.0 | @scrum |
+| 2025-12-24 | Definir 6 stories, 30 tasks | @scrum |
+| 2025-12-24 | Implementar S01-S05: crear ecosistema.md con 3 galerías + guía | @aleph |
+| 2025-12-24 | Actualizar navegación index.md (card Ecosistema) | @aleph |
+| 2025-12-24 | Crear redirect /agentes/ → /ecosistema/ | @aleph |

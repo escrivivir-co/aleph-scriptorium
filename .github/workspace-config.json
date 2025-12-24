@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-12-24T00:00:00Z",
+  "workspace": {
+    "name": "ALEPH Scriptorium",
+    "branch": "fc1",
+    "branch_note": "Feature Cycle 1 - Rama de trabajo activa desde 2025-12-24",
+    "commit_policy": {
+      "require_branch_check": true,
+      "protected_branches": ["main", "master"],
+      "development_branch": "fc1"
+    }
+  },
+  "git": {
+    "default_remote": "origin",
+    "submodule_branch": "integration/beta/scriptorium"
+  },
+  "changelog": [
+    {
+      "date": "2025-12-24",
+      "action": "Cambio de rama de trabajo: main → fc1",
+      "reason": "Política de arriba: no más commits en main"
+    }
+  ]
+}

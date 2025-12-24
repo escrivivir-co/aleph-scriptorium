@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "name": "Scriptorium Agents",
+  "description": "Biblioteca de schemas para comunicación entre agentes del Scriptorium",
+  "version": "1.0.0",
+  "schemas": [
+    "consulta-usuario",
+    "respuesta-agente"
+  ],
+  "createdAt": "2025-12-24T12:00:00Z",
+  "updatedAt": "2025-12-24T12:00:00Z"
+}

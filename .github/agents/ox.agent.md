@@ -88,6 +88,42 @@ handoffs:
     agent: plugin_ox_network
     prompt: Accede al plugin Network (Oasis/Scuttlebutt) para sincronización P2P de BOEs.
     send: false
+  - label: Invocar bridge Novelist
+    agent: plugin_ox_novelist
+    prompt: Accede al plugin Novelist (MCP) para edición de narrativas con memoria a largo plazo.
+    send: false
+  - label: Invocar bridge Blockly Editor
+    agent: plugin_ox_blocklyeditor
+    prompt: Accede al plugin Blockly Editor para lógica visual de personajes.
+    send: false
+  - label: Invocar bridge Wire Editor
+    agent: plugin_ox_wireeditor
+    prompt: Accede al plugin WireEditor para diseño de flujos Node-RED.
+    send: false
+  - label: Invocar bridge Prolog Editor
+    agent: plugin_ox_prologeditor
+    prompt: Accede al plugin PrologEditor para diseño y ejecución de lógica Prolog (SWI-Prolog).
+    send: false
+  - label: Invocar bridge TypedPrompting
+    agent: plugin_ox_typedprompting
+    prompt: Accede al plugin TypedPrompting para diseño de ontologías NL↔JSON y validación de mensajes.
+    send: false
+  - label: Invocar bridge N8N Editor
+    agent: plugin_ox_n8neditor
+    prompt: Accede al plugin N8N Editor para diseño visual de workflows y exportación a n8n.
+    send: false
+  - label: Invocar bridge WiringApp
+    agent: plugin_ox_wiringapp
+    prompt: Accede al plugin WiringApp (wiki-racer flows) para juegos de navegación Node-RED.
+    send: false
+  - label: Invocar bridge ArgBoardApp
+    agent: plugin_ox_argboardapp
+    prompt: Accede al plugin ArgBoardApp (wiki-racer state machine) para obras de navegación ARG.
+    send: false
+  - label: Invocar bridge HyperGraphEditor
+    agent: plugin_ox_hypergrapheditor
+    prompt: Accede al plugin HyperGraphEditor para navegación de grafos hipervinculados (incluye preset MediaWiki).
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -106,8 +142,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.3.0",
-  "ultima_actualizacion": "2025-12-24",
+  "version": "1.9.0",
+  "ultima_actualizacion": "2025-01-01",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -237,6 +273,42 @@ handoffs:
         "network": {
           "directorio": ".github/plugins/network/agents/",
           "agentes": ["Network"]
+        },
+        "novelist": {
+          "directorio": ".github/plugins/novelist/agents/",
+          "agentes": ["Novelist"]
+        },
+        "blockly-editor": {
+          "directorio": ".github/plugins/blockly-editor/agents/",
+          "agentes": ["BlocklyEditor"]
+        },
+        "wire-editor": {
+          "directorio": ".github/plugins/wire-editor/agents/",
+          "agentes": ["WireEditor"]
+        },
+        "prolog-editor": {
+          "directorio": ".github/plugins/prolog-editor/agents/",
+          "agentes": ["PrologEditor"]
+        },
+        "typed-prompting": {
+          "directorio": ".github/plugins/typed-prompting/agents/",
+          "agentes": ["TypedPrompting"]
+        },
+        "n8n-editor": {
+          "directorio": ".github/plugins/n8n-editor/agents/",
+          "agentes": ["N8NEditor"]
+        },
+        "wiring-app": {
+          "directorio": ".github/plugins/wiring-app/agents/",
+          "agentes": ["WiringApp"]
+        },
+        "arg-board-app": {
+          "directorio": ".github/plugins/arg-board-app/agents/",
+          "agentes": ["ArgBoardApp"]
+        },
+        "hypergraph-editor": {
+          "directorio": ".github/plugins/hypergraph-editor/agents/",
+          "agentes": ["HyperGraphEditor"]
         }
       },
       "bridges": {
@@ -286,6 +358,51 @@ handoffs:
           "plugin_ox_network": {
             "archivo": ".github/agents/plugin_ox_network.agent.md",
             "plugin": "network",
+            "delega_a": 1
+          },
+          "plugin_ox_novelist": {
+            "archivo": ".github/agents/plugin_ox_novelist.agent.md",
+            "plugin": "novelist",
+            "delega_a": 1
+          },
+          "plugin_ox_blocklyeditor": {
+            "archivo": ".github/agents/plugin_ox_blocklyeditor.agent.md",
+            "plugin": "blockly-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_wireeditor": {
+            "archivo": ".github/agents/plugin_ox_wireeditor.agent.md",
+            "plugin": "wire-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_prologeditor": {
+            "archivo": ".github/agents/plugin_ox_prologeditor.agent.md",
+            "plugin": "prolog-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_typedprompting": {
+            "archivo": ".github/agents/plugin_ox_typedprompting.agent.md",
+            "plugin": "typed-prompting",
+            "delega_a": 1
+          },
+          "plugin_ox_n8neditor": {
+            "archivo": ".github/agents/plugin_ox_n8neditor.agent.md",
+            "plugin": "n8n-editor",
+            "delega_a": 1
+          },
+          "plugin_ox_wiringapp": {
+            "archivo": ".github/agents/plugin_ox_wiringapp.agent.md",
+            "plugin": "wiring-app",
+            "delega_a": 1
+          },
+          "plugin_ox_argboardapp": {
+            "archivo": ".github/agents/plugin_ox_argboardapp.agent.md",
+            "plugin": "arg-board-app",
+            "delega_a": 1
+          },
+          "plugin_ox_hypergrapheditor": {
+            "archivo": ".github/agents/plugin_ox_hypergrapheditor.agent.md",
+            "plugin": "hypergraph-editor",
             "delega_a": 1
           }
         }

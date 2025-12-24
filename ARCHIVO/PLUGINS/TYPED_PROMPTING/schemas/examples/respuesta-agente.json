@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "id": "ejemplo-respuesta-agente",
+  "name": "Respuesta de Agente",
+  "description": "Schema para validar respuestas de agentes del Scriptorium",
+  "category": "Scriptorium",
+  "labels": ["agente", "respuesta", "ejemplo"],
+  "typeScript": "interface RespuestaAgente {\n  contenido: string;\n  confianza: number;\n  fuentes?: string[];\n  estado: 'resuelto' | 'escalado' | 'pendiente';\n  agente_id: string;\n  timestamp?: string;\n}",
+  "jsonSchema": {
+    "type": "object",
+    "properties": {
+      "contenido": {
+        "type": "string",
+        "description": "Contenido de la respuesta"
+      },
+      "confianza": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "Nivel de confianza (0-1)"
+      },
+      "fuentes": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Referencias o fuentes usadas"
+      },
+      "estado": {
+        "type": "string",
+        "enum": ["resuelto", "escalado", "pendiente"],
+        "description": "Estado de la consulta"
+      },
+      "agente_id": {
+        "type": "string",
+        "description": "Identificador del agente que responde"
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Momento de la respuesta (ISO 8601)"
+      }
+    },
+    "required": ["contenido", "confianza", "estado", "agente_id"],
+    "additionalProperties": false
+  },
+  "createdAt": "2025-12-24T12:00:00Z",
+  "libraryId": null
+}

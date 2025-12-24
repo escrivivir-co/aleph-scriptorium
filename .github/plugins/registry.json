@@ -1,7 +1,269 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-24T12:00:00Z",
+  "last_updated": "2025-12-29T14:00:00Z",
   "plugins": {
+    "n8n-editor": {
+      "name": "Editor Visual de Workflows (n8n Connector)",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar workflows visuales estilo n8n. CONECTOR a n8n, no reemplazo. Integra con TypedPrompting para validación JSON y MCP-Presets para nodos disponibles. Dos modos: Asistente y Gestor.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-29T14:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/N8N_EDITOR/",
+      "bridge_agent": "plugin_ox_n8neditor",
+      "dependencies": [],
+      "optional_dependencies": ["typed-prompting", "mcp-presets", "foro-scraper"],
+      "submodule": "alephscript-n8n-like-editor",
+      "angular": {
+        "version": "18.2.x",
+        "dev_port": 4200,
+        "ssr_port": 4000,
+        "canvas": "D3.js 7.9.x",
+        "editor": "Monaco 0.52.x"
+      },
+      "handoffs": [
+        {
+          "label": "Abrir editor de workflows",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Crear workflow",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Importar workflow",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Exportar workflow para n8n",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Asesorar sobre nodos MCP",
+          "agent": "N8NEditor"
+        },
+        {
+          "label": "Listar templates",
+          "agent": "N8NEditor"
+        }
+      ]
+    },
+    "typed-prompting": {
+      "name": "TypedPrompting (Ontologías NL↔JSON)",
+      "version": "1.0.0",
+      "description": "Plugin transversal para diseñar ontologías (TypeScript → JSON Schema), validar mensajes de LLM y crear contratos de comunicación entre agentes. Dos modos: Asistente (guía interactiva) y Gestor (instalación en agentes/ARG).",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-29T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/TYPED_PROMPTING/",
+      "bridge_agent": "plugin_ox_typedprompting",
+      "dependencies": [],
+      "optional_dependencies": ["agent-creator", "arg-board", "mcp-presets"],
+      "submodule": "alephscript-typed-prompting",
+      "validation": {
+        "engines": ["AJV (JSON Schema)", "Zod"],
+        "ai_providers": ["OpenAI", "Anthropic", "DeepSeek", "Ollama"],
+        "editor_port": 5000
+      },
+      "handoffs": [
+        {
+          "label": "[Asistente] Estudiar caso de uso",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "[Asistente] Sugerir ontología existente",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "[Gestor] Instalar schema en agente",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "[Gestor] Instalar protocolo en flujo ARG",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "Validar mensaje contra schema",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "Crear schema desde TypeScript",
+          "agent": "TypedPrompting"
+        },
+        {
+          "label": "Abrir editor web",
+          "agent": "TypedPrompting"
+        }
+      ]
+    },
+    "prolog-editor": {
+      "name": "Editor de Lógica Prolog",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar y ejecutar reglas Prolog (SWI-Prolog). Genera templates, ejecuta consultas, exporta Blockly a Prolog. Orientado a usuarios académicos.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-28T18:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "data_directory": "ARCHIVO/PLUGINS/PROLOG_EDITOR/",
+      "bridge_agent": "plugin_ox_prologeditor",
+      "dependencies": [],
+      "optional_dependencies": ["blockly-editor", "agent-creator", "arg-board", "as-gym"],
+      "submodule": "iot-sbr-logica-para-bots",
+      "prolog": {
+        "runtime": "SWI-Prolog 9.x",
+        "npm_binding": "swipl@1.0.6",
+        "templates": ["state-machine", "iot-app", "simu"]
+      },
+      "handoffs": [
+        {
+          "label": "Crear template Prolog",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Ejecutar consulta Prolog",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Exportar Blockly a Prolog",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Listar templates",
+          "agent": "PrologEditor"
+        },
+        {
+          "label": "Importar reglas",
+          "agent": "PrologEditor"
+        }
+      ]
+    },
+    "wire-editor": {
+      "name": "Diseñador de Flujos Node-RED",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar flujos de datos asíncronos con Node-RED. Gestiona flows, subflows y nodos personalizados. Transversal al Scriptorium.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-28T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "data_directory": "ARCHIVO/DISCO/WIRING/",
+      "bridge_agent": "plugin_ox_wireeditor",
+      "dependencies": [],
+      "optional_dependencies": ["arg-board", "agent-creator", "blockly-editor"],
+      "submodule": "node-red-alephscript-sdk",
+      "node_red": {
+        "default_port": 1880,
+        "nodes_count": 13,
+        "nodes_by_category": {
+          "bot": ["aleph-kick-bot-in", "aleph-kick-bot-out"],
+          "channel": ["aleph-channel-filter", "aleph-channel-merge", "aleph-channel-split"],
+          "format": ["aleph-message-format", "aleph-json-transform", "aleph-template"],
+          "orchestration": ["aleph-flow-control", "aleph-state-manager"],
+          "dashboard": ["aleph-widget-config", "aleph-dashboard-layout", "aleph-live-view"]
+        }
+      },
+      "handoffs": [
+        {
+          "label": "Crear proyecto Node-RED",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Importar flow desde archivo",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Exportar flow a JSON",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Asesorar sobre nodos",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Conectar feed asíncrono",
+          "agent": "WireEditor"
+        }
+      ]
+    },
+    "blockly-editor": {
+      "name": "Editor de Lógica Visual (Blockly)",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar lógica de agentes-personaje mediante programación visual con Blockly. Genera código JavaScript ejecutable en el Teatro.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-27T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/BLOCKLY_EDITOR/",
+      "bridge_agent": "plugin_ox_blocklyeditor",
+      "dependencies": ["arg-board", "agent-creator", "teatro"],
+      "optional_dependencies": ["mcp-presets"],
+      "submodule": "blockly-alephscript-sdk",
+      "handoffs": [
+        {
+          "label": "Abrir editor Blockly",
+          "agent": "BlocklyEditor"
+        },
+        {
+          "label": "Crear rutina para personaje",
+          "agent": "BlocklyEditor"
+        },
+        {
+          "label": "Asignar paleta de paradigma",
+          "agent": "BlocklyEditor"
+        },
+        {
+          "label": "Exportar código JavaScript",
+          "agent": "BlocklyEditor"
+        }
+      ]
+    },
+    "novelist": {
+      "name": "Editor de Narrativas (MCP Novelist)",
+      "version": "1.0.0",
+      "description": "Plugin para editar obras narrativas con memoria a largo plazo usando servidor MCP. Sincroniza con TALLER, AGENT_CREATOR y Teatro.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-24T18:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/NOVELIST/",
+      "bridge_agent": "plugin_ox_novelist",
+      "dependencies": ["arg-board", "agent-creator", "teatro"],
+      "submodule": "mcp-novelist",
+      "mcp": {
+        "port": 3066,
+        "transport": "http",
+        "tools_prefix": "alephAlpha_"
+      },
+      "handoffs": [
+        {
+          "label": "Crear obra en Novelist",
+          "agent": "Novelist"
+        },
+        {
+          "label": "Exportar obra a Teatro",
+          "agent": "Novelist"
+        },
+        {
+          "label": "Importar obra del TALLER",
+          "agent": "Novelist"
+        },
+        {
+          "label": "Sincronizar personajes",
+          "agent": "Novelist"
+        },
+        {
+          "label": "Listar obras",
+          "agent": "Novelist"
+        }
+      ]
+    },
     "network": {
       "name": "Network (Oasis/Scuttlebutt)",
       "version": "1.0.0",
@@ -315,6 +577,94 @@
           "id": "hdf-ernesto-castro",
           "nombre": "Historia de la Filosofía",
           "capitulos": 61
+        }
+      ]
+    },
+    "wiring-app": {
+      "name": "WiringApp (Wiki-Racer Flows)",
+      "version": "1.0.0",
+      "description": "Plugin de ejemplo de aplicación Node-RED basado en wiki-racer. Extiende WireEditor con templates de juegos de navegación.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-01T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/WIRING_APP/",
+      "bridge_agent": "plugin_ox_wiringapp",
+      "dependencies": ["wire-editor"],
+      "optional_dependencies": ["typed-prompting"],
+      "submodule": "wiki-racer",
+      "handoffs": [
+        {
+          "label": "Crear flow de juego",
+          "agent": "WiringApp"
+        },
+        {
+          "label": "Importar template wiki-racer",
+          "agent": "WiringApp"
+        },
+        {
+          "label": "Exportar a Node-RED",
+          "agent": "WiringApp"
+        }
+      ]
+    },
+    "arg-board-app": {
+      "name": "ArgBoardApp (Wiki-Racer State Machine)",
+      "version": "1.0.0",
+      "description": "Plugin que implementa wiki-racer como máquina de estados para obras del Teatro ARG. Navegación interactiva sobre mapas de enlaces.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-01T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/ARG_BOARD_APP/",
+      "bridge_agent": "plugin_ox_argboardapp",
+      "dependencies": ["arg-board", "teatro"],
+      "optional_dependencies": ["hypergraph-editor"],
+      "submodule": "wiki-racer",
+      "handoffs": [
+        {
+          "label": "Crear obra de navegación",
+          "agent": "ArgBoardApp"
+        },
+        {
+          "label": "Configurar mapa de enlaces",
+          "agent": "ArgBoardApp"
+        },
+        {
+          "label": "Ejecutar partida",
+          "agent": "ArgBoardApp"
+        }
+      ]
+    },
+    "hypergraph-editor": {
+      "name": "HyperGraphEditor (Navegador de Grafos Hipervinculados)",
+      "version": "1.0.0",
+      "description": "Plugin para visualizar y navegar mapas de enlaces hipervinculados. Usa el motor wiki-racer con fuentes abstractas (IGraphSource). Incluye preset MediaWiki.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-01T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 3,
+      "data_directory": "ARCHIVO/PLUGINS/HYPERGRAPH_EDITOR/",
+      "bridge_agent": "plugin_ox_hypergrapheditor",
+      "dependencies": [],
+      "optional_dependencies": ["arg-board", "mcp-presets", "typed-prompting"],
+      "submodule": "wiki-racer",
+      "presets": ["mediawiki"],
+      "handoffs": [
+        {
+          "label": "Crear mapa de enlaces",
+          "agent": "HyperGraphEditor"
+        },
+        {
+          "label": "Navegar grafo",
+          "agent": "HyperGraphEditor"
+        },
+        {
+          "label": "Cargar preset MediaWiki",
+          "agent": "HyperGraphEditor"
         }
       ]
     }

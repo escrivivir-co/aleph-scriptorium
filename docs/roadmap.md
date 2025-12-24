@@ -679,14 +679,14 @@ permalink: /roadmap/
         <div class="progress-fill" style="width: 100%"></div>
       </div>
       <div class="progress-text">
-        <span>Sprint 0</span>
+        <span>Feature Cycle 1</span>
         <span>100%</span>
       </div>
-      <p class="status">✅ Bootstrap completado · 18 épicas implementadas</p>
+      <p class="status">✅ FC1 cerrado · 14 submódulos · 18 plugins</p>
       <div class="badges">
-        <img src="https://img.shields.io/badge/Sprint_0-Complete-22c55e?style=flat-square" alt="Sprint 0 Complete">
-        <img src="https://img.shields.io/badge/Plugins-5_installed-3b82f6?style=flat-square" alt="5 Plugins">
-        <img src="https://img.shields.io/badge/Agents-15+-a855f7?style=flat-square" alt="15+ Agents">
+        <img src="https://img.shields.io/badge/v1.0.0--beta.3-Semillas_de_Futuro-8b5cf6?style=flat-square" alt="v1.0.0-beta.3">
+        <img src="https://img.shields.io/badge/Plugins-18_registrados-3b82f6?style=flat-square" alt="18 Plugins">
+        <img src="https://img.shields.io/badge/Agents-36_invocables-a855f7?style=flat-square" alt="36 Agents">
       </div>
       <div class="links">
         <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/BACKLOG-SCRIPTORIUM.md">📋 Ver Backlog</a>
@@ -760,9 +760,28 @@ permalink: /roadmap/
   <!-- GALERÍA DE FOTOS DE ESTADO -->
   <div class="fotos-gallery">
     <!-- Más reciente primero -->
+    
+    <!-- FOTO DE FUTURO - Feature Cycle 1 -->
+    <div class="foto-card" style="border: 2px solid #8b5cf6; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+      <div class="foto-header" style="background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);">
+        <span class="foto-icon">🔮</span>
+        <span class="foto-date" style="color: #fff;">2025-12-24</span>
+      </div>
+      <div class="foto-body" style="color: #e6edf3;">
+        <h4 style="color: #a78bfa;">🎄 Feature Cycle 1: Visión de Futuro</h4>
+        <p class="foto-summary" style="color: #94a3b8;">Rama fc1 activa. 14 submódulos integrados. 18 plugins registrados. El Scriptorium desarrollado: teatro de operaciones cognitivo.</p>
+        <div class="foto-metrics">
+          <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">📦 14 submódulos</span>
+          <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">🔌 18 plugins</span>
+          <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">🧊 main congelada</span>
+        </div>
+        <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-24_FC1_VisionFuturo.md" class="foto-link" style="color: #c4b5fd;">Ver foto de futuro →</a>
+      </div>
+    </div>
+    
     <div class="foto-card">
       <div class="foto-header sprint-2">
-        <span class="foto-icon">�</span>
+        <span class="foto-icon">📸</span>
         <span class="foto-date">2025-12-23</span>
       </div>
       <div class="foto-body">

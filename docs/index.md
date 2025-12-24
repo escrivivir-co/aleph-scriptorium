@@ -30,10 +30,10 @@ permalink: /
     <span class="card-title">Léeme</span>
     <span class="card-desc">Guía de inicio · 15 min</span>
   </a>
-  <a href="{{ site.baseurl }}/agentes/" class="nav-card">
-    <span class="card-icon">🐂</span>
-    <span class="card-title">Agentes</span>
-    <span class="card-desc">Del Clippy al Colectivo</span>
+  <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
+    <span class="card-icon">🧬</span>
+    <span class="card-title">Ecosistema</span>
+    <span class="card-desc">14 submódulos · 18 plugins · 36 agentes</span>
   </a>
   <a href="{{ site.baseurl }}/teatro/" class="nav-card">
     <span class="card-icon">🎭</span>

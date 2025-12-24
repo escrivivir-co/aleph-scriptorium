@@ -9,7 +9,7 @@
 
 | Script | Propósito |
 |--------|-----------|
-| `setup-workspace.sh` | Inicializa VS Code settings y los 5 submódulos |
+| `setup-workspace.sh` | Inicializa VS Code settings y los 14 submódulos |
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
@@ -31,12 +31,21 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `chat.instructionsFilesLocations`: detecta instructions de plugins
    - `chat.useNestedAgentsMdFiles`: busca agentes anidados
    
-2. **Sincroniza los 5 submódulos** con rama `integration/beta/scriptorium`:
+2. **Sincroniza los 14 submódulos** con rama `integration/beta/scriptorium`:
    - `vscode-alephscript-extension` — Extensión VS Code / Arrakis Theater
    - `alephscript-mcp-presets-site` — Zeus MCP Presets (UI web)
    - `as-utils-sdk` — VibeCoding Connector / Matrix Theater
    - `as-gym` — FIA (Fundamentos de IA) / Almas para Agentes
    - `alephscript-network-sdk` — Oasis/Scuttlebutt P2P Network
+   - `kick-aleph-bot` — Bot Kick para streaming (chat commands)
+   - `kick-aleph-crono-bot` — Bot Kick para cronología (time tracking)
+   - `mcp-novelist` — Servidor MCP para edición de narrativas
+   - `blockly-alephscript-sdk` — Editor visual Blockly para lógica de personajes
+   - `node-red-alephscript-sdk` — Diseñador de flujos Node-RED
+   - `iot-sbr-logica-para-bots` — Editor de Lógica Prolog (SWI-Prolog)
+   - `alephscript-typed-prompting` — TypedPrompting (Ontologías NL↔JSON)
+   - `alephscript-n8n-like-editor` — Editor visual de workflows (n8n connector)
+   - `wiki-racer` — Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
 
 ### Output esperado
 
@@ -49,14 +58,26 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: as-utils-sdk
 [setup] Configurando submódulo: as-gym
 [setup] Configurando submódulo: alephscript-network-sdk
-[setup] ✔ Setup completado
+[setup] Configurando submódulo: kick-aleph-bot
+[setup] Configurando submódulo: kick-aleph-crono-bot
+[setup] Configurando submódulo: mcp-novelist
+[setup] Configurando submódulo: blockly-alephscript-sdk
+[setup] Configurando submódulo: node-red-alephscript-sdk
+[setup] Configurando submódulo: iot-sbr-logica-para-bots
+[setup] ✔ Setup completado (11 submódulos)
 
-Submódulos configurados (5):
+Submódulos configurados (11):
   - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater
   - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)
   - as-utils-sdk: VibeCoding Connector / Matrix Theater
   - as-gym: FIA (Fundamentos de IA) / Almas para Agentes
   - alephscript-network-sdk: Oasis/Scuttlebutt P2P Network
+  - kick-aleph-bot: Bot Kick para streaming (chat commands)
+  - kick-aleph-crono-bot: Bot Kick para cronología (time tracking)
+  - mcp-novelist: Servidor MCP para edición de narrativas
+  - blockly-alephscript-sdk: Editor visual Blockly
+  - node-red-alephscript-sdk: Diseñador de flujos Node-RED
+  - iot-sbr-logica-para-bots: Editor de Lógica Prolog (SWI-Prolog)
 ```
 
 ---

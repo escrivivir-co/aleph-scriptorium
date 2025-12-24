@@ -11,7 +11,7 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto (4 en total)
+# Submódulos del proyecto (11 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/vscode-alephscript-extension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
@@ -27,6 +27,33 @@ SUBMODULE_AS_GYM_BRANCH="dev/001"
 
 SUBMODULE_NETWORK_SDK_DIR="$ROOT_DIR/alephscript-network-sdk"
 SUBMODULE_NETWORK_SDK_URL="https://github.com/escrivivir-co/alephscript-network-sdk.git"
+
+SUBMODULE_KICK_ALEPH_BOT_DIR="$ROOT_DIR/kick-aleph-bot"
+SUBMODULE_KICK_ALEPH_BOT_URL="https://github.com/escrivivir-co/kick-aleph-bot.git"
+
+SUBMODULE_KICK_CRONO_BOT_DIR="$ROOT_DIR/kick-aleph-crono-bot"
+SUBMODULE_KICK_CRONO_BOT_URL="https://github.com/escrivivir-co/kick-aleph-crono-bot.git"
+
+SUBMODULE_MCP_NOVELIST_DIR="$ROOT_DIR/mcp-novelist"
+SUBMODULE_MCP_NOVELIST_URL="https://github.com/escrivivir-co/mcp-novelist.git"
+
+SUBMODULE_BLOCKLY_SDK_DIR="$ROOT_DIR/blockly-alephscript-sdk"
+SUBMODULE_BLOCKLY_SDK_URL="https://github.com/escrivivir-co/blockly-alephscript-sdk.git"
+
+SUBMODULE_NODE_RED_SDK_DIR="$ROOT_DIR/node-red-alephscript-sdk"
+SUBMODULE_NODE_RED_SDK_URL="https://github.com/escrivivir-co/node-red-alephscript-sdk.git"
+
+SUBMODULE_PROLOG_SBR_DIR="$ROOT_DIR/iot-sbr-logica-para-bots"
+SUBMODULE_PROLOG_SBR_URL="https://github.com/escrivivir-co/iot-sbr-logica-para-bots.git"
+
+SUBMODULE_TYPED_PROMPTING_DIR="$ROOT_DIR/alephscript-typed-prompting"
+SUBMODULE_TYPED_PROMPTING_URL="https://github.com/escrivivir-co/alephscript-typed-prompting.git"
+
+SUBMODULE_N8N_EDITOR_DIR="$ROOT_DIR/alephscript-n8n-like-editor"
+SUBMODULE_N8N_EDITOR_URL="https://github.com/escrivivir-co/alephscript-n8n-like-editor.git"
+
+SUBMODULE_WIKI_RACER_DIR="$ROOT_DIR/wiki-racer"
+SUBMODULE_WIKI_RACER_URL="https://github.com/escrivivir-co/wiki-racer.git"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -45,7 +72,16 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/teatro/prompts": true,
     ".github/plugins/scrum/prompts": true,
     ".github/plugins/mcp-presets/prompts": true,
-    ".github/plugins/network/prompts": true
+    ".github/plugins/network/prompts": true,
+    ".github/plugins/novelist/prompts": true,
+    ".github/plugins/blockly-editor/prompts": true,
+    ".github/plugins/wire-editor/prompts": true,
+    ".github/plugins/prolog-editor/prompts": true,
+    ".github/plugins/typed-prompting/prompts": true,
+    ".github/plugins/n8n-editor/prompts": true,
+    ".github/plugins/wiring-app/prompts": true,
+    ".github/plugins/arg-board-app/prompts": true,
+    ".github/plugins/hypergraph-editor/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -57,7 +93,16 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/teatro/instructions": true,
     ".github/plugins/scrum/instructions": true,
     ".github/plugins/mcp-presets/instructions": true,
-    ".github/plugins/network/instructions": true
+    ".github/plugins/network/instructions": true,
+    ".github/plugins/novelist/instructions": true,
+    ".github/plugins/blockly-editor/instructions": true,
+    ".github/plugins/wire-editor/instructions": true,
+    ".github/plugins/prolog-editor/instructions": true,
+    ".github/plugins/typed-prompting/instructions": true,
+    ".github/plugins/n8n-editor/instructions": true,
+    ".github/plugins/wiring-app/instructions": true,
+    ".github/plugins/arg-board-app/instructions": true,
+    ".github/plugins/hypergraph-editor/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -139,8 +184,17 @@ setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL" "aleph
 setup_submodule "$SUBMODULE_AS_UTILS_SDK_DIR" "$SUBMODULE_AS_UTILS_SDK_URL" "as-utils-sdk"
 setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL" "as-gym"
 setup_submodule "$SUBMODULE_NETWORK_SDK_DIR" "$SUBMODULE_NETWORK_SDK_URL" "alephscript-network-sdk"
+setup_submodule "$SUBMODULE_KICK_ALEPH_BOT_DIR" "$SUBMODULE_KICK_ALEPH_BOT_URL" "kick-aleph-bot"
+setup_submodule "$SUBMODULE_KICK_CRONO_BOT_DIR" "$SUBMODULE_KICK_CRONO_BOT_URL" "kick-aleph-crono-bot"
+setup_submodule "$SUBMODULE_MCP_NOVELIST_DIR" "$SUBMODULE_MCP_NOVELIST_URL" "mcp-novelist"
+setup_submodule "$SUBMODULE_BLOCKLY_SDK_DIR" "$SUBMODULE_BLOCKLY_SDK_URL" "blockly-alephscript-sdk"
+setup_submodule "$SUBMODULE_NODE_RED_SDK_DIR" "$SUBMODULE_NODE_RED_SDK_URL" "node-red-alephscript-sdk"
+setup_submodule "$SUBMODULE_PROLOG_SBR_DIR" "$SUBMODULE_PROLOG_SBR_URL" "iot-sbr-logica-para-bots"
+setup_submodule "$SUBMODULE_TYPED_PROMPTING_DIR" "$SUBMODULE_TYPED_PROMPTING_URL" "alephscript-typed-prompting"
+setup_submodule "$SUBMODULE_N8N_EDITOR_DIR" "$SUBMODULE_N8N_EDITOR_URL" "alephscript-n8n-like-editor"
+setup_submodule "$SUBMODULE_WIKI_RACER_DIR" "$SUBMODULE_WIKI_RACER_URL" "wiki-racer"
 
-echo "[setup] ✔ Setup completado"
+echo "[setup] ✔ Setup completado (14 submódulos)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -151,10 +205,25 @@ echo "     cd alephscript-mcp-presets-site && git push -u origin $INTEGRATION_BR
 echo "     cd as-utils-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd as-gym && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd alephscript-network-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd blockly-alephscript-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd node-red-alephscript-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd iot-sbr-logica-para-bots && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd alephscript-typed-prompting && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd alephscript-n8n-like-editor && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd wiki-racer && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "Submódulos configurados (5):"
+echo "Submódulos configurados (14):"
 echo "  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater"
 echo "  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)"
 echo "  - as-utils-sdk: VibeCoding Connector / Matrix Theater"
 echo "  - as-gym: FIA (Fundamentos de IA) / Almas para Agentes"
 echo "  - alephscript-network-sdk: Oasis/Scuttlebutt P2P Network"
+echo "  - kick-aleph-bot: Bot Kick para streaming"
+echo "  - kick-aleph-crono-bot: Bot cronológico Kick"
+echo "  - mcp-novelist: Editor MCP de narrativas"
+echo "  - blockly-alephscript-sdk: Editor visual Blockly"
+echo "  - node-red-alephscript-sdk: Diseñador de flujos Node-RED"
+echo "  - iot-sbr-logica-para-bots: Editor de Lógica Prolog (SWI-Prolog)"
+echo "  - alephscript-typed-prompting: TypedPrompting (Ontologías NL↔JSON)"
+echo "  - alephscript-n8n-like-editor: Editor visual de workflows (n8n connector)"
+echo "  - wiki-racer: Motor de navegación wiki-racer (WiringApp, ArgBoardApp, HyperGraphEditor)"

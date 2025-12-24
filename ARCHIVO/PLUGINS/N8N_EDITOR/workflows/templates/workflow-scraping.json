@@ -1,0 +1,110 @@
+{
+  "id": "template-scraping",
+  "name": "Extracción y Procesamiento de Datos",
+  "description": "Flujo para extraer datos de fuentes web y procesarlos con validación TypedPrompting",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "config-1",
+      "type": "trigger",
+      "name": "Configuración de Fuente",
+      "position": { "x": 100, "y": 300 },
+      "parameters": {
+        "inputType": "object",
+        "schema": {
+          "url": "string",
+          "selector": "string",
+          "pagination": "boolean"
+        },
+        "description": "URL y selectores CSS para extracción"
+      },
+      "connections": {
+        "input": [],
+        "output": ["scraper-1"]
+      }
+    },
+    {
+      "id": "scraper-1",
+      "type": "mcp-tool",
+      "name": "ForoScraper (MCP)",
+      "position": { "x": 300, "y": 300 },
+      "parameters": {
+        "server": "playwright",
+        "tool": "browser_navigate",
+        "config": {
+          "waitForSelector": "{{config.selector}}",
+          "timeout": 30000
+        }
+      },
+      "connections": {
+        "input": ["config-1"],
+        "output": ["parse-1"]
+      }
+    },
+    {
+      "id": "parse-1",
+      "type": "data-transformer",
+      "name": "Parsear Contenido",
+      "position": { "x": 500, "y": 300 },
+      "parameters": {
+        "operation": "extract",
+        "format": "json",
+        "rules": [
+          { "field": "titulo", "selector": "h1, h2" },
+          { "field": "contenido", "selector": "article, .content, .post-body" },
+          { "field": "fecha", "selector": "time, .date" },
+          { "field": "autor", "selector": ".author, .username" }
+        ]
+      },
+      "connections": {
+        "input": ["scraper-1"],
+        "output": ["validate-1"]
+      }
+    },
+    {
+      "id": "validate-1",
+      "type": "ai-decision",
+      "name": "Validar con TypedPrompting",
+      "position": { "x": 700, "y": 300 },
+      "parameters": {
+        "prompt": "Valida el siguiente JSON contra el schema de entrada esperado.\nSi es válido, pásalo sin modificar.\nSi no es válido, intenta corregir los campos faltantes.",
+        "schema": "scraping-output.schema.json",
+        "outputFormat": "json"
+      },
+      "connections": {
+        "input": ["parse-1"],
+        "output": ["output-1"]
+      }
+    },
+    {
+      "id": "output-1",
+      "type": "output",
+      "name": "Guardar en DISCO",
+      "position": { "x": 900, "y": 300 },
+      "parameters": {
+        "destination": "ARCHIVO/DISCO/",
+        "filename": "{{source}}-{{date}}.md",
+        "format": "markdown",
+        "template": "# {{titulo}}\n\n> **Fuente**: {{url}}\n> **Fecha**: {{fecha}}\n> **Autor**: {{autor}}\n\n---\n\n{{contenido}}"
+      },
+      "connections": {
+        "input": ["validate-1"],
+        "output": []
+      }
+    }
+  ],
+  "connections": [
+    { "source": "config-1", "target": "scraper-1" },
+    { "source": "scraper-1", "target": "parse-1" },
+    { "source": "parse-1", "target": "validate-1" },
+    { "source": "validate-1", "target": "output-1" }
+  ],
+  "settings": {
+    "executionOrder": "sequential",
+    "errorHandling": "continue",
+    "createdAt": "2025-12-29T12:00:00Z",
+    "author": "Aleph Scriptorium",
+    "tags": ["scraping", "extraccion", "typed-prompting"],
+    "requiredPlugins": ["foro-scraper", "typed-prompting"]
+  }
+}
