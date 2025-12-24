@@ -12,19 +12,61 @@ Este prompt documenta el protocolo completo para instalar un nuevo submódulo en
 
 ## Contexto
 
-El Scriptorium integra **submódulos externos** que extienden sus capacidades. Actualmente hay 5 submódulos:
+El Scriptorium integra **submódulos externos** que extienden sus capacidades.
 
-1. `vscode-alephscript-extension` — Extensión VS Code
-2. `alephscript-mcp-presets-site` — Gestor MCP Presets (Zeus)
-3. `as-utils-sdk` — VibeCoding Connector (Matrix Theater)
-4. `as-gym` — Almas para Agentes (FIA)
-5. `alephscript-network-sdk` — Network Oasis/Scuttlebutt
+> **IMPORTANTE**: El número de submódulos es **dinámico**. Antes de iniciar, ejecutar:
+> ```bash
+> git submodule status | wc -l
+> ```
+> Esto devuelve el número actual (ej: 8). El nuevo submódulo será el N+1.
 
 Cada submódulo:
 - Se integra en rama `integration/beta/scriptorium`
 - Genera un **plugin** en `.github/plugins/{id}/`
 - Tiene **backlog de planificación** en `ARCHIVO/DISCO/BACKLOG_BORRADORES/`
 - Se configura en `scripts/setup-workspace.sh`
+- Se registra en `.vscode/settings.json` (discovery de prompts/instructions)
+
+---
+
+## Fase 0: Verificación de Estado Actual (OBLIGATORIA)
+
+> **Propósito**: Evitar desincronizaciones entre submódulos reales y configuración documentada.
+
+### 0.1. Auditoría de Submódulos
+
+```bash
+cd /ruta/al/SCRIPTORIUM/ALEPH
+
+# Contar submódulos actuales
+echo "Submódulos actuales: $(git submodule status | wc -l)"
+
+# Listar con detalle
+git submodule status
+```
+
+**Comparar con**:
+- `scripts/setup-workspace.sh` (variable `SUBMODULE_*` count)
+- `scripts/README.md` (contador en documentación)
+- Comentario en setup-workspace.sh ("Submódulos del proyecto (N en total)")
+
+### 0.2. Detectar Desincronizaciones
+
+| Archivo | Campo a verificar | Comando |
+|---------|-------------------|--------|
+| `setup-workspace.sh` | Comentario "N en total" | `grep -n "en total" scripts/setup-workspace.sh` |
+| `setup-workspace.sh` | Variables SUBMODULE_* | `grep -c "SUBMODULE_.*_DIR" scripts/setup-workspace.sh` |
+| `setup-workspace.sh` | Llamadas setup_submodule | `grep -c "setup_submodule" scripts/setup-workspace.sh` |
+| `scripts/README.md` | "N submódulos" | `grep -n "submódulos" scripts/README.md \| head -5` |
+
+### 0.3. Corregir Antes de Continuar
+
+Si hay discrepancias:
+1. **Actualizar** `setup-workspace.sh` con submódulos faltantes
+2. **Actualizar** `scripts/README.md` con documentación correcta
+3. **Commit** de corrección: `refactor(scripts): sincronizar configuración para N submódulos`
+
+**Solo continuar cuando los números coincidan.**
 
 ---
 
@@ -42,9 +84,13 @@ cat scripts/setup-workspace.sh
 
 **Objetivo**: Entender la estructura de submódulos existentes y el patrón de instalación.
 
-### 1.2. Verificar Número de Submódulos
+### 1.2. Calcular Número de Orden
 
-Identificar el **número de orden** del nuevo submódulo (actualmente es el 6º).
+```bash
+# El nuevo submódulo será el N+1
+NUEVO_ORDEN=$(($(git submodule status | wc -l) + 1))
+echo "El nuevo submódulo será el número: $NUEVO_ORDEN"
+```
 
 ---
 
@@ -652,47 +698,57 @@ El código del plugin está en `.github/plugins/{id}/` (inmutable).
 }
 ```
 
-### 7.2. Actualizar setup-workspace.sh
+### 7.2. Actualizar setup-workspace.sh (CRÍTICO)
 
 **Archivo**: `scripts/setup-workspace.sh`
 
-**1. Añadir variables de entorno**:
+> ⚠️ **ATENCIÓN**: Este archivo contiene 4 zonas que DEBEN actualizarse:
+> 1. Comentario de contador
+> 2. Variables de submódulo
+> 3. Template de settings.json
+> 4. Llamadas a setup_submodule
+
+**1. Actualizar comentario de contador** (línea ~14):
 
 ```bash
-# Submódulos (añadir nuevo)
-readonly SUBMODULE_{NOMBRE}_DIR="{nombre-submodulo}"
-readonly SUBMODULE_{NOMBRE}_URL="https://github.com/escrivivir-co/{nombre-submodulo}.git"
+# Submódulos del proyecto (N en total)  # ← Actualizar N
 ```
 
-**2. Actualizar settings.json template**:
+**2. Añadir variables de entorno** (después de las existentes):
 
 ```bash
-cat > "$SETTINGS_FILE" << 'EOF'
-{
-  "chat.promptFilesLocations": {
-    ".github/prompts": true,
-    ".github/plugins/{plugin-id}/prompts": true
-  },
-  "chat.instructionsFilesLocations": {
-    ".github/instructions": true,
-    ".github/plugins/{plugin-id}/instructions": true
-  }
-}
-EOF
+SUBMODULE_{NOMBRE}_DIR="$ROOT_DIR/{nombre-submodulo}"
+SUBMODULE_{NOMBRE}_URL="https://github.com/escrivivir-co/{nombre-submodulo}.git"
 ```
 
-**3. Añadir llamada setup_submodule**:
+**3. Actualizar settings.json template** (❗ CRÍTICO PARA DISCOVERY):
 
 ```bash
-# Configurar submódulos
-setup_submodule "$SUBMODULE_EXTENSION_DIR" "$SUBMODULE_EXTENSION_URL"
-setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL"
-setup_submodule "$SUBMODULE_AS_UTILS_DIR" "$SUBMODULE_AS_UTILS_URL"
-setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL"
-setup_submodule "$SUBMODULE_NETWORK_SDK_DIR" "$SUBMODULE_NETWORK_SDK_URL"
-setup_submodule "$SUBMODULE_{NOMBRE}_DIR" "$SUBMODULE_{NOMBRE}_URL"  # NUEVO
+# Buscar la sección cat > "$SETTINGS_FILE" y añadir:
 
-echo "✅ Submódulos configurados (6)"  # Actualizar contador
+# En chat.promptFilesLocations:
+".github/plugins/{plugin-id}/prompts": true,
+
+# En chat.instructionsFilesLocations:
+".github/plugins/{plugin-id}/instructions": true,
+```
+
+**Verificar que el template incluye TODOS los plugins**:
+```bash
+grep -c "plugins/" scripts/setup-workspace.sh
+# Debe coincidir con: número_de_plugins * 2 (prompts + instructions)
+```
+
+**4. Añadir llamada setup_submodule** (al final de la lista):
+
+```bash
+setup_submodule "$SUBMODULE_{NOMBRE}_DIR" "$SUBMODULE_{NOMBRE}_URL" "{nombre-submodulo}"
+```
+
+**5. Actualizar mensaje final**:
+
+```bash
+echo "[setup] ✔ Setup completado (N submódulos)"  # Actualizar N
 ```
 
 ### 7.3. Actualizar scripts/README.md
@@ -729,25 +785,28 @@ handoffs:
     send: false
 ```
 
-### 7.5. Actualizar ox.agent.md
+### 7.5. Actualizar ox.agent.md (4 ACTUALIZACIONES)
 
 **Archivo**: `.github/agents/ox.agent.md`
 
-**1. Actualizar versión del índice**:
+> ⚠️ **ATENCIÓN**: Este archivo requiere 4 modificaciones en zonas distintas.
+
+**1. Actualizar versión del índice** (en el JSON embebido):
 
 ```json
 {
-  "version": "1.{X}.0",
+  "version": "1.{X}.0",  // Incrementar minor
   "ultima_actualizacion": "{YYYY-MM-DD}",
   ...
 }
 ```
 
-**2. Añadir plugin a capa plugins.por_plugin**:
+**2. Añadir plugin a `plugins.por_plugin`** (dentro del JSON):
 
 ```json
 "plugins": {
   "por_plugin": {
+    // ... plugins existentes ...
     "{plugin-id}": {
       "directorio": ".github/plugins/{plugin-id}/agents/",
       "agentes": ["{Agente1}", "{Agente2}"]
@@ -756,11 +815,12 @@ handoffs:
 }
 ```
 
-**3. Añadir bridge**:
+**3. Añadir bridge a `plugins.bridges.agentes`** (dentro del JSON):
 
 ```json
 "bridges": {
   "agentes": {
+    // ... bridges existentes ...
     "plugin_ox_{pluginid}": {
       "archivo": ".github/agents/plugin_ox_{pluginid}.agent.md",
       "plugin": "{plugin-id}",
@@ -770,7 +830,7 @@ handoffs:
 }
 ```
 
-**4. Añadir handoff**:
+**4. Añadir handoff en frontmatter YAML** (sección `handoffs:`):
 
 ```yaml
 handoffs:
@@ -780,6 +840,63 @@ handoffs:
     prompt: Accede al plugin {Nombre} a través de su bridge.
     send: false
 ```
+
+**Verificación**:
+```bash
+# Contar bridges en el índice
+grep -c "plugin_ox_" .github/agents/ox.agent.md
+# Debe ser igual al número de plugins con bridge
+```
+
+---
+
+### 7.6. Validación de Integridad
+
+> **Propósito**: Verificar que todas las actualizaciones son consistentes.
+
+**Ejecutar verificación cruzada**:
+
+```bash
+cd /ruta/al/SCRIPTORIUM/ALEPH
+
+# 1. Contar submódulos reales
+REAL=$(git submodule status | wc -l)
+echo "Submódulos reales: $REAL"
+
+# 2. Contar en setup-workspace.sh
+SETUP_VARS=$(grep -c "SUBMODULE_.*_DIR=" scripts/setup-workspace.sh)
+SETUP_CALLS=$(grep -c "setup_submodule" scripts/setup-workspace.sh)
+echo "Variables SUBMODULE: $SETUP_VARS"
+echo "Llamadas setup_submodule: $SETUP_CALLS"
+
+# 3. Contar plugins en registry.json
+PLUGINS=$(grep -c '"enabled": true' .github/plugins/registry.json)
+echo "Plugins habilitados: $PLUGINS"
+
+# 4. Contar bridges
+BRIDGES=$(ls -1 .github/agents/plugin_ox_*.agent.md 2>/dev/null | wc -l)
+echo "Bridges: $BRIDGES"
+
+# 5. Verificar settings.json template
+SETTINGS_PROMPTS=$(grep -c 'plugins/.*/prompts' scripts/setup-workspace.sh)
+SETTINGS_INSTR=$(grep -c 'plugins/.*/instructions' scripts/setup-workspace.sh)
+echo "Settings prompts: $SETTINGS_PROMPTS"
+echo "Settings instructions: $SETTINGS_INSTR"
+```
+
+**Tabla de consistencia esperada**:
+
+| Métrica | Valor Esperado | Comando |
+|---------|----------------|--------|
+| Submódulos | N | `git submodule status \| wc -l` |
+| Variables SUBMODULE | N | `grep -c "SUBMODULE_.*_DIR=" setup-workspace.sh` |
+| Llamadas setup_submodule | N | `grep -c "setup_submodule" setup-workspace.sh` |
+| Plugins enabled | M | `grep -c '"enabled": true' registry.json` |
+| Bridges | M | `ls plugin_ox_*.agent.md \| wc -l` |
+| Settings prompts | M | `grep -c 'plugins/.*/prompts' setup-workspace.sh` |
+| Settings instructions | M | `grep -c 'plugins/.*/instructions' setup-workspace.sh` |
+
+> **Nota**: N = número de submódulos, M = número de plugins (pueden diferir si hay submódulos sin plugin)
 
 ---
 
@@ -907,19 +1024,25 @@ refs #SCRIPT-{version}-T001"
 
 Antes de considerar la instalación completa:
 
-### Fase 1: Submódulo
-- [ ] Submódulo clonado
+### Fase 0: Verificación Previa
+- [ ] Ejecutado `git submodule status | wc -l` para obtener N actual
+- [ ] Verificado que `setup-workspace.sh` tiene N submódulos declarados
+- [ ] Verificado que `scripts/README.md` documenta N submódulos
+- [ ] Corregidas discrepancias (si las había)
+
+### Fase 1-2: Submódulo
+- [ ] Submódulo clonado con `git submodule add`
 - [ ] Rama `integration/beta/scriptorium` creada
-- [ ] Estructura explorada
-- [ ] `README-SCRIPTORIUM.md` creado
+- [ ] Estructura explorada y documentada
+- [ ] `README-SCRIPTORIUM.md` creado en raíz del submódulo
 - [ ] Commit en submódulo realizado
 
-### Fase 2: Backlog
+### Fase 3: Backlog
 - [ ] Carpeta `BACKLOG_BORRADORES/{NOMBRE}/` creada
 - [ ] `conversacion-po-sm.md` con gaps identificados
 - [ ] `01_backlog-borrador.md` con épica/stories/tasks
 
-### Fase 3: Plugin
+### Fase 4: Plugin
 - [ ] Carpeta `.github/plugins/{plugin-id}/` creada
 - [ ] `manifest.md` con metadatos completos
 - [ ] Agente principal en `agents/`
@@ -927,22 +1050,58 @@ Antes de considerar la instalación completa:
 - [ ] Instructions en `instructions/`
 - [ ] `docs/README.md` creado
 
-### Fase 4: Integración
-- [ ] Bridge `plugin_ox_{pluginid}.agent.md` creado
-- [ ] `ARCHIVO/PLUGINS/{ID}/README.md` creado
-- [ ] `registry.json` actualizado
-- [ ] `setup-workspace.sh` actualizado (variables + llamada + contador)
-- [ ] `scripts/README.md` actualizado
-- [ ] `aleph.agent.md` con handoff añadido
-- [ ] `ox.agent.md` con índice actualizado
+### Fase 5: Bridge
+- [ ] Bridge `plugin_ox_{pluginid}.agent.md` creado en `.github/agents/`
+- [ ] Handoffs del bridge apuntan a agentes reales del plugin
 
-### Fase 5: Commits
+### Fase 6: Datos Runtime
+- [ ] `ARCHIVO/PLUGINS/{ID}/README.md` creado
+
+### Fase 7: Configuración del Sistema (⚠️ CRÍTICO)
+
+#### 7.1 registry.json
+- [ ] Plugin añadido con todos los campos
+- [ ] `bridge_agent` apunta al bridge correcto
+- [ ] `submodule` especifica el submódulo
+
+#### 7.2 setup-workspace.sh (4 ZONAS)
+- [ ] Comentario contador actualizado ("N en total")
+- [ ] Variables `SUBMODULE_{NOMBRE}_DIR` y `_URL` añadidas
+- [ ] **settings.json template**: plugin en `chat.promptFilesLocations`
+- [ ] **settings.json template**: plugin en `chat.instructionsFilesLocations`
+- [ ] Llamada `setup_submodule` añadida
+- [ ] Mensaje final actualizado ("N submódulos")
+
+#### 7.3 scripts/README.md
+- [ ] Contador actualizado
+- [ ] Nuevo submódulo en lista con descripción
+
+#### 7.4 aleph.agent.md
+- [ ] Handoff `[{ID}]` añadido en sección `handoffs:`
+
+#### 7.5 ox.agent.md (4 ZONAS)
+- [ ] Versión incrementada (ej: 1.3.0 → 1.4.0)
+- [ ] `ultima_actualizacion` actualizada
+- [ ] Plugin añadido en `plugins.por_plugin`
+- [ ] Bridge añadido en `plugins.bridges.agentes`
+- [ ] Handoff añadido en frontmatter YAML
+
+#### 7.6 Validación de Integridad
+- [ ] `git submodule status | wc -l` = N+1
+- [ ] Variables SUBMODULE = N+1
+- [ ] Llamadas setup_submodule = N+1
+- [ ] Settings prompts = número de plugins
+- [ ] Settings instructions = número de plugins
+
+### Fase 8: Commits
+- [ ] Rama de trabajo verificada (`workspace-config.json`)
 - [ ] Commit en submódulo ejecutado
 - [ ] Commit en repositorio principal ejecutado
 - [ ] Commits siguen protocolo DevOps
 
-### Fase 6: Verificación
-- [ ] `setup-workspace.sh` ejecutado sin errores
+### Fase 9: Verificación Post-Instalación
+- [ ] `./scripts/setup-workspace.sh` ejecutado sin errores
+- [ ] `.vscode/settings.json` generado con rutas del nuevo plugin
 - [ ] VS Code reiniciado
 - [ ] Prompts del plugin detectados (`/` en Chat)
 - [ ] Bridge detectado (`@` en Chat)
@@ -965,14 +1124,14 @@ Antes de considerar la instalación completa:
 
 ## Archivos Generados (Inventario Típico)
 
-### Submódulo (1 archivo)
+### Submódulo (1 archivo nuevo)
 - `{nombre-submodulo}/README-SCRIPTORIUM.md`
 
-### Backlog (2 archivos)
+### Backlog (2 archivos nuevos)
 - `ARCHIVO/DISCO/BACKLOG_BORRADORES/{NOMBRE}/conversacion-po-sm.md`
 - `ARCHIVO/DISCO/BACKLOG_BORRADORES/{NOMBRE}/01_backlog-borrador.md`
 
-### Plugin (mínimo 5 archivos, típico 7-10)
+### Plugin (mínimo 5 archivos, típico 7-10 nuevos)
 - `.github/plugins/{plugin-id}/manifest.md`
 - `.github/plugins/{plugin-id}/agents/{agente}.agent.md`
 - `.github/plugins/{plugin-id}/prompts/{accion1}.prompt.md`
@@ -980,19 +1139,76 @@ Antes de considerar la instalación completa:
 - `.github/plugins/{plugin-id}/instructions/{plugin-id}.instructions.md`
 - `.github/plugins/{plugin-id}/docs/README.md`
 
-### Integración (2 archivos)
+### Integración (2 archivos nuevos)
 - `.github/agents/plugin_ox_{pluginid}.agent.md`
 - `ARCHIVO/PLUGINS/{ID}/README.md`
 
-### Modificados (6 archivos)
-- `.github/plugins/registry.json`
-- `.github/agents/aleph.agent.md`
-- `.github/agents/ox.agent.md`
-- `scripts/setup-workspace.sh`
-- `scripts/README.md`
-- `.gitmodules`
+### Modificados (6 archivos - ⚠️ TODOS OBLIGATORIOS)
+
+| Archivo | Zonas a modificar | Verificación |
+|---------|-------------------|-------------|
+| `.github/plugins/registry.json` | 1 (añadir plugin) | `grep "{plugin-id}" registry.json` |
+| `.github/agents/aleph.agent.md` | 1 (handoff) | `grep "\[{ID}\]" aleph.agent.md` |
+| `.github/agents/ox.agent.md` | 4 (versión, plugin, bridge, handoff) | `grep "plugin_ox_{pluginid}" ox.agent.md` |
+| `scripts/setup-workspace.sh` | 4 (comentario, vars, settings, llamada) | Ver sección 7.2 |
+| `scripts/README.md` | 2 (contador, lista) | `grep "{nombre-submodulo}" README.md` |
+| `.gitmodules` | 1 (automático por git submodule add) | `git submodule status` |
 
 **Total típico**: 12-15 archivos nuevos, 6 modificados
+
+---
+
+## Diagrama de Dependencias de Actualización
+
+```
+                    ┌─────────────────────────┐
+                    │   git submodule add     │
+                    │   (crea .gitmodules)    │
+                    └───────────┬─────────────┘
+                                │
+            ┌───────────────────┼───────────────────┐
+            ▼                   ▼                   ▼
+    ┌───────────────┐   ┌───────────────┐   ┌───────────────┐
+    │ Plugin Code   │   │ Backlog       │   │ Runtime Data  │
+    │ .github/      │   │ ARCHIVO/DISCO │   │ ARCHIVO/      │
+    │ plugins/{id}/ │   │ /BACKLOG_.../ │   │ PLUGINS/{ID}/ │
+    └───────┬───────┘   └───────────────┘   └───────────────┘
+            │
+            ▼
+    ┌───────────────┐
+    │ Bridge Agent  │
+    │ .github/      │
+    │ agents/       │
+    │ plugin_ox_*   │
+    └───────┬───────┘
+            │
+    ┌───────┴───────────────────────────────────────┐
+    │               ACTUALIZACIONES OBLIGATORIAS     │
+    ├───────────────────────────────────────────────┤
+    │                                               │
+    │  ┌─────────────────┐    ┌─────────────────┐  │
+    │  │ registry.json   │    │ aleph.agent.md  │  │
+    │  │ (1 zona)        │    │ (1 handoff)     │  │
+    │  └─────────────────┘    └─────────────────┘  │
+    │                                               │
+    │  ┌─────────────────┐    ┌─────────────────┐  │
+    │  │ ox.agent.md     │    │ setup-          │  │
+    │  │ (4 zonas)       │    │ workspace.sh    │  │
+    │  │ - versión       │    │ (4 zonas)       │  │
+    │  │ - por_plugin    │    │ - comentario    │  │
+    │  │ - bridges       │    │ - variables     │  │
+    │  │ - handoff       │    │ - settings.json │  │
+    │  └─────────────────┘    │ - llamada       │  │
+    │                         └─────────────────┘  │
+    │                                               │
+    │  ┌─────────────────┐                         │
+    │  │ scripts/        │                         │
+    │  │ README.md       │                         │
+    │  │ (2 zonas)       │                         │
+    │  └─────────────────┘                         │
+    │                                               │
+    └───────────────────────────────────────────────┘
+```
 
 ---
 
