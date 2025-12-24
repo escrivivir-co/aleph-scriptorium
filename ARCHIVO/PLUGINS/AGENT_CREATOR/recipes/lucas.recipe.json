@@ -1,0 +1,91 @@
+{
+  "name": "lucas",
+  "version": "1.0.0",
+  "created_at": "2025-12-24T12:00:00Z",
+  "updated_at": "2025-12-24T12:00:00Z",
+  "created_by": "AgentCreator",
+  "agentes_base": [
+    {
+      "id": "aleph",
+      "file": ".github/agents/aleph.agent.md",
+      "elementos_heredados": [
+        "produccion_textual",
+        "orquestacion_auditores",
+        "protocolo_devops",
+        "gestion_backlogs",
+        "commits_conformes"
+      ]
+    },
+    {
+      "id": "ox",
+      "file": ".github/agents/ox.agent.md",
+      "elementos_heredados": [
+        "indice_maestro_agentes",
+        "taxonomia_capas",
+        "diagnostico_sistema",
+        "generacion_documentacion",
+        "consultas_oraculo"
+      ]
+    }
+  ],
+  "fuentes_datos": [
+    {
+      "ruta": "ARCHIVO/DEVOPS/",
+      "tipo": "documentacion_interna",
+      "archivos": [
+        "Funcional.md",
+        "Tecnico.md"
+      ],
+      "conceptos_extraidos": [
+        "indice_funcional",
+        "indice_tecnico",
+        "mapeo_agentes_plugins_submodulos",
+        "flujos_trabajo",
+        "checklists_mantenimiento",
+        "arquitectura_capas"
+      ]
+    }
+  ],
+  "especialidad": "Scrum Master con visión dual: mantiene coherencia entre índice funcional y técnico, valida ediciones DRY, actúa como oráculo de commits",
+  "tests_especificos": [
+    "coherencia_funcional_tecnico",
+    "dry_violation",
+    "indice_desactualizado",
+    "commit_sin_trazabilidad",
+    "archivo_huerfano"
+  ],
+  "handoffs_añadidos": [
+    "validar_edicion_indice",
+    "consultar_donde_documentar",
+    "preparar_commit_conforme"
+  ],
+  "arg_deployment": {
+    "deployed": true,
+    "deployed_at": "2025-12-24T12:00:00Z",
+    "target_plugin": "arg-board",
+    "obras": [
+      {
+        "id": "hola_mundo",
+        "titulo": "Hola Mundo",
+        "tipo": "demo"
+      },
+      {
+        "id": "camino_del_tarotista",
+        "titulo": "El Camino del Tarotista",
+        "tipo": "onboarding"
+      }
+    ],
+    "personaje": {
+      "id": "lucas",
+      "nombre": "Lucas",
+      "arquetipo": "MENTOR",
+      "rol": "Scrum Master del Índice",
+      "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png"
+    }
+  },
+  "output": {
+    "agent_file": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/lucas.agent.md",
+    "actor_entry": "actores.json",
+    "elenco_folder": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/"
+  }
+}

@@ -2995,3 +2995,169 @@ refs #SCRIPT-1.11.0
 | 2025-12-24 | Implementar S01-S05: crear ecosistema.md con 3 galerías + guía | @aleph |
 | 2025-12-24 | Actualizar navegación index.md (card Ecosistema) | @aleph |
 | 2025-12-24 | Crear redirect /agentes/ → /ecosistema/ | @aleph |
+
+---
+
+# Épica: SCRIPT-1.13.0 — Índices DRY y Agente Lucas
+
+**Objetivo**: Crear índices de navegación separados para visión funcional (@aleph) y técnica (@ox), y un agente Lucas que combine ambas perspectivas como Scrum Master del Índice.
+
+**Estado**: ✅ Completada
+
+**Fecha**: 2025-12-24 (Nochebuena)  
+**Rama de trabajo**: `fc1`
+
+---
+
+## Contexto
+
+### El problema
+
+Los agentes @aleph y @ox tienen documentación dispersa:
+- @aleph: Orientado a usuarios, necesita un frontal funcional ("qué puedo hacer")
+- @ox: Orientado a Scrum team, necesita un frontal técnico ("cómo está construido")
+- No hay un agente que valide coherencia DRY entre ambas visiones
+
+### La solución
+
+1. **Funcional.md**: Índice para usuarios (capacidades, flujos, invocaciones)
+2. **Tecnico.md**: Índice para equipo técnico (arquitectura, ontología, checklists)
+3. **Agente Lucas**: Scrum Master que mantiene coherencia entre índices
+
+---
+
+## Stories
+
+### SCRIPT-1.13.0-S01 — Índice Funcional (Aleph)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear ARCHIVO/DEVOPS/Funcional.md | ✅ |
+| T002 | Documentar 5 capacidades principales | ✅ |
+| T003 | Documentar agentes por capa (UI, Backend, Sistema, Plugins, Meta) | ✅ |
+| T004 | Documentar 4 flujos principales (redacción, auditoría, extracción, publicación) | ✅ |
+| T005 | Documentar memoria ARCHIVO y ejemplos de invocación | ✅ |
+
+**Definition of Done**: Usuario puede navegar desde Funcional.md a cualquier capacidad.
+
+---
+
+### SCRIPT-1.13.0-S02 — Índice Técnico (Ox)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Crear ARCHIVO/DEVOPS/Tecnico.md | ✅ |
+| T007 | Documentar arquitectura de 5 capas con diagrama | ✅ |
+| T008 | Documentar ontología .github/ (6 categorías) | ✅ |
+| T009 | Documentar sistema de plugins (18) y submódulos (14) | ✅ |
+| T010 | Documentar flujo DevOps y checklists de validación | ✅ |
+
+**Definition of Done**: Scrum team puede navegar desde Tecnico.md a cualquier componente.
+
+---
+
+### SCRIPT-1.13.0-S03 — Agente Lucas (Scrum Master del Índice)
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Crear recipe lucas.recipe.json (base: aleph + ox) | ✅ |
+| T012 | Crear agents/created/lucas.agent.md con 8 handoffs | ✅ |
+| T013 | Definir 5 tests de coherencia (DRY, sincronización, commits) | ✅ |
+| T014 | Crear ELENCO/lucas/lucas.agent.md (ficha de personaje) | ✅ |
+| T015 | Registrar en actores.json con arquetipo MENTOR | ✅ |
+| T016 | Añadir a obras hola_mundo y camino_del_tarotista | ✅ |
+| T017 | Registrar operaciones en creation-log.json | ✅ |
+| T018 | Corregir JSON malformado en creation-log.json | ✅ |
+
+**Definition of Done**: Lucas desplegado en Teatro ARG, invocable desde ambas obras.
+
+---
+
+## Métricas SCRIPT-1.13.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 3 |
+| Tasks totales | 18 |
+| Puntos totales | 11 |
+| Prioridad Must | 3 stories (11 pts) |
+| Completadas | **3** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| [ARCHIVO/DEVOPS/Funcional.md](ARCHIVO/DEVOPS/Funcional.md) | Índice para usuarios | ✅ |
+| [ARCHIVO/DEVOPS/Tecnico.md](ARCHIVO/DEVOPS/Tecnico.md) | Índice para Scrum team | ✅ |
+| [recipes/lucas.recipe.json](ARCHIVO/PLUGINS/AGENT_CREATOR/recipes/lucas.recipe.json) | Receta de Lucas | ✅ |
+| [agents/created/lucas.agent.md](ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/lucas.agent.md) | Agente principal | ✅ |
+| [ELENCO/lucas/](ARCHIVO/DISCO/TALLER/ELENCO/lucas/) | Ficha de personaje | ✅ |
+
+---
+
+## Archivos Actualizados
+
+| Archivo | Cambio |
+|---------|--------|
+| actores.json | Entrada `lucas` añadida |
+| obras.json | Lucas en hola_mundo y camino_del_tarotista |
+| creation-log.json | 2 entradas + corrección JSON |
+
+---
+
+## Características de Lucas
+
+| Campo | Valor |
+|-------|-------|
+| **Arquetipo** | MENTOR |
+| **Rol** | Scrum Master del Índice |
+| **Agentes base** | @aleph (funcional) + @ox (técnico) |
+| **Fuente datos** | ARCHIVO/DEVOPS/ |
+| **Obras** | hola_mundo, camino_del_tarotista |
+
+### Capacidades
+
+1. Validar ediciones de índice (Funcional.md, Tecnico.md)
+2. Mantener coherencia DRY entre visión funcional y técnica
+3. Actuar como oráculo de commits
+4. Auditar sincronización índice ↔ codebase
+5. Guiar dónde documentar información nueva
+
+### Tests
+
+| Test | Pregunta |
+|------|----------|
+| coherencia_funcional_tecnico | ¿Ambos índices reflejan la misma realidad? |
+| dry_violation | ¿Hay duplicación entre índices? |
+| indice_desactualizado | ¿El índice menciona algo que ya no existe? |
+| archivo_huerfano | ¿Hay archivos no mencionados en ningún índice? |
+| commit_sin_trazabilidad | ¿El commit sigue protocolo DevOps? |
+
+---
+
+## Pendientes
+
+- **Avatar**: Crear `ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png` (imagen 256×256)
+
+---
+
+## Changelog SCRIPT-1.13.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear épica SCRIPT-1.13.0 | @scrum |
+| 2025-12-24 | Crear Funcional.md y Tecnico.md (S01, S02) | @aleph |
+| 2025-12-24 | Crear agente Lucas y desplegar en Teatro (S03) | @aleph |
+| 2025-12-24 | Corregir creation-log.json y cerrar épica | @aleph |
