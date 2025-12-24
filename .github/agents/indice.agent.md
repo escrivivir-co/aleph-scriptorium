@@ -36,6 +36,14 @@ handoffs:
     agent: Indice
     prompt: Escanea registry.json, agents/, plugins/ y compara con los índices para detectar discrepancias.
     send: false
+  - label: Consultar índice SPLASH (docs/)
+    agent: plugin_ox_ghpages
+    prompt: Consulta el índice estructural de la web en ARCHIVO/DISCO/SPLASH/index.md para operaciones sobre docs/.
+    send: false
+  - label: Actualizar índice SPLASH
+    agent: plugin_ox_ghpages
+    prompt: Actualiza el índice SPLASH para reflejar cambios estructurales en docs/.
+    send: false
 ---
 
 # Agente: Índice (Portero del Proyecto)

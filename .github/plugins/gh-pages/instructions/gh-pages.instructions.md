@@ -670,8 +670,99 @@ Ver modelo en: `ARCHIVO/DISCO/Diciembre_25_Portada/TICKET-TESIS-NUMERO.md`
 
 ---
 
+## Índice SPLASH (Mapa Estructural)
+
+> **Fuente de verdad estructural**: `ARCHIVO/DISCO/SPLASH/index.md`  
+> **Propósito**: Mapa técnico-funcional para orquestar ediciones en `docs/`  
+> **Épica**: SCRIPT-1.16.0
+
+### Qué es
+
+El **índice SPLASH** documenta la arquitectura del sitio web:
+- Secciones de `index.md` con líneas y clases CSS
+- Sistema de variables CSS y banderas
+- Páginas del sitio y sus layouts
+- Operaciones de edición y checklist
+
+### Cuándo consultarlo
+
+| Operación | Consultar SPLASH |
+|-----------|------------------|
+| Añadir sección a index.md | ✅ Verificar tabla §2.2 |
+| Modificar estilos | ✅ Verificar §3.1 (variables) |
+| Crear nueva página | ✅ Verificar §4 (páginas) |
+| Refactorizar estructura | ✅ Obligatorio |
+| Publicar contenido existente | ⚠️ Opcional |
+
+### Cuándo actualizarlo
+
+Actualizar el índice SPLASH si:
+1. Se añade/elimina una **sección** en `index.md`
+2. Se crea una **nueva página** en `docs/`
+3. Se modifica la **estructura de layouts/includes**
+4. Se añaden **nuevas clases CSS** significativas
+5. Se cambia la **navegación** (`_config.yml`)
+
+**No es necesario actualizar si**:
+- Solo se modifica contenido textual
+- Solo se publican posts/capítulos
+- Se hacen ajustes menores de estilo
+
+### Flujo de operación
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  FLUJO CON ÍNDICE SPLASH                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  1. @GHPages recibe operación                                   │
+│            │                                                     │
+│            ▼                                                     │
+│  2. ¿Afecta estructura de docs/?                                │
+│            │                                                     │
+│     ┌──────┴──────┐                                             │
+│     │             │                                              │
+│     ▼             ▼                                              │
+│   [SÍ]          [NO]                                             │
+│     │             │                                              │
+│     ▼             ▼                                              │
+│  3. Consultar    Ejecutar                                        │
+│     SPLASH       operación                                       │
+│     index.md     directamente                                    │
+│            │                                                     │
+│            ▼                                                     │
+│  4. Ejecutar operación                                          │
+│            │                                                     │
+│            ▼                                                     │
+│  5. ¿Se modificó estructura?                                    │
+│            │                                                     │
+│     ┌──────┴──────┐                                             │
+│     │             │                                              │
+│     ▼             ▼                                              │
+│   [SÍ]          [NO]                                             │
+│     │             │                                              │
+│     ▼             ▼                                              │
+│  6. Sugerir      Commit                                          │
+│     actualizar   normal                                          │
+│     SPLASH                                                       │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Validación pre-commit
+
+El prompt `commit-message.prompt.md` incluye **Paso 2.6** que:
+- Detecta cambios en `docs/`
+- Compara con el índice SPLASH
+- Genera warning si hay discrepancia estructural
+
+**Este warning es informativo, NO bloquea el commit.**
+
+---
+
 ## Referencias
 
 - [Documentación del plugin](../docs/README.md)
 - [Agente GHPages](../agents/ghpages.agent.md)
 - [Manifest](../manifest.md)
+- [Índice SPLASH](../../../ARCHIVO/DISCO/SPLASH/index.md)

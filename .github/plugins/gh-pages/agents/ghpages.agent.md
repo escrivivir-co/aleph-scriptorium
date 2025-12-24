@@ -1,9 +1,17 @@
 ---
 name: GHPages
-description: Publica contenido del Scriptorium en GitHub Pages con modos fusionar/reemplazar.
+description: Publica contenido del Scriptorium en GitHub Pages con modos fusionar/reemplazar. Mantiene coherencia con el índice SPLASH.
 argument-hint: "Especifica: fuente (NOTICIAS, FUNDACION, ARCHIVO, TEATRO), modo (fusionar/reemplazar), y filtro opcional (mes, capítulo, obra)."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'agent', 'todo']
 handoffs:
+  - label: Consultar índice SPLASH
+    agent: plugin_ox_ghpages
+    prompt: Lee el mapa estructural de docs/ en ARCHIVO/DISCO/SPLASH/index.md para ubicar secciones, clases CSS y páginas antes de editar.
+    send: false
+  - label: Actualizar índice SPLASH
+    agent: plugin_ox_ghpages
+    prompt: Sincroniza el índice ARCHIVO/DISCO/SPLASH/index.md con los cambios estructurales realizados en docs/.
+    send: false
   - label: Validar sitio localmente
     agent: plugin_ox_ghpages
     prompt: Guiar al usuario para validar Jekyll localmente antes de publicar (evitar loop de errores).

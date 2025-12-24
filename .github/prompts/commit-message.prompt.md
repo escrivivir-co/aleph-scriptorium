@@ -88,6 +88,45 @@ Este warning es informativo y no bloquea el commit.
 
 El usuario decide si corregir ahora o después.
 
+### Paso 2.6: Validar Índice SPLASH (si hay cambios en docs/)
+
+Si los cambios afectan a `docs/`, verificar coherencia con el índice estructural:
+
+```bash
+# Detectar cambios en docs/
+git diff --stat | grep "docs/"
+```
+
+**Criterios de warning**:
+
+| Cambio detectado | Warning | Acción sugerida |
+|------------------|---------|------------------|
+| Nueva sección en `index.md` | ⚠️ SPLASH | Actualizar tabla §2.2 |
+| Nueva página `docs/*.md` | ⚠️ SPLASH | Actualizar tabla §4 |
+| Modificación `_layouts/` o `_includes/` | ⚠️ SPLASH | Actualizar §1 |
+| Nuevas variables CSS | ⚠️ SPLASH | Actualizar §3.1 |
+| Cambios en navegación (`_config.yml`) | ⚠️ SPLASH | Actualizar §1.3 |
+| Solo contenido textual | ✅ OK | No requiere actualización |
+| Solo `_posts/` o colecciones | ✅ OK | No requiere actualización |
+
+**Formato del warning**:
+
+```
+⚠️ VALIDACIÓN SPLASH (docs/)
+
+1. [estructura_modificada] Se detectaron cambios estructurales en docs/:
+   - {archivo1}
+   - {archivo2}
+
+El índice SPLASH puede estar desactualizado.
+Ruta: ARCHIVO/DISCO/SPLASH/index.md
+
+Sugerencia: @GHPages actualizar índice SPLASH
+Este warning es informativo y no bloquea el commit.
+```
+
+**Nota**: Este paso solo se ejecuta si hay cambios en `docs/`.
+
 ### Paso 3: Generar mensaje
 
 Ejemplo para cambios en Scriptorium:

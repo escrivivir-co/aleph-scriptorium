@@ -3538,3 +3538,165 @@ Los plugins se instalaban con `true` por defecto en settings.json:
 | 2025-01-02 | Generar backlog borrador (6 stories, 28 tasks) | @scrum |
 | 2025-01-02 | Implementar S01-S06 completas | @aleph |
 | 2025-01-02 | Cerrar épica al 100% | @aleph |
+
+---
+
+# Épica: SCRIPT-1.16.0 — Índice SPLASH y Vinculación GH-Pages
+
+**Objetivo**: Crear un índice estructural del sitio web (`docs/`) que permita orquestar refactorizaciones, vincular el plugin GH-Pages con este índice y generar warnings en commits cuando haya discrepancias.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-12-24  
+**Fecha cierre**: 2025-12-24  
+**Rama de trabajo**: `fc1`  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/SPLASH_INDEX/01_backlog-borrador.md`
+
+---
+
+## Contexto
+
+### El problema
+
+El plugin GH-Pages no tenía un índice estructural que:
+- Documentara la arquitectura del sitio web
+- Sirviera de mapa para refactorizaciones
+- Se mantuviera sincronizado con cambios en `docs/`
+- Generara warnings en commits cuando hubiera discrepancias
+
+### La solución
+
+1. **Índice SPLASH**: `ARCHIVO/DISCO/SPLASH/index.md` — mapa técnico-funcional de `docs/`
+2. **Vinculación**: Instrucciones del plugin GH-Pages referencian el índice
+3. **Interceptación**: Prompts del plugin verifican coherencia antes de operar
+4. **Warning en commits**: `commit-message.prompt.md` Paso 2.6 valida cambios en `docs/`
+5. **Conexión con @indice**: @indice puede delegar a @GHPages para índice SPLASH
+
+---
+
+## Story: SCRIPT-1.16.0-S01 — Creación del Índice SPLASH
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `ARCHIVO/DISCO/SPLASH/index.md` con arquitectura Jekyll | ✅ |
+| T002 | Documentar 8 secciones de index.md con líneas y clases CSS | ✅ |
+| T003 | Mapear sistema CSS (variables, banderas, ubicaciones) | ✅ |
+| T004 | Documentar páginas del sitio y operaciones | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S02 — Vinculación con Instrucciones GH-Pages
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T005 | Añadir sección "Índice SPLASH" en instrucciones | ✅ |
+| T006 | Documentar flujo de consulta del índice | ✅ |
+| T007 | Añadir regla: "Actualizar índice si se modifica estructura" | ✅ |
+| T008 | Añadir referencia cruzada en §8 del índice SPLASH | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S03 — Interceptación de Operaciones
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T009 | Modificar `gh-pages-publish.prompt.md`: añadir paso de validación | ✅ |
+| T010 | Documentar operaciones que requieren actualización del índice | ✅ |
+| T011 | Crear lógica: si cambia estructura → sugerir actualizar índice | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S04 — Warning en Commit-Message
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T012 | Añadir "Paso 2.6: Validar índice SPLASH" en commit-message.prompt | ✅ |
+| T013 | Definir criterios de warning (nuevas secciones, CSS, páginas) | ✅ |
+| T014 | Documentar formato del warning (informativo, no bloqueante) | ✅ |
+| T015 | Añadir sugerencia de actualización si hay discrepancia | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S05 — Actualización de Agente GHPages
+**Puntos**: 2  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Añadir handoff "Consultar índice SPLASH" | ✅ |
+| T017 | Añadir handoff "Actualizar índice SPLASH" | ✅ |
+
+---
+
+## Story: SCRIPT-1.16.0-S06 — Conexión con @indice
+**Puntos**: 2  
+**Prioridad**: Should  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T018 | Añadir handoff en @indice para delegar SPLASH a @GHPages | ✅ |
+| T019 | Documentar relación entre índices DRY y SPLASH | ✅ |
+
+---
+
+## Métricas SCRIPT-1.16.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 6 |
+| Tasks totales | 19 |
+| Puntos totales | 18 |
+| Prioridad Must | 4 stories (14 pts) |
+| Prioridad Should | 2 stories (4 pts) |
+| Completadas | **6** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Estado |
+|---------|-----------|--------|
+| `ARCHIVO/DISCO/SPLASH/index.md` | Índice estructural de docs/ | ✅ |
+| `.github/plugins/gh-pages/instructions/gh-pages.instructions.md` | Sección "Índice SPLASH" | ✅ |
+| `.github/plugins/gh-pages/prompts/gh-pages-publish.prompt.md` | Paso de validación SPLASH | ✅ |
+| `.github/plugins/gh-pages/agents/ghpages.agent.md` | Handoffs SPLASH | ✅ |
+| `.github/prompts/commit-message.prompt.md` | Paso 2.6 warning SPLASH | ✅ |
+| `.github/agents/indice.agent.md` | Handoff delegación SPLASH | ✅ |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| Plugin GH-Pages | ✅ Instalado |
+| @indice | ✅ Operativo |
+| SCRIPT-1.14.0 (Agente Índice) | ✅ Completada |
+
+---
+
+## Changelog SCRIPT-1.16.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-24 | Crear índice SPLASH | @aleph |
+| 2025-12-24 | Vincular con instrucciones GH-Pages | @aleph |
+| 2025-12-24 | Añadir Paso 2.6 en commit-message.prompt | @aleph |
+| 2025-12-24 | Añadir handoffs en GHPages | @aleph |
+| 2025-12-24 | Conectar @indice con SPLASH | @aleph |
+| 2025-12-24 | Publicar épica en backlog principal | @aleph |
