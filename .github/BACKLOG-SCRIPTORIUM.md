@@ -3150,7 +3150,7 @@ Los agentes @aleph y @ox tienen documentación dispersa:
 
 ## Pendientes
 
-- **Avatar**: Crear `ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png` (imagen 256×256)
+- **Avatar**: ✅ `ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png` (256×256 creado)
 
 ---
 
