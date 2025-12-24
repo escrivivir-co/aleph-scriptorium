@@ -3977,3 +3977,5 @@ El README.md es el punto de entrada público del proyecto, pero:
 | 2025-12-24 | Implementar S01-S03: refactorizar índices SPLASH y README | @aleph |
 | 2025-12-24 | Actualizar README.md y docs/ con contadores corregidos (19 plugins, 31 agentes) | @aleph |
 | 2025-12-24 | Cerrar épica al 100% | @aleph |
+| 2025-12-24 | Refactorizar README.md: 366→112 líneas (-69%), eliminar repeticiones | @aleph |
+| 2025-12-24 | Actualizar índice README/index.md con nueva estructura | @aleph |
