@@ -80,6 +80,10 @@ handoffs:
               agent: plugin_ox_network
               prompt: Accede al plugin Network (Oasis/Scuttlebutt). Publica, recibe y sincroniza BOEs entre Scriptoriums.
               send: false
+       - label: "[NOVELIST] Edición de narrativas"
+              agent: plugin_ox_novelist
+              prompt: Accede al plugin Novelist (MCP). Crea, edita y exporta obras narrativas con memoria a largo plazo.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

@@ -11,7 +11,7 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto (4 en total)
+# Submódulos del proyecto (8 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/vscode-alephscript-extension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
@@ -27,6 +27,15 @@ SUBMODULE_AS_GYM_BRANCH="dev/001"
 
 SUBMODULE_NETWORK_SDK_DIR="$ROOT_DIR/alephscript-network-sdk"
 SUBMODULE_NETWORK_SDK_URL="https://github.com/escrivivir-co/alephscript-network-sdk.git"
+
+SUBMODULE_KICK_ALEPH_BOT_DIR="$ROOT_DIR/kick-aleph-bot"
+SUBMODULE_KICK_ALEPH_BOT_URL="https://github.com/escrivivir-co/kick-aleph-bot.git"
+
+SUBMODULE_KICK_CRONO_BOT_DIR="$ROOT_DIR/kick-aleph-crono-bot"
+SUBMODULE_KICK_CRONO_BOT_URL="https://github.com/escrivivir-co/kick-aleph-crono-bot.git"
+
+SUBMODULE_MCP_NOVELIST_DIR="$ROOT_DIR/mcp-novelist"
+SUBMODULE_MCP_NOVELIST_URL="https://github.com/escrivivir-co/mcp-novelist.git"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -45,7 +54,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/teatro/prompts": true,
     ".github/plugins/scrum/prompts": true,
     ".github/plugins/mcp-presets/prompts": true,
-    ".github/plugins/network/prompts": true
+    ".github/plugins/network/prompts": true,
+    ".github/plugins/novelist/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -57,7 +67,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/teatro/instructions": true,
     ".github/plugins/scrum/instructions": true,
     ".github/plugins/mcp-presets/instructions": true,
-    ".github/plugins/network/instructions": true
+    ".github/plugins/network/instructions": true,
+    ".github/plugins/novelist/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -139,8 +150,11 @@ setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL" "aleph
 setup_submodule "$SUBMODULE_AS_UTILS_SDK_DIR" "$SUBMODULE_AS_UTILS_SDK_URL" "as-utils-sdk"
 setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL" "as-gym"
 setup_submodule "$SUBMODULE_NETWORK_SDK_DIR" "$SUBMODULE_NETWORK_SDK_URL" "alephscript-network-sdk"
+setup_submodule "$SUBMODULE_KICK_ALEPH_BOT_DIR" "$SUBMODULE_KICK_ALEPH_BOT_URL" "kick-aleph-bot"
+setup_submodule "$SUBMODULE_KICK_CRONO_BOT_DIR" "$SUBMODULE_KICK_CRONO_BOT_URL" "kick-aleph-crono-bot"
+setup_submodule "$SUBMODULE_MCP_NOVELIST_DIR" "$SUBMODULE_MCP_NOVELIST_URL" "mcp-novelist"
 
-echo "[setup] ✔ Setup completado"
+echo "[setup] ✔ Setup completado (8 submódulos)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"

@@ -88,6 +88,10 @@ handoffs:
     agent: plugin_ox_network
     prompt: Accede al plugin Network (Oasis/Scuttlebutt) para sincronización P2P de BOEs.
     send: false
+  - label: Invocar bridge Novelist
+    agent: plugin_ox_novelist
+    prompt: Accede al plugin Novelist (MCP) para edición de narrativas con memoria a largo plazo.
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -106,8 +110,8 @@ handoffs:
 
 ```json
 {
-  "version": "1.3.0",
-  "ultima_actualizacion": "2025-12-24",
+  "version": "1.4.0",
+  "ultima_actualizacion": "2025-12-27",
   "capas": {
     "ui": {
       "descripcion": "Agentes de producción e interfaz con usuario",
@@ -237,6 +241,10 @@ handoffs:
         "network": {
           "directorio": ".github/plugins/network/agents/",
           "agentes": ["Network"]
+        },
+        "novelist": {
+          "directorio": ".github/plugins/novelist/agents/",
+          "agentes": ["Novelist"]
         }
       },
       "bridges": {
@@ -286,6 +294,11 @@ handoffs:
           "plugin_ox_network": {
             "archivo": ".github/agents/plugin_ox_network.agent.md",
             "plugin": "network",
+            "delega_a": 1
+          },
+          "plugin_ox_novelist": {
+            "archivo": ".github/agents/plugin_ox_novelist.agent.md",
+            "plugin": "novelist",
             "delega_a": 1
           }
         }
