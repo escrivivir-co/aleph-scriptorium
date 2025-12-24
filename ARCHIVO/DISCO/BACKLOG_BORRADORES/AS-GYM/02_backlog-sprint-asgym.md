@@ -30,10 +30,13 @@ El resultado es un **protocolo unificado DRY** de creación de personajes que in
 
 | Iteración | Nombre | Objetivo | Effort |
 |-----------|--------|----------|--------|
-| FC1-I1 | Catálogo FIA | Exponer paradigmas en formato consultable | 25% |
-| FC1-I2 | Extensión AGENT_CREATOR | Añadir FIA + MCP-Presets al flujo | 35% |
-| FC1-I3 | Protocolo DRY | Documentar flujo unificado de creación | 20% |
-| FC1-I4 | Documentación Web | README técnico + docs/ usuario | 20% |
+| FC1-I1 | Catálogo FIA | Exponer paradigmas en formato consultable | 18% |
+| FC1-I2 | Extensión AGENT_CREATOR | Añadir FIA + MCP-Presets al flujo | 27% |
+| FC1-I3 | Protocolo DRY | Documentar flujo unificado de creación | 15% |
+| FC1-I4 | Documentación Web | README técnico + docs/ usuario | 18% |
+| FC1-I5 | **Sistema de Épocas** | Permitir personajes con modos de operación diferenciados | 22% |
+
+> **Nota**: I5 añadida tras análisis de gaps con caso de uso Tutatix (ver `03_gap-analysis-tutatix.md`)
 
 ---
 
@@ -106,6 +109,9 @@ El resultado es un **protocolo unificado DRY** de creación de personajes que in
 | T012 | Documentar paradigma `cientifica/` | 0.5 | ⏳ |
 | T013 | Documentar paradigma `gramaticas/` | 0.5 | ⏳ |
 | T014 | Documentar paradigma `sistemas/` | 0.5 | ⏳ |
+| T050 | Añadir sub-catálogo de modelos por paradigma (ej: `simbolica` → `red_semantica`, `frames`) | 1 | ⏳ |
+
+> **T050 añadida**: Caso de uso Tutatix requiere seleccionar modelos específicos, no solo paradigmas de alto nivel.
 
 **Definition of Done**: 
 - Los 10 paradigmas están en `fia-catalog.json` con metadata completa
@@ -451,15 +457,111 @@ Invoca `@AgentCreator` en el chat de Copilot...
 
 ---
 
+## Iteración 5: Sistema de Épocas
+
+> **Añadida tras análisis de gaps con caso de uso Tutatix**  
+> Ver: `03_gap-analysis-tutatix.md`
+
+**Objetivo**: Permitir que los personajes tengan modos de operación diferenciados (épocas).
+
+**Effort**: 10 puntos
+
+**Contexto**: El caso de uso Tutatix reveló que algunos personajes necesitan:
+- **Época de Edición**: Construir/modificar estructuras FIA (ej: red semántica)
+- **Época de Conversación**: Usar las estructuras como límites de contexto
+
+### Stories
+
+#### SCRIPT-1.10.0-S10: Sistema de Épocas para Personajes FIA
+**Effort**: 10 pts  
+**Prioridad**: Must  
+**Justificación**: Sin épocas, no se puede crear Tutatix ni ningún personaje con modos de operación diferenciados.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T051 | Diseñar schema de `epochs` en recipe.json | 1 | ⏳ |
+| T052 | Implementar selector de época en `crear-agente.prompt.md` | 1 | ⏳ |
+| T053 | Documentar patrones de épocas (write/read, contexto limitado) | 1 | ⏳ |
+| T054 | Definir estructura de carpeta con FIA persistente por agente | 1 | ⏳ |
+| T055 | Crear prompt `editar-red-semantica.prompt.md` | 2 | ⏳ |
+| T056 | Crear prompt `cargar-contexto-fia.prompt.md` | 1 | ⏳ |
+| T057 | Extender schema de `actores.json` con epochs | 1 | ⏳ |
+| T058 | Actualizar `desplegar-en-arg.prompt.md` con config de épocas | 1 | ⏳ |
+| T059 | Crear prueba de concepto: personaje Tutatix | 1 | ⏳ |
+
+**Definition of Done**:
+- Se puede crear un personaje con 2+ épocas
+- Las épocas persisten configuración FIA
+- El despliegue en ARG respeta las épocas
+- El usuario puede cambiar de época vía comando
+- Tutatix desplegado en obra "Hola Mundo"
+
+**Schema de epochs propuesto**:
+
+```json
+"epochs": [
+  {
+    "id": "edicion",
+    "nombre": "Edición de Red Semántica",
+    "descripcion": "El usuario construye/edita la red semántica",
+    "fia_activo": "simbolica.red_semantica",
+    "modo": "write",
+    "system_prompt_override": "Actúa como editor colaborativo..."
+  },
+  {
+    "id": "conversacion",
+    "nombre": "Conversación Limitada",
+    "descripcion": "Conversa usando solo conceptos de la red",
+    "fia_activo": "simbolica.red_semantica",
+    "modo": "read",
+    "system_prompt_override": "Responde usando SOLO los conceptos de la red..."
+  }
+],
+"epoch_default": "conversacion"
+```
+
+**Estructura de carpeta con FIA persistente**:
+
+```
+ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/tutatix/
+├── tutatix.agent.md        # Definición del agente
+├── tutatix.recipe.json     # Receta de 4 ingredientes + épocas
+└── fia/
+    └── red_semantica.json  # Red semántica persistida
+```
+
+**Extensión de actores.json**:
+
+```json
+"tutatix": {
+  "nombre": "Tutatix",
+  "tipo": "personaje",
+  "arquetipo": "MENTOR",
+  "origen": {
+    "agente_base": "blueflag",
+    "fia_modelo": "simbolica.red_semantica"
+  },
+  "epochs": {
+    "edicion": { "comando": "@tutatix editar" },
+    "conversacion": { "comando": "@tutatix consultar" }
+  },
+  "epoch_actual": "conversacion"
+}
+```
+
+---
+
 ## Métricas
 
 | Métrica | Target | Mínimo | Estado |
 |---------|--------|--------|--------|
-| Tasks completadas | 42/42 | 35/42 | ⏳ |
-| Effort completado | 34 pts | 28 pts | ⏳ |
+| Tasks completadas | 51/51 | 43/51 | ⏳ |
+| Effort completado | 45 pts | 38 pts | ⏳ |
 | % Avance | 100% | 85% | ⏳ |
-| Stories completadas | 9/9 | 7/9 | ⏳ |
+| Stories completadas | 10/10 | 8/10 | ⏳ |
 | Documentación web | 1 página | 1 página | ⏳ |
+
+> **Nota**: Métricas actualizadas tras análisis de gaps (Tutatix). Ver `03_gap-analysis-tutatix.md`.
 
 ---
 
@@ -492,6 +594,7 @@ Invoca `@AgentCreator` en el chat de Copilot...
 |-------|--------|-------|
 | 2025-12-24 | Crear backlog borrador desde conversación PO-SM | @scrum |
 | 2025-12-24 | Definir esquema de catálogo FIA | @scrum |
+| 2025-12-24 | Añadir I5 + S10 (Sistema de Épocas) tras análisis gaps Tutatix | @scrum |
 | 2025-12-24 | Diseñar protocolo 4 ingredientes DRY | @scrum |
 
 ---

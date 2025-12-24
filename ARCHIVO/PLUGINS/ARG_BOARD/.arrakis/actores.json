@@ -118,5 +118,51 @@
       "estructura": ["Escala", "Enforcement", "Suministro", "Deserción"],
       "sombras": ["Poder", "Enemigo", "Autodefensa", "Purga", "Herencia"]
     }
+  },
+  "tutatix": {
+    "nombre": "Tutatix",
+    "tipo": "personaje",
+    "arquetipo": "MENTOR",
+    "descripcion": "Auditor de verdad con conocimiento limitado a red semántica FIA. Primer personaje con sistema de épocas (edición/consulta).",
+    "rol": "Guardián epistémico con memoria estructurada",
+    "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/tutatix/avatar.png",
+    "plataformas": ["vscode"],
+    "monomito": "camino_del_tarotista",
+    "origen": {
+      "plugin": "agent-creator",
+      "agente_base": "blueflag",
+      "fia": "simbolica.red_semantica",
+      "fuente_datos": "as-gym/alephscript/src/FIA/paradigmas/simbolica/",
+      "agente_creado": "tutatix",
+      "ruta_agente": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/tutatix/tutatix.agent.md"
+    },
+    "capacidades": [
+      "Auditar verdad (evidencia, utilidad, falsificabilidad)",
+      "Construir red semántica colaborativa con usuario",
+      "Cambiar entre épocas: edición (write) y consulta (read)",
+      "Limitar conocimiento a la red cargada",
+      "Persistir/cargar red en JSON"
+    ],
+    "epochs": {
+      "edicion": {
+        "modo": "write",
+        "descripcion": "Añadir/modificar nodos y arcos de la red semántica",
+        "comandos": ["@tutatix editar", "@tutatix añadir"]
+      },
+      "consulta": {
+        "modo": "read",
+        "descripcion": "Solo responder con conocimiento de la red cargada",
+        "comandos": ["@tutatix", "@tutatix consultar"]
+      }
+    },
+    "epoch_default": "consulta",
+    "tests": {
+      "heredados": ["Evidencia", "Utilidad", "Falsificabilidad", "Posverdad"],
+      "especificos": ["concepto_en_red", "relacion_valida", "herencia_coherente"]
+    },
+    "fia_state": {
+      "red_path": "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/tutatix/fia/red_semantica.json",
+      "schema": "as-gym/red_semantica.schema.json"
+    }
   }
 }

@@ -367,3 +367,41 @@ El borrador contiene:
 | Método Científico | `cientifica` | @blueflag | @revisor | Método científico, falsificabilidad |
 | Gramáticas Formales | `gramaticas` | @orangeflag | @blueflag | Registro, estructura formal del lenguaje |
 | Teoría de Sistemas | `sistemas` | @redflag | @yellowflag | Emergencia, feedback loops, escala |
+
+---
+
+## Anexo: Análisis de Gaps (Caso Tutatix)
+
+> **Fecha**: 2025-12-24  
+> **Documento completo**: `03_gap-analysis-tutatix.md`
+
+### Caso de uso evaluado
+
+Creación del personaje **Tutatix**: auditor de verdad basado en @blueflag con Red Semántica y dos épocas de operación (edición / conversación).
+
+### Gaps identificados
+
+| # | Gap | Impact | Story Añadida |
+|---|-----|--------|---------------|
+| G1 | Sub-catálogo de modelos FIA | Medio | S02 (T050) |
+| G2 | Schema de epochs en recipe | Alto | S10 |
+| G3 | Selector de época en creación | Alto | S10 |
+| G4 | Patrones de épocas documentados | Medio | S10 |
+| G5 | Carpeta FIA persistente por agente | Alto | S10 |
+| G6 | Prompt editar-red-semantica | Alto | S10 |
+| G7 | Prompt cargar-contexto-fia | Alto | S10 |
+| G8 | Schema epochs en actores.json | Medio | S10 |
+| G9 | Actualizar desplegar-en-arg | Medio | S10 |
+
+### Impacto en métricas
+
+| Métrica | Antes | Después | Δ |
+|---------|-------|---------|---|
+| Stories | 9 | 10 | +1 |
+| Tasks | 42 | 51 | +9 |
+| Effort total | 34 pts | 45 pts | +11 |
+| Iteraciones | 4 | 5 | +1 |
+
+### Decisión PO
+
+✅ Aprobado añadir S10 (Sistema de Épocas) y T050 (sub-catálogo modelos).
