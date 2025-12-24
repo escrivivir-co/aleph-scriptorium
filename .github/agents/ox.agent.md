@@ -128,6 +128,10 @@ handoffs:
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
     send: false
+  - label: Crear release
+    agent: Ox
+    prompt: Crea un nuevo release del Scriptorium. Usa el protocolo de .github/prompts/crear-release.prompt.md para actualizar README, roadmap, merge a main, crear tag anotado y push.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
@@ -527,6 +531,48 @@ Cuando se añade o modifica un agente:
 2. **Invocar Ox**: `@ox diagnosticar agentes`
 3. **Regenerar docs**: `@ox generar README` o `@ox actualizar ontología`
 4. **Commit**: Seguir protocolo DevOps
+
+---
+
+## Protocolo de Release
+
+> **Referencia completa**: `.github/prompts/crear-release.prompt.md`
+
+Ox puede guiar el proceso completo de crear un release:
+
+### Pasos del Release
+
+1. **Actualizar docs**: README.md (badge, métricas), docs/roadmap.md
+2. **Commit en rama de desarrollo**: `release({version}): preparar {nombre}`
+3. **Merge a main**: Con mensaje `-preview` si el desarrollo continúa
+4. **Crear tag anotado**: Con release notes completas
+5. **Push**: main, rama origen, y tag
+
+### Convención de Versionado
+
+```
+v{major}.{minor}.{patch}[-{prerelease}]
+
+Ejemplos:
+- v1.0.0-beta.1  → Primera piedra
+- v1.0.0-beta.3  → Semillas de Futuro
+- v1.0.0         → Producción
+```
+
+### Indicadores de Merge
+
+| Indicador | Significado |
+|-----------|-------------|
+| _(ninguno)_ | Release final, rama origen se cierra |
+| `-preview` | Release parcial, desarrollo continúa |
+| `-hotfix` | Corrección urgente |
+
+### Releases del Proyecto
+
+| Versión | Nombre | Fecha | Nota |
+|---------|--------|-------|------|
+| v1.0.0-beta.1 | Primera Piedra | 2025-12-22 | Bootstrap |
+| v1.0.0-beta.3 | Semillas de Futuro | 2025-12-24 | FC1 -preview |
 
 ---
 
