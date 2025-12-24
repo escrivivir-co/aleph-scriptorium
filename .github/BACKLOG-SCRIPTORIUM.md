@@ -2808,8 +2808,8 @@ refs #SCRIPT-1.11.0
 | Puntos totales | 21 |
 | Prioridad Must | 5 stories (18 pts) |
 | Prioridad Should | 1 story (3 pts) |
-| Completadas | **5** (S01-S05) |
-| % Avance | **83%** |
+| Completadas | **6** (S01-S06) |
+| % Avance | **100%** 🎉 |
 
 ---
 
