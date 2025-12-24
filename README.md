@@ -50,8 +50,8 @@ code .
 
 ```
 .github/
-├── agents/              # 12 agentes core + 18 bridges
-├── plugins/             # 18 plugins (8 operativos + 10 borradores)
+├── agents/              # 13 agentes core + 18 bridges = 31
+├── plugins/             # 19 plugins (8 operativos + 11 borradores)
 ├── prompts/             # Prompts reutilizables
 ├── instructions/        # Instrucciones de contexto
 ├── DEVOPS.md            # Protocolo de desarrollo
@@ -164,13 +164,13 @@ Referencias técnicas:
 | `@plugin_ox_scrum` | Scrum | Scrum (1) |
 | `@plugin_ox_mcppresets` | MCP-Presets | McpPresets (1) |
 
-**Total**: 12 agentes core + 8 bridges + 16 agentes de plugins = **36 agentes**
+**Total**: 13 agentes core + 18 bridges = **31 agentes** (más agentes internos de plugins)
 
 Detalle: [escrivivir-co.github.io/aleph-scriptorium/agentes/](https://escrivivir-co.github.io/aleph-scriptorium/agentes/)
 
 ---
 
-## Plugins (18)
+## Plugins (19)
 
 | Categoría | Plugins | Descripción |
 |-----------|---------|-------------|
@@ -246,7 +246,7 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 │  ██║     ╚██████╗   ██║    Main: 🧊 congelada                │
 │  ╚═╝      ╚═════╝   ╚═╝                                      │
 │                                                              │
-│  v2.0.0-dev · 2025-12-24 · 14 submódulos · 18 plugins        │
+│  v2.0.0-dev · 2025-12-24 · 14 submódulos · 19 plugins        │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -254,11 +254,11 @@ Las contribuciones son bienvenidas. Este proyecto sigue un flujo FOSS estándar:
 |------------|---------|--------|
 | Scriptorium | **2.0.0-dev** | 🔥 FC1 activo (rama `fc1`) |
 | Submódulos | 14 integrados | 🔄 integration/beta/scriptorium |
-| Plugins | 18 registrados | ✅ 8 operativos + 10 borradores |
-| Agentes | 36 invocables | ✅ 12 core + 8 bridges + 16 plugins |
+| Plugins | 19 registrados | ✅ 8 operativos + 11 borradores |
+| Agentes | 31 invocables | ✅ 13 core + 18 bridges |
 | Fundación | 0.0.1 | ⏸️ Pendiente FC2 |
 
-**Rama de trabajo: `fc1`** — Main congelada para releases. Feature Cycle 1 integra 14 submódulos y 18 plugins en un ecosistema unificado: teatro dinámico, paradigmas FIA, flujos visuales, sincronización P2P. [Foto de futuro](ARCHIVO/FOTOS_ESTADO/2025-12-24_FC1_VisionFuturo.md).
+**Rama de trabajo: `fc1`** — Main congelada para releases. Feature Cycle 1 integra 14 submódulos y 19 plugins en un ecosistema unificado: teatro dinámico, paradigmas FIA, flujos visuales, sincronización P2P. [Foto de futuro](ARCHIVO/FOTOS_ESTADO/2025-12-24_FC1_VisionFuturo.md).
 
 **Backlog activo**: [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md)
 
@@ -307,11 +307,11 @@ $ git log --oneline fc1 | head -1
 
 ### 🎄 Nochebuena: Semillas de Futuro
 
-**v1.0.0-beta.3** cierra Feature Cycle 1 con un ecosistema completo de **14 submódulos** y **18 plugins** integrados. Las semillas del teatro cognitivo están plantadas.
+**v1.0.0-beta.3** cierra Feature Cycle 1 con un ecosistema completo de **14 submódulos** y **19 plugins** integrados. Las semillas del teatro cognitivo están plantadas.
 
 **Lo que hay:**
-- 36 agentes invocables (12 core + 18 bridges + 6 plugins)
-- 18 plugins registrados (8 operativos + 10 borradores)
+- 31 agentes invocables (13 core + 18 bridges)
+- 19 plugins registrados (8 operativos + 11 borradores)
 - 14 submódulos integrados (teatro, lógica, flujos, narrativa, bots)
 - Sistema de 5 banderas para auditoría doctrinal
 - Página Ecosistema con 3 galerías interactivas

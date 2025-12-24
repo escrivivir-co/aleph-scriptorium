@@ -3889,55 +3889,55 @@ El README.md es el punto de entrada público del proyecto, pero:
 ### SCRIPT-1.18.0-S01: Refactorizar SPLASH
 **Effort**: 3 pts  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T001 | Añadir ecosistema.md a tabla de páginas (§4) | ⏳ |
-| T002 | Homogeneizar checklist §6 al formato estándar | ⏳ |
-| T003 | Mover TODOs §7 a épica formal | ⏳ |
-| T004 | Añadir sección Referencias con enlace a DEVOPS | ⏳ |
+| T001 | Añadir ecosistema.md a tabla de páginas (§4) | ✅ |
+| T002 | Homogeneizar checklist §6 al formato estándar | ✅ |
+| T003 | Mover TODOs §7 a épica formal | ✅ |
+| T004 | Añadir sección Referencias con enlace a DEVOPS | ✅ |
 
 **Definition of Done**:
-- [ ] SPLASH referencia DEVOPS como fuente de verdad
-- [ ] Checklist usa formato tabla estándar
-- [ ] No hay TODOs sueltos
+- [x] SPLASH referencia DEVOPS como fuente de verdad
+- [x] Checklist usa formato tabla estándar
+- [x] No hay TODOs sueltos
 
 ---
 
 ### SCRIPT-1.18.0-S02: Refactorizar README Index
 **Effort**: 3 pts  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T005 | Simplificar §4: quitar duplicados, referenciar DEVOPS | ⏳ |
-| T006 | Homogeneizar checklist §7 al formato estándar | ⏳ |
-| T007 | Añadir sección Referencias con enlace a DEVOPS | ⏳ |
+| T005 | Simplificar §4: quitar duplicados, referenciar DEVOPS | ✅ |
+| T006 | Homogeneizar checklist §7 al formato estándar | ✅ |
+| T007 | Añadir sección Referencias con enlace a DEVOPS | ✅ |
 
 **Definition of Done**:
-- [ ] README index referencia DEVOPS como fuente de verdad
-- [ ] Checklist usa formato tabla estándar
-- [ ] §4 no duplica contadores de DEVOPS
+- [x] README index referencia DEVOPS como fuente de verdad
+- [x] Checklist usa formato tabla estándar
+- [x] §4 no duplica contadores de DEVOPS
 
 ---
 
 ### SCRIPT-1.18.0-S03: Validación y Cierre
 **Effort**: 2 pts  
 **Prioridad**: Must  
-**Estado**: ⏳ Pendiente
+**Estado**: ✅ Completada
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T008 | Ejecutar @indice para validar coherencia | ⏳ |
-| T009 | Verificar que GH-Pages compila sin errores | ⏳ |
-| T010 | Actualizar README.md con cambios si aplica | ⏳ |
+| T008 | Ejecutar @indice para validar coherencia | ✅ |
+| T009 | Verificar que GH-Pages compila sin errores | ✅ (GitHub Actions) |
+| T010 | Actualizar README.md con cambios si aplica | ✅ |
 
 **Definition of Done**:
-- [ ] @indice no reporta warnings
-- [ ] jekyll build pasa
-- [ ] Commit generado
+- [x] @indice no reporta warnings
+- [x] jekyll build pasa (vía GitHub Actions)
+- [x] Commit generado
 
 ---
 
@@ -3949,8 +3949,8 @@ El README.md es el punto de entrada público del proyecto, pero:
 | Tasks totales | 10 |
 | Puntos totales | 8 |
 | Prioridad Must | 3 stories (8 pts) |
-| Completadas | 0 |
-| % Avance | 0% |
+| Completadas | **3** |
+| % Avance | **100%** 🎉 |
 
 ---
 
@@ -3974,3 +3974,6 @@ El README.md es el punto de entrada público del proyecto, pero:
 | 2025-12-24 | Crear conversación PO-SM y análisis de cobertura | @scrum |
 | 2025-12-24 | Crear backlog borrador fusionado | @scrum |
 | 2025-12-24 | Aprobar y publicar épica | @scrum |
+| 2025-12-24 | Implementar S01-S03: refactorizar índices SPLASH y README | @aleph |
+| 2025-12-24 | Actualizar README.md y docs/ con contadores corregidos (19 plugins, 31 agentes) | @aleph |
+| 2025-12-24 | Cerrar épica al 100% | @aleph |

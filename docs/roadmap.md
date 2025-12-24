@@ -682,11 +682,11 @@ permalink: /roadmap/
         <span>Feature Cycle 1</span>
         <span>100%</span>
       </div>
-      <p class="status">✅ FC1 cerrado · 14 submódulos · 18 plugins</p>
+      <p class="status">✅ FC1 cerrado · 14 submódulos · 19 plugins</p>
       <div class="badges">
         <img src="https://img.shields.io/badge/v1.0.0--beta.3-Semillas_de_Futuro-8b5cf6?style=flat-square" alt="v1.0.0-beta.3">
-        <img src="https://img.shields.io/badge/Plugins-18_registrados-3b82f6?style=flat-square" alt="18 Plugins">
-        <img src="https://img.shields.io/badge/Agents-36_invocables-a855f7?style=flat-square" alt="36 Agents">
+        <img src="https://img.shields.io/badge/Plugins-19_registrados-3b82f6?style=flat-square" alt="19 Plugins">
+        <img src="https://img.shields.io/badge/Agents-31_invocables-a855f7?style=flat-square" alt="31 Agents">
       </div>
       <div class="links">
         <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/BACKLOG-SCRIPTORIUM.md">📋 Ver Backlog</a>
@@ -769,10 +769,10 @@ permalink: /roadmap/
       </div>
       <div class="foto-body" style="color: #e6edf3;">
         <h4 style="color: #a78bfa;">🎄 Feature Cycle 1: Visión de Futuro</h4>
-        <p class="foto-summary" style="color: #94a3b8;">Rama fc1 activa. 14 submódulos integrados. 18 plugins registrados. El Scriptorium desarrollado: teatro de operaciones cognitivo.</p>
+        <p class="foto-summary" style="color: #94a3b8;">Rama fc1 activa. 14 submódulos integrados. 19 plugins registrados. El Scriptorium desarrollado: teatro de operaciones cognitivo.</p>
         <div class="foto-metrics">
           <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">📦 14 submódulos</span>
-          <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">🔌 18 plugins</span>
+          <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">🔌 19 plugins</span>
           <span class="metric" style="background: rgba(139, 92, 246, 0.3); color: #c4b5fd;">🧊 main congelada</span>
         </div>
         <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-24_FC1_VisionFuturo.md" class="foto-link" style="color: #c4b5fd;">Ver foto de futuro →</a>

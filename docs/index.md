@@ -8,9 +8,9 @@ permalink: /
 
 <!-- RELEASE BANNER -->
 <div class="release-banner">
-  <div class="release-badge">🚀 v1.0.0-beta.2</div>
+  <div class="release-badge">🚀 v1.0.0-beta.3</div>
   <div class="release-text">
-    <strong>8 plugins · 36 agentes · Tu ejército de IA listo</strong> · 
+    <strong>19 plugins · 31 agentes · Tu ejército de IA listo</strong> · 
     <a href="{{ site.baseurl }}/roadmap/">Ver roadmap →</a>
   </div>
 </div>
@@ -33,7 +33,7 @@ permalink: /
   <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
     <span class="card-icon">🧬</span>
     <span class="card-title">Ecosistema</span>
-    <span class="card-desc">14 submódulos · 18 plugins · 36 agentes</span>
+    <span class="card-desc">14 submódulos · 19 plugins · 31 agentes</span>
   </a>
   <a href="{{ site.baseurl }}/teatro/" class="nav-card">
     <span class="card-icon">🎭</span>

@@ -119,17 +119,17 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 
 ## 4. Páginas del Sitio
 
-| Página | Archivo | Clase wrapper |
-|--------|---------|---------------|
-| Home | `index.md` | `.home-page` |
-| Léeme | `leeme.md` | `.leeme-page` |
-| Ecosistema | `ecosistema.md` | — |
-| Teatro | `teatro.md` | — |
-| Periódico | `periodico.md` | `.periodico-*` |
-| Fundación | `fundacion.md` | — |
-| Archivo | `archivo.md` | — |
-| Roadmap | `roadmap.md` | `.roadmap-*` |
-| Acerca | `acerca.md` | — |
+| Página | Archivo | Clase wrapper | Secciones principales |
+|--------|---------|---------------|----------------------|
+| Home | `index.md` | `.home-page` | 8 secciones (ver §2) |
+| Léeme | `leeme.md` | `.leeme-page` | Quick Start, instalación |
+| Ecosistema | `ecosistema.md` | `.ecosistema-page` | 3 galerías + guía interacción |
+| Teatro | `teatro.md` | `.teatro-page` | Galería, En Escena, Pantalla |
+| Periódico | `periodico.md` | `.periodico-*` | Cabecera, Tesis, Noticias |
+| Fundación | `fundacion.md` | — | Índice de 12 capítulos |
+| Archivo | `archivo.md` | — | Navegación ARCHIVO/ |
+| Roadmap | `roadmap.md` | `.roadmap-*` | Sprints, Fotos, Changelog |
+| Acerca | `acerca.md` | — | Licencia, Origen |
 
 ---
 
@@ -165,25 +165,46 @@ navigation:
 
 ---
 
-## 6. Checklist
+## 6. Checklist de Validación
 
-- [ ] Jekyll build sin errores
-- [ ] Responsive (320/768/1200px)
-- [ ] Menú hamburguesa funciona
-- [ ] Métricas actualizadas
-- [ ] Versión banner correcta
+| Test | Comando/Verificación | Criterio |
+|------|---------------------|----------|
+| Build | `bundle exec jekyll build` | Sin errores |
+| Responsive | Viewport 320/768/1200px | Layout correcto |
+| Menú móvil | Click hamburguesa | Toggle funciona |
+| Métricas | Comparar con registry.json | Contadores coinciden |
+| Banner | Comparar con package.json | Versión correcta |
+| Links | Navegar todas las páginas | Sin 404 |
 
 ---
 
-## 7. Pendientes (TODO)
+## 7. Mejoras Futuras
 
-- [ ] Crear favicon.ico con símbolo ℵ
-- [ ] Optimizar imágenes para web
-- [ ] Añadir Open Graph meta tags
+> **Nota**: Los TODOs se gestionan en épicas formales del backlog.
+> Ver `BACKLOG-SCRIPTORIUM.md` para tareas pendientes de GH-Pages.
+
+| Mejora | Épica/Issue | Prioridad |
+|--------|-------------|----------|
+| Favicon con ℵ | Pendiente asignar | Low |
+| Optimizar imágenes | Pendiente asignar | Low |
+| Open Graph meta tags | Pendiente asignar | Medium |
 
 ---
 
 ## 8. Referencias
+
+### Fuentes de Verdad
+
+| Índice | Ruta | Relación |
+|--------|------|----------|
+| **DEVOPS Funcional** | `ARCHIVO/DEVOPS/Funcional.md` | Visión usuario (NO MODIFICAR) |
+| **DEVOPS Técnico** | `ARCHIVO/DEVOPS/Tecnico.md` | Visión Scrum (NO MODIFICAR) |
+| **Este índice (SPLASH)** | `ARCHIVO/DISCO/SPLASH/index.md` | Mapa de docs/ |
+
+> **Arquitectura**: DEVOPS es la única fuente de verdad del sistema.
+> SPLASH describe cómo editar `docs/` para @GHPages.
+
+### Recursos del Plugin
 
 | Recurso | Ruta |
 |---------|------|

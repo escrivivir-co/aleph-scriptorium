@@ -504,7 +504,7 @@ permalink: /ecosistema/
 <div class="eco-hero">
   <h1 class="hero-title">🧬 El Ecosistema Aleph</h1>
   <p class="hero-subtitle">
-    De la infraestructura a la interfaz: <strong>14 submódulos</strong> alimentan <strong>18 plugins</strong> que empoderan <strong>36 agentes</strong> para trabajar contigo.
+    De la infraestructura a la interfaz: <strong>14 submódulos</strong> alimentan <strong>19 plugins</strong> que empoderan <strong>31 agentes</strong> para trabajar contigo.
   </p>
   
   <div class="eco-flow">
@@ -514,12 +514,12 @@ permalink: /ecosistema/
     </div>
     <span class="eco-flow-arrow">→</span>
     <div class="eco-flow-item plugins">
-      <span class="eco-flow-count">18</span>
+      <span class="eco-flow-count">19</span>
       <span class="eco-flow-label">Plugins</span>
     </div>
     <span class="eco-flow-arrow">→</span>
     <div class="eco-flow-item agentes">
-      <span class="eco-flow-count">36</span>
+      <span class="eco-flow-count">31</span>
       <span class="eco-flow-label">Agentes</span>
     </div>
     <span class="eco-flow-arrow">→</span>
@@ -1273,7 +1273,7 @@ permalink: /ecosistema/
 <div class="eco-cta">
   <h3>¿Listo para escribir con el colectivo?</h3>
   <p>
-    14 submódulos. 18 plugins. 36 agentes. Todo trabajando para ti.
+    14 submódulos. 19 plugins. 31 agentes. Todo trabajando para ti.
   </p>
   <a href="https://github.com/escrivivir-co/aleph-scriptorium" class="cta-button">
     Fork en GitHub →

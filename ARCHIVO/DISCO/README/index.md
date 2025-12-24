@@ -51,40 +51,37 @@ Este documento es el **mapa estructural** del README.md del proyecto. Sirve para
 
 ## 4. Secciones sincronizables
 
-### 4.1. Agentes (sincronizar con registry.json + ox.agent.md)
+> **Fuente de verdad de contadores**: `ARCHIVO/DEVOPS/Tecnico.md` §3
+> No duplicar contadores aquí. Referenciar DEVOPS.
+
+### 4.1. Agentes
 
 | Dato | Fuente de verdad |
 |------|------------------|
 | Diagrama de capas | `.github/agents/ox.agent.md` → Índice Maestro |
-| Tabla "Por capa" | Escanear `.github/agents/*.agent.md` |
-| Tabla "Las 5 Banderas" | 5 archivos `*flag.agent.md` |
-| Tabla "Plugin Bridges" | Escanear `plugin_ox_*.agent.md` + `registry.json` |
-| Contador total | `12 core + N bridges + M plugins` |
+| Contadores por capa | `ARCHIVO/DEVOPS/Tecnico.md` §3.1 |
 
-### 4.2. Plugins (sincronizar con registry.json)
+### 4.2. Plugins
 
 | Dato | Fuente de verdad |
 |------|------------------|
-| Plugins Core (8) | `registry.json` → enabled: true |
-| Plugins por categoría | Campo `category` si existe, o inferir de descripción |
-| Contador total | Longitud de `registry.json.plugins` |
+| Lista de plugins | `.github/plugins/registry.json` |
+| Categorías | `ARCHIVO/DEVOPS/Tecnico.md` §3.1 |
 
-### 4.3. Submódulos (sincronizar con .gitmodules)
+### 4.3. Submódulos
 
 | Dato | Fuente de verdad |
 |------|------------------|
-| Lista de 14 | `git submodule status` o `.gitmodules` |
-| Categorización | Convención de naming (ver BUG-003) |
-| Rama de integración | `integration/beta/scriptorium` |
+| Lista de 14 | `.gitmodules` |
+| Convención naming | `.github/instructions/submodulo-integracion.instructions.md` |
 
-### 4.4. Estado (sincronizar con backlog + fotos)
+### 4.4. Estado
 
 | Dato | Fuente de verdad |
 |------|------------------|
 | Versión | `package.json` + último tag |
-| Sprint/FC actual | `BACKLOG-SCRIPTORIUM.md` → Sprint actual |
-| Rama activa | `.github/workspace-config.json` → branch |
-| Contadores | Derivar de registry.json, git submodule, agents/ |
+| Sprint/FC actual | `BACKLOG-SCRIPTORIUM.md` |
+| Rama activa | `.github/workspace-config.json` |
 
 ---
 
@@ -128,25 +125,38 @@ Este documento es el **mapa estructural** del README.md del proyecto. Sirve para
 
 ## 7. Checklist de coherencia
 
-Antes de commit que afecte `README.md` o archivos relacionados:
+> **Agente responsable**: @indice (Paso 2.7 de commit-message.prompt.md)
 
-- [ ] Contador de agentes coincide con realidad (12 core + bridges + plugins)
-- [ ] Contador de plugins coincide con `registry.json`
-- [ ] Contador de submódulos coincide con `.gitmodules`
-- [ ] Versión en badge coincide con `package.json`
-- [ ] Rama activa en Estado coincide con `workspace-config.json`
-- [ ] Diagrama de agentes refleja estructura actual
+| Test | Verificación | Fuente |
+|------|-------------|--------|
+| Agentes | Contador coincide | Escanear `.github/agents/` |
+| Plugins | Contador coincide | `registry.json` |
+| Submódulos | Contador coincide | `.gitmodules` |
+| Versión | Badge correcto | `package.json` |
+| Rama | Estado correcto | `workspace-config.json` |
+| Diagrama | Refleja arquitectura | Comparar con ox.agent.md |
 
 ---
 
 ## 8. Referencia cruzada
 
+### Fuentes de Verdad
+
+| Índice | Ruta | Relación |
+|--------|------|----------|
+| **DEVOPS Funcional** | `ARCHIVO/DEVOPS/Funcional.md` | Visión usuario (NO MODIFICAR) |
+| **DEVOPS Técnico** | `ARCHIVO/DEVOPS/Tecnico.md` | Visión Scrum (NO MODIFICAR) |
+| **Este índice (README)** | `ARCHIVO/DISCO/README/index.md` | Mapa de README.md |
+
+> **Arquitectura**: DEVOPS es la única fuente de verdad del sistema.
+> Este índice describe cómo sincronizar `README.md` para @indice.
+
+### Documentos Relacionados
+
 | Documento | Relación con README |
 |-----------|---------------------|
-| `ARCHIVO/DEVOPS/Funcional.md` | Visión usuario — puede referenciar README |
-| `ARCHIVO/DEVOPS/Tecnico.md` | Visión técnica — complementa README |
-| `ARCHIVO/DISCO/SPLASH/index.md` | Índice de docs/ — paralelo a este índice |
-| `.github/copilot-instructions.md` | Hub de instrucciones — puede duplicar info |
+| `ARCHIVO/DISCO/SPLASH/index.md` | Índice paralelo para docs/ |
+| `.github/copilot-instructions.md` | Hub de instrucciones (puede referenciar) |
 
 ---
 
