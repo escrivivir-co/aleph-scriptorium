@@ -1,7 +1,40 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-24T18:00:00Z",
+  "last_updated": "2025-12-27T12:00:00Z",
   "plugins": {
+    "blockly-editor": {
+      "name": "Editor de Lógica Visual (Blockly)",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar lógica de agentes-personaje mediante programación visual con Blockly. Genera código JavaScript ejecutable en el Teatro.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-27T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 4,
+      "data_directory": "ARCHIVO/PLUGINS/BLOCKLY_EDITOR/",
+      "bridge_agent": "plugin_ox_blocklyeditor",
+      "dependencies": ["arg-board", "agent-creator", "teatro"],
+      "optional_dependencies": ["mcp-presets"],
+      "submodule": "blockly-alephscript-sdk",
+      "handoffs": [
+        {
+          "label": "Abrir editor Blockly",
+          "agent": "BlocklyEditor"
+        },
+        {
+          "label": "Crear rutina para personaje",
+          "agent": "BlocklyEditor"
+        },
+        {
+          "label": "Asignar paleta de paradigma",
+          "agent": "BlocklyEditor"
+        },
+        {
+          "label": "Exportar código JavaScript",
+          "agent": "BlocklyEditor"
+        }
+      ]
+    },
     "novelist": {
       "name": "Editor de Narrativas (MCP Novelist)",
       "version": "1.0.0",

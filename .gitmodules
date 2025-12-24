@@ -23,3 +23,6 @@
 [submodule "mcp-novelist"]
 	path = mcp-novelist
 	url = https://github.com/escrivivir-co/mcp-novelist.git
+[submodule "blockly-alephscript-sdk"]
+	path = blockly-alephscript-sdk
+	url = https://github.com/escrivivir-co/blockly-alephscript-sdk.git

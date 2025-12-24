@@ -1,0 +1,129 @@
+{
+  "id": "sbr",
+  "nombre": "Sistemas Basados en Reglas",
+  "nombre_corto": "SBR",
+  "paradigma_fia": "sbr",
+  "descripcion": "Paleta de bloques para lógica condicional IF-THEN. Ideal para definir reglas de comportamiento simples.",
+  "version": "1.0.0",
+  "estado": "activo",
+  "afinidad_banderas": ["blackflag"],
+  "bloques": [
+    {
+      "type": "sbr_si_entonces",
+      "category": "Condiciones",
+      "descripcion": "Bloque IF-THEN principal",
+      "genera": "if (condicion) { ... }"
+    },
+    {
+      "type": "sbr_si_entonces_sino",
+      "category": "Condiciones", 
+      "descripcion": "Bloque IF-THEN-ELSE",
+      "genera": "if (condicion) { ... } else { ... }"
+    },
+    {
+      "type": "sbr_condicion_estadio",
+      "category": "Condiciones",
+      "descripcion": "Condición basada en estadio actual",
+      "genera": "contexto.estadio === N"
+    },
+    {
+      "type": "sbr_condicion_memoria",
+      "category": "Condiciones",
+      "descripcion": "Condición basada en variable de memoria",
+      "genera": "contexto.memoria.X === valor"
+    },
+    {
+      "type": "sbr_y",
+      "category": "Operadores",
+      "descripcion": "Operador AND",
+      "genera": "cond1 && cond2"
+    },
+    {
+      "type": "sbr_o",
+      "category": "Operadores",
+      "descripcion": "Operador OR",
+      "genera": "cond1 || cond2"
+    },
+    {
+      "type": "sbr_no",
+      "category": "Operadores",
+      "descripcion": "Operador NOT",
+      "genera": "!condicion"
+    },
+    {
+      "type": "sbr_emitir_evento",
+      "category": "Acciones",
+      "descripcion": "Emitir evento a la obra",
+      "genera": "contexto.emitir('evento', datos)"
+    },
+    {
+      "type": "sbr_guardar_memoria",
+      "category": "Acciones",
+      "descripcion": "Guardar valor en memoria persistente",
+      "genera": "contexto.memoria.X = valor"
+    },
+    {
+      "type": "sbr_alerta",
+      "category": "Acciones",
+      "descripcion": "Mostrar mensaje al usuario",
+      "genera": "contexto.alerta('mensaje')"
+    },
+    {
+      "type": "sbr_log",
+      "category": "Acciones",
+      "descripcion": "Registrar mensaje en consola",
+      "genera": "contexto.log('mensaje')"
+    },
+    {
+      "type": "sbr_esperar_evento",
+      "category": "Control",
+      "descripcion": "Esperar a que ocurra un evento",
+      "genera": "await contexto.esperar('evento')"
+    }
+  ],
+  "toolbox": {
+    "kind": "categoryToolbox",
+    "contents": [
+      {
+        "kind": "category",
+        "name": "Condiciones",
+        "colour": "#5C81A6",
+        "contents": [
+          { "kind": "block", "type": "sbr_si_entonces" },
+          { "kind": "block", "type": "sbr_si_entonces_sino" },
+          { "kind": "block", "type": "sbr_condicion_estadio" },
+          { "kind": "block", "type": "sbr_condicion_memoria" }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Operadores",
+        "colour": "#5CA65C",
+        "contents": [
+          { "kind": "block", "type": "sbr_y" },
+          { "kind": "block", "type": "sbr_o" },
+          { "kind": "block", "type": "sbr_no" }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Acciones",
+        "colour": "#A65C5C",
+        "contents": [
+          { "kind": "block", "type": "sbr_emitir_evento" },
+          { "kind": "block", "type": "sbr_guardar_memoria" },
+          { "kind": "block", "type": "sbr_alerta" },
+          { "kind": "block", "type": "sbr_log" }
+        ]
+      },
+      {
+        "kind": "category",
+        "name": "Control",
+        "colour": "#A65CA6",
+        "contents": [
+          { "kind": "block", "type": "sbr_esperar_evento" }
+        ]
+      }
+    ]
+  }
+}

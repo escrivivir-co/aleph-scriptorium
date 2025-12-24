@@ -11,7 +11,7 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto (8 en total)
+# Submódulos del proyecto (9 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/vscode-alephscript-extension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
@@ -37,6 +37,9 @@ SUBMODULE_KICK_CRONO_BOT_URL="https://github.com/escrivivir-co/kick-aleph-crono-
 SUBMODULE_MCP_NOVELIST_DIR="$ROOT_DIR/mcp-novelist"
 SUBMODULE_MCP_NOVELIST_URL="https://github.com/escrivivir-co/mcp-novelist.git"
 
+SUBMODULE_BLOCKLY_SDK_DIR="$ROOT_DIR/blockly-alephscript-sdk"
+SUBMODULE_BLOCKLY_SDK_URL="https://github.com/escrivivir-co/blockly-alephscript-sdk.git"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -55,7 +58,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/scrum/prompts": true,
     ".github/plugins/mcp-presets/prompts": true,
     ".github/plugins/network/prompts": true,
-    ".github/plugins/novelist/prompts": true
+    ".github/plugins/novelist/prompts": true,
+    ".github/plugins/blockly-editor/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -68,7 +72,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/scrum/instructions": true,
     ".github/plugins/mcp-presets/instructions": true,
     ".github/plugins/network/instructions": true,
-    ".github/plugins/novelist/instructions": true
+    ".github/plugins/novelist/instructions": true,
+    ".github/plugins/blockly-editor/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -153,8 +158,9 @@ setup_submodule "$SUBMODULE_NETWORK_SDK_DIR" "$SUBMODULE_NETWORK_SDK_URL" "aleph
 setup_submodule "$SUBMODULE_KICK_ALEPH_BOT_DIR" "$SUBMODULE_KICK_ALEPH_BOT_URL" "kick-aleph-bot"
 setup_submodule "$SUBMODULE_KICK_CRONO_BOT_DIR" "$SUBMODULE_KICK_CRONO_BOT_URL" "kick-aleph-crono-bot"
 setup_submodule "$SUBMODULE_MCP_NOVELIST_DIR" "$SUBMODULE_MCP_NOVELIST_URL" "mcp-novelist"
+setup_submodule "$SUBMODULE_BLOCKLY_SDK_DIR" "$SUBMODULE_BLOCKLY_SDK_URL" "blockly-alephscript-sdk"
 
-echo "[setup] ✔ Setup completado (8 submódulos)"
+echo "[setup] ✔ Setup completado (9 submódulos)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -165,10 +171,15 @@ echo "     cd alephscript-mcp-presets-site && git push -u origin $INTEGRATION_BR
 echo "     cd as-utils-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd as-gym && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd alephscript-network-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd blockly-alephscript-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "Submódulos configurados (5):"
+echo "Submódulos configurados (9):"
 echo "  - vscode-alephscript-extension: Extensión VS Code / Arrakis Theater"
 echo "  - alephscript-mcp-presets-site: Zeus MCP Presets (UI web)"
 echo "  - as-utils-sdk: VibeCoding Connector / Matrix Theater"
 echo "  - as-gym: FIA (Fundamentos de IA) / Almas para Agentes"
 echo "  - alephscript-network-sdk: Oasis/Scuttlebutt P2P Network"
+echo "  - kick-aleph-bot: Bot Kick para streaming"
+echo "  - kick-aleph-crono-bot: Bot cronológico Kick"
+echo "  - mcp-novelist: Editor MCP de narrativas"
+echo "  - blockly-alephscript-sdk: Editor visual Blockly"

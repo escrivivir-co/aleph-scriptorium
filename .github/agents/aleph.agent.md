@@ -84,6 +84,10 @@ handoffs:
               agent: plugin_ox_novelist
               prompt: Accede al plugin Novelist (MCP). Crea, edita y exporta obras narrativas con memoria a largo plazo.
               send: false
+       - label: "[BLOCKLY-EDITOR] Lógica visual para personajes"
+              agent: plugin_ox_blocklyeditor
+              prompt: Accede al plugin Blockly Editor. Crea, edita y exporta rutinas JavaScript para personajes usando bloques visuales.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.

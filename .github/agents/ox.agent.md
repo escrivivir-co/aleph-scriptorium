@@ -92,6 +92,10 @@ handoffs:
     agent: plugin_ox_novelist
     prompt: Accede al plugin Novelist (MCP) para edición de narrativas con memoria a largo plazo.
     send: false
+  - label: Invocar bridge Blockly Editor
+    agent: plugin_ox_blocklyeditor
+    prompt: Accede al plugin Blockly Editor para lógica visual de personajes.
+    send: false
   - label: Tomar foto de estado del sprint
     agent: Aleph
     prompt: Genera foto de estado + discurso motivacional del sprint actual. Incluye comprensión del estado, discurso y próximos 3 movimientos. Publica en galería del roadmap.
@@ -110,7 +114,7 @@ handoffs:
 
 ```json
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "ultima_actualizacion": "2025-12-27",
   "capas": {
     "ui": {
@@ -245,6 +249,10 @@ handoffs:
         "novelist": {
           "directorio": ".github/plugins/novelist/agents/",
           "agentes": ["Novelist"]
+        },
+        "blockly-editor": {
+          "directorio": ".github/plugins/blockly-editor/agents/",
+          "agentes": ["BlocklyEditor"]
         }
       },
       "bridges": {
@@ -299,6 +307,11 @@ handoffs:
           "plugin_ox_novelist": {
             "archivo": ".github/agents/plugin_ox_novelist.agent.md",
             "plugin": "novelist",
+            "delega_a": 1
+          },
+          "plugin_ox_blocklyeditor": {
+            "archivo": ".github/agents/plugin_ox_blocklyeditor.agent.md",
+            "plugin": "blockly-editor",
             "delega_a": 1
           }
         }
