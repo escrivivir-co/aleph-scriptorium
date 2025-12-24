@@ -128,6 +128,7 @@
 |--------|---------|---------|
 | @pluginmanager | ⚙️ | Gestión de plugins |
 | @ox | 🐂 | Oráculo, índice, documentación |
+| @indice | 🗂️ | Navegador DRY, validación pre-commit |
 
 ### 4.5. Capa Plugins (Bridges)
 
@@ -181,7 +182,7 @@ Usuario → @periodico [EDITAR]
            ↓
        Alice (frame) ↔ Bob (hechos)
            ↓
-       4 Banderas (auditoría)
+       5 Banderas (auditoría)
            ↓
        @periodico [PUBLICAR]
            ↓
@@ -310,7 +311,7 @@ Fuentes: [archivos adjuntos]
 
 | Recurso | Cantidad |
 |---------|----------|
-| Agentes core | 12 |
+| Agentes core | 13 |
 | Agentes bridge | 18 |
 | Plugins instalados | 18 |
 | Submódulos | 14 |

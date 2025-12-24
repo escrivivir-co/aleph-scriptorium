@@ -43,7 +43,7 @@
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
 │                    CAPA META (Gestión)                               │
-│              @ox · @pluginmanager · @scrum · @indice                 │
+│                   @ox · @pluginmanager · @indice                     │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -66,7 +66,7 @@
 
 ```
 .github/
-├── agents/                 # 30 agentes (12 core + 18 bridges)
+├── agents/                 # 31 agentes (13 core + 18 bridges)
 │   ├── aleph.agent.md
 │   ├── plugin_ox_*.agent.md
 │   └── ...
