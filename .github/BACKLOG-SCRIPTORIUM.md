@@ -1402,6 +1402,61 @@ Renombrar **path local** (no URL remota) a **PascalCase descriptivo** que indiqu
 
 ---
 
+## BUG-004: Enlaces relativos rotos en GitHub Pages del submódulo BlockchainComPort
+
+**Estado**: ✅ Resuelto  
+**Severidad**: Media (bloquea navegación en hackaton landing page)  
+**Detectado**: 2025-01-02  
+**Resuelto**: 2025-01-02  
+**Submódulo**: `BlockchainComPort` (alephscript-network-sdk)  
+**Rama**: `hackaton_261225`
+
+### Problema
+
+La página `docs/index.html` del submódulo BlockchainComPort tiene enlaces relativos a archivos `.md` y `LICENSE` que:
+- Funcionan en desarrollo local
+- **Fallan en GitHub Pages** porque los archivos están fuera del directorio `/docs`
+- Bloquean la navegación de la landing page del hackaton
+
+Archivos afectados:
+- `SESION-BACKLOG.md`
+- `SESION-BACKLOG-EXPANSION.md`
+- `HACKATON_GUIDE.md`
+- `LICENSE`
+
+### Solución
+
+Cambiar los enlaces relativos a URLs absolutas apuntando al repositorio GitHub:
+
+```
+href="ARCHIVO.md"
+  ↓
+href="https://github.com/escrivivir-co/alephscript-network-sdk/blob/hackaton_261225/ARCHIVO.md"
+```
+
+### Tasks
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| BUG-004-T001 | Identificar todos los enlaces relativos rotos en docs/index.html | ✅ |
+| BUG-004-T002 | Cambiar enlaces a URLs absolutas de GitHub (rama hackaton_261225) | ✅ |
+| BUG-004-T003 | Verificar que GitHub Pages renderiza correctamente | ✅ |
+
+### Archivos Modificados
+
+- `BlockchainComPort/docs/index.html`:
+  - Línea ~319: enlace a SESION-BACKLOG-EXPANSION.md
+  - Líneas ~323-326: botones a SESION-BACKLOG.md, SESION-BACKLOG-EXPANSION.md, HACKATON_GUIDE.md
+  - Líneas ~383-387: footer LICENSE
+
+### Definition of Done
+
+- [x] Todos los enlaces relativos en docs/index.html cambiados a URLs absolutas
+- [x] URLs apuntan a rama `hackaton_261225`
+- [x] GitHub Pages del submódulo funciona correctamente (push completado)
+
+---
+
 # Épica: SCRIPT-1.5.0 — Plugin Bridge Discovery
 
 **Objetivo**: Habilitar la detección automática de prompts e instructions desde carpetas de plugins, y actualizar el protocolo de instalación para mantener los settings sincronizados.
