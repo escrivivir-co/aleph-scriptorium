@@ -4243,3 +4243,211 @@ El README.md es el punto de entrada público del proyecto, pero:
 | 2025-12-24 | Implementar S01-S06: refactorizar 5 páginas (-83% total) | @aleph |
 | 2025-12-24 | Actualizar SPLASH index con resultados y principios | @aleph |
 | 2025-12-24 | Corregir navegación: Agentes → Ecosistema en _config.yml | @aleph |
+
+---
+
+# Épica: SCRIPT-1.20.0 — FloveEditor (Template Ontológico CONFLUENTISM)
+
+**Objetivo**: Crear un plugin para diseñar ontologías basadas en el paradigma **CONFLUENTISM** de Flove.org. Estructura jerárquica de 3 niveles (Fuzzy→PsicoSocial→Freedom) con exportación a JSON Schema, TypeScript y Zod. Integración transversal con TypedPrompting y AGENT_CREATOR.
+
+**Estado**: 🔄 En Progreso (Feature Cycle 1)
+
+**Fecha inicio**: 2025-01-02  
+**Rama de trabajo**: `fc1`  
+**Submódulo**: `OnthologyEditor` (rama `integration/beta/scriptorium`)  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/`
+
+---
+
+## Contexto
+
+### El problema
+
+El Scriptorium tiene múltiples plugins que requieren **estructuras de datos tipadas** (TypedPrompting, AGENT_CREATOR, ARG_BOARD) pero:
+- No hay un editor visual de ontologías
+- Los schemas se crean manualmente sin validación
+- No hay metodología para diseñar jerarquías conceptuales
+
+### La solución
+
+Integrar la ontología **Flove** como template metodológico:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PARADIGMA CONFLUENTISM                        │
+│         "Simplexity InEvolution" — Bipolo que se fractaliza      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   Nivel 1: Fuzzy Logic          ┌─────────────────────────────┐  │
+│   (Metafísica/Teleología)       │  X → WHY → WHAT → HOW       │  │
+│                                 └─────────────────────────────┘  │
+│            ↓                                                      │
+│   Nivel 2: PsicoSocial          ┌─────────────────────────────┐  │
+│   (Psicología/Sociología)       │  SOULS, KEYS, Sensy, Wills  │  │
+│                                 └─────────────────────────────┘  │
+│            ↓                                                      │
+│   Nivel 3: Freedom/Economy      ┌─────────────────────────────┐  │
+│   (Economía/Aplicaciones)       │  DieSafe, PUZZY, Goddess    │  │
+│                                 └─────────────────────────────┘  │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Fuentes de la ontología
+
+| Fuente | URL | Estado |
+|--------|-----|--------|
+| flove.org | Sitio principal | ✅ Explorada |
+| demos.flove.org/whole | Tabla de taxonomía | ✅ Capturada |
+| Codeberg FloveDocs/Main | Documentación | ✅ Explorada |
+| FloveTables25.12.pdf | Tablas Dic 2025 | ⏳ Pendiente |
+
+---
+
+## Story: SCRIPT-1.20.0-S01 — Estructura Base del Plugin
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear submódulo `OnthologyEditor` con README | ✅ |
+| T002 | Crear `README-SCRIPTORIUM.md` con análisis Flove | ✅ |
+| T003 | Crear estructura `.github/plugins/flove-editor/` | ✅ |
+| T004 | Crear `manifest.md` con frontmatter YAML | ✅ |
+| T005 | Crear `agents/flove-editor.agent.md` | ✅ |
+| T006 | Crear `instructions/flove-editor.instructions.md` | ✅ |
+| T007 | Crear 2 prompts base (crear-ontologia, exportar) | ✅ |
+
+---
+
+## Story: SCRIPT-1.20.0-S02 — Bridge y Registro
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T008 | Crear bridge `plugin_ox_floveeditor.agent.md` | ✅ |
+| T009 | Actualizar `registry.json` con plugin flove-editor | ✅ |
+| T010 | Registrar submódulo en `.gitmodules` | ✅ |
+
+---
+
+## Story: SCRIPT-1.20.0-S03 — Captura de Ontología Flove
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Crear `ARCHIVO/PLUGINS/FLOVE_EDITOR/` | ⏳ |
+| T012 | Documentar los 10 campos de la ontología | ⏳ |
+| T013 | Documentar las 4 capas (Substance, Fields, Paradigms, Apps) | ⏳ |
+| T014 | Descargar FloveTables25.12.pdf | ⏳ |
+
+---
+
+## Story: SCRIPT-1.20.0-S04 — JSON Schema de Ontología
+**Puntos**: 5  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T015 | Diseñar estructura base del schema | ⏳ |
+| T016 | Definir tipo `FloveField` (10 campos) | ⏳ |
+| T017 | Definir tipo `FloveParadigm` (6 paradigmas) | ⏳ |
+| T018 | Definir tipo `FloveApp` (7 aplicaciones) | ⏳ |
+| T019 | Crear `flove-ontology.schema.json` | ⏳ |
+
+---
+
+## Story: SCRIPT-1.20.0-S05 — Exportadores (TypeScript/Zod)
+**Puntos**: 5  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T020 | Crear prompt `exportar-typescript.prompt.md` | ⏳ |
+| T021 | Crear prompt `exportar-zod.prompt.md` | ⏳ |
+| T022 | Implementar lógica de conversión schema→TS | ⏳ |
+| T023 | Implementar lógica de conversión schema→Zod | ⏳ |
+
+---
+
+## Story: SCRIPT-1.20.0-S06 — Integración TypedPrompting
+**Puntos**: 3  
+**Prioridad**: Could  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T024 | Crear prompt `instalar-en-typedprompting.prompt.md` | ⏳ |
+| T025 | Documentar flujo FloveEditor → TypedPrompting | ⏳ |
+| T026 | Crear ejemplo de ontología instalada | ⏳ |
+
+---
+
+## Story: SCRIPT-1.20.0-S07 — Integración AGENT_CREATOR
+**Puntos**: 3  
+**Prioridad**: Could  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T027 | Crear prompt `asignar-a-agente.prompt.md` | ⏳ |
+| T028 | Añadir campo `ontology` al schema de recipes | ⏳ |
+| T029 | Documentar flujo FloveEditor → AGENT_CREATOR | ⏳ |
+
+---
+
+## Story: SCRIPT-1.20.0-S08 — Documentación
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T030 | Publicar épica en BACKLOG-SCRIPTORIUM.md | ✅ |
+| T031 | Crear `ARCHIVO/PLUGINS/FLOVE_EDITOR/README.md` | ⏳ |
+| T032 | Actualizar copilot-instructions.md | ⏳ |
+| T033 | Crear ejemplo de ontología YAML | ⏳ |
+
+---
+
+## Métricas SCRIPT-1.20.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 8 |
+| Tasks totales | 33 |
+| Puntos totales | 26 |
+| Prioridad Must | 4 stories (10 pts) |
+| Prioridad Should | 2 stories (10 pts) |
+| Prioridad Could | 2 stories (6 pts) |
+| Completadas | **2** (S01, S02) |
+| % Avance | **25%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| Submódulo OnthologyEditor | ✅ Instalado | Rama integration/beta/scriptorium |
+| Plugin TypedPrompting | ✅ Instalado | Target de S06 |
+| Plugin AGENT_CREATOR | ✅ Instalado | Target de S07 |
+| Ontología Flove (web) | ✅ Accesible | demos.flove.org |
+
+---
+
+## Changelog SCRIPT-1.20.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-01-02 | Crear conversación PO-SM en BACKLOG_BORRADORES/FLOVE_EDITOR/ | @scrum |
+| 2025-01-02 | Generar backlog borrador (8 stories, 33 tasks) | @scrum |
+| 2025-01-02 | Crear submódulo OnthologyEditor + plugin flove-editor (S01, S02) | @aleph |
+| 2025-01-02 | Publicar épica en backlog principal | @aleph |
