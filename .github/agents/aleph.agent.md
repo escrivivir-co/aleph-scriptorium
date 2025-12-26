@@ -124,6 +124,10 @@ handoffs:
               agent: plugin_ox_hypergrapheditor
               prompt: Accede al plugin HyperGraphEditor. Crea mapas de enlaces, navega grafos hipervinculados, carga presets (MediaWiki).
               send: false
+       - label: "[FLOVE-EDITOR] Editor de ontologías"
+              agent: plugin_ox_floveeditor
+              prompt: Accede al plugin FloveEditor. Diseña ontologías con paradigma CONFLUENTISM (Fuzzy→PsicoSocial→Freedom), exporta a JSON Schema/TypeScript/Zod.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
               prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.
