@@ -40,3 +40,7 @@
 [submodule "wiki-racer"]
 	path = WiringAppHypergraphEditor
 	url = https://github.com/escrivivir-co/wiki-racer.git
+[submodule "OnthologyEditor"]
+	path = OnthologyEditor
+	url = https://github.com/escrivivir-co/alephscript-onthology-editor.git
+	branch = integration/beta/scriptorium
