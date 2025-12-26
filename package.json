@@ -94,7 +94,7 @@
     ],
     "prompts": [
       ".github/prompts/extraer-archivar.prompt.md",
-      ".github/prompts/commit-message.prompt.md",
+      ".github/prompts/as_commit-message.prompt.md",
       ".github/prompts/ejecutar-commits.prompt.md",
       ".github/prompts/as_foto_estado.prompt.md"
     ],
