@@ -5183,3 +5183,243 @@ ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/
 | 2025-01-03 | Expandir épica con FC0-FC3, 28 tasks, arquitectura pipeline | @ox |
 | 2025-12-26 | Consolidar borrador MMCO con épica publicada | @scrum |
 | 2025-01-03 | Expandir épica con FC0-FC3, 28 tasks, arquitectura pipeline | @ox |
+
+---
+
+# Épica: SCRIPT-1.24.0 — OntologyAgentEditor
+
+**Objetivo**: Extender el plugin AGENT_CREATOR para que los agentes creados puedan tener "alma ontológica": un paradigma formal (CONFLUENTISM/UFO/custom) validado por los agentes de FloveEditor y con métrica de coherencia MMCO.
+
+**Estado**: 🆕 Nueva (pendiente implementación)
+
+**Fecha inicio**: 2025-12-26  
+**Rama de trabajo**: `fc1`  
+**Plugin afectado**: `agent-creator` (extensión con capacidades ontológicas)  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTOLOGY_AGENT_EDITOR/`
+
+---
+
+## Contexto
+
+### El problema
+
+El plugin AGENT_CREATOR crea agentes con personalidad y conocimiento, pero:
+- `recipe.json` no tiene campo para ontología formal
+- No hay validación contra paradigmas (CONFLUENTISM, UFO)
+- No hay conexión con los 5 agentes de FloveEditor (SCRIPT-1.22.0)
+
+### La solución
+
+Integrar AGENT_CREATOR con FloveEditor mediante:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                    PIPELINE: AGENTE CON ONTOLOGÍA                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│   ┌──────────────┐        ┌──────────────┐        ┌──────────────┐         │
+│   │    AGENT     │───────▶│   FLOVE-OX   │───────▶│   METAMODEL  │         │
+│   │   CREATOR    │ paso   │ (Orquestador)│ valida │    (UFO)     │         │
+│   │              │  3b    │              │        │              │         │
+│   └──────┬───────┘        └──────┬───────┘        └──────────────┘         │
+│          │                       │                                          │
+│          │                       │ calcula                                  │
+│          │                       ▼                                          │
+│          │                ┌──────────────┐        ┌──────────────┐         │
+│          │                │     MMCO     │───────▶│  TYPED       │         │
+│          │                │  (φ metric)  │ export │  PROMPTING   │         │
+│          ▼                └──────────────┘        └──────────────┘         │
+│   ┌──────────────┐                                                          │
+│   │   recipe.json│  { "ontology": { "paradigm": "...", "mmco_score": N } } │
+│   └──────────────┘                                                          │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Feature Cycle 1: Core Integration
+
+**Effort total**: 15 pts
+
+---
+
+## Story: SCRIPT-1.24.0-S01 — Extensión Schema de Receta
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+
+Añadir bloque opcional `ontology` al schema de recetas de agentes.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T001 | Definir schema JSON para bloque `ontology` | 0.5 | ⏳ |
+| T002 | Añadir campo `paradigm` (enum: CONFLUENTISM, UFO, custom) | 0.5 | ⏳ |
+| T003 | Añadir campo `schema_path` (ruta a JSON Schema) | 0.5 | ⏳ |
+| T004 | Añadir campo `validated` (boolean) | 0.25 | ⏳ |
+| T005 | Añadir campo `mmco_score` (number 0-1, nullable) | 0.25 | ⏳ |
+| T006 | Actualizar documentación de recetas | 0.5 | ⏳ |
+| T007 | Crear ejemplo `recipes/ejemplo-ontologico.recipe.json` | 0.5 | ⏳ |
+
+### Criterios de Aceptación
+
+- [ ] AC1: Recetas sin `ontology` siguen siendo válidas (backward compatible)
+- [ ] AC2: `paradigm` es obligatorio si existe bloque `ontology`
+- [ ] AC3: Schema valida correctamente con AJV
+
+---
+
+## Story: SCRIPT-1.24.0-S02 — Handoffs Bidireccionales
+**Effort**: 5 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+
+Crear handoffs que conecten AgentCreator con FloveOx y viceversa.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T008 | Añadir handoff "Asignar paradigma ontológico" en agent-creator.agent.md | 1 | ⏳ |
+| T009 | Añadir handoff "Validar coherencia ontológica" en agent-creator.agent.md | 1 | ⏳ |
+| T010 | Añadir handoff "Crear agente desde ontología" en flove-ox.agent.md | 1 | ⏳ |
+| T011 | Actualizar plugin_ox_agentcreator con nuevos handoffs | 0.5 | ⏳ |
+| T012 | Actualizar plugin_ox_floveeditor con nuevo handoff | 0.5 | ⏳ |
+| T013 | Documentar flujo en agent-creator.instructions.md | 1 | ⏳ |
+
+### Criterios de Aceptación
+
+- [ ] AC1: Handoffs funcionan en ambas direcciones
+- [ ] AC2: El flujo circular (ontología→agente→validación) está documentado
+- [ ] AC3: Bridges actualizados en `.github/agents/`
+
+---
+
+## Story: SCRIPT-1.24.0-S03 — Prompt de Creación Extendido
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+
+Modificar `crear-agente.prompt.md` para incluir paso opcional de paradigma.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T014 | Añadir Paso 3b: "¿Paradigma ontológico?" | 1 | ⏳ |
+| T015 | Implementar lógica de selección de paradigma | 0.5 | ⏳ |
+| T016 | Integrar llamada a @flove-ox si se elige paradigma | 0.5 | ⏳ |
+| T017 | Actualizar template de recipe.json generado | 0.5 | ⏳ |
+| T018 | Documentar en README del plugin | 0.5 | ⏳ |
+
+### Criterios de Aceptación
+
+- [ ] AC1: El flujo de creación no se rompe si se elige "Sin ontología"
+- [ ] AC2: Seleccionar CONFLUENTISM invoca correctamente a @flove-ox
+- [ ] AC3: La receta generada incluye bloque `ontology` si aplica
+
+---
+
+## Story: SCRIPT-1.24.0-S04 — Tests de Auditoría Ontológica
+**Effort**: 2 pts  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+
+Añadir tests específicos para agentes con ontología.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T019 | Heredar tests de @yellowflag (límites conceptuales) | 0.5 | ⏳ |
+| T020 | Heredar tests de @metamodel (validación UFO) | 0.5 | ⏳ |
+| T021 | Crear test "coherencia_ontologica" (mmco_score >= 0.7) | 0.5 | ⏳ |
+| T022 | Documentar tests en sección "Tests de Auditoría" del agente | 0.5 | ⏳ |
+
+### Tests Propuestos
+
+| Test | Heredado de | Pregunta |
+|------|-------------|----------|
+| `limites_conceptuales` | @yellowflag | ¿El agente respeta los límites de su paradigma? |
+| `validacion_ufo` | @metamodel | ¿La ontología mapea correctamente a UFO? |
+| `coherencia_phi` | @mmco | ¿El score φ es >= 0.7 (coherencia aceptable)? |
+| `schema_valido` | @typedprompting | ¿El JSON Schema exportado es válido? |
+
+### Criterios de Aceptación
+
+- [ ] AC1: Agentes sin ontología no ejecutan estos tests
+- [ ] AC2: Tests reportan warnings, no bloquean creación
+- [ ] AC3: Tests documentados en template de agente
+
+---
+
+## Story: SCRIPT-1.24.0-S05 — Documentación e Integración
+**Effort**: 2 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+### Descripción
+
+Documentar la integración y cerrar stories pendientes de épicas relacionadas.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T023 | Actualizar agent-creator.instructions.md con sección "Ontología" | 0.5 | ⏳ |
+| T024 | Actualizar docs/README.md del plugin | 0.5 | ⏳ |
+| T025 | Cerrar SCRIPT-1.20.0-S07 (Integración AGENT_CREATOR) | 0.25 | ⏳ |
+| T026 | Actualizar registry.json con dependencias opcionales | 0.25 | ⏳ |
+| T027 | Commit según protocolo DevOps | 0.5 | ⏳ |
+
+### Criterios de Aceptación
+
+- [ ] AC1: Documentación completa y coherente
+- [ ] AC2: SCRIPT-1.20.0-S07 marcada como completada
+- [ ] AC3: Registry refleja dependencia opcional flove-editor
+
+---
+
+## Métricas SCRIPT-1.24.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 27 |
+| Effort total | 15 pts |
+| Prioridad Must | 4 stories (13 pts) |
+| Prioridad Should | 1 story (2 pts) |
+| Completadas | **0** |
+| % Avance | **0%** |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Impacto |
+|-------------|--------|---------|
+| SCRIPT-1.20.0 (FloveEditor) | 30% | S07 se cierra con esta épica |
+| SCRIPT-1.21.0 (Metamodel) | 35% | Validación UFO disponible |
+| SCRIPT-1.22.0 (Agentes) | **100%** | 5 agentes ontológicos listos |
+| SCRIPT-1.23.0 (MMCO) | 16% | Métrica φ parcialmente disponible |
+| TypedPrompting | Instalado | Exportación de schemas |
+
+---
+
+## Riesgos
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Flujo de creación muy complejo | Media | Medio | Paso 3b es opcional |
+| mmco_score no disponible | Baja | Bajo | Campo nullable |
+| Backwards compatibility rota | Baja | Alto | Tests de regresión |
+
+---
+
+## Changelog SCRIPT-1.24.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-26 | Crear conversación PO-SM | @scrum |
+| 2025-12-26 | Generar backlog borrador (5 stories, 27 tasks) | @scrum |
+| 2025-12-26 | Aprobar y publicar épica en backlog oficial | @scrum |
