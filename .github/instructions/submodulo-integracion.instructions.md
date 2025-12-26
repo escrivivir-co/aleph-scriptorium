@@ -297,7 +297,7 @@ Usuario debe revisar y aprobar con `@scrum aprobar`.
 
 ## Fase 6: Inicializar Plugin y Rama
 
-**Protocolo**: `.github/PLUGINS.md` + `plugin-install.prompt.md`
+**Protocolo**: `.github/PLUGINS.md` + `as_plugin-install.prompt.md`
 
 ### Acciones
 
@@ -447,7 +447,7 @@ Instrucciones:
 | Documento | Propósito |
 |-----------|-----------|
 | `.github/prompts/as_instalar_submodulo.prompt.md` | Prompt ejecutable con todas las fases |
-| `.github/prompts/plugin-install.prompt.md` | Protocolo de instalación de plugins |
+| `.github/prompts/as_plugin-install.prompt.md` | Protocolo de instalación de plugins |
 | `.github/PLUGINS.md` | Especificación de plugins |
 | `.github/plugins/scrum/prompts/crear-backlog-borrador.prompt.md` | Generación de backlogs |
 | `scripts/README.md` | Documentación de scripts |

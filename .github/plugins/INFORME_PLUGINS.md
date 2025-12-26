@@ -95,7 +95,7 @@ Implementar un **sistema de plugins** que permita:
 ├── agents/
 │   └── plugin-manager.agent.md  # Agente gestor de plugins
 └── prompts/
-    └── plugin-install.prompt.md # Prompt de instalación
+    └── as_plugin-install.prompt.md # Prompt de instalación
 ```
 
 ### 3.2. Estructura de un Plugin
@@ -247,7 +247,7 @@ handoffs:
 ├── agents/
 │   └── plugin-manager.agent.md          # Nuevo agente
 ├── prompts/
-│   └── plugin-install.prompt.md         # Nuevo prompt
+│   └── as_plugin-install.prompt.md         # Nuevo prompt
 └── plugins/
     ├── registry.json                    # Registro de plugins
     └── arg-board/                       # Plugin instalado

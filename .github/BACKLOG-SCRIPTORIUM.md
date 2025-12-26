@@ -1539,7 +1539,7 @@ Usar settings de workspace:
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T013 | Actualizar `plugin-manager.agent.md` con paso de settings | ✅ |
-| T014 | Actualizar `plugin-install.prompt.md` con pasos de settings y bridge | ✅ |
+| T014 | Actualizar `as_plugin-install.prompt.md` con pasos de settings y bridge | ✅ |
 | T015 | Actualizar `PLUGINS.md` con documentación de settings (formato correcto) | ✅ |
 | T016 | Añadir validación: settings incluye plugin | ✅ |
 
@@ -3470,7 +3470,7 @@ Los plugins se instalaban con `true` por defecto en settings.json:
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T001 | Modificar plugin-install.prompt.md paso 5: cambiar true → false | ✅ |
+| T001 | Modificar as_plugin-install.prompt.md paso 5: cambiar true → false | ✅ |
 | T002 | Añadir mensaje post-instalación explicando que está desactivado | ✅ |
 | T003 | Actualizar plugin-manager.agent.md con nuevo comportamiento | ✅ |
 | T004 | Actualizar PLUGINS.md sección 2.3 con nota SCRIPT-1.15.0 | ✅ |
@@ -3569,7 +3569,7 @@ Los plugins se instalaban con `true` por defecto en settings.json:
 
 | Archivo | Cambio |
 |---------|--------|
-| `.github/prompts/plugin-install.prompt.md` | Paso 5: default `false`, mensaje post-instalación |
+| `.github/prompts/as_plugin-install.prompt.md` | Paso 5: default `false`, mensaje post-instalación |
 | `.github/agents/plugin-manager.agent.md` | Handoffs, FAQ, status, umbrales, tabla distinción |
 | `.github/PLUGINS.md` | Sección 2.3 actualizada con SCRIPT-1.15.0 |
 

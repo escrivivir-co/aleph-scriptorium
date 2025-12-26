@@ -475,8 +475,8 @@ Usuario debe revisar y aprobar con `@scrum aprobar`.
 
 ## Fase 6: Inicializar Plugin y Rama
 
-> **Protocolo**: `.github/PLUGINS.md` + `plugin-install.prompt.md`  
-> **Referencia**: `.github/prompts/plugin-install.prompt.md`
+> **Protocolo**: `.github/PLUGINS.md` + `as_plugin-install.prompt.md`  
+> **Referencia**: `.github/prompts/as_plugin-install.prompt.md`
 
 ### 6.1. Estructura del Plugin
 
