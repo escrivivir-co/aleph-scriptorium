@@ -4720,3 +4720,222 @@ Completar documentación y publicar épica en backlog principal.
 | 2025-01-03 | Crear nota-colaboracion-talaia-flove.md con propuesta para autores externos | @aleph |
 | 2025-01-03 | Añadir §8 Licencias a OnthologyEditor/README-SCRIPTORIUM.md | @aleph |
 | 2025-01-03 | Actualizar S05 con tasks T030, T031; avance 35% | @aleph |
+
+---
+
+# Épica: SCRIPT-1.22.0 — Agentes Especializados FloveEditor (Ox + 3 Submódulos)
+
+**Objetivo**: Crear arquitectura de agentes DRY para el plugin FloveEditor: un orquestador "Ox" que coordina 3 agentes especializados (uno por submódulo: FloveDocs, Metamodel, MMCO), todos operando como índices que guían a las fuentes sin duplicar contenido.
+
+**Estado**: ✅ Completada
+
+**Fecha inicio**: 2025-12-26  
+**Fecha cierre**: 2025-12-26  
+**Rama de trabajo**: `fc1`  
+**Plugin**: `flove-editor` (`.github/plugins/flove-editor/`)
+
+---
+
+## Contexto
+
+### El problema
+
+El plugin FloveEditor (SCRIPT-1.20.0) tenía un solo agente genérico (`flove-editor.agent.md`) pero:
+- No había acceso especializado a los 3 submódulos (FloveDocs, Metamodel, MMCO)
+- No había orquestador que coordinara los frameworks
+- El bridge no podía invocar capacidades específicas de cada submódulo
+
+### La solución
+
+Arquitectura de agentes DRY con 5 agentes totales:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  plugin_ox_floveeditor.agent.md                  │
+│               (Bridge VS Code → Plugin)                          │
+├─────────────────────────────────────────────────────────────────┤
+│                            │                                     │
+│                            ▼                                     │
+│                   ┌─────────────────┐                            │
+│                   │  flove-ox.agent │  ← Orquestador             │
+│                   │  (Flove Ox)     │    Mapea Flove↔UFO↔MMCO    │
+│                   └────────┬────────┘                            │
+│                            │                                     │
+│        ┌───────────────────┼───────────────────┐                │
+│        ▼                   ▼                   ▼                │
+│  ┌───────────┐      ┌───────────┐      ┌───────────┐           │
+│  │ flovedocs │      │ metamodel │      │   mmco    │           │
+│  │  (Docs)   │      │  (UFO)    │      │  (OCMF)   │           │
+│  └───────────┘      └───────────┘      └───────────┘           │
+│                                                                  │
+│  + flove-editor.agent (diseñador de ontologías 3 niveles)       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Principio DRY aplicado
+
+Los agentes funcionan como **índices navegables**:
+- No duplican contenido de los submódulos
+- Referencian rutas exactas a archivos fuente
+- Guían al usuario hacia la documentación relevante
+- Mantienen mapeos conceptuales (Flove↔UFO↔MMCO)
+
+---
+
+## Stories
+
+### SCRIPT-1.22.0-S01 — Agente Orquestador (Flove Ox)
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T001 | Crear `flove-ox.agent.md` con índice JSON de submódulos | ✅ |
+| T002 | Definir handoffs a flovedocs, metamodel, mmco | ✅ |
+| T003 | Crear mapeo Flove↔UFO (10 campos → Endurants/Perdurants) | ✅ |
+| T004 | Crear mapeo Flove↔MMCO (paradigmas → niveles OCMF) | ✅ |
+| T005 | Documentar taxonomía visual de agentes | ✅ |
+
+**Entregable**: `flove-ox.agent.md` (189 líneas)
+
+---
+
+### SCRIPT-1.22.0-S02 — Agente FloveDocs
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T006 | Crear `flovedocs.agent.md` con índice de documentación | ✅ |
+| T007 | Indexar 10 campos Flove con rutas a tablas | ✅ |
+| T008 | Indexar 6 paradigmas con rutas a slides | ✅ |
+| T009 | Indexar 15+ aplicaciones con rutas a demos | ✅ |
+| T010 | Documentar estructura FloveDocs/Main | ✅ |
+
+**Entregable**: `flovedocs.agent.md` (161 líneas)
+
+---
+
+### SCRIPT-1.22.0-S03 — Agente Metamodel (UFO)
+**Puntos**: 5  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T011 | Crear `metamodel.agent.md` con índice UFO | ✅ |
+| T012 | Documentar 5 capas del metamodel | ✅ |
+| T013 | Crear templates ENTITY, RELATIONSHIP, PROCESS | ✅ |
+| T014 | Indexar estructura de carpetas metamodel/ | ✅ |
+| T015 | Documentar principios FAIR | ✅ |
+
+**Entregable**: `metamodel.agent.md` (238 líneas)
+
+---
+
+### SCRIPT-1.22.0-S04 — Agente MMCO (OCMF)
+**Puntos**: 3  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T016 | Crear `mmco.agent.md` con índice OCMF | ✅ |
+| T017 | Documentar 7 niveles de emergencia | ✅ |
+| T018 | Indexar 8 toy models (Python/Julia) | ✅ |
+| T019 | Documentar 4 constructos primarios | ✅ |
+| T020 | Crear handoffs de validación | ✅ |
+
+**Entregable**: `mmco.agent.md` (195 líneas)
+
+---
+
+### SCRIPT-1.22.0-S05 — Actualización Bridge y Registro
+**Puntos**: 2  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+| Task ID | Descripción | Estado |
+|---------|-------------|--------|
+| T021 | Actualizar `plugin_ox_floveeditor.agent.md` con 5 handoffs | ✅ |
+| T022 | Añadir taxonomía visual al bridge | ✅ |
+| T023 | Verificar integración con @aleph | ✅ |
+
+**Entregable**: `plugin_ox_floveeditor.agent.md` actualizado (173 líneas)
+
+---
+
+## Métricas SCRIPT-1.22.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 23 |
+| Puntos totales | 18 |
+| Prioridad Must | 5 stories (18 pts) |
+| Completadas | **5** |
+| % Avance | **100%** 🎉 |
+
+---
+
+## Entregables
+
+| Archivo | Propósito | Líneas |
+|---------|-----------|--------|
+| `flove-ox.agent.md` | Orquestador de submódulos | 189 |
+| `flovedocs.agent.md` | Índice documentación Flove | 161 |
+| `metamodel.agent.md` | Índice framework UFO | 238 |
+| `mmco.agent.md` | Índice framework OCMF | 195 |
+| `plugin_ox_floveeditor.agent.md` | Bridge actualizado | 173 |
+| **Total** | | **956** |
+
+---
+
+## Mapeos Conceptuales Creados
+
+### Flove → UFO
+
+| Concepto Flove | Concepto UFO | Capa |
+|----------------|--------------|------|
+| 10 Fields | Endurants | 1-2 |
+| 6 Paradigms | Perdurants | 1-2 |
+| 15+ Apps | Modes/Qualities | 2-3 |
+| Fuzzy Logic | Meta-level | 0-1 |
+| CONFLUENTISM | Ontological Patterns | 2 |
+
+### Flove → MMCO
+
+| Paradigma Flove | Nivel OCMF | Descripción |
+|-----------------|------------|-------------|
+| Fuzzy Logic | L0-L1 | Meta-estructura |
+| Fields (10) | L2-L3 | Propiedades constitutivas |
+| Paradigms (6) | L4-L5 | Dinámicas emergentes |
+| Apps (15+) | L6-L7 | Aplicaciones coherentes |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado |
+|-------------|--------|
+| SCRIPT-1.20.0 (FloveEditor base) | ✅ Completada |
+| SCRIPT-1.21.0 (Submódulos nested) | ✅ S01 Completada |
+| OnthologyEditor/FloveDocs | ✅ Submódulo instalado |
+| OnthologyEditor/metamodel | ✅ Submódulo instalado |
+| OnthologyEditor/MMCO | ✅ Submódulo instalado |
+
+---
+
+## Changelog SCRIPT-1.22.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-26 | Crear épica SCRIPT-1.22.0 | @scrum |
+| 2025-12-26 | Crear flove-ox.agent.md (orquestador) | @aleph |
+| 2025-12-26 | Crear flovedocs.agent.md (índice FloveDocs) | @aleph |
+| 2025-12-26 | Crear metamodel.agent.md (índice UFO) | @aleph |
+| 2025-12-26 | Crear mmco.agent.md (índice OCMF) | @aleph |
+| 2025-12-26 | Actualizar bridge plugin_ox_floveeditor | @aleph |
+| 2025-12-26 | Cerrar épica al 100% | @aleph |

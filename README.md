@@ -14,7 +14,7 @@ Sistema de agentes de IA para VS Code + GitHub Copilot Chat, diseñado para proy
 
 ## Quick Start
 
-\`\`\`bash
+```bash
 git clone https://github.com/escrivivir-co/aleph-scriptorium.git
 cd aleph-scriptorium && code .
 
@@ -23,7 +23,7 @@ cd aleph-scriptorium && code .
 
 # Setup completo (plugins + submódulos):
 ./scripts/setup-workspace.sh
-\`\`\`
+```
 
 **Requisito**: VS Code + GitHub Copilot Chat
 
@@ -31,12 +31,12 @@ cd aleph-scriptorium && code .
 
 ## Estructura
 
-\`\`\`
+```
 .github/          # 31 agentes · 19 plugins · prompts · instructions
 ARCHIVO/          # Base doctrinal (marco, diagnóstico, justificación)
 PROYECTOS/        # Textos en progreso (Fundación: 12 caps 2026)
 docs/             # Sitio web (Jekyll/GitHub Pages)
-\`\`\`
+```
 
 ---
 
@@ -44,10 +44,10 @@ docs/             # Sitio web (Jekyll/GitHub Pages)
 
 | Capa | Agentes | Función |
 |------|---------|---------|
-| 🟢 UI | \`@aleph\` \`@revisor\` \`@periodico\` | Producción |
-| 🔵⚫🔴🟡🟠 Backend | \`@blueflag\` \`@blackflag\` \`@redflag\` \`@yellowflag\` \`@orangeflag\` | Auditoría |
-| ⚪ Sistema | \`@vestibulo\` \`@cartaspuerta\` | Navegación |
-| ⚙️ Meta | \`@ox\` \`@pluginmanager\` \`@indice\` | Gestión |
+| 🟢 UI | `@aleph` `@revisor` `@periodico` | Producción |
+| 🔵⚫🔴🟡🟠 Backend | `@blueflag` `@blackflag` `@redflag` `@yellowflag` `@orangeflag` | Auditoría |
+| ⚪ Sistema | `@vestibulo` `@cartaspuerta` | Navegación |
+| ⚙️ Meta | `@ox` `@pluginmanager` `@indice` | Gestión |
 | 🔌 Bridges | 18 bridges → plugins | Extensiones |
 
 Las **5 Banderas** auditan propuestas desde 5 ángulos: verdad (evidencia), sombras (poder), estructura (escala), límites (inconmensurabilidad) y registro (retórica).
@@ -60,7 +60,7 @@ Las **5 Banderas** auditan propuestas desde 5 ángulos: verdad (evidencia), somb
 
 **Borradores (11)**: Network, Novelist, Blockly Editor, Prolog Editor, Wire Editor, N8N Editor, TypedPrompting, WiringApp, ArgBoardApp, HyperGraphEditor
 
-Cada plugin tiene un bridge en \`.github/agents/plugin_ox_{id}.agent.md\`. Ver [PLUGINS.md](.github/PLUGINS.md).
+Cada plugin tiene un bridge en `.github/agents/plugin_ox_{id}.agent.md`. Ver [PLUGINS.md](.github/PLUGINS.md).
 
 ---
 
@@ -70,21 +70,21 @@ Cada plugin tiene un bridge en \`.github/agents/plugin_ox_{id}.agent.md\`. Ver [
 |-----------|-------------|
 | 🎭 Teatro | Extensión VS Code, Matrix Theater, HyperGraph |
 | 🧠 Lógica | 10 paradigmas IA (FIA), Prolog, bloques Blockly |
-| �� Flujos | Node-RED, n8n workflows, P2P Oasis |
+| 🔄 Flujos | Node-RED, n8n workflows, P2P Oasis |
 | 📝 Contenido | Novelist (memoria), TypedPrompting, MCP Presets |
 | 🤖 Bots | Streaming Kick.com |
 
-Ver [scripts/README.md](scripts/README.md) para setup y \`.gitmodules\` para detalle.
+Ver [scripts/README.md](scripts/README.md) para setup y `.gitmodules` para detalle.
 
 ---
 
 ## Contribuir
 
-\`\`\`bash
+```bash
 # Rama activa: fc1 (main congelada para releases)
 git checkout fc1 && git checkout -b feature/mi-cambio
 # Commit → Push → PR a fc1
-\`\`\`
+```
 
 - [CONTRIBUTING.md](CONTRIBUTING.md) — Proceso
 - [DEVOPS.md](.github/DEVOPS.md) — Commits y metodología
@@ -97,7 +97,7 @@ git checkout fc1 && git checkout -b feature/mi-cambio
 | Componente | Valor |
 |------------|-------|
 | Versión | **1.0.0-beta.3** (Semillas de Futuro) |
-| Rama activa | \`fc1\` |
+| Rama activa | `fc1` |
 | Agentes | 31 (13 core + 18 bridges) |
 | Plugins | 19 (8 operativos + 11 borradores) |
 | Submódulos | 14 integrados |

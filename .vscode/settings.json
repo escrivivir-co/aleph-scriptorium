@@ -14,31 +14,31 @@
 	// --- PROMPTS ADICIONALES ---
 	// Añadir carpetas de prompts de plugins a las ubicaciones de búsqueda
 	// Por defecto, VS Code solo detecta .github/prompts/
-	"chat.promptFilesLocations": { 
-		 ".github/prompts": true ,
-		 ".github/plugins/arg-board/prompts": false ,
-		 ".github/plugins/agent-creator/prompts": true ,
-		 ".github/plugins/teatro/prompts": false ,
-		 ".github/plugins/scrum/prompts": true,
-		 ".github/plugins/foro-scraper/prompts": false,
-		 ".github/plugins/enciclopedia/prompts": false,
+	"chat.promptFilesLocations": {
+		".github/prompts": true,
+		".github/plugins/arg-board/prompts": false,
+		".github/plugins/agent-creator/prompts": true,
+		".github/plugins/teatro/prompts": false,
+		".github/plugins/scrum/prompts": true,
+		".github/plugins/foro-scraper/prompts": false,
+		".github/plugins/enciclopedia/prompts": false,
 		".github/plugins/gh-pages/prompts": true,
 		".github/plugins/mcp-presets/prompts": false,
 		".github/plugins/typed-prompting/prompts": false,
 		".github/plugins/n8n-editor/prompts": false,
 		".github/plugins/flove-editor/prompts": false
-	}	,
+	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
 	// Por defecto, VS Code solo detecta .github/instructions/
-	"chat.instructionsFilesLocations": { 
-		 ".github/instructions": true ,
-		 ".github/plugins/arg-board/instructions": false ,
-		 ".github/plugins/agent-creator/instructions": true ,
-		 ".github/plugins/teatro/instructions": false ,
-		 ".github/plugins/scrum/instructions": true,
-			".github/plugins/foro-scraper/instructions": false,
-			".github/plugins/enciclopedia/instructions": false,
+	"chat.instructionsFilesLocations": {
+		".github/instructions": true,
+		".github/plugins/arg-board/instructions": false,
+		".github/plugins/agent-creator/instructions": true,
+		".github/plugins/teatro/instructions": false,
+		".github/plugins/scrum/instructions": true,
+		".github/plugins/foro-scraper/instructions": false,
+		".github/plugins/enciclopedia/instructions": false,
 		".github/plugins/gh-pages/instructions": true,
 		".github/plugins/mcp-presets/instructions": false,
 		".github/plugins/typed-prompting/instructions": false,
