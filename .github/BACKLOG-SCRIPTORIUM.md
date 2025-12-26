@@ -4451,3 +4451,264 @@ Integrar la ontología **Flove** como template metodológico:
 | 2025-01-02 | Generar backlog borrador (8 stories, 33 tasks) | @scrum |
 | 2025-01-02 | Crear submódulo OnthologyEditor + plugin flove-editor (S01, S02) | @aleph |
 | 2025-01-02 | Publicar épica en backlog principal | @aleph |
+
+---
+
+# Épica: SCRIPT-1.21.0 — Metamodel Compliance para FloveEditor
+
+**Objetivo**: Integrar el metamodel de Talaia Digital (Codeberg) como framework de auditoría para asegurar que el plugin flove-editor produce ontologías certificables según estándares formales (UFO, FAIR, XAI).
+
+**Estado**: 🆕 Nueva (Feature Cycle 1)
+
+**Fecha inicio**: 2025-01-03  
+**Rama de trabajo**: `fc1`  
+**Submódulo a añadir**: `OnthologyEditor/metamodel` (https://codeberg.org/talaiadigital/metamodel)  
+**Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/`
+
+---
+
+## Contexto
+
+### El problema
+
+El plugin flove-editor (SCRIPT-1.20.0) diseña ontologías basadas en CONFLUENTISM pero:
+- No hay validación formal contra estándares ontológicos
+- No cumple con principios FAIR (Findable, Accessible, Interoperable, Reusable)
+- No hay trazabilidad hacia Unified Foundational Ontology (UFO)
+- Las exportaciones (JSON Schema, TypeScript, Zod) no están certificadas
+
+### La solución
+
+Integrar el **metamodel de Talaia Digital** como auditor:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    METAMODEL (5 CAPAS)                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│   Capa 0: Meta-especificación   ┌─────────────────────────────┐  │
+│   (Estándares: ISO, OWL, RDF)   │  Reglas de la propia spec   │  │
+│                                 └─────────────────────────────┘  │
+│            ↓                                                      │
+│   Capa 1: UFO (Foundational)    ┌─────────────────────────────┐  │
+│   (Endurants, Perdurants)       │  Ontología fundacional       │  │
+│                                 └─────────────────────────────┘  │
+│            ↓                                                      │
+│   Capa 2: Dominio Core          ┌─────────────────────────────┐  │
+│   (Conceptos reutilizables)     │  Patrones ontológicos        │  │
+│                                 └─────────────────────────────┘  │
+│            ↓                                                      │
+│   Capa 3: Aplicación            ┌─────────────────────────────┐  │
+│   (Instancias específicas)      │  Ontologías de dominio       │  │
+│                                 └─────────────────────────────┘  │
+│            ↓                                                      │
+│   Capa 4: Interfaz              ┌─────────────────────────────┐  │
+│   (Representaciones)            │  JSON-LD, OWL, RDF           │  │
+│                                 └─────────────────────────────┘  │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Mapeo Flove ↔ UFO (Preliminar)
+
+| Concepto Flove | Concepto UFO | Capa |
+|----------------|--------------|------|
+| Fields (10 campos) | Endurants (entidades persistentes) | 1-2 |
+| Paradigms (6) | Perdurants (eventos, procesos) | 1-2 |
+| Apps (15) | Modes/Qualities (propiedades) | 2-3 |
+| Fuzzy Logic | Meta-level (reglas de razonamiento) | 0-1 |
+| CONFLUENTISM | Ontological Patterns | 2 |
+
+---
+
+## Stories
+
+### SCRIPT-1.21.0-S01: Integración de Submódulos (metamodel + MMCO + FloveDocs)
+**Effort**: 5 pts  
+**Prioridad**: Must  
+**Estado**: ✅ Completada
+
+#### Descripción
+
+Agregar los repositorios de Talaia Digital y FloveDocs como submódulos Git anidados dentro de OnthologyEditor.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T001 | Verificar que OnthologyEditor ya está en rama `integration/beta/scriptorium` | 0.5 | ✅ |
+| T002 | Ejecutar `git submodule add` para metamodel, MMCO y FloveDocs | 1 | ✅ |
+| T003 | Crear README-SCRIPTORIUM.md para cada submódulo anidado | 1 | ✅ |
+| T004 | Actualizar `OnthologyEditor/README-SCRIPTORIUM.md` con arquitectura completa | 0.5 | ✅ |
+| T005 | Crear .gitmodules en OnthologyEditor | 0.5 | ✅ |
+| T006 | Commit según protocolo DevOps | 0.5 | ✅ |
+| T007 | Actualizar `scripts/setup-workspace.sh` para inicializar submódulo nested | 1 | ⏳ |
+
+#### Submódulos Instalados
+
+| Submódulo | Origen | Rama | Licencia |
+|-----------|--------|------|----------|
+| metamodel | codeberg.org/talaiadigital/metamodel | main | CC BY-SA 4.0 |
+| MMCO | codeberg.org/talaiadigital/MMCO | master | AGPL-3.0 |
+| FloveDocs | codeberg.org/FloveDocs/Main | main | Por determinar |
+
+**Definition of Done**:
+- [x] Submódulo metamodel visible en `OnthologyEditor/metamodel/`
+- [x] Submódulo MMCO visible en `OnthologyEditor/MMCO/`
+- [x] Submódulo FloveDocs visible en `OnthologyEditor/FloveDocs/`
+- [x] README-SCRIPTORIUM.md documenta arquitectura completa
+- [ ] setup-workspace.sh actualizado (pendiente T007)
+
+---
+
+### SCRIPT-1.21.0-S02: Arquitectura de Integración
+**Effort**: 5 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+
+Diseñar cómo el metamodel se integrará con OnthologyEditor y flove-editor.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T008 | Crear `OnthologyEditor/docs/ARCHITECTURE.md` con diseño de integración | 1.5 | ⏳ |
+| T009 | Documentar las 5 capas del metamodel y cómo mapean a Flove | 1 | ⏳ |
+| T010 | Diseñar estructura de carpetas `src/compliance/` | 0.5 | ⏳ |
+| T011 | Identificar puntos de extensión en flove-editor para validación | 1 | ⏳ |
+| T012 | Crear diagrama de flujo: Ontología Flove → Validación UFO → Exportación | 1 | ⏳ |
+
+**Definition of Done**:
+- [ ] ARCHITECTURE.md explica el diseño completo
+- [ ] Diagrama de flujo incluido
+- [ ] Puntos de extensión documentados
+
+---
+
+### SCRIPT-1.21.0-S03: Mapeo Conceptual Flove ↔ UFO
+**Effort**: 5 pts  
+**Prioridad**: Must  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+
+Crear documento de mapeo entre el paradigma CONFLUENTISM (Flove) y la Unified Foundational Ontology (UFO).
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T013 | Estudiar estructura UFO del metamodel (Endurants, Perdurants, Momentos) | 1 | ⏳ |
+| T014 | Mapear los 10 campos de Flove a conceptos UFO | 1 | ⏳ |
+| T015 | Mapear los 6 paradigmas de Flove a patrones ontológicos | 1 | ⏳ |
+| T016 | Mapear las 15 apps de Flove a modos/cualidades UFO | 1 | ⏳ |
+| T017 | Crear `ARCHIVO/PLUGINS/FLOVE_EDITOR/mapeo-flove-ufo.md` | 1 | ⏳ |
+
+**Definition of Done**:
+- [ ] Documento de mapeo completo con tablas
+- [ ] Gaps identificados para futuros FCs
+- [ ] Revisado por @yellowflag (límites conceptuales)
+
+---
+
+### SCRIPT-1.21.0-S04: Actualización del Plugin flove-editor
+**Effort**: 3 pts  
+**Prioridad**: Should  
+**Estado**: ⏳ Pendiente
+
+#### Descripción
+
+Actualizar el plugin flove-editor con referencias al metamodel y preparar para validación.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T018 | Añadir sección "Compliance" en `manifest.md` | 0.5 | ⏳ |
+| T019 | Actualizar `flove-paradigm.instructions.md` con referencias UFO | 0.5 | ⏳ |
+| T020 | Añadir handoff "Validar contra UFO" en agente FloveEditor | 0.5 | ⏳ |
+| T021 | Actualizar `registry.json` con campo `compliance.metamodel` | 0.5 | ⏳ |
+| T022 | Incrementar versión a 0.2.0 | 0.5 | ⏳ |
+| T023 | Crear `prompts/validar-ufo.prompt.md` (stub para FC2) | 0.5 | ⏳ |
+
+**Definition of Done**:
+- [ ] Plugin actualizado a v0.2.0
+- [ ] Referencias al metamodel en documentación
+- [ ] Handoff de validación preparado
+
+---
+
+### SCRIPT-1.21.0-S05: Documentación y Publicación
+**Effort**: 3 pts  
+**Prioridad**: Must  
+**Estado**: 🔄 En Progreso
+
+#### Descripción
+
+Completar documentación y publicar épica en backlog principal.
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T024 | Añadir épica SCRIPT-1.21.0 a BACKLOG-SCRIPTORIUM.md | 0.5 | ✅ |
+| T025 | Actualizar PLUGINS.md con nota de compliance en flove-editor | 0.5 | ⏳ |
+| T026 | Actualizar docs/ecosistema.md con metamodel como dependencia | 0.5 | ⏳ |
+| T027 | Crear entrada en docs/roadmap.md para Metamodel Compliance | 0.5 | ⏳ |
+| T028 | Commit según protocolo DevOps | 0.5 | ⏳ |
+| T029 | Actualizar contadores en README.md (nuevo submódulo) | 0.5 | ⏳ |
+
+**Definition of Done**:
+- [ ] Épica publicada en backlog principal
+- [ ] Documentación web actualizada
+- [ ] README refleja nuevo submódulo
+
+---
+
+## Métricas SCRIPT-1.21.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 5 |
+| Tasks totales | 29 |
+| Puntos totales | 21 |
+| Prioridad Must | 4 stories (18 pts) |
+| Prioridad Should | 1 story (3 pts) |
+| Completadas | **1** (S01: 6/7 tasks) |
+| % Avance | **21%** (6/29 tasks) |
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| OnthologyEditor submódulo | ✅ Instalado | Rama integration/beta/scriptorium |
+| flove-editor plugin | ✅ Instalado | v0.1.0 → v0.2.0 |
+| Metamodel Codeberg | ✅ Público | CC BY-SA 4.0 |
+| Git nested submodules | ✅ Soportado | Requiere --recursive |
+| SCRIPT-1.20.0 (S01, S02) | ✅ Completado | Base para compliance |
+
+---
+
+## Riesgos Identificados
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Licencia CC BY-SA incompatible | Baja | Alto | Verificar con legal antes de integrar |
+| Metamodel muy complejo | Media | Medio | Empezar por UFO básico |
+| Submódulo nested problemático | Baja | Medio | Test en branch separado |
+| Mapeo Flove↔UFO incompleto | Media | Medio | Iterar en FCs posteriores |
+
+---
+
+## Roadmap Post-FC1
+
+| FC | Objetivo | Estimación |
+|----|----------|------------|
+| **FC2** | Validación UFO (templates, validador, tests) | ~25 pts |
+| **FC3** | FAIR + Exportadores (metadatos, OWL, JSON-LD) | ~20 pts |
+| **FC4** | XAI + Análisis Dimensional | ~15 pts |
+
+---
+
+## Changelog SCRIPT-1.21.0
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-01-03 | Crear conversación PO-SM en BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/ | @scrum |
+| 2025-01-03 | Generar backlog borrador FC1 (5 stories, 29 tasks) | @scrum |
+| 2025-01-03 | Aprobar y publicar épica en backlog principal | @scrum |
+| 2025-01-03 | Instalar 3 submódulos nested: metamodel, MMCO, FloveDocs (S01 completada) | @aleph |
