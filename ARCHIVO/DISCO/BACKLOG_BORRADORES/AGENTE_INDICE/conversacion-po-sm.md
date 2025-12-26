@@ -176,7 +176,7 @@ Si falla algún test → Bloquear commit con mensaje
 ### Puntos de Integración
 
 1. **copilot-instructions.md §8**: Nueva sección que advierte de la existencia del índice
-2. **commit-message.prompt.md Paso 2.5**: Nuevo paso que invoca validación automática
+2. **as_commit-message.prompt.md Paso 2.5**: Nuevo paso que invoca validación automática
 
 ### Flujo Pre-Commit
 
@@ -184,7 +184,7 @@ Si falla algún test → Bloquear commit con mensaje
 Agente completa trabajo
        │
        ▼
-commit-message.prompt.md
+as_commit-message.prompt.md
        │
        ├── Paso 1: Identificar cambios
        │
@@ -223,7 +223,7 @@ commit-message.prompt.md
 | # | Decisión | Rationale |
 |---|----------|-----------|
 | D8 | Warning no bloqueante | UX fluida, no interrumpe trabajo |
-| D9 | Integrar en commit-message.prompt.md | Punto único de entrada a commits |
+| D9 | Integrar en as_commit-message.prompt.md | Punto único de entrada a commits |
 
 ---
 

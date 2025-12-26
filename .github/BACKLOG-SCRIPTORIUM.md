@@ -3258,7 +3258,7 @@ Crear `@indice` que:
 ├── agents/
 │   └── indice.agent.md          # ✅ CREADO
 ├── prompts/
-│   ├── commit-message.prompt.md # ✅ MODIFICADO (Paso 2.5)
+│   ├── as_commit-message.prompt.md # ✅ MODIFICADO (Paso 2.5)
 │   ├── indice-consultar.prompt.md   # ✅ CREADO
 │   ├── indice-actualizar.prompt.md  # ✅ CREADO
 │   └── indice-validar.prompt.md     # ✅ CREADO
@@ -3342,7 +3342,7 @@ ARCHIVO/DEVOPS/
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T020 | Añadir sección §8 en copilot-instructions.md | ✅ |
-| T021 | Modificar commit-message.prompt.md: Paso 2.5 | ✅ |
+| T021 | Modificar as_commit-message.prompt.md: Paso 2.5 | ✅ |
 | T022 | Implementar lógica de warning no bloqueante | ✅ |
 | T023 | Definir formato de warning accionable | ✅ |
 | T024 | Documentar flujo en indice-dry.instructions.md | ✅ |
@@ -3381,7 +3381,7 @@ ARCHIVO/DEVOPS/
 | `aleph.agent.md` | Handoffs @indice añadidos |
 | `ox.agent.md` | @indice en índice maestro |
 | `copilot-instructions.md` | Sección §8 añadida |
-| `commit-message.prompt.md` | Paso 2.5 añadido |
+| `as_commit-message.prompt.md` | Paso 2.5 añadido |
 | `Tecnico.md` | @indice en capa Meta |
 
 ---
@@ -3624,7 +3624,7 @@ El plugin GH-Pages no tenía un índice estructural que:
 1. **Índice SPLASH**: `ARCHIVO/DISCO/SPLASH/index.md` — mapa técnico-funcional de `docs/`
 2. **Vinculación**: Instrucciones del plugin GH-Pages referencian el índice
 3. **Interceptación**: Prompts del plugin verifican coherencia antes de operar
-4. **Warning en commits**: `commit-message.prompt.md` Paso 2.6 valida cambios en `docs/`
+4. **Warning en commits**: `as_commit-message.prompt.md` Paso 2.6 valida cambios en `docs/`
 5. **Conexión con @indice**: @indice puede delegar a @GHPages para índice SPLASH
 
 ---
@@ -3677,7 +3677,7 @@ El plugin GH-Pages no tenía un índice estructural que:
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T012 | Añadir "Paso 2.6: Validar índice SPLASH" en commit-message.prompt | ✅ |
+| T012 | Añadir "Paso 2.6: Validar índice SPLASH" en as_commit-message.prompt | ✅ |
 | T013 | Definir criterios de warning (nuevas secciones, CSS, páginas) | ✅ |
 | T014 | Documentar formato del warning (informativo, no bloqueante) | ✅ |
 | T015 | Añadir sugerencia de actualización si hay discrepancia | ✅ |
@@ -3730,7 +3730,7 @@ El plugin GH-Pages no tenía un índice estructural que:
 | `.github/plugins/gh-pages/instructions/gh-pages.instructions.md` | Sección "Índice SPLASH" | ✅ |
 | `.github/plugins/gh-pages/prompts/gh-pages-publish.prompt.md` | Paso de validación SPLASH | ✅ |
 | `.github/plugins/gh-pages/agents/ghpages.agent.md` | Handoffs SPLASH | ✅ |
-| `.github/prompts/commit-message.prompt.md` | Paso 2.6 warning SPLASH | ✅ |
+| `.github/prompts/as_commit-message.prompt.md` | Paso 2.6 warning SPLASH | ✅ |
 | `.github/agents/indice.agent.md` | Handoff delegación SPLASH | ✅ |
 
 ---
@@ -3751,7 +3751,7 @@ El plugin GH-Pages no tenía un índice estructural que:
 |-------|--------|-------|
 | 2025-12-24 | Crear índice SPLASH | @aleph |
 | 2025-12-24 | Vincular con instrucciones GH-Pages | @aleph |
-| 2025-12-24 | Añadir Paso 2.6 en commit-message.prompt | @aleph |
+| 2025-12-24 | Añadir Paso 2.6 en as_commit-message.prompt | @aleph |
 | 2025-12-24 | Añadir handoffs en GHPages | @aleph |
 | 2025-12-24 | Conectar @indice con SPLASH | @aleph |
 | 2025-12-24 | Publicar épica en backlog principal | @aleph |
@@ -3784,7 +3784,7 @@ El README.md es el punto de entrada público del proyecto, pero:
 
 1. **Índice README**: `ARCHIVO/DISCO/README/index.md` — mapa estructural del README.md
 2. **Vinculación**: @indice puede consultar y actualizar este índice
-3. **Warning en commits**: `commit-message.prompt.md` Paso 2.7 valida cambios que afectan al README
+3. **Warning en commits**: `as_commit-message.prompt.md` Paso 2.7 valida cambios que afectan al README
 4. **Criterios claros**: Definir qué cambios requieren actualización del README
 
 ---
@@ -3822,7 +3822,7 @@ El README.md es el punto de entrada público del proyecto, pero:
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T007 | Añadir "Paso 2.7: Validar índice README" en commit-message.prompt | ✅ |
+| T007 | Añadir "Paso 2.7: Validar índice README" en as_commit-message.prompt | ✅ |
 | T008 | Definir criterios de warning (plugins, submódulos, agentes, versión) | ✅ |
 | T009 | Documentar formato del warning (informativo, no bloqueante) | ✅ |
 | T010 | Añadir sugerencia de actualización si hay discrepancia | ✅ |
@@ -3860,7 +3860,7 @@ El README.md es el punto de entrada público del proyecto, pero:
 |---------|-----------|--------|
 | `ARCHIVO/DISCO/README/index.md` | Índice estructural de README.md | ✅ |
 | `.github/agents/indice.agent.md` | Handoffs README añadidos | ✅ |
-| `.github/prompts/commit-message.prompt.md` | Paso 2.7 warning README | ✅ |
+| `.github/prompts/as_commit-message.prompt.md` | Paso 2.7 warning README | ✅ |
 
 ---
 
@@ -3892,7 +3892,7 @@ El README.md es el punto de entrada público del proyecto, pero:
 |-------|--------|-------|
 | 2025-12-24 | Crear índice README | @aleph |
 | 2025-12-24 | Añadir handoffs en @indice | @aleph |
-| 2025-12-24 | Añadir Paso 2.7 en commit-message.prompt | @aleph |
+| 2025-12-24 | Añadir Paso 2.7 en as_commit-message.prompt | @aleph |
 | 2025-12-24 | Publicar épica en backlog principal | @aleph |
 
 ---

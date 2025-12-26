@@ -751,7 +751,7 @@ Actualizar el índice SPLASH si:
 
 ### Validación pre-commit
 
-El prompt `commit-message.prompt.md` incluye **Paso 2.6** que:
+El prompt `as_commit-message.prompt.md` incluye **Paso 2.6** que:
 - Detecta cambios en `docs/`
 - Compara con el índice SPLASH
 - Genera warning si hay discrepancia estructural

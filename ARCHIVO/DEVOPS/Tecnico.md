@@ -75,7 +75,7 @@
 │   ├── cartas-puerta.instructions.md
 │   └── ...
 ├── prompts/               # 18+ prompts reutilizables
-│   ├── commit-message.prompt.md
+│   ├── as_commit-message.prompt.md
 │   ├── as_instalar_submodulo.prompt.md
 │   └── ...
 ├── plugins/               # 19 plugins instalados

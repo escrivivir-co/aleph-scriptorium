@@ -8,7 +8,7 @@ Ejecutar validación rápida de coherencia DRY antes de hacer commit. Los warnin
 
 ## Contexto de uso
 
-Este prompt se invoca automáticamente desde `commit-message.prompt.md` (Paso 2.5) o manualmente con `@indice validar`.
+Este prompt se invoca automáticamente desde `as_commit-message.prompt.md` (Paso 2.5) o manualmente con `@indice validar`.
 
 ---
 
@@ -157,7 +157,7 @@ Este error debería corregirse antes de continuar.
 
 ---
 
-## Integración con commit-message.prompt.md
+## Integración con as_commit-message.prompt.md
 
 Este prompt se invoca en el **Paso 2.5** del flujo de commit:
 

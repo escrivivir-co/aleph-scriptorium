@@ -137,7 +137,7 @@ Los índices son el **mapa de navegación rápida** del proyecto. Consultar ante
 
 ### Validación Pre-Commit
 
-El prompt `commit-message.prompt.md` incluye **Paso 2.5** que invoca validación de índice:
+El prompt `as_commit-message.prompt.md` incluye **Paso 2.5** que invoca validación de índice:
 - Ejecuta 5 tests de coherencia
 - Genera warnings informativos (no bloqueantes)
 - Sugiere `@indice actualizar` si hay discrepancias

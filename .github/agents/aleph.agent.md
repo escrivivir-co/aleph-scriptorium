@@ -193,7 +193,7 @@ refs #TASK-ID
 
 ### Prompt de asistencia
 
-Usa `.github/prompts/commit-message.prompt.md` para generar mensajes conformes.
+Usa `.github/prompts/as_commit-message.prompt.md` para generar mensajes conformes.
 
 ---
 

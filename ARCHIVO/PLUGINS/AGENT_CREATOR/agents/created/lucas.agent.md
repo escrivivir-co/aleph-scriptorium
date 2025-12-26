@@ -221,4 +221,4 @@ Lucas está desplegado como personaje en:
 | Índice Técnico | `ARCHIVO/DEVOPS/Tecnico.md` |
 | Receta del agente | `ARCHIVO/PLUGINS/AGENT_CREATOR/recipes/lucas.recipe.json` |
 | Protocolo DevOps | `.github/DEVOPS.md` |
-| Protocolo commits | `.github/prompts/commit-message.prompt.md` |
+| Protocolo commits | `.github/prompts/as_commit-message.prompt.md` |

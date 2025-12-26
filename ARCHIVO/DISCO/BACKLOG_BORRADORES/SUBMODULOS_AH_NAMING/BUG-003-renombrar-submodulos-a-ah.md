@@ -83,7 +83,7 @@ Renombrar **solo el path local** de cada submódulo para que siga:
 | `.vscode/settings.json` | Actualizar rutas de plugins |
 | `scripts/README.md` | Actualizar documentación |
 | `.github/instructions/submodulo-integracion.instructions.md` | Añadir convención de naming |
-| `.github/prompts/instalar-submodulo.prompt.md` | Añadir sección 1.2.1 Naming |
+| `.github/prompts/as_instalar_submodulo.prompt.md` | Añadir sección 1.2.1 Naming |
 
 ### Lo que NO cambia
 
@@ -152,7 +152,7 @@ grep -r "alephscript-\|as-gym\|as-utils" scripts/ docs/ --include="*.md" --inclu
 | T004 | Actualizar `.vscode/settings.json` rutas | Must |
 | T005 | Actualizar `scripts/README.md` documentación | Should |
 | T006 | Añadir convención en `submodulo-integracion.instructions.md` | Must |
-| T007 | Añadir sección 1.2.1 en `instalar-submodulo.prompt.md` | Must |
+| T007 | Añadir sección 1.2.1 en `as_instalar_submodulo.prompt.md` | Must |
 | T008 | Crear script `verify-submodule-naming.sh` | Should |
 | T009 | Verificar `git submodule status` funciona | Must |
 | T010 | Documentar en `docs/leeme.md` sección avanzada | Should |
@@ -161,7 +161,7 @@ grep -r "alephscript-\|as-gym\|as-utils" scripts/ docs/ --include="*.md" --inclu
 
 ## Actualización del Protocolo de Instalación
 
-> **Archivo objetivo**: `.github/prompts/instalar-submodulo.prompt.md`
+> **Archivo objetivo**: `.github/prompts/as_instalar_submodulo.prompt.md`
 > **Ubicación**: Fase 1 → Nueva sección 1.2.1 después de "Convención de nombres"
 
 ### Contenido a añadir
@@ -255,7 +255,7 @@ fi
 - [ ] `.vscode/settings.json` actualizado con nuevas rutas
 - [ ] `scripts/README.md` actualizado
 - [ ] Convención documentada en `submodulo-integracion.instructions.md`
-- [ ] Sección 1.2.1 añadida a `instalar-submodulo.prompt.md`
+- [ ] Sección 1.2.1 añadida a `as_instalar_submodulo.prompt.md`
 - [ ] Script `verify-submodule-naming.sh` creado
 - [ ] Verificar `git submodule status` funciona
 - [ ] No quedan referencias a nombres antiguos (grep limpio)

@@ -76,7 +76,7 @@ Crear un agente `@indice` integrado en `.github/agents/` que:
 | Archivo | Cambio | Propósito |
 |---------|--------|-----------|
 | `copilot-instructions.md` | Nueva sección §8 | Advertir existencia del índice |
-| `commit-message.prompt.md` | Nuevo Paso 2.5 | Invocar validación automática |
+| `as_commit-message.prompt.md` | Nuevo Paso 2.5 | Invocar validación automática |
 | `indice-validar.prompt.md` | Crear | Ejecutar 5 tests rápidos |
 | `indice-dry.instructions.md` | Crear | Reglas de validación |
 
@@ -216,7 +216,7 @@ Integrar validación de índice en el flujo de commits para detectar desincroniz
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T020 | Añadir sección §8 en copilot-instructions.md sobre Índice DRY | 0.5 | ⏳ |
-| T021 | Modificar commit-message.prompt.md: añadir Paso 2.5 "Validar Índice" | 1 | ⏳ |
+| T021 | Modificar as_commit-message.prompt.md: añadir Paso 2.5 "Validar Índice" | 1 | ⏳ |
 | T022 | Implementar lógica de warning no bloqueante en Paso 2.5 | 0.5 | ⏳ |
 | T023 | Definir formato de warning con sugerencia accionable | 0.5 | ⏳ |
 | T024 | Documentar flujo en indice-dry.instructions.md | 0.5 | ⏳ |
@@ -229,7 +229,7 @@ Integrar validación de índice en el flujo de commits para detectar desincroniz
 ### Archivos modificados
 ```
 .github/copilot-instructions.md (§8 nuevo)
-.github/prompts/commit-message.prompt.md (Paso 2.5)
+.github/prompts/as_commit-message.prompt.md (Paso 2.5)
 .github/instructions/indice-dry.instructions.md
 ```
 
@@ -283,7 +283,7 @@ Este warning es informativo y no bloquea el commit.
 │   ├── aleph.agent.md           # ← MODIFICAR (S04)
 │   └── ox.agent.md              # ← MODIFICAR (S04)
 ├── prompts/
-│   ├── commit-message.prompt.md     # ← MODIFICAR (S05: Paso 2.5)
+│   ├── as_commit-message.prompt.md     # ← MODIFICAR (S05: Paso 2.5)
 │   ├── indice-consultar.prompt.md   # ← NUEVO (S03)
 │   ├── indice-actualizar.prompt.md  # ← NUEVO (S03)
 │   └── indice-validar.prompt.md     # ← NUEVO (S03)

@@ -114,7 +114,7 @@ Este documento es el **mapa estructural** del README.md del proyecto. Sirve para
 
 ## 7. Checklist de coherencia
 
-> **Agente responsable**: @indice (Paso 2.7 de commit-message.prompt.md)
+> **Agente responsable**: @indice (Paso 2.7 de as_commit-message.prompt.md)
 
 | Test | Verificación | Fuente |
 |------|-------------|--------|
