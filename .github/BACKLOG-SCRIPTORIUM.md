@@ -929,7 +929,7 @@ https://escrivivir-co.github.io/aleph-scriptorium/roadmap/#galeria-fotos
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T001 | Añadir protocolo de publicación en `foto-estado-y-discurso-motivacional.prompt.md` | ✅ |
+| T001 | Añadir protocolo de publicación en `as_foto_estado.prompt.md` | ✅ |
 | T002 | Definir formato de card para galería (HTML template) | ✅ |
 | T003 | Documentar flujo de actualización de roadmap.md | ✅ |
 
@@ -1387,7 +1387,7 @@ Renombrar **path local** (no URL remota) a **PascalCase descriptivo** que indiqu
 | BUG-003-T004 | Actualizar `.vscode/settings.json` | ✅ (no requería cambios) |
 | BUG-003-T005 | Actualizar `scripts/README.md` | ✅ |
 | BUG-003-T006 | Añadir convención en `submodulo-integracion.instructions.md` | ✅ |
-| BUG-003-T007 | Añadir sección 1.2.1 en `instalar-submodulo.prompt.md` | ✅ |
+| BUG-003-T007 | Añadir sección 1.2.1 en `as_instalar_submodulo.prompt.md` | ✅ |
 | BUG-003-T008 | Crear script `verify-submodule-naming.sh` | ✅ |
 | BUG-003-T009 | Verificar `git submodule status` funciona | ✅ |
 | BUG-003-T010 | Documentar en `docs/leeme.md` | ✅ |
@@ -1396,7 +1396,7 @@ Renombrar **path local** (no URL remota) a **PascalCase descriptivo** que indiqu
 
 - [x] Todos los submódulos usan paths PascalCase descriptivos
 - [x] `.gitmodules`, `setup-workspace.sh`, `.vscode/settings.json` actualizados
-- [x] Convención documentada en `instalar-submodulo.prompt.md` sección 1.2.1
+- [x] Convención documentada en `as_instalar_submodulo.prompt.md` sección 1.2.1
 - [x] Script de verificación creado
 - [x] No quedan referencias a nombres antiguos
 

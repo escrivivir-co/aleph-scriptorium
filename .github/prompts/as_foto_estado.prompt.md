@@ -29,6 +29,8 @@ Lee antes de escribir:
 - `README.md`
 - `.github/DEVOPS.md`
 - `.github/BACKLOG-SCRIPTORIUM.md`
+- ARCHIVO/DISCO/BACKLOG_ARCHIVADOS
+- ARCHIVO/DISCO/BACKLOG_BORRADORES
 - `PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md`
 - `PROYECTOS/FUNDACION/Indice.md`
 
@@ -41,7 +43,30 @@ Opcional (si existe y aporta):
 
 ## Reglas de estilo (obligatorio)
 
-Sigue `voz-manifiesto.instructions.md`:
+### Voz y estilo
+- Escribe en **español**.
+- Combina **ensayo** y **pulso literario**: una imagen o analogía solo si empuja una tesis.
+- Prefiere **párrafos con respiración** (no listas interminables).
+- Alterna:
+  - una frase de tensión (diagnóstico),
+  - una frase de corte (tesis),
+  - una frase de salida (propuesta).
+
+### Retórica permitida (y cómo usarla)
+- Preguntas retóricas: solo para introducir una decisión o un dilema real.
+- Binarios (luz/sombra, resistencia/fuerza): como brújula, no como simplificación.
+- Nombres propios y ejemplos contemporáneos: con prudencia; evitar el “catálogo de nombres” como sustituto del argumento.
+
+### Disciplina conceptual
+- No moralices: traduce el juicio en **incentivos**, **asimetrías**, **capturas**, **mecanismos**.
+- Cada concepto nuevo debe aterrizar en una regla: “si X, entonces Y”.
+- Evita la grandilocuencia vacía; si una frase suena “a lema”, reescríbela como decisión.
+
+### Cierre de sección
+- Termina secciones con un “cierre de tensión”: qué queda por decidir, qué costo tiene, qué abre.
+
+## Estructura
+
 - Ensayo con pulso literario: imagen solo si empuja una tesis.
 - Evita moralina; traduce juicio en **mecanismos** (incentivos, capturas, defensas, asimetrías).
 - Alterna: tensión (diagnóstico) → corte (tesis) → salida (propuesta).

@@ -6,7 +6,7 @@ applyTo: "scripts/**, .github/plugins/**, ARCHIVO/DISCO/BACKLOG_BORRADORES/**"
 
 # Instrucciones: Integración de Submódulos
 
-> **Fuente de verdad**: `.github/prompts/instalar-submodulo.prompt.md`  
+> **Fuente de verdad**: `.github/prompts/as_instalar_submodulo.prompt.md`  
 > **Agente orquestador**: `@aleph` → delega a `@scrum` para borradores
 
 ---
@@ -446,7 +446,7 @@ Instrucciones:
 
 | Documento | Propósito |
 |-----------|-----------|
-| `.github/prompts/instalar-submodulo.prompt.md` | Prompt ejecutable con todas las fases |
+| `.github/prompts/as_instalar_submodulo.prompt.md` | Prompt ejecutable con todas las fases |
 | `.github/prompts/plugin-install.prompt.md` | Protocolo de instalación de plugins |
 | `.github/PLUGINS.md` | Especificación de plugins |
 | `.github/plugins/scrum/prompts/crear-backlog-borrador.prompt.md` | Generación de backlogs |

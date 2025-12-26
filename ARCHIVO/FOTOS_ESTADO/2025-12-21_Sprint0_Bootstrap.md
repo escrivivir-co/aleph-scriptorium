@@ -1,4 +1,4 @@
-User: Follow instructions in [foto-estado-y-discurso-motivacional.prompt.md](file:///Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/.github/prompts/foto-estado-y-discurso-motivacional.prompt.md).
+User: Follow instructions in [as_foto_estado.prompt.md](file:///Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/.github/prompts/as_foto_estado.prompt.md).
 
 GitHub Copilot: Voy a consultar las fuentes necesarias para producir una foto de estado anclada en lo que existe en el repositorio. 
 

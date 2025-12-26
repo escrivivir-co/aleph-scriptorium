@@ -76,7 +76,7 @@
 │   └── ...
 ├── prompts/               # 18+ prompts reutilizables
 │   ├── commit-message.prompt.md
-│   ├── instalar-submodulo.prompt.md
+│   ├── as_instalar_submodulo.prompt.md
 │   └── ...
 ├── plugins/               # 19 plugins instalados
 │   ├── registry.json      # Índice maestro

@@ -271,6 +271,6 @@ Crea release v1.0.0-beta.4 "Puentes" desde fc1 con -preview
 
 ## Relación con Otros Prompts
 
-- `foto-estado-y-discurso-motivacional.prompt.md`: Para documentar estado antes del release
+- `as_foto_estado.prompt.md`: Para documentar estado antes del release
 - `ox-diagnostico-agentes.prompt.md`: Para verificar coherencia antes del release
 - `commit-message.prompt.md`: Para generar mensajes de commit conformes
