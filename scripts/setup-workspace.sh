@@ -200,7 +200,22 @@ setup_submodule "$SUBMODULE_N8N_EDITOR_DIR" "$SUBMODULE_N8N_EDITOR_URL" "Workflo
 setup_submodule "$SUBMODULE_WIKI_RACER_DIR" "$SUBMODULE_WIKI_RACER_URL" "WiringAppHypergraphEditor"
 setup_submodule "$SUBMODULE_ONTHOLOGY_EDITOR_DIR" "$SUBMODULE_ONTHOLOGY_EDITOR_URL" "OnthologyEditor"
 
-echo "[setup] ✔ Setup completado (15 submódulos)"
+# 4) Inicializar submódulos anidados de OnthologyEditor (metamodel, MMCO, FloveDocs)
+echo "[setup] ─────────────────────────────────────────"
+echo "[setup] Inicializando submódulos anidados de OnthologyEditor"
+echo "[setup] ─────────────────────────────────────────"
+if [[ -d "$SUBMODULE_ONTHOLOGY_EDITOR_DIR/.git" ]] || [[ -f "$SUBMODULE_ONTHOLOGY_EDITOR_DIR/.git" ]]; then
+  pushd "$SUBMODULE_ONTHOLOGY_EDITOR_DIR" >/dev/null
+  git submodule sync
+  git submodule update --init --recursive
+  echo "[setup] Submódulos anidados de OnthologyEditor:"
+  git submodule status
+  popd >/dev/null
+else
+  echo "[setup] Aviso: OnthologyEditor no inicializado, saltando submódulos anidados"
+fi
+
+echo "[setup] ✔ Setup completado (15 submódulos + 3 anidados en OnthologyEditor)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -236,3 +251,4 @@ echo "  - TypedPromptsEditor: TypedPrompting (Ontologías NL↔JSON)"
 echo "  - WorkflowEditor: Editor visual de workflows (n8n connector)"
 echo "  - WiringAppHypergraphEditor: Motor de navegación wiki-racer (WiringApp, ArgBoardApp, HyperGraphEditor)"
 echo "  - OnthologyEditor: Editor de ontologías (Flove Template)"
+echo "     └── Submódulos anidados: metamodel (UFO), MMCO (BNP), FloveDocs (taxonomía)"

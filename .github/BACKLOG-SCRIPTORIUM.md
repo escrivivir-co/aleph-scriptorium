@@ -4540,7 +4540,7 @@ Agregar los repositorios de Talaia Digital y FloveDocs como submódulos Git anid
 | T004 | Actualizar `OnthologyEditor/README-SCRIPTORIUM.md` con arquitectura completa | 0.5 | ✅ |
 | T005 | Crear .gitmodules en OnthologyEditor | 0.5 | ✅ |
 | T006 | Commit según protocolo DevOps | 0.5 | ✅ |
-| T007 | Actualizar `scripts/setup-workspace.sh` para inicializar submódulo nested | 1 | ⏳ |
+| T007 | Actualizar `scripts/setup-workspace.sh` para inicializar submódulo nested | 1 | ✅ |
 
 #### Submódulos Instalados
 
@@ -4555,7 +4555,7 @@ Agregar los repositorios de Talaia Digital y FloveDocs como submódulos Git anid
 - [x] Submódulo MMCO visible en `OnthologyEditor/MMCO/`
 - [x] Submódulo FloveDocs visible en `OnthologyEditor/FloveDocs/`
 - [x] README-SCRIPTORIUM.md documenta arquitectura completa
-- [ ] setup-workspace.sh actualizado (pendiente T007)
+- [x] setup-workspace.sh actualizado
 
 ---
 
@@ -4666,8 +4666,8 @@ Completar documentación y publicar épica en backlog principal.
 | Puntos totales | 21 |
 | Prioridad Must | 4 stories (18 pts) |
 | Prioridad Should | 1 story (3 pts) |
-| Completadas | **1** (S01: 6/7 tasks) |
-| % Avance | **21%** (6/29 tasks) |
+| Completadas | **1** (S01: 7/7 tasks) |
+| % Avance | **24%** (7/29 tasks) |
 
 ---
 
