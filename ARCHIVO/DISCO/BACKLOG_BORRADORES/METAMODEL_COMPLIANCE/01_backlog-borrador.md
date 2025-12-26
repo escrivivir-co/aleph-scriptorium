@@ -1,6 +1,6 @@
 # Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FloveEditor
 
-**Estado**: 📝 Borrador (pendiente aprobación)
+**Estado**: ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26)
 
 > **Sprint**: 2 — Feature Cycle 1  
 > **Modelo**: Auditoría + Integración de Submódulo  

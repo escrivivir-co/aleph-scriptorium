@@ -4248,9 +4248,9 @@ El README.md es el punto de entrada público del proyecto, pero:
 
 # Épica: SCRIPT-1.20.0 — FloveEditor (Template Ontológico CONFLUENTISM)
 
-**Objetivo**: Crear un plugin para diseñar ontologías basadas en el paradigma **CONFLUENTISM** de Flove.org. Estructura jerárquica de 3 niveles (Fuzzy→PsicoSocial→Freedom) con exportación a JSON Schema, TypeScript y Zod. Integración transversal con TypedPrompting y AGENT_CREATOR.
+**Objetivo**: Crear un plugin para diseñar ontologías basadas en el paradigma **CONFLUENTISM** de Flove.org. Estructura jerárquica de 3 niveles (Fuzzy→PsicoSocial→Freedom) con exportación a JSON Schema, TypeScript y Zod. Integra 3 submódulos externos: FloveDocs, Metamodel (UFO), MMCO (OCMF).
 
-**Estado**: 🔄 En Progreso (Feature Cycle 1)
+**Estado**: 🔄 En Progreso (Feature Cycle 1 - 30% completado)
 
 **Fecha inicio**: 2025-01-02  
 **Rama de trabajo**: `fc1`  
@@ -4270,25 +4270,20 @@ El Scriptorium tiene múltiples plugins que requieren **estructuras de datos tip
 
 ### La solución
 
-Integrar la ontología **Flove** como template metodológico:
+Integrar la ontología **Flove** como template metodológico con 3 marcos de validación:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PARADIGMA CONFLUENTISM                        │
-│         "Simplexity InEvolution" — Bipolo que se fractaliza      │
+│                    FLOVE-EDITOR ECOSYSTEM                         │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                   │
-│   Nivel 1: Fuzzy Logic          ┌─────────────────────────────┐  │
-│   (Metafísica/Teleología)       │  X → WHY → WHAT → HOW       │  │
-│                                 └─────────────────────────────┘  │
-│            ↓                                                      │
-│   Nivel 2: PsicoSocial          ┌─────────────────────────────┐  │
-│   (Psicología/Sociología)       │  SOULS, KEYS, Sensy, Wills  │  │
-│                                 └─────────────────────────────┘  │
-│            ↓                                                      │
-│   Nivel 3: Freedom/Economy      ┌─────────────────────────────┐  │
-│   (Economía/Aplicaciones)       │  DieSafe, PUZZY, Goddess    │  │
-│                                 └─────────────────────────────┘  │
+│  ┌───────────────┐   ┌───────────────┐   ┌───────────────┐    │
+│  │  FloveDocs    │   │   Metamodel   │   │     MMCO      │    │
+│  │  (Paradigma)  │   │   (UFO/FAIR)  │   │    (OCMF)     │    │
+│  ├───────────────┤   ├───────────────┤   ├───────────────┤    │
+│  │ Slides, Tablas│   │ 5 capas       │   │ 7 niveles     │    │
+│  │ 15+ Apps      │   │ Templates     │   │ Toy models    │    │
+│  └───────────────┘   └───────────────┘   └───────────────┘    │
 │                                                                   │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -4299,8 +4294,9 @@ Integrar la ontología **Flove** como template metodológico:
 |--------|-----|--------|
 | flove.org | Sitio principal | ✅ Explorada |
 | demos.flove.org/whole | Tabla de taxonomía | ✅ Capturada |
-| Codeberg FloveDocs/Main | Documentación | ✅ Explorada |
-| FloveTables25.12.pdf | Tablas Dic 2025 | ⏳ Pendiente |
+| Codeberg FloveDocs/Main | Documentación | ✅ Submódulo instalado |
+| Codeberg metamodel | UFO/FAIR | ✅ Submódulo instalado |
+| Codeberg MMCO | OCMF | ✅ Submódulo instalado |
 
 ---
 
@@ -4428,7 +4424,17 @@ Integrar la ontología **Flove** como template metodológico:
 | Prioridad Should | 2 stories (10 pts) |
 | Prioridad Could | 2 stories (6 pts) |
 | Completadas | **2** (S01, S02) |
-| % Avance | **25%** |
+| % Avance | **30%** |
+
+---
+
+## Agentes Creados (SCRIPT-1.22.0)
+
+Nota: Los agentes especializados se crearon en la épica relacionada SCRIPT-1.22.0:
+- `flove-ox.agent.md` — Orquestador de submódulos
+- `flovedocs.agent.md` — Índice FloveDocs  
+- `metamodel.agent.md` — Índice UFO/FAIR
+- `mmco.agent.md` — Índice OCMF
 
 ---
 
@@ -4437,6 +4443,9 @@ Integrar la ontología **Flove** como template metodológico:
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
 | Submódulo OnthologyEditor | ✅ Instalado | Rama integration/beta/scriptorium |
+| Submódulo FloveDocs (nested) | ✅ Instalado | Documentación paradigma |
+| Submódulo metamodel (nested) | ✅ Instalado | UFO/FAIR |
+| Submódulo MMCO (nested) | ✅ Instalado | OCMF coherencia |
 | Plugin TypedPrompting | ✅ Instalado | Target de S06 |
 | Plugin AGENT_CREATOR | ✅ Instalado | Target de S07 |
 | Ontología Flove (web) | ✅ Accesible | demos.flove.org |
@@ -4451,6 +4460,9 @@ Integrar la ontología **Flove** como template metodológico:
 | 2025-01-02 | Generar backlog borrador (8 stories, 33 tasks) | @scrum |
 | 2025-01-02 | Crear submódulo OnthologyEditor + plugin flove-editor (S01, S02) | @aleph |
 | 2025-01-02 | Publicar épica en backlog principal | @aleph |
+| 2025-12-26 | Instalar 3 submódulos nested: FloveDocs, metamodel, MMCO | @aleph |
+| 2025-12-26 | Crear 5 agentes especializados (ver SCRIPT-1.22.0) | @aleph |
+| 2025-12-26 | Consolidar con borradores MMCO y METAMODEL_COMPLIANCE | @scrum |
 
 ---
 
@@ -4458,11 +4470,11 @@ Integrar la ontología **Flove** como template metodológico:
 
 **Objetivo**: Integrar el metamodel de Talaia Digital (Codeberg) como framework de auditoría para asegurar que el plugin flove-editor produce ontologías certificables según estándares formales (UFO, FAIR, XAI).
 
-**Estado**: 🆕 Nueva (Feature Cycle 1)
+**Estado**: 🔄 En Progreso (Feature Cycle 1 - 35% completado)
 
 **Fecha inicio**: 2025-01-03  
 **Rama de trabajo**: `fc1`  
-**Submódulo a añadir**: `OnthologyEditor/metamodel` (https://codeberg.org/talaiadigital/metamodel)  
+**Submódulo**: `OnthologyEditor/metamodel` (https://codeberg.org/talaiadigital/metamodel)  
 **Backlog borrador**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/`
 
 ---
@@ -4720,6 +4732,7 @@ Completar documentación y publicar épica en backlog principal.
 | 2025-01-03 | Crear nota-colaboracion-talaia-flove.md con propuesta para autores externos | @aleph |
 | 2025-01-03 | Añadir §8 Licencias a OnthologyEditor/README-SCRIPTORIUM.md | @aleph |
 | 2025-01-03 | Actualizar S05 con tasks T030, T031; avance 35% | @aleph |
+| 2025-12-26 | Consolidar borrador con épica publicada | @scrum |
 
 ---
 
@@ -5167,4 +5180,6 @@ ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/
 |-------|--------|-------|
 | 2025-12-26 | Crear épica stub SCRIPT-1.23.0 | @aleph |
 | 2025-01-03 | Completar FC0: conversación PO-SM con expertos, backlog oficial | @ox |
+| 2025-01-03 | Expandir épica con FC0-FC3, 28 tasks, arquitectura pipeline | @ox |
+| 2025-12-26 | Consolidar borrador MMCO con épica publicada | @scrum |
 | 2025-01-03 | Expandir épica con FC0-FC3, 28 tasks, arquitectura pipeline | @ox |

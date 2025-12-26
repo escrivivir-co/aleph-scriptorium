@@ -2,7 +2,7 @@
 
 > **Sprint**: Feature Cycle 1  
 > **Fecha inicio**: 2025-01-02  
-> **Estado**: 📝 Borrador (pendiente aprobación)  
+> **Estado**: ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26)  
 > **Effort total**: 29 puntos
 
 ---

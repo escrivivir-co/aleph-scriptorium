@@ -1,6 +1,6 @@
 # Backlog Borrador: SCRIPT-1.23.0 — Integración MMCO (OCMF)
 
-**Estado**: ✅ Aprobado (listo para publicar)  
+**Estado**: ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26)  
 **Plugin**: flove-editor  
 **Submódulo**: OnthologyEditor/MMCO  
 **Bridge**: plugin_ox_floveeditor  
