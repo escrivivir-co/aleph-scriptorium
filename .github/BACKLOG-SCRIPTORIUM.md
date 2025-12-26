@@ -4647,13 +4647,17 @@ Completar documentación y publicar épica en backlog principal.
 | T025 | Actualizar PLUGINS.md con nota de compliance en flove-editor | 0.5 | ⏳ |
 | T026 | Actualizar docs/ecosistema.md con metamodel como dependencia | 0.5 | ⏳ |
 | T027 | Crear entrada en docs/roadmap.md para Metamodel Compliance | 0.5 | ⏳ |
-| T028 | Commit según protocolo DevOps | 0.5 | ⏳ |
+| T028 | Commit según protocolo DevOps | 0.5 | ✅ |
 | T029 | Actualizar contadores en README.md (nuevo submódulo) | 0.5 | ⏳ |
+| T030 | Crear nota-colaboracion-talaia-flove.md para autores externos | 0.5 | ✅ |
+| T031 | Documentar estrategia de licencias en OnthologyEditor/README | 0.5 | ✅ |
 
 **Definition of Done**:
-- [ ] Épica publicada en backlog principal
+- [x] Épica publicada en backlog principal
 - [ ] Documentación web actualizada
 - [ ] README refleja nuevo submódulo
+- [x] Nota de colaboración con autores externos creada
+- [x] Estrategia de licencias AIPL/CC BY-SA/AGPL documentada
 
 ---
 
@@ -4662,12 +4666,13 @@ Completar documentación y publicar épica en backlog principal.
 | Métrica | Valor |
 |---------|-------|
 | Stories totales | 5 |
-| Tasks totales | 29 |
-| Puntos totales | 21 |
-| Prioridad Must | 4 stories (18 pts) |
+| Tasks totales | 31 |
+| Puntos totales | 22 |
+| Prioridad Must | 4 stories (19 pts) |
 | Prioridad Should | 1 story (3 pts) |
 | Completadas | **1** (S01: 7/7 tasks) |
-| % Avance | **24%** (7/29 tasks) |
+| En progreso | **1** (S05: 4/8 tasks) |
+| % Avance | **35%** (11/31 tasks) |
 
 ---
 
@@ -4712,3 +4717,6 @@ Completar documentación y publicar épica en backlog principal.
 | 2025-01-03 | Generar backlog borrador FC1 (5 stories, 29 tasks) | @scrum |
 | 2025-01-03 | Aprobar y publicar épica en backlog principal | @scrum |
 | 2025-01-03 | Instalar 3 submódulos nested: metamodel, MMCO, FloveDocs (S01 completada) | @aleph |
+| 2025-01-03 | Crear nota-colaboracion-talaia-flove.md con propuesta para autores externos | @aleph |
+| 2025-01-03 | Añadir §8 Licencias a OnthologyEditor/README-SCRIPTORIUM.md | @aleph |
+| 2025-01-03 | Actualizar S05 con tasks T030, T031; avance 35% | @aleph |
