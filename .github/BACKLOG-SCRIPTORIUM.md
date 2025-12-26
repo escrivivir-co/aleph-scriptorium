@@ -4939,3 +4939,232 @@ Los agentes funcionan como **índices navegables**:
 | 2025-12-26 | Crear mmco.agent.md (índice OCMF) | @aleph |
 | 2025-12-26 | Actualizar bridge plugin_ox_floveeditor | @aleph |
 | 2025-12-26 | Cerrar épica al 100% | @aleph |
+
+# Épica: SCRIPT-1.23.0 — Integración MMCO (OCMF)
+
+**Objetivo**: Integrar el submódulo `OnthologyEditor/MMCO` como marco de coherencia para ontologías Flove: adapter schema→OCMF, validación UFO previa y métrica de coherencia `phi_mmco` con reporte público.
+
+**Estado**: 🔄 En Progreso (FC0 completado, FC1 listo para iniciar)  
+**Effort total**: 24 puntos (6 stories)
+
+**Submódulo**: `OnthologyEditor/MMCO`  
+**Plugin**: `flove-editor` (Bridge: `plugin_ox_floveeditor`)  
+**Conversación PO-SM**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/conversacion-po-sm.md`  
+**Backlog detallado**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/01_backlog-borrador.md`
+
+---
+
+## Contexto
+
+### El problema
+Las ontologías Flove creadas con `FloveEditor` carecen de una validación de coherencia material (OCMF). Existen recursos en MMCO (toy models y ontologías XML) que podemos usar, pero no hay adapter ni métrica integrados.
+
+### La solución
+Pipeline en 4 pasos:
+1. **FC0**: Tracking y documentación (setup inicial)
+2. **FC1**: Discovery + Adapter (`ocmf-adapter.json`)
+3. **FC2**: Validación UFO + Métrica (`phi_mmco.py`)
+4. **FC3**: Reportes, Prompts e Integración
+
+### Arquitectura del Pipeline
+
+```
+┌──────────────────────────────────────────────────────────────────────────┐
+│                      PIPELINE MMCO PARA FLOVE-EDITOR                      │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                           │
+│  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────┐ │
+│  │   SCHEMA    │────▶│     UFO     │────▶│   ADAPTER   │────▶│  MMCO   │ │
+│  │  (Flove)    │     │ (Metamodel) │     │(ocmf-adapter)│    │(φ metric)│ │
+│  └─────────────┘     └─────────────┘     └─────────────┘     └────┬────┘ │
+│        │                   │                   │                  │      │
+│        ▼                   ▼                   ▼                  ▼      │
+│   ontology.json      ufo-validation     adapter.json      mmco_score.json│
+│                           .md                               mmco_report.md│
+│                                                                           │
+│  ╔═══════════════════════════════════════════════════════════════════╗   │
+│  ║               SALIDA: ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/          ║   │
+│  ╚═══════════════════════════════════════════════════════════════════╝   │
+│                                                                           │
+└──────────────────────────────────────────────────────────────────────────┘
+```
+
+### Niveles de Emergencia OCMF (7 niveles)
+
+| Nivel | Símbolo | Nombre | Concepto |
+|-------|---------|--------|----------|
+| L0 | BNP | Being-Non-being-Potential | Meta-estructura |
+| L1 | QCW | Qualities-Consequences-Words | Propiedades |
+| L2 | CTN | Context-Target-Means | Intencionalidad |
+| L3 | PG | Periphery-Generator | Organización |
+| L4 | PT | Production-Transaction | Dinámica |
+| L5 | CS | Compression-Simplification | Abstracción |
+| L6 | MF | Multi-Fractal | Coherencia global |
+
+---
+
+## Feature Cycle 0: Tracking (Setup) — ✅ COMPLETADO
+
+**Objetivo**: Configuración inicial y documentación del trabajo
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T000 | Crear branch `feature/mmco-integration` (documentar) | 0.5 | ✅ |
+| T001 | Actualizar `OnthologyEditor/MMCO/README-SCRIPTORIUM.md` | 0.5 | ✅ |
+| T002 | Crear `conversacion-po-sm.md` con sesión de expertos | 2 | ✅ |
+| T003 | Publicar backlog oficial en `01_backlog-borrador.md` | 1 | ✅ |
+| T004 | Añadir épica al `BACKLOG-SCRIPTORIUM.md` | 0.5 | ✅ |
+
+**Effort FC0**: 4.5 pts | **Completado**: 4.5 pts (100%)
+
+---
+
+## Feature Cycle 1: Discovery + Adapter — ⏳ PENDIENTE
+
+**Objetivo**: Documentar recursos MMCO y diseñar adapter intermedio
+
+### Story: S01 — Inventario de Recursos MMCO
+**Effort**: 3 pts
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T005 | Documentar toy models en `MMCO/models/toy_models/` | 1 | ⏳ |
+| T006 | Documentar XMLs en `MMCO/resources/xml/` | 1 | ⏳ |
+| T007 | Mapear constructos OCMF a campos Flove | 1 | ⏳ |
+
+### Story: S02 — Diseño del Adapter
+**Effort**: 5 pts
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T008 | Especificar schema de `ocmf-adapter.json` | 1.5 | ⏳ |
+| T009 | Implementar conversión schema→adapter (minimal) | 2 | ⏳ |
+| T010 | Crear carpeta `ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/` | 0.5 | ⏳ |
+| T011 | Documentar formato intermedio en `adapter-spec.md` | 1 | ⏳ |
+
+**Effort FC1**: 8 pts | **Completado**: 0 pts (0%)
+
+---
+
+## Feature Cycle 2: Validación UFO + Métrica — ⏳ PENDIENTE
+
+**Objetivo**: Validar ontología con UFO y calcular métrica de coherencia
+
+### Story: S03 — Validación UFO
+**Effort**: 5 pts
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T012 | Aplicar plantilla ENTITY a entidades del schema | 1.5 | ⏳ |
+| T013 | Aplicar plantilla RELATIONSHIP a relaciones | 1.5 | ⏳ |
+| T014 | Aplicar plantilla PROCESS a procesos | 1 | ⏳ |
+| T015 | Generar `ufo-validation.md` con resultados | 1 | ⏳ |
+
+### Story: S04 — Métrica de Coherencia
+**Effort**: 4 pts
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T016 | Preparar entorno Python para `phi_mmco.py` | 1 | ⏳ |
+| T017 | Definir inputs desde adapter para cálculo φ | 1.5 | ⏳ |
+| T018 | Ejecutar métrica y capturar output | 1 | ⏳ |
+| T019 | Interpretar resultado φ ∈ [0,1] | 0.5 | ⏳ |
+
+**Effort FC2**: 9 pts | **Completado**: 0 pts (0%)
+
+---
+
+## Feature Cycle 3: Reportes y Prompts — ⏳ PENDIENTE
+
+**Objetivo**: Generar reportes y añadir prompts al plugin
+
+### Story: S05 — Reportes
+**Effort**: 3 pts
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T020 | Generar `mmco_score.json` con estructura definida | 1 | ⏳ |
+| T021 | Generar `mmco_report.md` con análisis legible | 1.5 | ⏳ |
+| T022 | Definir umbrales de coherencia (bajo/medio/alto) | 0.5 | ⏳ |
+
+### Story: S06 — Integración con Plugin
+**Effort**: 4 pts
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T023 | Crear `validar-mmco-pipeline.prompt.md` | 1 | ⏳ |
+| T024 | Crear `ejecutar-adapter-mmco.prompt.md` | 1 | ⏳ |
+| T025 | Crear `calcular-metrica-mmco.prompt.md` | 1 | ⏳ |
+| T026 | Actualizar `plugin_ox_floveeditor.agent.md` con handoffs | 0.5 | ⏳ |
+| T027 | Actualizar `manifest.md` del plugin | 0.5 | ⏳ |
+
+**Effort FC3**: 7 pts | **Completado**: 0 pts (0%)
+
+---
+
+## Métricas SCRIPT-1.23.0
+
+| Métrica | Valor |
+|---------|-------|
+| Stories totales | 6 (S00-S06) |
+| Tasks totales | 28 (T000-T027) |
+| Effort total | 28.5 pts |
+| FC0 completado | **4.5 pts (100%)** |
+| FC1 pendiente | 8 pts |
+| FC2 pendiente | 9 pts |
+| FC3 pendiente | 7 pts |
+| **% Avance global** | **16%** (FC0 done) |
+
+---
+
+## Umbrales de Coherencia MMCO
+
+| Rango φ | Nivel | Significado |
+|---------|-------|-------------|
+| 0.0 - 0.3 | 🔴 Bajo | Ontología fragmentada, requiere revisión |
+| 0.3 - 0.7 | 🟡 Medio | Coherencia parcial, mejorable |
+| 0.7 - 1.0 | 🟢 Alto | Ontología coherente según OCMF |
+
+---
+
+## Estructura de Salida
+
+```
+ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/
+└── {ontology_id}/
+    ├── adapter.json           # Formato intermedio OCMF
+    ├── ufo-validation.md      # Resultado validación UFO
+    ├── mmco_score.json        # Métrica φ + metadata
+    └── mmco_report.md         # Reporte legible
+```
+
+---
+
+## Dependencias
+
+| Dependencia | Estado | Notas |
+|-------------|--------|-------|
+| OnthologyEditor/MMCO | ✅ Instalado | Toy models + ontology XMLs |
+| flove-editor plugin | ✅ Instalado | Bridge operativo (v1.0.0) |
+| Metamodel (UFO) | ✅ Instalado | Templates ENTITY/RELATIONSHIP/PROCESS |
+| Python 3.10+ | ⚠️ Verificar | Requerido para phi_mmco.py |
+
+---
+
+## Riesgos Identificados
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Python no disponible en entorno | Media | Alto | Modo offline con φ=N/A |
+| OCMF muy complejo para v1 | Media | Medio | Subset de 4 constructos |
+| XMLs incompletos | Baja | Bajo | Fallback a templates |
+
+---
+
+## Changelog
+
+| Fecha | Cambio | Autor |
+|-------|--------|-------|
+| 2025-12-26 | Crear épica stub SCRIPT-1.23.0 | @aleph |
+| 2025-01-03 | Completar FC0: conversación PO-SM con expertos, backlog oficial | @ox |
+| 2025-01-03 | Expandir épica con FC0-FC3, 28 tasks, arquitectura pipeline | @ox |
