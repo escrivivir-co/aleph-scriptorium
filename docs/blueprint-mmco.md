@@ -24,9 +24,9 @@ permalink: /blueprint-mmco/
      ========================================== -->
 <div id="bnp" class="step mmco-level-0c" 
      data-x="0" 
-     data-y="0" 
-     data-z="-3000"
-     data-scale="2">
+     data-y="-2500" 
+     data-z="-500"
+     data-scale="1.5">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 0c</span>
     <span class="mmco-name">BNP · Basic Narrative Potential</span>
@@ -61,8 +61,8 @@ permalink: /blueprint-mmco/
      ========================================== -->
 <div id="correlations" class="step mmco-level-0b" 
      data-x="0" 
-     data-y="0" 
-     data-z="-2000">
+     data-y="-1500" 
+     data-z="0">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 0b</span>
     <span class="mmco-name">Correlaciones · Red de Handoffs</span>
@@ -121,8 +121,8 @@ flowchart LR
      ========================================== -->
 <div id="tensors" class="step mmco-level-0a" 
      data-x="0" 
-     data-y="0" 
-     data-z="-1000">
+     data-y="-500" 
+     data-z="0">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 0a</span>
     <span class="mmco-name">Tensores · Estado del Campo</span>
@@ -163,7 +163,7 @@ flowchart LR
      ========================================== -->
 <div id="geometry" class="step mmco-level-1" 
      data-x="0" 
-     data-y="0" 
+     data-y="500" 
      data-z="0">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 1</span>
@@ -212,8 +212,8 @@ flowchart LR
      ========================================== -->
 <div id="time" class="step mmco-level-2" 
      data-x="0" 
-     data-y="0" 
-     data-z="1000">
+     data-y="1500" 
+     data-z="0">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 2</span>
     <span class="mmco-name">Pseudo-tiempo · Meta-Dinámica</span>
@@ -265,8 +265,8 @@ flowchart LR
      ========================================== -->
 <div id="spacetime" class="step mmco-level-3" 
      data-x="0" 
-     data-y="0" 
-     data-z="2000">
+     data-y="2500" 
+     data-z="0">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 3</span>
     <span class="mmco-name">Espacio-tiempo · Publicación</span>
@@ -304,9 +304,9 @@ flowchart LR
      ========================================== -->
 <div id="matter" class="step mmco-level-4" 
      data-x="0" 
-     data-y="0" 
-     data-z="3000"
-     data-scale="1.5">
+     data-y="3500" 
+     data-z="0"
+     data-scale="1.2">
   <div class="mmco-header">
     <span class="mmco-level">Nivel 4</span>
     <span class="mmco-name">Materia · Coherencia Localizada</span>
@@ -347,8 +347,8 @@ flowchart LR
      ========================================== -->
 <div id="overview-mmco" class="step" 
      data-x="0" 
-     data-y="0" 
-     data-z="0"
+     data-y="500" 
+     data-z="3000"
      data-scale="6">
   <div class="mmco-overview-card">
     <h2>Jerarquía de Emergencia MMCO</h2>
