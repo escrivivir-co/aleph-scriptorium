@@ -151,7 +151,7 @@ Eres el agente principal de este workspace. Tu trabajo es **producir** (no solo 
 
 ```bash
 # Leer rama de trabajo del workspace-config
-cat .github/workspace-config.json | grep '"branch"'
+cat workspace-config.json | grep '"branch"'
 
 # Verificar rama actual
 git branch --show-current
@@ -344,7 +344,7 @@ Evitas:
 
 ```bash
 # Extraer rama configurada
-BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+BRANCH=$(cat workspace-config.json | grep '"branch"' | cut -d'"' -f4)
 CURRENT=$(git branch --show-current)
 
 if [ "$CURRENT" != "$BRANCH" ]; then

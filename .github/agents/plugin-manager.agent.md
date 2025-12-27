@@ -158,7 +158,7 @@ handoffs:
 
 ```bash
 # 1. Leer rama configurada
-BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+BRANCH=$(cat workspace-config.json | grep '"branch"' | cut -d'"' -f4)
 CURRENT=$(git branch --show-current)
 
 # 2. Verificar coincidencia

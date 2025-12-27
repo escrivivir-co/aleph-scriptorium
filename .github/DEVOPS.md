@@ -3,7 +3,7 @@
 > **Versión**: 0.0.1  
 > **Metodología**: Agile/Scrum adaptado a producción textual  
 > **Ciclo**: 12 sprints × 4 iteraciones = 48 iteraciones anuales  
-> **Rama de trabajo**: Ver `.github/workspace-config.json`
+> **Rama de trabajo**: Ver `workspace-config.json` (raíz del proyecto)
 
 ---
 
@@ -11,13 +11,13 @@
 
 ### Configuración Actual
 
-**Fuente de verdad**: `.github/workspace-config.json`
+**Fuente de verdad**: `workspace-config.json` (raíz del proyecto)
 
 Los agentes DEBEN consultar este archivo antes de hacer commits para verificar la rama de trabajo activa.
 
 ```bash
 # Verificar rama configurada
-cat .github/workspace-config.json | grep '"branch"'
+cat workspace-config.json | grep '"branch"'
 
 # Verificar rama actual
 git branch --show-current
@@ -27,7 +27,7 @@ git branch --show-current
 
 Cuando se cambie la rama de trabajo:
 
-1. **Actualizar** `.github/workspace-config.json`:
+1. **Actualizar** `workspace-config.json`:
    - Campo `workspace.branch`
    - Campo `workspace.branch_note`
    - Añadir entrada en `changelog`
@@ -242,7 +242,7 @@ Cuando Aleph realice cambios, debe:
 
 ```bash
 # 1. Leer configuración
-BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+BRANCH=$(cat workspace-config.json | grep '"branch"' | cut -d'"' -f4)
 
 # 2. Verificar que estamos en la rama correcta
 CURRENT=$(git branch --show-current)

@@ -2,7 +2,7 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2025-12-26  
+> **Última actualización**: 2025-12-27  
 > **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
 
 ---
@@ -301,7 +301,7 @@ git checkout -b integration/beta/scriptorium
 
 ### 5.1. Rama de Trabajo
 
-**Fuente de verdad**: `.github/workspace-config.json`
+**Fuente de verdad**: `workspace-config.json` (raíz)
 
 ```json
 {
@@ -355,7 +355,7 @@ refs #TASK-ID
 
 ```bash
 # Antes de CUALQUIER commit
-BRANCH=$(cat .github/workspace-config.json | grep '"branch"' | cut -d'"' -f4)
+BRANCH=$(cat workspace-config.json | grep '"branch"' | cut -d'"' -f4)
 CURRENT=$(git branch --show-current)
 
 if [ "$CURRENT" != "$BRANCH" ]; then
@@ -406,12 +406,24 @@ ARCHIVO/
 | Plugin | Carpeta ARCHIVO | Contenido principal |
 |--------|-----------------|---------------------|
 | ARG_BOARD | `PLUGINS/ARG_BOARD/` | `.arrakis/`, BOE/ |
-| AGENT_CREATOR | `PLUGINS/AGENT_CREATOR/` | recipes/, creation-log.json |
+| AGENT_CREATOR | `PLUGINS/AGENT_CREATOR/` | recipes/, agents/created/, creation-log.json |
 | GH_PAGES | `PLUGINS/GH_PAGES/` | published/ |
 | SCRUM | `PLUGINS/SCRUM/` | sprints/ |
 | TEATRO | `PLUGINS/TEATRO/` | obras/, cartelera.json |
 | MCP_PRESETS | `PLUGINS/MCP_PRESETS/` | presets/, catalog.json |
 | ... | ... | ... |
+
+### 7.3. Personajes Creados (AGENT_CREATOR)
+
+| Personaje | Agente Base | Rol | Obras |
+|-----------|-------------|-----|-------|
+| tarotista | @yellowflag | Oráculo epistémico (demarcación científica) | hola_mundo, camino_del_tarotista |
+| nonsi | @blackflag + @redflag | Auditora marxista (estructura + sombras) | hola_mundo, camino_del_tarotista |
+| tutatix | @blueflag | Guardián epistémico (red semántica FIA) | hola_mundo |
+| lucas | @aleph + @ox | Scrum Master del Índice (DRY) | hola_mundo, camino_del_tarotista |
+| pathykar | @indice | Arquitecto Central + Product Owner | hola_mundo, camino_del_tarotista |
+
+**Ubicación**: `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/`
 
 ---
 
@@ -557,7 +569,7 @@ Ejemplos:
 | Protocolo Submódulos | `.github/instructions/submodulo-integracion.instructions.md` |
 | Índice de agentes | `.github/agents/ox.agent.md` (JSON embebido) |
 | Registro de plugins | `.github/plugins/registry.json` |
-| Config workspace | `.github/workspace-config.json` |
+| Config workspace | `workspace-config.json` (raíz) |
 
 ---
 
