@@ -11,11 +11,47 @@
 
 | Épica | Nombre | Estado | Prioridad |
 |-------|--------|--------|-----------|
-| SCRIPT-1.20.0 | Metamodel Scriptorium | 🆕 Nueva | P0 |
-| SCRIPT-1.21.0 | MMCO ARG-Board | 🆕 Nueva | P1 |
-| SCRIPT-1.22.0 | Integración y Validación | 🆕 Nueva | P2 |
-| SCRIPT-1.23.0 | MMCO Editor Transmedia | 🆕 Nueva | P1 |
+| SCRIPT-1.26.0 | Blueprint Refinements | ✅ Cerrada | P0 |
+| SCRIPT-1.20.0 | Metamodel Scriptorium | 🆕 Nueva | P1 |
+| SCRIPT-1.21.0 | MMCO ARG-Board | 🆕 Nueva | P2 |
+| SCRIPT-1.22.0 | Integración y Validación | 🆕 Nueva | P3 |
+| SCRIPT-1.23.0 | MMCO Editor Transmedia | 🆕 Nueva | P2 |
 | SCRIPT-1.25.0 | Blueprint Visual Index | ✅ Cerrada | Alta |
+
+---
+
+## SCRIPT-1.26.0 — Blueprint Refinements
+
+> **Objetivo**: Corregir bugs y mejorar UX del Blueprint Visual Index  
+> **Sprint**: Actual  
+> **Effort total**: 13 pts  
+> **Estado**: ✅ Cerrada
+
+### Bugs
+
+| ID | Bug | Effort | Estado |
+|----|-----|--------|--------|
+| B01 | Responsive: contenido colapsa en pantallas no apaisadas | 2 pts | ✅ |
+| B02 | Hipervínculos sin formato (azul oscuro sobre fondo negro) en diapo6 y diapo7 | 1 pt | ✅ |
+
+### Cambios por Diapositiva
+
+| ID | Diapo | Cambio | Effort | Estado |
+|----|-------|--------|--------|--------|
+| C01 | 1 - Overview | Contador pequeño + nube de categorías funcionales | 2 pts | ✅ |
+| C02 | 1 - Overview | Nuevo slogan (pedir a Lucas, quitar "ejército de IA") | 1 pt | ✅ |
+| C03 | 2 - Core | Presentar como app Desktop, CLI_SCRIPTORIUM como kernel. Diagrama UML Mermaid | 2 pts | ✅ |
+| C04 | 3 - Ontology | Renombrar a "Taxonomía de agentes". Árbol completo con plugins | 2 pts | ✅ |
+| C05 | 4 - Dynamics | Añadir flujo Periódico (5W+Banderas) y flujo Teatro | 1 pt | ✅ |
+| C06 | 5 - Hypergraph | Círculos = plugins reales con fichas descriptivas | 1 pt | ✅ |
+| C07 | 6 - Products | Agregar ARCHIVO como fuente de datos | 1 pt | ✅ |
+| C08 | 7 - CTA | Cambiar título a "FOSS project (proyecto abierto)" | 0 pts | ✅ |
+
+### Criterios de Aceptación
+
+- [x] B01: Blueprint legible en orientación vertical (tablets, móviles)
+- [x] B02: Links visibles con contraste adecuado
+- [x] C01-C08: Todas las diapositivas actualizadas según especificación
 
 ---
 

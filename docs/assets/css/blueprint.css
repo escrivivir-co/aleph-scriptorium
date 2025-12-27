@@ -161,8 +161,161 @@ body.fallback-mode .fallback-message {
   color: var(--bp-muted);
 }
 
+#overview .tagline {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Métricas pequeñas */
+.metrics-small {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--bp-muted);
+  margin-top: 1rem;
+  font-family: var(--bp-font-mono);
+}
+
+.metrics-small span {
+  opacity: 0.7;
+}
+
+/* Nube de categorías funcionales */
+.categories-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-tag {
+  background: var(--bp-surface);
+  border: 1px solid var(--bp-border);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  color: var(--bp-fg);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.category-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Colores por categoría */
+.category-tag.cat-produce { border-color: var(--bp-ui); color: var(--bp-ui); }
+.category-tag.cat-audit { border-color: var(--bp-backend); color: var(--bp-backend); }
+.category-tag.cat-publish { border-color: var(--bp-meta); color: var(--bp-meta); }
+.category-tag.cat-scrape { border-color: var(--bp-red); color: var(--bp-red); }
+.category-tag.cat-design { border-color: var(--bp-plugins); color: var(--bp-plugins); }
+.category-tag.cat-teatro { border-color: #ec4899; color: #ec4899; }
+.category-tag.cat-scrum { border-color: var(--bp-orange); color: var(--bp-orange); }
+.category-tag.cat-ontology { border-color: #14b8a6; color: #14b8a6; }
+
 /* ========================================
-   Slide: Core
+   Slide: Core - Architecture Diagram
+   ======================================== */
+
+.architecture-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bp-bg);
+  border-radius: 12px;
+  border: 1px solid var(--bp-border);
+}
+
+.arch-layer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.arch-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--bp-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.arch-items-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.arch-item {
+  background: var(--bp-surface);
+  border: 1px solid var(--bp-border);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.arch-item.kernel {
+  background: var(--bp-accent);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+}
+
+.arch-item small {
+  opacity: 0.7;
+  font-size: 0.8em;
+}
+
+.arch-subitems {
+  display: flex;
+  gap: 0.75rem;
+  font-family: var(--bp-font-mono);
+  font-size: 0.8rem;
+  color: var(--bp-muted);
+}
+
+.arch-subitems span {
+  background: var(--bp-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border: 1px dashed var(--bp-border);
+}
+
+.arch-arrow {
+  font-size: 1.5rem;
+  color: var(--bp-muted);
+  opacity: 0.5;
+}
+
+.user-layer { background: rgba(34, 197, 94, 0.1); border: 1px solid var(--bp-ui); }
+.kernel-layer { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--bp-accent); }
+.resources-layer { background: rgba(139, 92, 246, 0.1); border: 1px solid var(--bp-plugins); }
+.data-layer { background: rgba(245, 158, 11, 0.1); border: 1px solid var(--bp-meta); }
+
+.arch-note {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--bp-muted);
+  font-style: italic;
+}
+
+/* ========================================
+   Slide: Core (legacy - keeping for compatibility)
    ======================================== */
 
 .core-grid {
@@ -211,7 +364,109 @@ body.fallback-mode .fallback-message {
 .core-card.flags { border-left: 4px solid var(--bp-meta); }
 
 /* ========================================
-   Slide: Capas Ontológicas
+   Slide: Taxonomía de Agentes (Tree)
+   ======================================== */
+
+.taxonomy-tree {
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.tree-root {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.tree-node {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.tree-node.root {
+  background: var(--bp-accent);
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.tree-node small {
+  font-weight: 400;
+  opacity: 0.8;
+  font-size: 0.85em;
+}
+
+.tree-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.tree-branch {
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.tree-branch .tree-node {
+  display: block;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.tree-node.branch-ui { background: rgba(34, 197, 94, 0.2); border: 1px solid var(--bp-ui); }
+.tree-node.branch-backend { background: rgba(59, 130, 246, 0.2); border: 1px solid var(--bp-backend); }
+.tree-node.branch-system { background: rgba(160, 160, 160, 0.2); border: 1px solid var(--bp-sistema); }
+.tree-node.branch-meta { background: rgba(245, 158, 11, 0.2); border: 1px solid var(--bp-meta); }
+.tree-node.branch-plugins { background: rgba(139, 92, 246, 0.2); border: 1px solid var(--bp-plugins); }
+
+.tree-leaves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.tree-leaves span {
+  background: var(--bp-surface);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-family: var(--bp-font-mono);
+  font-size: 0.75rem;
+  color: var(--bp-muted);
+}
+
+.tree-leaves span small {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.7;
+  font-family: var(--bp-font-sans);
+}
+
+/* Colores de banderas */
+.tree-leaves .flag-blue { border-left: 3px solid var(--bp-blue); }
+.tree-leaves .flag-black { border-left: 3px solid #666; }
+.tree-leaves .flag-red { border-left: 3px solid var(--bp-red); }
+.tree-leaves .flag-yellow { border-left: 3px solid var(--bp-yellow); }
+.tree-leaves .flag-orange { border-left: 3px solid var(--bp-orange); }
+
+.tree-leaves.plugins-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3rem;
+}
+
+.tree-leaves.plugins-grid span {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.4rem;
+}
+
+/* ========================================
+   Slide: Capas Ontológicas (legacy)
    ======================================== */
 
 .layers-visual {
@@ -261,12 +516,35 @@ body.fallback-mode .fallback-message {
    Slide: Dinámicas
    ======================================== */
 
+#dynamics h2 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--bp-fg);
+}
+
 .flow-diagram {
-  margin-top: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.flow-diagram.compact {
+  gap: 0.4rem;
+}
+
+.flow-diagram.compact .flow-node {
+  min-width: 100px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.flow-diagram.compact .flow-arrow {
+  font-size: 1.25rem;
 }
 
 .flow-node {
@@ -293,9 +571,80 @@ body.fallback-mode .fallback-message {
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.product-card {
+  background: linear-gradient(145deg, var(--bp-surface), var(--bp-bg));
+  border: 1px solid var(--bp-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: block;
+  text-decoration: none !important;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+  border-color: var(--bp-accent);
+}
+
+.product-card.source-card {
+  border-color: var(--bp-meta);
+  background: linear-gradient(145deg, rgba(245, 158, 11, 0.1), var(--bp-bg));
+}
+
+.product-card.source-card:hover {
+  border-color: var(--bp-meta);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+.product-icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.product-card h3 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--bp-fg);
+}
+
+.product-card p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 0;
+  color: var(--bp-muted);
+}
+
+/* ========================================
+   Slide: CTA
+   ======================================== */
+
+.cta-links {
   margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cta-links a {
+  color: var(--bp-accent) !important;
+  text-decoration: underline !important;
+}
+
+.cta-links a:hover {
+  color: #60a5fa !important;
+}
+
+.cta-separator {
+  color: var(--bp-muted);
 }
 
 .product-card {
@@ -327,7 +676,66 @@ body.fallback-mode .fallback-message {
 }
 
 /* ========================================
-   Slide: Hypergraph
+   Slide: Hypergraph - Plugins Showcase
+   ======================================== */
+
+.plugins-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.plugin-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.plugin-row.center-row {
+  justify-content: center;
+}
+
+.plugin-card {
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  min-width: 130px;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.plugin-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--bp-accent);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+}
+
+.plugin-icon {
+  display: block;
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.plugin-name {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--bp-fg);
+}
+
+.plugin-desc {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--bp-muted);
+  margin-top: 0.2rem;
+}
+
+/* ========================================
+   Slide: Hypergraph (legacy - orbital view)
    ======================================== */
 
 .hypergraph-container {
@@ -531,4 +939,220 @@ body.fallback-mode .blueprint-nav {
   .products-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Orientation: Portrait (pantallas verticales) */
+@media (orientation: portrait) {
+  .step {
+    width: 90vw;
+    min-height: auto;
+    max-height: none;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+  
+  .step h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+  
+  .step h2 {
+    font-size: 1.25rem;
+  }
+  
+  .step p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  #overview h1 {
+    font-size: 2.5rem;
+  }
+  
+  #overview .hero-symbol {
+    font-size: 6rem;
+  }
+  
+  #overview .tagline {
+    font-size: 1rem;
+  }
+  
+  .core-grid,
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .core-card,
+  .product-card {
+    padding: 1rem;
+  }
+  
+  .core-card .count {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .layers-visual {
+    gap: 0.5rem;
+  }
+  
+  .layer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem;
+  }
+  
+  .layer-label {
+    width: auto;
+    margin-bottom: 0.5rem;
+  }
+  
+  .layer-items {
+    width: 100%;
+  }
+  
+  .layer-item {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .flow-diagram {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .flow-node {
+    min-width: 100px;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .flow-arrow {
+    font-size: 1.25rem;
+  }
+  
+  .hypergraph-container {
+    height: 350px;
+  }
+  
+  .hypergraph-node {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+  
+  .hypergraph-node.center {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .cta-code {
+    font-size: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  
+  .blueprint-nav {
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-hint {
+    font-size: 0.75rem;
+  }
+  
+  /* Categorías cloud responsive */
+  .categories-cloud {
+    gap: 0.5rem;
+  }
+  
+  .category-tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .step {
+    padding: 1rem;
+  }
+  
+  .step h1 {
+    font-size: 1.5rem;
+  }
+  
+  #overview .hero-symbol {
+    font-size: 4rem;
+  }
+  
+  .product-icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* ========================================
+   Links (fix contrast on dark background)
+   ======================================== */
+
+.step a,
+.product-card,
+.cta-container a,
+#products a,
+#cta a {
+  color: var(--bp-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(59, 130, 246, 0.4);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.step a:hover,
+.product-card:hover,
+#products a:hover,
+#cta a:hover {
+  color: #60a5fa;
+  text-decoration-color: #60a5fa;
+}
+
+/* CTA buttons override */
+.cta-btn {
+  text-decoration: none !important;
+}
+
+.cta-btn.primary {
+  color: white !important;
+}
+
+.cta-btn.secondary {
+  color: var(--bp-fg) !important;
+}
+
+/* Product cards as links */
+.product-card {
+  text-decoration: none !important;
+  display: block;
+}
+
+.product-card h3,
+.product-card p {
+  color: var(--bp-fg);
+}
+
+.product-card:hover h3 {
+  color: var(--bp-accent);
 }
