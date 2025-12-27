@@ -1,0 +1,25 @@
+<!-- Mermaid.js Include para Jekyll -->
+<!-- Uso: {% include mermaid.html %} en cualquier página -->
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: 'neutral',
+    securityLevel: 'loose',
+    flowchart: {
+      useMaxWidth: true,
+      htmlLabels: true,
+      curve: 'basis'
+    },
+    themeVariables: {
+      primaryColor: '#1a1a1a',
+      primaryTextColor: '#ffffff',
+      primaryBorderColor: '#444444',
+      lineColor: '#666666',
+      secondaryColor: '#f5f5f5',
+      tertiaryColor: '#e5e5e5'
+    }
+  });
+</script>

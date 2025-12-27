@@ -4,7 +4,7 @@
 > **Feature Cycle**: FC1
 > **Modelo**: Secuencial con solapamiento (4 iteraciones)
 > **Effort total**: 37 puntos
-> **Estado**: 📝 Borrador (pendiente aprobación)
+> **Estado**: ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md (2025-12-27)
 
 ---
 

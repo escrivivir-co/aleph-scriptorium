@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'es' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  
+  <!-- Blueprint Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/blueprint.css' | relative_url }}">
+  
+  <!-- Mermaid.js para diagramas -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs" type="module"></script>
+  
+  {% seo %}
+</head>
+<body class="impress-not-supported blueprint-page">
+  
+  <!-- Fallback para navegadores sin soporte o JS desactivado -->
+  <noscript>
+    <div class="fallback-content">
+      <h1>{{ page.title | default: "Aleph Scriptorium" }}</h1>
+      {{ content }}
+    </div>
+  </noscript>
+
+  <!-- Canvas de Impress.js para Blueprint -->
+  <div id="impress" 
+       data-transition-duration="800"
+       data-width="1920"
+       data-height="1080"
+       data-max-scale="3"
+       data-min-scale="0.3"
+       data-autoplay="0">
+    
+    {{ content }}
+    
+  </div>
+
+  <!-- Controles de navegación -->
+  <nav class="blueprint-nav">
+    <div class="nav-hint">
+      <span class="key">←</span><span class="key">→</span> navegar
+      <span class="key">Espacio</span> siguiente
+      <span class="key">O</span> vista panorámica
+    </div>
+    <div class="nav-progress">
+      <span id="current-slide">1</span> / <span id="total-slides">7</span>
+    </div>
+  </nav>
+
+  <!-- impress.js -->
+  <script src="{{ '/assets/js/impress.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/blueprint.js' | relative_url }}"></script>
+  
+</body>
+</html>
