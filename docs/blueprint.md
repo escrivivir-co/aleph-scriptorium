@@ -66,18 +66,19 @@ permalink: /blueprint/
     <div class="arch-layer resources-layer">
       <div class="arch-label">📦 Recursos</div>
       <div class="arch-items-row">
-        <div class="arch-item">Agentes <small>(31)</small></div>
-        <div class="arch-item">Plugins <small>(19)</small></div>
-        <div class="arch-item">Prompts <small>(50+)</small></div>
+        <div class="arch-item">Agentes <small>(handsoff)</small></div>
+        <div class="arch-item">Instrucciones <small>(applyTo)</small></div>
+        <div class="arch-item">Prompts <small>(typed)</small></div>
+		<div class="arch-item">MCP Gallery<small>(tools+resources)</small></div>
       </div>
     </div>
     <div class="arch-arrow">↓</div>
     <div class="arch-layer data-layer">
       <div class="arch-label">💾 Datos</div>
       <div class="arch-items-row">
-        <div class="arch-item">ARCHIVO/</div>
-        <div class="arch-item">PROYECTOS/</div>
-        <div class="arch-item">docs/</div>
+        <div class="arch-item">ARCHIVO <small>(sistema)</small></div>
+        <div class="arch-item">PROYECTOS <small>(conectadas)</small></div>
+        <div class="arch-item">DISCOS <small>(plug&play)</small></div>
       </div>
     </div>
   </div>
@@ -98,7 +99,7 @@ permalink: /blueprint/
   
   <div class="taxonomy-tree">
     <div class="tree-root">
-      <span class="tree-node root">🐂 @ox <small>(Oráculo)</small></span>
+      <span class="tree-node root">@ox <small>(Oráculo)</small></span>
     </div>
     
     <div class="tree-branches">
@@ -108,6 +109,10 @@ permalink: /blueprint/
           <span>@aleph</span>
           <span>@revisor</span>
           <span>@periodico</span>
+		  <span>@vestibulo</span>
+          <span>@cartaspuerta</span>
+          <span>@indice</span>
+		  <span>@pluginmanager</span>
         </div>
       </div>
       
@@ -122,22 +127,7 @@ permalink: /blueprint/
         </div>
       </div>
       
-      <div class="tree-branch">
-        <span class="tree-node branch-system">⚪ Navegación</span>
-        <div class="tree-leaves">
-          <span>@vestibulo</span>
-          <span>@cartaspuerta</span>
-          <span>@indice</span>
-        </div>
-      </div>
-      
-      <div class="tree-branch">
-        <span class="tree-node branch-meta">⚙️ Meta</span>
-        <div class="tree-leaves">
-          <span>@pluginmanager</span>
-        </div>
-      </div>
-      
+     
       <div class="tree-branch">
         <span class="tree-node branch-plugins">🔌 Plugins (19)</span>
         <div class="tree-leaves plugins-grid">
@@ -352,13 +342,13 @@ permalink: /blueprint/
     <a href="{{ '/archivo/' | relative_url }}" class="product-card source-card">
       <div class="product-icon">📁</div>
       <h3>ARCHIVO/</h3>
-      <p>Fuente de datos: marco teórico, diagnóstico, materiales de trabajo. Todo fluye desde aquí.</p>
+      <p>Fuente de datos: marco teórico, diagnóstico, materiales de trabajo.</p>
     </a>
     
     <a href="{{ '/teatro/' | relative_url }}" class="product-card">
       <div class="product-icon">🎭</div>
       <h3>Teatro 3D</h3>
-      <p>Experiencias narrativas inmersivas con impress.js. Obras interactivas, personajes con IA.</p>
+      <p>Experiencias narrativas inmersivas con 2.5D (a medio camino en tre el 2D y el 3D, :-D). Obras interactivas, personajes con IA.</p>
     </a>
     
     <a href="{{ '/periodico/' | relative_url }}" class="product-card">
@@ -370,7 +360,7 @@ permalink: /blueprint/
     <a href="{{ '/fundacion/' | relative_url }}" class="product-card">
       <div class="product-icon">📜</div>
       <h3>Fundación</h3>
-      <p>Texto fundacional en 12 capítulos (2026). La razón de ser del proyecto.</p>
+      <p>Texto fundacional en 12 capítulos (2026). Usando el Scriptorium para demo.</p>
     </a>
   </div>
 </div>
@@ -384,21 +374,19 @@ permalink: /blueprint/
      data-z="-1500"
      data-rotate-z="5">
   <h1>// FOSS Project (Proyecto Abierto)</h1>
-  <p class="tagline">Un procesador de texto donde la IA no te interrumpe, sino que produce.</p>
+  <p class="tagline">Un procesador de texto donde la IA se taxonomiza ad hoc.</p>
   
   <div class="cta-container">
     <div class="cta-buttons">
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/fork" class="cta-btn primary">🍴 Fork</a>
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/issues" class="cta-btn secondary">📋 Issues</a>
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/CONTRIBUTING.md" class="cta-btn secondary">📖 Contribuir</a>
-    </div>
-    
+    </div>	   
     <div class="cta-code">
       <span class="prompt">$</span> git clone https://github.com/escrivivir-co/aleph-scriptorium.git<br>
       <span class="prompt">$</span> cd aleph-scriptorium && code .<br>
       <span class="prompt">$</span> # En Copilot Chat: @aleph hola
-    </div>
-    
+    </div>    
     <div class="cta-links">
       <a href="{{ '/' | relative_url }}">← Volver a la landing clásica</a>
       <span class="cta-separator">·</span>

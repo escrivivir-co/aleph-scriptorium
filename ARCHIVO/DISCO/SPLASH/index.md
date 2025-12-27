@@ -2,7 +2,7 @@
 
 > **Propósito**: Mapa técnico-funcional para orquestar ediciones en `docs/`  
 > **Fuente de verdad**: `docs/index.md` + `docs/assets/css/main.css`  
-> **Actualizado**: 2025-12-24 (SCRIPT-1.19.0: Refactorización Coherencia)
+> **Actualizado**: 2025-12-27 (SCRIPT-1.26.0: Blueprint Refinements)
 
 ---
 
@@ -82,9 +82,55 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 
 ---
 
-## 3. Sistema CSS
+## 3. Estructura Blueprint.md (SCRIPT-1.26.0)
 
-### 3.1 Variables (`:root`)
+### 3.1 Layout Especial
+
+Blueprint usa layout `presentation` (impress.js) en lugar de `page`:
+
+```yaml
+---
+layout: presentation   # ← Especial para 3D
+permalink: /blueprint/
+---
+```
+
+### 3.2 Mapa de Slides (7)
+
+| # | ID | Posición 3D | Contenido |
+|---|-----|-------------|-----------|
+| 1 | `overview` | z:3000, scale:5 | Hero + métricas + categorías |
+| 2 | `core` | 0,0,0 | Arquitectura (4 capas) |
+| 3 | `ontology` | x:-1500, rotate-y:15 | Taxonomía 31 agentes |
+| 4 | `dynamics` | x:1500, rotate-y:-15 | 3 flujos (Periódico, Teatro, Scrum) |
+| 5 | `hypergraph` | y:1500, rotate-x:-15 | 19 plugins showcase |
+| 6 | `products` | y:-1500, rotate-x:15 | 4 productos (ARCHIVO/ como fuente) |
+| 7 | `cta` | z:-1500, rotate-z:5 | FOSS Project + CTAs |
+
+### 3.3 CSS Específico
+
+Ubicación: `docs/assets/css/blueprint.css`
+
+| Componente | Clase | Uso |
+|------------|-------|-----|
+| Métricas | `.metrics-small` | Contador plugins/agentes/submódulos |
+| Categorías | `.categories-cloud` | 8 tags funcionales |
+| Arquitectura | `.architecture-diagram` | 4 capas: Usuario→Kernel→Recursos→Datos |
+| Taxonomía | `.taxonomy-tree` | Árbol desde @ox |
+| Plugins | `.plugins-showcase` | Grid 5×4 con cards |
+| Fuente | `.source-card` | Estilo amber para ARCHIVO/ |
+
+### 3.4 Navegación
+
+- **Teclado**: ← → (slides), Space (adelante), O (overview)
+- **Links internos**: Capturados por impress.js (navegan entre slides)
+- **Links externos**: Abrir en nueva pestaña o navegar directamente
+
+---
+
+## 4. Sistema CSS
+
+### 4.1 Variables (`:root`)
 
 | Variable | Valor | Uso |
 |----------|-------|-----|
@@ -95,7 +141,7 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 | `--font-mono` | SF Mono | Títulos, código |
 | `--max-width-wide` | 1200px | Home |
 
-### 3.2 Banderas
+### 4.2 Banderas
 
 | Bandera | Variable | Color |
 |---------|----------|-------|
@@ -105,7 +151,7 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 | Yellow | `--yellow` | `#ca8a04` |
 | Orange | `--orange` | `#ea580c` |
 
-### 3.3 Ubicación en main.css
+### 4.3 Ubicación en main.css
 
 | Componente | Líneas aprox. |
 |------------|---------------|
@@ -117,13 +163,14 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 
 ---
 
-## 4. Páginas del Sitio
+## 5. Páginas del Sitio
 
 > **SCRIPT-1.19.0**: Refactorización aplicada. CSS inline eliminado, tablas markdown.
 
 | Página | Archivo | Líneas | Estado |
 |--------|---------|--------|--------|
 | Home | `index.md` | 204 | ✅ Base |
+| **Blueprint** | `blueprint.md` | 406 | ✅ SCRIPT-1.26.0 (7 slides impress.js) |
 | Léeme | `leeme.md` | 175 | ✅ Refactorizado (575→175) |
 | Ecosistema | `ecosistema.md` | 178 | ✅ Refactorizado (1284→178) |
 | Teatro | `teatro.md` | 174 | ✅ Base |
@@ -132,13 +179,13 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 | Archivo | `archivo.md` | 123 | ✅ Refactorizado (748→123) |
 | Roadmap | `roadmap.md` | 680 | ✅ Galería expandida (2025-12-27) |
 | Acerca | `acerca.md` | 69 | ✅ Refactorizado (239→69) |
-| **Total** | — | **~1900** | **-60% vs original** |
+| **Total** | — | **~2300** | **Blueprint añade 400 líneas** |
 
 ---
 
-## 5. Operaciones
+## 6. Operaciones
 
-### 5.1 Editar Sección
+### 6.1 Editar Sección
 
 ```
 1. Identificar # en tabla 2.2
@@ -148,7 +195,7 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 5. Validar: bundle exec jekyll serve
 ```
 
-### 5.2 Añadir Sección
+### 6.2 Añadir Sección
 
 ```html
 <section class="home-section">
@@ -157,7 +204,7 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 </section>
 ```
 
-### 5.3 Modificar Nav Cards
+### 6.3 Modificar Nav Cards
 
 Sincronizar con `_config.yml`:
 ```yaml
@@ -168,7 +215,7 @@ navigation:
 
 ---
 
-## 6. Checklist de Validación
+## 7. Checklist de Validación
 
 | Test | Comando/Verificación | Criterio |
 |------|---------------------|----------|
@@ -181,7 +228,7 @@ navigation:
 
 ---
 
-## 7. Mejoras Futuras
+## 8. Mejoras Futuras
 
 > **Nota**: Los TODOs se gestionan en épicas formales del backlog.
 > Ver `BACKLOG-SCRIPTORIUM.md` para tareas pendientes de GH-Pages.
@@ -218,7 +265,7 @@ navigation:
 
 ---
 
-## 9. Referencias
+## 10. Referencias
 
 ### Fuentes de Verdad
 
