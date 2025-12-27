@@ -125,7 +125,19 @@ Los plugins extienden capacidades sin modificar el core.
 
 ### Submódulos
 
-El workspace incluye 14 submódulos (`MCPGallery`, `WorkflowEditor`, `BlocklyEditor`...).
+El workspace incluye 15 submódulos:
+
+| Submódulo | Función |
+|-----------|---------|
+| `MCPGallery` | Zeus MCP Presets (UI web) |
+| `VibeCodingSuite` | VibeCoding Connector / Matrix Theater |
+| `AAIAGallery` | FIA (Fundamentos de IA) |
+| `BlocklyEditor` | Editor visual Blockly |
+| `WorkflowEditor` | Editor visual n8n |
+| `WiringEditor` | Diseñador Node-RED |
+| `TypedPromptsEditor` | Ontologías NL↔JSON |
+| `OnthologyEditor` | Editor de ontologías (Flove Template) |
+| ... | [ver 7 más en scripts/README.md] |
 
 → Ver [scripts/README.md](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/scripts/README.md)
 

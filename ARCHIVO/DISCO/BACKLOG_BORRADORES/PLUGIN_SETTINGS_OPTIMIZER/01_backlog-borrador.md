@@ -56,7 +56,7 @@ Modificar el protocolo de instalación para que los plugins queden desactivados 
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T001 | Modificar `plugin-install.prompt.md` paso 5: valor `false` | 0.5 | ⏳ |
+| T001 | Modificar `as_plugin-install.prompt.md` paso 5: valor `false` | 0.5 | ⏳ |
 | T002 | Añadir mensaje post-instalación: "Plugin instalado (desactivado)" | 0.5 | ⏳ |
 | T003 | Actualizar `plugin-manager.agent.md` con nuevo comportamiento | 0.5 | ⏳ |
 | T004 | Actualizar ejemplo en `PLUGINS.md` sección 2.3 | 0.5 | ⏳ |
@@ -228,7 +228,7 @@ Validar el flujo completo con casos de prueba.
 
 | Archivo | Cambio |
 |---------|--------|
-| `.github/prompts/plugin-install.prompt.md` | Paso 5: default `false` |
+| `.github/prompts/as_plugin-install.prompt.md` | Paso 5: default `false` |
 | `.github/agents/plugin-manager.agent.md` | FAQ + nuevos handoffs |
 | `.github/PLUGINS.md` | Secciones 2.3 y 4.2 |
 | `.github/copilot-instructions.md` | Sección Plugins |

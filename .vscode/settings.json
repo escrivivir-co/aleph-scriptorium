@@ -14,34 +14,36 @@
 	// --- PROMPTS ADICIONALES ---
 	// Añadir carpetas de prompts de plugins a las ubicaciones de búsqueda
 	// Por defecto, VS Code solo detecta .github/prompts/
-	"chat.promptFilesLocations": { 
-		 ".github/prompts": true ,
-		 ".github/plugins/arg-board/prompts": false ,
-		 ".github/plugins/agent-creator/prompts": true ,
-		 ".github/plugins/teatro/prompts": false ,
-		 ".github/plugins/scrum/prompts": true,
-		 ".github/plugins/foro-scraper/prompts": false,
-		 ".github/plugins/enciclopedia/prompts": false,
+	"chat.promptFilesLocations": {
+		".github/prompts": true,
+		".github/plugins/arg-board/prompts": true,
+		".github/plugins/agent-creator/prompts": true,
+		".github/plugins/teatro/prompts": true,
+		".github/plugins/scrum/prompts": true,
+		".github/plugins/foro-scraper/prompts": true,
+		".github/plugins/enciclopedia/prompts": true,
 		".github/plugins/gh-pages/prompts": true,
-		".github/plugins/mcp-presets/prompts": false,
-		".github/plugins/typed-prompting/prompts": false,
-		".github/plugins/n8n-editor/prompts": false
-	}	,
+		".github/plugins/mcp-presets/prompts": true,
+		".github/plugins/typed-prompting/prompts": true,
+		".github/plugins/n8n-editor/prompts": true,
+		".github/plugins/flove-editor/prompts": true
+	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
 	// Por defecto, VS Code solo detecta .github/instructions/
-	"chat.instructionsFilesLocations": { 
-		 ".github/instructions": true ,
-		 ".github/plugins/arg-board/instructions": false ,
-		 ".github/plugins/agent-creator/instructions": true ,
-		 ".github/plugins/teatro/instructions": false ,
-		 ".github/plugins/scrum/instructions": true,
-			".github/plugins/foro-scraper/instructions": false,
-			".github/plugins/enciclopedia/instructions": false,
+	"chat.instructionsFilesLocations": {
+		".github/instructions": true,
+		".github/plugins/arg-board/instructions": true,
+		".github/plugins/agent-creator/instructions": true,
+		".github/plugins/teatro/instructions": true,
+		".github/plugins/scrum/instructions": true,
+		".github/plugins/foro-scraper/instructions": true,
+		".github/plugins/enciclopedia/instructions": true,
 		".github/plugins/gh-pages/instructions": true,
-		".github/plugins/mcp-presets/instructions": false,
-		".github/plugins/typed-prompting/instructions": false,
-		".github/plugins/n8n-editor/instructions": false
+		".github/plugins/mcp-presets/instructions": true,
+		".github/plugins/typed-prompting/instructions": true,
+		".github/plugins/n8n-editor/instructions": true,
+		".github/plugins/flove-editor/instructions": true
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas

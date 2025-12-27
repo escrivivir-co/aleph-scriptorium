@@ -2,7 +2,7 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2025-12-24  
+> **Última actualización**: 2025-12-26  
 > **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
 
 ---
@@ -30,13 +30,13 @@
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                  CAPA PLUGINS (18 bridges)                           │
+│                  CAPA PLUGINS (19 bridges)                           │
 │        plugin_ox_* → .github/plugins/{id}/agents/                    │
 └─────────────────────────────────────────────────────────────────────┘
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                  CAPA SUBMÓDULOS (14 repos)                          │
+│                  CAPA SUBMÓDULOS (15 repos)                          │
 │              Infraestructura externa (Git submodules)                │
 └─────────────────────────────────────────────────────────────────────┘
                                 │
@@ -66,7 +66,7 @@
 
 ```
 .github/
-├── agents/                 # 31 agentes (13 core + 18 bridges)
+├── agents/                 # 32 agentes (13 core + 19 bridges)
 │   ├── aleph.agent.md
 │   ├── plugin_ox_*.agent.md
 │   └── ...
@@ -75,10 +75,10 @@
 │   ├── cartas-puerta.instructions.md
 │   └── ...
 ├── prompts/               # 18+ prompts reutilizables
-│   ├── commit-message.prompt.md
-│   ├── instalar-submodulo.prompt.md
+│   ├── as_commit-message.prompt.md
+│   ├── as_instalar_submodulo.prompt.md
 │   └── ...
-├── plugins/               # 18 plugins instalados
+├── plugins/               # 19 plugins instalados
 │   ├── registry.json      # Índice maestro
 │   └── {plugin-id}/
 │       ├── manifest.md
@@ -104,6 +104,12 @@
 | `DEVOPS.md` | Protocolo de commits | Cambiar metodología |
 | `PLUGINS.md` | Protocolo de plugins | Cambiar estructura |
 | `BACKLOG-SCRIPTORIUM.md` | Estado del sprint | Cada sesión |
+
+### 2.5. Borradores de Backlog Activos
+
+| Borrador | Ruta | Estado |
+|----------|------|--------|
+| CLI Scriptorium | `ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/` | 📋 Pendiente PO |
 
 ### 2.3. Anatomía de un Agente
 
@@ -162,7 +168,7 @@ applyTo: "**/*.md"  # Glob de archivos
 }
 ```
 
-### 3.2. Plugins Instalados (18)
+### 3.2. Plugins Instalados (19)
 
 | Plugin | Versión | Submódulo | Bridge |
 |--------|---------|-----------|--------|
@@ -184,6 +190,7 @@ applyTo: "**/*.md"  # Glob de archivos
 | wiring-app | 1.0.0 | wiki-racer | plugin_ox_wiringapp |
 | arg-board-app | 1.0.0 | wiki-racer | plugin_ox_argboardapp |
 | hypergraph-editor | 1.0.0 | wiki-racer | plugin_ox_hypergrapheditor |
+| flove-editor | 1.0.0 | OnthologyEditor | plugin_ox_floveeditor |
 
 ### 3.3. Estructura de un Plugin
 
@@ -225,7 +232,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 
 ## 4. Sistema de Submódulos
 
-### 4.1. Submódulos Instalados (14)
+### 4.1. Submódulos Instalados (15)
 
 | Submódulo | Rama | Plugin asociado | Runtime |
 |-----------|------|-----------------|---------|
@@ -241,6 +248,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 | kick-aleph-crono-bot | integration/beta/scriptorium | — | Node.js |
 | mcp-novelist | integration/beta/scriptorium | novelist | Node.js |
 | node-red-alephscript-sdk | integration/beta/scriptorium | wire-editor | Node-RED |
+| OnthologyEditor | integration/beta/scriptorium | flove-editor | TypeScript |
 | vscode-alephscript-extension | integration/beta/scriptorium | — | TypeScript |
 | wiki-racer | integration/beta/scriptorium | wiring-app, arg-board-app, hypergraph-editor | TypeScript |
 

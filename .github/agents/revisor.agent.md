@@ -50,7 +50,7 @@ handoffs:
     send: false
   - label: "Tomar foto de estado del sprint"
     agent: Aleph
-    prompt: Genera foto de estado + discurso motivacional del sprint actual. Usa el prompt foto-estado-y-discurso-motivacional.prompt.md.
+    prompt: Genera foto de estado + discurso motivacional del sprint actual. Usa el prompt as_foto_estado.prompt.md.
     send: false
 ---
 # Agente: Revisor

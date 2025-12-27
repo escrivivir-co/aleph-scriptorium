@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://escrivivir.co/schemas/menu-definition.json",
+  "title": "MenuDefinition",
+  "description": "Esquema para validar definiciones de menú de consola",
+  "type": "object",
+  "required": ["title", "root"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Título del menú"
+    },
+    "version": {
+      "type": "string"
+    },
+    "root": {
+      "$ref": "#/definitions/menuNode"
+    }
+  },
+  "definitions": {
+    "menuNode": {
+      "type": "object",
+      "required": ["id", "label", "type"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["section", "command", "navigation", "info", "agent", "plugin"]
+        },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/menuNode" }
+        },
+        "action": {
+          "$ref": "#/definitions/menuAction"
+        },
+        "sourcePath": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "shortcut": {
+          "type": "string"
+        }
+      }
+    },
+    "menuAction": {
+      "type": "object",
+      "required": ["type", "target"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["invoke-agent", "run-prompt", "navigate", "execute", "display", "external-url"]
+        },
+        "target": {
+          "type": "string"
+        },
+        "args": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

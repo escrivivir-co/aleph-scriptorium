@@ -8,7 +8,7 @@
 
 ## Apertura
 
-**SM**: Actualmente tenemos 18 plugins instalados en el registry. El protocolo vigente (`plugin-install.prompt.md`) añade automáticamente cada plugin a `chat.promptFilesLocations` y `chat.instructionsFilesLocations` con valor `true`. Esto significa que todos los prompts e instructions están **siempre activos**.
+**SM**: Actualmente tenemos 18 plugins instalados en el registry. El protocolo vigente (`as_plugin-install.prompt.md`) añade automáticamente cada plugin a `chat.promptFilesLocations` y `chat.instructionsFilesLocations` con valor `true`. Esto significa que todos los prompts e instructions están **siempre activos**.
 
 El problema detectado:
 - **Sobrecarga cognitiva**: Al escribir `/` en el chat, aparecen 49+ prompts
@@ -25,7 +25,7 @@ El problema detectado:
 
 **PO**: Quiero que los plugins se instalen pero que **por defecto estén desactivados** en los settings de VS Code. Así el usuario elige cuáles necesita.
 
-**SM**: Técnicamente es sencillo. En el paso 5 del `plugin-install.prompt.md`, en lugar de:
+**SM**: Técnicamente es sencillo. En el paso 5 del `as_plugin-install.prompt.md`, en lugar de:
 
 ```json
 {
@@ -166,7 +166,7 @@ del autocompletado. Usa `@pluginmanager status` para revisar.
 
 | Archivo | Cambio |
 |---------|--------|
-| `.github/prompts/plugin-install.prompt.md` | Paso 5: valor `false` por defecto |
+| `.github/prompts/as_plugin-install.prompt.md` | Paso 5: valor `false` por defecto |
 | `.github/agents/plugin-manager.agent.md` | Nuevos handoffs + FAQ + avisos |
 | `.github/PLUGINS.md` | Documentar nuevo comportamiento |
 | `.vscode/settings.json` | Estructura de ejemplo actualizada |

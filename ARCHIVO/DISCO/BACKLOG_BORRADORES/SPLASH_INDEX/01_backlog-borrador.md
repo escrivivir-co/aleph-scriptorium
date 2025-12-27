@@ -22,7 +22,7 @@ El plugin GH-Pages no tiene un índice estructural que:
 1. **Índice SPLASH**: Documento técnico-funcional en `ARCHIVO/DISCO/SPLASH/`
 2. **Vinculación**: El plugin GH-Pages referencia y mantiene el índice
 3. **Interceptación**: Las operaciones del plugin verifican coherencia
-4. **Warning en commits**: `commit-message.prompt.md` valida cambios en `docs/`
+4. **Warning en commits**: `as_commit-message.prompt.md` valida cambios en `docs/`
 
 ---
 
@@ -104,7 +104,7 @@ Modificar prompts del plugin para verificar coherencia con el índice antes de o
 
 ### Descripción
 
-Modificar `commit-message.prompt.md` para validar cambios en `docs/` contra el índice SPLASH.
+Modificar `as_commit-message.prompt.md` para validar cambios en `docs/` contra el índice SPLASH.
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
@@ -153,7 +153,7 @@ Añadir handoffs al agente GHPages para consultar y actualizar el índice.
 |-------------|--------|-------|
 | Plugin GH-Pages | ✅ Instalado | v1.1.0 |
 | Índice SPLASH base | ✅ Creado | `ARCHIVO/DISCO/SPLASH/index.md` |
-| commit-message.prompt.md | ✅ Modificado | Paso 2.6 añadido |
+| as_commit-message.prompt.md | ✅ Modificado | Paso 2.6 añadido |
 
 ---
 
@@ -174,6 +174,7 @@ Añadir handoffs al agente GHPages para consultar y actualizar el índice.
 | 2025-12-24 | Crear backlog borrador | @scrum |
 | 2025-12-24 | Completar S01 (índice SPLASH creado) | @aleph |
 | 2025-01-02 | Completar S02-S05 (vinculación, interceptación, warning, handoffs) | @aleph |
+| 2025-12-27 | Actualizar índice roadmap (Galería Futuro/Presente) | @aleph |
 
 ---
 

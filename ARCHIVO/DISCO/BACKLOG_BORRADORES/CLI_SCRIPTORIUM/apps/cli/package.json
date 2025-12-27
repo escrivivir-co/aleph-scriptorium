@@ -1,0 +1,45 @@
+{
+  "name": "@scriptorium/cli",
+  "version": "0.0.1",
+  "description": "CLI principal del Aleph Scriptorium",
+  "type": "module",
+  "bin": {
+    "scriptorium": "./dist/bin.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/bin.ts",
+    "start": "tsx src/bin.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@scriptorium/types": "workspace:*",
+    "@scriptorium/core": "workspace:*",
+    "@scriptorium/menu-renderer": "workspace:*",
+    "@scriptorium/agent-runtime": "workspace:*",
+    "commander": "^12.0.0",
+    "conf": "^12.0.0",
+    "update-notifier": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/update-notifier": "^6.0.8",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

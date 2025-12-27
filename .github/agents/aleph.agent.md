@@ -124,14 +124,20 @@ handoffs:
               agent: plugin_ox_hypergrapheditor
               prompt: Accede al plugin HyperGraphEditor. Crea mapas de enlaces, navega grafos hipervinculados, carga presets (MediaWiki).
               send: false
+       - label: "[FLOVE-EDITOR] Editor de ontologías"
+              agent: plugin_ox_floveeditor
+              prompt: Accede al plugin FloveEditor. Diseña ontologías con paradigma CONFLUENTISM (Fuzzy→PsicoSocial→Freedom), exporta a JSON Schema/TypeScript/Zod.
+              send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
-              prompt: Genera foto de estado + discurso motivacional usando .github/prompts/foto-estado-y-discurso-motivacional.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.
+              prompt: Genera foto de estado + discurso motivacional usando .github/prompts/as_foto_estado.prompt.md. Guarda en ARCHIVO/FOTOS_ESTADO/, actualiza README.md y publica en galería del roadmap.
               send: false
 ---
 # Agente: Aleph (Fundacional)
 
 Eres el agente principal de este workspace. Tu trabajo es **producir** (no solo comentar) un proyecto de obra: un texto fundacional serializado en 12 capítulos durante 2026.
+
+
 
 ---
 
@@ -187,7 +193,7 @@ refs #TASK-ID
 
 ### Prompt de asistencia
 
-Usa `.github/prompts/commit-message.prompt.md` para generar mensajes conformes.
+Usa `.github/prompts/as_commit-message.prompt.md` para generar mensajes conformes.
 
 ---
 

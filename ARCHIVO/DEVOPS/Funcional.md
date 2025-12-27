@@ -2,7 +2,7 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2025-12-24  
+> **Última actualización**: 2025-01-02  
 > **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
 
 ---
@@ -132,7 +132,7 @@
 
 ### 4.5. Capa Plugins (Bridges)
 
-> **18 bridges** en `.github/agents/plugin_ox_*.agent.md`
+> **19 bridges** en `.github/agents/plugin_ox_*.agent.md`
 
 | Bridge | Plugin | Agentes internos |
 |--------|--------|------------------|
@@ -154,6 +154,7 @@
 | @plugin_ox_wiringapp | WiringApp | 1 agente |
 | @plugin_ox_argboardapp | ArgBoardApp | 1 agente |
 | @plugin_ox_hypergrapheditor | HyperGraphEditor | 1 agente |
+| @plugin_ox_floveeditor | Flove Editor | 1 agente |
 
 ---
 
@@ -312,9 +313,9 @@ Fuentes: [archivos adjuntos]
 | Recurso | Cantidad |
 |---------|----------|
 | Agentes core | 13 |
-| Agentes bridge | 18 |
-| Plugins instalados | 18 |
-| Submódulos | 14 |
+| Agentes bridge | 19 |
+| Plugins instalados | 19 |
+| Submódulos | 15 |
 | Prompts (.github) | 18+ |
 | Instructions (.github) | 10+ |
 

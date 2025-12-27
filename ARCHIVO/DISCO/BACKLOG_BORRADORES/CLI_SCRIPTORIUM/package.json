@@ -1,0 +1,49 @@
+{
+  "name": "scriptorium-cli",
+  "version": "0.0.1",
+  "description": "CLI para gestión del Aleph Scriptorium con hot-reload de plantillas Markdown",
+  "private": true,
+  "type": "module",
+  "license": "AIPL-1.0",
+  "author": "Escrivivir Co.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/escrivivir-co/aleph-scriptorium"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "cli": "pnpm --filter @scriptorium/cli run start",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "pnpm": {
+    "overrides": {}
+  }
+}

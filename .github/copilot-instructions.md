@@ -76,13 +76,8 @@ El contenido se rige por instrucciones específicas. **No improvisar** estilos n
 
 | Contexto | Instrucción Maestra |
 |----------|---------------------|
-| **Voz y Estilo** | [instructions/voz-manifiesto.instructions.md](instructions/voz-manifiesto.instructions.md) |
-| **Diagnóstico** | [instructions/diagnostico.instructions.md](instructions/diagnostico.instructions.md) (Memoria, no guía) |
-| **Justificación** | [instructions/justificacion.instructions.md](instructions/justificacion.instructions.md) (Memoria, no guía) |
-| **Marco Conceptual** | [instructions/marco-conceptual.instructions.md](instructions/marco-conceptual.instructions.md) (Herramientas activas) |
-| **Presentación** | [instructions/cartas-puerta.instructions.md](instructions/cartas-puerta.instructions.md) (Cartas de entrada) |
 | **Noticias (Periódico)** | [instructions/periodico.instructions.md](instructions/periodico.instructions.md) (5W + Banderas) |
-| **Herramientas MCP** | [instructions/mcp-tools.instructions.md](instructions/mcp-tools.instructions.md) |
+
 
 ## 5. Flujo de Trabajo (Resumen)
 
@@ -103,7 +98,9 @@ El contenido se rige por instrucciones específicas. **No improvisar** estilos n
   - El *cuándo* (plan) está en los Backlogs.
   - El *quién* (agentes) está en `@ox` → [agents/ox.agent.md](agents/ox.agent.md).
 
-## 7. Sistema de Plugins
+## 7. Sistema de Plugins y Submodules
+
+### 7.1 Plugins
 
 **Fuente de verdad**: [PLUGINS.md](PLUGINS.md)
 
@@ -114,6 +111,10 @@ Los plugins extienden las capacidades de Scriptorium sin modificar el core.
 - **Responsabilidad**: Instalar, activar, desactivar y desinstalar plugins.
 
 **Registro de Plugins**: [plugins/registry.json](plugins/registry.json)
+
+### 7.2 Submodules
+
+Prompt inicial: .github/prompts/as_instalar_submodulo.prompt.md
 
 ## 8. Índice DRY y Navegación Rápida
 
@@ -136,7 +137,7 @@ Los índices son el **mapa de navegación rápida** del proyecto. Consultar ante
 
 ### Validación Pre-Commit
 
-El prompt `commit-message.prompt.md` incluye **Paso 2.5** que invoca validación de índice:
+El prompt `as_commit-message.prompt.md` incluye **Paso 2.5** que invoca validación de índice:
 - Ejecuta 5 tests de coherencia
 - Genera warnings informativos (no bloqueantes)
 - Sugiere `@indice actualizar` si hay discrepancias

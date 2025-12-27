@@ -37,7 +37,7 @@ git diff --staged
 Staging **solo** de estos archivos (si existen y están modificados):
 - `.github/DEVOPS.md`
 - `.github/BACKLOG-SCRIPTORIUM.md`
-- `.github/prompts/commit-message.prompt.md`
+- `.github/prompts/as_commit-message.prompt.md`
 - `.github/prompts/extraer-archivar.prompt.md`
 - `.github/agents/aleph.agent.md`
 
@@ -46,7 +46,7 @@ Staging **solo** de estos archivos (si existen y están modificados):
 git add \
   .github/DEVOPS.md \
   .github/BACKLOG-SCRIPTORIUM.md \
-  .github/prompts/commit-message.prompt.md \
+  .github/prompts/as_commit-message.prompt.md \
   .github/prompts/extraer-archivar.prompt.md \
   .github/agents/aleph.agent.md
 
@@ -64,7 +64,7 @@ git commit -m "feat(script/devops): establecer protocolo DevOps y actualizar age
 
 - Crear DEVOPS.md con metodología Agile/Scrum adaptada
 - Crear BACKLOG-SCRIPTORIUM.md para Sprint 0
-- Crear commit-message.prompt.md para generación de commits
+- Crear as_commit-message.prompt.md para generación de commits
 - Actualizar aleph.agent.md con sección DevOps y trazabilidad
 - Añadir nota de extracción PDF a extraer-archivar.prompt.md
 

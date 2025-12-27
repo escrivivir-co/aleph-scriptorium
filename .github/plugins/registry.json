@@ -667,6 +667,53 @@
           "agent": "HyperGraphEditor"
         }
       ]
+    },
+    "flove-editor": {
+      "name": "Editor de Ontologías (Flove Template)",
+      "version": "1.0.0",
+      "description": "Plugin para diseñar ontologías basadas en el paradigma CONFLUENTISM de Flove. Estructura de 3 niveles (Fuzzy→PsicoSocial→Freedom). Exporta a JSON Schema, TypeScript y Zod. Integra con TypedPrompting y AGENT_CREATOR.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-01-02T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/FLOVE_EDITOR/",
+      "bridge_agent": "plugin_ox_floveeditor",
+      "dependencies": [],
+      "optional_dependencies": ["typed-prompting", "agent-creator", "mcp-presets"],
+      "submodule": "OnthologyEditor",
+      "paradigm": {
+        "name": "CONFLUENTISM",
+        "levels": ["Fuzzy Logic", "PsicoSocial", "Freedom/Economy"],
+        "source": "Flove/Iowa"
+      },
+      "export_formats": ["json-schema", "typescript", "zod"],
+      "handoffs": [
+        {
+          "label": "Crear ontología con template Flove",
+          "agent": "FloveEditor"
+        },
+        {
+          "label": "Exportar ontología a JSON Schema",
+          "agent": "FloveEditor"
+        },
+        {
+          "label": "Exportar ontología a TypeScript",
+          "agent": "FloveEditor"
+        },
+        {
+          "label": "Exportar ontología a Zod",
+          "agent": "FloveEditor"
+        },
+        {
+          "label": "Instalar en TypedPrompting",
+          "agent": "FloveEditor"
+        },
+        {
+          "label": "Asignar a receta de agente",
+          "agent": "FloveEditor"
+        }
+      ]
     }
   }
 }

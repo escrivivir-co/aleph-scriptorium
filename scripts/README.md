@@ -9,7 +9,7 @@
 
 | Script | Propósito |
 |--------|-----------|
-| `setup-workspace.sh` | Inicializa VS Code settings y los 14 submódulos |
+| `setup-workspace.sh` | Inicializa VS Code settings y los 15 submódulos |
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
@@ -32,7 +32,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `chat.instructionsFilesLocations`: detecta instructions de plugins
    - `chat.useNestedAgentsMdFiles`: busca agentes anidados
    
-2. **Sincroniza los 14 submódulos** con rama `integration/beta/scriptorium`:
+2. **Sincroniza los 15 submódulos** con rama `integration/beta/scriptorium`:
    - `VsCodeExtension` — Extensión VS Code / Arrakis Theater
    - `MCPGallery` — Zeus MCP Presets (UI web)
    - `VibeCodingSuite` — VibeCoding Connector / Matrix Theater
@@ -47,6 +47,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `TypedPromptsEditor` — TypedPrompting (Ontologías NL↔JSON)
    - `WorkflowEditor` — Editor visual de workflows (n8n connector)
    - `WiringAppHypergraphEditor` — Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
+   - `OnthologyEditor` — Editor de ontologías (Flove Template)
 
 ### Output esperado
 
@@ -68,9 +69,10 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: TypedPromptsEditor
 [setup] Configurando submódulo: WorkflowEditor
 [setup] Configurando submódulo: WiringAppHypergraphEditor
-[setup] ✔ Setup completado (14 submódulos)
+[setup] Configurando submódulo: OnthologyEditor
+[setup] ✔ Setup completado (15 submódulos)
 
-Submódulos configurados (14):
+Submódulos configurados (15):
   - VsCodeExtension: Extensión VS Code / Arrakis Theater
   - MCPGallery: Zeus MCP Presets (UI web)
   - VibeCodingSuite: VibeCoding Connector / Matrix Theater
@@ -85,6 +87,7 @@ Submódulos configurados (14):
   - TypedPromptsEditor: TypedPrompting (Ontologías NL↔JSON)
   - WorkflowEditor: Editor visual de workflows (n8n connector)
   - WiringAppHypergraphEditor: Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
+  - OnthologyEditor: Editor de ontologías (Flove Template)
 ```
 
 ---
