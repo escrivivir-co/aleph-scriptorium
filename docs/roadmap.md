@@ -97,257 +97,260 @@ permalink: /roadmap/
 
 ## Futuro (Borradores)
 
+> **27 borradores de planificación** — Conversaciones PO-SM que definen el roadmap del proyecto.  
+> Ver índice completo: [BACKLOG_BORRADORES/INDEX.md](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
+
 <div class="gallery-grid">
 
-  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/Mapa rápido" class="card">
-    <div class="card-header">Mapa rápido</div>
-    <h3 class="card-title">Mapa rápido</h3>
-    <div class="card-body">Sin descripción disponible.</div>
-    <div class="card-footer">
-      
-    </div>
-  </a>
-
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/AGENTE_INDICE" class="card">
-    <div class="card-header">AGENTE_INDICE</div>
-    <h3 class="card-title">Conversación PO-SM: Agente Índice (Gemelo de Lucas)</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 (Nochebuena) **Sprint**: FC1 **Épica propuesta**: SCRIPT-1.14.0</div>
+    <div class="card-header">📝 Borrador | SCRIPT-1.14.0</div>
+    <h3 class="card-title">Agente Índice (Gemelo de Lucas)</h3>
+    <div class="card-body">Agente que mantiene índices DRY del proyecto. Gemelo del personaje Lucas del Teatro. Navega Funcional.md y Tecnico.md.</div>
     <div class="card-footer">
-      <span class="tag">agente</span><span class="tag">indice</span><span class="tag">conversación</span>
+      <span class="tag">agente</span><span class="tag">índice</span><span class="tag">DRY</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-GYM" class="card">
-    <div class="card-header">AS-GYM</div>
-    <h3 class="card-title">Planificación Épica SCRIPT-1.10.0: Conversación PO-SM</h3>
-    <div class="card-body">**Caso de uso evaluado**: Creación del personaje **Tutatix**, un auditor de verdad basado en @blueflag que utiliza una Red Semántica (paradigma simbólico de as-gym
-) con dos épocas de operación: 1. **Época de Edición**: Chat para construir/modificar la red semántica 2. **Época de Conversación**: Diálogo usando la red…</div>                                 <div class="card-footer">
-      <span class="tag">gym</span><span class="tag">planificación</span><span class="tag">épica</span>
+    <div class="card-header">✅ Completada | SCRIPT-1.10.0</div>
+    <h3 class="card-title">Integración AS-GYM</h3>
+    <div class="card-body">Caso de uso Tutatix: auditor @blueflag con Red Semántica. Dos épocas: Edición (construir red) y Conversación (diálogo usando la red).</div>
+    <div class="card-footer">
+      <span class="tag">gym</span><span class="tag">semántica</span><span class="tag">auditor</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-UTILS-SDK" class="card">
-    <div class="card-header">AS-UTILS-SDK</div>
-    <h3 class="card-title">Planificación Épica SCRIPT-1.9.0: Conversación PO-SM</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">📋 Sin estado | SCRIPT-1.9.0</div>
+    <h3 class="card-title">SDK de Utilidades</h3>
+    <div class="card-body">Librería de utilidades compartidas para submódulos del Scriptorium. Funciones comunes de parsing, formateo y validación.</div>
     <div class="card-footer">
-      <span class="tag">utils</span><span class="tag">sdk</span><span class="tag">planificación</span>
+      <span class="tag">utils</span><span class="tag">sdk</span><span class="tag">lib</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/BLOCKLY-SDK" class="card">
-    <div class="card-header">BLOCKLY-SDK</div>
-    <h3 class="card-title">Conversación PO-SM: Blockly AlephScript SDK</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `blockly-alephscript-sdk` **Plugin objetivo**: `blockly-editor` **Sprint referencia**: SCRIPT-1.12.0</div>
+    <div class="card-header">📝 Borrador | SCRIPT-1.12.0</div>
+    <h3 class="card-title">Plugin Blockly Editor</h3>
+    <div class="card-body">Programación visual de lógica de personajes. Genera código JavaScript ejecutable en el Teatro. Bloques personalizados para agentes.</div>
     <div class="card-footer">
-      <span class="tag">blockly</span><span class="tag">sdk</span><span class="tag">conversación</span>
+      <span class="tag">blockly</span><span class="tag">visual</span><span class="tag">teatro</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM" class="card">
-    <div class="card-header">CLI_SCRIPTORIUM</div>
-    <h3 class="card-title">Plan Arquitectónico: CLI Scriptorium</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">📐 Diseño</div>
+    <h3 class="card-title">CLI Scriptorium</h3>
+    <div class="card-body">Plan arquitectónico del kernel CLI. Interfaz de comandos para gestionar el Scriptorium sin VS Code. Anchura sin profundidad.</div>
     <div class="card-footer">
-      <span class="tag">cli</span><span class="tag">scriptorium</span><span class="tag">arquitectónico</span>
+      <span class="tag">cli</span><span class="tag">kernel</span><span class="tag">arquitectura</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_Ontologia" class="card">
-    <div class="card-header">Diciembre_25_Ontologia</div>
-    <h3 class="card-title">Planificación Sprint 1: Conversación PO-SM</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">✅ Aprobado | FC1</div>
+    <h3 class="card-title">Ontología Formal del Scriptorium</h3>
+    <div class="card-body">Feature Cycle 1: Especificación formal de agentes, plugins y dominios usando Metamodel + MMCO. Base teórica del proyecto.</div>
     <div class="card-footer">
-      <span class="tag">diciembre</span><span class="tag">ontologia</span><span class="tag">planificación</span>
+      <span class="tag">ontología</span><span class="tag">metamodel</span><span class="tag">MMCO</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR" class="card">
-    <div class="card-header">FLOVE_EDITOR</div>
-    <h3 class="card-title">Planificación Plugin FloveEditor: Conversación PO-SM</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">✅ Publicado | SCRIPT-1.20.0</div>
+    <h3 class="card-title">Plugin FloveEditor</h3>
+    <div class="card-body">Editor de ontologías basado en paradigma CONFLUENTISM de Flove. Exporta a JSON Schema, TypeScript, Zod. 3 niveles: Fuzzy→PsicoSocial→Freedom.</div>
     <div class="card-footer">
-      <span class="tag">flove</span><span class="tag">editor</span><span class="tag">planificación</span>
+      <span class="tag">flove</span><span class="tag">ontología</span><span class="tag">editor</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA" class="card">
-    <div class="card-header">INDICES_COBERTURA</div>
-    <h3 class="card-title">Conversación PO-SM: Cobertura y Homogeneización de Índices</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Épica propuesta**: SCRIPT-1.18.0 **Agente orquestador**: @scrum</div>
+    <div class="card-header">✅ Aprobado | SCRIPT-1.18.0</div>
+    <h3 class="card-title">Cobertura de Índices</h3>
+    <div class="card-body">Homogeneizar Funcional.md y Tecnico.md. Cobertura completa, mismo estilo visual, DRY: referenciar sin duplicar.</div>
     <div class="card-footer">
-      <span class="tag">indices</span><span class="tag">cobertura</span><span class="tag">conversación</span>
+      <span class="tag">índices</span><span class="tag">cobertura</span><span class="tag">DRY</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA" class="card">
-    <div class="card-header">IOT-SBR-LOGICA</div>
-    <h3 class="card-title">Conversación PO-SM: Plugin PrologEditor</h3>
-    <div class="card-body">**Fecha**: 2025-01-04 **Submódulo**: `iot-sbr-logica-para-bots` **Plugin objetivo**: `prolog-editor` **Instrucciones del usuario**: - Relacionar con blockly-editor
- y AS-GYM - Exportar desde Scriptorium a editor Prolog e importar de vuelta - Conectar con AGENT_CREATOR y ARG_BOARD - Perfil académico: usuarios con alto…</div>                                 <div class="card-footer">
-      <span class="tag">iot</span><span class="tag">sbr</span><span class="tag">logica</span>
+    <div class="card-header">📝 Borrador | SCRIPT-1.11.0</div>
+    <h3 class="card-title">Plugin PrologEditor</h3>
+    <div class="card-body">Lógica declarativa Prolog (SWI-Prolog). Exportar desde Blockly a Prolog. Perfil académico: usuarios con conocimiento formal.</div>
+    <div class="card-footer">
+      <span class="tag">prolog</span><span class="tag">lógica</span><span class="tag">académico</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/KICK-ALEPH" class="card">
-    <div class="card-header">KICK-ALEPH</div>
-    <h3 class="card-title">Conversación PO-SM: Kick Aleph (Streaming Bridge)</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulos**: `kick-aleph-bot`, `kick-aleph-crono-bot` **Plugin objetivo**: `kick-stream`</div>
+    <div class="card-header">📋 Borrador</div>
+    <h3 class="card-title">Kick Aleph (Streaming)</h3>
+    <div class="card-body">Bridge para plataforma de streaming Kick. Dos bots: aleph-bot (interacción) y crono-bot (cronograma). Plugin objetivo: kick-stream.</div>
     <div class="card-footer">
-      <span class="tag">kick</span><span class="tag">aleph</span><span class="tag">conversación</span>
+      <span class="tag">kick</span><span class="tag">streaming</span><span class="tag">bot</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/MCP-NOVELIST" class="card">
-    <div class="card-header">MCP-NOVELIST</div>
-    <h3 class="card-title">Conversación PO-SM: MCP Novelist</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `mcp-novelist` **Plugin objetivo**: `novelist`</div>
+    <div class="card-header">📝 Borrador | SCRIPT-1.13.0</div>
+    <h3 class="card-title">Plugin Novelist (MCP)</h3>
+    <div class="card-body">Edición de narrativas con memoria a largo plazo vía servidor MCP. Sincroniza con TALLER, AGENT_CREATOR y Teatro. Puerto 3066.</div>
     <div class="card-footer">
-      <span class="tag">mcp</span><span class="tag">novelist</span><span class="tag">conversación</span>
+      <span class="tag">mcp</span><span class="tag">novelist</span><span class="tag">memoria</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/MCP-PRESETS-SITE" class="card">
-    <div class="card-header">MCP-PRESETS-SITE</div>
-    <h3 class="card-title">Conversación PO-SM: Plugin MCP-PRESETS</h3>
-    <div class="card-body">Este borrador define el plugin `mcp-presets` para Scriptorium, que permite:</div>
+    <div class="card-header">✅ Aprobado</div>
+    <h3 class="card-title">Plugin MCP-Presets</h3>
+    <div class="card-body">Gestión de presets MCP: packs de tools[], resources[], prompts[]. Importar, exportar y asignar presets a agentes especializados.</div>
     <div class="card-footer">
-      <span class="tag">mcp</span><span class="tag">presets</span><span class="tag">site</span>
+      <span class="tag">mcp</span><span class="tag">presets</span><span class="tag">tools</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE" class="card">
-    <div class="card-header">METAMODEL_COMPLIANCE</div>
-    <h3 class="card-title">Conversación PO-SM: Metamodel Compliance para FloveEditor</h3>
-    <div class="card-body">**Estado**: ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26)</div>
+    <div class="card-header">✅ Publicado | SCRIPT-1.21.0</div>
+    <h3 class="card-title">Metamodel Compliance</h3>
+    <div class="card-body">Integración Metamodel + MMCO + FloveDocs. Especificación formal para validar que plugins cumplen con la ontología del Scriptorium.</div>
     <div class="card-footer">
-      <span class="tag">metamodel</span><span class="tag">compliance</span><span class="tag">conversación</span>
+      <span class="tag">metamodel</span><span class="tag">compliance</span><span class="tag">formal</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO" class="card">
-    <div class="card-header">MMCO</div>
-    <h3 class="card-title">Conversación PO-SM: MMCO (OCMF)</h3>
-    <div class="card-body">**Fecha**: 2025-12-26 **Submódulo**: `OnthologyEditor/MMCO` **Plugin objetivo**: `flove-editor` (Bridge: `plugin_ox_floveeditor`)</div>
+    <div class="card-header">✅ Publicado | SCRIPT-1.23.0</div>
+    <h3 class="card-title">Integración MMCO (OCMF)</h3>
+    <div class="card-body">Métricas de Coherencia Multimodal Ontológica. Framework para medir coherencia en partidas ARG y producción editorial. Bridge: flove-editor.</div>
     <div class="card-footer">
-      <span class="tag">mmco</span><span class="tag">conversación</span><span class="tag">ocmf</span>
+      <span class="tag">mmco</span><span class="tag">coherencia</span><span class="tag">métricas</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/N8N-EDITOR" class="card">
-    <div class="card-header">N8N-EDITOR</div>
-    <h3 class="card-title">Conversación PO-SM: N8N Editor</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `alephscript-n8n-like-editor` **Plugin objetivo**: `n8n-editor` **Modo**: Autónomo (continuar sin pausas)</div>
+    <div class="card-header">📝 Borrador | SCRIPT-1.14.0</div>
+    <h3 class="card-title">Plugin N8N Editor</h3>
+    <div class="card-body">Editor visual de workflows estilo n8n. CONECTOR (no reemplazo). Integra con TypedPrompting para validación y MCP-Presets para nodos.</div>
     <div class="card-footer">
-      <span class="tag">n8n</span><span class="tag">editor</span><span class="tag">conversación</span>
+      <span class="tag">n8n</span><span class="tag">workflows</span><span class="tag">visual</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/NETWORK-SDK" class="card">
-    <div class="card-header">NETWORK-SDK</div>
-    <h3 class="card-title">Conversación PO-SM: Plugin Network (Oasis/Scuttlebutt)</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">🟡 Borrador | SCRIPT-1.11.0</div>
+    <h3 class="card-title">Plugin Network (Oasis)</h3>
+    <div class="card-body">Sincronización P2P de BOEs vía Scuttlebutt. Teatro distribuido entre Scriptoriums sin servidor central. Colaboración offline-first.</div>
     <div class="card-footer">
-      <span class="tag">network</span><span class="tag">sdk</span><span class="tag">conversación</span>
+      <span class="tag">network</span><span class="tag">p2p</span><span class="tag">scuttlebutt</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/NODE-RED-SDK" class="card">
-    <div class="card-header">NODE-RED-SDK</div>
-    <h3 class="card-title">Conversación PO-SM: Node-RED AlephScript SDK</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `node-red-alephscript-sdk` **Plugin objetivo**: `wire-editor` v1.0.0 **Épica**: SCRIPT-1.13.0</div>
+    <div class="card-header">📝 Borrador | SCRIPT-1.13.0</div>
+    <h3 class="card-title">Plugin WireEditor (Node-RED)</h3>
+    <div class="card-body">Diseñador de flujos asíncronos con Node-RED. 13 nodos personalizados en 5 categorías: bot, channel, format, orchestration, dashboard.</div>
     <div class="card-footer">
-      <span class="tag">node</span><span class="tag">red</span><span class="tag">sdk</span>
+      <span class="tag">node-red</span><span class="tag">flows</span><span class="tag">async</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR" class="card">
-    <div class="card-header">ONTHOLOGY_EDITOR</div>
-    <h3 class="card-title">Conversación PO-SM: OnthologyEditor (Flove Template)</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">📋 Borrador</div>
+    <h3 class="card-title">OnthologyEditor (Flove Template)</h3>
+    <div class="card-body">Submódulo principal de ontologías. Template Flove para modelar dominios con paradigma CONFLUENTISM. Base para FloveEditor.</div>
     <div class="card-footer">
-      <span class="tag">onthology</span><span class="tag">editor</span><span class="tag">conversación</span>
+      <span class="tag">ontología</span><span class="tag">flove</span><span class="tag">template</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTOLOGY_AGENT_EDITOR" class="card">
-    <div class="card-header">ONTOLOGY_AGENT_EDITOR</div>
-    <h3 class="card-title">Conversación PO-SM: OntologyAgentEditor</h3>
-    <div class="card-body">**Fecha**: 2025-12-26 **Plugin objetivo**: Extensión de `agent-creator` con capacidades ontológicas **Épicas relacionadas**: SCRIPT-1.20.0, SCRIPT-1.21.0, SCRIPT-1
-.22.0, SCRIPT-1.23.0 **Participantes**: @aleph (PO), @scrum (SM), @flove-ox, @agent-creator, @ox</div>                                                                                            <div class="card-footer">
-      <span class="tag">ontology</span><span class="tag">agent</span><span class="tag">editor</span>
+    <div class="card-header">✅ Aprobado | SCRIPT-1.24.0</div>
+    <h3 class="card-title">OntologyAgentEditor</h3>
+    <div class="card-body">Extensión de agent-creator con capacidades ontológicas. Crea agentes validados contra Metamodel. Integra épicas 1.20.0-1.23.0.</div>
+    <div class="card-footer">
+      <span class="tag">ontology</span><span class="tag">agent</span><span class="tag">creator</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/PLUGIN_SETTINGS_OPTIMIZER" class="card">
-    <div class="card-header">PLUGIN_SETTINGS_OPTIMIZER</div>
-    <h3 class="card-title">Planificación: Conversación PO-SM — Optimización Settings de Plugins</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">✅ Completada | SCRIPT-1.15.0</div>
+    <h3 class="card-title">Optimización Settings de Plugins</h3>
+    <div class="card-body">Plugins instalados desactivados por defecto. FAQ de troubleshooting integrado. Umbrales de aviso para sobrecarga (7+).</div>
     <div class="card-footer">
-      <span class="tag">plugin</span><span class="tag">settings</span><span class="tag">optimizer</span>
+      <span class="tag">plugins</span><span class="tag">settings</span><span class="tag">optimización</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/SPLASH_INDEX" class="card">
-    <div class="card-header">SPLASH_INDEX</div>
-    <h3 class="card-title">Backlog Borrador: SCRIPT-1.16.0 — Índice SPLASH y Vinculación GH-Pages</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">✅ Completada (85%) | SCRIPT-1.16.0</div>
+    <h3 class="card-title">Índice SPLASH (GH-Pages)</h3>
+    <div class="card-body">Índice estructural de la web pública. Vinculación docs/ ↔ ARCHIVO/SITE/. Permite refactorizar el sitio con cobertura.</div>
     <div class="card-footer">
-      <span class="tag">splash</span><span class="tag">index</span><span class="tag">script</span>
+      <span class="tag">splash</span><span class="tag">índice</span><span class="tag">web</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/SUBMODULOS_AH_NAMING" class="card">
-    <div class="card-header">SUBMODULOS_AH_NAMING</div>
-    <h3 class="card-title">BUG-003 — Renombrar paths de submódulos a convención PascalCase descriptiva</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">✅ Aprobado | BUG-003</div>
+    <h3 class="card-title">Renombrar Submódulos (PascalCase)</h3>
+    <div class="card-body">Eliminar prefijos técnicos (alephscript-, as-). Nuevo patrón: PascalCase descriptivo. Ej: alephscript-n8n-like-editor → WorkflowEditor.</div>
     <div class="card-footer">
-      <span class="tag">submodulos</span><span class="tag">naming</span><span class="tag">bug</span>
+      <span class="tag">submódulos</span><span class="tag">naming</span><span class="tag">refactor</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING" class="card">
-    <div class="card-header">TYPED_PROMPTING</div>
-    <h3 class="card-title">Conversación PO↔SM: TypedPrompting</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">✅ Aprobado</div>
+    <h3 class="card-title">Plugin TypedPrompting</h3>
+    <div class="card-body">Ontologías NL↔JSON. Diseña TypeScript→JSON Schema, valida mensajes de LLM, crea contratos entre agentes. Validación AJV/Zod.</div>
     <div class="card-footer">
-      <span class="tag">typed</span><span class="tag">prompting</span><span class="tag">conversación</span>
+      <span class="tag">typed</span><span class="tag">schema</span><span class="tag">validación</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/VS-CODE-EXTENSION" class="card">
-    <div class="card-header">VS-CODE-EXTENSION</div>
-    <h3 class="card-title">Backlog Sprint 2: Extensión VS Code Scriptorium</h3>
-    <div class="card-body">Sin descripción disponible.</div>
+    <div class="card-header">📋 Sin estado</div>
+    <h3 class="card-title">Extensión VS Code Scriptorium</h3>
+    <div class="card-body">Extensión oficial para VS Code. ChatParticipants, comandos, vistas personalizadas. Submódulo: vscode-alephscript-extension.</div>
     <div class="card-footer">
-      <span class="tag">code</span><span class="tag">extension</span><span class="tag">extensión</span>
+      <span class="tag">vscode</span><span class="tag">extensión</span><span class="tag">ide</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/WIKI_RACER_ARG_BOARD_APP" class="card">
-    <div class="card-header">WIKI_RACER_ARG_BOARD_APP</div>
-    <h3 class="card-title">Conversación PO-SM: ArgBoardApp (Wiki-Racer → Máquina de Estados ARG)</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `wiki-racer` **Plugin objetivo**: `arg-board-app`</div>
+    <div class="card-header">📝 Borrador</div>
+    <h3 class="card-title">ArgBoardApp (Wiki-Racer)</h3>
+    <div class="card-body">Implementa wiki-racer como máquina de estados para obras del Teatro ARG. Navegación interactiva sobre mapas de enlaces.</div>
     <div class="card-footer">
-      <span class="tag">wiki</span><span class="tag">racer</span><span class="tag">arg</span>
+      <span class="tag">wiki-racer</span><span class="tag">arg</span><span class="tag">estados</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/WIKI_RACER_HYPERGRAPH_EDITOR" class="card">
-    <div class="card-header">WIKI_RACER_HYPERGRAPH_EDITOR</div>
-    <h3 class="card-title">Conversación PO-SM: HyperGraphEditor (Wiki-Racer → Navegador de Hipergrafos)</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `wiki-racer` **Plugin objetivo**: `hypergraph-editor`</div>
+    <div class="card-header">📝 Borrador</div>
+    <h3 class="card-title">HyperGraphEditor (Wiki-Racer)</h3>
+    <div class="card-body">Navegador de grafos hipervinculados. Usa motor wiki-racer con fuentes abstractas (IGraphSource). Incluye preset MediaWiki.</div>
     <div class="card-footer">
-      <span class="tag">wiki</span><span class="tag">racer</span><span class="tag">hypergraph</span>
+      <span class="tag">wiki-racer</span><span class="tag">hypergraph</span><span class="tag">navegación</span>
     </div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/WIKI_RACER_WIRING_APP" class="card">
-    <div class="card-header">WIKI_RACER_WIRING_APP</div>
-    <h3 class="card-title">Conversación PO-SM: WiringApp (Wiki-Racer → Node-RED Flows)</h3>
-    <div class="card-body">**Fecha**: 2025-12-24 **Submódulo**: `wiki-racer` **Plugin objetivo**: `wiring-app`</div>
+    <div class="card-header">📝 Borrador</div>
+    <h3 class="card-title">WiringApp (Wiki-Racer Flows)</h3>
+    <div class="card-body">Extiende WireEditor con templates de juegos de navegación wiki-racer. Crea flows de juego, exporta a Node-RED.</div>
     <div class="card-footer">
-      <span class="tag">wiki</span><span class="tag">racer</span><span class="tag">wiring</span>
+      <span class="tag">wiki-racer</span><span class="tag">wiring</span><span class="tag">flows</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/NEW_GH_PAGES_INDEX" class="card">
+    <div class="card-header">✅ Aprobado | SCRIPT-1.25.0</div>
+    <h3 class="card-title">Blueprint Visual Index</h3>
+    <div class="card-body">Refactorizar docs/index.md como presentación 3D navegable con impress.js. 7 slides: Overview, Core, Ontology, Dynamics, Hypergraph, Products, CTA.</div>
+    <div class="card-footer">
+      <span class="tag">blueprint</span><span class="tag">impress</span><span class="tag">visual</span>
     </div>
   </a>
 
@@ -360,13 +363,13 @@ permalink: /roadmap/
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/Sprint0" class="card">
     <div class="card-header">Sprint Archivado</div>
     <h3 class="card-title">Sprint0</h3>
-    <div class="card-body">> **Fecha de archivo**: 2025-12-22</div>
+    <div class="card-body"><strong>Fecha de archivo</strong>: 2025-12-22</div>
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/Sprint1" class="card">
     <div class="card-header">Sprint Archivado</div>
     <h3 class="card-title">Sprint1</h3>
-    <div class="card-body">> **Sprint**: 1 (Extensión VS Code + Feature Cycle 1)</div>
+    <div class="card-body"><strong>Sprint</strong>: 1 (Extensión VS Code + Feature Cycle 1)</div>
   </a>
 
 </div>
