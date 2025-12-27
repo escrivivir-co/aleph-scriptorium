@@ -376,6 +376,11 @@ permalink: /blueprint/
   <h1>// FOSS Project (Proyecto Abierto)</h1>
   <p class="tagline">Un procesador de texto donde la IA se taxonomiza ad hoc.</p>
   
+  <div class="blueprint-toggle" style="margin-bottom: 1.5rem;">
+    <span class="toggle-current">📐 Vista UX</span>
+    <a href="{{ '/blueprint-mmco/' | relative_url }}" class="toggle-btn">🧬 Vista MMCO</a>
+  </div>
+  
   <div class="cta-container">
     <div class="cta-buttons">
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/fork" class="cta-btn primary">🍴 Fork</a>

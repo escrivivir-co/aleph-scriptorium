@@ -1156,3 +1156,589 @@ body.fallback-mode .blueprint-nav {
 .product-card:hover h3 {
   color: var(--bp-accent);
 }
+/* ========================================
+   MMCO Blueprint Styles
+   SCRIPT-1.27.0 - Jerarquía de Emergencia
+   ======================================== */
+
+/* Variables MMCO */
+:root {
+  --mmco-0c: #1a0a2e;    /* BNP - Violeta profundo */
+  --mmco-0b: #0a1628;    /* Correlaciones - Azul profundo */
+  --mmco-0a: #0a1a14;    /* Tensores - Verde profundo */
+  --mmco-1: #1a1a1a;     /* Geometría - Neutro */
+  --mmco-2: #1a1410;     /* Tiempo - Ámbar profundo */
+  --mmco-3: #0a141a;     /* Espacio-tiempo - Cyan profundo */
+  --mmco-4: #1a0a0a;     /* Materia - Rojo profundo */
+}
+
+/* Headers MMCO */
+.mmco-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--bp-border);
+}
+
+.mmco-level {
+  background: var(--bp-accent);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--bp-font-mono);
+}
+
+.mmco-name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--bp-fg);
+}
+
+.mmco-desc {
+  font-size: 1.125rem;
+  color: var(--bp-muted);
+  margin-bottom: 1.5rem;
+}
+
+.mmco-principle {
+  background: rgba(59, 130, 246, 0.1);
+  border-left: 4px solid var(--bp-accent);
+  padding: 1rem 1.5rem;
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--bp-muted);
+}
+
+.mmco-principle strong {
+  color: var(--bp-accent);
+}
+
+.mmco-principle em {
+  color: var(--bp-fg);
+  font-style: italic;
+}
+
+/* Nivel 0c: BNP */
+.mmco-level-0c {
+  background: linear-gradient(135deg, var(--mmco-0c) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-0c .mmco-level {
+  background: #8b5cf6;
+}
+
+.bnp-field {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.bnp-sphere {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.85;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.bnp-sphere:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.bnp-sphere.marco {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.4);
+}
+
+.bnp-sphere.diagnostico {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.1) 100%);
+  border: 2px solid rgba(239, 68, 68, 0.4);
+  margin-top: -30px;
+}
+
+.bnp-sphere.justificacion {
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, rgba(234, 179, 8, 0.1) 100%);
+  border: 2px solid rgba(234, 179, 8, 0.4);
+}
+
+.sphere-label {
+  font-family: var(--bp-font-mono);
+  font-size: 1.125rem;
+  color: var(--bp-fg);
+  font-weight: 600;
+}
+
+.sphere-desc {
+  font-size: 0.875rem;
+  color: var(--bp-muted);
+  margin-top: 0.5rem;
+}
+
+.mmco-nav-hint {
+  text-align: center;
+  color: var(--bp-muted);
+  font-size: 1rem;
+  margin-top: 2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Nivel 0b: Correlaciones */
+.mmco-level-0b {
+  background: linear-gradient(135deg, var(--mmco-0b) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-0b .mmco-level {
+  background: #0ea5e9;
+}
+
+.correlations-graph {
+  background: var(--bp-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.correlations-graph .mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+/* Nivel 0a: Tensores */
+.mmco-level-0a {
+  background: linear-gradient(135deg, var(--mmco-0a) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-0a .mmco-level {
+  background: #10b981;
+}
+
+.tensors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.tensor-card {
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tensor-icon {
+  font-size: 2rem;
+}
+
+.tensor-name {
+  font-family: var(--bp-font-mono);
+  font-size: 1.125rem;
+  color: var(--bp-fg);
+  font-weight: 600;
+}
+
+.tensor-desc {
+  font-size: 0.875rem;
+  color: var(--bp-muted);
+}
+
+.tensor-state {
+  font-size: 0.75rem;
+  color: var(--bp-accent);
+  font-family: var(--bp-font-mono);
+  margin-top: auto;
+}
+
+/* Nivel 1: Proto-geometría */
+.mmco-level-1 {
+  background: linear-gradient(135deg, var(--mmco-1) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-1 .mmco-level {
+  background: var(--bp-meta);
+}
+
+.geometry-diagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.geo-layer {
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-width: 250px;
+}
+
+.geo-label {
+  font-family: var(--bp-font-mono);
+  font-size: 1.125rem;
+  color: var(--bp-accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.geo-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.geo-item {
+  background: var(--bp-surface);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: var(--bp-font-mono);
+  color: var(--bp-muted);
+}
+
+.geo-arrow {
+  font-size: 2rem;
+  color: var(--bp-accent);
+}
+
+.geometry-plugins {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.geometry-plugins span {
+  background: var(--bp-accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Nivel 2: Pseudo-tiempo */
+.mmco-level-2 {
+  background: linear-gradient(135deg, var(--mmco-2) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-2 .mmco-level {
+  background: #f59e0b;
+}
+
+.timeline-container {
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.timeline-node {
+  background: var(--bp-bg);
+  border: 2px solid var(--bp-border);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  min-width: 140px;
+}
+
+.timeline-node.past {
+  border-color: var(--bp-muted);
+  opacity: 0.7;
+}
+
+.timeline-node.current {
+  border-color: var(--bp-accent);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.timeline-node.future {
+  border-style: dashed;
+  opacity: 0.5;
+}
+
+.node-version {
+  font-family: var(--bp-font-mono);
+  font-size: 0.875rem;
+  color: var(--bp-accent);
+  display: block;
+}
+
+.node-name {
+  font-size: 1rem;
+  color: var(--bp-fg);
+  font-weight: 600;
+  display: block;
+  margin: 0.25rem 0;
+}
+
+.node-date {
+  font-size: 0.75rem;
+  color: var(--bp-muted);
+}
+
+.timeline-arrow {
+  color: var(--bp-muted);
+  font-size: 1.5rem;
+}
+
+.scrum-cycle {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.scrum-cycle span {
+  font-family: var(--bp-font-mono);
+  color: var(--bp-muted);
+  font-size: 1rem;
+}
+
+/* Nivel 3: Espacio-tiempo */
+.mmco-level-3 {
+  background: linear-gradient(135deg, var(--mmco-3) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-3 .mmco-level {
+  background: #06b6d4;
+}
+
+.spacetime-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.st-card {
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.st-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.st-name {
+  font-family: var(--bp-font-mono);
+  font-size: 1.125rem;
+  color: var(--bp-fg);
+  font-weight: 600;
+  display: block;
+}
+
+.st-desc {
+  font-size: 0.875rem;
+  color: var(--bp-muted);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* Nivel 4: Materia */
+.mmco-level-4 {
+  background: linear-gradient(135deg, var(--mmco-4) 0%, var(--bp-surface) 100%);
+}
+
+.mmco-level-4 .mmco-level {
+  background: #ef4444;
+}
+
+.matter-products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.matter-card {
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.matter-card:hover {
+  border-color: var(--bp-accent);
+  transform: translateY(-4px);
+}
+
+.matter-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.matter-name {
+  font-size: 1.5rem;
+  color: var(--bp-fg);
+  font-weight: 600;
+  display: block;
+}
+
+.matter-desc {
+  font-size: 0.875rem;
+  color: var(--bp-muted);
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.mmco-summary {
+  background: var(--bp-bg);
+  border: 2px solid var(--bp-accent);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-family: var(--bp-font-mono);
+  font-size: 1.25rem;
+  color: var(--bp-accent);
+  margin-top: 2rem;
+}
+
+/* MMCO Overview */
+.mmco-overview-card {
+  background: var(--bp-surface);
+  border: 1px solid var(--bp-border);
+  border-radius: 12px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mmco-overview-card h2 {
+  font-size: 2.5rem;
+  color: var(--bp-fg);
+  margin-bottom: 1rem;
+}
+
+.blueprint-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.toggle-btn {
+  background: var(--bp-accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+  background: #2563eb;
+}
+
+.toggle-current {
+  background: var(--bp-border);
+  color: var(--bp-fg);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.mmco-levels-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.level-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: var(--bp-font-mono);
+}
+
+.level-tag.l0c { background: rgba(139, 92, 246, 0.3); color: #a78bfa; }
+.level-tag.l0b { background: rgba(14, 165, 233, 0.3); color: #38bdf8; }
+.level-tag.l0a { background: rgba(16, 185, 129, 0.3); color: #34d399; }
+.level-tag.l1 { background: rgba(245, 158, 11, 0.3); color: #fbbf24; }
+.level-tag.l2 { background: rgba(249, 115, 22, 0.3); color: #fb923c; }
+.level-tag.l3 { background: rgba(6, 182, 212, 0.3); color: #22d3ee; }
+.level-tag.l4 { background: rgba(239, 68, 68, 0.3); color: #f87171; }
+
+.mmco-footer {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--bp-muted);
+}
+
+.mmco-footer a {
+  color: var(--bp-accent);
+}
+
+/* Responsive MMCO */
+@media (max-width: 1200px) {
+  .tensors-grid,
+  .spacetime-grid,
+  .matter-products {
+    grid-template-columns: 1fr;
+  }
+  
+  .geometry-diagram {
+    flex-direction: column;
+  }
+  
+  .geo-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .timeline {
+    flex-direction: column;
+  }
+  
+  .timeline-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .bnp-field {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .bnp-sphere.diagnostico {
+    margin-top: 0;
+  }
+}

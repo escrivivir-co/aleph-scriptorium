@@ -11,7 +11,8 @@ permalink: /
   <div class="release-badge">🚀 v1.0.0-beta.4</div>
   <div class="release-text">
     <strong>19 plugins · 31 agentes · Tu ejército de IA listo</strong> · 
-    <a href="{{ site.baseurl }}/blueprint/" class="blueprint-link">📐 Explorar Blueprint 3D →</a>
+    <a href="{{ site.baseurl }}/blueprint/" class="blueprint-link">📐 Blueprint 3D</a> · 
+    <a href="{{ site.baseurl }}/blueprint-mmco/" class="blueprint-link">🧬 Vista MMCO</a>
   </div>
 </div>
 
@@ -29,6 +30,11 @@ permalink: /
     <span class="card-icon">📐</span>
     <span class="card-title">Blueprint</span>
     <span class="card-desc">Vista 3D del sistema</span>
+  </a>
+  <a href="{{ site.baseurl }}/blueprint-mmco/" class="nav-card">
+    <span class="card-icon">🧬</span>
+    <span class="card-title">MMCO</span>
+    <span class="card-desc">Jerarquía de Emergencia</span>
   </a>
   <a href="{{ site.baseurl }}/leeme/" class="nav-card">
     <span class="card-icon">📖</span>

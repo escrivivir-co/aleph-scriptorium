@@ -2,7 +2,7 @@
 
 > **Propósito**: Mapa técnico-funcional para orquestar ediciones en `docs/`  
 > **Fuente de verdad**: `docs/index.md` + `docs/assets/css/main.css`  
-> **Actualizado**: 2025-12-27 (SCRIPT-1.26.0: Blueprint Refinements)
+> **Actualizado**: 2025-12-27 (SCRIPT-1.27.0: Blueprint MMCO Compliance)
 
 ---
 
@@ -126,6 +126,22 @@ Ubicación: `docs/assets/css/blueprint.css`
 - **Links internos**: Capturados por impress.js (navegan entre slides)
 - **Links externos**: Abrir en nueva pestaña o navegar directamente
 
+### 3.5 Blueprint MMCO (SCRIPT-1.27.0)
+
+Vista alternativa usando terminología MetaModel y MMCO (Ontological Coherence Meta-Dynamic Framework).
+
+| # | ID | Nivel MMCO | Posición 3D | Contenido |
+|---|----|------------|-------------|-----------|
+| 1 | `bnp` | 0c (BNP) | z:-3000 | ARCHIVO como potencial narrativo |
+| 2 | `correlations` | 0b | z:-2000 | Grafo de handoffs (Mermaid) |
+| 3 | `tensors` | 0a | z:-1000 | Estado actual: DISCO + git |
+| 4 | `geometry` | 1 | z:0 | Estructura de proyectos/plugins |
+| 5 | `time` | 2 | z:1000 | Timeline sprints/commits |
+| 6 | `spacetime` | 3 | z:2000 | Publicaciones GH-Pages |
+| 7 | `matter` | 4 | z:3000 | Productos finales |
+
+**Toggle**: Ambos blueprints incluyen enlace para alternar entre vistas UX↔MMCO.
+
 ---
 
 ## 4. Sistema CSS
@@ -170,7 +186,8 @@ Ubicación: `docs/assets/css/blueprint.css`
 | Página | Archivo | Líneas | Estado |
 |--------|---------|--------|--------|
 | Home | `index.md` | 204 | ✅ Base |
-| **Blueprint** | `blueprint.md` | 406 | ✅ SCRIPT-1.26.0 (7 slides impress.js) |
+| **Blueprint UX** | `blueprint.md` | 411 | ✅ SCRIPT-1.26.0 (7 slides impress.js) |
+| **Blueprint MMCO** | `blueprint-mmco.md` | ~350 | ✅ SCRIPT-1.27.0 (7 slides jerarquía emergencia) |
 | Léeme | `leeme.md` | 175 | ✅ Refactorizado (575→175) |
 | Ecosistema | `ecosistema.md` | 178 | ✅ Refactorizado (1284→178) |
 | Teatro | `teatro.md` | 174 | ✅ Base |
