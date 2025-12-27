@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://escrivivir.co/schemas/plugin-registry.json",
+  "title": "PluginRegistry",
+  "description": "Esquema para validar el registry.json de plugins",
+  "type": "object",
+  "required": ["version", "plugins"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Versión del esquema",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp de última actualización"
+    },
+    "plugins": {
+      "type": "object",
+      "description": "Mapa de plugins por ID",
+      "additionalProperties": {
+        "$ref": "#/definitions/plugin"
+      }
+    }
+  },
+  "definitions": {
+    "plugin": {
+      "type": "object",
+      "required": ["name", "version", "description", "enabled"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "description": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "installed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "agents_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "prompts_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "data_directory": {
+          "type": "string"
+        },
+        "bridge_agent": {
+          "type": "string",
+          "pattern": "^plugin_ox_[a-z][a-z0-9]*$"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "optional_dependencies": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "submodule": {
+          "type": "string"
+        },
+        "handoffs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "agent"],
+            "properties": {
+              "label": { "type": "string" },
+              "agent": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

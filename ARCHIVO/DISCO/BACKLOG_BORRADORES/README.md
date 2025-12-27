@@ -6,6 +6,12 @@
 
 ---
 
+## Índice
+
+- Ver índice navegable por carpeta: [INDEX.md](INDEX.md)
+
+---
+
 ## Contenido
 
 ### Ciclo 1: Integración de Agentes Core (Rondas 1-4)

@@ -105,6 +105,12 @@
 | `PLUGINS.md` | Protocolo de plugins | Cambiar estructura |
 | `BACKLOG-SCRIPTORIUM.md` | Estado del sprint | Cada sesión |
 
+### 2.5. Borradores de Backlog Activos
+
+| Borrador | Ruta | Estado |
+|----------|------|--------|
+| CLI Scriptorium | `ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/` | 📋 Pendiente PO |
+
 ### 2.3. Anatomía de un Agente
 
 ```yaml

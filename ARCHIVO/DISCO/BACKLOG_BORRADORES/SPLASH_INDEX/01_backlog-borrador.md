@@ -174,6 +174,7 @@ Añadir handoffs al agente GHPages para consultar y actualizar el índice.
 | 2025-12-24 | Crear backlog borrador | @scrum |
 | 2025-12-24 | Completar S01 (índice SPLASH creado) | @aleph |
 | 2025-01-02 | Completar S02-S05 (vinculación, interceptación, warning, handoffs) | @aleph |
+| 2025-12-27 | Actualizar índice roadmap (Galería Futuro/Presente) | @aleph |
 
 ---
 
