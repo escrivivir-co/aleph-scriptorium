@@ -370,3 +370,164 @@ permalink: /roadmap/
   </a>
 
 </div>
+
+---
+
+## Galería de Fotos de Estado
+
+<style>
+  .foto-card {
+    border: 2px solid #000;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background: #fafafa;
+  }
+  .foto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .foto-icon { font-size: 1.5rem; }
+  .foto-date { 
+    font-family: monospace; 
+    color: #666;
+  }
+  .foto-body h4 { 
+    margin: 0 0 0.5rem 0;
+    color: #000;
+  }
+  .foto-summary { 
+    color: #444; 
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  .foto-metrics {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .metric {
+    font-size: 0.8rem;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 0.2em 0.5em;
+  }
+  .foto-link {
+    font-size: 0.85rem;
+    color: #000;
+    text-decoration: underline;
+  }
+  .foto-dual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+  .foto-lens {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .lens-positive { background: #e8f5e9; border-left: 3px solid #4caf50; }
+  .lens-negative { background: #fff3e0; border-left: 3px solid #ff9800; }
+</style>
+
+<!-- GALERÍA DE FOTOS DE ESTADO -->
+<div class="fotos-gallery">
+
+  <!-- Más reciente primero -->
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">🏗️📸</span>
+      <span class="foto-date">2025-12-27</span>
+    </div>
+    <div class="foto-body">
+      <h4>FC2: Foto Dual del Arquitecto (Pathykar)</h4>
+      <p class="foto-summary">Una escena, dos gafas: la misma realidad vista desde virtudes e impedimentos.</p>
+      <div class="foto-dual">
+        <div class="foto-lens lens-positive">
+          <strong>🟢 Gafas Positivas:</strong><br>
+          63 agentes · 19 plugins · Blueprint MMCO · 25+ conversaciones PO-SM
+        </div>
+        <div class="foto-lens lens-negative">
+          <strong>🔴 Gafas Negativas:</strong><br>
+          Fundación congelada · Bus factor=1 · Sin tests · Onboarding complejo
+        </div>
+      </div>
+      <div class="foto-metrics">
+        <span class="metric">🤖 63 agentes</span>
+        <span class="metric">📦 19 plugins</span>
+        <span class="metric">✅ 3 épicas cerradas</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-27_FC2_FotoDualPathykar.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
+
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">📸</span>
+      <span class="foto-date">2025-12-24</span>
+    </div>
+    <div class="foto-body">
+      <h4>FC1: Visión de Futuro</h4>
+      <p class="foto-summary">Planificación de ontología formal: Metamodel + MMCO para el Scriptorium.</p>
+      <div class="foto-metrics">
+        <span class="metric">🤖 28 agentes</span>
+        <span class="metric">📦 14 plugins</span>
+        <span class="metric">📋 4 épicas planificadas</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-24_FC1_VisionFuturo.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
+
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">📸</span>
+      <span class="foto-date">2025-12-23</span>
+    </div>
+    <div class="foto-body">
+      <h4>Sprint 2: Feature Cycle 1</h4>
+      <p class="foto-summary">Inicio del ciclo de features con agente @indice y plugins transversales.</p>
+      <div class="foto-metrics">
+        <span class="metric">🤖 26 agentes</span>
+        <span class="metric">📦 12 plugins</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-23_Sprint2_FeatureCycle1.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
+
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">📸</span>
+      <span class="foto-date">2025-12-22</span>
+    </div>
+    <div class="foto-body">
+      <h4>Sprint 1: Teatro Interactivo</h4>
+      <p class="foto-summary">7 plugins operativos, visualizador 3D con impress.js.</p>
+      <div class="foto-metrics">
+        <span class="metric">🤖 24 agentes</span>
+        <span class="metric">📦 7 plugins</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-22_Sprint1_TeatroInteractivo.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
+
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">📸</span>
+      <span class="foto-date">2025-12-21</span>
+    </div>
+    <div class="foto-body">
+      <h4>Sprint 0: Bootstrap</h4>
+      <p class="foto-summary">Infraestructura base: 12 agentes core, protocolo DevOps, primeras estructuras.</p>
+      <div class="foto-metrics">
+        <span class="metric">🤖 12 agentes</span>
+        <span class="metric">📦 2 plugins</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-21_Sprint0_Bootstrap.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
+
+</div>
