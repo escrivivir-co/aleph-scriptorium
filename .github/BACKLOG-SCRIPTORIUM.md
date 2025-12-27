@@ -11,6 +11,7 @@
 
 | Épica | Nombre | Estado | Prioridad |
 |-------|--------|--------|-----------|
+| SCRIPT-1.28.0 | Blueprint MMCO Enhancement | ✅ Cerrada | P0 |
 | SCRIPT-1.27.0 | Blueprint MMCO Compliance | ✅ Cerrada | P0 |
 | SCRIPT-1.26.0 | Blueprint Refinements | ✅ Cerrada | P0 |
 | SCRIPT-1.20.0 | Metamodel Scriptorium | 🆕 Nueva | P1 |
@@ -18,6 +19,48 @@
 | SCRIPT-1.22.0 | Integración y Validación | 🆕 Nueva | P3 |
 | SCRIPT-1.23.0 | MMCO Editor Transmedia | 🆕 Nueva | P2 |
 | SCRIPT-1.25.0 | Blueprint Visual Index | ✅ Cerrada | Alta |
+
+---
+
+## SCRIPT-1.28.0 — Blueprint MMCO Enhancement
+
+> **Objetivo**: Corregir navegación del Blueprint MMCO para presentación Talaia/Flove  
+> **Sprint**: FC2 (actual)  
+> **Effort total**: 3 pts  
+> **Estado**: ✅ Cerrada (2025-12-27)  
+> **Contexto**: Las diapositivas estaban superpuestas por usar solo eje Z sin separación X/Y
+
+### Problema Detectado
+
+| Aspecto | Antes | Después |
+|---------|-------|---------|
+| Coordenadas | Todas en (X=0, Y=0), solo variando Z | Distribuidas en eje Y vertical |
+| Navegación | Diapositivas superpuestas ilegibles | Flujo vertical ascendente 0c→4 |
+| Vista panorámica | Maraña apretada | Layout vertical claro |
+
+### Solución Implementada
+
+Layout Lineal Vertical:
+
+```
+bnp (y=-2500)         ← Nivel 0c (base)
+correlations (y=-1500) ← Nivel 0b
+tensors (y=-500)       ← Nivel 0a
+geometry (y=500)       ← Nivel 1 (centro)
+time (y=1500)          ← Nivel 2
+spacetime (y=2500)     ← Nivel 3
+matter (y=3500)        ← Nivel 4
+overview-mmco (y=500, z=3000, scale=6)
+```
+
+### Tasks Completadas
+
+| Task | Descripción | Estado |
+|------|-------------|--------|
+| T001 | Actualizar coordenadas de las 8 diapositivas | ✅ |
+| T002 | Verificar navegación local con Jekyll + Playwright | ✅ |
+| T003 | Tomar screenshots de validación | ✅ |
+| T004 | Commit y actualizar BACKLOG | ✅ |
 
 ---
 

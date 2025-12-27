@@ -96,11 +96,12 @@ git checkout fc1 && git checkout -b feature/mi-cambio
 
 | Componente | Valor |
 |------------|-------|
-| Versión | **1.0.0-beta.3** (Semillas de Futuro) |
+| Versión | **1.0.0-beta.4** (FC2 - Ontología Formal) |
 | Rama activa | `fc1` |
-| Agentes | 31 (13 core + 18 bridges) |
+| Agentes | 63 (32 core + 31 plugins) |
 | Plugins | 19 (8 operativos + 11 borradores) |
 | Submódulos | 14 integrados |
+| Última foto | [Foto Dual Pathykar](ARCHIVO/FOTOS_ESTADO/2025-12-27_FC2_FotoDualPathykar.md) |
 
 **Roadmap**: [/roadmap](https://escrivivir-co.github.io/aleph-scriptorium/roadmap/)
 

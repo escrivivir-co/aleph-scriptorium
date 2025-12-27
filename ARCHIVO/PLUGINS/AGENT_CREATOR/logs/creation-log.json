@@ -97,5 +97,32 @@
     "flujo": "FORO_SCRAPER → AGENT_CREATOR → ARG_BOARD → TEATRO",
     "resultado": "success",
     "notas": "Pipeline validado con obra Camino del Tarotista (12 estadios)"
-  }
+  },
+  "latest_entries": [
+    {
+      "timestamp": "2025-12-27T18:00:00Z",
+      "operation": "create",
+      "agent_name": "pathykar",
+      "agentes_base": ["indice"],
+      "perfil_datos": "ARCHIVO/DISCO/BACKLOG_BORRADORES/PathykarAgente/data.md",
+      "recipe_file": "recipes/pathykar.recipe.json",
+      "output_file": "agents/created/pathykar.agent.md",
+      "status": "success",
+      "notas": "Arquitecto Central + Product Owner. Combina navegación DRY (@indice) con visión por épocas (perfil Karpathy-like)."
+    },
+    {
+      "timestamp": "2025-12-27T18:00:00Z",
+      "operation": "deploy_to_arg",
+      "agent_name": "pathykar",
+      "target_plugin": "arg-board",
+      "obras": ["hola_mundo", "camino_del_tarotista"],
+      "personaje": "pathykar",
+      "archivos_modificados": [
+        "ARCHIVO/PLUGINS/ARG_BOARD/.arrakis/actores.json"
+      ],
+      "status": "success",
+      "notas": "Cuarto personaje desplegado. Mentor arquitectónico con visión estratégica por épocas."
+    }
+  ]
+}
 }
