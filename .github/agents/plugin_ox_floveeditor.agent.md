@@ -2,7 +2,7 @@
 name: plugin_ox_floveeditor
 description: "Bridge: conecta VS Code con FloveEditor y sus 3 submódulos (FloveDocs, Metamodel, MMCO). Editor de ontologías con validación UFO y coherencia OCMF."
 argument-hint: "Diseña, exporta, valida ontologías o consulta documentación/frameworks de los submódulos."
-tools: ['vscode', 'read', 'edit', 'search', 'agent']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Listar agentes del plugin
     agent: plugin_ox_floveeditor
