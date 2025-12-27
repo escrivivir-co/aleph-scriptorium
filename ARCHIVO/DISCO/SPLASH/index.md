@@ -130,9 +130,9 @@ plugins:       # jekyll-feed, jekyll-seo-tag, jekyll-sitemap
 | Periódico | `periodico.md` | 198 | ✅ Base |
 | Fundación | `fundacion.md` | 278 | ✅ Base |
 | Archivo | `archivo.md` | 123 | ✅ Refactorizado (748→123) |
-| Roadmap | `roadmap.md` | 93 | ✅ Refactorizado (1006→93) |
+| Roadmap | `roadmap.md` | 680 | ✅ Galería expandida (2025-12-27) |
 | Acerca | `acerca.md` | 69 | ✅ Refactorizado (239→69) |
-| **Total** | — | **~1500** | **-64% vs original** |
+| **Total** | — | **~1900** | **-60% vs original** |
 
 ---
 
