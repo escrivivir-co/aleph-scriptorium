@@ -57,9 +57,11 @@ plugins:
 navigation:
   - title: Inicio
     url: /
+  - title: Blueprint
+    url: /blueprint/
+    highlight: true
   - title: Léeme
     url: /leeme/
-    highlight: true
   - title: Ecosistema
     url: /ecosistema/
   - title: Teatro

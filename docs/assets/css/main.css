@@ -816,6 +816,39 @@ li {
   border-style: dashed;
 }
 
+/* Blueprint card destacada */
+.nav-card-featured {
+  background: linear-gradient(135deg, var(--fg) 0%, #333 100%);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.nav-card-featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.nav-card-featured .card-desc {
+  color: #ccc;
+}
+
+/* Enlace blueprint en banner */
+.blueprint-link {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.blueprint-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 /* --- Secciones --- */
 .home-section {
   margin-bottom: var(--space-xl);

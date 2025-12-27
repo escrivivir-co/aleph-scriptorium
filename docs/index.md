@@ -8,10 +8,10 @@ permalink: /
 
 <!-- RELEASE BANNER -->
 <div class="release-banner">
-  <div class="release-badge">🚀 v1.0.0-beta.3</div>
+  <div class="release-badge">🚀 v1.0.0-beta.4</div>
   <div class="release-text">
     <strong>19 plugins · 31 agentes · Tu ejército de IA listo</strong> · 
-    <a href="{{ site.baseurl }}/roadmap/">Ver roadmap →</a>
+    <a href="{{ site.baseurl }}/blueprint/" class="blueprint-link">📐 Explorar Blueprint 3D →</a>
   </div>
 </div>
 
@@ -25,6 +25,11 @@ permalink: /
 
 <!-- NAVEGACIÓN PRINCIPAL (sincronizada con _config.yml) -->
 <nav class="home-nav">
+  <a href="{{ site.baseurl }}/blueprint/" class="nav-card nav-card-featured">
+    <span class="card-icon">📐</span>
+    <span class="card-title">Blueprint</span>
+    <span class="card-desc">Vista 3D del sistema</span>
+  </a>
   <a href="{{ site.baseurl }}/leeme/" class="nav-card">
     <span class="card-icon">📖</span>
     <span class="card-title">Léeme</span>
