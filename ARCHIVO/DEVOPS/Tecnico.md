@@ -423,13 +423,15 @@ ARCHIVO/
 docs/
 ├── _config.yml        # Configuración Jekyll
 ├── _includes/         # Partials HTML
-├── _layouts/          # Templates
+├── _layouts/          # Templates (incluye presentation.html)
 ├── _site/             # Build (ignorado)
 ├── assets/
-│   ├── css/
+│   ├── css/           # main.css + blueprint.css
 │   └── js/
 ├── teatro/            # Obras impress.js
 ├── index.md           # Landing
+├── blueprint.md       # Vista UX (7 slides impress.js)
+├── blueprint-mmco.md  # Vista MMCO (jerarquía emergencia) ← SCRIPT-1.27.0
 ├── ecosistema.md      # Agentes + Plugins + Submódulos
 ├── teatro.md          # Cartelera
 ├── periodico.md       # Noticias
