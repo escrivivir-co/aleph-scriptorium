@@ -70,7 +70,7 @@ Justificación:
 | S05 | Slide 2: Pseudo-tiempo | Timeline de sprints + commits como meta-dinámica | 3 pts | ✅ |
 | S06 | Slides 3-4: Spacetime→Matter | Publicaciones y productos finales | 2 pts | ✅ |
 | S07 | Toggle entre blueprints | Navegación UX-view ↔ MMCO-view | 2 pts | ✅ |
-| S08 | Documentar modelo formal | README en OnthologyEditor/scriptorium/ | 1 pt | ⏳ |
+| S08 | Documentar modelo formal | Carta abierta en OnthologyEditor/scriptorium/ | 1 pt | ✅ |
 
 ### Detalle de Stories
 
