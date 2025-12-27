@@ -11,7 +11,7 @@
 
 | Épica | Nombre | Estado | Prioridad |
 |-------|--------|--------|-----------|
-| SCRIPT-1.27.0 | Blueprint MMCO Compliance | 🔄 En progreso | P0 |
+| SCRIPT-1.27.0 | Blueprint MMCO Compliance | ✅ Cerrada | P0 |
 | SCRIPT-1.26.0 | Blueprint Refinements | ✅ Cerrada | P0 |
 | SCRIPT-1.20.0 | Metamodel Scriptorium | 🆕 Nueva | P1 |
 | SCRIPT-1.21.0 | MMCO ARG-Board | 🆕 Nueva | P2 |
@@ -26,7 +26,7 @@
 > **Objetivo**: Refactorizar el Blueprint visual para que refleje la ontología formal (MetaModel) y la jerarquía de emergencia (MMCO) del Scriptorium  
 > **Sprint**: FC2 (actual)  
 > **Effort total**: 21 pts  
-> **Estado**: 🔄 En progreso  
+> **Estado**: ✅ Cerrada (2025-12-27)  
 > **Contexto**: El blueprint actual (SCRIPT-1.26.0) satisface UX pero no cumple el objetivo de FC1: modelar Scriptorium con terminología MetaModel/MMCO
 
 ### El Gap
