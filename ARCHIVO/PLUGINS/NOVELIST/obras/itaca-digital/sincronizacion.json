@@ -1,0 +1,64 @@
+{
+  "id": "itaca-digital",
+  "enlaces": {
+    "teatro": {
+      "ruta": "ARCHIVO/PLUGINS/TEATRO/obras/itaca-digital.yaml",
+      "tipo": "bidireccional",
+      "ultimaSync": "2025-12-28T12:00:00Z",
+      "estado": "sincronizado"
+    },
+    "taller": {
+      "ruta": "ARCHIVO/DISCO/TALLER/NOVELA_TRANSMEDIA",
+      "tipo": "lectura",
+      "archivos": {
+        "mapeo": "mapeo-selectivo.md",
+        "inicializacion": "inicializacion.md",
+        "arquitectura": "ARQUITECTURA.md"
+      },
+      "ultimaSync": "2025-12-28T12:00:00Z"
+    },
+    "fuenteRemota": {
+      "ruta": "/Users/morente/Desktop/THEIA_PATH/NOVELA",
+      "tipo": "lectura-selectiva",
+      "archivosVinculados": [
+        { "capitulo": 1, "fuente": "Abstract_Portada.md", "estado": "pendiente" },
+        { "capitulo": 2, "fuente": "Apertura_Ulises_y_Penelope.md", "estado": "pendiente" },
+        { "capitulo": 3, "fuente": "Capitulo01_Onan_y_Tamar.md", "estado": "pendiente" },
+        { "capitulo": 4, "fuente": "Capitulo02_Orfeo_y_Eurídice.md", "estado": "pendiente" },
+        { "capitulo": 5, "fuente": "Capitulo03_Edipo_y_Electra.md", "estado": "pendiente" },
+        { "capitulo": 6, "fuente": "Capitulo04_La_Caverna_y_el_Sol.md", "estado": "pendiente" },
+        { "capitulo": 7, "fuente": "Capitulo04_Z_Intermezzo_Homero_y_Joyce.md", "estado": "pendiente" },
+        { "capitulo": 8, "fuente": "Capitulo05_Atenas.md", "estado": "pendiente" },
+        { "capitulo": 9, "fuente": "Capitulo06_Politica_en_Platon.md", "estado": "pendiente" },
+        { "capitulo": 10, "fuente": "Capitulo07_Polis.md", "estado": "pendiente" },
+        { "capitulo": 11, "fuente": "Capitulo08_Gaia.md", "estado": "pendiente" },
+        { "capitulo": 12, "fuente": "filo/00_Exordio", "estado": "pendiente" }
+      ]
+    }
+  },
+  "operaciones": {
+    "importarDesdeTeatro": {
+      "comando": "@novelist importar-teatro itaca-digital",
+      "descripcion": "Importa estadios del YAML de Teatro a capitulos/"
+    },
+    "exportarATeatro": {
+      "comando": "@novelist exportar-teatro itaca-digital",
+      "descripcion": "Exporta cambios de capitulos/ al YAML de Teatro"
+    },
+    "sincronizarTaller": {
+      "comando": "@novelist sincronizar-taller itaca-digital",
+      "descripcion": "Sincroniza con mapeo-selectivo.md del TALLER"
+    },
+    "importarFuente": {
+      "comando": "@novelist importar-fuente itaca-digital {capitulo}",
+      "descripcion": "Importa contenido de NOVELA remota a un capítulo"
+    }
+  },
+  "historial": [
+    {
+      "fecha": "2025-12-28T12:00:00Z",
+      "accion": "inicializar",
+      "detalles": "Novela inicializada desde Teatro itaca-digital.yaml"
+    }
+  ]
+}
