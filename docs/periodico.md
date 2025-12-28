@@ -29,7 +29,7 @@ permalink: /periodico/
 
 <!-- ARTÍCULO 1: GEOPOLÍTICA -->
 <div class="periodico-article">
-  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/Diciembre_25_Geopolitica/imagen-cabecera.png" alt="Nobel Venezuela" class="periodico-article-img">
+  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_Geopolitica/imagen-cabecera.png" alt="Nobel Venezuela" class="periodico-article-img">
   <div class="periodico-article-header">
     <span class="periodico-article-flag">⚫</span>
     <div>
@@ -48,7 +48,7 @@ permalink: /periodico/
 
 <!-- ARTÍCULO 2: TECNOLOGÍA -->
 <div class="periodico-article">
-  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/Diciembre_25_Alineamiento/imagen-cabecera.png" alt="OpenAI Gobernanza" class="periodico-article-img">
+  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_Alineamiento/imagen-cabecera.png" alt="OpenAI Gobernanza" class="periodico-article-img">
   <div class="periodico-article-header">
     <span class="periodico-article-flag">🔴</span>
     <div>
@@ -67,7 +67,7 @@ permalink: /periodico/
 
 <!-- ARTÍCULO 3: MÉTODO -->
 <div class="periodico-article">
-  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/Diciembre_25_humanismo_extremo.md/imagen-cabecera.png" alt="Yellowflag" class="periodico-article-img">
+  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_humanismo_extremo.md/imagen-cabecera.png" alt="Yellowflag" class="periodico-article-img">
   <div class="periodico-article-header">
     <span class="periodico-article-flag">🟡</span>
     <div>
@@ -86,7 +86,7 @@ permalink: /periodico/
 
 <!-- ARTÍCULO 4: EPISTEMOLOGÍA -->
 <div class="periodico-article">
-  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/Diciembre_25_materia/imagen-cabecera.png" alt="Falsabilidad" class="periodico-article-img">
+  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_materia/imagen-cabecera.png" alt="Falsabilidad" class="periodico-article-img">
   <div class="periodico-article-header">
     <span class="periodico-article-flag">🔵</span>
     <div>
@@ -105,7 +105,7 @@ permalink: /periodico/
 
 <!-- ARTÍCULO 5: POÉTICA -->
 <div class="periodico-article">
-  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/Diciembre_25_Poesía_como_vias_alternativas.md/imagen-cabecera.png" alt="Poesía" class="periodico-article-img">
+  <img src="https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_Poesía_como_vias_alternativas.md/imagen-cabecera.png" alt="Poesía" class="periodico-article-img">
   <div class="periodico-article-header">
     <span class="periodico-article-flag">🟠</span>
     <div>
@@ -141,44 +141,44 @@ permalink: /periodico/
 
 <div class="periodico-redaccion-grid">
   <div class="periodico-redaccion-card">
-    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_Geopolitica">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_Geopolitica">
       <div class="flag">⚫</div>
       <h4>Geopolítica</h4>
       <p>Nobel, Venezuela, Assange. La paz como arma.</p>
     </a>
   </div>
   <div class="periodico-redaccion-card">
-    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_Alineamiento">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_Alineamiento">
       <div class="flag">🔴</div>
       <h4>Alineamiento</h4>
       <p>OpenAI, gobernanza IA, misión como cobertura.</p>
     </a>
   </div>
   <div class="periodico-redaccion-card">
-    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_humanismo_extremo.md">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_humanismo_extremo.md">
       <div class="flag">🟡</div>
       <h4>Humanismo Extremo</h4>
       <p>Gnosis, política, condiciones de vida filosófica.</p>
     </a>
   </div>
   <div class="periodico-redaccion-card">
-    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_materia">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_materia">
       <div class="flag">🔵</div>
       <h4>Materia</h4>
       <p>Falsabilidad, demarcación, frontera epistémica.</p>
     </a>
   </div>
   <div class="periodico-redaccion-card">
-    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Diciembre_25_Poesía_como_vias_alternativas.md">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/NOTICIAS/DICIEMBRE/Diciembre_25_Poesía_como_vias_alternativas.md">
       <div class="flag">🟠</div>
       <h4>Poesía</h4>
       <p>Aristóteles, Nietzsche, Bueno. Vías alternativas.</p>
     </a>
   </div>
   <div class="periodico-redaccion-card">
-    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/Foro_t8941392">
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/FUENTES/FORO/Foro_t8941392">
       <div class="flag">📁</div>
-      <h4>Foro Scraping</h4>
+      <h4>Scraping de fuentes</h4>
       <p>Criterio de demarcación científica (hilos).</p>
     </a>
   </div>
