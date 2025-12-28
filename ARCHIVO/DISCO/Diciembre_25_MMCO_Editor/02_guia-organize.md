@@ -1,0 +1,169 @@
+# Síntesis: Guía O.R.G.A.N.I.Z.E para MMCO Editor
+
+> **Fuente**: `ontological_reasoning_guide.md` (14.6 KB)  
+> **Síntesis para**: Sesión editorial SCRIPT-1.23.0  
+> **Fecha**: 2025-12-28
+
+---
+
+## El Acrónimo O.R.G.A.N.I.Z.E
+
+| Letra | Fase | Aplicación en MMCO Editor |
+|-------|------|---------------------------|
+| **O** | Ontological Query Assessment | Clasificar complejidad de cada story/task |
+| **R** | Reference Framework Components | Consultar metamodel.md, MMCO docs, FAIR |
+| **G** | Generate Structured Pathways | Elegir CoT/ToT/Graph según complejidad |
+| **A** | Analyze Using Selected Technique | Aplicar pattern a la story |
+| **N** | Navigate Documentation Efficiently | Consulta secuencial o paralela |
+| **I** | Integrate Multiple Components | Combinar Metamodel + MMCO + Flove |
+| **Z** | Validate Application Quality | Verificar contra templates formales |
+| **E** | Enhance Through Ontological Grounding | Producir XML/JSON validables |
+
+---
+
+## Técnicas de Razonamiento Disponibles
+
+### 1. Chain-of-Thought (CoT)
+**Cuándo usar**: Categorización lineal, clasificación simple
+**Mejora**: +17.9% en tareas de razonamiento complejo
+**Aplicación**: Mapeo LAYER_0→LAYER_4, clasificación de agentes
+
+```
+Step 1 → Step 2 → Step 3 → ... → Conclusión
+```
+
+### 2. Tree of Thoughts (ToT)
+**Cuándo usar**: Análisis multi-dimensional, exploración de alternativas
+**Mejora**: 74% éxito vs enfoques tradicionales
+**Aplicación**: Niveles de emergencia 0a/0b/0c, Φ alternativas
+
+```
+       ┌─ Path A → Eval A
+Query ─┼─ Path B → Eval B → Select Best → Proceed
+       └─ Path C → Eval C
+```
+
+### 3. Graph of Thought
+**Cuándo usar**: Redes de relaciones, sistemas interconectados
+**Mejora**: +60% insight en sistemas complejos
+**Aplicación**: Handoffs, meta-dinámicas Sprint→Commit→Release
+
+```
+     ┌──────┐
+     │ Node │←──┐
+     └──┬───┘   │
+        │       │
+   ┌────▼────┐  │
+   │ Node    │──┘
+   └─────────┘
+```
+
+### 4. Self-Consistency
+**Cuándo usar**: Decisiones críticas, validación de propuestas
+**Mejora**: +30% accuracy en clasificaciones importantes
+**Aplicación**: Composición de Φ_editor, validación cruzada
+
+```
+Perspective A ─┐
+Perspective B ─┼─→ Consensus
+Perspective C ─┘
+```
+
+---
+
+## Matriz de Selección para SCRIPT-1.23.0
+
+| Story | Complejidad | Profundidad | Técnica | Justificación |
+|-------|-------------|-------------|---------|---------------|
+| S01: Jerarquía | Multi-dimensional | Deep | **ToT** | 7 niveles con relaciones no lineales |
+| S02: Métrica Φ | Validación crítica | Comprehensive | **Self-Consistency** | Composición requiere multi-perspectiva |
+| S03: Meta-Dinámica | Redes relacionales | Deep | **Graph** | Sprint→Commit→Release es grafo |
+
+---
+
+## Aplicación a las 5 Banderas
+
+Cada bandera opera con una técnica diferente:
+
+| Bandera | Técnica Natural | Por qué |
+|---------|-----------------|---------|
+| 🔵 Blueflag | **CoT Sequential** | Verificación paso a paso de evidencia |
+| ⚫ Blackflag | **Graph of Thought** | Mapeo de redes de poder e influencia |
+| 🔴 Redflag | **CoT + Validation** | Cálculo material secuencial verificable |
+| 🟡 Yellowflag | **ToT Multi-Path** | Exploración de límites y condiciones |
+| 🟠 Orangeflag | **Self-Consistency** | Validación de registro desde múltiples audiencias |
+
+---
+
+## Implicación para Φ_editor
+
+### Fórmula Original (Lineal)
+```
+Φ_editor = w₁·Φ_blue + w₂·Φ_black + w₃·Φ_red + w₄·Φ_yellow + w₅·Φ_orange
+```
+
+### Propuesta Refactorizada (Grafo de Operadores)
+```
+                    ┌─────────────┐
+                    │   Φ_editor  │
+                    └──────┬──────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+    ┌────▼────┐      ┌─────▼─────┐     ┌─────▼─────┐
+    │ Φ_blue  │      │ Φ_black   │     │ Φ_red     │
+    │  (CoT)  │      │  (Graph)  │     │(CoT+Val)  │
+    └────┬────┘      └─────┬─────┘     └─────┬─────┘
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           │
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+    ┌────▼────┐      ┌─────▼─────┐
+    │Φ_yellow │      │ Φ_orange  │
+    │  (ToT)  │      │(SelfCons) │
+    └─────────┘      └───────────┘
+```
+
+**Diferencia clave**: Cada Φ_bandera se calcula con su técnica óptima, luego se integra.
+
+---
+
+## Validación Z (Checklist)
+
+Para cada story/task, verificar:
+
+- [ ] ¿Se identificó la técnica de razonamiento correcta?
+- [ ] ¿Se consultó el framework correspondiente (Metamodel/MMCO)?
+- [ ] ¿El análisis sigue el pattern estructurado?
+- [ ] ¿Se validó contra templates formales?
+- [ ] ¿El output es XML/JSON parseable?
+
+---
+
+## Anti-Patterns a Evitar
+
+| ❌ Anti-Pattern | ✅ Corrección |
+|-----------------|---------------|
+| Usar misma técnica para todas las banderas | Seleccionar técnica por tipo de bandera |
+| Φ como suma lineal simple | Φ como composición de grafos |
+| Ignorar complejidad de query | Clasificar antes de analizar |
+| Framework genérico | Consulta específica según story |
+
+---
+
+## Integración en Definition of Done
+
+Para cada story de SCRIPT-1.23.0, añadir:
+
+```markdown
+### O.R.G.A.N.I.Z.E Checklist
+- [ ] **O**: Complejidad clasificada como [Simple/Multi/System/Critical]
+- [ ] **R**: Frameworks consultados: [lista]
+- [ ] **G**: Técnica seleccionada: [CoT/ToT/Graph/SelfCons]
+- [ ] **A**: Análisis ejecutado siguiendo pattern
+- [ ] **N**: Documentación navegada: [rutas]
+- [ ] **I**: Componentes integrados: [lista]
+- [ ] **Z**: Validación pasando
+- [ ] **E**: Output ontológicamente fundamentado
+```
