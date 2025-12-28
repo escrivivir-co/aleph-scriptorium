@@ -1,7 +1,7 @@
 ---
 name: Protocolo Scrum de Backlogs
 description: Protocolo completo para gestión ágil de backlogs con fases de edición, aprobación y tracking.
-applyTo: "ARCHIVO/DISCO/**/*.md, .github/BACKLOG-*.md, PROYECTOS/**/BACKLOG-*.md"
+applyTo: ".github/plugins/scriptorium-pack/**/*, .github/plugins/scrum/**/*"
 ---
 
 # Protocolo Scrum de Backlogs
@@ -9,6 +9,8 @@ applyTo: "ARCHIVO/DISCO/**/*.md, .github/BACKLOG-*.md, PROYECTOS/**/BACKLOG-*.md
 > **Plugin**: Scrum  
 > **Agente**: @scrum  
 > **Versión**: 1.0.0
+
+> **📋 Backlog**: Si necesitas consultar el backlog oficial, adjunta manualmente `.github/BACKLOG-SCRIPTORIUM.md` o usa `@scrum status`.
 
 ---
 

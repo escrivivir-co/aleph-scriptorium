@@ -1,11 +1,13 @@
 ---
 description: "Flujo completo de planificación Scrum, estructura de backlog y métricas."
-applyTo: "ARCHIVO/DISCO/**/*planificacion*.md, ARCHIVO/DISCO/**/*backlog*.md, .github/BACKLOG-*.md"
+applyTo: ".github/plugins/scriptorium-pack/**/*, .github/plugins/scrum/**/*"
 ---
 
 # Instrucciones: Flujo de Trabajo Scrum
 
 > Activación contextual: al trabajar con backlogs o documentos de planificación.
+>
+> **📋 Backlog**: Si necesitas consultar el backlog oficial, adjunta manualmente `.github/BACKLOG-SCRIPTORIUM.md` o usa `@scrum status`.
 
 ---
 
