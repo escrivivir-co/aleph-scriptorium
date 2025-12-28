@@ -103,13 +103,20 @@
 | `copilot-instructions.md` | Hub de contexto | Añadir instrucciones |
 | `DEVOPS.md` | Protocolo de commits | Cambiar metodología |
 | `PLUGINS.md` | Protocolo de plugins | Cambiar estructura |
-| `BACKLOG-SCRIPTORIUM.md` | Estado del sprint | Cada sesión |
+| `BACKLOG-SCRIPTORIUM.md` | **Índice DRY** de referencias | Añadir/eliminar referencia |
 
-### 2.5. Borradores de Backlog Activos
+### 2.5. Sistema de Backlogs (DRY v2.0)
 
-| Borrador | Ruta | Estado |
-|----------|------|--------|
-| CLI Scriptorium | `ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/` | 📋 Pendiente PO |
+> **Protocolo**: El backlog oficial es un índice ligero (~50 líneas) que referencia borradores y archivados.
+
+| Tipo | Ubicación | Propósito |
+|------|-----------|-----------|
+| Índice oficial | `.github/BACKLOG-SCRIPTORIUM.md` | Solo referencias |
+| Borradores | `ARCHIVO/DISCO/BACKLOG_BORRADORES/` | Contenido detallado activo |
+| Archivados | `ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/` | Sprints cerrados |
+| Fotos estado | `ARCHIVO/FOTOS_ESTADO/` | Capturas de métricas |
+
+→ Ver [scrum-protocol.instructions.md](.github/plugins/scrum/instructions/scrum-protocol.instructions.md)
 
 ### 2.3. Anatomía de un Agente
 
@@ -364,13 +371,18 @@ if [ "$CURRENT" != "$BRANCH" ]; then
 fi
 ```
 
-### 6.4. Backlogs
+### 6.4. Backlogs (Modelo DRY)
 
-| Backlog | Ubicación |
-|---------|-----------|
-| Scriptorium | `.github/BACKLOG-SCRIPTORIUM.md` |
-| Fundación | `PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md` |
-| Borradores | `ARCHIVO/DISCO/BACKLOG_BORRADORES/` |
+> **Épica**: SCRIPT-1.29.0 (Context Bloat Mitigation)
+
+| Componente | Ubicación | Contenido |
+|------------|-----------|-----------|
+| **Índice** | `.github/BACKLOG-SCRIPTORIUM.md` | Solo referencias (~50 líneas) |
+| **Borradores** | `ARCHIVO/DISCO/BACKLOG_BORRADORES/` | Épicas en desarrollo |
+| **Archivados** | `ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/` | Sprints cerrados |
+| **Fotos** | `ARCHIVO/FOTOS_ESTADO/` | Métricas de cierre |
+
+**Regla DRY**: El agente @scrum solo escribe filas de referencia en el índice, nunca contenido detallado.
 
 ---
 

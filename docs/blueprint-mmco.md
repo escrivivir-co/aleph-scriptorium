@@ -115,6 +115,14 @@ permalink: /blueprint-mmco/
     </div>
   </div>
   
+  <div class="mmco-audit-banner corr-audit">
+    <span class="audit-icon">🔵</span>
+    <span class="audit-agent">@blueflag</span>
+    <span class="audit-phi">Φ_verdad</span>
+    <span class="audit-desc">Audita correlaciones de verdad. Evidencia, utilidad, falsificabilidad.</span>
+    <span class="organize-badge">🧠 CoT Sequential</span>
+  </div>
+  
   <p class="mmco-principle">
     <strong>Principio MMCO:</strong> La coherencia es alineación de fase estructural.
     Los handoffs definen <em>correlaciones</em> que preceden a la métrica espacial.
@@ -155,6 +163,14 @@ permalink: /blueprint-mmco/
       <span class="tensor-desc">Épicas y stories pendientes. La dirección del movimiento.</span>
       <span class="tensor-state">Estado: intencional</span>
     </div>
+  </div>
+  
+  <div class="mmco-audit-banner tensor-audit">
+    <span class="audit-icon">⚫</span>
+    <span class="audit-agent">@blackflag</span>
+    <span class="audit-phi">Φ_poder</span>
+    <span class="audit-desc">Audita tensiones de poder. Detecta captura y coerción oculta.</span>
+    <span class="organize-badge">🧠 Graph of Thought</span>
   </div>
   
   <p class="mmco-principle">
@@ -204,6 +220,14 @@ permalink: /blueprint-mmco/
     <span class="geo-plugin-count">19 plugins</span>
     <span class="geo-agent-count">31 agentes</span>
     <span class="geo-submodule-count">15 submódulos</span>
+  </div>
+  
+  <div class="mmco-audit-banner geometry-audit">
+    <span class="audit-icon">🔴</span>
+    <span class="audit-agent">@redflag</span>
+    <span class="audit-phi">Φ_material</span>
+    <span class="audit-desc">Audita estructura material. Escala, enforcement, suministro.</span>
+    <span class="organize-badge">🧠 CoT + Validation</span>
   </div>
   
   <p class="mmco-principle">
@@ -259,6 +283,14 @@ permalink: /blueprint-mmco/
     <span class="cycle-phase">DISCO → Sprint → Release → docs/</span>
   </div>
   
+  <div class="mmco-audit-banner time-audit">
+    <span class="audit-icon">🟡</span>
+    <span class="audit-agent">@yellowflag</span>
+    <span class="audit-phi">Φ_límites</span>
+    <span class="audit-desc">Audita límites temporales. Pre/Trans, condiciones, fronteras.</span>
+    <span class="organize-badge">🧠 ToT Multi-Path</span>
+  </div>
+  
   <p class="mmco-principle">
     <strong>Principio MMCO:</strong> El tiempo no es un contenedor, sino el <em>eco de la auto-consistencia</em>
     meta-dinámica. Cada commit es un "momento" de coherencia consolidada.
@@ -296,6 +328,14 @@ permalink: /blueprint-mmco/
       <span class="st-name">Blueprint</span>
       <span class="st-desc">Mapa navegable. Geometría accesible al usuario.</span>
     </div>
+  </div>
+  
+  <div class="mmco-audit-banner spacetime-audit">
+    <span class="audit-icon">🟠</span>
+    <span class="audit-agent">@orangeflag</span>
+    <span class="audit-phi">Φ_registro</span>
+    <span class="audit-desc">Audita registro observable. Dialéctica, género, estilo, auditorio.</span>
+    <span class="organize-badge">🧠 Self-Consistency</span>
   </div>
   
   <p class="mmco-principle">
@@ -343,8 +383,23 @@ permalink: /blueprint-mmco/
     concepto ejecutándose a sí mismo. Los productos son resonancias estables del campo.
   </p>
   
-  <div class="mmco-summary">
-    <strong>Φ_editor</strong> = f(Φ_blue, Φ_black, Φ_red, Φ_yellow, Φ_orange)
+  <div class="mmco-summary phi-5d">
+    <div class="phi-vector-display">
+      <strong>Φ_editor</strong> = 
+      <span class="phi-bracket">[</span>
+      <span class="phi-component phi-0b" title="Nivel 0b · CoT Sequential">Φ_verdad</span>,
+      <span class="phi-component phi-0a" title="Nivel 0a · Graph of Thought">Φ_poder</span>,
+      <span class="phi-component phi-1" title="Nivel 1 · CoT + Validation">Φ_material</span>,
+      <span class="phi-component phi-2" title="Nivel 2 · ToT Multi-Path">Φ_límites</span>,
+      <span class="phi-component phi-3" title="Nivel 3 · Self-Consistency">Φ_registro</span>
+      <span class="phi-bracket">]</span>
+    </div>
+    
+    <p class="phi-incommensurability">
+      <strong>Propiedad:</strong> Vector 5D con dimensiones ortogonales.<br>
+      Las banderas operan en espacios de razonamiento inconmensurables.<br>
+      <em>No es escalar. No es suma lineal.</em>
+    </p>
   </div>
 </div>
 
@@ -373,6 +428,17 @@ permalink: /blueprint-mmco/
       <span class="level-tag l2">2: Tiempo</span>
       <span class="level-tag l3">3: Espacio-tiempo</span>
       <span class="level-tag l4">4: Materia</span>
+    </div>
+    
+    <div class="incommensurability-note">
+      <h3>⚠️ Propiedad de Inconmensurabilidad</h3>
+      <p>Las 5 banderas operan en <strong>espacios de razonamiento ortogonales</strong>:</p>
+      <ul>
+        <li>Φ_verdad (epistemología) ≠ Φ_poder (política)</li>
+        <li>Φ_material (economía) ≠ Φ_límites (condiciones)</li>
+        <li>Φ_registro (retórica) opera en espacio-tiempo observable</li>
+      </ul>
+      <p><strong>Implicación:</strong> No existe un escalar "coherencia total". El output es un perfil multidimensional.</p>
     </div>
     
     <p class="mmco-footer">

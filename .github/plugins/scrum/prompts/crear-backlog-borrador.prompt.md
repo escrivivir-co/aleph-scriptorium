@@ -1,31 +1,70 @@
-# Prompt: Crear Backlog Borrador
+# Prompt: Crear Backlog Borrador (DRY)
 
-> **Plugin**: Scrum  
+> **Plugin**: Scrum v2.0  
 > **Comando**: `@scrum borrador`  
-> **Fase**: 2 (Editar)
+> **Modelo**: DRY (contenido en DISCO, no en índice)
 
 ---
 
-## Contexto
+## Objetivo
 
-Este prompt genera un backlog detallado en DISCO a partir de la conversación de planificación.
+Crear borrador detallado **EN LA CARPETA DEL BORRADOR**, nunca en el índice oficial.
 
 ## Instrucciones para @scrum
 
-### Paso 1: Leer conversación
+### Paso 1: Localizar carpeta
 
 ```
-1. Localizar 01_planificacion-sprintN.md en DISCO
-2. Extraer: objetivo, épicas, modelo, métricas de éxito
+1. Leer referencia desde .github/BACKLOG-SCRIPTORIUM.md
+2. Navegar a BACKLOG_BORRADORES/{tema}/
+3. Leer conversacion-po-sm.md para contexto
 ```
 
-### Paso 2: Estructurar épicas
+### Paso 2: Crear archivo de borrador
 
-Para cada épica identificada:
+Generar `01_backlog-borrador.md` **EN LA CARPETA DEL BORRADOR**:
 
 ```markdown
-| ID | Nombre | Opportunity | Effort | Prioridad |
-|----|--------|-------------|--------|-----------|
+# Backlog: {Nombre de Épica}
+
+> **Épica**: SCRIPT-X.Y.0
+> **Effort total**: N pts
+> **Estado**: 📋 Borrador
+
+## Stories
+
+| ID | Nombre | Effort | Estado |
+|----|--------|--------|--------|
+| S01 | ... | N pts | ⏳ |
+
+## Tasks
+
+### S01: {Nombre}
+
+| Task | Descripción | Effort | Estado |
+|------|-------------|--------|--------|
+| T001 | ... | N | ⏳ |
+```
+
+### Paso 3: Actualizar INDEX.md de borradores
+
+Actualizar `BACKLOG_BORRADORES/INDEX.md` con el nuevo borrador.
+
+### ⚠️ NO HACER
+
+- NO copiar este contenido al índice oficial
+- NO añadir tablas de tasks al BACKLOG-SCRIPTORIUM.md
+- NO duplicar información
+
+### Paso 4: Actualizar estado en índice
+
+Solo cambiar emoji en la fila existente:
+
+```markdown
+| 🔄 | SCRIPT-X.Y.0 | {Nombre} | [borrador](ruta) |
+```
+
+(Cambiar 📋 → 🔄)
 ```
 
 **Convención de IDs**:

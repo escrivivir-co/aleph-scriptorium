@@ -243,12 +243,14 @@ Usuario → @plugin_ox_teatro [generar]
 
 | Carpeta | Uso |
 |---------|-----|
-| `BACKLOG_BORRADORES/` | Borradores de épicas Scrum |
-| `Backlogs_Sprint0_Archivado/` | Histórico cerrado |
+| `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) |
+| `BACKLOG_ARCHIVADOS/` | Sprints cerrados |
 | `Diciembre_25_*/` | Sesiones editoriales diciembre |
 | `Foro_*/` | Material scrapeado |
 | `TALLER/` | Proyectos de usuario (obras) |
 | `WIRING/` | Flujos Node-RED |
+
+> **DRY**: El backlog oficial (`.github/BACKLOG-SCRIPTORIUM.md`) es un índice de ~50 líneas que referencia estas carpetas.
 
 ---
 
@@ -319,12 +321,15 @@ Fuentes: [archivos adjuntos]
 | Prompts (.github) | 18+ |
 | Instructions (.github) | 10+ |
 
-### 9.2. Backlogs Activos
+### 9.2. Sistema de Backlogs (DRY)
 
-| Backlog | Sprint | Estado |
-|---------|--------|--------|
-| SCRIPTORIUM | 2 (FC1) | 🔄 Activo |
-| FUNDACION | — | ⏸️ Pausa |
+> **Protocolo v2.0**: El backlog oficial es un índice de referencias, no contiene detalles.
+
+| Componente | Ubicación | Propósito |
+|------------|-----------|----------|
+| Índice | `.github/BACKLOG-SCRIPTORIUM.md` | Solo referencias |
+| Borradores | `BACKLOG_BORRADORES/` | Trabajo activo |
+| Archivados | `BACKLOG_ARCHIVADOS/` | Histórico |
 
 ---
 

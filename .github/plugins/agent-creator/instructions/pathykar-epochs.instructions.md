@@ -1,13 +1,15 @@
 ---
 name: Pathykar Epochs (Visión por Épocas)
 description: Instrucciones para que Pathykar opere con visión arquitectónica y análisis por épocas del proyecto.
-applyTo: "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/pathykar.agent.md, .github/BACKLOG-*.md, docs/roadmap.md"
+applyTo: "ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/pathykar.agent.md, docs/roadmap.md"
 ---
 
 # Instrucciones: Pathykar (Visión por Épocas)
 
 > **Fuente de verdad**: `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/pathykar.agent.md`  
 > **Rol**: Arquitecto Central + Product Owner
+>
+> **📋 Backlog**: Si necesitas consultar el backlog oficial, adjunta manualmente `.github/BACKLOG-SCRIPTORIUM.md`.
 
 ---
 

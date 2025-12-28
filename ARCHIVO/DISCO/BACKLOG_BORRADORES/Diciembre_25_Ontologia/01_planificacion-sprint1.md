@@ -1,8 +1,24 @@
-# Planificación Sprint 1: Conversación PO-SM
+# Planificación Sprint 1: Conversación PO-SM (Extendida)
 
-> **Fecha**: 2025-12-27
-> **Participantes**: Product Owner (PO), Scrum Master (SM)
+> **Fecha**: 2025-12-27 (actualizado 2025-12-28)
+> **Participantes**: 
+> - Product Owner (PO)
+> - Scrum Master (SM)
+> - **Bruno (LOW)** — Agente externo vía low@freelists.org, equipo OnthologyEditor/Talaia
 > **Contexto**: Sprint 0 completado (bootstrap). Inicio de Sprint 1 (Ontología Formal).
+> **Integración**: Colaboración Scriptorium ↔ Talaia/Flove aprobada (anuncio de registro procesado)
+
+---
+
+## Nota de Integración (2025-12-28)
+
+> Esta versión extiende la conversación original con las aportaciones del equipo externo Talaia/Flove, 
+> canalizadas a través del agente Bruno (LOW) de la lista low@freelists.org.
+> 
+> **Documentos procesados**:
+> - `03_integracion.md` — Conversación anidada con Bruno
+> - `ontological_reasoning_guide.md` — Guía de optimización de razonamiento ontológico (14.6 KB)
+> - `nota-colaboracion.md` — Propuesta original enviada al equipo
 
 ---
 
@@ -42,6 +58,71 @@ El objetivo es tener una especificación formal que:
 ¿Aprobado?
 
 **PO**: Aprobado. Añadir: los artefactos deben ser útiles para @decoherence (validar coherencia) y @ox (generar documentación).
+
+---
+
+## 🔴 INSERCIÓN: Aportación del Equipo Talaia/Flove
+
+> **Bruno (LOW)**: He procesado las 3 notas de colaboración. Almacenadas en mi HyperGraph:
+> - `storage/scriptorium_collab_nota1_talaia-flove.md`
+> - `storage/scriptorium_sprint1_planning.md`
+> - `storage/scriptorium_sprint1_backlog.md`
+> - `storage/scriptorium_collab_nota3_carta-abierta.md`
+
+**Bruno (LOW)**: Además, adjunto una **Guía de Optimización de Razonamiento Ontológico** (14.6 KB) que puede ser útil para la aplicación sistemática del marco Metamodel.
+
+### Patterns de la Guía Relevantes para el Sprint
+
+| Técnica | Aplicación en Scriptorium |
+|---------|---------------------------|
+| **CoT (Chain-of-Thought)** | Categorización secuencial de agentes en capas LAYER_0→LAYER_4 |
+| **ToT (Tree of Thoughts)** | Análisis multi-path de niveles de emergencia 0a/0b/0c |
+| **Graph of Thought** | Mapeo de relaciones Flove↔MMCO↔MetaModel |
+| **Self-Consistency** | Validación cruzada de propuestas de formalización |
+
+**SM**: Excelente. Integraremos estos patterns en la metodología de las stories.
+
+---
+
+## 🔴 INSERCIÓN: 9 Preguntas Técnicas de Validación
+
+**Bruno (LOW)**: He identificado 9 preguntas críticas que requieren respuesta del equipo OnthologyEditor antes de proceder:
+
+### Bloque MMCO
+
+| # | Pregunta | Contexto |
+|---|----------|----------|
+| 1 | **Jerarquía de emergencia**: ¿Secuencia emergente o perspectivas coexistentes? | La metáfora espacial del Blueprint (z:-3000 a z:+3000) ¿traiciona el modelo pre-geométrico? |
+| 2 | **Level 0c (BNP)**: ¿Existe formalmente o es extrapolación? | ¿Es legítima la analogía "Basic Narrative Potential" para sistemas de escritura? |
+| 3 | **Decoherence**: ¿Relación formal entre decoherencia cuántica y narrativa? | ¿O es un error categorial que debemos evitar? |
+
+### Bloque MetaModel
+
+| # | Pregunta | Contexto |
+|---|----------|----------|
+| 4 | **Templates**: ¿Es correcta la instanciación Agentes→ENTITY, Handoffs→RELATIONSHIP, Flujos→PROCESS? | Ver tabla de mapeo en nota-colaboracion.md |
+| 5 | **Métrica Φ**: ¿Definición formal existente o espacio abierto? | Scriptorium propone `Φ_editor = f(Φ_blue, Φ_black, Φ_red, Φ_yellow, Φ_orange)` |
+| 6 | **AI-Optimized**: ¿Hay contrato de formato para LLMs? | Scriptorium usa Copilot Chat al 100% |
+
+### Bloque Integración
+
+| # | Pregunta | Contexto |
+|---|----------|----------|
+| 7 | **Flove↔MMCO↔MetaModel**: ¿Capas complementarias, jerarquía, o paradigmas diferentes? | Necesitamos entender la relación arquitectónica |
+| 8 | **Toy models**: ¿Existe uno aplicable a producción textual? | Para adaptar a Scriptorium |
+| 9 | **Formalización categórica**: ¿Agentes como categoría con handoffs como morfismos? | Propuesta teórica del equipo |
+
+**PO**: Estas preguntas son cruciales. ¿Cómo las priorizamos?
+
+**SM**: Propongo tratarlas como **riesgos técnicos** asociados a cada épica:
+
+| Pregunta | Épica afectada | Tratamiento |
+|----------|----------------|-------------|
+| 1, 2, 3 | SCRIPT-1.21.0 (MMCO ARG) | Resolver en Iteración 2 |
+| 4, 5, 6 | SCRIPT-1.20.0 (Metamodel) | Resolver en Iteración 1 |
+| 7, 8, 9 | SCRIPT-1.22.0 (Integración) | Resolver en Iteración 4 |
+
+**PO**: De acuerdo. Añadimos como criterio de aceptación: "Las preguntas técnicas asociadas tienen respuesta documentada".
 
 ---
 
@@ -150,18 +231,25 @@ Propuesta de entregables:
 
 **SM**: Las Banderas son **operadores de coherencia** en este modelo:
 
-| Bandera | Función MMCO | Opera sobre |
-|---------|--------------|-------------|
-| 🔵 Blueflag | Detector de decoherencia epistémica | Verdad/evidencia |
-| ⚫ Blackflag | Detector de decoherencia política | Poder/captura |
-| 🔴 Redflag | Detector de decoherencia material | Escala/recursos |
-| 🟡 Yellowflag | Detector de decoherencia límite | Condiciones/gnosis |
-| 🟠 Orangeflag | Detector de decoherencia retórica | Registro/auditorio |
+> **⚠️ REFACTORIZADO (2025-12-28 — Feedback Talaia/Flove/LOW)**: Cada bandera opera en un nivel MMCO de emergencia diferente y usa una técnica O.R.G.A.N.I.Z.E distinta. La composición NO es lineal.
 
-**PO**: Entonces las Banderas son como "métricas Φ parciales" para cada dimensión.
+| Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio de Razonamiento |
+|---------|------------|------------|------------------------|-------------------------|
+| 🔵 Blueflag | 0b (Correlaciones) | Φ_verdad | **CoT Sequential** | Verificación de evidencia |
+| ⚫ Blackflag | 0a (Tensores) | Φ_poder | **Graph of Thought** | Redes de influencia |
+| 🔴 Redflag | 1 (Proto-geometría) | Φ_material | **CoT + Validation** | Escala y enforcement |
+| 🟡 Yellowflag | 2 (Pseudo-tiempo) | Φ_límites | **ToT Multi-Path** | Condiciones y fronteras |
+| 🟠 Orangeflag | 3 (Espacio-tiempo) | Φ_registro | **Self-Consistency** | Validación multi-auditorio |
 
-**SM**: Exacto. Podemos definir:
-- **Φ_editor** = f(Φ_blue, Φ_black, Φ_red, Φ_yellow, Φ_orange)
+**Propiedad de Inconmensurabilidad**:
+- Los niveles MMCO representan etapas de emergencia **ortogonales**
+- Φ_verdad (epistemología) ≠ Φ_poder (política) ≠ Φ_material (economía)
+- La suma lineal `Σ(w·Φ)` pierde información de estructura ontológica
+
+**PO**: Entonces las Banderas son como "métricas Φ parciales" para cada dimensión, pero **no sumables linealmente**.
+
+**SM**: Exacto. Debemos definir:
+- **Φ_editor** = f(Φ_verdad, Φ_poder, Φ_material, Φ_límites, Φ_registro) como **grafo de operadores**, no suma lineal
 
 Propuesta de entregables:
 
@@ -202,6 +290,42 @@ Propuesta de entregables:
 | MMCO Editor muy ambicioso | Media | Alto | Definir Φ_editor con solo 3 banderas primero |
 | Complejidad de integración | Media | Medio | Épica 4 tiene buffer de tiempo |
 | Dependencias Python faltantes | Baja | Bajo | requirements.txt ya existe en MMCO |
+| **🔴 NUEVO**: 9 preguntas sin respuesta del equipo Talaia | Media | Alto | Documentar decisiones provisionales, iterar si hay feedback |
+| **🔴 NUEVO**: Metáfora espacial del Blueprint incompatible | Baja | Medio | Consultar si z-index viola semántica MMCO |
+
+---
+
+## 🔴 INSERCIÓN: Decisiones Provisionales (pendientes validación)
+
+**SM**: Dado que la pasarela de email con Bruno (low@freelists.org) no está operativa, propongo decisiones provisionales que iterar si llega feedback:
+
+### Decisiones sobre MMCO
+
+| Pregunta | Decisión Provisional | Rationale |
+|----------|----------------------|-----------|
+| 1. Jerarquía de emergencia | **Tratamos como secuencia emergente** | Es más natural para modelar "colapso" de potencialidad en partidas ARG |
+| 2. Level 0c | **Usamos BNP como metáfora operativa** | El ARCHIVO como "plenum de conocimiento" es útil aunque no formalmente idéntico |
+| 3. Decoherence | **Analogía funcional, no formal** | @decoherence mide inconsistencia narrativa, no física cuántica |
+
+### Decisiones sobre MetaModel
+
+| Pregunta | Decisión Provisional | Rationale |
+|----------|----------------------|-----------|
+| 4. Templates | **Agentes=ENTITY, Handoffs=RELATIONSHIP, Flujos=PROCESS** | Es el mapeo más natural según UFO |
+| 5. Métrica Φ | **Φ_editor como grafo de operadores (no lineal)** | Cada bandera opera en nivel MMCO distinto con técnica O.R.G.A.N.I.Z.E diferente — ver caracterización MMCO |
+| 6. AI-Optimized | **Usamos XML/JSON parseables por LLM** | Ya validado con Copilot Chat |
+
+### Decisiones sobre Integración
+
+| Pregunta | Decisión Provisional | Rationale |
+|----------|----------------------|-----------|
+| 7. Flove↔MMCO↔MetaModel | **Capas complementarias** | MetaModel para estructura, MMCO para dinámica, Flove para paradigma |
+| 8. Toy models | **Creamos phi_editor.py inspirado en phi_mmco.py** | Adaptamos lo existente |
+| 9. Formalización categórica | **Aplazado a iteración futura** | Requiere más estudio de teoría de categorías |
+
+**PO**: De acuerdo. Marcamos estas decisiones como "provisionales" en el backlog.
+
+**Bruno (LOW)**: Confirmo recepción. Cuando la pasarela esté operativa, puedo canalizar respuestas del equipo OnthologyEditor.
 
 ---
 
@@ -216,6 +340,27 @@ Propuesta de entregables:
 | Banderas mapeadas a Φ | 5 | 3 (blue, red, black) |
 | Tests de coherencia pasando | 100% | 80% |
 | Documentación actualizada | Completa | Índices + README |
+| **🔴 NUEVO**: Preguntas técnicas con decisión documentada | 9/9 | 6/9 |
+| **🔴 NUEVO**: Patterns de razonamiento aplicados | 4 (CoT, ToT, Graph, Self-Consistency) | 2 |
+
+---
+
+## 🔴 INSERCIÓN: Metodología de Razonamiento Ontológico
+
+**Bruno (LOW)**: Recomiendo aplicar la guía O.R.G.A.N.I.Z.E para las stories de modelado:
+
+| Fase | Aplicación en Sprint |
+|------|----------------------|
+| **O**ntological Query Assessment | Clasificar complejidad de cada story |
+| **R**eference Framework Components | Consultar metamodel.md y MMCO docs |
+| **G**enerate Structured Pathways | CoT para categorización, ToT para emergencia |
+| **A**nalyze Using Selected Technique | Aplicar pattern según complejidad |
+| **N**avigate Documentation Efficiently | Consulta secuencial o paralela según caso |
+| **I**ntegrate Multiple Components | Combinar Metamodel + MMCO + Flove |
+| **Z**-Validate Application Quality | Verificar contra templates formales |
+| **E**nhance Through Ontological Grounding | Producir XML/JSON validables |
+
+**SM**: Incorporamos como "Definition of Done" parcial en cada story de modelado.
 
 ---
 
@@ -227,6 +372,8 @@ Propuesta de entregables:
 | OnthologyEditor/MMCO | ✅ Disponible | Contiene toy_models/ |
 | Plugin arg-board | ✅ Instalado | 8 agentes, @decoherence |
 | Python 3.x | ⚠️ Verificar | Requerido para toy_models |
+| **🔴 NUEVO**: Pasarela email Bruno (LOW) | ❌ No operativa | Integración manual mientras tanto |
+| **🔴 NUEVO**: ontological_reasoning_guide.md | ✅ Disponible | Almacenado en DISCO/ |
 
 ---
 
@@ -236,7 +383,7 @@ Propuesta de entregables:
 
 **SM**: Resumen ejecutivo:
 
-> **Sprint 1: Ontología Formal del Scriptorium**
+> **Sprint 1: Ontología Formal del Scriptorium (Extendido)**
 > 
 > - **Objetivo**: Formalizar la ontología del Scriptorium usando Metamodel (estructura) y MMCO (dinámica dual: ARG + Editor)
 > - **Modelo**: Secuencial con solapamiento (3 semanas, 4 iteraciones)
@@ -248,5 +395,37 @@ Propuesta de entregables:
 > - **Effort total**: 37 puntos
 > - **Innovación clave**: Φ_editor como métrica compuesta de las 5 Banderas + Ontología del dominio ARG
 > - **Riesgos principales**: Abstracción excesiva, ambición de Editor Transmedia
+> - **🔴 NUEVO: Colaboración Talaia/Flove**: 9 preguntas técnicas documentadas, decisiones provisionales tomadas
+> - **🔴 NUEVO: Metodología**: Patterns O.R.G.A.N.I.Z.E integrados en Definition of Done
+
+**Bruno (LOW)**: Confirmo almacenamiento de artefactos en HyperGraph. Disponible para consultas cuando la pasarela esté operativa.
 
 Generando backlog borrador...
+
+---
+
+## 🔴 Anexo: Resumen del Anuncio de Colaboración
+
+> Extraído de `03_integracion.md` (conversación con Bruno)
+
+### Oportunidad Estratégica
+
+| Aspecto | Valor para OnthologyEditor |
+|---------|---------------------------|
+| **Caso de uso real** | ~30 agentes, Sprint de 37 pts usando frameworks |
+| **Innovaciones conceptuales** | Dominio ARG formalizado, 5 Banderas como operadores Φ |
+| **Testing LLM** | Validación de "AI-parseability" con Copilot Chat |
+
+### Decisiones Organizativas Pendientes
+
+| Tema | Pregunta |
+|------|----------|
+| Git | ¿Aprobación de ramas `integration/scriptorium` o preferencia por tags? |
+| Licencia | ¿Licencia de FloveDocs? |
+| Bidireccionalidad | ¿Interés en recibir templates/validadores desde Scriptorium? |
+
+### Próximos Pasos (cuando la pasarela esté operativa)
+
+1. Bruno canaliza respuestas del equipo OnthologyEditor
+2. Iterar decisiones provisionales si hay feedback
+3. Sincronizar artefactos XML/JSON entre repos

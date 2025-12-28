@@ -1,14 +1,14 @@
-# Prompt: Tracking de Sprint
+# Prompt: Tracking de Sprint (DRY)
 
-> **Plugin**: Scrum  
+> **Plugin**: Scrum v2.0  
 > **Comando**: `@scrum tracking`  
-> **Fase**: 4 (Tracking)
+> **Modelo**: DRY (actualizar en BORRADOR, no en índice)
 
 ---
 
-## Contexto
+## Objetivo
 
-Este prompt actualiza el estado de tasks durante la ejecución del sprint.
+Actualizar estado de tasks **EN EL ARCHIVO DE BORRADOR**, no en el índice oficial.
 
 ## Modos de uso
 
@@ -30,29 +30,27 @@ Este prompt actualiza el estado de tasks durante la ejecución del sprint.
 @scrum tracking T030 bloqueada: falta acceso a API
 ```
 
-### Modo 4: Sincronización completa
-
-```
-@scrum tracking sync
-```
-
 ---
 
 ## Instrucciones para @scrum
 
-### Actualización individual/múltiple
-
-#### Paso 1: Identificar backlog
+### Paso 1: Localizar borrador
 
 ```
-1. Extraer ID de task (T{NNN})
-2. Buscar en BACKLOG-SCRIPTORIUM.md
-3. Si no está, buscar en BACKLOG-FUNDACION.md
+1. Leer índice .github/BACKLOG-SCRIPTORIUM.md
+2. Seguir referencia de épica activa (🔄)
+3. Abrir 01_backlog-borrador.md en la carpeta
 ```
 
-#### Paso 2: Actualizar estado
+### ⚠️ IMPORTANTE
 
-Cambiar el estado en la tabla de tasks:
+**NO modificar .github/BACKLOG-SCRIPTORIUM.md para tracking.**
+
+El índice solo tiene referencias, no tasks.
+
+### Paso 2: Actualizar estado EN EL BORRADOR
+
+Cambiar el estado en la tabla de tasks del borrador:
 
 | Estado anterior | Estado nuevo | Símbolo |
 |-----------------|--------------|---------|
