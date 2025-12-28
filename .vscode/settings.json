@@ -33,6 +33,7 @@
 	// Por defecto, VS Code solo detecta .github/instructions/
 	"chat.instructionsFilesLocations": {
 		".github/instructions": true,
+		".github/plugins/scriptorium-pack/instructions": true,
 		".github/plugins/arg-board/instructions": true,
 		".github/plugins/agent-creator/instructions": true,
 		".github/plugins/teatro/instructions": true,

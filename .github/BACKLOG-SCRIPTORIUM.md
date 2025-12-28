@@ -11,6 +11,7 @@
 
 | Épica | Nombre | Estado | Prioridad |
 |-------|--------|--------|-----------|
+| SCRIPT-1.29.0 | ScriptoriumPack (Context Bloat Mitigation) | 🔄 En progreso | P0 |
 | SCRIPT-1.28.0 | Blueprint MMCO Enhancement | ✅ Cerrada | P0 |
 | SCRIPT-1.27.0 | Blueprint MMCO Compliance | ✅ Cerrada | P0 |
 | SCRIPT-1.26.0 | Blueprint Refinements | ✅ Cerrada | P0 |
@@ -436,10 +437,313 @@ Una vez completadas las épicas de modelado ontológico, el index.md presentará
 
 ---
 
+---
+
+## SCRIPT-1.29.0 — ScriptoriumPack (Context Bloat Mitigation)
+
+> **Objetivo**: Crear plugin que encapsula instrucciones core del Scriptorium con patrones `applyTo` optimizados para reducir context bloat  
+> **Sprint**: FC2 (siguiente)  
+> **Effort total**: 13 pts  
+> **Estado**: 🆕 Nueva  
+> **Contexto**: [critica-prompting-pathykar.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/critica-prompting-pathykar.md) + [nfr-context-bloat.prompt.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md)
+
+### Problema Identificado
+
+| Métrica | Valor Actual | Target |
+|---------|--------------|--------|
+| Tokens por request | 117,877 | <50,000 |
+| Ratio señal/ruido | ~3% | >50% |
+| Attachments relevantes | 26% | >80% |
+| Tiempo respuesta | 16s | <5s |
+
+**Causas raíz**:
+1. Patrones `applyTo` demasiado amplios (`**/*.md` captura todo)
+2. Instructions redundantes con copilot-instructions.md
+3. Sin filtrado por tipo de tarea (edición vs. configuración)
+4. Falta de separación por dominio funcional
+
+### Solución: Plugin ScriptoriumPack
+
+Encapsular las instrucciones core en un plugin con:
+- **Activación selectiva**: Solo se carga cuando es necesario
+- **Patrones `applyTo` específicos**: Por tipo de tarea, no por ubicación
+- **Documentos compactos**: Aplicar patrón "resumen ejecutivo" (isSummarized pattern)
+
+### Arquitectura
+
+```
+.github/plugins/scriptorium-pack/
+├── manifest.md                                    # Metadatos del plugin
+├── agents/
+│   └── scriptorium-pack.agent.md                 # Bridge agent para VS Code
+├── instructions/
+│   ├── ox-ontologia.instructions.md              # Índice de agentes (activación: @ox)
+│   ├── periodico.instructions.md                 # Edición noticias (activación: DISCO/**/conversacion*)
+│   └── submodulo-integracion.instructions.md     # Configuración submódulos (activación: scripts/**)
+└── docs/
+    └── context-optimization.md                   # Documentación del patrón
+```
+
+### Patrones `applyTo` Optimizados
+
+| Instrucción | Antes (Problemático) | Después (Optimizado) |
+|-------------|----------------------|----------------------|
+| ox-ontologia | `.github/agents/*.agent.md, README.md` | `.github/agents/@ox*, .github/**/ox*.md` |
+| periodico | `ARCHIVO/NOTICIAS/**/*.md, ARCHIVO/DISCO/**/*.md` | `ARCHIVO/DISCO/**/conversacion*.md, ARCHIVO/NOTICIAS/**/*.md` |
+| submodulo-integracion | `scripts/**, .github/plugins/**` | `scripts/setup-*.sh, .gitmodules, **/README-SCRIPTORIUM.md` |
+
+**Principio DRY aplicado**:
+- Ninguna instrucción debe auto-inyectarse si el usuario no está trabajando activamente en esa tarea
+- Priorizar patrones por **nombre de archivo** sobre patrones por **ubicación**
+
+### isSummarized Pattern
+
+> **Nota técnica**: `isSummarized` es una propiedad interna de VS Code Copilot Chat que indica cuando un attachment ha sido resumido automáticamente. NO es configurable por el usuario, pero el patrón es aplicable al diseño de documentos.
+
+**Aplicación del patrón**:
+
+```markdown
+<!-- Documento largo tradicional: 8,849 líneas → 117K tokens -->
+
+<!-- Documento optimizado con patrón isSummarized: -->
+# Documento X
+
+> **Resumen ejecutivo**: [2-3 líneas con la esencia]
+
+## Índice de secciones
+| Sección | Líneas | Para quién |
+|---------|--------|------------|
+| Referencia rápida | 1-50 | Usuarios |
+| Detalles técnicos | 51-200 | Desarrolladores |
+
+## Referencia rápida (siempre incluido)
+[Contenido esencial]
+
+## Detalles técnicos (expandir solo si necesario)
+<!-- Este contenido se omite por defecto, similar a isSummarized -->
+```
+
+**Regla**: Los primeros 50-100 líneas de cualquier instrucción deben ser auto-contenidos y útiles sin leer el resto.
+
+### Compactación de copilot-instructions.md
+
+**Estado actual**: 107 líneas con redundancias
+
+**Objetivo**: <50 líneas, delegando a ScriptoriumPack
+
+| Sección Actual | Acción |
+|----------------|--------|
+| §1 Identidad | ✅ Mantener (esencial, 10 líneas) |
+| §2 Protocolo DevOps | → Referencia a DEVOPS.md |
+| §3 Taxonomía Agentes | → Delegar a ox-ontologia.instructions.md |
+| §4 Instrucciones Contenido | → Delegar a ScriptoriumPack |
+| §5 Flujo de Trabajo | → Mover a prompt planificar-sprint |
+| §6 Reglas de Oro | ✅ Mantener (esencial, 8 líneas) |
+| §7 Plugins/Submodules | → Referencia a PLUGINS.md |
+| §8 Índice DRY | → Delegar a @indice |
+
+**Resultado esperado**: copilot-instructions.md con ~40 líneas, solo:
+- Identidad del workspace
+- Referencias DRY a fuentes de verdad
+- Reglas de oro
+
+### Stories
+
+| ID | Story | Descripción | Effort | Estado |
+|----|-------|-------------|--------|--------|
+| S01 | Crear estructura plugin | manifest.md + bridge agent + carpetas | 2 pts | ✅ |
+| S02 | Migrar ox-ontologia | Mover a plugin + nuevo applyTo | 2 pts | ✅ |
+| S03 | Migrar periodico | Mover a plugin + nuevo applyTo | 2 pts | ✅ |
+| S04 | Migrar submodulo-integracion | Mover a plugin + nuevo applyTo | 2 pts | ✅ |
+| S05 | Compactar copilot-instructions | Reducir a <50 líneas DRY | 2 pts | ✅ |
+| S06 | Actualizar settings.json | Añadir rutas de ScriptoriumPack | 1 pt | ✅ |
+| S07 | Documentar patrón isSummarized | Guía en context-optimization.md | 1 pt | ✅ |
+| S08 | Validar métricas | Medir tokens pre/post, actualizar tabla | 1 pt | ⏳ |
+
+### Detalle de Stories
+
+#### S01: Crear estructura plugin (2 pts)
+
+**Tasks**:
+| ID | Task | Estado |
+|----|------|--------|
+| T01 | Crear `.github/plugins/scriptorium-pack/manifest.md` | ✅ |
+| T02 | Crear bridge agent `scriptorium-pack.agent.md` | ✅ |
+| T03 | Crear carpetas instructions/, docs/ | ✅ |
+| T04 | Registrar en registry.json | ✅ |
+
+**manifest.md propuesto**:
+
+```yaml
+---
+id: scriptorium-pack
+name: "ScriptoriumPack (Core Instructions)"
+version: "1.0.0"
+description: "Plugin que encapsula instrucciones core del Scriptorium con activación selectiva. Reduce context bloat al cargar solo instrucciones relevantes por tipo de tarea."
+author: "Aleph Scriptorium"
+license: "AIPL v1.0"
+
+scriptorium_version: ">=1.0.0"
+dependencies: []
+
+agents:
+  - name: "ScriptoriumPack"
+    file: "agents/scriptorium-pack.agent.md"
+    description: "Bridge agent para activación de instrucciones core."
+
+instructions:
+  - name: "ox-ontologia"
+    file: "instructions/ox-ontologia.instructions.md"
+    description: "Contexto del índice de agentes. Se activa con @ox."
+    applyTo: ".github/agents/@ox*, .github/**/ox*.md"
+    
+  - name: "periodico"
+    file: "instructions/periodico.instructions.md"
+    description: "Método 5W+Banderas para edición de noticias."
+    applyTo: "ARCHIVO/DISCO/**/conversacion*.md, ARCHIVO/NOTICIAS/**/*.md"
+    
+  - name: "submodulo-integracion"
+    file: "instructions/submodulo-integracion.instructions.md"
+    description: "Protocolo de instalación y configuración de submódulos."
+    applyTo: "scripts/setup-*.sh, .gitmodules, **/README-SCRIPTORIUM.md"
+
+handoffs:
+  - label: "Activar contexto de agentes (@ox)"
+    agent: "ScriptoriumPack"
+  - label: "Activar modo edición periodística"
+    agent: "ScriptoriumPack"
+  - label: "Activar modo configuración submódulos"
+    agent: "ScriptoriumPack"
+---
+```
+
+#### S02-S04: Migrar instrucciones (6 pts total)
+
+**Cambios en cada archivo**:
+
+1. **ox-ontologia.instructions.md**
+   - Antes: `applyTo: ".github/agents/*.agent.md, README.md, .github/copilot-instructions.md"`
+   - Después: `applyTo: ".github/agents/@ox*, .github/**/ox*.md, .github/agents/AGENTS.md"`
+   - Razón: Solo activar cuando se trabaja explícitamente con @ox o el índice
+
+2. **periodico.instructions.md**
+   - Antes: `applyTo: "ARCHIVO/NOTICIAS/**/*.md, ARCHIVO/DISCO/**/*.md"`
+   - Después: `applyTo: "ARCHIVO/DISCO/**/conversacion*.md, ARCHIVO/NOTICIAS/**/2*.md"`
+   - Razón: Solo activar en archivos de conversación editorial, no en TODO el DISCO
+
+3. **submodulo-integracion.instructions.md**
+   - Antes: `applyTo: "scripts/**, .github/plugins/**, ARCHIVO/DISCO/BACKLOG_BORRADORES/**"`
+   - Después: `applyTo: "scripts/setup-*.sh, .gitmodules, **/README-SCRIPTORIUM.md, scripts/verify-*.sh"`
+   - Razón: Solo activar en operaciones de configuración de submódulos
+
+#### S05: Compactar copilot-instructions.md (2 pts)
+
+**Antes** (107 líneas):
+```markdown
+# Instrucciones Globales (Copilot)
+## 1. Identidad del Workspace (20 líneas)
+## 2. Protocolo DevOps (10 líneas - redundante con DEVOPS.md)
+## 3. Taxonomía de Agentes (25 líneas - redundante con ox.agent.md)
+## 4. Instrucciones de Contenido (10 líneas)
+## 5. Flujo de Trabajo (15 líneas - redundante con scrum)
+## 6. Reglas de Oro (10 líneas)
+## 7. Plugins y Submodules (12 líneas - redundante con PLUGINS.md)
+## 8. Índice DRY (15 líneas - redundante con @indice)
+```
+
+**Después** (~45 líneas):
+```markdown
+# Instrucciones Globales — Aleph Scriptorium
+
+> Framework de escritura asistida por IA para proyectos de largo aliento.
+
+## Identidad
+- **Nombre**: Aleph Scriptorium
+- **Versión**: Ver [package.json](../package.json)
+- **Web**: [escrivivir-co.github.io/aleph-scriptorium](...)
+
+## Fuentes de Verdad (DRY)
+
+| Dominio | Fuente | Agente |
+|---------|--------|--------|
+| DevOps | [DEVOPS.md](DEVOPS.md) | @aleph |
+| Agentes | [ox.agent.md](agents/ox.agent.md) | @ox |
+| Plugins | [PLUGINS.md](PLUGINS.md) | @pluginmanager |
+| Backlogs | [BACKLOG-*.md](.) | @scrum |
+
+## Reglas de Oro
+
+1. **DRY**: Referenciar fuentes de verdad, no duplicar
+2. **Ubicación canónica**:
+   - El *qué* (contenido) → `ARCHIVO/`
+   - El *cómo* (reglas) → `.github/instructions/`
+   - El *cuándo* (plan) → Backlogs
+   - El *quién* (agentes) → `@ox`
+3. **En caso de duda**: Invocar `@ox` para orientación
+
+## Instrucciones Contextuales
+
+Las instrucciones específicas se cargan automáticamente según el contexto:
+- Ver [ScriptoriumPack](plugins/scriptorium-pack/) para instrucciones core
+- Ver [PLUGINS.md](PLUGINS.md) para extensiones disponibles
+```
+
+#### S06: Actualizar settings.json (1 pt)
+
+Añadir en `.vscode/settings.json`:
+
+```json
+{
+  "chat.instructionsFilesLocations": {
+    ".github/plugins/scriptorium-pack/instructions": true
+  }
+}
+```
+
+#### S07: Documentar patrón isSummarized (1 pt)
+
+Crear `context-optimization.md` en el plugin con:
+- Qué es `isSummarized` (propiedad interna de VS Code)
+- Cómo aplicar el patrón a documentos propios
+- Checklist para validar instrucciones optimizadas
+
+#### S08: Validar métricas (1 pt)
+
+Script de diagnóstico que mida:
+- Tokens por request (antes/después)
+- Número de instrucciones auto-inyectadas
+- Tiempo de respuesta promedio
+
+### Criterios de Aceptación
+
+- [ ] Plugin scriptorium-pack instalado y registrado
+- [ ] 3 instrucciones migradas con nuevos patrones applyTo
+- [ ] copilot-instructions.md reducido a <50 líneas
+- [ ] Tokens por request promedio <50K (reducción >50%)
+- [ ] Documentación de patrón isSummarized disponible
+- [ ] Tests de activación: cada instrucción solo se carga en su contexto
+
+### Riesgos
+
+| Riesgo | Probabilidad | Impacto | Mitigación |
+|--------|--------------|---------|------------|
+| Patrones muy restrictivos | Media | Alto | Testear con casos de uso reales |
+| Breaking changes en flujos | Baja | Alto | Mantener fallback manual |
+| VS Code no detecta plugin | Baja | Medio | Verificar settings.json |
+
+### Dependencias
+
+- **Blandas**: SCRIPT-1.27.0 (Blueprint MMCO) para documentar visualmente
+- **Duras**: Ninguna
+
+---
+
 ## Changelog
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-28 | ✅ Implementar SCRIPT-1.29.0 S01-S07 (12 pts de 13) — plugin scriptorium-pack operativo | Aleph |
+| 2025-12-28 | Crear épica SCRIPT-1.29.0 (ScriptoriumPack Context Bloat Mitigation) | Scrum |
 | 2025-12-27 | Crear épica SCRIPT-1.27.0 (Blueprint MMCO Compliance) — cierra gap con FC1 | Scrum |
 | 2025-12-27 | ✅ Cerrar SCRIPT-1.25.0 (Blueprint Visual Index) - Sprint 1 y 2 implementados | Aleph |
 | 2025-12-27 | Aprobar FC1 Ontología Formal (SCRIPT-1.20.0 a 1.23.0) | Scrum |

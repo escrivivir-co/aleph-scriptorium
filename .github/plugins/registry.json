@@ -1,7 +1,45 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-29T14:00:00Z",
+  "last_updated": "2025-12-28T20:00:00Z",
   "plugins": {
+    "scriptorium-pack": {
+      "name": "ScriptoriumPack (Core Instructions)",
+      "version": "1.0.0",
+      "description": "Plugin que encapsula instrucciones core del Scriptorium con activación selectiva. Reduce context bloat al cargar solo instrucciones relevantes por tipo de tarea.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2025-12-28T20:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 0,
+      "instructions_count": 4,
+      "data_directory": null,
+      "bridge_agent": "scriptorium-pack",
+      "dependencies": [],
+      "epic": "SCRIPT-1.29.0",
+      "context_optimization": {
+        "tokens_saved_estimate": "~70,000",
+        "apply_patterns": {
+          "ox-ontologia": ".github/agents/ox.agent.md, .github/agents/AGENTS.md",
+          "periodico": "ARCHIVO/DISCO/**/conversacion*.md, ARCHIVO/NOTICIAS/**/2*.md",
+          "submodulo-integracion": "scripts/setup-*.sh, .gitmodules, **/README-SCRIPTORIUM.md",
+          "indice-dry": "ARCHIVO/DEVOPS/Funcional.md, ARCHIVO/DEVOPS/Tecnico.md"
+        }
+      },
+      "handoffs": [
+        {
+          "label": "Activar contexto de agentes (@ox)",
+          "agent": "ScriptoriumPack"
+        },
+        {
+          "label": "Activar modo edición periodística",
+          "agent": "ScriptoriumPack"
+        },
+        {
+          "label": "Activar modo configuración submódulos",
+          "agent": "ScriptoriumPack"
+        }
+      ]
+    },
     "n8n-editor": {
       "name": "Editor Visual de Workflows (n8n Connector)",
       "version": "1.0.0",
