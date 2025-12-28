@@ -18,7 +18,7 @@
 | SCRIPT-1.20.0 | Metamodel Scriptorium | 🆕 Nueva | P1 |
 | SCRIPT-1.21.0 | MMCO ARG-Board | 🆕 Nueva | P2 |
 | SCRIPT-1.22.0 | Integración y Validación | 🆕 Nueva | P3 |
-| SCRIPT-1.23.0 | MMCO Editor Transmedia | 🆕 Nueva | P2 |
+| SCRIPT-1.23.0 | MMCO Editor Transmedia (Validación Paradigmática) | 🔄 Refactorizada | P0 |
 | SCRIPT-1.25.0 | Blueprint Visual Index | ✅ Cerrada | Alta |
 
 ---
@@ -319,16 +319,73 @@ Aplicar los frameworks **Metamodel** (ontología formal) y **MMCO** (métricas d
 | S02 | Métrica de Coherencia Φ_ARG | 3 pts | ⏳ |
 | S03 | Toy Model ARG (hola_mundo) | 2 pts | ⏳ |
 
-### SCRIPT-1.23.0 — MMCO Editor Transmedia
+### SCRIPT-1.23.0 — MMCO Editor Transmedia (Validación Paradigmática)
 
-> **Effort**: 8 pts  
-> **Objetivo**: Modelo de coherencia para producción editorial
+> **Objetivo**: Validar si MMCO+Metamodel son aplicables al Scriptorium como sistema de producción editorial  
+> **Effort total**: 13 pts (reducido de 16, inversión de riesgo)  
+> **Técnica**: O.R.G.A.N.I.Z.E (Graph, ToT, Self-Consistency)  
+> **Dependencias**: Ninguna (autocontenida — valida antes de depender)  
+> **Estado**: 🆕 Refactorizada (2025-12-28)  
+> **Conversación**: [DISCO/Diciembre_25_MMCO_Editor/conversacion.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/conversacion.md)
 
-| Story | Descripción | Effort | Estado |
-|-------|-------------|--------|--------|
-| S01 | Jerarquía de Emergencia Editorial | 3 pts | ⏳ |
-| S02 | Métrica Φ_editor (5 Banderas) | 3 pts | ⏳ |
-| S03 | Meta-Dinámica de Producción | 2 pts | ⏳ |
+#### Contexto de Refactorización
+
+Sesión editorial meta-recursiva (5W + 5 Banderas) reveló:
+- Fórmula lineal `Φ_editor = Σ(w·Φ_bandera)` teóricamente injustificada
+- Cada bandera opera con técnica de razonamiento diferente (CoT, ToT, Graph, Self-Consistency)
+- Sin validación previa de aplicabilidad de MMCO al dominio editorial
+
+**Decisión PO (@pathykar)**: Invertir orden — validar primero, formalizar después.
+
+#### Stories
+
+| ID | Story | Técnica | Effort | Estado |
+|----|-------|---------|--------|--------|
+| S01 | ¿Es MMCO aplicable a producción editorial? | Graph of Thought | 5 pts | ⏳ |
+| S02 | Definición operacional de coherencia editorial | ToT Multi-Path | 5 pts | ⏳ |
+| S03 | Toy Model MVP | Self-Consistency | 3 pts | ⏳ |
+
+#### S01: ¿Es MMCO aplicable? (5 pts)
+
+| Task | Descripción | Estado |
+|------|-------------|--------|
+| T01 | Mapear las 9 preguntas técnicas a nodos de grafo | ⏳ |
+| T02 | Identificar preguntas bloqueantes (dependency analysis) | ⏳ |
+| T03 | Responder las 3 preguntas bloqueantes (1, 5, 7) | ⏳ |
+| T04 | Documentar gaps irresolubles (exit criteria) | ⏳ |
+
+**DoD**: `mmco_applicability_analysis.md` con veredicto binario (✅ Aplicable / ❌ No aplicable)
+
+#### S02: Definición de coherencia editorial (5 pts)
+
+| Task | Descripción | Estado |
+|------|-------------|--------|
+| T05 | Path 1: Coherencia lógica (@blueflag, CoT) | ⏳ |
+| T06 | Path 2: Coherencia de poder (@blackflag, Graph) | ⏳ |
+| T07 | Path 3: Coherencia material (@redflag, CoT+Validation) | ⏳ |
+| T08 | Path 4: Coherencia de límites (@yellowflag, ToT) | ⏳ |
+| T09 | Path 5: Coherencia de registro (@orangeflag, Self-Consistency) | ⏳ |
+| T10 | Síntesis: Φ unificada vs dimensiones ortogonales | ⏳ |
+
+**DoD**: `coherence_definition.md` con propuesta formal de Φ
+
+#### S03: Toy Model MVP (3 pts)
+
+| Task | Descripción | Estado |
+|------|-------------|--------|
+| T11 | Crear fixture: sprint actual como input | ⏳ |
+| T12 | Ejecutar 5 banderas sobre fixture | ⏳ |
+| T13 | Calcular Φ según definición S02 | ⏳ |
+| T14 | Validar consistencia (3 ejecuciones) | ⏳ |
+
+**DoD**: `phi_editor_mvp.py` ejecutable + reporte de consistencia
+
+#### Criterios de Éxito
+
+- [ ] S01 produce veredicto binario (✅/❌)
+- [ ] S02 produce definición formal de Φ
+- [ ] S03 produce script ejecutable
+- [ ] Si alguna story falla → pivot documentado
 
 ### SCRIPT-1.22.0 — Integración y Validación
 
@@ -936,6 +993,7 @@ Script de diagnóstico que mida:
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-28 | 🔄 Refactorizar SCRIPT-1.23.0 como Validación Paradigmática (5W+Banderas→O.R.G.A.N.I.Z.E) — 16→13 pts, sin dependencias | @pathykar + @periodico |
 | 2025-12-28 | ✅ Cerrar SCRIPT-1.29.0 Fase 2 (S09-S15, 15 pts) — agentes core refactorizados: 1240→369 líneas (70% reducción) | Aleph |
 | 2025-12-28 | Extender SCRIPT-1.29.0 con Fase 2: refactorización de agentes core (S09-S15, +15 pts) | Scrum |
 | 2025-12-28 | ✅ Implementar SCRIPT-1.29.0 Fase 1 (S01-S07, 12 pts) — plugin scriptorium-pack operativo | Aleph |
