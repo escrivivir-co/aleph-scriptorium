@@ -1,230 +1,149 @@
-# Prompt: Retrospectiva y Cierre
+# Prompt: Retrospectiva y Cierre (DRY)
 
-> **Plugin**: Scrum  
+> **Plugin**: Scrum v2.0  
 > **Comando**: `@scrum cerrar`  
-> **Fase**: 5 (Cerrar)
+> **Modelo**: DRY (mover a archivados, actualizar referencias)
 
 ---
 
-## Contexto
+## Objetivo
 
-Este prompt genera la retrospectiva, foto de estado y prepara el siguiente sprint.
+Cerrar sprint moviendo borradores a archivados y actualizando referencias en el índice.
+
+---
 
 ## Instrucciones para @scrum
 
-### Paso 1: Verificar estado del sprint
+### Paso 1: Verificar estado
 
 ```
-1. Leer backlog oficial del sprint activo
-2. Calcular métricas finales
-3. Identificar tasks no completadas
+1. Leer índice .github/BACKLOG-SCRIPTORIUM.md
+2. Identificar épicas del sprint con estado ✅
+3. Leer borradores para calcular métricas
 ```
 
-**Si hay tasks pendientes**:
+**Si hay épicas no completadas (📋/🔄)**:
 
 ```
-⚠️ Sprint N tiene tasks pendientes
+⚠️ Sprint tiene épicas pendientes
 
-Completadas: 45/52 (87%)
-Pendientes: 7 tasks (15 pts)
+Completadas: N/M épicas
+Pendientes: {lista}
 
 Opciones:
-1. Cerrar igualmente (mover pendientes a Sprint N+1)
-2. Extender sprint (no recomendado)
-3. Cancelar cierre
+1. Cerrar igualmente (mover pendientes a siguiente sprint)
+2. Cancelar cierre
 
 ¿Qué deseas hacer?
 ```
 
-### Paso 2: Generar retrospectiva
+### Paso 2: Crear carpeta en ARCHIVADOS
 
-Crear sección de retrospectiva basada en:
-- Métricas finales vs. targets
-- Tasks bloqueadas durante el sprint
-- Buffer consumido
-- Entregables producidos
-
-```markdown
-## Retrospectiva
-
-### ✅ Qué funcionó
-- [Analizar métricas positivas]
-- [Entregables completados]
-- [Procesos que fluyeron bien]
-
-### ❌ Qué no funcionó
-- [Tasks bloqueadas y por qué]
-- [Métricas por debajo del target]
-- [Fricciones detectadas]
-
-### 🔧 Qué mejorar
-- [Acciones concretas para Sprint N+1]
-- [Cambios de proceso]
-- [Herramientas a añadir/mejorar]
+```
+ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/{sprint}/
+├── README.md
+├── {épica-1}/     # Mover desde BORRADORES
+├── {épica-2}/     # Mover desde BORRADORES
+└── retrospectiva.md
 ```
 
-### Paso 3: Crear foto de estado
+### Paso 3: Generar retrospectiva
 
-Generar `ARCHIVO/FOTOS_ESTADO/{fecha}_Sprint{N}_{Nombre}.md`:
+Crear `retrospectiva.md` en la carpeta del sprint archivado:
 
 ```markdown
-# Foto de Estado: Sprint N — {Nombre}
+# Retrospectiva: {Sprint}
 
-> **Fecha**: {fecha actual}
-> **Sprint**: N
-> **Duración**: {fecha inicio} → {fecha cierre}
+> **Período**: {fecha inicio} → {fecha cierre}
+> **Épicas cerradas**: N
 
----
+## ✅ Qué funcionó
+- [Analizar éxitos]
 
-## Métricas Finales
+## ❌ Qué no funcionó
+- [Analizar problemas]
 
-| Métrica | Target | Real | Status |
-|---------|--------|------|--------|
-| Tasks completadas | N/N | M/N | {emoji} |
-| Effort completado | X pts | Y pts | {emoji} |
-| % Avance | 100% | Z% | {emoji} |
-| Buffer consumido | ≤30 pts | W pts | {emoji} |
-| Bloqueos resueltos | 0 | K | {emoji} |
+## 🔧 Qué mejorar
+- [Acciones para siguiente sprint]
+```
 
-### Interpretación
-- {Análisis de las métricas}
+### Paso 4: Crear foto de estado
 
----
+Generar `ARCHIVO/FOTOS_ESTADO/{fecha}_{sprint}.md`:
 
-## Entregables
+```markdown
+# Foto de Estado: {Sprint}
 
-| Entregable | Estado | Ubicación |
-|------------|--------|-----------|
-| ... | ✅/⚠️/❌ | [link] |
+> **Fecha**: {YYYY-MM-DD}
 
----
+## Métricas
 
-## Retrospectiva
-
-[Copiar de paso 2]
-
----
+| Métrica | Valor |
+|---------|-------|
+| Épicas cerradas | N |
+| Effort completado | X pts |
 
 ## Estado del Proyecto
 
-### Scriptorium
-- Versión: {versión}
-- Plugins instalados: {N}
-- Agentes operativos: {M}
-
-### Fundación
-- Capítulos completados: {X}/12
-- Marco conceptual: {Y} documentos
-
-### Web (GH-Pages)
-- Páginas publicadas: {Z}
-- Obras en cartelera: {W}
-
----
-
-## Próximo Sprint
-
-**Propuesta**: Sprint N+1 — {Nombre sugerido}
-**Objetivo candidato**: {descripción}
-**Épicas candidatas**: {lista}
-
----
-
-*Foto generada automáticamente por @scrum*
+[Resumen del estado actual]
 ```
 
-### Paso 4: Archivar borrador
+### Paso 5: Actualizar índice
 
-Mover contenido de DISCO a archivo si es necesario, o marcar como cerrado:
+**⚠️ Solo modificar referencias, no añadir contenido**
+
+1. Eliminar filas del sprint activo
+2. Añadir fila en sección Histórico:
 
 ```markdown
-<!-- SPRINT CERRADO: {fecha} -->
+## Histórico
+
+| Sprint | Período | Épicas | Referencia |
+|--------|---------|--------|------------|
+| {nombre} | {fechas} | N cerradas | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/{sprint}/) |
 ```
 
-### Paso 5: Actualizar backlogs oficiales
+3. Actualizar métricas acumuladas si existen
 
-Marcar sprint como cerrado en el backlog oficial:
+### Paso 6: Actualizar changelog
 
 ```markdown
-## Sprint N: {Nombre} — ✅ CERRADO
-
-**Fecha cierre**: {fecha}
-**Métricas finales**: {resumen}
-
-[Ver foto de estado](../ARCHIVO/FOTOS_ESTADO/{archivo}.md)
-```
-
-### Paso 6: Calcular velocity
-
-```python
-velocity_sprint = effort_completado / num_iteraciones
-velocity_historico = promedio(velocity_sprints_anteriores)
-velocity_nuevo = (velocity_historico * num_sprints + velocity_sprint) / (num_sprints + 1)
-```
-
-Reportar:
-```
-Velocity del Sprint N: {X} pts/iteración
-Velocity histórico actualizado: {Y} pts/iteración
+| {fecha} | 🗄️ Archivar {sprint} | @scrum |
 ```
 
 ### Paso 7: Generar commit
 
 ```
-docs({scope}/plan): cerrar sprint N
+docs(script/plan): cerrar sprint {nombre}
 
-- Métricas: {completadas}/{total} tasks ({avance}%)
-- Foto de estado: {archivo}
-- Velocity: {X} pts/iteración
+- Archivar N épicas en BACKLOG_ARCHIVADOS/{sprint}/
+- Crear foto de estado
+- Actualizar índice con referencia
 
-refs #{ID-épica}
+refs #SCRIPT-X.Y.0, #SCRIPT-X.Z.0
 ```
 
 ### Paso 8: Proponer siguiente sprint
 
 ```
-Sprint N cerrado exitosamente.
+✅ Sprint {nombre} cerrado
 
-Propuesta para Sprint N+1:
-─────────────────────────
-Nombre sugerido: {nombre}
-Objetivo: {descripción}
+Archivado en: BACKLOG_ARCHIVADOS/{sprint}/
+Foto de estado: FOTOS_ESTADO/{archivo}.md
 
-Épicas candidatas:
-1. {épica 1} ({reason})
-2. {épica 2} ({reason})
-
-Tasks pendientes de Sprint N:
-- T048, T049, T050 (mover a Sprint N+1)
-
-Buffer de mejoras acumulado:
-- {lista de mejoras no abordadas}
+Épicas pendientes para siguiente sprint:
+- {lista de pendientes si las hay}
 
 ¿Iniciar planificación con @scrum planificar?
 ```
 
 ---
 
-## Criterios de cierre exitoso
+## Resumen del Modelo DRY
 
-| Criterio | Mínimo para éxito |
-|----------|-------------------|
-| % Avance | ≥80% |
-| Entregables principales | 100% |
-| Bloqueos activos | 0 |
-| Buffer | ≤100% consumido |
-
----
-
-## Salida esperada
-
-1. Retrospectiva generada
-2. Foto de estado en `ARCHIVO/FOTOS_ESTADO/`
-3. Backlog oficial marcado como cerrado
-4. Velocity actualizado
-5. Commit generado
-6. Propuesta de Sprint N+1
-
-## Siguiente paso
-
-Usuario decide → `@scrum planificar` para Sprint N+1.
+| Operación | En índice | En archivados |
+|-----------|-----------|---------------|
+| Eliminar épicas activas | ✅ Quitar filas | — |
+| Añadir a histórico | ✅ Una fila | — |
+| Guardar contenido | ❌ | ✅ Carpeta completa |
+| Retrospectiva | ❌ | ✅ Archivo .md |

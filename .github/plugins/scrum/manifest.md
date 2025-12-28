@@ -1,8 +1,8 @@
 ---
 id: scrum
-name: "Gestión Scrum de Backlogs"
-version: "1.0.0"
-description: "Plugin para gestión ágil de backlogs con protocolo de edición colaborativa, aprobación y tracking. Incluye roles PO, SM y DevOps."
+name: "Gestión Scrum DRY"
+version: "2.0.0"
+description: "Plugin para gestión ágil con modelo DRY: el backlog principal es un índice ligero que referencia borradores y archivados. Diseñado para mitigar context bloat."
 author: "Aleph Scriptorium"
 license: "AIPL v1.0"
 
@@ -12,46 +12,46 @@ dependencies: []
 agents:
   - name: "Scrum"
     file: "agents/scrum.agent.md"
-    description: "Coordinador principal del protocolo Scrum. Orquesta PO, SM y DevOps."
+    description: "Coordinador Scrum. Gestiona índice de referencias, NO contenido detallado."
 
 prompts:
   - name: "planificar-sprint"
     file: "prompts/planificar-sprint.prompt.md"
-    description: "Iniciar conversación PO-SM para planificar un sprint."
+    description: "Iniciar conversación PO-SM en BACKLOG_BORRADORES."
   - name: "crear-backlog-borrador"
     file: "prompts/crear-backlog-borrador.prompt.md"
-    description: "Generar backlog borrador en DISCO a partir de conversación."
+    description: "Crear borrador detallado en DISCO."
   - name: "aprobar-backlog"
     file: "prompts/aprobar-backlog.prompt.md"
-    description: "Revisar y aprobar backlog para publicación oficial."
+    description: "Añadir referencia al índice oficial (no copiar contenido)."
   - name: "tracking-sprint"
     file: "prompts/tracking-sprint.prompt.md"
-    description: "Actualizar estado de tasks y métricas del sprint activo."
+    description: "Actualizar estado en borrador activo."
   - name: "retrospectiva"
     file: "prompts/retrospectiva.prompt.md"
-    description: "Generar retrospectiva y foto de estado al cierre."
+    description: "Mover borrador a archivado y actualizar índice."
 
 instructions:
   - name: "scrum-protocol"
     file: "instructions/scrum-protocol.instructions.md"
-    description: "Protocolo completo de gestión de backlogs."
+    description: "Protocolo DRY: índice ligero + referencias."
 
 handoffs:
   - label: "Planificar nuevo sprint"
     agent: "Scrum"
-    prompt: "Inicia una conversación PO-SM para planificar el próximo sprint."
+    prompt: "Crea carpeta en BACKLOG_BORRADORES y añade referencia al índice."
   - label: "Crear backlog borrador"
     agent: "Scrum"
-    prompt: "Genera un backlog borrador en DISCO a partir de la planificación."
-  - label: "Aprobar y publicar backlog"
+    prompt: "Genera borrador detallado en DISCO (no en índice)."
+  - label: "Aprobar y referenciar"
     agent: "Scrum"
-    prompt: "Revisa el backlog borrador y publícalo en los backlogs oficiales."
+    prompt: "Añade fila de referencia al índice oficial."
   - label: "Actualizar tracking"
     agent: "Scrum"
-    prompt: "Actualiza el estado de las tasks del sprint activo."
+    prompt: "Actualiza estado en el borrador (no en índice)."
   - label: "Cerrar sprint"
     agent: "Scrum"
-    prompt: "Genera retrospectiva, foto de estado y prepara el siguiente sprint."
+    prompt: "Mueve borrador a BACKLOG_ARCHIVADOS y actualiza referencias."
 ---
 
 # Plugin: Gestión Scrum de Backlogs

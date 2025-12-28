@@ -1,83 +1,73 @@
-# Prompt: Planificar Sprint
+# Prompt: Planificar Sprint (DRY)
 
-> **Plugin**: Scrum  
+> **Plugin**: Scrum v2.0  
 > **Comando**: `@scrum planificar`  
-> **Fase**: 1 (Planificar)
+> **Modelo**: DRY (índice de referencias)
 
 ---
 
-## Contexto
+## Objetivo
 
-Este prompt inicia una conversación simulada entre Product Owner (PO) y Scrum Master (SM) para planificar el próximo sprint.
+Crear carpeta de borrador en DISCO y añadir **una fila de referencia** al índice oficial.
 
 ## Instrucciones para @scrum
 
-### Paso 1: Identificar sprint actual
+### Paso 1: Identificar siguiente épica
 
 ```
-1. Leer BACKLOG-SCRIPTORIUM.md y BACKLOG-FUNDACION.md
-2. Identificar el sprint activo más reciente
-3. Calcular número del siguiente sprint
+1. Leer .github/BACKLOG-SCRIPTORIUM.md (índice)
+2. Leer BACKLOG_BORRADORES/INDEX.md (estado actual)
+3. Determinar ID de siguiente épica (SCRIPT-X.Y.0)
 ```
 
-### Paso 2: Crear carpeta en DISCO
+### Paso 2: Crear carpeta en BACKLOG_BORRADORES
 
 ```
-ARCHIVO/DISCO/{Mes}_{Año}_release/
+ARCHIVO/DISCO/BACKLOG_BORRADORES/{tema}/
 ```
 
-Ejemplo: `ARCHIVO/DISCO/Enero_26_release/`
+Convención de nombres:
+- Usa tema descriptivo: `CLI_SCRIPTORIUM`, `CONTEXT_BLOAT`, `MMCO_EDITOR`
+- NO uses fechas en el nombre de carpeta
 
-### Paso 3: Iniciar conversación
+### Paso 3: Crear conversación PO-SM
 
-Generar `01_planificacion-sprintN.md` con estructura:
+Generar `conversacion-po-sm.md` en la carpeta:
 
 ```markdown
-# Planificación Sprint N: Conversación PO-SM
+# Planificación: {Tema}
 
-> **Fecha**: {fecha actual}
-> **Participantes**: Product Owner (PO), Scrum Master (SM)
-> **Contexto**: Cierre de Sprint N-1 ({métricas})
+> **Épica propuesta**: SCRIPT-X.Y.0
+> **Fecha**: {YYYY-MM-DD}
 
 ---
 
 ## Apertura
 
-**SM**: Sprint N-1 cerrado. {Resumen de métricas}.
-{Entregables principales}.
-¿Cuál es la dirección para el Sprint N?
+**SM**: [Contexto del trabajo anterior]
+¿Cuál es la dirección para esta épica?
 
 **PO**: [Esperar input del usuario]
 ```
 
-### Paso 4: Facilitar diálogo
+### Paso 4: Añadir referencia al índice
 
-Guiar al usuario a través de:
-
-1. **Objetivo del sprint** (qué queremos lograr)
-2. **Épicas candidatas** (qué trabajos grandes)
-3. **Modelo de trabajo** (100% una cosa, híbrido, etc.)
-4. **Riesgos** (qué puede salir mal)
-5. **Métricas de éxito** (cómo sabemos que funcionó)
-
-### Paso 5: Cerrar conversación
+**⚠️ SOLO AÑADIR UNA FILA**, no copiar contenido:
 
 ```markdown
-## Cierre
+| 📋 | SCRIPT-X.Y.0 | {Nombre corto} | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/{tema}/) |
+```
 
-**PO**: Aprobado.
+### Paso 5: Confirmar
 
-**SM**: Resumen ejecutivo:
+```
+✅ Épica planificada
 
-> **Sprint N: {Nombre}**
-> 
-> - **Objetivo**: {descripción}
-> - **Modelo**: {descripción}
-> - **Épicas**: {lista}
-> - **Effort estimado**: {N} pts
-> - **Riesgos principales**: {lista}
+- Carpeta: BACKLOG_BORRADORES/{tema}/
+- Referencia añadida al índice
+- Estado: 📋 (planificando)
 
-Generando backlog borrador...
+Siguiente: @scrum borrador para detallar épica
 ```
 
 ---

@@ -1,154 +1,93 @@
-# Prompt: Aprobar y Publicar Backlog
+# Prompt: Aprobar Épica (DRY)
 
-> **Plugin**: Scrum  
+> **Plugin**: Scrum v2.0  
 > **Comando**: `@scrum aprobar`  
-> **Fase**: 3 (Aprobar)
+> **Modelo**: DRY (solo cambiar estado, NO copiar contenido)
 
 ---
 
-## Contexto
+## Objetivo
 
-Este prompt valida un backlog borrador y lo publica en los backlogs oficiales.
+Cambiar estado de épica de 📋/🔄 a ✅ en el índice. **NO copiar contenido del borrador al índice.**
+
+---
 
 ## Instrucciones para @scrum
 
-### Paso 1: Localizar borrador
+### Paso 1: Validar borrador existe
 
 ```
-1. Identificar carpeta de release activa en DISCO
-2. Leer 02_backlog-sprintN.md
+1. Leer referencia desde .github/BACKLOG-SCRIPTORIUM.md
+2. Navegar a la carpeta referenciada
+3. Verificar que existe 01_backlog-borrador.md
 ```
 
-### Paso 2: Validar estructura
+### Paso 2: Validación ligera
 
-Verificar que el borrador contiene:
+| Check | Pregunta |
+|-------|----------|
+| Borrador existe | ¿Hay 01_backlog-borrador.md? |
+| Effort definido | ¿Hay estimación de puntos? |
+| Tasks listadas | ¿Hay al menos una task? |
 
-| Elemento | Requerido | Validación |
-|----------|-----------|------------|
-| Épicas | ✅ | IDs únicos, effort asignado |
-| Iteraciones | ✅ | Effort suma 100% |
-| Stories | ✅ | Cada una con tasks |
-| Tasks | ✅ | Estado inicial ⏳ |
-| Métricas | ✅ | Target y mínimo definidos |
-| Dependencias | ✅ | Estado documentado |
-| DoD | ✅ | Por cada story |
+**Si falla validación**: Reportar y solicitar corrección.
 
-**Si falla validación**: Reportar errores y solicitar corrección.
+### Paso 3: Cambiar estado en el índice
 
-### Paso 3: Identificar destino
-
-| Prefijo de épica | Backlog oficial |
-|------------------|-----------------|
-| `SCRIPT-*` | `.github/BACKLOG-SCRIPTORIUM.md` |
-| `FUND-*` | `PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md` |
-
-**Si hay épicas de ambas Opportunities**: Dividir y publicar en ambos backlogs.
-
-### Paso 4: Integrar en backlog oficial
-
-Para cada backlog afectado:
-
-1. Leer backlog oficial actual
-2. Localizar sección de último sprint
-3. Añadir nueva sección después:
+**⚠️ SOLO cambiar el emoji de estado en la fila existente**:
 
 ```markdown
----
+# Antes
+| 📋 | SCRIPT-X.Y.0 | Nombre | [borrador](ruta) |
 
-## Sprint N: {Nombre}
-
-> **Feature Cycle**: M
-> **Modelo**: {descripción}
-> **Effort**: {N} pts
-
-[Contenido del borrador adaptado]
+# Después
+| ✅ | SCRIPT-X.Y.0 | Nombre | [borrador](ruta) |
 ```
 
-4. Actualizar métricas globales si existen
-5. Añadir entrada al changelog:
+### ⚠️ NO HACER
+
+- NO añadir contenido del borrador al índice
+- NO crear secciones nuevas extensas
+- NO copiar tablas de tasks/stories
+- NO duplicar información
+
+### Paso 4: Actualizar changelog del índice
+
+Añadir entrada al changelog del BACKLOG-SCRIPTORIUM.md:
 
 ```markdown
-| {fecha} | Aprobar backlog Sprint N | @scrum |
+| {fecha} | ✅ Aprobar SCRIPT-X.Y.0 | @scrum |
 ```
 
 ### Paso 5: Generar commit
 
 ```
-chore({scope}/plan): aprobar backlog sprint N
+chore(script/plan): aprobar épica SCRIPT-X.Y.0
 
-- Integrar {lista de épicas}
-- {N} tasks, {M} pts effort
-- Modelo: {descripción}
+- Cambiar estado 📋 → ✅
+- Borrador validado en BACKLOG_BORRADORES/{tema}/
 
-refs #{ID-épica-principal}
+refs #SCRIPT-X.Y.0
 ```
 
-**Scope**:
-- `script/plan` para BACKLOG-SCRIPTORIUM
-- `fund/plan` para BACKLOG-FUNDACION
-
-### Paso 6: Confirmar publicación
-
-Reportar al usuario:
+### Paso 6: Confirmar
 
 ```
-✅ Backlog Sprint N publicado
+✅ Épica SCRIPT-X.Y.0 aprobada
 
-Destinos:
-- .github/BACKLOG-SCRIPTORIUM.md (X épicas)
-- PROYECTOS/FUNDACION/BACKLOG-FUNDACION.md (Y épicas)
+- Estado cambiado a ✅ en índice
+- Contenido permanece en: BACKLOG_BORRADORES/{tema}/
+- NO se copió contenido al índice (modelo DRY)
 
-Commit sugerido:
-{mensaje de commit}
-
-El sprint está listo para comenzar.
-Usa @scrum tracking para actualizar estado de tasks.
+Siguiente: Continuar trabajo, usar @scrum tracking para actualizar
 ```
 
 ---
 
-## Transformaciones
+## Resumen del Modelo DRY
 
-### Del borrador al oficial
-
-| En borrador | En oficial |
-|-------------|------------|
-| Estructura libre | Estructura del backlog oficial |
-| Feature Cycle | Sprint + Iteraciones |
-| IDs locales | IDs con prefijo de épica |
-
-### Métricas iniciales
-
-Al publicar, las métricas deben mostrar:
-
-```markdown
-| Métrica | Valor |
-|---------|-------|
-| Tasks totales | N |
-| Completadas | 0 |
-| En progreso | 0 |
-| Pendientes | N |
-| % Avance | 0% |
-```
-
----
-
-## Validaciones pre-commit
-
-- [ ] Backlog oficial modificado correctamente
-- [ ] No se eliminó contenido existente
-- [ ] Changelog actualizado
-- [ ] IDs no duplicados con sprints anteriores
-- [ ] Mensaje de commit sigue DEVOPS.md
-
----
-
-## Salida esperada
-
-1. Backlog(s) oficial(es) actualizados
-2. Mensaje de commit generado
-3. Confirmación al usuario
-
-## Siguiente paso
-
-Usuario ejecuta commit → desarrollo comienza → `@scrum tracking` para actualizar.
+| Antes (v1.x) | Después (v2.0 DRY) |
+|--------------|-------------------|
+| Copiar borrador al índice | Solo cambiar emoji |
+| Índice crece con cada épica | Índice permanece ligero |
+| Duplicación de información | Fuente única en borrador |
