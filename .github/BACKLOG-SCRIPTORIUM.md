@@ -11,6 +11,7 @@
 
 | Épica | Nombre | Estado | Prioridad |
 |-------|--------|--------|-----------|
+| SCRIPT-1.30.0 | Blueprint MMCO — Refactorización Φ 5D | ✅ Cerrada | P0 |
 | SCRIPT-1.29.0 | ScriptoriumPack (Context Bloat Mitigation) | ✅ Cerrada | P0 |
 | SCRIPT-1.28.0 | Blueprint MMCO Enhancement | ✅ Cerrada | P0 |
 | SCRIPT-1.27.0 | Blueprint MMCO Compliance | ✅ Cerrada | P0 |
@@ -20,6 +21,53 @@
 | SCRIPT-1.22.0 | Integración y Validación | 🆕 Nueva | P3 |
 | SCRIPT-1.23.0 | MMCO Editor Transmedia (Validación Paradigmática) | 🔄 Refactorizada | P0 |
 | SCRIPT-1.25.0 | Blueprint Visual Index | ✅ Cerrada | Alta |
+
+---
+
+## SCRIPT-1.30.0 — Blueprint MMCO: Refactorización Φ 5D
+
+> **Objetivo**: Refactorizar Blueprint MMCO para reflejar la caracterización MMCO de banderas aprobada en SCRIPT-1.23.0  
+> **Sprint**: FC2 (actual)  
+> **Effort total**: 9 pts  
+> **Estado**: ✅ Cerrada (2025-12-28)  
+> **Dependencia**: SCRIPT-1.23.0 (caracterización MMCO de banderas)
+
+### Problema Detectado
+
+| Aspecto | Blueprint Anterior | Blueprint Refactorizado |
+|---------|--------------------|--------------------------|
+| **Fórmula** | `f(Φ_blue, ..., Φ_orange)` | Vector 5D: `[Φ_verdad, Φ_poder, Φ_material, Φ_límites, Φ_registro]` |
+| **Banderas** | Lista plana en "Auditoría" | Distribuidas por nivel MMCO (0a, 0b, 1, 2, 3) |
+| **Técnicas** | No visibles | O.R.G.A.N.I.Z.E badge por bandera |
+| **Mensaje** | "Las banderas auditan" | "Espacios ortogonales, inconmensurables" |
+
+### Distribución de Banderas por Nivel MMCO
+
+| Nivel | Slide | Bandera | Técnica |
+|-------|-------|---------|----------|
+| 0a | Tensores | ⚫ @blackflag (Φ_poder) | Graph of Thought |
+| 0b | Correlaciones | 🔵 @blueflag (Φ_verdad) | CoT Sequential |
+| 1 | Geometría | 🔴 @redflag (Φ_material) | CoT + Validation |
+| 2 | Tiempo | 🟡 @yellowflag (Φ_límites) | ToT Multi-Path |
+| 3 | Espacio-tiempo | 🟠 @orangeflag (Φ_registro) | Self-Consistency |
+
+### Stories Completadas
+
+| ID | Story | Descripción | Effort | Estado |
+|----|-------|-------------|--------|--------|
+| S01 | Redistribuir banderas en slides | Mover cada bandera a su nivel MMCO | 3 pts | ✅ |
+| S02 | Actualizar Slide 4 (Materia) | Nueva fórmula vector 5D + CSS | 2 pts | ✅ |
+| S03 | Añadir técnicas O.R.G.A.N.I.Z.E | Mostrar técnica de cada bandera | 2 pts | ✅ |
+| S04 | Documentar inconmensurabilidad | Nota explicativa en overview | 1 pt | ✅ |
+| S05 | Tests de navegación | Verificar con Playwright | 1 pt | ✅ |
+
+### Criterios de Aceptación
+
+- [x] Las 5 banderas están distribuidas en sus niveles MMCO (0a, 0b, 1, 2, 3)
+- [x] Slide 4 muestra Φ_editor como vector 5D, no como función
+- [x] Cada bandera tiene su técnica O.R.G.A.N.I.Z.E visible
+- [x] Overview documenta inconmensurabilidad
+- [x] Navegación funciona sin errores (validado con Playwright MCP 2025-12-28)
 
 ---
 
@@ -1271,6 +1319,7 @@ Script de diagnóstico que mida:
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-28 | ✅ Aprobar y cerrar SCRIPT-1.30.0 (Blueprint MMCO Φ 5D, 9 pts) — banderas distribuidas por nivel MMCO, fórmula vector 5D, inconmensurabilidad documentada | @scrum |
 | 2025-12-28 | 📝 Ampliar S02 SCRIPT-1.23.0 con caracterización MMCO de banderas (feedback Talaia/Flove/LOW): nivel emergencia, operador Φ, inconmensurabilidad | @aleph + @periodico |
 | 2025-12-28 | ✅ Cerrar SCRIPT-1.29.0 Fase 3 (S16-S21, 12 pts) — agentes plugin refactorizados: 703→230 líneas (67% reducción) | Aleph |
 | 2025-12-28 | 🆕 Extender SCRIPT-1.29.0 con Fase 3: refactorización agentes plugin (S16-S21, +12 pts) — plugin-manager y scrum | Scrum |
