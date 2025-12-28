@@ -310,7 +310,132 @@ Antes de operar, el agente debe verificar:
 ## Referencias
 
 - **Plugin**: `.github/plugins/novelist/`
-- **Submódulo**: `mcp-novelist/`
+- **Submódulo**: `NovelistEditor/`
 - **TALLER**: `ARCHIVO/DISCO/TALLER/`
 - **AGENT_CREATOR**: `.github/plugins/agent-creator/`
 - **ARG_BOARD**: `ARCHIVO/PLUGINS/ARG_BOARD/`
+- **Obras**: `ARCHIVO/PLUGINS/NOVELIST/obras/`
+
+---
+
+## Integración: NovelistEditor Standalone
+
+### Escenario
+
+Un escritor abre VS Code directamente en `NovelistEditor/` (no en el Scriptorium completo). Necesita:
+1. Acceder a las obras del Scriptorium padre
+2. Usar las herramientas MCP si el servidor está activo
+3. Trabajar en modo ligero si no hay servidor
+
+### Archivos de Integración
+
+| Archivo | Ubicación | Propósito |
+|---------|-----------|-----------|
+| `scriptorium-context.json` | `NovelistEditor/` | Rutas al Scriptorium padre |
+| `scriptorium-context.schema.json` | `NovelistEditor/` | Validación del contexto |
+| `escritor.chatmode.md` | `NovelistEditor/.github/chatmodes/` | Modo de bienvenida |
+| `scriptorium-context.instructions.md` | `NovelistEditor/.github/instructions/` | Reglas de carga |
+
+### Flujo de Primera Sesión
+
+```
+Usuario abre NovelistEditor/
+       │
+       ▼
+Copilot detecta escritor.chatmode.md
+       │
+       ▼
+Lee scriptorium-context.json
+       │
+       ├── ¿Scriptorium detectado? → Listar obras disponibles
+       │
+       └── ¿Servidor MCP activo? → Activar modo completo
+       │
+       ▼
+Presenta bienvenida con obras disponibles
+```
+
+### Ejemplo de Prompt de Usuario
+
+```
+Hola. Soy un usuario de Aleph Scriptorium. Es la primera vez que 
+abro este NovelistEditor. Soy uno de los escritores de la novela 
+"Ítaca digital". Necesito hacer una sesión de escritura. 
+¿Puedes ayudarme?
+```
+
+### Respuesta Esperada del Agente
+
+1. **Detectar contexto**: Leer `scriptorium-context.json`
+2. **Verificar obra**: Buscar "itaca-digital" en obras disponibles
+3. **Cargar metadatos**: `novela.json`, `estructura.json`, `sincronizacion.json`
+4. **Presentar estado**: Tabla con capítulos y progreso
+5. **Ofrecer sesión**: "¿En qué capítulo quieres trabajar hoy?"
+
+### Configuración de Rutas (Instalación Local)
+
+Por ahora, las rutas son absolutas. En `scriptorium-context.json`:
+
+```json
+{
+  "scriptorium": {
+    "root": "/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH"
+  },
+  "obras": {
+    "path": "ARCHIVO/PLUGINS/NOVELIST/obras"
+  }
+}
+```
+
+**TODO**: Migrar a rutas relativas o variables de entorno:
+- `ALEPH_SCRIPTORIUM_ROOT` para la raíz
+- Detección automática si NovelistEditor es submódulo (`../`)
+
+### Chatmodes Disponibles
+
+| Chatmode | Rol | Cuándo usar |
+|----------|-----|-------------|
+| `escritor` | Sesiones de escritura | Primera vez, selección de obra |
+| `editor` | Gestión de contenedores | Inicializar, recuperar, configurar |
+| `albacea` | Creación de contenido | Añadir personajes, escenas, capítulos |
+| `lector` | Consulta de información | Buscar, indexar, analizar |
+
+### Sincronización con Scriptorium
+
+Cuando el escritor termina una sesión:
+
+1. **Guardar cambios locales**: Actualizar `capitulos/*.md`
+2. **Actualizar estructura**: Modificar `estructura.json` (palabras, estado)
+3. **Sincronizar Teatro** (opcional): Exportar a `TEATRO/obras/{id}.yaml`
+4. **Commit** (si está en Scriptorium): `feat(novelist): sesión de escritura`
+
+---
+
+## Obras Disponibles (Ejemplo)
+
+### Ítaca Digital
+
+```yaml
+id: itaca-digital
+titulo: "Ítaca Digital: El Retorno del Navegante"
+estado: borrador
+estructura: monomito-12
+capitulos: 12
+personajeGuia: penelope
+fuentes:
+  - teatro: ARCHIVO/PLUGINS/TEATRO/obras/itaca-digital.yaml
+  - taller: ARCHIVO/DISCO/TALLER/NOVELA_TRANSMEDIA
+  - remota: /Users/morente/Desktop/THEIA_PATH/NOVELA
+```
+
+### Crear Nueva Obra
+
+Para crear una nueva obra:
+
+1. Crear carpeta en `ARCHIVO/PLUGINS/NOVELIST/obras/{nueva-obra}/`
+2. Crear `novela.json` con metadatos
+3. Crear `estructura.json` con 12 capítulos
+4. Crear `sincronizacion.json` con enlaces
+5. Crear `capitulos/` con 12 archivos `.md`
+6. Actualizar `scriptorium-context.json` en NovelistEditor
+
