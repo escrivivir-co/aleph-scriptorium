@@ -149,6 +149,54 @@ Un editor de ontologías que:
 | T024 | Documentar flujo de integración | 0.5 | ⏳ |
 | T025 | Test end-to-end | 1 | ⏳ |
 
+---
+
+### SCRIPT-1.20.0-S07: Generación de System Prompts (P.R.O.M.P.T)
+**Effort**: 2 pts  
+**Prioridad**: Should  
+**Estado**: 📋 Borrador  
+**Dependencia**: S02 (Core Parser) + SCRIPT-1.23.0-S04
+
+> **DRY**: Metodología completa en `ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/PromptCraft.md`
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T026 | Integrar pipeline O.R.G.A.N.I.Z.E → P.R.O.M.P.T en FloveEditor | 0.5 | 📋 |
+| T027 | Crear handoff "Generar system prompt" desde ontología | 0.5 | 📋 |
+| T028 | Implementar anti-enshittification checklist en exportador | 0.5 | 📋 |
+| T029 | Documentar flujo Ontología → Agente | 0.5 | 📋 |
+
+**Concepto**: Una vez definida una ontología Flove, el usuario debería poder generar automáticamente un `.agent.md` con:
+- System prompt basado en P.R.O.M.P.T
+- Técnica de razonamiento seleccionada por O.R.G.A.N.I.Z.E según complejidad
+- Validación anti-enshittification incluida
+
+**Pipeline propuesto**:
+```
+Ontología YAML (Flove)
+        │
+        ▼
+FloveParser.ts → FloveValidator.ts
+        │
+        ▼
+O.R.G.A.N.I.Z.E (clasificar complejidad)
+        │
+        ▼
+P.R.O.M.P.T (generar behavioral gap + QA)
+        │
+        ▼
+AgentExporter.ts → .agent.md
+```
+
+**Definition of Done**: 
+- [ ] Handoff "Generar agente" disponible en @floveeditor
+- [ ] Exportación produce `.agent.md` con frontmatter válido
+- [ ] Checklist anti-enshittification incluido en output
+
+**Referencia cruzada**: 
+- SCRIPT-1.23.0-S04 (metodología P.R.O.M.P.T)
+- SCRIPT-1.21.0 (Metamodel Compliance)
+
 **Definition of Done**: Schema exportado se instala automáticamente en TypedPrompting.
 
 ---

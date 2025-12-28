@@ -167,3 +167,94 @@ Para cada story de SCRIPT-1.23.0, añadir:
 - [ ] **Z**: Validación pasando
 - [ ] **E**: Output ontológicamente fundamentado
 ```
+
+---
+
+## Paso Adicional: P.R.O.M.P.T (PromptCraft)
+
+> **Fuente**: `PromptCraft.md` (Talaia Digital)  
+> **Propósito**: Generar system prompts para agentes modelados con MMCO
+
+### Cuándo usar PromptCraft
+
+Después de completar O.R.G.A.N.I.Z.E (el **qué** del agente), usar P.R.O.M.P.T para generar el **cómo** (system messages ejecutables).
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    Pipeline MMCO → Agente                           │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│  MMCO Modeling      O.R.G.A.N.I.Z.E        P.R.O.M.P.T              │
+│  (Ontología)   →   (Razonamiento)    →   (System Prompt)           │
+│                                                                     │
+│  ┌──────────┐      ┌──────────────┐      ┌─────────────────┐       │
+│  │ Φ_editor │  →   │ Técnica CoT/ │  →   │ Behavioral Gap  │       │
+│  │ Niveles  │      │ ToT/Graph    │      │ Analysis        │       │
+│  │ 0c→4     │      │ validada     │      │ + QA Checklist  │       │
+│  └──────────┘      └──────────────┘      └─────────────────┘       │
+│                                                                     │
+│  Output: XML       Output: Análisis      Output: .agent.md         │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### El Acrónimo P.R.O.M.P.T
+
+| Letra | Fase | Conexión con O.R.G.A.N.I.Z.E |
+|-------|------|------------------------------|
+| **P** | Perceive (Behavioral Gap) | Usa output de **O** (Query Assessment) |
+| **R** | Relate (Context) | Complementa **R** (Reference Framework) |
+| **O** | Organize (Framework Selection) | Aplica decisión de **G** (Pathways) |
+| **M** | Model (Implementation) | Usa técnica de **A** (Analyze) |
+| **P** | Personalize (Audience) | Considera dominio de **I** (Integrate) |
+| **T** | Transfer (QA Delivery) | Valida junto con **Z** (Validate) |
+
+### Validación Anti-Enshittification
+
+PromptCraft incluye validación obligatoria:
+
+```markdown
+## ANTI-ENSHITTIFICATION CHECKLIST
+
+**Antes de generar system prompt verificar:**
+- [✓] Resolviendo problema real vs síntoma visible
+- [✓] Solución aplicable en entorno operacional descrito
+- [✓] Limitaciones de conocimiento declaradas
+- [✓] Fronteras de expertise de dominio respetadas
+- [✓] Escalación a experto activada cuando apropiado
+- [✓] Éxito medible por mejora real
+```
+
+### Mapeo Banderas → Técnica → System Prompt
+
+| Bandera | Técnica O.R.G.A.N.I.Z.E | Componente P.R.O.M.P.T |
+|---------|------------------------|------------------------|
+| 🔵 Blueflag | CoT Sequential | `Perceive` (evidence chain) |
+| ⚫ Blackflag | Graph of Thought | `Relate` (power network) |
+| 🔴 Redflag | CoT + Validation | `Model` (material calculation) |
+| 🟡 Yellowflag | ToT Multi-Path | `Organize` (boundary exploration) |
+| 🟠 Orangeflag | Self-Consistency | `Personalize` (multi-audience) |
+
+### Integración en Definition of Done (Extendida)
+
+```markdown
+### O.R.G.A.N.I.Z.E + P.R.O.M.P.T Checklist
+
+**O.R.G.A.N.I.Z.E (Modelado)**
+- [ ] Complejidad clasificada
+- [ ] Frameworks consultados
+- [ ] Técnica seleccionada y aplicada
+- [ ] Output ontológicamente fundamentado
+
+**P.R.O.M.P.T (Generación)**
+- [ ] Behavioral gap cuantificado
+- [ ] Framework de agente seleccionado (Conversational/Multi-Format/Hybrid)
+- [ ] Anti-enshittification validado
+- [ ] System prompt generado en `.agent.md`
+- [ ] Success metrics definidas (≥85% gap resolution)
+```
+
+### Referencias
+
+- **PromptCraft.md**: `ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/PromptCraft.md`
+- **OnthologyEditor**: Documentación MMCO y Metamodel
+- **Talaia Digital**: Framework original de prompt engineering

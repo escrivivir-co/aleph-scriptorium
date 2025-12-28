@@ -148,6 +148,38 @@ Completar documentación y publicar épica en backlog principal.
 |---------|-------------|--------|--------|
 | T024 | Añadir épica SCRIPT-1.21.0 a BACKLOG-SCRIPTORIUM.md | 0.5 | ⏳ |
 | T025 | Actualizar PLUGINS.md con nota de compliance en flove-editor | 0.5 | ⏳ |
+
+---
+
+## Integración con PromptCraft (P.R.O.M.P.T)
+
+> **DRY**: Ver `ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/PromptCraft.md` para metodología completa
+
+Una vez completado el mapeo Flove ↔ UFO (S03), el siguiente paso es generar **system prompts** para agentes que operen con ontologías certificadas.
+
+### Pipeline Recomendado
+
+```
+Metamodel Compliance (este backlog)
+         │
+         ▼
+    O.R.G.A.N.I.Z.E (técnicas de razonamiento)
+         │
+         ▼
+    P.R.O.M.P.T (generación de system prompts)
+         │
+         ▼
+    .agent.md certificado UFO
+```
+
+### Task Futura (FC2)
+
+| Task ID | Descripción | Effort | Estado |
+|---------|-------------|--------|--------|
+| T-FUT-01 | Generar system prompt para @floveeditor usando P.R.O.M.P.T | 2 | 📋 FC2 |
+| T-FUT-02 | Validar con anti-enshittification checklist | 1 | 📋 FC2 |
+
+**Referencia cruzada**: SCRIPT-1.23.0-S04 (Generación de System Prompts con PromptCraft)
 | T026 | Actualizar docs/ecosistema.md con metamodel como dependencia | 0.5 | ⏳ |
 | T027 | Crear entrada en docs/roadmap.md para Metamodel Compliance | 0.5 | ⏳ |
 | T028 | Commit según protocolo DevOps | 0.5 | ⏳ |

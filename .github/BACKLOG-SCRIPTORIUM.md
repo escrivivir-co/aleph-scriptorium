@@ -322,11 +322,12 @@ Aplicar los frameworks **Metamodel** (ontología formal) y **MMCO** (métricas d
 ### SCRIPT-1.23.0 — MMCO Editor Transmedia (Validación Paradigmática)
 
 > **Objetivo**: Validar si MMCO+Metamodel son aplicables al Scriptorium como sistema de producción editorial  
-> **Effort total**: 13 pts (reducido de 16, inversión de riesgo)  
-> **Técnica**: O.R.G.A.N.I.Z.E (Graph, ToT, Self-Consistency)  
+> **Effort total**: 15 pts (13 original + 2 PromptCraft)  
+> **Técnica**: O.R.G.A.N.I.Z.E (Graph, ToT, Self-Consistency) + P.R.O.M.P.T  
 > **Dependencias**: Ninguna (autocontenida — valida antes de depender)  
 > **Estado**: 🆕 Refactorizada (2025-12-28)  
-> **Conversación**: [DISCO/Diciembre_25_MMCO_Editor/conversacion.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/conversacion.md)
+> **Conversación**: [DISCO/Diciembre_25_MMCO_Editor/conversacion.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/conversacion.md)  
+> **Recursos**: [PromptCraft.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/PromptCraft.md) (Talaia Digital)
 
 #### Contexto de Refactorización
 
@@ -344,6 +345,7 @@ Sesión editorial meta-recursiva (5W + 5 Banderas) reveló:
 | S01 | ¿Es MMCO aplicable a producción editorial? | Graph of Thought | 5 pts | ⏳ |
 | S02 | Definición operacional de coherencia editorial | ToT Multi-Path | 5 pts | ⏳ |
 | S03 | Toy Model MVP | Self-Consistency | 3 pts | ⏳ |
+| S04 | Generación de System Prompts (PromptCraft) | P.R.O.M.P.T | 2 pts | 🆕 |
 
 #### S01: ¿Es MMCO aplicable? (5 pts)
 
@@ -379,6 +381,22 @@ Sesión editorial meta-recursiva (5W + 5 Banderas) reveló:
 | T14 | Validar consistencia (3 ejecuciones) | ⏳ |
 
 **DoD**: `phi_editor_mvp.py` ejecutable + reporte de consistencia
+
+#### S04: Generación de System Prompts con PromptCraft (2 pts) 🆕
+
+> **Fuente**: `PromptCraft.md` (Talaia Digital)  
+> **Dependencia**: Completar S01-S03 (modelado MMCO validado)
+
+| Task | Descripción | Estado |
+|------|-------------|--------|
+| T15 | Documentar pipeline MMCO → O.R.G.A.N.I.Z.E → P.R.O.M.P.T | ⏳ |
+| T16 | Generar system prompt para @blueflag usando P.R.O.M.P.T | ⏳ |
+| T17 | Validar con anti-enshittification checklist | ⏳ |
+| T18 | Extender a las 5 banderas si S16 exitosa | ⏳ |
+
+**DoD**: Al menos 1 `.agent.md` generado con metodología P.R.O.M.P.T + checklist de validación
+
+**Contexto**: PromptCraft es un meta-prompt para generar system messages de agentes previamente modelados con MMCO. Complementa O.R.G.A.N.I.Z.E (el "qué") con el "cómo" (system prompt ejecutable).
 
 #### Criterios de Éxito
 

@@ -42,6 +42,48 @@
 
 ---
 
+## Recursos Transversales: O.R.G.A.N.I.Z.E + P.R.O.M.P.T
+
+> **DRY**: Esta sección referencia documentos canónicos, no duplica contenido.
+
+### Pipeline de Ontología a Agente
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                 FC1: Ontología Formal → Agente Ejecutable                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  Metamodel/MMCO      O.R.G.A.N.I.Z.E         P.R.O.M.P.T                    │
+│  (Iteraciones 1-3)   (Razonamiento)          (System Prompt)                │
+│                                                                             │
+│  ┌──────────────┐    ┌──────────────────┐    ┌─────────────────────┐       │
+│  │ Ontología    │ ─▶ │ Técnica CoT/ToT/ │ ─▶ │ Behavioral Gap +    │       │
+│  │ XML/JSON     │    │ Graph validada   │    │ Anti-enshittification│      │
+│  └──────────────┘    └──────────────────┘    └─────────────────────┘       │
+│                                                                             │
+│  Output: entities.xml  Output: Análisis     Output: .agent.md              │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Documentos de Referencia
+
+| Documento | Ubicación | Propósito |
+|-----------|-----------|----------|
+| Guía O.R.G.A.N.I.Z.E | `ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/02_guia-organize.md` | Selección de técnica de razonamiento |
+| PromptCraft (P.R.O.M.P.T) | `ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/PromptCraft.md` | Generación de system prompts |
+| Ontological Reasoning | `ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_Ontologia/ontological_reasoning_guide.md` | Guía completa de técnicas |
+
+### Aplicación por Iteración
+
+| Iteración | Genera | Consume P.R.O.M.P.T |
+|-----------|--------|--------------------|
+| I1: Metamodel | `entities.xml`, `handoffs.json` | FC2 (agentes core) |
+| I2: MMCO ARG | `Φ_arg`, niveles 0c→4 | @arrakis, @gitarg |
+| I3: MMCO Editor | `Φ_editor`, 5 banderas | @blueflag..@orangeflag |
+| I4: Integración | @decoherence actualizado | Validación cruzada |
+
+---
+
 ## Iteración 1: Metamodel Scriptorium
 
 **Objetivo**: Aplicar el framework Metamodel a la estructura del Scriptorium (agentes, plugins, handoffs) y dominios específicos (ARG)  
