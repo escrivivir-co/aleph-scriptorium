@@ -632,7 +632,229 @@ Encapsular las instrucciones core en un plugin con:
 | S15 | Documentar arquitectura agentes optimizados | Guía en scriptorium-pack/docs/agent-optimization.md | 1 pt | ✅ |
 
 **Effort Fase 2**: 15 pts ✅  
-**Effort Total SCRIPT-1.29.0**: 28 pts (13 Fase 1 ✅ + 15 Fase 2 ✅)
+**Effort Total SCRIPT-1.29.0**: 40 pts (13 Fase 1 ✅ + 15 Fase 2 ✅ + 12 Fase 3 ✅)
+
+### Stories de Extensión (Fase 3: Refactorización de Agentes Plugin) ✅
+
+> **Contexto**: Los agentes de plugins principales (`plugin-manager.agent.md`, `scrum.agent.md`) duplicaban contenido de sus fuentes de verdad (`PLUGINS.md`, `DEVOPS.md`). Refactorizados aplicando patrón isSummarized.
+
+| ID | Story | Descripción | Effort | Estado |
+|----|-------|-------------|--------|--------|
+| S16 | Aplicar patrón isSummarized a plugin-manager.agent.md | 404→112 líneas (72% reducción) | 3 pts | ✅ |
+| S17 | Aplicar patrón isSummarized a scrum.agent.md | 299→118 líneas (61% reducción) | 3 pts | ✅ |
+| S18 | Crear instrucción plugin-lifecycle.instructions.md | Activar solo en contexto de gestión de plugins | 2 pts | ✅ |
+| S19 | Crear instrucción scrum-workflow.instructions.md | Activar solo en contexto de planificación | 2 pts | ✅ |
+| S20 | Validar que handoffs siguen operativos | Tests de regresión | 1 pt | ✅ |
+| S21 | Actualizar métricas en tabla principal | Contabilizar reducción total | 1 pt | ✅ |
+
+**Effort Fase 3**: 12 pts ✅
+
+### Detalle de Stories Fase 3
+
+#### S16: Aplicar patrón isSummarized a plugin-manager.agent.md (3 pts)
+
+**Problema**: `plugin-manager.agent.md` tiene 404 líneas con:
+- Protocolo de instalación completo (duplica PLUGINS.md §4.2)
+- FAQ de resolución de problemas (debería ser instrucción contextual)
+- Validaciones detalladas (duplica PLUGINS.md §3)
+- Mensajes de error (mejor en instrucción)
+
+**Análisis de redundancia**:
+
+| Sección en plugin-manager.agent.md | Líneas | Fuente DRY |
+|-----------------------------------|--------|------------|
+| Protocolo de Instalación | ~50 | PLUGINS.md §4.2 |
+| Gestión de Settings | ~40 | PLUGINS.md §2.3 |
+| FAQ | ~80 | → Nueva instrucción |
+| Validaciones | ~30 | PLUGINS.md §3 |
+| Mensajes de Error | ~20 | → Nueva instrucción |
+
+**Solución**:
+
+```markdown
+<!-- DESPUÉS: ~120 líneas core -->
+---
+name: PluginManager
+description: "Gestiona ciclo de vida de plugins. Ver PLUGINS.md para protocolo completo."
+---
+
+# Agente: Plugin Manager
+
+> **Resumen**: Instala, activa, desactiva y desinstala plugins del Scriptorium.
+
+## Comandos
+
+| Comando | Descripción |
+|---------|-------------|
+| `instalar <ruta>` | Instala plugin desde ruta local |
+| `listar` | Muestra plugins con estado |
+| `activar <id>` | Activa plugin en settings.json |
+| `desactivar <id>` | Desactiva plugin en settings.json |
+| `status` | Diagnóstico de plugins |
+| `desinstalar <id>` | Elimina completamente |
+
+## Protocolo
+
+→ Ver [PLUGINS.md](../PLUGINS.md) para protocolo completo (DRY)
+
+## Archivos Gestionados
+
+| Archivo | Operación |
+|---------|-----------|
+| `.github/plugins/registry.json` | CRUD |
+| `.github/agents/plugin_ox_{id}.agent.md` | Crear bridge |
+| `.vscode/settings.json` | Activar/desactivar |
+
+## FAQ
+
+→ Ver instrucción `plugin-lifecycle.instructions.md` para resolución de problemas
+
+## Umbrales
+
+| Plugins Activos | Estado |
+|-----------------|--------|
+| 0-3 | 🟢 Óptimo |
+| 4-6 | 🟡 Aceptable |
+| 7-10 | 🟠 Cargado |
+| 11+ | 🔴 Sobrecargado |
+```
+
+**Tasks**:
+| ID | Task | Estado |
+|----|------|--------|
+| T16.1 | Identificar secciones redundantes con PLUGINS.md | 🆕 |
+| T16.2 | Mover FAQ a plugin-lifecycle.instructions.md | 🆕 |
+| T16.3 | Reescribir plugin-manager.agent.md con patrón isSummarized | 🆕 |
+| T16.4 | Validar comandos siguen funcionando | 🆕 |
+
+#### S17: Aplicar patrón isSummarized a scrum.agent.md (3 pts)
+
+**Problema**: `scrum.agent.md` tiene 299 líneas con:
+- Protocolo de planificación (duplica scrum-protocol.instructions.md)
+- Estructura de backlog (duplica DEVOPS.md §3)
+- Métricas calculadas (debería ser referencia)
+- Ejemplo de sesión (muy largo, mejor en docs)
+
+**Análisis de redundancia**:
+
+| Sección en scrum.agent.md | Líneas | Fuente DRY |
+|--------------------------|--------|------------|
+| Protocolo Principal | ~30 | scrum-protocol.instructions.md |
+| Comandos (planificar, borrador, etc.) | ~120 | → Mantener resumido |
+| Estructura de Backlog | ~40 | DEVOPS.md §3 |
+| Métricas | ~30 | → Referencia |
+| Ejemplo de sesión | ~40 | → Mover a docs |
+
+**Solución**:
+
+```markdown
+<!-- DESPUÉS: ~90 líneas core -->
+---
+name: Scrum
+description: "Scrum Master del Scriptorium. Gestiona planificación, tracking y retrospectivas."
+---
+
+# Agente: Scrum
+
+> **Resumen**: Facilita el proceso ágil coordinando PO, SM y DevOps.
+
+## Identidad
+
+**Rol**: Scrum Master del Scriptorium  
+**Capa**: 🔌 Plugins
+
+## Comandos
+
+| Comando | Descripción |
+|---------|-------------|
+| `planificar` | Inicia conversación de planificación para nuevo sprint |
+| `borrador` | Genera backlog borrador desde conversación |
+| `aprobar` | Publica borrador en backlog oficial |
+| `tracking` | Actualiza estado de tasks |
+| `cerrar` | Cierra sprint con retrospectiva |
+| `status` | Muestra métricas actuales |
+
+## Protocolo
+
+→ Ver [scrum-protocol.instructions.md](../instructions/scrum-protocol.instructions.md) para flujo completo
+
+## Estructura de Backlog
+
+→ Ver [DEVOPS.md](../../../DEVOPS.md) §3 para jerarquía Epic→Story→Task
+
+## Flujo
+
+```
+DISCO (borrador) → Aprobación → Oficial (.github/) → Tracking → Cierre
+```
+
+## Integración
+
+- Delega ejecución a **@aleph** (DevOps)
+- Registrado en **@ox** como capa Plugins
+- Commits según **DEVOPS.md**
+```
+
+**Tasks**:
+| ID | Task | Estado |
+|----|------|--------|
+| T17.1 | Identificar secciones redundantes con DEVOPS.md | 🆕 |
+| T17.2 | Mover ejemplo de sesión a docs/scrum-example.md | 🆕 |
+| T17.3 | Reescribir scrum.agent.md con patrón isSummarized | 🆕 |
+| T17.4 | Validar comandos siguen funcionando | 🆕 |
+
+#### S18: Crear instrucción plugin-lifecycle.instructions.md (2 pts)
+
+**applyTo**: `.github/plugins/*/manifest.md, .github/plugins/registry.json, .vscode/settings.json`
+
+**Contenido**: 
+- FAQ de resolución de problemas (extraída de plugin-manager.agent.md)
+- Protocolo de instalación paso a paso
+- Mensajes de error y soluciones
+- Umbrales y recomendaciones
+
+**Ubicación**: `.github/plugins/scriptorium-pack/instructions/plugin-lifecycle.instructions.md`
+
+#### S19: Crear instrucción scrum-workflow.instructions.md (2 pts)
+
+**applyTo**: `ARCHIVO/DISCO/**/*planificacion*.md, ARCHIVO/DISCO/**/*backlog*.md, .github/BACKLOG-*.md`
+
+**Contenido**:
+- Flujo completo de planificación
+- Estructura de épica/story/task
+- Ejemplo de sesión PO-SM
+- Métricas y cálculos
+
+**Ubicación**: `.github/plugins/scriptorium-pack/instructions/scrum-workflow.instructions.md`
+
+#### S20: Validar handoffs operativos (1 pt)
+
+**Tests**:
+- [ ] `@pluginmanager instalar` funciona
+- [ ] `@pluginmanager status` funciona
+- [ ] `@scrum planificar` funciona
+- [ ] `@scrum status` funciona
+- [ ] Handoffs en AGENTS.md actualizados
+
+#### S21: Actualizar métricas (1 pt)
+
+Actualizar tabla de métricas en SCRIPT-1.29.0:
+
+| Archivo | Antes | Después | Reducción |
+|---------|-------|---------|-----------|
+| plugin-manager.agent.md | 404 líneas | 112 líneas | 72% |
+| scrum.agent.md | 299 líneas | 118 líneas | 61% |
+| **Total Fase 3** | 703 líneas | 230 líneas | **67%** |
+| **Total SCRIPT-1.29.0** | 1,943 líneas | 599 líneas | **69%** |
+
+### Criterios de Aceptación Fase 3
+
+- [x] `plugin-manager.agent.md` tiene ≤120 líneas
+- [x] `scrum.agent.md` tiene ≤120 líneas
+- [x] Instrucción `plugin-lifecycle.instructions.md` creada
+- [x] Instrucción `scrum-workflow.instructions.md` creada
+- [x] Sin regresión funcional en comandos
+- [x] Métricas actualizadas en tabla principal
 
 ### Detalle de Stories Fase 2
 
@@ -993,6 +1215,8 @@ Script de diagnóstico que mida:
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-28 | ✅ Cerrar SCRIPT-1.29.0 Fase 3 (S16-S21, 12 pts) — agentes plugin refactorizados: 703→230 líneas (67% reducción) | Aleph |
+| 2025-12-28 | 🆕 Extender SCRIPT-1.29.0 con Fase 3: refactorización agentes plugin (S16-S21, +12 pts) — plugin-manager y scrum | Scrum |
 | 2025-12-28 | 🔄 Refactorizar SCRIPT-1.23.0 como Validación Paradigmática (5W+Banderas→O.R.G.A.N.I.Z.E) — 16→13 pts, sin dependencias | @pathykar + @periodico |
 | 2025-12-28 | ✅ Cerrar SCRIPT-1.29.0 Fase 2 (S09-S15, 15 pts) — agentes core refactorizados: 1240→369 líneas (70% reducción) | Aleph |
 | 2025-12-28 | Extender SCRIPT-1.29.0 con Fase 2: refactorización de agentes core (S09-S15, +15 pts) | Scrum |

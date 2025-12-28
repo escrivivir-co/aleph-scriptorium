@@ -1,80 +1,27 @@
 # Protocolo DevOps — Aleph Scriptorium
 
-> **Versión**: 0.0.1  
-> **Metodología**: Agile/Scrum adaptado a producción textual  
-> **Ciclo**: 12 sprints × 4 iteraciones = 48 iteraciones anuales  
-> **Rama de trabajo**: Ver `workspace-config.json` (raíz del proyecto)
+> **Resumen**: Metodología Agile/Scrum adaptada a producción textual. 12 sprints × 4 iteraciones = 48 iteraciones anuales.
+
+**Versión**: 0.0.1  
+**Rama de trabajo**: Ver `workspace-config.json`
 
 ---
 
-## 1. Rama de Trabajo
+## Referencia Rápida
 
-### Configuración Actual
-
-**Fuente de verdad**: `workspace-config.json` (raíz del proyecto)
-
-Los agentes DEBEN consultar este archivo antes de hacer commits para verificar la rama de trabajo activa.
+### Rama de Trabajo
 
 ```bash
 # Verificar rama configurada
 cat workspace-config.json | grep '"branch"'
-
-# Verificar rama actual
 git branch --show-current
 ```
 
-### Protocolo de Cambio de Rama
-
-Cuando se cambie la rama de trabajo:
-
-1. **Actualizar** `workspace-config.json`:
-   - Campo `workspace.branch`
-   - Campo `workspace.branch_note`
-   - Añadir entrada en `changelog`
-
-2. **Crear rama** (si no existe):
-   ```bash
-   git checkout -b {nueva-rama}
-   ```
-
-3. **Notificar** a todos los agentes que hacen commits:
-   - @aleph
-   - @plugin-manager
-   - Cualquier script automatizado
-
-### Política de Ramas Protegidas
-
-**Ramas protegidas** (definidas en `workspace-config.json`):
-- `main` — No commits directos (desde 2025-12-24)
-- `master` — No commits directos
-
-**Rama de desarrollo actual**: Consultar `workspace.branch` en config
+**Ramas protegidas**: `main`, `master` — No commits directos
 
 ---
 
-## 2. Ontología del proyecto
-
-### Opportunities (Productos)
-
-| Opportunity | Descripción | Carpeta raíz | Versión actual |
-|-------------|-------------|--------------|----------------|
-| **Aleph Scriptorium** | Kit de herramientas para agentes de escritura política | `.github/` | 0.0.1 |
-| **Fundación** | Texto fundacional en 12 capítulos (2026) | `PROYECTOS/FUNDACION/` | 0.0.1 |
-
-### Jerarquía de trabajo
-
-```
-Opportunity
-└── Epic (Sprint = 1 mes = 1 capítulo)
-    └── Story (Iteración = 1 semana)
-        └── Task (Unidad atómica de trabajo)
-```
-
----
-
-## 2. Convención de commits
-
-### Formato
+### Convención de Commits
 
 ```
 <tipo>(<scope>): <descripción corta>
@@ -84,69 +31,64 @@ Opportunity
 [footer: refs #TASK-ID]
 ```
 
-### Tipos permitidos
-
 | Tipo | Uso |
 |------|-----|
 | `feat` | Nueva funcionalidad o contenido |
-| `fix` | Corrección de error o inconsistencia |
-| `docs` | Documentación (READMEs, instrucciones) |
+| `fix` | Corrección de error |
+| `docs` | Documentación |
 | `refactor` | Reestructuración sin cambio funcional |
-| `style` | Formato, voz, estilo (sin cambio de contenido) |
-| `chore` | Mantenimiento, configuración |
-| `archive` | Extracción y archivo de material fuente |
+| `chore` | Mantenimiento |
+| `archive` | Extracción de material fuente |
 
-### Scopes por Opportunity
+### Scopes
 
-**Scriptorium** (`script`):
-- `script/agents` — Definiciones de agentes
-- `script/prompts` — Prompts reutilizables
-- `script/instructions` — Instrucciones de contexto
-- `script/devops` — Protocolo y metodología
+| Opportunity | Scopes |
+|-------------|--------|
+| Scriptorium | `script/agents`, `script/prompts`, `script/instructions`, `script/devops` |
+| Fundación | `fund/archivo`, `fund/caps`, `fund/plan` |
 
-**Fundación** (`fund`):
-- `fund/archivo` — Material en ARCHIVO/
-- `fund/caps` — Capítulos en PROYECTOS/FUNDACION/CAPITULOS/
-- `fund/plan` — Índices y planificación
+---
 
-### Ejemplos
+### Jerarquía de Trabajo
 
 ```
-feat(script/agents): añadir protocolo devops a Aleph
-
-Incorpora metodología Scrum adaptada y convención de commits
-para gestión de sprints y trazabilidad.
-
-refs #SCRIPT-0.0.1-T001
-```
-
-```
-archive(fund/archivo): extraer crítica tecnofeudalismo (Ferrín)
-
-Procesa NC_2.pdf y crea documento 11-tecnofeudalismo-critica-puentes.md
-con dos capas: agitprop y académica.
-
-refs #FUND-0.0.1-T003
+Opportunity
+└── Epic (Sprint = 1 mes)
+    └── Story (Iteración = 1 semana)
+        └── Task (Unidad atómica)
 ```
 
 ---
 
-## 3. Estructura de Sprints
+### Definition of Done
 
-### Sprint 0 (Actual) — Bootstrap
+**Task**: Implementado + Consistente con ARCHIVO + README actualizado  
+**Story**: Todas las tasks + Commit conforme  
+**Epic**: Capítulo completo + Checklist verificado + Release tag
 
-**Objetivo**: Establecer infraestructura mínima para ambas opportunities.
+---
 
-| Epic | Stories | Estado |
-|------|---------|--------|
-| SCRIPT-0.0.1 | Crear protocolo DevOps | ✅ |
-| SCRIPT-0.0.1 | Actualizar agente Aleph | 🔄 |
-| FUND-0.0.1 | Consolidar ARCHIVO/marco | ✅ |
-| FUND-0.0.1 | Definir indicadores cap.1 | ✅ |
+### Versionado
 
-### Sprints 1–12 (2026)
+```
+<opportunity>-<major>.<minor>.<patch>
+```
 
-Cada sprint = 1 mes = 1 capítulo de Fundación.
+- `scriptorium-0.0.1` — Bootstrap
+- `fundacion-0.1.0` — Sprint 1 completado
+
+---
+
+## Opportunities
+
+| Opportunity | Descripción | Carpeta | Versión |
+|-------------|-------------|---------|---------|
+| Aleph Scriptorium | Kit de agentes de escritura | `.github/` | 0.0.1 |
+| Fundación | 12 capítulos (2026) | `PROYECTOS/FUNDACION/` | 0.0.1 |
+
+---
+
+## Sprints 2026
 
 | Sprint | Capítulo | Desplazamiento |
 |--------|----------|----------------|
@@ -165,95 +107,17 @@ Cada sprint = 1 mes = 1 capítulo de Fundación.
 
 ---
 
-## 4. Definición de Done
+## Instrucciones para Agentes
 
-### Para una Task
-- [ ] Código/texto implementado
-- [ ] Consistente con ARCHIVO/marco
-- [ ] Sin contradicciones con capítulos previos
-- [ ] README actualizado si aplica
-
-### Para una Story
-- [ ] Todas las tasks completadas
-- [ ] Commit(s) con mensaje conforme a convención
-- [ ] Sin errores de lint/formato
-
-### Para un Epic (Sprint)
-- [ ] Capítulo completo según estructura
-- [ ] Checklist de calidad Aleph verificado
-- [ ] Indicadores de fracaso definidos
-- [ ] Release tag creado
-
----
-
-## 5. Tags y Releases
-
-### Formato de versión
-
-```
-<opportunity>-<major>.<minor>.<patch>
-```
-
-- **Major**: Cambio de fase (0 = bootstrap, 1 = producción)
-- **Minor**: Sprint completado
-- **Patch**: Correcciones dentro del sprint
-
-### Ejemplos
-
-- `scriptorium-0.0.1` — Bootstrap inicial
-- `fundacion-0.1.0` — Sprint 1 completado
-- `fundacion-0.1.1` — Corrección en Sprint 1
-
----
-
-## 6. Backlog inicial
-
-### Scriptorium 0.0.1
-
-| ID | Task | Estado |
-|----|------|--------|
-| SCRIPT-0.0.1-T001 | Crear DEVOPS.md | ✅ |
-| SCRIPT-0.0.1-T002 | Actualizar aleph.agent.md con protocolo | 🔄 |
-| SCRIPT-0.0.1-T003 | Crear prompt de commit asistido | ⏳ |
-
-### Fundación 0.0.1
-
-| ID | Task | Estado |
-|----|------|--------|
-| FUND-0.0.1-T001 | Consolidar marco/08-11 | ✅ |
-| FUND-0.0.1-T002 | Crear diagnostico/05 | ✅ |
-| FUND-0.0.1-T003 | Refinar 11-tecnofeudalismo (dos capas) | ✅ |
-| FUND-0.0.1-T004 | Actualizar READMEs | ✅ |
-
----
-
-## 7. Instrucciones para Aleph
-
-Cuando Aleph realice cambios, debe:
-
-1. **Identificar la Opportunity** afectada por el cambio.
-2. **Asignar o crear Task** en el backlog correspondiente.
-3. **Generar commit message** conforme a la convención.
-4. **Actualizar estado** en este documento o en el backlog de la opportunity.
-
-### Comando de commit asistido
-
-**IMPORTANTE**: Antes de hacer commit, verificar rama de trabajo:
+Antes de commit:
 
 ```bash
-# 1. Leer configuración
 BRANCH=$(cat workspace-config.json | grep '"branch"' | cut -d'"' -f4)
-
-# 2. Verificar que estamos en la rama correcta
 CURRENT=$(git branch --show-current)
-if [ "$CURRENT" != "$BRANCH" ]; then
-  echo "⚠️  ADVERTENCIA: Rama actual ($CURRENT) no coincide con configuración ($BRANCH)"
-  echo "Cambiar a: git checkout $BRANCH"
-  exit 1
-fi
-
-# 3. Hacer commit
-git add -A && git commit -m "<mensaje generado>"
+[ "$CURRENT" != "$BRANCH" ] && echo "⚠️ Cambiar a: git checkout $BRANCH" && exit 1
 ```
 
-O preparar el mensaje para revisión del usuario antes de ejecutar.
+1. Identificar Opportunity afectada
+2. Asignar/crear Task en backlog
+3. Generar commit conforme a convención
+4. Actualizar estado en backlog
