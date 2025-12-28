@@ -157,6 +157,30 @@ Completar documentación y publicar épica en backlog principal.
 
 Una vez completado el mapeo Flove ↔ UFO (S03), el siguiente paso es generar **system prompts** para agentes que operen con ontologías certificadas.
 
+### Integración con SCRIPT-1.23.0 (MMCO Editor Transmedia)
+
+> **Actualización 2025-12-28**: La épica SCRIPT-1.23.0 fue refactorizada para caracterizar cada bandera con su nivel MMCO y técnica O.R.G.A.N.I.Z.E.
+
+**Impacto en Metamodel Compliance**:
+
+| Componente | Antes | Después |
+|------------|-------|--------|
+| Validación UFO | Escalar φ ∈ [0,1] | Vector 5D (φ_verdad, φ_poder, φ_material, φ_limites, φ_registro) |
+| Técnica | No especificada | CoT, Graph, ToT, Self-Consistency por bandera |
+| Composición | Lineal | Grafo de operadores (inconmensurabilidad reconocida) |
+
+**Caracterización MMCO de las 5 Banderas**:
+
+| Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E |
+|---------|------------|------------|------------------------|
+| 🔵 @blueflag | 0b (Correlaciones) | Φ_verdad | CoT Sequential |
+| ⚫ @blackflag | 0a (Tensores) | Φ_poder | Graph of Thought |
+| 🔴 @redflag | 1 (Proto-geometría) | Φ_material | CoT + Validation |
+| 🟡 @yellowflag | 2 (Pseudo-tiempo) | Φ_límites | ToT Multi-Path |
+| 🟠 @orangeflag | 3 (Espacio-tiempo) | Φ_registro | Self-Consistency |
+
+**Referencia**: [BACKLOG-SCRIPTORIUM.md § SCRIPT-1.23.0](../../../.github/BACKLOG-SCRIPTORIUM.md)
+
 ### Pipeline Recomendado
 
 ```

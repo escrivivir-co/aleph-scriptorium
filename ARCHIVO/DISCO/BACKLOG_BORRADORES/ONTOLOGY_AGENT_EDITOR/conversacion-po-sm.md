@@ -55,7 +55,12 @@
 > │                                                                │
 > │   @flovedocs   → Cargar template de 3 niveles                 │
 > │   @metamodel   → Validar contra UFO (5 capas)                 │
-> │   @mmco        → Calcular coherencia φ ∈ [0,1]                │
+> │   @mmco        → Calcular coherencia φ (vector 5D, NO escalar)│
+> │                                                                │
+> │   NOTA (2025-12-28): φ es un vector multi-dimensional:        │
+> │   Φ = (φ_verdad, φ_poder, φ_material, φ_limites, φ_registro)  │
+> │   Cada dimensión usa técnica O.R.G.A.N.I.Z.E diferente.       │
+> │   Ver SCRIPT-1.23.0 para caracterización MMCO completa.       │
 > │                                                                │
 > └──────────────────────────────────────────────────────────────┘
 > ```
@@ -94,10 +99,18 @@
 >     "paradigm": "CONFLUENTISM|UFO|custom",
 >     "schema_path": "ARCHIVO/PLUGINS/FLOVE_EDITOR/schemas/...",
 >     "validated": true,
->     "mmco_score": 0.85
+>     "mmco_score": {
+>       "phi_verdad": 0.85,
+>       "phi_poder": 0.72,
+>       "phi_material": 0.90,
+>       "phi_limites": 0.78,
+>       "phi_registro": 0.88
+>     }
 >   }
 > }
 > ```
+>
+> **Nota (2025-12-28)**: `mmco_score` es ahora un vector 5D, no un escalar. Cada dimensión corresponde a una bandera con su técnica O.R.G.A.N.I.Z.E específica. Ver SCRIPT-1.23.0 refactorizada.
 
 ---
 

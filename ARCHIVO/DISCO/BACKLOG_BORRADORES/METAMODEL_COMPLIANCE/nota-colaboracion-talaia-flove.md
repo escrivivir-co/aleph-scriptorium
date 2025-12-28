@@ -221,6 +221,7 @@ Si preferís no crear ramas adicionales, podemos:
 2. ¿Preferís ramas `integration/scriptorium` o tags versionados?
 3. **FloveDocs**: ¿Cuál es la licencia aplicable?
 4. ¿Tenéis interés en colaboración bidireccional (ej: recibir nuestros templates de validación)?
+5. **MMCO (2025-12-28)**: ¿Es correcta nuestra caracterización de Φ como vector 5D con banderas en diferentes niveles de emergencia MMCO? Ver [SCRIPT-1.23.0 refactorizada](../Diciembre_25_MMCO_Editor/02_guia-organize.md)
 
 ---
 

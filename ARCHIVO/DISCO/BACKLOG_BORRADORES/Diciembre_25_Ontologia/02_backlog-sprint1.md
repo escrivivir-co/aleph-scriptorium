@@ -233,12 +233,15 @@
 
 ## Iteración 3: MMCO Editor Transmedia
 
-**Objetivo**: Aplicar MMCO al Scriptorium como sistema de producción de coherencia editorial  
-**Effort**: 8 puntos
+**Objetivo**: Validar si MMCO+Metamodel son aplicables al Scriptorium como sistema de producción editorial  
+**Effort**: 13 puntos (refactorizado de 8 original)  
+**Estado**: 🔄 Refactorizado como Validación Paradigmática (2025-12-28)
 
-### Concepto Central
+> **⚠️ REFACTORIZADO (Feedback Talaia/Flove/LOW)**: Esta iteración pasó de "formalización" a "validación paradigmática". La fórmula lineal Φ_editor = Σ(w·Φ_bandera) fue descartada por inconmensurabilidad entre espacios de razonamiento.
 
-El Scriptorium no solo *valida* coherencia (vía Banderas), sino que *produce* coherencia a través de un proceso emergente. MMCO captura esta dinámica:
+### Concepto Central (Actualizado)
+
+El Scriptorium no solo *valida* coherencia (vía Banderas), sino que *produce* coherencia a través de un proceso emergente. MMCO captura esta dinámica, pero **cada bandera opera en un nivel de emergencia diferente**:
 
 ```
 ARCHIVO (BNP) → Agentes (correlaciones) → Workspace (tensores) →
@@ -265,23 +268,48 @@ ARCHIVO (BNP) → Agentes (correlaciones) → Workspace (tensores) →
 ---
 
 #### SCRIPT-1.23.0-S02: Métrica Φ_editor (5 Banderas)
-**Effort**: 3 pts
+**Effort**: 5 pts (ampliado por caracterización MMCO)
 
-| Task ID | Descripción | Effort | Estado |
-|---------|-------------|--------|--------|
-| T026 | Definir Φ_blue, Φ_black, Φ_red como submétricas | 1 | ⏳ |
-| T027 | Implementar phi_editor.py con composición | 1 | ⏳ |
-| T028 | Crear tests con fixture de sprint ejemplo | 1 | ⏳ |
+> **⚠️ REFACTORIZADO (2025-12-28)**: Fórmula lineal descartada. Cada bandera opera en un nivel MMCO diferente con técnica O.R.G.A.N.I.Z.E distinta.
 
-**Fórmula propuesta**:
+**Caracterización MMCO de las 5 Banderas**:
+
+| Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio de Razonamiento |
+|---------|------------|------------|------------------------|-------------------------|
+| 🔵 Blueflag | 0b (Correlaciones) | Φ_verdad | **CoT Sequential** | Verificación paso a paso de evidencia |
+| ⚫ Blackflag | 0a (Tensores) | Φ_poder | **Graph of Thought** | Mapeo de redes de influencia y captura |
+| 🔴 Redflag | 1 (Proto-geometría) | Φ_material | **CoT + Validation** | Cálculo de escala, enforcement, suministro |
+| 🟡 Yellowflag | 2 (Pseudo-tiempo) | Φ_límites | **ToT Multi-Path** | Exploración de condiciones y fronteras |
+| 🟠 Orangeflag | 3 (Espacio-tiempo) | Φ_registro | **Self-Consistency** | Validación multi-auditorio |
+
+**Propiedad de Inconmensurabilidad**:
+- Las banderas operan en espacios de razonamiento **ortogonales**
+- Φ_verdad (epistemología) ≠ Φ_poder (política) ≠ Φ_material (economía)
+- La suma lineal `Σ(w·Φ)` pierde información de estructura ontológica
+
+| Task ID | Descripción | Técnica | Nivel MMCO | Estado |
+|---------|-------------|---------|------------|--------|
+| T026 | Path 1: Coherencia lógica | @blueflag + CoT | 0b | ⏳ |
+| T027 | Path 2: Coherencia de poder | @blackflag + Graph | 0a | ⏳ |
+| T028 | Path 3: Coherencia material | @redflag + CoT+Val | 1 | ⏳ |
+| T029 | Path 4: Coherencia de límites | @yellowflag + ToT | 2 | ⏳ |
+| T030 | Path 5: Coherencia de registro | @orangeflag + SelfCons | 3 | ⏳ |
+| T031 | Síntesis: Φ como grafo de operadores (no lineal) | Ensemble | 4 | ⏳ |
+
+**Fórmula propuesta (Post-Lineal)**:
 ```
-Φ_editor = w₁·Φ_blue + w₂·Φ_black + w₃·Φ_red + w₄·Φ_yellow + w₅·Φ_orange
+Φ_editor = f(Φ_verdad, Φ_poder, Φ_material, Φ_límites, Φ_registro)
+
+Donde f es una función de grafo:
+- Nodos: Φ_bandera (con su técnica específica)
+- Aristas: Relaciones de dependencia/tensión entre espacios
+- Output: Vector multidimensional, NO escalar
 ```
-Donde cada Φ_bandera mide coherencia en su dimensión.
 
 **Definition of Done**:
-- [ ] `phi_editor.py` ejecutable
-- [ ] Mapeo bandera → métrica documentado
+- [ ] `phi_editor.py` ejecutable con composición no-lineal
+- [ ] Caracterización MMCO de cada bandera documentada
+- [ ] Grafo de dependencias entre Φ definido
 - [ ] Tests pasando con fixture de sprint
 
 ---

@@ -231,18 +231,25 @@ Propuesta de entregables:
 
 **SM**: Las Banderas son **operadores de coherencia** en este modelo:
 
-| Bandera | Función MMCO | Opera sobre |
-|---------|--------------|-------------|
-| 🔵 Blueflag | Detector de decoherencia epistémica | Verdad/evidencia |
-| ⚫ Blackflag | Detector de decoherencia política | Poder/captura |
-| 🔴 Redflag | Detector de decoherencia material | Escala/recursos |
-| 🟡 Yellowflag | Detector de decoherencia límite | Condiciones/gnosis |
-| 🟠 Orangeflag | Detector de decoherencia retórica | Registro/auditorio |
+> **⚠️ REFACTORIZADO (2025-12-28 — Feedback Talaia/Flove/LOW)**: Cada bandera opera en un nivel MMCO de emergencia diferente y usa una técnica O.R.G.A.N.I.Z.E distinta. La composición NO es lineal.
 
-**PO**: Entonces las Banderas son como "métricas Φ parciales" para cada dimensión.
+| Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio de Razonamiento |
+|---------|------------|------------|------------------------|-------------------------|
+| 🔵 Blueflag | 0b (Correlaciones) | Φ_verdad | **CoT Sequential** | Verificación de evidencia |
+| ⚫ Blackflag | 0a (Tensores) | Φ_poder | **Graph of Thought** | Redes de influencia |
+| 🔴 Redflag | 1 (Proto-geometría) | Φ_material | **CoT + Validation** | Escala y enforcement |
+| 🟡 Yellowflag | 2 (Pseudo-tiempo) | Φ_límites | **ToT Multi-Path** | Condiciones y fronteras |
+| 🟠 Orangeflag | 3 (Espacio-tiempo) | Φ_registro | **Self-Consistency** | Validación multi-auditorio |
 
-**SM**: Exacto. Podemos definir:
-- **Φ_editor** = f(Φ_blue, Φ_black, Φ_red, Φ_yellow, Φ_orange)
+**Propiedad de Inconmensurabilidad**:
+- Los niveles MMCO representan etapas de emergencia **ortogonales**
+- Φ_verdad (epistemología) ≠ Φ_poder (política) ≠ Φ_material (economía)
+- La suma lineal `Σ(w·Φ)` pierde información de estructura ontológica
+
+**PO**: Entonces las Banderas son como "métricas Φ parciales" para cada dimensión, pero **no sumables linealmente**.
+
+**SM**: Exacto. Debemos definir:
+- **Φ_editor** = f(Φ_verdad, Φ_poder, Φ_material, Φ_límites, Φ_registro) como **grafo de operadores**, no suma lineal
 
 Propuesta de entregables:
 
@@ -305,7 +312,7 @@ Propuesta de entregables:
 | Pregunta | Decisión Provisional | Rationale |
 |----------|----------------------|-----------|
 | 4. Templates | **Agentes=ENTITY, Handoffs=RELATIONSHIP, Flujos=PROCESS** | Es el mapeo más natural según UFO |
-| 5. Métrica Φ | **Φ_editor como espacio exploratorio** | Definimos estructura, no valores exactos |
+| 5. Métrica Φ | **Φ_editor como grafo de operadores (no lineal)** | Cada bandera opera en nivel MMCO distinto con técnica O.R.G.A.N.I.Z.E diferente — ver caracterización MMCO |
 | 6. AI-Optimized | **Usamos XML/JSON parseables por LLM** | Ya validado con Copilot Chat |
 
 ### Decisiones sobre Integración

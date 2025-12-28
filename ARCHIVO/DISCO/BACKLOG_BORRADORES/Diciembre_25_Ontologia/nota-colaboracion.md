@@ -92,19 +92,23 @@ Esta es la aplicación más ambiciosa: modelar cómo el Scriptorium *produce* co
 | 3 | Publicaciones (GH-Pages) |
 | 4 | Obras finales |
 
-**Innovación propuesta**: Tenemos 5 agentes "Bandera" que auditan diferentes dimensiones de coherencia:
+**Innovación propuesta**: Tenemos 5 agentes "Bandera" que auditan diferentes dimensiones de coherencia.
 
-| Bandera | Dimensión | Propuesta Φ |
-|---------|-----------|-------------|
-| 🔵 Blueflag | Epistémica (verdad) | Φ_blue |
-| ⚫ Blackflag | Política (poder) | Φ_black |
-| 🔴 Redflag | Material (estructura) | Φ_red |
-| 🟡 Yellowflag | Límite (condiciones) | Φ_yellow |
-| 🟠 Orangeflag | Retórica (registro) | Φ_orange |
+> **Actualización 2025-12-28**: Refactorización con caracterización MMCO completa (feedback Talaia/Flove/LOW)
 
-Proponemos definir **Φ_editor = f(Φ_blue, Φ_black, Φ_red, Φ_yellow, Φ_orange)** como métrica compuesta de coherencia editorial.
+| Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio |
+|---------|------------|------------|------------------------|---------|
+| 🔵 @blueflag | 0b (Correlaciones) | Φ_verdad | **CoT Sequential** | Verificación de evidencia |
+| ⚫ @blackflag | 0a (Tensores) | Φ_poder | **Graph of Thought** | Redes de influencia |
+| 🔴 @redflag | 1 (Proto-geometría) | Φ_material | **CoT + Validation** | Escala y recursos |
+| 🟡 @yellowflag | 2 (Pseudo-tiempo) | Φ_límites | **ToT Multi-Path** | Condiciones límite |
+| 🟠 @orangeflag | 3 (Espacio-tiempo) | Φ_registro | **Self-Consistency** | Validación multi-auditorio |
 
-**Pregunta específica**: ¿Esta composición de métricas Φ parciales es consistente con el formalismo de `phi_mmco.py`? ¿Deberíamos tratarlas como dimensiones ortogonales o hay riesgo de doble conteo?
+Proponemos definir **Φ_editor = f(Φ_verdad, Φ_poder, Φ_material, Φ_límites, Φ_registro)** como función de grafo (NO lineal).
+
+**Propiedad clave - Inconmensurabilidad**: Las banderas operan en espacios **ortogonales**. El output es un vector 5D, no un escalar.
+
+**Pregunta específica**: ¿Esta composición como grafo de operadores Φ es consistente con el formalismo de `phi_mmco.py`? ¿Cómo manejar la inconmensurabilidad entre espacios de razonamiento (epistemológico vs político vs material)?
 
 ---
 

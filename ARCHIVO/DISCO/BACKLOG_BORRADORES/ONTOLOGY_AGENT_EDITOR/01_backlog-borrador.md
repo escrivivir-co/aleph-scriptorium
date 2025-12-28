@@ -89,9 +89,15 @@ Añadir bloque opcional `ontology` al schema de recetas de agentes.
           "default": false
         },
         "mmco_score": {
-          "type": ["number", "null"],
-          "minimum": 0,
-          "maximum": 1
+          "type": ["object", "null"],
+          "description": "Vector 5D de coherencia (NO escalar). Ver SCRIPT-1.23.0 refactorizada.",
+          "properties": {
+            "phi_verdad": { "type": "number", "minimum": 0, "maximum": 1 },
+            "phi_poder": { "type": "number", "minimum": 0, "maximum": 1 },
+            "phi_material": { "type": "number", "minimum": 0, "maximum": 1 },
+            "phi_limites": { "type": "number", "minimum": 0, "maximum": 1 },
+            "phi_registro": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
         },
         "ufo_layer": {
           "type": "integer",
@@ -105,6 +111,8 @@ Añadir bloque opcional `ontology` al schema de recetas de agentes.
   }
 }
 ```
+
+> **Nota (2025-12-28)**: El campo `mmco_score` fue refactorizado de escalar a objeto 5D según SCRIPT-1.23.0 (Validación Paradigmática). Cada dimensión corresponde a una bandera con su técnica O.R.G.A.N.I.Z.E específica. Ver [caracterización MMCO](../../Diciembre_25_MMCO_Editor/02_guia-organize.md).
 
 ### Criterios de Aceptación
 
@@ -235,12 +243,16 @@ Añadir tests específicos para agentes con ontología.
 
 ### Tests Propuestos
 
-| Test | Heredado de | Pregunta |
-|------|-------------|----------|
-| `limites_conceptuales` | @yellowflag | ¿El agente respeta los límites de su paradigma? |
-| `validacion_ufo` | @metamodel | ¿La ontología mapea correctamente a UFO? |
-| `coherencia_phi` | @mmco | ¿El score φ es >= 0.7 (coherencia aceptable)? |
-| `schema_valido` | @typedprompting | ¿El JSON Schema exportado es válido? |
+> **Actualizado (2025-12-28)**: Los tests de coherencia ahora usan la caracterización MMCO por bandera (SCRIPT-1.23.0 refactorizada).
+
+| Test | Heredado de | Pregunta | Técnica O.R.G.A.N.I.Z.E |
+|------|-------------|----------|------------------------|
+| `coherencia_verdad` | @blueflag | ¿La ontología tiene evidencia de verdad? | CoT Sequential |
+| `coherencia_poder` | @blackflag | ¿Hay redes de captura en la ontología? | Graph of Thought |
+| `coherencia_material` | @redflag | ¿La estructura es viable a escala? | CoT + Validation |
+| `limites_conceptuales` | @yellowflag | ¿El agente respeta los límites de su paradigma? | ToT Multi-Path |
+| `validacion_registro` | @orangeflag | ¿El registro es apropiado para el auditorio? | Self-Consistency |
+| `validacion_ufo` | @metamodel | ¿La ontología mapea correctamente a UFO? | Validación |
 
 ### Criterios de Aceptación
 

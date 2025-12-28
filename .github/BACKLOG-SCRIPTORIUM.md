@@ -336,6 +336,11 @@ Sesión editorial meta-recursiva (5W + 5 Banderas) reveló:
 - Cada bandera opera con técnica de razonamiento diferente (CoT, ToT, Graph, Self-Consistency)
 - Sin validación previa de aplicabilidad de MMCO al dominio editorial
 
+**Feedback Talaia/Flove/LOW (2025-12-28)**:
+- Cada bandera debe caracterizarse con su nivel MMCO de emergencia
+- La composición de Φ debe respetar la inconmensurabilidad entre espacios
+- Propuesta: Φ_editor como **grafo de operadores**, no suma lineal
+
 **Decisión PO (@pathykar)**: Invertir orden — validar primero, formalizar después.
 
 #### Stories
@@ -343,7 +348,7 @@ Sesión editorial meta-recursiva (5W + 5 Banderas) reveló:
 | ID | Story | Técnica | Effort | Estado |
 |----|-------|---------|--------|--------|
 | S01 | ¿Es MMCO aplicable a producción editorial? | Graph of Thought | 5 pts | ⏳ |
-| S02 | Definición operacional de coherencia editorial | ToT Multi-Path | 5 pts | ⏳ |
+| S02 | Definición de coherencia editorial (con mapeo MMCO) | ToT Multi-Path | 5 pts | ⏳ |
 | S03 | Toy Model MVP | Self-Consistency | 3 pts | ⏳ |
 | S04 | Generación de System Prompts (PromptCraft) | P.R.O.M.P.T | 2 pts | 🆕 |
 
@@ -360,16 +365,49 @@ Sesión editorial meta-recursiva (5W + 5 Banderas) reveló:
 
 #### S02: Definición de coherencia editorial (5 pts)
 
-| Task | Descripción | Estado |
-|------|-------------|--------|
-| T05 | Path 1: Coherencia lógica (@blueflag, CoT) | ⏳ |
-| T06 | Path 2: Coherencia de poder (@blackflag, Graph) | ⏳ |
-| T07 | Path 3: Coherencia material (@redflag, CoT+Validation) | ⏳ |
-| T08 | Path 4: Coherencia de límites (@yellowflag, ToT) | ⏳ |
-| T09 | Path 5: Coherencia de registro (@orangeflag, Self-Consistency) | ⏳ |
-| T10 | Síntesis: Φ unificada vs dimensiones ortogonales | ⏳ |
+> **Marco MMCO**: Cada bandera opera en un nivel de emergencia diferente y usa una técnica O.R.G.A.N.I.Z.E distinta. La composición NO es lineal.
 
-**DoD**: `coherence_definition.md` con propuesta formal de Φ
+**Caracterización MMCO de las 5 Banderas**:
+
+| Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio de Razonamiento |
+|---------|------------|------------|------------------------|-------------------------|
+| 🔵 @blueflag | 0b (Correlaciones) | Φ_verdad | **CoT Sequential** | Verificación paso a paso de evidencia |
+| ⚫ @blackflag | 0a (Tensores) | Φ_poder | **Graph of Thought** | Mapeo de redes de influencia y captura |
+| 🔴 @redflag | 1 (Proto-geometría) | Φ_material | **CoT + Validation** | Cálculo de escala, enforcement, suministro |
+| 🟡 @yellowflag | 2 (Pseudo-tiempo) | Φ_límites | **ToT Multi-Path** | Exploración de condiciones y fronteras |
+| 🟠 @orangeflag | 3 (Espacio-tiempo) | Φ_registro | **Self-Consistency** | Validación multi-auditorio |
+
+**Propiedad de Inconmensurabilidad**:
+- Las banderas operan en espacios de razonamiento **ortogonales**
+- Φ_verdad (epistemología) ≠ Φ_poder (política) ≠ Φ_material (economía)
+- La suma lineal `Σ(w·Φ)` pierde información de estructura
+
+**Tasks con Mapeo MMCO**:
+
+| Task | Descripción | Técnica | Nivel MMCO | Estado |
+|------|-------------|---------|------------|--------|
+| T05 | Path 1: Coherencia lógica | @blueflag + CoT | 0b | ⏳ |
+| T06 | Path 2: Coherencia de poder | @blackflag + Graph | 0a | ⏳ |
+| T07 | Path 3: Coherencia material | @redflag + CoT+Val | 1 | ⏳ |
+| T08 | Path 4: Coherencia de límites | @yellowflag + ToT | 2 | ⏳ |
+| T09 | Path 5: Coherencia de registro | @orangeflag + SelfCons | 3 | ⏳ |
+| T10 | Síntesis: Φ como grafo de operadores (no lineal) | Ensemble | 4 | ⏳ |
+
+**Propuesta de Composición (Post-Lineal)**:
+
+```
+Φ_editor = f(Φ_verdad, Φ_poder, Φ_material, Φ_límites, Φ_registro)
+
+Donde f es una función de grafo:
+- Nodos: Φ_bandera (con su técnica específica)
+- Aristas: Relaciones de dependencia/tensión entre espacios
+- Output: Vector multidimensional, NO escalar
+```
+
+**DoD**: `coherence_definition.md` con:
+- Caracterización MMCO de cada bandera
+- Grafo de dependencias entre Φ
+- Propuesta de composición no-lineal validada
 
 #### S03: Toy Model MVP (3 pts)
 
@@ -1233,6 +1271,7 @@ Script de diagnóstico que mida:
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-28 | 📝 Ampliar S02 SCRIPT-1.23.0 con caracterización MMCO de banderas (feedback Talaia/Flove/LOW): nivel emergencia, operador Φ, inconmensurabilidad | @aleph + @periodico |
 | 2025-12-28 | ✅ Cerrar SCRIPT-1.29.0 Fase 3 (S16-S21, 12 pts) — agentes plugin refactorizados: 703→230 líneas (67% reducción) | Aleph |
 | 2025-12-28 | 🆕 Extender SCRIPT-1.29.0 con Fase 3: refactorización agentes plugin (S16-S21, +12 pts) — plugin-manager y scrum | Scrum |
 | 2025-12-28 | 🔄 Refactorizar SCRIPT-1.23.0 como Validación Paradigmática (5W+Banderas→O.R.G.A.N.I.Z.E) — 16→13 pts, sin dependencias | @pathykar + @periodico |
