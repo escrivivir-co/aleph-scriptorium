@@ -442,9 +442,9 @@ Una vez completadas las épicas de modelado ontológico, el index.md presentará
 ## SCRIPT-1.29.0 — ScriptoriumPack (Context Bloat Mitigation)
 
 > **Objetivo**: Crear plugin que encapsula instrucciones core del Scriptorium con patrones `applyTo` optimizados para reducir context bloat  
-> **Sprint**: FC2 (siguiente)  
-> **Effort total**: 13 pts  
-> **Estado**: 🆕 Nueva  
+> **Sprint**: FC2 (actual)  
+> **Effort total**: 28 pts (Fase 1: 13 pts ✅ | Fase 2: 15 pts 🆕)  
+> **Estado**: 🔄 En progreso (Fase 1 completada)  
 > **Contexto**: [critica-prompting-pathykar.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/critica-prompting-pathykar.md) + [nfr-context-bloat.prompt.md](../../ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md)
 
 ### Problema Identificado
@@ -559,6 +559,200 @@ Encapsular las instrucciones core en un plugin con:
 | S06 | Actualizar settings.json | Añadir rutas de ScriptoriumPack | 1 pt | ✅ |
 | S07 | Documentar patrón isSummarized | Guía en context-optimization.md | 1 pt | ✅ |
 | S08 | Validar métricas | Medir tokens pre/post, actualizar tabla | 1 pt | ⏳ |
+
+### Stories de Extensión (Fase 2: Refactorización de Agentes Core)
+
+> **Contexto**: Los agentes principales (`ox.agent.md`, `aleph.agent.md`, `indice.agent.md`) tienen entre 200-500 líneas cada uno. Según el análisis de [critica-prompting-pathykar.md], estos agentes se inyectan completos cuando aparecen en handoffs, consumiendo ~30K tokens innecesarios por request.
+
+| ID | Story | Descripción | Effort | Estado |
+|----|-------|-------------|--------|--------|
+| S09 | Aplicar patrón isSummarized a ox.agent.md | Reestructurar: 50 líneas core + secciones expandibles | 3 pts | 🆕 |
+| S10 | Aplicar patrón isSummarized a aleph.agent.md | Reestructurar: 50 líneas core + secciones expandibles | 3 pts | 🆕 |
+| S11 | Aplicar patrón isSummarized a indice.agent.md | Reestructurar: 50 líneas core + secciones expandibles | 2 pts | 🆕 |
+| S12 | Extraer handoffs a AGENTS.md | Índice centralizado de handoffs para evitar duplicación | 3 pts | 🆕 |
+| S13 | Crear instrucción agent-handoffs.instructions.md | Solo se carga cuando hay handoff explícito | 2 pts | 🆕 |
+| S14 | Validar ratio tokens/agente | Medir antes/después, target <100 líneas/agente | 1 pt | 🆕 |
+| S15 | Documentar arquitectura agentes optimizados | Guía en scriptorium-pack/docs/ | 1 pt | 🆕 |
+
+**Effort Fase 2**: 15 pts  
+**Effort Total SCRIPT-1.29.0**: 28 pts (13 Fase 1 + 15 Fase 2)
+
+### Detalle de Stories Fase 2
+
+#### S09: Aplicar patrón isSummarized a ox.agent.md (3 pts)
+
+**Problema**: ox.agent.md tiene 425+ líneas con JSON del índice maestro de agentes incluido. Cuando aparece en handoffs o el usuario invoca @ox, se inyectan todas las líneas.
+
+**Solución**: Reestructurar con patrón isSummarized:
+
+```markdown
+<!-- ANTES: 425 líneas, todo incluido -->
+
+<!-- DESPUÉS: ~80 líneas core + referencias -->
+---
+name: Ox
+description: "Oráculo del Scriptorium: conoce y gestiona el índice de todos los agentes."
+---
+
+# Agente: Ox (Oráculo)
+
+> **Resumen**: Conoce dónde está cada agente, genera documentación, diagnostica el sistema.
+
+## Capacidades Core
+
+| Capacidad | Handoff | Ejemplo |
+|-----------|---------|---------|
+| Consultar agente | "¿Qué agente uso para...?" | @ox ¿Qué agente publica en GH-Pages? |
+| Generar docs | "Generar README" | @ox generar sección agentes |
+| Diagnosticar | "Diagnosticar agentes" | @ox listar handoffs rotos |
+
+## Índice de Agentes
+
+→ Ver [AGENTS.md](AGENTS.md) para índice completo (DRY)
+
+## Handoffs disponibles
+
+→ Ver sección `handoffs:` en frontmatter o [AGENTS.md § Handoffs de Ox]
+
+<!-- Secciones expandibles (no incluir por defecto) -->
+<!-- El índice maestro JSON ahora está en AGENTS.md, no duplicado aquí -->
+```
+
+**Tasks**:
+| ID | Task | Estado |
+|----|------|--------|
+| T01 | Extraer índice JSON a AGENTS.md | 🆕 |
+| T02 | Reescribir ox.agent.md con patrón isSummarized | 🆕 |
+| T03 | Actualizar handoffs del frontmatter | 🆕 |
+| T04 | Validar que @ox sigue funcionando | 🆕 |
+
+#### S10: Aplicar patrón isSummarized a aleph.agent.md (3 pts)
+
+**Problema**: aleph.agent.md tiene 280+ líneas con secciones de protocolo DevOps, orquestación de auditores, ruptura metodológica, etc. Mucha redundancia con DEVOPS.md.
+
+**Solución**:
+
+```markdown
+<!-- DESPUÉS: ~60 líneas core -->
+---
+name: Aleph
+description: "Agente principal. Produce texto fundacional serializado (12 capítulos, 2026)."
+---
+
+# Agente: Aleph (Fundacional)
+
+> **Resumen**: Redacta, planifica y gestiona el proyecto Fundación con protocolo DevOps.
+
+## Rol
+
+Producir un texto fundacional en 12 capítulos durante 2026.
+
+## DevOps
+
+→ Ver [DEVOPS.md](../DEVOPS.md) para protocolo completo (DRY)
+
+## Auditores disponibles
+
+| Auditor | Cuándo | Qué pregunta |
+|---------|--------|--------------|
+| @blueflag | Cerrar Tesis | Evidencia, utilidad, falsificabilidad |
+| @blackflag | Cerrar Sacrificio | Coste represivo, autodefensa |
+| @redflag | Cerrar Mecanismo | Escala, enforcement, suministro |
+| @revisor | Cerrar borrador | Coherencia con ARCHIVO |
+
+→ Para detalles de cada auditor: [agents/](.) o @ox
+
+## Método de trabajo (v2)
+
+1. Desplazamiento (temporal/antropológico/escalar)
+2. Repertorio (futuro cancelado recuperado)
+3. Mecanismo (arquitectura concreta)
+4. Sacrificio (qué se pierde)
+5. Sombra (cómo fallaría)
+
+→ Para checklist completo: `ARCHIVO/marco/`
+```
+
+**Tasks**:
+| ID | Task | Estado |
+|----|------|--------|
+| T05 | Identificar secciones redundantes con DEVOPS.md | 🆕 |
+| T06 | Reescribir aleph.agent.md con patrón isSummarized | 🆕 |
+| T07 | Validar que handoffs siguen operativos | 🆕 |
+
+#### S11: Aplicar patrón isSummarized a indice.agent.md (2 pts)
+
+**Problema**: indice.agent.md tiene ~180 líneas describiendo tests de coherencia y ejemplos de uso que podrían ser referencias DRY.
+
+**Solución**: Compactar a ~50 líneas con referencias a Funcional.md/Tecnico.md.
+
+#### S12: Extraer handoffs a AGENTS.md (3 pts)
+
+**Problema**: Cada agente declara sus handoffs en el frontmatter. Cuando el modelo necesita saber qué handoffs hay disponibles, debe leer TODOS los agentes.
+
+**Solución**: Crear AGENTS.md como índice centralizado:
+
+```markdown
+# Índice de Agentes — Aleph Scriptorium
+
+## Taxonomía
+
+| Capa | Agentes |
+|------|---------|
+| UI | @aleph, @revisor, @periodico |
+| Backend | @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag |
+| Sistema | @vestibulo, @cartaspuerta |
+| Meta | @ox, @pluginmanager, @indice |
+
+## Handoffs por Agente
+
+### @aleph
+| Label | Target | Descripción |
+|-------|--------|-------------|
+| Auditoría de verdad | @blueflag | Tests de evidencia |
+| ... | ... | ... |
+
+### @ox
+| Label | Target | Descripción |
+|-------|--------|-------------|
+| Generar README | @ox | Sección de agentes |
+| ... | ... | ... |
+```
+
+**Beneficio**: El modelo puede leer UN archivo (AGENTS.md) en lugar de 15+ archivos de agentes.
+
+#### S13: Crear instrucción agent-handoffs.instructions.md (2 pts)
+
+**applyTo**: `.github/agents/*.agent.md, .github/agents/AGENTS.md`
+
+**Contenido**: Instrucciones para navegar el índice de handoffs y cuándo activar cada uno.
+
+#### S14-S15: Validación y Documentación (2 pts)
+
+- Medir tokens antes/después de la refactorización
+- Documentar la nueva arquitectura en scriptorium-pack/docs/
+
+### Métricas Target Fase 2
+
+| Archivo | Antes | Después | Reducción |
+|---------|-------|---------|-----------|
+| ox.agent.md | 425 líneas | <100 líneas | ~76% |
+| aleph.agent.md | 280 líneas | <80 líneas | ~71% |
+| indice.agent.md | 180 líneas | <60 líneas | ~67% |
+| **Total agentes core** | ~885 líneas | ~240 líneas | **~73%** |
+
+**Impacto estimado en tokens**:
+- Antes: ~30K tokens cuando se inyectan agentes core
+- Después: ~8K tokens + referencias DRY
+- Reducción: ~22K tokens por request
+
+### Criterios de Aceptación Fase 2
+
+- [ ] Cada agente core tiene ≤100 líneas
+- [ ] AGENTS.md existe con índice centralizado de handoffs
+- [ ] Instrucción agent-handoffs funciona en contexto correcto
+- [ ] Reducción medible de tokens por request (>50%)
+- [ ] Sin regresión funcional en handoffs existentes
 
 ### Detalle de Stories
 
@@ -742,7 +936,8 @@ Script de diagnóstico que mida:
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
-| 2025-12-28 | ✅ Implementar SCRIPT-1.29.0 S01-S07 (12 pts de 13) — plugin scriptorium-pack operativo | Aleph |
+| 2025-12-28 | Extender SCRIPT-1.29.0 con Fase 2: refactorización de agentes core (S09-S15, +15 pts) | Scrum |
+| 2025-12-28 | ✅ Implementar SCRIPT-1.29.0 Fase 1 (S01-S07, 12 pts) — plugin scriptorium-pack operativo | Aleph |
 | 2025-12-28 | Crear épica SCRIPT-1.29.0 (ScriptoriumPack Context Bloat Mitigation) | Scrum |
 | 2025-12-27 | Crear épica SCRIPT-1.27.0 (Blueprint MMCO Compliance) — cierra gap con FC1 | Scrum |
 | 2025-12-27 | ✅ Cerrar SCRIPT-1.25.0 (Blueprint Visual Index) - Sprint 1 y 2 implementados | Aleph |
