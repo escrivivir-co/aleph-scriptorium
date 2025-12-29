@@ -2,7 +2,7 @@
 name: plugin_ox_mcppresets
 description: "Bridge: conecta VS Code con el agente McpPresets del plugin mcp-presets. Ver .github/plugins/mcp-presets/"
 argument-hint: "Gestiona presets MCP: importar, listar, exportar, asignar a agentes."
-tools: ['agent']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Listar agentes del plugin mcp-presets
     agent: plugin_ox_mcppresets
