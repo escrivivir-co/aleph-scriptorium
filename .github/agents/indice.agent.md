@@ -42,8 +42,23 @@ handoffs:
 |--------|------|--------|
 | **Funcional** | `ARCHIVO/DEVOPS/Funcional.md` | Usuario: qué puedo hacer |
 | **Técnico** | `ARCHIVO/DEVOPS/Tecnico.md` | Scrum: cómo está construido |
+| **Plugins** | `.github/PLUGINS.md` | Protocolo y servidores MCP |
+| **MCP Servers** | `.vscode/mcp.json` | Servidores MCP activos |
 
-**Contrato DRY**: Estos dos archivos son la ÚNICA fuente de navegación.
+**Contrato DRY**: Estos archivos son la fuente de navegación.
+
+---
+
+## Servidores MCP
+
+| Servidor | Puerto | Fuente |
+|----------|--------|--------|
+| devops-mcp-server | 3003 | MCPGallery/mcp-mesh-sdk |
+| wiki-browser-server | 3002 | MCPGallery/mcp-mesh-sdk |
+| state-machine-server | 3004 | MCPGallery/mcp-mesh-sdk |
+| launcher-server | 3050 | MCPGallery/mcp-mesh-sdk |
+
+→ Ver [PLUGINS.md](../PLUGINS.md) sección "Servidores MCP" para protocolo.
 
 ---
 
