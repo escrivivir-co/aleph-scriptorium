@@ -1,7 +1,7 @@
 # Índice — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`
-> **Generado**: 2025-12-27
+> **Generado**: 2025-12-29
 > **Propósito**: Navegación rápida por los borradores de backlog/planificación (por carpeta), con resúmenes y señales operativas.
 
 ---
@@ -15,7 +15,12 @@
 | [AS-UTILS-SDK](#as-utils-sdk) | Planificación Épica SCRIPT-1.9.0: Conversación PO-SM |  | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-UTILS-SDK/conversacion-po-sm.md) |
 | [BLOCKLY-SDK](#blockly-sdk) | Conversación PO-SM: Blockly AlephScript SDK | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/BLOCKLY-SDK/conversacion-po-sm.md) |
 | [CLI_SCRIPTORIUM](#cli_scriptorium) | Plan Arquitectónico: CLI Scriptorium | 📐 Diseño (anchura sin profundidad) | [PLAN_ARQUITECTURA.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/PLAN_ARQUITECTURA.md) |
+| [Diciembre_25_MMCO_Editor](#diciembre_25_mmco_editor) | SCRIPT-1.29.0: Context Bloat Mitigation | ✅ Cerrada (36% reducción tokens, ver logs-critica) | [nfr-context-bloat.prompt.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md) |
 | [Diciembre_25_Ontologia](#diciembre_25_ontologia) | FC1: Ontología Formal del Scriptorium | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [02_backlog-sprint1.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_Ontologia/02_backlog-sprint1.md) |
+| [Diciembre_27_BlueprintMMCO_Enhancement](#diciembre_27_blueprintmmco_enhancement) | Enhancement: Navegación Blueprint MMCO | ✅ Completado (refactor coordenadas) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_27_BlueprintMMCO_Enhancement/01_conversacion-po-sm.md) |
+| [Diciembre_28_BlueprintMMCO_Phi5D](#diciembre_28_blueprintmmco_phi5d) | SCRIPT-1.30.0: Refactorización Φ 5D | 📋 Nuevo (dependencia de 1.23.0) | [01_backlog-borrador.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_BlueprintMMCO_Phi5D/01_backlog-borrador.md) |
+| [Diciembre_28_Novelist_Integration](#diciembre_28_novelist_integration) | SCRIPT-1.30.0: Novelist-Teatro-TALLER | ✅ Implementado (FC3) | [backlog-novelist-integration.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_Novelist_Integration/backlog-novelist-integration.md) |
+| [PathykarAgente](#pathykaragente) | Agente Karpathy-Like (scraping X/épocas) | 📝 Idea (sin formalizar) | [data.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/PathykarAgente/data.md) |
 | [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FloveEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
 | [INDICES_COBERTURA](#indices_cobertura) | Conversación PO-SM: Cobertura y Homogeneización de Índices | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA/conversacion-po-sm.md) |
 | [IOT-SBR-LOGICA](#iot-sbr-logica) | Conversación PO-SM: Plugin PrologEditor | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/conversacion-po-sm.md) |
@@ -721,3 +726,147 @@ wiki, racer, wiring, app, conversación, wiringapp, node, red, flows, script
 
 - [conversacion-po-sm.md — Conversación PO-SM: WiringApp (Wiki-Racer → Node-RED Flows)](ARCHIVO/DISCO/BACKLOG_BORRADORES/WIKI_RACER_WIRING_APP/conversacion-po-sm.md)
 - [01_backlog-borrador.md — Backlog Borrador: SCRIPT-1.11.0 — WiringApp (Wiki-Racer Flows)](ARCHIVO/DISCO/BACKLOG_BORRADORES/WIKI_RACER_WIRING_APP/01_backlog-borrador.md)
+
+## Diciembre_25_MMCO_Editor
+
+**Abstract**
+
+**Fecha**: 2025-12-25 — **Sprint**: FC3 — **Épica propuesta**: SCRIPT-1.29.0
+
+El SM ha identificado un anti-patrón crítico: el 92% de los tokens (117K de 128K) se consumen en contexto, dejando solo 8% para respuestas. La carpeta contiene la negociación NFR para rediseñar `.github/` y mitigar el context bloat.
+
+**Palabras clave**
+
+context, bloat, nfr, prompting, tokens, glob, applyTo, instructions
+
+**Titulares**
+
+- Prompt: Negociación NFR — Context Bloat en .github/
+- Diagnóstico de banderas sobre attachments
+- Propuesta de refactorización de `applyTo` patterns
+
+**Ideas fuerza**
+
+- **97% del contexto es ruido**: Solo ~250 líneas de 8,849 eran la tarea real
+- **Usuario perdió control**: El sistema auto-inyecta archivos sin filtrar por relevancia
+- **Ratio señal/ruido**: ~3% — Requiere intervención urgente
+
+**Archivos**
+
+- [nfr-context-bloat.prompt.md — Negociación NFR: Context Bloat](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md)
+- [critica-prompting-pathykar.md — Análisis crítico del prompting](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/critica-prompting-pathykar.md)
+- [Pathykar.inner.md — Dump de request a Copilot (8,849 líneas)](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/Pathykar.inner.md)
+
+## Diciembre_27_BlueprintMMCO_Enhancement
+
+**Abstract**
+
+**Fecha**: 2025-12-27 — **Sprint**: FC2 — **Épica**: SCRIPT-1.28.0
+
+Enhancement crítico: las 8 diapositivas del Blueprint MMCO estaban apiladas en (0,0) variando solo en Z, creando superposición visual. Refactorizado a layout lineal vertical.
+
+**Palabras clave**
+
+blueprint, mmco, impress, coordenadas, navegación, slides
+
+**Titulares**
+
+- Conversación PO-SM: Enhancement Blueprint MMCO
+- Refactorización de coordenadas (lineal vertical)
+- Verificación navegación local con Jekyll
+
+**Ideas fuerza**
+
+- **Problema**: Concepto "eje Z = nivel de emergencia" visualmente inviable
+- **Solución**: Layout lineal vertical con variación X para evitar superposición
+- **Estado**: ✅ Completado y verificado
+
+**Archivos**
+
+- [01_conversacion-po-sm.md — Conversación PO-SM: Enhancement Blueprint MMCO](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_27_BlueprintMMCO_Enhancement/01_conversacion-po-sm.md)
+- [02_backlog-borrador.md — Backlog Enhancement MMCO](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_27_BlueprintMMCO_Enhancement/02_backlog-borrador.md)
+
+## Diciembre_28_BlueprintMMCO_Phi5D
+
+**Abstract**
+
+**Fecha**: 2025-12-28 — **Sprint**: FC2 — **Épica propuesta**: SCRIPT-1.30.0
+
+El Blueprint MMCO actual muestra `Φ_editor = f(Φ_blue, ..., Φ_orange)` pero no refleja la caracterización MMCO aprobada en SCRIPT-1.23.0: cada bandera opera en un nivel de emergencia diferente, el resultado es un vector 5D, y las banderas son inconmensurables.
+
+**Palabras clave**
+
+blueprint, mmco, phi, 5d, banderas, emergencia, inconmensurabilidad
+
+**Titulares**
+
+- Backlog Borrador: Blueprint MMCO — Refactorización Φ 5D
+- Redistribución de Banderas por Nivel MMCO
+- Visualización de inconmensurabilidad
+
+**Ideas fuerza**
+
+- Cada bandera opera en un **nivel de emergencia diferente** (0a, 0b, 1, 2, 3)
+- Cada bandera usa una **técnica O.R.G.A.N.I.Z.E diferente**
+- Las banderas son **inconmensurables** (no sumables linealmente)
+
+**Archivos**
+
+- [01_backlog-borrador.md — Backlog: Refactorización Φ 5D](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_BlueprintMMCO_Phi5D/01_backlog-borrador.md)
+
+## Diciembre_28_Novelist_Integration
+
+**Abstract**
+
+**Fecha**: 2025-12-28 — **Sprint**: FC3 — **Épica**: SCRIPT-1.30.0
+
+Integración Novelist-Teatro-TALLER: schemas JSON, bridge actualizado, obra "Ítaca Digital" con 12 estadios monomito, y taller NOVELA_TRANSMEDIA para mapeo selectivo.
+
+**Palabras clave**
+
+novelist, teatro, taller, integración, monomito, itaca, transmedia
+
+**Titulares**
+
+- Backlog: Integración Novelist-Teatro-TALLER
+- Infraestructura Plugin Novelist (Sistema)
+- Obra Teatro Ítaca Digital (12 estadios)
+- Taller NOVELA_TRANSMEDIA
+
+**Ideas fuerza**
+
+- 4 stories implementadas: schemas, bridge, obra, taller
+- División clara: Sistema (commits 1-3) vs Contenido (commit 4)
+- Sincronización con fuente remota NOVELA
+
+**Archivos**
+
+- [backlog-novelist-integration.md — Backlog: Novelist Integration](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_Novelist_Integration/backlog-novelist-integration.md)
+
+## PathykarAgente
+
+**Abstract**
+
+**Fecha**: 2025-12-28 — **Estado**: 📝 Idea (sin formalizar)
+
+Propuesta de agente inspirado en @karpathy: segmentación de timeline por épocas temporales (2010-2015, 2016-2020, 2021-2025) con dos fases (scraping y uso) y llamadas a API de X.
+
+**Palabras clave**
+
+karpathy, agente, scraping, x, twitter, épocas, ml, ia
+
+**Titulares**
+
+- Instrucciones Generales para el Agente Karpathy-Like
+- Prompts para Épocas Temporales
+- Ficha del Agente para GitHub Copilot Chat
+
+**Ideas fuerza**
+
+- **Fase de Scraping**: Recopila datos de X segmentando por épocas
+- **Fase de Uso**: Genera respuestas en estilo conversacional
+- **Arquetipos, no personas**: Enfoque en patrones públicos observables
+
+**Archivos**
+
+- [data.md — Borrador de agente Karpathy-Like](ARCHIVO/DISCO/BACKLOG_BORRADORES/PathykarAgente/data.md)
