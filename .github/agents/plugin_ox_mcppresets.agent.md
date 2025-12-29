@@ -1,7 +1,7 @@
 ---
 name: plugin_ox_mcppresets
-description: "Bridge: conecta VS Code con el agente McpPresets del plugin mcp-presets. Ver .github/plugins/mcp-presets/"
-argument-hint: "Gestiona presets MCP: importar, listar, exportar, asignar a agentes."
+description: "Bridge: conecta VS Code con el agente McpPresets del plugin mcp-presets. Gestiona presets MCP usando el patrón BaseMCPServer de mcp-core-sdk."
+argument-hint: "Gestiona presets MCP: importar, listar, exportar, asignar a agentes, arrancar MCP Server."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Listar agentes del plugin mcp-presets
@@ -28,6 +28,14 @@ handoffs:
     agent: .github/plugins/mcp-presets/agents/mcp-presets.agent.md
     prompt: Vincula un preset MCP con un agente creado en AGENT_CREATOR.
     send: false
+  - label: Arrancar MCP Server de presets
+    agent: plugin_ox_mcppresets
+    prompt: Inicia el PresetsMCPServer en puerto 3067 para exponer tools de gestión de presets a Copilot Chat.
+    send: false
+  - label: Consultar arquitectura MCP
+    agent: plugin_ox_mcppresets
+    prompt: Explica el patrón BaseMCPServer y cómo se integra con VS Code Copilot.
+    send: false
 ---
 
 # Plugin Ox: MCP-Presets
@@ -46,6 +54,47 @@ Este bridge proporciona acceso al plugin **MCP-Presets**, que permite gestionar 
 - **Listar** presets disponibles en el Scriptorium
 - **Exportar** presets en formato Zeus-compatible
 - **Asignar** presets a agentes de AGENT_CREATOR
+- **Arrancar** MCP Server para exponer tools a Copilot Chat
+
+---
+
+## Arquitectura MCP (Patrón Aprendido)
+
+> **Fuente**: [08_Formacion_McpPresets_MCP_Server.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/08_Formacion_McpPresets_MCP_Server.md)
+
+```
+MCPGallery/
+├── mcp-core-sdk/              # Submódulo con BaseMCPServer
+│   └── src/server/
+│       └── BaseMCPServer.ts   # Usa @modelcontextprotocol/sdk
+└── src/
+    └── presets-mcp-server.ts  # Extiende BaseMCPServer (puerto 3067)
+```
+
+**Configuración VS Code** (`.vscode/mcp.json`):
+```json
+{
+  "servers": {
+    "mcp-presets": {
+      "type": "http",
+      "url": "http://localhost:3067"
+    }
+  }
+}
+```
+
+**Tools expuestas al LLM**:
+| Tool | Descripción |
+|------|-------------|
+| `list_presets` | Lista todos los presets disponibles |
+| `activate_preset` | Activa un preset para la sesión |
+| `get_preset_tools` | Obtiene tools de un preset específico |
+
+**Resources expuestos**:
+| Resource | Descripción |
+|----------|-------------|
+| `catalog://presets` | Catálogo completo de presets |
+| `catalog://assignments` | Mapeo agente→presets |
 
 ---
 
@@ -66,6 +115,7 @@ Este bridge proporciona acceso al plugin **MCP-Presets**, que permite gestionar 
 | `exportar` | Genera JSON Zeus-compatible |
 | `asignar` | Vincula preset con agente |
 | `desasignar` | Elimina vinculación |
+| `arrancar-server` | Inicia PresetsMCPServer:3067 |
 
 ---
 
@@ -84,4 +134,5 @@ Este bridge proporciona acceso al plugin **MCP-Presets**, que permite gestionar 
 - Manifest: `.github/plugins/mcp-presets/manifest.md`
 - Agentes: `.github/plugins/mcp-presets/agents/`
 - Instrucciones: `.github/plugins/mcp-presets/instructions/mcp-presets.instructions.md`
-- Submódulo: `alephscript-mcp-presets-site/` (rama `integration/beta/scriptorium`)
+- Patrón base: `NovelistEditor/mcp-core-sdk/src/server/BaseMCPServer.ts`
+- Formación: `ARCHIVO/DISCO/BACKLOG_BORRADORES/.../08_Formacion_McpPresets_MCP_Server.md`
