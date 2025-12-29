@@ -11,6 +11,13 @@
       "palabras": 0,
       "feature": "@vestibulo, @cartaspuerta",
       "fuenteOriginal": "Abstract_Portada.md",
+      "fuentesSecundarias": {
+        "origen": "LIBRO/",
+        "indice": "ARCHIVO/DISCO/TALLER/NOVELA_TRANSMEDIA/INDICE_THEIA_LIBRO.md",
+        "fragmentosAutorizados": 3,
+        "personajesLatentes": ["Lucy", "Gallardoblanco", "César"],
+        "hilosSembrados": ["lucy-penelope", "gallardoblanco-cronista", "lengua-maquinas", "cuenta-atras", "cesar-programador"]
+      },
       "prueba": "Leer la portada y comprender el contexto del viaje",
       "duracion": "20 min"
     },

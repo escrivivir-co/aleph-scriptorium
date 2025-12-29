@@ -21,7 +21,25 @@
       "ruta": "/Users/morente/Desktop/THEIA_PATH/NOVELA",
       "tipo": "lectura-selectiva",
       "archivosVinculados": [
-        { "capitulo": 1, "fuente": "Abstract_Portada.md", "estado": "pendiente" },
+        { 
+          "capitulo": 1, 
+          "fuente": "Abstract_Portada.md", 
+          "estado": "pendiente",
+          "fuentesSecundarias": [
+            {
+              "origen": "LIBRO/[El-borrego-avispado]-Aquí-estoy-yo.html",
+              "fragmentos": ["testigo-literatura", "saltar-del-huevo"],
+              "escenaDestino": "escena-2-ecos-blog",
+              "estado": "autorizado"
+            },
+            {
+              "origen": "LIBRO/[El-borrego-avispado]-No-estoy-solo%2C-sólo-que-las-jaulas.html",
+              "fragmentos": ["dialogo-lucy"],
+              "escenaDestino": "escena-2-ecos-blog",
+              "estado": "autorizado"
+            }
+          ]
+        },
         { "capitulo": 2, "fuente": "Apertura_Ulises_y_Penelope.md", "estado": "pendiente" },
         { "capitulo": 3, "fuente": "Capitulo01_Onan_y_Tamar.md", "estado": "pendiente" },
         { "capitulo": 4, "fuente": "Capitulo02_Orfeo_y_Eurídice.md", "estado": "pendiente" },
@@ -55,6 +73,11 @@
     }
   },
   "historial": [
+    {
+      "fecha": "2025-12-29T12:00:00Z",
+      "accion": "mapear-libro-cap1",
+      "detalles": "Añadir LIBRO/ como fuente secundaria para Cap.1. Fragmentos autorizados por banderas. Mapeo en mapeo-libro-cap1.md"
+    },
     {
       "fecha": "2025-12-28T12:00:00Z",
       "accion": "inicializar",
