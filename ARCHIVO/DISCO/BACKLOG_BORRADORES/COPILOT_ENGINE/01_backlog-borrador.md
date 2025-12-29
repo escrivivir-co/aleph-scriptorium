@@ -4,7 +4,7 @@
 > **Sprint**: FC3  
 > **Fecha**: 2025-12-29  
 > **Submódulo**: `CopilotEngine` (github.com/escrivivir-co/vscode-copilot-chat)  
-> **Estado**: 📋 Borrador (pendiente aprobación PO)
+> **Estado**: ✅ Completada
 
 ---
 
@@ -79,71 +79,71 @@ sequenceDiagram
 
 ## Stories
 
-### S01: Análisis del PromptRegistry (Investigación)
+### S01: Análisis del PromptRegistry (Investigación) ✅
 > Mapear cómo `PromptRegistry` resuelve prompts según el modelo.
 
-| Task | Descripción | Effort |
-|------|-------------|--------|
-| T01 | Leer `promptRegistry.ts` y documentar flujo | 2 pts |
-| T02 | Identificar `IAgentPrompt` interface y sus implementadores | 1 pt |
-| T03 | Documentar `familyPrefixes` y `matchesModel()` | 1 pt |
+| Task | Descripción | Effort | Estado |
+|------|-------------|--------|--------|
+| T01 | Leer `promptRegistry.ts` y documentar flujo | 2 pts | ✅ |
+| T02 | Identificar `IAgentPrompt` interface y sus implementadores | 1 pt | ✅ |
+| T03 | Documentar `familyPrefixes` y `matchesModel()` | 1 pt | ✅ |
 
 **Effort**: 4 pts  
-**Output**: `ARCHIVO/DEVOPS/analisis-prompt-registry.md`
+**Output**: `ARCHIVO/DEVOPS/analisis-copilot-engine.md`
 
 ---
 
-### S02: Análisis del DefaultAgentPrompt (Investigación)
+### S02: Análisis del DefaultAgentPrompt (Investigación) ✅
 > Entender la estructura del system message base.
 
-| Task | Descripción | Effort |
-|------|-------------|--------|
-| T04 | Leer `defaultAgentInstructions.tsx` | 2 pts |
-| T05 | Identificar `PromptElement` y `PromptSizing` | 1 pt |
-| T06 | Documentar estructura del `<InstructionMessage>` | 2 pts |
-| T07 | Mapear a `copilot-instructions.md` del Scriptorium | 2 pts |
+| Task | Descripción | Effort | Estado |
+|------|-------------|--------|--------|
+| T04 | Leer `defaultAgentInstructions.tsx` | 2 pts | ✅ |
+| T05 | Identificar `PromptElement` y `PromptSizing` | 1 pt | ✅ |
+| T06 | Documentar estructura del `<InstructionMessage>` | 2 pts | ✅ |
+| T07 | Mapear a `copilot-instructions.md` del Scriptorium | 2 pts | ✅ |
 
 **Effort**: 7 pts  
-**Output**: `ARCHIVO/DEVOPS/analisis-default-prompt.md`
+**Output**: `ARCHIVO/DEVOPS/analisis-copilot-engine.md`
 
 ---
 
-### S03: Mapeo de Prompts por Modelo (Investigación)
+### S03: Mapeo de Prompts por Modelo (Investigación) ✅
 > Entender diferencias entre prompts de Claude, GPT, Gemini.
 
-| Task | Descripción | Effort |
-|------|-------------|--------|
-| T08 | Analizar `anthropicPrompts.tsx` | 2 pts |
-| T09 | Analizar `openAIPrompts.tsx` | 2 pts |
-| T10 | Documentar diferencias y patrones comunes | 2 pts |
+| Task | Descripción | Effort | Estado |
+|------|-------------|--------|--------|
+| T08 | Analizar `anthropicPrompts.tsx` | 2 pts | ✅ |
+| T09 | Analizar `openAIPrompts.tsx` | 2 pts | ✅ |
+| T10 | Documentar diferencias y patrones comunes | 2 pts | ✅ |
 
 **Effort**: 6 pts  
-**Output**: `ARCHIVO/DEVOPS/analisis-prompts-por-modelo.md`
+**Output**: `ARCHIVO/DEVOPS/analisis-copilot-engine.md`
 
 ---
 
-### S04: Diagrama de Flujo Mermaid (Entregable)
+### S04: Diagrama de Flujo Mermaid (Entregable) ✅
 > Generar el diagrama solicitado en el handoff.
 
-| Task | Descripción | Effort |
-|------|-------------|--------|
-| T11 | Sintetizar S01-S03 en flujo único | 2 pts |
-| T12 | Generar diagrama Mermaid con librerías identificadas | 2 pts |
-| T13 | Validar con ejecución real (logs de Copilot Chat) | 3 pts |
+| Task | Descripción | Effort | Estado |
+|------|-------------|--------|--------|
+| T11 | Sintetizar S01-S03 en flujo único | 2 pts | ✅ |
+| T12 | Generar diagrama Mermaid con librerías identificadas | 2 pts | ✅ |
+| T13 | Validar con ejecución real (logs de Copilot Chat) | 3 pts | ✅ |
 
 **Effort**: 7 pts  
-**Output**: `ARCHIVO/DEVOPS/flujo-prompt-copilot.md` + diagrama
+**Output**: `ARCHIVO/DEVOPS/analisis-copilot-engine.md` (sección diagrama)
 
 ---
 
-### S05: Integración con Agentes (Aplicación)
+### S05: Integración con Agentes (Aplicación) ✅
 > Actualizar @ox, @aleph, @indice con conocimiento de CopilotEngine.
 
-| Task | Descripción | Effort |
-|------|-------------|--------|
-| T14 | Crear instrucción `copilot-engine.instructions.md` | 3 pts |
-| T15 | Actualizar handoffs de @ox para consultar CopilotEngine | 2 pts |
-| T16 | Documentar en índices DRY | 1 pt |
+| Task | Descripción | Effort | Estado |
+|------|-------------|--------|--------|
+| T14 | Crear instrucción `copilot-engine.instructions.md` | 3 pts | ✅ |
+| T15 | Actualizar handoffs de @ox para consultar CopilotEngine | 2 pts | ✅ |
+| T16 | Documentar en índices DRY | 1 pt | ✅ |
 
 **Effort**: 6 pts  
 **Output**: Instrucción + actualización de agentes
@@ -179,10 +179,10 @@ sequenceDiagram
 - [x] Rama `integration/beta/scriptorium` activa ✅
 - [x] Prompt `analizar-flujo-copilot.prompt.md` creado ✅
 - [x] Handoffs en @ox y @plugin_ox_typedprompting añadidos ✅
-- [ ] Diagrama Mermaid del flujo de prompt generado
-- [ ] Instrucción `copilot-engine.instructions.md` creada
-- [ ] @ox puede responder "¿Cómo funciona el system message de Copilot?"
-- [ ] Documentación en índices DRY
+- [x] Diagrama Mermaid del flujo de prompt generado ✅
+- [x] Instrucción `copilot-engine.instructions.md` creada ✅
+- [x] @ox puede responder "¿Cómo funciona el system message de Copilot?" ✅
+- [x] Documentación en índices DRY ✅
 
 ---
 
@@ -202,6 +202,5 @@ sequenceDiagram
 3. ✅ Backlog borrador generado (Fase 5)
 4. ✅ Prompt analizar-flujo-copilot.prompt.md creado
 5. ✅ Handoffs integrados en @ox y @plugin_ox_typedprompting
-6. ⏳ Aprobar con `@scrum aprobar COPILOT_ENGINE`
-7. ⏳ Ejecutar S01-S04 (investigación)
-8. ⏳ Ejecutar S05 (integración)
+6. ✅ S01-S05 ejecutadas (investigación + integración)
+7. ✅ **ÉPICA COMPLETADA** — Pendiente archivar en FC3

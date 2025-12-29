@@ -21,7 +21,7 @@
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
 | ✅ | SCRIPT-1.29.0 | Context Bloat Mitigation | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md) |
-| 📋 | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
+| ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
 
 ---
 
