@@ -7,19 +7,31 @@
       "tipo": "inicio",
       "anillo": 0,
       "archivo": "01-mundo-ordinario.md",
-      "estado": "borrador",
-      "palabras": 0,
+      "estado": "borrador-v2",
+      "palabras": 1406,
       "feature": "@vestibulo, @cartaspuerta",
       "fuenteOriginal": "Abstract_Portada.md",
       "fuentesSecundarias": {
         "origen": "LIBRO/",
         "indice": "ARCHIVO/DISCO/TALLER/NOVELA_TRANSMEDIA/INDICE_THEIA_LIBRO.md",
         "fragmentosAutorizados": 3,
-        "personajesLatentes": ["Lucy", "Gallardoblanco", "César"],
-        "hilosSembrados": ["lucy-penelope", "gallardoblanco-cronista", "lengua-maquinas", "cuenta-atras", "cesar-programador"]
+        "personajesLatentes": [
+          "Lucy",
+          "Gallardoblanco",
+          "César"
+        ],
+        "hilosSembrados": [
+          "lucy-penelope",
+          "gallardoblanco-cronista",
+          "lengua-maquinas",
+          "cuenta-atras",
+          "cesar-programador"
+        ]
       },
       "prueba": "Leer la portada y comprender el contexto del viaje",
-      "duracion": "20 min"
+      "duracion": "20 min",
+      "escenas": 6,
+      "sublore": "LIBRO/ integrado"
     },
     {
       "id": 2,
@@ -166,8 +178,8 @@
     }
   ],
   "estadisticas": {
-    "totalPalabras": 0,
+    "totalPalabras": 1406,
     "capitulosCompletos": 0,
-    "ultimaEdicion": "2025-12-28T12:00:00Z"
+    "ultimaEdicion": "2025-12-29T02:00:00Z"
   }
 }
