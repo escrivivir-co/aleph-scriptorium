@@ -14,7 +14,7 @@
 | [AS-GYM](#as-gym) | Planificación Épica SCRIPT-1.10.0: Conversación PO-SM | ✅ Completada | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-GYM/conversacion-po-sm.md) |
 | [AS-UTILS-SDK](#as-utils-sdk) | Planificación Épica SCRIPT-1.9.0: Conversación PO-SM |  | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/AS-UTILS-SDK/conversacion-po-sm.md) |
 | [BLOCKLY-SDK](#blockly-sdk) | Conversación PO-SM: Blockly AlephScript SDK | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/BLOCKLY-SDK/conversacion-po-sm.md) |
-| [CLI_SCRIPTORIUM](#cli_scriptorium) | Plan Arquitectónico: CLI Scriptorium | 📐 Diseño (anchura sin profundidad) | [PLAN_ARQUITECTURA.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/PLAN_ARQUITECTURA.md) |
+| [CLI_SCRIPTORIUM](#cli_scriptorium) | Plan Arquitectónico: CLI Scriptorium | 📐 FC4 (Q1 2026) | [PLAN_ARQUITECTURA.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/PLAN_ARQUITECTURA.md) |
 | [COPILOT_ENGINE](#copilot_engine) | SCRIPT-1.31.0: Análisis System Messaging (CopilotEngine) | 📋 Nuevo | [01_backlog-borrador.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
 | [Diciembre_25_MMCO_Editor](#diciembre_25_mmco_editor) | SCRIPT-1.29.0: Context Bloat Mitigation | ✅ Cerrada (36% reducción tokens, ver logs-critica) | [nfr-context-bloat.prompt.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md) |
 | [Diciembre_25_Ontologia](#diciembre_25_ontologia) | FC1: Ontología Formal del Scriptorium | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [02_backlog-sprint1.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_Ontologia/02_backlog-sprint1.md) |
