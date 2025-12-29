@@ -11,8 +11,9 @@ permalink: /
   <div class="release-badge">🚀 v1.0.0-beta.4</div>
   <div class="release-text">
     <strong>19 plugins · 31 agentes · Tu ejército de IA listo</strong> · 
-    <a href="{{ site.baseurl }}/blueprint/" class="blueprint-link">📐 Blueprint 3D</a> · 
-    <a href="{{ site.baseurl }}/blueprint-mmco/" class="blueprint-link">🧬 Vista MMCO</a>
+    <a href="{{ site.baseurl }}/blueprint/" class="blueprint-link">📐 Blueprint UX</a> · 
+    <a href="{{ site.baseurl }}/blueprint-mmco/" class="blueprint-link">🧬 MMCO</a> ·
+    <a href="{{ site.baseurl }}/blueprint-copilot/" class="blueprint-link">🧠 Copilot</a>
   </div>
 </div>
 
@@ -36,6 +37,11 @@ permalink: /
     <span class="card-title">MMCO</span>
     <span class="card-desc">Jerarquía de Emergencia</span>
   </a>
+  <a href="{{ site.baseurl }}/blueprint-copilot/" class="nav-card">
+    <span class="card-icon">🧠</span>
+    <span class="card-title">Copilot</span>
+    <span class="card-desc">El viaje de tu pregunta</span>
+  </a>
   <a href="{{ site.baseurl }}/leeme/" class="nav-card">
     <span class="card-icon">📖</span>
     <span class="card-title">Léeme</span>
@@ -44,7 +50,7 @@ permalink: /
   <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
     <span class="card-icon">🧬</span>
     <span class="card-title">Ecosistema</span>
-    <span class="card-desc">14 submódulos · 19 plugins · 31 agentes</span>
+    <span class="card-desc">16 submódulos · 19 plugins · 31 agentes</span>
   </a>
   <a href="{{ site.baseurl }}/teatro/" class="nav-card">
     <span class="card-icon">🎭</span>

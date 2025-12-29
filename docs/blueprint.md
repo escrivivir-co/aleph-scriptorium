@@ -379,6 +379,7 @@ permalink: /blueprint/
   <div class="blueprint-toggle" style="margin-bottom: 1.5rem;">
     <span class="toggle-current">📐 Vista UX</span>
     <a href="{{ '/blueprint-mmco/' | relative_url }}" class="toggle-btn">🧬 Vista MMCO</a>
+    <a href="{{ '/blueprint-copilot/' | relative_url }}" class="toggle-btn">🧠 Vista Copilot</a>
   </div>
   
   <div class="cta-container">
