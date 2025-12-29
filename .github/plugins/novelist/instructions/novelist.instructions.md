@@ -439,3 +439,114 @@ Para crear una nueva obra:
 5. Crear `capitulos/` con 12 archivos `.md`
 6. Actualizar `scriptorium-context.json` en NovelistEditor
 
+---
+
+## Protocolo de Fuentes Secundarias
+
+> **Generalizado desde sesiones de trabajo (2025-12)**
+> Este protocolo aplica cuando una obra tiene **material preexistente** que integrar.
+
+### Jerarquía de Fuentes (Patrón de 5 Lienzos)
+
+| Nivel | Nombre | Propósito | Operación |
+|-------|--------|-----------|-----------|
+| **A1** | Prehistoria | Material anterior al proyecto (blogs, borradores, HTML, PDFs) | Solo lectura |
+| **A2** | Fuente estructurada | Capítulos o textos ya organizados | Solo lectura |
+| **B** | Contenedor MCP | Escenas activas en servidor | Lectura/Escritura |
+| **C** | Renderizado local | Capítulos `.md` en `obras/{id}/capitulos/` | Escritura |
+| **D** | Experiencia final | Teatro YAML, PDF, web | Exportar |
+
+**Principio DRY**:
+- A1/A2 son **sagradas** (nunca modificar)
+- B es la **verdad estructurada** (editar aquí)
+- C es **renderizado** (se genera desde B)
+- D es **experiencia** (no contiene narrativa completa)
+
+### Concepto: Sublore
+
+> Material de fuentes secundarias (A1) que se **injerta** en la narrativa principal sin reemplazarla.
+
+- Funciona como **flashbacks**, **ecos**, **citas** o **notas del narrador**
+- Se distingue visualmente: cursivas, comillas, cajas
+- **Máximo 3-4 fragmentos por capítulo**
+- Debe estar **autorizado** por auditoría de banderas
+
+### Concepto: Hilos Sembrados
+
+> Referencias breves que **anticipan** desarrollo en capítulos futuros.
+
+| Campo en estructura.json | Tipo | Ejemplo |
+|--------------------------|------|---------|
+| `hilosSembrados` | array | `["lucy-penelope", "cuenta-atras"]` |
+
+**Reglas**:
+- Sembrar en capítulos tempranos (1-4)
+- Desarrollar en capítulos medios/tardíos
+- Nunca explicar el hilo en el mismo capítulo donde se siembra
+- Documentar en `sincronizacion.json` qué hilo → qué capítulo
+
+### Protocolo de Extracción HTML
+
+Cuando la fuente A1 es HTML:
+
+```bash
+# Convertir a texto limpio
+cat "archivo.html" | sed 's/<[^>]*>//g' | sed 's/&nbsp;/ /g' | head -200
+
+# Buscar fragmentos específicos
+grep -i -A5 -B5 "palabra_clave" archivo.html | sed 's/<[^>]*>//g'
+```
+
+### Restricciones de Material Secundario
+
+| ❌ Prohibido | ✅ Permitido |
+|-------------|-------------|
+| Copiar sin atribución | Citar con referencia |
+| Material político/legal sensible | Material introspectivo/metaliterario |
+| Fechas o eventos identificables | Referencias temporales vagas |
+| Explicar todo de inmediato | Mantener misterio (hilos) |
+| Más del 30% del capítulo | Máximo 3-4 fragmentos breves |
+
+### Checklist de Sesión con Fuentes Secundarias
+
+```markdown
+## Pre-sesión
+- [ ] Fuentes A1/A2 accesibles (vía terminal, NO read_file)
+- [ ] MCP servidor activo
+- [ ] sincronizacion.json tiene mapeo de fuentes
+- [ ] Banderas han autorizado fragmentos
+
+## Durante sesión
+- [ ] Extraer fragmentos con comandos terminal
+- [ ] Crear escenas nuevas o actualizar existentes en MCP
+- [ ] Marcar origen: `<!-- fuente: A1/archivo.html -->`
+- [ ] Marcar hilos: `<!-- hilo: nombre-hilo -->`
+
+## Post-sesión
+- [ ] Renderizar capítulo local
+- [ ] Actualizar estructura.json (palabras, estado, hilosSembrados)
+- [ ] Guardar estado MCP
+```
+
+### Comunicación con Scriptorium
+
+Cuando el Escritor necesita decisiones editoriales:
+
+```markdown
+## Solicitud de Auditoría
+
+**Fuente**: [nombre-archivo]
+**Fragmento** (líneas X-Y):
+> "Texto literal..."
+
+**Pregunta específica**: ¿Es apropiado incluir este fragmento?
+**Contexto narrativo**: Estadio X, escena Y.
+**Hilo que siembra**: [nombre-hilo]
+```
+
+**Decisiones que NO son del Escritor**:
+- ¿Incluir fragmento X? → @aleph + banderas
+- ¿Fusionar fragmentos? → @aleph
+- ¿Descartar material? → @aleph + @blackflag
+- ¿Orden de capítulos? → @aleph + @revisor
+

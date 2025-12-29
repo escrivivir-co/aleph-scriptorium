@@ -89,6 +89,31 @@
         "duracion": {
           "type": "string",
           "description": "Duración estimada"
+        },
+        "sublore": {
+          "type": "string",
+          "description": "Fuente de material secundario integrado (ej: 'LIBRO/ integrado')"
+        },
+        "hilosSembrados": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Referencias anticipatorias para capítulos futuros"
+        },
+        "fuentesSecundarias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "archivo": { "type": "string" },
+              "lineas": { "type": "string" },
+              "uso": { "type": "string" }
+            }
+          },
+          "description": "Lista de fragmentos de A1/A2 usados en este capítulo"
+        },
+        "escenas": {
+          "type": "integer",
+          "description": "Número de escenas en MCP"
         }
       },
       "required": ["id", "nombre", "tipo", "anillo", "archivo"]
