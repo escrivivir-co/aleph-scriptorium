@@ -1,8 +1,8 @@
 ---
 id: gh-pages
 name: "Website Publisher (GitHub Pages)"
-version: "1.1.0"
-description: "Plugin para publicar contenido del Scriptorium en GitHub Pages. Fuente de verdad: docs/ (raíz). Soporta dos modos: fusionar (añadir contenido) y reemplazar (sustituir todo)."
+version: "1.2.0"
+description: "Plugin para publicar contenido del Scriptorium en GitHub Pages. Fuente de verdad: docs/ (raíz). Soporta dos modos: fusionar (añadir contenido) y reemplazar (sustituir todo). Incluye protocolo de plantillas blueprint."
 author: "Aleph Scriptorium"
 license: "MIT"
 
@@ -44,12 +44,20 @@ prompts:
   - name: "gh-pages-publish"
     file: "prompts/gh-pages-publish.prompt.md"
     description: "Publicación general (detecta modo automáticamente)"
+  
+  - name: "create-blueprint"
+    file: "prompts/create-blueprint.prompt.md"
+    description: "Crear nueva presentación blueprint con patrón de navegación 3D"
 
 # Instrucciones
 instructions:
   - name: "gh-pages"
     file: "instructions/gh-pages.instructions.md"
     description: "Flujos de trabajo y convenciones del plugin"
+  
+  - name: "blueprint-templates"
+    file: "instructions/blueprint-templates.instructions.md"
+    description: "Protocolo de plantillas para blueprints impress.js (patrones cruz, columna, cubo)"
 
 # Handoffs para integración con agentes core
 handoffs:
@@ -68,6 +76,10 @@ handoffs:
   - label: "Reemplazar contenido web"
     agent: "GHPages"
     prompt: "Sustituye todo el contenido del sitio con la fuente especificada."
+  
+  - label: "Crear blueprint"
+    agent: "GHPages"
+    prompt: "Crea una nueva presentación blueprint con navegación 3D. Usa --patron=cruz|columna|cubo."
 
 # Metadatos adicionales
 tags:
@@ -76,6 +88,8 @@ tags:
   - jekyll
   - web
   - noticias
+  - blueprint
+  - impress.js
 
 # Modos de operación
 modes:
