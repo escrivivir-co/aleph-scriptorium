@@ -44,6 +44,14 @@ handoffs:
     agent: Ox
     prompt: Crea un nuevo release del Scriptorium usando .github/prompts/crear-release.prompt.md.
     send: false
+  - label: Analizar flujo Copilot Chat
+    agent: Ox
+    prompt: Dado un agente y modelo LLM, analiza el flujo completo User Prompt → System Message → Output usando CopilotEngine como fuente.
+    send: false
+  - label: Investigar System Message por modelo
+    agent: Ox
+    prompt: Busca en CopilotEngine cómo se construye el system message para un modelo específico (Claude, GPT, Gemini).
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)

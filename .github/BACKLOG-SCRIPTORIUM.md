@@ -20,7 +20,8 @@
 
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
-| 📋 | SCRIPT-1.29.0 | Context Bloat Mitigation | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md) |
+| ✅ | SCRIPT-1.29.0 | Context Bloat Mitigation | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md) |
+| 📋 | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
 
 ---
 
@@ -66,7 +67,7 @@
 | Épicas cerradas (total) | 24+ |
 | Effort completado | ~150 pts |
 | Plugins instalados | 19 |
-| Submódulos integrados | 15 |
+| Submódulos integrados | 16 |
 
 ---
 
@@ -74,5 +75,7 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-29 | ➕ Añadir SCRIPT-1.31.0 CopilotEngine | @scrum |
+| 2025-12-29 | ✅ Cerrar SCRIPT-1.29.0 (36% reducción) | @scrum |
 | 2025-12-28 | 🔄 Migrar a protocolo DRY (v1.1.0) | @scrum |
 | 2025-12-28 | 🗄️ Archivar FC2 | @scrum |
