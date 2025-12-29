@@ -123,13 +123,14 @@ Implementar un **gestor de contexto dinámico** basado en TypedPrompting que red
 
 **Owner**: Lucas  
 **Effort**: 5 pts  
-**Nota**: Fusión de SCRIPT-2.2.0 (MCP Resources Schema) + SCRIPT-2.4.0 (MCPGallery Integration)
+**Nota**: Fusión de SCRIPT-2.2.0 (MCP Resources Schema) + SCRIPT-2.4.0 (MCPGallery Integration)  
+**Anexo**: [09_Integracion_MCPGallery_Servidores.md](09_Integracion_MCPGallery_Servidores.md)
 
 ### S01: Mapear MCPGallery a TypedPrompting (2 pts)
 
 | Task | Descripción | Estado |
 |------|-------------|--------|
-| T018 | Analizar `MCPGallery/preset.json` | ⏳ |
+| T018 | Analizar `MCPGallery/preset.json` | ✅ |
 | T019 | Crear `mcp-integration.schema.json` | ⏳ |
 | T020 | Mapear items a contracts | ⏳ |
 
@@ -145,19 +146,29 @@ Implementar un **gestor de contexto dinámico** basado en TypedPrompting que red
 | Task | Descripción | Estado |
 |------|-------------|--------|
 | T023 | Crear `devops-tools.preset.json` | ⏳ |
-| T024 | Documentar en mcp-presets.instructions.md | ⏳ |
+| T024 | Documentar en mcp-presets.instructions.md | ✅ |
 
 ### S04: Integración con @aleph (1 pt)
 
 | Task | Descripción | Estado |
 |------|-------------|--------|
-| T025 | Añadir handoff "Invocar preset" | ⏳ |
+| T025 | Añadir handoff "Invocar preset" | ✅ |
 | T026 | Probar ejecución de preset | ⏳ |
 
+### S05: Configurar mcp.json (NUEVO)
+
+| Task | Descripción | Estado |
+|------|-------------|--------|
+| T027 | Crear `.vscode/mcp.json` con servidores | ✅ |
+| T028 | Documentar protocolo en PLUGINS.md | ✅ |
+| T029 | Actualizar manifest mcp-presets con mcpServers | ✅ |
+| T030 | Añadir scripts de arranque en mcp-mesh-sdk | ✅ |
+
 **Criterio de Aceptación**:
-- [ ] Presets de MCPGallery importables como packs
+- [x] Presets de MCPGallery importables como packs
 - [ ] Resources MCP validados por schema
-- [ ] @aleph puede invocar preset por nombre
+- [x] @aleph puede invocar preset por nombre
+- [x] 4 servidores MCP registrados en mcp.json
 
 ---
 
