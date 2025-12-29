@@ -27,7 +27,7 @@
 
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
-| 📋 | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
+| � | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
 
 ---
 
@@ -82,6 +82,7 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-29 | 🔄 Refinamiento SCRIPT-2.1.0 con PO, Lucas, @ox, @indice, @aleph | @scrum |
 | 2025-12-29 | ➕ Añadir SCRIPT-2.1.0 TypedPrompting Context Manager | @scrum |
 | 2025-12-29 | ✅ Cerrar SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
 | 2025-12-29 | ➕ Añadir SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
