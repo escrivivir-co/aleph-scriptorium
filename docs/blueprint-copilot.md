@@ -7,21 +7,25 @@ permalink: /blueprint-copilot/
 
 <!-- ==========================================
      BLUEPRINT COPILOT: El Viaje de tu Pregunta
+     SCRIPT-1.31.1 - Navegación en Cubo 3D
      
-     Simulación navegable del flujo interno de
-     Copilot Chat usando mock data.
+     Estructura de coordenadas:
+     - Eje X: Flujo principal (→)
+     - Eje Y: Subdiapos verticales (↓)
+     - Eje Z: Profundidad (detalle técnico)
      
-     Navegación: Prompt → Registry → Agent → Instructions → LLM → Output
+     Navegación: ← → entre fases, ↑ ↓ subdiapos
      ========================================== -->
 
 <!-- ==========================================
      SLIDE 0: TU PREGUNTA (Punto de entrada)
+     Coordenadas: (0, 0, 0)
      ========================================== -->
 <div id="prompt" class="step copilot-step" 
      data-x="0" 
      data-y="0" 
      data-z="0"
-     data-scale="1.5">
+     data-scale="1.2">
   <div class="copilot-header">
     <span class="copilot-phase">Fase 0</span>
     <span class="copilot-title">Tu Pregunta</span>
@@ -36,7 +40,7 @@ permalink: /blueprint-copilot/
   </div>
   
   <div class="copilot-explanation">
-    <p>Escribes algo en Copilot Chat. Parece simple, pero internamente desencadenas una cadena de 5 pasos.</p>
+    <p>Escribes algo en Copilot Chat. Parece simple, pero internamente desencadenas una cadena de 5 pasos que transforman tu pregunta en una respuesta inteligente.</p>
   </div>
   
   <div class="journey-preview">
@@ -51,55 +55,41 @@ permalink: /blueprint-copilot/
     <span class="journey-node">LLM</span>
   </div>
   
-  <div class="nav-hint">↓ Comenzar el viaje</div>
+  <div class="nav-hint">→ Siguiente: PromptRegistry</div>
 </div>
 
 <!-- ==========================================
-     SLIDE 1: PROMPT REGISTRY (Selección de modelo)
+     SLIDE 1: PROMPT REGISTRY (Principal)
+     Coordenadas: (2000, 0, 0)
      ========================================== -->
 <div id="registry" class="step copilot-step" 
-     data-x="1500" 
+     data-x="2000" 
      data-y="0" 
-     data-z="0"
-     data-rotate-y="-30">
+     data-z="0">
   <div class="copilot-header">
     <span class="copilot-phase">Fase 1</span>
     <span class="copilot-title">PromptRegistry</span>
   </div>
   
-  <div class="code-context">
-    <div class="file-tab">📄 promptRegistry.ts</div>
-    <pre class="code-block"><code>// Singleton que gestiona prompts por modelo
-class PromptRegistry {
-  private familyPrefixes = [
-    'anthropic', 'openai', 'google', 'xai'
-  ];
-  
-  matchesModel(modelFamily: string): IAgentPrompt {
-    // Tu modelo: <span class="highlight-model">claude-sonnet-4-20250514</span>
-    // Match: <span class="highlight-match">anthropic</span>
-    return this.promptsWithMatcher.find(
-      p => modelFamily.startsWith(p.prefix)
-    );
-  }
-}</code></pre>
+  <div class="copilot-explanation">
+    <p>El <strong>PromptRegistry</strong> es un singleton que detecta tu modelo LLM y selecciona el prompt adecuado.</p>
   </div>
   
   <div class="mock-data-panel">
-    <div class="mock-label">🔍 Mock: Detección de modelo</div>
+    <div class="mock-label">🔍 Detección de Modelo</div>
     <div class="mock-flow">
       <div class="mock-input">
-        <span class="mock-key">modelFamily:</span>
-        <span class="mock-value">"claude-sonnet-4-20250514"</span>
+        <span class="mock-key">Tu modelo:</span>
+        <span class="mock-value">claude-sonnet-4-20250514</span>
       </div>
       <div class="mock-arrow">↓ matchesModel()</div>
       <div class="mock-output">
-        <span class="mock-key">prefix match:</span>
-        <span class="mock-value">"anthropic"</span>
+        <span class="mock-key">Prefijo detectado:</span>
+        <span class="mock-value">anthropic</span>
       </div>
       <div class="mock-arrow">↓</div>
       <div class="mock-output">
-        <span class="mock-key">selected:</span>
+        <span class="mock-key">Prompt seleccionado:</span>
         <span class="mock-value">AnthropicAgentPrompt</span>
       </div>
     </div>
@@ -116,41 +106,71 @@ class PromptRegistry {
     <span class="journey-arrow">→</span>
     <span class="journey-node">LLM</span>
   </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↓</span>
+    <span>Ver código fuente</span>
+  </div>
 </div>
 
 <!-- ==========================================
-     SLIDE 2a: AGENT PROMPT (Interface)
+     SLIDE 1.1: REGISTRY - Código (Subdiapo)
+     Coordenadas: (2000, 700, 0)
      ========================================== -->
-<div id="agent-interface" class="step copilot-step" 
-     data-x="3000" 
-     data-y="-500" 
-     data-z="0"
-     data-rotate-y="-15">
+<div id="registry-code" class="step copilot-step" 
+     data-x="2000" 
+     data-y="700" 
+     data-z="0">
   <div class="copilot-header">
-    <span class="copilot-phase">Fase 2a</span>
-    <span class="copilot-title">IAgentPrompt Interface</span>
+    <span class="copilot-phase">Fase 1 · Detalle</span>
+    <span class="copilot-title">Código: promptRegistry.ts</span>
   </div>
   
   <div class="code-context">
-    <div class="file-tab">📄 types.ts</div>
-    <pre class="code-block"><code>interface IAgentPrompt {
-  // Los 5 métodos que TODO prompt debe implementar
+    <div class="file-tab">📄 src/vs/workbench/contrib/chat/browser/promptRegistry.ts</div>
+    <pre class="code-block"><code>// Singleton que gestiona prompts por modelo
+class PromptRegistry {
+  private familyPrefixes = [
+    '<span class="highlight-match">anthropic</span>',  // Claude
+    'openai',     // GPT-4, GPT-4o
+    'google',     // Gemini
+    'xai'         // Grok
+  ];
   
-  <span class="method-highlight">resolveSystemPrompt()</span>
-  // → Instrucciones base del sistema
-  
-  <span class="method-highlight">resolveReminderInstructions()</span>
-  // → Recordatorios para tareas largas
-  
-  <span class="method-highlight">resolveToolReferencesHint()</span>
-  // → Cómo referenciar herramientas
-  
-  <span class="method-highlight">resolveCopilotIdentityRules()</span>
-  // → "Soy GitHub Copilot, uso Claude..."
-  
-  <span class="method-highlight">resolveSafetyRules()</span>
-  // → Políticas de contenido
+  matchesModel(modelFamily: string): IAgentPrompt {
+    // Tu modelo: <span class="highlight-model">claude-sonnet-4-20250514</span>
+    return this.promptsWithMatcher.find(
+      p => modelFamily.startsWith(p.prefix)
+    );
+  }
 }</code></pre>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">💡</span>
+    <span class="note-text">
+      Cada familia de modelos tiene su propia implementación de <code>IAgentPrompt</code>, optimizada para sus capacidades específicas.
+    </span>
+  </div>
+  
+  <div class="nav-hint">↑ Volver a vista general</div>
+</div>
+
+<!-- ==========================================
+     SLIDE 2: AGENT PROMPT (Principal)
+     Coordenadas: (4000, 0, 0)
+     ========================================== -->
+<div id="agent" class="step copilot-step" 
+     data-x="4000" 
+     data-y="0" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 2</span>
+    <span class="copilot-title">IAgentPrompt Interface</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p>Cada modelo implementa <strong>5 métodos</strong> que definen cómo se construye el system message.</p>
   </div>
   
   <div class="interface-cards">
@@ -192,41 +212,24 @@ class PromptRegistry {
     <span class="journey-arrow">→</span>
     <span class="journey-node">LLM</span>
   </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↓</span>
+    <span>Comparar implementaciones por modelo</span>
+  </div>
 </div>
 
 <!-- ==========================================
-     SLIDE 2b: AGENT PROMPT (Implementación Claude)
+     SLIDE 2.1: AGENT - Comparación Modelos (Subdiapo)
+     Coordenadas: (4000, 700, 0)
      ========================================== -->
-<div id="agent-claude" class="step copilot-step" 
-     data-x="3000" 
-     data-y="500" 
-     data-z="0"
-     data-rotate-y="-15">
+<div id="agent-models" class="step copilot-step" 
+     data-x="4000" 
+     data-y="700" 
+     data-z="0">
   <div class="copilot-header">
-    <span class="copilot-phase">Fase 2b</span>
-    <span class="copilot-title">AnthropicAgentPrompt</span>
-  </div>
-  
-  <div class="code-context">
-    <div class="file-tab">📄 anthropicPrompts.tsx</div>
-    <pre class="code-block"><code>class AnthropicAgentPrompt implements IAgentPrompt {
-  
-  resolveSystemPrompt() {
-    return (
-      &lt;InstructionMessage&gt;
-        &lt;Tag name='instructions'&gt;
-          &lt;DefaultAgentInstructions /&gt;
-          &lt;AnthropicSpecificRules /&gt;
-        &lt;/Tag&gt;
-      &lt;/InstructionMessage&gt;
-    );
-  }
-  
-  // Claude NO usa reminder
-  resolveReminderInstructions() {
-    return <span class="highlight-null">null</span>;
-  }
-}</code></pre>
+    <span class="copilot-phase">Fase 2 · Detalle</span>
+    <span class="copilot-title">Implementaciones por Modelo</span>
   </div>
   
   <div class="model-comparison">
@@ -237,15 +240,17 @@ class PromptRegistry {
         <li>✅ DefaultAgentInstructions</li>
         <li>❌ No Reminder</li>
         <li>✅ Extended thinking</li>
+        <li>✅ Sonnet optimizations</li>
       </ul>
     </div>
     <div class="model-card gpt">
       <span class="model-icon">🟢</span>
-      <span class="model-name">GPT</span>
+      <span class="model-name">GPT-4</span>
       <ul class="model-features">
         <li>✅ DefaultAgentInstructions</li>
         <li>✅ KeepGoingReminder</li>
-        <li>✅ JSON mode</li>
+        <li>✅ JSON mode nativo</li>
+        <li>✅ Function calling</li>
       </ul>
     </div>
     <div class="model-card gemini">
@@ -255,55 +260,43 @@ class PromptRegistry {
         <li>✅ DefaultAgentInstructions</li>
         <li>❌ No Reminder</li>
         <li>✅ Grounding</li>
+        <li>✅ Long context</li>
       </ul>
     </div>
   </div>
   
-  <div class="journey-preview">
-    <span class="journey-node done">Prompt</span>
-    <span class="journey-arrow">→</span>
-    <span class="journey-node done">Registry</span>
-    <span class="journey-arrow">→</span>
-    <span class="journey-node current">Agent</span>
-    <span class="journey-arrow">→</span>
-    <span class="journey-node">Instructions</span>
-    <span class="journey-arrow">→</span>
-    <span class="journey-node">LLM</span>
+  <div class="code-context">
+    <div class="file-tab">📄 anthropicPrompts.tsx</div>
+    <pre class="code-block"><code>class AnthropicAgentPrompt implements IAgentPrompt {
+  resolveSystemPrompt() {
+    return &lt;DefaultAgentInstructions /&gt;;
+  }
+  
+  // Claude NO usa reminder (contexto largo)
+  resolveReminderInstructions() {
+    return <span class="highlight-null">null</span>;
+  }
+}</code></pre>
   </div>
+  
+  <div class="nav-hint">↑ Volver a vista general</div>
 </div>
 
 <!-- ==========================================
-     SLIDE 3: DEFAULT AGENT INSTRUCTIONS (Base común)
+     SLIDE 3: INSTRUCTIONS (Principal)
+     Coordenadas: (6000, 0, 0)
      ========================================== -->
 <div id="instructions" class="step copilot-step" 
-     data-x="4500" 
+     data-x="6000" 
      data-y="0" 
-     data-z="0"
-     data-rotate-y="0">
+     data-z="0">
   <div class="copilot-header">
     <span class="copilot-phase">Fase 3</span>
     <span class="copilot-title">DefaultAgentInstructions</span>
   </div>
   
-  <div class="code-context">
-    <div class="file-tab">📄 defaultAgentInstructions.tsx</div>
-    <pre class="code-block"><code>&lt;InstructionMessage&gt;
-  &lt;Tag name='instructions'&gt;
-    You are an expert AI programming assistant...
-    
-    &lt;Tag name='toolUseInstructions'&gt;
-      When using a tool, follow the JSON schema...
-    &lt;/Tag&gt;
-    
-    &lt;Tag name='notebookInstructions'&gt;
-      Use run_notebook_cell instead of jupyter...
-    &lt;/Tag&gt;
-    
-    &lt;Tag name='outputFormatting'&gt;
-      Use proper Markdown formatting...
-    &lt;/Tag&gt;
-  &lt;/Tag&gt;
-&lt;/InstructionMessage&gt;</code></pre>
+  <div class="copilot-explanation">
+    <p>Instrucciones base compartidas por todos los modelos, estructuradas en <strong>Tags XML</strong>.</p>
   </div>
   
   <div class="tag-structure">
@@ -326,8 +319,7 @@ class PromptRegistry {
   <div class="scriptorium-note">
     <span class="note-icon">💡</span>
     <span class="note-text">
-      <strong>Tu copilot-instructions.md</strong> se inyecta aquí, 
-      sumándose a estas instrucciones base.
+      Tu <strong>copilot-instructions.md</strong> se inyecta aquí, sumándose a estas instrucciones base. ¡Es tu oportunidad de personalizar el comportamiento!
     </span>
   </div>
   
@@ -342,19 +334,70 @@ class PromptRegistry {
     <span class="journey-arrow">→</span>
     <span class="journey-node">LLM</span>
   </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↓</span>
+    <span>Ver estructura de Tags completa</span>
+  </div>
 </div>
 
 <!-- ==========================================
-     SLIDE 4: SYSTEM MESSAGE COMPLETO (Ensamblaje)
+     SLIDE 3.1: INSTRUCTIONS - Tags Detail (Subdiapo)
+     Coordenadas: (6000, 700, 0)
+     ========================================== -->
+<div id="instructions-tags" class="step copilot-step" 
+     data-x="6000" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 3 · Detalle</span>
+    <span class="copilot-title">Estructura de Tags XML</span>
+  </div>
+  
+  <div class="code-context">
+    <div class="file-tab">📄 defaultAgentInstructions.tsx</div>
+    <pre class="code-block"><code>&lt;InstructionMessage&gt;
+  &lt;Tag name='<span class="highlight-match">instructions</span>'&gt;
+    You are an expert AI programming assistant...
+    
+    &lt;Tag name='<span class="highlight-model">toolUseInstructions</span>'&gt;
+      When using a tool, follow the JSON schema...
+      If you think running multiple tools can answer 
+      the user's question, prefer calling them in parallel.
+    &lt;/Tag&gt;
+    
+    &lt;Tag name='notebookInstructions'&gt;
+      Use run_notebook_cell instead of jupyter...
+    &lt;/Tag&gt;
+    
+    &lt;Tag name='outputFormatting'&gt;
+      Use proper Markdown formatting...
+      &lt;Tag name='fileLinkification'&gt;
+        When mentioning files, convert to markdown links...
+      &lt;/Tag&gt;
+    &lt;/Tag&gt;
+  &lt;/Tag&gt;
+&lt;/InstructionMessage&gt;</code></pre>
+  </div>
+  
+  <div class="nav-hint">↑ Volver a vista general</div>
+</div>
+
+<!-- ==========================================
+     SLIDE 4: ASSEMBLY (Principal)
+     Coordenadas: (8000, 0, 0)
      ========================================== -->
 <div id="assembly" class="step copilot-step" 
-     data-x="6000" 
+     data-x="8000" 
      data-y="0" 
-     data-z="0"
-     data-rotate-y="15">
+     data-z="0">
   <div class="copilot-header">
     <span class="copilot-phase">Fase 4</span>
     <span class="copilot-title">Ensamblaje del System Message</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p>Todas las piezas se combinan en un único <strong>System Message</strong> que guía al LLM.</p>
   </div>
   
   <div class="assembly-diagram">
@@ -367,7 +410,7 @@ class PromptRegistry {
       <span class="assembly-plus">+</span>
       <div class="assembly-block model">
         <span class="block-label">Modelo</span>
-        <span class="block-content">AnthropicSpecificRules</span>
+        <span class="block-content">AnthropicRules</span>
         <span class="block-tokens">~200 tokens</span>
       </div>
     </div>
@@ -381,7 +424,7 @@ class PromptRegistry {
       <span class="assembly-plus">+</span>
       <div class="assembly-block context">
         <span class="block-label">Contexto</span>
-        <span class="block-content">*.instructions.md (applyTo)</span>
+        <span class="block-content">*.instructions.md</span>
         <span class="block-tokens">variable</span>
       </div>
     </div>
@@ -389,16 +432,6 @@ class PromptRegistry {
     <div class="assembly-result">
       <span class="result-label">System Message Final</span>
       <span class="result-tokens">~2000-4000 tokens</span>
-    </div>
-  </div>
-  
-  <div class="mock-data-panel">
-    <div class="mock-label">📦 Mock: Tu mensaje ensamblado</div>
-    <div class="mock-system-message">
-      <div class="msg-section">You are an expert AI programming assistant...</div>
-      <div class="msg-section highlight-user">// Instrucciones Globales — Aleph Scriptorium</div>
-      <div class="msg-section highlight-user">**Aleph Scriptorium** es un sistema de agentes...</div>
-      <div class="msg-section">When using a tool, follow the JSON schema...</div>
     </div>
   </div>
   
@@ -413,46 +446,63 @@ class PromptRegistry {
     <span class="journey-arrow">→</span>
     <span class="journey-node">LLM</span>
   </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↓</span>
+    <span>Ver mensaje ensamblado (mock)</span>
+  </div>
 </div>
 
 <!-- ==========================================
-     SLIDE 5: LLM (Envío al modelo)
+     SLIDE 4.1: ASSEMBLY - Mock Message (Subdiapo)
+     Coordenadas: (8000, 700, 0)
+     ========================================== -->
+<div id="assembly-mock" class="step copilot-step" 
+     data-x="8000" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 4 · Detalle</span>
+    <span class="copilot-title">Tu System Message Ensamblado</span>
+  </div>
+  
+  <div class="mock-data-panel">
+    <div class="mock-label">📦 Mock: Contenido del System Message</div>
+    <div class="mock-system-message">
+      <div class="msg-section">You are an expert AI programming assistant, working with a user in the VS Code editor...</div>
+      <div class="msg-section">When asked for your name, you must respond with "GitHub Copilot"...</div>
+      <div class="msg-section highlight-user">// Instrucciones Globales — Aleph Scriptorium</div>
+      <div class="msg-section highlight-user">**Aleph Scriptorium** es un sistema de agentes de IA para VS Code + GitHub Copilot Chat...</div>
+      <div class="msg-section">When using a tool, follow the JSON schema very carefully...</div>
+      <div class="msg-section">Use proper Markdown formatting. When referring to symbols wrap in backticks...</div>
+    </div>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">🎯</span>
+    <span class="note-text">
+      Las secciones <strong style="color: var(--cp-warning);">resaltadas</strong> son TUS instrucciones del Scriptorium, inyectadas en el system message.
+    </span>
+  </div>
+  
+  <div class="nav-hint">↑ Volver a vista general</div>
+</div>
+
+<!-- ==========================================
+     SLIDE 5: LLM (Principal)
+     Coordenadas: (10000, 0, 0)
      ========================================== -->
 <div id="llm" class="step copilot-step" 
-     data-x="7500" 
+     data-x="10000" 
      data-y="0" 
-     data-z="0"
-     data-rotate-y="30">
+     data-z="0">
   <div class="copilot-header">
     <span class="copilot-phase">Fase 5</span>
     <span class="copilot-title">Envío al LLM</span>
   </div>
   
-  <div class="llm-request">
-    <div class="request-box">
-      <div class="request-header">
-        <span class="request-icon">📤</span>
-        <span class="request-title">API Request → Claude</span>
-      </div>
-      <div class="request-body">
-        <div class="request-field">
-          <span class="field-key">model:</span>
-          <span class="field-value">"claude-sonnet-4-20250514"</span>
-        </div>
-        <div class="request-field">
-          <span class="field-key">system:</span>
-          <span class="field-value">[System Message ~2500 tokens]</span>
-        </div>
-        <div class="request-field">
-          <span class="field-key">messages:</span>
-          <span class="field-value">[{ role: "user", content: "@aleph escribe..." }]</span>
-        </div>
-        <div class="request-field">
-          <span class="field-key">tools:</span>
-          <span class="field-value">[read_file, replace_string, run_in_terminal, ...]</span>
-        </div>
-      </div>
-    </div>
+  <div class="copilot-explanation">
+    <p>Todo listo. El mensaje se envía a la API del modelo seleccionado.</p>
   </div>
   
   <div class="llm-visualization">
@@ -478,16 +528,68 @@ class PromptRegistry {
     <span class="journey-arrow">→</span>
     <span class="journey-node current">LLM</span>
   </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↓</span>
+    <span>Ver estructura de la API Request</span>
+  </div>
 </div>
 
 <!-- ==========================================
-     SLIDE 6: OUTPUT (Respuesta)
+     SLIDE 5.1: LLM - API Request (Subdiapo)
+     Coordenadas: (10000, 700, 0)
+     ========================================== -->
+<div id="llm-api" class="step copilot-step" 
+     data-x="10000" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 5 · Detalle</span>
+    <span class="copilot-title">API Request Structure</span>
+  </div>
+  
+  <div class="llm-request">
+    <div class="request-box">
+      <div class="request-header">
+        <span class="request-icon">📤</span>
+        <span class="request-title">POST → api.anthropic.com/v1/messages</span>
+      </div>
+      <div class="request-body">
+        <div class="request-field">
+          <span class="field-key">model:</span>
+          <span class="field-value">"claude-sonnet-4-20250514"</span>
+        </div>
+        <div class="request-field">
+          <span class="field-key">system:</span>
+          <span class="field-value">[System Message ~2500 tokens]</span>
+        </div>
+        <div class="request-field">
+          <span class="field-key">messages:</span>
+          <span class="field-value">[{ role: "user", content: "@aleph escribe..." }]</span>
+        </div>
+        <div class="request-field">
+          <span class="field-key">tools:</span>
+          <span class="field-value">[read_file, replace_string, run_in_terminal, ...]</span>
+        </div>
+        <div class="request-field">
+          <span class="field-key">max_tokens:</span>
+          <span class="field-value">16384</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-hint">↑ Volver a vista general</div>
+</div>
+
+<!-- ==========================================
+     SLIDE 6: OUTPUT (Respuesta Final)
+     Coordenadas: (12000, 0, 0)
      ========================================== -->
 <div id="output" class="step copilot-step" 
-     data-x="9000" 
+     data-x="12000" 
      data-y="0" 
-     data-z="0"
-     data-rotate-y="45">
+     data-z="0">
   <div class="copilot-header">
     <span class="copilot-phase">Fase 6</span>
     <span class="copilot-title">La Respuesta</span>
@@ -505,7 +607,7 @@ class PromptRegistry {
         <span class="tool-name">semantic_search</span>
         <span class="tool-args">"tecnofeudalismo"</span>
       </div>
-      <p>Encontré referencias en <code>ARCHIVO/marco/economia-digital.md</code>. Basándome en el marco teórico del Scriptorium...</p>
+      <p>Encontré referencias en <code>ARCHIVO/marco/economia-digital.md</code>. Basándome en el marco teórico del Scriptorium, procedo a redactar...</p>
     </div>
   </div>
   
@@ -546,33 +648,38 @@ class PromptRegistry {
 </div>
 
 <!-- ==========================================
-     SLIDE 7: OVERVIEW (Vista panorámica)
+     SLIDE 7: OVERVIEW (Vista Panorámica)
+     Coordenadas: (6000, 0, 3500) - Alejado en Z
      ========================================== -->
 <div id="overview-copilot" class="step" 
-     data-x="4500" 
+     data-x="6000" 
      data-y="0" 
-     data-z="3000"
+     data-z="3500"
      data-scale="5">
   <div class="copilot-overview-card">
     <h2>🧠 El Viaje de tu Pregunta</h2>
-    <p>Has navegado el flujo completo de Copilot Chat: desde tu prompt hasta la respuesta.</p>
+    <p>Has navegado el flujo completo de Copilot Chat: desde tu prompt hasta la respuesta inteligente.</p>
     
     <div class="journey-complete">
       <div class="journey-step">
-        <span class="step-num">1</span>
+        <span class="step-num">0</span>
         <span class="step-name">Prompt</span>
       </div>
       <div class="journey-step">
-        <span class="step-num">2</span>
+        <span class="step-num">1</span>
         <span class="step-name">Registry</span>
       </div>
       <div class="journey-step">
-        <span class="step-num">3</span>
+        <span class="step-num">2</span>
         <span class="step-name">Agent</span>
       </div>
       <div class="journey-step">
-        <span class="step-num">4</span>
+        <span class="step-num">3</span>
         <span class="step-name">Instructions</span>
+      </div>
+      <div class="journey-step">
+        <span class="step-num">4</span>
+        <span class="step-name">Assembly</span>
       </div>
       <div class="journey-step">
         <span class="step-num">5</span>
@@ -590,6 +697,7 @@ class PromptRegistry {
         <li><strong>Tus instrucciones importan:</strong> Se suman al system message, no lo reemplazan</li>
         <li><strong>El modelo importa:</strong> Claude y GPT reciben instrucciones diferentes</li>
         <li><strong>El contexto importa:</strong> Los <code>applyTo</code> inyectan instrucciones según el archivo</li>
+        <li><strong>Navegación 3D:</strong> Usa ↑↓ para explorar detalles técnicos en cada fase</li>
       </ul>
     </div>
     
@@ -600,7 +708,8 @@ class PromptRegistry {
     </div>
     
     <p class="copilot-footer">
-      Basado en análisis de <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/CopilotEngine">CopilotEngine</a> · 
+      Basado en análisis de <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/CopilotEngine">CopilotEngine</a> · 
+      SCRIPT-1.31.1 · 
       <a href="{{ '/ecosistema/' | relative_url }}">Volver al Ecosistema →</a>
     </p>
   </div>

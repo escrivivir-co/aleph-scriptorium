@@ -40,7 +40,7 @@ permalink: /
   <a href="{{ site.baseurl }}/blueprint-copilot/" class="nav-card">
     <span class="card-icon">🧠</span>
     <span class="card-title">Copilot</span>
-    <span class="card-desc">El viaje de tu pregunta</span>
+    <span class="card-desc">Viaje 3D: Prompt → LLM</span>
   </a>
   <a href="{{ site.baseurl }}/leeme/" class="nav-card">
     <span class="card-icon">📖</span>
