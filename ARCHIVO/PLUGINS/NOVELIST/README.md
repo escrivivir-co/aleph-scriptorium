@@ -8,7 +8,7 @@
 
 ## Propósito
 
-Este directorio almacena datos de runtime generados por el plugin Novelist durante la edición de obras narrativas.
+Este directorio almacena datos de runtime y **obras narrativas** gestionadas por el plugin Novelist.
 
 ---
 
@@ -19,9 +19,26 @@ NOVELIST/
 ├── README.md           # Este archivo
 ├── config.json         # Configuración del plugin (opcional)
 ├── sync-log.json       # Registro de sincronizaciones
-└── cache/              # Cache temporal de obras
-    └── ...
+├── obras/              # Obras narrativas
+│   └── itaca-digital/  # Ejemplo: Ítaca Digital
+│       ├── novela.json
+│       ├── estructura.json
+│       ├── sincronizacion.json
+│       ├── README.md
+│       └── capitulos/
+│           ├── 01-mundo-ordinario.md
+│           ├── 02-llamada.md
+│           └── ...
+└── cache/              # Cache temporal
 ```
+
+---
+
+## Obras Registradas
+
+| ID | Título | Estado | Capítulos |
+|----|--------|--------|-----------|
+| `itaca-digital` | Ítaca Digital: El Retorno del Navegante | borrador | 12 |
 
 ---
 

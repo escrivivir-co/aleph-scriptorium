@@ -1,0 +1,193 @@
+id: itaca-digital
+titulo: "Ítaca Digital: El Retorno del Navegante"
+tipo: narrativa
+personaje_guia: penelope
+descripcion: |
+  Un recorrido teatral por los 12 estadios del monomito de Campbell,
+  adaptando la epopeya clásica de Ulises y Penélope en una experiencia
+  de aprendizaje sobre navegación, escritura y retorno a casa en la era digital.
+
+estadios:
+  - id: 1
+    nombre: "El Mundo Ordinario: Ítaca Perdida"
+    anillo: 0
+    tipo: inicio
+    prueba: "Leer la portada y comprender el contexto del viaje"
+    feature: "@vestibulo, @cartaspuerta"
+    contenido: |
+      En Ítaca, mientras Ulises navega por mares desconocidos,
+      Penélope teje y desteje, esperando el retorno.
+      ¿Qué significa tejer en la era de los datos y los algoritmos?
+    duracion: "20 min"
+    
+  - id: 2
+    nombre: "La Llamada a la Aventura: Apertura del Viaje"
+    anillo: 1
+    tipo: llamada
+    prueba: "Leer la Apertura y reconocer el motivo del peregrinaje"
+    feature: "@periodico"
+    contenido: |
+      Ulises y Penélope son invocados nuevamente.
+      El viaje no es sólo físico: es una travesía por arquetipos,
+      por historias que se repiten desde Onan y Tamar hasta hoy.
+    duracion: "30 min"
+    
+  - id: 3
+    nombre: "El Rechazo de la Llamada: Duda y Resistencia"
+    anillo: 1
+    tipo: rechazo
+    prueba: "Examinar la primera resistencia en Onan y Tamar"
+    feature: "@blueflag"
+    contenido: |
+      ¿Quién rechaza qué? Onan rechaza su deber. La sociedad rechaza
+      la mujer sin protección. ¿Cuál es tu resistencia al cambio narrativo?
+    duracion: "25 min"
+    
+  - id: 4
+    nombre: "El Encuentro con el Mentor: Orfeo Canta"
+    anillo: 1
+    tipo: mentor
+    prueba: "Recibir sabiduría de Orfeo: el poder de la música y la palabra"
+    feature: "@plugin_ox_enciclopedia"
+    contenido: |
+      Orfeo aparece como guía. No es Odiseo, sino el poeta que descubre
+      que la verdadera navegación es lingüística. La lira es el código.
+      El mentor enseña: toda escritura es rescate de Eurídice del olvido.
+    duracion: "35 min"
+    
+  - id: 5
+    nombre: "El Cruce del Umbral: Edipo Reconoce su Verdad"
+    anillo: 1
+    tipo: umbral
+    prueba: "Descubrir lo que está oculto y enfrentar la verdad incómoda"
+    feature: "@blackflag"
+    contenido: |
+      Edipo cruza el umbral cuando reconoce su verdad.
+      No hay regreso atrás. El viajero debe renunciar a la comodidad
+      de no saber. ¿Estás listo para tu anagnórisis?
+    duracion: "30 min"
+    
+  - id: 6
+    nombre: "Aliados y Herramientas: La Cueva y El Sol"
+    anillo: 2
+    tipo: aliados
+    prueba: "Identificar y dominar las herramientas del conocimiento"
+    feature: "@redflag, @plugin_ox_agentcreator"
+    contenido: |
+      En la caverna, Platón ve sombras. Pero hay fuego.
+      En el sol, hay luz. En la era digital: datos, algoritmos,
+      modelos de lenguaje. Éstas son tus herramientas aliadas.
+      Aprende a usarlas sin ser usado por ellas.
+    duracion: "40 min"
+    
+  - id: 7
+    nombre: "La Cueva Oculta: El Intermezzo de Homero y Joyce"
+    anillo: 2
+    tipo: cueva
+    prueba: "Navegar la metacognición: escrito sobre la escritura"
+    feature: "@yellowflag"
+    contenido: |
+      Homero escribe sobre Ulises. Joyce escribe sobre Homero
+      escribiendo sobre Ulises. ¿Dónde termina la realidad?
+      ¿Dónde comienza la ficción? El desafío: sostener ambas simultáneamente.
+    duracion: "45 min"
+    
+  - id: 8
+    nombre: "La Prueba Suprema: Atenas y la Política"
+    anillo: 2
+    tipo: ordalia
+    prueba: "Comprender la estructura política y su relación con la narrativa"
+    feature: "@orangeflag, @plugin_ox_enciclopedia"
+    contenido: |
+      En Atenas, la democracia emergente se construye con palabras,
+      con retórica, con narrativas. Platón, Aristóteles, los retóricos:
+      ¿Cuál es el verdadero poder? ¿La verdad o la persuasión?
+    duracion: "50 min"
+    
+  - id: 9
+    nombre: "La Recompensa: La Polis como Saber"
+    anillo: 2
+    tipo: recompensa
+    prueba: "Integrar política, narrativa y tecnología en una visión coherente"
+    feature: "@aleph"
+    contenido: |
+      Has cruzado todos los umbrales. La recompensa no es oro
+      sino comprensión: cómo la polis clásica prefiguró las redes,
+      cómo la oralidad de Homero anticipó los algoritmos.
+    duracion: "40 min"
+    
+  - id: 10
+    nombre: "El Retorno a Casa: Aplicación en Gaia"
+    anillo: 3
+    tipo: retorno
+    prueba: "Proyectar lo aprendido hacia el mundo viviente"
+    feature: "@revisor"
+    contenido: |
+      Gaia no es solo la tierra: es el sistema vivo, el ecosistema
+      de narraciones, cuerpos, máquinas. ¿Cómo aplicas tu nueva comprensión
+      al retorno? ¿A Ítaca, pero transformada?
+    duracion: "35 min"
+    
+  - id: 11
+    nombre: "La Resurrección: Síntesis Exórdica"
+    anillo: 3
+    tipo: resurreccion
+    prueba: "Integrar el viaje completo en una nueva narrativa"
+    feature: "@plugin_ox_argboard"
+    contenido: |
+      Penélope desteje su tela. Comienza de nuevo, pero con nuevo hilo.
+      La resurrección es la capacidad de reescribir tu propia historia
+      sin negar lo vivido. Éste es el verdadero retorno de Ulises.
+    duracion: "40 min"
+    
+  - id: 12
+    nombre: "El Elixir: Nueva Forma de Escritura"
+    anillo: 3
+    tipo: elixir
+    prueba: "Crear y compartir tu propio artefacto narrativo"
+    feature: "@plugin_ox_ghpages"
+    contenido: |
+      El elixir no se guardas para ti. Lo compartes.
+      Tu nueva forma de escritura—combinada de tecnología,
+      filosofía clásica y auto-conciencia narrativa—
+      se publica. Se convierte en invitación para otros navegantes.
+    duracion: "50 min"
+
+meta:
+  duracion_estimada: "6 horas"
+  nivel: intermedio
+  prerequisitos:
+    - "Familiaridad con narrativa clásica (Odisea)"
+    - "Apertura a pensar la tecnología como heredera de retórica griega"
+  tags:
+    - monomito
+    - filología
+    - clásicos-remezclados
+    - transmedia
+    - ítaca
+  creado: "2025-12-28"
+  autor: "Teatro Interactivo × Aleph Scriptorium"
+  
+dependencias:
+  plugins:
+    - arg-board
+    - agent-creator
+    - gh-pages
+  agentes:
+    - "@vestibulo"
+    - "@cartaspuerta"
+    - "@periodico"
+    - "@blueflag"
+    - "@blackflag"
+    - "@redflag"
+    - "@yellowflag"
+    - "@orangeflag"
+    - "@aleph"
+    - "@revisor"
+    - "@plugin_ox_enciclopedia"
+    - "@plugin_ox_agentcreator"
+    - "@plugin_ox_argboard"
+    - "@plugin_ox_ghpages"
+
+estado: "generada"
+proximo_paso: "instalar"

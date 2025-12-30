@@ -1,11 +1,18 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.1.0-dry  
-> **Sprint actual**: FC3 (Feature Cycle 3)  
-> **Actualizado**: 2025-12-28
+> **Versión**: 1.2.2-dry  
+> **Sprint actual**: PRE  
+> **Actualizado**: 2025-12-30
 
 ---
+
+## CICLOS de FEATURES
+- PRE	- diciembre 25
+- FC1  - trimestre 1 2026
+- FC2  - trimestre 2 2026
+- FC3  - trimestre 3 2026
+- FC4  - trimestre 4 2026
 
 ## ⚠️ Protocolo DRY
 
@@ -16,11 +23,22 @@
 
 ---
 
-## Sprint Activo: FC3
+## Sprint Activo: PRE
 
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
-| 📋 | SCRIPT-1.29.0 | Context Bloat Mitigation | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/nfr-context-bloat.prompt.md) |
+| ✅ | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.1.1 | Copilot Log Exporter MCP | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/01_backlog-borrador.md) |
+| ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
+| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| ✅ | DEMO-1.0.0 | Demo Screens Hackathon | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-borrador.md) |
+
+---
+
+## Sprint Cerrado: <-->
+
+| Estado | Épica | Nombre | Referencia |
+|--------|-------|--------|------------|
 
 ---
 
@@ -28,10 +46,6 @@
 
 | Épica | Nombre | Referencia |
 |-------|--------|------------|
-| SCRIPT-1.20.0 | Metamodel Scriptorium | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/) |
-| SCRIPT-1.21.0 | MMCO ARG-Board | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/) |
-| SCRIPT-1.22.0 | Integración y Validación | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/FC2/) |
-| SCRIPT-1.23.0 | MMCO Editor Transmedia | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/) |
 
 ---
 
@@ -41,9 +55,9 @@
 
 | Carpeta | Foco | Estado |
 |---------|------|--------|
-| [CLI_SCRIPTORIUM](../ARCHIVO/DISCO/BACKLOG_BORRADORES/CLI_SCRIPTORIUM/) | CLI monorepo | 📐 Diseño |
-| [Diciembre_25_MMCO_Editor](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_MMCO_Editor/) | Editor MMCO | 📋 Activo |
-| [Diciembre_28_BlueprintMMCO_Phi5D](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_BlueprintMMCO_Phi5D/) | Blueprint Phi5D | 📋 Nuevo |
+| [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | ✅ Funcional |
+| [Diciembre_30_CopilotLogExporter](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/) | Copilot Log Exporter | ✅ Completado |
+| [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 (incl. Demo) | 📋 Activo |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 
@@ -53,9 +67,8 @@
 
 | Sprint | Período | Épicas | Referencia |
 |--------|---------|--------|------------|
-| FC2 | 2025-12-22 → 2025-12-28 | 6 cerradas | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/FC2/) |
-| Sprint1 | 2025-12-15 → 2025-12-21 | 18 épicas | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/Sprint1/) |
-| Sprint0 | 2025-12-01 → 2025-12-14 | Bootstrap | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/Sprint0/) |
+| PRE | 2025-12-22 → 2025-12-28 | X cerradas | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/) |
+
 
 ---
 
@@ -66,7 +79,7 @@
 | Épicas cerradas (total) | 24+ |
 | Effort completado | ~150 pts |
 | Plugins instalados | 19 |
-| Submódulos integrados | 15 |
+| Submódulos integrados | 16 |
 
 ---
 
@@ -74,5 +87,13 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-30 | 🧹 Limpiar INDEX.md (895→70 líneas, DRY) | @scrum |
+| 2025-12-30 | ✅ Cerrar BUG-003 SUBMODULOS_AH_NAMING (14 submódulos renombrados) | @scrum |
+| 2025-12-30 | ✅ Cerrar SCRIPT-1.31.0 CopilotEngine Analysis (30 pts) | @scrum |
+| 2025-12-29 | 🔄 Refinamiento SCRIPT-2.1.0 con PO, Lucas, @ox, @indice, @aleph | @scrum |
+| 2025-12-29 | ➕ Añadir SCRIPT-2.1.0 TypedPrompting Context Manager | @scrum |
+| 2025-12-29 | ✅ Cerrar SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
+| 2025-12-29 | ➕ Añadir SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
+| 2025-12-29 | ➕ Añadir SCRIPT-1.31.0 CopilotEngine | @scrum |
+| 2025-12-29 | ✅ Cerrar SCRIPT-1.29.0 (36% reducción) | @scrum |
 | 2025-12-28 | 🔄 Migrar a protocolo DRY (v1.1.0) | @scrum |
-| 2025-12-28 | 🗄️ Archivar FC2 | @scrum |

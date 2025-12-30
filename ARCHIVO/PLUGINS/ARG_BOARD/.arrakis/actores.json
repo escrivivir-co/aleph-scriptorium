@@ -242,5 +242,54 @@
       "Documenta primero, implementa después.",
       "El código es efímero, la arquitectura perdura."
     ]
+  },
+  "clippy": {
+    "nombre": "Clippy 2.0",
+    "tipo": "personaje",
+    "arquetipo": "HERO",
+    "descripcion": "El viejo asistente de Office Word, renacido para la era de la IA. Protagonista de Release Party.",
+    "rol": "Héroe del monomito",
+    "avatar": null,
+    "plataformas": ["vscode", "impress"],
+    "monomito": "release_party",
+    "etapa_heroe": 1,
+    "origen": {
+      "fuente": "Microsoft Office 97",
+      "transformacion": "De asistente obsoleto a agente integrado",
+      "arco": "Del horror vacui a la girándula creativa"
+    },
+    "frases": [
+      "Parece que estás escribiendo una carta...",
+      "Parece que estás padeciendo un episodio de horror vacui. ¿Quieres que arranque una girándula de estímulos de lo más pizguetos?"
+    ]
+  },
+  "po": {
+    "nombre": "Product Owner",
+    "tipo": "personaje",
+    "arquetipo": "HERALD",
+    "descripcion": "Metanarrador de Release Party. Rompe la cuarta pared y conecta la audiencia con la historia.",
+    "rol": "Narrador y guía",
+    "plataformas": ["vscode", "impress"],
+    "monomito": "release_party",
+    "capacidades": [
+      "Romper la cuarta pared",
+      "Presentar demos en vivo",
+      "Conectar capítulos del monomito"
+    ]
+  },
+  "devops_server": {
+    "nombre": "DevOps Server",
+    "tipo": "sistema",
+    "arquetipo": "DEUS_EX_MACHINA",
+    "descripcion": "El servidor MCP que resuelve el problema del context bloat. Deus ex machina de la obra.",
+    "rol": "La solución inesperada",
+    "plataformas": ["mcp"],
+    "monomito": "release_party",
+    "puerto": 3003,
+    "capacidades": [
+      "CRUD de Context Packs",
+      "Persistencia de configuración",
+      "Reducción de 76% de tokens"
+    ]
   }
 }

@@ -37,6 +37,13 @@ scriptorium_version: ">=0.0.1"
 agents:
   - name: "NombreAgente"
     file: "agents/mi-agente.agent.md"
+
+# (Opcional) Servidores MCP que el plugin aporta
+mcpServers:
+  - id: "mi-server"
+    port: 3XXX
+    source: "submódulo/ruta"        # Dónde está el código
+    startCommand: "npm start"       # Cómo arrancarlo
 ---
 ```
 
@@ -81,16 +88,59 @@ agents:
 
 ## Bridges Instalados
 
-| Bridge | Plugin | Agentes |
-|--------|--------|---------|
-| `@plugin_ox_argboard` | ARG Board | 8 agentes |
-| `@plugin_ox_enciclopedia` | Enciclopedia | 2 agentes |
-| `@plugin_ox_ghpages` | GH-Pages | 1 agente |
-| `@plugin_ox_foroscraper` | Foro Scraper | 1 agente |
-| `@plugin_ox_agentcreator` | Agent Creator | 1 agente |
-| `@plugin_ox_teatro` | Teatro | 1 agente |
-| `@plugin_ox_scrum` | Scrum | 1 agente |
-| `@plugin_ox_mcppresets` | MCP Presets | 1 agente |
+| Bridge | Plugin | Agentes | MCP Servers |
+|--------|--------|---------|-------------|
+| `@plugin_ox_argboard` | ARG Board | 8 agentes | — |
+| `@plugin_ox_enciclopedia` | Enciclopedia | 2 agentes | — |
+| `@plugin_ox_ghpages` | GH-Pages | 1 agente | — |
+| `@plugin_ox_foroscraper` | Foro Scraper | 1 agente | — |
+| `@plugin_ox_agentcreator` | Agent Creator | 1 agente | — |
+| `@plugin_ox_teatro` | Teatro | 1 agente | — |
+| `@plugin_ox_scrum` | Scrum | 1 agente | — |
+| `@plugin_ox_mcppresets` | MCP Presets | 1 agente | 5 servers (mesh) |
+
+---
+
+## Servidores MCP (Opcional)
+
+Los plugins pueden registrar **servidores MCP** que se añaden a `.vscode/mcp.json`.
+
+### Propiedad `mcpServers` en Manifest
+
+```yaml
+mcpServers:
+  - id: "devops-mcp-server"         # ID único
+    port: 3003                       # Puerto HTTP
+    source: "MCPGallery/mcp-mesh-sdk" # Submódulo fuente
+    startCommand: "npm start"        # Comando de arranque
+    description: "DevOps automation" # Descripción
+```
+
+### Servidores Disponibles (MCPGallery/mcp-mesh-sdk)
+
+| Servidor | Puerto | Descripción |
+|----------|--------|-------------|
+| `devops-mcp-server` | 3003 | DevOps automation (default) |
+| `wiki-browser-server` | 3002 | Wikipedia browsing |
+| `state-machine-server` | 3004 | X+1 state machine |
+| `launcher-server` | 3050 | Server orchestration |
+| `xplus1-server` | 3001 | X+1 control |
+
+### Flujo de Registro
+
+1. Plugin declara `mcpServers` en manifest
+2. `@pluginmanager` detecta y actualiza `.vscode/mcp.json`
+3. Usuario arranca el servidor (manual o script)
+4. VS Code Copilot puede invocar tools del servidor
+
+### Catálogo Dinámico (via Zeus)
+
+Para listar servidores activos en la mesh:
+```bash
+curl http://localhost:4001/ai/ui/mcp/list | jq '.catalog'
+```
+
+→ Ver [MCPGallery/README-SCRIPTORIUM.md](../MCPGallery/README-SCRIPTORIUM.md) para arquitectura completa.
 
 ---
 

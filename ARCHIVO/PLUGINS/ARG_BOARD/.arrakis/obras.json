@@ -88,5 +88,36 @@
       "duracion_estimada": "2-3 horas",
       "nivel": "introductorio"
     }
+  },
+  "release_party": {
+    "titulo": "Release Party: El Héroe del Horror Vacui",
+    "tipo": "monomito",
+    "estado": "registrada",
+    "descripcion": "Obra meta-teatral que narra el viaje de Clippy desde Word 97 hasta el Scriptorium. Monomito completo de 12 estadios con demos interactivos.",
+    "etapa_actual": 1,
+    "actores": ["clippy", "ox", "aleph", "po", "devops_server"],
+    "capitulos": [
+      { "id": 1, "nombre": "El Mundo Ordinario", "tema": "Horror Vacui", "estado": "pendiente" },
+      { "id": 2, "nombre": "La Llamada a la Aventura", "tema": "Brecha Digital", "estado": "pendiente" },
+      { "id": 3, "nombre": "El Rechazo de la Llamada", "tema": "Resistencia al Cambio", "estado": "pendiente" },
+      { "id": 4, "nombre": "Encuentro con el Mentor", "tema": "Ox + Run All", "estado": "pendiente", "demo": "runAll" },
+      { "id": 5, "nombre": "El Cruce del Umbral", "tema": "Panel Aleph", "estado": "pendiente", "demo": "demo-gallery" },
+      { "id": 6, "nombre": "Pruebas, Aliados, Enemigos", "tema": "Metanarrador", "estado": "pendiente" },
+      { "id": 7, "nombre": "Acercamiento a la Cueva Interior", "tema": "NovelistEditor", "estado": "pendiente", "demo": "novelist" },
+      { "id": 8, "nombre": "La Ordalía", "tema": "Zeus Presets", "estado": "pendiente", "demo": "zeus" },
+      { "id": 9, "nombre": "La Recompensa", "tema": "Roadmap", "estado": "pendiente", "demo": "roadmap" },
+      { "id": 10, "nombre": "El Camino de Regreso", "tema": "Banners/README", "estado": "pendiente" },
+      { "id": 11, "nombre": "La Resurrección", "tema": "Fundación vacía", "estado": "pendiente" },
+      { "id": 12, "nombre": "Regreso con el Elixir", "tema": "La Girándula", "estado": "pendiente", "demo": "runAll-loop" }
+    ],
+    "meta": {
+      "fuente": "ARCHIVO/DISCO/TALLER/RELEASE_PARTY/obra.yaml",
+      "personaje_guia": "clippy",
+      "blueprint": "docs/blueprint-release-party.md",
+      "duracion_estimada": "25-30 minutos",
+      "nivel": "demo",
+      "fecha_estreno": "2025-12-30",
+      "version": "v1.0.0-beta.1"
+    }
   }
 }

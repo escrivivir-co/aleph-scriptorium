@@ -12,6 +12,29 @@ dependencies: []
 optional_dependencies:
   - "agent-creator"  # Para asignación de presets a agentes
 
+# Servidores MCP (del submódulo MCPGallery)
+mcpServers:
+  - id: "devops-mcp-server"
+    port: 3003
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm start"
+    description: "DevOps automation server"
+  - id: "launcher-server"
+    port: 3050
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm run start:launcher"
+    description: "Server orchestration (puede lanzar otros)"
+  - id: "wiki-browser-server"
+    port: 3002
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm run start:wiki"
+    description: "Wikipedia browsing"
+  - id: "state-machine-server"
+    port: 3004
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm run start:state"
+    description: "X+1 state machine"
+
 # Recursos exportados
 agents:
   - name: "McpPresets"

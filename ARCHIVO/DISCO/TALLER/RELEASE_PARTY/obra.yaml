@@ -1,0 +1,379 @@
+---
+# OBRA: Release Party — El Héroe Digital
+# Monomito en 12 estadios para Aleph Scriptorium
+
+id: release-party
+titulo: "Release Party: El Héroe del Horror Vacui"
+subtitulo: "Del Clip de Word al Scriptorium en Red"
+version: 1.0.0
+fecha: 2025-12-30
+genero: ["meta-teatro", "comedia digital", "tech-drama"]
+
+# Sinopsis
+sinopsis: |
+  Un héroe atrapado en el mundo ordinario del procesador de texto descubre 
+  que la escritura digital ha evolucionado. Siguiendo la llamada de la 
+  transformación digital, atraviesa el umbral hacia un nuevo ecosistema 
+  donde agentes, servidores MCP y metodologías Scrum forman una red viva.
+  Al final, el horror vacui del lienzo en blanco se transforma en una 
+  girándula de posibilidades creativas.
+
+# Personaje guía
+heroe: 
+  id: clippy
+  nombre: "Clippy 2.0"
+  descripcion: "El viejo asistente de Office Word, renacido para la era de la IA"
+  arco: "De obsoleto a integrado"
+  frase: "Parece que estás escribiendo una carta... ¿o una nueva era?"
+
+# Elenco completo
+personajes:
+  - id: clippy
+    nombre: "Clippy 2.0"
+    rol: "Héroe / Protagonista"
+    simbolo: "📎"
+    en_elenco: false
+    
+  - id: ox
+    nombre: "@ox"
+    rol: "Mentor / Oráculo"
+    simbolo: "🐂"
+    en_elenco: true
+    recipe: "../../ELENCO/ox/"
+    
+  - id: aleph
+    nombre: "@aleph"
+    rol: "Productor / Aliado"
+    simbolo: "ℵ"
+    en_elenco: true
+    recipe: "../../ELENCO/aleph/"
+    
+  - id: po
+    nombre: "Product Owner"
+    rol: "Metanarrador / Scrum Master"
+    simbolo: "🎤"
+    en_elenco: false
+    
+  - id: devops_server
+    nombre: "DevOps Server"
+    rol: "Deus ex Machina"
+    simbolo: "🖥️"
+    en_elenco: false
+
+# Estructura: MONOMITO en 12 estadios
+estadios:
+  # === PARTIDA (1-4): Mundo Ordinario → Umbral ===
+  
+  partida:
+    - capitulo: 1
+      titulo: "El Mundo Ordinario"
+      tema: "Horror Vacui"
+      escenas:
+        - id: "01-01"
+          titulo: "El cursor parpadeante"
+          personajes: [clippy]
+          accion: |
+            Clippy contempla un documento Word vacío. El cursor parpadea 
+            infinitamente. El horror vacui paraliza al héroe.
+          slide_principal: "paso1-po"
+          slides_adyacentes:
+            ox: "paso1-ox"
+            aleph: "paso1-aleph"
+            sm: "paso1-sm"
+          nota_ox: "Stack técnico: Word vs Copilot"
+          nota_aleph: "Propuesta de valor: del vacío a la creación"
+          nota_sm: "Sprint Actual: PRE"
+          
+    - capitulo: 2
+      titulo: "La Llamada a la Aventura"
+      tema: "Brecha Digital"
+      escenas:
+        - id: "02-01"
+          titulo: "La voz del futuro"
+          personajes: [clippy, po]
+          accion: |
+            El PO aparece como metanarrador, revelando que existe otro 
+            mundo: el Scriptorium. Un lugar donde los agentes colaboran 
+            y la escritura se transforma.
+          slide_principal: "paso2-po"
+          slides_adyacentes:
+            ox: "paso2-ox"
+            aleph: "paso2-aleph"
+            sm: "paso2-sm"
+          nota_ox: "Diagnóstico: 127K tokens de problema"
+          nota_aleph: "Pain Points: repetir contexto, sin metodología"
+          nota_sm: "Backlog del Problema: 5 épicas"
+          
+    - capitulo: 3
+      titulo: "El Rechazo de la Llamada"
+      tema: "Resistencia al Cambio"
+      escenas:
+        - id: "03-01"
+          titulo: "Pero... ¿y mi autocompletar?"
+          personajes: [clippy]
+          accion: |
+            Clippy duda. El mundo de Word es conocido, cómodo. 
+            ¿Por qué cambiar? El papel es sólido, lo digital es efímero.
+          slide_principal: "paso3-po"
+          slides_adyacentes:
+            ox: "paso3-ox"
+            aleph: "paso3-aleph"
+            sm: "paso3-sm"
+          nota_ox: "MCP Servers: la nueva arquitectura"
+          nota_aleph: "Capa UI: @aleph, @revisor, @periodico"
+          nota_sm: "Épicas de Solución: 6 cerradas"
+          
+    - capitulo: 4
+      titulo: "Encuentro con el Mentor"
+      tema: "Ox muestra el camino"
+      escenas:
+        - id: "04-01"
+          titulo: "Run All"
+          personajes: [clippy, ox]
+          accion: |
+            Ox aparece con su superpoder: ¡Run All Demo Servers!
+            5 terminales se abren. Jekyll, Launcher, Model, Zeus, Novelist.
+            El mundo del Scriptorium cobra vida.
+          slide_principal: "paso4-po"
+          slides_adyacentes:
+            ox: "paso4-ox"
+            aleph: "paso4-aleph"
+            sm: "paso4-sm"
+          nota_ox: "DEMO: alephscript.demo.runAll"
+          nota_aleph: "Flujo de Usuario: pregunta → agente → respuesta"
+          nota_sm: "Métricas: 31+ agentes, 19 plugins"
+          demo: true
+          comando: "alephscript.demo.runAll"
+
+  # === INICIACIÓN (5-8): Pruebas → Ordalía ===
+  
+  iniciacion:
+    - capitulo: 5
+      titulo: "El Cruce del Umbral"
+      tema: "Panel de Control Aleph"
+      escenas:
+        - id: "05-01"
+          titulo: "La galería de demos"
+          personajes: [clippy, aleph]
+          accion: |
+            Aleph muestra su Panel de Control: una galería de iframes 
+            con todas las herramientas del Scriptorium. Zeus, Novelist, 
+            Blueprints en 3D.
+          slide_principal: "paso5-po"
+          slides_adyacentes:
+            ox: "paso5-ox"
+            aleph: "paso5-aleph"
+            sm: "paso5-sm"
+          nota_ox: "Plugin Registry: estructura y estado"
+          nota_aleph: "Casos de Uso: teatro, scrum, publicación"
+          nota_sm: "Burndown: 57 puntos completados"
+          demo: true
+          url: "http://localhost:4000/aleph-scriptorium/demo/"
+          
+    - capitulo: 6
+      titulo: "Pruebas, Aliados, Enemigos"
+      tema: "La charla del PO"
+      escenas:
+        - id: "06-01"
+          titulo: "El metanarrador se revela"
+          personajes: [po, clippy, ox, aleph]
+          accion: |
+            El PO revela que siempre estuvo ahí como metanarrador.
+            Presenta el blueprint-po como guía del viaje. La audiencia 
+            entiende que está viendo la misma charla que el héroe vive.
+          slide_principal: "paso6-po"
+          slides_adyacentes:
+            ox: "paso6-ox"
+            aleph: "paso6-aleph"
+            sm: "paso6-sm"
+          nota_ox: "impress.js: navegación 3D"
+          nota_aleph: "Galería Visual: 4 blueprints"
+          nota_sm: "Impedimentos: navegación móvil"
+          meta: true
+          
+    - capitulo: 7
+      titulo: "Acercamiento a la Cueva Interior"
+      tema: "NovelistEditor"
+      escenas:
+        - id: "07-01"
+          titulo: "La obra que se escribe a sí misma"
+          personajes: [clippy, ox]
+          accion: |
+            Abrimos NovelistEditor. Clippy ve esta misma obra siendo 
+            editada. Recursividad. La historia contiene la historia.
+          slide_principal: "paso7-po"
+          slides_adyacentes:
+            ox: "paso7-ox"
+            aleph: "paso7-aleph"
+            sm: "paso7-sm"
+          nota_ox: "16 submódulos integrados"
+          nota_aleph: "Integraciones: MCP, Playwright, Jekyll"
+          nota_sm: "Roadmap: FC1-FC4"
+          demo: true
+          url: "http://localhost:3000"
+          
+    - capitulo: 8
+      titulo: "La Ordalía"
+      tema: "Zeus y los Presets"
+      escenas:
+        - id: "08-01"
+          titulo: "Diseñando el contexto"
+          personajes: [clippy, ox]
+          accion: |
+            Navegamos a Zeus para ver la UI de gestión de presets.
+            El héroe entiende que el contexto se puede diseñar, no 
+            sufrir. Los Context Packs reducen el bloat.
+          slide_principal: "paso8-po"
+          slides_adyacentes:
+            ox: "paso8-ox"
+            aleph: "paso8-aleph"
+            sm: "paso8-sm"
+          nota_ox: "API/SDK: mcp-core-sdk, mesh, model"
+          nota_aleph: "Templates: crear agentes propios"
+          nota_sm: "Releases: v1.0.0-beta.1"
+          demo: true
+          url: "http://localhost:4001"
+
+  # === RETORNO (9-12): Recompensa → Elixir ===
+  
+  retorno:
+    - capitulo: 9
+      titulo: "La Recompensa"
+      tema: "Roadmap y Galería"
+      escenas:
+        - id: "09-01"
+          titulo: "El mapa del tesoro"
+          personajes: [clippy, po]
+          accion: |
+            Navegamos a la sección roadmap de GH-Pages. Vemos la galería 
+            de backlogs pendientes. El héroe entiende que hay un plan, 
+            una comunidad, un futuro.
+          slide_principal: "paso9-po"
+          slides_adyacentes:
+            ox: "paso9-ox"
+            aleph: "paso9-aleph"
+            sm: "paso9-sm"
+          nota_ox: "Fork → DEVOPS.md → PR"
+          nota_aleph: "Documentación: DRY, modular"
+          nota_sm: "Retrospectiva: lecciones aprendidas"
+          url: "http://localhost:4000/aleph-scriptorium/roadmap/"
+          
+    - capitulo: 10
+      titulo: "El Camino de Regreso"
+      tema: "Portada y Banners"
+      escenas:
+        - id: "10-01"
+          titulo: "Los estandartes"
+          personajes: [clippy, po]
+          accion: |
+            Datos técnicos: FOSS, AIPL license, README. Las 3 fotos 
+            de la raíz: VibeCoding, Aleph Scriptorium, Fundación.
+            El héroe ve que pertenece a algo más grande.
+          slide_principal: "paso10-po"
+          slides_adyacentes:
+            ox: "paso10-ox"
+            aleph: "paso10-aleph"
+            sm: "paso10-sm"
+          nota_ox: "Repos: GitHub, documentación"
+          nota_aleph: "Contacto: comunidad AIPL"
+          nota_sm: "Next Steps: seguir construyendo"
+          
+    - capitulo: 11
+      titulo: "La Resurrección"
+      tema: "Fundación vacía"
+      escenas:
+        - id: "11-01"
+          titulo: "El lienzo en blanco regresa"
+          personajes: [clippy]
+          accion: |
+            Al héroe se le entrega Fundación: 12 capítulos vacíos.
+            ¡Horror vacui de nuevo! Pero ahora es diferente.
+            Tiene herramientas. Tiene aliados. Tiene metodología.
+          slide_principal: "paso11-po"
+          slides_adyacentes:
+            ox: "paso11-ox"
+            aleph: "paso11-aleph"
+            sm: "paso11-sm"
+          twist: true
+          
+    - capitulo: 12
+      titulo: "Regreso con el Elixir"
+      tema: "La Girándula"
+      escenas:
+        - id: "12-01"
+          titulo: "Parece que estás padeciendo horror vacui"
+          personajes: [clippy, ox, aleph, po, devops_server]
+          accion: |
+            Clippy 2.0 dice, imitando al viejo: "Parece que estás 
+            padeciendo un episodio de horror vacui. ¿Quieres que 
+            arranque una girándula de estímulos de lo más pizguetos?"
+            
+            Ox lanza Run All. Los servidores cobran vida. Comienza 
+            a escribirse la historia... y resulta que es esta misma, 
+            narrada por el PO.
+            
+            En la escena final, Clippy ya no está solo. Junto a él 
+            están Ox, Aleph, y muchos amigos nuevos. Una nueva época 
+            en la escritura digital. Ahora, en red.
+          slide_principal: "paso12-po"
+          slides_adyacentes:
+            ox: "paso12-ox"
+            aleph: "paso12-aleph"
+            sm: "paso12-sm"
+          loop: true
+          cierre: true
+          frase_final: |
+            "Comienza una nueva época en la escritura digital.
+             Ahora, en red."
+
+# Navegación Blueprint Cubo (coordenadas impress.js)
+navegacion:
+  patron: "CUBO_3D"
+  incremento_x: 3000
+  slides_por_paso:
+    po: { y: 0, z: 0 }
+    ox: { y: -800, z: 0 }
+    aleph: { y: 800, x_offset: -500, z: 0 }
+    sm: { y: 800, x_offset: 500, z: 0 }
+  overview:
+    x: 16500  # Centro aproximado
+    y: 0
+    z: 4000
+    scale: 6
+
+# Demos interactivos por capítulo
+demos:
+  - capitulo: 4
+    accion: "alephscript.demo.runAll"
+    tipo: "comando_vscode"
+    
+  - capitulo: 5
+    url: "http://localhost:4000/aleph-scriptorium/demo/"
+    tipo: "navegador"
+    
+  - capitulo: 7
+    url: "http://localhost:3000"
+    tipo: "navegador"
+    nota: "NovelistEditor"
+    
+  - capitulo: 8
+    url: "http://localhost:4001"
+    tipo: "navegador"
+    nota: "Zeus Presets"
+    
+  - capitulo: 9
+    url: "http://localhost:4000/aleph-scriptorium/roadmap/"
+    tipo: "navegador"
+
+# Metadatos de exportación
+exportar:
+  arg_board: true
+  teatro: true
+  novelist: true
+  blueprint: "blueprint-release-party.md"
+
+# Changelog
+changelog:
+  - fecha: 2025-12-30
+    autor: "@novelist + @ox"
+    cambio: "Crear estructura monomito completa (12 cap.)"

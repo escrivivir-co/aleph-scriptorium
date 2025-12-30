@@ -134,20 +134,50 @@ Un plugin puede estar:
 
 ---
 
-## FAQ de Resolución de Problemas
+## Servidores MCP (Opcional)
 
-### "No me aparecen los prompts del plugin X"
+### Plugins con Servidores MCP
 
-**Causa más común**: El plugin está instalado pero **desactivado** en settings.
+Algunos plugins pueden aportar **servidores MCP** que VS Code Copilot puede invocar.
 
-**Diagnóstico**:
-1. Ejecutar `@pluginmanager status`
-2. Verificar si el plugin aparece en "desactivados"
+### Propiedad `mcpServers` en Manifest
 
-**Solución**:
+```yaml
+mcpServers:
+  - id: "devops-mcp-server"
+    port: 3003
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm start"
 ```
-@pluginmanager activar {id}
+
+### Protocolo de Registro
+
+1. **Detectar**: Leer `mcpServers` del manifest
+2. **Validar**: Verificar que `source` existe y tiene `package.json`
+3. **Registrar**: Añadir a `.vscode/mcp.json`
+4. **Documentar**: Añadir a tabla en PLUGINS.md
+
+### Formato .vscode/mcp.json
+
+```jsonc
+{
+  "servers": {
+    "devops-mcp-server": {
+      "type": "http",
+      "url": "http://localhost:3003"
+    }
+  }
+}
 ```
+
+### Catálogo Dinámico
+
+Para listar servidores activos:
+```bash
+curl http://localhost:4001/ai/ui/mcp/list | jq '.catalog'
+```
+
+→ Ver [PLUGINS.md](../../../PLUGINS.md) sección "Servidores MCP" para la lista completa.
 
 ---
 

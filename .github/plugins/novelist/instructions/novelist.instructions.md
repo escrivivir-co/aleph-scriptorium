@@ -310,7 +310,243 @@ Antes de operar, el agente debe verificar:
 ## Referencias
 
 - **Plugin**: `.github/plugins/novelist/`
-- **Submódulo**: `mcp-novelist/`
+- **Submódulo**: `NovelistEditor/`
 - **TALLER**: `ARCHIVO/DISCO/TALLER/`
 - **AGENT_CREATOR**: `.github/plugins/agent-creator/`
 - **ARG_BOARD**: `ARCHIVO/PLUGINS/ARG_BOARD/`
+- **Obras**: `ARCHIVO/PLUGINS/NOVELIST/obras/`
+
+---
+
+## Integración: NovelistEditor Standalone
+
+### Escenario
+
+Un escritor abre VS Code directamente en `NovelistEditor/` (no en el Scriptorium completo). Necesita:
+1. Acceder a las obras del Scriptorium padre
+2. Usar las herramientas MCP si el servidor está activo
+3. Trabajar en modo ligero si no hay servidor
+
+### Archivos de Integración
+
+| Archivo | Ubicación | Propósito |
+|---------|-----------|-----------|
+| `scriptorium-context.json` | `NovelistEditor/` | Rutas al Scriptorium padre |
+| `scriptorium-context.schema.json` | `NovelistEditor/` | Validación del contexto |
+| `escritor.chatmode.md` | `NovelistEditor/.github/chatmodes/` | Modo de bienvenida |
+| `scriptorium-context.instructions.md` | `NovelistEditor/.github/instructions/` | Reglas de carga |
+
+### Flujo de Primera Sesión
+
+```
+Usuario abre NovelistEditor/
+       │
+       ▼
+Copilot detecta escritor.chatmode.md
+       │
+       ▼
+Lee scriptorium-context.json
+       │
+       ├── ¿Scriptorium detectado? → Listar obras disponibles
+       │
+       └── ¿Servidor MCP activo? → Activar modo completo
+       │
+       ▼
+Presenta bienvenida con obras disponibles
+```
+
+### Ejemplo de Prompt de Usuario
+
+```
+Hola. Soy un usuario de Aleph Scriptorium. Es la primera vez que 
+abro este NovelistEditor. Soy uno de los escritores de la novela 
+"Ítaca digital". Necesito hacer una sesión de escritura. 
+¿Puedes ayudarme?
+```
+
+### Respuesta Esperada del Agente
+
+1. **Detectar contexto**: Leer `scriptorium-context.json`
+2. **Verificar obra**: Buscar "itaca-digital" en obras disponibles
+3. **Cargar metadatos**: `novela.json`, `estructura.json`, `sincronizacion.json`
+4. **Presentar estado**: Tabla con capítulos y progreso
+5. **Ofrecer sesión**: "¿En qué capítulo quieres trabajar hoy?"
+
+### Configuración de Rutas (Instalación Local)
+
+Por ahora, las rutas son absolutas. En `scriptorium-context.json`:
+
+```json
+{
+  "scriptorium": {
+    "root": "/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH"
+  },
+  "obras": {
+    "path": "ARCHIVO/PLUGINS/NOVELIST/obras"
+  }
+}
+```
+
+**TODO**: Migrar a rutas relativas o variables de entorno:
+- `ALEPH_SCRIPTORIUM_ROOT` para la raíz
+- Detección automática si NovelistEditor es submódulo (`../`)
+
+### Chatmodes Disponibles
+
+| Chatmode | Rol | Cuándo usar |
+|----------|-----|-------------|
+| `escritor` | Sesiones de escritura | Primera vez, selección de obra |
+| `editor` | Gestión de contenedores | Inicializar, recuperar, configurar |
+| `albacea` | Creación de contenido | Añadir personajes, escenas, capítulos |
+| `lector` | Consulta de información | Buscar, indexar, analizar |
+
+### Sincronización con Scriptorium
+
+Cuando el escritor termina una sesión:
+
+1. **Guardar cambios locales**: Actualizar `capitulos/*.md`
+2. **Actualizar estructura**: Modificar `estructura.json` (palabras, estado)
+3. **Sincronizar Teatro** (opcional): Exportar a `TEATRO/obras/{id}.yaml`
+4. **Commit** (si está en Scriptorium): `feat(novelist): sesión de escritura`
+
+---
+
+## Obras Disponibles (Ejemplo)
+
+### Ítaca Digital
+
+```yaml
+id: itaca-digital
+titulo: "Ítaca Digital: El Retorno del Navegante"
+estado: borrador
+estructura: monomito-12
+capitulos: 12
+personajeGuia: penelope
+fuentes:
+  - teatro: ARCHIVO/PLUGINS/TEATRO/obras/itaca-digital.yaml
+  - taller: ARCHIVO/DISCO/TALLER/NOVELA_TRANSMEDIA
+  - remota: /Users/morente/Desktop/THEIA_PATH/NOVELA
+```
+
+### Crear Nueva Obra
+
+Para crear una nueva obra:
+
+1. Crear carpeta en `ARCHIVO/PLUGINS/NOVELIST/obras/{nueva-obra}/`
+2. Crear `novela.json` con metadatos
+3. Crear `estructura.json` con 12 capítulos
+4. Crear `sincronizacion.json` con enlaces
+5. Crear `capitulos/` con 12 archivos `.md`
+6. Actualizar `scriptorium-context.json` en NovelistEditor
+
+---
+
+## Protocolo de Fuentes Secundarias
+
+> **Generalizado desde sesiones de trabajo (2025-12)**
+> Este protocolo aplica cuando una obra tiene **material preexistente** que integrar.
+
+### Jerarquía de Fuentes (Patrón de 5 Lienzos)
+
+| Nivel | Nombre | Propósito | Operación |
+|-------|--------|-----------|-----------|
+| **A1** | Prehistoria | Material anterior al proyecto (blogs, borradores, HTML, PDFs) | Solo lectura |
+| **A2** | Fuente estructurada | Capítulos o textos ya organizados | Solo lectura |
+| **B** | Contenedor MCP | Escenas activas en servidor | Lectura/Escritura |
+| **C** | Renderizado local | Capítulos `.md` en `obras/{id}/capitulos/` | Escritura |
+| **D** | Experiencia final | Teatro YAML, PDF, web | Exportar |
+
+**Principio DRY**:
+- A1/A2 son **sagradas** (nunca modificar)
+- B es la **verdad estructurada** (editar aquí)
+- C es **renderizado** (se genera desde B)
+- D es **experiencia** (no contiene narrativa completa)
+
+### Concepto: Sublore
+
+> Material de fuentes secundarias (A1) que se **injerta** en la narrativa principal sin reemplazarla.
+
+- Funciona como **flashbacks**, **ecos**, **citas** o **notas del narrador**
+- Se distingue visualmente: cursivas, comillas, cajas
+- **Máximo 3-4 fragmentos por capítulo**
+- Debe estar **autorizado** por auditoría de banderas
+
+### Concepto: Hilos Sembrados
+
+> Referencias breves que **anticipan** desarrollo en capítulos futuros.
+
+| Campo en estructura.json | Tipo | Ejemplo |
+|--------------------------|------|---------|
+| `hilosSembrados` | array | `["lucy-penelope", "cuenta-atras"]` |
+
+**Reglas**:
+- Sembrar en capítulos tempranos (1-4)
+- Desarrollar en capítulos medios/tardíos
+- Nunca explicar el hilo en el mismo capítulo donde se siembra
+- Documentar en `sincronizacion.json` qué hilo → qué capítulo
+
+### Protocolo de Extracción HTML
+
+Cuando la fuente A1 es HTML:
+
+```bash
+# Convertir a texto limpio
+cat "archivo.html" | sed 's/<[^>]*>//g' | sed 's/&nbsp;/ /g' | head -200
+
+# Buscar fragmentos específicos
+grep -i -A5 -B5 "palabra_clave" archivo.html | sed 's/<[^>]*>//g'
+```
+
+### Restricciones de Material Secundario
+
+| ❌ Prohibido | ✅ Permitido |
+|-------------|-------------|
+| Copiar sin atribución | Citar con referencia |
+| Material político/legal sensible | Material introspectivo/metaliterario |
+| Fechas o eventos identificables | Referencias temporales vagas |
+| Explicar todo de inmediato | Mantener misterio (hilos) |
+| Más del 30% del capítulo | Máximo 3-4 fragmentos breves |
+
+### Checklist de Sesión con Fuentes Secundarias
+
+```markdown
+## Pre-sesión
+- [ ] Fuentes A1/A2 accesibles (vía terminal, NO read_file)
+- [ ] MCP servidor activo
+- [ ] sincronizacion.json tiene mapeo de fuentes
+- [ ] Banderas han autorizado fragmentos
+
+## Durante sesión
+- [ ] Extraer fragmentos con comandos terminal
+- [ ] Crear escenas nuevas o actualizar existentes en MCP
+- [ ] Marcar origen: `<!-- fuente: A1/archivo.html -->`
+- [ ] Marcar hilos: `<!-- hilo: nombre-hilo -->`
+
+## Post-sesión
+- [ ] Renderizar capítulo local
+- [ ] Actualizar estructura.json (palabras, estado, hilosSembrados)
+- [ ] Guardar estado MCP
+```
+
+### Comunicación con Scriptorium
+
+Cuando el Escritor necesita decisiones editoriales:
+
+```markdown
+## Solicitud de Auditoría
+
+**Fuente**: [nombre-archivo]
+**Fragmento** (líneas X-Y):
+> "Texto literal..."
+
+**Pregunta específica**: ¿Es apropiado incluir este fragmento?
+**Contexto narrativo**: Estadio X, escena Y.
+**Hilo que siembra**: [nombre-hilo]
+```
+
+**Decisiones que NO son del Escritor**:
+- ¿Incluir fragmento X? → @aleph + banderas
+- ¿Fusionar fragmentos? → @aleph
+- ¿Descartar material? → @aleph + @blackflag
+- ¿Orden de capítulos? → @aleph + @revisor
+

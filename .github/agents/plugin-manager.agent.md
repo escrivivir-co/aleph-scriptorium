@@ -54,6 +54,20 @@ handoffs:
 | `status` | Diagnóstico de plugins |
 | `desinstalar <id>` | Elimina completamente |
 | `info <id>` | Muestra detalles del manifest |
+| `mcp:listar` | Lista servidores MCP registrados |
+| `mcp:registrar <plugin-id>` | Registra mcpServers del plugin en mcp.json |
+
+---
+
+## Servidores MCP
+
+Los plugins pueden declarar `mcpServers` en su manifest. Al instalar:
+
+1. Leer `mcpServers` del manifest
+2. Añadir cada servidor a `.vscode/mcp.json`
+3. Documentar en PLUGINS.md
+
+→ Ver [PLUGINS.md](../PLUGINS.md) sección "Servidores MCP" para protocolo.
 
 ---
 

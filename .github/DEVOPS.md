@@ -1,6 +1,6 @@
 # Protocolo DevOps — Aleph Scriptorium
 
-> **Resumen**: Metodología Agile/Scrum adaptada a producción textual. 12 sprints × 4 iteraciones = 48 iteraciones anuales.
+> **Resumen**: Metodología Agile/Scrum adaptada a producción textual. 12 sprints × 4 iteraciones = 48 iteraciones anuales. 4 ciclos de desarrollo: un FC por trimestre.
 
 **Versión**: 0.0.1  
 **Rama de trabajo**: Ver `workspace-config.json`

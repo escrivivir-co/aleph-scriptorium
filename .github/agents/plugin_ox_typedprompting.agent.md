@@ -36,6 +36,14 @@ handoffs:
     agent: .github/plugins/typed-prompting/agents/typed-prompting.agent.md
     prompt: "Inicia el servidor del editor visual (localhost:5000)."
     send: false
+  - label: Investigar System Message subyacente
+    agent: Ox
+    prompt: "Analiza en CopilotEngine cómo se construye el system message para el modelo/agente actual. Usa analizar-flujo-copilot.prompt.md."
+    send: false
+  - label: Mapear TypeScript a PromptElement
+    agent: Ox
+    prompt: "Busca en CopilotEngine cómo @vscode/prompt-tsx convierte interfaces TS a elementos de prompt."
+    send: false
 ---
 
 # Plugin Ox: TypedPrompting
