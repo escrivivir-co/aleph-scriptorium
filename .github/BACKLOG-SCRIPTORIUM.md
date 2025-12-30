@@ -27,7 +27,8 @@
 
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
-| � | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
+| 📋 | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.1.1 | Copilot Log Exporter MCP | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/01_backlog-borrador.md) |
 
 ---
 
@@ -52,7 +53,7 @@
 | Carpeta | Foco | Estado |
 |---------|------|--------|
 | [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | 📋 Activo |
-
+| [Diciembre_30_CopilotLogExporter](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/) | Copilot Log Exporter | ✅ Completado |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 
