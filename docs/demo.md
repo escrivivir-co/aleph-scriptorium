@@ -65,6 +65,7 @@ permalink: /demo/
 .iframe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-auto-flow: row dense;
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -82,7 +83,7 @@ permalink: /demo/
 }
 
 .iframe-card.featured {
-  grid-column: span 2;
+  grid-column: 1 / -1;
 }
 
 .iframe-header {
@@ -200,10 +201,6 @@ permalink: /demo/
   .iframe-grid {
     grid-template-columns: 1fr;
   }
-  
-  .iframe-card.featured {
-    grid-column: span 1;
-  }
 }
 </style>
 
@@ -224,11 +221,11 @@ permalink: /demo/
     </span>
     <span class="status-badge">
       <span class="dot"></span>
-      Zeus :4001
+      Zeus :3012
     </span>
     <span class="status-badge">
       <span class="dot"></span>
-      Novelist :3000
+      Novelist :8080
     </span>
   </div>
   
@@ -252,17 +249,17 @@ permalink: /demo/
       <div class="iframe-header">
         <span class="iframe-title">⚡ Zeus Presets</span>
         <div class="iframe-actions">
-          <a href="http://localhost:4001" target="_blank">↗ Abrir</a>
+          <a href="http://localhost:3012" target="_blank">↗ Abrir</a>
         </div>
       </div>
       <div class="iframe-container">
         <div class="iframe-placeholder" id="zeus-placeholder">
           <span class="icon">⚡</span>
           <p>Zeus MCP Server</p>
-          <p><code>localhost:4001</code></p>
+          <p><code>localhost:3012</code></p>
           <p>Ejecuta: <code>npm run start:zeus</code></p>
         </div>
-        <!-- <iframe src="http://localhost:4001" loading="lazy"></iframe> -->
+        <iframe src="http://localhost:3012/editor" loading="lazy"></iframe> 
       </div>
     </div>
     
@@ -271,17 +268,17 @@ permalink: /demo/
       <div class="iframe-header">
         <span class="iframe-title">📝 Novelist Editor</span>
         <div class="iframe-actions">
-          <a href="http://localhost:3000" target="_blank">↗ Abrir</a>
+          <a href="http://localhost:8080" target="_blank">↗ Abrir</a>
         </div>
       </div>
       <div class="iframe-container">
         <div class="iframe-placeholder" id="novelist-placeholder">
           <span class="icon">📝</span>
           <p>Novelist Editor</p>
-          <p><code>localhost:3000</code></p>
+          <p><code>localhost:8080</code></p>
           <p>Ejecuta: <code>npm start</code> en NovelistEditor/</p>
         </div>
-        <!-- <iframe src="http://localhost:3000" loading="lazy"></iframe> -->
+        <iframe src="http://localhost:8080" loading="lazy"></iframe>
       </div>
     </div>
     
@@ -354,8 +351,8 @@ permalink: /demo/
 <script>
 // Auto-check server status
 const servers = [
-  { id: 'zeus-placeholder', url: 'http://localhost:4001', iframe: true },
-  { id: 'novelist-placeholder', url: 'http://localhost:3000', iframe: true }
+  { id: 'zeus-placeholder', url: 'http://localhost:3012', iframe: true },
+  { id: 'novelist-placeholder', url: 'http://localhost:8080', iframe: true }
 ];
 
 async function checkServer(server) {

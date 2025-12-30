@@ -36,6 +36,14 @@ handoffs:
     agent: Indice
     prompt: Verifica que las instrucciones mencionadas en un Context Pack existan en .github/plugins/*/instructions/.
     send: false
+  - label: 🎬 Lanzar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales.
+    send: false
+  - label: 🛑 Parar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.stopAll' para cerrar terminales demo.
+    send: false
 ---
 
 # Agente: Índice (Portero del Proyecto)

@@ -68,6 +68,14 @@ handoffs:
     agent: Ox
     prompt: Usa mcp_devops-mcp-se_get_server_status() para verificar salud del servidor MCP principal.
     send: false
+  - label: 🎬 Lanzar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales (Jekyll, Launcher, Model, Zeus, Novelist).
+    send: false
+  - label: 🛑 Parar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.stopAll' para cerrar las terminales de demo.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)

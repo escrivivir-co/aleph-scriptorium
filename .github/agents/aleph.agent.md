@@ -40,6 +40,14 @@ handoffs:
     agent: plugin-manager
     prompt: Instala, activa o desinstala plugins.
     send: false
+  - label: 🎬 Lanzar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales.
+    send: false
+  - label: 🛑 Parar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.stopAll' para cerrar terminales demo.
+    send: false
 ---
 
 # Agente: Aleph (Fundacional)
