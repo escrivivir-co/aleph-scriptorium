@@ -24,6 +24,26 @@ handoffs:
     agent: Indice
     prompt: Escanea registry.json, agents/, plugins/ y detecta discrepancias.
     send: false
+  - label: Resolver instrucciones desde Context Pack
+    agent: Indice
+    prompt: Usa mcp_devops-mcp-se_get_prompt(pack_id) para obtener lista de instrucciones a activar/desactivar según foco.
+    send: false
+  - label: Consultar Context Pack por dominio
+    agent: Indice
+    prompt: Dado un dominio (blueprint, scrum, teatro), consulta el pack correspondiente en DevOps Server.
+    send: false
+  - label: Validar coherencia pack ↔ instrucciones
+    agent: Indice
+    prompt: Verifica que las instrucciones mencionadas en un Context Pack existan en .github/plugins/*/instructions/.
+    send: false
+  - label: 🎬 Lanzar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales.
+    send: false
+  - label: 🛑 Parar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.stopAll' para cerrar terminales demo.
+    send: false
 ---
 
 # Agente: Índice (Portero del Proyecto)
@@ -42,8 +62,24 @@ handoffs:
 |--------|------|--------|
 | **Funcional** | `ARCHIVO/DEVOPS/Funcional.md` | Usuario: qué puedo hacer |
 | **Técnico** | `ARCHIVO/DEVOPS/Tecnico.md` | Scrum: cómo está construido |
+| **Plugins** | `.github/PLUGINS.md` | Protocolo y servidores MCP |
+| **MCP Servers** | `.vscode/mcp.json` | Servidores MCP activos |
+| **Context Packs** | DevOps Server (:3003) | Packs de contexto dinámicos |
 
-**Contrato DRY**: Estos dos archivos son la ÚNICA fuente de navegación.
+**Contrato DRY**: Estos archivos son la fuente de navegación.
+
+---
+
+## Servidores MCP
+
+| Servidor | Puerto | Fuente |
+|----------|--------|--------|
+| devops-mcp-server | 3003 | MCPGallery/mcp-mesh-sdk |
+| wiki-browser-server | 3002 | MCPGallery/mcp-mesh-sdk |
+| state-machine-server | 3004 | MCPGallery/mcp-mesh-sdk |
+| launcher-server | 3050 | MCPGallery/mcp-mesh-sdk |
+
+→ Ver [PLUGINS.md](../PLUGINS.md) sección "Servidores MCP" para protocolo.
 
 ---
 

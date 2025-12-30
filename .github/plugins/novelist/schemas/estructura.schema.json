@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "novelist-estructura-schema",
+  "title": "Novelist - Schema de Estructura",
+  "description": "Schema para estructura de 12 capítulos (monomito)",
+  "type": "object",
+  "properties": {
+    "tipo": {
+      "type": "string",
+      "enum": ["monomito-12", "tres-actos", "libre"],
+      "default": "monomito-12"
+    },
+    "capitulos": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/capitulo"
+      },
+      "minItems": 1,
+      "maxItems": 12
+    },
+    "estadisticas": {
+      "type": "object",
+      "properties": {
+        "totalPalabras": { "type": "integer" },
+        "capituloscompletos": { "type": "integer" },
+        "ultimaEdicion": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "$defs": {
+    "capitulo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "inicio",
+            "llamada",
+            "rechazo",
+            "mentor",
+            "umbral",
+            "aliados",
+            "cueva",
+            "ordalia",
+            "recompensa",
+            "retorno",
+            "resurreccion",
+            "elixir"
+          ]
+        },
+        "anillo": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "archivo": {
+          "type": "string",
+          "description": "Nombre del archivo .md en capitulos/"
+        },
+        "estado": {
+          "type": "string",
+          "enum": ["vacio", "borrador", "revision", "completo"],
+          "default": "vacio"
+        },
+        "palabras": {
+          "type": "integer",
+          "default": 0
+        },
+        "feature": {
+          "type": "string",
+          "description": "@agente asignado"
+        },
+        "fuenteOriginal": {
+          "type": "string",
+          "description": "Archivo de NOVELA mapeado"
+        },
+        "prueba": {
+          "type": "string",
+          "description": "Prueba/tarea del monomito"
+        },
+        "duracion": {
+          "type": "string",
+          "description": "Duración estimada"
+        },
+        "sublore": {
+          "type": "string",
+          "description": "Fuente de material secundario integrado (ej: 'LIBRO/ integrado')"
+        },
+        "hilosSembrados": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Referencias anticipatorias para capítulos futuros"
+        },
+        "fuentesSecundarias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "archivo": { "type": "string" },
+              "lineas": { "type": "string" },
+              "uso": { "type": "string" }
+            }
+          },
+          "description": "Lista de fragmentos de A1/A2 usados en este capítulo"
+        },
+        "escenas": {
+          "type": "integer",
+          "description": "Número de escenas en MCP"
+        }
+      },
+      "required": ["id", "nombre", "tipo", "anillo", "archivo"]
+    }
+  },
+  "required": ["tipo", "capitulos"]
+}

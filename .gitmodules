@@ -44,3 +44,6 @@
 	path = OnthologyEditor
 	url = https://github.com/escrivivir-co/alephscript-onthology-editor.git
 	branch = integration/beta/scriptorium
+[submodule "CopilotEngine"]
+	path = CopilotEngine
+	url = https://github.com/escrivivir-co/vscode-copilot-chat

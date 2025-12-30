@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "novelist-novela-schema",
+  "title": "Novelist - Schema de Novela",
+  "description": "Schema para novelas con estructura de monomito (12 capítulos)",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "ID único (kebab-case)"
+    },
+    "titulo": {
+      "type": "string",
+      "description": "Título de la novela"
+    },
+    "subtitulo": {
+      "type": "string",
+      "description": "Subtítulo opcional"
+    },
+    "autor": {
+      "type": "string",
+      "description": "Autor o autores"
+    },
+    "genero": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Géneros literarios"
+    },
+    "estado": {
+      "type": "string",
+      "enum": ["borrador", "revision", "completada", "publicada"],
+      "default": "borrador"
+    },
+    "sinopsis": {
+      "type": "string",
+      "description": "Sinopsis de la obra"
+    },
+    "fechaCreacion": {
+      "type": "string",
+      "format": "date"
+    },
+    "fechaModificacion": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "estructura": {
+      "type": "string",
+      "enum": ["monomito-12", "tres-actos", "libre"],
+      "default": "monomito-12"
+    },
+    "duracionEstimada": {
+      "type": "string",
+      "description": "Duración estimada de lectura"
+    },
+    "nivel": {
+      "type": "string",
+      "enum": ["introductorio", "intermedio", "avanzado"]
+    },
+    "personajeGuia": {
+      "type": "string",
+      "description": "ID del personaje guía (para obras transmedia)"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "prerequisitos": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sincronizacion": {
+      "type": "object",
+      "properties": {
+        "teatro": {
+          "type": "string",
+          "description": "Ruta al YAML de Teatro"
+        },
+        "taller": {
+          "type": "string",
+          "description": "Ruta al directorio de TALLER"
+        },
+        "fuenteRemota": {
+          "type": "string",
+          "description": "Ruta a fuente original (NOVELA)"
+        },
+        "ultimaSync": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "required": ["id", "titulo", "autor", "estado", "estructura"]
+}

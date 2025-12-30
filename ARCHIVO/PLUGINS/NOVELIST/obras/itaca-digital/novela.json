@@ -1,0 +1,36 @@
+{
+  "id": "itaca-digital",
+  "titulo": "Ítaca Digital: El Retorno del Navegante",
+  "subtitulo": "Una travesía transmedia por el monomito",
+  "autor": "Teatro Interactivo × Aleph Scriptorium",
+  "genero": [
+    "narrativa-transmedia",
+    "filología",
+    "clásicos-remezclados"
+  ],
+  "estado": "borrador",
+  "sinopsis": "Un recorrido teatral por los 12 estadios del monomito de Campbell, adaptando la epopeya clásica de Ulises y Penélope en una experiencia de aprendizaje sobre navegación, escritura y retorno a casa en la era digital.",
+  "fechaCreacion": "2025-12-28",
+  "fechaModificacion": "2025-12-28T12:00:00Z",
+  "estructura": "monomito-12",
+  "duracionEstimada": "6 horas",
+  "nivel": "intermedio",
+  "personajeGuia": "penelope",
+  "tags": [
+    "monomito",
+    "filología",
+    "clásicos-remezclados",
+    "transmedia",
+    "ítaca"
+  ],
+  "prerequisitos": [
+    "Familiaridad con narrativa clásica (Odisea)",
+    "Apertura a pensar la tecnología como heredera de retórica griega"
+  ],
+  "sincronizacion": {
+    "teatro": "ARCHIVO/PLUGINS/TEATRO/obras/itaca-digital.yaml",
+    "taller": "ARCHIVO/DISCO/TALLER/NOVELA_TRANSMEDIA",
+    "fuenteRemota": "/Users/morente/Desktop/THEIA_PATH/NOVELA",
+    "ultimaSync": "2025-12-28T12:00:00Z"
+  }
+}

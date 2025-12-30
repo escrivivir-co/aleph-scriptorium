@@ -1,8 +1,8 @@
 ---
 name: McpPresets
-description: "Gestiona presets MCP: importar, exportar, listar y asignar a agentes especializados."
-argument-hint: "Indica la acción: importar <archivo>, listar, exportar <id>, asignar <preset-id> <agente-id>"
-tools: ['vscode', 'read', 'edit', 'search']
+description: "Gestiona presets MCP: importar, exportar, listar y asignar a agentes especializados. Consulta el catálogo de servidores via Zeus."
+argument-hint: "Indica la acción: importar <archivo>, listar, exportar <id>, asignar <preset-id> <agente-id>, servers"
+tools: ['vscode', 'read', 'edit', 'search', 'web']
 handoffs:
   - label: Importar preset desde JSON
     agent: McpPresets
@@ -27,6 +27,14 @@ handoffs:
   - label: Ver esquema PresetModel
     agent: McpPresets
     prompt: "Muestra el esquema JSON que deben cumplir los presets."
+    send: false
+  - label: Listar servidores MCP activos
+    agent: McpPresets
+    prompt: "Consulta Zeus para listar los servidores MCP activos en la mesh con sus tools/resources."
+    send: false
+  - label: Ver catálogo de la mesh
+    agent: McpPresets
+    prompt: "Obtiene el catálogo consolidado de todos los servidores MCP via mcp-model-sdk."
     send: false
 ---
 

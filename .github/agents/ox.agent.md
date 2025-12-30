@@ -44,6 +44,38 @@ handoffs:
     agent: Ox
     prompt: Crea un nuevo release del Scriptorium usando .github/prompts/crear-release.prompt.md.
     send: false
+  - label: Analizar flujo Copilot Chat
+    agent: Ox
+    prompt: Dado un agente y modelo LLM, analiza el flujo completo User Prompt → System Message → Output usando CopilotEngine como fuente.
+    send: false
+  - label: Investigar System Message por modelo
+    agent: Ox
+    prompt: Busca en CopilotEngine cómo se construye el system message para un modelo específico (Claude, GPT, Gemini).
+    send: false
+  - label: Listar Context Packs disponibles
+    agent: Ox
+    prompt: Consulta DevOps Server con mcp_devops-mcp-se_list_prompts() para ver todos los Context Packs registrados.
+    send: false
+  - label: Recomendar Context Pack según foco
+    agent: Ox
+    prompt: Dado el foco del usuario (blueprint, scrum, teatro, full), consulta el pack correspondiente y retorna instrucciones a activar/desactivar.
+    send: false
+  - label: Crear nuevo Context Pack
+    agent: Ox
+    prompt: Usa mcp_devops-mcp-se_add_prompt() para registrar un nuevo pack de contexto con instrucciones, agentes preferidos y tools MCP.
+    send: false
+  - label: Consultar estado DevOps Server
+    agent: Ox
+    prompt: Usa mcp_devops-mcp-se_get_server_status() para verificar salud del servidor MCP principal.
+    send: false
+  - label: 🎬 Lanzar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales (Jekyll, Launcher, Model, Zeus, Novelist).
+    send: false
+  - label: 🛑 Parar servidores demo
+    agent: Ox
+    prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.stopAll' para cerrar las terminales de demo.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
@@ -60,6 +92,8 @@ handoffs:
 
 | Capacidad | Cuándo usar | Ejemplo |
 |-----------|-------------|---------|
+| **Context Pack** | Optimizar tokens | "@ox recomienda pack para blueprints" |
+| **DevOps Status** | Verificar servidores | "@ox ¿está vivo el DevOps Server?" |
 | **Consultar agente** | No sé qué agente usar | "@ox ¿Qué agente publica en GH-Pages?" |
 | **Generar docs** | Necesito actualizar README | "@ox generar sección agentes" |
 | **Diagnosticar** | Verificar consistencia | "@ox diagnosticar agentes" |

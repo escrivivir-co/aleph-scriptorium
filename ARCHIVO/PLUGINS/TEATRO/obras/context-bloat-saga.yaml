@@ -1,0 +1,631 @@
+# 🎭 CONTEXT BLOAT SAGA: El Despertar del Oráculo
+#
+# Una obra de teatro transmedia sobre la lucha contra el Context Bloating
+# Basada en hechos reales: SCRIPT-2.1.0 (29-30 Diciembre 2025)
+#
+# Épica original: https://github.com/escrivivir-co/aleph-scriptorium
+# Formato: Teatro interactivo del Scriptorium
+
+id: "context-bloat-saga"
+titulo: "CONTEXT BLOAT SAGA: El Despertar del Oráculo"
+tipo: narrativa
+personaje_guia: "ox"
+version: "1.0.0"
+estreno: "2025-12-30"
+
+descripcion: |
+  Cuando 127,548 tokens amenazan con colapsar el Scriptorium,
+  un equipo improbable de agentes debe encontrar la manera
+  de liberar a Claude de las cadenas del Context Bloating.
+
+# ═══════════════════════════════════════════════════════════════════
+# ACTO I: EL DESCUBRIMIENTO
+# "En el que se revela la magnitud del problema"
+# ═══════════════════════════════════════════════════════════════════
+
+actos:
+  - id: 1
+    titulo: "EL DESCUBRIMIENTO"
+    subtitulo: "127K tokens para un blueprint"
+    escena: "El Archivo del Scriptorium, medianoche"
+    
+    estadios:
+      - id: 1
+        tipo: inicio
+        anillo: 0
+        nombre: "El Log Maldito"
+        descripcion: |
+          [Se enciende una luz tenue sobre un terminal antiguo]
+          
+          NARRADOR: Era el 29 de diciembre de 2025. El Product Owner
+          descubrió un log enterrado en ARCHIVO/DISCO/DEPRECATED...
+          
+        dialogo:
+          - actor: "PO"
+            linea: "¿Qué es esto? AgenteGhPagesInnerVoices.md..."
+            
+          - actor: "PO"
+            linea: |
+              [Lee en voz alta]
+              prompt_tokens: 127,548
+              cached_tokens: 126,298
+              completion_tokens: 162
+              
+          - actor: "PO"
+            linea: "¡127 MIL tokens para generar 162! ¡El 99.6% del límite!"
+            
+          - actor: "@aleph"
+            linea: "[Aparece como holograma] Me llamaste. ¿Qué ocurre?"
+            
+          - actor: "PO"
+            linea: "¡El sistema está sobrecargado! Cada request consume casi TODO el contexto."
+            
+        feature: "@aleph"
+        metricas:
+          tokens_antes: 127548
+          tokens_despues: null
+          crisis: true
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 2
+        tipo: llamada
+        anillo: 1
+        nombre: "La Auditoría"
+        descripcion: |
+          [Las luces revelan múltiples pantallas con datos]
+          
+        dialogo:
+          - actor: "PO"
+            linea: "@aleph, necesito que audites este log. Quiero entender POR QUÉ."
+            
+          - actor: "@aleph"
+            linea: |
+              [Analiza el log]
+              Veo el problema. El System Message incluye:
+              - 47 herramientas (15,000 tokens)
+              - 19 instrucciones completas (8,000 tokens)
+              - 5 attachments sin filtrar (8,000 tokens)
+              
+          - actor: "@ox"
+            linea: "[Materializa desde las sombras] Esto confirma lo que temía. El Scriptorium crece, pero el contexto es finito."
+            
+          - actor: "PO"
+            linea: "¿Hay solución?"
+            
+          - actor: "@ox"
+            linea: "Hay un camino. Pero requerirá... trabajo en equipo."
+            
+        feature: "@ox"
+        blockers:
+          - "CopilotEngine no expone hooks de filtrado"
+          - "19 instrucciones se cargan SIEMPRE"
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 3
+        tipo: rechazo
+        anillo: 1
+        nombre: "Los Impedimentos"
+        descripcion: |
+          [El escenario se oscurece. Símbolos de error flotan en el aire]
+          
+        dialogo:
+          - actor: "@indice"
+            linea: |
+              [Entra corriendo con pergaminos]
+              ¡He consultado el CopilotEngine!
+              Malas noticias: messagesApi.ts serializa TODAS las tools.
+              No hay hook para filtrar.
+              
+          - actor: "Lucas"
+            linea: |
+              [Desarrollador, pragmático]
+              Interceptar messagesApi.ts es invasivo.
+              Son 8 puntos de esfuerzo. Es para el FC2.
+              
+          - actor: "@aleph"
+            linea: "Entonces... ¿estamos atrapados?"
+            
+          - actor: "@ox"
+            linea: |
+              [Sonríe enigmáticamente]
+              No del todo. El filtrado dinámico de TOOLS es difícil.
+              Pero el filtrado de INSTRUCCIONES... eso es otra historia.
+              
+        feature: "@indice"
+        decision: |
+          WISH-01: Documentar la necesidad de hook de filtrado
+          para consideración upstream por VS Code/Copilot.
+
+# ═══════════════════════════════════════════════════════════════════
+# ACTO II: EL REFINAMIENTO
+# "En el que el equipo descubre el camino"
+# ═══════════════════════════════════════════════════════════════════
+
+  - id: 2
+    titulo: "EL REFINAMIENTO"
+    subtitulo: "La sesión Scrum que cambió todo"
+    escena: "Sala de Guerra del Scriptorium"
+    
+    estadios:
+      - id: 4
+        tipo: mentor
+        anillo: 1
+        nombre: "La Sesión Scrum"
+        descripcion: |
+          [Mesa redonda. Seis sillas. Cada agente toma su lugar]
+          
+        dialogo:
+          - actor: "@scrum"
+            linea: |
+              [Facilitando]
+              Buenos días, equipo. El PO ha traído 5 épicas candidatas.
+              Vamos a desgranarlas. ¿PO?
+              
+          - actor: "PO"
+            linea: |
+              Mi visión: reducir de 127K a 50K tokens por request.
+              Propongo:
+              - SCRIPT-2.1.0: Context Manager Core (5 pts)
+              - SCRIPT-2.3.0: Context Packs System (5 pts)
+              - SCRIPT-2.2.0 + 2.4.0: MCP Integration (5 pts)
+              - SCRIPT-2.5.0: Tool Filtering (8 pts → DIFERIDO)
+              
+          - actor: "@ox"
+            linea: |
+              Propongo fusionar 2.2.0 y 2.4.0.
+              MCPGallery ya tiene schemas funcionales.
+              Reusemos en lugar de reinventar.
+              
+          - actor: "TODOS"
+            linea: "[Asienten] Aceptado."
+            
+        feature: "@scrum"
+        acierto: |
+          Fusión de épicas: 2.2.0 + 2.4.0 → 2.2.4
+          Reducción de 21 pts a 15 pts
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 5
+        tipo: umbral
+        anillo: 1
+        nombre: "El Primer Pivot"
+        descripcion: |
+          [Las luces parpadean. @indice entra con malas noticias]
+          
+        dialogo:
+          - actor: "@indice"
+            linea: |
+              [Agitado]
+              He investigado más. El hook que necesitamos...
+              NO EXISTE en CopilotEngine.
+              La épica 2.1.0 tal como está diseñada... es inviable.
+              
+          - actor: "@aleph"
+            linea: "¿Qué propones?"
+            
+          - actor: "@indice"
+            linea: |
+              Context Packs ESTÁTICOS.
+              En lugar de filtrado dinámico, el usuario elige su pack:
+              blueprint.json, teatro.json, scrum.json, full.json
+              
+          - actor: "PO"
+            linea: |
+              [Pensativo]
+              Acepto el pivot. Mejor entregar algo funcional
+              que prometer lo imposible.
+              
+          - actor: "@scrum"
+            linea: "Refactorizamos. De 15 pts a 8 pts. Reducción del 47%."
+            
+        feature: "@indice"
+        decision: |
+          PIVOT: De filtrado dinámico a packs estáticos.
+          Documentado en 06_Decision_PO_Refactorizar.md
+
+# ═══════════════════════════════════════════════════════════════════
+# ACTO III: LA REVELACIÓN
+# "En el que se descubre la solución oculta"
+# ═══════════════════════════════════════════════════════════════════
+
+  - id: 3
+    titulo: "LA REVELACIÓN"
+    subtitulo: "El DevOps Server tenía la respuesta"
+    escena: "Servidor MCP, puerto 3003"
+    
+    estadios:
+      - id: 6
+        tipo: aliados
+        anillo: 2
+        nombre: "La Formación del Aprendiz"
+        descripcion: |
+          [Sala de entrenamiento. Omnímodo instruye a @mcp-presets]
+          
+        dialogo:
+          - actor: "Omnímodo"
+            linea: |
+              @mcp-presets, tu análisis tenía un error.
+              Zeus es una UI web. VS Code espera MCP Servers REALES.
+              
+          - actor: "@mcp-presets"
+            linea: "¿Qué es un MCP Server real?"
+            
+          - actor: "Omnímodo"
+            linea: |
+              [Despliega diagrama]
+              MCP Server = @modelcontextprotocol/sdk + HTTP transport
+              Mira NovelistEditor. Extiende BaseMCPServer.
+              Puerto 3066. VS Code lo reconoce.
+              
+          - actor: "@mcp-presets"
+            linea: "¡Entonces necesitamos nuestro propio servidor!"
+            
+          - actor: "Omnímodo"
+            linea: |
+              Ya existe. DevOps MCP Server. Puerto 3003.
+              Tiene CRUD de prompts y resources.
+              ESO es tu repositorio de Context Packs.
+              
+        feature: "@plugin_ox_mcppresets"
+        investigacion: |
+          Análisis de NovelistEditor → mcp-core-sdk → BaseMCPServer
+          Descubrimiento: DevOps Server ya implementa el patrón
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 7
+        tipo: cueva
+        anillo: 2
+        nombre: "La Prueba E2E"
+        descripcion: |
+          [Terminal activo. @ox ejecuta comandos]
+          
+        dialogo:
+          - actor: "@ox"
+            linea: |
+              [Teclando]
+              Voy a probar la teoría.
+              mcp_devops-mcp-se_add_prompt(
+                "context-pack-blueprint",
+                { domain: "impress.js", token_savings: "60%" }
+              )
+              
+          - actor: "SISTEMA"
+            linea: "✅ Prompt añadido exitosamente"
+            
+          - actor: "@ox"
+            linea: |
+              Ahora: context-pack-scrum, context-pack-teatro, context-pack-full...
+              
+          - actor: "SISTEMA"
+            linea: "✅ 4 prompts registrados. 6 prompts totales en servidor."
+            
+          - actor: "@ox"
+            linea: |
+              [Satisfecho]
+              Funciona. El DevOps Server ES nuestro Context Manager.
+              
+        feature: "mcp_devops-mcp-se_add_prompt"
+        metricas:
+          packs_creados: 4
+          prompts_totales: 6
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 8
+        tipo: ordalia
+        anillo: 2
+        nombre: "La Validación"
+        descripcion: |
+          [Todos los agentes reunidos. Pantalla central muestra métricas]
+          
+        dialogo:
+          - actor: "PO"
+            linea: "Muéstrame los números."
+            
+          - actor: "@ox"
+            linea: |
+              [Despliega dashboard]
+              ANTES (pack full):     127K tokens
+              DESPUÉS (pack blueprint): ~30K tokens
+              REDUCCIÓN: 75%
+              
+          - actor: "@indice"
+            linea: "Las instrucciones cargadas pasan de 19 a 2-4."
+            
+          - actor: "@aleph"
+            linea: "Time to first token: de 55s a ~20s estimado."
+            
+          - actor: "PO"
+            linea: |
+              [Emocionado]
+              ¡Superamos el objetivo!
+              Queríamos 60% de reducción. Tenemos 75%.
+              
+          - actor: "@scrum"
+            linea: "Y el esfuerzo: de 15 pts a 4.5 pts. Reducción del 70%."
+            
+        feature: "@scrum"
+        metricas:
+          tokens_antes: 127000
+          tokens_despues: 30000
+          reduccion_porcentaje: 75
+          effort_inicial: 15
+          effort_final: 4.5
+
+# ═══════════════════════════════════════════════════════════════════
+# ACTO IV: EL RETORNO
+# "En el que se establece el nuevo orden"
+# ═══════════════════════════════════════════════════════════════════
+
+  - id: 4
+    titulo: "EL RETORNO"
+    subtitulo: "El módulo reflexivo nace"
+    escena: "Centro de Operaciones del Scriptorium"
+    
+    estadios:
+      - id: 9
+        tipo: recompensa
+        anillo: 2
+        nombre: "La Nueva Arquitectura"
+        descripcion: |
+          [Diagrama holográfico de la arquitectura final]
+          
+        dialogo:
+          - actor: "@ox"
+            linea: |
+              [Señalando el diagrama]
+              Esta es la arquitectura final:
+              
+              1. Usuario expresa su foco: "Estoy trabajando en blueprints"
+              2. @ox consulta DevOps Server: get_prompt("context-pack-blueprint")
+              3. Server retorna: { instrucciones: [...], token_savings: "60%" }
+              4. @indice valida coherencia con Funcional.md y Tecnico.md
+              5. Copilot recibe contexto optimizado
+              
+          - actor: "@indice"
+            linea: |
+              Y ahora tengo nuevas capacidades:
+              - Resolver instrucciones desde pack
+              - Validar coherencia pack ↔ instrucciones
+              - Mapear pack a archivos .instructions.md
+              
+          - actor: "@aleph"
+            linea: "Yo puedo invocar presets por nombre. La orquestación es más limpia."
+            
+        feature: "DevOps MCP Server"
+        arquitectura:
+          componentes:
+            - "DevOps Server (:3003)"
+            - "@ox (consulta)"
+            - "@indice (validación)"
+            - "@aleph (ejecución)"
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 10
+        tipo: retorno
+        anillo: 3
+        nombre: "El Módulo Reflexivo"
+        descripcion: |
+          [El escenario se transforma. Emerge un nuevo componente brillante]
+          
+        dialogo:
+          - actor: "NARRADOR"
+            linea: |
+              Y así nació el MÓDULO REFLEXIVO del Scriptorium.
+              Un sistema que puede observar su propio consumo de contexto
+              y adaptarse para optimizarlo.
+              
+          - actor: "PO"
+            linea: "Explícame el ciclo completo, @ox."
+            
+          - actor: "@ox"
+            linea: |
+              [Despliega diagrama de ciclo]
+              
+              ┌─────────────────────────────────────────────────┐
+              │           CICLO REFLEXIVO DE CONTEXTO           │
+              ├─────────────────────────────────────────────────┤
+              │                                                  │
+              │   1. OBSERVACIÓN                                │
+              │      └─ Auditar logs de Copilot                 │
+              │      └─ Identificar tokens consumidos           │
+              │      └─ Detectar instrucciones no usadas        │
+              │                                                  │
+              │   2. ANÁLISIS                                   │
+              │      └─ @aleph audita con evidencia             │
+              │      └─ @indice mapea dominios                  │
+              │      └─ @ox coordina diagnóstico                │
+              │                                                  │
+              │   3. ADAPTACIÓN                                 │
+              │      └─ Crear/editar Context Packs              │
+              │      └─ mcp_devops-mcp-se_add_prompt()          │
+              │      └─ mcp_devops-mcp-se_edit_prompt()         │
+              │                                                  │
+              │   4. VALIDACIÓN                                 │
+              │      └─ Ejecutar request con pack activo        │
+              │      └─ Medir tokens resultantes                │
+              │      └─ Comparar con baseline                   │
+              │                                                  │
+              │   5. APRENDIZAJE                                │
+              │      └─ Documentar en Tecnico.md                │
+              │      └─ Actualizar metadatos del pack           │
+              │      └─ Retroalimentar al siguiente ciclo       │
+              │                                                  │
+              └─────────────────────────────────────────────────┘
+              
+          - actor: "@aleph"
+            linea: "El Scriptorium ahora puede REPROGRAMARSE para mejorar."
+            
+        feature: "Módulo Reflexivo"
+        ciclo:
+          fases:
+            - "Observación"
+            - "Análisis"
+            - "Adaptación"
+            - "Validación"
+            - "Aprendizaje"
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 11
+        tipo: resurreccion
+        anillo: 3
+        nombre: "La Síntesis"
+        descripcion: |
+          [Todos los agentes en círculo. Luz cenital sobre @ox]
+          
+        dialogo:
+          - actor: "@ox"
+            linea: |
+              Lo que aprendimos en esta épica:
+              
+              🔴 BLOCKERS:
+              - CopilotEngine no expone hook de filtrado
+              - messagesApi.ts serializa TODAS las tools
+              - WISH-01 documentado para upstream
+              
+              🟢 ACIERTOS:
+              - Fusión de épicas (2.2.0 + 2.4.0)
+              - Pivot a packs estáticos
+              - Descubrimiento del DevOps Server
+              
+              🔵 DECISIONES:
+              - Diferir SCRIPT-2.5.0 a FC2
+              - Usar MCP Server como repositorio
+              - Context Packs por dominio
+              
+              🟡 INVESTIGACIONES:
+              - Análisis de CopilotEngine/messagesApi.ts
+              - Patrón BaseMCPServer de mcp-core-sdk
+              - MCPGallery/preset.json como referencia
+              
+          - actor: "PO"
+            linea: "Y la métrica final?"
+            
+          - actor: "@scrum"
+            linea: |
+              127K → 30K tokens = 75% reducción
+              15 pts → 4.5 pts = 70% menos esfuerzo
+              19 instrucciones → 2-4 = 80% menos carga
+              
+        feature: "@ox"
+        resumen:
+          blockers: 3
+          aciertos: 3
+          decisiones: 3
+          investigaciones: 3
+
+# ═══════════════════════════════════════════════════════════════════
+
+      - id: 12
+        tipo: elixir
+        anillo: 3
+        nombre: "El Legado"
+        descripcion: |
+          [El escenario se ilumina completamente. Música épica]
+          
+        dialogo:
+          - actor: "NARRADOR"
+            linea: |
+              Y así, el Aleph Scriptorium evolucionó.
+              
+              Ya no es solo un sistema de agentes para escritura.
+              Ahora es un organismo que puede OBSERVARSE a sí mismo,
+              DIAGNOSTICAR sus ineficiencias,
+              y ADAPTARSE para mejorar.
+              
+              El Context Bloat no desapareció.
+              Pero ahora tenemos las herramientas para combatirlo.
+              
+          - actor: "@ox"
+            linea: |
+              [Al público]
+              Si quieren probar, invoquen:
+              
+              "@ox recomienda pack para blueprints"
+              "@ox consulta estado DevOps Server"
+              "@ox crea nuevo Context Pack"
+              
+          - actor: "@aleph"
+            linea: "El Scriptorium sigue escribiendo. Ahora, más eficiente que nunca."
+            
+          - actor: "TODOS"
+            linea: "[Al unísono] ¡El contexto es finito, la adaptación infinita!"
+            
+          - actor: "NARRADOR"
+            linea: |
+              FIN DEL ACTO IV
+              
+              ═══════════════════════════════════════════════════
+              
+              Esta obra está basada en hechos reales.
+              Los logs, las métricas y las decisiones son documentos
+              del Archivo del Scriptorium.
+              
+              Gracias por asistir al estreno.
+              
+              ═══════════════════════════════════════════════════
+              
+        feature: "Scriptorium"
+        mensaje_final: "El contexto es finito, la adaptación infinita"
+
+# ═══════════════════════════════════════════════════════════════════
+# METADATA
+# ═══════════════════════════════════════════════════════════════════
+
+metadata:
+  referencias:
+    - archivo: "02_evidence_agent_logs_and_refactor.md"
+      descripcion: "Auditoría inicial del log de 127K tokens"
+    - archivo: "03_conversacion-refinamiento-backlog.md"
+      descripcion: "Sesión Scrum de refinamiento"
+    - archivo: "06_Decision_PO_Refactorizar.md"
+      descripcion: "Pivot a Context Packs estáticos"
+    - archivo: "08_Formacion_McpPresets_MCP_Server.md"
+      descripcion: "Descubrimiento del patrón BaseMCPServer"
+    - archivo: "10_Resolucion_DevOps_ContextManager.md"
+      descripcion: "Resolución final con DevOps Server"
+      
+  actores:
+    - id: "PO"
+      rol: "Product Owner"
+      descripcion: "Visión de producto, priorización"
+    - id: "ox"
+      rol: "Oráculo del Scriptorium"
+      descripcion: "Coordinación y documentación"
+    - id: "aleph"
+      rol: "Productor Principal"
+      descripcion: "Planificación y ejecución"
+    - id: "indice"
+      rol: "Navegador DRY"
+      descripcion: "Resolución de rutas y dependencias"
+    - id: "scrum"
+      rol: "Scrum Master"
+      descripcion: "Facilitación y gestión de backlog"
+    - id: "mcp-presets"
+      rol: "Gestor de Presets MCP"
+      descripcion: "Integración de herramientas"
+    - id: "Lucas"
+      rol: "Desarrollador"
+      descripcion: "Perspectiva técnica"
+    - id: "Omnímodo"
+      rol: "Formador"
+      descripcion: "Enseñanza del patrón MCP"
+      
+  estadisticas:
+    duracion_real: "29-30 Diciembre 2025"
+    documentos_generados: 10
+    tokens_ahorrados: 97000
+    esfuerzo_reducido: "70%"
+    
+  tags:
+    - "context-bloat"
+    - "mcp"
+    - "reflexivo"
+    - "hackathon"
+    - "scriptorium"

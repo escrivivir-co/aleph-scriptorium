@@ -1,22 +1,22 @@
 ---
 layout: default
 title: Ecosistema
-description: "14 submódulos → 19 plugins → 31 agentes → Tú"
+description: "16 submódulos → 19 plugins → 31 agentes → Tú"
 permalink: /ecosistema/
 ---
 
 # 🧬 El Ecosistema Aleph
 
-De la infraestructura a la interfaz: **14 submódulos** alimentan **19 plugins** que empoderan **31 agentes** para trabajar contigo.
+De la infraestructura a la interfaz: **16 submódulos** alimentan **19 plugins** que empoderan **31 agentes** para trabajar contigo.
 
 ```
 [Submódulos] ─→ [Plugins] ─→ [Agentes] ─→ [Tú]
-     14             19           31
+     16             19           31
 ```
 
 ---
 
-## 📦 Infraestructura — 14 Submódulos
+## 📦 Infraestructura — 16 Submódulos
 
 Repositorios externos integrados que proporcionan capacidades especializadas.
 
@@ -131,6 +131,46 @@ Los bridges conectan VS Code con los agentes internos de cada plugin:
 
 ---
 
+## 🧠 Cómo Entiende el Scriptorium a Copilot
+
+El Scriptorium no solo usa Copilot Chat — **entiende cómo funciona por dentro**.
+
+### El Viaje de tu Pregunta
+
+Cuando escribes algo en Copilot Chat, esto es lo que ocurre:
+
+```
+Tu pregunta → Sistema prepara contexto → Modelo (Claude/GPT/Gemini) → Respuesta
+```
+
+El Scriptorium ha analizado este flujo completo. Sabe:
+
+| Aspecto | Lo que sabemos |
+|---------|----------------|
+| **Registro de modelos** | Copilot selecciona instrucciones diferentes según uses Claude, GPT o Gemini |
+| **Estructura del mensaje** | Las instrucciones se organizan en "Tags" XML que el modelo interpreta |
+| **Diferencias por modelo** | GPT tiene recordatorios extra para tareas largas; Claude confía más en instrucciones base |
+
+### ¿Por qué te importa esto?
+
+Porque cuando creas tus propias instrucciones (`.github/copilot-instructions.md`), el Scriptorium puede ayudarte a:
+
+1. **Escribir en el formato óptimo** — Sabemos qué estructura espera cada modelo
+2. **Evitar conflictos** — Tus instrucciones se suman a las del sistema, no las reemplazan
+3. **Optimizar para tu modelo favorito** — Si usas Claude, optimizamos diferente que para GPT
+
+### Pregúntale a @ox
+
+```
+@ox ¿Cómo funciona el system message de Copilot?
+@ox ¿Qué diferencia hay entre el prompt de Claude y GPT?
+@ox ¿Cómo optimizo mis instrucciones para Claude?
+```
+
+> 📄 **Documentación técnica**: Ver [analisis-copilot-engine.md](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/DEVOPS/analisis-copilot-engine.md)
+
+---
+
 ## 💬 Cómo Interactuar
 
 ### Flujo de Handoffs
@@ -173,6 +213,6 @@ Tú → @aleph → [handoff] → @plugin_ox_* → [agente interno] → Resultado
 
 ## 🚀 ¿Listo para escribir?
 
-14 submódulos. 19 plugins. 31 agentes. Todo trabajando para ti.
+16 submódulos. 19 plugins. 31 agentes. Todo trabajando para ti.
 
 [Fork en GitHub →](https://github.com/escrivivir-co/aleph-scriptorium)

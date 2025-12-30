@@ -170,15 +170,43 @@ Cuando se asigna un preset, se puede inyectar en la recipe del agente:
 
 ## Submódulo Zeus
 
-El proyecto fuente es `alephscript-mcp-presets-site`:
+El proyecto fuente es `MCPGallery` (con 3 componentes):
 
-| Campo | Valor |
-|-------|-------|
-| Rama | `integration/beta/scriptorium` |
-| Ruta | `alephscript-mcp-presets-site/` |
-| Modelo | `zeus/models/presetModel.js` |
+| Componente | Puerto | Función |
+|------------|--------|---------|
+| mcp-mesh-sdk | 3003 | DevOps MCP Server (MCP real) |
+| mcp-model-sdk | 4001 | Preset Service (REST) |
+| zeus | 3012 | UI de Gestión + Catálogo |
 
-Para sincronización futura, el Scriptorium usará la API REST de Zeus.
+### Servidores MCP Disponibles en la Mesh
+
+| Servidor | Puerto | Descripción |
+|----------|--------|-------------|
+| `devops-mcp-server` | 3003 | DevOps automation |
+| `wiki-browser-server` | 3002 | Wikipedia browsing |
+| `state-machine-server` | 3004 | X+1 state machine |
+| `launcher-server` | 3050 | Server orchestration |
+| `xplus1-server` | 3001 | X+1 control |
+
+### Flujo Zeus → Plugin
+
+```
+1. Zeus consulta mcp-model-sdk → obtiene catálogo de la mesh
+2. Plugin @McpPresets consulta Zeus → GET http://localhost:3012/api/catalog
+3. Plugin informa a @aleph qué servers/tools hay activos
+4. Usuario en Copilot Chat invoca tool del DevOps Server
+5. VS Code usa .vscode/mcp.json → conecta a :3003
+```
+
+### Arranque del Sistema
+
+```bash
+cd MCPGallery/mcp-mesh-sdk && npm start   # DevOps Server :3003
+cd MCPGallery/mcp-model-sdk && npm start  # Preset Service :4001
+cd MCPGallery/zeus && npm start           # UI :3012
+```
+
+→ Ver [MCPGallery/README-SCRIPTORIUM.md](../../../../MCPGallery/README-SCRIPTORIUM.md) para arquitectura completa.
 
 ---
 
