@@ -1,7 +1,7 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.1-dry  
+> **Versión**: 1.2.2-dry  
 > **Sprint actual**: PRE  
 > **Actualizado**: 2025-12-30
 
@@ -27,9 +27,10 @@
 
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
-| 📋 | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
 | ✅ | SCRIPT-2.1.1 | Copilot Log Exporter MCP | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/01_backlog-borrador.md) |
 | ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
+| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
 
@@ -53,8 +54,9 @@
 
 | Carpeta | Foco | Estado |
 |---------|------|--------|
-| [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | 📋 Activo |
+| [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | ✅ Funcional |
 | [Diciembre_30_CopilotLogExporter](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/) | Copilot Log Exporter | ✅ Completado |
+| [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 | 📋 Activo |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 
