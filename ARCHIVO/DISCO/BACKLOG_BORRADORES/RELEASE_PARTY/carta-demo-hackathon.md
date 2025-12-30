@@ -24,16 +24,33 @@ Esto abre 5 terminales:
 | ⚡ Zeus | :4001 | http://localhost:4001 |
 | 📝 Novelist | :3000 | http://localhost:3000 |
 
-### 2. Abrir navegador con tabs
+### 2. Verificar MCP Playwright disponible
 
+Antes de abrir navegadores, verificar que las tools MCP están activas:
 ```
-Tab 1: http://localhost:4000/blueprint-po/     ← Presentación principal
-Tab 2: http://localhost:4000/demo/             ← Galería de control
-Tab 3: http://localhost:4001                   ← Zeus (para demo Ox)
-Tab 4: http://localhost:3000                   ← Novelist (para demo Aleph)
+@ox ¿están disponibles las tools mcp_playwright_*?
 ```
 
-### 3. Tener VS Code visible
+### 3. Abrir navegadores via MCP Playwright (NO Simple Browser)
+
+> **IMPORTANTE**: Cada agente abre su navegador via MCP Playwright desde conversaciones Chat separadas.
+
+| Agente | URL | Comando MCP |
+|--------|-----|-------------|
+| @indice/PO | Blueprint | `mcp_playwright_navigate({ url: "http://127.0.0.1:4000/aleph-scriptorium/blueprint-po/" })` |
+| @aleph | Galería | `mcp_playwright_navigate({ url: "http://127.0.0.1:4000/aleph-scriptorium/demo/" })` |
+| @ox | Zeus | `mcp_playwright_navigate({ url: "http://localhost:4001" })` |
+
+### 4. Configurar conversaciones Chat paralelas
+
+Para control independiente:
+1. **Ventana 1**: `@ox` (servidores, técnico)
+2. **Ventana 2**: `@aleph` (galería, producto)
+3. **Ventana 3**: `@indice` (blueprint PO, navegación)
+
+Cada conversación puede usar MCP Playwright para interactuar con su navegador.
+
+### 5. Tener VS Code visible
 
 Para mostrar:
 - Copilot Chat con @ox
@@ -67,7 +84,7 @@ Cada paso tiene esta estructura:
 Eres el hilo conductor. Presentas cada paso y das paso a los especialistas.
 
 ### Materiales
-- **Pantalla principal**: http://localhost:4000/blueprint-po/
+- **Pantalla principal**: http://127.0.0.1:4000/aleph-scriptorium/blueprint-po/
 - **Slides**: paso1-po, paso2-po, ... paso10-po
 
 ### Frases de transición
@@ -140,7 +157,7 @@ El producto. Explicas valor para el usuario, casos de uso, experiencia.
 ### Materiales
 - **Slides**: paso1-aleph, paso2-aleph, ... (navegas con ↓ desde PO, luego ←)
 - **Demo live**: http://localhost:3000 (Novelist)
-- **Galería**: http://localhost:4000/demo/
+- **Galería**: http://127.0.0.1:4000/aleph-scriptorium/demo/
 
 ### Momentos clave
 
@@ -159,7 +176,7 @@ El producto. Explicas valor para el usuario, casos de uso, experiencia.
 
 ### Demo live sugerida (Paso 6)
 
-Abrir http://localhost:4000/demo/ y mostrar:
+Abrir http://127.0.0.1:4000/aleph-scriptorium/demo/ y mostrar:
 1. Los 7 iframes cargando
 2. Hacer clic en "↗ Abrir" de un blueprint
 3. Navegar con flechas
