@@ -24,7 +24,7 @@
 | [Diciembre_29_Blueprint_Copilot_Cube](Diciembre_29_Blueprint_Copilot_Cube/) | SCRIPT-1.31.1: Blueprint Copilot 3D Cube | ✅ Completada |
 | [Diciembre_29_TypedPrompting_ContextManager](Diciembre_29_TypedPrompting_ContextManager/) | SCRIPT-2.1.0: TypedPrompting Context Manager | 📋 Activo |
 | [Diciembre_30_CopilotLogExporter](Diciembre_30_CopilotLogExporter/) | SCRIPT-2.1.1: Copilot Log Exporter | ✅ Completada |
-| [RELEASE_PARTY](RELEASE_PARTY/) | 🎉 Release Party v1.0.0-beta.1 (Obra teatro + Demo) | 📋 Activo |
+| [RELEASE_PARTY](RELEASE_PARTY/) | 🎉 Release Party v1.0.0-beta.1 (Obra teatro + Demo + DEMO-1.0.0) | 📋 Activo |
 | [FLOVE_EDITOR](FLOVE_EDITOR/) | Plugin FloveEditor | ✅ Publicado |
 | [INDICES_COBERTURA](INDICES_COBERTURA/) | Cobertura de Índices | ✅ Publicado |
 | [IOT-SBR-LOGICA](IOT-SBR-LOGICA/) | Plugin PrologEditor | 📝 Borrador |

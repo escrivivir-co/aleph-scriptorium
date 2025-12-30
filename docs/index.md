@@ -42,6 +42,11 @@ permalink: /
     <span class="card-title">Copilot</span>
     <span class="card-desc">Viaje 3D: Prompt → LLM</span>
   </a>
+  <a href="{{ site.baseurl }}/demo/" class="nav-card nav-card-featured">
+    <span class="card-icon">🎬</span>
+    <span class="card-title">Demo</span>
+    <span class="card-desc">Galería de iframes · Hackathon</span>
+  </a>
   <a href="{{ site.baseurl }}/leeme/" class="nav-card">
     <span class="card-icon">📖</span>
     <span class="card-title">Léeme</span>

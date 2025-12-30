@@ -31,6 +31,7 @@
 | ✅ | SCRIPT-2.1.1 | Copilot Log Exporter MCP | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/01_backlog-borrador.md) |
 | ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| ✅ | DEMO-1.0.0 | Demo Screens Hackathon | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-borrador.md) |
 
 ---
 
@@ -56,7 +57,7 @@
 |---------|------|--------|
 | [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | ✅ Funcional |
 | [Diciembre_30_CopilotLogExporter](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/) | Copilot Log Exporter | ✅ Completado |
-| [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 | 📋 Activo |
+| [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 (incl. Demo) | 📋 Activo |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 

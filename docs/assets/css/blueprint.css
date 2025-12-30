@@ -3090,3 +3090,603 @@ body.fallback-mode .blueprint-nav {
     font-size: 1.75rem;
   }
 }
+
+/* ========================================
+   Blueprint PO Showcase (DEMO-1.0.0-F001)
+   ======================================== */
+
+.showcase-step {
+  width: 900px;
+  padding: 2rem;
+  border-radius: 16px;
+  background: var(--bp-surface);
+  border: 2px solid var(--bp-border);
+}
+
+.showcase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--bp-border);
+}
+
+.showcase-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.showcase-role.po {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  color: white;
+}
+
+.showcase-role.ox {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.showcase-role.aleph {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+}
+
+.showcase-role.sm {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+.showcase-paso,
+.showcase-context {
+  color: var(--bp-muted);
+  font-size: 0.9rem;
+}
+
+.showcase-step h1 {
+  font-size: 2.5rem;
+  margin: 0 0 1.5rem 0;
+  color: var(--bp-fg);
+}
+
+.showcase-step h2 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem 0;
+  color: var(--bp-fg);
+}
+
+.showcase-content {
+  text-align: center;
+}
+
+.showcase-content .hero-symbol {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.showcase-content .tagline {
+  font-size: 1.25rem;
+  color: var(--bp-accent);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.value-props {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.value-props .prop {
+  padding: 0.75rem 1.25rem;
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-border);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.nav-hints {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bp-border);
+  color: var(--bp-muted);
+  font-size: 0.85rem;
+}
+
+/* Tech Stack */
+.tech-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tech-layer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  border-left: 3px solid var(--bp-accent);
+}
+
+.layer-name {
+  font-weight: 600;
+  color: var(--bp-accent);
+}
+
+.layer-tech {
+  color: var(--bp-muted);
+}
+
+/* Value Grid */
+.value-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.value-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+}
+
+.value-item .icon {
+  font-size: 1.5rem;
+}
+
+.value-item .text {
+  color: var(--bp-muted);
+}
+
+/* Sprint Status */
+.sprint-status {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.metric {
+  text-align: center;
+  padding: 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.metric .value {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--bp-accent);
+}
+
+.metric .label {
+  color: var(--bp-muted);
+  font-size: 0.85rem;
+}
+
+/* Problem Cards */
+.problem-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.problem-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: var(--bp-bg);
+  border: 1px solid var(--bp-red);
+  border-radius: 8px;
+}
+
+.problem-icon {
+  font-size: 1.5rem;
+}
+
+.problem-text {
+  color: var(--bp-muted);
+  font-size: 1.1rem;
+}
+
+/* Diagnosis */
+.diagnosis {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.diag-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+}
+
+.diag-item code {
+  color: var(--bp-accent);
+  font-family: var(--bp-font-mono);
+}
+
+.diag-item span {
+  color: var(--bp-muted);
+}
+
+/* Pain Points */
+.pain-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pain-points li {
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background: var(--bp-bg);
+  border-left: 3px solid var(--bp-red);
+  border-radius: 4px;
+  color: var(--bp-muted);
+  font-style: italic;
+}
+
+/* Backlog Preview */
+.backlog-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.backlog-preview .epic {
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  color: var(--bp-muted);
+  border-left: 3px solid var(--bp-accent);
+}
+
+/* Solution Pillars */
+.solution-pillars {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.pillar {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--bp-bg);
+  border-radius: 12px;
+  min-width: 150px;
+}
+
+.pillar-icon {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pillar-name {
+  display: block;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--bp-fg);
+}
+
+.pillar-desc {
+  color: var(--bp-muted);
+  font-size: 0.9rem;
+}
+
+/* MCP Grid */
+.mcp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.mcp-server {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  border: 1px solid var(--bp-border);
+}
+
+.mcp-server .port {
+  color: var(--bp-accent);
+  font-family: var(--bp-font-mono);
+  font-weight: 600;
+}
+
+.mcp-server .name {
+  color: var(--bp-muted);
+}
+
+/* Agents Showcase */
+.agents-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.agent-card {
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  color: var(--bp-fg);
+}
+
+/* Demo Preview */
+.demo-preview {
+  background: var(--bp-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.demo-command {
+  margin-bottom: 1rem;
+}
+
+.demo-command code {
+  font-family: var(--bp-font-mono);
+  color: var(--bp-accent);
+  font-size: 1.1rem;
+}
+
+.demo-response {
+  padding-left: 1rem;
+  border-left: 3px solid var(--bp-ui);
+}
+
+.demo-response code {
+  color: var(--bp-ui);
+}
+
+/* Commands List */
+.commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.commands-list code {
+  display: block;
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  font-family: var(--bp-font-mono);
+  color: var(--bp-accent);
+}
+
+/* User Flow */
+.user-flow {
+  text-align: center;
+}
+
+.flow-step {
+  padding: 0.75rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.flow-arrow {
+  color: var(--bp-accent);
+  font-size: 1.25rem;
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Plugins Showcase */
+.plugins-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.plugin-card {
+  padding: 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Epics List */
+.epics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.epic-item {
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+}
+
+.epic-item.done {
+  border-left: 3px solid var(--bp-ui);
+}
+
+.epic-item.active {
+  border-left: 3px solid var(--bp-accent);
+}
+
+/* Blueprint Gallery */
+.blueprint-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.bp-card {
+  padding: 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--bp-border);
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+}
+
+.cta-section .hero-symbol {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.cta-btn.primary {
+  background: var(--bp-accent);
+  color: white;
+}
+
+.cta-btn.primary:hover {
+  background: #2563eb;
+}
+
+.cta-btn.secondary {
+  background: var(--bp-surface);
+  border: 1px solid var(--bp-border);
+  color: var(--bp-fg);
+}
+
+.cta-btn.secondary:hover {
+  border-color: var(--bp-accent);
+}
+
+/* Use Cases, Integrations, etc. */
+.use-cases,
+.integrations,
+.templates,
+.docs-links,
+.repos,
+.submodules-list,
+.sdks,
+.contrib-steps,
+.roadmap,
+.release-info,
+.next-steps,
+.retro,
+.contact,
+.impediments,
+.plugin-timeline,
+.tech-details,
+.registry-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case,
+.int,
+.tpl,
+.doc,
+.step-item,
+.quarter,
+.rel,
+.next,
+.retro-item,
+.timeline-item,
+.detail,
+.reg-item,
+.imp {
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+}
+
+.retro-item.good {
+  border-left: 3px solid var(--bp-ui);
+}
+
+.retro-item.improve {
+  border-left: 3px solid var(--bp-yellow);
+}
+
+.imp.resolved {
+  border-left: 3px solid var(--bp-ui);
+}
+
+/* Ecosystem Stats */
+.ecosystem-stats {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat .number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--bp-accent);
+}
+
+.stat .label {
+  color: var(--bp-muted);
+}
+
+/* Community */
+.community-info {
+  text-align: center;
+}
+
+.community-info .links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.community-info a {
+  padding: 0.5rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  color: var(--bp-accent);
+  text-decoration: none;
+}

@@ -15,6 +15,14 @@
     "state-machine-server": {
       "type": "http",
       "url": "http://localhost:3004"
+    },
+    "copilot-logs-mcp-server": {
+      "type": "http",
+      "url": "http://localhost:3100"
+    },
+	"AlephAlpha": {
+      "type": "http",
+      "url": "http://localhost:3066"
     }
   }
 }
