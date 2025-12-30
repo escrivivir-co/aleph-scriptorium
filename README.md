@@ -1,6 +1,6 @@
 # Aleph Scriptorium
 
-[![Version](https://img.shields.io/badge/version-1.0.0--beta.3-blueviolet)](https://github.com/escrivivir-co/aleph-scriptorium/releases/tag/v1.0.0-beta.3)
+![Version](https://img.shields.io/badge/version-1.0.0--alpha.1--preview-blueviolet)
 [![License: AIPL](https://img.shields.io/badge/License-AIPL%20v1.0-blue.svg)](LICENSE.md)
 [![GitHub Pages](https://img.shields.io/badge/Web-GitHub%20Pages-success)](https://escrivivir-co.github.io/aleph-scriptorium/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -92,18 +92,31 @@ git checkout fc1 && git checkout -b feature/mi-cambio
 
 ---
 
+
 ## Estado
 
 | Componente | Valor |
 |------------|-------|
-| Versión | **1.0.0-beta.4** (FC2 - Ontología Formal) |
-| Rama activa | `fc1` |
-| Agentes | 63 (32 core + 31 plugins) |
+| Versión | **1.0.0-alpha.1-preview** (ItacaEditor) |
+| Rama activa | `v1.0.0-alpha.1` (preview) |
+| Agentes | 31+ (core) + plugins (ver sección) |
 | Plugins | 19 (8 operativos + 11 borradores) |
 | Submódulos | 14 integrados |
 | Última foto | [Foto Dual Pathykar](ARCHIVO/FOTOS_ESTADO/2025-12-27_FC2_FotoDualPathykar.md) |
 
 **Roadmap**: [/roadmap](https://escrivivir-co.github.io/aleph-scriptorium/roadmap/)
+
+---
+
+## Notas del Release: ItacaEditor (v1.0.0-alpha.1-preview)
+
+- Primer release alpha del editor Itaca.
+- Estado: preview, rama de integración activa (`v1.0.0-alpha.1`).
+- Integración inicial de submódulos, plugins y agentes principales.
+- Se recomienda testeo y feedback antes de consolidar a producción.
+- Métricas: 31+ agentes core, 19 plugins, 14 submódulos.
+
+> Este release es una versión de avance (preview). El desarrollo continúa en la rama de integración.
 
 ---
 
