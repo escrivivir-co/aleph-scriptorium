@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.0-dry  
-> **Sprint actual**: FC1 (Feature Cycle 1)  
-> **Actualizado**: 2025-12-29
+> **Versión**: 1.2.1-dry  
+> **Sprint actual**: PRE  
+> **Actualizado**: 2025-12-30
 
 ---
 
@@ -29,6 +29,7 @@
 |--------|-------|--------|------------|
 | 📋 | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
 | ✅ | SCRIPT-2.1.1 | Copilot Log Exporter MCP | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/01_backlog-borrador.md) |
+| ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
 
 ---
 
@@ -83,6 +84,9 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2025-12-30 | 🧹 Limpiar INDEX.md (895→70 líneas, DRY) | @scrum |
+| 2025-12-30 | ✅ Cerrar BUG-003 SUBMODULOS_AH_NAMING (14 submódulos renombrados) | @scrum |
+| 2025-12-30 | ✅ Cerrar SCRIPT-1.31.0 CopilotEngine Analysis (30 pts) | @scrum |
 | 2025-12-29 | 🔄 Refinamiento SCRIPT-2.1.0 con PO, Lucas, @ox, @indice, @aleph | @scrum |
 | 2025-12-29 | ➕ Añadir SCRIPT-2.1.0 TypedPrompting Context Manager | @scrum |
 | 2025-12-29 | ✅ Cerrar SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |

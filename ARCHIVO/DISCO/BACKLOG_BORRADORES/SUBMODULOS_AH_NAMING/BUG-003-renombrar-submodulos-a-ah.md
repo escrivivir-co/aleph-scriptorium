@@ -1,9 +1,9 @@
 # BUG-003 — Renombrar paths de submódulos a convención PascalCase descriptiva
 
-> **Fecha**: 2025-01-01 (actualizado 2025-12-24)  
+> **Fecha**: 2025-01-01 (actualizado 2025-12-30)  
 > **Opportunity**: Aleph Scriptorium  
 > **Severidad**: Media (no bloquea runtime, pero sí DX/legibilidad)  
-> **Estado**: ✅ Aprobado para backlog oficial  
+> **Estado**: ✅ COMPLETADO — 14 submódulos renombrados  
 > **Fuente**: petición de mantenimiento de naming (eliminar prefijo `alephscript-` en paths locales)
 
 ---
