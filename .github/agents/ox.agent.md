@@ -52,6 +52,22 @@ handoffs:
     agent: Ox
     prompt: Busca en CopilotEngine cómo se construye el system message para un modelo específico (Claude, GPT, Gemini).
     send: false
+  - label: Listar Context Packs disponibles
+    agent: Ox
+    prompt: Consulta DevOps Server con mcp_devops-mcp-se_list_prompts() para ver todos los Context Packs registrados.
+    send: false
+  - label: Recomendar Context Pack según foco
+    agent: Ox
+    prompt: Dado el foco del usuario (blueprint, scrum, teatro, full), consulta el pack correspondiente y retorna instrucciones a activar/desactivar.
+    send: false
+  - label: Crear nuevo Context Pack
+    agent: Ox
+    prompt: Usa mcp_devops-mcp-se_add_prompt() para registrar un nuevo pack de contexto con instrucciones, agentes preferidos y tools MCP.
+    send: false
+  - label: Consultar estado DevOps Server
+    agent: Ox
+    prompt: Usa mcp_devops-mcp-se_get_server_status() para verificar salud del servidor MCP principal.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)
@@ -68,6 +84,8 @@ handoffs:
 
 | Capacidad | Cuándo usar | Ejemplo |
 |-----------|-------------|---------|
+| **Context Pack** | Optimizar tokens | "@ox recomienda pack para blueprints" |
+| **DevOps Status** | Verificar servidores | "@ox ¿está vivo el DevOps Server?" |
 | **Consultar agente** | No sé qué agente usar | "@ox ¿Qué agente publica en GH-Pages?" |
 | **Generar docs** | Necesito actualizar README | "@ox generar sección agentes" |
 | **Diagnosticar** | Verificar consistencia | "@ox diagnosticar agentes" |

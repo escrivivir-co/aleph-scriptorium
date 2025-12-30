@@ -24,6 +24,18 @@ handoffs:
     agent: Indice
     prompt: Escanea registry.json, agents/, plugins/ y detecta discrepancias.
     send: false
+  - label: Resolver instrucciones desde Context Pack
+    agent: Indice
+    prompt: Usa mcp_devops-mcp-se_get_prompt(pack_id) para obtener lista de instrucciones a activar/desactivar según foco.
+    send: false
+  - label: Consultar Context Pack por dominio
+    agent: Indice
+    prompt: Dado un dominio (blueprint, scrum, teatro), consulta el pack correspondiente en DevOps Server.
+    send: false
+  - label: Validar coherencia pack ↔ instrucciones
+    agent: Indice
+    prompt: Verifica que las instrucciones mencionadas en un Context Pack existan en .github/plugins/*/instructions/.
+    send: false
 ---
 
 # Agente: Índice (Portero del Proyecto)
@@ -44,6 +56,7 @@ handoffs:
 | **Técnico** | `ARCHIVO/DEVOPS/Tecnico.md` | Scrum: cómo está construido |
 | **Plugins** | `.github/PLUGINS.md` | Protocolo y servidores MCP |
 | **MCP Servers** | `.vscode/mcp.json` | Servidores MCP activos |
+| **Context Packs** | DevOps Server (:3003) | Packs de contexto dinámicos |
 
 **Contrato DRY**: Estos archivos son la fuente de navegación.
 
