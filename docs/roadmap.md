@@ -441,6 +441,25 @@ permalink: /roadmap/
 <div class="fotos-gallery">
 
   <!-- Más reciente primero -->
+
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">🚀</span>
+      <span class="foto-date">2025-12-31</span>
+    </div>
+    <div class="foto-body">
+      <h4>Release Alpha: ItacaEditor (v1.0.0-alpha.1-preview)</h4>
+      <p class="foto-summary">Primer release alpha del editor Itaca. Estado preview, rama de integración activa. Integración inicial de submódulos, plugins y agentes principales.</p>
+      <div class="foto-metrics">
+        <span class="metric">🤖 31+ agentes core</span>
+        <span class="metric">📦 19 plugins</span>
+        <span class="metric">🔌 14 submódulos</span>
+        <span class="metric">🟡 Estado: preview</span>
+      </div>
+      <a href="#" class="foto-link">Notas del release →</a>
+    </div>
+  </div>
+
   <div class="foto-card">
     <div class="foto-header">
       <span class="foto-icon">🏗️📸</span>
