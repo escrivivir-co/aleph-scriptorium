@@ -44,6 +44,25 @@ description: Teatro Interactivo - Experiencias transmedia guiadas con navegació
 
 <div class="galeria-grid" markdown="1">
 
+<div class="obra-card obra-destacada" markdown="1">
+
+### 🎉 Release Party
+
+<div class="obra-meta">
+  <span class="badge badge-tipo">Demo</span>
+  <span class="badge badge-nivel">Hackathon</span>
+  <span class="badge badge-duracion">15-20 min</span>
+</div>
+
+> El monomito de Clippy: de Word 97 al Scriptorium.
+> 12 estadios siguiendo el Camino del Héroe con demos en vivo: Ox Run All, Panel Aleph, NovelistEditor, Zeus Presets.
+
+**Personaje guía**: 📎 Clippy 2.0
+
+<a href="{{ '/blueprint-release-party/' | relative_url }}" class="btn-primario">▶️ Ver obra</a>
+
+</div>
+
 <div class="obra-card" markdown="1">
 
 ### Hola Mundo

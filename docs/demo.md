@@ -322,7 +322,7 @@ permalink: /demo/
     </div>
     
     <!-- Blueprint PO (nuevo) -->
-    <div class="iframe-card featured">
+    <div class="iframe-card">
       <div class="iframe-header">
         <span class="iframe-title">🎤 Blueprint PO Showcase</span>
         <div class="iframe-actions">
@@ -331,6 +331,19 @@ permalink: /demo/
       </div>
       <div class="iframe-container">
         <iframe src="{{ site.baseurl }}/blueprint-po/" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- Blueprint Release Party (DEMO-1.0.0) -->
+    <div class="iframe-card featured">
+      <div class="iframe-header">
+        <span class="iframe-title">🎉 Release Party - Monomito de Clippy</span>
+        <div class="iframe-actions">
+          <a href="{{ site.baseurl }}/blueprint-release-party/" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <iframe src="{{ site.baseurl }}/blueprint-release-party/" loading="lazy"></iframe>
       </div>
     </div>
     
