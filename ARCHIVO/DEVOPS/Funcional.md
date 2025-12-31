@@ -2,7 +2,7 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2025-01-02  
+> **Última actualización**: 2025-12-31  
 > **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
 
 ---
@@ -312,14 +312,14 @@ Fuentes: [archivos adjuntos]
 
 ### 9.1. Contadores Actuales
 
-| Recurso | Cantidad |
-|---------|----------|
-| Agentes core | 13 |
-| Agentes bridge | 19 |
-| Plugins instalados | 19 |
-| Submódulos | 15 |
-| Prompts (.github) | 18+ |
-| Instructions (.github) | 10+ |
+| Recurso | Fuente / cómo calcular |
+|---------|------------------------|
+| Agentes core | Ver ` .github/agents/ ` — contar con: `ls .github/agents/*.agent.md | wc -l` |
+| Agentes bridge | Ver ` .github/agents/plugin_ox_*.agent.md ` o sumar todos los `.agent.md` en el workspace: `ls **/.github/agents/*.agent.md | wc -l` |
+| Plugins instalados | Fuente canónica: `.github/plugins/registry.json` (conteo: `python -c "import json;print(len(json.load(open('.github/plugins/registry.json'))['plugins']))"`) |
+| Submódulos | Fuente canónica: `.gitmodules` (conteo: `git config --file .gitmodules --get-regexp path | wc -l`) |
+| Prompts (.github) | `ls .github/prompts/*.md | wc -l` |
+| Instructions (.github) | `ls .github/instructions/*.md | wc -l` |
 
 ### 9.2. Sistema de Backlogs (DRY)
 

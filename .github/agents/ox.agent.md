@@ -2,7 +2,7 @@
 name: Ox
 description: "Oráculo del Scriptorium: conoce y gestiona el índice de todos los agentes. Genera documentación técnica y de usuario."
 argument-hint: "Pregunta sobre agentes, solicita documentación (README, manual), o pide diagnóstico del sistema."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Generar sección de agentes para README
     agent: Ox

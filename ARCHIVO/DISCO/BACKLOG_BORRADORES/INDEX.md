@@ -1,7 +1,7 @@
 # Índice — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`  
-> **Actualizado**: 2025-12-30  
+> **Actualizado**: 2025-12-31  
 > **Principio**: DRY — Solo referencias, detalles en cada borrador
 
 ---
@@ -48,6 +48,7 @@
 | [WIKI_RACER_ARG_BOARD_APP](WIKI_RACER_ARG_BOARD_APP/) | ArgBoardApp | 📝 Borrador |
 | [WIKI_RACER_HYPERGRAPH_EDITOR](WIKI_RACER_HYPERGRAPH_EDITOR/) | HyperGraphEditor | 📝 Borrador |
 | [WIKI_RACER_WIRING_APP](WIKI_RACER_WIRING_APP/) | WiringApp | 📝 Borrador |
+| [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | Test 0x: Prueba de Destilación | 📝 Borrador |
 
 ---
 
