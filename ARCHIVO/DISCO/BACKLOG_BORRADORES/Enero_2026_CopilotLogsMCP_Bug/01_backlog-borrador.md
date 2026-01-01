@@ -3,7 +3,7 @@
 > **Épica**: FEATURE-SNAPSHOTS-1.0.0  
 > **Origen**: BUG-MCLOGS-1.0.0 (bug → feature pivot)  
 > **Tipo**: 🚀 Feature  
-> **Estado**: 🧪 En Pruebas (Phase 1 Completado)  
+> **Estado**: ✅ Completado  
 > **Fecha**: 2026-01-01
 
 ---
@@ -288,6 +288,9 @@ Acuérdate de tomar la foto (snapshot) cada poco rato durante tu sesión.
 | 2026-01-01 | 🚀 Phase 1 implementado (T001-T010) | @scrum |
 | 2026-01-01 | 🔧 Refactorización: tipos y templates modulares | @scrum |
 | 2026-01-01 | 🧪 Paso a fase de pruebas | @scrum |
+| 2026-01-01 | 🐛 Bug detectado: cache no se poblaba (regex fallaba) | @ox |
+| 2026-01-01 | 🔧 Fix: ID único + cache 20 items | @ox |
+| 2026-01-01 | ✅ **FEATURE COMPLETADO** - Pruebas exitosas vía MCP y UI | @ox |
 
 ---
 
