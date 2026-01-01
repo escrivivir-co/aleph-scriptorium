@@ -24,9 +24,10 @@
 		".github/plugins/enciclopedia/prompts": true,
 		".github/plugins/gh-pages/prompts": true,
 		".github/plugins/mcp-presets/prompts": true,
-		".github/plugins/typed-prompting/prompts": true,
-		".github/plugins/n8n-editor/prompts": true,
-		".github/plugins/flove-editor/prompts": true
+		".github/plugins/typed-prompting/prompts": false,
+		".github/plugins/n8n-editor/prompts": false,
+		".github/plugins/flove-editor/prompts": false,
+		".github/plugins/scriptorium-pack/prompts": true
 	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
@@ -42,9 +43,9 @@
 		".github/plugins/enciclopedia/instructions": true,
 		".github/plugins/gh-pages/instructions": true,
 		".github/plugins/mcp-presets/instructions": true,
-		".github/plugins/typed-prompting/instructions": true,
-		".github/plugins/n8n-editor/instructions": true,
-		".github/plugins/flove-editor/instructions": true
+		".github/plugins/typed-prompting/instructions": false,
+		".github/plugins/n8n-editor/instructions": false,
+		".github/plugins/flove-editor/instructions": false
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas
@@ -55,7 +56,9 @@
 	"chat.useAgentsMdFile": false,
 	// --- RECOMENDACIONES DE PROMPTS ---
 	// Mostrar prompts recomendados al iniciar una nueva sesión de chat
-	"chat.promptFilesRecommendations": true,
+	"chat.promptFilesRecommendations": {
+		".github/plugins/scriptorium-pack/prompts": true
+	},
 	// --- JEKYLL/RUBY (para desarrollo local del sitio) ---
 	"files.associations": {
 		"*.md": "markdown"

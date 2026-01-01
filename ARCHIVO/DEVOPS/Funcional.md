@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2025-01-02  
-> **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
+> **Última actualización**: 2026-01-01  
+> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
 
 ---
 
@@ -45,6 +45,7 @@
 | Archivo | `/archivo/` | Navegación del ARCHIVO |
 | Roadmap | `/roadmap/` | Estado del proyecto + fotos |
 | Fundación | `/fundacion/` | El texto de 2026 |
+| Blueprint Logic Flow | `/blueprint-logic-flow/` | Agentic Typed Logic Flow (IOT-SBR + SCRIPT-2.2.0) |
 
 > **Fuente**: `docs/` (Jekyll + GitHub Pages)
 
@@ -86,7 +87,24 @@
 | Foro Scraper | Foros y blogs externos | @plugin_ox_foroscraper |
 | MCP-Presets | Herramientas MCP | @plugin_ox_mcppresets |
 
-### 3.5. Publicación (@plugin_ox_ghpages)
+### 3.5. Copilot Logs (MCP Server)
+
+> **Feature**: FEATURE-SNAPSHOTS-1.0.0
+
+| Tool | Descripción |
+|------|-------------|
+| `help` | Guía + advertencia sobre límite 100 requests |
+| `capture_snapshot` | Guardar conversación actual |
+| `list_snapshots` | Ver snapshots guardados |
+| `get_snapshot(id)` | Recuperar snapshot |
+| `get_latest_request` | Último request (siempre funciona) |
+| `generate_abstract` | Generar resumen semántico con LLM |
+
+**Ubicación de datos**: `ARCHIVO/DISCO/COPILOT_SNAPSHOTS/`
+
+⚠️ **Advertencia**: Los logs tienen límite ~100 requests en memoria. Capturar snapshots cada 30 min.
+
+### 3.6. Publicación (@plugin_ox_ghpages)
 
 | Modo | Descripción |
 |------|-------------|
@@ -245,6 +263,7 @@ Usuario → @plugin_ox_teatro [generar]
 |---------|-----|
 | `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) |
 | `BACKLOG_ARCHIVADOS/` | Sprints cerrados |
+| `COPILOT_SNAPSHOTS/` | **NUEVO** Snapshots de conversaciones Copilot |
 | `Diciembre_25_*/` | Sesiones editoriales diciembre |
 | `Foro_*/` | Material scrapeado |
 | `TALLER/` | Proyectos de usuario (obras) |
@@ -312,14 +331,14 @@ Fuentes: [archivos adjuntos]
 
 ### 9.1. Contadores Actuales
 
-| Recurso | Cantidad |
-|---------|----------|
-| Agentes core | 13 |
-| Agentes bridge | 19 |
-| Plugins instalados | 19 |
-| Submódulos | 15 |
-| Prompts (.github) | 18+ |
-| Instructions (.github) | 10+ |
+| Recurso | Fuente / cómo calcular |
+|---------|------------------------|
+| Agentes core | Ver ` .github/agents/ ` — contar con: `ls .github/agents/*.agent.md | wc -l` |
+| Agentes bridge | Ver ` .github/agents/plugin_ox_*.agent.md ` o sumar todos los `.agent.md` en el workspace: `ls **/.github/agents/*.agent.md | wc -l` |
+| Plugins instalados | Fuente canónica: `.github/plugins/registry.json` (conteo: `python -c "import json;print(len(json.load(open('.github/plugins/registry.json'))['plugins']))"`) |
+| Submódulos | Fuente canónica: `.gitmodules` (conteo: `git config --file .gitmodules --get-regexp path | wc -l`) |
+| Prompts (.github) | `ls .github/prompts/*.md | wc -l` |
+| Instructions (.github) | `ls .github/instructions/*.md | wc -l` |
 
 ### 9.2. Sistema de Backlogs (DRY)
 

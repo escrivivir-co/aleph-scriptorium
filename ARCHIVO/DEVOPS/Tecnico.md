@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2025-12-27  
-> **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
+> **Última actualización**: 2026-01-01  
+> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
 
 ---
 
@@ -30,7 +30,7 @@
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                  CAPA PLUGINS (19 bridges)                           │
+│    CAPA PLUGINS (consulte .github/plugins/registry.json para lista) │
 │        plugin_ox_* → .github/plugins/{id}/agents/                    │
 └─────────────────────────────────────────────────────────────────────┘
                                 │
@@ -66,11 +66,11 @@
 
 ```
 .github/
-├── agents/                 # 32 agentes (13 core + 19 bridges)
-│   ├── aleph.agent.md
-│   ├── plugin_ox_*.agent.md
-│   └── ...
-├── instructions/           # 10+ instrucciones de contexto
+.├── agents/                 # ~32 core agent files in `.github/agents/` (plus bridge agents and agents in submodules). Calcule el total con: `ls **/.github/agents/*.agent.md | wc -l`
+.│   ├── aleph.agent.md
+.│   ├── plugin_ox_*.agent.md
+.│   └── ...
+.├── instructions/           # 10+ instrucciones de contexto
 │   ├── voz-manifiesto.instructions.md
 │   ├── cartas-puerta.instructions.md
 │   └── ...
@@ -78,9 +78,9 @@
 │   ├── as_commit-message.prompt.md
 │   ├── as_instalar_submodulo.prompt.md
 │   └── ...
-├── plugins/               # 19 plugins instalados
-│   ├── registry.json      # Índice maestro
-│   └── {plugin-id}/
+.├── plugins/               # Consulte `.github/plugins/registry.json` para la lista y el conteo canónico
+.│   ├── registry.json      # Índice maestro (fuente canónica)
+.│   └── {plugin-id}/
 │       ├── manifest.md
 │       ├── agents/
 │       ├── prompts/
@@ -175,7 +175,9 @@ applyTo: "**/*.md"  # Glob de archivos
 }
 ```
 
-### 3.2. Plugins Instalados (19)
+### 3.2. Plugins Instalados
+
+> Fuente canónica: `.github/plugins/registry.json` — consulte ese archivo para la lista y el conteo actualizados (campo `last_updated`).
 
 | Plugin | Versión | Submódulo | Bridge |
 |--------|---------|-----------|--------|
@@ -396,6 +398,7 @@ ARCHIVO/
 ├── DEVOPS/            # Este documento + Funcional.md
 ├── DISCO/             # Memoria de trabajo (activo)
 │   ├── BACKLOG_BORRADORES/
+│   ├── COPILOT_SNAPSHOTS/  # Snapshots de conversaciones Copilot (auto-generado)
 │   ├── TALLER/        # Proyectos de usuario
 │   └── ...
 ├── ENCICLOPEDIA/      # Tomos consultables
@@ -423,6 +426,7 @@ ARCHIVO/
 | SCRUM | `PLUGINS/SCRUM/` | sprints/ |
 | TEATRO | `PLUGINS/TEATRO/` | obras/, cartelera.json |
 | MCP_PRESETS | `PLUGINS/MCP_PRESETS/` | presets/, catalog.json |
+| COPILOT_LOGS | `DISCO/COPILOT_SNAPSHOTS/` | INDEX.md, ABSTRACT.md, {id}/metadata.json |
 | ... | ... | ... |
 
 ### 7.3. Personajes Creados (AGENT_CREATOR)
