@@ -2,14 +2,15 @@
 
 > **Opportunity**: Aleph Scriptorium  
 > **Versión**: 1.2.3-dry  
-> **Sprint actual**: PRE  
+> **Sprint actual**: FC1  "flavour/monada"
 > **Actualizado**: 2026-01-01
-
+> **Rama en ALEPH (esta codebase)**: flavour/monada
+> **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
 
 ## CICLOS de FEATURES
 - PRE	- diciembre 25
-- FC1  - trimestre 1 2026
+- FC1  - trimestre 1 2026 <------
 - FC2  - trimestre 2 2026
 - FC3  - trimestre 3 2026
 - FC4  - trimestre 4 2026
@@ -95,12 +96,4 @@
 | 2026-01-01 | 🟢 Actualizar IOT-SBR-LOGICA a estado Investigado (capacidad EXISTE) | @scrum |
 | 2026-01-01 | 📝 Actualizar bridge @plugin_ox_prologeditor con conocimiento estructural | @scrum |
 | 2025-12-30 | 🧹 Limpiar INDEX.md (895→70 líneas, DRY) | @scrum |
-| 2025-12-30 | ✅ Cerrar BUG-003 SUBMODULOS_AH_NAMING (14 submódulos renombrados) | @scrum |
-| 2025-12-30 | ✅ Cerrar SCRIPT-1.31.0 CopilotEngine Analysis (30 pts) | @scrum |
-| 2025-12-29 | 🔄 Refinamiento SCRIPT-2.1.0 con PO, Lucas, @ox, @indice, @aleph | @scrum |
-| 2025-12-29 | ➕ Añadir SCRIPT-2.1.0 TypedPrompting Context Manager | @scrum |
-| 2025-12-29 | ✅ Cerrar SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
-| 2025-12-29 | ➕ Añadir SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
-| 2025-12-29 | ➕ Añadir SCRIPT-1.31.0 CopilotEngine | @scrum |
-| 2025-12-29 | ✅ Cerrar SCRIPT-1.29.0 (36% reducción) | @scrum |
-| 2025-12-28 | 🔄 Migrar a protocolo DRY (v1.1.0) | @scrum |
+

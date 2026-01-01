@@ -11,6 +11,17 @@ applyTo: ".github/BACKLOG-SCRIPTORIUM.md"
 > **Épica**: SCRIPT-1.29.0 (Context Bloat Mitigation)
 
 ---
+# Backlog — Aleph Scriptorium
+
+Contexto general:
+
+> **Opportunity**: Aleph Scriptorium  
+> **Versión**: 1.2.3-dry  
+> **Sprint actual**: FC1  "flavour/monada"
+> **Actualizado**: 2026-01-01
+> **Rama en ALEPH (esta codebase)**: flavour/monada
+> **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
+
 
 ## 1. Principio Fundamental
 
@@ -251,11 +262,3 @@ refs #SCRIPT-1.30.0
 
 ---
 
-## Resumen Ejecutivo
-
-| Antes (v1.x) | Después (v2.0 DRY) |
-|--------------|-------------------|
-| Backlog con 400+ líneas | Índice con ~50 líneas |
-| Épicas detalladas en .github/ | Épicas en DISCO/BORRADORES/ |
-| Context bloat al cargar | Carga mínima, expandir bajo demanda |
-| Duplicación de información | Fuente única en borrador |
