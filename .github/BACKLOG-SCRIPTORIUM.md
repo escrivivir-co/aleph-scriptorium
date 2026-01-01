@@ -35,6 +35,7 @@
 | ✅ | DEMO-1.0.0 | Demo Screens Hackathon | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-borrador.md) |
 | 🟢 | IOT-SBR-LOGICA | PrologEditor: Inteligencias Situadas | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) |
 | 📋 | SCRIPT-2.2.0 | Agentic Typed Logic Flow | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) |
+| 🟢 | FEATURE-SNAPSHOTS-1.0.0 | Copilot Logs Snapshot System | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/01_backlog-borrador.md) |
 
 ---
 
@@ -64,6 +65,7 @@
 | [IOT-SBR-LOGICA](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) | PrologEditor + Inteligencias Situadas | 🟢 Investigado |
 | [Diciembre_31_Test_0x_Destilacion](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) | Agentic Typed Logic Flow | 📝 Blueprint |
 | [Enero_2026_LogicaAgentes](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_LogicaAgentes/) | IOT-SBR + SCRIPT-2.2.0: Conversaciones | 📋 Activo |
+| [Enero_2026_CopilotLogsMCP_Bug](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/) | Copilot Logs Snapshot System | 🟢 Aprobado |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 
