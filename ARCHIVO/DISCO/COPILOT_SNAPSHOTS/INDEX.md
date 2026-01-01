@@ -1,7 +1,7 @@
 # Índice de Snapshots — Copilot Logs
 
 > **Generado automáticamente** por SnapshotManager  
-> **Actualizado**: 2026-01-01T20:14:11.804Z
+> **Actualizado**: 2026-01-01T21:21:04.642Z
 
 ---
 
@@ -9,6 +9,7 @@
 
 | ID | Nombre | Fecha | Requests | Backlog |
 |----|--------|-------|----------|--------|
+| 2026-01-01_22-21_diagnostico-blueprints-bloat | diagnostico-blueprints-bloat | 1/1/2026 | 1 | SCRIPT-1.32.0 |
 | 2026-01-01_21-14_cierre-feature-snapshots-1-0-0 | cierre-feature-snapshots-1.0.0 | 1/1/2026 | 1 | FEATURE-SNAPSHOTS-1.0.0 |
 | 2026-01-01_21-10_test-2 | TEST 2 | 1/1/2026 | 1 | FEATURE-SNAPSHOTS-1.0.0 |
 | 2026-01-01_21-09_test-fix-cache | test-fix-cache | 1/1/2026 | 1 | — |
