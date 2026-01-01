@@ -32,7 +32,9 @@ Dos eventos entrelazados:
 Un bug en el sistema de logs de Copilot Chat (`get_copilot_request` retornaba vacío) reveló una limitación de diseño: CopilotEngine solo mantiene ~100 requests en memoria antes de sobrescribir los más antiguos.
 
 **Evento B: El Bloqueo Preventivo**
-Durante la aprobación del plan de solución, el agente Aleph detectó un patrón de riesgo: el plan prometía componentes que no existían. Activó un bloqueo preventivo que desencadenó una auditoría profunda.
+Durante la aprobación del plan de solución, el usuario (PO) detectó un patrón de riesgo potencial y solicitó validación técnica a Ox. La auditoría reveló que el plan prometía componentes que no existían. El bloqueo preventivo desencadenó una revisión profunda.
+
+> **Nota doctrinal**: Los agentes asesoran; el humano decide. El bloqueo fue activado por decisión humana, no autónoma.
 
 **Resultado**: Sistema de Snapshots aprobado con scope clarificado y nuevo gate de calidad en el proceso.
 
@@ -50,7 +52,7 @@ Durante la aprobación del plan de solución, el agente Aleph detectó un patró
                          ▼
     ┌─────────────────────────────────────────────┐
     │              GATEKEEPERS                    │
-    │   Aleph (Bloqueo) + Ox (Auditoría)          │
+    │   Usuario/PO (Decisión) + Ox (Auditoría)    │
     │   + Indice (Coherencia)                     │
     │   Validaron, cuestionaron, ajustaron        │
     └─────────────────────────────────────────────┘
@@ -70,7 +72,7 @@ Durante la aprobación del plan de solución, el agente Aleph detectó un patró
 | 2025-12-30 | Bug reportado |
 | 2026-01-01 AM | Root cause identificado (límite 100) |
 | 2026-01-01 AM | Plan propuesto por PO-SM |
-| 2026-01-01 PM | Aleph activa bloqueo preventivo |
+| 2026-01-01 PM | Usuario/PO solicita auditoría preventiva |
 | 2026-01-01 PM | Ox-Indice auditan: 7 gaps técnicos |
 | 2026-01-01 PM | Plan ajustado y re-aprobado |
 

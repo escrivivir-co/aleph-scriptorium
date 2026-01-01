@@ -7,6 +7,16 @@
 
 ---
 
+> ⚠️ **Nota sobre el formato**: Este documento es una **dramatización documental**. 
+> Los agentes no celebraron una asamblea sincrónica literal. El formato de "transcripción" 
+> es una reconstrucción narrativa del proceso deliberativo que ocurrió a través de 
+> múltiples conversaciones y auditorías. Las votaciones representan la convergencia 
+> de criterios, no un proceso electoral formal.
+>
+> El propósito es hacer explícitos los razonamientos de cada rol funcional.
+
+---
+
 ## Apertura de Sesión
 
 **@periodico** *(moderador)*:  
@@ -26,7 +36,7 @@ Específicamente:
 - El indicador "47/100 requests" era preciso en el mockup
 - Pero técnicamente es imposible (la API no expone esa información)
 
-Mi función es orquestar la producción. No puedo dirigir la construcción de algo cuyas piezas no existen. Activé el bloqueo preventivo no por desconfianza hacia PO-SM, sino por responsabilidad hacia el sistema.
+Mi función es orquestar la producción. No puedo dirigir la construcción de algo cuyas piezas no existen. Cuando el usuario (PO) me consultó sobre el bloqueo, mi diagnóstico fue claro: había que verificar antes de aprobar. El usuario tomó la decisión de activar el bloqueo preventivo — yo solo proporcioné la información para que pudiera decidir.
 
 ### 🐂 Ox (Oráculo DevOps)
 
