@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2025-12-31  
-> **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
+> **Última actualización**: 2026-01-01  
+> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
 
 ---
 
@@ -87,7 +87,24 @@
 | Foro Scraper | Foros y blogs externos | @plugin_ox_foroscraper |
 | MCP-Presets | Herramientas MCP | @plugin_ox_mcppresets |
 
-### 3.5. Publicación (@plugin_ox_ghpages)
+### 3.5. Copilot Logs (MCP Server)
+
+> **Feature**: FEATURE-SNAPSHOTS-1.0.0
+
+| Tool | Descripción |
+|------|-------------|
+| `help` | Guía + advertencia sobre límite 100 requests |
+| `capture_snapshot` | Guardar conversación actual |
+| `list_snapshots` | Ver snapshots guardados |
+| `get_snapshot(id)` | Recuperar snapshot |
+| `get_latest_request` | Último request (siempre funciona) |
+| `generate_abstract` | Generar resumen semántico con LLM |
+
+**Ubicación de datos**: `ARCHIVO/DISCO/COPILOT_SNAPSHOTS/`
+
+⚠️ **Advertencia**: Los logs tienen límite ~100 requests en memoria. Capturar snapshots cada 30 min.
+
+### 3.6. Publicación (@plugin_ox_ghpages)
 
 | Modo | Descripción |
 |------|-------------|
@@ -246,6 +263,7 @@ Usuario → @plugin_ox_teatro [generar]
 |---------|-----|
 | `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) |
 | `BACKLOG_ARCHIVADOS/` | Sprints cerrados |
+| `COPILOT_SNAPSHOTS/` | **NUEVO** Snapshots de conversaciones Copilot |
 | `Diciembre_25_*/` | Sesiones editoriales diciembre |
 | `Foro_*/` | Material scrapeado |
 | `TALLER/` | Proyectos de usuario (obras) |

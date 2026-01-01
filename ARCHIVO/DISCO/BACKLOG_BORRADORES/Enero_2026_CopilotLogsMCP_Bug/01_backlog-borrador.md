@@ -3,7 +3,7 @@
 > **Épica**: FEATURE-SNAPSHOTS-1.0.0  
 > **Origen**: BUG-MCLOGS-1.0.0 (bug → feature pivot)  
 > **Tipo**: 🚀 Feature  
-> **Estado**: ✅ Aprobado  
+> **Estado**: 🧪 En Pruebas (Phase 1 Completado)  
 > **Fecha**: 2026-01-01
 
 ---
@@ -39,72 +39,125 @@ Permitir al usuario **capturar, almacenar y recuperar** snapshots de sus convers
 ## ✅ Acceptance Criteria
 
 ### AC1: Tool "help" con advertencia
-- [ ] `help()` retorna guía completa
-- [ ] Advertencia sobre límite 100 es prominente
-- [ ] Incluye recomendación de snapshots frecuentes
+- [x] `help()` retorna guía completa
+- [x] Advertencia sobre límite 100 es prominente
+- [x] Incluye recomendación de snapshots frecuentes
 
 ### AC2: Captura de Snapshots
-- [ ] Botón REFRESH captura todo lo disponible en `_entries[]`
-- [ ] Se puede nombrar el snapshot
-- [ ] Se puede vincular a un backlog
+- [x] Botón 📸 Nuevo captura todo lo disponible en cache
+- [x] Se puede nombrar el snapshot
+- [x] Se puede vincular a un backlog (T010)
 
 ### AC3: Panel View CRUD
-- [ ] Lista snapshots existentes
-- [ ] Búsqueda por nombre/fecha
-- [ ] Ver contenido de snapshot
-- [ ] Exportar a JSON/MD
-- [ ] Eliminar con confirmación
+- [x] Lista snapshots existentes
+- [ ] Búsqueda por nombre/fecha (P2 - backlog)
+- [x] Ver contenido de snapshot
+- [x] Exportar a JSON/MD
+- [x] Eliminar con confirmación
 
 ### AC4: Persistencia
-- [ ] Snapshots en `ARCHIVO/DISCO/COPILOT_SNAPSHOTS/`
-- [ ] INDEX.md se actualiza automáticamente
-- [ ] metadata.json con info completa
+- [x] Snapshots en `ARCHIVO/DISCO/COPILOT_SNAPSHOTS/`
+- [x] INDEX.md se actualiza automáticamente
+- [x] metadata.json con info completa
 
 ### AC5: Indicador de Estado
-- [ ] Muestra "Requests en memoria: X/100"
-- [ ] Muestra tiempo desde último snapshot
-- [ ] Warning si > 80 requests sin snapshot
+- [x] Muestra "N snapshots guardados" (viable)
+- [x] Muestra tiempo desde último snapshot
+- [x] Warning si cache tiene requests sin snapshot
+
+### AC6: Resúmenes Semánticos (T009)
+- [x] ABSTRACT.md generado con LLM (vscode.lm API)
+- [x] Fallback a resumen básico si LLM no disponible
+- [x] Tool MCP `generate_abstract` disponible
+- [x] Comando VS Code para generar abstract
+
+### AC7: Calidad de Código (Refactorización)
+- [x] Tipos modulares en `types/snapshot.types.ts`
+- [x] Plantilla HTML extraída a `templates/MetricsPanelTemplate.ts`
+- [x] Helpers reutilizables: formatNumber, formatTimeAgo, escapeHtml
+- [x] PREDEFINED_BACKLOGS centralizado
+
+---
+
+## 🧪 Fase de Pruebas
+
+> **Estado actual**: Implementación completada, entrando en fase de testing.
+
+### Cómo Probar
+
+1. **Compilar e instalar**:
+   ```bash
+   cd VsCodeExtension && npm run deploy:insiders
+   ```
+
+2. **Abrir VS Code Insiders** y verificar:
+   - Panel "Copilot Metrics" muestra sección Snapshots
+   - Botón "📸 Nuevo" abre flujo de captura
+   - QuickPick permite seleccionar backlog
+
+3. **Probar CRUD**:
+   - Capturar snapshot
+   - Ver en JSON
+   - Exportar a MD
+   - Eliminar con confirmación
+
+### Cómo Reportar Bugs
+
+Si encuentras un bug relacionado con snapshots:
+
+1. **Crear issue** en carpeta: `ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/bugs/`
+2. **Nombre**: `BUG-{descripcion-corta}.md`
+3. **Contenido mínimo**:
+   ```markdown
+   ## Bug: {título}
+   - **Pasos para reproducir**: ...
+   - **Comportamiento esperado**: ...
+   - **Comportamiento actual**: ...
+   - **Logs relevantes**: (si aplica)
+   ```
+
+4. **Vincular** a este backlog: refs FEATURE-SNAPSHOTS-1.0.0
 
 ---
 
 ## 🔧 Stories
 
-### S01: Core - Tool Help y Captura
+### S01: Core - Tool Help y Captura ✅ COMPLETADA
 
 **Descripción**: Implementar la base del sistema de snapshots.
 
-| Task | Descripción | Archivo | Effort |
-|------|-------------|---------|--------|
-| T001 | Tool "help" con advertencia | `CopilotLogsMCPServer.ts` | S |
-| T002 | Servicio SnapshotManager | `copilotLogs/SnapshotManager.ts` | M |
-| T003 | Método captureSnapshot() | `CopilotLogExporterService.ts` | M |
-| T004 | Persistencia básica en DISCO | `SnapshotManager.ts` | M |
+| Task | Descripción | Archivo | Effort | Estado |
+|------|-------------|---------|--------|--------|
+| T001 | Tool "help" con advertencia | `CopilotLogsMCPServer.ts` | S | ✅ |
+| T002 | Servicio SnapshotManager | `copilotLogs/SnapshotManager.ts` | M | ✅ |
+| T003 | Método captureSnapshot() | `SnapshotManager.ts` | M | ✅ |
+| T004 | Persistencia básica en DISCO | `SnapshotManager.ts` | M | ✅ |
 
-**Effort**: 4 tasks, ~6h
+**Effort**: 4 tasks, ~6h → ✅ COMPLETADA
 
-### S02: UI - Panel View CRUD
+### S02: UI - Panel View CRUD ✅ COMPLETADA
 
 **Descripción**: Interfaz para gestionar snapshots.
 
-| Task | Descripción | Archivo | Effort |
-|------|-------------|---------|--------|
-| T005 | Lista de snapshots | `views/CopilotLogsPanel.ts` | L |
-| T006 | Formulario nuevo snapshot | `views/CopilotLogsPanel.ts` | M |
-| T007 | Búsqueda y filtrado | `views/CopilotLogsPanel.ts` | S |
+| Task | Descripción | Archivo | Effort | Estado |
+|------|-------------|---------|--------|--------|
+| T005 | Lista de snapshots | `CopilotMetricsPanelProvider.ts` | L | ✅ |
+| T006 | Formulario nuevo snapshot | `CopilotMetricsPanelProvider.ts` | M | ✅ |
+| T007 | Búsqueda y filtrado | `CopilotMetricsPanelProvider.ts` | S | 📋 P2 |
 
-**Effort**: 3 tasks, ~6h
+**Effort**: 3 tasks, ~6h → 2/3 COMPLETADAS
 
-### S03: Índices y Vinculación
+### S03: Índices y Vinculación ✅ COMPLETADA
 
 **Descripción**: Índices automáticos y link a backlogs.
 
-| Task | Descripción | Archivo | Effort |
-|------|-------------|---------|--------|
-| T008 | Generar INDEX.md automático | `SnapshotManager.ts` | S |
-| T009 | Generar ABSTRACT.md | `SnapshotManager.ts` | M |
-| T010 | Vincular snapshot a backlog | `SnapshotManager.ts` | S |
+| Task | Descripción | Archivo | Effort | Estado |
+|------|-------------|---------|--------|--------|
+| T008 | Generar INDEX.md automático | `SnapshotManager.ts` | S | ✅ |
+| T009 | Generar ABSTRACT.md con LLM | `SnapshotManager.ts` | M | ✅ |
+| T010 | Vincular snapshot a backlog | `SnapshotManager.ts` | S | ✅ |
 
-**Effort**: 3 tasks, ~4h
+**Effort**: 3 tasks, ~4h → ✅ COMPLETADA
 
 ---
 
@@ -114,21 +167,23 @@ Permitir al usuario **capturar, almacenar y recuperar** snapshots de sus convers
 
 ```
 src/copilotLogs/
-├── SnapshotManager.ts          # NUEVO: Gestión de snapshots
-├── CopilotLogsMCPServer.ts     # MOD: +tool "help"
-├── CopilotLogExporterService.ts # MOD: +captureSnapshot()
-└── index.ts                     # MOD: exports
-
-src/views/
-└── CopilotLogsPanel.ts          # MOD: +CRUD snapshots
+├── SnapshotManager.ts              # Gestión de snapshots (582 líneas)
+├── CopilotLogsMCPServer.ts         # +6 tools MCP (help, capture, list, get, delete, abstract)
+├── CopilotMetricsPanelProvider.ts  # Panel refactorizado (216 líneas)
+├── commands.ts                     # +4 comandos VS Code
+├── index.ts                        # Exports actualizados
+├── types/
+│   └── snapshot.types.ts           # NUEVO: Tipos reutilizables (156 líneas)
+└── templates/
+    └── MetricsPanelTemplate.ts     # NUEVO: HTML extraído (522 líneas)
 ```
 
 ### Datos (ARCHIVO)
 
 ```
 ARCHIVO/DISCO/COPILOT_SNAPSHOTS/
-├── INDEX.md                     # Índice DRY
-├── ABSTRACT.md                  # Índice semántico
+├── INDEX.md                     # Índice DRY (auto-generado)
+├── ABSTRACT.md                  # Índice semántico (LLM)
 └── {YYYY-MM-DD_HH-MM}_{nombre}/
     ├── metadata.json
     ├── requests.json
@@ -230,6 +285,9 @@ Acuérdate de tomar la foto (snapshot) cada poco rato durante tu sesión.
 | 2026-01-01 | ❌ Opción B descartada (API no expuesta) | @ox |
 | 2026-01-01 | ✅ Plan aprobado: Snapshots + CRUD | @scrum |
 | 2026-01-01 | 📝 Backlog regenerado como Feature | @scrum |
+| 2026-01-01 | 🚀 Phase 1 implementado (T001-T010) | @scrum |
+| 2026-01-01 | 🔧 Refactorización: tipos y templates modulares | @scrum |
+| 2026-01-01 | 🧪 Paso a fase de pruebas | @scrum |
 
 ---
 

@@ -68,9 +68,9 @@ Acuérdate de tomar la foto (snapshot) cada poco rato durante tu sesión.
 │                                                             │
 │  📊 SESIÓN ACTUAL                                           │
 │  ┌─────────────────────────────────────────────────────┐   │
-│  │ Requests en memoria: 47/100                         │   │
-│  │ Último refresh: hace 15 min                         │   │
-│  │ ⚠️ Recuerda hacer REFRESH para no perder datos      │   │
+│  │ Snapshots guardados: 3                             │   │
+│  │ Último snapshot: hace 15 min                       │   │
+│  │ ⚠️ Recuerda tomar snapshot para conservar contexto   │   │
 │  └─────────────────────────────────────────────────────┘   │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
@@ -104,7 +104,7 @@ Acuérdate de tomar la foto (snapshot) cada poco rato durante tu sesión.
 │  [▼ SCRIPT-2.1.1 Copilot Log Exporter     ]                │
 │                                                             │
 │  ──────────────────────────────────────────────────────     │
-│  📊 Preview: 47 requests serán guardados                    │
+│  📊 Preview: Se capturará cache actual + ccreq:latest     │
 │  ──────────────────────────────────────────────────────     │
 │                                                             │
 │                              [Cancelar]  [💾 Guardar]       │
@@ -331,3 +331,24 @@ Fase 3: Índices (P2)
 - [07_analisis-viabilidad-plan-po-sm.md](./07_analisis-viabilidad-plan-po-sm.md): Gap identificado
 - [05_solucion-arquitectonica-propuesta.md](./05_solucion-arquitectonica-propuesta.md): Opciones técnicas
 - [VsCodeExtension/src/copilotLogs/](../../../../../VsCodeExtension/src/copilotLogs/): Código actual
+
+---
+
+## Addenda: Limitación Técnica (2026-01-01 PM)
+
+> **Origen**: Auditoría Ox-Indice pre-aprobación
+
+### Indicador "Requests en memoria: X/100" — NO IMPLEMENTABLE
+
+El mockup original mostraba `Requests en memoria: 47/100`. Esto es **técnicamente imposible**:
+
+```typescript
+// CopilotEngine (interno, NO expuesto a extensiones)
+private _entries: RequestLogEntry[] = [];  // No hay API para .length
+```
+
+**Solución adoptada**: Mostrar información que SÍ podemos obtener:
+- `Snapshots guardados: N` — cuenta carpetas en DISCO
+- `Último snapshot: hace X min` — timestamp de última captura
+
+Esta limitación es **upstream** (GitHub CopilotEngine), no nuestra.

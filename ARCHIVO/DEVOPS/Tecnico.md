@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2025-12-31  
-> **Estado**: 🌱 Esqueleto inicial (rellenar DRY)
+> **Última actualización**: 2026-01-01  
+> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
 
 ---
 
@@ -398,6 +398,7 @@ ARCHIVO/
 ├── DEVOPS/            # Este documento + Funcional.md
 ├── DISCO/             # Memoria de trabajo (activo)
 │   ├── BACKLOG_BORRADORES/
+│   ├── COPILOT_SNAPSHOTS/  # Snapshots de conversaciones Copilot (auto-generado)
 │   ├── TALLER/        # Proyectos de usuario
 │   └── ...
 ├── ENCICLOPEDIA/      # Tomos consultables
@@ -425,6 +426,7 @@ ARCHIVO/
 | SCRUM | `PLUGINS/SCRUM/` | sprints/ |
 | TEATRO | `PLUGINS/TEATRO/` | obras/, cartelera.json |
 | MCP_PRESETS | `PLUGINS/MCP_PRESETS/` | presets/, catalog.json |
+| COPILOT_LOGS | `DISCO/COPILOT_SNAPSHOTS/` | INDEX.md, ABSTRACT.md, {id}/metadata.json |
 | ... | ... | ... |
 
 ### 7.3. Personajes Creados (AGENT_CREATOR)
