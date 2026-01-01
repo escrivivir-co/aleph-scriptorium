@@ -112,12 +112,32 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 3. Actualizar estado a 🔄 en el índice (solo cambio de emoji)
 ```
 
+### Fase 2.5: Auditoría (NUEVO — Resolución R1 Asamblea 2026-01-01)
+
+```
+1. Invocar @ox para auditoría técnica:
+   - Verificar que componentes referenciados existen
+   - Identificar gaps entre plan y código real
+   - Documentar hallazgos en borrador
+
+2. Invocar @indice para auditoría estructural:
+   - Verificar rutas mencionadas existen o están marcadas "a crear"
+   - Verificar coherencia con principios DRY
+   - Documentar hallazgos en borrador
+
+3. Si hay gaps críticos → volver a Fase 2
+4. Si auditoría OK → proceder a Fase 3
+```
+
+> **Bloqueo preventivo**: Cualquier agente puede invocar `@ox diagnosticar {épica}` ante sospecha de gaps. Esto pausa la aprobación hasta resolución.
+
 ### Fase 3: Aprobar
 
 ```
-1. Validar borrador completado
-2. Cambiar estado a ✅ en el índice
-3. NO copiar contenido al índice
+1. Verificar que Fase 2.5 está completada (auditoría OK)
+2. Validar borrador completado
+3. Cambiar estado a ✅ en el índice
+4. NO copiar contenido al índice
 ```
 
 ### Fase 4: Archivar
@@ -149,6 +169,49 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 ```markdown
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](ruta)
 ```
+
+---
+
+## 7. Asambleas Deliberativas (Resolución R4)
+
+> **Origen**: Asamblea de Agentes 2026-01-01
+
+Cuando una épica requiere decisiones significativas o hay conflicto de criterios, se convoca una **Asamblea Deliberativa**.
+
+### Cuándo Convocar
+
+- Bloqueo preventivo activado
+- Gap analysis con hallazgos críticos
+- Cambio de scope significativo
+- Decisiones arquitectónicas mayores
+
+### Formato
+
+```markdown
+# Asamblea: {Tema}
+
+## Participantes
+{Lista de agentes}
+
+## Rondas
+1. ¿Qué ocurrió? (cada agente desde su rol)
+2. ¿Qué aprendimos? (propuestas de acción)
+3. ¿Qué significa para el sistema? (implicaciones)
+4. Votación (si aplica)
+
+## Resoluciones
+R1: ...
+R2: ...
+```
+
+### Ubicación
+
+Las asambleas se archivan en:
+```
+ARCHIVO/NOTICIAS/{tema}/05_asamblea_agentes.md
+```
+
+Estas asambleas son **fuente de verdad** para decisiones de proceso y pueden citarse como precedente.
 
 ---
 
