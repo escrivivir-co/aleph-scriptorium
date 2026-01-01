@@ -1,0 +1,12 @@
+{
+  "id": "2026-01-01_21-09_test-fix-cache",
+  "name": "test-fix-cache",
+  "description": "Prueba del fix de cache",
+  "createdAt": "2026-01-01T20:09:34.788Z",
+  "requestCount": 1,
+  "models": [],
+  "totalTokens": {
+    "prompt": 0,
+    "completion": 0
+  }
+}
