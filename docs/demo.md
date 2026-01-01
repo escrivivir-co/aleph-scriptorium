@@ -308,10 +308,10 @@ permalink: /demo/
       </div>
     </div>
     
-    <!-- Blueprint Copilot -->
+    <!-- Blueprint Copilot (+ Self-Reflection subcubo) -->
     <div class="iframe-card">
       <div class="iframe-header">
-        <span class="iframe-title">🧠 Blueprint Copilot</span>
+        <span class="iframe-title">🧠 Blueprint Copilot + Self-Reflection</span>
         <div class="iframe-actions">
           <a href="{{ site.baseurl }}/blueprint-copilot/" target="_blank">↗ Abrir</a>
         </div>

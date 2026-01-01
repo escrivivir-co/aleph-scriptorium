@@ -40,7 +40,7 @@ permalink: /
   <a href="{{ site.baseurl }}/blueprint-copilot/" class="nav-card">
     <span class="card-icon">🧠</span>
     <span class="card-title">Copilot</span>
-    <span class="card-desc">Viaje 3D: Prompt → LLM</span>
+    <span class="card-desc">Prompt → LLM → Self-Reflection</span>
   </a>
   <a href="{{ site.baseurl }}/demo/" class="nav-card nav-card-featured">
     <span class="card-icon">🎬</span>
@@ -50,7 +50,7 @@ permalink: /
   <a href="{{ site.baseurl }}/blueprint-po/" class="nav-card nav-card-featured">
     <span class="card-icon">🎤</span>
     <span class="card-title">PO Showcase</span>
-    <span class="card-desc">Demo 4 roles · 47 slides</span>
+    <span class="card-desc">Demo 4 roles · 53 slides</span>
   </a>
   <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
     <span class="card-icon">🧬</span>
