@@ -3974,6 +3974,158 @@ body.fallback-mode .blueprint-nav {
 }
 
 /* ========================================
+   Self-Reflection Demo Styles
+   Feature: FEATURE-SNAPSHOTS-1.0.0
+   ======================================== */
+
+/* Bug Insight Box */
+.bug-insight {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(234, 88, 12, 0.05));
+  border: 1px solid var(--bp-warning);
+  border-left: 4px solid var(--bp-warning);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.bug-insight p {
+  margin: 0;
+  color: var(--bp-fg);
+}
+
+/* Block Info */
+.block-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.block-trigger,
+.block-action,
+.block-result {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  border: 1px solid var(--bp-border);
+}
+
+.block-trigger {
+  border-left: 4px solid var(--bp-warning);
+}
+
+.block-action {
+  border-left: 4px solid var(--bp-plugins);
+}
+
+.block-result {
+  border-left: 4px solid var(--bp-ui);
+}
+
+.block-info .icon {
+  font-size: 1.5rem;
+}
+
+.block-info .text {
+  flex: 1;
+  color: var(--bp-fg);
+}
+
+/* Solution Preview */
+.solution-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.solution-what,
+.solution-where,
+.solution-how {
+  display: flex;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+  border: 1px solid var(--bp-border);
+}
+
+.solution-preview .label {
+  color: var(--bp-accent);
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.solution-preview .value {
+  color: var(--bp-fg);
+}
+
+.solution-preview code {
+  background: var(--bp-surface);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--bp-font-mono);
+  font-size: 0.85rem;
+}
+
+/* Fix Demo */
+.fix-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.fix-before,
+.fix-after,
+.fix-test {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bp-bg);
+  border-radius: 8px;
+}
+
+.fix-before {
+  border: 1px solid #ef4444;
+}
+
+.fix-after {
+  border: 1px solid #22c55e;
+}
+
+.fix-test {
+  border: 2px solid var(--bp-accent);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+}
+
+.fix-demo .label {
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.fix-demo .code {
+  font-family: var(--bp-font-mono);
+  font-size: 0.9rem;
+  color: var(--bp-muted);
+}
+
+.fix-demo .tool {
+  font-family: var(--bp-font-mono);
+  font-size: 0.85rem;
+  color: var(--bp-plugins);
+}
+
+.fix-demo .result {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* ========================================
    Blueprint Logic Flow (blueprint-logic-flow.md)
    Patrón: Espiral + Laterales
    ======================================== */
