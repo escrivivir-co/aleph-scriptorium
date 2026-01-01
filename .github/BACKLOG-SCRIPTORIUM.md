@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.2-dry  
+> **Versión**: 1.2.3-dry  
 > **Sprint actual**: PRE  
-> **Actualizado**: 2025-12-30
+> **Actualizado**: 2026-01-01
 
 ---
 
@@ -32,6 +32,8 @@
 | ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 | ✅ | DEMO-1.0.0 | Demo Screens Hackathon | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-borrador.md) |
+| 🟢 | IOT-SBR-LOGICA | PrologEditor: Inteligencias Situadas | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) |
+| 📋 | SCRIPT-2.2.0 | Agentic Typed Logic Flow | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) |
 
 ---
 
@@ -58,6 +60,8 @@
 | [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | ✅ Funcional |
 | [Diciembre_30_CopilotLogExporter](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/) | Copilot Log Exporter | ✅ Completado |
 | [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 (incl. Demo) | 📋 Activo |
+| [IOT-SBR-LOGICA](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) | PrologEditor + Inteligencias Situadas | 🟢 Investigado |
+| [Diciembre_31_Test_0x_Destilacion](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) | Agentic Typed Logic Flow | 📝 Blueprint |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 
@@ -87,6 +91,9 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-01 | ➕ Añadir SCRIPT-2.2.0 Agentic Typed Logic Flow (blueprint arquitectónico) | @scrum |
+| 2026-01-01 | 🟢 Actualizar IOT-SBR-LOGICA a estado Investigado (capacidad EXISTE) | @scrum |
+| 2026-01-01 | 📝 Actualizar bridge @plugin_ox_prologeditor con conocimiento estructural | @scrum |
 | 2025-12-30 | 🧹 Limpiar INDEX.md (895→70 líneas, DRY) | @scrum |
 | 2025-12-30 | ✅ Cerrar BUG-003 SUBMODULOS_AH_NAMING (14 submódulos renombrados) | @scrum |
 | 2025-12-30 | ✅ Cerrar SCRIPT-1.31.0 CopilotEngine Analysis (30 pts) | @scrum |
