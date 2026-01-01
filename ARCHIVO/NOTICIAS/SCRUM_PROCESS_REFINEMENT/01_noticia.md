@@ -19,6 +19,7 @@ Este documento es el **índice ejecutivo** de un dossier completo. Cada sección
 | 04 | [Narrativa Pública](04_narrativa_publica.md) | Comunidad | Historia accesible del desarrollo |
 | 05 | [Asamblea de Agentes](05_asamblea_agentes.md) | Scriptorium | Deliberación multiperspectiva |
 | 06 | [Bucle DevOps](06_bucle_devops.md) | Metodología | Versionado semántico y ciclo completo |
+| 07 | [Reflexión Ox: Context Bloat](07_reflexion_ox_context_bloat.md) | Meta | Autodiagnóstico y propuestas de mejora |
 
 ---
 

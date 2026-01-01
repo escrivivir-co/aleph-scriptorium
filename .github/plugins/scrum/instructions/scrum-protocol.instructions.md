@@ -325,3 +325,55 @@ refs #SCRIPT-1.30.0
 
 ---
 
+## 14. Integración con Auto-Reflexión
+
+> **Fuente de verdad**: `auto-reflexion.instructions.md`
+
+### Snapshots en el Ciclo Scrum
+
+| Momento | Acción | Obligatorio |
+|---------|--------|-------------|
+| Al planificar épica | Capturar snapshot de contexto inicial | ⚪ Opcional |
+| Al completar story compleja | Capturar snapshot | ⚪ Opcional |
+| Al cerrar épica | `capture_snapshot` + `generate_abstract` | 🔴 Obligatorio |
+| Al cerrar sprint | Snapshot + Foto de estado | 🔴 Obligatorio |
+
+### Métricas en Borradores
+
+Al cerrar una sesión de trabajo intensa (>1 hora), añadir al borrador:
+
+```markdown
+## Métricas de Sesión
+
+| Métrica | Valor |
+|---------|-------|
+| healthScore | {0-100} |
+| cacheHitRate | {%} |
+| Antipatrones | {AP-0X, AP-0Y} |
+| Snapshots capturados | {N} |
+```
+
+### Terapia de Bridges
+
+Si un bridge de plugin es detectado como ineficiente:
+
+```
+1. @scrum planificar → crear BACKLOG_BORRADORES/{bridge}_terapia/
+2. @ox analyze_session → documentar antipatrones
+3. @scrum tracking → registrar propuestas de mejora
+4. Implementar fix → cerrar terapia
+```
+
+### Resoluciones de Auto-Reflexión (R5)
+
+Los aprendizajes de auto-reflexión pueden generar resoluciones que afectan el proceso:
+
+| Tipo | Ejemplo | Dónde documentar |
+|------|---------|------------------|
+| Nuevo antipatrón | AP-05: X | auto-reflexion.instructions.md |
+| Nueva buena práctica | BP-06: Y | auto-reflexion.instructions.md |
+| Mejora de proceso | R5: Z | Asamblea + DEVOPS.md |
+| Mejora de bridge | Fix de scope | Bridge .agent.md |
+
+---
+
