@@ -49,6 +49,7 @@
 | [WIKI_RACER_HYPERGRAPH_EDITOR](WIKI_RACER_HYPERGRAPH_EDITOR/) | HyperGraphEditor | 📝 Borrador |
 | [WIKI_RACER_WIRING_APP](WIKI_RACER_WIRING_APP/) | WiringApp | 📝 Borrador |
 | [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | SCRIPT-2.2.0: Agentic Typed Logic Flow | 📝 Blueprint |
+| [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
 
 ---
 
@@ -70,9 +71,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Total carpetas | 39 |
+| Total carpetas | 40 |
 | ✅ Completadas/Publicadas | 20 |
-| 📋/📝 En progreso/Borrador | 19 |
+| 📋/📝 En progreso/Borrador | 20 |
 
 ---
 

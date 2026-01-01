@@ -63,6 +63,7 @@
 | [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 (incl. Demo) | 📋 Activo |
 | [IOT-SBR-LOGICA](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) | PrologEditor + Inteligencias Situadas | 🟢 Investigado |
 | [Diciembre_31_Test_0x_Destilacion](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) | Agentic Typed Logic Flow | 📝 Blueprint |
+| [Enero_2026_LogicaAgentes](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_LogicaAgentes/) | IOT-SBR + SCRIPT-2.2.0: Conversaciones | 📋 Activo |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 

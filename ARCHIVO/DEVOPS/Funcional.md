@@ -45,6 +45,7 @@
 | Archivo | `/archivo/` | Navegación del ARCHIVO |
 | Roadmap | `/roadmap/` | Estado del proyecto + fotos |
 | Fundación | `/fundacion/` | El texto de 2026 |
+| Blueprint Logic Flow | `/blueprint-logic-flow/` | Agentic Typed Logic Flow (IOT-SBR + SCRIPT-2.2.0) |
 
 > **Fuente**: `docs/` (Jekyll + GitHub Pages)
 

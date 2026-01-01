@@ -535,6 +535,209 @@ permalink: /blueprint-po/
     <div class="timeline-item">FC1: +3 editores visuales</div>
     <div class="timeline-item">FC2: +2 integraciones</div>
   </div>
+  
+  <div class="depth-hint">↓ Ver Logic Flow Demo</div>
+</div>
+
+<!-- ==========================================
+     PASO 5.5: LOGIC FLOW DEMO (Subcubo)
+     Ciclo: Edición → Servidor → Pack → Escena
+     Features: IOT-SBR-LOGICA + SCRIPT-2.2.0
+     ========================================== -->
+
+<!-- 5.5.1: Intro Logic Flow -->
+<div id="logic-intro" class="step showcase-step po-step" 
+     data-x="12000" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role po">🎤 PO</span>
+    <span class="showcase-context">Logic Flow · Intro</span>
+  </div>
+  
+  <h2>Demo: Logic Flow Completo</h2>
+  
+  <div class="flow-intro">
+    <p><strong>El ciclo que une dos mundos:</strong></p>
+    <div class="flow-chain">
+      <span class="flow-node">📝 Edición</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">🔌 Servidor</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">📦 Pack</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">🎭 Escena</span>
+    </div>
+    <p class="flow-tagline">Desde escribir una regla Prolog hasta que un títere la invoca en vivo</p>
+  </div>
+  
+  <div class="nav-hints">
+    <span>↑ Volver a Plugins</span>
+    <span>→ Paso 1: Edición</span>
+  </div>
+</div>
+
+<!-- 5.5.2: Edición Prolog -->
+<div id="logic-edit" class="step showcase-step ox-step" 
+     data-x="13200" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role ox">🐂 Ox</span>
+    <span class="showcase-context">Logic Flow · Edición</span>
+  </div>
+  
+  <h2>1️⃣ Editar Regla Prolog</h2>
+  
+  <div class="code-example">
+    <div class="code-header">arrakis.pl</div>
+    <pre><code>% Regla: agua es crítica si población > 1000
+recurso_critico(agua) :- 
+    poblacion(P), P > 1000.
+
+% Hecho
+poblacion(1500).</code></pre>
+  </div>
+  
+  <p class="step-note">Plugin: <code>@plugin_ox_prologeditor</code></p>
+</div>
+
+<!-- 5.5.3: Servidor MCP -->
+<div id="logic-server" class="step showcase-step aleph-step" 
+     data-x="14400" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role aleph">ℵ Aleph</span>
+    <span class="showcase-context">Logic Flow · Servidor</span>
+  </div>
+  
+  <h2>2️⃣ Exponer como MCP</h2>
+  
+  <div class="server-info">
+    <div class="server-card">
+      <div class="server-name">prolog-mcp-server</div>
+      <div class="server-port">Puerto 3006</div>
+    </div>
+    <div class="server-tools">
+      <span class="tool">query_prolog</span>
+      <span class="tool">assert_fact</span>
+      <span class="tool">consult_kb</span>
+    </div>
+  </div>
+  
+  <p class="step-note">LauncherServer registra en la mesh</p>
+</div>
+
+<!-- 5.5.4: Pack Tipado -->
+<div id="logic-pack" class="step showcase-step sm-step" 
+     data-x="15600" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role sm">📋 SM</span>
+    <span class="showcase-context">Logic Flow · Pack</span>
+  </div>
+  
+  <h2>3️⃣ Crear Pack Tipado</h2>
+  
+  <div class="pack-preview">
+    <div class="pack-name">AgentPrologBrain.pack.json</div>
+    <div class="pack-contents">
+      <div class="pack-section">
+        <span class="label">tools:</span>
+        <span class="items">query_prolog, assert_fact</span>
+      </div>
+      <div class="pack-section">
+        <span class="label">resources:</span>
+        <span class="items">knowledge_base</span>
+      </div>
+      <div class="pack-section">
+        <span class="label">prompts:</span>
+        <span class="items">razonamiento_sbr</span>
+      </div>
+    </div>
+  </div>
+  
+  <p class="step-note">Contrato entre agente y herramientas</p>
+</div>
+
+<!-- 5.5.5: Escena Teatro -->
+<div id="logic-scene" class="step showcase-step po-step" 
+     data-x="16800" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role po">🎤 PO</span>
+    <span class="showcase-context">Logic Flow · Escena</span>
+  </div>
+  
+  <h2>4️⃣ Títere en Escena</h2>
+  
+  <div class="scene-preview">
+    <div class="scene-header">
+      <span class="obra">🎭 Obra: Duna</span>
+      <span class="escena">Consejo de Agua</span>
+    </div>
+    <div class="scene-dialogue">
+      <div class="turn">
+        <span class="actor">@arrakis:</span>
+        <span class="action">Invoca <code>query_prolog("recurso_critico(X)")</code></span>
+      </div>
+      <div class="turn result">
+        <span class="actor">MCP:</span>
+        <span class="response">X = agua</span>
+      </div>
+      <div class="turn">
+        <span class="actor">@arrakis:</span>
+        <span class="dialogue">"El agua es recurso crítico. Protejamos los pozos."</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5.5.6: Resumen Ciclo -->
+<div id="logic-summary" class="step showcase-step ox-step" 
+     data-x="18000" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role ox">🐂 Ox</span>
+    <span class="showcase-context">Logic Flow · Resumen</span>
+  </div>
+  
+  <h2>El Ciclo Completo</h2>
+  
+  <div class="cycle-diagram">
+    <div class="cycle-layer">
+      <span class="layer-label">L0</span>
+      <span class="layer-name">Infraestructura</span>
+      <span class="layer-items">PrologServer, FIA Catalog</span>
+    </div>
+    <div class="cycle-arrow">↓ Exponer</div>
+    <div class="cycle-layer">
+      <span class="layer-label">L1</span>
+      <span class="layer-name">Servidores MCP</span>
+      <span class="layer-items">prolog-mcp, aaia-mcp</span>
+    </div>
+    <div class="cycle-arrow">↓ Tipar</div>
+    <div class="cycle-layer">
+      <span class="layer-label">L2</span>
+      <span class="layer-name">Packs</span>
+      <span class="layer-items">AgentPrologBrain, AgentFIACreator</span>
+    </div>
+    <div class="cycle-arrow">↓ Consumir</div>
+    <div class="cycle-layer">
+      <span class="layer-label">L3</span>
+      <span class="layer-name">Teatro/ARG</span>
+      <span class="layer-items">Títeres en escena</span>
+    </div>
+  </div>
+  
+  <div class="nav-hints">
+    <span>↑ Volver a Plugins</span>
+    <span>→ Blueprints 3D</span>
+  </div>
 </div>
 
 <!-- ==========================================
