@@ -36,6 +36,7 @@
 | 🟢 | IOT-SBR-LOGICA | PrologEditor: Inteligencias Situadas | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) |
 | 📋 | SCRIPT-2.2.0 | Agentic Typed Logic Flow | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) |
 | ✅ | FEATURE-SNAPSHOTS-1.0.0 | Copilot Logs Snapshot System | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/01_backlog-borrador.md) |
+| ✅ | SCRIPT-1.29.0 | Auto-Reflexión: Gobernanza Tripartita | [instrucción](../plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md) |
 
 ---
 
