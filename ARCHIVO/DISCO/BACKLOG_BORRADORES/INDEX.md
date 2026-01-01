@@ -50,6 +50,7 @@
 | [WIKI_RACER_WIRING_APP](WIKI_RACER_WIRING_APP/) | WiringApp | 📝 Borrador |
 | [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | SCRIPT-2.2.0: Agentic Typed Logic Flow | 📝 Blueprint |
 | [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
+| [Enero_2026_CopilotLogsMCP_Bug](Enero_2026_CopilotLogsMCP_Bug/) | BUG-MCLOGS-1.0.0: get_copilot_request retorna vacío | 🐛 Bug |
 
 ---
 
