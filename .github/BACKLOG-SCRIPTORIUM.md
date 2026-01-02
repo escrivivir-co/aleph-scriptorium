@@ -29,7 +29,8 @@
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
 | ✅ | SCRIPT-2.2.0 | Model Selector para Generate Abstract | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_ModelSelector_GenerateAbstract/01_backlog-borrador.md) |
-| � | SCRIPT-2.3.0 | Prolog MCP Server Integration (FC1 ✅) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologMCPServer/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.3.0 | Prolog MCP Server Integration (FC1 ✅) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologMCPServer/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.3.1 | PrologAgent Pack (AGENT_CREATOR + TypedPrompting) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
@@ -69,6 +70,7 @@
 | [IOT-SBR-LOGICA](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) | PrologEditor + Inteligencias Situadas | 🟢 Investigado |
 | [Diciembre_31_Test_0x_Destilacion](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) | Agentic Typed Logic Flow | 📝 Blueprint |
 | [Enero_2026_LogicaAgentes](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_LogicaAgentes/) | IOT-SBR + SCRIPT-2.2.0: Conversaciones | 📋 Activo |
+| [Enero_02_PrologAgentPack](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/) | PrologAgent Pack: AGENT_CREATOR + TypedPrompting | ✅ Completado |
 | [Enero_2026_CopilotLogsMCP_Bug](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/) | Copilot Logs Snapshot System | 🟢 Aprobado |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
