@@ -508,6 +508,28 @@ bundle exec jekyll serve --livereload
 | prolog-mcp-server | 3006 | DEFAULT_PROLOG_MCP_SERVER_CONFIG |
 | launcher-server | 3050 | DEFAULT_LAUNCHER_MCP_SERVER_CONFIG |
 
+### 9.2. MCP Packs (Packs Tipados)
+
+> **Feature**: SCRIPT-2.3.0 — Agentic Typed Logic Flow
+
+**Ubicación**: `.github/plugins/mcp-presets/packs/`
+
+| Pack | Versión | MCP Server | Descripción |
+|------|---------|------------|-------------|
+| AgentPrologBrain | 1.0.0 | prolog-mcp-server | Razonamiento Prolog para agentes Teatro |
+
+**Schema de validación**: `.github/plugins/mcp-presets/schemas/pack.schema.json`
+
+**Uso en recetas AGENT_CREATOR**:
+```json
+{
+  "mcpPacks": [{
+    "id": "AgentPrologBrain",
+    "prologBrain": { "file": "path/to/brain.pl" }
+  }]
+}
+```
+
 ---
 
 ## 10. Tests y Validación

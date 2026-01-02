@@ -122,6 +122,27 @@
 
 💡 **Uso**: Cada obra del Teatro puede tener su propia KB Prolog aislada.
 
+### 3.8. MCP Packs (Packs Tipados)
+
+> **Feature**: SCRIPT-2.3.0 — Agentic Typed Logic Flow
+
+| Pack | Descripción | Uso |
+|------|-------------|-----|
+| `AgentPrologBrain` | Razonamiento Prolog para agentes | Personajes Teatro con cerebro lógico |
+
+**Personajes con Cerebro Prolog**:
+
+| Personaje | Obra | Cerebro |
+|-----------|------|---------|
+| Lucas | Ítaca Digital | `lucas-prolog.brain.pl` |
+
+**Queries de ejemplo** (Lucas):
+```prolog
+?- documentacion_coherente(X).    % Validar DRY
+?- ubicacion_canonica(como, Donde). % Dónde buscar
+?- consejo(perdido, Mensaje).       % Guía al viajero
+```
+
 ### 3.6. Publicación (@plugin_ox_ghpages)
 
 | Modo | Descripción |
