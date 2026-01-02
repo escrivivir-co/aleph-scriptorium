@@ -153,6 +153,37 @@ estadios:
       se publica. Se convierte en invitación para otros navegantes.
     duracion: "50 min"
 
+# =============================================================================
+# ELENCO — Personajes con Cerebro Prolog
+# =============================================================================
+elenco:
+  - id: lucas
+    nombre: "Lucas — Scrum Master del Índice"
+    arquetipo: MENTOR
+    estadio: 11
+    brain: "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl"
+    descripcion: |
+      Guardián de la coherencia documental. Valida que no haya duplicados,
+      que los índices estén sincronizados, y guía en la integración final.
+    queries_ejemplo:
+      - "documentacion_coherente(X)"
+      - "ubicacion_canonica(como, Donde)"
+      - "consejo(perdido, Mensaje)"
+
+# =============================================================================
+# MCP PACKS — Herramientas de Runtime
+# =============================================================================
+mcpPacks:
+  - id: AgentPrologBrain
+    version: "1.0.0"
+    sessionConfig:
+      sessionId: "itaca-digital-session"
+      autoConsult:
+        - "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl"
+    description: |
+      Habilita razonamiento Prolog para personajes de la obra.
+      Lucas puede validar coherencia documental en tiempo real.
+
 meta:
   duracion_estimada: "6 horas"
   nivel: intermedio
@@ -165,7 +196,9 @@ meta:
     - clásicos-remezclados
     - transmedia
     - ítaca
+    - prolog-brain
   creado: "2025-12-28"
+  actualizado: "2026-01-02"
   autor: "Teatro Interactivo × Aleph Scriptorium"
   
 dependencias:
@@ -173,6 +206,8 @@ dependencias:
     - arg-board
     - agent-creator
     - gh-pages
+    - mcp-presets
+    - prolog-editor
   agentes:
     - "@vestibulo"
     - "@cartaspuerta"
@@ -188,6 +223,11 @@ dependencias:
     - "@plugin_ox_agentcreator"
     - "@plugin_ox_argboard"
     - "@plugin_ox_ghpages"
+    - "@plugin_ox_prologeditor"
+  mcpServers:
+    - id: "prolog-mcp-server"
+      port: 3006
+      required: true
 
 estado: "generada"
 proximo_paso: "instalar"
