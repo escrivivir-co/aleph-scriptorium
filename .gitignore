@@ -8,3 +8,4 @@ docs/.bundle/
 docs/vendor/bundle/
 docs/Gemfile.lock
 docs/.jekyll-cache
+**/node_modules/**/*
