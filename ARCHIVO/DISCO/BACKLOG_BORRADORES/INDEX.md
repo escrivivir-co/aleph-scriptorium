@@ -49,6 +49,7 @@
 | [WIKI_RACER_HYPERGRAPH_EDITOR](WIKI_RACER_HYPERGRAPH_EDITOR/) | HyperGraphEditor | 📝 Borrador |
 | [WIKI_RACER_WIRING_APP](WIKI_RACER_WIRING_APP/) | WiringApp | 📝 Borrador |
 | [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | Test 0x: Prueba de Destilación | 📝 Borrador |
+| [Enero_02_ModelSelector_GenerateAbstract](Enero_02_ModelSelector_GenerateAbstract/) | SCRIPT-2.2.0: Model Selector para Generate Abstract | ✅ Completada |
 
 ---
 
