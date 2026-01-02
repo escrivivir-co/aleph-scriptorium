@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2026-01-01  
-> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
+> **Última actualización**: 2026-01-02  
+> **Estado**: 🌿 Actualizado (SCRIPT-2.3.0 Prolog MCP)
 
 ---
 
@@ -103,6 +103,24 @@
 **Ubicación de datos**: `ARCHIVO/DISCO/COPILOT_SNAPSHOTS/`
 
 ⚠️ **Advertencia**: Los logs tienen límite ~100 requests en memoria. Capturar snapshots cada 30 min.
+
+### 3.7. Prolog MCP Server (SCRIPT-2.3.0)
+
+> **Feature**: Inteligencias situadas + Typed Logic Flow
+
+| Tool | Descripción |
+|------|-------------|
+| `create_session` | Crear sesión Prolog aislada para una obra |
+| `destroy_session` | Limpiar sesión y liberar recursos |
+| `list_sessions` | Listar sesiones activas |
+| `query_prolog` | Ejecutar query Prolog con todos los solutions |
+| `assert_fact` | Añadir hecho a la KB |
+| `consult_file` | Cargar archivo .pl con caching |
+
+**Puerto**: 3006  
+**Ubicación**: `MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts`
+
+💡 **Uso**: Cada obra del Teatro puede tener su propia KB Prolog aislada.
 
 ### 3.6. Publicación (@plugin_ox_ghpages)
 

@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-01-01  
-> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
+> **Última actualización**: 2026-01-02  
+> **Estado**: 🌿 Actualizado (SCRIPT-2.3.0 Prolog MCP)
 
 ---
 
@@ -496,6 +496,17 @@ bundle exec jekyll serve --livereload
 | mcp-novelist | 3066 | MCP server |
 | node-red-alephscript-sdk | 1880 | Node-RED |
 | alephscript-network-sdk | — | Docker compose |
+
+### 9.1. MCP Mesh Servers (MCPGallery)
+
+| Servidor | Puerto | Config |
+|----------|--------|--------|
+| xplus1-server | 3001 | DEFAULT_XPLUS1_MCP_SERVER_CONFIG |
+| wiki-browser-server | 3002 | DEFAULT_WIKI_MCP_SERVER_CONFIG |
+| devops-mcp-server | 3003 | DEFAULT_DEVOPS_MCP_SERVER_CONFIG |
+| state-machine-server | 3004 | DEFAULT_STATE_MACHINE_MCP_SERVER_CONFIG |
+| prolog-mcp-server | 3006 | DEFAULT_PROLOG_MCP_SERVER_CONFIG |
+| launcher-server | 3050 | DEFAULT_LAUNCHER_MCP_SERVER_CONFIG |
 
 ---
 

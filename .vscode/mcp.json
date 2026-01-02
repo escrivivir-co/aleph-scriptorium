@@ -16,6 +16,10 @@
       "type": "http",
       "url": "http://localhost:3004"
     },
+    "prolog-mcp-server": {
+      "type": "http",
+      "url": "http://localhost:3006"
+    },
     "copilot-logs-mcp-server": {
       "type": "http",
       "url": "http://localhost:3100"

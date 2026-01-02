@@ -97,7 +97,7 @@ mcpServers:
 | `@plugin_ox_agentcreator` | Agent Creator | 1 agente | — |
 | `@plugin_ox_teatro` | Teatro | 1 agente | — |
 | `@plugin_ox_scrum` | Scrum | 1 agente | — |
-| `@plugin_ox_mcppresets` | MCP Presets | 1 agente | 5 servers (mesh) |
+| `@plugin_ox_mcppresets` | MCP Presets | 1 agente | 6 servers (mesh) |
 
 ---
 
@@ -120,11 +120,12 @@ mcpServers:
 
 | Servidor | Puerto | Descripción |
 |----------|--------|-------------|
-| `devops-mcp-server` | 3003 | DevOps automation (default) |
-| `wiki-browser-server` | 3002 | Wikipedia browsing |
-| `state-machine-server` | 3004 | X+1 state machine |
-| `launcher-server` | 3050 | Server orchestration |
 | `xplus1-server` | 3001 | X+1 control |
+| `wiki-browser-server` | 3002 | Wikipedia browsing |
+| `devops-mcp-server` | 3003 | DevOps automation (default) |
+| `state-machine-server` | 3004 | X+1 state machine |
+| `prolog-mcp-server` | 3006 | Prolog queries + KB management (SCRIPT-2.3.0) |
+| `launcher-server` | 3050 | Server orchestration |
 
 ### Flujo de Registro
 
