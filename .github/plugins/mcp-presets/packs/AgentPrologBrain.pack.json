@@ -1,0 +1,138 @@
+{
+  "$schema": "../schemas/pack.schema.json",
+  "id": "AgentPrologBrain",
+  "name": "Prolog Brain Pack",
+  "version": "1.0.0",
+  "description": "Pack para agentes que razonan con lógica Prolog. Habilita consultas, hechos y reglas declarativas.",
+  "author": "Aleph Scriptorium",
+  "license": "AIPL-1.0",
+  
+  "mcpServer": {
+    "id": "prolog-mcp-server",
+    "port": 3006,
+    "source": "MCPGallery/mcp-mesh-sdk",
+    "startCommand": "npm run start:prolog"
+  },
+  
+  "tools": [
+    {
+      "name": "prolog_create_session",
+      "description": "Crear sesión Prolog para una obra Teatro",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string", "description": "ID único de sesión" },
+          "obraId": { "type": "string", "description": "ID de la obra Teatro" }
+        },
+        "required": ["sessionId", "obraId"]
+      }
+    },
+    {
+      "name": "prolog_query",
+      "description": "Ejecutar consulta Prolog (e.g., 'member(X, [1,2,3]).')",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string" },
+          "query": { "type": "string", "description": "Query Prolog a ejecutar" }
+        },
+        "required": ["sessionId", "query"]
+      }
+    },
+    {
+      "name": "prolog_assert_fact",
+      "description": "Añadir hecho a la base de conocimiento",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string" },
+          "fact": { "type": "string", "description": "Hecho Prolog (e.g., 'likes(mary, wine)')" }
+        },
+        "required": ["sessionId", "fact"]
+      }
+    },
+    {
+      "name": "prolog_consult_file",
+      "description": "Cargar archivo .pl en la sesión",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string" },
+          "filePath": { "type": "string", "description": "Ruta al archivo .pl" }
+        },
+        "required": ["sessionId", "filePath"]
+      }
+    },
+    {
+      "name": "prolog_destroy_session",
+      "description": "Destruir sesión y liberar recursos",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string" }
+        },
+        "required": ["sessionId"]
+      }
+    },
+    {
+      "name": "prolog_list_sessions",
+      "description": "Listar todas las sesiones activas"
+    },
+    {
+      "name": "prolog_get_templates",
+      "description": "Obtener catálogo de templates Prolog disponibles"
+    }
+  ],
+  
+  "resources": [
+    {
+      "uri": "prolog://sessions/current",
+      "name": "prolog-session-state",
+      "description": "Estado actual de la sesión Prolog incluyendo metadata",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "prolog://templates/catalog",
+      "name": "prolog-templates-catalog", 
+      "description": "Templates Prolog disponibles para agentes Teatro",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "prolog://sessions",
+      "name": "prolog-active-sessions",
+      "description": "Lista de sesiones Prolog activas",
+      "mimeType": "application/json"
+    }
+  ],
+  
+  "prompts": [
+    {
+      "name": "razonamiento_sbr",
+      "description": "Ejecutar razonamiento basado en reglas Prolog",
+      "template": "Dado el contexto {contexto}, usa las reglas Prolog cargadas para inferir {objetivo}. Utiliza prolog_query con la sesión activa.",
+      "arguments": ["contexto", "objetivo"]
+    },
+    {
+      "name": "validar_coherencia",
+      "description": "Validar coherencia doctrinal con reglas Prolog",
+      "template": "Verifica si {afirmacion} es consistente con la base de conocimiento usando prolog_query(?- valido({afirmacion})).",
+      "arguments": ["afirmacion"]
+    }
+  ],
+  
+  "contextTriggers": {
+    "keywords": ["prolog", "regla", "inferencia", "lógica", "query", "sbr"],
+    "filePatterns": ["*.pl", "*prolog*", "*brain*"],
+    "domains": ["teatro", "arg", "razonamiento"]
+  },
+  
+  "examples": {
+    "sessionWorkflow": [
+      "1. prolog_create_session({sessionId: 'lucas-itaca', obraId: 'itaca-digital'})",
+      "2. prolog_consult_file({sessionId: 'lucas-itaca', filePath: 'lucas-prolog.brain.pl'})",
+      "3. prolog_query({sessionId: 'lucas-itaca', query: 'coherente_documentacion(X).'})",
+      "4. prolog_destroy_session({sessionId: 'lucas-itaca'})"
+    ],
+    "lucastIneractiveSession": "Ejemplo con Lucas como personaje de Ítaca Digital que valida coherencia documental"
+  }
+}
