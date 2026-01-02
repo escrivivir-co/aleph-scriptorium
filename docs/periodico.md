@@ -14,18 +14,36 @@ permalink: /periodico/
 
 <div class="periodico-edition-bar">
   <span class="left">ISSN: 0000-0000</span>
-  <span class="center">Nº 1 · DICIEMBRE 2025</span>
+  <span class="center">Nº 2 · ENERO 2026</span>
   <span class="right">Aleph Scriptorium</span>
 </div>
 
 <!-- TITULAR PRINCIPAL -->
 <div class="periodico-headline">
-  <h2>«La verdad ya no es un dato: es un campo de batalla donde instituciones, infraestructuras y lenguajes compiten por definir qué cuenta como real.»</h2>
+  <h2>«Un sistema que no puede recordar sus conversaciones es un sistema amnésico. Los snapshots transforman la amnesia en archivo.»</h2>
 </div>
 
 ---
 
-<div class="periodico-section-header">Collage Editorial — 5 piezas</div>
+<div class="periodico-section-header">Collage Editorial — 6 piezas</div>
+
+<!-- ARTÍCULO DESTACADO: SNAPSHOTS (ENERO 2026) -->
+<div class="periodico-article periodico-article-featured">
+  <div class="periodico-article-header">
+    <span class="periodico-article-flag">🐂</span>
+    <div>
+      <div class="periodico-article-section">Meta-DevOps</div>
+      <div class="periodico-article-meta">FEATURE-SNAPSHOTS-1.0.0 · OX</div>
+    </div>
+  </div>
+  <div class="periodico-article-body">
+    <h3>El Scriptorium que Aprende a Recordar</h3>
+    <p>Un bug reveló que <strong>CopilotEngine</strong> solo retiene 100 requests en memoria. En lugar de esperar un fix upstream, el equipo construyó un sistema de <strong>Snapshots</strong> que captura conversaciones permanentemente. El proceso incluye bloqueo preventivo, auditoría técnica, y un nuevo gate de calidad.</p>
+    <div class="periodico-article-link">
+      → <a href="{{ site.baseurl }}/noticias/scriptorium-aprende-recordar/">El Scriptorium que Aprende a Recordar [leer]</a>
+    </div>
+  </div>
+</div>
 
 <!-- ARTÍCULO 1: GEOPOLÍTICA -->
 <div class="periodico-article">
@@ -129,9 +147,9 @@ permalink: /periodico/
 <div class="periodico-thesis">
   <h3>// diagnóstico convergente</h3>
   <ol>
-    <li><strong>Las instituciones de verdad funcionan como infraestructura de poder.</strong> El Nobel legitima guerras; OpenAI usa "safety" como barrera de entrada; el foro usa "falsabilidad" como veto social.</li>
-    <li><strong>La captura no es frontal; es semántica.</strong> No prohíben: redefinen. No censuran: desplazan el perímetro de lo decible.</li>
-    <li><strong>La defensa requiere arquitectura, no solo denuncia.</strong> Por eso construimos auditores (Banderas), métodos (5W), y distinciones operativas (condiciones vs contenido).</li>
+    <li><strong>Las limitaciones técnicas bien entendidas son oportunidades disfrazadas.</strong> CopilotEngine olvida; nosotros construimos memoria persistente. La restricción upstream devino en capacidad local.</li>
+    <li><strong>El proceso de planificación requiere gates de verdad.</strong> El bloqueo preventivo de Aleph forzó una auditoría que reveló 7 gaps técnicos. Ahora el DoR incluye verificación Ox-Indice.</li>
+    <li><strong>Un sistema que documenta cómo piensa puede pensar mejor.</strong> Los snapshots cierran un bucle: las conversaciones que generan conocimiento ahora pueden preservarse y consultarse.</li>
   </ol>
 </div>
 

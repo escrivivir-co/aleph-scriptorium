@@ -1959,6 +1959,25 @@ li {
   filter: grayscale(100%) contrast(1.1);
 }
 
+/* Artículo destacado */
+.periodico-article-featured {
+  border: 2px solid #fff;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  margin-bottom: 2rem;
+}
+
+.periodico-article-featured .periodico-article-body h3 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.periodico-article-featured .periodico-article-body p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
 /* Tesis box */
 .periodico-thesis {
   border: 2px solid #fff;

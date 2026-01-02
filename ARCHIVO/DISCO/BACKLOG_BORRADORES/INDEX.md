@@ -1,7 +1,7 @@
 # Índice — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`  
-> **Actualizado**: 2025-12-31  
+> **Actualizado**: 2026-01-01  
 > **Principio**: DRY — Solo referencias, detalles en cada borrador
 
 ---
@@ -27,7 +27,7 @@
 | [RELEASE_PARTY](RELEASE_PARTY/) | 🎉 Release Party v1.0.0-beta.1 (Obra teatro + Demo + DEMO-1.0.0) | 📋 Activo |
 | [FLOVE_EDITOR](FLOVE_EDITOR/) | Plugin FloveEditor | ✅ Publicado |
 | [INDICES_COBERTURA](INDICES_COBERTURA/) | Cobertura de Índices | ✅ Publicado |
-| [IOT-SBR-LOGICA](IOT-SBR-LOGICA/) | Plugin PrologEditor | 📝 Borrador |
+| [IOT-SBR-LOGICA](IOT-SBR-LOGICA/) | Plugin PrologEditor + Inteligencias Situadas | 🟢 Investigado |
 | [KICK-ALEPH](KICK-ALEPH/) | Kick Streaming Bridge | 📋 Borrador |
 | [MCP-NOVELIST](MCP-NOVELIST/) | Plugin Novelist | 📝 Borrador |
 | [MCP-PRESETS-SITE](MCP-PRESETS-SITE/) | Plugin MCP-PRESETS | ✅ Publicado |
@@ -48,8 +48,9 @@
 | [WIKI_RACER_ARG_BOARD_APP](WIKI_RACER_ARG_BOARD_APP/) | ArgBoardApp | 📝 Borrador |
 | [WIKI_RACER_HYPERGRAPH_EDITOR](WIKI_RACER_HYPERGRAPH_EDITOR/) | HyperGraphEditor | 📝 Borrador |
 | [WIKI_RACER_WIRING_APP](WIKI_RACER_WIRING_APP/) | WiringApp | 📝 Borrador |
-| [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | Test 0x: Prueba de Destilación | 📝 Borrador |
-| [Enero_02_ModelSelector_GenerateAbstract](Enero_02_ModelSelector_GenerateAbstract/) | SCRIPT-2.2.0: Model Selector para Generate Abstract | ✅ Completada |
+| [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | SCRIPT-2.2.0: Agentic Typed Logic Flow | 📝 Blueprint |
+| [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
+| [Enero_2026_CopilotLogsMCP_Bug](Enero_2026_CopilotLogsMCP_Bug/) | BUG-MCLOGS-1.0.0: get_copilot_request retorna vacío | 🐛 Bug |
 
 ---
 
@@ -71,9 +72,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Total carpetas | 39 |
+| Total carpetas | 40 |
 | ✅ Completadas/Publicadas | 20 |
-| 📋/📝 En progreso/Borrador | 19 |
+| 📋/📝 En progreso/Borrador | 20 |
 
 ---
 

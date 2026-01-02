@@ -18,8 +18,8 @@ Los índices son el **mapa de navegación rápida** del proyecto. No duplican co
 | Índice | Audiencia | Contenido |
 |--------|-----------|-----------|
 | **Funcional.md** | Usuarios | Capacidades, agentes, flujos, invocaciones |
-| **Tecnico.md** | Desarrolladores | Arquitectura, plugins, submódulos, DevOps |
-
+| **Tecnico.md** | Desarrolladores | Arquitectura, plugins, submódulos, DevOps || **BACKLOG_ARCHIVADOS/INDEX.md** | Scrum | Épicas cerradas, sprints históricos, spikes descartados |
+| **BACKLOG_BORRADORES/INDEX.md** | Scrum | Trabajo en progreso, conversaciones PO-SM |
 ---
 
 ## Cuándo Actualizar
@@ -30,6 +30,8 @@ Los índices son el **mapa de navegación rápida** del proyecto. No duplican co
 | Nuevo agente creado | Añadir en § Agentes por capa |
 | Nueva instrucción | Añadir en § Ontología |
 | Submódulo añadido | Añadir en § Submódulos |
+| Épica cerrada | Mover a BACKLOG_ARCHIVADOS, actualizar INDEX.md |
+| Spike descartado | Mover a BACKLOG_ARCHIVADOS/Spikes/, actualizar INDEX_ABSTRACT.md |
 
 ---
 

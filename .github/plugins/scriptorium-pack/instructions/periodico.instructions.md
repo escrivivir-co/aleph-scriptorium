@@ -1,7 +1,7 @@
 ---
 name: Periódico (noticias)
 description: Instrucciones para producción de planas noticieras con método doctrinal.
-applyTo: "ARCHIVO/DISCO/**/conversacion*.md, ARCHIVO/NOTICIAS/**/2*.md"
+applyTo: "ARCHIVO/DISCO/NOTICIAS/**/*.md, ARCHIVO/NOTICIAS/**/*.md"
 ---
 # Instrucciones: Agente Periódico
 

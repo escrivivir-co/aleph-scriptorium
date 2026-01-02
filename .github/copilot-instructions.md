@@ -24,6 +24,7 @@
 | **Plugins** | [PLUGINS.md](PLUGINS.md) | @pluginmanager |
 | **Backlogs** | [BACKLOG-SCRIPTORIUM.md](BACKLOG-SCRIPTORIUM.md) | @scrum |
 | **Core Instructions** | [scriptorium-pack](plugins/scriptorium-pack/) | @scriptorium-pack |
+| **Auto-Reflexión** | [auto-reflexion.instructions.md](plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md) | @ox, @indice, @scrum |
 
 ---
 
@@ -42,16 +43,44 @@
 ## Taxonomía de Agentes (Resumen)
 
 ```
-🐂 OX (Meta) ← Oráculo: conoce todos los agentes
+🐂 OX (Meta) ← Oráculo: conoce todos los agentes + gobierna auto-reflexión
      │
      ├─── 🟢 UI: @aleph, @revisor, @periodico
      ├─── 🔵⚫🔴🟡🟠 Backend: 5 banderas (auditoría)
      ├─── ⚪ Sistema: @vestibulo, @cartaspuerta
-     ├─── ⚙️ Meta: @pluginmanager, @ox
+     ├─── ⚙️ Meta: @pluginmanager, @ox, @indice
      └─── 🔌 Plugins: bridges + agentes específicos
 ```
 
 > **DRY**: Para el índice completo, invocar `@ox`.
+
+---
+
+## Protocolo de Auto-Reflexión
+
+> **Fuente**: `auto-reflexion.instructions.md`
+
+Los agentes del Scriptorium pueden **verse a sí mismos** funcionando:
+
+| Agente | Rol en Auto-Reflexión |
+|--------|----------------------|
+| **@ox** | Auditoría técnica: métricas, antipatrones |
+| **@indice** | Navegación: mapa estructural, evitar lecturas redundantes |
+| **@scrum** | Proceso: tracking de terapias, snapshots de cierre |
+
+### Cuándo Aplicar
+
+- Sesiones >1 hora → check de métricas
+- healthScore <60 → identificar antipatrones
+- Bridge invocado >5x sin resolver → terapia
+
+### Herramientas MCP
+
+```
+mcp_copilot-logs-_get_usage_metrics()    → Métricas de salud
+mcp_copilot-logs-_analyze_session()      → Diagnóstico de issues
+mcp_copilot-logs-_capture_snapshot()     → Preservar contexto
+```
 
 ---
 
