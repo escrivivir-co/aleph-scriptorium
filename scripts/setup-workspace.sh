@@ -11,7 +11,6 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto (11 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/VsCodeExtension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
