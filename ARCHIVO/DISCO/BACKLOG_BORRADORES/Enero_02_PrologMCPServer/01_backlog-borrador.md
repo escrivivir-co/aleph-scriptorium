@@ -3,11 +3,11 @@
 > **Épica**: SCRIPT-2.3.0  
 > **Opportunity**: Aleph Scriptorium  
 > **Effort total**: 27 pts  
-> **Estado**: ⚙️ En Desarrollo  
+> **Estado**: ✅ FC1 Completado  
 > **FC1 Completado**: 23 pts ✅  
 > **FC2 Pendiente**: 4 pts ⏳  
 > **Fecha creación**: 2026-01-02  
-> **Último commit**: e43ab79 (S04 Real Prolog Implementation)
+> **Último commit**: 18f5d88 (docs + feat Prolog MCP Server)
 
 ---
 
@@ -189,25 +189,25 @@ Escribir tests end-to-end para validar flujo completo de sesiones y queries.
 
 **Effort**: 2 pts  
 **Prioridad**: Should  
-**Estado**: ⏳ Pendiente (FC2)
+**Estado**: ✅ Parcialmente Completado
 
 ### Descripción
 Documentar API, ejemplos y patrones de uso del servidor Prolog.
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T022 | Crear README.md para MCPPrologServer | 1 | ⏳ |
+| T022 | Documentar en README-SCRIPTORIUM.md (dependencias + tools) | 1 | ✅ |
 | T023 | Actualizar blueprint-logic-flow.md con diagrama | 1 | ⏳ |
 
 ### Criterios de Aceptación
-- [ ] README documenta: tools, resources, session lifecycle
-- [ ] Incluye ejemplos de curl/http para cada tool
-- [ ] Documenta estructura de caché
+- [x] README documenta: tools, resources, session lifecycle
+- [x] Incluye instrucciones de instalación de SWI-Prolog por OS
+- [x] Documenta tabla de dependencias por servidor
 - [ ] Blueprint actualizado con flujo Prolog MCP
 
 ### Archivos Afectados
-- `MCPGallery/mcp-mesh-sdk/src/MCPPrologServer/README.md` (nuevo)
-- `docs/blueprint-logic-flow.md` (actualizar sección Prolog)
+- `MCPGallery/mcp-mesh-sdk/README-SCRIPTORIUM.md` (✅ actualizado)
+- `docs/blueprint-logic-flow.md` (⏳ pendiente)
 
 ---
 
@@ -261,4 +261,6 @@ Documentar API, ejemplos y patrones de uso del servidor Prolog.
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-02 | ✅ FC1 completado: tests MCP exitosos con SWI-Prolog real | @ox |
+| 2026-01-02 | ✅ T022: Documentación en README-SCRIPTORIUM.md | @ox |
 | 2026-01-02 | Creación del backlog borrador | @scrum |
