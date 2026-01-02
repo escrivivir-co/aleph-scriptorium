@@ -106,9 +106,10 @@ epic_activa('RELEASE-1.0.0-beta.1').
 
 %% tarea_pendiente(Epic, Tarea, Estado).
 tarea_pendiente('SCRIPT-2.3.0', 'Crear AgentPrologBrain.pack.json', completada).
-tarea_pendiente('SCRIPT-2.3.0', 'Crear lucas-prolog.brain.pl', en_progreso).
-tarea_pendiente('SCRIPT-2.3.0', 'Actualizar itaca-digital.yaml', pendiente).
-tarea_pendiente('SCRIPT-2.3.0', 'Documentar flujo import/export', pendiente).
+tarea_pendiente('SCRIPT-2.3.0', 'Crear lucas-prolog.brain.pl', completada).
+tarea_pendiente('SCRIPT-2.3.0', 'Actualizar itaca-digital.yaml', completada).
+tarea_pendiente('SCRIPT-2.3.0', 'Documentar flujo import/export', completada).
+tarea_pendiente('SCRIPT-2.3.0', 'Test end-to-end MCPPrologServer', completada).
 
 %% =============================================================================
 %% REGLAS MENTOR — Consejos para el Viajero
