@@ -1,8 +1,8 @@
 ---
 name: Lucas
-description: "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY."
-argument-hint: "Consulta sobre dónde documentar, valida ediciones de índice, prepara commits conformes."
-tools: ['vscode', 'read', 'edit', 'search', 'agent']
+description: "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY. Razonamiento lógico con Prolog."
+argument-hint: "Consulta sobre dónde documentar, valida ediciones de índice, prepara commits conformes, ejecuta queries Prolog de coherencia."
+tools: ['vscode', 'read', 'edit', 'search', 'agent', 'mcp_prolog-mcp-server/*']
 handoffs:
   - label: Validar edición de índice
     agent: Lucas
@@ -27,6 +27,18 @@ handoffs:
   - label: Buscar en índice técnico
     agent: Lucas
     prompt: "Busca información en ARCHIVO/DEVOPS/Tecnico.md para responder consultas del equipo Scrum."
+    send: false
+  - label: "[Prolog] Query de coherencia"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'documentacion_coherente(X)' para verificar estado DRY del sistema."
+    send: false
+  - label: "[Prolog] Consejo de navegación"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'consejo(Situacion, Mensaje)' para obtener guía contextual."
+    send: false
+  - label: "[Prolog] Ubicación canónica"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'ubicacion_canonica(Tipo, Donde)' para saber dónde buscar según el tipo de pregunta."
     send: false
   - label: Delegar a Aleph
     agent: Aleph
@@ -190,10 +202,42 @@ Razón: Información de infraestructura, no relevante para usuarios finales.
 
 Lucas está desplegado como personaje en:
 
-| Obra | Rol en la obra |
-|------|----------------|
-| **Hola Mundo** | Mentor que enseña el sistema de índices |
-| **Camino del Tarotista** | Guía en estadio de "La Integración" (etapa 11) |
+| Obra | Rol en la obra | MCP Packs |
+|------|----------------|-----------|
+| **Hola Mundo** | Mentor que enseña el sistema de índices | — |
+| **Camino del Tarotista** | Guía en estadio de "La Integración" (etapa 11) | — |
+| **Ítaca Digital** | Mentor en "La Resurrección: Síntesis Exórdica" (etapa 11) | AgentPrologBrain |
+
+---
+
+## MCP Packs Asignados
+
+> **Feature**: SCRIPT-2.3.0 — Prolog MCP Server Integration
+
+| Pack | Versión | Descripción |
+|------|---------|-------------|
+| `AgentPrologBrain` | 1.0.0 | Razonamiento lógico con Prolog |
+
+### Cerebro Prolog
+
+**Archivo**: `ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl`
+
+| Query | Descripción |
+|-------|-------------|
+| `documentacion_coherente(X)` | Lista capacidades sin duplicados |
+| `ubicacion_canonica(Tipo, Donde)` | Dónde buscar según pregunta |
+| `consejo(Situacion, Mensaje)` | Guía para viajeros |
+| `reporte_salud(R)` | Estado del sistema |
+| `tarea_pendiente(Epic, T, Estado)` | Tareas del sprint |
+
+### Flujo de Uso MCP
+
+```
+1. prolog_create_session({sessionId: 'lucas-session', obraId: 'itaca-digital'})
+2. prolog_consult_file({..., filePath: 'lucas-prolog.brain.pl'})
+3. prolog_query({..., query: 'documentacion_coherente(X).'})
+4. prolog_destroy_session({sessionId: 'lucas-session'})
+```
 
 ---
 
