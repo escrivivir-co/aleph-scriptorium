@@ -3,11 +3,11 @@
 > **Épica**: SCRIPT-2.3.0  
 > **Opportunity**: Aleph Scriptorium  
 > **Effort total**: 27 pts  
-> **Estado**: ✅ FC1 Completado  
-> **FC1 Completado**: 23 pts ✅  
-> **FC2 Pendiente**: 4 pts ⏳  
+> **Estado**: ✅ FC1 Completado + S06 Documentación  
+> **FC1 Completado**: 24 pts ✅ (incluye S06)  
+> **FC2 Pendiente**: 3 pts ⏳ (solo Tests E2E)  
 > **Fecha creación**: 2026-01-02  
-> **Último commit**: 18f5d88 (docs + feat Prolog MCP Server)
+> **Último commit**: ae09433 + blueprint update
 
 ---
 
@@ -189,7 +189,7 @@ Escribir tests end-to-end para validar flujo completo de sesiones y queries.
 
 **Effort**: 2 pts  
 **Prioridad**: Should  
-**Estado**: ✅ Parcialmente Completado
+**Estado**: ✅ Completado
 
 ### Descripción
 Documentar API, ejemplos y patrones de uso del servidor Prolog.
@@ -197,17 +197,19 @@ Documentar API, ejemplos y patrones de uso del servidor Prolog.
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T022 | Documentar en README-SCRIPTORIUM.md (dependencias + tools) | 1 | ✅ |
-| T023 | Actualizar blueprint-logic-flow.md con diagrama | 1 | ⏳ |
+| T023 | Actualizar blueprint-logic-flow.md con diagrama | 1 | ✅ |
 
 ### Criterios de Aceptación
 - [x] README documenta: tools, resources, session lifecycle
 - [x] Incluye instrucciones de instalación de SWI-Prolog por OS
 - [x] Documenta tabla de dependencias por servidor
-- [ ] Blueprint actualizado con flujo Prolog MCP
+- [x] Blueprint actualizado con flujo Prolog MCP
+- [x] Enlace visible en index.md (release banner + nav-card)
 
 ### Archivos Afectados
 - `MCPGallery/mcp-mesh-sdk/README-SCRIPTORIUM.md` (✅ actualizado)
-- `docs/blueprint-logic-flow.md` (⏳ pendiente)
+- `docs/blueprint-logic-flow.md` (✅ actualizado)
+- `docs/index.md` (✅ enlace en release banner)
 
 ---
 
@@ -261,6 +263,7 @@ Documentar API, ejemplos y patrones de uso del servidor Prolog.
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-02 | ✅ T023: Blueprint actualizado con diagrama Prolog MCP Flow | @ox |
 | 2026-01-02 | ✅ FC1 completado: tests MCP exitosos con SWI-Prolog real | @ox |
 | 2026-01-02 | ✅ T022: Documentación en README-SCRIPTORIUM.md | @ox |
 | 2026-01-02 | Creación del backlog borrador | @scrum |
