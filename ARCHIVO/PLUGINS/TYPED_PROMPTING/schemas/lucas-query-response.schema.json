@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aleph-scriptorium.github.io/schemas/lucas-query-response.schema.json",
+  "title": "Lucas Query Response",
+  "description": "Schema para validar responses de queries Prolog del agente Lucas",
+  "type": "object",
+  "required": ["success", "intent"],
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "description": "Si la query se ejecutó correctamente"
+    },
+    "intent": {
+      "type": "string",
+      "enum": [
+        "validar_coherencia",
+        "consultar_ubicacion",
+        "obtener_consejo",
+        "auditar_indices",
+        "verificar_tarea"
+      ]
+    },
+    "bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "description": "Variables unificadas por Prolog"
+    },
+    "mensaje": {
+      "type": "string",
+      "description": "Mensaje legible para el usuario"
+    },
+    "consejo": {
+      "type": "string",
+      "description": "Consejo de Lucas si aplica"
+    },
+    "acciones_sugeridas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "accion": { "type": "string" },
+          "descripcion": { "type": "string" },
+          "handoff": { "type": "string" }
+        }
+      },
+      "description": "Próximos pasos sugeridos"
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" }
+      },
+      "description": "Error si success=false"
+    }
+  }
+}
