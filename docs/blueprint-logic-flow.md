@@ -263,15 +263,15 @@ accionMotor(_, IdSensor, _) :-
   </div>
   
   <div class="servers-preview">
-    <div class="server-card new">
+    <div class="server-card active">
       <div class="server-name">prolog-mcp-server</div>
       <div class="server-port">:3006</div>
-      <div class="server-status">🔧 Por crear</div>
+      <div class="server-status">✅ FC1 Activo</div>
     </div>
     <div class="server-card new">
       <div class="server-name">aaia-mcp-server</div>
       <div class="server-port">:3007</div>
-      <div class="server-status">🔧 Por crear</div>
+      <div class="server-status">🔧 Pendiente</div>
     </div>
   </div>
   
@@ -295,38 +295,49 @@ accionMotor(_, IdSensor, _) :-
   <h3>Configuración del Servidor</h3>
   
   <div class="code-snippet">
-    <div class="snippet-header">prolog.config.ts (por crear)</div>
+    <div class="snippet-header">DEFAULT_PROLOG_MCP_SERVER_CONFIG.ts ✅</div>
     <pre><code>export const DEFAULT_PROLOG_MCP_SERVER_CONFIG = {
   id: "prolog-mcp-server",
   port: 3006,
   tools: [
-    "query_prolog",
-    "assert_fact",
-    "retract_fact",
-    "consult_kb"
+    "prolog_create_session",
+    "prolog_query",
+    "prolog_assert_fact",
+    "prolog_consult_file",
+    "prolog_destroy_session",
+    "prolog_list_sessions",
+    "prolog_get_templates"
   ],
-  resources: ["knowledge_base"]
+  resources: ["session-state", "templates-catalog"]
 };</code></pre>
   </div>
   
   <div class="file-tree">
-    <div class="file-entry create">
-      <span class="file-icon">➕</span>
-      <code>MCPGallery/.../configs/prolog.config.ts</code>
+    <div class="file-entry done">
+      <span class="file-icon">✅</span>
+      <code>MCPGallery/.../configs/DEFAULT_PROLOG_MCP_SERVER_CONFIG.ts</code>
     </div>
-    <div class="file-entry create">
-      <span class="file-icon">➕</span>
+    <div class="file-entry done">
+      <span class="file-icon">✅</span>
+      <code>MCPGallery/.../services/PrologEngine.ts</code>
+    </div>
+    <div class="file-entry done">
+      <span class="file-icon">✅</span>
+      <code>MCPGallery/.../services/PrologSessionManager.ts</code>
+    </div>
+    <div class="file-entry done">
+      <span class="file-icon">✅</span>
+      <code>MCPGallery/.../MCPPrologServer.ts</code>
+    </div>
+    <div class="file-entry pending">
+      <span class="file-icon">⏳</span>
       <code>MCPGallery/.../configs/aaia.config.ts</code>
     </div>
-    <div class="file-entry modify">
-      <span class="file-icon">✏️</span>
-      <code>MCPLauncherServer.ts</code>
-    </div>
   </div>
-  
+
   <div class="effort-badge">
     <span class="effort-label">Effort:</span>
-    <span class="effort-value">5 + 8 = 13 pts</span>
+    <span class="effort-value">23 pts ✅ (FC1) + 4 pts ⏳ (FC2)</span>
   </div>
 </div>
 
@@ -369,6 +380,115 @@ accionMotor(_, IdSensor, _) :-
       <span class="handoff-action">"Exponer AAIA"</span>
       <span class="handoff-to">@mcppresets</span>
     </div>
+  </div>
+</div>
+
+<!-- L1: Extra - Diagrama Prolog MCP Flow -->
+<div id="layer1-prolog-flow" class="step logic-step flow-step" 
+     data-x="0" 
+     data-y="3700" 
+     data-z="300"
+     data-rotate-x="-10">
+  
+  <div class="flow-header">
+    <span class="layer-badge-mini">L1</span>
+    <span class="flow-label">🧠 Prolog MCP Flow</span>
+    <span class="status-badge active">FC1 ✅</span>
+  </div>
+  
+  <h3>Ciclo de Inferencia Lógica</h3>
+  
+  <div class="flow-diagram">
+    <div class="flow-row">
+      <div class="flow-node client">
+        <span class="node-icon">🤖</span>
+        <span class="node-label">Copilot Agent</span>
+      </div>
+      <div class="flow-arrow">
+        <span class="arrow-line">──────►</span>
+        <span class="arrow-label">create_session</span>
+      </div>
+      <div class="flow-node server">
+        <span class="node-icon">🔌</span>
+        <span class="node-label">MCPPrologServer</span>
+        <span class="node-port">:3006</span>
+      </div>
+    </div>
+    
+    <div class="flow-row sub">
+      <div class="flow-spacer"></div>
+      <div class="flow-arrow down">
+        <span class="arrow-line">│</span>
+      </div>
+      <div class="flow-node internal">
+        <span class="node-icon">📦</span>
+        <span class="node-label">PrologSessionManager</span>
+      </div>
+    </div>
+    
+    <div class="flow-row sub">
+      <div class="flow-spacer"></div>
+      <div class="flow-arrow down">
+        <span class="arrow-line">│</span>
+      </div>
+      <div class="flow-node engine">
+        <span class="node-icon">⚙️</span>
+        <span class="node-label">PrologEngine</span>
+        <span class="node-tech">swipl-stdio</span>
+      </div>
+    </div>
+    
+    <div class="flow-row sub">
+      <div class="flow-spacer"></div>
+      <div class="flow-arrow down">
+        <span class="arrow-line">│</span>
+      </div>
+      <div class="flow-node external">
+        <span class="node-icon">🦉</span>
+        <span class="node-label">SWI-Prolog</span>
+        <span class="node-version">v10.0.0</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tools-grid">
+    <div class="tool-card">
+      <code>prolog_create_session</code>
+      <span class="tool-desc">Crea sesión aislada</span>
+    </div>
+    <div class="tool-card">
+      <code>prolog_assert_fact</code>
+      <span class="tool-desc">Añade a la KB</span>
+    </div>
+    <div class="tool-card">
+      <code>prolog_query</code>
+      <span class="tool-desc">Ejecuta consulta</span>
+    </div>
+    <div class="tool-card">
+      <code>prolog_consult_file</code>
+      <span class="tool-desc">Carga archivo .pl</span>
+    </div>
+    <div class="tool-card">
+      <code>prolog_destroy_session</code>
+      <span class="tool-desc">Libera recursos</span>
+    </div>
+    <div class="tool-card">
+      <code>prolog_list_sessions</code>
+      <span class="tool-desc">Lista activas</span>
+    </div>
+  </div>
+  
+  <div class="example-query">
+    <div class="query-header">Ejemplo de consulta:</div>
+    <pre><code>// 1. Crear sesión
+prolog_create_session({sessionId: "teatro-01", obraId: "demo"})
+
+// 2. Añadir hechos
+prolog_assert_fact({sessionId: "teatro-01", fact: "agente(ox, meta, oraculo)"})
+
+// 3. Consultar
+prolog_query({sessionId: "teatro-01", query: "agente(X, meta, Y)."})
+// → { results: [{X: "ox", Y: "oraculo"}] }</code></pre>
   </div>
 </div>
 
