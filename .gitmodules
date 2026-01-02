@@ -65,3 +65,4 @@
 [submodule "StateMachine"]
 	path = StateMachine
 	url = https://github.com/escrivivir-co/state-machine-mcp-driver
+	branch = integration/beta/scriptorium

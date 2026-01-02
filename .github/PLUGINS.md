@@ -98,6 +98,7 @@ mcpServers:
 | `@plugin_ox_teatro` | Teatro | 1 agente | — |
 | `@plugin_ox_scrum` | Scrum | 1 agente | — |
 | `@plugin_ox_mcppresets` | MCP Presets | 1 agente | 6 servers (mesh) |
+| `@plugin_ox_openasyncapieditor` | OpenAsyncAPI Editor | 1 agente | — |
 
 ---
 

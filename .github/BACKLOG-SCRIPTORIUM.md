@@ -31,6 +31,8 @@
 | ✅ | SCRIPT-2.2.0 | Model Selector para Generate Abstract | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_ModelSelector_GenerateAbstract/01_backlog-borrador.md) |
 | ✅ | SCRIPT-2.3.0 | Prolog MCP Server Integration (FC1 ✅) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologMCPServer/01_backlog-borrador.md) |
 | ✅ | SCRIPT-2.3.1 | PrologAgent Pack (AGENT_CREATOR + TypedPrompting) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/01_backlog-borrador.md) |
+| ✅ | PROLOG-API-1.0.0 | PrologEditor API Contracts (OpenAPI/AsyncAPI) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologEditor_API_Contracts/01_backlog-borrador.md) |
+| ✅ | PLUGIN-OPENASYNCAPI-1.0.0 | OpenAsyncAPI Editor Plugin | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_OpenAsyncApiEditor/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---

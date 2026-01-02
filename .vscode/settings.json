@@ -27,7 +27,8 @@
 		".github/plugins/typed-prompting/prompts": false,
 		".github/plugins/n8n-editor/prompts": false,
 		".github/plugins/flove-editor/prompts": false,
-		".github/plugins/scriptorium-pack/prompts": true
+		".github/plugins/scriptorium-pack/prompts": true,
+		".github/plugins/openasyncapi-editor/prompts": true
 	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
@@ -45,7 +46,8 @@
 		".github/plugins/mcp-presets/instructions": true,
 		".github/plugins/typed-prompting/instructions": false,
 		".github/plugins/n8n-editor/instructions": false,
-		".github/plugins/flove-editor/instructions": false
+		".github/plugins/flove-editor/instructions": false,
+		".github/plugins/openasyncapi-editor/instructions": true
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas
