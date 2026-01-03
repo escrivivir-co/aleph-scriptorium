@@ -2,8 +2,9 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.0.0  
-> **Última actualización**: 2026-01-03
+> **Versión**: 1.1.0  
+> **Última actualización**: 2026-01-03  
+> **Épica**: PROLOG-CLIENT-GEN-1.0.0 (actualización)
 
 ---
 
@@ -78,11 +79,19 @@
 
 ### 2.3 MCP Server (mcp-mesh-sdk/)
 
-| Componente | Path | Tools expuestas |
-|------------|------|-----------------|
-| PrologServer | `servers/prolog-mcp-server/` | 7 tools, 3 resources |
-| DevOpsServer | `servers/devops-mcp-server/` | N tools |
-| LauncherServer | `servers/launcher-server/` | Orquestación |
+| Componente | Path | Capacidades |
+|------------|------|-------------|
+| PrologServer | `src/MCPPrologServer.ts` | **12 tools**, **6 resources**, **8 prompts** |
+| DevOpsServer | `src/MCPDevOpsServer.ts` | N tools |
+| LauncherServer | `src/MCPLauncherServer.ts` | Orquestación |
+
+### 2.4 Clients (mcp-mesh-sdk/src/clients/)
+
+| Cliente | Path | Propósito |
+|---------|------|-----------|
+| PrologBackendClient | `clients/PrologBackendClient.ts` | HTTP client para SQLite sin ciclos MCP |
+
+> **Nota**: El PrologBackendClient permite al MCPPrologServer acceder a datos SQLite del backend sin invocar MCP tools, evitando ciclos infinitos.
 
 ---
 
@@ -113,6 +122,8 @@ mcp-core-sdk/types/
 
 ### 3.3 Matriz de Alineamiento
 
+#### Tools Core (7) - Invocan motor SWI-Prolog
+
 | Tool MCP Server | Cliente Backend | Endpoint REST | Service Frontend | UI Component |
 |-----------------|-----------------|---------------|------------------|--------------|
 | `prolog_create_session` | `createSession()` | `POST /sessions` | `createSession()` | ❌ Pendiente |
@@ -123,7 +134,43 @@ mcp-core-sdk/types/
 | `prolog_consult_file` | `consultFile()` | `POST /consult` | `consultFile()` | ❌ Pendiente |
 | `prolog_get_templates` | `getTemplates()` | `GET /mcp-templates` | `getMcpTemplates()` | ❌ Pendiente |
 
+#### Tools Backend-Integrated (5) - Acceden SQLite via PrologBackendClient
+
+| Tool MCP Server | PrologBackendClient | Endpoint REST Safe | Propósito |
+|-----------------|---------------------|--------------------|-----------|
+| `prolog_load_rules_from_db` | `getAllRules()`, `getRulesByApp()` | `GET /rules`, `GET /rules/{app}` | Cargar reglas de SQLite a KB |
+| `prolog_save_rule_to_db` | `createRule()` | `POST /rules` | Persistir regla en SQLite |
+| `prolog_list_sdk_templates` | `getSdkTemplates()` | `GET /sdk-templates` | Listar templates del SDK |
+| `prolog_get_sdk_template_content` | `getTemplateContent()` | `GET /sdk-templates/{id}` | Obtener contenido de template |
+| `prolog_get_telemetry_status` | `getTelemetryStatus()` | `GET /telemetry/status` | Estado de telemetría |
+
 **Regla**: Toda tool debe estar alineada en las 5 capas para considerarse 100% completa.
+
+> **Nota sobre ciclos**: Las 5 tools backend-integrated usan `PrologBackendClient` (HTTP directo) en lugar de invocar MCP, previniendo ciclos MCP → Backend → MCP.
+
+### 3.4 Matriz de Prompts (8)
+
+| Prompt | Propósito | Tools que Orquesta |
+|--------|-----------|-------------------|
+| `session_lifecycle` | Gestión ciclo de vida | create, list, destroy |
+| `load_knowledge_base` | Carga de conocimiento | consult_file, load_rules_from_db |
+| `interactive_query` | Consulta interactiva | query + resource session-state |
+| `persist_rule` | Persistencia | assert_fact, save_rule_to_db |
+| `use_sdk_template` | Templates SDK | list_sdk_templates, get_sdk_template_content |
+| `telemetry_check` | Monitoreo IoT | get_telemetry_status + resource telemetry |
+| `razonamiento_sbr` | Sensor-Based Reasoning | query, load_rules_from_db, get_telemetry_status |
+| `teatro_agent_session` | Workflow E2E Teatro | **Todos** (orquestación completa) |
+
+### 3.5 Matriz de Resources (6)
+
+| Resource | URI | Fuente |
+|----------|-----|--------|
+| `prolog-session-state` | `prolog://sessions/current` | SessionManager |
+| `prolog-templates-catalog` | `prolog://templates/catalog` | Local templates |
+| `prolog-active-sessions` | `prolog://sessions` | SessionManager |
+| `prolog-rules-catalog` | `prolog://rules/catalog` | PrologBackendClient → SQLite |
+| `prolog-sdk-templates` | `prolog://sdk/templates` | PrologBackendClient → Backend |
+| `prolog-telemetry` | `prolog://telemetry/current` | PrologBackendClient → IoT |
 
 ---
 
@@ -169,10 +216,10 @@ export type { PrologSession, CreateSessionRequest } from '@alephscript/mcp-core-
 ¿Dónde definir un nuevo tipo?
 
 1. ¿Lo usan múltiples packages?
-   └─► SÍ → mcp-core-sdk/types/
+   └─► SÍ → mcp-core-sdk/src/types/
 
-2. ¿Es específico de un MCP Server?
-   └─► SÍ → mcp-mesh-sdk/servers/{server}/types/
+2. ¿Es específico del mesh de servers?
+   └─► SÍ → mcp-mesh-sdk/src/types/
 
 3. ¿Es específico del backend de una app?
    └─► SÍ → {app}/backend/src/types/
@@ -226,13 +273,17 @@ export type { PrologSession, CreateSessionRequest } from '@alephscript/mcp-core-
 
 ### 6.3 Métricas de Alineamiento
 
-| Métrica | Fórmula | Objetivo |
-|---------|---------|----------|
-| Cobertura Backend | Tools con cliente / Total tools | 100% |
-| Cobertura REST | Endpoints / Tools | 100% |
-| Cobertura Frontend | Services / Endpoints | 100% |
-| Cobertura UI | Componentes / Services | ≥80% |
-| Tipos DRY | Tipos en core / Tipos totales | ≥70% |
+| Métrica | Fórmula | Objetivo | Estado Actual (PrologEditor) |
+|---------|---------|----------|------------------------------|
+| Cobertura Backend | Tools con cliente / Total tools | 100% | 12/12 = **100%** ✅ |
+| Cobertura REST | Endpoints / Tools | 100% | 12/12 = **100%** ✅ |
+| Cobertura Frontend | Services / Endpoints | 100% | 7/12 = 58% ⚠️ |
+| Cobertura UI | Componentes / Services | ≥80% | 1/7 = **14%** 🔴 |
+| Tipos DRY | Tipos en core / Tipos totales | ≥70% | ~85% ✅ |
+| Cobertura Prompts | Prompts implementados / Prompts pack | 100% | 8/8 = **100%** ✅ |
+| Cobertura Resources | Resources implementados / Resources pack | 100% | 6/6 = **100%** ✅ |
+
+> **Pendiente**: UI Refactor (02_backlog-ui-refactor.md) para cerrar gap de cobertura UI.
 
 ### 6.4 Validación de Cierre
 
@@ -264,6 +315,7 @@ npm run lint       # en cada package
 | **Tool sin REST** | Tool funciona en Copilot, no en app | Añadir endpoint |
 | **REST sin UI** | Endpoint existe pero nadie lo llama | Añadir componente o deprecar |
 | **Spec desactualizada** | OpenAPI no refleja endpoints reales | Sync con código |
+| **Ciclo MCP infinito** | MCP Server invoca Backend que invoca MCP | Usar PrologBackendClient (HTTP directo) |
 
 ---
 
@@ -302,10 +354,12 @@ grep -E "^\s+(create|list|destroy|run|assert|consult|get)" PrologEditor/frontend
 | Documento | Path | Contenido |
 |-----------|------|-----------|
 | Spike original | `BACKLOG_BORRADORES/Enero_02_PrologAgentPack/spike-prolog-mcp-tools.md` | Análisis detallado |
-| OpenAPI Spec | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/openapi.yaml` | Contrato REST |
+| OpenAPI Spec (Full) | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/openapi.yaml` | Contrato REST completo |
+| OpenAPI Spec (Safe) | `MCPGallery/mcp-mesh-sdk/specs/openapi-safe.yaml` | Subset sin ciclos MCP (7 endpoints) |
 | AsyncAPI Spec | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/asyncapi.yaml` | Contrato MQTT |
-| Agent Pack | `.github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json` | Tools para agentes |
+| Agent Pack | `.github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json` | 12 tools para agentes (v2.0.0) |
 | Core SDK Types | `MCPGallery/mcp-core-sdk/src/types/` | Tipos compartidos |
+| PrologBackendClient | `MCPGallery/mcp-mesh-sdk/src/clients/PrologBackendClient.ts` | Cliente HTTP para backend |
 
 ---
 

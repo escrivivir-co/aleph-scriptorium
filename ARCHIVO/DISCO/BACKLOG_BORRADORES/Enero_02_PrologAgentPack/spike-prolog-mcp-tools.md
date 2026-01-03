@@ -8,12 +8,13 @@
 
 ## Backlogs Derivados (DRY)
 
-| Backlog | Foco | Effort | Tipos SDK |
-|---------|------|--------|-----------|
-| [02_backlog-ui-refactor.md](02_backlog-ui-refactor.md) | UI Alignment | 21 pts | ✅ Re-exports existentes |
-| [03_backlog-openapi-client-gen.md](03_backlog-openapi-client-gen.md) | Backend Client | 13 pts | ✅ via importMappings |
+| Backlog | Foco | Effort | Estado |
+|---------|------|--------|--------|
+| [02_backlog-ui-refactor.md](02_backlog-ui-refactor.md) | UI Alignment | 21 pts | 📋 Pendiente |
+| [03_backlog-openapi-client-gen.md](03_backlog-openapi-client-gen.md) | Backend Client | 13 pts | ✅ Completado |
+| [04_backlog-prompts-completion.md](04_backlog-prompts-completion.md) | Prompts + Resources + Handoffs | 17 pts | 📋 Nuevo |
 
-**Total effort derivado**: 34 pts
+**Total effort derivado**: 51 pts
 
 ---
 
