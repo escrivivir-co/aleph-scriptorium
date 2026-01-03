@@ -35,7 +35,8 @@
 | ✅ | PLUGIN-OPENASYNCAPI-1.0.0 | OpenAsyncAPI Editor Plugin | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_OpenAsyncApiEditor/01_backlog-borrador.md) |
 | ✅ | PROLOG-CLIENT-GEN-1.0.0 | OpenAPI Client Gen para MCPPrologServer | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/03_backlog-openapi-client-gen.md) |
 | ✅ | PROLOG-PROMPTS-1.0.0 | MCP Prompts Completion (8 prompts + 3 resources) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/04_backlog-prompts-completion.md) |
-| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| ✅ | PROLOG-UI-2.0.0 | PrologEditor UI Refactor (7/7 tools) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/02_backlog-ui-refactor.md) |
+| �📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
 

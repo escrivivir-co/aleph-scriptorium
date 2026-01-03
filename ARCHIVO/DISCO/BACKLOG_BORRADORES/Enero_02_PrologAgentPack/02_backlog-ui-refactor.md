@@ -2,8 +2,10 @@
 
 > **Épica**: PROLOG-UI-2.0.0  
 > **Effort total**: 21 pts  
-> **Estado**: 📋 Borrador  
+> **Estado**: ✅ Completado  
 > **Fecha**: 2026-01-03  
+> **Aprobado**: 2026-01-03  
+> **Cerrado**: 2026-01-03  
 > **Dependencia**: SCRIPT-2.3.1 (PrologAgent Pack) ✅
 
 ---
