@@ -144,7 +144,24 @@
         "panel": "shared",
         "clear": true
       },
-      "detail": "Verifica estado de los 4 servicios (script externo)"
+      "detail": "Verifica prerequisitos (swipl) + estado de los 4 servicios"
+    },
+
+    {
+      "label": "APB: Check Prerequisites",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "bash ./scripts/apb-health-check.sh 2>&1 | head -30"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Solo verifica prerequisitos (swipl en PATH) - rápido"
     },
 
     {

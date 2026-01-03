@@ -1,12 +1,33 @@
 ---
 id: prolog-editor
 name: "Stack MCP Prolog"
-version: "2.0.0"
+version: "2.0.1"
 description: "Stack completo de 4 capas: UI Angular + Backend REST + MCP Server (12 tools, 6 resources, 8 prompts). Razonamiento lógico, IoT/SBR, Teatro."
 author: "Aleph Scriptorium"
 license: "MIT"
 
 scriptorium_version: ">=1.0.0"
+
+# ============================================
+# PREREQUISITOS DEL SISTEMA OPERATIVO
+# ============================================
+# IMPORTANTE: SWI-Prolog debe estar instalado antes de usar este plugin.
+# El health check (scripts/apb-health-check.sh) verificará este prerequisito.
+systemPrerequisites:
+  - name: "SWI-Prolog"
+    binary: "swipl"
+    required: true
+    install:
+      macOS: "brew install swi-prolog"
+      Windows: "winget install SWI-Prolog.SWI-Prolog"
+      Linux-Debian: "sudo apt install swi-prolog"
+      Linux-Fedora: "sudo dnf install pl"
+    verify:
+      macOS: "which swipl"
+      Windows: "where swipl"
+      Linux: "which swipl"
+    documentation: "https://www.swi-prolog.org/download/stable"
+
 dependencies: []
 optional_dependencies:
   - blockly-editor
