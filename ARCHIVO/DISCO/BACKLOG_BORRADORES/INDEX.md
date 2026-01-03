@@ -31,6 +31,7 @@
 | [Enero_02_PrologAgentPack](Enero_02_PrologAgentPack/) | SCRIPT-2.3.1: PrologAgent Pack (49 pts: 3 backlogs derivados) | 📋 Activo |
 | [Enero_02_PrologMCPServer](Enero_02_PrologMCPServer/) | SCRIPT-2.3.0: Prolog MCP Server Integration | ✅ Completada |
 | [Enero_02_PrologEditor_API_Contracts](Enero_02_PrologEditor_API_Contracts/) | PROLOG-API-1.0.0: OpenAPI/AsyncAPI Specs | 📋 Activo |
+| [Enero_03_Tablero_Cotrabajo](Enero_03_Tablero_Cotrabajo/) | COWORK-1.0.0: Tablero para Cotrabajo Multi-Agente | ✅ Completada |
 | [Enero_2026_Blueprint_Refinement](Enero_2026_Blueprint_Refinement/) | SCRIPT-1.32.0: Blueprint Refinement para Release Party | 📋 Activo |
 | [Enero_2026_CopilotLogsMCP_Bug](Enero_2026_CopilotLogsMCP_Bug/) | FEATURE-SNAPSHOTS-1.0.0: Copilot Logs Snapshot System | ✅ Completada |
 | [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
@@ -80,8 +81,8 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Total carpetas | 47 |
-| ✅ Completadas/Publicadas | 27 |
+| Total carpetas | 48 |
+| ✅ Completadas/Publicadas | 28 |
 | 📋/📝 En progreso/Borrador | 20 |
 
 ---

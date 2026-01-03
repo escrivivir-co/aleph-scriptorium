@@ -3,7 +3,7 @@
 > **Opportunity**: Aleph Scriptorium  
 > **Versión**: 1.2.3-dry  
 > **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-02
+> **Actualizado**: 2026-01-03
 > **Rama en ALEPH (esta codebase)**: flavour/monada
 > **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
@@ -38,6 +38,7 @@
 | ✅ | PROLOG-UI-2.0.0 | PrologEditor UI Refactor (7/7 tools) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/02_backlog-ui-refactor.md) |
 | ✅ | PROLOG-DRY-1.0.0 | Tipado DRY completo (12/12 frontend) | [guía](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/guia-arquitectura-mcp-stack.md) |
 | ✅ | TEATRO-PROLOG-1.0.0 | Integración Teatro + Prolog (13 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/05_backlog-teatro-prolog-integration.md) |
+| ✅ | COWORK-1.0.0 | Tablero para Cotrabajo Multi-Agente (21 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
@@ -78,6 +79,7 @@
 | [Diciembre_31_Test_0x_Destilacion](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) | Agentic Typed Logic Flow | 📝 Blueprint |
 | [Enero_2026_LogicaAgentes](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_LogicaAgentes/) | IOT-SBR + SCRIPT-2.2.0: Conversaciones | 📋 Activo |
 | [Enero_02_PrologAgentPack](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/) | PrologAgent Pack: AGENT_CREATOR + TypedPrompting | ✅ Completado |
+| [Enero_03_Tablero_Cotrabajo](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/) | Tablero para Cotrabajo Multi-Agente | ✅ Completado |
 | [Enero_2026_CopilotLogsMCP_Bug](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/) | Copilot Logs Snapshot System | 🟢 Aprobado |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)

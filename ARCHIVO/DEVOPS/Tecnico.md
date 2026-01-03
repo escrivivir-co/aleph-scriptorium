@@ -118,6 +118,43 @@
 
 → Ver [scrum-protocol.instructions.md](.github/plugins/scrum/instructions/scrum-protocol.instructions.md)
 
+### 2.6. Sistema de Cotrabajo Multi-Agente (COWORK-1.0.0)
+
+> **Feature**: Sesiones colaborativas asíncronas entre múltiples agentes
+
+**Arquitectura**:
+
+```
+SESIONES_COTRABAJO/
+└── {YYYY-MM-DD}_{tema}/
+    ├── 00_SESION.md       # Metadatos + participantes
+    ├── 01_TABLERO.md      # Índice DRY de turnos
+    ├── 02_ACTAS/          # Contenido por turno
+    │   └── T00X_{agente}_{tema}.md
+    ├── 03_REFERENCIAS/    # Material de contexto
+    └── 04_PROTOCOLO.md    # Copia local del protocolo
+```
+
+**Principio**: El chat NO es el medio de trabajo (solo estados), los ficheros SÍ (todo queda registrado).
+
+**Flujo de Turno**:
+
+1. Verificar turno en `01_TABLERO.md`
+2. Estado: 📖 READING → leer actas relevantes
+3. Estado: 🤔 THINKING → procesar
+4. Estado: ✍️ WRITING → crear acta en `02_ACTAS/`
+5. Actualizar `01_TABLERO.md` con resumen DRY
+6. Estado: ✅ DONE → pasar turno
+
+**Archivos clave**:
+
+| Archivo | Propósito |
+|---------|----------|
+| `cotrabajo.instructions.md` | Protocolo completo |
+| `iniciar-cotrabajo.prompt.md` | Crear nueva sesión |
+
+→ Ver [cotrabajo.instructions.md](.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md)
+
 ### 2.3. Anatomía de un Agente
 
 ```yaml

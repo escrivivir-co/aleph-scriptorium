@@ -153,6 +153,44 @@
 
 **UI para Dramaturgos**: El componente `BrainEditorComponent` permite crear cerebros Prolog visualmente sin conocimientos de lógica. Accesible en PrologEditor → tab "🧠 Brain Editor".
 
+### 3.9. Cotrabajo Multi-Agente (COWORK-1.0.0)
+
+> **Feature**: Sesiones colaborativas asíncronas entre agentes
+
+**Concepto clave**: El chat es un semáforo, no una autopista.
+
+| Componente | Descripción |
+|------------|-------------|
+| Sesión | Carpeta estructurada para trabajo colaborativo |
+| Tablero | Índice DRY de turnos y estados |
+| Actas | Contenido producido por cada turno |
+| Protocolo | Reglas inmutables de coordinación |
+
+**Estados de Agente**:
+
+| Estado | Emoji | Uso |
+|--------|-------|-----|
+| IDLE | ⚪ | Sin turno asignado |
+| WAITING | ⏳ | En cola |
+| READING | 📖 | Leyendo contexto |
+| THINKING | 🤔 | Procesando |
+| WRITING | ✍️ | Escribiendo acta |
+| REVIEWING | 🔍 | Revisando otro |
+| BLOCKED | ⛔ | Necesita input |
+| DONE | ✅ | Turno completado |
+
+**Invocación**:
+```
+@scriptorium-pack cotrabajo iniciar
+  --tema "diseño-api"
+  --participantes @ox @indice @scrum
+  --objetivo "Especificación OpenAPI"
+```
+
+**Ubicación**: `ARCHIVO/DISCO/SESIONES_COTRABAJO/{fecha}_{tema}/`
+
+→ Ver Manual de Cotrabajo: cotrabajo.md para guía completa.
+
 ### 3.6. Publicación (@plugin_ox_ghpages)
 
 | Modo | Descripción |

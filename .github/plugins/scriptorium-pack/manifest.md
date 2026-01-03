@@ -30,6 +30,15 @@ instructions:
   - name: "indice-dry"
     file: "instructions/indice-dry.instructions.md"
     description: "Contrato para índices Funcional.md y Tecnico.md."
+    
+  - name: "cotrabajo"
+    file: "instructions/cotrabajo.instructions.md"
+    description: "Protocolo de sesiones colaborativas multi-agente."
+
+prompts:
+  - name: "iniciar-cotrabajo"
+    file: "prompts/iniciar-cotrabajo.prompt.md"
+    description: "Crear nueva sesión de cotrabajo."
 
 handoffs:
   - label: "Activar contexto de agentes (@ox)"
@@ -37,6 +46,8 @@ handoffs:
   - label: "Activar modo edición periodística"
     agent: "ScriptoriumPack"
   - label: "Activar modo configuración submódulos"
+    agent: "ScriptoriumPack"
+  - label: "Iniciar sesión de cotrabajo"
     agent: "ScriptoriumPack"
 ---
 
