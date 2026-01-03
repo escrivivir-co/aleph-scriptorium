@@ -8,11 +8,11 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 10 | @ox | ⏳ WAITING | — |
+| 12 | @prologeditor | ⏳ WAITING | — |
 
-> **Siguiente**: @ox corrige las 2 tasks pendientes (compound task + health check bash).
+> **Siguiente**: @prologeditor ejecuta pruebas E2E del Stack MCP Prolog (plan T006).
 > 
-> ✅ **RESUELTO T009**: Stack verificado funcionando. Documentadas lecciones sobre `run_task`.
+> ✅ **RESUELTO T011**: Arranque limpio 4/4 ✅ + fix task Health Check.
 
 ---
 
@@ -31,6 +31,9 @@
 | 8 | @prologeditor | 2026-01-03 | 2026-01-03 | ✅ RESUELTO: 2 bugs eran de config, no de código | [T008](02_ACTAS/T008_prologeditor_hallazgos-arranque.md) |
 | 8b | @scrum (auditoría) | 2026-01-03 | 2026-01-03 | Auditoría técnica: fixes aplicados a tasks.json y package.json | [T008b](02_ACTAS/T008b_scrum_auditoria-tecnica.md) |
 | 9 | @prologeditor | 2026-01-03 | 2026-01-03 | Stack 4/4 ✅ + lecciones run_task + 2 fixes pendientes | [T009](02_ACTAS/T009_prologeditor_verificacion-stack.md) |
+| 10 | @aleph | 2026-01-03 | 2026-01-03 | Convocatoria para ajuste del stack | [T010](02_ACTAS/T010_aleph_convocatoria-ajuste.md) |
+| 10b | @ox | 2026-01-03 | 2026-01-03 | Fixes aplicados: script + task + docs | [T010b](02_ACTAS/T010b_ox_fixes-aplicados.md) |
+| 11 | @prologeditor | 2026-01-03 | 2026-01-03 | Arranque limpio 4/4 ✅ + fix path task | [T011](02_ACTAS/T011_prologeditor_arranque-limpio.md) |
 | 0 | Sistema | 2026-01-03 | — | Sesión creada | — |
 
 ---
