@@ -2,7 +2,8 @@
 
 > **Fecha**: 2026-01-03  
 > **Épica**: SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Puerto**: 3006
+> **Puerto**: 3006  
+> **Actualizado**: 2026-01-03 (Spike Teatro-ARG-AgentCreator)
 
 ---
 
@@ -10,11 +11,12 @@
 
 | Backlog | Foco | Effort | Estado |
 |---------|------|--------|--------|
-| [02_backlog-ui-refactor.md](02_backlog-ui-refactor.md) | UI Alignment | 21 pts | 📋 Pendiente |
+| [02_backlog-ui-refactor.md](02_backlog-ui-refactor.md) | UI Alignment | 21 pts | ✅ Completado |
 | [03_backlog-openapi-client-gen.md](03_backlog-openapi-client-gen.md) | Backend Client | 13 pts | ✅ Completado |
-| [04_backlog-prompts-completion.md](04_backlog-prompts-completion.md) | Prompts + Resources + Handoffs | 17 pts | 📋 Nuevo |
+| [04_backlog-prompts-completion.md](04_backlog-prompts-completion.md) | Prompts + Resources + Handoffs | 17 pts | ✅ Completado |
+| **05_spike-teatro-integration.md** (nuevo) | Teatro + ARG + AgentCreator | TBD | 🟢 Investigado |
 
-**Total effort derivado**: 51 pts
+**Total effort derivado**: 51+ pts
 
 ---
 
@@ -595,4 +597,253 @@ src/app/models/
 ### Siguiente Paso Recomendado
 
 Crear `SessionManagerComponent` para exponer control explícito de sesiones MCP en la UI.
+
+---
+
+## Spike: Integración Teatro + ARG + AgentCreator
+
+> **Fecha**: 2026-01-03  
+> **Foco**: Alineamiento de personajes-agente con PrologEditor durante obras en vivo
+
+---
+
+### Contexto Histórico
+
+Este tema ha sido explorado en múltiples carpetas:
+
+| Carpeta | Épica | Foco | Estado |
+|---------|-------|------|--------|
+| [IOT-SBR-LOGICA](../IOT-SBR-LOGICA/) | SCRIPT-1.11.0 | Plugin PrologEditor original | 🟢 Investigado |
+| [Enero_2026_LogicaAgentes](../Enero_2026_LogicaAgentes/) | SCRIPT-2.2.0 | Agentic Typed Logic Flow | 📋 Activo |
+| [Diciembre_29_TypedPrompting_ContextManager](../Diciembre_29_TypedPrompting_ContextManager/) | SCRIPT-2.1.0 | TypedPrompting Context Manager | ✅ Funcional |
+
+### Arquitectura de Plugins Relacionados
+
+```
+                    ┌─────────────────────────────────────────────────────────┐
+                    │                    MCPPrologServer                      │
+                    │              (12 tools, 6 resources, 8 prompts)         │
+                    │                     Puerto: 3006                        │
+                    └────────────────────────────┬────────────────────────────┘
+                                                 │
+                                    AgentPrologBrain.pack.json
+                                                 │
+                    ┌────────────────────────────┼────────────────────────────┐
+                    │                            │                            │
+            ┌───────▼───────┐           ┌────────▼────────┐          ┌────────▼────────┐
+            │    TEATRO     │           │   ARG_BOARD     │          │  AGENT_CREATOR  │
+            │ (orquestador) │           │ (obras/actores) │          │  (personajes)   │
+            └───────┬───────┘           └────────┬────────┘          └────────┬────────┘
+                    │                            │                            │
+                    └────────────────────────────┼────────────────────────────┘
+                                                 │
+                                         ┌───────▼───────┐
+                                         │   OBRA YAML   │
+                                         │ (declaración) │
+                                         └───────────────┘
+```
+
+---
+
+### Plugin Teatro — Puntos de Integración
+
+**Archivo clave**: `.github/plugins/teatro/instructions/teatro-interactivo.instructions.md`
+
+| Flujo | Descripción | Tools MCP que Usa |
+|-------|-------------|-------------------|
+| Generar Obra | Crea YAML con 12 estadios (monomito) | — |
+| Instalar Obra | Registra en `obras.json` | — |
+| **Ejecutar Obra** | Pone en escena, agentes razonan | **prolog_*** |
+
+**Oportunidad**: La ejecución de obra puede usar el prompt `teatro_agent_session` (ya implementado en MCPPrologServer).
+
+### Plugin ARG_BOARD — Puntos de Integración
+
+**Archivo clave**: `.github/plugins/arg-board/instructions/arg-engine.instructions.md`
+
+| Componente | Descripción | Potencial Prolog |
+|------------|-------------|------------------|
+| **Arrakis** (director) | Orquesta partidas, gestiona turnos | Reglas de turno/estado |
+| **BOE** (registro) | Boletín oficial de eventos | Hechos inmutables |
+| **Decoherence** | Validador de coherencia | Queries de consistencia |
+| **Monomito** | Camino del Héroe (12 etapas) | Transiciones de estado |
+
+**Oportunidad**: Las 12 etapas del monomito pueden modelarse como máquina de estados Prolog:
+
+```prolog
+% Transiciones del monomito
+transicion(mundo_ordinario, llamada_aventura).
+transicion(llamada_aventura, rechazo_llamada).
+transicion(rechazo_llamada, encuentro_mentor).
+% ... hasta retorno_elixir
+
+% Query: ¿Cuál es el siguiente estadio?
+siguiente_estadio(Actual, Siguiente) :-
+    transicion(Actual, Siguiente).
+```
+
+### Plugin AgentCreator — Puntos de Integración
+
+**Archivo clave**: `.github/plugins/agent-creator/instructions/agent-creator.instructions.md`
+
+| Feature | Descripción | Potencial Prolog |
+|---------|-------------|------------------|
+| Agente Base + Fuentes | Combina metodología + datos | KB heredada |
+| Recetas reproducibles | JSON de configuración | Export a `.brain.pl` |
+| **Desplegar en Teatro** | Handoff a Arrakis | Session MCP por agente |
+
+**Oportunidad**: Cada agente creado puede tener un archivo `.brain.pl` con sus reglas de comportamiento.
+
+---
+
+### Prompt Existente: `teatro_agent_session`
+
+**Ubicación**: `MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts` (línea 1043)
+
+**Parámetros**:
+- `obraId`: ID de la obra (ej: "itaca-digital")
+- `agentName`: Nombre del agente (ej: "lucas")
+
+**Workflow que Orquesta**:
+1. `prolog_create_session` → Crea sesión `{agentName}-{obraId}`
+2. `prolog_consult_file` → Carga `{agentName}.brain.pl`
+3. `prolog_load_rules_from_db` → Carga reglas de BD para esa obra
+4. `prolog_query` → Ejecuta `decidir_accion(agentName, Accion).`
+5. `prolog_destroy_session` → Cleanup
+
+**Implicación**: El prompt ya existe y está listo para ser invocado por Arrakis/Teatro.
+
+---
+
+### Flujo Propuesto: Dramaturgo con PrologEditor
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        FLUJO: DRAMATURGO + PROLOG                           │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. DISEÑO (PrologEditor/frontend)                                          │
+│     └── Dramaturgo edita reglas de comportamiento del personaje            │
+│         └── Guarda como: lucas.brain.pl                                    │
+│                                                                             │
+│  2. EMPAQUETADO (TypedPrompting)                                            │
+│     └── Crea pack específico: ObraItacaDigital.pack.json                   │
+│         └── Incluye: lucas.brain.pl + reglas de la obra                    │
+│                                                                             │
+│  3. INSTALACIÓN (Teatro)                                                    │
+│     └── Instala obra con `@plugin_ox_teatro instalar itaca-digital`        │
+│         └── Registra pack en obras.json                                    │
+│                                                                             │
+│  4. EJECUCIÓN (ARG_BOARD)                                                   │
+│     └── Arrakis invoca `teatro_agent_session(obraId, agentName)`           │
+│         └── MCPPrologServer carga KB y ejecuta razonamiento                │
+│                                                                             │
+│  5. EN VIVO (Turno del personaje)                                           │
+│     └── Query: decidir_accion(lucas, Accion).                              │
+│         └── Respuesta: Accion = consultar_indice.                          │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### Matriz de Alineamiento Teatro-Prolog
+
+| Capa | Componente | Existe | Falta |
+|------|------------|--------|-------|
+| **MCP** | Prompt `teatro_agent_session` | ✅ | — |
+| **Pack** | AgentPrologBrain.pack.json | ✅ | Pack por obra |
+| **Teatro** | Handoff a MCPPrologServer | ❌ | Declarar en `teatro.agent.md` |
+| **ARG** | Arrakis invoca prompt | ❌ | Añadir handoff |
+| **AgentCreator** | Genera `.brain.pl` | ❌ | Template de exportación |
+| **Frontend** | UI para editar `.brain.pl` | ⚠️ | Mejorar KnowledgeBase |
+
+---
+
+### Tasks Identificadas (Backlog Potencial)
+
+| Task | Descripción | Effort | Prioridad |
+|------|-------------|--------|-----------|
+| T01 | Añadir handoff en `teatro.agent.md` → `teatro_agent_session` | 1 | Alta |
+| T02 | Añadir handoff en `arrakis.agent.md` → `teatro_agent_session` | 1 | Alta |
+| T03 | Template `.brain.pl` en AgentCreator | 2 | Media |
+| T04 | Propiedad `mcpPacks` en schema de obra YAML | 2 | Media |
+| T05 | UI en PrologEditor para editar `.brain.pl` | 3 | Baja |
+| T06 | Pack por obra (ObraItacaDigital.pack.json) | 2 | Baja |
+| T07 | Documentar flujo E2E en teatro-interactivo.instructions.md | 2 | Media |
+
+**Effort total estimado**: 13 pts
+
+---
+
+### Ejemplo: Obra Ítaca Digital con Lucas
+
+**Obra**: `ARCHIVO/PLUGINS/TEATRO/obras/itaca-digital.yaml`
+
+```yaml
+id: itaca-digital
+titulo: "Ítaca Digital"
+personaje_guia: lucas
+mcpPacks:
+  - AgentPrologBrain
+
+estadios:
+  - id: 1
+    nombre: "Mundo Ordinario"
+    feature: "@plugin_ox_indice consultar"
+    
+  - id: 5
+    nombre: "Cruce del Umbral"
+    feature: "@plugin_ox_prologeditor razonar"
+    
+  # ...
+```
+
+**Cerebro Prolog de Lucas**: `lucas.brain.pl`
+
+```prolog
+% Identidad
+rol(lucas, scrum_master).
+especialidad(lucas, indices_dry).
+
+% Reglas de comportamiento
+decidir_accion(lucas, consultar_indice) :-
+    contexto(buscar_informacion).
+    
+decidir_accion(lucas, validar_coherencia) :-
+    contexto(pre_commit).
+    
+decidir_accion(lucas, delegar_ox) :-
+    contexto(no_sabe_que_agente).
+```
+
+**Invocación en Turno**:
+
+```
+Arrakis → teatro_agent_session(itaca-digital, lucas)
+       → prolog_query("decidir_accion(lucas, X).")
+       → X = consultar_indice
+       → Lucas ejecuta @plugin_ox_indice
+```
+
+---
+
+### Recomendaciones
+
+1. **Corto plazo (FC1)**: Añadir handoffs T01-T02 (2 pts) para habilitar flujo básico
+2. **Medio plazo (FC2)**: Templates `.brain.pl` en AgentCreator (T03, 2 pts)
+3. **Largo plazo (FC3)**: UI completa para dramaturgos (T05-T06, 5 pts)
+
+---
+
+### Referencias Cruzadas
+
+| Documento | Ubicación | Relevancia |
+|-----------|-----------|------------|
+| Feature 1: Inteligencias Situadas | `Enero_2026_LogicaAgentes/feature1_*.md` | Arquitectura base |
+| Feature 2: Agentic Typed Logic Flow | `Enero_2026_LogicaAgentes/feature2_*.md` | Packs tipados |
+| HOJA_RUTA | `Enero_2026_LogicaAgentes/HOJA_RUTA.md` | Plan completo |
+| Teatro Interactivo | `teatro/instructions/teatro-interactivo.instructions.md` | Esquema YAML |
+| ARG Engine | `arg-board/instructions/arg-engine.instructions.md` | Máquina de estados |
+| AgentCreator | `agent-creator/instructions/agent-creator.instructions.md` | Recetas de agentes |
 

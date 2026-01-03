@@ -2,9 +2,9 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.3.0  
+> **Versión**: 1.4.0  
 > **Última actualización**: 2026-01-03  
-> **Épica**: PROLOG-DRY-1.0.0 (Tipado completo)
+> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0
 
 ---
 
@@ -96,6 +96,7 @@
 ### 2.5 Componentes UI Angular (PrologEditor/frontend/)
 
 > **Épica**: PROLOG-UI-2.0.0 (completado 2026-01-03)
+> **Épica**: TEATRO-PROLOG-1.0.0 (completado 2026-01-03)
 
 | Componente | Path | Tools MCP que Expone |
 |------------|------|---------------------|
@@ -105,8 +106,9 @@
 | **McpTemplatesBrowserComponent** | `components/mcp-templates-browser/` | get_templates |
 | **UserAppSaveDialogComponent** | `components/user-app-save-dialog/` | (modal auxiliar) |
 | **TelemetryProcessComponent** | `components/telemetry-process/` | (testing IoT) |
+| **BrainEditorComponent** | `components/brain-editor/` | Generador visual de `.brain.pl` para Teatro |
 
-**Navegación**: Tabs en `AppComponent` → Sessions | Editor | Knowledge | Templates | Telemetry
+**Navegación**: Tabs en `AppComponent` → Sessions | Editor | Knowledge | Templates | Telemetry | 🧠 Brain Editor
 
 ---
 
@@ -377,6 +379,9 @@ grep -E "^\s+(create|list|destroy|run|assert|consult|get)" PrologEditor/frontend
 | PrologBackendClient | `MCPGallery/mcp-mesh-sdk/src/clients/PrologBackendClient.ts` | Cliente HTTP para backend |
 | UI Refactor Backlog | `BACKLOG_BORRADORES/Enero_02_PrologAgentPack/02_backlog-ui-refactor.md` | Épica PROLOG-UI-2.0.0 ✅ |
 | Prompts Completion | `BACKLOG_BORRADORES/Enero_02_PrologAgentPack/04_backlog-prompts-completion.md` | Épica PROLOG-PROMPTS-1.0.0 ✅ |
+| Teatro-Prolog Backlog | `BACKLOG_BORRADORES/Enero_02_PrologAgentPack/05_backlog-teatro-prolog-integration.md` | Épica TEATRO-PROLOG-1.0.0 ✅ |
+| Brain Template | `ARCHIVO/PLUGINS/AGENT_CREATOR/templates/brain.pl.template` | Template para cerebros Prolog |
+| Obra Pack Schema | `ARCHIVO/PLUGINS/TEATRO/schemas/obra-pack.schema.json` | Schema para packs de obra |
 
 ---
 
