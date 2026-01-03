@@ -1,0 +1,324 @@
+# Use Cases: Equipo Ox y Bridger
+# Caso de Uso: Levantar el Setup del Stack MCP Prolog
+# 
+# Actores: @ox, @plugin_ox_prologeditor, @pluginmanager
+# Epic: PROLOG-DRY-1.0.0
+# Version: 1.0.0
+# Schema: usecases/1.0.0 (Aleph Scriptorium)
+
+spec: usecases
+version: 1.0.0
+
+info:
+  title: Use Cases - Ox/Bridger Setup
+  description: |
+    Especificación de casos de uso para el equipo de agentes Ox y bridges
+    relacionados con el levantamiento y gestión del stack MCP Prolog.
+    
+    ## Actores
+    
+    | Actor | Rol | Responsabilidad |
+    |-------|-----|-----------------|
+    | @ox | Meta-coordinador | Diagnóstico, documentación, orquestación |
+    | @plugin_ox_prologeditor | Bridge | Delegación a PrologEditor |
+    | @pluginmanager | Gestor de plugins | Activación/desactivación de capabilities |
+    | @indice | Navegador DRY | Validación de coherencia estructural |
+    
+    ## Stack Components
+    
+    ```
+    ┌─────────────────────────────────────────────────────────┐
+    │                    SETUP WORKFLOW                       │
+    ├─────────────────────────────────────────────────────────┤
+    │                                                         │
+    │  1. @pluginmanager activar prolog-editor                │
+    │         ↓                                               │
+    │  2. @ox verificar MCPGallery/mcp-mesh-sdk              │
+    │         ↓                                               │
+    │  3. Terminal: npm run start:mesh (puerto 3006)         │
+    │         ↓                                               │
+    │  4. Terminal: PrologEditor/backend (puerto 8000)       │
+    │         ↓                                               │
+    │  5. Terminal: PrologEditor/frontend (puerto 4200)      │
+    │         ↓                                               │
+    │  6. @ox diagnosticar → healthcheck de servicios        │
+    │                                                         │
+    └─────────────────────────────────────────────────────────┘
+    ```
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+  license:
+    name: AIPL v1.0
+
+# ============================================================================
+# USE CASES
+# ============================================================================
+
+x-use-cases:
+  
+  # --------------------------------------------------------------------------
+  # UC-OX-001: Verificar Prerequisitos del Stack
+  # --------------------------------------------------------------------------
+  UC-OX-001:
+    name: Verificar Prerequisitos del Stack
+    actor: "@ox"
+    preconditions:
+      - Workspace aleph-scriptorium clonado
+      - Submódulos inicializados (git submodule update --init)
+      - Node.js >= 18 instalado
+      - SWI-Prolog instalado (swipl en PATH)
+    trigger: Usuario solicita "@ox verificar stack prolog"
+    flow:
+      - step: 1
+        action: "Verificar existencia de MCPGallery/mcp-mesh-sdk/"
+        check: "Directorio existe con package.json"
+      - step: 2
+        action: "Verificar SWI-Prolog"
+        command: "which swipl || where swipl"
+        check: "Retorna ruta válida"
+      - step: 3
+        action: "Verificar dependencias instaladas"
+        command: "npm ls @alephscript/mcp-core-sdk"
+        check: "Sin errores de peer dependencies"
+      - step: 4
+        action: "Verificar .vscode/mcp.json"
+        check: "Contiene entrada para prolog-mcp-server"
+    postconditions:
+      - Informe de estado generado
+      - Gaps identificados (si existen)
+    exceptions:
+      - condition: "swipl no encontrado"
+        action: "Instruir instalación de SWI-Prolog"
+      - condition: "Submódulo no inicializado"
+        action: "Ejecutar git submodule update --init --recursive"
+
+  # --------------------------------------------------------------------------
+  # UC-OX-002: Levantar Stack Completo
+  # --------------------------------------------------------------------------
+  UC-OX-002:
+    name: Levantar Stack Completo
+    actor: "@ox"
+    preconditions:
+      - UC-OX-001 completado sin errores
+    trigger: Usuario solicita "@ox levantar prolog"
+    flow:
+      - step: 1
+        action: "Crear terminal MCP Mesh"
+        terminal: "MCPGallery"
+        command: "cd MCPGallery && npm run start:mesh"
+        background: true
+        expectedOutput: "MCPPrologServer listening on port 3006"
+      - step: 2
+        action: "Crear terminal Backend"
+        terminal: "PrologBackend"
+        command: "cd PrologEditor/backend && npm run start:dev"
+        background: true
+        expectedOutput: "Server running on port 8000"
+      - step: 3
+        action: "Crear terminal Frontend"
+        terminal: "PrologFrontend"
+        command: "cd PrologEditor/frontend && npm start"
+        background: true
+        expectedOutput: "Angular Live Development Server on port 4200"
+      - step: 4
+        action: "Healthcheck de servicios"
+        checks:
+          - url: "http://localhost:3006/tools"
+            method: GET
+            expectedStatus: 200
+          - url: "http://localhost:8000/api/rules"
+            method: GET
+            expectedStatus: 200
+          - url: "http://localhost:4200"
+            method: GET
+            expectedStatus: 200
+    postconditions:
+      - 3 terminales en background
+      - Servicios respondiendo
+      - Browser abierto en localhost:4200 (opcional)
+    exceptions:
+      - condition: "Puerto ocupado"
+        action: "Identificar proceso y sugerir kill o cambio de puerto"
+      - condition: "Error de build"
+        action: "Ejecutar npm install en el módulo afectado"
+
+  # --------------------------------------------------------------------------
+  # UC-OX-003: Diagnosticar Estado del Stack
+  # --------------------------------------------------------------------------
+  UC-OX-003:
+    name: Diagnosticar Estado del Stack
+    actor: "@ox"
+    preconditions:
+      - Al menos un servicio intentado levantar
+    trigger: Usuario solicita "@ox diagnosticar prolog"
+    flow:
+      - step: 1
+        action: "Verificar puertos"
+        command: "netstat -an | grep -E '3006|8000|4200'"
+      - step: 2
+        action: "Verificar logs de terminales"
+        check: "Buscar errores en output de cada terminal"
+      - step: 3
+        action: "Test de conectividad MCP"
+        method: "mcp_prolog-mcp-se_prolog_list_sessions()"
+        expectedResult: "Array de sesiones (puede estar vacío)"
+      - step: 4
+        action: "Generar informe"
+        format: |
+          ## Stack Prolog - Diagnóstico
+          
+          | Servicio | Puerto | Estado | Última verificación |
+          |----------|--------|--------|---------------------|
+          | MCP Server | 3006 | ✅/❌ | {timestamp} |
+          | Backend | 8000 | ✅/❌ | {timestamp} |
+          | Frontend | 4200 | ✅/❌ | {timestamp} |
+          
+          ### Issues Detectados
+          {lista de issues}
+          
+          ### Recomendaciones
+          {lista de acciones}
+    postconditions:
+      - Informe generado
+      - Issues priorizados
+
+  # --------------------------------------------------------------------------
+  # UC-OX-004: Registrar MCP Server en VS Code
+  # --------------------------------------------------------------------------
+  UC-OX-004:
+    name: Registrar MCP Server en VS Code
+    actor: "@pluginmanager"
+    preconditions:
+      - Plugin prolog-editor instalado
+      - .vscode/mcp.json existe
+    trigger: "@pluginmanager activar prolog-editor"
+    flow:
+      - step: 1
+        action: "Leer manifest del plugin"
+        file: ".github/plugins/prolog-editor/manifest.md"
+      - step: 2
+        action: "Extraer configuración mcpServers"
+        data:
+          id: "prolog-mcp-server"
+          port: 3006
+          startCommand: "npm run start:mesh"
+      - step: 3
+        action: "Actualizar .vscode/mcp.json"
+        operation: "merge"
+        content: |
+          {
+            "servers": {
+              "prolog-mcp-server": {
+                "command": "node",
+                "args": ["MCPGallery/mcp-mesh-sdk/dist/MCPPrologServer.js"],
+                "env": {
+                  "PROLOG_BACKEND_URL": "http://localhost:8000/api"
+                }
+              }
+            }
+          }
+      - step: 4
+        action: "Recargar configuración VS Code"
+        command: "Developer: Reload Window"
+    postconditions:
+      - MCP Server registrado en Copilot
+      - Tools disponibles en chat
+
+  # --------------------------------------------------------------------------
+  # UC-OX-005: Crear Pack de Contexto para Prolog
+  # --------------------------------------------------------------------------
+  UC-OX-005:
+    name: Crear Pack de Contexto para Prolog
+    actor: "@ox"
+    preconditions:
+      - DevOps MCP Server activo (puerto 3003)
+    trigger: "@ox recomendar pack para prolog"
+    flow:
+      - step: 1
+        action: "Consultar packs existentes"
+        method: "mcp_devops-mcp-se_list_prompts()"
+      - step: 2
+        action: "Verificar AgentPrologBrain.pack.json"
+        file: ".github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json"
+      - step: 3
+        action: "Recomendar configuración"
+        output: |
+          ## Pack Recomendado: AgentPrologBrain
+          
+          **Tools activas** (12):
+          - Core: create/list/destroy_session, query, assert_fact, consult_file, get_templates
+          - Backend: load/save_rules, list/get_sdk_templates, telemetry
+          
+          **Resources** (6):
+          - session-state, templates-catalog, active-sessions
+          - rules-catalog, sdk-templates, telemetry
+          
+          **Prompts sugeridos**:
+          - Para dramaturgos: `teatro_agent_session`
+          - Para IoT: `razonamiento_sbr`
+          - Para gestión: `session_lifecycle`
+    postconditions:
+      - Pack identificado
+      - Instrucciones de uso proporcionadas
+
+# ============================================================================
+# SECUENCIAS DE COMANDOS
+# ============================================================================
+
+x-command-sequences:
+  
+  setup-completo:
+    name: "Setup Completo del Stack"
+    description: "Secuencia de comandos para levantar todo el stack"
+    steps:
+      - name: "Instalar dependencias globales"
+        commands:
+          - "cd MCPGallery/mcp-core-sdk && npm install && npm run build"
+          - "cd MCPGallery/mcp-mesh-sdk && npm install && npm run build"
+          - "cd PrologEditor/backend && npm install"
+          - "cd PrologEditor/frontend && npm install"
+      
+      - name: "Levantar servicios"
+        commands:
+          - terminal: MCPMesh
+            command: "cd MCPGallery && npm run start:mesh"
+            background: true
+          - terminal: Backend
+            command: "cd PrologEditor/backend && npm run start:dev"
+            background: true
+          - terminal: Frontend
+            command: "cd PrologEditor/frontend && npm start"
+            background: true
+      
+      - name: "Verificar"
+        commands:
+          - "curl http://localhost:3006/tools | jq '.tools | length'"
+          - "curl http://localhost:8000/api/rules"
+
+  teardown:
+    name: "Apagar Stack"
+    description: "Secuencia para cerrar todos los servicios"
+    steps:
+      - name: "Cerrar terminales"
+        action: "Ctrl+C en cada terminal o cerrar grupo"
+
+# ============================================================================
+# MÉTRICAS DE ÉXITO
+# ============================================================================
+
+x-success-metrics:
+  setup-time:
+    description: "Tiempo desde solicitud hasta stack operativo"
+    target: "< 2 minutos (con dependencias instaladas)"
+    measurement: "Timestamp entre @ox levantar y healthcheck OK"
+  
+  diagnostico-accuracy:
+    description: "Precisión del diagnóstico de @ox"
+    target: "> 95%"
+    measurement: "Issues detectados vs issues reales"
+  
+  recovery-rate:
+    description: "Éxito de recuperación automática"
+    target: "> 80%"
+    measurement: "Errores resueltos sin intervención manual"

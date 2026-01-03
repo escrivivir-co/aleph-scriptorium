@@ -2,7 +2,7 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.4.0  
+> **Versión**: 1.5.0  
 > **Última actualización**: 2026-01-03  
 > **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0
 
@@ -382,6 +382,14 @@ grep -E "^\s+(create|list|destroy|run|assert|consult|get)" PrologEditor/frontend
 | Teatro-Prolog Backlog | `BACKLOG_BORRADORES/Enero_02_PrologAgentPack/05_backlog-teatro-prolog-integration.md` | Épica TEATRO-PROLOG-1.0.0 ✅ |
 | Brain Template | `ARCHIVO/PLUGINS/AGENT_CREATOR/templates/brain.pl.template` | Template para cerebros Prolog |
 | Obra Pack Schema | `ARCHIVO/PLUGINS/TEATRO/schemas/obra-pack.schema.json` | Schema para packs de obra |
+| **Specs Index** | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/INDEX.md` | **Catálogo de todas las specs** |
+| OpenAPI Spec | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/openapi.yaml` | REST API Backend v2.0.0 |
+| AsyncAPI Spec | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/asyncapi.yaml` | MQTT IoT v1.0.0 |
+| MCP Spec | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/mcpspec.yaml` | MCP Server v2.0.0 (12 tools) |
+| Use Cases Ox | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/usecases-ox-bridger.yaml` | Casos de uso: Setup |
+| Use Cases Dramaturgo | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/usecases-dramaturgo.yaml` | Casos de uso: Escribir obras |
+| Use Cases Agente | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/usecases-agente-personaje.yaml` | Casos de uso: Agente runtime |
+| Use Cases UI | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/usecases-usuario-final.yaml` | Casos de uso: UI Angular |
 
 ---
 
