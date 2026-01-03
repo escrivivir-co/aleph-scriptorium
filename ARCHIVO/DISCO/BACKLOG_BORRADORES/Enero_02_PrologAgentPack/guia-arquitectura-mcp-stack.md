@@ -2,9 +2,9 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.5.0  
+> **Versión**: 1.6.0  
 > **Última actualización**: 2026-01-03  
-> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0
+> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, SDK-BROWSER-1.0.0
 
 ---
 
@@ -67,6 +67,19 @@
 | `@alephscript/mcp-core-sdk` | `mcp-core-sdk/` | Types, BaseMCPClient, utils | Todos |
 | `@alephscript/mcp-mesh-sdk` | `mcp-mesh-sdk/` | Servers, clients, services | Backend |
 | `@alephscript/mcp-model-sdk` | `mcp-model-sdk/` | LLM integrations | Backend |
+
+#### Subpaths de `@alephscript/mcp-core-sdk` (v1.2.0+)
+
+| Subpath | Contenido | ¿Browser-safe? | Consumidor |
+|---------|-----------|----------------|------------|
+| `/browser` | **Solo tipos + utils isomórficos** | ✅ SÍ | **Frontend Angular** |
+| `/types` | Tipos (pero arrastra .d.ts de server) | ⚠️ Requiere skipLibCheck | — |
+| `/types/prolog` | Tipos Prolog específicos | ⚠️ Requiere skipLibCheck | — |
+| `/server` | BaseMCPServer, SocketServer | ❌ NO | Backend, MCP Servers |
+| `/client` | BaseMCPClient, MCPClientPool | ❌ NO | Backend |
+| `/utils` | Message, isLogable | ✅ SÍ | Todos |
+
+> **⚠️ REGLA CRÍTICA**: Todo consumidor **browser/Angular** DEBE importar de `/browser`, NO de `/types` ni de la raíz.
 
 ### 2.2 Aplicación (PrologEditor/)
 
@@ -208,20 +221,58 @@ mcp-core-sdk/types/
 
 | Módulo | Uso | OK Frontend | OK Backend |
 |--------|-----|-------------|------------|
-| `@alephscript/mcp-core-sdk/types` | Types only | ✅ | ✅ |
+| **`@alephscript/mcp-core-sdk/browser`** | **Tipos + utils browser-safe** | ✅ **OBLIGATORIO** | ✅ |
+| `@alephscript/mcp-core-sdk/types` | Types (con skipLibCheck) | ⚠️ Deprecated | ✅ |
 | `rxjs` | Observables | ✅ | ✅ |
 | `zod` | Validation | ✅ | ✅ |
+
+> **🚨 DECISIÓN ARQUITECTÓNICA (SDK-BROWSER-1.0.0)**:  
+> El SDK `@alephscript/mcp-core-sdk` contiene dependencias Node.js (`socket.io`, `express`) en `/server` y `/client`.  
+> Aunque el frontend solo importe de `/types`, TypeScript procesa **todos** los `.d.ts` del paquete instalado.  
+> 
+> **Solución implementada (v1.2.0)**:  
+> - Nuevo subpath `/browser` que exporta SOLO tipos e isomórficos  
+> - Frontend DEBE usar `skipLibCheck: true` en tsconfig.json  
+> - Frontend DEBE importar de `/browser`, NO de `/types`
 
 ### 4.3 Patrón de Re-export Seguro
 
 ```typescript
 // frontend/src/app/models/session.model.ts
-// ✅ CORRECTO: Re-export solo tipos (no runtime)
-export type { PrologSession, CreateSessionRequest } from '@alephscript/mcp-core-sdk';
+
+// ✅ CORRECTO (v1.2.0+): Usar subpath /browser
+export type { 
+  PrologSession, 
+  CreateSessionRequest,
+  QueryResponse,
+} from '@alephscript/mcp-core-sdk/browser';
+
+export { PrologErrorType } from '@alephscript/mcp-core-sdk/browser';
+
+// ❌ INCORRECTO: Import desde /types (arrastra .d.ts con socket.io)
+// export type { PrologSession } from '@alephscript/mcp-core-sdk/types/prolog';
+
+// ❌ INCORRECTO: Import desde raíz (arrastra todo)
+// export type { PrologSession } from '@alephscript/mcp-core-sdk';
 
 // ❌ INCORRECTO: Import de clase con dependencias Node
 // import { MCPClient } from '@alephscript/mcp-core-sdk/client';
 ```
+
+### 4.4 Configuración tsconfig.json (Frontend)
+
+```jsonc
+// PrologEditor/frontend/tsconfig.json
+{
+  "compilerOptions": {
+    // ... otras opciones ...
+    "skipLibCheck": true  // ← OBLIGATORIO para evitar errores en node_modules
+  }
+}
+```
+
+> **Razón**: Aunque usemos `/browser`, el tgz instalado incluye los `.d.ts` de `/server` que referencian `socket.io`.  
+> `skipLibCheck` previene que TypeScript valide tipos en `node_modules`.
 
 ---
 
@@ -328,11 +379,26 @@ npm run lint       # en cada package
 |------------|---------|------------|
 | **Tipos duplicados** | Misma interface en 2+ lugares | Mover a core-sdk |
 | **Import cruzado** | Backend importa de frontend | Extraer a core-sdk |
-| **Socket en frontend** | Error de build "fs not found" | Usar solo tipos |
+| **Socket en frontend** | Error `TS1192: Module '"http"' has no default export` | **Usar `/browser` + `skipLibCheck: true`** |
+| **Import desde /types** | Error socket.io en Angular build | **Cambiar a `/browser`** |
 | **Tool sin REST** | Tool funciona en Copilot, no en app | Añadir endpoint |
 | **REST sin UI** | Endpoint existe pero nadie lo llama | Añadir componente o deprecar |
 | **Spec desactualizada** | OpenAPI no refleja endpoints reales | Sync con código |
 | **Ciclo MCP infinito** | MCP Server invoca Backend que invoca MCP | Usar PrologBackendClient (HTTP directo) |
+
+### 7.1 Diagnóstico Rápido: Error socket.io en Frontend
+
+**Síntoma**:
+```
+Error: node_modules/socket.io/dist/index.d.ts:1:8 - error TS1192: Module '"http"' has no default export.
+```
+
+**Causa**: El frontend importa de `@alephscript/mcp-core-sdk/types` o de la raíz, y TypeScript procesa todos los `.d.ts` del paquete.
+
+**Solución**:
+1. Cambiar TODOS los imports a `@alephscript/mcp-core-sdk/browser`
+2. Añadir `"skipLibCheck": true` en `tsconfig.json`
+3. Reinstalar SDK: `npm i ../../MCPGallery/mcp-core-sdk/alephscript-mcp-core-sdk-1.2.0.tgz`
 
 ---
 

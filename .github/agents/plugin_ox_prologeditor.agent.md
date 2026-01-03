@@ -2,7 +2,7 @@
 name: plugin_ox_prologeditor
 description: "Bridge: conecta VS Code con agentes del plugin PrologEditor para lógica declarativa, sistemas IoT/SBR y modelado de inteligencias situadas (aferencia/eferencia)."
 argument-hint: "Invoca capacidades de edición Prolog, ejecución SWI-Prolog, MCP Prompts, o modelado de sistemas IoT con paradigma SBR."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'copilot-logs-mcp-server/*', 'prolog-mcp-se/*', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']
 
 # Conocimiento Estructural (protocolo plugin_ox_*)
 # - Código del plugin: .github/plugins/prolog-editor/
