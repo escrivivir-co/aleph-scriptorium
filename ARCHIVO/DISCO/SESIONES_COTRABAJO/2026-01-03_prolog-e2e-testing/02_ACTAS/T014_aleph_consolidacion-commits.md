@@ -7,8 +7,8 @@
 | **Turno** | 014 |
 | **Agente** | @aleph |
 | **Inicio** | 2026-01-04 08:00 |
-| **Fin** | — (en progreso) |
-| **Estado final** | ✍️ WRITING |
+| **Fin** | 2026-01-04 08:15 |
+| **Estado final** | ✅ DONE |
 
 ---
 
@@ -77,11 +77,11 @@
 
 ## Tareas de este Turno
 
-- [ ] Commit 1: Actas T009-T013 (sesión cotrabajo)
-- [ ] Commit 2: Fixes de submódulos (MCPGallery, PrologEditor)
-- [ ] Commit 3: Config y docs (tasks.json, guía)
-- [ ] Actualizar tablero con T014
-- [ ] Pasar turno a @prologeditor (Fase 3)
+- [x] Commit 1: Actas T009-T013 (sesión cotrabajo)
+- [x] Commit 2: Config y docs (tasks.json, guía)
+- [x] Commit 3: Fixes submódulos (MCPGallery, PrologEditor)
+- [x] Actualizar tablero con T014
+- [x] Pasar turno a @prologeditor (Fase 3)
 
 ---
 

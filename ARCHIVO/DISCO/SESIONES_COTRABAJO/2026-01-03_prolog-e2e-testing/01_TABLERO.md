@@ -8,7 +8,7 @@
 
 | Estado | Fecha Inicio | Turnos | Agentes |
 |--------|--------------|--------|---------|
-| 🟢 **ACTIVA** | 2026-01-03 | 13 | 4 |
+| 🟢 **ACTIVA** | 2026-01-03 | 14 | 4 |
 
 ---
 
@@ -16,7 +16,9 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 14 | @prologeditor | ⏳ **WAITING** | (siguiente: E2E Resources + Prompts) |
+| 15 | @prologeditor | ⏳ **ASIGNADO** | [T015](02_ACTAS/T015_prologeditor_resources-prompts.md) |
+
+> **Handoff**: Continuar E2E - Fase 3 (Resources) + Fase 4 (Prompts)
 
 ---
 
@@ -39,6 +41,7 @@
 | 11 | @prologeditor | 23:30 | 23:35 | ✅ Fase 1 COMPLETADA: 7/7 Tools Core OK | [T011](02_ACTAS/T011_prologeditor_bloqueado-tools-deshabilitadas.md) |
 | 12 | @prologeditor | 23:45 | 23:50 | ⛔ BLOCKED: Tools Backend fallando "Backend not available" | [T012](02_ACTAS/T012_prologeditor_fase2-backend-blocked.md) |
 | 13 | @ox | 00:00 | 00:20 | ✅ 3 fixes: HEAD parse, l.warn, SQLite migration | [T013](02_ACTAS/T013_ox_fixes-backend-integration.md) |
+| 14 | @aleph | 08:00 | 08:15 | Consolidación + 4 commits según protocolo | [T014](02_ACTAS/T014_aleph_consolidacion-commits.md) |
 
 ---
 
@@ -89,9 +92,9 @@
 
 | Agente | Estado | Último Turno |
 |--------|--------|--------------|
-| @prologeditor | ⏳ ASIGNADO | T010 (reintentar E2E) |
-| @aleph | ✅ DONE | T008 |
-| @ox | ✅ DONE | T009 |
+| @prologeditor | ⏳ ASIGNADO | T015 (Resources + Prompts) |
+| @aleph | ✅ DONE | T014 |
+| @ox | ✅ DONE | T013 |
 | @scrum | ⚪ IDLE | — |
 | @indice | ⚪ IDLE | — |
 
