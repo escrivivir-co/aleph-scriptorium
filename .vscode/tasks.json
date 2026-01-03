@@ -133,7 +133,7 @@
       "command": "bash",
       "args": [
         "-c",
-        "echo '╔══════════════════════════════════════╗' && echo '║   APB: Agent Prolog Brain - Health   ║' && echo '╚══════════════════════════════════════╝' && echo '' && echo '🚀 MCP Launcher (3050):' && (curl -s http://localhost:3050/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '🧠 MCP Prolog (3006):' && (curl -s http://localhost:3006/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '⚙️  Backend REST (8000):' && (curl -s http://localhost:8000/api/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '🌐 Frontend Angular (5001):' && (curl -s -o /dev/null -w 'HTTP %{http_code}' http://localhost:5001 && echo ' ✅') || echo ' ❌ DOWN'"
+        "echo '╔══════════════════════════════════════╗' && echo '║   APB: Agent Prolog Brain - Health   ║' && echo '╚══════════════════════════════════════╝' && echo '' && echo '🚀 MCP Launcher (3050):' && (curl -s http://localhost:3050/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '🧠 MCP Prolog (3006):' && (curl -s http://localhost:3006/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '⚙️  Backend REST (8000):' && (curl -s http://localhost:8000/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '🌐 Frontend Angular (5001):' && (curl -s -o /dev/null -w 'HTTP %{http_code}' http://localhost:5001 && echo ' ✅') || echo ' ❌ DOWN'"
       ],
       "problemMatcher": [],
       "presentation": {

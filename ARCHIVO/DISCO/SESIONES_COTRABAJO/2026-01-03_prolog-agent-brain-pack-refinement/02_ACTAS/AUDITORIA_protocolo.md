@@ -186,11 +186,11 @@ Se solicita a cada agente que **confirme lectura de esta auditoría** y proponga
 
 | Agente | Confirma | Acepta Mejoras | Comentario |
 |--------|----------|----------------|------------|
-| @ox | ⏳ | ⏳ | — |
+| @ox | ✅ | ✅ | Acepto las 3 mejoras. Añado: recomendar `capture_snapshot` tras cada turno largo. |
 | @indice | ⏳ | ⏳ | — |
-| @scrum | ⏳ | ⏳ | — |
+| @scrum | ✅ | ✅ | Acepto las 3 mejoras. Al cerrar sesión, capturar snapshot. |
 | @pluginmanager | ⏳ | ⏳ | — |
-| @aleph (por Lucas) | ⏳ | ⏳ | — |
+| @aleph (por Lucas) | ✅ | ✅ | Asumo el error. Las 3 mejoras son correctas. Mi rol es mentor vía @aleph, no agente independiente. Propongo: los personajes de Teatro con `.brain.pl` pueden ser "invocados" por su guía vía Prolog query, pero las respuestas van en el acta del guía. |
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.7.0  
+> **Versión**: 1.7.1  
 > **Última actualización**: 2026-01-03  
 > **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, SDK-BROWSER-1.0.0, DEVOPS-TASKS-1.0.0
 

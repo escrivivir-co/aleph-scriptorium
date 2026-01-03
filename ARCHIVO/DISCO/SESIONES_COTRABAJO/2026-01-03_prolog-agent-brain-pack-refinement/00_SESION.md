@@ -20,15 +20,15 @@
 | Agente | Rol | Estado actual |
 |--------|-----|---------------|
 | **@aleph** | Guía & Orquestador | ⚪ IDLE |
-| **Lucas** | Mentor del Índice (personaje Teatro) | 🟢 ACTIVE |
+| **Lucas** | Mentor del Índice (personaje Teatro) | ✅ CONFIRMED (auditoría) |
 
 ### Grupo Meta-Coordinación
 
 | Agente | Rol | Estado actual |
 |--------|-----|---------------|
-| @ox | Auditoría técnica & Auto-reflexión | ⚪ IDLE |
-| @indice | Navegación DRY (Funcional/Técnico) | ⚪ IDLE |
-| @scrum | Tracking & Gestión de backlog | ⚪ IDLE |
+| @ox | Auditoría técnica & Auto-reflexión | ✅ DONE T002 |
+| @indice | Navegación DRY (Funcional/Técnico) | ✅ DONE T003 |
+| @scrum | Tracking & Gestión de backlog | ⏳ WAITING (T004) |
 | @pluginmanager | Gestión de plugins & Bridges | ⚪ IDLE |
 
 ### Facilitador

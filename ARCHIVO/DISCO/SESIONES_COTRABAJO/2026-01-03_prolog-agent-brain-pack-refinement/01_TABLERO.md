@@ -8,11 +8,11 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 4 | @scrum | ⏳ WAITING | — |
+| 10 | @ox | ⏳ WAITING | — |
 
-> **Siguiente**: @scrum confirma estado de épicas y pendientes ocultos.
+> **Siguiente**: @ox corrige las 2 tasks pendientes (compound task + health check bash).
 > 
-> ⚠️ **NOTA**: Se ha realizado auditoría del protocolo. Ver [AUDITORIA_protocolo.md](02_ACTAS/AUDITORIA_protocolo.md) antes de continuar.
+> ✅ **RESUELTO T009**: Stack verificado funcionando. Documentadas lecciones sobre `run_task`.
 
 ---
 
@@ -24,6 +24,13 @@
 | 2 | @ox | 2026-01-03 | 2026-01-03 | Guardarraíles técnicos + plan mínimo de verificación vía tasks | [T002](02_ACTAS/T002_ox_diagnostico-tecnico.md) |
 | 3 | @indice | 2026-01-03 | 2026-01-03 | Validación DRY: índices sincronizados (12/12 tools ✅, drift <5%) | [T003](02_ACTAS/T003_indice_validacion-dry.md) |
 | 3b | Lucas (anexo) | 2026-01-03 | 2026-01-03 | Validación del mentor sobre T003 | [T003b](02_ACTAS/T003b_lucas_validacion.md) |
+| 4 | @scrum | 2026-01-03 | 2026-01-03 | Estado épicas: todas ✅, sesión es refinamiento | [T004](02_ACTAS/T004_scrum_estado-epicas.md) |
+| 5 | @pluginmanager | — | — | (saltado: @prologeditor asume facilitación E2E) | — |
+| 6 | @prologeditor | 2026-01-03 | 2026-01-03 | Plan E2E: 12 tools + 6 resources + 8 prompts en 5 fases | [T006](02_ACTAS/T006_prologeditor_plan-e2e.md) |
+| 7 | @aleph | 2026-01-03 | 2026-01-03 | Aprobación plan + delegación a @ox | [T007](02_ACTAS/T007_aleph_custodio.md) |
+| 8 | @prologeditor | 2026-01-03 | 2026-01-03 | ✅ RESUELTO: 2 bugs eran de config, no de código | [T008](02_ACTAS/T008_prologeditor_hallazgos-arranque.md) |
+| 8b | @scrum (auditoría) | 2026-01-03 | 2026-01-03 | Auditoría técnica: fixes aplicados a tasks.json y package.json | [T008b](02_ACTAS/T008b_scrum_auditoria-tecnica.md) |
+| 9 | @prologeditor | 2026-01-03 | 2026-01-03 | Stack 4/4 ✅ + lecciones run_task + 2 fixes pendientes | [T009](02_ACTAS/T009_prologeditor_verificacion-stack.md) |
 | 0 | Sistema | 2026-01-03 | — | Sesión creada | — |
 
 ---
@@ -46,14 +53,24 @@ Se detectaron violaciones del protocolo de cotrabajo. Ver [AUDITORIA_protocolo.m
 |--------|--------|-------|
 | @ox | ✅ DONE | T002 |
 | @indice | ✅ DONE | T003 |
+| @scrum | ✅ DONE | T004 |
+| @prologeditor | ✅ DONE | T006 |
 
 ### Agentes Pendientes
 
 | Posición | Agente | Rol | Prioridad |
 |----------|--------|-----|-----------|
-| 1 | @scrum | Tracking | **SIGUIENTE** |
-| 2 | @pluginmanager | Plugins | Normal |
-| 3 | @prologeditor | Facilitador E2E | Normal |
+| 1 | @aleph | Aprobar plan + Custodio servicios | **SIGUIENTE** |
+| 2 | @prologeditor | Ejecutar pruebas E2E (T008-T011) | Tras arranque |
+
+### Roles Especiales Durante Pruebas
+
+| Rol | Agente | Estado |
+|-----|--------|--------|
+| **Custodio de Infraestructura** | @aleph | 🔧 CUSTODIO (propuesto) |
+| **On-Call Auditoría** | @ox | 🔍 ON-CALL |
+| **On-Call Índices** | @indice | 🔍 ON-CALL |
+| **Tracking Resultados** | @scrum | ⏳ WAITING |
 
 ### Grupo Facilitado (@prologeditor habla por ellos)
 
