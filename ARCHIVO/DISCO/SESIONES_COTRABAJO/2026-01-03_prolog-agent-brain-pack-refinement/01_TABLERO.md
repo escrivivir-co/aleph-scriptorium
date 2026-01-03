@@ -4,15 +4,15 @@
 
 ---
 
-## Turno Actual
+## Estado de Sesión
 
-| # | Agente | Estado | Acta |
-|---|--------|--------|------|
-| 12 | @prologeditor | ⏳ WAITING | — |
+| Estado | Fecha Cierre | Turnos | Agentes |
+|--------|--------------|--------|--------|
+| 🟢 **CERRADA** | 2026-01-03 | 15 | 6 |
 
-> **Siguiente**: @prologeditor ejecuta pruebas E2E del Stack MCP Prolog (plan T006).
+> **Objetivo cumplido**: Stack 4/4 operativo, protocolo validado, DRY confirmado.
 > 
-> ✅ **RESUELTO T011**: Arranque limpio 4/4 ✅ + fix task Health Check.
+> **Diferido**: Pruebas E2E (plan T006) → futura sesión PROLOG-E2E-1.0.0
 
 ---
 
@@ -34,6 +34,10 @@
 | 10 | @aleph | 2026-01-03 | 2026-01-03 | Convocatoria para ajuste del stack | [T010](02_ACTAS/T010_aleph_convocatoria-ajuste.md) |
 | 10b | @ox | 2026-01-03 | 2026-01-03 | Fixes aplicados: script + task + docs | [T010b](02_ACTAS/T010b_ox_fixes-aplicados.md) |
 | 11 | @prologeditor | 2026-01-03 | 2026-01-03 | Arranque limpio 4/4 ✅ + fix path task | [T011](02_ACTAS/T011_prologeditor_arranque-limpio.md) |
+| 12 | @ox | 2026-01-03 | 2026-01-03 | Investigación auto-reflexión: logs son per-window | [T012](02_ACTAS/T012_ox_auto-reflexion-investigacion.md) |
+| 13 | @prologeditor | 2026-01-03 | 2026-01-03 | Auto-reflexión + psicoanálisis + ABSTRACT.md | [T013](02_ACTAS/T013_prologeditor_auto-reflexion.md) |
+| 14 | @aleph | 2026-01-03 | 2026-01-03 | Refactorización: limpió conflictos, propone cerrar | [T014](02_ACTAS/T014_aleph_refactorizacion-sesion.md) |
+| 15 | @scrum | 2026-01-03 | 2026-01-03 | **CIERRE**: métricas + lecciones aprendidas | [T015](02_ACTAS/T015_scrum_cierre-sesion.md) |
 | 0 | Sistema | 2026-01-03 | — | Sesión creada | — |
 
 ---
@@ -50,21 +54,28 @@ Se detectaron violaciones del protocolo de cotrabajo. Ver [AUDITORIA_protocolo.m
 
 ## Cola de Espera
 
-### Agentes Activos (turno completado)
+### Estado Actual de Agentes
 
-| Agente | Estado | Turno |
-|--------|--------|-------|
-| @ox | ✅ DONE | T002 |
-| @indice | ✅ DONE | T003 |
-| @scrum | ✅ DONE | T004 |
-| @prologeditor | ✅ DONE | T006 |
+| Agente | Estado | Último Turno |
+|--------|--------|--------------|
+| @aleph | 🔧 CUSTODIO | T010 |
+| @ox | ✅ DONE | T012 (auto-reflexión) |
+| @indice | 🔍 ON-CALL | T003 |
+| @scrum | ⏳ WAITING | T004 |
+| @prologeditor | ✅ DONE | T013 |
+| @pluginmanager | ⚪ IDLE | — |
 
-### Agentes Pendientes
+### Pruebas E2E Pendientes
 
-| Posición | Agente | Rol | Prioridad |
-|----------|--------|-----|-----------|
-| 1 | @aleph | Aprobar plan + Custodio servicios | **SIGUIENTE** |
-| 2 | @prologeditor | Ejecutar pruebas E2E (T008-T011) | Tras arranque |
+Las pruebas E2E del plan T006 **no se han ejecutado**. La sesión pivoteó hacia auto-reflexión.
+
+| Fase | Estado | Siguiente Agente |
+|------|--------|------------------|
+| Tools Core (7) | ⏳ Pendiente | @prologeditor |
+| Tools Backend (5) | ⏳ Pendiente | @prologeditor |
+| Resources (6) | ⏳ Pendiente | @prologeditor |
+| Prompts (8) | ⏳ Pendiente | @prologeditor |
+| Cierre | ⏳ Pendiente | @aleph + @scrum |
 
 ### Roles Especiales Durante Pruebas
 

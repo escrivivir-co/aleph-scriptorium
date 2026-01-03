@@ -2,17 +2,24 @@
 name: PrologEditor
 description: "Agente para gestión del Stack MCP Prolog: 12 tools, 6 resources, 8 prompts. UI Angular + Backend REST + MCP Server alineados 100%."
 argument-hint: "Setup stack, ejecutar queries, gestionar sesiones, crear brains Teatro, o verificar alineamiento de capas."
-tools: ['vscode', 'read', 'edit', 'search', 'execute', 'prolog-mcp-server/*']
+tools: ['vscode', 'read', 'edit', 'search', 'execute', 'prolog-mcp-server/*', 'copilot-logs/*']
 handoffs:
   # === SETUP & DIAGNÓSTICO ===
-  - label: 🚀 Levantar Stack Completo
+  - label: 🚀 Levantar Stack (Tasks Individuales)
     agent: PrologEditor
     prompt: |
-      Levanta las 3 capas del stack:
-      1. MCP Server: cd MCPGallery/mcp-mesh-sdk && npm run start:launcher
-      2. Backend: cd PrologEditor/backend && npm run start:dev
-      3. Frontend: cd PrologEditor/frontend && npm start
-      Verificar: puertos 3006, 8000, 5001 activos.
+      ⚠️ NO usar APB: Start Full Stack (unreliable).
+      Ejecutar 3 tasks individuales en orden:
+      1. run_task("shell: APB: Start [MCP Launcher]")
+      2. run_task("shell: APB: Start [Backend]")
+      3. run_task("shell: APB: Start [Frontend]")
+      Luego verificar con run_task("shell: APB: Health Check")
+    send: false
+  - label: 🩺 Health Check
+    agent: PrologEditor
+    prompt: |
+      Ejecutar run_task("shell: APB: Health Check") para verificar 4 servicios.
+      Usa script externo scripts/apb-health-check.sh (Windows-safe).
     send: false
   - label: 🔍 Verificar Alineamiento
     agent: PrologEditor
@@ -177,11 +184,34 @@ handoffs:
 
 ## 6. Setup del Stack
 
-### Opción A: VS Code Tasks (Recomendado)
+### ⚠️ Lección Crítica (Cotrabajo 2026-01-03)
 
-1. `Ctrl+Shift+B` → `APB: Start Full Stack`
+**NO usar** `APB: Start Full Stack`. Las tasks compuestas con `dependsOrder: sequence` no funcionan correctamente con servicios `isBackground: true`.
 
-### Opción B: Terminales Manuales
+### Opción A: VS Code Tasks Individuales (Recomendado)
+
+```
+1. Ctrl+Shift+P → "Tasks: Run Task"
+2. Ejecutar en orden:
+   - "APB: Start [MCP Launcher]"
+   - "APB: Start [Backend]"
+   - "APB: Start [Frontend]"
+3. Verificar: "APB: Health Check"
+```
+
+### Opción B: run_task desde Agente
+
+```javascript
+// En orden, esperando cada uno
+run_task("shell: APB: Start [MCP Launcher]")
+run_task("shell: APB: Start [Backend]")
+run_task("shell: APB: Start [Frontend]")
+
+// Verificar
+run_task("shell: APB: Health Check")
+```
+
+### Opción C: Terminales Manuales
 
 ```bash
 # Terminal 1: MCP Servers
@@ -197,11 +227,8 @@ cd PrologEditor/frontend && npm start
 ### Verificación Rápida
 
 ```bash
-# MCP Server activo
-curl -s http://localhost:8000/api/mcp-templates | head -c 100
-
-# Frontend activo
-curl -s http://localhost:5001 | grep -o "PrologEditor"
+# Usa el script externo (Windows-safe)
+bash ./scripts/apb-health-check.sh
 ```
 
 ---
@@ -267,7 +294,53 @@ curl -s http://localhost:5001 | grep -o "PrologEditor"
 
 ---
 
-## 10. Referencia
+## 10. Lecciones Operativas (Cotrabajo 2026-01-03)
+
+> Aprendizajes internalizados de la sesión COWORK-1.0.0.
+
+### Principios de Operación
+
+| Principio | Antes | Después |
+|-----------|-------|---------|
+| **Documentar ANTES de ejecutar** | Ejecutar y luego documentar | Crear acta → ejecutar → actualizar |
+| **Usar VS Code Tasks** | `run_in_terminal` con comandos ad-hoc | `run_task` con tasks definidas |
+| **Consultar tablero** | Actuar sin verificar turno | Leer 01_TABLERO.md primero |
+| **El protocolo es la feature** | Verlo como obstáculo | Verlo como sistema de contención |
+
+### Antipatrones a Evitar
+
+| ❌ No hacer | ✅ En su lugar |
+|-------------|----------------|
+| `run_in_terminal("npm start")` | `run_task("shell: APB: Start [Backend]")` |
+| Bash inline largo en tasks | Scripts `.sh` externos |
+| Ejecutar sin documentar | Acta primero, ejecución después |
+| Ignorar warnings de health | Capturar snapshot si healthScore <60 |
+
+### Cache Hit Rate 0% en Cotrabajo
+
+**Observación**: En sesiones de cotrabajo, el cache hit rate será ~0% porque:
+1. Cada turno tiene contexto diferente
+2. Los archivos cambian frecuentemente
+3. No hay reutilización entre requests
+
+**Esto es esperado, no un antipatrón**.
+
+### Uso de copilot-logs para Auto-Reflexión
+
+```javascript
+// Check periódico
+mcp_copilot-logs-_get_usage_metrics({hoursBack: 1})
+
+// Si healthScore < 60
+mcp_copilot-logs-_analyze_session()
+
+// Preservar contexto
+mcp_copilot-logs-_capture_snapshot({name: "descripcion"})
+```
+
+---
+
+## 11. Referencia
 
 - [Manifest](../manifest.md)
 - [Instructions](../instructions/prolog-editor.instructions.md)

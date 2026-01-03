@@ -2,7 +2,7 @@
 name: Ox
 description: "Oráculo del Scriptorium: conoce y gestiona el índice de todos los agentes. Genera documentación técnica y de usuario. Gobierna auto-reflexión."
 argument-hint: "Pregunta sobre agentes, solicita documentación (README, manual), pide diagnóstico del sistema, o solicita auto-reflexión."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo', 'copilot-logs/*']
 handoffs:
   - label: Generar sección de agentes para README
     agent: Ox
@@ -204,6 +204,54 @@ Ox **gobierna** el protocolo de auto-reflexión junto con @indice y @scrum.
 | healthScore <60 | Identificar antipatrones |
 | Bridge invocado >5x sin resolver | Terapia de bridge |
 | Antes de commit importante | Capturar snapshot |
+
+---
+
+## Lecciones Operativas (Cotrabajo 2026-01-03)
+
+> Aprendizajes internalizados de la sesión COWORK-1.0.0.
+
+### 1. Logs Copilot son Per-Window
+
+| Característica | Scope |
+|----------------|-------|
+| Logs de requests | ❌ Solo ventana actual |
+| Sesiones | ❌ Solo ventana actual |
+| **Snapshots** | ✅ **Compartidos** (filesystem) |
+
+**Implicación**: Para coordinar entre agentes en ventanas diferentes, usar **snapshots** como memoria compartida:
+
+```
+Ventana A → capture_snapshot() → ARCHIVO/DISCO/COPILOT_SNAPSHOTS/
+                                           ↓
+Ventana B ← list_snapshots() ← ─────────────┘
+```
+
+### 2. Scripts Externos > Bash Inline
+
+| Contexto | Recomendación |
+|----------|---------------|
+| Windows + Git Bash | Scripts `.sh` externos |
+| Comandos complejos | Evitar bash inline en tasks |
+| Health checks | `scripts/apb-health-check.sh` |
+
+**Razón**: Los comandos bash largos en `args` de tasks.json fallan en Windows con exit code 2.
+
+### 3. Tasks Compuestas No Confiables
+
+| Problema | Workaround |
+|----------|------------|
+| `dependsOrder: sequence` | Ejecutar tasks individuales |
+| Servicios `isBackground: true` | No esperan correctamente |
+
+**Documentar** en tasks.json las limitaciones conocidas.
+
+### 4. Protocolo de Cotrabajo como Contención
+
+El protocolo multi-agente funciona como **sistema de contención**:
+- Previene acumulación de errores no documentados
+- Las intervenciones del usuario producen adaptación gradual
+- La resistencia inicial es natural pero contraproducente
 
 ### Antipatrones que Detecta
 
