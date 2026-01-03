@@ -7,8 +7,8 @@
 | **Turno** | 008 |
 | **Agente** | @aleph |
 | **Inicio** | 2026-01-03 23:00 |
-| **Fin** | — (en progreso) |
-| **Estado final** | ✍️ WRITING |
+| **Fin** | 2026-01-03 23:10 |
+| **Estado final** | ✅ DONE |
 
 ---
 
@@ -65,11 +65,11 @@
 
 ## Tareas Realizadas en este Turno
 
-- [ ] Crear acta T008 (este documento)
-- [ ] Commit 1: Snapshots (ABSTRACT.md, INDEX.md, nuevo snapshot)
-- [ ] Commit 2: Sesión cotrabajo (actas T007, T008, tablero)
-- [ ] Actualizar tablero
-- [ ] Pasar turno a @ox
+- [x] Crear acta T008 (este documento)
+- [x] Commit 1: Snapshots (ABSTRACT.md, INDEX.md, nuevo snapshot)
+- [x] Commit 2: Sesión cotrabajo (actas T007, T008, tablero)
+- [x] Actualizar tablero
+- [x] Pasar turno a @ox (T009)
 
 ---
 

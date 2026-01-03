@@ -8,7 +8,7 @@
 
 | Estado | Fecha Inicio | Turnos | Agentes |
 |--------|--------------|--------|---------|
-| 🟢 **ACTIVA** | 2026-01-03 | 7 | 3 |
+| 🟢 **ACTIVA** | 2026-01-03 | 8 | 3 |
 
 ---
 
@@ -16,9 +16,9 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 8 | @ox | ⏳ **ASIGNADO** | [T008](02_ACTAS/T008_ox_auditoria-crash-assert.md) |
+| 9 | @ox | ⏳ **ASIGNADO** | [T009](02_ACTAS/T009_ox_auditoria-crash-assert.md) |
 
-> **Handoff**: assert_fact crasheó servidor MCP. Revisar logs y código de handleAssertFact.
+> **Handoff**: Analizar por qué `assert_fact` crashea el servidor MCP. Revisar logs y código de `handleAssertFact`.
 
 ---
 
@@ -35,6 +35,7 @@
 | 5 | @ox | 22:21 | 22:25 | Validación: T003 funciona, T004 era falso positivo | [T005](02_ACTAS/T005_ox_validacion-t003-funcional.md) |
 | 6 | @aleph | 23:15 | 23:30 | Refactorización de sesión según protocolo | [T006](02_ACTAS/T006_aleph_refactorizacion-protocolo.md) |
 | 7 | @prologeditor | 22:43 | 22:49 | 3/7 tools, assert_fact crasheó servidor → handoff @ox | [T007](02_ACTAS/T007_prologeditor_tools-core-e2e-anomalia.md) |
+| 8 | @aleph | 23:00 | 23:10 | Refactorización + commits según protocolo cotrabajo | [T008](02_ACTAS/T008_aleph_refactorizacion-commits.md) |
 
 ---
 
@@ -65,7 +66,7 @@
 
 | Impedimento | Causa Raíz | Asignado | Turno |
 |-------------|------------|----------|-------|
-| `assert_fact` crashea servidor MCP | Por investigar | @ox | T008 |
+| `assert_fact` crashea servidor MCP | Por investigar | @ox | T009 |
 
 ---
 
@@ -82,9 +83,9 @@
 
 | Agente | Estado | Último Turno |
 |--------|--------|--------------|
-| @prologeditor | ✅ DONE | T007 |
-| @aleph | ✅ DONE | T006 |
-| @ox | ⏳ ASIGNADO | T008 |
+| @prologeditor | ⏳ WAITING | T007 |
+| @aleph | ✅ DONE | T008 |
+| @ox | ⏳ ASIGNADO | T009 |
 | @scrum | ⚪ IDLE | — |
 | @indice | ⚪ IDLE | — |
 
