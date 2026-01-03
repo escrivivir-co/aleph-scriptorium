@@ -2,9 +2,9 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.7.1  
+> **Versión**: 1.8.0  
 > **Última actualización**: 2026-01-03  
-> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, SDK-BROWSER-1.0.0, DEVOPS-TASKS-1.0.0
+> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, SDK-BROWSER-1.0.0, DEVOPS-TASKS-1.0.0, PROLOG-E2E-1.0.0
 
 ---
 
@@ -20,6 +20,7 @@
 | [6. Checklist de Alineamiento](#6-checklist-de-alineamiento) | Validación 100% | Al cerrar trabajo |
 | [7. Antipatrones](#7-antipatrones-a-evitar) | Errores comunes | Debugging |
 | [8. DevOps: VS Code Tasks](#8-devops-vs-code-tasks) | **Tasks APB** | **Arrancar stack** |
+| [9. Prerequisitos: SWI-Prolog](#9-prerequisitos-swi-prolog) | **Instalación swipl** | **Setup inicial** |
 
 ---
 
@@ -495,7 +496,104 @@ grep -E "^\s+(create|list|destroy|run|assert|consult|get)" PrologEditor/frontend
 
 ---
 
-## 9. Referencias
+## 9. Prerequisitos: SWI-Prolog
+
+> **Dependencia crítica**: El MCP Prolog Server usa `swipl-stdio` que requiere SWI-Prolog instalado y accesible en PATH.
+
+### 9.1 Instalación por Sistema Operativo
+
+| Sistema | Comando de Instalación | Ruta Típica |
+|---------|------------------------|-------------|
+| **Windows** | `winget install SWI-Prolog.SWI-Prolog` | `C:\Program Files\swipl\bin` |
+| **macOS (Homebrew)** | `brew install swi-prolog` | `/opt/homebrew/bin` (ARM) o `/usr/local/bin` (Intel) |
+| **Linux (Debian/Ubuntu)** | `sudo apt install swi-prolog` | `/usr/bin` (normalmente ya en PATH) |
+| **Linux (Fedora)** | `sudo dnf install swi-prolog` | `/usr/bin` |
+
+### 9.2 Verificar Instalación
+
+```bash
+# Debe mostrar versión (ej: "SWI-Prolog version 9.2.9")
+swipl --version
+
+# Si falla, verificar ruta manual
+which swipl       # Linux/macOS
+where swipl       # Windows (cmd)
+```
+
+### 9.3 Configuración de PATH en VS Code Tasks
+
+El task `APB: Start [MCP Launcher]` añade automáticamente la ruta de `swipl` al PATH según el sistema operativo.
+
+**Configuración en `.vscode/tasks.json`**:
+
+```jsonc
+{
+  "label": "APB: Start [MCP Launcher]",
+  // ... otras propiedades ...
+  "options": {
+    "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+    "env": {
+      "PATH": "${env:PATH}:/usr/local/bin"  // Linux default
+    }
+  },
+  // Overrides por plataforma
+  "windows": {
+    "options": {
+      "env": {
+        "PATH": "${env:PATH};C:\\Program Files\\swipl\\bin"
+      }
+    }
+  },
+  "osx": {
+    "options": {
+      "env": {
+        "PATH": "${env:PATH}:/opt/homebrew/bin:/usr/local/bin"
+      }
+    }
+  }
+}
+```
+
+### 9.4 Diagnóstico: Error "spawn swipl ENOENT"
+
+**Síntoma**:
+```
+[ERROR] Uncaught exception in MCPPrologServer {
+  "error": "spawn swipl ENOENT"
+}
+```
+
+**Causa**: El ejecutable `swipl` no está en el PATH del proceso Node.
+
+**Soluciones**:
+
+1. **Verificar instalación**: `swipl --version`
+2. **Añadir al PATH del sistema** (permanente):
+   - Windows: Sistema → Variables de entorno → PATH → Añadir `C:\Program Files\swipl\bin`
+   - macOS/Linux: Añadir a `~/.bashrc` o `~/.zshrc`: `export PATH="$PATH:/ruta/a/swipl"`
+3. **Usar VS Code Tasks** (ya configurado): El task `APB: Start [MCP Launcher]` incluye la ruta automáticamente
+
+### 9.5 Protección contra Crash (T009)
+
+El MCP Prolog Server incluye manejadores de excepciones globales para prevenir crashes por errores de `swipl-stdio`:
+
+```typescript
+// MCPPrologServer.ts (entry point)
+process.on('uncaughtException', (error) => {
+  l.e('Uncaught exception in MCPPrologServer', { error: error.message });
+  // No exit - server continues running
+});
+
+process.on('unhandledRejection', (reason) => {
+  l.e('Unhandled rejection in MCPPrologServer', { reason: String(reason) });
+});
+```
+
+Esto permite que el servidor registre el error sin crashear, facilitando el diagnóstico.
+
+---
+
+## 10. Referencias
 
 | Documento | Path | Contenido |
 |-----------|------|-----------|
@@ -522,7 +620,7 @@ grep -E "^\s+(create|list|destroy|run|assert|consult|get)" PrologEditor/frontend
 
 ---
 
-## 10. Protocolo de Actualización de Esta Guía
+## 11. Protocolo de Actualización de Esta Guía
 
 **Cuándo actualizar**:
 - Al añadir nuevo MCP Server al mesh

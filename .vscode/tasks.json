@@ -38,7 +38,27 @@
       "command": "npm",
       "args": ["run", "start:launcher"],
       "options": {
-        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+        "env": {
+          "PATH": "${env:PATH}:/usr/local/bin"
+        }
+      },
+      // Platform-specific PATH for SWI-Prolog (swipl-stdio dependency)
+      "windows": {
+        "options": {
+          "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+          "env": {
+            "PATH": "${env:PATH};C:\\Program Files\\swipl\\bin"
+          }
+        }
+      },
+      "osx": {
+        "options": {
+          "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+          "env": {
+            "PATH": "${env:PATH}:/opt/homebrew/bin:/usr/local/bin"
+          }
+        }
       },
       "isBackground": true,
       "problemMatcher": {
