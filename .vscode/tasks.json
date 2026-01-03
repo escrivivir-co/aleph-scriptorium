@@ -1,0 +1,221 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // ═══════════════════════════════════════════════════════════════════════
+    // APB: Agent Prolog Brain Pack
+    // Stack: MCP Mesh (Launcher+Prolog) + Backend REST + Frontend Angular
+    // Puertos: 3050 (Launcher), 3006 (Prolog), 8000 (Backend), 5001 (Frontend)
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // COMPOUND: Arranque completo del stack
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Start Full Stack",
+      "dependsOn": [
+        "APB: Start [MCP Launcher]",
+        "APB: Start [Backend]",
+        "APB: Start [Frontend]"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Arranca MCP Launcher (3050) → Backend (8000) → Frontend (5001)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // INDIVIDUAL: Servicios con hot-reload
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Start [MCP Launcher]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:launcher"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "apb-mcp",
+        "pattern": {
+          "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Launcher running on port 3050.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "apb-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "MCP Launcher (3050) + Prolog Server (3006)"
+    },
+
+    {
+      "label": "APB: Start [Backend]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:backend"],
+      "options": {
+        "cwd": "${workspaceFolder}/PrologEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "apb-backend",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Backend.*$",
+          "endsPattern": "^.*listening on port 8000.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "apb-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Express REST API (8000)"
+    },
+
+    {
+      "label": "APB: Start [Frontend]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:frontend"],
+      "options": {
+        "cwd": "${workspaceFolder}/PrologEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "apb-angular",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "apb-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Angular Dev Server (5001) con hot-reload"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UTILITY: Health checks y diagnóstico
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Health Check",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '╔══════════════════════════════════════╗' && echo '║   APB: Agent Prolog Brain - Health   ║' && echo '╚══════════════════════════════════════╝' && echo '' && echo '🚀 MCP Launcher (3050):' && (curl -s http://localhost:3050/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '🧠 MCP Prolog (3006):' && (curl -s http://localhost:3006/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '⚙️  Backend REST (8000):' && (curl -s http://localhost:8000/api/health && echo ' ✅') || echo ' ❌ DOWN' && echo '' && echo '🌐 Frontend Angular (5001):' && (curl -s -o /dev/null -w 'HTTP %{http_code}' http://localhost:5001 && echo ' ✅') || echo ' ❌ DOWN'"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Verifica estado de los 4 servicios"
+    },
+
+    {
+      "label": "APB: Test Query",
+      "type": "shell",
+      "command": "curl",
+      "args": [
+        "-s", "-X", "POST",
+        "http://localhost:8000/api/run-rule",
+        "-H", "Content-Type: application/json",
+        "-d", "{\"rule\":\"member(X, [1,2,3])\"}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Ejecuta query Prolog de prueba via Backend"
+    },
+
+    {
+      "label": "APB: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:5001"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:5001"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre el frontend en el navegador"
+    },
+
+    {
+      "label": "APB: Stop All",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo 'Stopping APB services...' && (pkill -f 'MCPLauncherServer' 2>/dev/null || true) && (pkill -f 'MCPPrologServer' 2>/dev/null || true) && (pkill -f 'ng serve' 2>/dev/null || true) && (pkill -f 'PrologEditor.*app.js' 2>/dev/null || true) && echo '✅ All APB services stopped'"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "taskkill /F /IM node.exe /FI \"WINDOWTITLE eq APB*\" 2>nul & echo Services stopped"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Detiene todos los procesos del stack APB"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BUILD: Compilación del stack
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Build Chain",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '🔨 Building MCP Core SDK...' && cd ${workspaceFolder}/MCPGallery/mcp-core-sdk && npm run build && echo '🔨 Building MCP Mesh SDK...' && cd ../mcp-mesh-sdk && npm run build && echo '🔨 Building Backend...' && cd ../../PrologEditor/backend && npm run build 2>/dev/null || echo '(no build script)' && echo '🔨 Building Frontend...' && cd ../frontend && npm run build && echo '✅ Build chain complete'"
+      ],
+      "problemMatcher": ["$tsc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build",
+      "detail": "Build completo: core-sdk → mesh-sdk → backend → frontend"
+    }
+  ]
+}

@@ -2,9 +2,9 @@
 
 > **Propósito**: Protocolo DRY para agentes que trabajan en el stack MCP.  
 > **Origen**: Spike SCRIPT-2.3.1 (PrologAgent Pack)  
-> **Versión**: 1.6.0  
+> **Versión**: 1.7.0  
 > **Última actualización**: 2026-01-03  
-> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, SDK-BROWSER-1.0.0
+> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, SDK-BROWSER-1.0.0, DEVOPS-TASKS-1.0.0
 
 ---
 
@@ -18,6 +18,8 @@
 | [4. Restricciones de Entorno](#4-restricciones-de-entorno) | Backend vs Frontend | Evitar errores de build |
 | [5. Protocolo de Tipos](#5-protocolo-de-tipos) | Dónde definir tipos | Al crear nuevos tipos |
 | [6. Checklist de Alineamiento](#6-checklist-de-alineamiento) | Validación 100% | Al cerrar trabajo |
+| [7. Antipatrones](#7-antipatrones-a-evitar) | Errores comunes | Debugging |
+| [8. DevOps: VS Code Tasks](#8-devops-vs-code-tasks) | **Tasks APB** | **Arrancar stack** |
 
 ---
 
@@ -50,8 +52,8 @@
 
 | Servicio | Puerto | Directorio |
 |----------|--------|------------|
-| Angular Dev Server | 4200 | `*/frontend/` |
-| Backend REST | 3000 | `*/backend/` |
+| Angular Dev Server | **5001** | `PrologEditor/frontend/` |
+| Backend REST | **8000** | `PrologEditor/backend/` |
 | MCP Prolog Server | 3006 | `MCPGallery/mcp-mesh-sdk/` |
 | MCP DevOps Server | 3003 | `MCPGallery/mcp-mesh-sdk/` |
 | MCP Launcher | 3050 | `MCPGallery/mcp-mesh-sdk/` |
@@ -402,22 +404,83 @@ Error: node_modules/socket.io/dist/index.d.ts:1:8 - error TS1192: Module '"http"
 
 ---
 
-## 8. Comandos de Desarrollo
+## 8. DevOps: VS Code Tasks
 
-### 8.1 Arrancar Stack Completo
+> **Pack**: APB (Agent Prolog Brain)  
+> **Archivo**: `.vscode/tasks.json`  
+> **Convención de nombres**: `{PACK}: {Acción} [{Servicio}]`
+
+### 8.1 Nomenclatura de Packs
+
+| Prefijo | Pack | Descripción |
+|---------|------|-------------|
+| `APB:` | **A**gent **P**rolog **B**rain | Stack MCP + Prolog + UI Angular |
+| `SCR:` | **SCR**iptorium Core | Documentación, Jekyll, GH-Pages |
+| `TEA:` | **TEA**tro | Demo transmedia, obras interactivas |
+
+### 8.2 Tasks Disponibles (APB)
+
+| Task | Atajo | Descripción |
+|------|-------|-------------|
+| `APB: Start Full Stack` | `Ctrl+Shift+B` | Arranca los 3 servicios en secuencia |
+| `APB: Start [MCP Launcher]` | — | Solo MCP Launcher (3050) + Prolog (3006) |
+| `APB: Start [Backend]` | — | Solo Express REST (8000) |
+| `APB: Start [Frontend]` | — | Solo Angular Dev (5001) con hot-reload |
+| `APB: Health Check` | — | Verifica estado de los 4 puertos |
+| `APB: Test Query` | — | Ejecuta query Prolog de prueba |
+| `APB: Open Browser` | — | Abre http://localhost:5001 |
+| `APB: Stop All` | — | Detiene todos los procesos APB |
+| `APB: Build Chain` | — | Build completo: core → mesh → backend → frontend |
+
+### 8.3 Puertos y Servicios
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                  APB: Start Full Stack                  │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  [MCP Launcher :3050] ──► [MCP Prolog :3006]           │
+│          │                                              │
+│          ▼                                              │
+│  [Backend REST :8000] ◄── [Frontend Angular :5001]     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 8.4 Uso desde Copilot Chat
+
+Los agentes pueden invocar tasks con:
+
+```
+# Arrancar stack completo
+run_task({workspaceFolder: "...", id: "APB: Start Full Stack"})
+
+# Verificar salud
+run_task({workspaceFolder: "...", id: "APB: Health Check"})
+```
+
+### 8.5 Flujo de Desarrollo Recomendado
+
+1. **Arrancar**: `Ctrl+Shift+B` → `APB: Start Full Stack`
+2. **Verificar**: `APB: Health Check` (esperar ✅ en los 4 servicios)
+3. **Desarrollar**: Editar código (hot-reload automático en frontend)
+4. **Validar**: `APB: Test Query` para probar Prolog
+5. **Parar**: `APB: Stop All` al terminar
+
+### 8.6 Comandos Manuales (Alternativa)
 
 ```bash
 # Terminal 1: MCP Servers
-cd MCPGallery && npm run start:mesh
+cd MCPGallery/mcp-mesh-sdk && npm run start:launcher
 
 # Terminal 2: Backend
-cd PrologEditor/backend && npm run start:dev
+cd PrologEditor && npm run start:backend
 
-# Terminal 3: Frontend
-cd PrologEditor/frontend && npm start
+# Terminal 3: Frontend  
+cd PrologEditor && npm run start:frontend
 ```
 
-### 8.2 Verificar Alineamiento
+### 8.7 Verificar Alineamiento
 
 ```bash
 # Listar tools del MCP Server

@@ -1,19 +1,78 @@
 ---
 name: plugin_ox_prologeditor
-description: "Bridge: conecta VS Code con agentes del plugin PrologEditor para lógica declarativa, sistemas IoT/SBR y modelado de inteligencias situadas (aferencia/eferencia)."
-argument-hint: "Invoca capacidades de edición Prolog, ejecución SWI-Prolog, MCP Prompts, o modelado de sistemas IoT con paradigma SBR."
+description: "Bridge: Stack MCP Prolog completo (12 tools, 6 resources, 8 prompts). UI Angular + Backend REST + MCP Server. Lógica declarativa, IoT/SBR, Teatro."
+argument-hint: "Setup stack, ejecutar Prolog, gestionar sesiones MCP, o modelar sistemas IoT con paradigma SBR."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']
 
-# Conocimiento Estructural (protocolo plugin_ox_*)
-# - Código del plugin: .github/plugins/prolog-editor/
-# - Datos y configuración: ARCHIVO/PLUGINS/PROLOG_EDITOR/
-# - Submódulo fuente: PrologEditor/ (iot-sbr-logica-para-bots)
-# - Gestor de estructura: @plugin-manager
-# - Documentación de sesiones: ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/
-# - MCP Server: prolog-mcp-server (puerto 3006)
-# - Pack: AgentPrologBrain.pack.json v3.0.0 (12 tools, 6 resources, 8 prompts)
+# ═══════════════════════════════════════════════════════════════════════════
+# CONOCIMIENTO ESTRUCTURAL — Stack MCP Prolog v2.0.0
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# ARQUITECTURA DE 4 CAPAS:
+# ┌─────────────────────────────────────────────────────────────────────────┐
+# │  CAPA 1: UI Angular (puerto 5001)                                       │
+# │  └── PrologEditor/frontend/src/app/                                     │
+# │      └── 7 componentes: Sessions, Editor, Knowledge, Templates,         │
+# │          Telemetry, BrainEditor, UserAppDialog                          │
+# ├─────────────────────────────────────────────────────────────────────────┤
+# │  CAPA 2: Backend REST (puerto 8000)                                     │
+# │  └── PrologEditor/backend/src/                                          │
+# │      └── 12 endpoints alineados con MCP tools                           │
+# ├─────────────────────────────────────────────────────────────────────────┤
+# │  CAPA 3: MCP Server (puerto 3006)                                       │
+# │  └── MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts                     │
+# │      └── 12 tools + 6 resources + 8 prompts                             │
+# ├─────────────────────────────────────────────────────────────────────────┤
+# │  CAPA 4: SDK Core (tipos compartidos)                                   │
+# │  └── MCPGallery/mcp-core-sdk/src/types/                                 │
+# │      └── Tipos DRY 100%: PrologSession, QueryResponse, etc.             │
+# └─────────────────────────────────────────────────────────────────────────┘
+#
+# PUERTOS ESTÁNDAR:
+#   - Frontend Angular: 5001
+#   - Backend REST:     8000  
+#   - MCP Prolog:       3006
+#   - MCP Launcher:     3050
+#
+# UBICACIONES:
+#   - Plugin code:      .github/plugins/prolog-editor/
+#   - Plugin data:      ARCHIVO/PLUGINS/PROLOG_EDITOR/
+#   - Submódulo UI+BE:  PrologEditor/
+#   - Submódulo MCP:    MCPGallery/mcp-mesh-sdk/
+#   - SDK tipos:        MCPGallery/mcp-core-sdk/
+#   - Guía arquitectura: ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/guia-arquitectura-mcp-stack.md
+#   - Pack MCP:         .github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json v3.0.0
+#   - VS Code Tasks:    .vscode/tasks.json (prefijo APB:)
+#
 
 handoffs:
+  # ═══════════════════════════════════════════════════════════════════════
+  # SETUP & DIAGNOSTICS (UC-OX-*)
+  # ═══════════════════════════════════════════════════════════════════════
+  - label: 🚀 Levantar Stack Completo (APB)
+    agent: plugin_ox_prologeditor
+    prompt: |
+      Levanta el stack MCP Prolog completo usando VS Code Tasks (prefijo APB:).
+      1. Terminal MCP: cd MCPGallery/mcp-mesh-sdk && npm run start:launcher
+      2. Terminal Backend: cd PrologEditor/backend && npm run start:dev
+      3. Terminal Frontend: cd PrologEditor/frontend && npm start
+      Verificar puertos: 3006, 8000, 5001 activos.
+    send: false
+  - label: 🔍 Verificar Stack (Healthcheck)
+    agent: plugin_ox_prologeditor
+    prompt: |
+      Ejecuta healthcheck del stack:
+      - curl http://localhost:3006/tools (MCP: 12 tools)
+      - curl http://localhost:8000/api/sessions (Backend)
+      - curl http://localhost:5001 (Frontend Angular)
+    send: false
+  - label: 📋 Ver Guía de Arquitectura
+    agent: plugin_ox_prologeditor
+    prompt: Lee la guía completa de arquitectura en ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/guia-arquitectura-mcp-stack.md
+    send: false
+  # ═══════════════════════════════════════════════════════════════════════
+  # AGENTE PRINCIPAL
+  # ═══════════════════════════════════════════════════════════════════════
   - label: Listar agentes de PrologEditor
     agent: plugin_ox_prologeditor
     prompt: Lista agentes disponibles en el plugin prolog-editor.
@@ -46,7 +105,9 @@ handoffs:
     agent: .github/plugins/prolog-editor/agents/prolog-editor.agent.md
     prompt: Añade una condición Prolog a un estadio de obra en ARG_BOARD.
     send: false
-  # === MCP Prompts (v3.0.0) ===
+  # ═══════════════════════════════════════════════════════════════════════
+  # MCP PROMPTS (v3.0.0) - 8 Workflows Orquestados
+  # ═══════════════════════════════════════════════════════════════════════
   - label: 🔄 Gestionar sesión Prolog
     agent: plugin_ox_prologeditor
     prompt: "Usa el prompt MCP 'session_lifecycle' para crear, listar o destruir una sesión Prolog. Acciones disponibles: create (requiere sessionId y obraId), list, destroy (requiere sessionId)."
@@ -85,11 +146,44 @@ handoffs:
 
 **Capa:** 🔌 Plugins (Bridge) — ver taxonomía en @ox
 
-> Agente bridge que conecta VS Code con `.github/plugins/prolog-editor/agents/`.
+> Bridge para el **Stack MCP Prolog completo**: UI Angular + Backend REST + MCP Server con 12 tools alineadas.
 
 ---
 
-## Agentes Disponibles
+## 1. Arquitectura del Stack (4 Capas)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         STACK MCP PROLOG v2.0.0                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌───────────────┐     ┌───────────────┐     ┌───────────────┐             │
+│  │ UI Angular    │ ──► │ Backend REST  │ ──► │ MCP Server    │             │
+│  │ :5001         │     │ :8000         │     │ :3006         │             │
+│  │ 7 components  │     │ 12 endpoints  │     │ 12 tools      │             │
+│  └───────────────┘     └───────────────┘     └───────────────┘             │
+│         │                     │                     │                       │
+│         └─────────────────────┼─────────────────────┘                       │
+│                               │                                             │
+│                      ┌────────▼────────┐                                    │
+│                      │  mcp-core-sdk   │ ← Tipos DRY 100%                   │
+│                      └─────────────────┘                                    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Puertos
+
+| Servicio | Puerto | Directorio |
+|----------|--------|------------|
+| Frontend Angular | **5001** | `PrologEditor/frontend/` |
+| Backend REST | **8000** | `PrologEditor/backend/` |
+| MCP Prolog Server | **3006** | `MCPGallery/mcp-mesh-sdk/` |
+| MCP Launcher | 3050 | `MCPGallery/mcp-mesh-sdk/` |
+
+---
+
+## 2. Agentes Disponibles
 
 | Agente | Archivo | Descripción |
 |--------|---------|-------------|
@@ -97,26 +191,36 @@ handoffs:
 
 ---
 
-## Capacidades
+## 3. Matriz de Alineamiento (12 Tools)
 
-### Templates
-- Crear templates Prolog asistidos
-- Listar templates disponibles
-- Importar reglas .pl
+### Tools Core (7) - Motor SWI-Prolog
 
-### Ejecución
-- Ejecutar consultas Prolog (requiere SWI-Prolog)
-- Validar sintaxis
+| Tool MCP | Endpoint REST | UI Component |
+|----------|---------------|--------------|
+| `prolog_create_session` | `POST /sessions` | ✅ SessionManager |
+| `prolog_list_sessions` | `GET /sessions` | ✅ SessionManager |
+| `prolog_destroy_session` | `DELETE /sessions/:id` | ✅ SessionManager |
+| `prolog_query` | `POST /run-rule` | ✅ RuleEditor |
+| `prolog_assert_fact` | `POST /assert` | ✅ KnowledgeBase |
+| `prolog_consult_file` | `POST /consult` | ✅ KnowledgeBase |
+| `prolog_get_templates` | `GET /mcp-templates` | ✅ McpTemplatesBrowser |
 
-### Integraciones
-- Exportar Blockly → Prolog
-- Asignar reglas a agentes (AGENT_CREATOR)
-- Condiciones en estadios (ARG_BOARD)
+### Tools Backend-Integrated (5) - SQLite via HTTP
 
-### MCP Prompts (v3.0.0)
+| Tool MCP | Endpoint REST | UI Component |
+|----------|---------------|--------------|
+| `prolog_load_rules_from_db` | `GET /rules` | ✅ RuleList |
+| `prolog_save_rule_to_db` | `POST /rules` | ✅ RuleEditor |
+| `prolog_list_sdk_templates` | `GET /sdk-templates` | ✅ RuleEditor (dropdown) |
+| `prolog_get_sdk_template_content` | `GET /template/:name` | ✅ RuleEditor |
+| `prolog_get_telemetry_status` | `GET /telemetry/status` | ✅ TelemetryMonitor |
 
-| Prompt | Descripción | Tools Orquestadas |
-|--------|-------------|-------------------|
+---
+
+## 4. MCP Prompts (8 Workflows)
+
+| Prompt | Propósito | Tools Orquestadas |
+|--------|-----------|-------------------|
 | `session_lifecycle` | Gestión de sesiones | create, list, destroy |
 | `load_knowledge_base` | Carga de conocimiento | consult_file, load_rules_from_db |
 | `interactive_query` | Consultas interactivas | query |
@@ -124,24 +228,74 @@ handoffs:
 | `use_sdk_template` | Templates SDK | list_sdk_templates, get_sdk_template_content |
 | `telemetry_check` | Estado IoT | get_telemetry_status |
 | `razonamiento_sbr` | SBR | query, load_rules, telemetry |
-| `teatro_agent_session` | Workflow E2E | Todos |
+| `teatro_agent_session` | Workflow E2E Teatro | **Todos** |
 
 ---
 
-## MCP Server
+## 5. MCP Resources (6)
 
-- **ID**: prolog-mcp-server
-- **Puerto**: 3006
-- **Pack**: AgentPrologBrain.pack.json v3.0.0
-- **Capacidades**: 12 tools, 6 resources, 8 prompts
+| Resource | URI |
+|----------|-----|
+| `prolog-session-state` | `prolog://sessions/current` |
+| `prolog-templates-catalog` | `prolog://templates/catalog` |
+| `prolog-active-sessions` | `prolog://sessions` |
+| `prolog-rules-catalog` | `prolog://rules/catalog` |
+| `prolog-sdk-templates` | `prolog://sdk/templates` |
+| `prolog-telemetry` | `prolog://telemetry/current` |
 
 ---
 
-## Referencia
+## 6. Componentes UI (7)
 
-- Manifest: `.github/plugins/prolog-editor/manifest.md`
-- Agentes: `.github/plugins/prolog-editor/agents/`
-- Prompts: `.github/plugins/prolog-editor/prompts/`
-- Instructions: `.github/plugins/prolog-editor/instructions/`
-- Submódulo: `iot-sbr-logica-para-bots/`
+| Componente | Tab | Funcionalidad |
+|------------|-----|---------------|
+| SessionManagerComponent | Sessions | Crear/listar/destruir sesiones |
+| RuleEditorComponent | Editor | Escribir/ejecutar reglas |
+| KnowledgeBaseComponent | Knowledge | Assert facts, consult files |
+| McpTemplatesBrowserComponent | Templates | Explorar catálogo MCP |
+| TelemetryProcessComponent | Telemetry | Testing IoT |
+| BrainEditorComponent | 🧠 Brain Editor | Generar `.brain.pl` para Teatro |
+| UserAppSaveDialogComponent | (Modal) | Guardar apps de usuario |
+
+---
+
+## 7. Setup del Stack
+
+### Opción A: VS Code Tasks
+
+1. `Ctrl+Shift+P` → "Tasks: Run Task"
+2. Seleccionar `APB: Start Full Stack`
+
+### Opción B: Terminales Manuales
+
+```bash
+# Terminal 1: MCP Servers
+cd MCPGallery/mcp-mesh-sdk && npm run start:launcher
+
+# Terminal 2: Backend
+cd PrologEditor/backend && npm run start:dev
+
+# Terminal 3: Frontend
+cd PrologEditor/frontend && npm start
+```
+
+### Verificación
+
+```bash
+curl http://localhost:3006/tools    # 12 tools
+curl http://localhost:8000/api/sessions  # {}
+curl http://localhost:5001          # HTML Angular
+```
+
+---
+
+## 8. Referencia
+
+| Recurso | Ubicación |
+|---------|-----------|
+| Guía Arquitectura | `ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/guia-arquitectura-mcp-stack.md` |
+| Manifest Plugin | `.github/plugins/prolog-editor/manifest.md` |
+| Pack MCP | `.github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json` |
+| OpenAPI Spec | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/openapi.yaml` |
+| Use Cases | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/usecases-*.yaml` |
 
