@@ -8,9 +8,11 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 2 | @ox | ⏳ WAITING | — |
+| 4 | @scrum | ⏳ WAITING | — |
 
-> **Siguiente**: @ox realiza diagnóstico técnico del stack con herramientas MCP de auto-reflexión.
+> **Siguiente**: @scrum confirma estado de épicas y pendientes ocultos.
+> 
+> ⚠️ **NOTA**: Se ha realizado auditoría del protocolo. Ver [AUDITORIA_protocolo.md](02_ACTAS/AUDITORIA_protocolo.md) antes de continuar.
 
 ---
 
@@ -19,22 +21,39 @@
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
 | 1 | @aleph + Lucas | 2026-01-03 | 2026-01-03 | Convocatoria oficial + agenda de 10 turnos | [T001](02_ACTAS/T001_aleph-lucas_convocatoria.md) |
+| 2 | @ox | 2026-01-03 | 2026-01-03 | Guardarraíles técnicos + plan mínimo de verificación vía tasks | [T002](02_ACTAS/T002_ox_diagnostico-tecnico.md) |
+| 3 | @indice | 2026-01-03 | 2026-01-03 | Validación DRY: índices sincronizados (12/12 tools ✅, drift <5%) | [T003](02_ACTAS/T003_indice_validacion-dry.md) |
+| 3b | Lucas (anexo) | 2026-01-03 | 2026-01-03 | Validación del mentor sobre T003 | [T003b](02_ACTAS/T003b_lucas_validacion.md) |
 | 0 | Sistema | 2026-01-03 | — | Sesión creada | — |
+
+---
+
+## ⚠️ Auditoría de Protocolo
+
+Se detectaron violaciones del protocolo de cotrabajo. Ver [AUDITORIA_protocolo.md](02_ACTAS/AUDITORIA_protocolo.md) para:
+- Infracciones por agente
+- Correcciones aplicadas
+- Propuestas de mejora al protocolo
+- **Ronda de confirmación pendiente**
 
 ---
 
 ## Cola de Espera
 
-> Los agentes se suman según lleguen a la convocatoria.
+### Agentes Activos (turno completado)
 
-### Grupo Meta-Coordinación
+| Agente | Estado | Turno |
+|--------|--------|-------|
+| @ox | ✅ DONE | T002 |
+| @indice | ✅ DONE | T003 |
+
+### Agentes Pendientes
 
 | Posición | Agente | Rol | Prioridad |
 |----------|--------|-----|-----------|
-| 2 | @ox | Auditoría técnica | Alta |
-| 3 | @indice | Navegación DRY | Normal |
-| 4 | @scrum | Tracking | Normal |
-| 5 | @pluginmanager | Plugins | Normal |
+| 1 | @scrum | Tracking | **SIGUIENTE** |
+| 2 | @pluginmanager | Plugins | Normal |
+| 3 | @prologeditor | Facilitador E2E | Normal |
 
 ### Grupo Facilitado (@prologeditor habla por ellos)
 

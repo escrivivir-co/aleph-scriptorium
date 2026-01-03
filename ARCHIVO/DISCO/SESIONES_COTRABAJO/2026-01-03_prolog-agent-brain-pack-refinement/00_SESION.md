@@ -20,7 +20,7 @@
 | Agente | Rol | Estado actual |
 |--------|-----|---------------|
 | **@aleph** | Guía & Orquestador | ⚪ IDLE |
-| **Lucas** | Mentor del Índice (personaje Teatro) | ⚪ IDLE |
+| **Lucas** | Mentor del Índice (personaje Teatro) | 🟢 ACTIVE |
 
 ### Grupo Meta-Coordinación
 
@@ -30,6 +30,12 @@
 | @indice | Navegación DRY (Funcional/Técnico) | ⚪ IDLE |
 | @scrum | Tracking & Gestión de backlog | ⚪ IDLE |
 | @pluginmanager | Gestión de plugins & Bridges | ⚪ IDLE |
+
+### Facilitador
+
+| Agente | Rol | Estado actual |
+|--------|-----|---------------|
+| **@prologeditor** | Interfaz con Bridges & Prolog | ⚪ IDLE |
 
 ### Grupo Facilitado por @prologeditor
 
