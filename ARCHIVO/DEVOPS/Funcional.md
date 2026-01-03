@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2026-01-02  
-> **Estado**: 🌿 Actualizado (SCRIPT-2.3.0 Prolog MCP)
+> **Última actualización**: 2026-01-03  
+> **Estado**: 🌿 Actualizado (TEATRO-PROLOG-1.0.0)
 
 ---
 
@@ -104,23 +104,31 @@
 
 ⚠️ **Advertencia**: Los logs tienen límite ~100 requests en memoria. Capturar snapshots cada 30 min.
 
-### 3.7. Prolog MCP Server (SCRIPT-2.3.0)
+### 3.7. Prolog MCP Server (SCRIPT-2.3.0 + TEATRO-PROLOG-1.0.0)
 
-> **Feature**: Inteligencias situadas + Typed Logic Flow
+> **Feature**: Inteligencias situadas + Typed Logic Flow + Teatro Integration
+
+**Capacidades**: 12 tools, 6 resources, 8 prompts
 
 | Tool | Descripción |
 |------|-------------|
-| `create_session` | Crear sesión Prolog aislada para una obra |
-| `destroy_session` | Limpiar sesión y liberar recursos |
-| `list_sessions` | Listar sesiones activas |
-| `query_prolog` | Ejecutar query Prolog con todos los solutions |
-| `assert_fact` | Añadir hecho a la KB |
-| `consult_file` | Cargar archivo .pl con caching |
+| `prolog_create_session` | Crear sesión Prolog aislada para una obra |
+| `prolog_destroy_session` | Limpiar sesión y liberar recursos |
+| `prolog_list_sessions` | Listar sesiones activas |
+| `prolog_query` | Ejecutar query Prolog con todos los solutions |
+| `prolog_assert_fact` | Añadir hecho a la KB |
+| `prolog_consult_file` | Cargar archivo .pl con caching |
+| `prolog_get_templates` | Obtener catálogo de templates Prolog |
+| `prolog_retract_fact` | Eliminar hecho de la KB |
+| `prolog_list_facts` | Listar hechos de un predicado |
+| `prolog_save_brain` | Guardar estado del cerebro a archivo |
+| `prolog_load_brain` | Cargar cerebro desde archivo .brain.pl |
+| `prolog_get_brain_metadata` | Obtener metadatos del cerebro |
 
 **Puerto**: 3006  
 **Ubicación**: `MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts`
 
-💡 **Uso**: Cada obra del Teatro puede tener su propia KB Prolog aislada.
+💡 **Uso**: Cada obra del Teatro tiene su propia KB Prolog aislada. Ver guía DRY en `guia-arquitectura-mcp-stack.md`.
 
 ### 3.8. MCP Packs (Packs Tipados)
 
@@ -134,7 +142,7 @@
 
 | Personaje | Obra | Cerebro |
 |-----------|------|---------|
-| Lucas | Ítaca Digital | `lucas-prolog.brain.pl` |
+| Lucas | Ítaca Digital | `lucas.brain.pl` |
 
 **Queries de ejemplo** (Lucas):
 ```prolog
@@ -142,6 +150,8 @@
 ?- ubicacion_canonica(como, Donde). % Dónde buscar
 ?- consejo(perdido, Mensaje).       % Guía al viajero
 ```
+
+**UI para Dramaturgos**: El componente `BrainEditorComponent` permite crear cerebros Prolog visualmente sin conocimientos de lógica. Accesible en PrologEditor → tab "🧠 Brain Editor".
 
 ### 3.6. Publicación (@plugin_ox_ghpages)
 

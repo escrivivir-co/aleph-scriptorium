@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-01-02  
-> **Estado**: 🌿 Actualizado (SCRIPT-2.3.0 Prolog MCP)
+> **Última actualización**: 2026-01-03  
+> **Estado**: 🌿 Actualizado (TEATRO-PROLOG-1.0.0)
 
 ---
 
@@ -241,7 +241,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 
 ## 4. Sistema de Submódulos
 
-### 4.1. Submódulos Instalados (15)
+### 4.1. Submódulos Instalados (17)
 
 | Submódulo | Rama | Plugin asociado | Runtime |
 |-----------|------|-----------------|---------|
