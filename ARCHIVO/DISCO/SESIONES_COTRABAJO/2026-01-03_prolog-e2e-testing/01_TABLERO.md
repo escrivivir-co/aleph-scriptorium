@@ -8,7 +8,7 @@
 
 | Estado | Fecha Inicio | Turnos | Agentes |
 |--------|--------------|--------|---------|
-| 🟢 **ACTIVA** | 2026-01-03 | 14 | 4 |
+| 🔴 **CERRADA** | 2026-01-03 | 16 | 4 |
 
 ---
 
@@ -16,9 +16,7 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 15 | @prologeditor | ⏳ **ASIGNADO** | [T015](02_ACTAS/T015_prologeditor_resources-prompts.md) |
-
-> **Handoff**: Continuar E2E - Fase 3 (Resources) + Fase 4 (Prompts)
+| — | — | Sesión cerrada | — |
 
 ---
 
@@ -42,6 +40,8 @@
 | 12 | @prologeditor | 23:45 | 23:50 | ⛔ BLOCKED: Tools Backend fallando "Backend not available" | [T012](02_ACTAS/T012_prologeditor_fase2-backend-blocked.md) |
 | 13 | @ox | 00:00 | 00:20 | ✅ 3 fixes: HEAD parse, l.warn, SQLite migration | [T013](02_ACTAS/T013_ox_fixes-backend-integration.md) |
 | 14 | @aleph | 08:00 | 08:15 | Consolidación + 4 commits según protocolo | [T014](02_ACTAS/T014_aleph_consolidacion-commits.md) |
+| 15 | @prologeditor | 09:00 | 09:35 | ✅ E2E COMPLETADO: Resources 5/6, Prompts 7/8 (88.5%) | [T015](02_ACTAS/T015_prologeditor_resources-prompts.md) |
+| 16 | @scrum | 09:40 | 09:50 | 🔴 CIERRE: Métricas finales, backlog actualizado | [T016](02_ACTAS/T016_scrum_cierre-metricas.md) |
 
 ---
 
@@ -53,9 +53,11 @@
 |------|-------|-------------|--------|-------------|
 | 1 | T001→T011 | Tools Core MCP (7) | ✅ **7/7 OK** | @prologeditor |
 | 2 | T012→T013 | Tools Backend REST (5) | ✅ **4/5 OK** (1 omitido) | @ox |
-| 3 | T014 | Resources MCP (6) | ⏳ Siguiente | @prologeditor |
-| 4 | T015 | Prompts MCP (8) | ⚪ Pendiente | @prologeditor |
-| 5 | T016 | Cierre + Métricas | ⚪ Pendiente | @scrum |
+| 3 | T015 | Resources MCP (6) | ✅ **5/6 OK** | @prologeditor |
+| 4 | T015 | Prompts MCP (8) | ✅ **7/8 OK** | @prologeditor |
+| 5 | T016 | Cierre + Métricas | ⏳ **Siguiente** | @scrum |
+
+**Progreso global**: 23/26 (88.5%) — **E2E COMPLETADO**
 
 ---
 
