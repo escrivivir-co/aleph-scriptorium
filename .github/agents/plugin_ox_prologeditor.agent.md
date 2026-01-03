@@ -44,27 +44,45 @@ tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-
 #   - Pack MCP:         .github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json v3.0.0
 #   - VS Code Tasks:    .vscode/tasks.json (prefijo APB:)
 #
+# LECCIONES OPERATIVAS (Cotrabajo 2026-01-03):
+#   - NO usar APB: Start Full Stack (tasks compuestas unreliable)
+#   - Usar run_task() con tasks individuales en orden
+#   - Usar get_task_output() para leer logs (no consola)
+#   - Scripts .sh externos para comandos complejos (Windows-safe)
+#   - Cache hit rate 0% es normal en sesiones de cotrabajo
+#
+# PREREQUISITO CRÍTICO:
+#   - SWI-Prolog (swipl) debe estar en PATH
+#   - Ver guía-arquitectura-mcp-stack.md § 9 para instalación
+#
 
 handoffs:
   # ═══════════════════════════════════════════════════════════════════════
-  # SETUP & DIAGNOSTICS (UC-OX-*)
+  # SETUP & DIAGNOSTICS — VS Code Tasks (Lecciones Cotrabajo 2026-01-03)
   # ═══════════════════════════════════════════════════════════════════════
-  - label: 🚀 Levantar Stack Completo (APB)
+  - label: 🚀 Levantar Stack (Tasks Individuales)
     agent: plugin_ox_prologeditor
     prompt: |
-      Levanta el stack MCP Prolog completo usando VS Code Tasks (prefijo APB:).
-      1. Terminal MCP: cd MCPGallery/mcp-mesh-sdk && npm run start:launcher
-      2. Terminal Backend: cd PrologEditor/backend && npm run start:dev
-      3. Terminal Frontend: cd PrologEditor/frontend && npm start
-      Verificar puertos: 3006, 8000, 5001 activos.
+      ⚠️ NO usar 'APB: Start Full Stack' (tasks compuestas son unreliable).
+      Usar run_task con tasks individuales en orden:
+      1. run_task({id: "shell: APB: Start [MCP Launcher]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+      2. run_task({id: "shell: APB: Start [Backend]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+      3. run_task({id: "shell: APB: Start [Frontend]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+      4. Verificar: run_task({id: "shell: APB: Health Check", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
     send: false
-  - label: 🔍 Verificar Stack (Healthcheck)
+  - label: 🩺 Health Check (run_task)
     agent: plugin_ox_prologeditor
     prompt: |
-      Ejecuta healthcheck del stack:
-      - curl http://localhost:3006/tools (MCP: 12 tools)
-      - curl http://localhost:8000/api/sessions (Backend)
-      - curl http://localhost:5001 (Frontend Angular)
+      Verificar stack con script externo (Windows-safe):
+      run_task({id: "shell: APB: Health Check", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+      Esperar resultado y usar get_task_output() para ver logs.
+    send: false
+  - label: 📊 Leer Logs de Task
+    agent: plugin_ox_prologeditor
+    prompt: |
+      Para ver output de una task en ejecución:
+      get_task_output({id: "shell: APB: Start [MCP Launcher]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+      Esto evita usar run_in_terminal + consola para leer logs.
     send: false
   - label: 📋 Ver Guía de Arquitectura
     agent: plugin_ox_prologeditor
@@ -259,37 +277,102 @@ handoffs:
 
 ---
 
-## 7. Setup del Stack
+## 7. Gestión de Procesos con VS Code Tasks
 
-### Opción A: VS Code Tasks
+> **Fuente DRY**: Lecciones operativas en `.github/plugins/prolog-editor/agents/prolog-editor.agent.md` § 10-11
 
-1. `Ctrl+Shift+P` → "Tasks: Run Task"
-2. Seleccionar `APB: Start Full Stack`
+### 7.1. Principio: run_task > run_in_terminal
 
-### Opción B: Terminales Manuales
+| ❌ Antipatrón | ✅ Patrón Correcto |
+|---------------|--------------------|
+| `run_in_terminal("cd ... && npm start")` | `run_task({id: "shell: APB: Start [Backend]"})` |
+| Usar `APB: Start Full Stack` | Ejecutar 3 tasks individuales en orden |
+| Leer logs con `cat` o `tail` | `get_task_output({id: "...", workspaceFolder: "..."})` |
 
-```bash
-# Terminal 1: MCP Servers
-cd MCPGallery/mcp-mesh-sdk && npm run start:launcher
+### 7.2. Secuencia de Arranque (Copiar/Pegar)
 
-# Terminal 2: Backend
-cd PrologEditor/backend && npm run start:dev
+```javascript
+// 1. MCP Launcher (incluye Prolog Server :3006)
+run_task({id: "shell: APB: Start [MCP Launcher]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
 
-# Terminal 3: Frontend
-cd PrologEditor/frontend && npm start
+// 2. Backend REST (:8000)
+run_task({id: "shell: APB: Start [Backend]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+
+// 3. Frontend Angular (:5001)
+run_task({id: "shell: APB: Start [Frontend]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+
+// 4. Verificar (script externo Windows-safe)
+run_task({id: "shell: APB: Health Check", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
 ```
 
-### Verificación
+### 7.3. Lectura de Logs (Sin Consola)
 
-```bash
-curl http://localhost:3006/tools    # 12 tools
-curl http://localhost:8000/api/sessions  # {}
-curl http://localhost:5001          # HTML Angular
+```javascript
+// Ver output de task en background
+get_task_output({id: "shell: APB: Start [MCP Launcher]", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+
+// Ver output de health check
+get_task_output({id: "shell: APB: Health Check", workspaceFolder: "c:/Users/aleph/OASIS/aleph-scriptorium"})
+```
+
+### 7.4. Tasks Disponibles (Prefijo APB:)
+
+| Task ID | Puerto | Propósito |
+|---------|--------|----------|
+| `shell: APB: Start [MCP Launcher]` | 3050, 3006 | Launcher + Prolog Server |
+| `shell: APB: Start [Backend]` | 8000 | REST API Express |
+| `shell: APB: Start [Frontend]` | 5001 | Angular Dev Server |
+| `shell: APB: Health Check` | — | Verificar 4 servicios |
+| `shell: APB: Test Query` | — | Query Prolog de prueba |
+| `shell: APB: Open Browser` | — | Abrir http://localhost:5001 |
+| `shell: APB: Stop All` | — | Detener procesos Node |
+
+### 7.5. ⚠️ Lección Crítica: Tasks Compuestas
+
+**NO usar `APB: Start Full Stack`**. Las tasks con `dependsOrder: sequence` no funcionan correctamente cuando los dependientes tienen `isBackground: true`.
+
+**Razón técnica**: VS Code no espera a que un servicio background esté "listo", solo a que se lance. El siguiente servicio puede arrancar antes de que el anterior esté escuchando.
+
+---
+
+## 8. Lecciones Operativas (DRY)
+
+> **Fuente completa**: `.github/plugins/prolog-editor/agents/prolog-editor.agent.md` § 10-11
+
+### Resumen Ejecutivo
+
+| Principio | Aplicación |
+|-----------|------------|
+| **Documentar ANTES de ejecutar** | Crear acta → ejecutar → actualizar |
+| **Usar VS Code Tasks** | `run_task` + `get_task_output`, no `run_in_terminal` |
+| **Scripts externos** | Bash largo → archivo `.sh` (Windows-safe) |
+| **Cache hit 0% es normal** | En cotrabajo, cada turno tiene contexto diferente |
+
+### Antipatrones a Evitar
+
+| Código | Antipatrón | Corrección |
+|--------|------------|------------|
+| AP-01 | Lecturas redundantes | Verificar si ya está en contexto |
+| AP-02 | Diagnóstico por prueba y error | Consultar @indice primero |
+| AP-03 | Respuestas verbosas | Solo lo que el usuario pidió |
+| AP-04 | Exploración sin caché | Usar snapshots como memoria |
+
+### Auto-Reflexión (Herramientas MCP)
+
+```javascript
+// Check periódico (cada 10-15 requests)
+mcp_copilot-logs-_get_usage_metrics({hoursBack: 1})
+
+// Si healthScore < 60
+mcp_copilot-logs-_analyze_session()
+
+// Preservar contexto (cada 30-60 min)
+mcp_copilot-logs-_capture_snapshot({name: "descripcion-tarea"})
 ```
 
 ---
 
-## 8. Referencia
+## 9. Referencia
 
 | Recurso | Ubicación |
 |---------|-----------|
