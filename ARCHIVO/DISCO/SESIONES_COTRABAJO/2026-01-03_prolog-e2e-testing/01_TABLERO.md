@@ -8,7 +8,7 @@
 
 | Estado | Fecha Inicio | Turnos | Agentes |
 |--------|--------------|--------|---------|
-| 🟢 **ACTIVA** | 2026-01-03 | 8 | 3 |
+| 🟢 **ACTIVA** | 2026-01-03 | 13 | 4 |
 
 ---
 
@@ -16,9 +16,7 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 9 | @ox | ⏳ **ASIGNADO** | [T009](02_ACTAS/T009_ox_auditoria-crash-assert.md) |
-
-> **Handoff**: Analizar por qué `assert_fact` crashea el servidor MCP. Revisar logs y código de `handleAssertFact`.
+| 14 | @prologeditor | ⏳ **WAITING** | (siguiente: E2E Resources + Prompts) |
 
 ---
 
@@ -36,6 +34,11 @@
 | 6 | @aleph | 23:15 | 23:30 | Refactorización de sesión según protocolo | [T006](02_ACTAS/T006_aleph_refactorizacion-protocolo.md) |
 | 7 | @prologeditor | 22:43 | 22:49 | 3/7 tools, assert_fact crasheó servidor → handoff @ox | [T007](02_ACTAS/T007_prologeditor_tools-core-e2e-anomalia.md) |
 | 8 | @aleph | 23:00 | 23:10 | Refactorización + commits según protocolo cotrabajo | [T008](02_ACTAS/T008_aleph_refactorizacion-commits.md) |
+| 9 | @prologeditor | 23:30 | 23:45 | Auditoría crash: Fix engine.assertFact() aplicado | [T009](02_ACTAS/T009_prologeditor_auditoria-crash-assert.md) |
+| 10 | — | — | — | (vacío - numeración de tablero) | — |
+| 11 | @prologeditor | 23:30 | 23:35 | ✅ Fase 1 COMPLETADA: 7/7 Tools Core OK | [T011](02_ACTAS/T011_prologeditor_bloqueado-tools-deshabilitadas.md) |
+| 12 | @prologeditor | 23:45 | 23:50 | ⛔ BLOCKED: Tools Backend fallando "Backend not available" | [T012](02_ACTAS/T012_prologeditor_fase2-backend-blocked.md) |
+| 13 | @ox | 00:00 | 00:20 | ✅ 3 fixes: HEAD parse, l.warn, SQLite migration | [T013](02_ACTAS/T013_ox_fixes-backend-integration.md) |
 
 ---
 
@@ -45,11 +48,11 @@
 
 | Fase | Turno | Componentes | Estado | Responsable |
 |------|-------|-------------|--------|-------------|
-| 1 | T001→T007 | Tools Core MCP (7) | � 3/7 (BLOQUEADO) | @prologeditor |
-| 2 | T008 | Tools Backend REST (5) | ⚪ Pendiente | @prologeditor |
-| 3 | T009 | Resources MCP (6) | ⚪ Pendiente | @prologeditor |
-| 4 | T010 | Prompts MCP (8) | ⚪ Pendiente | @prologeditor |
-| 5 | T011 | Cierre + Métricas | ⚪ Pendiente | @scrum |
+| 1 | T001→T011 | Tools Core MCP (7) | ✅ **7/7 OK** | @prologeditor |
+| 2 | T012→T013 | Tools Backend REST (5) | ✅ **4/5 OK** (1 omitido) | @ox |
+| 3 | T014 | Resources MCP (6) | ⏳ Siguiente | @prologeditor |
+| 4 | T015 | Prompts MCP (8) | ⚪ Pendiente | @prologeditor |
+| 5 | T016 | Cierre + Métricas | ⚪ Pendiente | @scrum |
 
 ---
 
@@ -59,6 +62,10 @@
 |-------------|------------|------------|-------|
 | Stack crash al usar tools MCP | SWI-Prolog no instalado | Usuario instaló vía winget | T002 |
 | Health check daba falso OK | No verificaba swipl en PATH | Script actualizado | T003 |
+| `assert_fact` crashea servidor MCP | Acceso directo a engine.engine.call | Fix: usar engine.assertFact() wrapper | T009 |
+| Backend-Integrated tools fallan | HEAD request parseaba JSON vacío | Fix: detectar method HEAD en fetch() | T013 |
+| `l.warn()` not a function | Logger API incorrecta | Fix: usar `l.w()` | T013 |
+| SQLite tabla sin columnas | Schema antiguo | Fix: migración automática + recrear DB | T013 |
 
 ---
 
@@ -66,7 +73,7 @@
 
 | Impedimento | Causa Raíz | Asignado | Turno |
 |-------------|------------|----------|-------|
-| `assert_fact` crashea servidor MCP | Por investigar | @ox | T009 |
+| — | — | — | — |
 
 ---
 
@@ -74,8 +81,7 @@
 
 | Posición | Agente | Tarea Prevista |
 |----------|--------|----------------|
-| 1 | @prologeditor | Continuar E2E tras fix de @ox |
-| 2 | @scrum | T011: Cierre + Métricas |
+| 1 | @scrum | T011: Cierre + Métricas |
 
 ---
 
@@ -83,9 +89,9 @@
 
 | Agente | Estado | Último Turno |
 |--------|--------|--------------|
-| @prologeditor | ⏳ WAITING | T007 |
+| @prologeditor | ⏳ ASIGNADO | T010 (reintentar E2E) |
 | @aleph | ✅ DONE | T008 |
-| @ox | ⏳ ASIGNADO | T009 |
+| @ox | ✅ DONE | T009 |
 | @scrum | ⚪ IDLE | — |
 | @indice | ⚪ IDLE | — |
 
