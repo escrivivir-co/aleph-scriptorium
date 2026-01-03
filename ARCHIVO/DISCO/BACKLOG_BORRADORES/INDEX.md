@@ -1,7 +1,7 @@
 # Índice — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`  
-> **Actualizado**: 2026-01-02  
+> **Actualizado**: 2026-01-03  
 > **Principio**: DRY — Solo referencias, detalles en cada borrador
 
 ---
@@ -27,6 +27,7 @@
 | [Diciembre_30_CopilotLogExporter](Diciembre_30_CopilotLogExporter/) | SCRIPT-2.1.1: Copilot Log Exporter | ✅ Completada |
 | [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | SCRIPT-2.2.0: Agentic Typed Logic Flow | 📝 Blueprint |
 | [Enero_02_ModelSelector_GenerateAbstract](Enero_02_ModelSelector_GenerateAbstract/) | SCRIPT-2.2.0: Model Selector para Generate Abstract | ✅ Completada |
+| [Enero_02_OpenAsyncApiEditor](Enero_02_OpenAsyncApiEditor/) | PLUGIN-OPENASYNCAPI-1.0.0: OpenAsyncAPI Editor Plugin | ✅ Completada |
 | [Enero_02_PrologAgentPack](Enero_02_PrologAgentPack/) | SCRIPT-2.3.1: PrologAgent Pack (AGENT_CREATOR + TypedPrompting) | ✅ Completada |
 | [Enero_02_PrologMCPServer](Enero_02_PrologMCPServer/) | SCRIPT-2.3.0: Prolog MCP Server Integration | ✅ Completada |
 | [Enero_02_PrologEditor_API_Contracts](Enero_02_PrologEditor_API_Contracts/) | PROLOG-API-1.0.0: OpenAPI/AsyncAPI Specs | 📋 Activo |
@@ -79,8 +80,8 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Total carpetas | 46 |
-| ✅ Completadas/Publicadas | 26 |
+| Total carpetas | 47 |
+| ✅ Completadas/Publicadas | 27 |
 | 📋/📝 En progreso/Borrador | 20 |
 
 ---

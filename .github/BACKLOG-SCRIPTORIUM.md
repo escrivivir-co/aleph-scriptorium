@@ -33,6 +33,7 @@
 | ✅ | SCRIPT-2.3.1 | PrologAgent Pack (AGENT_CREATOR + TypedPrompting) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/01_backlog-borrador.md) |
 | ✅ | PROLOG-API-1.0.0 | PrologEditor API Contracts (OpenAPI/AsyncAPI) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologEditor_API_Contracts/01_backlog-borrador.md) |
 | ✅ | PLUGIN-OPENASYNCAPI-1.0.0 | OpenAsyncAPI Editor Plugin | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_OpenAsyncApiEditor/01_backlog-borrador.md) |
+| ✅ | PROLOG-CLIENT-GEN-1.0.0 | OpenAPI Client Gen para MCPPrologServer | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/03_backlog-openapi-client-gen.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---

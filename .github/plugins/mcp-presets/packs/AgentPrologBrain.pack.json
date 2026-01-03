@@ -2,8 +2,8 @@
   "$schema": "../schemas/pack.schema.json",
   "id": "AgentPrologBrain",
   "name": "Prolog Brain Pack",
-  "version": "1.0.0",
-  "description": "Pack para agentes que razonan con lógica Prolog. Habilita consultas, hechos y reglas declarativas.",
+  "version": "2.0.0",
+  "description": "Pack para agentes que razonan con lógica Prolog. Habilita consultas, hechos, reglas declarativas y acceso a backend SQLite.",
   "author": "Aleph Scriptorium",
   "license": "AIPL-1.0",
   
@@ -81,6 +81,50 @@
     {
       "name": "prolog_get_templates",
       "description": "Obtener catálogo de templates Prolog disponibles"
+    },
+    {
+      "name": "prolog_load_rules_from_db",
+      "description": "Cargar reglas persistidas de SQLite a la KB de sesión",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string", "description": "Sesión destino" },
+          "app": { "type": "string", "description": "Filtrar por app (opcional)" }
+        },
+        "required": ["sessionId"]
+      }
+    },
+    {
+      "name": "prolog_save_rule_to_db",
+      "description": "Persistir una regla Prolog en SQLite",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Nombre de la regla" },
+          "content": { "type": "string", "description": "Contenido Prolog" },
+          "app": { "type": "string", "description": "Aplicación (opcional)" }
+        },
+        "required": ["name", "content"]
+      }
+    },
+    {
+      "name": "prolog_list_sdk_templates",
+      "description": "Listar templates SDK disponibles en backend"
+    },
+    {
+      "name": "prolog_get_sdk_template_content",
+      "description": "Obtener contenido de un template SDK específico",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "templateName": { "type": "string", "description": "Nombre del template" }
+        },
+        "required": ["templateName"]
+      }
+    },
+    {
+      "name": "prolog_get_telemetry_status",
+      "description": "Obtener estado de telemetría/sensores del backend"
     }
   ],
   
