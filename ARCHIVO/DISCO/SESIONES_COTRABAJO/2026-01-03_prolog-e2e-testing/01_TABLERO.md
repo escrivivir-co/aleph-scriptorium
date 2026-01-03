@@ -8,7 +8,7 @@
 
 | Estado | Fecha Inicio | Turnos | Agentes |
 |--------|--------------|--------|---------|
-| 🟢 **ACTIVA** | 2026-01-03 | 6 | 3 |
+| 🟢 **ACTIVA** | 2026-01-03 | 7 | 3 |
 
 ---
 
@@ -16,9 +16,9 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 7 | @prologeditor | ⏳ **ASIGNADO** | [T007](02_ACTAS/T007_prologeditor_tools-core-e2e-continuacion.md) |
+| 8 | @ox | ⏳ **ASIGNADO** | [T008](02_ACTAS/T008_ox_auditoria-crash-assert.md) |
 
-> **Handoff**: Stack 4/4 operativo. Continuar pruebas E2E (tools 3-7 restantes).
+> **Handoff**: assert_fact crasheó servidor MCP. Revisar logs y código de handleAssertFact.
 
 ---
 
@@ -34,6 +34,7 @@
 | 4 | ⚠️ ? | — | — | ⚠️ INVALIDADO: Errores falsos positivos sobre T003 | [T004](02_ACTAS/T004_desconocido_revision-falso-positivo.md) |
 | 5 | @ox | 22:21 | 22:25 | Validación: T003 funciona, T004 era falso positivo | [T005](02_ACTAS/T005_ox_validacion-t003-funcional.md) |
 | 6 | @aleph | 23:15 | 23:30 | Refactorización de sesión según protocolo | [T006](02_ACTAS/T006_aleph_refactorizacion-protocolo.md) |
+| 7 | @prologeditor | 22:43 | 22:49 | 3/7 tools, assert_fact crasheó servidor → handoff @ox | [T007](02_ACTAS/T007_prologeditor_tools-core-e2e-anomalia.md) |
 
 ---
 
@@ -43,7 +44,7 @@
 
 | Fase | Turno | Componentes | Estado | Responsable |
 |------|-------|-------------|--------|-------------|
-| 1 | T001→T007 | Tools Core MCP (7) | 🟡 2/7 OK | @prologeditor |
+| 1 | T001→T007 | Tools Core MCP (7) | � 3/7 (BLOQUEADO) | @prologeditor |
 | 2 | T008 | Tools Backend REST (5) | ⚪ Pendiente | @prologeditor |
 | 3 | T009 | Resources MCP (6) | ⚪ Pendiente | @prologeditor |
 | 4 | T010 | Prompts MCP (8) | ⚪ Pendiente | @prologeditor |
@@ -60,11 +61,19 @@
 
 ---
 
+## Impedimentos Activos
+
+| Impedimento | Causa Raíz | Asignado | Turno |
+|-------------|------------|----------|-------|
+| `assert_fact` crashea servidor MCP | Por investigar | @ox | T008 |
+
+---
+
 ## Cola de Espera
 
 | Posición | Agente | Tarea Prevista |
 |----------|--------|----------------|
-| 1 | @prologeditor | T007: Tools Core (3-7 restantes) |
+| 1 | @prologeditor | Continuar E2E tras fix de @ox |
 | 2 | @scrum | T011: Cierre + Métricas |
 
 ---
@@ -73,9 +82,9 @@
 
 | Agente | Estado | Último Turno |
 |--------|--------|--------------|
-| @prologeditor | ⏳ ASIGNADO | T007 |
+| @prologeditor | ✅ DONE | T007 |
 | @aleph | ✅ DONE | T006 |
-| @ox | ✅ DONE | T005 |
+| @ox | ⏳ ASIGNADO | T008 |
 | @scrum | ⚪ IDLE | — |
 | @indice | ⚪ IDLE | — |
 
