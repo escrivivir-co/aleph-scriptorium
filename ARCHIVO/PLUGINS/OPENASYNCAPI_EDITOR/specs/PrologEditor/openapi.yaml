@@ -2,14 +2,24 @@ openapi: 3.1.0
 info:
   title: PrologEditor API
   description: |
-    REST API for PrologEditor - IoT Rule Engine with Prolog Backend.
+    REST API for PrologEditor - IoT Rule Engine with MCP Prolog Backend.
+    
+    ## Architecture (v2.0)
+    
+    The backend acts as a REST API Gateway that delegates Prolog execution
+    to an MCP Prolog Server (MCPGallery/mcp-mesh-sdk/MCPPrologServer).
+    
+    ```
+    Angular Frontend <--HTTP--> REST Backend <--MCP--> MCPPrologServer
+    ```
     
     This API provides endpoints for:
-    - CRUD operations on Prolog rules
-    - Executing Prolog queries
+    - CRUD operations on Prolog rules (persisted in SQLite)
+    - Executing Prolog queries (via MCP)
     - Managing SDK templates
+    - MCP Session management
     - Processing IoT telemetry
-  version: 1.0.0
+  version: 2.0.0
   contact:
     name: Aleph Scriptorium
     url: https://escrivivir-co.github.io/aleph-scriptorium/
@@ -28,11 +38,13 @@ servers:
 
 tags:
   - name: Rules
-    description: Prolog rule management
+    description: Prolog rule management (SQLite persistence)
   - name: Query
-    description: Prolog query execution
+    description: Prolog query execution (via MCP)
   - name: Templates
     description: SDK template management
+  - name: Sessions
+    description: MCP Prolog session management
   - name: Telemetry
     description: IoT telemetry processing
 
@@ -83,7 +95,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RuleCreated'
+                $ref: '#/components/schemas/RuleCreatedResponse'
               example:
                 id: 42
                 text: "Rule successfully inserted"
@@ -151,7 +163,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/QueryInput'
+              $ref: '#/components/schemas/QueryRequest'
             examples:
               simple:
                 summary: Simple query
@@ -167,7 +179,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QueryResult'
+                $ref: '#/components/schemas/QueryResponse'
               examples:
                 success:
                   summary: Successful result
@@ -346,6 +358,143 @@ paths:
         '500':
           $ref: '#/components/responses/InternalError'
 
+  # ============================================
+  # MCP Session Management (v2.0)
+  # ============================================
+
+  /sessions:
+    post:
+      tags:
+        - Sessions
+      summary: Create MCP Prolog session
+      description: |
+        Create a new Prolog session in the MCP server.
+        Sessions are isolated execution contexts for Prolog queries.
+      operationId: createSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+            example:
+              sessionId: "session_iot_001"
+              obraId: "iot-app"
+      responses:
+        '200':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    get:
+      tags:
+        - Sessions
+      summary: List active sessions
+      description: List all active Prolog sessions in the MCP server
+      operationId: listSessions
+      responses:
+        '200':
+          description: List of sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSessionsResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /sessions/{sessionId}:
+    delete:
+      tags:
+        - Sessions
+      summary: Destroy session
+      description: Destroy a Prolog session and free resources
+      operationId: destroySession
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session destroyed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /assert:
+    post:
+      tags:
+        - Query
+      summary: Assert fact
+      description: Assert a new fact into the Prolog knowledge base
+      operationId: assertFact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssertFactRequest'
+            example:
+              sessionId: "session_iot_001"
+              fact: "sensor_value('temp1', 25)"
+      responses:
+        '200':
+          description: Fact asserted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssertFactResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /consult:
+    post:
+      tags:
+        - Query
+      summary: Consult Prolog file
+      description: Load a Prolog file into the session knowledge base
+      operationId: consultFile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsultFileRequest'
+      responses:
+        '200':
+          description: File consulted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsultFileResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /mcp-templates:
+    get:
+      tags:
+        - Templates
+      summary: Get MCP templates catalog
+      description: Get available Prolog templates from the MCP server
+      operationId: getMcpTemplates
+      responses:
+        '200':
+          description: Templates catalog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatesCatalog'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
 components:
   schemas:
     Rule:
@@ -375,7 +524,6 @@ components:
         evalCompatible:
           type: string
           description: Evaluation compatibility flag
-      additionalProperties: true
       required:
         - name
         - content
@@ -389,12 +537,19 @@ components:
           type: string
         app:
           type: string
-      additionalProperties: true
+        predicate:
+          type: string
+        arity:
+          type: string
+        example:
+          type: string
+        evalCompatible:
+          type: string
       required:
         - name
         - content
 
-    RuleCreated:
+    RuleCreatedResponse:
       type: object
       properties:
         id:
@@ -406,18 +561,24 @@ components:
       required:
         - id
 
-    QueryInput:
+    QueryRequest:
       type: object
       properties:
         text:
           type: string
           description: Prolog goal to execute
+        sessionId:
+          type: string
+          description: Optional session context for MCP
       required:
         - text
 
-    QueryResult:
+    QueryResponse:
       type: object
       properties:
+        success:
+          type: boolean
+          description: Whether query executed successfully
         status:
           type: integer
           description: HTTP-like status code
@@ -427,7 +588,17 @@ components:
             type: object
             additionalProperties: true
           description: Query results as array of bindings
+        query:
+          type: string
+          description: The executed query
+        count:
+          type: integer
+          description: Number of results
+        error:
+          type: string
+          description: Error message if failed
       required:
+        - success
         - status
         - payload
 
@@ -440,16 +611,25 @@ components:
         description:
           type: string
           description: Human-readable description
+        main:
+          type: string
+          description: Main entry file
         files:
           type: array
           items:
             type: string
           description: Files/directories included in template
+        exports:
+          type: array
+          items:
+            type: string
+          description: Exported predicates or modules
       required:
         - name
 
-    TemplateContent:
+    TemplateContentResponse:
       type: object
+      description: Alias for TemplateContent (SDK naming)
       properties:
         content:
           type: string
@@ -526,6 +706,137 @@ components:
           description: Error message
       required:
         - error
+
+    # ============================================
+    # MCP Session Schemas (v2.0)
+    # ============================================
+
+    CreateSessionRequest:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Unique session identifier
+        obraId:
+          type: string
+          description: Teatro obra identifier
+      required:
+        - sessionId
+        - obraId
+
+    CreateSessionResponse:
+      type: object
+      description: Response from session creation (aliased as SessionResponse for backwards compat)
+      properties:
+        success:
+          type: boolean
+        sessionId:
+          type: string
+        obraId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        message:
+          type: string
+        error:
+          type: string
+
+    # Backwards compatibility alias
+    SessionResponse:
+      $ref: '#/components/schemas/CreateSessionResponse'
+
+    ListSessionsResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        count:
+          type: integer
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PrologSession'
+        error:
+          type: string
+
+    PrologSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        obraId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        lastUsedAt:
+          type: string
+          format: date-time
+
+    AssertFactRequest:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Session ID (optional - uses active session if not provided)
+        fact:
+          type: string
+          description: "Prolog fact to assert (e.g., 'likes(mary, wine)')"
+      required:
+        - fact
+
+    AssertFactResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        fact:
+          type: string
+        message:
+          type: string
+        error:
+          type: string
+
+    ConsultFileRequest:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        filePath:
+          type: string
+          description: Path to .pl file to consult
+      required:
+        - filePath
+
+    ConsultFileResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        filePath:
+          type: string
+        message:
+          type: string
+        error:
+          type: string
+
+    TemplatesCatalog:
+      type: object
+      properties:
+        templates:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              description:
+                type: string
+              path:
+                type: string
+        message:
+          type: string
 
   responses:
     InternalError:
