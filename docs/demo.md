@@ -227,6 +227,14 @@ permalink: /demo/
       <span class="dot"></span>
       Novelist :8080
     </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      TypedPrompts :3019
+    </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      Prolog :5001
+    </span>
   </div>
   
   <div class="iframe-grid">
@@ -282,6 +290,48 @@ permalink: /demo/
       </div>
     </div>
     
+    <!-- ═══════════════ EDITORES LÓGICOS ═══════════════ -->
+    
+    <!-- TypedPromptsEditor -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">🧠 TypedPrompts Editor</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:3019" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="typed-placeholder">
+          <span class="icon">🧠</span>
+          <p>TypedPrompts Editor</p>
+          <p><code>localhost:3019</code></p>
+          <p>Ejecuta: <code>npm run dev</code> en TypedPromptsEditor/</p>
+        </div>
+        <iframe src="http://localhost:3019" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- PrologEditor -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">🔬 Prolog Editor</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:5001" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="prolog-placeholder">
+          <span class="icon">🔬</span>
+          <p>Prolog Editor (Angular)</p>
+          <p><code>localhost:5001</code></p>
+          <p>Ejecuta: <code>npm run start:frontend</code> en PrologEditor/</p>
+        </div>
+        <iframe src="http://localhost:5001" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- ═══════════════ BLUEPRINTS ═══════════════ -->
+    
     <!-- Blueprint UX -->
     <div class="iframe-card">
       <div class="iframe-header">
@@ -308,10 +358,10 @@ permalink: /demo/
       </div>
     </div>
     
-    <!-- Blueprint Copilot -->
+    <!-- Blueprint Copilot (+ Self-Reflection subcubo) -->
     <div class="iframe-card">
       <div class="iframe-header">
-        <span class="iframe-title">🧠 Blueprint Copilot</span>
+        <span class="iframe-title">🧠 Blueprint Copilot + Self-Reflection</span>
         <div class="iframe-actions">
           <a href="{{ site.baseurl }}/blueprint-copilot/" target="_blank">↗ Abrir</a>
         </div>
@@ -365,7 +415,10 @@ permalink: /demo/
 // Auto-check server status
 const servers = [
   { id: 'zeus-placeholder', url: 'http://localhost:3012', iframe: true },
-  { id: 'novelist-placeholder', url: 'http://localhost:8080', iframe: true }
+  { id: 'novelist-placeholder', url: 'http://localhost:8080', iframe: true },
+  // Editores Lógicos (DS-S02)
+  { id: 'typed-placeholder', url: 'http://localhost:3019', iframe: true },
+  { id: 'prolog-placeholder', url: 'http://localhost:5001', iframe: true }
 ];
 
 async function checkServer(server) {

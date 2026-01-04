@@ -126,6 +126,7 @@
 | `plugin_ox_argboardapp` | arg-board-app | 1 agente | `@plugin_ox_argboardapp` |
 | `plugin_ox_hypergrapheditor` | hypergraph-editor | 1 agente | `@plugin_ox_hypergrapheditor` |
 | `plugin_ox_floveeditor` | flove-editor | 1 agente | `@plugin_ox_floveeditor` |
+| `plugin_ox_openasyncapieditor` | openasyncapi-editor | 1 agente | `@plugin_ox_openasyncapieditor` |
 
 ### Detalle por Plugin
 
@@ -149,6 +150,7 @@
 | wiring-app | `.github/plugins/wiring-app/agents/` | WiringApp |
 | arg-board-app | `.github/plugins/arg-board-app/agents/` | ArgBoardApp |
 | hypergraph-editor | `.github/plugins/hypergraph-editor/agents/` | HyperGraphEditor |
+| openasyncapi-editor | `.github/plugins/openasyncapi-editor/agents/` | OpenAsyncApiEditor |
 
 ---
 

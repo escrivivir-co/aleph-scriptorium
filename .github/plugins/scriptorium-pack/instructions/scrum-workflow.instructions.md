@@ -14,14 +14,39 @@ applyTo: ".github/plugins/scriptorium-pack/**/*, .github/plugins/scrum/**/*"
 ## Flujo Principal
 
 ```
-DISCO (borrador) → Aprobación → Oficial (.github/) → Tracking → Cierre
+DISCO (borrador) → Auditoría (Ox+Indice) → Aprobación → Oficial (.github/) → Tracking → Cierre
 ```
 
 ### Regla de Oro
 
-> "El backlog se cocina en DISCO, se sirve en .github/"
+> "El backlog se cocina en DISCO, se audita por Ox-Indice, se sirve en .github/"
 
-Nunca escribas directamente en los backlogs oficiales sin pasar por el proceso de borrador y aprobación.
+Nunca escribas directamente en los backlogs oficiales sin pasar por el proceso de borrador, auditoría y aprobación.
+
+---
+
+## Gate de Auditoría (Resolución R1-R2 Asamblea 2026-01-01)
+
+> **Obligatorio** para toda épica antes de aprobación PO-SM.
+
+### Checklist DoR (Definition of Ready)
+
+| # | Verificación | Responsable | Estado |
+|---|--------------|-------------|--------|
+| 1 | Componentes referenciados existen o marcados "a crear" | @ox | ⬜ |
+| 2 | Gap analysis documentado | @ox | ⬜ |
+| 3 | Estimación validada por implementador | @scrum | ⬜ |
+| 4 | Coherencia estructural con ARCHIVO | @indice | ⬜ |
+| 5 | Rutas mencionadas verificadas | @indice | ⬜ |
+
+### Bloqueo Preventivo (R3)
+
+Cualquier agente puede invocar:
+```
+@ox diagnosticar {épica-id}
+```
+
+Esto pausa la aprobación hasta que se resuelvan los gaps identificados. **No es acusación; es petición de clarificación.**
 
 ---
 

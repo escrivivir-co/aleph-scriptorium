@@ -1,0 +1,13 @@
+{
+  "id": "2026-01-01_21-14_cierre-feature-snapshots-1-0-0",
+  "name": "cierre-feature-snapshots-1.0.0",
+  "description": "Conversación de cierre: fix cache + pruebas + commit",
+  "createdAt": "2026-01-01T20:14:11.785Z",
+  "requestCount": 1,
+  "models": [],
+  "linkedBacklog": "FEATURE-SNAPSHOTS-1.0.0",
+  "totalTokens": {
+    "prompt": 0,
+    "completion": 0
+  }
+}

@@ -7,7 +7,31 @@ applyTo: "ARCHIVO/PLUGINS/TYPED_PROMPTING/**/*.json, .github/plugins/typed-promp
 # Instrucciones: Plugin TypedPrompting
 
 > **Fuente de verdad**: `ARCHIVO/PLUGINS/TYPED_PROMPTING/`  
-> **Submódulo**: `alephscript-typed-prompting/`
+> **Submódulo**: `TypedPromptsEditor/`  
+> **Specs**: `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor/`
+
+## Stack MCP
+
+| Capa | Puerto | Fuente |
+|------|--------|--------|
+| **MCP Server** | 3020 | `MCPGallery/mcp-mesh-sdk/src/MCPTypedPromptServer.ts` |
+| **Backend Client** | — | `MCPGallery/mcp-mesh-sdk/src/clients/TypedPromptBackendClient.ts` |
+| **REST Backend** | 3019 | `TypedPromptsEditor/server/` |
+| **Tipos DRY** | — | `MCPGallery/mcp-core-sdk/src/types/typed-prompts/` |
+
+### Tools MCP (7)
+
+| Tool | Descripción |
+|------|-------------|
+| `typed_validate_message` | Validar JSON contra schema |
+| `typed_convert_interface` | Convertir TypeScript a JSON Schema |
+| `typed_list_schemas` | Listar schemas (filtros opcionales) |
+| `typed_get_schema` | Obtener schema por ID |
+| `typed_create_schema` | Crear nuevo schema |
+| `typed_list_libraries` | Listar bibliotecas |
+| `typed_suggest_ontology` | Sugerir ontologías para caso de uso |
+
+---
 
 ## Qué es TypedPrompting
 
@@ -151,7 +175,9 @@ Se añade a la obra en ARG_BOARD:
 | Schemas de ejemplo | `ARCHIVO/PLUGINS/TYPED_PROMPTING/schemas/examples/` |
 | Bibliotecas | `ARCHIVO/PLUGINS/TYPED_PROMPTING/libraries/` |
 | Logs de validación | `ARCHIVO/PLUGINS/TYPED_PROMPTING/validation-logs/` |
-| Datos del submódulo | `alephscript-typed-prompting/data/` |
+| Datos del submódulo | `TypedPromptsEditor/data/` |
+| Tipos DRY | `MCPGallery/mcp-core-sdk/src/types/typed-prompts/` |
+| Specs OpenAPI | `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor/` |
 
 ---
 

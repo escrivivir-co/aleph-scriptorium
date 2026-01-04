@@ -1,7 +1,7 @@
 # Fichas Detalladas — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX_ABSTRACT.md`  
-> **Actualizado**: 2025-12-30  
+> **Actualizado**: 2026-01-03  
 > **Propósito**: Fichas con abstract, palabras clave, titulares e ideas fuerza de cada borrador  
 > **Navegación rápida**: → [INDEX.md](INDEX.md)
 
@@ -971,3 +971,106 @@ copilot, log, exporter, mcp, server, conversacion, debug, prompts
 - [conversacion-po-sm.md — Conversación PO-SM](Diciembre_30_CopilotLogExporter/conversacion-po-sm.md)
 - [CONVERSACION_DE_BACKLOG.md — Conversación de Backlog](Diciembre_30_CopilotLogExporter/CONVERSACION_DE_BACKLOG.md)
 - [prompt-investigacion-ccreq.md — Prompt Investigación](Diciembre_30_CopilotLogExporter/prompt-investigacion-ccreq.md)
+
+---
+
+## Diciembre_31_Test_0x_Destilacion
+
+**Abstract**
+
+**Fecha**: 2026-01-01 — **Sprint**: PRE → FC1 — **Épica propuesta**: SCRIPT-2.2.0 — **Estado**: 📝 Borrador arquitectónico
+
+Destilación de la visión arquitectónica "Agentic Typed Logic Scriptorium Flow": cadena de 4 capas que conecta PrologServer → MCP Mesh → Packs Tipados → Teatro/ARG. El PO presentó la visión, @aleph + @ox + @indice validaron viabilidad técnica.
+
+**Palabras clave**
+
+agentic, typed, logic, flow, prolog, mcp, packs, teatro, arg, infraestructura, mesh, layers
+
+**Titulares**
+
+- Destilación: Agentic Typed Logic Scriptorium Flow
+- Blueprint Agéntico: Red de handoffs entre 4 layers
+- Cadena de dependencias Layer 0→1→2→3
+- 6 épicas identificadas (~34 pts total)
+
+**Ideas fuerza**
+
+- **Layer 0**: Infraestructura existente (PrologServer, AAIAGallery, mcp-mesh-sdk)
+- **Layer 1**: Servidores MCP por crear (prolog-mcp-server, aaia-mcp-server)
+- **Layer 2**: Packs tipados (AgentPrologBrain, AgentFIACreator)
+- **Layer 3**: Consumidores runtime (Teatro, ARG-Board)
+- **Riesgo real**: Integración entre layers, no en piezas individuales
+- **Esfuerzo estimado**: ~34 pts (1 FC completo)
+
+**Archivos**
+
+- [02_putting_all_together.md — Destilación PO + Aleph](Diciembre_31_Test_0x_Destilacion/02_putting_all_together.md)
+- [03_together_all.md — Blueprint Agéntico Ox](Diciembre_31_Test_0x_Destilacion/03_together_all.md)
+
+---
+
+## IOT-SBR-LOGICA (Actualizado 2026-01-01)
+
+**Abstract**
+
+**Fecha**: 2025-12-24 → **Actualizado**: 2026-01-01 — **Sprint**: PRE — **Estado**: 🟢 FUNCIONAL (no cartón-piedra)
+
+Investigación completa del plugin PrologEditor y submódulo `iot-sbr-logica-para-bots`. El PO preguntó sobre modelado de inteligencias situadas (aferencia/eferencia, IoT) y la investigación reveló que **la capacidad EXISTE y FUNCIONA**, solo estaba desconectada del vocabulario académico.
+
+**Palabras clave**
+
+prolog, iot, sbr, logica, aferencia, eferencia, sensores, actuadores, mqtt, inteligencia, situadas
+
+**Titulares**
+
+- Transcripción: Sesión PO — Plugin PrologEditor
+- Análisis Técnico del Submódulo
+- Resumen Ejecutivo para PO: ✅ Capacidad EXISTE y FUNCIONA
+- Referencias a Enciclopedia: Inteligencias Situadas
+
+**Ideas fuerza**
+
+- **Estado actualizado**: Plugin 🟢 FUNCIONAL (antes 🟡 cartón-piedra)
+- **Submódulo clonado**: PrologEditor/ con backend Express.js + SWI-Prolog
+- **Paradigma SBR**: Sensor → Brain → Response = Aferencia → Inferencia → Eferencia
+- **MQTT + Telemetría**: IoT básico funcional
+- **Gaps menores**: G1 vocabulario explícito (~2 pts), G2 exportación Blockly (~5 pts)
+
+**Archivos**
+
+- [01_transcripcion-po-session.md — Transcripción Sesión PO](IOT-SBR-LOGICA/01_transcripcion-po-session.md)
+- [02_analisis-submodulo.md — Análisis Técnico](IOT-SBR-LOGICA/02_analisis-submodulo.md)
+- [03_resumen-ejecutivo-po.md — Resumen Ejecutivo PO](IOT-SBR-LOGICA/03_resumen-ejecutivo-po.md)
+- [04_referencias_enciclopedia.md — Referencias Enciclopedia](IOT-SBR-LOGICA/04_referencias_enciclopedia.md)
+- [05_peticion_referencias.md — Petición Referencias](IOT-SBR-LOGICA/05_peticion_referencias.md)
+- [06_carpeta_enciclopedia.md — Carpeta Enciclopedia](IOT-SBR-LOGICA/06_carpeta_enciclopedia.md)
+
+## Enero_02_OpenAsyncApiEditor
+
+**Abstract**
+
+**Fecha**: 2026-01-02 — **Sprint**: FC1 — **Épica**: PLUGIN-OPENASYNCAPI-1.0.0 — **Estado**: ✅ Completada
+
+Plugin para gestionar el catálogo de especificaciones OpenAPI y AsyncAPI del Scriptorium. Incluye catalogación centralizada, guías de instalación de UIs (Swagger, AsyncAPI Studio) y generación de código cliente/servidor.
+
+**Palabras clave**
+
+openapi, asyncapi, editor, plugin, swagger, catalog, codegen, api
+
+**Titulares**
+
+- PLUGIN-OPENASYNCAPI-1.0.0: OpenAsyncAPI Editor Plugin
+- Catálogo centralizado de especificaciones API
+- Generación de código desde specs
+- Guías de instalación de UIs locales
+
+**Ideas fuerza**
+
+- **Documentación unificada**: Todas las APIs del ecosistema en un catálogo
+- **Onboarding acelerado**: Guías paso a paso para UIs locales
+- **Automatización**: Generación de código desde specs
+- **Consistencia**: Validación centralizada
+
+**Archivos**
+
+- [01_backlog-borrador.md — Épica: OpenAsyncAPI Editor Plugin](Enero_02_OpenAsyncApiEditor/01_backlog-borrador.md)

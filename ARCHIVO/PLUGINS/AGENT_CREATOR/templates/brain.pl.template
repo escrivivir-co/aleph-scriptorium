@@ -1,0 +1,78 @@
+%% ============================================
+%% Cerebro Prolog: {{AGENT_NAME}}
+%% Obra: {{OBRA_ID}}
+%% Generado por: AgentCreator
+%% Fecha: {{DATE}}
+%% Versión: 1.0.0
+%% ============================================
+
+%% --- MÓDULO ---
+:- module(brain_{{agent_name}}, [
+    rol/2,
+    especialidad/2,
+    decidir_accion/2,
+    conoce/2
+]).
+
+%% --- IDENTIDAD ---
+%% Define rol y especialidad del personaje
+rol({{agent_name}}, {{rol}}).
+especialidad({{agent_name}}, {{especialidad}}).
+
+%% --- CONOCIMIENTO BASE ---
+%% Hechos que el personaje conoce inicialmente
+%% Añadir hechos usando: assert(conoce({{agent_name}}, concepto)).
+conoce({{agent_name}}, scriptorium).
+conoce({{agent_name}}, prolog).
+
+%% --- CONTEXTO ---
+%% Predicados dinámicos para estado del contexto
+:- dynamic contexto/1.
+:- dynamic estado_obra/1.
+
+%% Estado inicial
+contexto(inicio).
+estado_obra(en_cartel).
+
+%% --- REGLAS DE COMPORTAMIENTO ---
+%% Patrón principal: decidir_accion(Agente, Accion)
+decidir_accion({{agent_name}}, Accion) :-
+    contexto(Contexto),
+    regla_para(Contexto, Accion),
+    !.  % Corte: primera regla que matchee
+
+decidir_accion({{agent_name}}, delegar_ox) :-
+    \+ contexto(_).  % Fallback si no hay contexto
+
+%% --- REGLAS ESPECÍFICAS ---
+%% Mapeo contexto → acción
+regla_para(inicio, presentarse).
+regla_para(buscar_informacion, consultar_indice).
+regla_para(validar_coherencia, ejecutar_tests).
+regla_para(crear_contenido, invocar_aleph).
+regla_para(auditar, invocar_banderas).
+regla_para(desconocido, delegar_ox).
+
+%% --- TRANSICIONES DE CONTEXTO ---
+%% Cambiar contexto dinámicamente
+cambiar_contexto(NuevoContexto) :-
+    retractall(contexto(_)),
+    assert(contexto(NuevoContexto)).
+
+%% --- QUERIES EJEMPLO ---
+%% Probar en MCPPrologServer:
+%% ?- decidir_accion({{agent_name}}, X).
+%% ?- rol({{agent_name}}, R).
+%% ?- conoce({{agent_name}}, C).
+%% ?- cambiar_contexto(auditar), decidir_accion({{agent_name}}, A).
+
+%% --- HOOKS PARA TEATRO ---
+%% Predicados que el Teatro puede invocar
+on_estadio_cambio(EstadioId) :-
+    format('~w: Cambio a estadio ~w~n', [{{agent_name}}, EstadioId]).
+
+on_turno(TurnoId) :-
+    decidir_accion({{agent_name}}, Accion),
+    format('~w turno ~w: ~w~n', [{{agent_name}}, TurnoId, Accion]).
+
+%% --- FIN DEL CEREBRO ---

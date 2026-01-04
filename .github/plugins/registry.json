@@ -752,6 +752,64 @@
           "agent": "FloveEditor"
         }
       ]
+    },
+    "openasyncapi-editor": {
+      "name": "OpenAsyncAPI Editor",
+      "version": "1.0.0",
+      "description": "Plugin para gestionar catálogo de especificaciones OpenAPI y AsyncAPI del Scriptorium. Incluye guías de instalación de UIs (Swagger, AsyncAPI Studio) y generación de código cliente/servidor.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-01-02T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "instructions_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/",
+      "bridge_agent": "plugin_ox_openasyncapieditor",
+      "dependencies": [],
+      "optional_dependencies": ["prolog-editor", "typed-prompting"],
+      "tools_cli": [
+        "@openapitools/openapi-generator-cli",
+        "@asyncapi/cli",
+        "@redocly/cli"
+      ],
+      "supported_specs": {
+        "openapi": ["3.0.x", "3.1.x"],
+        "asyncapi": ["2.x", "3.0.x"]
+      },
+      "uis": {
+        "swagger-ui": { "port": 8080, "type": "docker" },
+        "asyncapi-studio": { "port": 3210, "type": "docker" }
+      },
+      "handoffs": [
+        {
+          "label": "Listar catálogo de specs",
+          "agent": "OpenAsyncApiEditor"
+        },
+        {
+          "label": "Catalogar nueva spec",
+          "agent": "OpenAsyncApiEditor"
+        },
+        {
+          "label": "Validar especificación",
+          "agent": "OpenAsyncApiEditor"
+        },
+        {
+          "label": "Generar cliente TypeScript",
+          "agent": "OpenAsyncApiEditor"
+        },
+        {
+          "label": "Generar stub servidor",
+          "agent": "OpenAsyncApiEditor"
+        },
+        {
+          "label": "Setup Swagger UI",
+          "agent": "OpenAsyncApiEditor"
+        },
+        {
+          "label": "Setup AsyncAPI Studio",
+          "agent": "OpenAsyncApiEditor"
+        }
+      ]
     }
   }
 }

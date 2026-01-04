@@ -1,0 +1,396 @@
+# Model Context Protocol Specification
+# MCPPrologServer - Prolog Reasoning Engine for Agentic Workflows
+# 
+# Standard: MCP 1.0 (https://modelcontextprotocol.io)
+# Server: MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts
+# Version: 2.0.0 (PROLOG-DRY-1.0.0)
+
+name: mcp-prolog-server
+version: 2.0.0
+description: |
+  MCP Server que expone un motor de razonamiento Prolog (SWI-Prolog) para agentes IA.
+  
+  ## Arquitectura
+  
+  ```
+  Copilot/LLM ──MCP──► MCPPrologServer ──swipl-stdio──► SWI-Prolog
+                              │
+                              └──HTTP──► PrologEditor Backend (SQLite)
+  ```
+  
+  ## Casos de Uso Principales
+  
+  1. **Agentes Ox**: Setup y gestión de sesiones Prolog
+  2. **Dramaturgos**: Escribir cerebros .brain.pl para personajes
+  3. **Agentes Teatro**: Razonamiento en tiempo real durante obras
+
+transport:
+  type: stdio
+  command: node
+  args:
+    - dist/MCPPrologServer.js
+  env:
+    PROLOG_BACKEND_URL: http://localhost:8000/api
+    MCP_SERVER_PORT: "3006"
+
+capabilities:
+  tools: true
+  resources: true
+  prompts: true
+  sampling: false
+
+# ============================================================================
+# TOOLS (12)
+# ============================================================================
+tools:
+  # --- Core Tools (7): Invocan motor SWI-Prolog directamente ---
+  
+  - name: prolog_create_session
+    description: |
+      Crea una nueva sesión Prolog aislada.
+      El sessionId se usa para todas las operaciones posteriores.
+      El obraId vincula la sesión a una obra de Teatro (opcional).
+    inputSchema:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Identificador único de sesión (ej. "obra_itaca_001")
+        obraId:
+          type: string
+          description: ID de obra de Teatro para vincular contexto
+      required:
+        - sessionId
+    examples:
+      - description: Crear sesión para obra de teatro
+        input:
+          sessionId: itaca_001
+          obraId: itaca_digital
+      - description: Crear sesión genérica
+        input:
+          sessionId: test_session_42
+
+  - name: prolog_list_sessions
+    description: Lista todas las sesiones Prolog activas.
+    inputSchema:
+      type: object
+      properties: {}
+
+  - name: prolog_destroy_session
+    description: Destruye una sesión y libera recursos.
+    inputSchema:
+      type: object
+      properties:
+        sessionId:
+          type: string
+      required:
+        - sessionId
+
+  - name: prolog_query
+    description: |
+      Ejecuta una consulta Prolog en la sesión especificada.
+      Retorna todas las soluciones (backtracking completo).
+    inputSchema:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        query:
+          type: string
+          description: "Consulta Prolog (ej. 'decidir_accion(lucas, X).')"
+      required:
+        - sessionId
+        - query
+    examples:
+      - description: Consultar acción de personaje
+        input:
+          sessionId: itaca_001
+          query: "decidir_accion(lucas, Accion)."
+      - description: Listar hechos
+        input:
+          sessionId: test_01
+          query: "rol(Quien, Que)."
+
+  - name: prolog_assert_fact
+    description: Añade un hecho dinámico a la sesión.
+    inputSchema:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        fact:
+          type: string
+          description: "Hecho Prolog (ej. 'contexto(crisis).')"
+      required:
+        - sessionId
+        - fact
+    examples:
+      - description: Añadir contexto de escena
+        input:
+          sessionId: itaca_001
+          fact: "contexto(crisis)."
+      - description: Registrar conocimiento de personaje
+        input:
+          sessionId: itaca_001
+          fact: "conoce(lucas, secreto_ox)."
+
+  - name: prolog_consult_file
+    description: |
+      Carga un archivo .pl o .brain.pl en la sesión.
+      El archivo debe existir en el servidor o ser accesible.
+    inputSchema:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        filePath:
+          type: string
+          description: "Ruta al archivo Prolog"
+      required:
+        - sessionId
+        - filePath
+    examples:
+      - description: Cargar cerebro de personaje
+        input:
+          sessionId: itaca_001
+          filePath: ARCHIVO/PLUGINS/AGENT_CREATOR/templates/lucas.brain.pl
+
+  - name: prolog_get_templates
+    description: |
+      Obtiene el catálogo de templates Prolog disponibles.
+      Incluye templates para cerebros de personajes, reglas IoT, etc.
+    inputSchema:
+      type: object
+      properties: {}
+
+  # --- Backend-Integrated Tools (5): Acceden SQLite via PrologBackendClient ---
+
+  - name: prolog_load_rules_from_db
+    description: |
+      Carga reglas desde SQLite al Knowledge Base de la sesión.
+      Útil para restaurar estado persistido de una obra.
+    inputSchema:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        appFilter:
+          type: string
+          description: "Filtro por aplicación/obra (opcional)"
+      required:
+        - sessionId
+
+  - name: prolog_save_rule_to_db
+    description: |
+      Persiste una regla en SQLite para uso futuro.
+      La regla queda asociada a una aplicación/obra.
+    inputSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Nombre descriptivo de la regla"
+        content:
+          type: string
+          description: "Código Prolog de la regla"
+        app:
+          type: string
+          description: "ID de aplicación/obra"
+      required:
+        - name
+        - content
+        - app
+
+  - name: prolog_list_sdk_templates
+    description: Lista los templates disponibles en el SDK.
+    inputSchema:
+      type: object
+      properties: {}
+
+  - name: prolog_get_sdk_template_content
+    description: Obtiene el contenido de un template específico del SDK.
+    inputSchema:
+      type: object
+      properties:
+        templateId:
+          type: string
+      required:
+        - templateId
+
+  - name: prolog_get_telemetry_status
+    description: |
+      Obtiene el estado de telemetría IoT actual.
+      Útil para integración con sensores en obras interactivas.
+    inputSchema:
+      type: object
+      properties: {}
+
+# ============================================================================
+# RESOURCES (6)
+# ============================================================================
+resources:
+  - uri: prolog://sessions/current
+    name: prolog-session-state
+    description: Estado de la sesión Prolog activa
+    mimeType: application/json
+
+  - uri: prolog://templates/catalog
+    name: prolog-templates-catalog
+    description: Catálogo de templates Prolog locales
+    mimeType: application/json
+
+  - uri: prolog://sessions
+    name: prolog-active-sessions
+    description: Lista de todas las sesiones activas
+    mimeType: application/json
+
+  - uri: prolog://rules/catalog
+    name: prolog-rules-catalog
+    description: Catálogo de reglas persistidas en SQLite
+    mimeType: application/json
+
+  - uri: prolog://sdk/templates
+    name: prolog-sdk-templates
+    description: Templates del SDK (mcp-core-sdk)
+    mimeType: application/json
+
+  - uri: prolog://telemetry/current
+    name: prolog-telemetry
+    description: Datos de telemetría IoT actuales
+    mimeType: application/json
+
+# ============================================================================
+# PROMPTS (8)
+# ============================================================================
+prompts:
+  - name: session_lifecycle
+    description: |
+      Guía al agente para gestionar el ciclo de vida de sesiones Prolog.
+      Incluye crear, listar y destruir sesiones.
+    arguments:
+      - name: action
+        description: "create | list | destroy"
+        required: true
+      - name: sessionId
+        description: "ID de sesión (para create/destroy)"
+        required: false
+
+  - name: load_knowledge_base
+    description: |
+      Carga conocimiento en una sesión desde archivos o base de datos.
+      Combina consult_file y load_rules_from_db.
+    arguments:
+      - name: sessionId
+        required: true
+      - name: source
+        description: "file | database | both"
+        required: true
+
+  - name: interactive_query
+    description: |
+      Ejecuta consultas interactivas con contexto enriquecido.
+      Usa el resource session-state para mostrar contexto actual.
+    arguments:
+      - name: sessionId
+        required: true
+      - name: query
+        required: true
+
+  - name: persist_rule
+    description: |
+      Persiste una regla Prolog en la base de datos.
+      Primero la valida con assert_fact, luego la guarda.
+    arguments:
+      - name: sessionId
+        required: true
+      - name: ruleName
+        required: true
+      - name: ruleContent
+        required: true
+      - name: app
+        required: true
+
+  - name: use_sdk_template
+    description: |
+      Guía para usar templates del SDK como punto de partida.
+      Lista templates disponibles y carga el seleccionado.
+    arguments:
+      - name: templateType
+        description: "brain | iot | generic"
+        required: false
+
+  - name: telemetry_check
+    description: |
+      Verifica el estado de telemetría IoT y lo integra con el razonamiento.
+      Útil para obras interactivas con sensores físicos.
+    arguments:
+      - name: sessionId
+        required: true
+
+  - name: razonamiento_sbr
+    description: |
+      Sensor-Based Reasoning: razonamiento basado en datos de sensores.
+      Combina telemetría, reglas Prolog y decisiones.
+    arguments:
+      - name: sessionId
+        required: true
+      - name: sensorType
+        description: "temperature | humidity | presence | generic"
+        required: true
+
+  - name: teatro_agent_session
+    description: |
+      Workflow E2E para que un personaje de Teatro razone usando su cerebro.
+      
+      ## Flujo Completo
+      
+      1. Crear sesión vinculada a obra
+      2. Cargar cerebro .brain.pl del personaje
+      3. Cargar contexto de la escena actual
+      4. Ejecutar decidir_accion/2
+      5. Retornar acción decidida
+      
+      ## Ejemplo
+      
+      ```
+      Personaje: Lucas (Scrum Master del Scriptorium)
+      Obra: itaca_digital
+      Escena: "El equipo descubre un bug crítico"
+      Contexto: crisis
+      
+      → Lucas consultará verificar_indices primero
+      ```
+    arguments:
+      - name: personaje
+        description: "Nombre del personaje (ej. 'lucas')"
+        required: true
+      - name: obraId
+        description: "ID de la obra activa"
+        required: true
+      - name: contexto
+        description: "Contexto actual de la escena"
+        required: false
+
+# ============================================================================
+# METADATA
+# ============================================================================
+metadata:
+  author: Aleph Scriptorium
+  license: AIPL v1.0
+  repository: https://github.com/escrivivir-co/aleph-scriptorium
+  epic: PROLOG-DRY-1.0.0
+  relatedEpics:
+    - SCRIPT-2.3.0
+    - SCRIPT-2.3.1
+    - TEATRO-PROLOG-1.0.0
+  servers:
+    - name: MCPPrologServer
+      port: 3006
+      path: MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts
+    - name: PrologEditor Backend
+      port: 8000
+      path: PrologEditor/backend/
+  clients:
+    - name: PrologBackendClient
+      path: MCPGallery/mcp-mesh-sdk/src/clients/PrologBackendClient.ts
+      purpose: HTTP client para SQLite sin ciclos MCP

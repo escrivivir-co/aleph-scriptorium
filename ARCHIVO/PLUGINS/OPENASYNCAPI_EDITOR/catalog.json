@@ -1,0 +1,37 @@
+{
+  "$schema": "./catalog.schema.json",
+  "version": "1.0.0",
+  "updated_at": "2026-01-02T12:00:00Z",
+  "specs": [
+    {
+      "id": "prolog-editor-openapi",
+      "project": "PrologEditor",
+      "type": "openapi",
+      "spec_version": "3.1.0",
+      "api_version": "1.0.0",
+      "title": "PrologEditor API",
+      "description": "REST API for PrologEditor - IoT Rule Engine with Prolog Backend",
+      "origin": "ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologEditor_API_Contracts/api-specs/openapi.yaml",
+      "local": null,
+      "status": "validated",
+      "cataloged_at": "2026-01-02T12:00:00Z",
+      "validated_at": "2026-01-02T12:00:00Z",
+      "tags": ["iot", "rest", "prolog", "rules"]
+    },
+    {
+      "id": "prolog-editor-asyncapi",
+      "project": "PrologEditor",
+      "type": "asyncapi",
+      "spec_version": "3.0.0",
+      "api_version": "1.0.0",
+      "title": "PrologEditor MQTT API",
+      "description": "AsyncAPI specification for PrologEditor's real-time IoT telemetry via MQTT",
+      "origin": "ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologEditor_API_Contracts/api-specs/asyncapi.yaml",
+      "local": null,
+      "status": "validated",
+      "cataloged_at": "2026-01-02T12:00:00Z",
+      "validated_at": "2026-01-02T12:00:00Z",
+      "tags": ["iot", "mqtt", "telemetry", "pubsub"]
+    }
+  ]
+}

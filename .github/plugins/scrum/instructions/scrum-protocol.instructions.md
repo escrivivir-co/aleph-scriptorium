@@ -11,6 +11,17 @@ applyTo: ".github/BACKLOG-SCRIPTORIUM.md"
 > **Épica**: SCRIPT-1.29.0 (Context Bloat Mitigation)
 
 ---
+# Backlog — Aleph Scriptorium
+
+Contexto general:
+
+> **Opportunity**: Aleph Scriptorium  
+> **Versión**: 1.2.3-dry  
+> **Sprint actual**: FC1  "flavour/monada"
+> **Actualizado**: 2026-01-01
+> **Rama en ALEPH (esta codebase)**: flavour/monada
+> **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
+
 
 ## 1. Principio Fundamental
 
@@ -101,12 +112,32 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 3. Actualizar estado a 🔄 en el índice (solo cambio de emoji)
 ```
 
+### Fase 2.5: Auditoría (NUEVO — Resolución R1 Asamblea 2026-01-01)
+
+```
+1. Invocar @ox para auditoría técnica:
+   - Verificar que componentes referenciados existen
+   - Identificar gaps entre plan y código real
+   - Documentar hallazgos en borrador
+
+2. Invocar @indice para auditoría estructural:
+   - Verificar rutas mencionadas existen o están marcadas "a crear"
+   - Verificar coherencia con principios DRY
+   - Documentar hallazgos en borrador
+
+3. Si hay gaps críticos → volver a Fase 2
+4. Si auditoría OK → proceder a Fase 3
+```
+
+> **Bloqueo preventivo**: Cualquier agente puede invocar `@ox diagnosticar {épica}` ante sospecha de gaps. Esto pausa la aprobación hasta resolución.
+
 ### Fase 3: Aprobar
 
 ```
-1. Validar borrador completado
-2. Cambiar estado a ✅ en el índice
-3. NO copiar contenido al índice
+1. Verificar que Fase 2.5 está completada (auditoría OK)
+2. Validar borrador completado
+3. Cambiar estado a ✅ en el índice
+4. NO copiar contenido al índice
 ```
 
 ### Fase 4: Archivar
@@ -138,6 +169,49 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 ```markdown
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](ruta)
 ```
+
+---
+
+## 7. Asambleas Deliberativas (Resolución R4)
+
+> **Origen**: Asamblea de Agentes 2026-01-01
+
+Cuando una épica requiere decisiones significativas o hay conflicto de criterios, se convoca una **Asamblea Deliberativa**.
+
+### Cuándo Convocar
+
+- Bloqueo preventivo activado
+- Gap analysis con hallazgos críticos
+- Cambio de scope significativo
+- Decisiones arquitectónicas mayores
+
+### Formato
+
+```markdown
+# Asamblea: {Tema}
+
+## Participantes
+{Lista de agentes}
+
+## Rondas
+1. ¿Qué ocurrió? (cada agente desde su rol)
+2. ¿Qué aprendimos? (propuestas de acción)
+3. ¿Qué significa para el sistema? (implicaciones)
+4. Votación (si aplica)
+
+## Resoluciones
+R1: ...
+R2: ...
+```
+
+### Ubicación
+
+Las asambleas se archivan en:
+```
+ARCHIVO/NOTICIAS/{tema}/05_asamblea_agentes.md
+```
+
+Estas asambleas son **fuente de verdad** para decisiones de proceso y pueden citarse como precedente.
 
 ---
 
@@ -251,11 +325,55 @@ refs #SCRIPT-1.30.0
 
 ---
 
-## Resumen Ejecutivo
+## 14. Integración con Auto-Reflexión
 
-| Antes (v1.x) | Después (v2.0 DRY) |
-|--------------|-------------------|
-| Backlog con 400+ líneas | Índice con ~50 líneas |
-| Épicas detalladas en .github/ | Épicas en DISCO/BORRADORES/ |
-| Context bloat al cargar | Carga mínima, expandir bajo demanda |
-| Duplicación de información | Fuente única en borrador |
+> **Fuente de verdad**: `auto-reflexion.instructions.md`
+
+### Snapshots en el Ciclo Scrum
+
+| Momento | Acción | Obligatorio |
+|---------|--------|-------------|
+| Al planificar épica | Capturar snapshot de contexto inicial | ⚪ Opcional |
+| Al completar story compleja | Capturar snapshot | ⚪ Opcional |
+| Al cerrar épica | `capture_snapshot` + `generate_abstract` | 🔴 Obligatorio |
+| Al cerrar sprint | Snapshot + Foto de estado | 🔴 Obligatorio |
+
+### Métricas en Borradores
+
+Al cerrar una sesión de trabajo intensa (>1 hora), añadir al borrador:
+
+```markdown
+## Métricas de Sesión
+
+| Métrica | Valor |
+|---------|-------|
+| healthScore | {0-100} |
+| cacheHitRate | {%} |
+| Antipatrones | {AP-0X, AP-0Y} |
+| Snapshots capturados | {N} |
+```
+
+### Terapia de Bridges
+
+Si un bridge de plugin es detectado como ineficiente:
+
+```
+1. @scrum planificar → crear BACKLOG_BORRADORES/{bridge}_terapia/
+2. @ox analyze_session → documentar antipatrones
+3. @scrum tracking → registrar propuestas de mejora
+4. Implementar fix → cerrar terapia
+```
+
+### Resoluciones de Auto-Reflexión (R5)
+
+Los aprendizajes de auto-reflexión pueden generar resoluciones que afectan el proceso:
+
+| Tipo | Ejemplo | Dónde documentar |
+|------|---------|------------------|
+| Nuevo antipatrón | AP-05: X | auto-reflexion.instructions.md |
+| Nueva buena práctica | BP-06: Y | auto-reflexion.instructions.md |
+| Mejora de proceso | R5: Z | Asamblea + DEVOPS.md |
+| Mejora de bridge | Fix de scope | Bridge .agent.md |
+
+---
+

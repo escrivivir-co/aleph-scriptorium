@@ -1,0 +1,12 @@
+{
+  "id": "2026-01-04_20-04_resource-template-curl-vs-mcp",
+  "name": "resource-template-curl-vs-mcp",
+  "description": "Sesión fix BUG-TPE-003 - análisis curl vs MCP tools",
+  "createdAt": "2026-01-04T19:04:34.593Z",
+  "requestCount": 1,
+  "models": [],
+  "totalTokens": {
+    "prompt": 0,
+    "completion": 0
+  }
+}

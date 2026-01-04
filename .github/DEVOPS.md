@@ -60,11 +60,27 @@ Opportunity
 
 ---
 
-### Definition of Done
+### Definition of Ready (DoR) — Gate de Aprobación
+
+> **Resolución R1-R2 de Asamblea 2026-01-01**: Toda épica debe pasar auditoría Ox-Indice antes de aprobación PO-SM.
+
+**Checklist obligatorio antes de aprobar épica**:
+
+- [ ] **Verificación de componentes**: Todo archivo/módulo referenciado existe o está marcado "a crear"
+- [ ] **Gap analysis documentado**: Diferencias entre plan y realidad técnica identificadas
+- [ ] **Estimación validada**: Por quien implementará, no solo por quien planifica
+- [ ] **Auditoría Ox**: Viabilidad técnica verificada
+- [ ] **Auditoría Indice**: Coherencia estructural con ARCHIVO verificada
+
+**Bloqueo preventivo** (R3): Cualquier agente puede invocar `@ox diagnosticar` ante sospecha de gaps técnicos. No es acusación; es petición de clarificación.
+
+---
+
+### Definition of Done (DoD)
 
 **Task**: Implementado + Consistente con ARCHIVO + README actualizado  
 **Story**: Todas las tasks + Commit conforme  
-**Epic**: Capítulo completo + Checklist verificado + Release tag
+**Epic**: Capítulo completo + Checklist verificado + Release tag + Asamblea documentada (R4)
 
 ---
 
