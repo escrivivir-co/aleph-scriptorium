@@ -1,8 +1,8 @@
 # Catálogo de Especificaciones — PrologEditor
 
-> **Versión**: 2.1.0  
-> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0  
-> **Última actualización**: 2026-01-03  
+> **Versión**: 2.2.0  
+> **Épicas**: PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0, DRAMATURGIA-MAQUINA-1.0.0  
+> **Última actualización**: 2026-01-04  
 > **Guía DRY**: [guia-arquitectura-mcp-stack.md](../../../../../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/guia-arquitectura-mcp-stack.md)
 
 ---
@@ -27,6 +27,7 @@ organizadas por estándar y caso de uso.
 |---------|----------|-------------|---------|
 | [openapi.yaml](openapi.yaml) | OpenAPI 3.1 | REST API del Backend (SQLite + MCP Gateway) | 2.0.0 |
 | [asyncapi.yaml](asyncapi.yaml) | AsyncAPI 3.0 | MQTT API para telemetría IoT | 1.0.0 |
+| [dramaturgo-signals.asyncapi.yaml](dramaturgo-signals.asyncapi.yaml) | AsyncAPI 3.0 | Señales Sensor/Actuador (Ox→Lucas) | 1.0.0 |
 | [mcpspec.yaml](mcpspec.yaml) | MCP 1.0 | Model Context Protocol Server (Prolog) | 2.0.0 |
 | [usecases-ox-bridger.yaml](usecases-ox-bridger.yaml) | usecases/1.0.0 | Casos de uso: Setup del stack | 1.0.0 |
 | [usecases-dramaturgo.yaml](usecases-dramaturgo.yaml) | usecases/1.0.0 | Casos de uso: Escribir obras | 1.0.0 |
