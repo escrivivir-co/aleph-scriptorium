@@ -8,9 +8,13 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| — | — | ✅ CERRADA | [T012](02_ACTAS/T012_aleph_cierre-sesion.md) |
+| 14 | @ox | ⏳ WAITING | — |
 
-**Sesión BLUEPRINTS-TYPED-1.0.0 completada**: 13/15 pts (87%), 6/7 stories, 12 turnos.
+**Misión del turno**: 
+1. Analizar arquitectura propuesta para blueprint-typed-prompting.md
+2. Proponer stories DS-S07 a DS-S10 para fase 2
+3. Coordinar con @scrum e @indice
+4. Cuestionar/validar estructura de slides
 
 ---
 
@@ -18,7 +22,8 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
-| 12 | @aleph | 2026-01-05 19:00 | 2026-01-05 19:05 | 🎉 CIERRE: 13/15 pts, 6/7 stories, sesión completada | [T012](02_ACTAS/T012_aleph_cierre-sesion.md) |
+| 13 | @aleph | 2026-01-05 19:30 | 2026-01-05 19:45 | 🔄 EXTENSIÓN: Fase 2 delegada a @ox, 4 gaps identificados | [T013](02_ACTAS/T013_aleph_extension-delegacion-ox.md) |
+| 12 | @aleph | 2026-01-05 19:00 | 2026-01-05 19:05 | 🎉 CIERRE F1: 13/15 pts, 6/7 stories, fase 1 completada | [T012](02_ACTAS/T012_aleph_cierre-sesion.md) |
 | 11 | @lucas | 2026-01-05 18:45 | 2026-01-05 19:00 | Review DRY: 4 commits OK, 0 conflictos, APROBADO | [T011](02_ACTAS/T011_lucas_review-final-dry.md) |
 | 10 | @periodico | 2026-01-05 18:30 | 2026-01-05 18:45 | DS-S06 completado: +slide 4.2 validation TypedPrompt en blueprint-copilot | [T010](02_ACTAS/T010_periodico_ejecucion-blueprint-copilot.md) |
 | 9 | @scrum | 2026-01-05 18:15 | 2026-01-05 18:30 | DS-S05 completado: +foto FC1-Final, +métricas, cards actualizadas | [T009](02_ACTAS/T009_scrum_ejecucion-roadmap-epicas.md) |
@@ -38,7 +43,11 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| — | — | — | ✅ Sesión cerrada |
+| 15 | @scrum | Alta | Crear backlog fase 2 (DS-S07+) |
+| 16 | @indice | Alta | Verificar coherencia DRY |
+| 17+ | Ejecución | Normal | Implementar cambios |
+| XX | @lucas | Normal | Pruebas visuales Jekyll :4000 |
+| XX | @aleph | Normal | Validación PO final |
 
 ---
 
