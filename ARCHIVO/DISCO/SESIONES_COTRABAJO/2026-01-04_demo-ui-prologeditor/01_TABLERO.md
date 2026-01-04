@@ -20,9 +20,10 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 1 | @plugin_ox_prologeditor | 📢 READY | [acta-01.md](02_ACTAS/acta-01.md) |
+| — | — | ✅ DEMO COMPLETADA | [acta-12.md](02_ACTAS/acta-12.md) |
 
-**Próximo paso**: Crear sesión Prolog — esperando OK del PO
+**Paso en curso**: Crear sesión Prolog (UC-DEV-001)  
+**Commits consolidados**: ✅ 2 commits (settings.json + sesión cotrabajo)
 
 ## Guión de Demo (12 pasos) — ✅ VALIDADO por @ox
 
@@ -61,13 +62,23 @@ Cada paso sigue este protocolo:
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
-| — | — | — | — | Sesión recién iniciada | — |
+| 1 | @plugin_ox_prologeditor | 01:40 | 01:42 | ✅ Sesión creada: session-mjz010od-f7d5 | [acta-01.md](02_ACTAS/acta-01.md) |
+| 2 | @plugin_ox_prologeditor | 01:42 | 01:43 | ✅ list_sessions demostrado (tabla) | [acta-02.md](02_ACTAS/acta-02.md) |
+| 3 | @plugin_ox_prologeditor | 01:43 | 01:45 | ✅ Query member(X,[1,2,3]) → 3 soluciones | [acta-03.md](02_ACTAS/acta-03.md) |
+| 4 | @plugin_ox_prologeditor | 01:45 | 01:47 | ✅ Assert likes(mary,wine) + hallazgo aislamiento | [acta-04.md](02_ACTAS/acta-04.md) |
+| 5 | @plugin_ox_prologeditor | 01:47 | 01:50 | ✅ Consult test.pl + historial/re-consult | [acta-05.md](02_ACTAS/acta-05.md) |
+| 6 | @plugin_ox_prologeditor | 01:50 | 01:52 | ⚠️ MCP Templates: catálogo OK, contenido 404 | [acta-06.md](02_ACTAS/acta-06.md) |
+| 7-8 | @plugin_ox_prologeditor | 01:52 | 01:54 | ✅ SDK Templates dropdown funcional | [acta-07-08.md](02_ACTAS/acta-07-08.md) |
+| 9-10 | @plugin_ox_prologeditor | 01:54 | 01:56 | ✅ Save rule OK, list no refresh | [acta-09-10.md](02_ACTAS/acta-09-10.md) |
+| 11 | @plugin_ox_prologeditor | 01:56 | 01:57 | ✅ Telemetría IoT completa | [acta-11.md](02_ACTAS/acta-11.md) |
+| 12 | @plugin_ox_prologeditor | 01:57 | 01:58 | ✅ Sesión destruida, demo finalizada | [acta-12.md](02_ACTAS/acta-12.md) |
 
 ## Intervenciones Puntuales
 
 | Agente | Hora | Resumen | Acta | Pendiente |
 |--------|------|---------|------|-----------|
-| @indice | 2026-01-04 | Corrección settings.json: indexar 22 plugins (prolog-editor estaba ausente) | [acta-indice-01.md](02_ACTAS/acta-indice-01.md) | ⏳ Commit |
+| @indice | 2026-01-04 | Corrección settings.json: indexar 22 plugins | [acta-indice-01.md](02_ACTAS/acta-indice-01.md) | ✅ Commit 463cd0e |
+| @aleph | 2026-01-04 | Consolidar commits de sesión | — | ✅ Commit 78be298 |
 
 ## Cola de Espera
 
@@ -80,8 +91,18 @@ Cada paso sigue este protocolo:
 
 | Paso | Estado | Resultado |
 |------|--------|-----------|
-| 1 | ⏳ Pendiente | — |
-| 2 | ⏳ Pendiente | — |
+| 1 | ✅ Completado | session-mjz010od-f7d5 creada |
+| 2 | ✅ Completado | 1 sesión listada en tabla |
+| 3 | ✅ Completado | member(X,[1,2,3]) → X=1,2,3 |
+| 4 | ✅ Completado | likes(mary,wine) asertado |
+| 5 | ✅ Completado | test.pl consultado |
+| 6 | ⚠️ Parcial | Catálogo OK, contenido 404 |
+| 7 | ✅ Completado | SDK templates listados |
+| 8 | ✅ Completado | Template seleccionado |
+| 9 | ✅ Completado | Reglas cargadas |
+| 10 | ✅ Completado | factorial guardado |
+| 11 | ✅ Completado | Telemetría enviada |
+| 12 | ✅ Completado | Sesión destruida |
 | 3 | ⏳ Pendiente | — |
 | 4 | ⏳ Pendiente | — |
 | 5 | ⏳ Pendiente | — |
