@@ -14,6 +14,7 @@
 | [2026-01-03_prolog-agent-brain-pack-refinement](2026-01-03_prolog-agent-brain-pack-refinement/) | PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0 | 15 | ✅ Cerrada |
 | [2026-01-03_prolog-e2e-testing](2026-01-03_prolog-e2e-testing/) | PROLOG-E2E-1.0.0 | 16 | ✅ Cerrada (88.5%) |
 | [2026-01-04_demo-ui-prologeditor](2026-01-04_demo-ui-prologeditor/) | DEMO-UI-1.0.0 | - | 🟢 Activa |
+| [2026-01-04_dramaturgia-scriptorium-maquina](2026-01-04_dramaturgia-scriptorium-maquina/) | DRAMATURGIA-MAQUINA-1.0.0 | 6 | ✅ Cerrada |
 
 ---
 
@@ -46,8 +47,8 @@ Cada carpeta sigue el protocolo `cotrabajo.instructions.md`:
 
 | Métrica | Valor |
 |---------|-------|
-| Total sesiones | 3 |
-| ✅ Cerradas | 2 |
+| Total sesiones | 4 |
+| ✅ Cerradas | 3 |
 | 🟢 Activas | 1 |
 
 ---
