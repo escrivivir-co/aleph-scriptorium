@@ -175,11 +175,11 @@ permalink: /roadmap/
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA" class="card">
-    <div class="card-header">📝 Borrador | SCRIPT-1.11.0</div>
+    <div class="card-header">✅ Completado | PROLOG-UI-2.0.0</div>
     <h3 class="card-title">Plugin PrologEditor</h3>
-    <div class="card-body">Lógica declarativa Prolog (SWI-Prolog). Exportar desde Blockly a Prolog. Perfil académico: usuarios con conocimiento formal.</div>
+    <div class="card-body">Stack completo: Angular UI (:5001) + Express API (:8000) + MCPPrologServer (:3006). 12 tools, 6 resources, 8 prompts MCP.</div>
     <div class="card-footer">
-      <span class="tag">prolog</span><span class="tag">lógica</span><span class="tag">académico</span>
+      <span class="tag">prolog</span><span class="tag">MCP</span><span class="tag">12 tools</span>
     </div>
   </a>
 
@@ -301,11 +301,11 @@ permalink: /roadmap/
   </a>
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING" class="card">
-    <div class="card-header">✅ Aprobado</div>
+    <div class="card-header">✅ Completado | TYPED-MCP-1.0.0</div>
     <h3 class="card-title">Plugin TypedPrompting</h3>
-    <div class="card-body">Ontologías NL↔JSON. Diseña TypeScript→JSON Schema, valida mensajes de LLM, crea contratos entre agentes. Validación AJV/Zod.</div>
+    <div class="card-body">Stack completo: Vite UI (:3019) + MCPTypedPromptServer (:3020). 7 tools, 3 prompts MCP. Valida NL↔JSON con AJV/Zod.</div>
     <div class="card-footer">
-      <span class="tag">typed</span><span class="tag">schema</span><span class="tag">validación</span>
+      <span class="tag">typed</span><span class="tag">MCP</span><span class="tag">7 tools</span>
     </div>
   </a>
 
@@ -462,6 +462,30 @@ permalink: /roadmap/
 
   <div class="foto-card">
     <div class="foto-header">
+      <span class="foto-icon">✅🎯</span>
+      <span class="foto-date">2026-01-04</span>
+    </div>
+    <div class="foto-body">
+      <h4>FC1: Épicas Cerradas (TypedPrompt + Prolog)</h4>
+      <p class="foto-summary">Cierre de sprint FC1: TypedPromptEditor y PrologEditor como ciudadanos de primera clase. MCP servers integrados en docs/.</p>
+      <div class="foto-metrics">
+        <span class="metric">✅ TYPED-MCP-1.0.0 (34 pts)</span>
+        <span class="metric">✅ PROLOG-UI-2.0.0 (7/7 tools)</span>
+        <span class="metric">✅ COWORK-1.0.0 (21 pts)</span>
+        <span class="metric">✅ DRAMATURGIA-1.0.0 (13 pts)</span>
+      </div>
+      <div class="foto-metrics">
+        <span class="metric">📊 215+ pts effort</span>
+        <span class="metric">🔌 22 plugins</span>
+        <span class="metric">🤖 31+ agentes</span>
+        <span class="metric">📂 6 sesiones cotrabajo</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/" class="foto-link">Ver sesión de cierre →</a>
+    </div>
+  </div>
+
+  <div class="foto-card">
+    <div class="foto-header">
       <span class="foto-icon">🏗️📸</span>
       <span class="foto-date">2025-12-27</span>
     </div>
@@ -480,8 +504,8 @@ permalink: /roadmap/
       </div>
       <div class="foto-metrics">
         <span class="metric">🤖 63 agentes</span>
-        <span class="metric">📦 19 plugins</span>
-        <span class="metric">✅ 3 épicas cerradas</span>
+        <span class="metric">📦 22 plugins</span>
+        <span class="metric">✅ 29+ épicas cerradas</span>
       </div>
       <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2025-12-27_FC2_FotoDualPathykar.md" class="foto-link">Ver foto completa →</a>
     </div>

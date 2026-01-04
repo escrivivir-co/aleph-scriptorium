@@ -8,13 +8,12 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 9 | @scrum | ⏳ WAITING | — |
+| 10 | @periodico | ⏳ WAITING | — |
 
 **Misión del turno**: 
-1. Ejecutar DS-S05 (roadmap.md)
-2. Añadir TYPED-MCP-1.0.0 (34 pts) en épicas cerradas FC1
-3. Añadir PROLOG-UI-2.0.0 en épicas cerradas FC1
-4. Actualizar métricas de effort completado
+1. Ejecutar DS-S06 (blueprint-copilot.md)
+2. Añadir mención a TypedPromptEditor en system message section
+3. Vincular con flujo L0→L3 de Agentic Typed Logic Flow
 
 ---
 
@@ -22,6 +21,7 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 9 | @scrum | 2026-01-05 18:15 | 2026-01-05 18:30 | DS-S05 completado: +foto FC1-Final, +métricas, cards actualizadas | [T009](02_ACTAS/T009_scrum_ejecucion-roadmap-epicas.md) |
 | 8 | @periodico | 2026-01-05 18:00 | 2026-01-05 18:15 | DS-S04 completado: +MCP servers en L2/L3, +specs links | [T008](02_ACTAS/T008_periodico_ejecucion-logic-flow.md) |
 | 7 | @aleph | 2026-01-05 17:30 | 2026-01-05 17:45 | DS-S03 completado: +slide 4.7 "validation" en blueprint.md | [T007](02_ACTAS/T007_aleph_ejecucion-blueprint-validation.md) |
 | 6 | @lucas | 2026-01-05 17:00 | 2026-01-05 17:15 | DS-S02 completado: +2 cards, +2 badges, +2 servers health check | [T006](02_ACTAS/T006_lucas_ejecucion-demo-cards.md) |
@@ -38,7 +38,6 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| 10 | @periodico | Normal | Ejecutar DS-S06 (blueprint-copilot.md) |
 | 11 | @lucas | Normal | Review final DRY |
 
 ---
