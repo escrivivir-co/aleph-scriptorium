@@ -107,6 +107,7 @@
 | ✅ | 2026-01-03_prolog-agent-brain-pack-refinement | COWORK-1.0.0 | Protocolo validado, 15 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-agent-brain-pack-refinement/) |
 | ✅ | 2026-01-03_prolog-e2e-testing | PROLOG-E2E-1.0.0 | E2E 88.5% (23/26), 16 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-e2e-testing/) |
 | ✅ | 2026-01-04_demo-ui-prologeditor | PROLOG-UI-DEMO-1.0.0 | Demo 12/12 pasos, 2 bugs detectados | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/) |
+| ✅ | 2026-01-04_dramaturgia-scriptorium-maquina | DRAMATURGIA-MAQUINA-1.0.0 | Backlog 13 pts (5 stories, 13 tasks), 6 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 
 ---
 
@@ -114,10 +115,11 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Épicas cerradas (total) | 27+ |
-| Effort completado | ~168 pts |
+| Épicas cerradas (total) | 28+ |
+| Effort completado | ~181 pts |
 | Plugins instalados | 22 |
 | Submódulos integrados | 16 |
+| Sesiones cotrabajo | 4 |
 | Sesiones cotrabajo | 3 |
 
 ---
