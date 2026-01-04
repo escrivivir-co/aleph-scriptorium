@@ -1,7 +1,7 @@
 # Índice de Snapshots — Copilot Logs
 
 > **Generado automáticamente** por SnapshotManager  
-> **Actualizado**: 2026-01-03T21:52:26.375Z
+> **Actualizado**: 2026-01-04T19:04:34.603Z
 
 ---
 
@@ -9,6 +9,7 @@
 
 | ID | Nombre | Fecha | Requests | Backlog |
 |----|--------|-------|----------|--------|
+| 2026-01-04_20-04_resource-template-curl-vs-mcp | resource-template-curl-vs-mcp | 1/4/2026 | 1 | — |
 | 2026-01-03_22-52_prolog-e2e-t007-assert-crash | prolog-e2e-t007-assert-crash | 1/3/2026 | 2 | — |
 | 2026-01-03_21-22_prologeditor-auto-reflexion-t013 | prologeditor-auto-reflexion-t013 | 1/3/2026 | 2 | COWORK-1.0.0 |
 | 2026-01-03_21-19_auto-reflexion-investigacion | auto-reflexion-investigacion | 1/3/2026 | 1 | COWORK-1.0.0 |
