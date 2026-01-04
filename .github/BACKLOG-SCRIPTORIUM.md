@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.3-dry  
+> **Versión**: 1.2.4-dry  
 > **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-03
+> **Actualizado**: 2026-01-04
 > **Rama en ALEPH (esta codebase)**: flavour/monada
 > **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
@@ -63,6 +63,8 @@
 
 | Épica | Nombre | Referencia |
 |-------|--------|------------|
+| PROLOG-BUG-001 | Session Isolation (assert_fact sin sessionId) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
+| PROLOG-BUG-002 | MCP Templates 404 (catalog OK, content fails) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
 
 ---
 
@@ -104,6 +106,7 @@
 |--------|--------|-------|-----------|------------|
 | ✅ | 2026-01-03_prolog-agent-brain-pack-refinement | COWORK-1.0.0 | Protocolo validado, 15 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-agent-brain-pack-refinement/) |
 | ✅ | 2026-01-03_prolog-e2e-testing | PROLOG-E2E-1.0.0 | E2E 88.5% (23/26), 16 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-e2e-testing/) |
+| ✅ | 2026-01-04_demo-ui-prologeditor | PROLOG-UI-DEMO-1.0.0 | Demo 12/12 pasos, 2 bugs detectados | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/) |
 
 ---
 
@@ -111,11 +114,11 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Épicas cerradas (total) | 26+ |
-| Effort completado | ~165 pts |
-| Plugins instalados | 19 |
+| Épicas cerradas (total) | 27+ |
+| Effort completado | ~168 pts |
+| Plugins instalados | 22 |
 | Submódulos integrados | 16 |
-| Sesiones cotrabajo | 2 |
+| Sesiones cotrabajo | 3 |
 
 ---
 
@@ -123,6 +126,8 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-04 | ✅ Cerrar sesión PROLOG-UI-DEMO-1.0.0 (12/12 pasos, 2 bugs) | @scrum |
+| 2026-01-04 | 🐛 Registrar bugs PROLOG-BUG-001/002 para priorizar | @scrum |
 | 2026-01-04 | ✅ Cerrar sesión PROLOG-E2E-1.0.0 (88.5%, 16 turnos) | @scrum |
 | 2026-01-01 | ➕ Añadir SCRIPT-2.2.0 Agentic Typed Logic Flow (blueprint arquitectónico) | @scrum |
 | 2026-01-01 | 🟢 Actualizar IOT-SBR-LOGICA a estado Investigado (capacidad EXISTE) | @scrum |
