@@ -175,14 +175,37 @@ elenco:
 # =============================================================================
 mcpPacks:
   - id: AgentPrologBrain
-    version: "1.0.0"
+    version: "3.0.0"
     sessionConfig:
       sessionId: "itaca-digital-session"
       autoConsult:
         - "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl"
+    sensorBridge:
+      enabled: true
+      sensors:
+        - source: "@ox"
+          target: "lucas"
+          predicate: "recibir_senal/2"
+      actuators:
+        - source: "lucas"
+          targets:
+            - "penelope"
+            - "orfeo"
+            - "viajero"
+          predicate: "notificar/2"
+      events:
+        - trigger: "estado_parado"
+          action: "anunciar_a_elenco"
+        - trigger: "estado_operativo"
+          action: "confirmar_reanudacion"
+        - trigger: "coherencia_rota"
+          action: "alerta_dry"
     description: |
       Habilita razonamiento Prolog para personajes de la obra.
-      Lucas puede validar coherencia documental en tiempo real.
+      Lucas opera como ACTUADOR del modelo Scriptorium-como-Máquina:
+      - Recibe señales de sensores (@ox, otros agentes)
+      - Procesa cambios con verificación DRY
+      - Notifica a personajes suscritos (eferencia)
 
 meta:
   duracion_estimada: "6 horas"
@@ -198,7 +221,7 @@ meta:
     - ítaca
     - prolog-brain
   creado: "2025-12-28"
-  actualizado: "2026-01-02"
+  actualizado: "2026-01-04"
   autor: "Teatro Interactivo × Aleph Scriptorium"
   
 dependencias:

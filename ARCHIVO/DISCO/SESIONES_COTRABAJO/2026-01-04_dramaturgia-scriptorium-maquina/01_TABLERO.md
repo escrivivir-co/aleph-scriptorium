@@ -37,6 +37,7 @@
 | 5 | @aleph | 16:15 | 16:20 | Handoff a @periodico para noticia de sesión | [T005](02_ACTAS/T005_aleph_handoff-periodico.md) |
 | 6 | @periodico | 16:30 | 16:45 | Noticia de sesión — documento base PO/SM | [T006](02_ACTAS/T006_periodico_noticia-sesion.md) |
 | 7 | @ox | 17:00 | 17:15 | Implementar S02: 3 predicados sensor/actuador en lucas-prolog.brain.pl | [T007](02_ACTAS/T007_ox_s02-prolog-sensor.md) |
+| 8 | @ox | 17:20 | 17:30 | Implementar S03: mcpPacks v3.0.0 + sensorBridge en itaca-digital.yaml | [T008](02_ACTAS/T008_ox_s03-obra-update.md) |
 
 ---
 
@@ -44,7 +45,7 @@
 
 | # | Agente | Estado | Objetivo |
 |---|--------|--------|----------|
-| 7 | @ox | ✅ DONE | Implementar S02: Rutina Prolog sensor (3 tasks) |
+| 8 | @ox | ✅ DONE | Implementar S03: Actualizar itaca-digital.yaml |
 
 ---
 
