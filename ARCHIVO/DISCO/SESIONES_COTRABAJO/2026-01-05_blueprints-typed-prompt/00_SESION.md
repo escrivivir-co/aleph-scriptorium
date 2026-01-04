@@ -5,10 +5,22 @@
 | Campo | Valor |
 |-------|-------|
 | **Fecha inicio** | 2026-01-05 |
-| **Estado** | 🟢 ACTIVA |
-| **Épicas relacionadas** | BLUEPRINTS-TYPED-1.0.0 (nueva) |
+| **Fecha cierre** | 2026-01-05 |
+| **Estado** | ✅ CERRADA |
+| **Épicas relacionadas** | BLUEPRINTS-TYPED-1.0.0 |
 | **Carpeta** | `ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/` |
 | **Origen** | Transferencia desde sesión 2026-01-04_typed-mcp-test-session |
+
+---
+
+## Resultado Final
+
+| Métrica | Valor |
+|---------|-------|
+| **Stories** | 6/7 (86%) |
+| **Puntos** | 13/15 (87%) |
+| **Turnos** | 12 |
+| **Commits** | 5 |
 
 ---
 
@@ -26,11 +38,13 @@
 
 ## Participantes
 
-| Agente | Rol | Estado actual |
-|--------|-----|---------------|
-| @aleph | PO (review) | ✅ DONE (T007) |
-| @periodico | Editor principal | ⏳ WAITING (turno 8) |
-| @lucas | Diseño de contenido | ✅ DONE (T006) |
+| Agente | Rol | Turnos |
+|--------|-----|--------|
+| @aleph | PO (aprobación, cierre) | T004, T007, T012 |
+| @periodico | Editor principal | T001, T005, T008, T010 |
+| @lucas | Diseño, review DRY | T003, T006, T011 |
+| @ox | Ronda crítica | T002 |
+| @scrum | Métricas | T009 |
 
 ---
 

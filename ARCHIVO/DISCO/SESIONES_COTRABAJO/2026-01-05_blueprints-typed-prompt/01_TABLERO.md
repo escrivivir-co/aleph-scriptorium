@@ -8,12 +8,9 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 11 | @lucas | ⏳ WAITING | — |
+| — | — | ✅ CERRADA | [T012](02_ACTAS/T012_aleph_cierre-sesion.md) |
 
-**Misión del turno**: 
-1. Review final DRY: verificar coherencia de todos los cambios
-2. Aprobar cierre de sesión BLUEPRINTS-TYPED-1.0.0
-3. Actualizar 00_SESION.md con resumen final
+**Sesión BLUEPRINTS-TYPED-1.0.0 completada**: 13/15 pts (87%), 6/7 stories, 12 turnos.
 
 ---
 
@@ -21,6 +18,8 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 12 | @aleph | 2026-01-05 19:00 | 2026-01-05 19:05 | 🎉 CIERRE: 13/15 pts, 6/7 stories, sesión completada | [T012](02_ACTAS/T012_aleph_cierre-sesion.md) |
+| 11 | @lucas | 2026-01-05 18:45 | 2026-01-05 19:00 | Review DRY: 4 commits OK, 0 conflictos, APROBADO | [T011](02_ACTAS/T011_lucas_review-final-dry.md) |
 | 10 | @periodico | 2026-01-05 18:30 | 2026-01-05 18:45 | DS-S06 completado: +slide 4.2 validation TypedPrompt en blueprint-copilot | [T010](02_ACTAS/T010_periodico_ejecucion-blueprint-copilot.md) |
 | 9 | @scrum | 2026-01-05 18:15 | 2026-01-05 18:30 | DS-S05 completado: +foto FC1-Final, +métricas, cards actualizadas | [T009](02_ACTAS/T009_scrum_ejecucion-roadmap-epicas.md) |
 | 8 | @periodico | 2026-01-05 18:00 | 2026-01-05 18:15 | DS-S04 completado: +MCP servers en L2/L3, +specs links | [T008](02_ACTAS/T008_periodico_ejecucion-logic-flow.md) |
@@ -39,7 +38,7 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| — | — | — | Sesión completada (pending review final) |
+| — | — | — | ✅ Sesión cerrada |
 
 ---
 
