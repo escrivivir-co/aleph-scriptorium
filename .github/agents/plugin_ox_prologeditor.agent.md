@@ -51,6 +51,15 @@ tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-
 #   - Scripts .sh externos para comandos complejos (Windows-safe)
 #   - Cache hit rate 0% es normal en sesiones de cotrabajo
 #
+# ⚠️ NAVEGACIÓN UI (Demo 2026-01-04):
+#   - NO usar open_simple_browser → pide confirmación "Allow/Skip" y bloquea
+#   - USAR MCP Playwright tools para navegar:
+#     - mcp_playwright_browser_navigate({url: "http://localhost:5001"})
+#     - mcp_playwright_browser_snapshot() → ver estado de página
+#     - mcp_playwright_browser_click({element: "...", ref: "..."}) → interactuar
+#   - Activar con: activate_browser_interaction_tools() si no disponibles
+#   - Para demos: mostrar snapshots y resultados al PO, NO screenshots
+#
 # PREREQUISITO CRÍTICO:
 #   - SWI-Prolog (swipl) debe estar en PATH
 #   - Ver guía-arquitectura-mcp-stack.md § 9 para instalación
