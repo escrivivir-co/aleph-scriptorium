@@ -36,6 +36,7 @@
 | 4a | Lucas+@scrum | 15:50 | 16:10 | Desglose épica: 5 stories, 13 tasks, owners asignados | [T004a](02_ACTAS/T004a_lucas-scrum_backlog-tasks.md) |
 | 5 | @aleph | 16:15 | 16:20 | Handoff a @periodico para noticia de sesión | [T005](02_ACTAS/T005_aleph_handoff-periodico.md) |
 | 6 | @periodico | 16:30 | 16:45 | Noticia de sesión — documento base PO/SM | [T006](02_ACTAS/T006_periodico_noticia-sesion.md) |
+| 7 | @ox | 17:00 | 17:15 | Implementar S02: 3 predicados sensor/actuador en lucas-prolog.brain.pl | [T007](02_ACTAS/T007_ox_s02-prolog-sensor.md) |
 
 ---
 
@@ -43,7 +44,7 @@
 
 | # | Agente | Estado | Objetivo |
 |---|--------|--------|----------|
-| 6 | @periodico | ✅ DONE | Noticia de sesión (documento base PO/SM) |
+| 7 | @ox | ✅ DONE | Implementar S02: Rutina Prolog sensor (3 tasks) |
 
 ---
 
