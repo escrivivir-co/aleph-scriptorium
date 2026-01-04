@@ -20,6 +20,10 @@
       "type": "http",
       "url": "http://localhost:3006"
     },
+    "typed-prompt-mcp-server": {
+      "type": "http",
+      "url": "http://localhost:3020"
+    },
     "copilot-logs-mcp-server": {
       "type": "http",
       "url": "http://localhost:3100"

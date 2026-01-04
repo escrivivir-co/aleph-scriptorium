@@ -98,6 +98,7 @@ mcpServers:
 | `@plugin_ox_teatro` | Teatro | 1 agente | — |
 | `@plugin_ox_scrum` | Scrum | 1 agente | — |
 | `@plugin_ox_mcppresets` | MCP Presets | 1 agente | 6 servers (mesh) |
+| `@plugin_ox_typedprompting` | TypedPrompting | 1 agente | 1 server (3020) |
 | `@plugin_ox_openasyncapieditor` | OpenAsyncAPI Editor | 1 agente | — |
 
 ---
@@ -126,6 +127,7 @@ mcpServers:
 | `devops-mcp-server` | 3003 | DevOps automation (default) |
 | `state-machine-server` | 3004 | X+1 state machine |
 | `prolog-mcp-server` | 3006 | Prolog queries + KB management (SCRIPT-2.3.0) |
+| `typed-prompt-mcp-server` | 3020 | Schema validation + ontology management (TYPED-MCP-1.0.0) |
 | `launcher-server` | 3050 | Server orchestration |
 
 ### Flujo de Registro

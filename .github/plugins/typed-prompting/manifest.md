@@ -58,7 +58,15 @@ handoffs:
     prompt: "Valida un mensaje JSON contra un schema definido."
   - label: "Abrir editor web"
     agent: "TypedPrompting"
-    prompt: "Abre el editor visual de ontologías en el navegador (localhost:5000)."
+    prompt: "Abre el editor visual de ontologías en el navegador (localhost:3019)."
+
+# Servidores MCP que el plugin aporta
+mcpServers:
+  - id: "typed-prompt-mcp-server"
+    port: 3020
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm run start:typed-prompt"
+    description: "TypedPrompt MCP Server - schema validation and ontology management"
 ---
 
 # Plugin: TypedPrompting
