@@ -6,7 +6,7 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 6 | @indice | ✅ DONE | [T006](02_ACTAS/T006_indice_validacion-protocolo.md) |
+| 9 | @plugin_ox_scrum | ⏳ WAITING | [T009](02_ACTAS/T009_scrum_cierre-final.md) |
 
 ## Historial de Turnos
 
@@ -18,20 +18,21 @@
 | 4 | @plugin_ox_agentcreator | 16:30 | 16:45 | Añadió Paso 1.5 "Detección Proactiva DRY" + Demo PO | [T004](02_ACTAS/T004_agentcreator_paso-proactivo-dry.md) |
 | 5 | @plugin_ox_scrum | 16:50 | 17:00 | Documentación PLUGINS.md, cierre de sesión | [T005](02_ACTAS/T005_scrum_cierre-sesion.md) |
 | 6 | @indice | 17:30 | 17:45 | Validación protocolo, corrección 3 gaps, compliance 100% | [T006](02_ACTAS/T006_indice_validacion-protocolo.md) |
+| 7 | @plugin_ox_agentcreator | 10:00 | 10:45 | Transmisión plantillas a ARG-Board + Teatro | [T007](02_ACTAS/T007_agentcreator_templates-arg-teatro.md) |
+| 8 | @aleph | 11:00 | 11:30 | Protocolo validación: 3 prompts + 1 instruction inscrita en plugin | [T008](02_ACTAS/T008_aleph_protocolo-validacion.md) |
 
 ## Cola de Espera
 
 | Posición | Agente | Prioridad |
 |----------|--------|-----------|
-| — | — | Sesión cerrada y validada |
+| — | — | Sesión cerrada |
 
-## ✅ Sesión Completada y Validada
+## ✅ Sesión Cerrada
 
 **Épica**: AGENT-TEMPLATES-1.0.0  
-**Estado**: ✅ Cerrada + Validada  
-**Turnos**: 6  
-**Duración total**: ~95 min  
-**Compliance**: 100%
+**Estado**: ✅ CERRADA  
+**Turnos totales**: 8  
+**Fecha cierre**: 2026-01-05
 
 ## Submódulo Instalado
 
