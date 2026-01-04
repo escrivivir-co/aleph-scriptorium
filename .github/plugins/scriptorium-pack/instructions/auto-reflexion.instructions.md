@@ -87,6 +87,31 @@ read_file(solo_los_necesarios)
 
 **Corrección**: Al inicio de sesión larga, capturar snapshot del contexto. Consultar snapshots existentes antes de re-investigar.
 
+### 🔴 AP-05: Reportar Gaps sin Verificar Activación
+
+> **Origen**: Fe de erratas T010 (2026-01-04)
+
+**Síntoma**: Declarar herramientas MCP como "no disponibles" o "gap" sin verificar si requieren activación.
+
+**Ejemplo malo**:
+```
+"stop_mcp_server ❌ No expuesto → ⚠️ Gap"
+```
+
+**Realidad**: La herramienta EXISTE pero requiere:
+```
+activate_mcp_server_management_tools()
+→ Desbloquea: launch/stop/restart_mcp_server
+```
+
+**Corrección**: Antes de reportar un gap de herramientas MCP, buscar si existe un `activate_*` que la incluya. Familias conocidas:
+
+| Familia | Comando | Tools |
+|---------|---------|-------|
+| Server Management | `activate_mcp_server_management_tools` | launch/stop/restart servers |
+| Browser Interaction | `activate_browser_interaction_tools` | Playwright clicks, navigate |
+| Prolog Sessions | `activate_prolog_session_management_tools` | create/query sessions |
+
 ---
 
 ## 4. Arquetipos de Buena Práctica

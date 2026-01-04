@@ -4,11 +4,12 @@
 
 ---
 
-## Estado: ✅ SESIÓN CERRADA (con fix post-cierre)
+## Estado: ✅ SESIÓN CERRADA
 
-**Cerrada**: 2026-01-04 20:00 por @aleph (PO)  
+**Cerrada**: 2026-01-04 20:35 por @aleph (PO)  
 **Fix post-cierre**: T009 @ox - BUG-TPE-003 ResourceTemplate fix  
-**Razón cierre**: Épica TYPED-MCP-1.0.0 aprobada para demo, transferencia a @periodico completada
+**Fe de erratas**: T010 @ox - MCP tools SÍ disponibles (demostrado con activate_*)  
+**Commit**: `79337c2` - docs(script/reflexion): fe de erratas T010
 
 ---
 
@@ -26,6 +27,7 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 10 | @ox | 20:10 | 20:35 | **Fe de erratas**: MCP tools SÍ disponibles (activación lazy) | [T010](02_ACTAS/T010_ox_curl-vs-mcp-tools.md) |
 | 9 | @ox | 19:55 | 20:10 | Fix BUG-TPE-003: ResourceTemplate para URIs dinámicos | [T009](02_ACTAS/T009_ox_resource-template-fix.md) |
 | 8 | @aleph | 19:45 | 20:00 | Transferencia a @periodico, cierre sesión | [T008](02_ACTAS/T008_aleph_transferencia-periodico.md) |
 | 7 | @aleph | 19:30 | 19:45 | Aprobación final PO, épica lista para demo | [T007](02_ACTAS/T007_aleph_aprobacion-final.md) |
@@ -43,12 +45,13 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Turnos totales | 10 |
+| Turnos totales | 11 |
 | Agentes participantes | 4 (@ox, @aleph, @nodejs-expert, @periodico próximo) |
 | Tests ejecutados | 17 |
 | Tests auto pass | 12 (71%) |
 | Bugs corregidos | 4 |
 | Bugs documentados | 1 (ISSUE-TPE-001) |
+| Falsos positivos corregidos | 1 (T010 - MCP tools) |
 | Épica aprobada | ✅ TYPED-MCP-1.0.0 |
 
 ---

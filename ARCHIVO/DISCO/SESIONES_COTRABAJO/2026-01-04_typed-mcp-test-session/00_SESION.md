@@ -5,8 +5,8 @@
 | Campo | Valor |
 |-------|-------|
 | **Fecha inicio** | 2026-01-04 17:30 |
-| **Fecha fin** | 2026-01-04 18:45 |
-| **Estado** | ✅ COMPLETADA |
+| **Fecha fin** | 2026-01-04 20:35 |
+| **Estado** | ✅ COMPLETADA (con fe de erratas T010) |
 | **Épicas relacionadas** | TYPED-MCP-1.0.0 (cerrada), LAUNCHER-BUG-001 (fixed) |
 | **Carpeta** | `ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session/` |
 
@@ -16,10 +16,11 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Turnos ejecutados | 4 |
-| Tests ejecutados | 7 |
-| Tests pasados | 6 (86%) |
-| Bugs corregidos | 3 |
+| Turnos ejecutados | 11 |
+| Tests ejecutados | 17 |
+| Tests pasados | 12 (71%) |
+| Bugs corregidos | 4 |
+| Falsos positivos corregidos | 1 (T010) |
 | Issues abiertos | 1 |
 | Spec fixes | 1 |
 
@@ -28,6 +29,11 @@
 1. **LAUNCHER-BUG-001**: Cross-platform process kill (Windows/macOS/Linux)
 2. **BUG-TPE-001**: getAllSchemas response parsing
 3. **BUG-TPE-002**: Missing /api/convert endpoint
+4. **BUG-TPE-003**: ResourceTemplate para URIs dinámicos
+
+### Falso Positivo Corregido
+
+- **T010**: Ox reportó erróneamente MCP tools como "no disponibles" — corregido con patrón `activate_*`
 
 ### Issue Pendiente
 
@@ -37,21 +43,19 @@
 
 ## Participantes
 
-| Agente | Rol | Estado actual |
-|--------|-----|---------------|
-| @ox | Arquitecto + Fix LAUNCHER | ⏳ WAITING (primer turno) |
-| @indice | Validación DRY + Navegación | ⚪ IDLE |
-| @scrum | Tracking + Product Owner liaison | ⚪ IDLE |
-| @plugin_ox_typedprompting | Bridge TypedPrompting | ⚪ IDLE |
-| @plugin_ox_mcppresets | Bridge MCP Presets | ⚪ IDLE |
+| Agente | Rol | Turnos |
+|--------|-----|--------|
+| @ox | Arquitecto + Fix + Tests | 6 (T001, T003, T004r, T006, T009, T010) |
+| @aleph | PO + Revisión + Cierre | 4 (T004, T005, T007, T008) |
+| @nodejs-expert | Fix race condition | 1 (T002) |
 
 ---
 
 ## Objetivo
 
-1. **@ox** aplica fix de LAUNCHER-BUG-001 (proceso kill Windows)
-2. **@ox** testea MCPTypedPromptServer (7 tools, 3 resources, 3 prompts)
-3. **@indice** valida coherencia de referencias DRY
+1. ✅ **@ox** aplica fix de LAUNCHER-BUG-001 (proceso kill Windows)
+2. ✅ **@ox** testea MCPTypedPromptServer (7 tools, 3 resources, 3 prompts)
+3. ✅ **@aleph** valida y aprueba para demo
 4. **@scrum** reporta a Product Owner cuando esté listo para demo
 
 ---

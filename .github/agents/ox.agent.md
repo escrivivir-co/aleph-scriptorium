@@ -2,7 +2,7 @@
 name: Ox
 description: "Oráculo del Scriptorium: conoce y gestiona el índice de todos los agentes. Genera documentación técnica y de usuario. Gobierna auto-reflexión."
 argument-hint: "Pregunta sobre agentes, solicita documentación (README, manual), pide diagnóstico del sistema, o solicita auto-reflexión."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'devops-mcp-server/*', 'launcher-server/*', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'launcher-server/*', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'devops-mcp-server/*', 'launcher-server/*', 'todo']
 handoffs:
   - label: Generar sección de agentes para README
     agent: Ox
@@ -252,6 +252,23 @@ El protocolo multi-agente funciona como **sistema de contención**:
 - Previene acumulación de errores no documentados
 - Las intervenciones del usuario producen adaptación gradual
 - La resistencia inicial es natural pero contraproducente
+
+### 5. Patrón de Activación Lazy (MCP Tools)
+
+> **Origen**: Corrección de falso positivo T010 (2026-01-04)
+
+Las herramientas MCP en VS Code usan **activación lazy** por familias. **NO reportar gaps** antes de verificar si existe un `activate_*` correspondiente.
+
+| Familia | Comando de activación | Tools desbloqueados |
+|---------|----------------------|---------------------|
+| Server Management | `activate_mcp_server_management_tools` | launch/stop/restart servers |
+| Browser Interaction | `activate_browser_interaction_tools` | Playwright clicks, navigate |
+| Form & File | `activate_form_and_file_management_tools` | Playwright forms, uploads |
+| Page Capture | `activate_page_capture_tools` | Screenshots, accessibility |
+| Prolog Sessions | `activate_prolog_session_management_tools` | create/query/destroy sessions |
+| Schema Management | `activate_schema_management_tools` | TypedPrompt schemas |
+
+**Antes de decir "herramienta no disponible"**: Buscar en el contexto si hay un `activate_*` que la incluya.
 
 ### Antipatrones que Detecta
 
