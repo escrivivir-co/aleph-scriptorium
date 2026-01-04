@@ -207,6 +207,37 @@
       },
       "detail": "TypedPromptsEditor Dev Server (3019)"
     },
+    {
+      "label": "TPE: Start [MCP Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:typed-prompt"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typed-prompt-mcp",
+        "pattern": {
+          "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*running on port 3020.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "demo-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "TypedPrompt MCP Server (3020)"
+    },
 
     // ─────────────────────────────────────────────────────────────────────────
     // DEMO: Demo Servers (DEMO-1.0.0)
