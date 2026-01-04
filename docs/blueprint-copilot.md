@@ -485,7 +485,55 @@ class PromptRegistry {
     </span>
   </div>
   
-  <div class="nav-hint">↑ Volver a vista general</div>
+  <div class="nav-hint">↓ Ver validación estructurada</div>
+</div>
+
+<!-- ==========================================
+     SLIDE 4.2: VALIDATION (TypedPrompt)
+     Coordenadas: (8000, 1400, 0)
+     BLUEPRINTS-TYPED-1.0.0: Validación NL↔JSON
+     ========================================== -->
+<div id="assembly-validation" class="step copilot-step" 
+     data-x="8000" 
+     data-y="1400" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 4 · Validación</span>
+    <span class="copilot-title">TypedPrompt: NL↔JSON</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p>Antes de enviar al LLM, <strong>TypedPromptEditor</strong> valida que el mensaje cumpla con el schema esperado.</p>
+  </div>
+  
+  <div class="validation-flow">
+    <div class="validation-step">
+      <span class="step-icon">📝</span>
+      <span class="step-label">L0: Prompt NL</span>
+      <span class="step-desc">"@aleph escribe borrador"</span>
+    </div>
+    <div class="validation-arrow">↓ TypedPromptServer :3020</div>
+    <div class="validation-step">
+      <span class="step-icon">📋</span>
+      <span class="step-label">L1: Schema JSON</span>
+      <span class="step-desc">{ action: "write", topic: "..." }</span>
+    </div>
+    <div class="validation-arrow">↓ validate_schema</div>
+    <div class="validation-step validated">
+      <span class="step-icon">✅</span>
+      <span class="step-label">L2: Validado</span>
+      <span class="step-desc">AJV/Zod pass → enviar a LLM</span>
+    </div>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">🔗</span>
+    <span class="note-text">
+      Ver flujo completo: <a href="/blueprint-logic-flow/">Agentic Typed Logic Flow</a> (L0→L3)
+    </span>
+  </div>
+  
+  <div class="nav-hint">↑ Volver a mensaje ensamblado</div>
 </div>
 
 <!-- ==========================================

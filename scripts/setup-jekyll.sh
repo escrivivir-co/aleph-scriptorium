@@ -1,54 +1,102 @@
 #!/bin/bash
 # Script de instalación de Jekyll para validación local
 # Uso: ./scripts/setup-jekyll.sh
-# Requiere: rbenv con Ruby 3.0.1+
+# Compatible: Windows (Git Bash/MSYS2), Linux, macOS
+# Requiere: Ruby 3.0.1+ (rbenv en Unix, RubyInstaller en Windows)
 
 set -e
 
+# ============================================
+# Cargar helper de Ruby cross-platform
+# ============================================
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/ruby-env.sh"
+
 echo "🔧 Instalando Jekyll para validación local..."
 echo ""
+echo "🖥️  Sistema detectado: $RUBY_ENV_OS"
 
-# Inicializar rbenv si está disponible
-if command -v rbenv &> /dev/null; then
-    eval "$(rbenv init -)"
-fi
-
-# Verificar Ruby
+# ============================================
+# Verificar Ruby usando helper
+# ============================================
+echo ""
 echo "✓ Verificando Ruby..."
-ruby_version=$(ruby --version)
-echo "  $ruby_version"
 
-# Verificar versión mínima (3.0+)
-if [[ "$ruby_version" == *"2.6"* ]] || [[ "$ruby_version" == *"2.7"* ]]; then
-    echo ""
-    echo "⚠️  Ruby 2.x detectado. Se requiere Ruby 3.0+"
-    echo "   Ejecuta: rbenv global 3.0.1 && exec \$SHELL"
+if ! ensure_ruby "3.0"; then
     exit 1
 fi
 
+ruby_version=$(ruby --version)
+echo "  $ruby_version"
+
+# ============================================
 # Instalar bundler
+# ============================================
 echo ""
 echo "📦 Instalando Bundler..."
-gem install bundler --user-install
 
-# Navegar a docs/
-cd docs/
-
-# Eliminar Gemfile.lock antiguo si existe (para evitar conflictos)
-if [ -f "Gemfile.lock" ]; then
-    echo "🗑️  Eliminando Gemfile.lock antiguo..."
-    rm Gemfile.lock
+if [[ "$RUBY_ENV_OS" == "Windows" ]]; then
+    # En Windows con RubyInstaller, --user-install puede causar problemas
+    gem install bundler 2>/dev/null || gem install bundler --user-install
+else
+    gem install bundler --user-install
 fi
 
-# Instalar dependencias
+# ============================================
+# Obtener directorio del script (cross-platform)
+# ============================================
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
+DOCS_DIR="$WORKSPACE_DIR/docs"
+
+echo ""
+echo "📂 Workspace: $WORKSPACE_DIR"
+echo "📂 Docs:      $DOCS_DIR"
+
+# Navegar a docs/
+cd "$DOCS_DIR"
+
+# ============================================
+# Eliminar Gemfile.lock antiguo si existe
+# ============================================
+if [ -f "Gemfile.lock" ]; then
+    echo ""
+    echo "🗑️  Eliminando Gemfile.lock antiguo..."
+    rm -f Gemfile.lock
+fi
+
+# ============================================
+# Instalar dependencias de Jekyll
+# ============================================
 echo ""
 echo "📚 Instalando dependencias de Jekyll..."
 bundle config set --local path 'vendor/bundle'
+
+# En Windows, puede haber problemas con eventmachine
+if [[ "$RUBY_ENV_OS" == "Windows" ]]; then
+    echo "   (Windows detectado: usando configuración especial)"
+    # Forzar plataforma Ruby puro para gemas problemáticas
+    bundle config set --local force_ruby_platform true 2>/dev/null || true
+fi
+
 bundle install
 
+# ============================================
+# Mensaje de éxito
+# ============================================
 echo ""
 echo "✅ Jekyll instalado correctamente"
 echo ""
 echo "Comandos disponibles:"
-echo "  ./scripts/validate-site.sh  - Validar Jekyll sin servidor"
-echo "  ./scripts/serve-site.sh     - Iniciar servidor local (http://localhost:4000)"
+
+if [[ "$RUBY_ENV_OS" == "Windows" ]]; then
+    echo "  bash ./scripts/validate-site.sh  - Validar Jekyll sin servidor"
+    echo "  bash ./scripts/serve-site.sh     - Iniciar servidor local (http://localhost:4000)"
+else
+    echo "  ./scripts/validate-site.sh  - Validar Jekyll sin servidor"
+    echo "  ./scripts/serve-site.sh     - Iniciar servidor local (http://localhost:4000)"
+fi
+
+echo ""
+echo "💡 Tip: Si tienes problemas con gemas nativas en Windows,"
+echo "   ejecuta: ridk install (opción 3) desde cmd.exe"

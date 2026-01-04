@@ -11,7 +11,6 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
-# Submódulos del proyecto (11 en total)
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/VsCodeExtension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
@@ -60,6 +59,9 @@ SUBMODULE_ONTHOLOGY_EDITOR_URL="https://github.com/escrivivir-co/alephscript-ont
 
 SUBMODULE_COPILOT_ENGINE_DIR="$ROOT_DIR/CopilotEngine"
 SUBMODULE_COPILOT_ENGINE_URL="https://github.com/escrivivir-co/vscode-copilot-chat.git"
+
+SUBMODULE_STATE_MACHINE_DIR="$ROOT_DIR/StateMachine"
+SUBMODULE_STATE_MACHINE_URL="https://github.com/escrivivir-co/state-machine-mcp-driver.git"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -203,6 +205,7 @@ setup_submodule "$SUBMODULE_N8N_EDITOR_DIR" "$SUBMODULE_N8N_EDITOR_URL" "Workflo
 setup_submodule "$SUBMODULE_WIKI_RACER_DIR" "$SUBMODULE_WIKI_RACER_URL" "WiringAppHypergraphEditor"
 setup_submodule "$SUBMODULE_ONTHOLOGY_EDITOR_DIR" "$SUBMODULE_ONTHOLOGY_EDITOR_URL" "OnthologyEditor"
 setup_submodule "$SUBMODULE_COPILOT_ENGINE_DIR" "$SUBMODULE_COPILOT_ENGINE_URL" "CopilotEngine"
+setup_submodule "$SUBMODULE_STATE_MACHINE_DIR" "$SUBMODULE_STATE_MACHINE_URL" "StateMachine"
 
 # 4) Inicializar submódulos anidados de OnthologyEditor (metamodel, MMCO, FloveDocs)
 echo "[setup] ─────────────────────────────────────────"
@@ -219,7 +222,7 @@ else
   echo "[setup] Aviso: OnthologyEditor no inicializado, saltando submódulos anidados"
 fi
 
-echo "[setup] ✔ Setup completado (16 submódulos + 3 anidados en OnthologyEditor)"
+echo "[setup] ✔ Setup completado (17 submódulos + 3 anidados en OnthologyEditor)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -239,7 +242,7 @@ echo "     cd WiringAppHypergraphEditor && git push -u origin $INTEGRATION_BRANC
 echo
 echo "     cd OnthologyEditor && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "Submódulos configurados (16):"
+echo "Submódulos configurados (17):"
 echo "  - VsCodeExtension: Extensión VS Code / Arrakis Theater"
 echo "  - MCPGallery: Zeus MCP Presets (UI web)"
 echo "  - VibeCodingSuite: VibeCoding Connector / Matrix Theater"
@@ -257,3 +260,4 @@ echo "  - WiringAppHypergraphEditor: Motor de navegación wiki-racer (WiringApp,
 echo "  - OnthologyEditor: Editor de ontologías (Flove Template)"
 echo "     └── Submódulos anidados: metamodel (UFO), MMCO (BNP), FloveDocs (taxonomía)"
 echo "  - CopilotEngine: Fuente VS Code Copilot Chat (System Messaging ReadOnly)"
+echo "  - StateMachine: Gamification UI multi-platform (Console, HTML5, Blockly, ThreeJS)"

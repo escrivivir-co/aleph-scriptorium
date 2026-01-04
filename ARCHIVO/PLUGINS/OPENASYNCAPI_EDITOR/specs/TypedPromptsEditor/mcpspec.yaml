@@ -1,0 +1,308 @@
+# MCP Server Specification: MCPTypedPromptServer
+# Port: 3020
+# Epic: TYPED-MCP-1.0.0
+
+mcpVersion: "1.0.0"
+
+info:
+  title: MCPTypedPromptServer
+  description: |
+    MCP Server for schema validation and ontology management.
+    Provides TypeScript/JSON Schema validation, conversion, and suggestion tools.
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+
+server:
+  port: 3020
+  transport: streamable-http
+  baseClass: BaseMCPServer
+  config: DEFAULT_TYPED_PROMPT_MCP_SERVER_CONFIG
+  backendUrl: http://localhost:3019/api
+
+capabilities:
+  tools: true
+  resources: true
+  prompts: true
+  healthChecks: true
+
+tools:
+  - name: typed_validate_message
+    description: Validate a JSON message against a schema
+    inputSchema:
+      type: object
+      required:
+        - schemaId
+        - message
+      properties:
+        schemaId:
+          type: integer
+          description: ID of the schema to validate against
+        message:
+          type: string
+          description: JSON message to validate
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        valid:
+          type: boolean
+        report:
+          $ref: '#/components/ValidationReport'
+        error:
+          type: string
+
+  - name: typed_convert_interface
+    description: Convert a TypeScript interface definition to JSON Schema
+    inputSchema:
+      type: object
+      required:
+        - typescript
+      properties:
+        typescript:
+          type: string
+          description: TypeScript interface definition
+        name:
+          type: string
+          description: Name for the generated schema
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        jsonSchema:
+          type: string
+        error:
+          type: string
+
+  - name: typed_list_schemas
+    description: List all available schemas, optionally filtered
+    inputSchema:
+      type: object
+      properties:
+        libraryId:
+          type: integer
+          description: Filter by library ID
+        category:
+          type: string
+          description: Filter by category
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        count:
+          type: integer
+        schemas:
+          type: array
+          items:
+            $ref: '#/components/Schema'
+
+  - name: typed_get_schema
+    description: Get a schema by its ID
+    inputSchema:
+      type: object
+      required:
+        - schemaId
+      properties:
+        schemaId:
+          type: integer
+          description: ID of the schema to retrieve
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        schema:
+          $ref: '#/components/Schema'
+        error:
+          type: string
+
+  - name: typed_create_schema
+    description: Create a new schema from TypeScript and JSON Schema definitions
+    inputSchema:
+      type: object
+      required:
+        - name
+        - typescript
+        - jsonSchema
+      properties:
+        name:
+          type: string
+          description: Name of the schema
+        typescript:
+          type: string
+          description: TypeScript interface definition
+        jsonSchema:
+          type: string
+          description: JSON Schema definition
+        category:
+          type: string
+          description: Category for organization
+        libraryId:
+          type: integer
+          description: Library to add schema to
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        schema:
+          $ref: '#/components/Schema'
+        error:
+          type: string
+
+  - name: typed_list_libraries
+    description: List all available schema libraries
+    inputSchema:
+      type: object
+      properties: {}
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        count:
+          type: integer
+        libraries:
+          type: array
+          items:
+            $ref: '#/components/Library'
+
+  - name: typed_suggest_ontology
+    description: Suggest existing ontologies/schemas based on a use case description
+    inputSchema:
+      type: object
+      required:
+        - useCase
+      properties:
+        useCase:
+          type: string
+          description: Description of the use case
+        domain:
+          type: string
+          description: Domain context (e.g., Teatro, IoT, ARG)
+        constraints:
+          type: array
+          items:
+            type: string
+          description: Constraints to consider
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        suggestions:
+          type: array
+          items:
+            type: object
+            properties:
+              schemaId:
+                type: integer
+              name:
+                type: string
+              relevance:
+                type: integer
+              reason:
+                type: string
+
+resources:
+  - uri: typed-prompt://schemas
+    name: All Schemas
+    description: Get list of all schemas
+    mimeType: application/json
+
+  - uri: typed-prompt://schemas/{id}
+    name: Schema by ID
+    description: Get schema details by ID
+    mimeType: application/json
+
+  - uri: typed-prompt://libraries/{id}
+    name: Library by ID
+    description: Get library details by ID
+    mimeType: application/json
+
+prompts:
+  - name: study_case
+    description: Analyze a use case and propose an ontology structure
+    arguments:
+      - name: context
+        description: Context of the use case
+        required: true
+      - name: requirements
+        description: List of requirements
+        required: false
+
+  - name: suggest_ontology
+    description: Search existing ontologies and suggest relevant ones
+    arguments:
+      - name: domain
+        description: Domain to search in
+        required: true
+      - name: constraints
+        description: Constraints to apply
+        required: false
+
+  - name: install_in_agent
+    description: Guide for installing a schema in an agent's recipe
+    arguments:
+      - name: agentId
+        description: Agent identifier
+        required: true
+      - name: schemaId
+        description: Schema ID to install
+        required: true
+
+components:
+  Schema:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      typeScript:
+        type: string
+      jsonSchema:
+        type: string
+      category:
+        type: string
+      labels:
+        type: array
+        items:
+          type: string
+      description:
+        type: string
+      libraryId:
+        type: integer
+      createdAt:
+        type: string
+
+  Library:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      createdAt:
+        type: string
+
+  ValidationReport:
+    type: object
+    properties:
+      valid:
+        type: boolean
+      errors:
+        type: array
+        items:
+          type: object
+          properties:
+            path:
+              type: string
+            message:
+              type: string

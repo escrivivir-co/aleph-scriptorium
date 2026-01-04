@@ -64,6 +64,14 @@ handoffs:
     agent: Indice
     prompt: Revisa el historial de la sesión y detecta si se ha leído el mismo archivo múltiples veces (AP-01).
     send: false
+  - label: 👥 Consultar sesiones de cotrabajo activas
+    agent: Indice
+    prompt: Lista sesiones activas en ARCHIVO/DISCO/SESIONES_COTRABAJO/ con estado y participantes.
+    send: false
+  - label: 📋 Mapa de sesión de cotrabajo
+    agent: Indice
+    prompt: Dado un tema de sesión, proporciona mapa de su estructura (tablero, actas, referencias).
+    send: false
 ---
 
 # Agente: Índice (Portero del Proyecto)

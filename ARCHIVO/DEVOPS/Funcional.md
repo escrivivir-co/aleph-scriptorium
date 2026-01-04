@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2026-01-01  
-> **Estado**: 🌿 Actualizado (FEATURE-SNAPSHOTS-1.0.0)
+> **Última actualización**: 2026-01-04  
+> **Estado**: 🌿 Actualizado (COWORK-1.0.0 indexado)
 
 ---
 
@@ -46,6 +46,7 @@
 | Roadmap | `/roadmap/` | Estado del proyecto + fotos |
 | Fundación | `/fundacion/` | El texto de 2026 |
 | Blueprint Logic Flow | `/blueprint-logic-flow/` | Agentic Typed Logic Flow (IOT-SBR + SCRIPT-2.2.0) |
+| Blueprint TypedPrompting | `/blueprint-typed-prompting/` | TypedPrompting MCP (7 tools, schemas) |
 
 > **Fuente**: `docs/` (Jekyll + GitHub Pages)
 
@@ -103,6 +104,123 @@
 **Ubicación de datos**: `ARCHIVO/DISCO/COPILOT_SNAPSHOTS/`
 
 ⚠️ **Advertencia**: Los logs tienen límite ~100 requests en memoria. Capturar snapshots cada 30 min.
+
+### 3.6. Validación de Schemas (TypedPrompting)
+
+> **Feature**: TYPED-MCP-1.0.0 — MCPTypedPromptEditor Refactor
+
+**Concepto**: Validación bidireccional NL↔JSON para conversaciones estructuradas.
+
+| Componente | Puerto | Descripción |
+|------------|--------|-------------|
+| TypedPromptsEditor | 3019 | UI Vite para edición de ontologías |
+| MCPTypedPromptServer | 3020 | Server MCP con 7 tools + 3 prompts |
+
+**Tools del Server (3020)**:
+
+| Tool | Descripción |
+|------|-------------|
+| `typed_create_schema` | Crear nuevo schema de validación |
+| `typed_validate` | Validar mensaje contra schema |
+| `typed_list_schemas` | Listar schemas disponibles |
+| `typed_get_schema` | Obtener schema específico |
+| `typed_delete_schema` | Eliminar schema |
+| `typed_export_openapi` | Exportar a OpenAPI |
+| `typed_import_openapi` | Importar desde OpenAPI |
+
+**Ubicación código**: `MCPGallery/mcp-mesh-sdk/src/MCPTypedPromptServer.ts`  
+**Spec OpenAPI**: `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor/` (931 líneas)
+
+💡 **Uso**: Definir schemas antes de crear agentes. Los schemas garantizan coherencia en el diálogo.
+
+### 3.7. Prolog MCP Server (SCRIPT-2.3.0 + TEATRO-PROLOG-1.0.0)
+
+> **Feature**: Inteligencias situadas + Typed Logic Flow + Teatro Integration
+
+**Capacidades**: 12 tools, 6 resources, 8 prompts
+
+| Tool | Descripción |
+|------|-------------|
+| `prolog_create_session` | Crear sesión Prolog aislada para una obra |
+| `prolog_destroy_session` | Limpiar sesión y liberar recursos |
+| `prolog_list_sessions` | Listar sesiones activas |
+| `prolog_query` | Ejecutar query Prolog con todos los solutions |
+| `prolog_assert_fact` | Añadir hecho a la KB |
+| `prolog_consult_file` | Cargar archivo .pl con caching |
+| `prolog_get_templates` | Obtener catálogo de templates Prolog |
+| `prolog_retract_fact` | Eliminar hecho de la KB |
+| `prolog_list_facts` | Listar hechos de un predicado |
+| `prolog_save_brain` | Guardar estado del cerebro a archivo |
+| `prolog_load_brain` | Cargar cerebro desde archivo .brain.pl |
+| `prolog_get_brain_metadata` | Obtener metadatos del cerebro |
+
+**Puerto**: 3006  
+**Ubicación**: `MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts`
+
+💡 **Uso**: Cada obra del Teatro tiene su propia KB Prolog aislada. Ver guía DRY en `guia-arquitectura-mcp-stack.md`.
+
+### 3.8. MCP Packs (Packs Tipados)
+
+> **Feature**: SCRIPT-2.3.0 — Agentic Typed Logic Flow
+
+| Pack | Descripción | Uso |
+|------|-------------|-----|
+| `AgentPrologBrain` | Razonamiento Prolog para agentes | Personajes Teatro con cerebro lógico |
+
+**Personajes con Cerebro Prolog**:
+
+| Personaje | Obra | Cerebro |
+|-----------|------|---------|
+| Lucas | Ítaca Digital | `lucas.brain.pl` |
+
+**Queries de ejemplo** (Lucas):
+```prolog
+?- documentacion_coherente(X).    % Validar DRY
+?- ubicacion_canonica(como, Donde). % Dónde buscar
+?- consejo(perdido, Mensaje).       % Guía al viajero
+```
+
+**UI para Dramaturgos**: El componente `BrainEditorComponent` permite crear cerebros Prolog visualmente sin conocimientos de lógica. Accesible en PrologEditor → tab "🧠 Brain Editor".
+
+### 3.9. Cotrabajo Multi-Agente (COWORK-1.0.0)
+
+> **Feature**: Sesiones colaborativas asíncronas entre agentes
+
+**Concepto clave**: El chat es un semáforo, no una autopista.
+
+| Componente | Descripción |
+|------------|-------------|
+| Sesión | Carpeta estructurada para trabajo colaborativo |
+| Tablero | Índice DRY de turnos y estados |
+| Actas | Contenido producido por cada turno |
+| Protocolo | Reglas inmutables de coordinación |
+
+**Estados de Agente**:
+
+| Estado | Emoji | Uso |
+|--------|-------|-----|
+| IDLE | ⚪ | Sin turno asignado |
+| WAITING | ⏳ | En cola |
+| READING | 📖 | Leyendo contexto |
+| THINKING | 🤔 | Procesando |
+| WRITING | ✍️ | Escribiendo acta |
+| REVIEWING | 🔍 | Revisando otro |
+| BLOCKED | ⛔ | Necesita input |
+| DONE | ✅ | Turno completado |
+
+**Invocación**:
+```
+@scriptorium-pack cotrabajo iniciar
+  --tema "diseño-api"
+  --participantes @ox @indice @scrum
+  --objetivo "Especificación OpenAPI"
+```
+
+**Ubicación**: `ARCHIVO/DISCO/SESIONES_COTRABAJO/{fecha}_{tema}/`
+
+**Sesiones activas**: Ver [SESIONES_COTRABAJO/INDEX.md](../DISCO/SESIONES_COTRABAJO/INDEX.md)
+
+→ Protocolo completo: [cotrabajo.instructions.md](../.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md)
 
 ### 3.6. Publicación (@plugin_ox_ghpages)
 
@@ -259,15 +377,16 @@ Usuario → @plugin_ox_teatro [generar]
 
 ### 6.2. DISCO (Memoria de Trabajo)
 
-| Carpeta | Uso |
-|---------|-----|
-| `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) |
-| `BACKLOG_ARCHIVADOS/` | Sprints cerrados |
-| `COPILOT_SNAPSHOTS/` | **NUEVO** Snapshots de conversaciones Copilot |
-| `Diciembre_25_*/` | Sesiones editoriales diciembre |
-| `Foro_*/` | Material scrapeado |
-| `TALLER/` | Proyectos de usuario (obras) |
-| `WIRING/` | Flujos Node-RED |
+| Carpeta | Uso | Índice |
+|---------|-----|--------|
+| `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) | [INDEX.md](../DISCO/BACKLOG_BORRADORES/INDEX.md) |
+| `BACKLOG_ARCHIVADOS/` | Sprints cerrados | — |
+| `COPILOT_SNAPSHOTS/` | Snapshots de conversaciones Copilot | — |
+| `SESIONES_COTRABAJO/` | Sesiones colaborativas multi-agente | [INDEX.md](../DISCO/SESIONES_COTRABAJO/INDEX.md) |
+| `Diciembre_25_*/` | Sesiones editoriales diciembre | — |
+| `Foro_*/` | Material scrapeado | — |
+| `TALLER/` | Proyectos de usuario (obras) | — |
+| `WIRING/` | Flujos Node-RED | — |
 
 > **DRY**: El backlog oficial (`.github/BACKLOG-SCRIPTORIUM.md`) es un índice de ~50 líneas que referencia estas carpetas.
 

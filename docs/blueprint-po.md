@@ -79,7 +79,7 @@ permalink: /blueprint-po/
     </div>
     <div class="tech-layer">
       <span class="layer-name">MCP</span>
-      <span class="layer-tech">5 servidores (Zeus, Launcher, Model...)</span>
+      <span class="layer-tech">7 servidores (mesh SDK)</span>
     </div>
     <div class="tech-layer">
       <span class="layer-name">Web</span>
@@ -307,6 +307,18 @@ permalink: /blueprint-po/
     <div class="mcp-server">
       <span class="port">:3004</span>
       <span class="name">State Machine</span>
+    </div>
+    <div class="mcp-server">
+      <span class="port">:3020</span>
+      <span class="name">TypedPrompt</span>
+    </div>
+    <div class="mcp-server">
+      <span class="port">:3006</span>
+      <span class="name">Prolog</span>
+    </div>
+    <div class="mcp-server">
+      <span class="port">:3003</span>
+      <span class="name">DevOps</span>
     </div>
   </div>
 </div>

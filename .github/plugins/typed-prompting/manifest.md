@@ -58,7 +58,15 @@ handoffs:
     prompt: "Valida un mensaje JSON contra un schema definido."
   - label: "Abrir editor web"
     agent: "TypedPrompting"
-    prompt: "Abre el editor visual de ontologías en el navegador (localhost:5000)."
+    prompt: "Abre el editor visual de ontologías en el navegador (localhost:3019)."
+
+# Servidores MCP que el plugin aporta
+mcpServers:
+  - id: "typed-prompt-mcp-server"
+    port: 3020
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm run start:typed-prompt"
+    description: "TypedPrompt MCP Server - schema validation and ontology management"
 ---
 
 # Plugin: TypedPrompting
@@ -90,7 +98,7 @@ Instalación de reglas en el sistema:
 2. **Instalar en flujo ARG**: Define `communicationProtocol` en la obra
 3. **Exportar biblioteca**: Genera paquete de schemas reutilizables
 
-## Arquitectura
+## Arquitectura de Datos
 
 ```
 ARCHIVO/PLUGINS/TYPED_PROMPTING/
@@ -99,25 +107,68 @@ ARCHIVO/PLUGINS/TYPED_PROMPTING/
 │   └── custom/                # Schemas del usuario
 ├── libraries/                  # Bibliotecas de schemas
 └── validation-logs/           # Historial de validaciones
+
+MCPGallery/mcp-core-sdk/src/types/typed-prompts/
+└── index.ts                   # Tipos DRY compartidos
+
+ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor/
+├── INDEX.md                   # Documentación arquitectura
+├── openapi.yaml               # REST API spec (3019)
+└── mcpspec.yaml               # MCP Server spec (3020)
+```
+
+## Arquitectura MCP Stack
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   VS Code Copilot                       │
+│                     (MCP Client)                        │
+└────────────────────────┬────────────────────────────────┘
+                         │ MCP Protocol
+                         ▼
+┌─────────────────────────────────────────────────────────┐
+│              MCPTypedPromptServer (3020)                │
+│  7 tools │ 3 resources │ 3 prompts                      │
+├─────────────────────────────────────────────────────────┤
+│              TypedPromptBackendClient                   │
+│                   (HTTP Client)                         │
+└────────────────────────┬────────────────────────────────┘
+                         │ HTTP/REST
+                         ▼
+┌─────────────────────────────────────────────────────────┐
+│         TypedPromptsEditor Backend (3019)               │
+│  Express + SQLite + Monaco + Multi-AI                   │
+└─────────────────────────────────────────────────────────┘
+```
+
+### Puertos
+
+| Servicio | Puerto | Descripción |
+|----------|--------|-------------|
+| REST Backend | 3019 | API REST + UI Editor |
+| MCP Server | 3020 | Integración VS Code |
+
+### Iniciar servicios
+
+```bash
+# Opción 1: Backend + UI
+cd TypedPromptsEditor && npm run dev
+
+# Opción 2: MCP Server (requiere backend activo)
+cd MCPGallery/mcp-mesh-sdk && npm run start:typed-prompt
+
+# Opción 3: Usando tasks.json
+# Terminal → Run Task → "TPE: Start [MCP Server]"
 ```
 
 ## Submódulo
 
-El plugin usa el submódulo `alephscript-typed-prompting` que proporciona:
+El plugin usa el submódulo `TypedPromptsEditor/` que proporciona:
 
-- **Servidor web** en puerto 5000 (desarrollo)
-- **API REST** documentada con Swagger
+- **Servidor REST** en puerto 3019
+- **API REST** documentada con OpenAPI
 - **Editor visual** con Monaco Editor
 - **Soporte multi-IA**: OpenAI, DeepSeek, Ollama, Anthropic
-
-### Iniciar servidor
-
-```bash
-cd alephscript-typed-prompting
-npm install
-npm run dev
-# Abrir http://localhost:5000
-```
 
 ## Integración con otros plugins
 
@@ -148,6 +199,9 @@ npm run dev
 
 ## Referencias
 
-- Submódulo: `alephscript-typed-prompting/`
+- Submódulo: `TypedPromptsEditor/`
 - Datos: `ARCHIVO/PLUGINS/TYPED_PROMPTING/`
 - Backlog: `ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/`
+- Specs: `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor/`
+- Tipos: `MCPGallery/mcp-core-sdk/src/types/typed-prompts/`
+- MCP Server: `MCPGallery/mcp-mesh-sdk/src/MCPTypedPromptServer.ts`

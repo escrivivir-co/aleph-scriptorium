@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/obra-pack.schema.json",
+  "id": "ObraItacaDigital",
+  "version": "1.0.0",
+  "obraId": "itaca_digital",
+  "title": "Ítaca Digital: El Retorno del Desarrollador",
+  "description": "Onboarding transmedia para nuevos colaboradores del Scriptorium. El héroe aprende a navegar el sistema de agentes siguiendo el monomito de 12 estadios.",
+  "mcpServer": "prolog-mcp-server",
+  "mcpPort": 3006,
+  "personajes": [
+    {
+      "name": "lucas",
+      "brainFile": "brains/lucas.brain.pl",
+      "agentRef": "@indice",
+      "rol": "Guardián de los Índices",
+      "estadioInicial": 1
+    },
+    {
+      "name": "ox",
+      "brainFile": "brains/ox.brain.pl",
+      "agentRef": "@ox",
+      "rol": "Oráculo del Scriptorium",
+      "estadioInicial": 3
+    },
+    {
+      "name": "yellowflag",
+      "brainFile": "brains/yellowflag.brain.pl",
+      "agentRef": "@yellowflag",
+      "rol": "Guardián de Límites",
+      "estadioInicial": 6
+    },
+    {
+      "name": "aleph",
+      "brainFile": "brains/aleph.brain.pl",
+      "agentRef": "@aleph",
+      "rol": "Productor Principal",
+      "estadioInicial": 9
+    }
+  ],
+  "sharedRules": "brains/scriptorium_base.pl",
+  "contextTriggers": {
+    "hero_enters_vestibulo": "inicio",
+    "hero_asks_navigation": "buscar_ubicacion",
+    "hero_validates_content": "validar_coherencia",
+    "hero_creates_draft": "crear_contenido",
+    "hero_requests_audit": "auditar"
+  },
+  "dependencies": [],
+  "hooks": {
+    "onObraStart": "initialize_obra(itaca_digital)",
+    "onEstadioChange": "on_estadio_cambio(EstadioId)",
+    "onTurno": "on_turno(TurnoId)",
+    "onObraEnd": "finalize_obra(itaca_digital)"
+  }
+}

@@ -36,6 +36,10 @@ handoffs:
     agent: BOE
     prompt: Lista las obras activas en el Teatro ARG donde se puede desplegar el agente.
     send: false
+  - label: Exportar cerebro Prolog
+    agent: AgentCreator
+    prompt: "Genera archivo .brain.pl con reglas de comportamiento Prolog para un personaje. Usa template brain.pl.template."
+    send: false
 ---
 
 # Agente: Agent Creator

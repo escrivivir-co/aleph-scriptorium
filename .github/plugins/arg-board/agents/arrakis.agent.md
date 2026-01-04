@@ -21,6 +21,15 @@ handoffs:
     agent: AutomataHeroe
     prompt: "Activa agente héroe para avanzar en su monomito"
     send: false
+  # Integración Prolog (TEATRO-PROLOG-1.0.0)
+  - label: Turno-razonar (Prolog)
+    agent: Arrakis
+    prompt: "Ejecuta turno de razonamiento para un actor usando su cerebro Prolog. Invoca MCPPrologServer con teatro_agent_session para obtener la siguiente acción."
+    send: false
+  - label: Consultar estado KB actor
+    agent: Arrakis
+    prompt: "Consulta el estado actual del knowledge base de un actor. Usa prolog_query para inspeccionar hechos y reglas cargados."
+    send: false
 ---
 
 # Agente: Arrakis (Director de Teatro)

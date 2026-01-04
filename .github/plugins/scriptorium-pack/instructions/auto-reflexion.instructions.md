@@ -87,6 +87,31 @@ read_file(solo_los_necesarios)
 
 **Corrección**: Al inicio de sesión larga, capturar snapshot del contexto. Consultar snapshots existentes antes de re-investigar.
 
+### 🔴 AP-05: Reportar Gaps sin Verificar Activación
+
+> **Origen**: Fe de erratas T010 (2026-01-04)
+
+**Síntoma**: Declarar herramientas MCP como "no disponibles" o "gap" sin verificar si requieren activación.
+
+**Ejemplo malo**:
+```
+"stop_mcp_server ❌ No expuesto → ⚠️ Gap"
+```
+
+**Realidad**: La herramienta EXISTE pero requiere:
+```
+activate_mcp_server_management_tools()
+→ Desbloquea: launch/stop/restart_mcp_server
+```
+
+**Corrección**: Antes de reportar un gap de herramientas MCP, buscar si existe un `activate_*` que la incluya. Familias conocidas:
+
+| Familia | Comando | Tools |
+|---------|---------|-------|
+| Server Management | `activate_mcp_server_management_tools` | launch/stop/restart servers |
+| Browser Interaction | `activate_browser_interaction_tools` | Playwright clicks, navigate |
+| Prolog Sessions | `activate_prolog_session_management_tools` | create/query sessions |
+
 ---
 
 ## 4. Arquetipos de Buena Práctica
@@ -145,6 +170,38 @@ Si `healthScore < 60`:
 1. Pausar trabajo nuevo
 2. Revisar antipatrones activos
 3. Capturar snapshot antes de continuar
+
+### ✅ BP-06: Cacheo Bajo Demanda (CRÍTICO)
+
+> **Origen**: Sesión AUTO-REFLEXION-FC1 (2026-01-04)
+
+**Problema**: Los snapshots solo capturan requests que están en el caché de contenido. Los request IDs antiguos existen en el log pero su **contenido ya no es accesible** via `ccreq:` URI.
+
+**Solución**: Cachear bajo demanda ANTES de tomar el snapshot:
+
+```
+# Paso 1: Cachear la conversación actual
+mcp_copilot-logs-_get_latest_request()
+
+# Paso 2: Ahora sí, capturar snapshot (incluirá lo cacheado)
+mcp_copilot-logs-_capture_snapshot({name: "descripcion"})
+```
+
+**Por qué funciona**:
+- `get_latest_request()` resuelve el `ccreq:` URI del request actual y lo cachea
+- `capture_snapshot()` persiste todo lo que esté en caché
+- El caché tiene límite de 50 entries (configurable con `configure_cache`)
+
+**Flujo completo para auto-reflexión**:
+
+```
+1. get_usage_metrics()      → Diagnóstico de salud
+2. get_latest_request()     → Cachea conversación actual
+3. capture_snapshot()       → Persiste todo lo cacheado
+4. generate_abstract()      → Resumen semántico (opcional)
+```
+
+**Limitación conocida**: Los requests antiguos (>30 min) ya no son accesibles aunque sus IDs existan. La memoria del `ccreq:` provider es volátil.
 
 ---
 
@@ -224,9 +281,11 @@ Sesión de trabajo
 |------|-----------|-------------|
 | `mcp_copilot-logs-_get_usage_metrics` | Métricas de salud | Check periódico |
 | `mcp_copilot-logs-_analyze_session` | Diagnóstico de issues | Si healthScore < 60 |
-| `mcp_copilot-logs-_capture_snapshot` | Preservar contexto | Cada 30-60 min |
+| `mcp_copilot-logs-_get_latest_request` | **Cachear conversación actual** | **ANTES de snapshot** (BP-06) |
+| `mcp_copilot-logs-_capture_snapshot` | Preservar contexto cacheado | Cada 30-60 min |
 | `mcp_copilot-logs-_list_snapshots` | Ver historial | Antes de re-investigar |
 | `mcp_copilot-logs-_generate_abstract` | Resumen semántico | Al cerrar épica |
+| `mcp_copilot-logs-_configure_cache` | Ajustar tamaño caché (default: 50) | Si necesitas más historial |
 
 ---
 
@@ -281,5 +340,5 @@ Este documento es **vivo**. Nuevos arquetipos se añaden cuando:
 3. @ox extrae el arquetipo generalizable
 4. Se añade aquí con formato AP-XX o BP-XX
 
-**Fecha última actualización**: 2026-01-01  
-**Sesión origen**: FEATURE-SNAPSHOTS-1.0.0
+**Fecha última actualización**: 2026-01-04  
+**Sesión origen**: FEATURE-SNAPSHOTS-1.0.0, AUTO-REFLEXION-FC1

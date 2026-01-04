@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aleph-scriptorium.github.io/schemas/lucas-query-request.schema.json",
+  "title": "Lucas Query Request",
+  "description": "Schema para validar requests de queries Prolog al agente Lucas",
+  "type": "object",
+  "required": ["intent", "query"],
+  "properties": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "validar_coherencia",
+        "consultar_ubicacion",
+        "obtener_consejo",
+        "auditar_indices",
+        "verificar_tarea"
+      ],
+      "description": "Tipo de consulta que el usuario quiere hacer"
+    },
+    "query": {
+      "type": "string",
+      "description": "Query Prolog a ejecutar (e.g., 'documentacion_coherente(X).')"
+    },
+    "sessionId": {
+      "type": "string",
+      "default": "lucas-session",
+      "description": "ID de sesión Prolog (opcional, usa default)"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "obra": {
+          "type": "string",
+          "description": "ID de la obra Teatro si aplica"
+        },
+        "estadio": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12,
+          "description": "Estadio del viajero en el monomito"
+        },
+        "archivo_editado": {
+          "type": "string",
+          "description": "Ruta del archivo que se está editando"
+        }
+      }
+    }
+  }
+}
