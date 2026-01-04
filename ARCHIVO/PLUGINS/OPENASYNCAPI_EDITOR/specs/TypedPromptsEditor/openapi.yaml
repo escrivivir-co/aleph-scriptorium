@@ -256,12 +256,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ValidationReport'
 
-  /generate:
+  /convert:
     post:
       tags:
         - Generation
-      summary: Generate JSON Schema from TypeScript
-      operationId: generateFromTypeScript
+      summary: Convert TypeScript interface to JSON Schema
+      operationId: convertInterface
       requestBody:
         required: true
         content:
