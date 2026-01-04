@@ -40,7 +40,8 @@
 | ✅ | TEATRO-PROLOG-1.0.0 | Integración Teatro + Prolog (13 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/05_backlog-teatro-prolog-integration.md) |
 | ✅ | COWORK-1.0.0 | Tablero para Cotrabajo Multi-Agente (21 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/01_backlog-borrador.md) |
 | ✅ | DRAMATURGIA-MAQUINA-1.0.0 | Scriptorium como Máquina (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
-| �📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| 📋 | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
+| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
 

@@ -177,6 +177,36 @@
       },
       "detail": "Novelist MCP Server (3066)"
     },
+    {
+      "label": "TPE: Start [Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/TypedPromptsEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typed-prompts",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*starting.*$",
+          "endsPattern": "^.*serving on port 3019.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "demo-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "TypedPromptsEditor Dev Server (3019)"
+    },
 
     // ─────────────────────────────────────────────────────────────────────────
     // DEMO: Demo Servers (DEMO-1.0.0)
@@ -381,7 +411,71 @@
       "presentation": {
         "reveal": "never"
       },
-      "detail": "Abre el frontend en el navegador"
+      "detail": "Abre PrologEditor Frontend en el navegador (5001)"
+    },
+
+    {
+      "label": "TPE: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3019"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3019"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre TypedPromptsEditor en el navegador (3019)"
+    },
+
+    {
+      "label": "JKL: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:4000"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:4000"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Jekyll Docs Site en el navegador (4000)"
+    },
+
+    {
+      "label": "ZEUS: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3012"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3012"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Zeus UI en el navegador (3012)"
+    },
+
+    {
+      "label": "NOV: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:8080"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:8080"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Novelist UI en el navegador (8080)"
     },
 
     {

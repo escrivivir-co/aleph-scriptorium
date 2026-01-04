@@ -531,7 +531,7 @@ bundle exec jekyll serve --livereload
 |-----------|--------|----------|
 | alephscript-n8n-like-editor | 4200 | Angular dev |
 | alephscript-n8n-like-editor | 4000 | SSR |
-| alephscript-typed-prompting | 5000 | Vite editor |
+| alephscript-typed-prompting | 3019 | Vite editor |
 | mcp-novelist | 3066 | MCP server |
 | node-red-alephscript-sdk | 1880 | Node-RED |
 | alephscript-network-sdk | — | Docker compose |
