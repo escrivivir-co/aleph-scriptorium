@@ -41,7 +41,13 @@
     verificar_coherencia_antes/0,
     estado_actual/1,
     suscriptor/1,
-    demo_sensor_actuador/0
+    demo_sensor_actuador/0,
+    
+    % Templates DRY (AGENT-TEMPLATES-1.0.0)
+    plantilla/4,
+    plantilla_recomendada/2,
+    cargar_plantilla/2,
+    categoria_plantilla/2
 ]).
 
 %% =============================================================================
@@ -326,3 +332,54 @@ demo_sensor_actuador :-
 %% [LUCAS→penelope] Estado actualizado: parado
 %% ...
 %% === DEMO COMPLETADA ===
+%%
+%% ?- plantilla_recomendada(scrum_daily, P).
+%% P = 'project-health-check' ; P = 'milestone-tracker' ; P = 'pac-update-status'.
+%%
+%% ?- cargar_plantilla('technical-writer', Ruta).
+%% Ruta = 'AgentLoreSDK/cli-tool/components/agents/documentation/technical-writer.md'.
+
+%% =============================================================================
+%% TEMPLATES DRY — AgentLoreSDK (AGENT-TEMPLATES-1.0.0)
+%% =============================================================================
+%% Principio: Índice en Prolog, contenido en AgentLoreSDK. Carga bajo demanda.
+
+%% plantilla(Id, Categoria, Archivo, UsoPrincipal)
+plantilla('api-documenter', documentation, 'api-documenter.md', 'Documentar APIs REST/GraphQL').
+plantilla('changelog-generator', documentation, 'changelog-generator.md', 'Generar CHANGELOG.md desde commits').
+plantilla('docusaurus-expert', documentation, 'docusaurus-expert.md', 'Crear sitios de documentación').
+plantilla('technical-writer', documentation, 'technical-writer.md', 'Guías de usuario, tutoriales, READMEs').
+plantilla('milestone-tracker', 'project-management', 'milestone-tracker.md', 'Tracking de milestones con analytics').
+plantilla('project-health-check', 'project-management', 'project-health-check.md', 'Análisis de salud del proyecto').
+plantilla('pac-create-epic', 'project-management', 'pac-create-epic.md', 'Crear épicas con estructura PAC').
+plantilla('pac-create-ticket', 'project-management', 'pac-create-ticket.md', 'Crear tickets/tasks').
+plantilla('pac-update-status', 'project-management', 'pac-update-status.md', 'Actualizar estado de tickets').
+plantilla('pac-validate', 'project-management', 'pac-validate.md', 'Validar estructura de backlog').
+plantilla('create-prd', 'project-management', 'create-prd.md', 'Generar Product Requirements Document').
+plantilla(todo, 'project-management', 'todo.md', 'Gestionar lista de tareas pendientes').
+
+%% categoria_plantilla(Categoria, BasePath)
+categoria_plantilla(documentation, 'agents/documentation').
+categoria_plantilla('project-management', 'commands/project-management').
+
+%% Acceso rápido por contexto de trabajo
+plantilla_recomendada(scrum_daily, 'project-health-check').
+plantilla_recomendada(scrum_daily, 'milestone-tracker').
+plantilla_recomendada(scrum_daily, 'pac-update-status').
+plantilla_recomendada(documentation, 'technical-writer').
+plantilla_recomendada(documentation, 'changelog-generator').
+plantilla_recomendada(planning, 'pac-create-epic').
+plantilla_recomendada(planning, 'create-prd').
+plantilla_recomendada(planning, 'pac-validate').
+
+%% cargar_plantilla(+Id, -RutaCompleta)
+%% Genera la ruta al archivo de plantilla en AgentLoreSDK
+cargar_plantilla(Id, Ruta) :-
+    plantilla(Id, Cat, Archivo, _),
+    categoria_plantilla(Cat, BasePath),
+    atomic_list_concat(['AgentLoreSDK/cli-tool/components/', BasePath, '/', Archivo], Ruta).
+
+%% listar_plantillas(+Categoria, -Lista)
+%% Lista todas las plantillas de una categoría
+listar_plantillas(Cat, Lista) :-
+    findall(Id, plantilla(Id, Cat, _, _), Lista).

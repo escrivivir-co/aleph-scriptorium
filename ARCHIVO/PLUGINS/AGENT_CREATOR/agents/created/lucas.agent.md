@@ -1,7 +1,7 @@
 ---
 name: Lucas
-description: "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY. Razonamiento lógico con Prolog."
-argument-hint: "Consulta sobre dónde documentar, valida ediciones de índice, prepara commits conformes, ejecuta queries Prolog de coherencia."
+description: "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY. Razonamiento lógico con Prolog. Carga plantillas AgentLoreSDK bajo demanda."
+argument-hint: "Consulta sobre dónde documentar, valida ediciones de índice, prepara commits conformes, ejecuta queries Prolog de coherencia, carga plantillas de documentación/scrum."
 tools: ['vscode', 'read', 'edit', 'search', 'agent', 'mcp_prolog-mcp-server/*']
 handoffs:
   - label: Validar edición de índice
@@ -39,6 +39,22 @@ handoffs:
   - label: "[Prolog] Ubicación canónica"
     agent: Lucas
     prompt: "Ejecuta prolog_query con 'ubicacion_canonica(Tipo, Donde)' para saber dónde buscar según el tipo de pregunta."
+    send: false
+  - label: "[Templates] Listar por categoría"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'listar_plantillas(Categoria, Lista)' para ver plantillas disponibles (documentation, project-management)."
+    send: false
+  - label: "[Templates] Recomendar para scrum_daily"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'plantilla_recomendada(scrum_daily, P)' para obtener plantillas de daily standup."
+    send: false
+  - label: "[Templates] Recomendar para planning"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'plantilla_recomendada(planning, P)' para obtener plantillas de planificación."
+    send: false
+  - label: "[Templates] Cargar plantilla"
+    agent: Lucas
+    prompt: "Ejecuta prolog_query con 'cargar_plantilla(Id, Ruta)' y luego read_file(Ruta) para obtener el contenido de la plantilla."
     send: false
   - label: Delegar a Aleph
     agent: Aleph
@@ -213,10 +229,12 @@ Lucas está desplegado como personaje en:
 ## MCP Packs Asignados
 
 > **Feature**: SCRIPT-2.3.0 — Prolog MCP Server Integration
+> **Feature**: AGENT-TEMPLATES-1.0.0 — AgentLoreSDK Templates
 
 | Pack | Versión | Descripción |
 |------|---------|-------------|
 | `AgentPrologBrain` | 1.0.0 | Razonamiento lógico con Prolog |
+| `AgentLoreSDK` | 1.0.0 | Plantillas bajo demanda (12 templates) |
 
 ### Cerebro Prolog
 
@@ -229,6 +247,32 @@ Lucas está desplegado como personaje en:
 | `consejo(Situacion, Mensaje)` | Guía para viajeros |
 | `reporte_salud(R)` | Estado del sistema |
 | `tarea_pendiente(Epic, T, Estado)` | Tareas del sprint |
+| `plantilla_recomendada(Contexto, P)` | Plantillas por contexto (scrum_daily, planning, documentation) |
+| `cargar_plantilla(Id, Ruta)` | Ruta completa a plantilla AgentLoreSDK |
+| `listar_plantillas(Cat, Lista)` | Todas las plantillas de una categoría |
+
+### Índice de Plantillas (DRY)
+
+**Ubicación**: `ARCHIVO/DISCO/TALLER/ELENCO/lucas/templates-index.json`
+
+| Categoría | Plantillas | Uso principal |
+|-----------|------------|---------------|
+| documentation | 4 | Guías, changelogs, APIs |
+| project-management | 8 | Scrum, épicas, health checks |
+
+**Acceso rápido**:
+- `scrum_daily`: project-health-check, milestone-tracker, pac-update-status
+- `documentation`: technical-writer, changelog-generator
+- `planning`: pac-create-epic, create-prd, pac-validate
+
+### TypedPrompt Schemas
+
+| Schema | Uso |
+|--------|-----|
+| `lucas-query-request.schema.json` | Requests de queries Prolog |
+| `lucas-query-response.schema.json` | Responses de queries Prolog |
+| `lucas-template-request.schema.json` | **Requests de plantillas** |
+| `lucas-template-response.schema.json` | **Responses con plantilla cargada** |
 
 ### Flujo de Uso MCP
 

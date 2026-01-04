@@ -88,6 +88,37 @@ Donde = '.github/instructions'.
 5. Detectar violaciones DRY
 6. **[Prolog]** Razonar con lógica declarativa sobre documentación
 7. **[Prolog]** Ofrecer consejos contextuales a viajeros
+8. **[Templates]** Cargar plantillas de AgentLoreSDK bajo demanda
+
+---
+
+## Índice de Plantillas (DRY)
+
+> **Principio**: Índice ligero → carga bajo demanda desde `AgentLoreSDK/cli-tool/components/`
+
+| Categoría | Plantillas | Uso principal |
+|-----------|------------|---------------|
+| documentation | 4 | Guías, changelogs, APIs |
+| project-management | 8 | Scrum, épicas, health checks |
+
+**Acceso rápido**:
+- `scrum_daily`: project-health-check, milestone-tracker, pac-update-status
+- `documentation`: technical-writer, changelog-generator
+- `planning`: pac-create-epic, create-prd, pac-validate
+
+→ Ver [`templates-index.json`](templates-index.json) para índice completo
+
+### Query Prolog para Plantillas
+
+```prolog
+?- plantilla_recomendada(scrum_daily, P).
+P = 'project-health-check' ;
+P = 'milestone-tracker' ;
+P = 'pac-update-status'.
+
+?- cargar_plantilla('technical-writer', Ruta).
+Ruta = 'AgentLoreSDK/cli-tool/components/agents/documentation/technical-writer.md'.
+```
 
 ---
 
@@ -102,3 +133,4 @@ Ver: `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/lucas.agent.md`
 | Pack | Versión | Uso |
 |------|---------|-----|
 | AgentPrologBrain | 1.0.0 | Razonamiento y validación DRY |
+| AgentLoreSDK | 1.0.0 | Plantillas bajo demanda (12 templates) |
