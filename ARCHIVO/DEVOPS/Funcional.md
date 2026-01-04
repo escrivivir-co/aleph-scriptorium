@@ -46,6 +46,7 @@
 | Roadmap | `/roadmap/` | Estado del proyecto + fotos |
 | Fundación | `/fundacion/` | El texto de 2026 |
 | Blueprint Logic Flow | `/blueprint-logic-flow/` | Agentic Typed Logic Flow (IOT-SBR + SCRIPT-2.2.0) |
+| Blueprint TypedPrompting | `/blueprint-typed-prompting/` | TypedPrompting MCP (7 tools, schemas) |
 
 > **Fuente**: `docs/` (Jekyll + GitHub Pages)
 

@@ -14,7 +14,8 @@ permalink: /
     <a href="{{ site.baseurl }}/blueprint/" class="blueprint-link">📐 Blueprint UX</a> · 
     <a href="{{ site.baseurl }}/blueprint-mmco/" class="blueprint-link">🧬 MMCO</a> ·
     <a href="{{ site.baseurl }}/blueprint-copilot/" class="blueprint-link">🧠 Copilot</a> ·
-    <a href="{{ site.baseurl }}/blueprint-logic-flow/" class="blueprint-link">🔗 Logic Flow</a>
+    <a href="{{ site.baseurl }}/blueprint-logic-flow/" class="blueprint-link">🔗 Logic Flow</a> ·
+    <a href="{{ site.baseurl }}/blueprint-typed-prompting/" class="blueprint-link">🧩 TypedPrompt</a>
   </div>
 </div>
 

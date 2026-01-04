@@ -8,12 +8,12 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 19 | @lucas | ⏳ WAITING | — |
+| 20 | @aleph | ⏳ WAITING | — |
 
 **Misión del turno**: 
-1. Pruebas visuales Jekyll :4000
-2. Verificar nuevo blueprint-typed-prompting.md
-3. Verificar grids MCP actualizados en release-party, mmco, po
+1. Validación PO de Fase 2
+2. Cierre de sesión
+3. Commit final y push
 
 ---
 
@@ -21,6 +21,7 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 19 | @lucas | 2026-01-05 20:45 | 2026-01-05 21:00 | Testing visual: 4/4 blueprints OK (Playwright MCP + Jekyll task) | [T019](02_ACTAS/acta-T019-lucas-visual-testing.md) |
 | 18 | @aleph | 2026-01-05 20:20 | 2026-01-05 20:40 | DS-S10 completado: NUEVO blueprint-typed-prompting.md (~650 líneas), patrón ESPIRAL+CUBO | [T018](02_ACTAS/T018_aleph_ejecucion-ds-s10-nuevo-blueprint.md) |
 | 17 | @periodico | 2026-01-05 20:10 | 2026-01-05 20:20 | DS-S07/S08/S09 completados: +TypedPrompt/Prolog en 3 blueprints, métricas actualizadas | [T017](02_ACTAS/T017_periodico_ejecucion-ds-s07-s08-s09.md) |
 | 16 | @indice | 2026-01-05 20:05 | 2026-01-05 20:10 | Verificación OK: §3.6 y §3.7 ya existen en Funcional.md | [T016](02_ACTAS/T016_indice_verificacion-funcional.md) |
@@ -47,7 +48,6 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| 19 | @lucas | Normal | Pruebas visuales Jekyll :4000 |
 | 20 | @aleph | Normal | Validación PO + cierre sesión |
 
 ---

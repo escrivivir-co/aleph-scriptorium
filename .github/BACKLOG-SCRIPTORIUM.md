@@ -41,7 +41,7 @@
 | ✅ | COWORK-1.0.0 | Tablero para Cotrabajo Multi-Agente (21 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/01_backlog-borrador.md) |
 | ✅ | DRAMATURGIA-MAQUINA-1.0.0 | Scriptorium como Máquina (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
-| � | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
+| ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 | �📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
