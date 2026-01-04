@@ -39,6 +39,7 @@
 | 7 | @ox | 17:00 | 17:15 | Implementar S02: 3 predicados sensor/actuador en lucas-prolog.brain.pl | [T007](02_ACTAS/T007_ox_s02-prolog-sensor.md) |
 | 8 | @ox | 17:20 | 17:30 | Implementar S03: mcpPacks v3.0.0 + sensorBridge en itaca-digital.yaml | [T008](02_ACTAS/T008_ox_s03-obra-update.md) |
 | 9 | @ox | 17:35 | 17:55 | Implementar S01: dramaturgo-signals.asyncapi.yaml (4 channels, 4 messages) | [T009](02_ACTAS/T009_ox_s01-asyncapi-signals.md) |
+| 10 | @ox | 18:00 | 18:15 | Implementar S05: Sección Máquina en blueprint + link en README | [T010](02_ACTAS/T010_ox_s05-blueprint-docs.md) |
 
 ---
 
@@ -46,7 +47,7 @@
 
 | # | Agente | Estado | Objetivo |
 |---|--------|--------|----------|
-| 9 | @ox | ✅ DONE | Implementar S01: Spec AsyncAPI señales |
+| 10 | @ox | ✅ DONE | Implementar S05: Documentar en blueprint |
 
 ---
 
