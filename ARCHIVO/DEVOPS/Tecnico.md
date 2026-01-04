@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-01-03  
-> **Estado**: 🌿 Actualizado (TEATRO-PROLOG-1.0.0)
+> **Última actualización**: 2026-01-04  
+> **Estado**: 🌿 Actualizado (COWORK-1.0.0 indexado)
 
 ---
 
@@ -152,6 +152,8 @@ SESIONES_COTRABAJO/
 |---------|----------|
 | `cotrabajo.instructions.md` | Protocolo completo |
 | `iniciar-cotrabajo.prompt.md` | Crear nueva sesión |
+
+**Índice de sesiones**: [SESIONES_COTRABAJO/INDEX.md](../DISCO/SESIONES_COTRABAJO/INDEX.md)
 
 → Ver [cotrabajo.instructions.md](.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md)
 

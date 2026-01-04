@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2026-01-03  
-> **Estado**: 🌿 Actualizado (TEATRO-PROLOG-1.0.0)
+> **Última actualización**: 2026-01-04  
+> **Estado**: 🌿 Actualizado (COWORK-1.0.0 indexado)
 
 ---
 
@@ -189,7 +189,9 @@
 
 **Ubicación**: `ARCHIVO/DISCO/SESIONES_COTRABAJO/{fecha}_{tema}/`
 
-→ Ver Manual de Cotrabajo: cotrabajo.md para guía completa.
+**Sesiones activas**: Ver [SESIONES_COTRABAJO/INDEX.md](../DISCO/SESIONES_COTRABAJO/INDEX.md)
+
+→ Protocolo completo: [cotrabajo.instructions.md](../.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md)
 
 ### 3.6. Publicación (@plugin_ox_ghpages)
 
@@ -346,15 +348,16 @@ Usuario → @plugin_ox_teatro [generar]
 
 ### 6.2. DISCO (Memoria de Trabajo)
 
-| Carpeta | Uso |
-|---------|-----|
-| `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) |
-| `BACKLOG_ARCHIVADOS/` | Sprints cerrados |
-| `COPILOT_SNAPSHOTS/` | **NUEVO** Snapshots de conversaciones Copilot |
-| `Diciembre_25_*/` | Sesiones editoriales diciembre |
-| `Foro_*/` | Material scrapeado |
-| `TALLER/` | Proyectos de usuario (obras) |
-| `WIRING/` | Flujos Node-RED |
+| Carpeta | Uso | Índice |
+|---------|-----|--------|
+| `BACKLOG_BORRADORES/` | Épicas activas (contenido detallado) | [INDEX.md](../DISCO/BACKLOG_BORRADORES/INDEX.md) |
+| `BACKLOG_ARCHIVADOS/` | Sprints cerrados | — |
+| `COPILOT_SNAPSHOTS/` | Snapshots de conversaciones Copilot | — |
+| `SESIONES_COTRABAJO/` | Sesiones colaborativas multi-agente | [INDEX.md](../DISCO/SESIONES_COTRABAJO/INDEX.md) |
+| `Diciembre_25_*/` | Sesiones editoriales diciembre | — |
+| `Foro_*/` | Material scrapeado | — |
+| `TALLER/` | Proyectos de usuario (obras) | — |
+| `WIRING/` | Flujos Node-RED | — |
 
 > **DRY**: El backlog oficial (`.github/BACKLOG-SCRIPTORIUM.md`) es un índice de ~50 líneas que referencia estas carpetas.
 
