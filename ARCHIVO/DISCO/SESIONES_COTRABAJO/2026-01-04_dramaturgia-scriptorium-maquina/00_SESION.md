@@ -8,8 +8,8 @@
 | **Fecha cierre** | 2026-01-04 |
 | **Estado** | ✅ CERRADA |
 | **Épica relacionada** | DRAMATURGIA-MAQUINA-1.0.0 |
-| **Turnos totales** | 6 |
-| **Resultado** | Backlog 13 pts (5 stories, 13 tasks) |
+| **Turnos totales** | 12 |
+| **Resultado** | ✅ Épica 100% completada (13/13 pts, 5 commits) |
 | **Carpeta** | `ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/` |
 
 ---

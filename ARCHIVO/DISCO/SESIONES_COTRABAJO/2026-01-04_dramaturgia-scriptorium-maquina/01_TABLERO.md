@@ -41,6 +41,7 @@
 | 9 | @ox | 17:35 | 17:55 | Implementar S01: dramaturgo-signals.asyncapi.yaml (4 channels, 4 messages) | [T009](02_ACTAS/T009_ox_s01-asyncapi-signals.md) |
 | 10 | @ox | 18:00 | 18:15 | Implementar S05: Sección Máquina en blueprint + link en README | [T010](02_ACTAS/T010_ox_s05-blueprint-docs.md) |
 | 11 | @ox | 18:20 | 18:40 | Implementar S04: Wireframe 3-columnas + 9 widgets en docs/teatro/ | [T011](02_ACTAS/T011_ox_s04-wireframe.md) |
+| 12 | @scrum | 18:45 | 18:50 | Cierre formal: métricas finales, backlog actualizado | [T012](02_ACTAS/T012_scrum_cierre-sesion.md) |
 
 ---
 
@@ -48,7 +49,7 @@
 
 | # | Agente | Estado | Objetivo |
 |---|--------|--------|----------|
-| 11 | @ox | ✅ DONE | Implementar S04: Wireframe Vista Dramaturgo |
+| 12 | @scrum | ✅ DONE | Cierre formal de sesión |
 
 ---
 
