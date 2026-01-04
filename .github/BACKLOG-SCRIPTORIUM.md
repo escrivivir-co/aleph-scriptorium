@@ -42,7 +42,8 @@
 | ✅ | DRAMATURGIA-MAQUINA-1.0.0 | Scriptorium como Máquina (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
 | ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
-| �📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| ✅ | AGENT-TEMPLATES-1.0.0 | AgentLoreSDK Templates en Agent Creator (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
 
@@ -114,6 +115,7 @@
 | ✅ | 2026-01-04_dramaturgia-scriptorium-maquina | DRAMATURGIA-MAQUINA-1.0.0 | Backlog 13 pts (5 stories, 13 tasks), 6 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 | ✅ | 2026-01-04_typed-mcp-test-session | TYPED-MCP-1.0.0 | Tests 83% (5/6 auto), 8 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session/) |
 | 🟢 | 2026-01-05_blueprints-typed-prompt | BLUEPRINTS-TYPED-1.0.0 | En progreso | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
+| ✅ | 2026-01-04_agent-creator-claude-templates | AGENT-TEMPLATES-1.0.0 | Completada (5 turnos, 4 agentes) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
 
 ---
 
@@ -124,8 +126,8 @@
 | Épicas cerradas (total) | 29+ |
 | Effort completado | ~215 pts |
 | Plugins instalados | 22 |
-| Submódulos integrados | 16 |
-| Sesiones cotrabajo | 6 |
+| Submódulos integrados | 17 |
+| Sesiones cotrabajo | 7 |
 
 ---
 

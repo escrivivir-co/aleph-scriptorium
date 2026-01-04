@@ -66,3 +66,6 @@
 	path = StateMachine
 	url = https://github.com/escrivivir-co/state-machine-mcp-driver
 	branch = integration/beta/scriptorium
+[submodule "AgentLoreSDK"]
+	path = AgentLoreSDK
+	url = https://github.com/escrivivir-co/mcp-agent-lore-sdk.git
