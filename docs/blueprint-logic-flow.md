@@ -555,6 +555,15 @@ prolog_query({sessionId: "teatro-01", query: "agente(X, meta, Y)."})
   
   <h3>Estructura del Pack</h3>
   
+  <div class="validation-server">
+    <div class="server-card active">
+      <div class="server-name">MCPTypedPromptServer</div>
+      <div class="server-port">:3020</div>
+      <div class="server-desc">Validación NL↔JSON pre-pack</div>
+      <div class="server-tools">7 tools · 3 prompts</div>
+    </div>
+  </div>
+  
   <div class="code-snippet">
     <div class="snippet-header">AgentPrologBrain.pack.json</div>
     <pre><code>{
@@ -681,6 +690,15 @@ prolog_query({sessionId: "teatro-01", query: "agente(X, meta, Y)."})
   
   <h3>Configuración de Obra</h3>
   
+  <div class="inference-server">
+    <div class="server-card active">
+      <div class="server-name">MCPPrologServer</div>
+      <div class="server-port">:3006</div>
+      <div class="server-desc">Motor de inferencia lógica</div>
+      <div class="server-tools">12 tools · 6 resources · 8 prompts</div>
+    </div>
+  </div>
+  
   <div class="code-snippet">
     <div class="snippet-header">obra.yaml (con mcpPacks)</div>
     <pre><code>titulo: "Duna: Consejo de Agua"
@@ -786,6 +804,24 @@ escenas:
         <span class="msg-arrow">←────────────</span>
         <span class="msg-label">Respuesta ARG</span>
       </div>
+    </div>
+  </div>
+  
+  <div class="specs-reference">
+    <h3>📋 Especificaciones API</h3>
+    <div class="specs-grid">
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor" target="_blank" class="spec-link">
+        <span class="spec-icon">📐</span>
+        <span class="spec-name">TypedPromptsEditor OpenAPI</span>
+      </a>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor" target="_blank" class="spec-link">
+        <span class="spec-icon">🧠</span>
+        <span class="spec-name">PrologEditor OpenAPI</span>
+      </a>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/dramaturgo-signals.asyncapi.yaml" target="_blank" class="spec-link">
+        <span class="spec-icon">🎭</span>
+        <span class="spec-name">Dramaturgo AsyncAPI</span>
+      </a>
     </div>
   </div>
 </div>
