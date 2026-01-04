@@ -8,12 +8,11 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 16 | @indice | ⏳ WAITING | — |
+| 17 | @periodico | ⏳ WAITING | — |
 
 **Misión del turno**: 
-1. Verificar §3.7 PrologEditor en Funcional.md
-2. Si no existe, añadirlo (similar a §3.6)
-3. Validar coherencia DRY
+1. Ejecutar DS-S07: añadir TypedPrompt :3020 y Prolog :3006 al grid MCP en blueprint-release-party.md
+2. Líneas objetivo: ~316 (Ox slide), ~385 (SM slide), ~88 (stack)
 
 ---
 
@@ -21,6 +20,7 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 16 | @indice | 2026-01-05 20:05 | 2026-01-05 20:10 | Verificación OK: §3.6 y §3.7 ya existen en Funcional.md | [T016](02_ACTAS/T016_indice_verificacion-funcional.md) |
 | 15 | @scrum | 2026-01-05 20:00 | 2026-01-05 20:05 | Backlog F2 formalizado: 4 stories (9 pts), orden T016-T021 | [T015](02_ACTAS/T015_scrum_backlog-fase2-formalizado.md) |
 | 14 | @ox | 2026-01-05 19:45 | 2026-01-05 20:00 | Backlog F2: 4 stories (9 pts), patrón ESPIRAL+CUBO para nuevo blueprint | [T014](02_ACTAS/T014_ox_analisis-backlog-fase2.md) |
 | 13 | @aleph | 2026-01-05 19:30 | 2026-01-05 19:45 | 🔄 EXTENSIÓN: Fase 2 delegada a @ox, 4 gaps identificados | [T013](02_ACTAS/T013_aleph_extension-delegacion-ox.md) |
@@ -44,7 +44,7 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| 17 | @periodico | Alta | Ejecutar DS-S07 (release-party grid) |
+
 | 18 | @periodico | Normal | Ejecutar DS-S08/S09 (métricas) |
 | 19 | @aleph | Normal | Ejecutar DS-S10 (nuevo blueprint) |
 | 20 | @lucas | Normal | Pruebas visuales Jekyll :4000 |
