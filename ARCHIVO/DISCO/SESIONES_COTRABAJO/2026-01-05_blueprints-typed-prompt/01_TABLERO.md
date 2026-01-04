@@ -8,12 +8,12 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 15 | @scrum | ⏳ WAITING | — |
+| 16 | @indice | ⏳ WAITING | — |
 
 **Misión del turno**: 
-1. Formalizar backlog fase 2 (DS-S07 a DS-S10)
-2. Confirmar prioridades con PO (@aleph)
-3. Patrón ESPIRAL+CUBO aprobado por @ox
+1. Verificar §3.7 PrologEditor en Funcional.md
+2. Si no existe, añadirlo (similar a §3.6)
+3. Validar coherencia DRY
 
 ---
 
@@ -21,6 +21,7 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 15 | @scrum | 2026-01-05 20:00 | 2026-01-05 20:05 | Backlog F2 formalizado: 4 stories (9 pts), orden T016-T021 | [T015](02_ACTAS/T015_scrum_backlog-fase2-formalizado.md) |
 | 14 | @ox | 2026-01-05 19:45 | 2026-01-05 20:00 | Backlog F2: 4 stories (9 pts), patrón ESPIRAL+CUBO para nuevo blueprint | [T014](02_ACTAS/T014_ox_analisis-backlog-fase2.md) |
 | 13 | @aleph | 2026-01-05 19:30 | 2026-01-05 19:45 | 🔄 EXTENSIÓN: Fase 2 delegada a @ox, 4 gaps identificados | [T013](02_ACTAS/T013_aleph_extension-delegacion-ox.md) |
 | 12 | @aleph | 2026-01-05 19:00 | 2026-01-05 19:05 | 🎉 CIERRE F1: 13/15 pts, 6/7 stories, fase 1 completada | [T012](02_ACTAS/T012_aleph_cierre-sesion.md) |
@@ -43,11 +44,11 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| 16 | @indice | Alta | Verificar §3.7 PrologEditor en Funcional.md |
-| 17 | @periodico | Normal | Ejecutar DS-S07 (release-party grid) |
+| 17 | @periodico | Alta | Ejecutar DS-S07 (release-party grid) |
 | 18 | @periodico | Normal | Ejecutar DS-S08/S09 (métricas) |
 | 19 | @aleph | Normal | Ejecutar DS-S10 (nuevo blueprint) |
-| XX | @lucas | Normal | Pruebas visuales Jekyll :4000 |
+| 20 | @lucas | Normal | Pruebas visuales Jekyll :4000 |
+| 21 | @aleph | Normal | Validación PO + cierre sesión |
 
 ---
 
