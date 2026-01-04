@@ -146,6 +146,38 @@ Si `healthScore < 60`:
 2. Revisar antipatrones activos
 3. Capturar snapshot antes de continuar
 
+### ✅ BP-06: Cacheo Bajo Demanda (CRÍTICO)
+
+> **Origen**: Sesión AUTO-REFLEXION-FC1 (2026-01-04)
+
+**Problema**: Los snapshots solo capturan requests que están en el caché de contenido. Los request IDs antiguos existen en el log pero su **contenido ya no es accesible** via `ccreq:` URI.
+
+**Solución**: Cachear bajo demanda ANTES de tomar el snapshot:
+
+```
+# Paso 1: Cachear la conversación actual
+mcp_copilot-logs-_get_latest_request()
+
+# Paso 2: Ahora sí, capturar snapshot (incluirá lo cacheado)
+mcp_copilot-logs-_capture_snapshot({name: "descripcion"})
+```
+
+**Por qué funciona**:
+- `get_latest_request()` resuelve el `ccreq:` URI del request actual y lo cachea
+- `capture_snapshot()` persiste todo lo que esté en caché
+- El caché tiene límite de 50 entries (configurable con `configure_cache`)
+
+**Flujo completo para auto-reflexión**:
+
+```
+1. get_usage_metrics()      → Diagnóstico de salud
+2. get_latest_request()     → Cachea conversación actual
+3. capture_snapshot()       → Persiste todo lo cacheado
+4. generate_abstract()      → Resumen semántico (opcional)
+```
+
+**Limitación conocida**: Los requests antiguos (>30 min) ya no son accesibles aunque sus IDs existan. La memoria del `ccreq:` provider es volátil.
+
 ---
 
 ## 5. Protocolo de Terapia para Bridges
@@ -224,9 +256,11 @@ Sesión de trabajo
 |------|-----------|-------------|
 | `mcp_copilot-logs-_get_usage_metrics` | Métricas de salud | Check periódico |
 | `mcp_copilot-logs-_analyze_session` | Diagnóstico de issues | Si healthScore < 60 |
-| `mcp_copilot-logs-_capture_snapshot` | Preservar contexto | Cada 30-60 min |
+| `mcp_copilot-logs-_get_latest_request` | **Cachear conversación actual** | **ANTES de snapshot** (BP-06) |
+| `mcp_copilot-logs-_capture_snapshot` | Preservar contexto cacheado | Cada 30-60 min |
 | `mcp_copilot-logs-_list_snapshots` | Ver historial | Antes de re-investigar |
 | `mcp_copilot-logs-_generate_abstract` | Resumen semántico | Al cerrar épica |
+| `mcp_copilot-logs-_configure_cache` | Ajustar tamaño caché (default: 50) | Si necesitas más historial |
 
 ---
 
@@ -281,5 +315,5 @@ Este documento es **vivo**. Nuevos arquetipos se añaden cuando:
 3. @ox extrae el arquetipo generalizable
 4. Se añade aquí con formato AP-XX o BP-XX
 
-**Fecha última actualización**: 2026-01-01  
-**Sesión origen**: FEATURE-SNAPSHOTS-1.0.0
+**Fecha última actualización**: 2026-01-04  
+**Sesión origen**: FEATURE-SNAPSHOTS-1.0.0, AUTO-REFLEXION-FC1
