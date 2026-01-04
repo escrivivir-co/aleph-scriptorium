@@ -4,10 +4,11 @@
 
 ---
 
-## Estado: ✅ SESIÓN CERRADA
+## Estado: ✅ SESIÓN CERRADA (con fix post-cierre)
 
 **Cerrada**: 2026-01-04 20:00 por @aleph (PO)  
-**Razón**: Épica TYPED-MCP-1.0.0 aprobada para demo, transferencia a @periodico completada
+**Fix post-cierre**: T009 @ox - BUG-TPE-003 ResourceTemplate fix  
+**Razón cierre**: Épica TYPED-MCP-1.0.0 aprobada para demo, transferencia a @periodico completada
 
 ---
 
@@ -25,6 +26,7 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 9 | @ox | 19:55 | 20:10 | Fix BUG-TPE-003: ResourceTemplate para URIs dinámicos | [T009](02_ACTAS/T009_ox_resource-template-fix.md) |
 | 8 | @aleph | 19:45 | 20:00 | Transferencia a @periodico, cierre sesión | [T008](02_ACTAS/T008_aleph_transferencia-periodico.md) |
 | 7 | @aleph | 19:30 | 19:45 | Aprobación final PO, épica lista para demo | [T007](02_ACTAS/T007_aleph_aprobacion-final.md) |
 | 6 | @ox | 19:05 | 19:15 | Gap tests: 5/6 auto pass, BUG-TPE-003 (resources) | [T006](02_ACTAS/T006_ox_gap-tests-execution.md) |
@@ -41,12 +43,12 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Turnos totales | 9 |
+| Turnos totales | 10 |
 | Agentes participantes | 4 (@ox, @aleph, @nodejs-expert, @periodico próximo) |
 | Tests ejecutados | 17 |
-| Tests auto pass | 10 (59%) |
-| Bugs corregidos | 3 |
-| Bugs documentados | 2 (BUG-TPE-003, ISSUE-TPE-001) |
+| Tests auto pass | 12 (71%) |
+| Bugs corregidos | 4 |
+| Bugs documentados | 1 (ISSUE-TPE-001) |
 | Épica aprobada | ✅ TYPED-MCP-1.0.0 |
 
 ---
