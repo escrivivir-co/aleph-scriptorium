@@ -40,6 +40,7 @@
 | 8 | @ox | 17:20 | 17:30 | Implementar S03: mcpPacks v3.0.0 + sensorBridge en itaca-digital.yaml | [T008](02_ACTAS/T008_ox_s03-obra-update.md) |
 | 9 | @ox | 17:35 | 17:55 | Implementar S01: dramaturgo-signals.asyncapi.yaml (4 channels, 4 messages) | [T009](02_ACTAS/T009_ox_s01-asyncapi-signals.md) |
 | 10 | @ox | 18:00 | 18:15 | Implementar S05: Sección Máquina en blueprint + link en README | [T010](02_ACTAS/T010_ox_s05-blueprint-docs.md) |
+| 11 | @ox | 18:20 | 18:40 | Implementar S04: Wireframe 3-columnas + 9 widgets en docs/teatro/ | [T011](02_ACTAS/T011_ox_s04-wireframe.md) |
 
 ---
 
@@ -47,7 +48,7 @@
 
 | # | Agente | Estado | Objetivo |
 |---|--------|--------|----------|
-| 10 | @ox | ✅ DONE | Implementar S05: Documentar en blueprint |
+| 11 | @ox | ✅ DONE | Implementar S04: Wireframe Vista Dramaturgo |
 
 ---
 
