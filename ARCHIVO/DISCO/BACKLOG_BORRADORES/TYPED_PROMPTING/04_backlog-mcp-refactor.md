@@ -4,9 +4,42 @@
 > **Feature**: Refactorizar TypedPromptsEditor para integrar stack MCP  
 > **Sprint**: FC1/FC2  
 > **Effort total**: 34 pts  
-> **Estado**: 📋 Planificado  
-> **Fecha**: 2026-01-04  
+> **Estado**: ✅ Completado  
+> **Fecha inicio**: 2026-01-04  
+> **Fecha cierre**: 2026-01-04  
 > **Autor**: @ox + @scrum
+
+---
+
+## Resumen de Cierre
+
+**Épica completada en una sesión intensa**. Se replicó el patrón exitoso de PrologEditor:
+
+| Artefacto | Estado | Commit |
+|-----------|--------|--------|
+| mcp-core-sdk/types/typed-prompts | ✅ 300+ líneas | a70830e |
+| MCPTypedPromptServer (608 líneas) | ✅ 7 tools, 3 res, 3 prompts | 4991247 |
+| TypedPromptBackendClient | ✅ HTTP client | 4991247 |
+| Port fix 5000→3019 | ✅ | b4958a7 |
+| Pack MCP (.vscode/mcp.json) | ✅ | b9f8771 |
+| OpenAsyncAPI specs (931 líneas) | ✅ | d1ec334 |
+| Plugin docs | ✅ | ed82319 |
+
+### Arquitectura Final
+
+```
+VS Code Copilot (MCP Client)
+         │ MCP Protocol
+         ▼
+MCPTypedPromptServer (3020) ─┐
+  7 tools, 3 resources       │
+                             │ HTTP/REST
+TypedPromptBackendClient ────┤
+                             │
+         ▼                   │
+TypedPromptsEditor (3019) ◄──┘
+  Express + SQLite + Monaco
+```
 
 ---
 
@@ -60,15 +93,15 @@ MCPTypedPromptServer ←HTTP→ TypedPromptBackendClient ←REST→ Backend Expr
 
 | # | Story | Nombre | Effort | Deps | Estado |
 |---|-------|--------|--------|------|--------|
-| S01 | Tipos compartidos en mcp-core-sdk | 5 pts | — | ⏳ |
-| S02 | MCPTypedPromptServer en mesh-sdk | 8 pts | S01 | ⏳ |
-| S03 | TypedPromptBackendClient en mesh-sdk | 3 pts | S02 | ⏳ |
-| S04 | Integrar cliente en backend Express | 3 pts | S03 | ⏳ |
-| S05 | Crear MCP Pack TypedPromptEditor | 3 pts | S02 | ⏳ |
-| S06 | Publicar specs en OpenAsyncAPI | 5 pts | S04 | ⏳ |
-| S07 | Completar prompts faltantes (plugin) | 2 pts | — | ⏳ |
-| S08 | Validar con @indice + commit | 2 pts | all | ⏳ |
-| S09 | Consolidar Context Manager (2.1.0) | 3 pts | S05 | ⏳ |
+| S01 | Tipos compartidos en mcp-core-sdk | 5 pts | — | ✅ |
+| S02 | MCPTypedPromptServer en mesh-sdk | 8 pts | S01 | ✅ |
+| S03 | TypedPromptBackendClient en mesh-sdk | 3 pts | S02 | ✅ |
+| S04 | Integrar puerto 3019 en backend Express | 3 pts | S03 | ✅ |
+| S05 | Crear MCP Pack TypedPromptEditor | 3 pts | S02 | ✅ |
+| S06 | Publicar specs en OpenAsyncAPI | 5 pts | S04 | ✅ |
+| S07 | Completar prompts faltantes (plugin) | 2 pts | — | ✅ |
+| S08 | Validar docs + commit | 2 pts | all | ✅ |
+| S09 | Cerrar épica | 3 pts | S08 | ✅ |
 
 **Total**: 34 pts
 
