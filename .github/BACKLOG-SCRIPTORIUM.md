@@ -41,7 +41,8 @@
 | ✅ | COWORK-1.0.0 | Tablero para Cotrabajo Multi-Agente (21 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/01_backlog-borrador.md) |
 | ✅ | DRAMATURGIA-MAQUINA-1.0.0 | Scriptorium como Máquina (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
-| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| � | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
+| �📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
 
@@ -111,6 +112,8 @@
 | ✅ | 2026-01-03_prolog-e2e-testing | PROLOG-E2E-1.0.0 | E2E 88.5% (23/26), 16 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-e2e-testing/) |
 | ✅ | 2026-01-04_demo-ui-prologeditor | PROLOG-UI-DEMO-1.0.0 | Demo 12/12 pasos, 2 bugs detectados | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/) |
 | ✅ | 2026-01-04_dramaturgia-scriptorium-maquina | DRAMATURGIA-MAQUINA-1.0.0 | Backlog 13 pts (5 stories, 13 tasks), 6 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
+| ✅ | 2026-01-04_typed-mcp-test-session | TYPED-MCP-1.0.0 | Tests 83% (5/6 auto), 8 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session/) |
+| 🟢 | 2026-01-05_blueprints-typed-prompt | BLUEPRINTS-TYPED-1.0.0 | En progreso | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 
 ---
 
@@ -118,12 +121,11 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Épicas cerradas (total) | 28+ |
-| Effort completado | ~181 pts |
+| Épicas cerradas (total) | 29+ |
+| Effort completado | ~215 pts |
 | Plugins instalados | 22 |
 | Submódulos integrados | 16 |
-| Sesiones cotrabajo | 4 |
-| Sesiones cotrabajo | 3 |
+| Sesiones cotrabajo | 6 |
 
 ---
 
