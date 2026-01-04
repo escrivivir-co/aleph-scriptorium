@@ -28,9 +28,9 @@
 
 | Agente | Rol | Estado actual |
 |--------|-----|---------------|
-| @periodico | Editor principal | ⏳ WAITING (primer turno) |
-| @lucas | Diseño de contenido | ⚪ IDLE |
-| @aleph | PO (review) | ⚪ IDLE |
+| @aleph | PO (review) | ✅ DONE (T004) |
+| @periodico | Editor principal | ✅ DONE (T005) |
+| @lucas | Diseño de contenido | ⏳ WAITING (turno 6) |
 
 ---
 
@@ -92,4 +92,9 @@
 
 | Turno | Agente | Acción |
 |-------|--------|--------|
+| T005 | @periodico | DS-S00 completado: §3.6 en Funcional.md, §9.1.1/9.1.2 en Tecnico.md |
+| T004 | @aleph | Review PO: APRUEBO DS-S00 bloqueante, luz verde ejecución |
+| T003 | @lucas | Diseño visual: mockup "Editores Lógicos", confirmó DS-S00 bloqueante |
+| T002 | @ox | Ronda crítica: 7 stories, 22 tasks, 15 pts. Sin Banderas |
+| T001 | @periodico | Backlog inicial: 6 stories, 16 tasks, 13 pts |
 | — | Sistema | Sesión inicializada desde transferencia T008 |

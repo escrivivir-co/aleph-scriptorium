@@ -104,6 +104,34 @@
 
 ⚠️ **Advertencia**: Los logs tienen límite ~100 requests en memoria. Capturar snapshots cada 30 min.
 
+### 3.6. Validación de Schemas (TypedPrompting)
+
+> **Feature**: TYPED-MCP-1.0.0 — MCPTypedPromptEditor Refactor
+
+**Concepto**: Validación bidireccional NL↔JSON para conversaciones estructuradas.
+
+| Componente | Puerto | Descripción |
+|------------|--------|-------------|
+| TypedPromptsEditor | 3019 | UI Vite para edición de ontologías |
+| MCPTypedPromptServer | 3020 | Server MCP con 7 tools + 3 prompts |
+
+**Tools del Server (3020)**:
+
+| Tool | Descripción |
+|------|-------------|
+| `typed_create_schema` | Crear nuevo schema de validación |
+| `typed_validate` | Validar mensaje contra schema |
+| `typed_list_schemas` | Listar schemas disponibles |
+| `typed_get_schema` | Obtener schema específico |
+| `typed_delete_schema` | Eliminar schema |
+| `typed_export_openapi` | Exportar a OpenAPI |
+| `typed_import_openapi` | Importar desde OpenAPI |
+
+**Ubicación código**: `MCPGallery/mcp-mesh-sdk/src/MCPTypedPromptServer.ts`  
+**Spec OpenAPI**: `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor/` (931 líneas)
+
+💡 **Uso**: Definir schemas antes de crear agentes. Los schemas garantizan coherencia en el diálogo.
+
 ### 3.7. Prolog MCP Server (SCRIPT-2.3.0 + TEATRO-PROLOG-1.0.0)
 
 > **Feature**: Inteligencias situadas + Typed Logic Flow + Teatro Integration
