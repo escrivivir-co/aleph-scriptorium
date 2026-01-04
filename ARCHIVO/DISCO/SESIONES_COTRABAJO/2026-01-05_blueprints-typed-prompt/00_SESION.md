@@ -28,9 +28,9 @@
 
 | Agente | Rol | Estado actual |
 |--------|-----|---------------|
-| @aleph | PO (review) | ✅ DONE (T004) |
-| @periodico | Editor principal | ✅ DONE (T005) |
-| @lucas | Diseño de contenido | ⏳ WAITING (turno 6) |
+| @aleph | PO (review) | ✅ DONE (T007) |
+| @periodico | Editor principal | ⏳ WAITING (turno 8) |
+| @lucas | Diseño de contenido | ✅ DONE (T006) |
 
 ---
 
@@ -92,6 +92,8 @@
 
 | Turno | Agente | Acción |
 |-------|--------|--------|
+| T007 | @aleph | DS-S03 completado: +slide 4.7 "validation" en blueprint.md |
+| T006 | @lucas | DS-S02 ejecutada: +2 cards en demo.md, sección "Editores Lógicos" |
 | T005 | @periodico | DS-S00 completado: §3.6 en Funcional.md, §9.1.1/9.1.2 en Tecnico.md |
 | T004 | @aleph | Review PO: APRUEBO DS-S00 bloqueante, luz verde ejecución |
 | T003 | @lucas | Diseño visual: mockup "Editores Lógicos", confirmó DS-S00 bloqueante |

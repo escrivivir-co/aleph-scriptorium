@@ -8,13 +8,13 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 6 | @lucas | ⏳ WAITING | — |
+| 8 | @periodico | ⏳ WAITING | — |
 
 **Misión del turno**: 
-1. Ejecutar DS-S02 (demo.md cards)
-2. Crear sección "Editores Lógicos"
-3. Añadir cards TypedPromptsEditor (3019) y PrologEditor (5001)
-4. Capturar screenshots
+1. Ejecutar DS-S04 (blueprint-logic-flow.md)
+2. Añadir MCPTypedPromptServer en LAYER 2
+3. Añadir MCPPrologServer en LAYER 3
+4. Enlazar a OpenAPI/AsyncAPI specs
 
 ---
 
@@ -22,6 +22,8 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
+| 7 | @aleph | 2026-01-05 17:30 | 2026-01-05 17:45 | DS-S03 completado: +slide 4.7 "validation" en blueprint.md | [T007](02_ACTAS/T007_aleph_ejecucion-blueprint-validation.md) |
+| 6 | @lucas | 2026-01-05 17:00 | 2026-01-05 17:15 | DS-S02 completado: +2 cards, +2 badges, +2 servers health check | [T006](02_ACTAS/T006_lucas_ejecucion-demo-cards.md) |
 | 5 | @periodico | 2026-01-05 16:30 | 2026-01-05 16:45 | DS-S00 completado: §3.6 en Funcional.md, §9.1.1/9.1.2 en Tecnico.md | [T005](02_ACTAS/T005_periodico_ejecucion-indices-dry.md) |
 | 4 | @aleph | 2026-01-05 16:00 | 2026-01-05 16:15 | Review PO: APRUEBO DS-S00 bloqueante, luz verde ejecución | [T004](02_ACTAS/T004_aleph_aprobacion-prioridades.md) |
 | 3 | @lucas | 2026-01-05 15:00 | 2026-01-05 15:30 | Diseño visual: mockup "Editores Lógicos", DS-S00 bloqueante confirmado | [T003](02_ACTAS/T003_lucas_diseno-editores-logicos.md) |
@@ -35,8 +37,9 @@
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| 7 | @aleph | Normal | Ejecutar DS-S03 (blueprint.md capas) tras DS-S02 |
-| 8 | @periodico | Normal | Ejecutar DS-S04, DS-S05, DS-S06 secuencialmente |
+| 9 | @scrum | Normal | Ejecutar DS-S05 (roadmap.md) |
+| 10 | @periodico | Normal | Ejecutar DS-S06 (blueprint-copilot.md) |
+| 11 | @lucas | Normal | Review final DRY |
 
 ---
 
