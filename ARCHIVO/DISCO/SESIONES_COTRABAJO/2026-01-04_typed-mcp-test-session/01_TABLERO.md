@@ -8,11 +8,10 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 1 | @ox | ⏳ WAITING | — |
+| 3 | @ox | ⏳ WAITING | — |
 
 **Misión del turno**: 
-1. Aplicar fix LAUNCHER-BUG-001
-2. Testear MCPTypedPromptServer con los casos de `03_REFERENCIAS/test-cases-mcp.md`
+Ejecutar test cases TC-001 a TC-007 del MCPTypedPromptServer
 
 ---
 
@@ -20,7 +19,8 @@
 
 | # | Agente | Inicio | Fin | Resumen (1 línea) | Acta |
 |---|--------|--------|-----|-------------------|------|
-| — | — | — | — | Sesión recién iniciada | — |
+| 2 | @nodejs-expert | 18:05 | 18:20 | Fix intentionalStops para auto-restart race condition | [T002](02_ACTAS/T002_nodejs-expert_intentional-stop-fix.md) |
+| 1 | @ox | 17:30 | 17:52 | Fix compilación + LAUNCHER-BUG-001 verificado | [T001](02_ACTAS/T001_ox_fix-compilation.md) |
 
 ---
 
