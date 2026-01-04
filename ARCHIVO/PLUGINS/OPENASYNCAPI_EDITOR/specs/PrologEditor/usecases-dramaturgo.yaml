@@ -1,0 +1,447 @@
+# Use Cases: Dramaturgo
+# Caso de Uso: Escribir Obras Agénticas con Brains Prolog
+# 
+# Actores: Dramaturgo (humano), @plugin_ox_teatro, @plugin_ox_agentcreator
+# Epic: TEATRO-PROLOG-1.0.0
+# Version: 1.0.0
+# Schema: usecases/1.0.0 (Aleph Scriptorium)
+
+spec: usecases
+version: 1.0.0
+
+info:
+  title: Use Cases - Dramaturgo
+  description: |
+    Especificación de casos de uso para dramaturgos que escriben obras
+    de teatro interactivo con personajes agénticos equipados con cerebros Prolog.
+    
+    ## Concepto: Brain Prolog
+    
+    Un **brain** (`.brain.pl`) es un módulo Prolog que define:
+    - Identidad del personaje (rol, especialidad)
+    - Conocimiento base (qué sabe)
+    - Reglas de comportamiento (`decidir_accion/2`)
+    - Transiciones de contexto
+    
+    ## Workflow Creativo
+    
+    ```
+    ┌────────────────────────────────────────────────────────────────┐
+    │                    FLUJO DEL DRAMATURGO                        │
+    ├────────────────────────────────────────────────────────────────┤
+    │                                                                │
+    │  1. Concebir personaje (nombre, rol, motivaciones)            │
+    │         ↓                                                      │
+    │  2. Usar BrainEditorComponent (UI) o template                 │
+    │         ↓                                                      │
+    │  3. Definir identidad → hechos Prolog                         │
+    │         ↓                                                      │
+    │  4. Diseñar reglas de decisión (contexto → acción)            │
+    │         ↓                                                      │
+    │  5. Probar cerebro en sesión aislada                          │
+    │         ↓                                                      │
+    │  6. Exportar .brain.pl                                         │
+    │         ↓                                                      │
+    │  7. Vincular a obra en obras.yaml                             │
+    │                                                                │
+    └────────────────────────────────────────────────────────────────┘
+    ```
+    
+    ## Actores
+    
+    | Actor | Tipo | Responsabilidad |
+    |-------|------|-----------------|
+    | Dramaturgo | Humano | Diseño creativo de personajes y tramas |
+    | @plugin_ox_teatro | Agent | Orquestación de obras |
+    | @plugin_ox_agentcreator | Agent | Generación de agentes/brains |
+    | BrainEditorComponent | UI | Editor visual de cerebros |
+    
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+  license:
+    name: AIPL v1.0
+
+# ============================================================================
+# USE CASES
+# ============================================================================
+
+x-use-cases:
+  
+  # --------------------------------------------------------------------------
+  # UC-DRAMA-001: Crear Personaje con Brain desde Template
+  # --------------------------------------------------------------------------
+  UC-DRAMA-001:
+    name: Crear Personaje con Brain desde Template
+    actor: Dramaturgo
+    assistedBy: "@plugin_ox_agentcreator"
+    preconditions:
+      - Stack Prolog levantado (UC-OX-002)
+      - Template brain.pl.template disponible
+    trigger: |
+      Dramaturgo solicita:
+      "@plugin_ox_agentcreator crear personaje {nombre} para obra {obra}"
+    flow:
+      - step: 1
+        action: "Recopilar información del personaje"
+        questions:
+          - "¿Nombre del personaje?"
+          - "¿Rol en la obra? (protagonista, antagonista, guía, comic relief)"
+          - "¿Especialidad o habilidad principal?"
+          - "¿Qué conoce inicialmente?"
+          - "¿Motivación principal?"
+      - step: 2
+        action: "Cargar template base"
+        file: "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/brain.pl.template"
+        variables:
+          PERSONAJE_NOMBRE: "{nombre}"
+          OBRA_ID: "{obra}"
+          ROL: "{rol}"
+          ESPECIALIDAD: "{especialidad}"
+      - step: 3
+        action: "Generar hechos de identidad"
+        output: |
+          :- module(brain_{nombre}, [
+              rol/2,
+              especialidad/2,
+              decidir_accion/2,
+              conoce/2
+          ]).
+          
+          rol({nombre}, {rol}).
+          especialidad({nombre}, {especialidad}).
+          
+          conoce({nombre}, {conocimiento_1}).
+          conoce({nombre}, {conocimiento_2}).
+      - step: 4
+        action: "Generar reglas de decisión iniciales"
+        output: |
+          decidir_accion({nombre}, Accion) :-
+              contexto(Contexto),
+              regla_{nombre}(Contexto, Accion),
+              !.
+          
+          decidir_accion({nombre}, default_action) :-
+              \+ contexto(_).
+          
+          regla_{nombre}(inicio, presentarse).
+          regla_{nombre}(conflicto, evaluar_opciones).
+          regla_{nombre}(crisis, {accion_crisis}).
+      - step: 5
+        action: "Guardar brain"
+        path: "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/{nombre}.brain.pl"
+      - step: 6
+        action: "Registrar en obra"
+        update: "ARCHIVO/PLUGINS/TEATRO/obras/{obra}.yaml"
+        section: "personajes"
+    postconditions:
+      - Brain .brain.pl creado
+      - Personaje registrado en obra
+      - Listo para pruebas
+
+  # --------------------------------------------------------------------------
+  # UC-DRAMA-002: Diseñar Reglas de Comportamiento
+  # --------------------------------------------------------------------------
+  UC-DRAMA-002:
+    name: Diseñar Reglas de Comportamiento
+    actor: Dramaturgo
+    tool: BrainEditorComponent
+    preconditions:
+      - Personaje creado (UC-DRAMA-001)
+      - Frontend activo en localhost:4200
+    trigger: "Dramaturgo abre tab 'Brain Editor' en PrologEditor UI"
+    flow:
+      - step: 1
+        action: "Seleccionar personaje existente o crear nuevo"
+        ui: "Dropdown con personajes del directorio templates/"
+      - step: 2
+        action: "Panel Identidad"
+        description: "Formulario visual que genera hechos"
+        fields:
+          - label: "Nombre"
+            type: text
+            generates: "% ya definido en módulo"
+          - label: "Rol"
+            type: select
+            options: [protagonista, antagonista, guia, mentor, comic_relief, NPC]
+            generates: "rol(nombre, {value})."
+          - label: "Especialidad"
+            type: text
+            generates: "especialidad(nombre, {value})."
+          - label: "Conocimientos"
+            type: textarea
+            hint: "Uno por línea"
+            generates: "conoce(nombre, X). % por cada línea"
+      - step: 3
+        action: "Panel Reglas"
+        description: "Editor visual de reglas contexto → acción"
+        components:
+          - type: rule-builder
+            structure:
+              when: "contexto({selector})"
+              then: "acción({input})"
+            generates: "regla_nombre(contexto, accion)."
+          - type: code-editor
+            language: prolog
+            features:
+              - syntax-highlighting
+              - autocomplete
+              - validation
+      - step: 4
+        action: "Probar en sesión"
+        button: "▶ Probar en sesión"
+        operations:
+          - "Crear sesión temporal"
+          - "Cargar brain actual"
+          - "Ejecutar: decidir_accion(nombre, X)"
+          - "Mostrar resultado"
+          - "Destruir sesión"
+      - step: 5
+        action: "Exportar"
+        button: "💾 Exportar .brain.pl"
+        output: "Archivo descargado o guardado en workspace"
+    postconditions:
+      - Reglas validadas sintácticamente
+      - Brain probado funcionalmente
+      - Archivo exportado
+
+  # --------------------------------------------------------------------------
+  # UC-DRAMA-003: Diseñar Escenas con Contextos
+  # --------------------------------------------------------------------------
+  UC-DRAMA-003:
+    name: Diseñar Escenas con Contextos
+    actor: Dramaturgo
+    assistedBy: "@plugin_ox_teatro"
+    preconditions:
+      - Personajes con brains creados
+      - Obra registrada en obras.yaml
+    trigger: "@plugin_ox_teatro diseñar escena {escena} para {obra}"
+    flow:
+      - step: 1
+        action: "Definir contextos de la escena"
+        output: |
+          % Escena: {escena}
+          % Contextos disponibles
+          :- dynamic contexto/1.
+          
+          % Estados posibles de la escena
+          contexto_valido(inicio).
+          contexto_valido(desarrollo).
+          contexto_valido(crisis).
+          contexto_valido(resolucion).
+      - step: 2
+        action: "Definir transiciones"
+        output: |
+          % Transiciones de escena
+          transicion(inicio, desarrollo) :- trigger(tiempo, 5min).
+          transicion(desarrollo, crisis) :- trigger(accion, conflicto).
+          transicion(crisis, resolucion) :- trigger(decision, personaje).
+      - step: 3
+        action: "Mapear personajes a escena"
+        output: |
+          % Personajes activos en escena
+          en_escena({escena}, lucas).
+          en_escena({escena}, mentor).
+          
+          % Cargar brains al inicio de escena
+          iniciar_escena({escena}) :-
+              findall(P, en_escena({escena}, P), Personajes),
+              forall(member(P, Personajes), cargar_brain(P)).
+      - step: 4
+        action: "Guardar definición de escena"
+        path: "ARCHIVO/PLUGINS/TEATRO/obras/{obra}/escenas/{escena}.pl"
+    postconditions:
+      - Escena definida con contextos
+      - Transiciones especificadas
+      - Personajes vinculados
+
+  # --------------------------------------------------------------------------
+  # UC-DRAMA-004: Probar Obra Completa
+  # --------------------------------------------------------------------------
+  UC-DRAMA-004:
+    name: Probar Obra Completa
+    actor: Dramaturgo
+    tool: "MCP + UI"
+    preconditions:
+      - Obra con escenas y personajes definidos
+      - Stack completo levantado
+    trigger: "@plugin_ox_teatro probar obra {obra}"
+    flow:
+      - step: 1
+        action: "Crear sesión de prueba"
+        mcp: "prolog_create_session"
+        params:
+          sessionId: "test_{obra}_{timestamp}"
+          obraId: "{obra}"
+      - step: 2
+        action: "Cargar todas las definiciones"
+        sequence:
+          - "prolog_consult_file: obras/{obra}/config.pl"
+          - "Para cada personaje: prolog_consult_file: {personaje}.brain.pl"
+          - "Para cada escena: prolog_consult_file: escenas/{escena}.pl"
+      - step: 3
+        action: "Simular escena inicial"
+        mcp: "prolog_query"
+        params:
+          query: "iniciar_escena(escena_1)."
+      - step: 4
+        action: "Iterar decisiones de personajes"
+        loop:
+          condition: "Mientras escena activa"
+          actions:
+            - "prolog_query: decidir_accion(Personaje, Accion)"
+            - "Mostrar acción al dramaturgo"
+            - "Solicitar input: aprobar/modificar/siguiente contexto"
+            - "prolog_assert_fact: feedback(Personaje, Accion, {aprobado|modificado})"
+      - step: 5
+        action: "Generar reporte de prueba"
+        output: |
+          ## Reporte de Prueba: {obra}
+          
+          **Sesión**: {sessionId}
+          **Escenas probadas**: {n}
+          **Decisiones evaluadas**: {m}
+          
+          ### Decisiones por Personaje
+          | Personaje | Contexto | Acción | Feedback |
+          |-----------|----------|--------|----------|
+          ...
+          
+          ### Ajustes Sugeridos
+          - {lista de reglas a revisar}
+      - step: 6
+        action: "Limpiar sesión"
+        mcp: "prolog_destroy_session"
+    postconditions:
+      - Reporte generado
+      - Feedback documentado
+      - Sesión limpiada
+
+  # --------------------------------------------------------------------------
+  # UC-DRAMA-005: Iterar Reglas según Feedback
+  # --------------------------------------------------------------------------
+  UC-DRAMA-005:
+    name: Iterar Reglas según Feedback
+    actor: Dramaturgo
+    preconditions:
+      - UC-DRAMA-004 ejecutado
+      - Feedback de prueba disponible
+    trigger: "Dramaturgo abre reporte y decide ajustar"
+    flow:
+      - step: 1
+        action: "Identificar reglas problemáticas"
+        input: "Feedback marcado como 'modificado'"
+      - step: 2
+        action: "Abrir BrainEditorComponent"
+        navigation: "Tab Brain Editor → Seleccionar personaje"
+      - step: 3
+        action: "Modificar regla"
+        ui: "Panel Reglas → Editar regla específica"
+      - step: 4
+        action: "Re-probar inmediatamente"
+        button: "▶ Probar en sesión"
+        assertions:
+          - "Nueva acción para mismo contexto"
+          - "Sin efectos secundarios en otras reglas"
+      - step: 5
+        action: "Guardar versión"
+        action: "Exportar con versionado semántico"
+        path: "{personaje}.brain.pl"
+        commit: "feat(teatro): ajustar reglas {personaje} - {contexto}"
+    postconditions:
+      - Regla actualizada
+      - Prueba pasada
+      - Commit generado
+
+# ============================================================================
+# SCHEMAS DE DATOS
+# ============================================================================
+
+x-data-schemas:
+  
+  BrainIdentity:
+    description: "Estructura de identidad de un personaje"
+    type: object
+    properties:
+      nombre:
+        type: string
+        example: "lucas"
+      rol:
+        type: string
+        enum: [protagonista, antagonista, guia, mentor, comic_relief, npc]
+      especialidad:
+        type: string
+        example: "gestion_indices"
+      conocimientos:
+        type: array
+        items:
+          type: string
+        example: ["indice_funcional", "protocolo_dry"]
+    required: [nombre, rol]
+
+  BrainRule:
+    description: "Estructura de una regla de comportamiento"
+    type: object
+    properties:
+      contexto:
+        type: string
+        description: "Condición de activación"
+        example: "crisis"
+      accion:
+        type: string
+        description: "Acción a tomar"
+        example: "verificar_indices"
+      prioridad:
+        type: integer
+        description: "Orden de evaluación (menor = primero)"
+        example: 1
+    required: [contexto, accion]
+
+  ObraPack:
+    description: "Pack completo de una obra"
+    type: object
+    properties:
+      id:
+        type: string
+        example: "itaca_digital"
+      nombre:
+        type: string
+        example: "Ítaca Digital"
+      personajes:
+        type: array
+        items:
+          $ref: '#/x-data-schemas/BrainIdentity'
+      escenas:
+        type: array
+        items:
+          type: string
+        example: ["escena_1", "escena_2"]
+      estado:
+        type: string
+        enum: [borrador, ensayo, en_cartel, archivada]
+
+# ============================================================================
+# TEMPLATES
+# ============================================================================
+
+x-templates:
+  
+  brain-minimal:
+    name: "Brain Mínimo"
+    description: "Template básico para empezar"
+    content: |
+      :- module(brain_NOMBRE, [rol/2, decidir_accion/2]).
+      
+      rol(NOMBRE, ROL).
+      
+      decidir_accion(NOMBRE, default) :- true.
+
+  brain-completo:
+    name: "Brain Completo"
+    description: "Template con todas las secciones"
+    file: "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/brain.pl.template"
+
+  brain-ejemplo-lucas:
+    name: "Ejemplo: Lucas"
+    description: "Brain funcional de referencia"
+    file: "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/lucas.brain.pl"

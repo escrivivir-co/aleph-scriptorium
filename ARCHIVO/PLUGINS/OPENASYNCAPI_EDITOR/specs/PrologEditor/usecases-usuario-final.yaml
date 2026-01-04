@@ -1,0 +1,760 @@
+# Use Cases: Usuario Final UI (Developer/IoT Engineer)
+# Casos de Uso: Interacción directa con la UI Angular de PrologEditor
+# 
+# Actores: Developer, IoT Engineer, Usuario Final
+# Epic: PROLOG-UI-2.0.0
+# Version: 1.0.0
+# Schema: usecases/1.0.0 (Aleph Scriptorium)
+
+spec: usecases
+version: 1.0.0
+
+info:
+  title: Use Cases - Usuario Final UI
+  description: |
+    Especificación de casos de uso para usuarios finales que interactúan
+    directamente con la UI Angular de PrologEditor.
+    
+    ## Actores
+    
+    | Actor | Perfil | Objetivo Principal |
+    |-------|--------|-------------------|
+    | Developer | Desarrollador Prolog | Crear y probar reglas de negocio |
+    | IoT Engineer | Ingeniero IoT | Procesar telemetría de sensores |
+    | Usuario Final | Cualquier usuario | Explorar templates y ejecutar queries |
+    
+    ## Navegación UI
+    
+    ```
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                    PrologEditor UI v2.0                        │
+    ├─────────────────────────────────────────────────────────────────┤
+    │  [Sessions] [Editor] [Knowledge] [Templates] [Telemetry] [🧠]  │
+    ├─────────────────────────────────────────────────────────────────┤
+    │                                                                 │
+    │  Sessions:    SessionManagerComponent                           │
+    │               - Crear/Listar/Destruir sesiones MCP              │
+    │                                                                 │
+    │  Editor:      RuleEditorComponent + RuleListComponent           │
+    │               - Escribir reglas Prolog                          │
+    │               - Ver reglas por aplicación                       │
+    │               - Ejecutar queries                                │
+    │                                                                 │
+    │  Knowledge:   KnowledgeBaseComponent                            │
+    │               - Assert hechos                                   │
+    │               - Consultar archivos .pl                          │
+    │                                                                 │
+    │  Templates:   McpTemplatesBrowserComponent                      │
+    │               - Explorar catálogo MCP                           │
+    │               - Cargar templates                                │
+    │                                                                 │
+    │  Telemetry:   TelemetryProcessComponent + TelemetryMonitor      │
+    │               - Enviar datos de sensores                        │
+    │               - Ver estado actual                               │
+    │                                                                 │
+    │  Brain:       BrainEditorComponent (Teatro)                     │
+    │               - (cubierto en usecases-dramaturgo)               │
+    │                                                                 │
+    └─────────────────────────────────────────────────────────────────┘
+    ```
+    
+    ## Componentes → Endpoints REST
+    
+    | Componente | Endpoints | Tab |
+    |------------|-----------|-----|
+    | SessionManagerComponent | /sessions (GET, POST, DELETE) | Sessions |
+    | RuleEditorComponent | /rules (POST), /run-rule, /sdk-templates | Editor |
+    | RuleListComponent | /rules/{app} (GET), /rules/{id} (DELETE) | Editor |
+    | KnowledgeBaseComponent | /assert, /consult | Knowledge |
+    | McpTemplatesBrowserComponent | /mcp-templates | Templates |
+    | TelemetryProcessComponent | /telemetry/process | Telemetry |
+    | TelemetryMonitorComponent | /telemetry/status | Telemetry |
+    | UserAppSaveDialogComponent | /user-app (POST) | (Modal) |
+    
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+  license:
+    name: AIPL v1.0
+
+servers:
+  - url: http://localhost:4200
+    description: Angular Dev Server
+  - url: http://localhost:8000/api
+    description: Backend REST API
+
+# ============================================================================
+# USE CASES - DEVELOPER
+# ============================================================================
+
+x-use-cases:
+  
+  # --------------------------------------------------------------------------
+  # UC-DEV-001: Crear y Gestionar Sesiones Prolog
+  # --------------------------------------------------------------------------
+  UC-DEV-001:
+    name: Crear y Gestionar Sesiones Prolog
+    actor: Developer
+    component: SessionManagerComponent
+    tab: Sessions
+    preconditions:
+      - Backend activo en localhost:8000
+      - MCPPrologServer activo en localhost:3006
+    trigger: "Usuario navega al tab 'Sessions'"
+    flow:
+      - step: 1
+        action: "Ver sesiones activas"
+        ui: "Lista de cards con sesiones"
+        endpoint: "GET /sessions"
+        response: "Array de sesiones con id, obraId, createdAt"
+      
+      - step: 2
+        action: "Crear nueva sesión"
+        ui: "Formulario con campos sessionId y obraId"
+        input:
+          sessionId: "mi_sesion_001"
+          obraId: "app_iot"
+        endpoint: "POST /sessions"
+        response: |
+          {
+            "success": true,
+            "sessionId": "mi_sesion_001"
+          }
+      
+      - step: 3
+        action: "Seleccionar sesión activa"
+        ui: "Click en card de sesión"
+        effect: "currentSessionId se actualiza en PrologService"
+        note: "Esta sesión se usa en tabs posteriores"
+      
+      - step: 4
+        action: "Destruir sesión"
+        ui: "Botón 'Destroy' en card"
+        endpoint: "DELETE /sessions/{sessionId}"
+        confirmation: "Modal de confirmación"
+    
+    postconditions:
+      - Sesión activa seleccionada para operaciones
+      - Estado de sesiones sincronizado con servidor
+    
+    errors:
+      - condition: "sessionId duplicado"
+        message: "Session already exists"
+        recovery: "Usar otro ID o destruir la existente"
+      
+      - condition: "SWI-Prolog no disponible"
+        message: "Error creating session: swipl not found"
+        recovery: "Verificar instalación de SWI-Prolog"
+
+  # --------------------------------------------------------------------------
+  # UC-DEV-002: Escribir y Ejecutar Reglas Prolog
+  # --------------------------------------------------------------------------
+  UC-DEV-002:
+    name: Escribir y Ejecutar Reglas Prolog
+    actor: Developer
+    component: RuleEditorComponent
+    tab: Editor
+    preconditions:
+      - Sesión activa (UC-DEV-001)
+    trigger: "Usuario navega al tab 'Editor'"
+    flow:
+      - step: 1
+        action: "Cargar templates SDK"
+        automatic: true
+        endpoint: "GET /sdk-templates"
+        response: "Lista de templates disponibles"
+      
+      - step: 2
+        action: "Seleccionar template (opcional)"
+        ui: "Dropdown con templates"
+        effect: "Carga predicados del template en la lista lateral"
+      
+      - step: 3
+        action: "Escribir regla"
+        ui: "Textarea con código Prolog"
+        input: |
+          alert(high_temp) :- 
+            temperature(X), 
+            X > 30.
+      
+      - step: 4
+        action: "Guardar regla"
+        ui: "Formulario con nombre y app"
+        input:
+          name: "high_temp_alert"
+          content: "alert(high_temp) :- temperature(X), X > 30."
+          app: "iot_rules"
+        endpoint: "POST /rules"
+        response: |
+          {
+            "id": 42,
+            "text": "Rule successfully inserted"
+          }
+      
+      - step: 5
+        action: "Ejecutar query"
+        ui: "Textarea + botón 'Run'"
+        input: "temperature(25), alert(X)."
+        endpoint: "POST /run-rule"
+        request: |
+          {
+            "text": "temperature(25), alert(X).",
+            "sessionId": "mi_sesion_001"
+          }
+        response: |
+          {
+            "success": true,
+            "results": [{"X": "normal"}]
+          }
+    
+    postconditions:
+      - Regla persistida en SQLite
+      - Query ejecutado en sesión activa
+    
+    relatedUseCases:
+      - UC-DEV-003: Ver lista de reglas por app
+
+  # --------------------------------------------------------------------------
+  # UC-DEV-003: Gestionar Reglas por Aplicación
+  # --------------------------------------------------------------------------
+  UC-DEV-003:
+    name: Gestionar Reglas por Aplicación
+    actor: Developer
+    component: RuleListComponent
+    tab: Editor (panel derecho)
+    preconditions:
+      - Reglas existentes en base de datos
+    trigger: "Selección de app en RuleEditorComponent"
+    flow:
+      - step: 1
+        action: "Filtrar reglas por app"
+        trigger: "Cambio en @Input theApp"
+        endpoint: "GET /rules/{app}"
+        response: "Array de reglas filtradas"
+      
+      - step: 2
+        action: "Visualizar reglas"
+        ui: "Tabla con columnas: id, name, content, app"
+        features:
+          - HTML escaped para seguridad
+          - Soporte para objetos anidados
+      
+      - step: 3
+        action: "Ejecutar regla desde lista (kit)"
+        ui: "Formulario dinámico con aridad"
+        description: "Genera inputs según el predicado"
+        example: |
+          Predicado: do_init(Arg1, Arg2)
+          → Input 1: [____]
+          → Input 2: [____]
+          → [Run]
+      
+      - step: 4
+        action: "Eliminar regla"
+        ui: "Botón delete en fila"
+        endpoint: "DELETE /rules/{id}"
+        confirmation: "Confirmación visual"
+    
+    postconditions:
+      - Lista actualizada
+      - Regla eliminada de SQLite
+
+  # --------------------------------------------------------------------------
+  # UC-DEV-004: Cargar Conocimiento en Sesión
+  # --------------------------------------------------------------------------
+  UC-DEV-004:
+    name: Cargar Conocimiento en Sesión
+    actor: Developer
+    component: KnowledgeBaseComponent
+    tab: Knowledge
+    preconditions:
+      - Sesión activa seleccionada
+    trigger: "Usuario navega al tab 'Knowledge Base'"
+    flow:
+      - step: 1
+        action: "Assert hecho dinámico"
+        ui: "Input + botón 'Assert'"
+        input: "temperature(25)."
+        endpoint: "POST /assert"
+        request: |
+          {
+            "sessionId": "mi_sesion_001",
+            "fact": "temperature(25)."
+          }
+        response: |
+          {
+            "success": true,
+            "message": "Fact asserted"
+          }
+      
+      - step: 2
+        action: "Consultar archivo .pl"
+        ui: "Input filepath + botón 'Consult'"
+        input: "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/lucas.brain.pl"
+        endpoint: "POST /consult"
+        request: |
+          {
+            "sessionId": "mi_sesion_001",
+            "filePath": "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/lucas.brain.pl"
+          }
+        response: |
+          {
+            "success": true,
+            "message": "File consulted successfully"
+          }
+      
+      - step: 3
+        action: "Verificar conocimiento cargado"
+        method: "Ejecutar query en tab Editor"
+        query: "rol(lucas, X)."
+        expected: "X = scrum_master"
+    
+    postconditions:
+      - Hechos añadidos a Knowledge Base de sesión
+      - Archivo .pl cargado y disponible para queries
+    
+    errors:
+      - condition: "Archivo no encontrado"
+        message: "File not found: {path}"
+        recovery: "Verificar ruta relativa al workspace"
+      
+      - condition: "Sintaxis Prolog inválida"
+        message: "Syntax error in fact"
+        recovery: "Corregir sintaxis (falta punto, paréntesis, etc.)"
+
+  # --------------------------------------------------------------------------
+  # UC-DEV-005: Explorar Templates MCP
+  # --------------------------------------------------------------------------
+  UC-DEV-005:
+    name: Explorar Templates MCP
+    actor: Developer
+    component: McpTemplatesBrowserComponent
+    tab: Templates
+    preconditions:
+      - MCPPrologServer activo
+    trigger: "Usuario navega al tab 'Templates'"
+    flow:
+      - step: 1
+        action: "Cargar catálogo de templates"
+        automatic: true
+        endpoint: "GET /mcp-templates"
+        response: |
+          {
+            "templates": [
+              { "name": "iot-basic", "description": "...", "category": "IoT" },
+              { "name": "brain-template", "description": "...", "category": "Teatro" }
+            ]
+          }
+      
+      - step: 2
+        action: "Filtrar por término"
+        ui: "Searchbox"
+        input: "iot"
+        effect: "Filtrado local por name, description, category"
+      
+      - step: 3
+        action: "Seleccionar template"
+        ui: "Click en card"
+        effect: "Muestra preview con predicados"
+      
+      - step: 4
+        action: "Cargar template"
+        ui: "Botón 'Load'"
+        endpoint: "GET /template/{name}"
+        effect: |
+          - Crea sesión automática si no existe
+          - Carga contenido del template
+          - Emite evento templateLoaded
+    
+    postconditions:
+      - Template cargado en sesión
+      - Predicados disponibles para ejecución
+
+  # --------------------------------------------------------------------------
+  # UC-DEV-006: Guardar Aplicación Personalizada
+  # --------------------------------------------------------------------------
+  UC-DEV-006:
+    name: Guardar Aplicación Personalizada
+    actor: Developer
+    component: UserAppSaveDialogComponent
+    tab: (Modal desde Editor)
+    preconditions:
+      - Contenido Prolog válido escrito
+    trigger: "Click en botón 'Save as App' en Editor"
+    flow:
+      - step: 1
+        action: "Abrir modal"
+        ui: "Dialog con campos"
+        input_visible: "Contenido actual del editor"
+      
+      - step: 2
+        action: "Ingresar nombre de app"
+        ui: "Input con validación"
+        validation: "^[a-zA-Z][a-zA-Z0-9_-]*$"
+        example: "my-iot-rules"
+      
+      - step: 3
+        action: "Preview de contenido"
+        ui: "Primeras 10 líneas del contenido"
+        purpose: "Verificación visual"
+      
+      - step: 4
+        action: "Guardar"
+        endpoint: "POST /user-app"
+        request: |
+          {
+            "appName": "my-iot-rules",
+            "content": "temperature(X) :- sensor(temp, X).\n..."
+          }
+        response: |
+          {
+            "message": "App saved successfully"
+          }
+      
+      - step: 5
+        action: "Auto-cierre"
+        timing: "1.5 segundos después de éxito"
+        effect: "Modal se cierra, evento saved emitido"
+    
+    postconditions:
+      - Aplicación guardada en servidor
+      - Disponible en dropdown de templates
+
+# ============================================================================
+# USE CASES - IoT ENGINEER
+# ============================================================================
+
+  # --------------------------------------------------------------------------
+  # UC-IOT-001: Procesar Telemetría de Sensores
+  # --------------------------------------------------------------------------
+  UC-IOT-001:
+    name: Procesar Telemetría de Sensores
+    actor: IoT Engineer
+    component: TelemetryProcessComponent
+    tab: Telemetry (panel izquierdo)
+    preconditions:
+      - Backend con endpoint de telemetría activo
+      - Reglas IoT cargadas (opcional)
+    trigger: "Usuario navega al tab 'Telemetry'"
+    flow:
+      - step: 1
+        action: "Ver presets de sensores"
+        ui: "Botones con tipos de sensor"
+        presets:
+          - name: temperature
+            type: number
+            unit: "°C"
+            range: "-40 a 60"
+          - name: humidity
+            type: number
+            unit: "%"
+            range: "0 a 100"
+          - name: pressure
+            type: number
+            unit: "hPa"
+            range: "900 a 1100"
+          - name: light
+            type: number
+            unit: "lux"
+            range: "0 a 10000"
+          - name: motion
+            type: boolean
+            unit: ""
+          - name: door
+            type: state
+            values: ["open", "closed"]
+          - name: co2
+            type: number
+            unit: "ppm"
+            range: "0 a 5000"
+          - name: noise
+            type: number
+            unit: "dB"
+            range: "0 a 120"
+      
+      - step: 2
+        action: "Aplicar preset (opcional)"
+        ui: "Click en botón de sensor"
+        effect: "Rellena nombre y valor por defecto"
+      
+      - step: 3
+        action: "Ingresar datos manualmente"
+        ui: "Inputs sensor name y value"
+        input:
+          sensor: "temperature"
+          value: "35"
+      
+      - step: 4
+        action: "Procesar telemetría"
+        ui: "Botón 'Process'"
+        endpoint: "POST /telemetry/process"
+        request: |
+          {
+            "telemetry": {
+              "sensor": "temperature",
+              "value": 35
+            }
+          }
+        response: |
+          {
+            "success": true,
+            "alerts": [
+              { "type": "high_temp", "threshold": 30 }
+            ],
+            "facts_added": ["temperature(35)"]
+          }
+      
+      - step: 5
+        action: "Ver en historial"
+        ui: "Lista de telemetría procesada"
+        columns: ["sensor", "value", "timestamp", "success"]
+    
+    postconditions:
+      - Telemetría procesada por motor Prolog
+      - Alertas generadas según reglas
+      - Historial actualizado
+
+  # --------------------------------------------------------------------------
+  # UC-IOT-002: Monitorear Estado de Telemetría
+  # --------------------------------------------------------------------------
+  UC-IOT-002:
+    name: Monitorear Estado de Telemetría
+    actor: IoT Engineer
+    component: TelemetryMonitorComponent
+    tab: Telemetry (panel derecho)
+    preconditions:
+      - Datos de telemetría procesados previamente
+    trigger: "Vista automática al cargar tab Telemetry"
+    flow:
+      - step: 1
+        action: "Obtener estado actual"
+        automatic: true
+        endpoint: "GET /telemetry/status"
+        response: |
+          [
+            { "sensor": "temperature", "lastValue": 35, "lastUpdate": "..." },
+            { "sensor": "humidity", "lastValue": 60, "lastUpdate": "..." }
+          ]
+      
+      - step: 2
+        action: "Visualizar estado"
+        ui: "Cards o tabla con sensores"
+        data: "Último valor, timestamp, tendencia"
+      
+      - step: 3
+        action: "Refresh manual"
+        ui: "Botón refresh"
+        effect: "Re-fetch de /telemetry/status"
+    
+    postconditions:
+      - Estado actual visible
+      - Datos refrescados
+
+# ============================================================================
+# USE CASES - FLUJO COMPLETO
+# ============================================================================
+
+  # --------------------------------------------------------------------------
+  # UC-FULL-001: Workflow Completo IoT
+  # --------------------------------------------------------------------------
+  UC-FULL-001:
+    name: Workflow Completo IoT
+    actor: IoT Engineer
+    description: "Flujo E2E desde setup hasta alertas"
+    composed_of:
+      - UC-DEV-001: Crear sesión "iot_session"
+      - UC-DEV-002: Escribir regla de alerta
+      - UC-DEV-004: Cargar regla en sesión
+      - UC-IOT-001: Procesar telemetría
+      - UC-IOT-002: Verificar alertas
+    flow:
+      - step: 1
+        useCase: UC-DEV-001
+        action: "Crear sesión 'iot_demo'"
+      
+      - step: 2
+        useCase: UC-DEV-002
+        action: "Escribir regla"
+        input: |
+          high_temp_alert(critical) :- 
+            temperature(X), 
+            X > 35.
+          
+          high_temp_alert(warning) :- 
+            temperature(X), 
+            X > 30, 
+            X =< 35.
+      
+      - step: 3
+        useCase: UC-DEV-004
+        action: "Assert regla en sesión"
+        input: "Consult la regla desde archivo guardado"
+      
+      - step: 4
+        useCase: UC-IOT-001
+        action: "Enviar telemetría"
+        input:
+          sensor: "temperature"
+          value: 38
+      
+      - step: 5
+        useCase: UC-IOT-002
+        action: "Verificar alerta"
+        expected: "Alerta 'critical' visible"
+    
+    duration: "~5 minutos"
+    
+    success_criteria:
+      - Sesión creada correctamente
+      - Regla persistida y cargada
+      - Alerta generada por telemetría
+
+  # --------------------------------------------------------------------------
+  # UC-FULL-002: Workflow Completo Development
+  # --------------------------------------------------------------------------
+  UC-FULL-002:
+    name: Workflow Completo Development
+    actor: Developer
+    description: "Flujo E2E desde exploración hasta aplicación guardada"
+    composed_of:
+      - UC-DEV-005: Explorar templates
+      - UC-DEV-001: Crear sesión
+      - UC-DEV-002: Modificar y ejecutar
+      - UC-DEV-006: Guardar como app
+    flow:
+      - step: 1
+        useCase: UC-DEV-005
+        action: "Explorar catálogo de templates"
+        selection: "iot-basic"
+      
+      - step: 2
+        useCase: UC-DEV-001
+        action: "Crear sesión para desarrollo"
+        input: "dev_session_001"
+      
+      - step: 3
+        action: "Cargar template en sesión"
+        endpoint: "GET /template/iot-basic"
+      
+      - step: 4
+        useCase: UC-DEV-002
+        action: "Modificar reglas del template"
+        additions: "Agregar lógica custom"
+      
+      - step: 5
+        action: "Probar queries"
+        tests:
+          - "temperature(25), alert(X)."
+          - "humidity(80), humid(X)."
+      
+      - step: 6
+        useCase: UC-DEV-006
+        action: "Guardar como nueva app"
+        name: "my-iot-app-v2"
+    
+    duration: "~10 minutos"
+
+# ============================================================================
+# COMPONENTES NO CUBIERTOS EN SPECS ANTERIORES
+# ============================================================================
+
+x-gap-analysis:
+  description: |
+    Análisis de componentes UI que NO estaban cubiertos en las specs anteriores:
+    
+    | Componente | Spec Anterior | Esta Spec |
+    |------------|---------------|-----------|
+    | SessionManagerComponent | Parcial (MCP tools) | ✅ UC-DEV-001 |
+    | RuleEditorComponent | No | ✅ UC-DEV-002 |
+    | RuleListComponent | No | ✅ UC-DEV-003 |
+    | KnowledgeBaseComponent | Parcial | ✅ UC-DEV-004 |
+    | McpTemplatesBrowserComponent | Parcial | ✅ UC-DEV-005 |
+    | UserAppSaveDialogComponent | No | ✅ UC-DEV-006 |
+    | TelemetryProcessComponent | No | ✅ UC-IOT-001 |
+    | TelemetryMonitorComponent | No | ✅ UC-IOT-002 |
+    | BrainEditorComponent | usecases-dramaturgo | N/A |
+    | DashboardComponent | Empty (placeholder) | N/A |
+    
+    ## Specs Anteriores Cubren:
+    
+    - **mcpspec.yaml**: Tools MCP (invocación desde Copilot/agentes)
+    - **usecases-ox-bridger.yaml**: Setup del stack (agentes Ox)
+    - **usecases-dramaturgo.yaml**: Escritura de obras (dramaturgo)
+    - **usecases-agente-personaje.yaml**: Runtime de personajes (agentes IA)
+    
+    ## Esta Spec Cubre:
+    
+    - **usecases-usuario-final.yaml**: Interacción directa con UI (humanos)
+
+# ============================================================================
+# ENDPOINTS CUBIERTOS
+# ============================================================================
+
+x-endpoint-coverage:
+  
+  by_component:
+    SessionManagerComponent:
+      - method: GET
+        path: /sessions
+        operation: listSessions
+      - method: POST
+        path: /sessions
+        operation: createSession
+      - method: DELETE
+        path: /sessions/{id}
+        operation: destroySession
+    
+    RuleEditorComponent:
+      - method: POST
+        path: /rules
+        operation: saveRule
+      - method: POST
+        path: /run-rule
+        operation: runRule
+      - method: GET
+        path: /sdk-templates
+        operation: getSdkTemplates
+      - method: GET
+        path: /template/{name}
+        operation: getTemplateContent
+    
+    RuleListComponent:
+      - method: GET
+        path: /rules/{app}
+        operation: getRulesByApp
+      - method: DELETE
+        path: /rules/{id}
+        operation: deleteRule
+    
+    KnowledgeBaseComponent:
+      - method: POST
+        path: /assert
+        operation: assertFact
+      - method: POST
+        path: /consult
+        operation: consultFile
+    
+    McpTemplatesBrowserComponent:
+      - method: GET
+        path: /mcp-templates
+        operation: getMcpTemplates
+    
+    TelemetryProcessComponent:
+      - method: POST
+        path: /telemetry/process
+        operation: processTelemetry
+    
+    TelemetryMonitorComponent:
+      - method: GET
+        path: /telemetry/status
+        operation: getTelemetryStatus
+    
+    UserAppSaveDialogComponent:
+      - method: POST
+        path: /user-app
+        operation: saveUserApp
+
+  total:
+    endpoints: 14
+    covered: 14
+    percentage: 100%

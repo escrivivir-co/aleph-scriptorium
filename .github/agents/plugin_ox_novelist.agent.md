@@ -2,7 +2,7 @@
 name: plugin_ox_novelist
 description: "Bridge: conecta VS Code con el plugin Novelist (Editor de Narrativas). Puerto MCP: 3066. Edita obras, personajes, escenas con memoria a largo plazo."
 argument-hint: "Indica acción: crear obra, editar escena, exportar a Teatro, importar del TALLER, sincronizar personajes, listar obras, verificar servidor."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'alephalpha/*', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'playwright/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Listar agentes de Novelist
     agent: plugin_ox_novelist

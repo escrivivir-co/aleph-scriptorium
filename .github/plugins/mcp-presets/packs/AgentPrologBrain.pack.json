@@ -2,8 +2,8 @@
   "$schema": "../schemas/pack.schema.json",
   "id": "AgentPrologBrain",
   "name": "Prolog Brain Pack",
-  "version": "1.0.0",
-  "description": "Pack para agentes que razonan con lógica Prolog. Habilita consultas, hechos y reglas declarativas.",
+  "version": "3.0.0",
+  "description": "Pack completo para agentes con razonamiento Prolog. Incluye 12 tools, 6 resources y 8 prompts para workflows E2E.",
   "author": "Aleph Scriptorium",
   "license": "AIPL-1.0",
   
@@ -81,6 +81,50 @@
     {
       "name": "prolog_get_templates",
       "description": "Obtener catálogo de templates Prolog disponibles"
+    },
+    {
+      "name": "prolog_load_rules_from_db",
+      "description": "Cargar reglas persistidas de SQLite a la KB de sesión",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sessionId": { "type": "string", "description": "Sesión destino" },
+          "app": { "type": "string", "description": "Filtrar por app (opcional)" }
+        },
+        "required": ["sessionId"]
+      }
+    },
+    {
+      "name": "prolog_save_rule_to_db",
+      "description": "Persistir una regla Prolog en SQLite",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string", "description": "Nombre de la regla" },
+          "content": { "type": "string", "description": "Contenido Prolog" },
+          "app": { "type": "string", "description": "Aplicación (opcional)" }
+        },
+        "required": ["name", "content"]
+      }
+    },
+    {
+      "name": "prolog_list_sdk_templates",
+      "description": "Listar templates SDK disponibles en backend"
+    },
+    {
+      "name": "prolog_get_sdk_template_content",
+      "description": "Obtener contenido de un template SDK específico",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "templateName": { "type": "string", "description": "Nombre del template" }
+        },
+        "required": ["templateName"]
+      }
+    },
+    {
+      "name": "prolog_get_telemetry_status",
+      "description": "Obtener estado de telemetría/sensores del backend"
     }
   ],
   
@@ -102,37 +146,118 @@
       "name": "prolog-active-sessions",
       "description": "Lista de sesiones Prolog activas",
       "mimeType": "application/json"
+    },
+    {
+      "uri": "prolog://rules/catalog",
+      "name": "prolog-rules-catalog",
+      "description": "Catálogo de reglas Prolog persistidas en SQLite",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "prolog://sdk/templates",
+      "name": "prolog-sdk-templates",
+      "description": "Templates SDK disponibles en backend storage",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "prolog://telemetry/current",
+      "name": "prolog-telemetry",
+      "description": "Estado actual de telemetría IoT/sensores",
+      "mimeType": "application/json"
     }
   ],
   
   "prompts": [
     {
-      "name": "razonamiento_sbr",
-      "description": "Ejecutar razonamiento basado en reglas Prolog",
-      "template": "Dado el contexto {contexto}, usa las reglas Prolog cargadas para inferir {objetivo}. Utiliza prolog_query con la sesión activa.",
-      "arguments": ["contexto", "objetivo"]
+      "name": "session_lifecycle",
+      "description": "Gestionar ciclo de vida de sesión Prolog (crear, listar, destruir)",
+      "arguments": [
+        { "name": "action", "description": "Acción: create, list, destroy", "required": true },
+        { "name": "sessionId", "description": "ID de sesión (para create/destroy)", "required": false },
+        { "name": "obraId", "description": "ID de obra Teatro (para create)", "required": false }
+      ]
     },
     {
-      "name": "validar_coherencia",
-      "description": "Validar coherencia doctrinal con reglas Prolog",
-      "template": "Verifica si {afirmacion} es consistente con la base de conocimiento usando prolog_query(?- valido({afirmacion})).",
-      "arguments": ["afirmacion"]
+      "name": "load_knowledge_base",
+      "description": "Cargar conocimiento Prolog desde archivo o base de datos",
+      "arguments": [
+        { "name": "source", "description": "Fuente: file o database", "required": true },
+        { "name": "sessionId", "description": "ID de sesión destino", "required": true },
+        { "name": "path", "description": "Ruta archivo (si source=file)", "required": false },
+        { "name": "app", "description": "Filtro app (si source=database)", "required": false }
+      ]
+    },
+    {
+      "name": "interactive_query",
+      "description": "Ejecutar consultas Prolog interactivas con contexto de sesión",
+      "arguments": [
+        { "name": "sessionId", "description": "ID de sesión activa", "required": true },
+        { "name": "queryType", "description": "Tipo: simple, findall, aggregate", "required": false }
+      ]
+    },
+    {
+      "name": "persist_rule",
+      "description": "Guardar reglas Prolog en sesión o base de datos",
+      "arguments": [
+        { "name": "target", "description": "Destino: session o database", "required": true },
+        { "name": "sessionId", "description": "ID sesión (si target=session)", "required": false },
+        { "name": "ruleName", "description": "Nombre regla (si target=database)", "required": false }
+      ]
+    },
+    {
+      "name": "use_sdk_template",
+      "description": "Explorar y aplicar templates SDK de Prolog",
+      "arguments": [
+        { "name": "action", "description": "Acción: list o get", "required": true },
+        { "name": "templateName", "description": "Nombre template (para get)", "required": false }
+      ]
+    },
+    {
+      "name": "telemetry_check",
+      "description": "Verificar estado de telemetría IoT/sensores",
+      "arguments": []
+    },
+    {
+      "name": "razonamiento_sbr",
+      "description": "Ejecutar razonamiento basado en sensores (SBR) con Prolog",
+      "arguments": [
+        { "name": "sessionId", "description": "Sesión con reglas SBR cargadas", "required": true },
+        { "name": "objetivo", "description": "Objetivo del razonamiento", "required": true }
+      ]
+    },
+    {
+      "name": "teatro_agent_session",
+      "description": "Workflow E2E completo para agente Teatro con razonamiento Prolog",
+      "arguments": [
+        { "name": "obraId", "description": "ID de la obra Teatro", "required": true },
+        { "name": "agentName", "description": "Nombre del agente (e.g., 'lucas')", "required": true }
+      ]
     }
   ],
   
   "contextTriggers": {
-    "keywords": ["prolog", "regla", "inferencia", "lógica", "query", "sbr"],
-    "filePatterns": ["*.pl", "*prolog*", "*brain*"],
-    "domains": ["teatro", "arg", "razonamiento"]
+    "keywords": ["prolog", "regla", "inferencia", "lógica", "query", "sbr", "razonamiento", "sesión"],
+    "filePatterns": ["*.pl", "*prolog*", "*brain*", "*rules*"],
+    "domains": ["teatro", "arg", "razonamiento", "iot", "sbr"]
   },
   
   "examples": {
     "sessionWorkflow": [
       "1. prolog_create_session({sessionId: 'lucas-itaca', obraId: 'itaca-digital'})",
       "2. prolog_consult_file({sessionId: 'lucas-itaca', filePath: 'lucas-prolog.brain.pl'})",
-      "3. prolog_query({sessionId: 'lucas-itaca', query: 'coherente_documentacion(X).'})",
-      "4. prolog_destroy_session({sessionId: 'lucas-itaca'})"
+      "3. prolog_load_rules_from_db({sessionId: 'lucas-itaca', app: 'itaca-digital'})",
+      "4. prolog_query({sessionId: 'lucas-itaca', query: 'decidir_accion(lucas, Accion).'})",
+      "5. prolog_destroy_session({sessionId: 'lucas-itaca'})"
     ],
-    "lucastIneractiveSession": "Ejemplo con Lucas como personaje de Ítaca Digital que valida coherencia documental"
+    "promptWorkflow": [
+      "1. Prompt: teatro_agent_session con obraId='itaca-digital', agentName='lucas'",
+      "2. Seguir instrucciones generadas por el prompt",
+      "3. El prompt orquesta todas las tools necesarias"
+    ],
+    "sbrWorkflow": [
+      "1. prolog_get_telemetry_status() - obtener datos de sensores",
+      "2. prolog_load_rules_from_db({sessionId: 'sbr-session', app: 'sbr'})",
+      "3. Prompt: razonamiento_sbr con objetivo específico"
+    ]
   }
 }

@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aleph-scriptorium.github.io/schemas/obra-pack.schema.json",
+  "title": "ObraPack",
+  "description": "Pack de configuración para obras del Teatro con integración Prolog",
+  "type": "object",
+  "required": ["id", "version", "obraId", "personajes"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^Obra[A-Z][a-zA-Z0-9]*$",
+      "description": "Identificador único del pack (ej: ObraItacaDigital)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versión semántica del pack"
+    },
+    "obraId": {
+      "type": "string",
+      "description": "Slug de la obra en obras.json (ej: itaca_digital)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Título humano de la obra"
+    },
+    "description": {
+      "type": "string",
+      "description": "Descripción breve del pack"
+    },
+    "mcpServer": {
+      "type": "string",
+      "default": "prolog-mcp-server",
+      "description": "Servidor MCP que ejecuta la lógica Prolog"
+    },
+    "mcpPort": {
+      "type": "integer",
+      "default": 3006,
+      "description": "Puerto del servidor MCP"
+    },
+    "personajes": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Personajes con cerebro Prolog en esta obra",
+      "items": {
+        "type": "object",
+        "required": ["name", "brainFile"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nombre del personaje (ej: lucas)"
+          },
+          "brainFile": {
+            "type": "string",
+            "pattern": "\\.brain\\.pl$",
+            "description": "Ruta al archivo .brain.pl relativa al pack"
+          },
+          "agentRef": {
+            "type": "string",
+            "description": "Referencia al agente en Scriptorium (ej: @indice)"
+          },
+          "rol": {
+            "type": "string",
+            "description": "Rol del personaje en la obra"
+          },
+          "estadioInicial": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12,
+            "description": "Estadio del monomito donde aparece"
+          }
+        }
+      }
+    },
+    "sharedRules": {
+      "type": "string",
+      "description": "Ruta a archivo .pl con reglas compartidas por todos los personajes"
+    },
+    "contextTriggers": {
+      "type": "object",
+      "description": "Mapeo de eventos de obra a cambios de contexto Prolog",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "description": "Otros packs requeridos",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hooks": {
+      "type": "object",
+      "description": "Predicados Prolog a invocar en eventos",
+      "properties": {
+        "onObraStart": { "type": "string" },
+        "onEstadioChange": { "type": "string" },
+        "onTurno": { "type": "string" },
+        "onObraEnd": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-01-02  
-> **Estado**: 🌿 Actualizado (SCRIPT-2.3.0 Prolog MCP)
+> **Última actualización**: 2026-01-04  
+> **Estado**: 🌿 Actualizado (COWORK-1.0.0 indexado)
 
 ---
 
@@ -117,6 +117,45 @@
 | Fotos estado | `ARCHIVO/FOTOS_ESTADO/` | Capturas de métricas |
 
 → Ver [scrum-protocol.instructions.md](.github/plugins/scrum/instructions/scrum-protocol.instructions.md)
+
+### 2.6. Sistema de Cotrabajo Multi-Agente (COWORK-1.0.0)
+
+> **Feature**: Sesiones colaborativas asíncronas entre múltiples agentes
+
+**Arquitectura**:
+
+```
+SESIONES_COTRABAJO/
+└── {YYYY-MM-DD}_{tema}/
+    ├── 00_SESION.md       # Metadatos + participantes
+    ├── 01_TABLERO.md      # Índice DRY de turnos
+    ├── 02_ACTAS/          # Contenido por turno
+    │   └── T00X_{agente}_{tema}.md
+    ├── 03_REFERENCIAS/    # Material de contexto
+    └── 04_PROTOCOLO.md    # Copia local del protocolo
+```
+
+**Principio**: El chat NO es el medio de trabajo (solo estados), los ficheros SÍ (todo queda registrado).
+
+**Flujo de Turno**:
+
+1. Verificar turno en `01_TABLERO.md`
+2. Estado: 📖 READING → leer actas relevantes
+3. Estado: 🤔 THINKING → procesar
+4. Estado: ✍️ WRITING → crear acta en `02_ACTAS/`
+5. Actualizar `01_TABLERO.md` con resumen DRY
+6. Estado: ✅ DONE → pasar turno
+
+**Archivos clave**:
+
+| Archivo | Propósito |
+|---------|----------|
+| `cotrabajo.instructions.md` | Protocolo completo |
+| `iniciar-cotrabajo.prompt.md` | Crear nueva sesión |
+
+**Índice de sesiones**: [SESIONES_COTRABAJO/INDEX.md](../DISCO/SESIONES_COTRABAJO/INDEX.md)
+
+→ Ver [cotrabajo.instructions.md](.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md)
 
 ### 2.3. Anatomía de un Agente
 
@@ -241,7 +280,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 
 ## 4. Sistema de Submódulos
 
-### 4.1. Submódulos Instalados (15)
+### 4.1. Submódulos Instalados (17)
 
 | Submódulo | Rama | Plugin asociado | Runtime |
 |-----------|------|-----------------|---------|
@@ -492,7 +531,7 @@ bundle exec jekyll serve --livereload
 |-----------|--------|----------|
 | alephscript-n8n-like-editor | 4200 | Angular dev |
 | alephscript-n8n-like-editor | 4000 | SSR |
-| alephscript-typed-prompting | 5000 | Vite editor |
+| alephscript-typed-prompting | 3019 | Vite editor |
 | mcp-novelist | 3066 | MCP server |
 | node-red-alephscript-sdk | 1880 | Node-RED |
 | alephscript-network-sdk | — | Docker compose |
@@ -506,7 +545,60 @@ bundle exec jekyll serve --livereload
 | devops-mcp-server | 3003 | DEFAULT_DEVOPS_MCP_SERVER_CONFIG |
 | state-machine-server | 3004 | DEFAULT_STATE_MACHINE_MCP_SERVER_CONFIG |
 | prolog-mcp-server | 3006 | DEFAULT_PROLOG_MCP_SERVER_CONFIG |
+| typed-prompt-mcp-server | 3020 | DEFAULT_TYPED_PROMPT_MCP_SERVER_CONFIG |
 | launcher-server | 3050 | DEFAULT_LAUNCHER_MCP_SERVER_CONFIG |
+
+### 9.1.1. Stack MCP TypedPrompt (TYPED-MCP-1.0.0)
+
+> **Feature**: Validación de schemas NL↔JSON
+
+| Componente | Puerto | Tipo | Descripción |
+|------------|--------|------|-------------|
+| TypedPromptsEditor | 3019 | UI (Vite) | Editor visual de ontologías |
+| MCPTypedPromptServer | 3020 | MCP Server | 7 tools + 3 prompts de validación |
+
+**Arquitectura**:
+```
+Usuario → TypedPromptsEditor (3019) → HTTP → MCPTypedPromptServer (3020)
+                                              ↓
+                                    Schemas en ARCHIVO/PLUGINS/TYPED_PROMPTING/
+```
+
+**Arranque**:
+```bash
+# UI (3019)
+cd TypedPromptsEditor && npm run dev
+
+# MCP Server (3020)
+cd MCPGallery/mcp-mesh-sdk && npm run start:typed-prompt
+```
+
+### 9.1.2. Stack MCP Prolog (SCRIPT-2.3.0)
+
+> **Feature**: Lógica declarativa + Inteligencias Situadas
+
+| Componente | Puerto | Tipo | Descripción |
+|------------|--------|------|-------------|
+| PrologEditor Frontend | 5001 | UI (Angular) | Editor visual con tabs: Query, Facts, Brain |
+| PrologEditor Backend | 8000 | REST API (Express) | Proxy a SWI-Prolog |
+| MCPPrologServer | 3006 | MCP Server | 12 tools + 6 resources + 8 prompts |
+
+**Arquitectura**:
+```
+Usuario → PrologEditor (5001) → REST → Backend (8000) → SWI-Prolog
+                                 ↓
+            MCPPrologServer (3006) → Sesiones aisladas por obra
+```
+
+**Arranque** (via tasks.json):
+```bash
+# Full stack
+npm run start:launcher  # 3050 + 3006
+npm run start:backend   # 8000
+npm run start:frontend  # 5001
+```
+
+**Prerequisitos**: SWI-Prolog en PATH (`swipl --version`)
 
 ### 9.2. MCP Packs (Packs Tipados)
 

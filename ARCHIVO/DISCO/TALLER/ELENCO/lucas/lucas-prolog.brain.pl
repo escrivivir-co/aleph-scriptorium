@@ -32,7 +32,16 @@
     
     % Mentor
     consejo/2,
-    estadio_actual/2
+    estadio_actual/2,
+    
+    % Sensor/Actuador (DRAMATURGIA-MAQUINA-1.0.0 S02)
+    recibir_senal/2,
+    procesar_cambio/2,
+    notificar/2,
+    verificar_coherencia_antes/0,
+    estado_actual/1,
+    suscriptor/1,
+    demo_sensor_actuador/0
 ]).
 
 %% =============================================================================
@@ -160,6 +169,131 @@ reporte_salud(Reporte) :-
         ;  Reporte = 'WARN: Hay duplicados o índices vacíos').
 
 %% =============================================================================
+%% CICLO SENSOR/ACTUADOR — DRAMATURGIA-MAQUINA-1.0.0 (S02)
+%% =============================================================================
+%%
+%% Lucas opera como ACTUADOR del modelo Scriptorium-como-Máquina:
+%%   - Recibe señales de sensores (@ox, otros agentes)
+%%   - Procesa cambios de estado con verificación DRY
+%%   - Notifica a personajes suscritos (eferencia)
+%%
+
+%% Exportar nuevos predicados
+:- module(lucas_brain, [
+    % ... (predicados existentes) ...
+    % Sensor/Actuador (S02)
+    recibir_senal/2,
+    procesar_cambio/2,
+    notificar/2,
+    verificar_coherencia_antes/0,
+    estado_actual/1,
+    suscriptor/1,
+    demo_sensor_actuador/0
+]).
+
+%% Estado dinámico
+:- dynamic estado_actual/1.
+:- dynamic sensor_log/3.
+:- dynamic notificacion_log/3.
+
+%% Estado inicial
+estado_actual(operativo).
+
+%% Suscriptores por defecto (personajes que reciben notificaciones)
+suscriptor(penelope).
+suscriptor(orfeo).
+suscriptor(viajero).
+
+%% -----------------------------------------------------------------------------
+%% T02.1: recibir_senal/2 — Aferencia generalizada
+%% -----------------------------------------------------------------------------
+%% recibir_senal(+Fuente, +NuevoEstado)
+%% Recibe señal de cualquier sensor (no solo @ox) y registra en log.
+
+recibir_senal(Fuente, NuevoEstado) :-
+    get_time(Timestamp),
+    assertz(sensor_log(Fuente, NuevoEstado, Timestamp)),
+    format('[SENSOR] ~w reporta: ~w~n', [Fuente, NuevoEstado]),
+    procesar_cambio(estado_actual, NuevoEstado).
+
+%% -----------------------------------------------------------------------------
+%% T02.2: procesar_cambio/2 — Cerebro SBR con verificación DRY
+%% -----------------------------------------------------------------------------
+%% procesar_cambio(+EstadoAnterior, +NuevoEstado)
+%% Procesa cambio de estado solo si pasa verificación de coherencia.
+
+procesar_cambio(_, NuevoEstado) :-
+    estado_actual(E),
+    E == NuevoEstado,
+    !,
+    format('[CEREBRO] Estado sin cambios: ~w~n', [E]).
+
+procesar_cambio(_, NuevoEstado) :-
+    verificar_coherencia_antes,
+    !,
+    retractall(estado_actual(_)),
+    assertz(estado_actual(NuevoEstado)),
+    format('[CEREBRO] Estado cambiado a: ~w~n', [NuevoEstado]),
+    notificar_a_todos(NuevoEstado).
+
+procesar_cambio(_, NuevoEstado) :-
+    format('[CEREBRO] BLOQUEADO: Coherencia falló. No se aplica: ~w~n', [NuevoEstado]),
+    fail.
+
+%% Verificar coherencia DRY antes de cualquier cambio
+verificar_coherencia_antes :-
+    sistema_indices_sano,
+    format('[DRY-CHECK] Coherencia OK~n', []).
+
+verificar_coherencia_antes :-
+    \+ sistema_indices_sano,
+    format('[DRY-CHECK] WARN: Índices con problemas~n', []),
+    fail.
+
+%% -----------------------------------------------------------------------------
+%% T02.3: notificar/2 — Eferencia broadcast
+%% -----------------------------------------------------------------------------
+%% notificar(+Destinatario, +Mensaje)
+%% Notifica a un personaje específico y registra en log.
+
+notificar(Destinatario, Mensaje) :-
+    get_time(Timestamp),
+    assertz(notificacion_log(Destinatario, Mensaje, Timestamp)),
+    format('[LUCAS→~w] ~w~n', [Destinatario, Mensaje]).
+
+%% Notificar a todos los suscriptores
+notificar_a_todos(Estado) :-
+    format(atom(Mensaje), 'Estado actualizado: ~w', [Estado]),
+    forall(suscriptor(P), notificar(P, Mensaje)).
+
+%% -----------------------------------------------------------------------------
+%% DEMO: demo_sensor_actuador/0
+%% -----------------------------------------------------------------------------
+%% Ejecuta ciclo completo para verificar implementación.
+
+demo_sensor_actuador :-
+    format('~n=== DEMO SENSOR/ACTUADOR ===~n', []),
+    format('1. Estado inicial...~n', []),
+    estado_actual(E0),
+    format('   Estado: ~w~n', [E0]),
+    
+    format('2. Simulando señal de @ox...~n', []),
+    recibir_senal(ox, parado),
+    
+    format('3. Verificando nuevo estado...~n', []),
+    estado_actual(E1),
+    format('   Estado: ~w~n', [E1]),
+    
+    format('4. Restaurando estado operativo...~n', []),
+    recibir_senal(ox, operativo),
+    
+    format('5. Estado final...~n', []),
+    estado_actual(E2),
+    format('   Estado: ~w~n', [E2]),
+    
+    format('=== DEMO COMPLETADA ===~n~n', []).
+
+%% =============================================================================
 %% EJEMPLOS DE QUERIES
 %% =============================================================================
 %%
@@ -180,3 +314,15 @@ reporte_salud(Reporte) :-
 %%
 %% ?- reporte_salud(R).
 %% R = 'OK: Sistema de índices coherente'.
+%%
+%% ?- demo_sensor_actuador.
+%% === DEMO SENSOR/ACTUADOR ===
+%% 1. Estado inicial...
+%%    Estado: operativo
+%% 2. Simulando señal de @ox...
+%% [SENSOR] ox reporta: parado
+%% [DRY-CHECK] Coherencia OK
+%% [CEREBRO] Estado cambiado a: parado
+%% [LUCAS→penelope] Estado actualizado: parado
+%% ...
+%% === DEMO COMPLETADA ===

@@ -2,7 +2,7 @@
 name: Ox
 description: "Oráculo del Scriptorium: conoce y gestiona el índice de todos los agentes. Genera documentación técnica y de usuario. Gobierna auto-reflexión."
 argument-hint: "Pregunta sobre agentes, solicita documentación (README, manual), pide diagnóstico del sistema, o solicita auto-reflexión."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'playwright/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'launcher-server/*', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'devops-mcp-server/*', 'launcher-server/*', 'todo']
 handoffs:
   - label: Generar sección de agentes para README
     agent: Ox
@@ -204,6 +204,71 @@ Ox **gobierna** el protocolo de auto-reflexión junto con @indice y @scrum.
 | healthScore <60 | Identificar antipatrones |
 | Bridge invocado >5x sin resolver | Terapia de bridge |
 | Antes de commit importante | Capturar snapshot |
+
+---
+
+## Lecciones Operativas (Cotrabajo 2026-01-03)
+
+> Aprendizajes internalizados de la sesión COWORK-1.0.0.
+
+### 1. Logs Copilot son Per-Window
+
+| Característica | Scope |
+|----------------|-------|
+| Logs de requests | ❌ Solo ventana actual |
+| Sesiones | ❌ Solo ventana actual |
+| **Snapshots** | ✅ **Compartidos** (filesystem) |
+
+**Implicación**: Para coordinar entre agentes en ventanas diferentes, usar **snapshots** como memoria compartida:
+
+```
+Ventana A → capture_snapshot() → ARCHIVO/DISCO/COPILOT_SNAPSHOTS/
+                                           ↓
+Ventana B ← list_snapshots() ← ─────────────┘
+```
+
+### 2. Scripts Externos > Bash Inline
+
+| Contexto | Recomendación |
+|----------|---------------|
+| Windows + Git Bash | Scripts `.sh` externos |
+| Comandos complejos | Evitar bash inline en tasks |
+| Health checks | `scripts/apb-health-check.sh` |
+
+**Razón**: Los comandos bash largos en `args` de tasks.json fallan en Windows con exit code 2.
+
+### 3. Tasks Compuestas No Confiables
+
+| Problema | Workaround |
+|----------|------------|
+| `dependsOrder: sequence` | Ejecutar tasks individuales |
+| Servicios `isBackground: true` | No esperan correctamente |
+
+**Documentar** en tasks.json las limitaciones conocidas.
+
+### 4. Protocolo de Cotrabajo como Contención
+
+El protocolo multi-agente funciona como **sistema de contención**:
+- Previene acumulación de errores no documentados
+- Las intervenciones del usuario producen adaptación gradual
+- La resistencia inicial es natural pero contraproducente
+
+### 5. Patrón de Activación Lazy (MCP Tools)
+
+> **Origen**: Corrección de falso positivo T010 (2026-01-04)
+
+Las herramientas MCP en VS Code usan **activación lazy** por familias. **NO reportar gaps** antes de verificar si existe un `activate_*` correspondiente.
+
+| Familia | Comando de activación | Tools desbloqueados |
+|---------|----------------------|---------------------|
+| Server Management | `activate_mcp_server_management_tools` | launch/stop/restart servers |
+| Browser Interaction | `activate_browser_interaction_tools` | Playwright clicks, navigate |
+| Form & File | `activate_form_and_file_management_tools` | Playwright forms, uploads |
+| Page Capture | `activate_page_capture_tools` | Screenshots, accessibility |
+| Prolog Sessions | `activate_prolog_session_management_tools` | create/query/destroy sessions |
+| Schema Management | `activate_schema_management_tools` | TypedPrompt schemas |
+
+**Antes de decir "herramienta no disponible"**: Buscar en el contexto si hay un `activate_*` que la incluya.
 
 ### Antipatrones que Detecta
 
