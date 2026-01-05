@@ -251,6 +251,10 @@ permalink: /demo/
       <span class="dot"></span>
       Blockly :4200
     </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      Inspector :6274
+    </span>
   </div>
   
   <div class="iframe-grid">
@@ -383,6 +387,29 @@ permalink: /demo/
           <p>Ejecuta: <code>npx @asyncapi/cli start studio</code></p>
         </div>
         <iframe src="http://localhost:3022" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- ═══════════════ MCP INSPECTOR ═══════════════ -->
+    
+    <!-- MCP Inspector -->
+    <div class="iframe-card featured">
+      <div class="iframe-header">
+        <span class="iframe-title">🔍 MCP Inspector</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:6274" target="_blank">↗ Abrir</a>
+          <a href="http://localhost:6274?transport=sse&serverUrl=http://localhost:3050/sse" target="_blank">→ Launcher</a>
+          <a href="http://localhost:6274?transport=sse&serverUrl=http://localhost:3006/sse" target="_blank">→ Prolog</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="inspector-placeholder">
+          <span class="icon">🔍</span>
+          <p>MCP Inspector</p>
+          <p><code>localhost:6274</code></p>
+          <p>Ejecuta: Task <code>INS: Start [Inspector]</code></p>
+        </div>
+        <iframe src="http://localhost:6274" loading="lazy"></iframe>
       </div>
     </div>
     
@@ -558,6 +585,8 @@ const servers = [
   // API Specs (OpenAsyncAPI Editor)
   { id: 'swagger-placeholder', url: 'http://localhost:3021', iframe: true },
   { id: 'asyncapi-placeholder', url: 'http://localhost:3022', iframe: true },
+  // MCP Inspector
+  { id: 'inspector-placeholder', url: 'http://localhost:6274', iframe: true },
   // Wiring Editors (Node-RED)
   { id: 'nodered-placeholder', url: 'http://localhost:1880', iframe: true },
   { id: 'nodered-ui-placeholder', url: 'http://localhost:1880/ui', iframe: true }
