@@ -341,6 +341,7 @@
     // NRE: Node-RED Editor (WiringEditor + WiringApp)
     // Stack: Node-RED Editor (1880) + Dashboard UI (1880/ui) + GamifyUI (3088)
     // Submódulos: WiringEditor, WiringAppHypergraphEditor
+    // C:\Users\aleph\.node-red\settings.js <--- Node-RED user settings  Activate projects!!!!
     // ─────────────────────────────────────────────────────────────────────────
     {
       "label": "NRE: Start [Editor]",
