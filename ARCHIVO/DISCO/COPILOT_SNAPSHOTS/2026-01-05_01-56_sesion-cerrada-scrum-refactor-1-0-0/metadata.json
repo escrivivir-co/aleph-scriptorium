@@ -1,0 +1,13 @@
+{
+  "id": "2026-01-05_01-56_sesion-cerrada-scrum-refactor-1-0-0",
+  "name": "sesion-cerrada-scrum-refactor-1.0.0",
+  "description": "Sesión de cotrabajo 'consenso-agile-scriptorium' cerrada. Epic SCRUM-REFACTOR-1.0.0 (46 pts) aprobada. Modelo Generativo + Lucas DRY. 4 turnos, BREAKING CHANGE.",
+  "createdAt": "2026-01-05T00:56:20.712Z",
+  "requestCount": 1,
+  "models": [],
+  "linkedBacklog": "SCRUM-REFACTOR-1.0.0",
+  "totalTokens": {
+    "prompt": 0,
+    "completion": 0
+  }
+}

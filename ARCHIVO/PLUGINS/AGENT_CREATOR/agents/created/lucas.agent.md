@@ -1,7 +1,7 @@
 ---
 name: Lucas
-description: "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY. Razonamiento lógico con Prolog. Carga plantillas AgentLoreSDK bajo demanda."
-argument-hint: "Consulta sobre dónde documentar, valida ediciones de índice, prepara commits conformes, ejecuta queries Prolog de coherencia, carga plantillas de documentación/scrum."
+description: "Scrum Master del Índice: mantiene coherencia entre visión funcional y técnica del sistema. Oráculo de commits y validador DRY. Carga plantillas AgentLoreSDK bajo demanda vía herramientas VS Code. Razonamiento lógico con Prolog (opcional)."
+argument-hint: "Consulta sobre dónde documentar, valida ediciones de índice, prepara commits conformes, carga plantillas de documentación/scrum, ejecuta queries Prolog avanzadas (opcional)."
 tools: ['vscode', 'read', 'edit', 'search', 'agent', 'mcp_prolog-mcp-server/*']
 handoffs:
   - label: Validar edición de índice
@@ -28,33 +28,25 @@ handoffs:
     agent: Lucas
     prompt: "Busca información en ARCHIVO/DEVOPS/Tecnico.md para responder consultas del equipo Scrum."
     send: false
+  - label: "[Templates] Cargar plantilla por ID"
+    agent: Lucas
+    prompt: "Lee templates-index.json, busca plantilla por ID, calcula ruta en AgentLoreSDK/cli-tool/components/{basePath}/{file}, carga contenido con read_file()."
+    send: false
+  - label: "[Templates] Recomendar por contexto"
+    agent: Lucas
+    prompt: "Consulta templates-index.json y recomienda plantillas relevantes según el contexto (scrum_daily, planning, documentation)."
+    send: false
   - label: "[Prolog] Query de coherencia"
     agent: Lucas
-    prompt: "Ejecuta prolog_query con 'documentacion_coherente(X)' para verificar estado DRY del sistema."
+    prompt: "OPCIONAL: Ejecuta prolog_query con 'documentacion_coherente(X)' para razonamiento lógico sobre coherencia DRY."
     send: false
   - label: "[Prolog] Consejo de navegación"
     agent: Lucas
-    prompt: "Ejecuta prolog_query con 'consejo(Situacion, Mensaje)' para obtener guía contextual."
+    prompt: "OPCIONAL: Ejecuta prolog_query con 'consejo(Situacion, Mensaje)' para guía contextual basada en lógica."
     send: false
   - label: "[Prolog] Ubicación canónica"
     agent: Lucas
-    prompt: "Ejecuta prolog_query con 'ubicacion_canonica(Tipo, Donde)' para saber dónde buscar según el tipo de pregunta."
-    send: false
-  - label: "[Templates] Listar por categoría"
-    agent: Lucas
-    prompt: "Ejecuta prolog_query con 'listar_plantillas(Categoria, Lista)' para ver plantillas disponibles (documentation, project-management)."
-    send: false
-  - label: "[Templates] Recomendar para scrum_daily"
-    agent: Lucas
-    prompt: "Ejecuta prolog_query con 'plantilla_recomendada(scrum_daily, P)' para obtener plantillas de daily standup."
-    send: false
-  - label: "[Templates] Recomendar para planning"
-    agent: Lucas
-    prompt: "Ejecuta prolog_query con 'plantilla_recomendada(planning, P)' para obtener plantillas de planificación."
-    send: false
-  - label: "[Templates] Cargar plantilla"
-    agent: Lucas
-    prompt: "Ejecuta prolog_query con 'cargar_plantilla(Id, Ruta)' y luego read_file(Ruta) para obtener el contenido de la plantilla."
+    prompt: "OPCIONAL: Ejecuta prolog_query con 'ubicacion_canonica(Tipo, Donde)' para lógica de navegación avanzada."
     send: false
   - label: Delegar a Aleph
     agent: Aleph

@@ -43,6 +43,7 @@
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
 | ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 | ✅ | AGENT-TEMPLATES-1.0.0 | AgentLoreSDK Templates en Agent Creator (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| 📋 | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
@@ -116,6 +117,7 @@
 | ✅ | 2026-01-04_typed-mcp-test-session | TYPED-MCP-1.0.0 | Tests 83% (5/6 auto), 8 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session/) |
 | 🟢 | 2026-01-05_blueprints-typed-prompt | BLUEPRINTS-TYPED-1.0.0 | En progreso | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 | ✅ | 2026-01-04_agent-creator-claude-templates | AGENT-TEMPLATES-1.0.0 | 8 turnos, protocolo validación inscrito | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| ✅ | 2026-01-05_consenso-agile-scriptorium | SCRUM-REFACTOR-1.0.0 | 4 turnos, Modelo Generativo + Lucas DRY (46 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_consenso-agile-scriptorium/) |
 
 ---
 
@@ -127,7 +129,7 @@
 | Effort completado | ~215 pts |
 | Plugins instalados | 22 |
 | Submódulos integrados | 17 |
-| Sesiones cotrabajo | 7 |
+| Sesiones cotrabajo | 8 |
 
 ---
 
@@ -135,6 +137,8 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-05 | ✅ Cerrar sesión consenso-agile-scriptorium → SCRUM-REFACTOR-1.0.0 (46 pts) | @aleph |
+| 2026-01-05 | ➕ Añadir SCRUM-REFACTOR-1.0.0 (Modelo Generativo + Lucas DRY) ⚠️ BREAKING | @aleph |
 | 2026-01-04 | 🐛 Registrar LAUNCHER-BUG-001 (Process Kill Windows spawn) | @ox |
 | 2026-01-04 | ✅ Cerrar sesión PROLOG-UI-DEMO-1.0.0 (12/12 pasos, 2 bugs) | @scrum |
 | 2026-01-04 | 🐛 Registrar bugs PROLOG-BUG-001/002 para priorizar | @scrum |
