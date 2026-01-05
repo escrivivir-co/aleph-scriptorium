@@ -498,7 +498,7 @@
 
     // ─────────────────────────────────────────────────────────────────────────
     // BLE: Blockly Editor (BlocklyEditor SDK)
-    // Stack: Angular 19 Editor (4200) + Runtime UI (4300)
+    // Stack: Angular 19 Editor (4200) + Runtime UI (5000)
     // Submódulo: BlocklyEditor (blockly-alephscript-sdk)
     // Paquetes: blockly-alephscript-blocks, blockly-gamify-ui, blockly-runtime-gamify-ui
     // ─────────────────────────────────────────────────────────────────────────
@@ -537,7 +537,7 @@
       "label": "BLE: Start [Runtime]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev:runtime"],
+      "args": ["run", "dev:runtime-ui"],
       "options": {
         "cwd": "${workspaceFolder}/BlocklyEditor"
       },
@@ -561,7 +561,7 @@
         "showReuseMessage": false,
         "clear": true
       },
-      "detail": "Blockly Runtime UI - http://localhost:4300"
+      "detail": "Blockly Runtime UI - http://localhost:5000"
     },
 
     {
@@ -621,7 +621,7 @@
       "label": "BLE: Open [Runtime]",
       "type": "shell",
       "command": "bash",
-      "args": ["-c", "open http://localhost:5000 2>/dev/null || xdg-open http://localhost:4300 2>/dev/null || start http://localhost:4300"],
+      "args": ["-c", "open http://localhost:5000 2>/dev/null"],
       "windows": {
         "command": "cmd",
         "args": ["/c", "start", "http://localhost:5000"]
@@ -639,7 +639,7 @@
       "command": "bash",
       "args": [
         "-c",
-        "echo '🔍 Checking Blockly services...' && (curl -s http://localhost:4200 > /dev/null && echo '✅ Blockly Editor: http://localhost:4200' || echo '❌ Blockly Editor: Not running') && (curl -s http://localhost:4300 > /dev/null && echo '✅ Blockly Runtime: http://localhost:4300' || echo '❌ Blockly Runtime: Not running')"
+        "echo '🔍 Checking Blockly services...' && (curl -s http://localhost:4200 > /dev/null && echo '✅ Blockly Editor: http://localhost:4200' || echo '❌ Blockly Editor: Not running') && (curl -s http://localhost:5000 > /dev/null && echo '✅ Blockly Runtime: http://localhost:5000' || echo '❌ Blockly Runtime: Not running')"
       ],
       "windows": {
         "command": "cmd",
