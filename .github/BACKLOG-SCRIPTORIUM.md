@@ -43,7 +43,7 @@
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
 | ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 | ✅ | AGENT-TEMPLATES-1.0.0 | AgentLoreSDK Templates en Agent Creator (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
-| � | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
+| ✅ | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
@@ -137,11 +137,11 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-05 | ✅ Completar SCRUM-REFACTOR-1.0.0 (Plugin Scrum v3.0.0 Modelo Generativo) | @aleph |
 | 2026-01-05 | ✅ Cerrar sesión consenso-agile-scriptorium → SCRUM-REFACTOR-1.0.0 (46 pts) | @aleph |
 | 2026-01-05 | ➕ Añadir SCRUM-REFACTOR-1.0.0 (Modelo Generativo + Lucas DRY) ⚠️ BREAKING | @aleph |
 | 2026-01-04 | 🐛 Registrar LAUNCHER-BUG-001 (Process Kill Windows spawn) | @ox |
 | 2026-01-04 | ✅ Cerrar sesión PROLOG-UI-DEMO-1.0.0 (12/12 pasos, 2 bugs) | @scrum |
-| 2026-01-04 | 🐛 Registrar bugs PROLOG-BUG-001/002 para priorizar | @scrum |
 | 2026-01-04 | ✅ Cerrar sesión PROLOG-E2E-1.0.0 (88.5%, 16 turnos) | @scrum |
 | 2026-01-01 | ➕ Añadir SCRIPT-2.2.0 Agentic Typed Logic Flow (blueprint arquitectónico) | @scrum |
 | 2026-01-01 | 🟢 Actualizar IOT-SBR-LOGICA a estado Investigado (capacidad EXISTE) | @scrum |
