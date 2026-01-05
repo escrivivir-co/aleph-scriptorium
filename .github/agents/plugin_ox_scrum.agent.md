@@ -4,7 +4,6 @@ description: "Bridge: Plugin Scrum v3.0 con Modelo Generativo. @scrum interpreta
 argument-hint: "planificar | borrador | generar-desde-sesion | aprobar | tracking | cerrar | status"
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'prolog-mcp-server/*', 'agent', 'todo']
 handoffs:
-  # === Comandos Core ===
   - label: Planificar nuevo sprint
     agent: .github/plugins/scrum/agents/scrum.agent.md
     prompt: Inicia planificación creando carpeta y referencia en índice.

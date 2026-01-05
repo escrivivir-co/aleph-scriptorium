@@ -465,10 +465,10 @@
       "label": "JKL: Open Browser",
       "type": "shell",
       "command": "bash",
-      "args": ["-c", "start http://localhost:4000"],
+      "args": ["-c", "start http://localhost:4000/aleph-scriptorium/"],
       "windows": {
         "command": "cmd",
-        "args": ["/c", "start", "http://localhost:4000"]
+        "args": ["/c", "start", "http://localhost:4000/aleph-scriptorium/"]
       },
       "problemMatcher": [],
       "presentation": {

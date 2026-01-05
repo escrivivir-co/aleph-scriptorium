@@ -36,6 +36,22 @@ handoffs:
     agent: Lucas
     prompt: "Consulta templates-index.json y recomienda plantillas relevantes según el contexto (scrum_daily, planning, documentation)."
     send: false
+  - label: "[AgentLore] Cargar plantilla"
+    agent: Lucas
+    prompt: "Carga bajo demanda una plantilla de AgentLoreSDK. Especifica ID: technical-writer, comprehensive-researcher o social-media-copywriter. Lucas lee el .md y aplica la metodología."
+    send: false
+  - label: "[AgentLore] Redactar con technical-writer"
+    agent: Lucas
+    prompt: "Usa metodología technical-writer para redactar guías claras y accesibles del viaje a Ítaca."
+    send: false
+  - label: "[AgentLore] Investigar con researcher"
+    agent: Lucas
+    prompt: "Usa metodología comprehensive-researcher para investigar mitos clásicos con citas académicas."
+    send: false
+  - label: "[AgentLore] Publicar con copywriter"
+    agent: Lucas
+    prompt: "Usa metodología social-media-copywriter para crear threads de Twitter o posts de LinkedIn sobre estadios del monomito."
+    send: false
   - label: "[Prolog] Query de coherencia"
     agent: Lucas
     prompt: "OPCIONAL: Ejecuta prolog_query con 'documentacion_coherente(X)' para razonamiento lógico sobre coherencia DRY."
@@ -104,7 +120,26 @@ Su rol es asegurar que ambos índices (Funcional.md y Tecnico.md) permanezcan:
 |-----------|-----------|-----------|
 | `Funcional.md` | Usuarios (@aleph) | Capacidades, flujos, invocaciones |
 | `Tecnico.md` | Equipo Scrum (@ox) | Arquitectura, plugins, submódulos, checklists |
+### Plantillas Conectadas (AgentLoreSDK)
 
+> **Protocolo**: Carga bajo demanda vía handoffs `[AgentLore]`. NO embebidas.
+
+| Plantilla | Categoría | Ruta | Uso |
+|-----------|-----------|------|-----|
+| **technical-writer** | documentation | `AgentLoreSDK/.../documentation/` | Redacción clara y accesible |
+| **comprehensive-researcher** | podcast-creator-team | `AgentLoreSDK/.../podcast-creator-team/` | Investigación académica con citas |
+| **social-media-copywriter** | podcast-creator-team | `AgentLoreSDK/.../podcast-creator-team/` | Publicación en redes sociales |
+
+**Cómo usar**:
+1. Invocar handoff `[AgentLore] Cargar plantilla`
+2. Especificar ID de plantilla (`technical-writer`, etc.)
+3. Lucas lee el contenido bajo demanda
+4. Aplica la metodología sin duplicar código
+
+**Contexto de uso**:
+- **technical-writer** → Guías de estadios del monomito en Ítaca Digital
+- **comprehensive-researcher** → Investigación de mitos clásicos (Homero, Joyce, Ovidio)
+- **social-media-copywriter** → Twitter threads sobre reflexiones del viaje
 ---
 
 ## Tests de Calidad
