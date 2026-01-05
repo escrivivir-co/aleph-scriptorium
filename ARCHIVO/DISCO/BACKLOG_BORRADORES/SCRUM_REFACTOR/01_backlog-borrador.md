@@ -9,7 +9,7 @@ tipo: BREAKING CHANGE
 effort: 46 pts
 prioridad: P0
 sprint: FC1
-estado: 📋 Ready
+estado: � En progreso
 
 origen:
   tipo: sesion-cotrabajo

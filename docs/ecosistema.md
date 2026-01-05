@@ -55,7 +55,7 @@ Plugins completamente funcionales, listos para usar.
 | **Foro Scraper** | 1 | \`@plugin_ox_foroscraper\` | Scraping pausable. vBulletin, phpBB |
 | **Agent Creator** | 1 | \`@plugin_ox_agentcreator\` | Fábrica de agentes especializados |
 | **Teatro** | 1 | \`@plugin_ox_teatro\` | Experiencias 3D con impress.js |
-| **Scrum** | 1 | \`@plugin_ox_scrum\` | Gestión ágil de backlogs (5 fases) |
+| **Scrum** | 1 | \`@plugin_ox_scrum\` | Gestión ágil con Modelo Generativo (v3.0) |
 | **MCP-Presets** | 1 | \`@plugin_ox_mcppresets\` | Gestión de toolkits MCP |
 
 ### 🚧 En Desarrollo (11)

@@ -1,56 +1,100 @@
 ---
 name: plugin_ox_scrum
-description: "Bridge: conecta VS Code con el agente Scrum del plugin de gestión ágil. Ver .github/plugins/scrum/agents/"
-argument-hint: "planificar | borrador | aprobar | tracking | cerrar | status"
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'playwright/*', 'agent', 'todo']
+description: "Bridge: Plugin Scrum v3.0 con Modelo Generativo. @scrum interpreta a Lucas. Sesiones PRODUCEN artefactos."
+argument-hint: "planificar | borrador | generar-desde-sesion | aprobar | tracking | cerrar | status"
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'prolog-mcp-server/*', 'agent', 'todo']
 handoffs:
-  - label: Listar capacidades de Scrum
-    agent: plugin_ox_scrum
-    prompt: Lista los comandos y capacidades del plugin Scrum.
-    send: false
+  # === Comandos Core ===
   - label: Planificar nuevo sprint
     agent: .github/plugins/scrum/agents/scrum.agent.md
-    prompt: Inicia conversación PO-SM para planificar el próximo sprint.
+    prompt: Inicia planificación creando carpeta y referencia en índice.
     send: false
   - label: Crear backlog borrador
     agent: .github/plugins/scrum/agents/scrum.agent.md
     prompt: Genera backlog borrador en DISCO a partir de la planificación.
     send: false
-  - label: Aprobar y publicar backlog
+  - label: 🆕 Generar desde sesión cotrabajo
     agent: .github/plugins/scrum/agents/scrum.agent.md
-    prompt: Valida el borrador y publícalo en los backlogs oficiales.
+    prompt: Genera borrador desde sesión de cotrabajo cerrada (Modelo Generativo).
+    send: false
+  - label: Aprobar épica
+    agent: .github/plugins/scrum/agents/scrum.agent.md
+    prompt: Cambia estado en índice (📋→✅).
     send: false
   - label: Actualizar tracking
     agent: .github/plugins/scrum/agents/scrum.agent.md
-    prompt: Actualiza el estado de las tasks del sprint activo.
+    prompt: Actualiza el estado de las tasks en el borrador activo.
     send: false
   - label: Cerrar sprint
     agent: .github/plugins/scrum/agents/scrum.agent.md
-    prompt: Genera retrospectiva, foto de estado y prepara siguiente sprint.
+    prompt: Archiva sprint. Opción --incluir-sesiones para sesiones relacionadas.
     send: false
-  - label: Mostrar status actual
+  - label: Mostrar status (incluye sesiones)
     agent: .github/plugins/scrum/agents/scrum.agent.md
-    prompt: Muestra métricas y estado del sprint activo.
+    prompt: Muestra métricas, borradores activos y sesiones activas.
+    send: false
+  
+  # === Expertise Lucas ===
+  - label: 🎭 Cargar contexto Lucas
+    agent: .github/plugins/scrum/agents/scrum.agent.md
+    prompt: Carga expertise de Lucas (identidad + brain Prolog + plantillas).
+    send: false
+  - label: 📚 Buscar plantilla Scrum
+    agent: .github/plugins/scrum/agents/scrum.agent.md
+    prompt: Consulta templates-index.json de Lucas para plantillas Scrum.
+    send: false
+  
+  # === Info ===
+  - label: Listar capacidades
+    agent: plugin_ox_scrum
+    prompt: Lista comandos y capacidades del plugin Scrum v3.0.
     send: false
 ---
 
-# Plugin Ox: Scrum
+# Plugin Ox: Scrum v3.0.0
 
 **Capa**: 🔌 Plugins (Bridge) — ver taxonomía en @ox
 
-> Agente bridge que conecta VS Code con `.github/plugins/scrum/agents/`.
+> Bridge que conecta VS Code con `.github/plugins/scrum/agents/`.
+
+---
+
+## ⚠️ BREAKING CHANGE desde v2.0.0
+
+Este plugin implementa cambios arquitectónicos significativos:
+
+1. **Modelo Generativo**: Sesiones de cotrabajo PRODUCEN borradores
+2. **Interpreta a Lucas**: Sin duplicación de expertise Scrum
+3. **Nuevo comando**: `generar-desde-sesion`
 
 ---
 
 ## Descripción
 
-El plugin **Scrum** implementa un protocolo formal para gestión ágil de backlogs:
+El plugin **Scrum v3.0** implementa gestión ágil con dos innovaciones:
 
-1. **Planificar**: Conversación PO-SM en DISCO
-2. **Editar**: Backlog borrador en DISCO
-3. **Aprobar**: Publicar en backlogs oficiales
-4. **Tracking**: Actualizar estado durante desarrollo
-5. **Cerrar**: Retrospectiva y foto de estado
+### 1. Modelo Generativo
+
+```
+Sesión Cotrabajo  ──PRODUCE──►  Borrador Épica
+    │                              │
+    │ permanece intacta            │ referencia origen
+    └──────────────────────────────┘
+```
+
+Las sesiones **NO se transforman** en borradores. Los **producen** como output.
+
+### 2. Interpreta a Lucas
+
+El agente @scrum no tiene expertise propia. "Interpreta" a Lucas:
+
+```
+@scrum ──interpreta──► Lucas (ARCHIVO/DISCO/TALLER/ELENCO/lucas/)
+                           │
+                           ├── lucas.agent.md (identidad)
+                           ├── lucas-prolog.brain.pl (razonamiento)
+                           └── templates-index.json (plantillas)
+```
 
 ---
 
@@ -58,48 +102,82 @@ El plugin **Scrum** implementa un protocolo formal para gestión ágil de backlo
 
 | Agente | Archivo | Descripción |
 |--------|---------|-------------|
-| **Scrum** | `scrum.agent.md` | Scrum Master: coordina PO, SM y DevOps |
+| **Scrum** | `scrum.agent.md` | Scrum Master que interpreta a Lucas |
 
 ---
 
 ## Comandos
 
-| Comando | Descripción |
-|---------|-------------|
-| `planificar` | Inicia conversación de planificación |
-| `borrador` | Genera backlog desde conversación |
-| `aprobar` | Publica en backlog oficial |
-| `tracking` | Actualiza estado de tasks |
-| `cerrar` | Retrospectiva y cierre |
-| `status` | Métricas actuales |
+| Comando | Descripción | Nuevo |
+|---------|-------------|-------|
+| `planificar` | Crear carpeta + referencia | |
+| `borrador` | Generar backlog detallado | |
+| `generar-desde-sesion` | Producir borrador desde sesión | 🆕 |
+| `aprobar` | Cambiar estado en índice | |
+| `tracking` | Actualizar tasks en borrador | |
+| `cerrar` | Archivar (opción: --incluir-sesiones) | 🔄 |
+| `status` | Métricas + sesiones activas | 🔄 |
 
 ---
 
-## Flujo típico
+## Flujo Modelo Generativo
 
 ```
-@scrum planificar
-    ↓
-[Conversación PO-SM en DISCO]
-    ↓
-@scrum borrador
-    ↓
-[Revisión del borrador]
-    ↓
-@scrum aprobar
-    ↓
-[Desarrollo con @aleph]
-    ↓
-@scrum tracking (múltiples veces)
-    ↓
-@scrum cerrar
+1. SESIÓN COTRABAJO
+   └── Multi-agente → Actas → Consenso
+   
+2. CIERRE PRODUCTIVO
+   └── @scrum generar-desde-sesion
+   
+3. BORRADOR GENERADO
+   └── origen: {sesión}
+   └── Epic/Stories/Tasks
+   
+4. FLUJO SCRUM NORMAL
+   └── aprobar → tracking → cerrar
 ```
 
 ---
 
-## Referencia
+## Expertise Lucas
 
-- **Manifest**: `.github/plugins/scrum/manifest.md`
-- **Agente**: `.github/plugins/scrum/agents/scrum.agent.md`
-- **Protocolo**: `.github/plugins/scrum/instructions/scrum-protocol.instructions.md`
-- **Prompts**: `.github/plugins/scrum/prompts/`
+Para conocimiento Scrum avanzado, el bridge puede invocar:
+
+| Handoff | Qué carga |
+|---------|-----------|
+| 🎭 Cargar contexto Lucas | Identidad + capacidades |
+| 📚 Buscar plantilla Scrum | templates-index.json → AgentLoreSDK |
+
+### Plantillas Disponibles (via Lucas)
+
+| Categoría | Plantillas |
+|-----------|------------|
+| project-management | pac-create-epic, milestone-tracker, project-health-check |
+| documentation | technical-writer, changelog-generator |
+
+---
+
+## Integración con Cotrabajo
+
+| Acción | Comando |
+|--------|---------|
+| Ver sesiones activas | `@scrum status` |
+| Generar borrador desde sesión | `@scrum generar-desde-sesion {ruta}` |
+| Cerrar sprint + sesiones | `@scrum cerrar --incluir-sesiones` |
+
+---
+
+## Ubicaciones
+
+| Tipo | Ruta |
+|------|------|
+| Plugin | `.github/plugins/scrum/` |
+| Agente real | `.github/plugins/scrum/agents/scrum.agent.md` |
+| Lucas | `ARCHIVO/DISCO/TALLER/ELENCO/lucas/` |
+| Sesiones | `ARCHIVO/DISCO/SESIONES_COTRABAJO/` |
+| Borradores | `ARCHIVO/DISCO/BACKLOG_BORRADORES/` |
+
+---
+
+**Versión**: 3.0.0  
+**Épica origen**: SCRUM-REFACTOR-1.0.0

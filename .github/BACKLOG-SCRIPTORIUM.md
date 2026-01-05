@@ -43,7 +43,7 @@
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
 | ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 | ✅ | AGENT-TEMPLATES-1.0.0 | AgentLoreSDK Templates en Agent Creator (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
-| 📋 | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
+| � | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
