@@ -452,17 +452,17 @@ permalink: /demo/
       <div class="iframe-header">
         <span class="iframe-title">▶️ Blockly Runtime</span>
         <div class="iframe-actions">
-          <a href="http://localhost:4300" target="_blank">↗ Abrir</a>
+          <a href="http://localhost:5000" target="_blank">↗ Abrir</a>
         </div>
       </div>
       <div class="iframe-container">
         <div class="iframe-placeholder" id="blockly-runtime-placeholder">
           <span class="icon">▶️</span>
           <p>Blockly Runtime Execution</p>
-          <p><code>localhost:4300</code></p>
+          <p><code>localhost:5000</code></p>
           <p>Ejecuta: <code>npm run dev:runtime</code> o Task: BLE: Start [Runtime]</p>
         </div>
-        <iframe src="http://localhost:4300" loading="lazy"></iframe>
+        <iframe src="http://localhost:5000" loading="lazy"></iframe>
       </div>
     </div>
     

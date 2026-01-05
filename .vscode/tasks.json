@@ -621,16 +621,16 @@
       "label": "BLE: Open [Runtime]",
       "type": "shell",
       "command": "bash",
-      "args": ["-c", "open http://localhost:4300 2>/dev/null || xdg-open http://localhost:4300 2>/dev/null || start http://localhost:4300"],
+      "args": ["-c", "open http://localhost:5000 2>/dev/null || xdg-open http://localhost:4300 2>/dev/null || start http://localhost:4300"],
       "windows": {
         "command": "cmd",
-        "args": ["/c", "start", "http://localhost:4300"]
+        "args": ["/c", "start", "http://localhost:5000"]
       },
       "problemMatcher": [],
       "presentation": {
         "reveal": "never"
       },
-      "detail": "Abre Blockly Runtime UI en el navegador (4300)"
+      "detail": "Abre Blockly Runtime UI en el navegador (5000)"
     },
 
     {
