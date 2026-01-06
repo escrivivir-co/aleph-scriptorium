@@ -398,8 +398,6 @@ permalink: /demo/
         <span class="iframe-title">🔍 MCP Inspector</span>
         <div class="iframe-actions">
           <a href="http://localhost:6274" target="_blank">↗ Abrir</a>
-          <a href="http://localhost:6274?transport=sse&serverUrl=http://localhost:3050/sse" target="_blank">→ Launcher</a>
-          <a href="http://localhost:6274?transport=sse&serverUrl=http://localhost:3006/sse" target="_blank">→ Prolog</a>
         </div>
       </div>
       <div class="iframe-container">

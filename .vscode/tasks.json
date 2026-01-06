@@ -957,7 +957,10 @@
       "command": "npm",
       "args": ["start"],
       "options": {
-        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk"
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
       },
       "isBackground": true,
       "problemMatcher": {
@@ -982,12 +985,15 @@
       "detail": "MCP Inspector UI (6274) + Proxy (6277)"
     },
     {
-      "label": "INS: Start [Dev Mode]",
+      "label": "INS: Start",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev"],
+      "args": ["start"],
       "options": {
-        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk"
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
       },
       "isBackground": true,
       "problemMatcher": {
@@ -1007,7 +1013,7 @@
         "panel": "dedicated",
         "group": "inspector-stack"
       },
-      "detail": "MCP Inspector en modo desarrollo con hot-reload"
+      "detail": "MCP Inspector"
     },
     {
       "label": "INS: Open Browser",
@@ -1023,66 +1029,6 @@
         "reveal": "never"
       },
       "detail": "Abre MCP Inspector en el navegador (6274)"
-    },
-    {
-      "label": "INS: Connect to Launcher",
-      "type": "shell",
-      "command": "bash",
-      "args": ["-c", "start 'http://localhost:6274?transport=sse&serverUrl=http://localhost:3050/sse'"],
-      "windows": {
-        "command": "cmd",
-        "args": ["/c", "start", "http://localhost:6274?transport=sse^&serverUrl=http://localhost:3050/sse"]
-      },
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "never"
-      },
-      "detail": "Abre Inspector pre-conectado al MCP Launcher (3050)"
-    },
-    {
-      "label": "INS: Connect to Prolog",
-      "type": "shell",
-      "command": "bash",
-      "args": ["-c", "start 'http://localhost:6274?transport=sse&serverUrl=http://localhost:3006/sse'"],
-      "windows": {
-        "command": "cmd",
-        "args": ["/c", "start", "http://localhost:6274?transport=sse^&serverUrl=http://localhost:3006/sse"]
-      },
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "never"
-      },
-      "detail": "Abre Inspector pre-conectado al Prolog MCP Server (3006)"
-    },
-    {
-      "label": "INS: Connect to TypedPrompt",
-      "type": "shell",
-      "command": "bash",
-      "args": ["-c", "start 'http://localhost:6274?transport=sse&serverUrl=http://localhost:3020/sse'"],
-      "windows": {
-        "command": "cmd",
-        "args": ["/c", "start", "http://localhost:6274?transport=sse^&serverUrl=http://localhost:3020/sse"]
-      },
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "never"
-      },
-      "detail": "Abre Inspector pre-conectado al TypedPrompt MCP Server (3020)"
-    },
-    {
-      "label": "INS: Connect to Novelist",
-      "type": "shell",
-      "command": "bash",
-      "args": ["-c", "start 'http://localhost:6274?transport=sse&serverUrl=http://localhost:3066/sse'"],
-      "windows": {
-        "command": "cmd",
-        "args": ["/c", "start", "http://localhost:6274?transport=sse^&serverUrl=http://localhost:3066/sse"]
-      },
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "never"
-      },
-      "detail": "Abre Inspector pre-conectado al Novelist MCP Server (3066)"
     },
 
     // ─────────────────────────────────────────────────────────────────────────
