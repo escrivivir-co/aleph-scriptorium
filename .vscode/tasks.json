@@ -1,6 +1,5 @@
 {
   "version": "2.0.0",
-  
   // ═══════════════════════════════════════════════════════════════════════════
   // GLOBAL DEFAULTS - Aplican a todas las tasks a menos que se sobreescriban
   // ═══════════════════════════════════════════════════════════════════════════
@@ -13,7 +12,6 @@
     "showReuseMessage": false,
     "clear": true
   },
-
   // ═══════════════════════════════════════════════════════════════════════════
   // INPUTS - Variables reutilizables para tasks interactivas
   // ═══════════════════════════════════════════════════════════════════════════
@@ -22,18 +20,29 @@
       "id": "serverPort",
       "type": "pickString",
       "description": "Puerto del servidor",
-      "options": ["3050", "3006", "4000", "5001", "8000"],
+      "options": [
+        "3050",
+        "3006",
+        "4000",
+        "5001",
+        "8000"
+      ],
       "default": "3050"
     },
     {
       "id": "stackGroup",
       "type": "pickString",
       "description": "Grupo de stack a iniciar",
-      "options": ["apb", "demo", "oae", "nre", "ble"],
+      "options": [
+        "apb",
+        "demo",
+        "oae",
+        "nre",
+        "ble"
+      ],
       "default": "apb"
     }
   ],
-
   "tasks": [
     // ═══════════════════════════════════════════════════════════════════════
     // SCP: SCRIPTORIUM (Compound tasks)
@@ -52,10 +61,12 @@
       ],
       "dependsOrder": "sequence",
       "problemMatcher": [],
-      "group": { "kind": "build", "isDefault": true },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "detail": "⚠️ Compound tasks pueden fallar. Usar tasks individuales si hay problemas."
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // MCP: MCP SERVERS (Mesh + Core)
     // Puertos: 3050 (Launcher), 3006 (Prolog), 4001 (Model), 3020 (TypedPrompt)
@@ -64,53 +75,78 @@
       "label": "MCP: Start [Launcher]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "start:launcher"],
-      "options": { "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk" },
+      "args": [
+        "run",
+        "start:launcher"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
       "windows": {
         "options": {
           "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
-          "env": { "PATH": "${env:PATH};C:\\Program Files\\swipl\\bin" }
+          "env": {
+            "PATH": "${env:PATH};C:\\Program Files\\swipl\\bin"
+          }
         }
       },
       "osx": {
         "options": {
           "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
-          "env": { "PATH": "${env:PATH}:/opt/homebrew/bin:/usr/local/bin" }
+          "env": {
+            "PATH": "${env:PATH}:/opt/homebrew/bin:/usr/local/bin"
+          }
         }
       },
       "isBackground": true,
       "problemMatcher": {
         "owner": "mcp-launcher",
-        "pattern": { "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$", "severity": 1, "message": 2 },
+        "pattern": {
+          "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*Launcher running on port 3050.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "mcp-stack" },
+      "presentation": {
+        "reveal": "always",
+        "group": "mcp-stack"
+      },
       "detail": "Puerto 3050"
     },
     {
       "label": "MCP: Start [Model]",
       "type": "shell",
       "command": "npm",
-      "args": ["start"],
-      "options": { "cwd": "${workspaceFolder}/MCPGallery/mcp-model-sdk" },
+      "args": [
+        "start"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-model-sdk"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "mcp-model",
-        "pattern": { "regexp": "^.*listening on port 4001.*$", "message": 1 },
+        "pattern": {
+          "regexp": "^.*listening on port 4001.*$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*listening on port 4001.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "mcp-stack" },
+      "presentation": {
+        "reveal": "always",
+        "group": "mcp-stack"
+      },
       "detail": "Puerto 4001"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // APB: AGENT PROLOG BRAIN (PrologEditor Stack)
     // Puertos: 8000 (Backend), 5001 (Frontend/Angular)
@@ -119,70 +155,117 @@
       "label": "APB: Start [Service]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "start:backend"],
-      "options": { "cwd": "${workspaceFolder}/PrologEditor" },
+      "args": [
+        "run",
+        "start:backend"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/PrologEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "apb-backend",
-        "pattern": { "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$", "severity": 1, "message": 2 },
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Backend.*$",
           "endsPattern": "^.*listening on port 8000.*$"
         }
       },
-      "presentation": { "group": "apb-stack" },
+      "presentation": {
+        "group": "apb-stack"
+      },
       "detail": "Puerto 8000"
     },
     {
       "label": "APB: Start [App]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "start:frontend"],
-      "options": { "cwd": "${workspaceFolder}/PrologEditor" },
+      "args": [
+        "run",
+        "start:frontend"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/PrologEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "apb-angular",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Compiling.*$",
           "endsPattern": "^.*Compiled successfully.*$"
         }
       },
-      "presentation": { "group": "apb-stack" },
+      "presentation": {
+        "group": "apb-stack"
+      },
       "detail": "Puerto 5001"
     },
     {
       "label": "APB: Build [Chain]",
       "type": "shell",
       "command": "bash",
-      "args": ["-c", "npm run build --prefix MCPGallery/mcp-core-sdk && npm run build --prefix MCPGallery/mcp-mesh-sdk && npm run build --prefix PrologEditor/frontend"],
-      "problemMatcher": ["$tsc"],
+      "args": [
+        "-c",
+        "npm run build --prefix MCPGallery/mcp-core-sdk && npm run build --prefix MCPGallery/mcp-mesh-sdk && npm run build --prefix PrologEditor/frontend"
+      ],
+      "problemMatcher": [
+        "$tsc"
+      ],
       "group": "build",
-      "presentation": { "reveal": "always", "panel": "shared" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
       "detail": "Build: Core → Mesh → Frontend"
     },
     {
       "label": "APB: Health Check",
       "type": "shell",
       "command": "bash",
-      "args": ["./scripts/apb-health-check.sh"],
+      "args": [
+        "./scripts/apb-health-check.sh"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
       "detail": "Verificar prerequisitos"
     },
     {
       "label": "APB: Open [Browser]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:5001"],
-      "windows": { "command": "cmd", "args": ["/c", "start", "http://localhost:5001"] },
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:5001"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "start",
+          "http://localhost:5001"
+        ]
+      },
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir http://localhost:5001"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // NOV: NOVELIST EDITOR
     // Puertos: 3066 (Server), 8080 (UI/Docs)
@@ -191,50 +274,74 @@
       "label": "NOV: Start [Server]",
       "type": "shell",
       "command": "npm",
-      "args": ["start"],
-      "options": { "cwd": "${workspaceFolder}/NovelistEditor" },
+      "args": [
+        "start"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/NovelistEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "novelist-server",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*Server running on port 3066.*$"
         }
       },
-      "presentation": { "group": "nov-stack" },
+      "presentation": {
+        "group": "nov-stack"
+      },
       "detail": "Puerto 3066"
     },
     {
       "label": "NOV: Start [UI]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "docs:serve"],
-      "options": { "cwd": "${workspaceFolder}/NovelistEditor" },
+      "args": [
+        "run",
+        "docs:serve"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/NovelistEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "novelist-ui",
-        "pattern": { "regexp": "^.*Serving HTTP on 0.0.0.0 port 8080.*$", "message": 1 },
+        "pattern": {
+          "regexp": "^.*Serving HTTP on 0.0.0.0 port 8080.*$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Serving HTTP.*$",
           "endsPattern": "^.*Serving HTTP on 0.0.0.0 port 8080.*$"
         }
       },
-      "presentation": { "group": "nov-stack" },
+      "presentation": {
+        "group": "nov-stack"
+      },
       "detail": "Puerto 8080"
     },
     {
       "label": "NOV: Open [Browser]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:8080"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:8080"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir http://localhost:8080"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // TPE: TYPED PROMPTS EDITOR
     // Puertos: 3019 (Server), 3020 (MCP Server)
@@ -243,50 +350,76 @@
       "label": "TPE: Start [Server]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev"],
-      "options": { "cwd": "${workspaceFolder}/TypedPromptsEditor" },
+      "args": [
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/TypedPromptsEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "tpe-server",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*starting.*$",
           "endsPattern": "^.*serving on port 3019.*$"
         }
       },
-      "presentation": { "group": "tpe-stack" },
+      "presentation": {
+        "group": "tpe-stack"
+      },
       "detail": "Puerto 3019"
     },
     {
       "label": "TPE: Start [MCP]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "start:typed-prompt"],
-      "options": { "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk" },
+      "args": [
+        "run",
+        "start:typed-prompt"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "tpe-mcp",
-        "pattern": { "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$", "severity": 1, "message": 2 },
+        "pattern": {
+          "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*running on port 3020.*$"
         }
       },
-      "presentation": { "group": "tpe-stack" },
+      "presentation": {
+        "group": "tpe-stack"
+      },
       "detail": "Puerto 3020"
     },
     {
       "label": "TPE: Open [Browser]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:3019"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3019"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir http://localhost:3019"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // OAE: OPENASYNCAPI EDITOR (Specs)
     // Puertos: 3021 (Swagger/Redocly), 3022 (AsyncAPI Studio)
@@ -294,60 +427,91 @@
     {
       "label": "OAE: Start [Swagger]",
       "type": "shell",
-      "command": "npx",
-      "args": ["@redocly/cli", "preview-docs", "specs/PrologEditor/openapi.yaml", "--port", "3021"],
-      "options": { "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR" },
+      "command": "npm",
+      "args": [
+        "run",
+        "swagger-ui"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "oae-swagger",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*http://.*3021.*$"
         }
       },
-      "presentation": { "group": "oae-stack" },
+      "presentation": {
+        "group": "oae-stack"
+      },
       "detail": "Puerto 3021"
     },
     {
       "label": "OAE: Start [AsyncAPI]",
       "type": "shell",
-      "command": "npx",
-      "args": ["@asyncapi/cli", "start", "studio", "--file", "specs/PrologEditor/asyncapi.yaml", "--port", "3022"],
-      "options": { "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR" },
+      "command": "npm",
+      "args": [
+        "run",
+        "asyncapi-studio"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "oae-asyncapi",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*http://.*3022.*$"
         }
       },
-      "presentation": { "group": "oae-stack" },
+      "presentation": {
+        "group": "oae-stack"
+      },
       "detail": "Puerto 3022"
     },
     {
       "label": "OAE: Open [Swagger]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:3021"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3021"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Swagger UI"
     },
     {
       "label": "OAE: Open [AsyncAPI]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:3022"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3022"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir AsyncAPI Studio"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // NRE: NODE-RED EDITOR (Wiring)
     // Puertos: 1880 (Editor), 1880/ui (Dashboard), 3088 (GamifyUI)
@@ -355,86 +519,136 @@
     {
       "label": "NRE: Start [Editor]",
       "type": "shell",
-      "command": "node-red",
-      "args": [],
+      "command": "npm",
+      "args": ["start"],
       "isBackground": true,
       "problemMatcher": {
         "owner": "nre-editor",
-        "pattern": { "regexp": "^\\[(ERROR|error|warn)\\]\\s+(.*)$", "severity": 1, "message": 2 },
+        "pattern": {
+          "regexp": "^\\[(ERROR|error|warn)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Welcome to Node-RED.*$",
           "endsPattern": "^.*Server now running at.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "nre-stack" },
+      "options": {
+        "cwd": "${workspaceFolder}/WiringEditor"
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "nre-stack"
+      },
       "detail": "Puerto 1880"
     },
     {
       "label": "NRE: Start [GamifyUI]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev:ui"],
-      "options": { "cwd": "${workspaceFolder}/WiringEditor" },
+      "args": [
+        "run",
+        "dev:ui"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/WiringEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "nre-gamify",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Compiling.*$",
           "endsPattern": "^.*Compiled successfully.*$"
         }
       },
-      "presentation": { "group": "nre-stack" },
+      "presentation": {
+        "group": "nre-stack"
+      },
       "detail": "Puerto 3088"
     },
     {
       "label": "NRE: Setup [Contribs]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "scripts\\setup-node-red.cmd", "--skip-global"],
+      "args": [
+        "/c",
+        "scripts\\setup-node-red.cmd",
+        "--skip-global"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
       "detail": "Instalar contribuciones"
     },
     {
       "label": "NRE: Health Check",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "curl -s http://localhost:1880 >nul 2>&1 && echo [OK] Node-RED: http://localhost:1880 || echo [FAIL] Node-RED: Not running"],
+      "args": [
+        "/c",
+        "curl -s http://localhost:1880 >nul 2>&1 && echo [OK] Node-RED: http://localhost:1880 || echo [FAIL] Node-RED: Not running"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
       "detail": "Verificar servicios"
     },
     {
       "label": "NRE: Open [Editor]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:1880"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:1880"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Editor"
     },
     {
       "label": "NRE: Open [Dashboard]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:1880/ui"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:1880/ui"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Dashboard"
     },
     {
       "label": "NRE: Open [GamifyUI]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:3088"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3088"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir GamifyUI"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // BLE: BLOCKLY EDITOR
     // Puertos: 4200 (Editor/Angular), 5000 (Runtime)
@@ -443,79 +657,127 @@
       "label": "BLE: Start [Editor]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev:ui"],
-      "options": { "cwd": "${workspaceFolder}/BlocklyEditor" },
+      "args": [
+        "run",
+        "dev:ui"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "ble-editor",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Compiling.*$",
           "endsPattern": "^.*Compiled successfully.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "ble-stack" },
+      "presentation": {
+        "reveal": "always",
+        "group": "ble-stack"
+      },
       "detail": "Puerto 4200"
     },
     {
       "label": "BLE: Start [Runtime]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "dev:runtime-ui"],
-      "options": { "cwd": "${workspaceFolder}/BlocklyEditor" },
+      "args": [
+        "run",
+        "dev:runtime-ui"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "ble-runtime",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Compiling.*$",
           "endsPattern": "^.*serving.*$"
         }
       },
-      "presentation": { "group": "ble-stack" },
+      "presentation": {
+        "group": "ble-stack"
+      },
       "detail": "Puerto 5000"
     },
     {
       "label": "BLE: Build [All]",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "build:all"],
-      "options": { "cwd": "${workspaceFolder}/BlocklyEditor" },
-      "problemMatcher": ["$tsc"],
+      "args": [
+        "run",
+        "build:all"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ],
       "group": "build",
-      "presentation": { "reveal": "always", "panel": "shared" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
       "detail": "Build todos los paquetes"
     },
     {
       "label": "BLE: Setup",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "scripts\\setup-blockly.cmd"],
+      "args": [
+        "/c",
+        "scripts\\setup-blockly.cmd"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "always", "panel": "shared" },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
       "detail": "Setup inicial"
     },
     {
       "label": "BLE: Open [Editor]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:4200"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:4200"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Editor"
     },
     {
       "label": "BLE: Open [Runtime]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:5000"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:5000"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Runtime"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // JKL: JEKYLL (Docs Site)
     // Puerto: 4000
@@ -527,26 +789,37 @@
       "isBackground": true,
       "problemMatcher": {
         "owner": "jkl-site",
-        "pattern": { "regexp": "^.*Server address: http://127.0.0.1:4000/.*$", "message": 1 },
+        "pattern": {
+          "regexp": "^.*Server address: http://127.0.0.1:4000/.*$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Generating...$",
           "endsPattern": "^.*Server running... press ctrl-c to stop.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "jkl-stack" },
+      "presentation": {
+        "reveal": "always",
+        "group": "jkl-stack"
+      },
       "detail": "Puerto 4000"
     },
     {
       "label": "JKL: Open [Browser]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:4000/aleph-scriptorium/"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:4000/aleph-scriptorium/"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir docs"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // ZEU: ZEUS (MCP Gallery UI)
     // Puerto: 3012
@@ -555,31 +828,164 @@
       "label": "ZEU: Start [UI]",
       "type": "shell",
       "command": "npm",
-      "args": ["start"],
-      "options": { "cwd": "${workspaceFolder}/MCPGallery/zeus" },
+      "args": [
+        "start"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/zeus"
+      },
       "isBackground": true,
       "problemMatcher": {
         "owner": "zeu-ui",
-        "pattern": { "regexp": "^.*listening on port 3012.*$", "message": 1 },
+        "pattern": {
+          "regexp": "^.*listening on port 3012.*$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting.*$",
           "endsPattern": "^.*listening on port 3012.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "zeu-stack" },
+      "presentation": {
+        "reveal": "always",
+        "group": "zeu-stack"
+      },
       "detail": "Puerto 3012"
     },
     {
       "label": "ZEU: Open [Browser]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:3012"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3012"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Zeus UI"
     },
-
+    // ═══════════════════════════════════════════════════════════════════════
+    // CHS: CHANNELS SDK (Socket.IO Server + Admin UI)
+    // Puertos: 3000 (ws-server), 3100 (Admin UI)
+    // Ubicación: MCPGallery/mcp-mesh-sdk/mcp-channels-sdk (submódulo anidado)
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "CHS: Build [Core]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "build:core"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-channels-sdk/ws-server"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Compilar @alephscript/core"
+    },
+    {
+      "label": "CHS: Start [Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-channels-sdk/ws-server"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "chs-server",
+        "pattern": {
+          "regexp": "^(Error|TypeError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Socket Gym Demo.*$",
+          "endsPattern": "^.*escuchando en el puerto 3000.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "chs-stack"
+      },
+      "detail": "Puerto 3000 - Socket.IO Server"
+    },
+    {
+      "label": "CHS: Start [AdminUI]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "start"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-channels-sdk/socket.io-admin-ui-develop"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "chs-admin",
+        "pattern": {
+          "regexp": "^(Error|error):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*listening.*3100.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "chs-stack"
+      },
+      "detail": "Puerto 3100 - Socket.IO Admin UI"
+    },
+    {
+      "label": "CHS: Open [Server]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3000"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abrir Socket.IO Server Demo"
+    },
+    {
+      "label": "CHS: Open [AdminUI]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3100"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abrir Socket.IO Admin UI"
+    },
     // ═══════════════════════════════════════════════════════════════════════
     // INS: MCP INSPECTOR
     // Puertos: 6274 (UI), 6277 (Proxy)
@@ -588,34 +994,49 @@
       "label": "INS: Start [Inspector]",
       "type": "shell",
       "command": "npm",
-      "args": ["start"],
+      "args": [
+        "start"
+      ],
       "options": {
         "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
-        "env": { "DANGEROUSLY_OMIT_AUTH": "true" }
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
       },
       "isBackground": true,
       "problemMatcher": {
         "owner": "ins-inspector",
-        "pattern": { "regexp": "^Error:\\s+(.*)$", "message": 1 },
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "^.*Starting MCP inspector.*$",
           "endsPattern": "^.*MCP Inspector.*running.*$"
         }
       },
-      "presentation": { "reveal": "always", "group": "ins-stack" },
+      "presentation": {
+        "reveal": "always",
+        "group": "ins-stack"
+      },
       "detail": "Puerto 6274"
     },
     {
       "label": "INS: Open [Browser]",
       "type": "shell",
       "command": "cmd",
-      "args": ["/c", "start", "http://localhost:6274"],
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:6274"
+      ],
       "problemMatcher": [],
-      "presentation": { "reveal": "never" },
+      "presentation": {
+        "reveal": "never"
+      },
       "detail": "Abrir Inspector"
     },
-
     // ═══════════════════════════════════════════════════════════════════════
     // DMO: DEMO (Compound tasks para demos)
     // ═══════════════════════════════════════════════════════════════════════
@@ -631,7 +1052,10 @@
       ],
       "dependsOrder": "sequence",
       "problemMatcher": [],
-      "group": { "kind": "test", "isDefault": false },
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
       "detail": "Demo: 6 servicios (Jekyll, Launcher, Model, Zeus, Novelist)"
     }
   ]

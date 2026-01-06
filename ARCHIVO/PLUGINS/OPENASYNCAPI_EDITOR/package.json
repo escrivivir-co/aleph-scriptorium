@@ -4,12 +4,12 @@
   "description": "CLI tools para visualizar y generar código desde specs OpenAPI/AsyncAPI",
   "private": true,
   "scripts": {
-    "swagger-ui": "npx @redocly/cli preview-docs specs/PrologEditor/openapi.yaml --port 3021",
-    "asyncapi-studio": "npx @asyncapi/cli start studio --file specs/PrologEditor/asyncapi.yaml --port 3022",
-    "validate:openapi": "npx @redocly/cli lint specs/PrologEditor/openapi.yaml",
-    "validate:asyncapi": "npx @asyncapi/cli validate specs/PrologEditor/asyncapi.yaml",
-    "generate:ts-client": "npx @openapitools/openapi-generator-cli generate -i specs/PrologEditor/openapi.yaml -g typescript-fetch -o generated/PrologEditor/typescript-client",
-    "generate:asyncapi-ts": "npx @asyncapi/cli generate fromTemplate specs/PrologEditor/asyncapi.yaml @asyncapi/typescript-nats-template -o generated/PrologEditor/asyncapi-client"
+    "swagger-ui": "redocly preview-docs specs/PrologEditor/openapi.yaml --port 3021",
+    "asyncapi-studio": "asyncapi start studio --file specs/PrologEditor/asyncapi.yaml --port 3022",
+    "validate:openapi": "redocly lint specs/PrologEditor/openapi.yaml",
+    "validate:asyncapi": "asyncapi validate specs/PrologEditor/asyncapi.yaml",
+    "generate:ts-client": "openapi-generator-cli generate -i specs/PrologEditor/openapi.yaml -g typescript-fetch -o generated/PrologEditor/typescript-client",
+    "generate:asyncapi-ts": "asyncapi generate fromTemplate specs/PrologEditor/asyncapi.yaml @asyncapi/typescript-nats-template -o generated/PrologEditor/asyncapi-client"
   },
   "devDependencies": {
     "@asyncapi/cli": "^2.0.0",
