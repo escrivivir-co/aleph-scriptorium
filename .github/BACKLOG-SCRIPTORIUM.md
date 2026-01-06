@@ -68,6 +68,9 @@
 
 | Épica | Nombre | Referencia |
 |-------|--------|------------|
+| LAUNCHER-BUG-001 | MCPLauncher Process Kill Failure (Windows spawn) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_04_MCPLauncher_ProcessKill_Bug/01_backlog-borrador.md) |
+| PROLOG-BUG-001 | Session Isolation (assert_fact sin sessionId) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
+| PROLOG-BUG-002 | MCP Templates 404 (catalog OK, content fails) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
 
 
 ---

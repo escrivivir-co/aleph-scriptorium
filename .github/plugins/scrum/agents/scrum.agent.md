@@ -83,6 +83,18 @@ handoffs:
     agent: Scrum
     prompt: Documenta healthScore y antipatrones en el borrador activo.
     send: false
+  - label: 👥 Iniciar sesión de cotrabajo
+    agent: ScriptoriumPack
+    prompt: Delega a @scriptorium-pack cotrabajo iniciar para crear sesión colaborativa.
+    send: false
+  - label: 📋 Vincular sesión cotrabajo a épica
+    agent: Scrum
+    prompt: Registra referencia de sesión de cotrabajo en borrador de épica.
+    send: false
+  - label: ✅ Cerrar sesión cotrabajo con tracking
+    agent: Scrum
+    prompt: Cierra sesión de cotrabajo y añade resumen al borrador de épica.
+    send: false
 ---
 
 # Agente: Scrum v3.0.0 — Interpreta a Lucas
