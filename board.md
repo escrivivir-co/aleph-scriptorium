@@ -1,153 +1,198 @@
-# Aleph Scriptorium — entorno integrado agéntico
+# Aleph Scriptorium — Entorno Integrado Agéntico
 
 Del procesador de textos tradicional (Word + Clippy) al entorno de escritura asistida ([Aleph Scriptorium](README.md) + [@ox](.github/agents/ox.agent.md)).
 
 > **Tipo**: Blueprint de Producto (Opportunities)  
-> **Versión**: 1.1.0  integration/beta/scriptorium  
+> **Versión**: 1.1.0 — `integration/beta/scriptorium`  
 > **Última revisión**: 2026-01-06
 
 ---
 
-Indice de contenidos:
+## Índice de Contenidos
 
-- Parte I: El escritorio
-- Parte II: La escritura
-- Parte III: El escribir
-- Parte II: El escritor
-- Referencias 
+- [Parte I: El Escritorio](#parte-i-el-escritorio) — Infraestructura y configuración
+- [Parte II: La Escritura](#parte-ii-la-escritura) — Diseño y lógica
+- [Parte III: El Escribir](#parte-iii-el-escribir) — Producción y publicación
+- [Parte IV: El Escritor](#parte-iv-el-escritor) — Operativa diaria
+- [Referencias](#referencias)
 
-## Parte I: El escritorio
+---
 
-### 1. Breviario para anuncio
+## Parte I: El Escritorio
 
-| Era | Herramienta | Asistente | Limitación |
-|-----|-------------|-----------|------------|
-| **1995** | Word | Clippy | Sugerencias genéricas |
-| **2026** | [Aleph Scriptorium](README.md) | [@ox](.github/agents/ox.agent.md) | Oráculo agéntico: tus sugerencias |
+### 1. Breviario
 
-**Diferencia fundamental**: Clippy ofrecía tips predefinidos. Tú creas y diseñas a Ox para que orqueste a los agentes según tus flujos y procesos cotidianos. Eso sí, ¡tendrás que aprender a hablar con Ox, https://code.visualstudio.com/docs/debugtest/debugging#copilot-guides-articles, :-D!
+| Era | Herramienta | Asistente | Paradigma |
+|-----|-------------|-----------|-----------|
+| **1995** | Word | Clippy | Sugerencias genéricas predefinidas |
+| **2026** | [Aleph Scriptorium](README.md) | [@ox](.github/agents/ox.agent.md) | Oráculo agéntico: un agente para orquestarlos a todos |
 
- Una herramienta de escritura que se adapta al escritor, no al revés.
+**Diferencia fundamental**: Clippy ofrecía tips predefinidos. Tú creas y diseñas a Ox para que orqueste a los agentes según tus flujos y procesos cotidianos.
 
-### 2. Producto Mínimo Viable (software + configuración como infraestructura )
+> 💡 Una herramienta de escritura que se adapta al escritor, no al revés.
+
+Para aprender a hablar con los agentes: [VS Code Copilot Guides](https://code.visualstudio.com/docs/copilot/overview), :-D.
+
+---
+
+### 2. Producto Mínimo Viable: Scriptorium
 
 La elección de **VS Code** no es arbitraria. Es un editor FOSS extensible que también funciona como servidor web ([code-server](https://github.com/coder/code-server)), permitiendo el mismo entorno en escritorio o navegador. Su marketplace de extensiones es el ecosistema más grande para herramientas de desarrollo.
 
-https://code.visualstudio.com/api
+→ [VS Code API](https://code.visualstudio.com/api)
 
-Extensión **[GitHub Copilot Chat](CopilotEngine/README.md)** (https://code.visualstudio.com/docs/copilot/overview) aporta el motor conversacional. Internamente, Copilot construye un *system message* que combina las instrucciones del usuario ([copilot-instructions.md](.github/copilot-instructions.md)) con el contexto del workspace. El submódulo [CopilotEngine](CopilotEngine/) es una captura de la extensión mantenida por Microsoft para que puedas entender —y eventualmente modificar— cómo piensa tu asistente.
+#### Motor Conversacional
+
+La extensión **[GitHub Copilot Chat](CopilotEngine/README.md)** aporta el motor conversacional. Internamente, Copilot construye un *system message* que combina las instrucciones del sistema ([copilot-instructions.md](.github/copilot-instructions.md)) con las del contexto del workspace y el prompt de usuario.
+
+El submódulo [CopilotEngine](CopilotEngine/) es una captura de la extensión mantenida por Microsoft para que puedas entender —y eventualmente modificar— cómo piensa tu asistente. Y, además, para que el asistente pueda ver cómo es por dentro.
+
+→ [Copilot Overview](https://code.visualstudio.com/docs/copilot/overview)
 
 Sobre esta base, Scriptorium añade otras extensiones:
 
-https://code.visualstudio.com/api#creating-your-own-extension
+#### Extensión Arrakis
 
-**[Arrakis Extension](VsCodeExtension/README.md)** es la interfaz visual del Scriptorium. Sus tres paneles (Settings, CMD, MENU) exponen la configuración, comandos y servicios. Para amantes de lo que "surge" cuando lo invocas, Lo mejor de las UIs que "aparecen"; y para los amantes de deslizarse en miles de menús anidados. La extensión, abierta, se puede personalizar con "flavours" según el tipo de proyecto y el área técnica.
+**[Arrakis Extension](VsCodeExtension/README.md)** es la interfaz visual del Scriptorium. Sus tres paneles (Settings, CMD, MENU) exponen la configuración, comandos y servicios.  
+
+Para amantes de lo que "surge" cuando lo invocas: lo mejor de las UIs que "aparecen"; y para los amantes de deslizarse en miles de menús anidados: añade y refactoriza los paneles que necesites para tu día a día. 
+
+La extensión se puede personalizar con "flavours" según el tipo de proyecto y el área técnica.
+
+→ [Creating Extensions](https://code.visualstudio.com/api#creating-your-own-extension)
 
 > **Curva de aprendizaje**: Si usas VS Code, ya tienes el 70% del camino recorrido. Scriptorium añade agentes y paneles, no reemplaza el editor.
 
+---
+
 ### 3. Arquitectura de SDKs
 
-Aleph Scriptorium es una suite de código y configuraciones que se reparte en distintos ámbitos y ubicaciones. En un balance entre:
+Aleph Scriptorium distribuye su código en distintos ámbitos:
 
-a) Código dentro de la Vs Code Extension
-b) Código para la codebase/copilot (.github)
-c) Código para gestión del workspace (.vscode)
-c) Código para gestión de los almacenes: ARCHIVO + DISCO.
-d) Submodulos
+| Ámbito | Ubicación | Propósito |
+|--------|-----------|-----------|
+| VS Code Extension | `VsCodeExtension/` | Interfaz visual (Hacker Panels) |
+| Copilot/Codebase | `.github/` | Agentes, prompts, instrucciones |
+| Workspace | `.vscode/` | Tasks, settings, MCP servers |
+| Almacenes | `ARCHIVO/` + `DISCO/` | Contenido y datos |
+| Submódulos | Raíz | Herramientas externas |
 
-La tendencia es a mover el máximo posible de código a la colección de proyecto "alephscript" con librerías npm modulares. [MCPGallery](MCPGallery/README.md):
+La tendencia es mover el máximo código posible a librerías npm modulares en [MCPGallery](MCPGallery/README.md):
 
 | SDK | Función |
 |-----|---------|
 | [mcp-core-sdk](MCPGallery/mcp-core-sdk/) | Primitivas MCP base |
 | [mcp-mesh-sdk](MCPGallery/mcp-mesh-sdk/) | Red mesh de servidores MCP |
-| [mcp-inspector-sdk](MCPGallery/mcp-inspector-sdk/) | Servicio de logística de la mesh |
+| [mcp-inspector-sdk](MCPGallery/mcp-inspector-sdk/) | Inspección y logística de la mesh |
 | [mcp-model-sdk](MCPGallery/mcp-model-sdk/) | Servicio de modelos IA |
+| ... | ... |
+
+---
 
 ### 4. Instalación y Estructura
 
-Scriptorium es un repositorio Git con [submódulos](.gitmodules) opcionales. Puedes instalar todo de golpe:
+Scriptorium es un repositorio Git con [submódulos](.gitmodules) opcionales:
 
 ```bash
+# Instalación completa
 git clone https://github.com/escrivivir-co/aleph-scriptorium
 git submodule update --init --recursive
+
+# O añadir capacidades progresivamente
+git submodule update --init MCPGallery
 ```
 
-O ir añadiendo capacidades según las necesites. Esta es la filosofía central: **el editor se adapta al escritor, no al revés**.
-
-#### Submódulos → Plugins → Tu Scriptorium
+> **Filosofía central**: El editor se adapta al escritor, no al revés.
 
 Estrategia de ampliación ad hoc: 
 
-a) Trae una herramienta agregándola como submodulo. Ponla a punto.
-b) Mapea con un plugin la funcionalidad para sumarla al scriptorium. Sigue pautas generales o crea tu propio camino.
+- a) Trae una herramienta agregándola como submódulo. Ponla a punto.
+- b) Mapea con un plugin la funcionalidad para sumarla al scriptorium. Sigue pautas generales o crea tu propio camino.
+
+#### Flujo: Submódulo → Plugin → Tu Scriptorium
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│  1. IDE VS Code                                                     │
+│     ├── workspace-config.json                                       │
+│     └── scripts/setup-workspace.sh                                  │
+├─────────────────────────────────────────────────────────────────────┤
+│  2. Submódulo (herramienta externa)                                 │
+│     ├── Prompt: .github/prompts/as_instalar_submodulo.prompt.md     │
+│     └── Git: .gitmodules                                            │
+├─────────────────────────────────────────────────────────────────────┤
+│  3. Plugin (mapea la herramienta)                                   │
+│     ├── Prompt: .github/prompts/as_plugin-install.prompt.md         │
+│     └── Registro: .github/plugins/registry.json                     │
+├─────────────────────────────────────────────────────────────────────┤
+│  4. Configuración                                                   │
+│     ├── Agente bridge (@plugin_ox_*)  → .github/agents/             │
+│     ├── Copilot Locations             → .vscode/settings.json       │
+│     ├── Datos                         → ARCHIVO/PLUGINS/{ID}/       │
+│     └── Sistema                       → .github/plugins/{id}/       │
+│         ├── manifest.md                                             │
+│         ├── instructions/                                           │
+│         ├── prompts/                                                │
+│         ├── agents/                                                 │
+│         └── schemas/                                                │
+├─────────────────────────────────────────────────────────────────────┤
+│  5. UI (opcional)                                                   │
+│     └── Hacker Panels → VsCodeExtension/src/views/                  │
+├─────────────────────────────────────────────────────────────────────┤
+│  6. Tu Scriptorium (único)                                          │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+
 
 Cada submódulo es una herramienta externa (un editor, un servidor, una librería). El [sistema de plugins](.github/PLUGINS.md) la integra al ecosistema de agentes.
+El [scriptorium-pack](.github/plugins/scriptorium-pack/) viene preinstalado. A partir de ahí, tú decides qué añadir:
 
-El [scriptorium-pack](.github/plugins/scriptorium-pack/) viene preinstalado como base. A partir de ahí, tú decides qué añadir: ¿necesitas lógica simbólica? Activa [prolog-editor](.github/plugins/prolog-editor/). ¿Producción narrativa? [novelist](.github/plugins/novelist/). Con el tiempo, tu instalación refleja tu forma de trabajar.
+| Necesidad | Plugin |
+|-----------|--------|
+| Lógica simbólica | [prolog-editor](.github/plugins/prolog-editor/) |
+| Producción narrativa | [novelist](.github/plugins/novelist/) |
+| Bloques visuales | [blockly-editor](.github/plugins/blockly-editor/) |
+| Flujos wiring | [wire-editor](.github/plugins/wire-editor/) |
+| ... | ...  |
 
-```
-Abre el IDE VsCode
-    ├── Workspace                       -> workspace-config.json
-    └── Setup                           -> scripts\setup-workspace.sh    
-     ↓
-Submódulo (herramienta externa)
-    ├── prompt: .github/prompts/as_instalar_submodulo.prompt.md
-    └── git                             -> .gitmodules
-     ↓
-Plugin (mapea la herramienta) 
-     ├── prompt: .github/prompts/as_plugin-install.prompt.md
-     └── registro:                      -> .github\plugins\registry.json
-     ↓
-Diseña y configura
-     ├── Agente bridge (@plugin_ox_*)   -> .github/agents
-     ├── Copilot Locations              -> .vscode/settings.json
-     ├── Datos                          -> ARCHIVO/PLUGINS/{ID}
-     └── Sistema                        -> .github/plugins/{ID}
-        ├── Manifest
-        ├── Instrucciones
-        ├── Prompts
-        ├── Agentes
-        ├── ...
-        └── Esquemas
-     ↓
-Integra o crea una UI para el plugin
-     └── Hacker Panels                  -> VsCodeExtension\src\views
-     ↓
-Tu Scriptorium (único)
-```
+Con el tiempo, tu instalación refleja tu forma de trabajar.
 
 #### Arquitectura DRY
 
 Dos principios organizan el contenido:
 
-**Separación de memorias**: [ARCHIVO](ARCHIVO/) contiene texto clasificado y permanente (enciclopedias, novelas, documentación). [DISCO](ARCHIVO/DISCO/) contiene datos crudos y trabajo en progreso (sesiones, borradores, snapshots). Esta distinción evita mezclar material publicable con notas de trabajo.
+**Separación de memorias**:
+- [ARCHIVO](ARCHIVO/): Texto clasificado y permanente (enciclopedias, novelas, documentación)
+- [DISCO](ARCHIVO/DISCO/): Datos crudos y trabajo en progreso (sesiones, borradores, snapshots)
 
-**Índices únicos**: [Funcional.md](ARCHIVO/Funcional.md) documenta qué puede hacer el sistema. [Tecnico.md](ARCHIVO/Tecnico.md) documenta dónde está cada componente. Los plugins y agentes consultan estos índices en lugar de duplicar información.  Criterio Don't Repeat Yourself.
+**Índices únicos**:
+- [Funcional.md](ARCHIVO/DEVOPS/Funcional.md): Qué puede hacer el sistema (visión usuario)
+- [Tecnico.md](ARCHIVO/DEVOPS/Tecnico.md): Dónde está cada componente (visión desarrollador)
 
-#### Github Copilot Chat y el Context Bloat
+Criterio Don't Repeat Yourself: Los plugins y agentes consultan estos índices en lugar de duplicar información.
 
-##### Github Copilot Chat
+---
 
-El trabajo agéntico con modelos, en nuestro entorno, pasa por 3 momentos:
+### 5. GitHub Copilot Chat y Context Bloat
 
-Ver ./docs/blueprint-copilot.md
+#### Flujo de Trabajo con el Modelo
 
-Cuando se envía un mensaje:
+El trabajo agéntico pasa por 3 momentos. Ver [blueprint-copilot.md](docs/blueprint-copilot.md).
 
+**Al enviar un mensaje**:
 - Herramientas MCP disponibles
-- Mensajes de Sistema
-- Datos de Contexto
+- Mensajes de sistema
+- Datos de contexto
 - Caché
 - Intención de usuario
 
-Mientras el modelo trabaja:
+**Mientras el modelo trabaja**:
+- Consola de Copilot Chat en OUTPUT → [Debugging](https://code.visualstudio.com/docs/debugtest/debugging)
+- Output en ventana de chat → [Smart Actions](https://code.visualstudio.com/docs/copilot/copilot-smart-actions)
+- Cambios en codebase → [Source Control](https://code.visualstudio.com/docs/sourcecontrol/overview)
 
-- Consola de Github Copilot Chat en la salida OUTPUT de https://code.visualstudio.com/docs/debugtest/debugging, para ver cómo funciona por dentro la comunicación con el modelo
-- Ouput en la ventana de chat: https://code.visualstudio.com/docs/copilot/copilot-smart-actions#copilot-chat-articles
-- Verás (con git) el trabajo en la codebase: https://code.visualstudio.com/docs/sourcecontrol/overview
-
-##### El context bloat
+#### Gestión del Context Bloat
 
 Cada modelo tiene un coste y también un **tamaño máximo de contexto**. Cuando más contexto se añade a una consulta más tarda, más cuesta pero más precisas y certera será.
 
@@ -162,112 +207,122 @@ Cuando se opera desde la raíz, los dominios de plugins se cargan usando las **"
 Aleph Scriptorium usa **Don't Repeat Yourself** para cargar en el contexto índices que funcionan como las herramientas MCP. El modelo reciba una lista de "disponibles" como índice, y si quiere usarlas tendrá que pedirlo. El sistema DRY hace lo mismo con la información de contexto, enlaces en lugar de cargar ficheros enteros.
 
 **El sistema de instrucciones** funciona mediante filtros de "apply" que especifican que patrones de nombres y extensiones de ficheros son objetivo. Cuando en la conversación se añade como contexto un fichero que hace saltar el filtro, Copilot carga esas instrucciones en el contexto.
-
 Según diseño, todo empieza en: [copilot-instructions.md](.github/copilot-instructions.md), el primer archivo de **instrucciones globales**. A partir de aquí, ¡tú decides qué cargas en el Contexto! 
 
 Con el uso de Scriptorium, el escritor podrá usar la capacidad de los agentes para **"auto-reflexión"** (.github/plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md") para aprender con el modelo qué pasa por debajo cuando el usuario y el agente hablan y así aprender cómo redirigirlo al gusto.
 
-###### Contexto (MCP)
+#### Model Context Protocol (MCP)
 
-https://modelcontextprotocol.io/docs/getting-started/intro MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems. 
+> MCP es como un puerto USB-C para aplicaciones IA: un estándar para conectar sistemas externos. MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems. 
 
-Aleph Scriptorium intenta sacar el máximo partido de estos conectores para el contexto y, nuevamente, será responsabilidad del escritor vigilar y controlar cómo se integra, especialmente en 3 puntos:
+→ [MCP Introduction](https://modelcontextprotocol.io/docs/getting-started/intro)
 
-**Herramientas configuradas en los agentes**: https://code.visualstudio.com/api/extension-guides/ai/mcp. Es resonsabilidad del usuario arrancar los servidores MCP en el launcher y, según uso y necesidad, arrancarlos en .vscode/mcp.json. Una vez en línea, el usuario escoge y mantiene lo más pequeña posible la lista de herramientas disponible.
+Protocolo estándar: `tools` + `resources` + `templates` + `prompts` + `sampling`
 
+Mantener el contexto pequeño es responsabilidad del usuario:
+- Arrancar servidores MCP necesarios
+- Configurar `.vscode/mcp.json`
+- Mantener lista de herramientas mínima
 
-### 5. Configuración y Acceso
+→ [Gestionar servidores MCP](https://code.visualstudio.com/docs/copilot/customization/mcp-servers) | [Usar servidores MCP](https://code.visualstudio.com/api/extension-guides/ai/mcp)
 
-Tres capas de personalización:
-- **VS Code**: [.vscode/settings.json](.vscode/settings.json) — Editor base. https://code.visualstudio.com/api/ux-guidelines/settings.
-- **Copilot Chat**: https://code.visualstudio.com/docs/copilot/chat/copilot-chat
-- **Arrakis **: [ArrakisTheater_OperaConfig.json](VsCodeExtension/ArrakisTheater_OperaConfig.json) — Panel Settings
+---
 
+### 6. Configuración y Acceso
 
-Diseña e integra en el IDE tus barras de herramientas y paneles de acceso. https://code.visualstudio.com/api/ux-guidelines/views. Añade QuickPicks: https://code.visualstudio.com/api/ux-guidelines/quick-picks a tus datos habituales.
+#### Capas de Personalización
 
+| Capa | Archivo | Propósito |
+|------|---------|-----------|
+| VS Code | [.vscode/settings.json](.vscode/settings.json) | Editor base |
+| Vs Code Copilot Chat | `github.copilot.chat` | Modelos, permisos, comportamiento,... |
+| Arrakis | [ArrakisTheater_OperaConfig.json](VsCodeExtension/ArrakisTheater_OperaConfig.json) | Configuración Scriptorium |
+
+→ [VS Code Settings](https://code.visualstudio.com/api/ux-guidelines/settings) | [Copilot Chat](https://code.visualstudio.com/docs/copilot/chat/copilot-chat)
 
 #### Hacker Panels
 
-Crea paneles a partir de plantillas: https://code.visualstudio.com/api/ux-guidelines/panel
+Paneles personalizables para el Scriptorium:
 
-VsCodeExtension\src\views\BaseHackerPanelProvider.ts
+| Panel | Archivo | Función |
+|-------|---------|---------|
+| **Config** | [HackerConfigPanelProvider.ts](VsCodeExtension/src/views/HackerConfigPanelProvider.ts) | Configuraciones del entorno + agentes |
+| **CMD** | [HackerCommandPanelProvider.ts](VsCodeExtension/src/views/HackerCommandPanelProvider.ts) | Directorio de comandos |
+| **UIs** | [HackerControlPanelProvider.ts](VsCodeExtension/src/views/HackerControlPanelProvider.ts) | Catálogo de URLs de apps |
 
-##### Config (Hacker Panel)
+Base: [BaseHackerPanelProvider.ts](VsCodeExtension/src/views/BaseHackerPanelProvider.ts)
 
-De un lado las configuraciones del entorno integrado para la operativo del escritor con sus herramients y del otro la nueva configuración específica para permitir que los agentes interaccionen con el sistema y la codebase. Scriptorium te las desvela y pone a mano en plantillas de expertirse para fácil control y supervisión.
+→ [VS Code Panel Guidelines](https://code.visualstudio.com/api/ux-guidelines/panel) | [VS Code Views](https://code.visualstudio.com/api/ux-guidelines/views)
 
-VsCodeExtension\src\views\HackerConfigPanelProvider.ts
+---
 
-##### CMD (Hacker Panel)
-
-Ten un directorio de esos comandos invisibles que están ahí pero a veces no encuentras: 
-
-VsCodeExtension\src\views\HackerCommandPanelProvider.ts
-
-##### UIs (Hacker Panel)
-
-Ten a mano y en catálogo las urls de tus apps:
-
-VsCodeExtension\src\views\HackerControlPanelProvider.ts
-
-### 6. Entorno híbrido: usuario + agentes
-
-- **VS Code Commands**: Paleta de comandos (`Ctrl+Shift+P`)
-- **Arrakis  CMD Panel**: Catálogo Comandos contextuales 
-- **Agentes**: [handoffs](.github/agents/AGENTS.md) entre agentes especializados
-
-### 7. Panel de servicios y apps
+### 7. Entorno Híbrido: Usuario + Agentes
 
 Operar un sistema dinámico es una cuestión pandemónica. Crear un sistema que pueda usar tanto el usuario como el agente permite delegar o asumir al gusto la gestión.
 
-#### Arrancar Tasks
-Explicar feature de vs code y comando para run tasks con el picker nativo de la ui. https://code.visualstudio.com/docs/debugtest/tasks y el fichero .vscode/task.json.
+| Interfaz | Acceso | Uso |
+|----------|--------|-----|
+| Paleta de comandos | `Ctrl+Shift+P` | Comandos VS Code estándar |
+| Arrakis CMD Panel | Panel lateral | Comandos contextuales |
+| Agentes | `@agente` en chat | Especialistas por dominio |
 
-Presentar el catálogo completo de nuestras tasks agrupadas por nombre.
+Los [handoffs](.github/agents/AGENTS.md) permiten navegación entre agentes especializados.
 
-Se puede pedir al agente que ejecute la task y que la monitorice, o arrancarlas manualmente.
+---
 
+### 8. Panel de Servicios y Apps
 
+#### Tasks de VS Code
 
-### 8. Model Context Protocol (MCP)
+El sistema de [Tasks](https://code.visualstudio.com/docs/debugtest/tasks) permite arrancar servicios desde `.vscode/tasks.json`.
 
-El protocolo que permite integrar al usuario con el IDE con los agentes con los datos y servicios es https://modelcontextprotocol.io/docs/getting-started/intro.
+**Ejecución**:
+- Manual: `Ctrl+Shift+P` → "Tasks: Run Task"
+- Agente: Pedir al agente que ejecute y monitorice
 
-Protocolo estándar : `tools` + `resources` + `templates` + `prompts` + `sampling`.
+#### Catálogo de Tasks por Stack
 
-Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect electronic devices, MCP provides a standardized way to connect AI applications to external systems.
+| Stack | Prefijo | Puertos | Servicios |
+|-------|---------|---------|-----------|
+| **APB** (Prolog) | `APB:` | 3006, 3050, 5001, 8000 | MCP Launcher + Prolog + Backend + Frontend |
+| **TPE** (TypedPrompts) | `TPE:` | 3019, 3020 | Editor + MCP Server |
+| **OAE** (OpenAsyncAPI) | `OAE:` | 3021, 3022 | Swagger UI + AsyncAPI Studio |
+| **NRE** (Node-RED) | `NRE:` | 1880, 3088 | Editor + GamifyUI |
+| **BLE** (Blockly) | `BLE:` | 4200, 5000 | Editor + Runtime |
+| **NOV** (Novelist) | `NOV:` | 3066, 8080 | MCP Server + UI |
+| **DEMO** | `DEMO:` | Varios | Stack completo para demostraciones |
+| **INS** (Inspector) | `INS:` | 6274, 6277 | MCP Inspector UI + Proxy |
 
-#### Servidores de terceros
+---
 
-https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+### 9. Servidores MCP
 
-#### Servidores Scriptorium
-En Aleph Scritporium se pueden conectar servers en VsCode o propios de nuestra mesh. .vscode\mcp.json
+#### Servidores en mcp-mesh-sdk
 
-Servidores MCP en [mcp-mesh-sdk](MCPGallery/mcp-mesh-sdk/src/): mcp-scriptorium-servers-pack
+Ubicación: [MCPGallery/mcp-mesh-sdk/src/](MCPGallery/mcp-mesh-sdk/src/)
 
-| Servidor | Puerto | Archivo |
+| Servidor | Puerto | Función |
 |----------|--------|---------|
-| [Launcher](MCPGallery/mcp-mesh-sdk/src/MCPLauncherServer.ts) | 3050 | Orquestación |
-(catálogo completo)
+| [MCPLauncherServer](MCPGallery/mcp-mesh-sdk/src/MCPLauncherServer.ts) | 3050 | Orquestación de servidores |
+| [MCPPrologServer](MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts) | 3006 | Editor/Runtime de lógicas |
+| [MCPTypedPromptServer](MCPGallery/mcp-mesh-sdk/src/MCPTypedPromptServer.ts) | 3020 | Base taxonómica
+| [MCPWikiBrowserServer](MCPGallery/mcp-mesh-sdk/src/MCPWikiBrowserServer.ts) | 3002 | Aplicación conectada |
+| [MCPStateMachineServer](MCPGallery/mcp-mesh-sdk/src/MCPStateMachineServer.ts) | 3004 | Máquina de estados |
+| [DevOpsServer](MCPGallery/mcp-mesh-sdk/src/DevOpsServer.ts) | 3003 | Automatización DevOps |
 
-##### Arrancar/Parar servidores MCP
+Configuración: `.vscode/mcp.json`
 
-El servidor MCP Launcher es un hub centralizado para lanzar otros MCP servers.
+#### Operaciones MCP
 
-Los agentes pueden usar la operativa de gestión de servidores en el launcher para arrancar, monitorizar o interactuar con los servicios.
+| Operación | Método |
+|-----------|--------|
+| **Arrancar/Parar** | MCP Launcher como hub centralizado |
+| **Operar** | Tools MCP comunicando con servicios REST/Async |
+| **Monitorizar** | [mcp-inspector-sdk](MCPGallery/mcp-inspector-sdk/) para inspección completa |
 
-##### Operar con los servicios a través de MCP
+---
 
-Los MCP Servers de la mesh se comunican con clientes a las funcionalidades de  REST o ASYNC con otros servicios de los submodulos. Ver por ejemplo PrologEditor.
-
-
-##### Monitorizar, inspeccionar operar servidores MCP
-
-De igual forma, el usuario puede usar el MCPGallery\mcp-inspector-sdk para plena gestión.
-
-## Parte II: La escritura
+## Parte II: La Escritura
 
 ### 1. Diseño Ontológico
 
@@ -279,31 +334,46 @@ De igual forma, el usuario puede usar el MCPGallery\mcp-inspector-sdk para plena
 | [MMCO](OnthologyEditor/MMCO/) | Modelado de realidad | Simulación |
 | [Metamodel](OnthologyEditor/metamodel/) | Estructuras formales | Especificación |
 
+---
+
 ### 2. Tipos y Presets
 
-Flujo de diseño ScriptoriumPacks:
-1. **[TypedPrompting](TypedPromptsEditor/README.md)**: Creación de esquemas y tipado. Validadores.
-2. **[MCPPresets](.github/plugins/mcp-presets/)**: Librería/catálogo/configurador de packs/selector e instalador de packs.
-3. **[HypergraphEditor](WiringAppHypergraphEditor/)**: Diseño visual de operativas. Diseño de operativas sobre BOEs (arg-board) o con el Editor de Hypergrafos.
+Los diseños del punto anterior se transforman en un flujo de diseño en ScriptoriumPacks:
 
-Plugin: [typed-prompting](.github/plugins/typed-prompting/) | Datos: [TYPED_PROMPTING](ARCHIVO/PLUGINS/TYPED_PROMPTING/)
+```
+1. TypedPrompting  →  Creación de esquemas y validadores
+         ↓
+2. MCPPresets      →  Catálogo y configuración de packs
+         ↓
+3. HypergraphEditor → Integración de Tipos y Packs en operativas
+```
 
-### 3. Especificación de APIs, UML, MCP,...
+| Componente | Submódulo | Plugin | Datos |
+|------------|-----------|--------|-------|
+| [TypedPrompting](TypedPromptsEditor/README.md) | TypedPromptsEditor | [typed-prompting](.github/plugins/typed-prompting/) | [TYPED_PROMPTING](ARCHIVO/PLUGINS/TYPED_PROMPTING/) |
+| [MCPPresets](.github/plugins/mcp-presets/) | — | [mcp-presets](.github/plugins/mcp-presets/) | [MCP_PRESETS](ARCHIVO/PLUGINS/MCP_PRESETS/) |
+| [HypergraphEditor](WiringAppHypergraphEditor/) | WiringAppHypergraphEditor | [hypergraph-editor](.github/plugins/hypergraph-editor/) | — |
 
-Para especificar la logica de negocio y los flujos de comunicación.
+---
 
-[OpenAsyncAPI Editor](.github/plugins/openasyncapi-editor/):
-- **OpenAPI**: REST endpoints ([specs](ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/))
-- **AsyncAPI**: Eventos y mensajería
-- **MCP**: Model Context Protocol
-- **UML**: Casos de uso y relacionales
-- Otros
-- Generación de código desde especificaciones
-- Caso de ejemplo: ARCHIVO\PLUGINS\OPENASYNCAPI_EDITOR\specs\PrologEditor (detallar specs por "tipo")
+### 3. Especificación de APIs
+
+[OpenAsyncAPI Editor](.github/plugins/openasyncapi-editor/) para especificar lógica de negocio y comunicación:
+
+| Tipo | Uso | Ejemplo |
+|------|-----|---------|
+| **OpenAPI** | REST endpoints | [specs/PrologEditor/openapi.yaml](ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/) |
+| **AsyncAPI** | Eventos y mensajería | [specs/PrologEditor/asyncapi.yaml](ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/) |
+| **MCP** | Model Context Protocol | Herramientas y recursos |
+| **UML** | Casos de uso | Diagramas relacionales |
+
+**Generación de código**: Desde especificaciones a implementaciones tipadas.
+
+---
 
 ### 4. Editores de Lógica
 
-Los ScriptoriumPacks pueden ser exportados a editores especializados que podrán inicializar sus taxonomías con tipos básicos en paletas para luego definir lógica sabiendo que será compatible con todo el ecosistema Scriptorium.
+Los ScriptoriumPacks pueden exportarse a editores especializados con paletas tipadas compatibles con todo el ecosistema:
 
 | Editor | Submódulo | Plugin | Paradigma |
 |--------|-----------|--------|-----------|
@@ -313,11 +383,9 @@ Los ScriptoriumPacks pueden ser exportados a editores especializados que podrán
 | [AAIAGallery](AAIAGallery/) | ✓ | — | Agentes AlephScript |
 | [WorkflowEditor](WorkflowEditor/) | ✓ | — | Workflows BPMN |
 
-### 5. Compilación lógicas
+---
 
-**Del Editor a la Runtime**: "Explicar flujo de 2 UIs en Blockly"
-**En Runtime: del agente al servicio**: "Explicar uso de PrologAgentBrainPack en Lucas"
-
+### 5. Pipeline de Compilación
 
 ```
 ┌────────────────────────────────────────────────────────────────────┐
@@ -357,94 +425,138 @@ Los ScriptoriumPacks pueden ser exportados a editores especializados que podrán
 └────────────────────────────────────────────────────────────────────┘
 ```
 
+**Flujos de compilación**:
+- **Editor → Runtime**: Blockly genera código ejecutable en 2 UIs: a) editor, b) runtime manager
+- **Agente → Servicio**: PrologAgentBrainPack en personajes como Lucas que permite inferencias en directo ya sea para alterar "hechos" o para pedir "asserts".
+
+---
+
 ### 6. Creación de Agentes
 
-AgentCreator. Multiplexa brains de varios origenes en los personajes publicando su ficha de personaje e interfaz de operativa con los brains. Enriquecidos con AgentLoreSDK, plugin-Enciclopedia, conectado a fuentes de scraping .github\plugins\foro-scraper, agentes de la codebase, etcétera.
-
-
-[AgentCreator](.github/plugins/agent-creator/) multiplexando fuentes:
+[AgentCreator](.github/plugins/agent-creator/) multiplexa fuentes para crear personajes y los exporta a otros plugins como NovelistEditor o ARG-Board:
 
 | Fuente | Ubicación | Aporta |
 |--------|-----------|--------|
-| Brains (Prolog, Blockly...) | Editores §12 | Capacidades lógicas |
+| Brains (Prolog, Blockly...) | Editores §4 | Capacidades lógicas |
 | [AgentLoreSDK](AgentLoreSDK/) | Submódulo | Plantillas de agentes |
 | [Enciclopedia](.github/plugins/enciclopedia/) | Plugin | Conocimiento estructurado |
 | [ForoScraper](.github/plugins/foro-scraper/) | Plugin | Fuentes externas |
 
-Output: Personajes en [TALLER/ELENCO](ARCHIVO/DISCO/TALLER/ELENCO/)
-
-## Parte III: El escribir
-
-Aleph Scriptorium es un sistema ideal para "streamers" e "influencers" permitiéndoles gozar de la solidez e inmediatez del versionado semántico del bucle DevOps de CD/CI con sus obras y actuaciones o presencia en la red. Pudiendo diseñar sesiones en el escritorio y reproducirlas en directo. El scriptorium cubre las fases del proceso desde la "idea" hasta "los aplausos" o "likes".
-
-### 1. Producción Narrativa Agéntica
-
-NovelistEditor. Uso de personajes con brain invocables en la narrativa mediante llamadas según el texto de la novela. Uso de los agentes de scriptorium para que recaben información en ENCICLOPEDIAS o scraping de fuentes conectadas. Gestión y mantenimiento del ARCHIVO separado de DISCO (el "archivo" es texto tratado y clasificiado, el DISCO es un soporte de datos de donde nutrirse) para redacción de textos posicionados, etc.
-
-
-[NovelistEditor](NovelistEditor/):
-- Personajes con brains invocables durante la redacción
-- Agentes que investigan en [ENCICLOPEDIA](ARCHIVO/ENCICLOPEDIA/)
-- Gestión de [ARCHIVO](ARCHIVO/) (texto clasificado) vs [DISCO](ARCHIVO/DISCO/) (datos crudos)
-
-Plugin: [novelist](.github/plugins/novelist/) | Datos: [NOVELIST](ARCHIVO/PLUGINS/NOVELIST/)
-
-### 2. Conversión de la narrativa agéntica en transmedia
-
-Creación de .github\plugins\arg-board-app, apps. Teatro-Arg-board --> UIs + Webs conectadas --> Invocación en tiempo real a las runtimes de los brains según cada una. El BlockchainComPort permite publicar la trama en la red.
-
-[Teatro ARG](.github/plugins/teatro/) + [ARG Board App](.github/plugins/arg-board-app/):
-- UIs web interactivas con brains en tiempo real
-- [WiringAppHypergraphEditor](WiringAppHypergraphEditor/) para apps conectadas
-- [BlockchainComPort](BlockchainComPort/) para publicar tramas en red P2P
-
-### 3. Proyección de narrativa transmedia en linea
-
- Web base: gh-pages. Secciones: plugin-periodico, plugin-teatro --> Genera contenido como autor y mantén frontales actualizados (Github Actions -> Azure Extension "Euler Scriptorium")
-
-[GitHub Pages](docs/) con Jekyll:
-- [Plugin Periódico](.github/plugins/scriptorium-pack/instructions/periodico.instructions.md): Producción noticiosa
-- [Plugin Teatro](.github/plugins/teatro/): Contenido interactivo
-- GitHub Actions → Azure "Euler Scriptorium" --> .github\workflows\pages.yml
-Ver: [docs/_config.yml](docs/_config.yml) | [demo.md](docs/demo.md)
-
-### 4. Uso de narrativa transmedia en Streaming con Apps conectadas
-
-Aleph Scriptorium es un sistema ideal para "streamers" e "influencers" permitiéndoles gozar de la solidez e inmediatez del versionado semántico del bucle DevOps de CD/CI con sus obras y actuaciones o presencia en la red. Pudiendo diseñar sesiones en el escritorio y reproducirlas en directo.
-
-- [StreamDesktop](StreamDesktop/) — Pantalla de teatro con streaming
-- [StreamDesktopAppCronos](StreamDesktopAppCronos/) — Gestión temporal
-- Apps creadas con [WiringAppHypergraphEditor](WiringAppHypergraphEditor/)
+**Output**: Personajes en [TALLER/ELENCO](ARCHIVO/DISCO/TALLER/ELENCO/)
 
 ---
 
-## Parte II: El escritor
+## Parte III: El Escribir
 
-Sesiones en [GitHub Copilot Chat](CopilotEngine/README.md):
+Aleph Scriptorium es un sistema ideal para "streamers" e "influencers" permitiéndoles gozar de la solidez e inmediatez del versionado semántico del bucle DevOps de CD/CI con sus obras y actuaciones o presencia en la red. Pudiendo diseñar sesiones en el escritorio y reproducirlas en directo. El scriptorium cubre las fases del proceso desde la "idea" hasta "los aplausos" o "likes". Aleph Scriptorium es un sistema ideal para "streamers" e "influencers" permitiéndoles gozar de la solidez e inmediatez del versionado semántico del bucle DevOps de CD/CI con sus obras y actuaciones o presencia en la red. Pudiendo diseñar sesiones en el escritorio y reproducirlas en directo.
+
+### 1. Producción Narrativa Agéntica
+
+[NovelistEditor](NovelistEditor/) es el sistema de producción narrativa:
+
+| Capacidad | Descripción |
+|-----------|-------------|
+| Personajes con brains | Invocables durante la redacción |
+| Investigación | Agentes consultan [ENCICLOPEDIA](ARCHIVO/ENCICLOPEDIA/) o scraping |
+| Gestión documental | [ARCHIVO](ARCHIVO/) (clasificado) vs [DISCO](ARCHIVO/DISCO/) (crudos) |
+
+**Plugin**: [novelist](.github/plugins/novelist/) | **Datos**: [NOVELIST](ARCHIVO/PLUGINS/NOVELIST/)
+
+> 💡 Ideal para streamers e influencers: DevOps de CD/CI aplicado a obras y presencia en red.
+
+---
+
+### 2. Conversión de la narrativa agéntica en transmedia
+
+[Teatro ARG](.github/plugins/teatro/) + [ARG Board App](.github/plugins/arg-board-app/) para narrativa interactiva:
+
+| Componente | Función |
+|------------|---------|
+| [WiringAppHypergraphEditor](WiringAppHypergraphEditor/) | Apps conectadas con brains en tiempo real |
+| [BlockchainComPort](BlockchainComPort/) | Publicación de tramas en red P2P |
+| UIs Web | Interacción con runtimes de brains |
+
+---
+
+### 3. Proyección de narrativa transmedia en linea
+
+Exporta desde el Scriptorium por vias naturales como [GitHub Pages](.github/plugins/gh-pages) u otras integraciones para levantar series temáticas y temporales como noticias, obras, columnas etc manteniendo sincronizada tu codebase y los portales donde los usuarios las visitan:
+
+| Plugin | Ubicación | Función |
+|----------|-----------|---------|
+| Periódico | [periodico.instructions.md](.github/plugins/scriptorium-pack/instructions/periodico.instructions.md) | Portal de contenido |
+| Teatro | [teatro](.github/plugins/teatro/) | Portal de cntenido interactivo |
+| Publicar CI/CD  | [.github/workflows/pages.yml](.github/workflows/pages.yml) | GitHub Actions → Azure |
+
+**Ver**: [docs/_config.yml](docs/_config.yml) | [demo.md](docs/demo.md)
+
+---
+
+### 4. Uso de narrativa transmedia en Streaming con Apps conectadas
+
+Lo difícil es hacer la obra. Una vez se ha montado el corpus: ¡con Aleph Scriptorium da gusto desplegarlo y escrivivirlo, :-D!
+
+Herramientas para diseñar sesiones en escritorio y reproducirlas en directo:
+
+| Submódulo | Función |
+|-----------|---------|
+| [StreamDesktop](StreamDesktop/) | Pantalla de teatro con streaming |
+| [StreamDesktopAppCronos](StreamDesktopAppCronos/) | Gestión temporal |
+| [WiringAppHypergraphEditor](WiringAppHypergraphEditor/) | Creación de apps conectadas |
+
+---
+
+## Parte IV: El Escritor
 
 ### 1. IDE Clásico
 
-https://code.visualstudio.com/docs/setup/setup-overview
-
 Operaciones estándar de VS Code:
-- Explorador de archivos ([workspace-config.json](workspace-config.json))
-- Edición con IntelliSense
-- Búsqueda en workspace (`Ctrl+Shift+F`)
-- Terminal integrada
-- Smart Actions: https://code.visualstudio.com/docs/copilot/copilot-smart-actions
+
+| Función | Acceso |
+|---------|--------|
+| Explorador de archivos | [workspace-config.json](workspace-config.json) |
+| Autocompletado inteligente |
+| Búsqueda en workspace | `Ctrl+Shift+F` |
+| Terminal integrada | `` Ctrl+` `` |
+| Asistencia integrada | [Smart Actions](https://code.visualstudio.com/docs/copilot/copilot-smart-actions) |
+| Sugerencias | [Inline suggestions](https://code.visualstudio.com/docs/copilot/overview#_inline-suggestions) |
+
+Configuración: [workspace-config.json](workspace-config.json)
+
+→ [VS Code Setup](https://code.visualstudio.com/docs/setup/setup-overview)
+
+---
 
 ### 2. Sistema de Agentes
 
-https://code.visualstudio.com/docs/copilot/customization/mcp-servers#copilot-agents-articles
+| Componente | Ubicación | Función | Sale en VsCode | 
+|------------|-----------|---------|------|
+| Agentes | `.github/agents/*.agent.md` | Especialistas por dominio | Sí |
+| Puentes | `.github/agents/plugin_ox_*.agent.md` | Conectores de plugin | Sí |
+| Plugins | `.github/plugins/*/agents/*.agent.md` | Agentes "lore"" | No |
 
-| Componente | Ubicación | Función |
-|------------|-----------|---------|
-| [Agentes](.github/agents/) | `.github/agents/*.agent.md` | Especialistas por dominio |
-| [Handoffs](.github/agents/AGENTS.md) | (shortcuts) Tabla de delegación | Navegación entre agentes |
-| [Prompts](.github/prompts/) | Plantillas reutilizables | Flujos predefinidos |
-| [Instrucciones](.github/plugins/*/instructions/) | Por plugin | Reglas contextuales |
+| Handoffs | [AGENTS.md](.github/agents/AGENTS.md) | Tabla de delegación |
+| Prompts | `.github/prompts/*.prompt.md` | Plantillas de dominio | Sí |
+| Plugins | `.github/plugins/*/prompts/*.prompt.md` | Plantillas contextuales  | Si activo en Locations |
 
-Agentes principales: [@ox](.github/agents/ox.agent.md) (oráculo), [@aleph](.github/agents/aleph.agent.md) (productor), [@scrum](.github/plugins/scrum/agents/scrum.agent.md) (proceso)
+| Instrucciones | `.github/instructions/*.instruction.md` | Reglas contextuales |
+| Plugins | `.github/plugins/*/instruction/*.instruction.md` | Agentes "lore"" | Si activo en Locations |
+
+**Agentes principales**:
+- [@ox](.github/agents/ox.agent.md) — Oráculo y coordinador técnico
+- [@indice](.github/agents/indice.agent.md) — Gestor de coherencia DRY
+- [@aleph](.github/agents/aleph.agent.md) — Como Ox pero "funcional"
+- [@scrum](.github/plugins/scrum/agents/scrum.agent.md) — El master Agile
+- ...
+
+→ [Copilot Agents](https://code.visualstudio.com/docs/copilot/customization/mcp-servers#copilot-agents-articles)
+
+Locations (activar/desactivar):
+
+En .vscode\settings.json:
+- chat.promptFilesLocations
+- chat.instructionsFilesLocations
+---
 
 ### 3. Protocolos Multi-Agente
 
@@ -455,48 +567,61 @@ Coordinación de agentes en tareas complejas:
 | [Cotrabajo](.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md) | Sesiones colaborativas | Épicas multi-etapa |
 | [Scrum](.github/plugins/scrum/instructions/scrum-protocol.instructions.md) | Modelo Generativo | Planificación |
 | [Auto-reflexión](.github/plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md) | Optimización de tokens | Sesiones largas |
+| [Banderas](.github/agentes/*flag.agent.md) | Rondas de agentes | Sesiones largas |
 
-Sesiones activas en: [SESIONES_COTRABAJO](ARCHIVO/DISCO/SESIONES_COTRABAJO/)
+**Sesiones activas**: [SESIONES_COTRABAJO](ARCHIVO/DISCO/SESIONES_COTRABAJO/)
+
+---
 
 ### 4. Auto-Reflexión y Métricas
 
-Gobernanza tripartita ([@ox](.github/agents/ox.agent.md), [@indice](.github/agents/indice.agent.md), [@scrum](.github/plugins/scrum/agents/scrum.agent.md)):
+El flujo agéntico pasa por etapas (ver referencia: blueprint-copilot.md) donde la conversación se transforma en etapas y niveles. El feature "auto-reflexión" en Aleph Scriptorium consiste en un mecanismo que conecta a los agentes con su actividad interna con Copilot Chat de modo que puedan observar sus propias conversaciones no ya desde le plano usuario-agente sino agente-LLM. Esta información es vital para evolucionar el scriptorium e incluso para coger ideas de ingeniería de prompting observando en vivo cómo dialoga consigo mismo el agente construyendo secuencias de llamadas a herrammientas y manejo del contexto de forma performante y como performance.
 
 | Métrica | Herramienta MCP | Umbral |
 |---------|-----------------|--------|
-| `healthScore` | `get_usage_metrics()` | ≥70 verde |
+| `healthScore` | `get_usage_metrics()` | ≥70 🟢 |
 | `cacheHitRate` | `analyze_session()` | ≥30% |
 | Snapshots | `capture_snapshot()` | Cada 30-60 min |
 
-Ver: [auto-reflexion.instructions.md](.github/plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md)
+→ [auto-reflexion.instructions.md](.github/plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md)
 
-### 5. Invocación de Plugins
+---
+
+### 5. Plugins Instalados
 
 [22 plugins](.github/plugins/) instalados, accesibles via bridges `@plugin_ox_*`:
 
 | Categoría | Plugins |
 |-----------|---------|
-(completar con lista real)
+| ... | ... |
 
-Registro: [registry.json](.github/plugins/registry.json)
 
-### 6. Despliegue de Servicios
-
-[Tasks](.vscode/tasks.json) para servicios y Apps:
-
-| Stack | Puertos | Task |
-|-------|---------|------|
-(completar con lista real)
+**Registro**: [registry.json](.github/plugins/registry.json)
 
 ---
 
-## Referencias 
+### 6. Despliegue de Servicios
+
+[Tasks](.vscode/tasks.json) organizadas por stack:
+
+| Stack | Task Principal | Puertos |
+| ... | ... | ... |
+
+
+**Ejecución**: `Ctrl+Shift+P` → "Tasks: Run Task" → Seleccionar
+
+---
+
+## Referencias
 
 | Documento | Propósito |
 |-----------|-----------|
-| [README.md](README.md) | Visión general |
-| [DEVOPS.md](.github/DEVOPS.md) | Metodología y commits |
+| [README.md](README.md) | Visión general del proyecto |
+| [DEVOPS.md](.github/DEVOPS.md) | Metodología y convención de commits |
 | [PLUGINS.md](.github/PLUGINS.md) | Protocolo de extensiones |
-| [AGENTS.md](.github/agents/AGENTS.md) | Índice de agentes |
-| [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md) | Estado del proyecto |
+| [AGENTS.md](.github/agents/AGENTS.md) | Índice maestro de agentes |
+| [BACKLOG-SCRIPTORIUM.md](.github/BACKLOG-SCRIPTORIUM.md) | Estado actual del proyecto |
 | [roadmap.md](docs/roadmap.md) | Épocas de desarrollo |
+| [blueprint-copilot.md](docs/blueprint-copilot.md) | Arquitectura de Copilot |
+| [Funcional.md](ARCHIVO/DEVOPS/Funcional.md) | Índice funcional (usuario) |
+| [Tecnico.md](ARCHIVO/DEVOPS/Tecnico.md) | Índice técnico (desarrollador) |
