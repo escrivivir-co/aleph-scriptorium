@@ -40,6 +40,18 @@ handoffs:
     agent: AgentCreator
     prompt: "Genera archivo .brain.pl con reglas de comportamiento Prolog para un personaje. Usa template brain.pl.template."
     send: false
+  - label: Validar agente creado
+    agent: AgentCreator
+    prompt: "Genera cuestionario de validación para un agente recién creado. Ejecuta protocolo de 3 fases (generar→pasar→analizar)."
+    send: false
+  - label: Generar cuestionario de validación
+    agent: AgentCreator
+    prompt: "Genera solo el cuestionario de validación (Fase A) adaptado a las fuentes y agentes base del agente."
+    send: false
+  - label: Analizar alineamiento
+    agent: Aleph
+    prompt: "Analiza las respuestas del cuestionario y emite veredicto de alineamiento (Fase C). Usa validar-agente.prompt.md."
+    send: false
 ---
 
 # Agente: Agent Creator

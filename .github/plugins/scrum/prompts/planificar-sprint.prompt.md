@@ -1,8 +1,8 @@
-# Prompt: Planificar Sprint (DRY)
+# Prompt: Planificar Sprint (Modelo Generativo)
 
-> **Plugin**: Scrum v2.0  
+> **Plugin**: Scrum v3.0.0  
 > **Comando**: `@scrum planificar`  
-> **Modelo**: DRY (índice de referencias)
+> **Modelo**: DRY (índice de referencias) + Modelo Generativo
 
 ---
 
@@ -10,7 +10,19 @@
 
 Crear carpeta de borrador en DISCO y añadir **una fila de referencia** al índice oficial.
 
+**v3.0**: Alternativa si viene de sesión de cotrabajo → usar `@scrum generar-desde-sesion`
+
 ## Instrucciones para @scrum
+
+### Paso 0: Verificar origen (v3.0)
+
+```
+¿Existe una sesión de cotrabajo cerrada como PRODUCTIVA 
+que debería generar este borrador?
+
+Si SÍ → Recomendar: @scrum generar-desde-sesion {ruta}
+Si NO → Continuar con planificación manual
+```
 
 ### Paso 1: Identificar siguiente épica
 
@@ -86,14 +98,32 @@ Siguiente: @scrum borrador para detallar épica
 
 ---
 
+## Detección de Sesiones Productivas (v3.0)
+
+### Cuándo recomendar `generar-desde-sesion`
+
+```
+Si existe en SESIONES_COTRABAJO/ una sesión:
+  - Estado: CERRADA
+  - Tipo: PRODUCTIVA
+  - Sin borrador generado aún
+
+→ Mostrar:
+  "⚠️ Hay una sesión productiva que podría generar este borrador:
+   
+   Sesión: {nombre}
+   Consenso: {resumen}
+   
+   ¿Usar @scrum generar-desde-sesion en lugar de planificar manual?"
+```
+
+---
+
 ## Salida esperada
 
-Archivo `ARCHIVO/DISCO/{Mes}_{Año}_release/01_planificacion-sprintN.md` con:
-- Conversación completa PO-SM
-- Objetivo definido
-- Épicas identificadas
-- Riesgos documentados
-- Métricas de éxito
+Archivo `ARCHIVO/DISCO/BACKLOG_BORRADORES/{tema}/conversacion-po-sm.md` con:
+- Contexto inicial
+- Objetivo definido (pending input PO)
 
 ## Siguiente paso
 

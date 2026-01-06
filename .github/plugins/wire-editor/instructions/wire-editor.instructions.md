@@ -6,11 +6,99 @@ applyTo: "ARCHIVO/DISCO/WIRING/**/*.json, .github/plugins/wire-editor/**/*.md"
 
 # Instrucciones: Plugin WireEditor
 
-> **Fuente de verdad**: `ARCHIVO/DISCO/WIRING/` y `node-red-alephscript-sdk/`
+> **Fuente de verdad**: `ARCHIVO/DISCO/WIRING/` y `WiringEditor/`
+> **Submódulo**: `WiringEditor` (node-red-alephscript-sdk)
 
 ## Qué es WireEditor
 
 WireEditor es el plugin de **diseño de flujos de datos** del Scriptorium. Usa la metáfora de Node-RED: nodos conectados por cables que transforman y enrutan información.
+
+---
+
+## Fases de Trabajo del Agente
+
+El agente @wire-editor guía al usuario a través de 4 fases:
+
+### Fase 1: Setup (Instalación)
+
+| Handoff | Comando | Descripción |
+|---------|---------|-------------|
+| `@wire-editor verificar setup` | — | Verifica Node-RED instalado |
+| `@wire-editor instalar node-red` | `npm i -g node-red` | Instala Node-RED globalmente |
+| `@wire-editor setup completo` | `scripts/setup-node-red.sh` | Setup automático multiplataforma |
+
+**Scripts disponibles**:
+```bash
+# Unix/macOS
+./scripts/setup-node-red.sh
+
+# Windows
+scripts\setup-node-red.cmd
+
+# Opciones
+--skip-global    # No instalar Node-RED (ya instalado)
+--contrib-only   # Solo contribs, no dashboard
+```
+
+### Fase 2: Configuración (Contribs)
+
+| Handoff | Descripción |
+|---------|-------------|
+| `@wire-editor instalar dashboard` | Instala node-red-dashboard |
+| `@wire-editor instalar alephscript` | Instala 13 nodos AlephScript |
+| `@wire-editor verificar nodos` | Lista nodos instalados |
+
+**Contribs del Scriptorium**:
+
+| Paquete | Nodos | Ruta |
+|---------|-------|------|
+| node-red-contrib-alephscript | 13 | `WiringEditor/packages/node-red-contrib-alephscript` |
+| node-red-contrib-wiki-racer | 1 | `WiringAppHypergraphEditor/node-red-contrib-wikir-racer` |
+| node-red-dashboard | ~30 | npm registry |
+
+### Fase 3: Edición (Diseño de Flows)
+
+| Handoff | Descripción |
+|---------|-------------|
+| `@wire-editor crear flow {nombre}` | Nuevo proyecto en DISCO/WIRING/ |
+| `@wire-editor importar flow` | Importa JSON a proyecto |
+| `@wire-editor exportar flow` | Exporta a archivo |
+| `@wire-editor asesorar nodos` | Recomienda nodos según caso |
+
+### Fase 4: Ejecución (Runtime)
+
+| Handoff | Task VS Code | Puerto |
+|---------|--------------|--------|
+| `@wire-editor arrancar editor` | NRE: Start [Editor] | 1880 |
+| `@wire-editor arrancar dashboard` | — (requiere flow) | 1880/ui |
+| `@wire-editor arrancar gamify` | NRE: Start [GamifyUI] | 3088 |
+| `@wire-editor abrir editor` | NRE: Open [Editor] | — |
+| `@wire-editor health check` | NRE: Health Check | — |
+
+---
+
+## Arquitectura de Puertos
+
+| Servicio | Puerto | Descripción |
+|----------|--------|-------------|
+| Node-RED Editor | 1880 | Editor visual de flows |
+| Node-RED Dashboard | 1880/ui | UI runtime generada |
+| GamifyUI (Angular) | 3088 | UI alternativa (WiringEditor) |
+
+---
+
+## Tasks de VS Code
+
+```
+NRE: Node-RED Editor
+├── NRE: Start [Editor]      → node-red (puerto 1880)
+├── NRE: Start [GamifyUI]    → npm run dev:ui (puerto 3088)
+├── NRE: Setup [Contribs]    → scripts/setup-node-red.sh
+├── NRE: Open [Editor]       → Abre http://localhost:1880
+├── NRE: Open [Dashboard]    → Abre http://localhost:1880/ui
+├── NRE: Open [GamifyUI]     → Abre http://localhost:3088
+└── NRE: Health Check        → Verifica servicios activos
+```
 
 ---
 
@@ -240,11 +328,39 @@ Evento externo → ChannelNode → FlowControlNode (rate limit)
 
 ## Lo que NO hacer
 
-- **No gestionar Node-RED**: El plugin no instala, arranca ni para Node-RED
+- **No ignorar setup**: Verificar prerequisitos antes de editar flows
 - **No editar flows en ejecución**: Operar siempre sobre archivos
 - **No hardcodear rutas**: Usar paths relativos a WIRING/
 - **No mezclar schemas de feed**: Cada feed tiene su schema definido
 - **No ignorar catálogo**: Siempre consultar antes de recomendar nodos
+
+---
+
+## Nodos AlephScript (14 total)
+
+### De WiringEditor (13 nodos)
+
+| Nodo | Categoría | Descripción |
+|------|-----------|-------------|
+| alephscript-bot | Bot | Conecta con servidor AlephScript |
+| alephscript-enhanced-bot | Bot | Bot con capacidades extendidas |
+| alephscript-app-channel | Channel | Canal de aplicación |
+| alephscript-sys-channel | Channel | Canal de sistema |
+| alephscript-ui-channel | Channel | Canal de UI |
+| alephscript-orchestrator | Control | Orquestador de flujos |
+| alephscript-app-format | Format | Formateador de app |
+| alephscript-sys-format | Format | Formateador de sistema |
+| alephscript-ui-format | Format | Formateador de UI |
+| alephscript-config | Config | Configuración global |
+| alephscript-bot-registry | Dashboard | Registro de bots |
+| alephscript-room-tester | Dashboard | Tester de rooms |
+| alephscript-stream-monitor | Dashboard | Monitor de streams |
+
+### De WiringApp (1 nodo)
+
+| Nodo | Categoría | Descripción |
+|------|-----------|-------------|
+| game | Game | Motor de partidas wiki-racer |
 
 ---
 

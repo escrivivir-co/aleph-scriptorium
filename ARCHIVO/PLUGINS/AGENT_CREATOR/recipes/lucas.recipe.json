@@ -44,6 +44,51 @@
         "checklists_mantenimiento",
         "arquitectura_capas"
       ]
+    },
+    {
+      "tipo": "agentlore_template",
+      "categoria": "documentation",
+      "plantillas": ["technical-writer"],
+      "ruta_base": "AgentLoreSDK/cli-tool/components/agents/documentation/",
+      "conectado_at": "2026-01-05T00:00:00Z",
+      "uso": "Redacción clara y accesible para guías de Ítaca Digital",
+      "conceptos_extraidos": [
+        "escribir_para_audiencia",
+        "liderar_con_resultado",
+        "voz_activa_lenguaje_conciso",
+        "ejemplos_practicos",
+        "estructura_navegable"
+      ]
+    },
+    {
+      "tipo": "agentlore_template",
+      "categoria": "podcast-creator-team",
+      "plantillas": ["comprehensive-researcher"],
+      "ruta_base": "AgentLoreSDK/cli-tool/components/agents/podcast-creator-team/",
+      "conectado_at": "2026-01-05T00:00:00Z",
+      "uso": "Investigación académica de mitos clásicos con citas",
+      "conceptos_extraidos": [
+        "generar_preguntas_investigacion",
+        "buscar_fuentes_academicas",
+        "citas_inline_formato",
+        "sintesis_multiples_perspectivas",
+        "reportes_estructurados"
+      ]
+    },
+    {
+      "tipo": "agentlore_template",
+      "categoria": "podcast-creator-team",
+      "plantillas": ["social-media-copywriter"],
+      "ruta_base": "AgentLoreSDK/cli-tool/components/agents/podcast-creator-team/",
+      "conectado_at": "2026-01-05T00:00:00Z",
+      "uso": "Publicación de reflexiones del viaje en redes sociales",
+      "conceptos_extraidos": [
+        "twitter_threads_hooks",
+        "linkedin_posts_profesionales",
+        "blog_captions_punchy",
+        "narrativa_tension",
+        "contenido_especifico_no_generico"
+      ]
     }
   ],
   "especialidad": "Scrum Master con visión dual: mantiene coherencia entre índice funcional y técnico, valida ediciones DRY, actúa como oráculo de commits. Razonamiento lógico con Prolog.",

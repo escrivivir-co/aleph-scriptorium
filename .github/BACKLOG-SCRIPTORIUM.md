@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.4-dry  
+> **Versión**: 1.2.5-dry  
 > **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-04
+> **Actualizado**: 2026-01-05
 > **Rama en ALEPH (esta codebase)**: flavour/monada
 > **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
@@ -42,7 +42,9 @@
 | ✅ | DRAMATURGIA-MAQUINA-1.0.0 | Scriptorium como Máquina (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 | ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
 | ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
-| �📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+| ✅ | AGENT-TEMPLATES-1.0.0 | AgentLoreSDK Templates en Agent Creator (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| ✅ | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
+| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 
 ---
 
@@ -69,6 +71,7 @@
 | LAUNCHER-BUG-001 | MCPLauncher Process Kill Failure (Windows spawn) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_04_MCPLauncher_ProcessKill_Bug/01_backlog-borrador.md) |
 | PROLOG-BUG-001 | Session Isolation (assert_fact sin sessionId) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
 | PROLOG-BUG-002 | MCP Templates 404 (catalog OK, content fails) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
+
 
 ---
 
@@ -114,6 +117,8 @@
 | ✅ | 2026-01-04_dramaturgia-scriptorium-maquina | DRAMATURGIA-MAQUINA-1.0.0 | Backlog 13 pts (5 stories, 13 tasks), 6 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
 | ✅ | 2026-01-04_typed-mcp-test-session | TYPED-MCP-1.0.0 | Tests 83% (5/6 auto), 8 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session/) |
 | 🟢 | 2026-01-05_blueprints-typed-prompt | BLUEPRINTS-TYPED-1.0.0 | En progreso | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
+| ✅ | 2026-01-04_agent-creator-claude-templates | AGENT-TEMPLATES-1.0.0 | 8 turnos, protocolo validación inscrito | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| ✅ | 2026-01-05_consenso-agile-scriptorium | SCRUM-REFACTOR-1.0.0 | 4 turnos, Modelo Generativo + Lucas DRY (46 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_consenso-agile-scriptorium/) |
 
 ---
 
@@ -124,8 +129,8 @@
 | Épicas cerradas (total) | 29+ |
 | Effort completado | ~215 pts |
 | Plugins instalados | 22 |
-| Submódulos integrados | 16 |
-| Sesiones cotrabajo | 6 |
+| Submódulos integrados | 17 |
+| Sesiones cotrabajo | 8 |
 
 ---
 
@@ -133,9 +138,14 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-05 | ✅ Cerrar PROLOG-BUG-002 (templates reales iot-app/state-machine/simu en mcp-presets) | @scrum |
+| 2026-01-05 | ✅ Cerrar LAUNCHER-BUG-001 (killProcessTree + waitForProcessExit en MCPLauncherServer) | @scrum |
+| 2026-01-05 | ✅ Cerrar PROLOG-BUG-001 (sessionId propagation en PrologEditor frontend) | @scrum |
+| 2026-01-05 | ✅ Completar SCRUM-REFACTOR-1.0.0 (Plugin Scrum v3.0.0 Modelo Generativo) | @aleph |
+| 2026-01-05 | ✅ Cerrar sesión consenso-agile-scriptorium → SCRUM-REFACTOR-1.0.0 (46 pts) | @aleph |
+| 2026-01-05 | ➕ Añadir SCRUM-REFACTOR-1.0.0 (Modelo Generativo + Lucas DRY) ⚠️ BREAKING | @aleph |
 | 2026-01-04 | 🐛 Registrar LAUNCHER-BUG-001 (Process Kill Windows spawn) | @ox |
 | 2026-01-04 | ✅ Cerrar sesión PROLOG-UI-DEMO-1.0.0 (12/12 pasos, 2 bugs) | @scrum |
-| 2026-01-04 | 🐛 Registrar bugs PROLOG-BUG-001/002 para priorizar | @scrum |
 | 2026-01-04 | ✅ Cerrar sesión PROLOG-E2E-1.0.0 (88.5%, 16 turnos) | @scrum |
 | 2026-01-01 | ➕ Añadir SCRIPT-2.2.0 Agentic Typed Logic Flow (blueprint arquitectónico) | @scrum |
 | 2026-01-01 | 🟢 Actualizar IOT-SBR-LOGICA a estado Investigado (capacidad EXISTE) | @scrum |

@@ -261,6 +261,71 @@ Cuando el personaje_guia de una obra no existe en actores.json, Teatro invoca AG
 
 ---
 
+## Integración con AgentLoreSDK (Plantillas)
+
+> **Épica**: AGENT-TEMPLATES-1.0.0
+
+Los personajes pueden tener **plantillas AgentLoreSDK** asignadas para carga bajo demanda.
+
+### Configuración en obras.json
+
+Cuando un actor tiene plantillas, se declara en `actores_config`:
+
+```json
+{
+  "actores": ["lucas", "tarotista"],
+  "actores_config": {
+    "lucas": {
+      "templates_enabled": true,
+      "templates_index": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/templates-index.json",
+      "templates_categories": ["documentation", "project-management"],
+      "brain_file": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl"
+    }
+  }
+}
+```
+
+### Flujo de Carga de Plantillas
+
+```
+1. Teatro.ejecutar(obra_id, escena_id)
+   │
+2. Verificar actores de la escena
+   │
+3. Para cada actor con templates_enabled:
+   │   └── Cargar templates_index.json en sesión Prolog
+   │
+4. Query de contexto:
+   │   └── prolog_query("plantilla_recomendada(Contexto, P)")
+   │
+5. Si hay plantilla recomendada:
+   │   └── prolog_query("cargar_plantilla(P, Ruta)")
+   │   └── read_file(Ruta) → Contenido de plantilla
+   │
+6. Actor usa contenido para su acción
+```
+
+### TypedPrompt Schemas para Plantillas
+
+| Schema | Uso |
+|--------|-----|
+| `lucas-template-request.schema.json` | Request de carga de plantilla |
+| `lucas-template-response.schema.json` | Response con plantilla cargada |
+
+### Ubicación de Índices por Personaje
+
+| Personaje | Índice de Plantillas |
+|-----------|---------------------|
+| Lucas | `ARCHIVO/DISCO/TALLER/ELENCO/lucas/templates-index.json` |
+
+### Catálogo Global
+
+El catálogo global de AgentLoreSDK está en:
+- **Índice**: `.github/plugins/agent-creator/index/catalog.json`
+- **Submódulo**: `AgentLoreSDK/cli-tool/components/`
+
+---
+
 ## Integración con GH-PAGES
 
 ### Cartelera (docs/teatro.md)

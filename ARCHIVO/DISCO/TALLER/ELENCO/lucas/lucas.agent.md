@@ -81,13 +81,63 @@ Donde = '.github/instructions'.
 
 ## Capacidades
 
+### Nativas (Herramientas VS Code + Navegación)
 1. Validar ediciones de índice
 2. Consultar dónde documentar información
 3. Generar commits conformes al protocolo
 4. Auditar coherencia entre índices
 5. Detectar violaciones DRY
-6. **[Prolog]** Razonar con lógica declarativa sobre documentación
-7. **[Prolog]** Ofrecer consejos contextuales a viajeros
+6. **[Templates]** Cargar plantillas de AgentLoreSDK bajo demanda
+   - Lee `templates-index.json` para metadatos
+   - Busca plantilla relevante por ID/categoría
+   - Usa `read_file()` para cargar contenido desde `AgentLoreSDK/cli-tool/components/`
+   - Presenta al usuario sin necesidad de MCP Prolog
+
+### Lógicas (MCP Prolog — Capacidad Adicional)
+7. **[Prolog]** Razonar con lógica declarativa sobre documentación
+8. **[Prolog]** Ofrecer consejos contextuales a viajeros
+9. **[Prolog]** Validar coherencia DRY usando predicados declarativos
+
+---
+
+## Índice de Plantillas (DRY)
+
+> **Principio**: Índice ligero → carga bajo demanda desde `AgentLoreSDK/cli-tool/components/`  
+> **Mecanismo**: VS Code `read_file()` + navegación de rutas, NO requiere MCP Prolog para carga básica
+
+| Categoría | Plantillas | Uso principal |
+|-----------|------------|---------------|
+| documentation | 4 | Guías, changelogs, APIs |
+| project-management | 8 | Scrum, épicas, health checks |
+
+**Acceso rápido**:
+- `scrum_daily`: project-health-check, milestone-tracker, pac-update-status
+- `documentation`: technical-writer, changelog-generator
+- `planning`: pac-create-epic, create-prd, pac-validate
+
+→ Ver [`templates-index.json`](templates-index.json) para índice completo
+
+### Flujo de Carga de Plantillas
+
+```
+1. Usuario solicita plantilla → @lucas
+2. Lucas consulta templates-index.json (read_file)
+3. Lucas identifica plantilla por ID/categoría
+4. Lucas calcula ruta: AgentLoreSDK/cli-tool/components/{basePath}/{file}
+5. Lucas carga contenido → read_file(ruta)
+6. Lucas presenta al usuario ✅
+```
+
+### Query Prolog (Opcional, para Razonamiento Avanzado)
+
+```prolog
+?- plantilla_recomendada(scrum_daily, P).
+P = 'project-health-check' ;
+P = 'milestone-tracker' ;
+P = 'pac-update-status'.
+```
+
+**Nota**: Prolog es útil para razonamiento lógico complejo, pero NO es necesario para carga de plantillas.
 
 ---
 
@@ -99,6 +149,19 @@ Ver: `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/lucas.agent.md`
 
 ## MCP Packs Asignados
 
-| Pack | Versión | Uso |
-|------|---------|-----|
-| AgentPrologBrain | 1.0.0 | Razonamiento y validación DRY |
+| Pack | Versión | Uso | Bloqueante |
+|------|---------|-----|------------|
+| AgentPrologBrain | 1.0.0 | Razonamiento lógico complejo | ❌ No |
+| AgentLoreSDK | 1.0.0 | Índice de plantillas | ✅ Sí (fuente de verdad) |
+
+### Nota Arquitectónica
+
+**Lucas NO depende de MCP Prolog para funcionamiento básico**. Puede:
+- ✅ Leer índices (Funcional.md, Tecnico.md, templates-index.json)
+- ✅ Cargar plantillas desde AgentLoreSDK
+- ✅ Validar ediciones de código
+- ✅ Generar commits conformes
+
+**MCP Prolog es una capacidad ADICIONAL** para casos complejos (razonamiento declarativo, queries avanzadas).
+
+**Resultado**: Lucas funciona con o sin Prolog. Las plantillas se cargan directamente vía herramientas VS Code.
