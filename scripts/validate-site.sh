@@ -1,19 +1,35 @@
 #!/bin/bash
 # Script de validación local de Jekyll (sin servidor)
 # Uso: ./scripts/validate-site.sh
-# Requiere: rbenv con Ruby 3.0.1+
+# Compatible: Windows (Git Bash/MSYS2), Linux, macOS
 
 set -e
 
-# Inicializar rbenv si está disponible
-if command -v rbenv &> /dev/null; then
-    eval "$(rbenv init -)"
+# ============================================
+# Cargar helper de Ruby cross-platform
+# ============================================
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
+
+if [ -f "$SCRIPT_DIR/lib/ruby-env.sh" ]; then
+    source "$SCRIPT_DIR/lib/ruby-env.sh"
+    
+    if ! ensure_ruby "3.0"; then
+        echo ""
+        echo "💡 Ejecuta primero: ./scripts/setup-jekyll.sh"
+        exit 1
+    fi
+else
+    # Fallback: intentar rbenv directamente (compatibilidad legacy)
+    if command -v rbenv &> /dev/null; then
+        eval "$(rbenv init -)"
+    fi
 fi
 
 echo "🔍 Validando sitio Jekyll localmente..."
 echo ""
 
-cd docs/
+cd "$WORKSPACE_DIR/docs/"
 
 # Verificar que bundler esté disponible
 if ! command -v bundle &> /dev/null; then

@@ -2,7 +2,7 @@
 name: plugin_ox_mcppresets
 description: "Bridge: Gateway al ecosistema MCPGallery. Gestiona la mesh de servidores MCP, presets, Zeus UI y orquestación vía Launcher."
 argument-hint: "Gestiona MCPGallery: arrancar mesh/model/zeus, consultar catálogo, crear presets, orquestar servidores."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']
 handoffs:
   # === ARRANQUE DE SERVIDORES ===
   - label: "🚀 Arrancar DevOps Server (mesh:3003)"

@@ -80,6 +80,7 @@ Los agentes del Scriptorium pueden **verse a sí mismos** funcionando:
 mcp_copilot-logs-_get_usage_metrics()    → Métricas de salud
 mcp_copilot-logs-_analyze_session()      → Diagnóstico de issues
 mcp_copilot-logs-_capture_snapshot()     → Preservar contexto
+(examinar el servidor para más)
 ```
 
 ---
@@ -108,3 +109,6 @@ Ver [plugins/scriptorium-pack/](plugins/scriptorium-pack/) para detalles.
 
 > Si no sabes qué agente invocar → `@ox`
 
+# Herramientas MCP en Vs Code
+
+A veces algunas herramientas pueden paracer deshabilitadas. Aplicar el patrón de activación lazy de las herramientas MCP, algunas herramientas se agrupan y requieren invocar activate_* antes de usarlas.

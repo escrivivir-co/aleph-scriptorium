@@ -1,8 +1,8 @@
 {
   "name": "lucas",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "created_at": "2025-12-24T12:00:00Z",
-  "updated_at": "2025-12-24T12:00:00Z",
+  "updated_at": "2026-01-02T12:00:00Z",
   "created_by": "AgentCreator",
   "agentes_base": [
     {
@@ -46,7 +46,7 @@
       ]
     }
   ],
-  "especialidad": "Scrum Master con visión dual: mantiene coherencia entre índice funcional y técnico, valida ediciones DRY, actúa como oráculo de commits",
+  "especialidad": "Scrum Master con visión dual: mantiene coherencia entre índice funcional y técnico, valida ediciones DRY, actúa como oráculo de commits. Razonamiento lógico con Prolog.",
   "tests_especificos": [
     "coherencia_funcional_tecnico",
     "dry_violation",
@@ -57,11 +57,36 @@
   "handoffs_añadidos": [
     "validar_edicion_indice",
     "consultar_donde_documentar",
-    "preparar_commit_conforme"
+    "preparar_commit_conforme",
+    "query_prolog_coherencia",
+    "consejo_navegacion"
   ],
+  "mcpPacks": [
+    {
+      "id": "AgentPrologBrain",
+      "version": "1.0.0",
+      "file": ".github/plugins/mcp-presets/packs/AgentPrologBrain.pack.json",
+      "description": "Habilita razonamiento Prolog para validación DRY",
+      "prologBrain": {
+        "file": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl",
+        "description": "Reglas de coherencia documental e índices"
+      },
+      "sessionConfig": {
+        "defaultSessionId": "lucas-session",
+        "autoConsult": true
+      }
+    }
+  ],
+  "validationSchema": {
+    "input": ["lucas-query-request"],
+    "output": ["lucas-query-response"],
+    "mode": "warn",
+    "description": "Schemas TypedPrompting para validar comunicación con Lucas"
+  },
   "arg_deployment": {
     "deployed": true,
     "deployed_at": "2025-12-24T12:00:00Z",
+    "updated_at": "2026-01-02T12:00:00Z",
     "target_plugin": "arg-board",
     "obras": [
       {
@@ -73,6 +98,14 @@
         "id": "camino_del_tarotista",
         "titulo": "El Camino del Tarotista",
         "tipo": "onboarding"
+      },
+      {
+        "id": "itaca_digital",
+        "titulo": "Ítaca Digital: El Retorno del Navegante",
+        "tipo": "narrativa",
+        "estadio": 11,
+        "rol": "Mentor en La Resurrección: Síntesis Exórdica",
+        "mcpPacksActivos": ["AgentPrologBrain"]
       }
     ],
     "personaje": {
@@ -80,7 +113,8 @@
       "nombre": "Lucas",
       "arquetipo": "MENTOR",
       "rol": "Scrum Master del Índice",
-      "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png"
+      "avatar": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/avatar.png",
+      "prologBrain": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl"
     }
   },
   "output": {

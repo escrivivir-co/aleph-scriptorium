@@ -1,45 +1,59 @@
 [submodule "vscode-alephscript-extension"]
 	path = VsCodeExtension
 	url = https://github.com/escrivivir-co/vscode-alephscript-extension.git
+	branch = integration/beta/scriptorium
 [submodule "alephscript-mcp-presets-site"]
 	path = MCPGallery
 	url = https://github.com/escrivivir-co/alephscript-mcp-presets-site.git
+	branch = integration/beta/scriptorium
 [submodule "as-utils-sdk"]
 	path = VibeCodingSuite
 	url = https://github.com/escrivivir-co/as-utils-sdk.code-workspace
+	branch = integration/beta/scriptorium
 [submodule "as-gym"]
 	path = AAIAGallery
 	url = https://github.com/escrivivir-co/as-gym
+	branch = integration/beta/scriptorium
 [submodule "alephscript-network-sdk"]
 	path = BlockchainComPort
 	url = https://github.com/escrivivir-co/alephscript-network-sdk.git
+	branch = integration/beta/scriptorium
 [submodule "kick-aleph-bot"]
 	path = StreamDesktop
 	url = https://github.com/escrivivir-co/kick-aleph-bot.git
+	branch = integration/beta/scriptorium
 [submodule "kick-aleph-crono-bot"]
 	path = StreamDesktopAppCronos
 	url = https://github.com/escrivivir-co/kick-aleph-crono-bot.git
+	branch = integration/beta/scriptorium	
 [submodule "mcp-novelist"]
 	path = NovelistEditor
 	url = https://github.com/escrivivir-co/mcp-novelist.git
+	branch = integration/beta/scriptorium		
 [submodule "blockly-alephscript-sdk"]
 	path = BlocklyEditor
 	url = https://github.com/escrivivir-co/blockly-alephscript-sdk.git
+	branch = integration/beta/scriptorium
 [submodule "node-red-alephscript-sdk"]
 	path = WiringEditor
 	url = https://github.com/escrivivir-co/node-red-alephscript-sdk.git
+	branch = integration/beta/scriptorium
 [submodule "iot-sbr-logica-para-bots"]
 	path = PrologEditor
 	url = https://github.com/escrivivir-co/iot-sbr-logica-para-bots.git
+	branch = integration/beta/scriptorium
 [submodule "alephscript-typed-prompting"]
 	path = TypedPromptsEditor
 	url = https://github.com/escrivivir-co/alephscript-typed-prompting
+	branch = integration/beta/scriptorium
 [submodule "alephscript-n8n-like-editor"]
 	path = WorkflowEditor
 	url = https://github.com/escrivivir-co/alephscript-n8n-like-editor
+	branch = integration/beta/scriptorium
 [submodule "wiki-racer"]
 	path = WiringAppHypergraphEditor
 	url = https://github.com/escrivivir-co/wiki-racer.git
+	branch = integration/beta/scriptorium
 [submodule "OnthologyEditor"]
 	path = OnthologyEditor
 	url = https://github.com/escrivivir-co/alephscript-onthology-editor.git
@@ -47,3 +61,8 @@
 [submodule "CopilotEngine"]
 	path = CopilotEngine
 	url = https://github.com/escrivivir-co/vscode-copilot-chat
+	branch = integration/beta/scriptorium
+[submodule "StateMachine"]
+	path = StateMachine
+	url = https://github.com/escrivivir-co/state-machine-mcp-driver
+	branch = integration/beta/scriptorium

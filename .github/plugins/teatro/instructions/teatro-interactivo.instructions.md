@@ -129,6 +129,85 @@ La visualización 3D organiza los 12 estadios en 4 anillos concéntricos:
 
 ---
 
+## Integración con MCP Prolog (TEATRO-PROLOG-1.0.0)
+
+> **Épica**: TEATRO-PROLOG-1.0.0 (FC1)
+
+Las obras pueden incluir **packs Prolog** que definen el comportamiento lógico de sus personajes.
+
+### Propiedad mcpPacks en YAML de Obra
+
+```yaml
+id: itaca_digital
+titulo: "Ítaca Digital"
+# ... otros campos ...
+
+# Integración Prolog (opcional)
+mcpPacks:
+  - ObraItacaDigital    # Referencia a pack en ARCHIVO/PLUGINS/TEATRO/packs/
+```
+
+### Schema de Pack
+
+Los packs siguen el schema `obra-pack.schema.json`:
+
+```json
+{
+  "id": "ObraItacaDigital",
+  "version": "1.0.0",
+  "obraId": "itaca_digital",
+  "mcpServer": "prolog-mcp-server",
+  "personajes": [
+    {
+      "name": "lucas",
+      "brainFile": "brains/lucas.brain.pl",
+      "agentRef": "@indice"
+    }
+  ]
+}
+```
+
+### Flujo de Ejecución con Prolog
+
+```
+1. Teatro.ejecutar(obra_id)
+   │
+2. Cargar mcpPacks declarados
+   │
+3. Para cada personaje con brainFile:
+   │   └── prolog_consult_file(brainFile)
+   │
+4. En cada turno/estadio:
+   │   └── prolog_query("decidir_accion(personaje, A)")
+   │
+5. Acción retornada → Teatro ejecuta handoff correspondiente
+```
+
+### Prompt MCP: teatro_agent_session
+
+El prompt `teatro_agent_session` en MCPPrologServer orquesta el workflow completo:
+
+```
+@mcp teatro_agent_session obraId=itaca_digital agentName=lucas
+```
+
+Este prompt:
+1. Crea/reutiliza sesión Prolog
+2. Carga cerebro del personaje
+3. Ejecuta query de decisión
+4. Retorna acción recomendada
+
+### Ubicaciones de Archivos
+
+| Recurso | Ubicación |
+|---------|-----------|
+| Schema de pack | `ARCHIVO/PLUGINS/TEATRO/schemas/obra-pack.schema.json` |
+| Packs de obra | `ARCHIVO/PLUGINS/TEATRO/packs/*.pack.json` |
+| Cerebros Prolog | `ARCHIVO/PLUGINS/TEATRO/packs/brains/*.brain.pl` |
+| Template cerebro | `ARCHIVO/PLUGINS/AGENT_CREATOR/templates/brain.pl.template` |
+
+---
+
 ## Integración con ARG_BOARD
 
 ### Estados de Obra

@@ -104,7 +104,7 @@ git checkout fc1 && git checkout -b feature/mi-cambio
 | Submódulos | 14 integrados |
 | Última foto | [Foto Dual Pathykar](ARCHIVO/FOTOS_ESTADO/2025-12-27_FC2_FotoDualPathykar.md) |
 
-**Roadmap**: [/roadmap](https://escrivivir-co.github.io/aleph-scriptorium/roadmap/)
+**Roadmap**: [/roadmap](https://escrivivir-co.github.io/aleph-scriptorium/roadmap/) · **Blueprint**: [/blueprint](https://escrivivir-co.github.io/aleph-scriptorium/blueprint/) · **Máquina**: [/blueprint#machine](https://escrivivir-co.github.io/aleph-scriptorium/blueprint/#machine)
 
 ---
 
