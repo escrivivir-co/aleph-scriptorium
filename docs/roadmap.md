@@ -97,8 +97,9 @@ permalink: /roadmap/
 
 ## Futuro (Borradores)
 
-> **27 borradores de planificación** — Conversaciones PO-SM que definen el roadmap del proyecto.  
-> Ver índice completo: [BACKLOG_BORRADORES/INDEX.md](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
+> **54 borradores de planificación** — Conversaciones PO-SM que definen el roadmap del proyecto.  
+> 📋 **Índice navegable**: [INDEX.md](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)  
+> 📖 **Resúmenes generados por IA**: [INDEX_ABSTRACT.md](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX_ABSTRACT.md)
 
 <div class="gallery-grid">
 
@@ -376,6 +377,90 @@ permalink: /roadmap/
 
 ---
 
+## 🤝 Sesiones de Cotrabajo
+
+> **8 sesiones multi-agente** — Trabajo colaborativo asíncrono donde múltiples agentes producen artefactos Scrum.  
+> 📋 **Índice**: [SESIONES_COTRABAJO/INDEX.md](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/INDEX.md)  
+> 📖 **Protocolo**: [cotrabajo.instructions.md](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/plugins/scriptorium-pack/instructions/cotrabajo.instructions.md)
+
+<div class="gallery-grid">
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_consenso-agile-scriptorium" class="card">
+    <div class="card-header">✅ Cerrada | SCRUM-REFACTOR-1.0.0</div>
+    <h3 class="card-title">Consenso Agile Scriptorium</h3>
+    <div class="card-body">Modelo Generativo de Scrum. @scrum interpreta a Lucas. Las sesiones PRODUCEN borradores.</div>
+    <div class="card-footer">
+      <span class="tag">4 turnos</span><span class="tag">46 pts</span><span class="tag">breaking</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt" class="card">
+    <div class="card-header">✅ Cerrada | BLUEPRINTS-TYPED-1.0.0</div>
+    <h3 class="card-title">Blueprints + TypedPrompt</h3>
+    <div class="card-body">Integración de TypedPrompt con OpenAsyncAPI. Documentación showcase.</div>
+    <div class="card-footer">
+      <span class="tag">22 pts</span><span class="tag">docs</span><span class="tag">showcase</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session" class="card">
+    <div class="card-header">✅ Cerrada | TYPED-MCP-1.0.0</div>
+    <h3 class="card-title">TypedMCP Test Session</h3>
+    <div class="card-body">Tests 83% (5/6 auto). Refactor MCPTypedPromptEditor.</div>
+    <div class="card-footer">
+      <span class="tag">8 turnos</span><span class="tag">34 pts</span><span class="tag">tests</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina" class="card">
+    <div class="card-header">✅ Cerrada | DRAMATURGIA-MAQUINA-1.0.0</div>
+    <h3 class="card-title">Scriptorium como Máquina</h3>
+    <div class="card-body">Backlog 13 pts (5 stories, 13 tasks). Dramaturgia del sistema.</div>
+    <div class="card-footer">
+      <span class="tag">6 turnos</span><span class="tag">100%</span><span class="tag">filosofía</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor" class="card">
+    <div class="card-header">✅ Cerrada | PROLOG-UI-DEMO-1.0.0</div>
+    <h3 class="card-title">Demo UI PrologEditor</h3>
+    <div class="card-body">Demo completa 12/12 pasos. 2 bugs detectados y corregidos.</div>
+    <div class="card-footer">
+      <span class="tag">demo</span><span class="tag">UI</span><span class="tag">bugs</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates" class="card">
+    <div class="card-header">✅ Cerrada | AGENT-TEMPLATES-1.0.0</div>
+    <h3 class="card-title">Agent Creator + Claude Templates</h3>
+    <div class="card-body">Integración AgentLoreSDK (637+ items). Protocolo de validación inscrito.</div>
+    <div class="card-footer">
+      <span class="tag">8 turnos</span><span class="tag">13 pts</span><span class="tag">templates</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-e2e-testing" class="card">
+    <div class="card-header">✅ Cerrada | PROLOG-E2E-1.0.0</div>
+    <h3 class="card-title">Prolog E2E Testing</h3>
+    <div class="card-body">E2E 88.5% (23/26 tests). Stack completo validado.</div>
+    <div class="card-footer">
+      <span class="tag">16 turnos</span><span class="tag">testing</span><span class="tag">E2E</span>
+    </div>
+  </a>
+
+  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-agent-brain-pack-refinement" class="card">
+    <div class="card-header">✅ Cerrada | PROLOG-DRY-1.0.0</div>
+    <h3 class="card-title">Prolog Agent Brain Pack</h3>
+    <div class="card-body">Protocolo validado. 15 turnos de refinamiento DRY.</div>
+    <div class="card-footer">
+      <span class="tag">15 turnos</span><span class="tag">DRY</span><span class="tag">teatro</span>
+    </div>
+  </a>
+
+</div>
+
+---
+
 ## Galería de Fotos de Estado
 
 <style>
@@ -441,6 +526,30 @@ permalink: /roadmap/
 <div class="fotos-gallery">
 
   <!-- Más reciente primero -->
+
+  <div class="foto-card">
+    <div class="foto-header">
+      <span class="foto-icon">🎉📸</span>
+      <span class="foto-date">2026-01-06</span>
+    </div>
+    <div class="foto-body">
+      <h4>FC1: Víspera del Release Party (v1.0.0-beta.1)</h4>
+      <p class="foto-summary">Cierre de FC1: Stack Prolog completo, TypedPromptEditor integrado, 8 sesiones de cotrabajo, protocolo de auto-reflexión validado. La Fundación espera descongelarse.</p>
+      <div class="foto-metrics">
+        <span class="metric">✅ 29+ épicas cerradas</span>
+        <span class="metric">📊 ~215 pts effort</span>
+        <span class="metric">🤖 53+ agentes</span>
+        <span class="metric">📦 22 plugins</span>
+      </div>
+      <div class="foto-metrics">
+        <span class="metric">🔌 17 submódulos</span>
+        <span class="metric">📂 8 sesiones cotrabajo</span>
+        <span class="metric">📝 48 borradores</span>
+        <span class="metric">📖 0 capítulos</span>
+      </div>
+      <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/FOTOS_ESTADO/2026-01-06_FC1_ReleaseParty.md" class="foto-link">Ver foto completa →</a>
+    </div>
+  </div>
 
   <div class="foto-card">
     <div class="foto-header">
@@ -577,3 +686,144 @@ permalink: /roadmap/
   </div>
 
 </div>
+
+---
+
+## 🏃 Cómo Usar el Plugin Scrum
+
+> **Plugin**: [scrum v3.0.0](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/.github/plugins/scrum) — Modelo Generativo  
+> **Agente**: `@scrum` — Interpreta a Lucas para expertise DRY
+
+### Filosofía: Ciclo de Vida Completo
+
+```
+                          ┌──────────────────────────────────────────────────────────────────────┐
+                          │                    .github/BACKLOG-SCRIPTORIUM.md                    │
+                          │                         (ÍNDICE ~50 líneas)                          │
+                          │   Solo referencias: | Estado | Épica | Nombre | [borrador](ruta) |   │
+                          └──────────────────────────────────┬───────────────────────────────────┘
+                                                             │
+                 ┌───────────────────────────────────────────┼───────────────────────────────────────────┐
+                 │                                           │                                           │
+                 ▼                                           ▼                                           ▼
+┌─────────────────────────────────┐      ┌─────────────────────────────────┐      ┌─────────────────────────────────┐
+│     SESIONES_COTRABAJO/         │      │     BACKLOG_BORRADORES/         │      │     BACKLOG_ARCHIVADOS/         │
+│     (Trabajo Multi-Agente)      │      │     (Épicas Activas)            │      │     (Histórico)                 │
+├─────────────────────────────────┤      ├─────────────────────────────────┤      ├─────────────────────────────────┤
+│ 00_SESION.md    (metadatos)     │      │ 01_backlog-borrador.md          │      │ Sprint0/                        │
+│ 01_TABLERO.md   (índice turnos) │      │ conversacion-po-sm.md           │      │ Sprint1/                        │
+│ 02_ACTAS/       (T00X_*.md)     │      │ assets/                         │      │ FC1/                            │
+│ 03_REFERENCIAS/ (contexto)      │      │                                 │      │                                 │
+└───────────────┬─────────────────┘      └───────────────┬─────────────────┘      └─────────────────────────────────┘
+                │                                        │                                           ▲
+                │ PRODUCE                                │                                           │
+                │ (generar-desde-sesion)                 │                                           │
+                └────────────────────────────────────────┤                                           │
+                                                         │                                           │
+                                                         │ ARCHIVA (cerrar --incluir-sesiones)       │
+                                                         └───────────────────────────────────────────┘
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+                                        🔄 FLUJO DE ESTADOS EN EL ÍNDICE
+
+    ┌──────────┐     planificar      ┌──────────┐      aprobar       ┌──────────┐      cerrar       ┌──────────┐
+    │   IDEA   │ ─────────────────►  │    📋    │ ─────────────────► │    ✅    │ ─────────────────► │ ARCHIVADO│
+    │          │                     │ Borrador │                    │ Aprobado │                    │          │
+    └──────────┘                     └────┬─────┘                    └──────────┘                    └──────────┘
+                                          │
+                                          │ tracking (actualiza EN el borrador, NO en índice)
+                                          ▼
+                                    ┌──────────┐
+                                    │    🔄    │
+                                    │En progreso│
+                                    └──────────┘
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+                                        🎭 TIPOS DE CIERRE DE SESIÓN
+
+    ┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+    │                                                                                                             │
+    │   SESIÓN COTRABAJO                                                                                          │
+    │   Estado: CERRADA                                                                                           │
+    │                                                                                                             │
+    │   ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐                                         │
+    │   │  EXPLORATORIA   │    │   NORMATIVA     │    │   PRODUCTIVA    │                                         │
+    │   │                 │    │                 │    │                 │                                         │
+    │   │ → Solo registro │    │ → Instrucciones │    │ → Borrador      │                                         │
+    │   │   en histórico  │    │   .github/      │    │   BACKLOG_      │                                         │
+    │   │                 │    │   instructions/ │    │   BORRADORES/   │                                         │
+    │   └─────────────────┘    └─────────────────┘    └────────┬────────┘                                         │
+    │                                                          │                                                  │
+    │                                                          ▼                                                  │
+    │                                                 ┌─────────────────┐                                         │
+    │                                                 │ origen:         │                                         │
+    │                                                 │   tipo: sesion  │                                         │
+    │                                                 │   referencia:   │                                         │
+    │                                                 │   actas: [...]  │                                         │
+    │                                                 │   consenso: "…" │                                         │
+    │                                                 └─────────────────┘                                         │
+    │                                                                                                             │
+    └─────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Invocación Rápida
+
+| Si quieres... | Comando |
+|---------------|---------|
+| Crear nueva épica | `@scrum planificar {nombre}` |
+| Generar backlog detallado | `@scrum borrador {nombre}` |
+| **Desde sesión cerrada** | `@scrum generar-desde-sesion {ruta}` |
+| Aprobar épica | `@scrum aprobar {épica}` |
+| Actualizar estado | `@scrum tracking {épica}` |
+| Ver métricas | `@scrum status` |
+| Cerrar sprint | `@scrum cerrar {sprint}` |
+
+### Ejemplo de Flujo Completo
+
+```bash
+# 1. Crear épica nueva
+@scrum planificar MI-FEATURE-1.0.0
+
+# 2. Generar backlog detallado
+@scrum borrador MI-FEATURE-1.0.0
+
+# 3. Aprobar y comenzar
+@scrum aprobar MI-FEATURE-1.0.0
+
+# 4. Durante el sprint, actualizar
+@scrum tracking MI-FEATURE-1.0.0
+
+# 5. Al finalizar
+@scrum cerrar FC1
+
+# Alternativa: Desde sesión de cotrabajo
+@scrum generar-desde-sesion ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_mi-sesion/
+```
+
+### Dónde Vive Cada Cosa (DRY)
+
+| Ubicación | Contenido | Tocar |
+|-----------|-----------|-------|
+| `.github/BACKLOG-SCRIPTORIUM.md` | Índice (~50 líneas) | Solo referencias |
+| `ARCHIVO/DISCO/BACKLOG_BORRADORES/` | Detalles activos | Contenido épicas |
+| `ARCHIVO/DISCO/SESIONES_COTRABAJO/` | Sesiones multi-agente | Protocolo cotrabajo |
+| `ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/` | Sprints cerrados | Histórico |
+
+### Feature: Interpretar a Lucas
+
+`@scrum` **no tiene expertise propia** — interpreta a [Lucas](https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/TALLER/ELENCO/lucas/):
+
+```bash
+# Cargar contexto avanzado bajo demanda
+@scrum 🎭 Cargar contexto Lucas
+
+# Consultar brain Prolog
+@scrum 🧠 Consultar brain Prolog
+
+# Buscar plantilla de AgentLoreSDK
+@scrum 📚 Buscar plantilla Scrum
+```
+
+> 📐 **Protocolo completo**: Ver [scrum-protocol.instructions.md](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/plugins/scrum/instructions/scrum-protocol.instructions.md)
