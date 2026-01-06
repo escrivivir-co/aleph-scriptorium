@@ -240,6 +240,424 @@
     },
 
     // ─────────────────────────────────────────────────────────────────────────
+    // OAE: OpenAsyncAPI Editor (OPENASYNCAPI_EDITOR)
+    // Stack: Swagger UI (3021) + AsyncAPI Studio (3022)
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "OAE: Start [Swagger UI]",
+      "type": "shell",
+      "command": "npx",
+      "args": ["@redocly/cli", "preview-docs", "specs/PrologEditor/openapi.yaml", "--port", "3021"],
+      "options": {
+        "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "swagger-ui",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*http://.*3021.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "oae-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Swagger UI (REST API) - http://localhost:3021"
+    },
+
+    {
+      "label": "OAE: Start [AsyncAPI Studio]",
+      "type": "shell",
+      "command": "npx",
+      "args": ["@asyncapi/cli", "start", "studio", "--file", "specs/PrologEditor/asyncapi.yaml", "--port", "3022"],
+      "options": {
+        "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "asyncapi-studio",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*http://.*3022.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "oae-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "AsyncAPI Studio - http://localhost:3022"
+    },
+
+    {
+      "label": "OAE: Open [Swagger UI]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3021"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3021"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Swagger UI en el navegador (3021)"
+    },
+
+    {
+      "label": "OAE: Open [AsyncAPI Studio]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3022"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3022"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre AsyncAPI Studio en el navegador (3022)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NRE: Node-RED Editor (WiringEditor + WiringApp)
+    // Stack: Node-RED Editor (1880) + Dashboard UI (1880/ui) + GamifyUI (3088)
+    // Submódulos: WiringEditor, WiringAppHypergraphEditor
+    // C:\Users\aleph\.node-red\settings.js <--- Node-RED user settings  Activate projects!!!!
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "NRE: Start [Editor]",
+      "type": "shell",
+      "command": "node-red",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "node-red",
+        "pattern": {
+          "regexp": "^\\[(ERROR|error|warn)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Welcome to Node-RED.*$",
+          "endsPattern": "^.*Server now running at.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "nre-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Node-RED Editor - http://localhost:1880"
+    },
+
+    {
+      "label": "NRE: Start [GamifyUI]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:ui"],
+      "options": {
+        "cwd": "${workspaceFolder}/WiringEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "gamify-ui",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "nre-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "GamifyUI Angular Dev Server - http://localhost:3088"
+    },
+
+    {
+      "label": "NRE: Setup [Contribs]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/setup-node-red.sh", "--skip-global"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "scripts\\setup-node-red.cmd", "--skip-global"]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Instala node-red-dashboard + nodos AlephScript + Wiki-Racer"
+    },
+
+    {
+      "label": "NRE: Open [Editor]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:1880 2>/dev/null || xdg-open http://localhost:1880 2>/dev/null || start http://localhost:1880"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:1880"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Node-RED Editor en el navegador (1880)"
+    },
+
+    {
+      "label": "NRE: Open [Dashboard]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:1880/ui 2>/dev/null || xdg-open http://localhost:1880/ui 2>/dev/null || start http://localhost:1880/ui"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:1880/ui"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Node-RED Dashboard UI en el navegador (1880/ui)"
+    },
+
+    {
+      "label": "NRE: Open [GamifyUI]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:3088 2>/dev/null || xdg-open http://localhost:3088 2>/dev/null || start http://localhost:3088"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3088"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre GamifyUI en el navegador (3088)"
+    },
+
+    {
+      "label": "NRE: Health Check",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '🔍 Checking Node-RED services...' && (curl -s http://localhost:1880 > /dev/null && echo '✅ Node-RED Editor: http://localhost:1880' || echo '❌ Node-RED Editor: Not running') && (curl -s http://localhost:1880/ui > /dev/null && echo '✅ Node-RED Dashboard: http://localhost:1880/ui' || echo '⚠️ Node-RED Dashboard: No flows deployed')"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo Checking Node-RED services... && curl -s http://localhost:1880 >nul 2>&1 && echo [OK] Node-RED Editor: http://localhost:1880 || echo [FAIL] Node-RED Editor: Not running"
+        ]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Verifica estado de Node-RED Editor y Dashboard"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BLE: Blockly Editor (BlocklyEditor SDK)
+    // Stack: Angular 19 Editor (4200) + Runtime UI (5000)
+    // Submódulo: BlocklyEditor (blockly-alephscript-sdk)
+    // Paquetes: blockly-alephscript-blocks, blockly-gamify-ui, blockly-runtime-gamify-ui
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "BLE: Start [Editor]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:ui"],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "blockly-editor",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "ble-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Blockly Editor Angular 19 - http://localhost:4200"
+    },
+
+    {
+      "label": "BLE: Start [Runtime]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:runtime-ui"],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "blockly-runtime",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*serving.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "ble-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Blockly Runtime UI - http://localhost:5000"
+    },
+
+    {
+      "label": "BLE: Build [All]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build:all"],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "problemMatcher": ["$tsc"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Build completo: blocks → UI → runtime"
+    },
+
+    {
+      "label": "BLE: Setup",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/setup-blockly.sh"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "scripts\\setup-blockly.cmd"]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Instala dependencias y construye todos los paquetes Blockly"
+    },
+
+    {
+      "label": "BLE: Open [Editor]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:4200 2>/dev/null || xdg-open http://localhost:4200 2>/dev/null || start http://localhost:4200"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:4200"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Blockly Editor en el navegador (4200)"
+    },
+
+    {
+      "label": "BLE: Open [Runtime]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:5000 2>/dev/null"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:5000"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Blockly Runtime UI en el navegador (5000)"
+    },
+
+    {
+      "label": "BLE: Health Check",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '🔍 Checking Blockly services...' && (curl -s http://localhost:4200 > /dev/null && echo '✅ Blockly Editor: http://localhost:4200' || echo '❌ Blockly Editor: Not running') && (curl -s http://localhost:5000 > /dev/null && echo '✅ Blockly Runtime: http://localhost:5000' || echo '❌ Blockly Runtime: Not running')"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo Checking Blockly services... && curl -s http://localhost:4200 >nul 2>&1 && echo [OK] Blockly Editor: http://localhost:4200 || echo [FAIL] Blockly Editor: Not running"
+        ]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Verifica estado de Blockly Editor y Runtime"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
     // DEMO: Demo Servers (DEMO-1.0.0)
     // Stack: Jekyll + MCP Mesh + Model + Zeus + Novelist
     // Puertos: 4000 (Jekyll), 3050 (Launcher), 4001 (Model), 3012 (Zeus), 3066 (Novelist), 8080 (Novelist UI)
@@ -465,10 +883,10 @@
       "label": "JKL: Open Browser",
       "type": "shell",
       "command": "bash",
-      "args": ["-c", "start http://localhost:4000"],
+      "args": ["-c", "start http://localhost:4000/aleph-scriptorium/"],
       "windows": {
         "command": "cmd",
-        "args": ["/c", "start", "http://localhost:4000"]
+        "args": ["/c", "start", "http://localhost:4000/aleph-scriptorium/"]
       },
       "problemMatcher": [],
       "presentation": {
@@ -527,6 +945,90 @@
         "panel": "shared"
       },
       "detail": "Detiene todos los procesos del stack APB"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // INS: MCP Inspector (SCRIPT-2.5.0)
+    // UI: 6274, Proxy: 6277
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "INS: Start [Inspector]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-inspector",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting MCP inspector.*$",
+          "endsPattern": "^.*MCP Inspector.*running.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "inspector-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "MCP Inspector UI (6274) + Proxy (6277)"
+    },
+    {
+      "label": "INS: Start",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-inspector-dev",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*ready in.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "inspector-stack"
+      },
+      "detail": "MCP Inspector"
+    },
+    {
+      "label": "INS: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:6274"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:6274"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre MCP Inspector en el navegador (6274)"
     },
 
     // ─────────────────────────────────────────────────────────────────────────

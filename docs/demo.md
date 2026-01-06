@@ -235,6 +235,26 @@ permalink: /demo/
       <span class="dot"></span>
       Prolog :5001
     </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      Swagger :3021
+    </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      AsyncAPI :3022
+    </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      Node-RED :1880
+    </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      Blockly :4200
+    </span>
+    <span class="status-badge">
+      <span class="dot"></span>
+      Inspector :6274
+    </span>
   </div>
   
   <div class="iframe-grid">
@@ -330,6 +350,147 @@ permalink: /demo/
       </div>
     </div>
     
+    <!-- ═══════════════ API SPECS ═══════════════ -->
+    
+    <!-- Swagger UI (OpenAPI) -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">📋 Swagger UI (OpenAPI)</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:3021" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="swagger-placeholder">
+          <span class="icon">📋</span>
+          <p>Swagger UI (REST API)</p>
+          <p><code>localhost:3021</code></p>
+          <p>Ejecuta: <code>npx @redocly/cli preview-docs</code></p>
+        </div>
+        <iframe src="http://localhost:3021" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- AsyncAPI Studio -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">🔌 AsyncAPI Studio</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:3022" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="asyncapi-placeholder">
+          <span class="icon">🔌</span>
+          <p>AsyncAPI Studio</p>
+          <p><code>localhost:3022</code></p>
+          <p>Ejecuta: <code>npx @asyncapi/cli start studio</code></p>
+        </div>
+        <iframe src="http://localhost:3022" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- ═══════════════ MCP INSPECTOR ═══════════════ -->
+    
+    <!-- MCP Inspector -->
+    <div class="iframe-card featured">
+      <div class="iframe-header">
+        <span class="iframe-title">🔍 MCP Inspector</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:6274" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="inspector-placeholder">
+          <span class="icon">🔍</span>
+          <p>MCP Inspector</p>
+          <p><code>localhost:6274</code></p>
+          <p>Ejecuta: Task <code>INS: Start [Inspector]</code></p>
+        </div>
+        <iframe src="http://localhost:6274" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- ═══════════════ WIRING EDITORS (Node-RED) ═══════════════ -->
+    
+    <!-- Node-RED Editor -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">🔗 Node-RED Editor</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:1880" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="nodered-placeholder">
+          <span class="icon">🔗</span>
+          <p>Node-RED Flow Editor</p>
+          <p><code>localhost:1880</code></p>
+          <p>Ejecuta: <code>node-red</code> o Task: NRE: Start [Editor]</p>
+        </div>
+        <iframe src="http://localhost:1880" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- Node-RED Dashboard -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">🎮 Node-RED Dashboard</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:1880/ui" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="nodered-ui-placeholder">
+          <span class="icon">🎮</span>
+          <p>Node-RED Dashboard UI</p>
+          <p><code>localhost:1880/ui</code></p>
+          <p>Requiere: Flow desplegado con nodos Dashboard</p>
+        </div>
+        <iframe src="http://localhost:1880/ui" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- ═══════════════ BLOCKLY EDITOR ═══════════════ -->
+    
+    <!-- Blockly Editor -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">🧩 Blockly Editor</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:4200" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="blockly-placeholder">
+          <span class="icon">🧩</span>
+          <p>Blockly Visual Programming</p>
+          <p><code>localhost:4200</code></p>
+          <p>Ejecuta: <code>npm run dev:ui</code> o Task: BLE: Start [Editor]</p>
+        </div>
+        <iframe src="http://localhost:4200" loading="lazy"></iframe>
+      </div>
+    </div>
+    
+    <!-- Blockly Runtime -->
+    <div class="iframe-card">
+      <div class="iframe-header">
+        <span class="iframe-title">▶️ Blockly Runtime</span>
+        <div class="iframe-actions">
+          <a href="http://localhost:5000" target="_blank">↗ Abrir</a>
+        </div>
+      </div>
+      <div class="iframe-container">
+        <div class="iframe-placeholder" id="blockly-runtime-placeholder">
+          <span class="icon">▶️</span>
+          <p>Blockly Runtime Execution</p>
+          <p><code>localhost:5000</code></p>
+          <p>Ejecuta: <code>npm run dev:runtime</code> o Task: BLE: Start [Runtime]</p>
+        </div>
+        <iframe src="http://localhost:5000" loading="lazy"></iframe>
+      </div>
+    </div>
+    
     <!-- ═══════════════ BLUEPRINTS ═══════════════ -->
     
     <!-- Blueprint UX -->
@@ -418,7 +579,15 @@ const servers = [
   { id: 'novelist-placeholder', url: 'http://localhost:8080', iframe: true },
   // Editores Lógicos (DS-S02)
   { id: 'typed-placeholder', url: 'http://localhost:3019', iframe: true },
-  { id: 'prolog-placeholder', url: 'http://localhost:5001', iframe: true }
+  { id: 'prolog-placeholder', url: 'http://localhost:5001', iframe: true },
+  // API Specs (OpenAsyncAPI Editor)
+  { id: 'swagger-placeholder', url: 'http://localhost:3021', iframe: true },
+  { id: 'asyncapi-placeholder', url: 'http://localhost:3022', iframe: true },
+  // MCP Inspector
+  { id: 'inspector-placeholder', url: 'http://localhost:6274', iframe: true },
+  // Wiring Editors (Node-RED)
+  { id: 'nodered-placeholder', url: 'http://localhost:1880', iframe: true },
+  { id: 'nodered-ui-placeholder', url: 'http://localhost:1880/ui', iframe: true }
 ];
 
 async function checkServer(server) {

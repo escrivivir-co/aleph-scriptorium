@@ -1,42 +1,73 @@
 ---
-name: Protocolo Scrum DRY
-description: Protocolo ligero para gestión de backlogs con índice DRY. Diseñado para mitigar context bloat.
+name: Protocolo Scrum — Modelo Generativo
+description: Protocolo DRY + Modelo Generativo. Sesiones de cotrabajo PRODUCEN artefactos Scrum.
 applyTo: ".github/BACKLOG-SCRIPTORIUM.md"
 ---
 
-# Protocolo Scrum DRY
+# Protocolo Scrum v3.0 — Modelo Generativo
 
-> **Plugin**: Scrum v2.0.0  
-> **Agente**: @scrum  
-> **Épica**: SCRIPT-1.29.0 (Context Bloat Mitigation)
+> **Plugin**: Scrum v3.0.0  
+> **Agente**: @scrum (interpreta a Lucas)  
+> **Épica**: SCRUM-REFACTOR-1.0.0
 
 ---
-# Backlog — Aleph Scriptorium
 
-Contexto general:
+## 1. Modelo Conceptual
 
-> **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.3-dry  
-> **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-01
-> **Rama en ALEPH (esta codebase)**: flavour/monada
-> **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
+### Relación Sesión → Borrador
 
+```
+┌─────────────────────────┐
+│   SESIÓN COTRABAJO      │
+│   (SESIONES_COTRABAJO/) │
+│                         │
+│   • Estado: CERRADA     │
+│   • Tipo: PRODUCTIVA    │
+│   • Actas: T001..TN     │
+└───────────┬─────────────┘
+            │
+            │ PRODUCE (no TRANSFORMA)
+            │
+            ▼
+┌─────────────────────────┐
+│   BORRADOR ÉPICA        │
+│   (BACKLOG_BORRADORES/) │
+│                         │
+│   • origen: {sesión}    │
+│   • Epic/Stories/Tasks  │
+│   • Definition of Done  │
+└─────────────────────────┘
+```
 
-## 1. Principio Fundamental
+**Principio clave**: La sesión **permanece intacta**. El borrador **referencia** a la sesión.
+
+### Tipos de Cierre de Sesión
+
+| Tipo | Produce | Acción @scrum |
+|------|---------|---------------|
+| **Exploratoria** | Nada tangible | Registrar en histórico de sesiones |
+| **Normativa** | Decisiones/reglas | Documentar en `.github/instructions/` |
+| **Productiva** | Borrador de épica | `generar-desde-sesion` |
+
+---
+
+## 2. Principio DRY
 
 > **DRY = Don't Repeat Yourself**
 >
 > El backlog oficial (`.github/BACKLOG-SCRIPTORIUM.md`) es un **índice de referencias**.  
-> NO contiene detalles de épicas. Los detalles viven en:
-> - `ARCHIVO/DISCO/BACKLOG_BORRADORES/` → trabajo activo
-> - `ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/` → sprints cerrados
+> NO contiene detalles de épicas.
 
----
+### Ubicaciones Canónicas
 
-## 2. Estructura del Índice
+| Tipo | Ubicación | Contenido |
+|------|-----------|-----------|
+| Índice oficial | `.github/BACKLOG-SCRIPTORIUM.md` | ~50 líneas, solo referencias |
+| Borradores | `ARCHIVO/DISCO/BACKLOG_BORRADORES/` | Épicas detalladas activas |
+| Archivados | `ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/` | Sprints cerrados |
+| Sesiones | `ARCHIVO/DISCO/SESIONES_COTRABAJO/` | Trabajo multi-agente |
 
-El índice oficial tiene **máximo ~50 líneas** y contiene solo:
+### Estructura del Índice
 
 ```markdown
 ## Sprint Activo: {nombre}
@@ -45,11 +76,11 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 |--------|-------|--------|------------|
 | 📋 | ID | Nombre corto | [borrador](ruta) |
 
-## Épicas Pendientes
+## Sesiones de Cotrabajo
 
-| Épica | Nombre | Referencia |
-|-------|--------|------------|
-| ID | Nombre | [borrador](ruta) |
+| Estado | Sesión | Épica | Resultado | Referencia |
+|--------|--------|-------|-----------|------------|
+| ✅ | nombre | ID | Resumen | [sesión](ruta) |
 
 ## Histórico
 
@@ -64,47 +95,67 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 
 ### ✅ El agente @scrum PUEDE:
 
-| Operación | En índice | En borrador |
-|-----------|-----------|-------------|
-| Añadir fila de referencia | ✅ | — |
-| Eliminar fila de referencia | ✅ | — |
-| Cambiar estado (📋→✅) | ✅ | — |
-| Escribir contenido detallado | ❌ | ✅ |
-| Actualizar tasks/effort | ❌ | ✅ |
-| Crear nuevas carpetas | — | ✅ |
+| Operación | En índice | En borrador | En sesión |
+|-----------|-----------|-------------|-----------|
+| Añadir fila de referencia | ✅ | — | — |
+| Eliminar fila de referencia | ✅ | — | — |
+| Cambiar estado (📋→✅) | ✅ | — | — |
+| Escribir contenido detallado | ❌ | ✅ | ❌ |
+| Actualizar tasks/effort | ❌ | ✅ | ❌ |
+| Crear nuevas carpetas | — | ✅ | ❌ |
+| Extraer decisiones | — | ✅ | Solo lectura |
 
 ### ❌ El agente @scrum NUNCA:
 
 - Copiar contenido de borrador al índice
-- Escribir épicas/stories/tasks en el índice
-- Duplicar información entre índice y borradores
-- Generar secciones extensas en el índice
+- Copiar actas completas al borrador
+- Sintetizar/resumir actas automáticamente
+- Modificar sesiones cerradas
+- Duplicar información entre ubicaciones
 
 ---
 
-## 4. Ubicaciones Canónicas
-
-| Tipo de contenido | Ubicación | Formato |
-|-------------------|-----------|---------|
-| Conversaciones PO-SM | `BACKLOG_BORRADORES/{nombre}/conversacion*.md` | Markdown |
-| Borradores de épica | `BACKLOG_BORRADORES/{nombre}/01_backlog-borrador.md` | Markdown |
-| Índice maestro borradores | `BACKLOG_BORRADORES/INDEX.md` | Tabla |
-| Sprints cerrados | `BACKLOG_ARCHIVADOS/{sprint}/` | Carpeta |
-| Fotos de estado | `ARCHIVO/FOTOS_ESTADO/` | Markdown |
-
----
-
-## 5. Flujo de Trabajo DRY
+## 4. Flujo de Trabajo
 
 ### Fase 1: Planificar
 
+**Input**: Idea/necesidad del PO  
+**Output**: Carpeta en BACKLOG_BORRADORES + referencia en índice
+
 ```
 1. Crear carpeta en BACKLOG_BORRADORES/{tema}/
-2. Generar conversacion-po-sm.md en esa carpeta
+2. Generar conversacion-po-sm.md (opcional)
 3. Añadir fila de referencia al índice con estado 📋
 ```
 
+### Fase 1b: Cotrabajo (Alternativa)
+
+**Input**: Tema complejo que requiere múltiples agentes  
+**Output**: Sesión de cotrabajo en SESIONES_COTRABAJO
+
+```
+1. Crear sesión según protocolo cotrabajo
+2. Ejecutar turnos hasta consenso
+3. Cerrar sesión como PRODUCTIVA
+4. → Ir a Fase 1c
+```
+
+### Fase 1c: Generar desde Sesión
+
+**Input**: Sesión cerrada como PRODUCTIVA  
+**Output**: Borrador con metadata `origen:`
+
+```
+1. @scrum generar-desde-sesion {ruta-sesion}
+2. Extraer decisiones de actas
+3. Generar borrador con origen: {sesión}
+4. Añadir referencia al índice
+```
+
 ### Fase 2: Desarrollar
+
+**Input**: Borrador inicial  
+**Output**: Borrador detallado con Stories/Tasks
 
 ```
 1. Crear 01_backlog-borrador.md en la carpeta
@@ -112,71 +163,151 @@ El índice oficial tiene **máximo ~50 líneas** y contiene solo:
 3. Actualizar estado a 🔄 en el índice (solo cambio de emoji)
 ```
 
-### Fase 2.5: Auditoría (NUEVO — Resolución R1 Asamblea 2026-01-01)
+### Fase 2.5: Auditoría (Gate Ox-Indice)
+
+**Input**: Borrador "completo"  
+**Output**: Aprobación técnica/estructural
 
 ```
-1. Invocar @ox para auditoría técnica:
-   - Verificar que componentes referenciados existen
-   - Identificar gaps entre plan y código real
-   - Documentar hallazgos en borrador
+1. @ox auditoría técnica:
+   - Verificar componentes referenciados existen
+   - Identificar gaps plan vs código
+   
+2. @indice auditoría estructural:
+   - Verificar rutas válidas
+   - Verificar coherencia DRY
 
-2. Invocar @indice para auditoría estructural:
-   - Verificar rutas mencionadas existen o están marcadas "a crear"
-   - Verificar coherencia con principios DRY
-   - Documentar hallazgos en borrador
-
-3. Si hay gaps críticos → volver a Fase 2
-4. Si auditoría OK → proceder a Fase 3
+3. Si gaps críticos → volver a Fase 2
+4. Si OK → Fase 3
 ```
-
-> **Bloqueo preventivo**: Cualquier agente puede invocar `@ox diagnosticar {épica}` ante sospecha de gaps. Esto pausa la aprobación hasta resolución.
 
 ### Fase 3: Aprobar
 
+**Input**: Borrador auditado  
+**Output**: Estado ✅ en índice
+
 ```
-1. Verificar que Fase 2.5 está completada (auditoría OK)
-2. Validar borrador completado
-3. Cambiar estado a ✅ en el índice
-4. NO copiar contenido al índice
+1. Verificar auditoría OK
+2. Cambiar estado a ✅ en el índice
+3. NO copiar contenido al índice
 ```
 
 ### Fase 4: Archivar
+
+**Input**: Sprint completado  
+**Output**: Carpetas movidas a archivados
 
 ```
 1. Mover carpeta de BACKLOG_BORRADORES/ a BACKLOG_ARCHIVADOS/{sprint}/
 2. Actualizar referencia en sección Histórico
 3. Eliminar fila de sección activa
+4. Opcionalmente: mover sesiones relacionadas
 ```
 
 ---
 
-## 6. Formato de Referencias
+## 5. Metadata `origen:`
 
-### Referencia a borrador activo
+Cuando un borrador proviene de una sesión de cotrabajo, debe incluir:
 
-```markdown
-[borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/{nombre}/)
+```yaml
+origen:
+  tipo: sesion-cotrabajo
+  referencia: SESIONES_COTRABAJO/{nombre}/
+  actas: [T001, T002, ...]
+  consenso: "{resumen de decisiones}"
+  fecha_consenso: {YYYY-MM-DD}
 ```
 
-### Referencia a archivado
+### Propósito
 
-```markdown
-[archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/{sprint}/)
+| Campo | Uso |
+|-------|-----|
+| `tipo` | Identificar fuente del borrador |
+| `referencia` | Link directo a sesión |
+| `actas` | Trazabilidad de decisiones |
+| `consenso` | Resumen ejecutivo |
+| `fecha_consenso` | Cuándo se cerró |
+
+### Verificación Gate
+
+El Gate Ox-Indice puede verificar:
 ```
-
-### Referencia a índice completo
-
-```markdown
-→ Para índice completo: [BACKLOG_BORRADORES/INDEX.md](ruta)
+1. Si origen.referencia existe → sesión válida
+2. Si origen.actas existen → trazabilidad OK
+3. Si origen.consenso no vacío → decisiones documentadas
 ```
 
 ---
 
-## 7. Asambleas Deliberativas (Resolución R4)
+## 6. Comandos del Agente
 
-> **Origen**: Asamblea de Agentes 2026-01-01
+| Comando | Acción | En índice | En borrador |
+|---------|--------|-----------|-------------|
+| `planificar` | Crear carpeta + referencia | ✅ Añadir fila | ✅ Crear carpeta |
+| `borrador` | Generar backlog detallado | ❌ | ✅ |
+| `generar-desde-sesion` | Producir desde cotrabajo | ✅ Añadir fila | ✅ + origen |
+| `aprobar` | Cambiar estado | ✅ Cambiar emoji | ❌ |
+| `tracking` | Actualizar tasks | ❌ | ✅ |
+| `cerrar` | Archivar sprint | ✅ Mover a histórico | ✅ Mover carpeta |
+| `status` | Mostrar métricas | ✅ Leer | ✅ Leer + sesiones |
 
-Cuando una épica requiere decisiones significativas o hay conflicto de criterios, se convoca una **Asamblea Deliberativa**.
+### Extensiones v3.0
+
+| Comando | Opción | Descripción |
+|---------|--------|-------------|
+| `cerrar` | `--incluir-sesiones` | Archivar sesiones relacionadas |
+| `status` | (default) | Incluye sesiones activas |
+
+---
+
+## 7. Integración con Lucas
+
+El agente @scrum "interpreta" a Lucas para expertise avanzada:
+
+```yaml
+interpreta:
+  personaje: lucas
+  fuente: ARCHIVO/DISCO/TALLER/ELENCO/lucas/
+  cargar:
+    - lucas.agent.md        # Siempre
+    - lucas-prolog.brain.pl # Bajo demanda
+    - templates-index.json  # Bajo demanda
+```
+
+### Cuándo Cargar Lucas
+
+| Situación | Cargar |
+|-----------|--------|
+| Comandos básicos | Solo identidad |
+| Razonamiento complejo | + brain Prolog |
+| Plantillas Scrum | + templates-index.json |
+
+### Queries Prolog Útiles
+
+```prolog
+?- tarea_pendiente(Epic, Task, Estado).
+?- documentacion_coherente(X).
+?- reporte_salud(R).
+```
+
+---
+
+## 8. Anti-patrones
+
+| Código | Nombre | Señal | Corrección |
+|--------|--------|-------|------------|
+| AP-SCRUM-01 | Índice inflado | >50 líneas | Mover contenido a borrador |
+| AP-SCRUM-02 | Duplicación | Mismo contenido en 2+ lugares | Usar referencias |
+| AP-SCRUM-03 | Sesión absorbida | Borrador = copia de actas | Modelo Generativo |
+| AP-SCRUM-04 | Expertise duplicada | @scrum tiene conocimiento propio | Interpretar Lucas |
+| AP-SCRUM-05 | Sin trazabilidad | Borrador sin origen | Añadir metadata |
+
+---
+
+## 9. Asambleas Deliberativas
+
+Cuando una épica requiere decisiones significativas:
 
 ### Cuándo Convocar
 
@@ -185,195 +316,54 @@ Cuando una épica requiere decisiones significativas o hay conflicto de criterio
 - Cambio de scope significativo
 - Decisiones arquitectónicas mayores
 
-### Formato
+### Formato de Sesión
 
 ```markdown
-# Asamblea: {Tema}
+# Sesión: {Tema}
 
 ## Participantes
 {Lista de agentes}
 
 ## Rondas
-1. ¿Qué ocurrió? (cada agente desde su rol)
-2. ¿Qué aprendimos? (propuestas de acción)
-3. ¿Qué significa para el sistema? (implicaciones)
-4. Votación (si aplica)
+1. ¿Qué ocurrió? (diagnóstico)
+2. ¿Qué aprendimos? (propuestas)
+3. ¿Qué decidimos? (consenso)
+4. ¿Qué producimos? (artefactos)
 
-## Resoluciones
-R1: ...
-R2: ...
-```
-
-### Ubicación
-
-Las asambleas se archivan en:
-```
-ARCHIVO/NOTICIAS/{tema}/05_asamblea_agentes.md
-```
-
-Estas asambleas son **fuente de verdad** para decisiones de proceso y pueden citarse como precedente.
-
----
-
-## 7. Estados en el Índice
-
-| Estado | Emoji | Significado |
-|--------|-------|-------------|
-| Planificando | 📋 | Conversación PO-SM activa |
-| En desarrollo | 🔄 | Borrador con trabajo activo |
-| Completada | ✅ | Épica cerrada |
-| Bloqueada | ⛔ | Requiere acción externa |
-
----
-
-## 8. Sincronización con Índices DRY
-
-El backlog debe mantenerse coherente con:
-
-| Índice | Qué refleja | Cuándo actualizar |
-|--------|-------------|-------------------|
-| `Funcional.md` | Capacidades del sistema | Al cerrar épica de feature |
-| `Tecnico.md` | Arquitectura | Al cerrar épica técnica |
-| `BACKLOG_BORRADORES/INDEX.md` | Estado detallado | Cada cambio de borrador |
-
----
-
-## 9. Validación Pre-Commit
-
-Antes de commit, verificar:
-
-| Check | Pregunta |
-|-------|----------|
-| `dry_violation` | ¿Hay contenido duplicado entre índice y borrador? |
-| `orphan_reference` | ¿Todas las referencias apuntan a archivos existentes? |
-| `index_size` | ¿El índice tiene menos de 80 líneas? |
-| `status_sync` | ¿Estados en índice coinciden con realidad en borradores? |
-
----
-
-## 10. Comandos del Agente
-
-| Comando | Acción en índice | Acción en borrador |
-|---------|------------------|-------------------|
-| `planificar` | Añadir fila 📋 | Crear carpeta + conversacion.md |
-| `borrador` | — | Crear 01_backlog-borrador.md |
-| `aprobar` | Cambiar a ✅ | — |
-| `tracking` | — | Actualizar estado tasks |
-| `cerrar` | Mover a Histórico | Mover a ARCHIVADOS |
-| `status` | Leer índice | Leer borrador activo |
-
----
-
-## 11. Ejemplo de Índice Correcto
-
-```markdown
-# Backlog — Aleph Scriptorium
-
-> **Versión**: 1.1.0-dry
-
-## Sprint Activo: FC3
-
-| Estado | Épica | Nombre | Referencia |
-|--------|-------|--------|------------|
-| 📋 | SCRIPT-1.29.0 | Context Bloat | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/...) |
-
-## Histórico
-
-| Sprint | Período | Épicas | Referencia |
-|--------|---------|--------|------------|
-| FC2 | 2025-12-22 → 28 | 6 | [archivado](../ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/FC2/) |
-```
-
-**Total: ~30 líneas** (vs. anterior: 400+ líneas)
-
----
-
-## 12. Migración desde Protocolo Anterior
-
-Si encuentras un backlog con contenido detallado:
-
-1. Identificar secciones de épicas con tasks
-2. Mover cada sección a `BACKLOG_BORRADORES/{nombre}/`
-3. Reemplazar sección por fila de referencia
-4. Validar que enlaces funcionan
-
----
-
-## 13. Integración con DevOps
-
-### Commits de índice
-
-```
-chore(script/plan): actualizar índice backlog
-
-- Añadir referencia SCRIPT-1.29.0
-- Archivar FC2
-
-refs #SCRIPT-1.29.0
-```
-
-### Commits de borrador
-
-```
-docs(script/plan): crear borrador SCRIPT-1.30.0
-
-- Conversación PO-SM en BACKLOG_BORRADORES/
-- Épicas: X, Y, Z
-
-refs #SCRIPT-1.30.0
+## Tipo de Cierre
+{Exploratoria | Normativa | Productiva}
 ```
 
 ---
 
-## 14. Integración con Auto-Reflexión
+## 10. Checklist de Validación
 
-> **Fuente de verdad**: `auto-reflexion.instructions.md`
+### Borrador válido
 
-### Snapshots en el Ciclo Scrum
+- [ ] Tiene Epic ID único
+- [ ] Está en BACKLOG_BORRADORES/
+- [ ] Tiene referencia en índice
+- [ ] Si viene de sesión: tiene metadata `origen:`
+- [ ] Stories tienen effort estimado
+- [ ] Tasks tienen descripción clara
+- [ ] Definition of Done definido
 
-| Momento | Acción | Obligatorio |
-|---------|--------|-------------|
-| Al planificar épica | Capturar snapshot de contexto inicial | ⚪ Opcional |
-| Al completar story compleja | Capturar snapshot | ⚪ Opcional |
-| Al cerrar épica | `capture_snapshot` + `generate_abstract` | 🔴 Obligatorio |
-| Al cerrar sprint | Snapshot + Foto de estado | 🔴 Obligatorio |
+### Sesión válida para generar
 
-### Métricas en Borradores
+- [ ] Estado = CERRADA — PRODUCTIVA
+- [ ] Tiene 00_SESION.md
+- [ ] Tiene al menos 1 acta
+- [ ] Actas tienen "Decisiones Tomadas"
 
-Al cerrar una sesión de trabajo intensa (>1 hora), añadir al borrador:
+### Índice válido
 
-```markdown
-## Métricas de Sesión
-
-| Métrica | Valor |
-|---------|-------|
-| healthScore | {0-100} |
-| cacheHitRate | {%} |
-| Antipatrones | {AP-0X, AP-0Y} |
-| Snapshots capturados | {N} |
-```
-
-### Terapia de Bridges
-
-Si un bridge de plugin es detectado como ineficiente:
-
-```
-1. @scrum planificar → crear BACKLOG_BORRADORES/{bridge}_terapia/
-2. @ox analyze_session → documentar antipatrones
-3. @scrum tracking → registrar propuestas de mejora
-4. Implementar fix → cerrar terapia
-```
-
-### Resoluciones de Auto-Reflexión (R5)
-
-Los aprendizajes de auto-reflexión pueden generar resoluciones que afectan el proceso:
-
-| Tipo | Ejemplo | Dónde documentar |
-|------|---------|------------------|
-| Nuevo antipatrón | AP-05: X | auto-reflexion.instructions.md |
-| Nueva buena práctica | BP-06: Y | auto-reflexion.instructions.md |
-| Mejora de proceso | R5: Z | Asamblea + DEVOPS.md |
-| Mejora de bridge | Fix de scope | Bridge .agent.md |
+- [ ] ≤50 líneas
+- [ ] Solo referencias, no contenido
+- [ ] Estados correctos (📋, 🔄, ✅)
+- [ ] Links funcionan
 
 ---
 
+**Versión**: 3.0.0  
+**Épica origen**: SCRUM-REFACTOR-1.0.0  
+**Sesión origen**: 2026-01-05_consenso-agile-scriptorium

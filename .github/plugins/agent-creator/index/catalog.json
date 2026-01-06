@@ -1,0 +1,107 @@
+{
+  "$schema": "./catalog.schema.json",
+  "source": "AgentLoreSDK/cli-tool",
+  "repository": "https://github.com/escrivivir-co/mcp-agent-lore-sdk",
+  "scanned_at": "2026-01-04T12:40:00Z",
+  "version": "1.0.0",
+  "summary": {
+    "total_categories": 55,
+    "total_items": 708,
+    "by_type": {
+      "agents": { "categories": 25, "items": 165 },
+      "commands": { "categories": 20, "items": 217 },
+      "skills": { "categories": 10, "items": 255 }
+    }
+  },
+  "categories": {
+    "agents": {
+      "description": "Agentes especializados para Claude Code",
+      "base_path": "components/agents/",
+      "count": 25,
+      "items": [
+        { "id": "ai-specialists", "name": "AI Specialists", "path": "components/agents/ai-specialists/", "items": 7, "tags": ["ai", "ml", "specialists"] },
+        { "id": "api-graphql", "name": "API & GraphQL", "path": "components/agents/api-graphql/", "items": 3, "tags": ["api", "graphql", "rest"] },
+        { "id": "blockchain-web3", "name": "Blockchain & Web3", "path": "components/agents/blockchain-web3/", "items": 3, "tags": ["blockchain", "web3", "crypto"] },
+        { "id": "business-marketing", "name": "Business & Marketing", "path": "components/agents/business-marketing/", "items": 10, "tags": ["business", "marketing", "sales"] },
+        { "id": "data-ai", "name": "Data & AI", "path": "components/agents/data-ai/", "items": 8, "tags": ["data", "analytics", "ml"] },
+        { "id": "database", "name": "Database", "path": "components/agents/database/", "items": 9, "tags": ["database", "sql", "nosql"] },
+        { "id": "deep-research-team", "name": "Deep Research Team", "path": "components/agents/deep-research-team/", "items": 13, "tags": ["research", "team", "analysis"] },
+        { "id": "development-team", "name": "Development Team", "path": "components/agents/development-team/", "items": 8, "tags": ["dev", "team", "collaboration"] },
+        { "id": "development-tools", "name": "Development Tools", "path": "components/agents/development-tools/", "items": 12, "tags": ["tools", "dev", "productivity"] },
+        { "id": "devops-infrastructure", "name": "DevOps & Infrastructure", "path": "components/agents/devops-infrastructure/", "items": 8, "tags": ["devops", "infra", "cloud"] },
+        { "id": "documentation", "name": "Documentation", "path": "components/agents/documentation/", "items": 4, "tags": ["docs", "writing", "technical"] },
+        { "id": "expert-advisors", "name": "Expert Advisors", "path": "components/agents/expert-advisors/", "items": 4, "tags": ["expert", "advisor", "consulting"] },
+        { "id": "ffmpeg-clip-team", "name": "FFmpeg & Clip Team", "path": "components/agents/ffmpeg-clip-team/", "items": 8, "tags": ["ffmpeg", "video", "media"] },
+        { "id": "game-development", "name": "Game Development", "path": "components/agents/game-development/", "items": 4, "tags": ["game", "unity", "unreal"] },
+        { "id": "git", "name": "Git", "path": "components/agents/git/", "items": 1, "tags": ["git", "version-control"] },
+        { "id": "mcp-dev-team", "name": "MCP Dev Team", "path": "components/agents/mcp-dev-team/", "items": 7, "tags": ["mcp", "claude", "anthropic"] },
+        { "id": "modernization", "name": "Modernization", "path": "components/agents/modernization/", "items": 3, "tags": ["modernization", "migration", "upgrade"] },
+        { "id": "obsidian-ops-team", "name": "Obsidian Ops Team", "path": "components/agents/obsidian-ops-team/", "items": 8, "tags": ["obsidian", "notes", "pkm"] },
+        { "id": "ocr-extraction-team", "name": "OCR & Extraction Team", "path": "components/agents/ocr-extraction-team/", "items": 7, "tags": ["ocr", "extraction", "documents"] },
+        { "id": "performance-testing", "name": "Performance Testing", "path": "components/agents/performance-testing/", "items": 5, "tags": ["performance", "testing", "load"] },
+        { "id": "podcast-creator-team", "name": "Podcast Creator Team", "path": "components/agents/podcast-creator-team/", "items": 11, "tags": ["podcast", "audio", "content"] },
+        { "id": "programming-languages", "name": "Programming Languages", "path": "components/agents/programming-languages/", "items": 11, "tags": ["languages", "polyglot"] },
+        { "id": "realtime", "name": "Realtime", "path": "components/agents/realtime/", "items": 1, "tags": ["realtime", "websocket", "streaming"] },
+        { "id": "security", "name": "Security", "path": "components/agents/security/", "items": 5, "tags": ["security", "audit", "vulnerabilities"] },
+        { "id": "web-tools", "name": "Web Tools", "path": "components/agents/web-tools/", "items": 6, "tags": ["web", "scraping", "automation"] }
+      ]
+    },
+    "commands": {
+      "description": "Comandos predefinidos para automatización",
+      "base_path": "components/commands/",
+      "count": 20,
+      "items": [
+        { "id": "automation", "name": "Automation", "path": "components/commands/automation/", "items": 4, "tags": ["automation", "scripts"] },
+        { "id": "database", "name": "Database", "path": "components/commands/database/", "items": 8, "tags": ["database", "queries"] },
+        { "id": "deployment", "name": "Deployment", "path": "components/commands/deployment/", "items": 11, "tags": ["deploy", "release"] },
+        { "id": "documentation", "name": "Documentation", "path": "components/commands/documentation/", "items": 10, "tags": ["docs", "generate"] },
+        { "id": "game-development", "name": "Game Development", "path": "components/commands/game-development/", "items": 5, "tags": ["game", "build"] },
+        { "id": "git", "name": "Git", "path": "components/commands/git/", "items": 5, "tags": ["git", "commands"] },
+        { "id": "git-workflow", "name": "Git Workflow", "path": "components/commands/git-workflow/", "items": 10, "tags": ["git", "workflow", "branching"] },
+        { "id": "marketing", "name": "Marketing", "path": "components/commands/marketing/", "items": 5, "tags": ["marketing", "content"] },
+        { "id": "nextjs-vercel", "name": "Next.js & Vercel", "path": "components/commands/nextjs-vercel/", "items": 10, "tags": ["nextjs", "vercel", "deploy"] },
+        { "id": "orchestration", "name": "Orchestration", "path": "components/commands/orchestration/", "items": 12, "tags": ["orchestration", "workflow"] },
+        { "id": "performance", "name": "Performance", "path": "components/commands/performance/", "items": 10, "tags": ["performance", "optimize"] },
+        { "id": "project-management", "name": "Project Management", "path": "components/commands/project-management/", "items": 18, "tags": ["pm", "tasks", "planning"] },
+        { "id": "security", "name": "Security", "path": "components/commands/security/", "items": 6, "tags": ["security", "scan"] },
+        { "id": "setup", "name": "Setup", "path": "components/commands/setup/", "items": 15, "tags": ["setup", "init", "config"] },
+        { "id": "simulation", "name": "Simulation", "path": "components/commands/simulation/", "items": 10, "tags": ["simulation", "mock"] },
+        { "id": "svelte", "name": "Svelte", "path": "components/commands/svelte/", "items": 16, "tags": ["svelte", "sveltekit"] },
+        { "id": "sync", "name": "Sync", "path": "components/commands/sync/", "items": 14, "tags": ["sync", "backup"] },
+        { "id": "team", "name": "Team", "path": "components/commands/team/", "items": 14, "tags": ["team", "collaboration"] },
+        { "id": "testing", "name": "Testing", "path": "components/commands/testing/", "items": 14, "tags": ["testing", "qa"] },
+        { "id": "utilities", "name": "Utilities", "path": "components/commands/utilities/", "items": 20, "tags": ["utils", "helpers"] }
+      ]
+    },
+    "skills": {
+      "description": "Habilidades modulares reutilizables",
+      "base_path": "components/skills/",
+      "count": 10,
+      "items": [
+        { "id": "business-marketing", "name": "Business & Marketing", "path": "components/skills/business-marketing/", "items": 12, "tags": ["business", "marketing"] },
+        { "id": "creative-design", "name": "Creative Design", "path": "components/skills/creative-design/", "items": 9, "tags": ["design", "creative", "ui"] },
+        { "id": "database", "name": "Database", "path": "components/skills/database/", "items": 1, "tags": ["database"] },
+        { "id": "development", "name": "Development", "path": "components/skills/development/", "items": 56, "tags": ["dev", "coding", "programming"] },
+        { "id": "document-processing", "name": "Document Processing", "path": "components/skills/document-processing/", "items": 7, "tags": ["documents", "pdf", "parsing"] },
+        { "id": "enterprise-communication", "name": "Enterprise Communication", "path": "components/skills/enterprise-communication/", "items": 17, "tags": ["enterprise", "communication", "slack"] },
+        { "id": "media", "name": "Media", "path": "components/skills/media/", "items": 2, "tags": ["media", "audio", "video"] },
+        { "id": "productivity", "name": "Productivity", "path": "components/skills/productivity/", "items": 12, "tags": ["productivity", "efficiency"] },
+        { "id": "scientific", "name": "Scientific", "path": "components/skills/scientific/", "items": 136, "tags": ["science", "research", "academic"] },
+        { "id": "utilities", "name": "Utilities", "path": "components/skills/utilities/", "items": 3, "tags": ["utils"] }
+      ]
+    },
+    "templates": {
+      "description": "Plantillas por lenguaje de programación",
+      "base_path": "templates/",
+      "count": 6,
+      "items": [
+        { "id": "common", "name": "Common", "path": "templates/common/", "tags": ["universal", "shared"] },
+        { "id": "go", "name": "Go", "path": "templates/go/", "tags": ["go", "golang"] },
+        { "id": "javascript-typescript", "name": "JavaScript & TypeScript", "path": "templates/javascript-typescript/", "tags": ["js", "ts", "node"] },
+        { "id": "python", "name": "Python", "path": "templates/python/", "tags": ["python", "py"] },
+        { "id": "ruby", "name": "Ruby", "path": "templates/ruby/", "tags": ["ruby", "rails"] },
+        { "id": "rust", "name": "Rust", "path": "templates/rust/", "tags": ["rust", "cargo"] }
+      ]
+    }
+  }
+}

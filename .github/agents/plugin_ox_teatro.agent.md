@@ -2,7 +2,7 @@
 name: plugin_ox_teatro
 description: "Bridge: conecta VS Code con el plugin Teatro Interactivo. Orquesta ARG_BOARD, AGENT_CREATOR y GH-PAGES para experiencias transmedia."
 argument-hint: "Acciones: generar <tema>, instalar <id>, ejecutar <id>, cartelera, crear-personaje"
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'playwright/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'AlephAlpha/*', 'prolog-mcp-server/*', 'copilot-logs-mcp-server/*', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Listar agentes de Teatro
     agent: plugin_ox_teatro
@@ -63,10 +63,15 @@ Teatro Interactivo es el sistema unificado para experiencias de teatro transmedi
 
 ## Agentes disponibles
 
+### Fuente 1 agentes plugin
+
 | Agente | Archivo | Descripción |
 |--------|---------|-------------|
 | **Teatro** | `.github/plugins/teatro/agents/teatro.agent.md` | Orquestador principal. Coordina generación, instalación y ejecución de obras. |
 
+### Fuente 2 agentes personaje
+
+En el caso de que seas invocado para manejar un "agente personaje" deberás coordinar conocimiento mediante otros agente bridge plugin: a) agent-creator, b) arg-board. Deberas hacer una fase de reconstrucción del contexto del agente personaje a través de las capacidades que ofrece cada plugin. Hazlo secuencial según el usuario solicite. A partir de un funcionamiento Don't Repeat Yourself, prioriza obtener índices antes que grandes partes de información para saber dónde dirigir la siguiente respuesta y sugerir al usuario posibles caminos conocidos probables, manejando con cuidado el Context Bloating en la cadena de prompts de la convesación.
 ---
 
 ## Prompts disponibles

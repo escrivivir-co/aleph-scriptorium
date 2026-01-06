@@ -7,13 +7,127 @@ applyTo: "ARCHIVO/PLUGINS/BLOCKLY_EDITOR/**/*.json, .github/plugins/blockly-edit
 # Instrucciones: Plugin Blockly Editor
 
 > **Fuente de verdad**: `.github/plugins/blockly-editor/manifest.md`  
-> **Submódulo**: `blockly-alephscript-sdk`
+> **Submódulo**: `BlocklyEditor` (blockly-alephscript-sdk)
 
 ---
 
 ## Propósito
 
 El plugin Blockly Editor permite **programación visual** de lógica para agentes-personaje. Traduce diagramas de bloques en código JavaScript ejecutable en el Teatro.
+
+---
+
+## Fases de Trabajo
+
+### Fase 1: Setup
+
+| Task | Comando | Resultado |
+|------|---------|-----------|
+| `BLE: Setup` | `scripts/setup-blockly.sh` | Dependencias + build completo |
+| `npm run install:all` | En BlocklyEditor/ | Solo dependencias |
+| `npm run build:all` | En BlocklyEditor/ | Build de todos los paquetes |
+
+**Prerequisitos**:
+- Node.js 18+
+- Angular CLI recomendado (usa npx si no está)
+
+### Fase 2: Desarrollo
+
+| Task | Puerto | Descripción |
+|------|--------|-------------|
+| `BLE: Start [Editor]` | 4200 | Angular 19 con hot-reload |
+| `BLE: Start [Runtime]` | 4300 | Ejecución de rutinas |
+| `BLE: Health Check` | — | Verifica ambos servicios |
+
+**Comandos directos**:
+```bash
+cd BlocklyEditor
+npm run dev:ui       # Editor (4200)
+npm run dev:runtime  # Runtime (4300)
+```
+
+### Fase 3: Edición de Rutinas
+
+1. **Abrir editor**: http://localhost:4200
+2. **Seleccionar paleta**: sbr, logica, simbolica, conexionista
+3. **Arrastrar bloques**: Desde toolbox al workspace
+4. **Conectar bloques**: Formar secuencias lógicas
+5. **Guardar**: Genera .js en rutinas/ y .xml en workspaces/
+
+### Fase 4: Ejecución
+
+1. **Abrir runtime**: http://localhost:4300
+2. **Cargar rutina**: Seleccionar .js generado
+3. **Ejecutar**: Con contexto simulado
+4. **Depurar**: Ver logs y estado de memoria
+
+---
+
+## Estructura del Submódulo
+
+```
+BlocklyEditor/                         # Submódulo #16
+├── package.json                       # Scripts: install:all, build:all, dev:ui
+├── packages/
+│   ├── blockly-alephscript-blocks/   # 6 categorías de bloques
+│   │   ├── src/
+│   │   │   ├── blocks/               # Definiciones de bloques
+│   │   │   └── generators/           # Generadores JavaScript
+│   │   └── package.json
+│   ├── blockly-gamify-ui/            # Editor Angular 19 (puerto 4200)
+│   │   ├── src/app/
+│   │   │   ├── blockly/              # Componentes Blockly
+│   │   │   └── services/             # Servicios de workspace
+│   │   └── angular.json
+│   └── blockly-runtime-gamify-ui/    # Runtime UI (puerto 4300)
+│       └── src/app/
+└── examples/                          # Workspaces de ejemplo
+```
+
+---
+
+## Paquetes del SDK
+
+### blockly-alephscript-blocks
+
+6 categorías de bloques específicos para AlephScript:
+
+| Categoría | Descripción | Ejemplo de bloque |
+|-----------|-------------|-------------------|
+| `sbr` | Sistemas Basados en Reglas | sbr_si_entonces, sbr_condicion_estadio |
+| `logica` | Lógica Formal | logica_cuantificador, logica_predicado |
+| `simbolica` | IA Simbólica | simbolica_patron, simbolica_inferir |
+| `conexionista` | Redes Neuronales | conexionista_capa, conexionista_activacion |
+| `teatro` | Integración Teatro | teatro_emitir, teatro_estadio |
+| `common` | Utilidades comunes | common_log, common_alerta |
+
+### blockly-gamify-ui
+
+Editor visual Angular 19 con:
+- Toolbox configurable por paleta
+- Workspace persistente (localStorage)
+- Export/Import de workspaces XML
+- Generación de código JavaScript
+- Preview del código generado
+
+### blockly-runtime-gamify-ui
+
+Entorno de ejecución con:
+- Sandbox seguro (sin acceso DOM directo)
+- Contexto inyectado para Teatro
+- Depuración paso a paso
+- Visualización de memoria
+
+---
+
+## Handoffs
+
+| Origen | Destino | Cuándo |
+|--------|---------|--------|
+| `@plugin_ox_blocklyeditor` | `@plugin_ox_teatro` | Rutina lista para asignar a personaje |
+| `@plugin_ox_blocklyeditor` | `@plugin_ox_agentcreator` | Crear personaje con rutina embebida |
+| `@plugin_ox_teatro` | `@plugin_ox_blocklyeditor` | Editar rutina de personaje existente |
+| `@plugin_ox_prologeditor` | `@plugin_ox_blocklyeditor` | Visualizar reglas Prolog como bloques |
 
 ---
 

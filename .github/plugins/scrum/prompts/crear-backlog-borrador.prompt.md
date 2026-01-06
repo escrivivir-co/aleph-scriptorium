@@ -1,14 +1,18 @@
-# Prompt: Crear Backlog Borrador (DRY)
+# Prompt: Crear Backlog Borrador (Modelo Generativo)
 
-> **Plugin**: Scrum v2.0  
+> **Plugin**: Scrum v3.0.0  
 > **Comando**: `@scrum borrador`  
-> **Modelo**: DRY (contenido en DISCO, no en índice)
+> **Modelo**: Generativo + DRY (contenido en DISCO, referencia en índice)
 
 ---
 
 ## Objetivo
 
 Crear borrador detallado **EN LA CARPETA DEL BORRADOR**, nunca en el índice oficial.
+
+**Modelo Generativo v3.0**: Si el borrador tiene `origen:` de sesión, verificar trazabilidad.
+
+---
 
 ## Instrucciones para @scrum
 
@@ -17,10 +21,35 @@ Crear borrador detallado **EN LA CARPETA DEL BORRADOR**, nunca en el índice ofi
 ```
 1. Leer referencia desde .github/BACKLOG-SCRIPTORIUM.md
 2. Navegar a BACKLOG_BORRADORES/{tema}/
-3. Leer conversacion-po-sm.md para contexto
+3. Si existe conversacion-po-sm.md → leer para contexto
+4. Si existe origen.md → leer para contexto de sesión
 ```
 
-### Paso 2: Crear archivo de borrador
+### Paso 2: Verificar origen (v3.0)
+
+Si el borrador proviene de una sesión de cotrabajo:
+
+```yaml
+# Verificar que existe este bloque en la carpeta
+origen:
+  tipo: sesion-cotrabajo
+  referencia: SESIONES_COTRABAJO/{nombre}/
+  actas: [T001, T002, ...]
+  consenso: "{resumen de decisiones}"
+  fecha_consenso: {YYYY-MM-DD}
+```
+
+**Si falta origen pero hay sesión relacionada**:
+
+```
+⚠️ Detectada sesión posiblemente relacionada: {nombre}
+
+¿Este borrador debería tener origen: sesion-cotrabajo?
+1. Sí → Añadir metadata origen
+2. No → Continuar sin origen
+```
+
+### Paso 3: Crear archivo de borrador
 
 Generar `01_backlog-borrador.md` **EN LA CARPETA DEL BORRADOR**:
 
@@ -30,6 +59,16 @@ Generar `01_backlog-borrador.md` **EN LA CARPETA DEL BORRADOR**:
 > **Épica**: SCRIPT-X.Y.0
 > **Effort total**: N pts
 > **Estado**: 📋 Borrador
+
+## Origen (si aplica)
+
+<!-- Si viene de sesión -->
+| Campo | Valor |
+|-------|-------|
+| Tipo | sesion-cotrabajo |
+| Sesión | [{nombre}](../SESIONES_COTRABAJO/{nombre}/) |
+| Consenso | {resumen} |
+| Fecha | {YYYY-MM-DD} |
 
 ## Stories
 
@@ -46,34 +85,9 @@ Generar `01_backlog-borrador.md` **EN LA CARPETA DEL BORRADOR**:
 | T001 | ... | N | ⏳ |
 ```
 
-### Paso 3: Actualizar INDEX.md de borradores
+### Paso 4: Estructurar por iteraciones
 
-Actualizar `BACKLOG_BORRADORES/INDEX.md` con el nuevo borrador.
-
-### ⚠️ NO HACER
-
-- NO copiar este contenido al índice oficial
-- NO añadir tablas de tasks al BACKLOG-SCRIPTORIUM.md
-- NO duplicar información
-
-### Paso 4: Actualizar estado en índice
-
-Solo cambiar emoji en la fila existente:
-
-```markdown
-| 🔄 | SCRIPT-X.Y.0 | {Nombre} | [borrador](ruta) |
-```
-
-(Cambiar 📋 → 🔄)
-```
-
-**Convención de IDs**:
-- Scriptorium: `SCRIPT-{MAJOR}.{MINOR}.{PATCH}`
-- Fundación: `FUND-{MAJOR}.{MINOR}.{PATCH}`
-
-### Paso 3: Diseñar iteraciones
-
-Dividir el sprint en iteraciones lógicas:
+Para sprints grandes, dividir en iteraciones:
 
 ```markdown
 ## Feature Cycle N: Estructura
@@ -82,25 +96,19 @@ Dividir el sprint en iteraciones lógicas:
 |-----------|--------|----------|--------|
 | FC1-I1 | ... | ... | N% |
 | FC1-I2 | ... | ... | M% |
-| ...
 ```
 
 **Regla**: El effort total de iteraciones = 100%
 
-### Paso 4: Desglosar stories y tasks
+### Paso 5: Desglosar stories y tasks
 
-Para cada iteración:
+Para cada story:
 
 ```markdown
-## Iteración N: {Nombre}
+### {ÉPICA}-S{NN}: {Nombre}
 
-**Objetivo**: {descripción}
-**Effort**: {N} puntos
-
-### Stories
-
-#### {ÉPICA}-S{NN}: {Nombre}
 **Effort**: {N} pts
+**Origen**: {Decisión de acta TNN | Manual}
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
@@ -110,7 +118,7 @@ Para cada iteración:
 **Definition of Done**: {criterio de aceptación}
 ```
 
-### Paso 5: Calcular métricas iniciales
+### Paso 6: Calcular métricas
 
 ```markdown
 ## Métricas
@@ -120,22 +128,43 @@ Para cada iteración:
 | Tasks completadas | {total}/{total} | {min}/{total} | ⏳ |
 | Effort completado | {total} pts | {min} pts | ⏳ |
 | % Avance | 100% | {min}% | ⏳ |
+| Trazabilidad origen | ✅ | ✅ | ⏳ |
 ```
 
-### Paso 6: Documentar dependencias
+### Paso 7: Documentar dependencias
 
 ```markdown
 ## Dependencias
 
 | Dependencia | Estado | Notas |
 |-------------|--------|-------|
+| Sesión {nombre} | ✅ Cerrada | Origen de esta épica |
 | Sprint N-1 | ✅ Completado | ... |
-| Plugin X | ✅ Instalado | ... |
 ```
 
-### Paso 7: Guardar borrador
+### Paso 8: Actualizar INDEX.md
 
-Crear `02_backlog-sprintN.md` en la misma carpeta de DISCO.
+Actualizar `BACKLOG_BORRADORES/INDEX.md` con el nuevo borrador.
+
+### Paso 9: Actualizar estado en índice oficial
+
+**Solo cambiar emoji en la fila existente**:
+
+```markdown
+| 🔄 | SCRIPT-X.Y.0 | {Nombre} | [borrador](ruta) |
+```
+
+(Cambiar 📋 → 🔄)
+
+---
+
+## ⚠️ NO HACER
+
+- ❌ Copiar contenido del borrador al índice oficial
+- ❌ Añadir tablas de tasks al BACKLOG-SCRIPTORIUM.md
+- ❌ Duplicar información entre ubicaciones
+- ❌ Copiar actas completas de la sesión
+- ❌ Sintetizar actas automáticamente sin referencia
 
 ---
 
@@ -154,27 +183,50 @@ Crear `02_backlog-sprintN.md` en la misma carpeta de DISCO.
 
 ## Validaciones
 
-Antes de guardar, verificar:
+### Borrador válido
 
-- [ ] Suma de effort por story = effort declarado
-- [ ] Suma de stories por iteración = effort de iteración
-- [ ] Suma de iteraciones = effort total del sprint
-- [ ] Todas las tasks tienen estado ⏳
-- [ ] Todos los IDs son únicos
+- [ ] Tiene Epic ID único
+- [ ] Está en BACKLOG_BORRADORES/
+- [ ] Tiene referencia en índice
+- [ ] **Si viene de sesión**: tiene metadata `origen:` ✅
+- [ ] **Si tiene origen**: sesión referenciada existe ✅
+- [ ] Stories tienen effort estimado
+- [ ] Tasks tienen descripción clara
 - [ ] Definition of Done presente en cada story
+
+### Trazabilidad (v3.0)
+
+- [ ] Si origen.tipo = sesion-cotrabajo:
+  - [ ] origen.referencia apunta a carpeta existente
+  - [ ] origen.actas lista actas válidas
+  - [ ] origen.consenso no está vacío
+  - [ ] origen.fecha_consenso es fecha válida
+
+---
+
+## Convención de IDs
+
+| Opportunity | Formato | Ejemplo |
+|-------------|---------|---------|
+| Scriptorium | `SCRIPT-{MAJOR}.{MINOR}.{PATCH}` | SCRIPT-3.1.0 |
+| Fundación | `FUND-{MAJOR}.{MINOR}.{PATCH}` | FUND-1.2.0 |
 
 ---
 
 ## Salida esperada
 
-Archivo `ARCHIVO/DISCO/{Mes}_{Año}_release/02_backlog-sprintN.md` con:
-- Épicas con IDs
-- Iteraciones estructuradas
+Archivo `ARCHIVO/DISCO/BACKLOG_BORRADORES/{tema}/01_backlog-borrador.md` con:
+
+- Epic ID único
 - Stories con tasks desglosadas
 - Effort asignado
-- Métricas iniciales
-- Dependencias documentadas
+- Definition of Done
+- Metadata `origen:` (si aplica)
+- Link a sesión de cotrabajo (si aplica)
+
+---
 
 ## Siguiente paso
 
-Usuario revisa borrador → `@scrum aprobar` para publicar.
+- Si borrador manual → `@scrum aprobar` para Gate Ox-Indice
+- Si borrador de sesión → Verificar trazabilidad → `@scrum aprobar`

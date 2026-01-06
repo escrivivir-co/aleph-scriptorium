@@ -189,6 +189,196 @@ EXTERNO → INSTALADO (disabled) ↔ ENABLED → REMOVED
 
 ---
 
+## Caso de Uso: Integración de Catálogos Externos via MCP
+
+> **Épica**: AGENT-TEMPLATES-1.0.0  
+> **Plugin ejemplo**: `agent-creator` + `AgentLoreSDK`
+
+### Problema
+
+Un plugin necesita acceder a un **catálogo externo** (otro submódulo o repositorio) para ofrecer plantillas, componentes o recursos predefinidos al usuario durante su flujo de trabajo.
+
+### Solución: Patrón Submódulo + Índice + Detección Proactiva DRY
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    PATRÓN DE INTEGRACIÓN                        │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  1. SUBMÓDULO (Acceso)                                         │
+│     └── AgentLoreSDK/ (raíz del workspace)                     │
+│         → Submódulo #18: mcp-agent-lore-sdk                    │
+│                                                                 │
+│  2. ÍNDICE (Navegación)                                        │
+│     └── .github/plugins/agent-creator/index/catalog.json       │
+│         → Metadatos escaneados del catálogo                    │
+│                                                                 │
+│  3. DETECCIÓN PROACTIVA DRY (Comportamiento)                   │
+│     └── Paso 1.5 en crear-agente.prompt.md                     │
+│         → Infiere dominio de keywords del usuario              │
+│         → Sugiere plantillas SIN preguntar                     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Estructura de Archivos
+
+```
+AgentLoreSDK/                      # Submódulo en raíz (#18)
+└── cli-tool/
+    └── components/
+        ├── agents/                # 25 categorías, 165 items
+        ├── commands/              # 20 categorías, 217 items
+        ├── skills/                # 10 categorías, 255 items
+        └── templates/             # 6 lenguajes
+
+.github/plugins/agent-creator/
+├── manifest.md                    # Declara externalCatalogs
+├── index/
+│   ├── catalog.json               # Índice maestro (61 categorías, 637+ items)
+│   ├── catalog.schema.json        # Esquema de validación
+│   └── README.md                  # Documentación de uso
+└── prompts/
+    └── crear-agente.prompt.md     # Flujo con Paso 1.5 DRY
+```
+
+### Manifest: Declarar Catálogo Externo
+
+```yaml
+---
+id: agent-creator
+name: "Agent Creator"
+version: "2.0.0"
+scriptorium_version: ">=1.0.0"
+
+# Catálogos externos
+externalCatalogs:
+  - id: "agent-lore-sdk"
+    source: "AgentLoreSDK/cli-tool"
+    indexFile: "index/catalog.json"
+---
+```
+
+### Esquema del Índice (catalog.json)
+
+```json
+{
+  "$schema": "./catalog.schema.json",
+  "source": "AgentLoreSDK/cli-tool",
+  "scanned_at": "2026-01-04T16:00:00Z",
+  "summary": {
+    "total_categories": 61,
+    "total_items": 637
+  },
+  "categories": {
+    "agents": {
+      "description": "Agentes especializados",
+      "count": 25,
+      "items": [
+        { "id": "security", "name": "Security", "path": "components/agents/security/", "items": 5, "tags": ["security", "audit"] },
+        { "id": "deep-research-team", "name": "Deep Research Team", "path": "components/agents/deep-research-team/", "items": 13, "tags": ["research", "analysis"] }
+      ]
+    },
+    "commands": { "count": 20, "items": ["..."] },
+    "skills": { "count": 10, "items": ["..."] },
+    "templates": { "count": 6, "items": ["..."] }
+  }
+}
+```
+
+### Principio DRY: Detección Proactiva
+
+> "Un agente que no sugiere plantillas existentes **dilapida esfuerzo del usuario**."
+
+El Paso 1.5 de `crear-agente.prompt.md` implementa detección proactiva:
+
+1. **Infiere dominio** de las palabras del usuario (mapeo de keywords)
+2. **Consulta catalog.json** buscando categorías matching
+3. **Muestra proactivamente** (no pregunta "¿quieres ver?")
+4. **Usuario decide**: explorar, seleccionar, o skip
+
+### Flujo de Uso: Detección Proactiva DRY
+
+```
+Usuario: "Quiero mejorar a Lucas con capacidades Scrum"
+                         │
+                         ▼
+         ┌───────────────────────────────────┐
+         │  1. Análisis del agente existente │
+         │     → Lee lucas.agent.md          │
+         │     → Lee lucas-prolog.brain.pl   │
+         └───────────────┬───────────────────┘
+                         │
+                         ▼
+         ┌───────────────────────────────────┐
+         │  2. Detección Proactiva DRY       │
+         │     Keywords: "scrum", "lucas",   │
+         │               "coherencia"        │
+         │     → project-management (18)     │
+         │     → documentation (4)           │
+         │     → productivity (12)           │
+         └───────────────┬───────────────────┘
+                         │
+                         ▼
+         ┌───────────────────────────────────┐
+         │  3. Sugerencia (sin preguntar)    │
+         │     💡 "Tengo plantillas que      │
+         │        podrían ahorrarte trabajo" │
+         │     → Lista categorías relevantes │
+         └───────────────┬───────────────────┘
+                         │
+                         ▼
+         ┌───────────────────────────────────┐
+         │  4. Usuario elige o skip          │
+         │     → Explora → Selecciona        │
+         │     → Fusiona con agente base     │
+         └───────────────────────────────────┘
+```
+
+### Ejemplo de Interacción (Demo PO)
+
+```markdown
+**PO**: Quiero mejorar a Lucas, el Scrum Master del Índice
+
+**AgentCreator**: Analizando Lucas...
+- Ubicación: ARCHIVO/DISCO/TALLER/ELENCO/lucas/
+- Rol actual: Mentor en Teatro ARG, guardián de coherencia documental
+- Cerebro: 329 líneas de Prolog
+
+💡 Detecté que Lucas trabaja con **documentación**, **coherencia** y **Scrum**.
+
+| # | Tipo | Categoría | Items |
+|---|------|-----------|-------|
+| 1 | agents | documentation | 4 |
+| 2 | skills | productivity | 12 |
+| 3 | commands | project-management | 18 |
+
+¿Cuál exploramos? (1-3/skip)
+
+**PO**: 3
+
+**AgentCreator**: En project-management tengo 18 plantillas:
+- backlog-grooming.md, velocity-tracker.md, blockers-report.md...
+
+¿Cuáles fusiono con Lucas?
+
+**PO**: backlog-grooming, velocity-tracker, blockers-report
+
+**AgentCreator**: ✅ Lucas mejorado.
+- lucas.agent.md actualizado (3 handoffs nuevos)
+- lucas-prolog.brain.pl extendido (nuevas reglas Scrum)
+```
+
+### Plugins que Usan Este Patrón
+
+| Plugin | Catálogo Externo | Uso |
+|--------|------------------|-----|
+| `agent-creator` | `AgentLoreSDK` | Plantillas de agentes, skills, commands |
+| `typed-prompting` | `OnthologyEditor/schemas` | Esquemas de validación |
+| `teatro` | `NovelistEditor/templates` | Plantillas narrativas |
+
+---
+
 ## Detalle Extendido
 
 → Ver `plugin-lifecycle.instructions.md` para:

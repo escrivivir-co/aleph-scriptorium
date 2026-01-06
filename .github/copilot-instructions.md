@@ -85,6 +85,70 @@ mcp_copilot-logs-_capture_snapshot()     → Preservar contexto
 
 ---
 
+## Personalización Agentica: Protocolo de Reconstrucción
+
+> **Fuente**: `.github/plugins/teatro/instructions/personaje-context-protocol.instructions.md`  
+> **Épica**: SCRIPT-2.4.0 (Agentic Personalization Layer)
+
+Cualquier agente (@lucas, @teatro, @aleph, @revisor, etc.) puede **"interpretar" a un personaje creado** para ofrecer una segunda capa de contexto especializado.
+
+### Mecanismo: Doble Carga de Fuentes (DRY)
+
+```
+PERSONAJE (ej: Lucas)
+├── FUENTE 1: Agent-Creator (lucas.agent.md)
+├── FUENTE 2: Brain Prolog (lucas-prolog.brain.pl) [opcional]
+├── FUENTE 3: Plantillas (templates-index.json) [opcional]
+├── FUENTE 4: Teatro Roles (itaca-digital.yaml) [opcional]
+└── FUENTE 5: FIAs / Blockly [future]
+```
+
+### Protocolo en 4 Fases (Sin Context Bloat)
+
+| Fase | Nombre | Función | Tokens |
+|------|--------|---------|--------|
+| **0** | Detección | Parse nombre de personaje | ~100 |
+| **1** | Indexación DRY | Consultar `personajes-registry.json` (metadatos) | ~2K |
+| **1b** | Sugerencias | Mostrar opciones disponibles (sin preguntar) | ~500 |
+| **2** | Carga Bajo Demanda | Usuario elige qué fuentes cargar | Variable |
+| **3** | Síntesis | Contexto personalizado integrado | ~1K |
+
+**Ahorro**: Índices ~2.5K vs cargar TODO ~30K = **75% ahorro potencial**.
+
+### Invocación
+
+```
+Agente: @lucas Cargame la visión de Penelope
+         ↓
+       FASE 1: Consultar índice
+       → Detectado: Penelope (agent-creator) con Brain Prolog + Teatro roles
+         ↓
+       FASE 1b: Sugerencias
+       → "✅ Brain Prolog (50 predicados)"
+         "✅ Roles en Teatro (2 obras)"
+         "Qué necesitas?"
+         ↓
+       Usuario: "Brain + Teatro"
+       ↓
+       FASE 2: Carga bajo demanda
+       → read_file(penelope-prolog.brain.pl) + itaca-digital.yaml
+       ↓
+       FASE 3: Síntesis
+       → "Aquí está Penelope con capacidades X, Y, Z"
+```
+
+### Características
+
+- ✅ **Transversal**: Cualquier agente puede usarlo, no solo Teatro
+- ✅ **DRY**: Personajes-registry.json = fuente única de metadatos
+- ✅ **Sin bloat**: Índices ligeros + carga bajo demanda
+- ✅ **Auto-reflexión**: Integrado con BP-01, BP-02, BP-06
+- ✅ **Cacheable**: Sesiones reutilizan contextos cargados
+
+Ver instrucciones completas en: `.github/plugins/teatro/instructions/personaje-context-protocol.instructions.md`
+
+---
+
 ## Instrucciones Contextuales
 
 Las instrucciones específicas se cargan automáticamente según el archivo:
