@@ -1,0 +1,368 @@
+openapi: 3.1.0
+info:
+  title: MCPChannels Mesh API
+  description: |
+    REST API for SocketIoMesh - Mesh orchestration layer for MCP Servers.
+    
+    ## Architecture (v1.0)
+    
+    The mesh provides discovery and invocation of capabilities across
+    multiple MCP servers connected via Socket.IO.
+    
+    ```
+    ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+    │  DevOps     │     │   Prolog    │     │  StateMach  │
+    │  Server     │     │   Server    │     │   Server    │
+    │ (Proserpina)│     │ (Euridice)  │     │  (Orfeo)    │
+    └──────┬──────┘     └──────┬──────┘     └──────┬──────┘
+           │                   │                   │
+           └───────────────────┼───────────────────┘
+                               │
+                    ┌──────────▼──────────┐
+                    │   Socket.IO Mesh    │
+                    │    (port 3010)      │
+                    │   /runtime ns       │
+                    └──────────┬──────────┘
+                               │
+                    ┌──────────▼──────────┐
+                    │    REST API         │
+                    │  /mesh endpoints    │
+                    └─────────────────────┘
+    ```
+    
+    ## MASTER-ROOM Protocol
+    
+    Each MCP server registers as MASTER of its room with a list of capabilities.
+    Clients can discover and invoke these capabilities via the mesh API.
+    
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  - url: http://localhost:3010
+    description: Local Socket.IO mesh server
+  - url: http://{host}:3010
+    description: Dynamic host
+    variables:
+      host:
+        default: localhost
+
+tags:
+  - name: Mesh
+    description: Mesh state and discovery
+  - name: Rooms
+    description: Room management and inspection
+  - name: Capabilities
+    description: Capability discovery and invocation
+  - name: Health
+    description: Health monitoring
+
+paths:
+  /mesh:
+    get:
+      tags:
+        - Mesh
+      summary: Get mesh state
+      description: Retrieve the complete state of the Socket.IO mesh
+      operationId: getMeshState
+      responses:
+        '200':
+          description: Mesh state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeshState'
+              example:
+                meshId: "mesh-lx5g7k2"
+                startedAt: "2026-01-07T10:00:00Z"
+                rooms:
+                  - id: "devops-mcp-server_ROOM"
+                    masterId: "abc123"
+                    masterName: "ProserpinaBot"
+                    capabilities: ["DEVOPS_STATUS", "DEVOPS_HEALTH"]
+                    socketCount: 2
+                  - id: "prolog-mcp-server_ROOM"
+                    masterId: "def456"
+                    masterName: "EuridiceBot"
+                    capabilities: ["PROLOG_QUERY", "PROLOG_ASSERT"]
+                    socketCount: 1
+                totalSockets: 5
+                totalRooms: 2
+
+  /mesh/rooms:
+    get:
+      tags:
+        - Rooms
+      summary: List all rooms
+      description: Get a list of all active rooms in the mesh
+      operationId: listRooms
+      responses:
+        '200':
+          description: List of rooms
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rooms:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MeshRoom'
+                  count:
+                    type: integer
+              example:
+                rooms:
+                  - id: "devops-mcp-server_ROOM"
+                    masterId: "abc123"
+                    masterName: "ProserpinaBot"
+                    capabilities: ["DEVOPS_STATUS", "DEVOPS_HEALTH", "PROMPT_LIST"]
+                    socketCount: 2
+                count: 1
+
+  /mesh/rooms/{roomId}:
+    get:
+      tags:
+        - Rooms
+      summary: Get room details
+      description: Get detailed information about a specific room
+      operationId: getRoom
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "devops-mcp-server_ROOM"
+      responses:
+        '200':
+          description: Room details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeshRoom'
+        '404':
+          description: Room not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /mesh/capabilities:
+    get:
+      tags:
+        - Capabilities
+      summary: List all capabilities
+      description: Get all capabilities across all rooms in the mesh
+      operationId: listCapabilities
+      responses:
+        '200':
+          description: List of capabilities
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  capabilities:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        room:
+                          type: string
+                        capability:
+                          type: string
+                  count:
+                    type: integer
+              example:
+                capabilities:
+                  - room: "devops-mcp-server_ROOM"
+                    capability: "DEVOPS_STATUS"
+                  - room: "devops-mcp-server_ROOM"
+                    capability: "DEVOPS_HEALTH"
+                  - room: "prolog-mcp-server_ROOM"
+                    capability: "PROLOG_QUERY"
+                  - room: "prolog-mcp-server_ROOM"
+                    capability: "PROLOG_ASSERT"
+                count: 4
+
+  /mesh/invoke/{roomId}:
+    post:
+      tags:
+        - Capabilities
+      summary: Invoke capability
+      description: |
+        Invoke a capability on a room's master.
+        
+        The mesh will emit a `GET_{capability}` event to the room,
+        and the master should respond with `SET_{capability}`.
+      operationId: invokeCapability
+      parameters:
+        - name: roomId
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "prolog-mcp-server_ROOM"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvokeRequest'
+            example:
+              capability: "PROLOG_QUERY"
+              payload:
+                sessionId: "session-123"
+                query: "likes(mary, X)."
+      responses:
+        '200':
+          description: Capability invoked successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvokeResponse'
+        '400':
+          description: Invalid request or capability not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvokeResponse'
+
+  /mesh/health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Check the health status of the mesh
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Mesh is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                status: "healthy"
+                meshId: "mesh-lx5g7k2"
+                uptime: 3600000
+                rooms: 2
+                sockets: 5
+
+components:
+  schemas:
+    MeshState:
+      type: object
+      required:
+        - meshId
+        - startedAt
+        - rooms
+        - totalSockets
+        - totalRooms
+      properties:
+        meshId:
+          type: string
+          description: Unique identifier for this mesh instance
+        startedAt:
+          type: string
+          format: date-time
+        rooms:
+          type: array
+          items:
+            $ref: '#/components/schemas/MeshRoom'
+        totalSockets:
+          type: integer
+        totalRooms:
+          type: integer
+
+    MeshRoom:
+      type: object
+      required:
+        - id
+        - capabilities
+        - socketCount
+      properties:
+        id:
+          type: string
+          description: Room identifier (e.g., "devops-mcp-server_ROOM")
+        masterId:
+          type: string
+          nullable: true
+          description: Socket ID of the room master
+        masterName:
+          type: string
+          nullable: true
+          description: Human-readable name of the master bot
+        capabilities:
+          type: array
+          items:
+            type: string
+          description: List of capabilities the master exposes
+        socketCount:
+          type: integer
+          description: Number of sockets subscribed to this room
+        createdAt:
+          type: string
+          format: date-time
+        lastActivity:
+          type: string
+          format: date-time
+
+    InvokeRequest:
+      type: object
+      required:
+        - capability
+      properties:
+        capability:
+          type: string
+          description: Name of the capability to invoke (e.g., "PROLOG_QUERY")
+        payload:
+          type: object
+          description: Optional payload to send with the request
+          additionalProperties: true
+
+    InvokeResponse:
+      type: object
+      required:
+        - success
+        - room
+        - capability
+      properties:
+        success:
+          type: boolean
+        room:
+          type: string
+        capability:
+          type: string
+        result:
+          type: object
+          additionalProperties: true
+        error:
+          type: string
+
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        meshId:
+          type: string
+        uptime:
+          type: integer
+          description: Uptime in milliseconds
+        rooms:
+          type: integer
+        sockets:
+          type: integer
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string

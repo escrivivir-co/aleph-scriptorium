@@ -1,0 +1,136 @@
+# MCP Specification for MCPChannels Mesh
+# Version: 1.0.0
+# This spec defines MCP tools that could expose mesh capabilities
+
+mcpVersion: "1.0"
+info:
+  name: MCPChannels Mesh
+  version: 1.0.0
+  description: |
+    MCP tools for discovering and invoking capabilities across the Socket.IO mesh.
+    These tools allow any MCP client to interact with connected MCP servers.
+
+servers:
+  mesh:
+    url: http://localhost:3010
+    description: Socket.IO Mesh Server
+
+tools:
+  - name: mesh_list_rooms
+    description: |
+      List all active rooms in the Socket.IO mesh.
+      Each room represents an MCP server with its capabilities.
+    inputSchema:
+      type: object
+      properties: {}
+      required: []
+    annotations:
+      audience: [developer, agent]
+      readOnlyHint: true
+
+  - name: mesh_get_room
+    description: |
+      Get detailed information about a specific room.
+      Returns the master bot, capabilities, and connected sockets.
+    inputSchema:
+      type: object
+      properties:
+        roomId:
+          type: string
+          description: Room identifier (e.g., "devops-mcp-server_ROOM")
+      required:
+        - roomId
+    annotations:
+      audience: [developer, agent]
+      readOnlyHint: true
+
+  - name: mesh_list_capabilities
+    description: |
+      List all capabilities available across all rooms in the mesh.
+      Useful for discovering what operations can be invoked.
+    inputSchema:
+      type: object
+      properties: {}
+      required: []
+    annotations:
+      audience: [developer, agent]
+      readOnlyHint: true
+
+  - name: mesh_invoke
+    description: |
+      Invoke a capability on a room's master bot.
+      
+      This sends a GET_{capability} event to the room, and the master
+      should respond with SET_{capability}.
+      
+      Examples:
+      - room: "prolog-mcp-server_ROOM", capability: "PROLOG_QUERY", payload: {query: "likes(X,Y)."}
+      - room: "devops-mcp-server_ROOM", capability: "DEVOPS_STATUS"
+    inputSchema:
+      type: object
+      properties:
+        room:
+          type: string
+          description: Target room ID
+        capability:
+          type: string
+          description: Capability to invoke (e.g., "PROLOG_QUERY")
+        payload:
+          type: object
+          description: Optional payload for the capability
+          additionalProperties: true
+      required:
+        - room
+        - capability
+    annotations:
+      audience: [developer, agent]
+      readOnlyHint: false
+
+  - name: mesh_health
+    description: |
+      Check the health status of the Socket.IO mesh.
+      Returns uptime, connected rooms, and socket count.
+    inputSchema:
+      type: object
+      properties: {}
+      required: []
+    annotations:
+      audience: [developer, agent]
+      readOnlyHint: true
+
+resources:
+  - name: mesh://state
+    description: Current state of the mesh (rooms, sockets, masters)
+    mimeType: application/json
+    uri: mesh://state
+    annotations:
+      audience: [developer, agent]
+
+  - name: mesh://rooms
+    description: List of all rooms with their capabilities
+    mimeType: application/json
+    uri: mesh://rooms
+    annotations:
+      audience: [developer, agent]
+
+  - name: mesh://capabilities
+    description: Flat list of all capabilities across the mesh
+    mimeType: application/json
+    uri: mesh://capabilities
+    annotations:
+      audience: [developer, agent]
+
+prompts:
+  - name: discover_mesh
+    description: Discover all servers and capabilities in the Socket.IO mesh
+    arguments: []
+
+  - name: invoke_capability
+    description: Guide for invoking a specific capability on a room
+    arguments:
+      - name: room
+        description: Target room ID
+        required: true
+      - name: capability
+        description: Capability to invoke
+        required: true

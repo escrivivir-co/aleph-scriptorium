@@ -1,0 +1,202 @@
+# Use Cases: UI Client connecting to Mesh
+# Actor: Angular/React UI Application
+# Version: 1.0.0
+
+x-use-cases-version: "1.0.0"
+
+info:
+  title: UI Client Use Cases
+  description: |
+    Use cases for frontend applications connecting to the Socket.IO mesh
+    and consuming capabilities from MCP servers.
+  actor: UI Application (Angular, React, vanilla)
+  version: 1.0.0
+
+useCases:
+  - id: UC-UI-01
+    name: Connect to Mesh (Angular)
+    description: Angular application connects using AlephScriptService
+    preconditions:
+      - @alephscript/angular package installed
+      - Socket.IO mesh running on port 3010
+    flow:
+      - step: 1
+        action: Inject service
+        code: |
+          constructor(private alephScript: AlephScriptService) {}
+      - step: 2
+        action: Connect to mesh
+        code: |
+          ngOnInit() {
+            this.alephScript.connect('http://localhost:3010');
+          }
+      - step: 3
+        action: Subscribe to connection status
+        code: |
+          this.alephScript.connected$.subscribe(connected => {
+            console.log('Mesh connected:', connected);
+          });
+    postconditions:
+      - Socket.IO connection established
+      - UI can subscribe to rooms
+
+  - id: UC-UI-02
+    name: Discover Available Capabilities
+    description: UI discovers what capabilities are available in the mesh
+    preconditions:
+      - Connected to mesh (UC-UI-01)
+    flow:
+      - step: 1
+        action: Request server state
+        code: |
+          this.alephScript.emit('GET_SERVER_STATE', {});
+      - step: 2
+        action: Receive capabilities
+        code: |
+          this.alephScript.on('SET_SERVER_STATE').subscribe(state => {
+            const rooms = state.rooms;
+            // Each room has capabilities array
+            rooms.forEach(room => {
+              console.log(`${room.id}: ${room.capabilities.join(', ')}`);
+            });
+          });
+    postconditions:
+      - UI knows all available rooms and capabilities
+
+  - id: UC-UI-03
+    name: Subscribe to Room
+    description: UI subscribes to a specific room to receive events
+    preconditions:
+      - Connected to mesh (UC-UI-01)
+    flow:
+      - step: 1
+        action: Subscribe to room
+        code: |
+          this.alephScript.joinRoom('prolog-mcp-server_ROOM');
+      - step: 2
+        action: Listen for room events
+        code: |
+          this.alephScript.on('SET_PROLOG_QUERY').subscribe(result => {
+            console.log('Query result:', result);
+          });
+    postconditions:
+      - UI receives all events broadcast to the room
+
+  - id: UC-UI-04
+    name: Invoke Prolog Query
+    description: UI sends a Prolog query to the mesh
+    preconditions:
+      - Subscribed to prolog-mcp-server_ROOM (UC-UI-03)
+    flow:
+      - step: 1
+        action: Emit query request
+        code: |
+          this.alephScript.emitToRoom('GET_PROLOG_QUERY', {
+            sessionId: 'user-session-123',
+            query: 'likes(mary, X).'
+          }, 'prolog-mcp-server_ROOM');
+      - step: 2
+        action: Receive response
+        code: |
+          this.alephScript.on('SET_PROLOG_QUERY').pipe(
+            take(1)
+          ).subscribe(result => {
+            if (result.success) {
+              this.results = result.results;
+            }
+          });
+    postconditions:
+      - UI displays query results
+
+  - id: UC-UI-05
+    name: Real-time Updates
+    description: UI receives real-time updates from MCP servers
+    preconditions:
+      - Subscribed to room (UC-UI-03)
+    flow:
+      - step: 1
+        action: Server broadcasts update
+        description: MCP server pushes update to room
+      - step: 2
+        action: UI receives update
+        code: |
+          this.alephScript.on('SET_PROLOG_SESSIONS').subscribe(sessions => {
+            this.activeSessions = sessions;
+          });
+      - step: 3
+        action: UI updates display
+        description: Angular change detection updates view
+    postconditions:
+      - UI shows real-time data
+
+  - id: UC-UI-06
+    name: Disconnect from Mesh
+    description: UI disconnects gracefully
+    preconditions:
+      - Connected to mesh
+    flow:
+      - step: 1
+        action: Leave rooms
+        code: |
+          this.alephScript.leaveRoom('prolog-mcp-server_ROOM');
+      - step: 2
+        action: Disconnect
+        code: |
+          this.alephScript.disconnect();
+    postconditions:
+      - Socket.IO connection closed
+      - Resources released
+
+examples:
+  angular:
+    name: BlocklyEditor Angular Integration
+    component: AlephScriptService
+    package: "@alephscript/angular"
+    code: |
+      @Injectable({ providedIn: 'root' })
+      export class AlephScriptService {
+        private socket: Socket | null = null;
+        private _connected$ = new BehaviorSubject<boolean>(false);
+        
+        connect(url: string): void {
+          this.socket = io(url, { path: '/runtime' });
+          
+          this.socket.on('connect', () => {
+            this._connected$.next(true);
+            this.register();
+          });
+        }
+        
+        private register(): void {
+          this.socket?.emit('CLIENT_REGISTER', {
+            usuario: 'BlocklyUI',
+            sesion: this.generateSessionId()
+          });
+        }
+        
+        joinRoom(room: string): void {
+          this.socket?.emit('CLIENT_SUSCRIBE', { room });
+        }
+        
+        emitToRoom(event: string, data: any, room: string): void {
+          this.socket?.emit('ROOM_MESSAGE', { room, event, args: data });
+        }
+        
+        on<T>(event: string): Observable<T> {
+          return new Observable(observer => {
+            this.socket?.on(event, (data: T) => observer.next(data));
+          });
+        }
+      }
+
+  react:
+    name: React Integration (future)
+    package: "@alephscript/react"
+    code: |
+      // Future implementation
+      const { connected, emit, on } = useAlephScript('http://localhost:3010');
+      
+      useEffect(() => {
+        const sub = on('SET_PROLOG_QUERY').subscribe(setResults);
+        return () => sub.unsubscribe();
+      }, []);

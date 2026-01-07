@@ -1,0 +1,168 @@
+# Use Cases: MCP Server connecting to Mesh
+# Actor: MCP Server (DevOps, Prolog, StateMachine)
+# Version: 1.0.0
+
+x-use-cases-version: "1.0.0"
+
+info:
+  title: MCP Server Use Cases
+  description: |
+    Use cases for MCP servers connecting to the Socket.IO mesh
+    and registering as MASTER of their room.
+  actor: MCP Server Bot (ProserpinaBot, EuridiceBot, etc.)
+  version: 1.0.0
+
+useCases:
+  - id: UC-SERVER-01
+    name: Connect to Mesh
+    description: MCP server connects to the Socket.IO mesh on startup
+    preconditions:
+      - Socket.IO mesh is running on port 3010
+      - Server has AlephScriptClient configured
+    flow:
+      - step: 1
+        action: Create AlephScriptClient instance
+        code: |
+          const bot = new AlephScriptClient(
+            serverName,      // e.g., "devops-mcp-server"
+            "http://localhost:3010",
+            "/runtime"
+          );
+      - step: 2
+        action: Define init triggers
+        code: |
+          bot.initTriggersDefinition.push(() => {
+            // Registration logic here
+          });
+      - step: 3
+        action: Connect to mesh
+        code: |
+          bot.connect();
+    postconditions:
+      - Socket.IO connection established
+      - Bot appears in mesh socket list
+
+  - id: UC-SERVER-02
+    name: Register as MASTER
+    description: Server registers as MASTER of its room with capabilities
+    preconditions:
+      - Connected to mesh (UC-SERVER-01)
+    flow:
+      - step: 1
+        action: Emit CLIENT_REGISTER
+        code: |
+          bot.io.emit("CLIENT_REGISTER", {
+            usuario: bot.name,
+            sesion: getHash("BotSession")
+          });
+      - step: 2
+        action: Subscribe to room
+        code: |
+          const ROOM = serverName + "_ROOM";
+          bot.io.emit("CLIENT_SUSCRIBE", { room: ROOM });
+      - step: 3
+        action: Claim MASTER with capabilities
+        code: |
+          bot.room("MAKE_MASTER", {
+            features: [
+              "PROLOG_QUERY",
+              "PROLOG_ASSERT",
+              "PROLOG_RETRACT"
+            ]
+          }, ROOM);
+    postconditions:
+      - Bot is MASTER of its room
+      - Capabilities registered in mesh
+      - Room visible in /mesh/rooms API
+
+  - id: UC-SERVER-03
+    name: Handle Capability Request
+    description: Server responds to GET_* requests from clients
+    preconditions:
+      - Registered as MASTER (UC-SERVER-02)
+    flow:
+      - step: 1
+        action: Listen for GET_* events
+        code: |
+          bot.io.on("GET_PROLOG_QUERY", async (data) => {
+            console.log("Received query request", data);
+            // Execute capability
+            const result = await handleQuery(data);
+            // Respond to room
+            bot.room("SET_PROLOG_QUERY", result, ROOM);
+          });
+      - step: 2
+        action: Process request
+        description: Execute the actual capability logic
+      - step: 3
+        action: Broadcast response
+        description: Emit SET_* to the room
+    postconditions:
+      - All room subscribers receive the response
+
+  - id: UC-SERVER-04
+    name: Handle Disconnect
+    description: Server handles graceful disconnection
+    preconditions:
+      - Connected to mesh
+    flow:
+      - step: 1
+        action: Server shuts down
+        description: Process exit or explicit disconnect
+      - step: 2
+        action: Socket.IO disconnects
+        description: Automatic on socket close
+      - step: 3
+        action: Mesh cleans up
+        description: |
+          - Removes socket from sockets map
+          - Removes MASTER from room if applicable
+          - Removes room if empty
+    postconditions:
+      - Room no longer has MASTER
+      - Capabilities unavailable until reconnect
+
+examples:
+  proserpinaBot:
+    name: ProserpinaBot (DevOps)
+    server: DevOpsServerImpl
+    room: devops-mcp-server_ROOM
+    capabilities:
+      - DEVOPS_STATUS
+      - DEVOPS_HEALTH
+      - PROMPT_LIST
+    code: |
+      private initProserpinaBot(): void {
+        this.proserpinaBot = new AlephScriptClient(
+          "devops-mcp-server",
+          "http://localhost:3010"
+        );
+        
+        this.proserpinaBot.initTriggersDefinition.push(() => {
+          const ROOM = "devops-mcp-server_ROOM";
+          
+          this.proserpinaBot.io.emit("CLIENT_REGISTER", {
+            usuario: this.proserpinaBot.name,
+            sesion: getHash("Proserpina")
+          });
+          
+          this.proserpinaBot.io.emit("CLIENT_SUSCRIBE", { room: ROOM });
+          
+          this.proserpinaBot.room("MAKE_MASTER", {
+            features: ["DEVOPS_STATUS", "DEVOPS_HEALTH", "PROMPT_LIST"]
+          }, ROOM);
+        });
+      }
+
+  euridiceBot:
+    name: EuridiceBot (Prolog)
+    server: MCPPrologServer
+    room: prolog-mcp-server_ROOM
+    capabilities:
+      - PROLOG_QUERY
+      - PROLOG_ASSERT
+      - PROLOG_RETRACT
+      - PROLOG_LOAD_FILE
+      - PROLOG_GET_SESSIONS
+      - PROLOG_CREATE_SESSION
+      - PROLOG_DESTROY_SESSION

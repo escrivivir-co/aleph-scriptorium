@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2026-01-04  
-> **Estado**: 🌿 Actualizado (COWORK-1.0.0 indexado)
+> **Última actualización**: 2026-01-07  
+> **Estado**: 🌿 Actualizado (MCP-CHANNELS-1.0.0 indexado)
 
 ---
 
@@ -159,7 +159,41 @@
 
 💡 **Uso**: Cada obra del Teatro tiene su propia KB Prolog aislada. Ver guía DRY en `guia-arquitectura-mcp-stack.md`.
 
-### 3.8. MCP Packs (Packs Tipados)
+### 3.8. MCPChannels SDK (MCP-CHANNELS-1.0.0)
+
+> **Feature**: Socket.IO mesh para comunicación entre servidores MCP y UIs
+
+**Concepto**: Los servidores MCP se conectan a un mesh Socket.IO (puerto 3010) y registran sus capacidades. Las UIs pueden descubrir e invocar capacidades via protocolo MASTER-ROOM.
+
+| Componente | Puerto | Descripción |
+|------------|--------|-------------|
+| Socket.IO Mesh | 3010 | Servidor Socket.IO (namespace /runtime) |
+| SocketIoMesh | 3010 | Orchestration layer con REST API |
+| @alephscript/angular | — | Cliente Angular para UIs |
+
+**Bots registrados**:
+
+| Bot | Servidor | Room | Capabilities |
+|-----|----------|------|--------------|
+| ProserpinaBot | DevOpsServer | `devops-mcp-server_ROOM` | DEVOPS_STATUS, DEVOPS_HEALTH, PROMPT_LIST |
+| EuridiceBot | MCPPrologServer | `prolog-mcp-server_ROOM` | PROLOG_QUERY, PROLOG_ASSERT, PROLOG_RETRACT, PROLOG_LOAD_FILE, PROLOG_GET_SESSIONS |
+
+**REST API del Mesh**:
+
+| Endpoint | Descripción |
+|----------|-------------|
+| `GET /mesh` | Estado completo del mesh |
+| `GET /mesh/rooms` | Lista de rooms activas |
+| `GET /mesh/rooms/:id` | Detalle de room |
+| `GET /mesh/capabilities` | Todas las capabilities |
+| `POST /mesh/invoke/:room` | Invocar capability |
+| `GET /mesh/health` | Health check |
+
+**Specs OpenAPI/AsyncAPI**: `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/MCPChannels/`
+
+💡 **Uso**: Cualquier UI Angular puede suscribirse a rooms y recibir eventos en tiempo real.
+
+### 3.9. MCP Packs (Packs Tipados)
 
 > **Feature**: SCRIPT-2.3.0 — Agentic Typed Logic Flow
 
@@ -182,7 +216,7 @@
 
 **UI para Dramaturgos**: El componente `BrainEditorComponent` permite crear cerebros Prolog visualmente sin conocimientos de lógica. Accesible en PrologEditor → tab "🧠 Brain Editor".
 
-### 3.9. Cotrabajo Multi-Agente (COWORK-1.0.0)
+### 3.10. Cotrabajo Multi-Agente (COWORK-1.0.0)
 
 > **Feature**: Sesiones colaborativas asíncronas entre agentes
 

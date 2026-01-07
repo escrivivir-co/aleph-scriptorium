@@ -1,0 +1,214 @@
+# Use Cases: Mesh Administration
+# Actor: System Administrator / DevOps Agent
+# Version: 1.0.0
+
+x-use-cases-version: "1.0.0"
+
+info:
+  title: Mesh Administration Use Cases
+  description: |
+    Use cases for administering and monitoring the Socket.IO mesh,
+    including discovery, health checks, and capability invocation.
+  actor: System Administrator, DevOps Agent, Monitoring System
+  version: 1.0.0
+
+useCases:
+  - id: UC-ADMIN-01
+    name: Check Mesh Health
+    description: Verify the mesh is operational
+    preconditions:
+      - Mesh server running on port 3010
+    flow:
+      - step: 1
+        action: Call health endpoint
+        code: |
+          curl http://localhost:3010/mesh/health
+      - step: 2
+        action: Verify response
+        expected: |
+          {
+            "status": "healthy",
+            "meshId": "mesh-lx5g7k2",
+            "uptime": 3600000,
+            "rooms": 2,
+            "sockets": 5
+          }
+    postconditions:
+      - Mesh status confirmed
+
+  - id: UC-ADMIN-02
+    name: Discover All Rooms
+    description: List all active rooms and their masters
+    preconditions:
+      - Mesh server running
+    flow:
+      - step: 1
+        action: Call rooms endpoint
+        code: |
+          curl http://localhost:3010/mesh/rooms
+      - step: 2
+        action: Parse room list
+        expected: |
+          {
+            "rooms": [
+              {
+                "id": "devops-mcp-server_ROOM",
+                "masterId": "abc123",
+                "masterName": "ProserpinaBot",
+                "capabilities": ["DEVOPS_STATUS", "DEVOPS_HEALTH"],
+                "socketCount": 2
+              },
+              {
+                "id": "prolog-mcp-server_ROOM",
+                "masterId": "def456",
+                "masterName": "EuridiceBot",
+                "capabilities": ["PROLOG_QUERY", "PROLOG_ASSERT"],
+                "socketCount": 1
+              }
+            ],
+            "count": 2
+          }
+    postconditions:
+      - All rooms enumerated
+
+  - id: UC-ADMIN-03
+    name: List All Capabilities
+    description: Get flat list of all capabilities across mesh
+    preconditions:
+      - Mesh server running with connected servers
+    flow:
+      - step: 1
+        action: Call capabilities endpoint
+        code: |
+          curl http://localhost:3010/mesh/capabilities
+      - step: 2
+        action: Review capabilities
+        expected: |
+          {
+            "capabilities": [
+              { "room": "devops-mcp-server_ROOM", "capability": "DEVOPS_STATUS" },
+              { "room": "devops-mcp-server_ROOM", "capability": "DEVOPS_HEALTH" },
+              { "room": "prolog-mcp-server_ROOM", "capability": "PROLOG_QUERY" },
+              { "room": "prolog-mcp-server_ROOM", "capability": "PROLOG_ASSERT" }
+            ],
+            "count": 4
+          }
+    postconditions:
+      - Capability inventory complete
+
+  - id: UC-ADMIN-04
+    name: Invoke Capability via REST
+    description: Invoke a capability using the REST API
+    preconditions:
+      - Target room has MASTER with capability
+    flow:
+      - step: 1
+        action: POST to invoke endpoint
+        code: |
+          curl -X POST http://localhost:3010/mesh/invoke/prolog-mcp-server_ROOM \
+            -H "Content-Type: application/json" \
+            -d '{
+              "capability": "PROLOG_QUERY",
+              "payload": {
+                "sessionId": "admin-session",
+                "query": "listing."
+              }
+            }'
+      - step: 2
+        action: Receive acknowledgment
+        expected: |
+          {
+            "success": true,
+            "room": "prolog-mcp-server_ROOM",
+            "capability": "PROLOG_QUERY",
+            "result": {
+              "message": "GET_PROLOG_QUERY emitted to room"
+            }
+          }
+    postconditions:
+      - Capability invoked on room master
+
+  - id: UC-ADMIN-05
+    name: Monitor Room Activity
+    description: Track activity on a specific room
+    preconditions:
+      - Room exists in mesh
+    flow:
+      - step: 1
+        action: Get room details
+        code: |
+          curl http://localhost:3010/mesh/rooms/devops-mcp-server_ROOM
+      - step: 2
+        action: Check activity timestamp
+        expected: |
+          {
+            "id": "devops-mcp-server_ROOM",
+            "masterId": "abc123",
+            "masterName": "ProserpinaBot",
+            "capabilities": ["DEVOPS_STATUS", "DEVOPS_HEALTH"],
+            "socketCount": 2,
+            "createdAt": "2026-01-07T10:00:00Z",
+            "lastActivity": "2026-01-07T10:05:00Z"
+          }
+    postconditions:
+      - Activity metrics visible
+
+  - id: UC-ADMIN-06
+    name: Diagnose Missing Server
+    description: Investigate why an expected server isn't in mesh
+    preconditions:
+      - Expected server not appearing in rooms
+    flow:
+      - step: 1
+        action: Check mesh rooms
+        code: |
+          curl http://localhost:3010/mesh/rooms
+      - step: 2
+        action: Verify server is running
+        code: |
+          curl http://localhost:3006/health  # Prolog server
+      - step: 3
+        action: Check server logs
+        description: Look for Socket.IO connection errors
+      - step: 4
+        action: Verify SOCKET_MESH_URL env var
+        description: Ensure server points to correct mesh URL
+    postconditions:
+      - Root cause identified
+
+examples:
+  monitoring_script:
+    name: Mesh Monitoring Script
+    description: Bash script for periodic health checks
+    code: |
+      #!/bin/bash
+      # mesh-monitor.sh
+      
+      MESH_URL="http://localhost:3010"
+      
+      # Health check
+      health=$(curl -s "$MESH_URL/mesh/health")
+      status=$(echo $health | jq -r '.status')
+      
+      if [ "$status" != "healthy" ]; then
+        echo "⚠️ Mesh unhealthy: $health"
+        exit 1
+      fi
+      
+      # Count rooms
+      rooms=$(curl -s "$MESH_URL/mesh/rooms" | jq '.count')
+      echo "✅ Mesh healthy with $rooms rooms"
+      
+      # List capabilities
+      curl -s "$MESH_URL/mesh/capabilities" | jq '.capabilities[] | "\(.room): \(.capability)"'
+
+  grafana_integration:
+    name: Grafana Dashboard (future)
+    description: Metrics export for Grafana monitoring
+    endpoints:
+      - /mesh/metrics (Prometheus format)
+    metrics:
+      - mesh_rooms_total
+      - mesh_sockets_total
+      - mesh_capabilities_total
+      - mesh_invocations_total

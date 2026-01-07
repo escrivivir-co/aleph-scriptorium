@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-01-04  
-> **Estado**: 🌿 Actualizado (COWORK-1.0.0 indexado)
+> **Última actualización**: 2026-01-07  
+> **Estado**: 🌿 Actualizado (MCP-CHANNELS-1.0.0 indexado)
 
 ---
 
@@ -538,15 +538,16 @@ bundle exec jekyll serve --livereload
 
 ### 9.1. MCP Mesh Servers (MCPGallery)
 
-| Servidor | Puerto | Config |
-|----------|--------|--------|
-| xplus1-server | 3001 | DEFAULT_XPLUS1_MCP_SERVER_CONFIG |
-| wiki-browser-server | 3002 | DEFAULT_WIKI_MCP_SERVER_CONFIG |
-| devops-mcp-server | 3003 | DEFAULT_DEVOPS_MCP_SERVER_CONFIG |
-| state-machine-server | 3004 | DEFAULT_STATE_MACHINE_MCP_SERVER_CONFIG |
-| prolog-mcp-server | 3006 | DEFAULT_PROLOG_MCP_SERVER_CONFIG |
-| typed-prompt-mcp-server | 3020 | DEFAULT_TYPED_PROMPT_MCP_SERVER_CONFIG |
-| launcher-server | 3050 | DEFAULT_LAUNCHER_MCP_SERVER_CONFIG |
+| Servidor | Puerto | Config | Bot Socket.IO |
+|----------|--------|--------|---------------|
+| xplus1-server | 3001 | DEFAULT_XPLUS1_MCP_SERVER_CONFIG | — |
+| wiki-browser-server | 3002 | DEFAULT_WIKI_MCP_SERVER_CONFIG | — |
+| devops-mcp-server | 3003 | DEFAULT_DEVOPS_MCP_SERVER_CONFIG | ProserpinaBot |
+| state-machine-server | 3004 | DEFAULT_STATE_MACHINE_MCP_SERVER_CONFIG | — |
+| prolog-mcp-server | 3006 | DEFAULT_PROLOG_MCP_SERVER_CONFIG | EuridiceBot |
+| typed-prompt-mcp-server | 3020 | DEFAULT_TYPED_PROMPT_MCP_SERVER_CONFIG | — |
+| launcher-server | 3050 | DEFAULT_LAUNCHER_MCP_SERVER_CONFIG | — |
+| **socket-io-mesh** | **3010** | **SocketIoMesh (REST + WS)** | **Orchestrator** |
 
 ### 9.1.1. Stack MCP TypedPrompt (TYPED-MCP-1.0.0)
 

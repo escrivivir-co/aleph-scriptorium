@@ -1,0 +1,305 @@
+asyncapi: 3.0.0
+info:
+  title: MCPChannels Socket.IO Protocol
+  version: 1.0.0
+  description: |
+    AsyncAPI specification for MCPChannels Socket.IO events.
+    
+    ## MASTER-ROOM Protocol
+    
+    The mesh uses a MASTER-ROOM pattern where:
+    1. Servers register as clients and subscribe to their room
+    2. Servers claim MASTER role with their capabilities
+    3. Clients subscribe to rooms to receive events
+    4. GET_* requests are forwarded to the room master
+    5. Master responds with SET_* events
+    
+    ## Namespaces
+    
+    - `/runtime` - Main namespace for MCP servers and UIs
+    - `/admin` - Admin dashboard namespace
+    - `/` - Base namespace for compatibility
+    
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  development:
+    host: localhost:3010
+    protocol: ws
+    description: Local Socket.IO mesh server
+    tags:
+      - name: env:development
+
+defaultContentType: application/json
+
+channels:
+  runtime:
+    address: /runtime
+    description: Main namespace for MCP servers and UIs
+    messages:
+      clientRegister:
+        $ref: '#/components/messages/ClientRegister'
+      clientSuscribe:
+        $ref: '#/components/messages/ClientSuscribe'
+      roomMessage:
+        $ref: '#/components/messages/RoomMessage'
+      makeMaster:
+        $ref: '#/components/messages/MakeMaster'
+      getCapability:
+        $ref: '#/components/messages/GetCapability'
+      setCapability:
+        $ref: '#/components/messages/SetCapability'
+      serverState:
+        $ref: '#/components/messages/ServerState'
+
+operations:
+  # Client → Server operations
+  registerClient:
+    action: send
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Register client in the mesh
+    description: |
+      First step when connecting to the mesh. Registers the client
+      with a username and session identifier.
+    messages:
+      - $ref: '#/components/messages/ClientRegister'
+
+  subscribeToRoom:
+    action: send
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Subscribe to a room
+    description: |
+      Subscribe or unsubscribe from a room. After subscribing,
+      the client will receive all events broadcast to that room.
+    messages:
+      - $ref: '#/components/messages/ClientSuscribe'
+
+  claimMaster:
+    action: send
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Claim MASTER role for a room
+    description: |
+      Claim the MASTER role for a room and register capabilities.
+      Only one master per room. The master handles all GET_* requests.
+    messages:
+      - $ref: '#/components/messages/MakeMaster'
+
+  sendRoomMessage:
+    action: send
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Send message to room
+    description: |
+      Send any message to a room. Used for ROOM_MESSAGE wrapper
+      that includes event name and room target.
+    messages:
+      - $ref: '#/components/messages/RoomMessage'
+
+  requestCapability:
+    action: send
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Request a capability from room master
+    description: |
+      Send GET_{capability} to request data from the room master.
+      The master should respond with SET_{capability}.
+    messages:
+      - $ref: '#/components/messages/GetCapability'
+
+  # Server → Client operations
+  receiveCapabilityResponse:
+    action: receive
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Receive capability response
+    description: |
+      Receive SET_{capability} response from the room master.
+    messages:
+      - $ref: '#/components/messages/SetCapability'
+
+  receiveServerState:
+    action: receive
+    channel:
+      $ref: '#/channels/runtime'
+    summary: Receive server state broadcast
+    description: |
+      Receive the current state of the mesh server including
+      all rooms, sockets, and masters.
+    messages:
+      - $ref: '#/components/messages/ServerState'
+
+components:
+  messages:
+    ClientRegister:
+      name: CLIENT_REGISTER
+      title: Client Registration
+      summary: Register a new client in the mesh
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - usuario
+          - sesion
+        properties:
+          usuario:
+            type: string
+            description: Client/bot name
+            examples:
+              - ProserpinaBot
+              - EuridiceBot
+              - BlocklyUI
+          sesion:
+            type: string
+            description: Unique session identifier
+            examples:
+              - ">k27f"
+              - ">m3x9"
+
+    ClientSuscribe:
+      name: CLIENT_SUSCRIBE
+      title: Room Subscription
+      summary: Subscribe or unsubscribe from a room
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - room
+        properties:
+          room:
+            type: string
+            description: Room to subscribe to
+            examples:
+              - devops-mcp-server_ROOM
+              - prolog-mcp-server_ROOM
+          out:
+            type: boolean
+            description: If true, unsubscribe from room
+            default: false
+
+    RoomMessage:
+      name: ROOM_MESSAGE
+      title: Room Message
+      summary: Generic message sent to a room
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - room
+          - event
+        properties:
+          room:
+            type: string
+            description: Target room
+          event:
+            type: string
+            description: Event name (e.g., MAKE_MASTER, GET_*, SET_*)
+          args:
+            type: object
+            description: Event payload
+            additionalProperties: true
+
+    MakeMaster:
+      name: MAKE_MASTER
+      title: Claim Master Role
+      summary: Claim MASTER role for a room with capabilities
+      description: |
+        Sent via ROOM_MESSAGE with event="MAKE_MASTER".
+        The features array lists capabilities the master provides.
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - room
+          - event
+          - args
+        properties:
+          room:
+            type: string
+            examples:
+              - devops-mcp-server_ROOM
+          event:
+            type: string
+            const: MAKE_MASTER
+          args:
+            type: object
+            properties:
+              features:
+                type: array
+                items:
+                  type: string
+                description: List of capabilities the master exposes
+                examples:
+                  - - DEVOPS_STATUS
+                    - DEVOPS_HEALTH
+                    - PROMPT_LIST
+                  - - PROLOG_QUERY
+                    - PROLOG_ASSERT
+                    - PROLOG_RETRACT
+
+    GetCapability:
+      name: GET_{capability}
+      title: Request Capability
+      summary: Request data from room master
+      description: |
+        Dynamic event name: GET_PROLOG_QUERY, GET_DEVOPS_STATUS, etc.
+        Forwarded to room master who responds with SET_{capability}.
+      contentType: application/json
+      payload:
+        type: object
+        additionalProperties: true
+        examples:
+          - sessionId: session-123
+            query: "likes(mary, X)."
+          - {}
+
+    SetCapability:
+      name: SET_{capability}
+      title: Capability Response
+      summary: Response from room master
+      description: |
+        Dynamic event name: SET_PROLOG_QUERY, SET_DEVOPS_STATUS, etc.
+        Broadcast to the room by the master.
+      contentType: application/json
+      payload:
+        type: object
+        additionalProperties: true
+        examples:
+          - success: true
+            results:
+              - X: wine
+              - X: food
+          - status: healthy
+            uptime: 3600
+
+    ServerState:
+      name: SET_SERVER_STATE
+      title: Server State
+      summary: Complete state of the mesh server
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          namespaces:
+            type: array
+            items:
+              type: object
+          sockets:
+            type: array
+            items:
+              type: object
+          rooms:
+            type: array
+            items:
+              type: object
+          masters:
+            type: array
+            items:
+              type: object
