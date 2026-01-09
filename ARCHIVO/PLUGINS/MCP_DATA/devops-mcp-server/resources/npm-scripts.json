@@ -1,0 +1,14 @@
+{
+  "id": "npm-scripts",
+  "name": "Scripts NPM Disponibles",
+  "description": "Lista de scripts NPM disponibles en el proyecto",
+  "uri": "devops://npm/scripts",
+  "mimeType": "application/json",
+  "content": "{\n  \"availableScripts\": [\n    \"npm start\",\n    \"npm run dev\",\n    \"npm run build\",\n    \"npm test\",\n    \"npm run launcher\",\n    \"npm run cleannode\"\n  ],\n  \"recommended\": \"npm start\",\n  \"description\": \"Scripts principales para el desarrollo y despliegue\"\n}",
+  "metadata": {
+    "category": "documentation",
+    "source": "packageon"
+  },
+  "createdAt": 1767935707695,
+  "updatedAt": 1767935707695
+}

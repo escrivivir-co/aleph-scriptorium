@@ -1,0 +1,44 @@
+{
+  "id": "start-system",
+  "name": "Arrancar el sistema",
+  "description": "Prompt para arrancar el sistema usando npm start",
+  "content": "🚀 **Sistema de Arranque**\n\nPor favor, utiliza las herramientas base de VS Code para ejecutar el comando `npm start` en el terminal del proyecto.\n\n**Pasos recomendados:**\n1. Abre el terminal integrado de VS Code (Ctrl+`)\n2. Asegúrate de estar en el directorio raíz del proyecto\n3. Ejecuta: `npm start`\n4. Monitorea la salida para verificar que el sistema arranque correctamente\n\n**Información del contexto:**\n- Proyecto: state-machine-mcp-driver\n- Script principal: npm start\n- Puerto esperado: Verificar logs de arranque\n\n¿Necesitas ayuda con algún paso específico del arranque del sistema?",
+  "parameters": {
+    "projectPath": {
+      "def": {
+        "type": "optional",
+        "innerType": {
+          "def": {
+            "type": "string"
+          },
+          "type": "string",
+          "format": null,
+          "minLength": null,
+          "maxLength": null
+        }
+      },
+      "type": "optional"
+    },
+    "environment": {
+      "def": {
+        "type": "optional",
+        "innerType": {
+          "def": {
+            "type": "string"
+          },
+          "type": "string",
+          "format": null,
+          "minLength": null,
+          "maxLength": null
+        }
+      },
+      "type": "optional"
+    }
+  },
+  "metadata": {
+    "category": "devops",
+    "priority": "high"
+  },
+  "createdAt": 1767935707694,
+  "updatedAt": 1767935707694
+}

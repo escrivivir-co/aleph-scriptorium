@@ -1,0 +1,14 @@
+{
+  "id": "project-status",
+  "name": "Estado del Proyecto",
+  "description": "Estado actual del proyecto y servicios",
+  "uri": "devops://project/status",
+  "mimeType": "application/json",
+  "content": "{\n  \"projectName\": \"state-machine-mcp-driver\",\n  \"status\": \"initialized\",\n  \"services\": [],\n  \"lastCheck\": \"2026-01-09T05:15:07.695Z\"\n}",
+  "metadata": {
+    "category": "status",
+    "updateInterval": "30s"
+  },
+  "createdAt": 1767935707695,
+  "updatedAt": 1767935707695
+}

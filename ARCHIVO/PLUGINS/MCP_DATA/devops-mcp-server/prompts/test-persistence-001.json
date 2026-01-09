@@ -1,0 +1,18 @@
+{
+  "id": "test-persistence-001",
+  "name": "Test Persistence Prompt",
+  "description": "Un prompt de prueba para verificar que la persistencia a disco funciona correctamente",
+  "content": "Eres un asistente especializado en {{tema}}. Ayuda al usuario con claridad y precisión.",
+  "parameters": {
+    "tema": {
+      "type": "string",
+      "description": "El tema de especialización"
+    }
+  },
+  "metadata": {
+    "category": "testing",
+    "epic": "MCP-PERSISTENCE-1.0.0"
+  },
+  "createdAt": 1767935781623,
+  "updatedAt": 1767935781623
+}

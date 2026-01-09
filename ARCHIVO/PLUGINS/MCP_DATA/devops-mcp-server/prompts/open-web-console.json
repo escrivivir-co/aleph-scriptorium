@@ -1,0 +1,47 @@
+{
+  "id": "open-web-console",
+  "name": "Abrir consola web",
+  "description": "Prompt para abrir la consola web en localhost:8080",
+  "content": "🌐 **Consola Web**\n\nPor favor, abre el navegador simple de VS Code para acceder a la consola web del sistema.\n\n**URL objetivo:** http://localhost:8080\n\n**Pasos recomendados:**\n1. Usa la herramienta de navegador simple de VS Code\n2. Navega a: http://localhost:8080\n3. Verifica que la aplicación web esté respondiendo correctamente\n\n**Si el puerto 8080 no está disponible, verifica:**\n- Que el sistema esté ejecutándose correctamente\n- Los logs del servidor para identificar el puerto real\n- Configuración de puertos en packageon o variables de entorno\n\n¿El navegador web está funcionando correctamente?",
+  "parameters": {
+    "port": {
+      "def": {
+        "type": "optional",
+        "innerType": {
+          "def": {
+            "type": "number",
+            "checks": []
+          },
+          "type": "number",
+          "minValue": null,
+          "maxValue": null,
+          "isInt": false,
+          "isFinite": true,
+          "format": null
+        }
+      },
+      "type": "optional"
+    },
+    "host": {
+      "def": {
+        "type": "optional",
+        "innerType": {
+          "def": {
+            "type": "string"
+          },
+          "type": "string",
+          "format": null,
+          "minLength": null,
+          "maxLength": null
+        }
+      },
+      "type": "optional"
+    }
+  },
+  "metadata": {
+    "category": "devops",
+    "priority": "medium"
+  },
+  "createdAt": 1767935707694,
+  "updatedAt": 1767935707694
+}

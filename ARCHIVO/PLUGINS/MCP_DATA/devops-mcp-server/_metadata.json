@@ -1,0 +1,10 @@
+{
+  "serverName": "devops-mcp-server",
+  "collections": [
+    "prompts",
+    "resources"
+  ],
+  "createdAt": 1767935977379,
+  "updatedAt": 1767935977379,
+  "version": "1.0.0"
+}
