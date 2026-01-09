@@ -147,6 +147,37 @@
       },
       "detail": "Puerto 4001"
     },
+    {
+      "label": "MCP: Start [DevOps]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "start"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-devops",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*DevOps MCP Server running on port 3003.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "mcp-stack"
+      },
+      "detail": "Puerto 3003 - DevOps Server con persistencia"
+    },
     // ═══════════════════════════════════════════════════════════════════════
     // APB: AGENT PROLOG BRAIN (PrologEditor Stack)
     // Puertos: 8000 (Backend), 5001 (Frontend/Angular)
