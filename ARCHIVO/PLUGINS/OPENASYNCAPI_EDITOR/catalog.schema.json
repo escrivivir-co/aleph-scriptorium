@@ -36,8 +36,8 @@
         },
         "type": {
           "type": "string",
-          "enum": ["openapi", "asyncapi"],
-          "description": "Specification type"
+          "enum": ["openapi", "asyncapi", "mcpspec"],
+          "description": "Specification type (OpenAPI, AsyncAPI, or MCP Server Spec)"
         },
         "spec_version": {
           "type": "string",

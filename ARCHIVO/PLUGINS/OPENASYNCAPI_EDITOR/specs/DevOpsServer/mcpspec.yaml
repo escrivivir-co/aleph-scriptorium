@@ -1,0 +1,567 @@
+# MCP Server Specification: DevOpsServer
+# Port: 3003
+# Epic: MCP-CHANNELS-1.0.0, SCRIPT-2.3.0
+
+mcpVersion: "1.0.0"
+
+info:
+  title: DevOpsServer MCP
+  description: |
+    MCP Server for DevOps automation and management.
+    Provides CRUD operations for prompts/resources, server control,
+    Plugin system (XPlus1 control, Room management), and mesh integration.
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+
+server:
+  port: 3003
+  transport: streamable-http
+  baseClass: BaseMCPServer
+  config: DEFAULT_DEVOPS_MCP_SERVER_CONFIG
+  backendUrl: null  # No backend - uses managers internally
+  socketUrl: http://localhost:3010  # ProserpinaBot mesh connection
+
+capabilities:
+  tools: true
+  resources: true
+  prompts: true
+  healthChecks: true
+  plugins: true  # XPlus1ControlPlugin, DevOpsRoomPlugin
+
+# ============================================================================
+# TOOLS (19 total)
+# ============================================================================
+tools:
+  # --- Core System Tools (4) - CoreComponentsManager ---
+  
+  - name: start_system
+    description: |
+      Arrancar el sistema usando npm start.
+      Devuelve información del arranque incluyendo puerto y entorno.
+    inputSchema:
+      type: object
+      properties:
+        environment:
+          type: string
+          description: "Entorno de ejecución (development, production)"
+        verbose:
+          type: boolean
+          description: "Salida detallada"
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        port:
+          type: integer
+
+  - name: open_web_console
+    description: Abrir la consola web en el navegador.
+    inputSchema:
+      type: object
+      properties:
+        host:
+          type: string
+          default: localhost
+        port:
+          type: integer
+          default: 8080
+    output:
+      type: object
+      properties:
+        success:
+          type: boolean
+        url:
+          type: string
+
+  - name: get_server_status
+    description: |
+      Obtener estado actual del servidor.
+      Incluye uptime, uso de memoria y puerto.
+    inputSchema:
+      type: object
+      properties: {}
+    output:
+      type: object
+      properties:
+        server:
+          type: string
+        status:
+          type: string
+          enum: [running, stopped, error]
+        uptime:
+          type: object
+        memory:
+          type: object
+
+  - name: get_server_info
+    description: |
+      Obtener información detallada del servidor.
+      Incluye capabilities, endpoints y runtime info.
+    inputSchema:
+      type: object
+      properties: {}
+    output:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+
+  # --- CRUD Tools (10) - CRUDToolsManager ---
+
+  - name: list_prompts
+    description: Listar todos los prompts disponibles en el servidor.
+    inputSchema:
+      type: object
+      properties:
+        category:
+          type: string
+          description: "Filtrar por categoría"
+        search:
+          type: string
+          description: "Buscar en nombre o descripción"
+    output:
+      type: object
+      properties:
+        total:
+          type: integer
+        prompts:
+          type: array
+
+  - name: add_prompt
+    description: Añadir un nuevo prompt al servidor.
+    inputSchema:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - content
+      properties:
+        id:
+          type: string
+          description: "ID único del prompt"
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        parameters:
+          type: object
+        metadata:
+          type: object
+
+  - name: edit_prompt
+    description: Editar un prompt existente.
+    inputSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+
+  - name: delete_prompt
+    description: Eliminar un prompt del servidor.
+    inputSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+
+  - name: get_prompt
+    description: Recuperar un prompt específico por ID.
+    inputSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+
+  - name: list_resources
+    description: Listar todos los recursos disponibles en el servidor.
+    inputSchema:
+      type: object
+      properties:
+        category:
+          type: string
+        search:
+          type: string
+
+  - name: add_resource
+    description: Añadir un nuevo recurso al servidor.
+    inputSchema:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - uri
+        - mimeType
+        - content
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+        mimeType:
+          type: string
+        content:
+          type: string
+        metadata:
+          type: object
+
+  - name: edit_resource
+    description: Editar un recurso existente.
+    inputSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+
+  - name: delete_resource
+    description: Eliminar un recurso del servidor.
+    inputSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+
+  - name: get_resource
+    description: Recuperar un recurso específico por ID.
+    inputSchema:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+
+  # --- XPlus1 Control Plugin Tools (6) - Conditional based on health ---
+
+  - name: set_user_personality
+    description: |
+      Cambiar la personalidad del UserSimulator.
+      Requiere que X+1 machine esté conectado.
+    inputSchema:
+      type: object
+      required:
+        - personality
+      properties:
+        personality:
+          type: string
+          enum: [cautious, balanced, risk_taker, passive]
+          description: "Personalidad del simulador"
+        reason:
+          type: string
+          description: "Razón del cambio"
+    annotations:
+      plugin: xplus1-control
+      requiresConnection: true
+
+  - name: simulate_user_decision
+    description: |
+      Simular decisión de consumo del usuario.
+      Puede forzar yes/no/clarify o usar auto.
+    inputSchema:
+      type: object
+      properties:
+        forceDecision:
+          type: string
+          enum: [yes, no, clarify, auto]
+        context:
+          type: object
+          properties:
+            currentX:
+              type: integer
+            messageCount:
+              type: integer
+            recentReset:
+              type: boolean
+    annotations:
+      plugin: xplus1-control
+
+  - name: simulate_agent_selection
+    description: Seleccionar agente específico para el siguiente mensaje.
+    inputSchema:
+      type: object
+      required:
+        - agentId
+      properties:
+        agentId:
+          type: string
+        reasoning:
+          type: string
+    annotations:
+      plugin: xplus1-control
+
+  - name: control_simulator_mode
+    description: Habilitar/deshabilitar modo automático del UserSimulator.
+    inputSchema:
+      type: object
+      required:
+        - mode
+      properties:
+        mode:
+          type: string
+          enum: [on, off, toggle]
+        duration:
+          type: integer
+          description: "Duración en ms (opcional)"
+    annotations:
+      plugin: xplus1-control
+
+  - name: get_simulator_status
+    description: Obtener estado actual del UserSimulator y estadísticas.
+    inputSchema:
+      type: object
+      properties:
+        includeHistory:
+          type: boolean
+    annotations:
+      plugin: xplus1-control
+
+  - name: analyze_game_context
+    description: Analizar estado actual del juego para decisiones inteligentes.
+    inputSchema:
+      type: object
+      properties:
+        includeRecommendations:
+          type: boolean
+    annotations:
+      plugin: xplus1-control
+
+  # --- DevOps Room Plugin Tools (3) ---
+
+  - name: devops_room_get_capabilities
+    description: |
+      Obtener lista de capabilities expuestas por DevOps Room.
+      Capabilities disponibles: GET_SERVER_STATUS, GET_PLUGIN_LIST, 
+      GET_TASK_LIST, GET_AGENT_LIST, GET_ROOM_MEMBERS.
+    inputSchema:
+      type: object
+      properties: {}
+    annotations:
+      plugin: devops-room
+
+  - name: devops_room_invoke
+    description: |
+      Invocar una capability en el DevOps Room.
+      Ejemplo: capability='GET_SERVER_STATUS'
+    inputSchema:
+      type: object
+      required:
+        - capability
+      properties:
+        capability:
+          type: string
+          description: "ID de capability (ej. GET_SERVER_STATUS)"
+        input:
+          type: object
+          description: "Datos de entrada para la capability"
+    annotations:
+      plugin: devops-room
+
+  - name: devops_room_status
+    description: Obtener estado de la conexión DevOps Room.
+    inputSchema:
+      type: object
+      properties: {}
+    annotations:
+      plugin: devops-room
+
+# ============================================================================
+# RESOURCES (8)
+# ============================================================================
+resources:
+  # Dynamic resources from DevOpsServerImpl
+  - uri: devops://game/state/live
+    name: live-game-state
+    description: Estado actual del juego X+1 consultado dinámicamente via MCP
+    mimeType: application/json
+
+  - uri: devops://runtime/statistics
+    name: runtime-stats
+    description: Estadísticas detalladas del runtime del juego
+    mimeType: application/json
+
+  - uri: devops://mcp/health
+    name: mcp-servers-health
+    description: Estado de salud de todos los servidores MCP
+    mimeType: application/json
+
+  - uri: devops://game/agents
+    name: agents-status
+    description: Estado actual de todos los agentes del juego
+    mimeType: application/json
+
+  # XPlus1 Plugin resources
+  - uri: devops://xplus1/simulator-status
+    name: simulator-status
+    description: Estado y configuración actual del UserSimulator
+    mimeType: application/json
+    annotations:
+      plugin: xplus1-control
+
+  - uri: devops://xplus1/game-context-analysis
+    name: game-context-analysis
+    description: Análisis del estado del juego y acciones recomendadas
+    mimeType: application/json
+    annotations:
+      plugin: xplus1-control
+
+  - uri: devops://xplus1/simulator-history
+    name: simulator-history
+    description: Historial de acciones y decisiones del UserSimulator
+    mimeType: application/json
+    annotations:
+      plugin: xplus1-control
+
+  # DevOps Room Plugin resources
+  - uri: devops-room://capabilities
+    name: devops-room-capabilities
+    description: Lista de capabilities expuestas por DevOps Room
+    mimeType: application/json
+    annotations:
+      plugin: devops-room
+
+# ============================================================================
+# PROMPTS (4)
+# ============================================================================
+prompts:
+  # Default prompts from ContentManager
+  - name: start-system
+    description: Prompt para arrancar el sistema usando npm start
+    arguments:
+      - name: projectPath
+        description: "Ruta del proyecto"
+        required: false
+      - name: environment
+        description: "Entorno de ejecución"
+        required: false
+
+  - name: open-web-console
+    description: Prompt para abrir la consola web en localhost:8080
+    arguments:
+      - name: port
+        description: "Puerto del servidor web"
+        required: false
+      - name: host
+        description: "Host del servidor"
+        required: false
+
+  # XPlus1 Plugin prompts
+  - name: simulator-control
+    description: Guía para controlar UserSimulator via MCP tools
+    arguments:
+      - name: currentContext
+        description: "Contexto actual del juego"
+        required: false
+    annotations:
+      plugin: xplus1-control
+
+  - name: decision-strategy
+    description: Guía estratégica para decisiones de consumo
+    arguments:
+      - name: gameState
+        description: "Estado del juego"
+        required: false
+      - name: personality
+        description: "Personalidad actual"
+        required: false
+    annotations:
+      plugin: xplus1-control
+
+# ============================================================================
+# PLUGINS
+# ============================================================================
+plugins:
+  - id: xplus1-control
+    name: X+1 Control Plugin
+    version: "1.0.0"
+    description: Remote control for AS_MCP_MESH_SDK and UserSimulator
+    category: game-control
+    enabled: true
+    conditional: true  # Requires X+1 machine to be healthy
+    tools: 6
+    resources: 3
+    prompts: 2
+
+  - id: devops-room
+    name: DevOps Room Plugin
+    version: "1.0.0"
+    description: Socket.IO room management for DevOps capabilities exposure
+    category: communication
+    enabled: true
+    tools: 3
+    resources: 1
+    prompts: 0
+
+# ============================================================================
+# METADATA
+# ============================================================================
+metadata:
+  author: Aleph Scriptorium
+  license: AIPL v1.0
+  repository: https://github.com/escrivivir-co/aleph-scriptorium
+  epics:
+    - MCP-CHANNELS-1.0.0
+    - SCRIPT-2.3.0
+  servers:
+    - name: DevOpsServer
+      port: 3003
+      path: MCPGallery/mcp-mesh-sdk/src/DevOpsServerImpl.ts
+    - name: ProserpinaBot
+      description: Socket.IO client for mesh communication
+      socketUrl: http://localhost:3010
+  managers:
+    - name: ContentManager
+      purpose: CRUD operations for prompts and resources
+      path: MCPGallery/mcp-mesh-sdk/src/managers/ContentManager.ts
+    - name: CRUDToolsManager
+      purpose: Generic CRUD tools registration
+      path: MCPGallery/mcp-mesh-sdk/src/managers/CRUDToolsManager.ts
+    - name: CoreComponentsManager
+      purpose: Server control and health checks
+      path: MCPGallery/mcp-mesh-sdk/src/managers/CoreComponentsManager.ts
+  adapters:
+    - name: MCPDriverAdapter
+      purpose: Connect to other MCP servers
+      connectedServers:
+        - state-machine-server
+        - wiki-mcp-browser
+        - mcp-service-launcher

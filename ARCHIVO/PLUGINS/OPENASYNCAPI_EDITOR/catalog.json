@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
-  "version": "1.1.0",
-  "updated_at": "2026-01-07T12:00:00Z",
+  "version": "1.2.0",
+  "updated_at": "2026-01-09T12:00:00Z",
   "specs": [
     {
       "id": "prolog-editor-openapi",
@@ -32,6 +32,21 @@
       "cataloged_at": "2026-01-02T12:00:00Z",
       "validated_at": "2026-01-02T12:00:00Z",
       "tags": ["iot", "mqtt", "telemetry", "pubsub"]
+    },
+    {
+      "id": "prolog-editor-mcpspec",
+      "project": "PrologEditor",
+      "type": "mcpspec",
+      "spec_version": "1.0",
+      "api_version": "2.0.0",
+      "title": "MCPPrologServer",
+      "description": "MCP Server for Prolog reasoning engine (12 tools, 6 resources, 8 prompts)",
+      "origin": null,
+      "local": "specs/PrologEditor/mcpspec.yaml",
+      "status": "validated",
+      "cataloged_at": "2026-01-03T12:00:00Z",
+      "validated_at": "2026-01-03T12:00:00Z",
+      "tags": ["mcp", "prolog", "reasoning", "teatro"]
     },
     {
       "id": "mcp-channels-openapi",
@@ -77,6 +92,36 @@
       "cataloged_at": "2026-01-07T12:00:00Z",
       "validated_at": null,
       "tags": ["mesh", "mcp", "tools", "orchestration"]
+    },
+    {
+      "id": "typed-prompts-mcpspec",
+      "project": "TypedPromptsEditor",
+      "type": "mcpspec",
+      "spec_version": "1.0.0",
+      "api_version": "1.0.0",
+      "title": "MCPTypedPromptServer",
+      "description": "MCP Server for schema validation and ontology management",
+      "origin": null,
+      "local": "specs/TypedPromptsEditor/mcpspec.yaml",
+      "status": "validated",
+      "cataloged_at": "2026-01-05T12:00:00Z",
+      "validated_at": "2026-01-05T12:00:00Z",
+      "tags": ["mcp", "schema", "validation", "typescript", "ontology"]
+    },
+    {
+      "id": "devops-server-mcpspec",
+      "project": "DevOpsServer",
+      "type": "mcpspec",
+      "spec_version": "1.0.0",
+      "api_version": "1.0.0",
+      "title": "DevOpsServer MCP",
+      "description": "MCP Server for DevOps automation (19 tools, 8 resources, 4 prompts, 2 plugins)",
+      "origin": null,
+      "local": "specs/DevOpsServer/mcpspec.yaml",
+      "status": "draft",
+      "cataloged_at": "2026-01-09T12:00:00Z",
+      "validated_at": null,
+      "tags": ["mcp", "devops", "automation", "plugins", "mesh", "socketio"]
     }
   ]
 }
