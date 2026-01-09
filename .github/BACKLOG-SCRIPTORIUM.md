@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.5-dry  
+> **Versión**: 1.2.6-dry  
 > **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-05
+> **Actualizado**: 2026-01-09
 > **Rama en ALEPH (esta codebase)**: flavour/monada
 > **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
@@ -46,6 +46,7 @@
 | ✅ | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 | ✅ | MCP-CHANNELS-1.0.0 | Socket.IO Integration + Angular Unification (55 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_07_MCP_Channels_Integration/01_backlog-borrador.md) |
+| ✅ | MCP-PERSISTENCE-1.0.0 | DevOps Server File Persistence (18 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_09_DevOpsMCP_Persistencia/01_backlog-borrador.md) |
 
 ---
 
