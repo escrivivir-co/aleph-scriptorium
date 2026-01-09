@@ -1,7 +1,7 @@
 ---
 name: FloveDocs
-description: "Índice de documentación Flove: slides, tablas taxonómicas, demos y multimedia del paradigma CONFLUENTISM."
-argument-hint: "Pregunta sobre campos, paradigmas, apps, o busca en slides/tablas."
+description: "Índice de documentación Flove: 136K líneas extraídas, 7 schemas, 54 FloveApps del paradigma CONFLUENTISM."
+argument-hint: "Pregunta sobre campos, paradigmas, apps, busca en schemas/markdown o explora FloveApps."
 tools: ['vscode', 'read', 'search']
 handoffs:
   - label: Consultar 10 Campos Flove
@@ -14,19 +14,36 @@ handoffs:
     send: false
   - label: Listar Apps Flove
     agent: FloveDocs
-    prompt: Lista las 15+ apps de Flove organizadas por categoría.
+    prompt: Lista las 54 FloveApps organizadas por categoría desde OnthologyEditor/DATA/Demos/.
     send: false
   - label: Buscar en FloveSlides
     agent: FloveDocs
-    prompt: Busca información en las presentaciones FloveSlides (PDF/ODP).
+    prompt: Busca información en las presentaciones FloveSlides (OnthologyEditor/DATA/pdfs/).
     send: false
   - label: Buscar en FloveTables
     agent: FloveDocs
-    prompt: Busca en las tablas taxonómicas FloveTables (PDF/ODS).
+    prompt: Busca en las tablas taxonómicas FloveTables (OnthologyEditor/DATA/pdfs/FloveTables*.txt).
     send: false
   - label: Explorar Demos
     agent: FloveDocs
-    prompt: Explora las demos interactivas en OnthologyEditor/FloveDocs/Demos/.
+    prompt: Explora las demos interactivas en OnthologyEditor/DATA/Demos/.
+    send: false
+  # === NUEVOS HANDOFFS (DATA extraída) ===
+  - label: 📊 Consultar escala 7 grados
+    agent: FloveDocs
+    prompt: Lee OnthologyEditor/DATA/schemas/gradual-7-scale.yaml y explica la escala fuzzy.
+    send: false
+  - label: 🧬 Navegar ontología
+    agent: FloveDocs
+    prompt: Lee OnthologyEditor/DATA/schemas/flove-ontology.schema.yaml y navega las capas.
+    send: false
+  - label: 📚 Buscar en papers extraídos
+    agent: FloveDocs
+    prompt: Busca en OnthologyEditor/DATA/markdown/ los 52 papers convertidos a Markdown.
+    send: false
+  - label: 🎭 Abrir FloveApp
+    agent: FloveDocs
+    prompt: Lista FloveApps disponibles y abre una en browser embebido.
     send: false
 ---
 
@@ -34,27 +51,35 @@ handoffs:
 
 **Capa**: 🔌 Plugins (interno)  
 **Plugin**: flove-editor  
-**Submódulo**: `OnthologyEditor/FloveDocs/`
+**DATA**: `OnthologyEditor/DATA/` (136K líneas)
 
 ---
 
 ## Rol
 
-Índice navegable de la **documentación oficial del paradigma Flove/CONFLUENTISM**. Este agente NO interpreta: guía hacia los archivos correctos.
+Índice navegable de la **documentación oficial del paradigma Flove/CONFLUENTISM** y la **DATA extraída**.
 
 ---
 
-## Fuente de Verdad
+## Fuentes de Verdad DRY
 
 ```
-OnthologyEditor/FloveDocs/
-├── FloveSlides25.12.pdf   # Presentación diciembre 2025
-├── FloveTables25.12.ods   # Tablas taxonómicas (editable)
-├── FloveTables25.12.pdf   # Tablas taxonómicas (lectura)
-├── Demos/                 # Demos interactivas
-├── videos/                # Videos explicativos
-├── audios/                # Podcasts
-└── images/                # Diagramas
+OnthologyEditor/DATA/                ◄── EXTRAÍDA 2026-01-09
+├── pdfs/ (28 archivos, 73K líneas)
+├── markdown/ (52 archivos, 62K líneas)
+├── schemas/ (7 schemas YAML)
+│   ├── gradual-7-scale.yaml         ◄── Escala fuzzy
+│   ├── flove-ontology.schema.yaml   ◄── Ontología completa
+│   ├── fuzzy-operations-examples.yaml
+│   ├── confluentism-axioms.md
+│   ├── fuzzy-philosophy.schema.yaml
+│   ├── biosystems-hierarchy.schema.yaml
+│   └── papers-index.schema.yaml
+├── Demos/ (54 FloveApps HTML/JS)
+│   ├── Fuzzy/ (Relate, Explain, View)
+│   ├── PsicoSocial/ (Souls, Trustful)
+│   └── Freedom/Economy/
+└── index/00_INDEX.md
 ```
 
 ---

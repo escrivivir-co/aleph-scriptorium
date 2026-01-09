@@ -217,7 +217,45 @@ Cada app Flove implementa el paradigma en un dominio específico:
 
 ## Recursos
 
-- **Documentación**: `OnthologyEditor/README-SCRIPTORIUM.md`
+### DATA Extraída (Fuente de Verdad DRY)
+
+```
+OnthologyEditor/DATA/
+├── pdfs/ (28 archivos, 73K líneas)
+├── markdown/ (52 archivos, 62K líneas)
+├── schemas/ (7 schemas)
+│   ├── gradual-7-scale.yaml         ◄── ESCALA FUZZY
+│   ├── flove-ontology.schema.yaml   ◄── ONTOLOGÍA COMPLETA
+│   ├── fuzzy-operations-examples.yaml
+│   ├── confluentism-axioms.md
+│   ├── fuzzy-philosophy.schema.yaml
+│   ├── biosystems-hierarchy.schema.yaml
+│   └── papers-index.schema.yaml
+├── Demos/ (54 FloveApps HTML/JS)
+└── index/00_INDEX.md
+```
+
+### Schemas para Operaciones
+
+| Operación | Schema | Ruta |
+|-----------|--------|------|
+| RELATE | `gradual-7-scale.yaml` | Escala 7 grados (0.14→1.0) |
+| EXPLAIN | `fuzzy-operations-examples.yaml` | Perspectivas, tonos, focos |
+| VIEW | `flove-ontology.schema.yaml` | Navegación ontológica |
+| GRADE | `gradual-7-scale.yaml` | Nivel 4 = centro neutral |
+
+### FloveApps Destacadas
+
+| App | Ruta | Demuestra |
+|-----|------|-----------|
+| **Mindmap RELATE** | `Demos/Fuzzy/Relate/` | SVG interactivo |
+| **5Loves Avatar** | `Demos/PsicoSocial/Souls/5Loves/` | Tipos de amor |
+| **Crumbler** | `Demos/PsicoSocial/Trustful/Crumbler/` | Validación |
+| **Shareful** | `Demos/Freedom/Economy/Offer/Shareful/` | Economía |
+
+### Referencias Externas
+
 - **FloveDocs**: https://codeberg.org/FloveDocs/Main
-- **Presentaciones**: FloveSlides25.12.pdf
-- **Tablas técnicas**: FloveTables25.12.ods
+- **Submódulo**: `OnthologyEditor/` (Submodule #15)
+- **Catálogo**: `ARCHIVO/PLUGINS/FLOVE_EDITOR/catalog.json`
+

@@ -1,0 +1,229 @@
+{
+  "id": "flove-editor-catalog",
+  "version": "1.0.0",
+  "updated": "2026-01-09",
+  "source": "OnthologyEditor/DATA/",
+  
+  "summary": {
+    "total_schemas": 7,
+    "total_apps": 54,
+    "total_lines": 136072,
+    "coverage": "95%"
+  },
+  
+  "schemas": {
+    "fuzzy-core": [
+      {
+        "id": "gradual-7-scale",
+        "name": "Escala Gradual 7 Niveles",
+        "path": "schemas/gradual-7-scale.yaml",
+        "purpose": "Escala fuzzy de 7 grados (0.14→1.0)",
+        "level": 1,
+        "operations": ["RELATE", "GRADE"],
+        "tags": ["fuzzy", "scale", "intensity", "chakra"]
+      },
+      {
+        "id": "flove-ontology",
+        "name": "Ontología Flove Completa",
+        "path": "schemas/flove-ontology.schema.yaml",
+        "purpose": "Jerarquía completa: Substances→Fields→Triads→Apps",
+        "level": 0,
+        "operations": ["ALL"],
+        "tags": ["ontology", "hierarchy", "meta"]
+      },
+      {
+        "id": "fuzzy-operations",
+        "name": "Operaciones Fuzzy (UI Specs)",
+        "path": "schemas/fuzzy-operations-examples.yaml",
+        "purpose": "Especificaciones UI de RELATE/EXPLAIN/VIEW",
+        "level": 1,
+        "operations": ["RELATE", "EXPLAIN", "VIEW"],
+        "tags": ["ui", "specs", "demo"]
+      }
+    ],
+    "philosophy": [
+      {
+        "id": "confluentism-axioms",
+        "name": "Axiomas del Confluentismo",
+        "path": "schemas/confluentism-axioms.md",
+        "purpose": "9 categorías de axiomas filosóficos",
+        "level": 0,
+        "operations": ["EXPLAIN"],
+        "tags": ["philosophy", "axioms", "foundation"]
+      },
+      {
+        "id": "fuzzy-philosophy",
+        "name": "Filosofía Fuzzy",
+        "path": "schemas/fuzzy-philosophy.schema.yaml",
+        "purpose": "Paper 'Why Fuzzy' formalizado",
+        "level": 1,
+        "operations": ["EXPLAIN", "FREE"],
+        "tags": ["philosophy", "theory", "why"]
+      }
+    ],
+    "biology": [
+      {
+        "id": "biosystems-hierarchy",
+        "name": "Jerarquía de Biosistemas",
+        "path": "schemas/biosystems-hierarchy.schema.yaml",
+        "purpose": "Físico→biológico→psicosocial",
+        "level": 2,
+        "operations": ["SOULS", "VIEW"],
+        "tags": ["biology", "systems", "hierarchy"]
+      }
+    ],
+    "reference": [
+      {
+        "id": "papers-index",
+        "name": "Índice de Papers",
+        "path": "schemas/papers-index.schema.yaml",
+        "purpose": "Catálogo de 19 papers fundacionales",
+        "level": 0,
+        "operations": ["REFERENCE"],
+        "tags": ["papers", "bibliography", "sources"]
+      }
+    ]
+  },
+  
+  "apps": {
+    "fuzzy": {
+      "relate": {
+        "path": "Demos/Fuzzy/Relate/",
+        "count": 8,
+        "featured": "index.html",
+        "description": "Mindmap SVG con media bar y badges"
+      },
+      "explain": {
+        "path": "Demos/Fuzzy/Explain/",
+        "count": 2,
+        "featured": "index.html",
+        "description": "Formularios de perspectiva y tono"
+      },
+      "view": {
+        "path": "Demos/Fuzzy/View/",
+        "count": 2,
+        "featured": "index.html",
+        "description": "Pills, popovers, wizard de navegación"
+      }
+    },
+    "psicosocial": {
+      "souls": {
+        "path": "Demos/PsicoSocial/Souls/",
+        "count": 12,
+        "subcategories": ["5Loves", "Avatar", "DieSafe", "OpenAstro"],
+        "description": "Identidad, amor, seguridad, astrología"
+      },
+      "trustful": {
+        "path": "Demos/PsicoSocial/Trustful/",
+        "count": 15,
+        "subcategories": ["Crumbler", "GenderWars", "HackBoth", "Maty", "MyFamily", "Sensy"],
+        "description": "Validación de confianza, relaciones familiares"
+      }
+    },
+    "freedom": {
+      "economy": {
+        "path": "Demos/PsicoSocial/Freedom/Economy/",
+        "count": 10,
+        "subcategories": ["Craft", "Ecology", "Offer"],
+        "description": "Producción, ecología, ofertas compartidas"
+      }
+    },
+    "meta": {
+      "simplex": {
+        "path": "Demos/Simplex/",
+        "count": 3,
+        "description": "Visualización cosmos"
+      },
+      "pages": {
+        "path": "Demos/Pages/",
+        "count": 2,
+        "description": "Navegación web"
+      }
+    }
+  },
+  
+  "integrations": {
+    "typed-prompting": {
+      "schemas_to_install": [
+        "gradual-7-scale",
+        "flove-ontology",
+        "fuzzy-operations"
+      ],
+      "validation_patterns": [
+        "FuzzyGrade",
+        "FuzzyTriad",
+        "FuzzyField",
+        "FuzzyRelation"
+      ]
+    },
+    "teatro": {
+      "personajes_disponibles": [
+        {
+          "id": "filosofo-confluente",
+          "brain": "flove-ontology.schema.yaml",
+          "level": "meta"
+        },
+        {
+          "id": "terapeuta-fuzzy",
+          "brain": "gradual-7-scale.yaml",
+          "level": "psicosocial"
+        }
+      ]
+    },
+    "agent-creator": {
+      "templates_disponibles": [
+        {
+          "id": "fuzzy-reasoner",
+          "source": "apps.fuzzy.relate",
+          "handoffs": ["relate", "explain", "view"]
+        },
+        {
+          "id": "trust-validator",
+          "source": "apps.psicosocial.trustful",
+          "handoffs": ["validate", "certify", "revoke"]
+        }
+      ]
+    }
+  },
+  
+  "mcp_tools": {
+    "proposed": [
+      {
+        "name": "flove_relate",
+        "description": "Establecer relación fuzzy entre conceptos",
+        "input": { "conceptA": "string", "conceptB": "string", "intensity?": "number" },
+        "output": { "relation": "string", "grade": "number", "triad": "object" }
+      },
+      {
+        "name": "flove_explain",
+        "description": "Explicar concepto con perspectiva y tono",
+        "input": { "concept": "string", "perspective?": "enum", "tone?": "enum" },
+        "output": { "definition": "string", "prism": "object", "sources": "array" }
+      },
+      {
+        "name": "flove_view",
+        "description": "Visualizar concepto en ontología",
+        "input": { "concept": "string", "depth?": "number" },
+        "output": { "node": "object", "related": "array", "apps": "array" }
+      },
+      {
+        "name": "flove_grade",
+        "description": "Obtener detalles de un grado fuzzy",
+        "input": { "level": "number" },
+        "output": { "grade": "object" }
+      },
+      {
+        "name": "flove_list_apps",
+        "description": "Listar FloveApps por categoría",
+        "input": { "category?": "string", "level?": "number" },
+        "output": { "apps": "array" }
+      },
+      {
+        "name": "flove_get_schema",
+        "description": "Obtener schema por ID",
+        "input": { "schemaId": "string" },
+        "output": { "schema": "object" }
+      }
+    ]
+  }
+}

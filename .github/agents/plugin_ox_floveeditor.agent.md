@@ -1,7 +1,7 @@
 ---
 name: plugin_ox_floveeditor
-description: "Bridge: conecta VS Code con FloveEditor y sus 3 submódulos (FloveDocs, Metamodel, MMCO). Editor de ontologías con validación UFO y coherencia OCMF."
-argument-hint: "Diseña, exporta, valida ontologías o consulta documentación/frameworks de los submódulos."
+description: "Bridge: conecta VS Code con FloveEditor, sus 3 submódulos, 7 schemas extraídos y 54 FloveApps funcionales."
+argument-hint: "Diseña, exporta, valida ontologías, consulta schemas fuzzy, explora FloveApps o razona con lógica gradual."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Listar agentes del plugin
@@ -48,13 +48,93 @@ handoffs:
     agent: plugin_ox_agentcreator
     prompt: Asigna la ontología exportada a una receta de agente en AGENT_CREATOR.
     send: false
+  # === NUEVOS HANDOFFS (DATA extraída 2026-01-09) ===
+  - label: 📊 Consultar catálogo de schemas
+    agent: plugin_ox_floveeditor
+    prompt: Lee ARCHIVO/PLUGINS/FLOVE_EDITOR/catalog.json y lista los 7 schemas disponibles con sus operaciones.
+    send: false
+  - label: 🔢 Consultar escala de 7 grados
+    agent: plugin_ox_floveeditor
+    prompt: Lee OnthologyEditor/DATA/schemas/gradual-7-scale.yaml y explica los 7 niveles fuzzy (0.14→1.0).
+    send: false
+  - label: 🧬 Explorar ontología completa
+    agent: plugin_ox_floveeditor
+    prompt: Lee OnthologyEditor/DATA/schemas/flove-ontology.schema.yaml y navega las 4 capas (Substances→Fields→Triads→Apps).
+    send: false
+  - label: 🎭 Listar FloveApps disponibles
+    agent: plugin_ox_floveeditor
+    prompt: Consulta catalog.json sección apps y lista las 54 FloveApps por categoría (Fuzzy/PsicoSocial/Freedom).
+    send: false
+  - label: 🔗 RELATE dos conceptos
+    agent: plugin_ox_floveeditor
+    prompt: Usa el schema gradual-7-scale.yaml para establecer una relación fuzzy entre dos conceptos dados.
+    send: false
+  - label: 📖 EXPLAIN un concepto
+    agent: plugin_ox_floveeditor
+    prompt: Usa fuzzy-operations-examples.yaml para explicar un concepto con perspectiva y tono configurables.
+    send: false
+  - label: 👁️ VIEW concepto en ontología
+    agent: plugin_ox_floveeditor
+    prompt: Navega flove-ontology.schema.yaml mostrando nodo, relacionados y apps disponibles.
+    send: false
+  - label: 🎯 Abrir FloveApp en browser
+    agent: plugin_ox_floveeditor
+    prompt: Abre una FloveApp específica de OnthologyEditor/DATA/Demos/ en el navegador embebido.
+    send: false
+  - label: 🧠 Generar personaje Teatro con brain Flove
+    agent: plugin_ox_teatro
+    prompt: Crea un personaje de Teatro que use flove-ontology como brain y hable en vocabulario Confluentista.
+    send: false
+  - label: 📝 Crear agente Fuzzy Reasoner
+    agent: plugin_ox_agentcreator
+    prompt: Usa el template fuzzy-reasoner del catalog.json para crear un agente que razone con lógica gradual.
+    send: false
 ---
 
 # Plugin Ox: FloveEditor
 
 **Capa**: 🔌 Plugins (Bridge) — ver taxonomía en @ox
 
-> Agente bridge que conecta VS Code con `.github/plugins/flove-editor/agents/`.
+> Agente bridge que conecta VS Code con `.github/plugins/flove-editor/agents/` y la **DATA extraída** (136K líneas).
+
+---
+
+## Fuentes de Verdad DRY
+
+| Recurso | Ubicación | Contenido |
+|---------|-----------|-----------|
+| **Código** | `.github/plugins/flove-editor/` | 5 agentes, prompts, instructions |
+| **Datos plugin** | `ARCHIVO/PLUGINS/FLOVE_EDITOR/` | INDEX.md, catalog.json |
+| **DATA extraída** | `OnthologyEditor/DATA/` | 28 PDFs, 52 MDs, 7 schemas, 54 apps |
+| **Submódulos** | `OnthologyEditor/{FloveDocs,metamodel,MMCO}/` | Fuentes originales |
+
+---
+
+## Catálogo de Capacidades (catalog.json)
+
+### Schemas Disponibles (7)
+
+| Schema | Propósito | Operaciones |
+|--------|-----------|-------------|
+| `gradual-7-scale` | Escala fuzzy 7 grados | RELATE, GRADE |
+| `flove-ontology` | Ontología completa 4 capas | ALL |
+| `fuzzy-operations` | UI specs | RELATE, EXPLAIN, VIEW |
+| `confluentism-axioms` | Axiomas filosóficos | EXPLAIN |
+| `fuzzy-philosophy` | Paper "Why Fuzzy" | EXPLAIN, FREE |
+| `biosystems-hierarchy` | Físico→bio→psico | SOULS, VIEW |
+| `papers-index` | 19 papers fundacionales | REFERENCE |
+
+### FloveApps Disponibles (54)
+
+| Categoría | Count | Destacado |
+|-----------|-------|-----------|
+| **Fuzzy/Relate** | 8 | Mindmap SVG interactivo |
+| **Fuzzy/Explain** | 2 | Forms perspectiva/tono |
+| **Fuzzy/View** | 2 | Pills, popovers, wizard |
+| **PsicoSocial/Souls** | 12 | 5Loves, Avatar, OpenAstro |
+| **PsicoSocial/Trustful** | 15 | Crumbler, GenderWars, Sensy |
+| **Freedom/Economy** | 10 | Craft, Ecology, Shareful |
+| **Simplex + Pages** | 5 | Cosmos, navegación |
 
 ---
 
