@@ -18,25 +18,10 @@ A partir de hoy, el desarrollo activo del Scriptorium se traslada a la rama `fc1
 | Rama | Propósito | Estado |
 |------|-----------|--------|
 | `main` | Releases estables (tags vX.Y.Z) | 🧊 Congelada |
-| `fc1` | Feature Cycle 1 — desarrollo activo | 🔥 Activa |
+| `integration/beta/scriptorium` | Feature Cycle 1 — desarrollo activo | 🔥 Activa |
 | `integration/beta/scriptorium` | Submódulos integrados | 🔄 Sincronizada |
 
-### Qué cambia
 
-```bash
-# Antes
-git checkout main
-git commit...
-
-# Ahora
-git checkout fc1
-git commit...
-
-# Releases
-git checkout main
-git merge fc1 --no-ff
-git tag v2.0.0
-```
 
 ---
 

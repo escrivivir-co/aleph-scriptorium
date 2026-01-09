@@ -208,7 +208,7 @@ feat(script/plugins): crear bridge plugin_ox_teatro
 
 refs #SCRIPT-1.0.0-T007
 
-⚠️ Verificar rama: fc1 (actual: {verificar})
+⚠️ Verificar rama: integration/beta/scriptorium (actual: {verificar})
 ```
 
 ### CU3: Consultar Dónde Documentar

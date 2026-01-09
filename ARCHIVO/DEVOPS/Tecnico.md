@@ -354,7 +354,7 @@ git checkout -b integration/beta/scriptorium
 ```json
 {
   "workspace": {
-    "branch": "fc1",
+    "branch": "integration/beta/scriptorium",
     "commit_policy": {
       "protected_branches": ["main", "master"]
     }
