@@ -5,6 +5,7 @@
 > **Tipo**: Anexo T002-A (síntesis DRY para facilitar tamizado de Banderas)  
 > **Fuentes**: T04x01, T04x02, T04x03
 
+AGENTES: Este documento es una versión mínima del borrador, ver completo: ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-11_refactorizacion-fundacion/03_REFERENCIAS/FUNDACION_12_CAPITULOS_SOFISTICADO.md
 ---
 
 ## Capítulo 1: Anacronismo productivo

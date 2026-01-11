@@ -18,9 +18,9 @@
 | @revisor | Verificación doctrinal | ✅ DONE T003 |
 | @ForoScraper | Descarga de textos originales | ✅ DONE T005-A (anexo) |
 | @FloveEditor | Interfaces de navegación | ✅ DONE T005-B,C,D (anexos) |
-| @blueflag | Auditoría de Verdad | ⏳ WAITING T005 |
-| @blackflag | Auditoría de Sombras | ⚪ IDLE |
-| @redflag | Auditoría de Estructura | ⚪ IDLE |
+| @blueflag | Auditoría de Verdad | ✅ DONE T005 (7 transformaciones: 2 P0, 3 P1, 2 P2) |
+| @blackflag | Auditoría de Sombras | ✅ DONE T006 (7 transformaciones: 3 P0, 3 P1, 1 P2) |
+| @redflag | Auditoría de Estructura | ⏳ WAITING T007 |
 | @yellowflag | Auditoría de Límites | ⚪ IDLE |
 | @orangeflag | Auditoría de Registro | ⚪ IDLE |
 

@@ -6,7 +6,7 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 5 | @blueflag | ⏳ WAITING | — |
+| 7 | @redflag | ⏳ WAITING | — |
 
 ## Historial de Turnos
 
@@ -16,6 +16,8 @@
 | 2 | @periodico | 2026-01-11 | 2026-01-11 | Análisis 5W de 3 textos, frames periodísticos, hilo conductor P vs NP | [T002](02_ACTAS/T002_periodico_analisis-5W.md) |
 | 3 | @revisor | 2026-01-11 | 2026-01-11 | Verificación doctrinal: 8 ingenuidades detectadas, T04x03 requiere intervención P0 | [T003](02_ACTAS/T003_revisor_verificacion-doctrinal.md) |
 | 4 | @aleph | 2026-01-11 | 2026-01-11 | FASE 1 completada: distribución 3 textos en 12 caps, 3 arcos narrativos, P0/P1/P2 | [T004](02_ACTAS/T004_aleph_sintesis-distribucion.md) |
+| 5 | @blueflag | 2026-01-11 | 2026-01-11 | Tests de Verdad: 7 transformaciones (2 P0, 3 P1, 2 P2), foco en P≠NP y Nietzsche | [T005](02_ACTAS/T005_blueflag_plan-intervencion-verdad.md) |
+| 6 | @blackflag | 2026-01-11 | 2026-01-11 | Tests de Sombras: 7 transformaciones (3 P0, 3 P1, 1 P2), foco en pólvora, posverdad técnica, captura enemiga | [T006](02_ACTAS/T006_blackflag_plan-intervencion-sombras.md) |
 
 ## Cola de Turnos (Plan)
 
