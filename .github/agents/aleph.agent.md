@@ -2,7 +2,7 @@
 name: Aleph
 description: Planifica, redacta y gestiona el texto fundacional (12 capítulos, 2026) con protocolo DevOps integrado.
 argument-hint: "Describe objetivo, audiencia y restricciones (p.ej. capitulo=3, tema=vivienda, longitud=1400)."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'alephalpha/*', 'launcher-server/*', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'state-machine-server/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']
 handoffs:
   - label: Solicitar auditoría de verdad
     agent: Blueflag

@@ -175,4 +175,4 @@ Ver [plugins/scriptorium-pack/](plugins/scriptorium-pack/) para detalles.
 
 # Herramientas MCP en Vs Code
 
-A veces algunas herramientas pueden paracer deshabilitadas. Aplicar el patrón de activación lazy de las herramientas MCP, algunas herramientas se agrupan y requieren invocar activate_* antes de usarlas.
+A veces algunas herramientas pueden parecer deshabilitadas. Aplicar el patrón de activación lazy de las herramientas MCP, algunas herramientas se agrupan y requieren invocar activate_* antes de usarlas.

@@ -2,7 +2,7 @@
 name: plugin_ox_foroscraper
 description: "Bridge: conecta VS Code con agentes del plugin Foro Scraper. Ver .github/plugins/foro-scraper/agents/"
 argument-hint: "Scraping de foros y blogs con estado pausable/reanudable usando MCP Playwright."
-tools: ['agent']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Listar agentes de Foro Scraper
     agent: plugin_ox_foroscraper
