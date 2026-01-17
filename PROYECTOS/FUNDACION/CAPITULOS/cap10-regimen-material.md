@@ -1,3 +1,5 @@
+SIN REFACTORIZAR VER guia_de_consolidacion.md
+
 # Capítulo 10: Régimen material
 
 *Desplazamiento: Escalar*
@@ -91,6 +93,82 @@ Este capítulo cierra el arco que inició en el Capítulo 3 (P≠NP) y continuó
 | **10** | Material | ¿Con qué se computa? |
 
 El límite P≠NP no es abstracto: se paga en TWh, se extrae en Congo, se fabrica en Taiwan. **Todo bit tiene un átomo debajo**.
+
+---
+
+## §6. El sujeto que extrae: disputar el régimen material
+
+Este es el capítulo más difícil para proponer un "sujeto". El régimen material no se cambia con protestas, apps o regulaciones nacionales. Se cambia con **trillones de dólares y décadas de tiempo**.
+
+### La honestidad brutal sobre la escala
+
+| Transformación | Inversión estimada | Tiempo | Actor mínimo |
+|----------------|-------------------|--------|--------------|
+| Transición energética global | $130 trillion | 30 años | G20 coordinado |
+| Independencia de semiconductores (Europa) | $430 billion | 15 años | UE |
+| Reciclaje de e-waste al 50% | $50 billion/año | 10 años | Tratados internacionales |
+| Reducción 50% consumo data centers | Desconocido | 20 años | Cambio de modelo de negocio |
+
+Ningún movimiento social tiene esta escala. Ningún Estado solo tampoco.
+
+> "Deberíamos pensar en términos de ≈3 trillones de inversión en las próximas décadas." — [11-tecnofeudalismo](../../ARCHIVO/marco/11-tecnofeudalismo.md)
+
+### Lo que sí es posible
+
+El régimen material no se cambia **completo**, pero tiene **puntos de intervención**:
+
+**1. Cuellos de botella regulables**
+
+| Cuello | Control potencial | Mecanismo |
+|--------|------------------|-----------|
+| Litio | Alto (pocos países) | Cartel tipo OPEC |
+| Cobalto | Medio (Congo 70%) | Certificación ética |
+| TSMC | Bajo (monopolio privado) | Política industrial EE.UU./UE |
+| Tierras raras | Medio (China 60%) | Diversificación |
+
+**2. Demanda modificable**
+
+El régimen material responde a la demanda. Modificar la demanda es más factible que modificar la oferta.
+
+- Obsolescencia programada → Regulación de durabilidad mínima.
+- Crecimiento infinito de datos → Derechos de eliminación (GDPR modelo).
+- Computación redundante → Estándares de eficiencia obligatorios.
+
+**3. Externalización de costos visibilizable**
+
+El régimen actual externaliza costos a:
+- Territorios de extracción (contaminación)
+- Trabajadores de la cadena (salud, muerte)
+- Generaciones futuras (cambio climático)
+
+Hacer visible el costo puede cambiar decisiones de consumo e inversión.
+
+### ¿Quién puede?
+
+| Actor | Capacidad | Mecanismo | Límite |
+|-------|-----------|-----------|--------|
+| **Estados extractivos** | Media | Cartelización, impuestos a exportación | Dependencia de ingresos |
+| **Estados consumidores** | Media | Regulación de productos, aranceles | Lobbying corporativo |
+| **Coaliciones internacionales** | Alta en teoría | Tratados vinculantes | Enforcement débil |
+| **Consumidores organizados** | Baja | Boicots, presión | Atomización |
+| **Trabajadores de cadena** | Media | Organización sindical | Represión, precariedad |
+
+> "Mueren 1.88 millones de personas al año en accidentes de trabajo. Gran parte de este sufrimiento se concentra en la cadena de suministro de las tecnologías digitales." — [08-trabajo-campo-batalla](../../ARCHIVO/marco/08-trabajo-campo-batalla.md)
+
+### Test de Régimen Material (4 preguntas)
+
+Para cada tecnología:
+
+1. **¿Qué extrae?** (Recursos materiales, energía, trabajo)
+2. **¿De dónde?** (Geografía de la extracción)
+3. **¿Quién paga los costos ocultos?** (Externalidades)
+4. **¿Qué cuello de botella es regulable?** (Punto de intervención)
+
+### Implicación para FUNDACIÓN
+
+El régimen material es el límite más duro de la política digital. No se resuelve con "conciencia" ni "innovación".
+
+Pero tampoco es inmutable. Tiene puntos de intervención. La tarea política no es "cambiar el régimen material" (hybris) sino **identificar y presionar los puntos donde sí es modificable** (realismo estratégico).
 
 El siguiente capítulo pregunta: dado este régimen material, ¿qué sacrificamos para mantenerlo funcionando?
 

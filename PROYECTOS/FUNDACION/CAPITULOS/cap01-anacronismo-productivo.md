@@ -71,6 +71,8 @@ Cuando hoy decimos "democracia", pensamos en elecciones. Pero para los ateniense
 
 **Principio trasladable**: Las asambleas ciudadanas por sorteo ya se usan en Irlanda, Francia y otros países para deliberar sobre cuestiones constitucionales. No son reliquias históricas; son experimentos vivos que podrían escalar.
 
+**Condición de implementación**: La objeción de escala es real pero mal formulada. Atenas tenía ~30.000 ciudadanos elegibles; España tiene 47 millones. Pero el sorteo no requiere que todos participen simultáneamente. La estructura federativa resuelve el problema: sorteo **a cada escala**, no sorteo centralizado. Diez personas de cada barrio sorteadas para decidir sobre el barrio. Representantes de esos sorteados, vueltos a sortear, para decidir sobre la ciudad. Y así hacia arriba. Lo que no escala es la asamblea masiva; lo que sí escala es la **delegación por capas con mandato revocable**. Los experimentos actuales (Irlanda, Francia, Bélgica) son consultivos porque quienes detentan el poder no quieren cederlo. El sorteo con poder vinculante existe: se llama jurado popular. Funciona. Se ha resistido a siglos de ataques precisamente porque los poderosos también necesitan jurados que parezcan legítimos.
+
 ### Los commons medievales
 
 Antes del cercamiento de tierras comunales en Inglaterra (siglos XVI-XIX), la gestión colectiva de bosques, pastos y aguas era la norma, no la excepción. Los *commons* funcionaban bajo reglas locales de acceso, uso y sanción elaboradas por las propias comunidades.
@@ -78,6 +80,8 @@ Antes del cercamiento de tierras comunales en Inglaterra (siglos XVI-XIX), la ge
 Elinor Ostrom ganó el Nobel de Economía en 2009 demostrando que estos sistemas **no fracasaron por ineficiencia**. Fueron destruidos activamente por intereses que querían privatizar la tierra. El "cercamiento" no fue evolución natural del mercado; fue política de Estado al servicio de terratenientes.
 
 **Principio trasladable**: La gestión comunitaria de recursos digitales (Wikipedia, software libre, datos abiertos) recupera la lógica de los commons sin necesidad de tierra física.
+
+**Condición de implementación**: Los commons digitales funcionan mientras nadie los ataque seriamente. Wikipedia sobrevive porque no amenaza intereses económicos concentrados. El día que una cooperativa de datos compita realmente con Meta, la asfixiarán. Implementar commons digitales a escala requiere: (1) infraestructura propia (servidores, redes), (2) modelo económico sostenible sin publicidad ni vigilancia, (3) masa crítica de participantes antes de que la presión llegue.
 
 ### La mit'a inca
 
@@ -87,11 +91,15 @@ La mit'a no era "esclavitud con otro nombre". Era un sistema de **seguro colecti
 
 **Principio trasladable**: La renta básica universal recupera la idea de que el Estado debe algo a todos, no solo a quienes "merecen" ayuda.
 
+**Condición de implementación**: La mit'a funcionaba porque el Estado tenía capacidad de redistribuir (graneros, infraestructura) y las comunidades tenían capacidad de exigir reciprocidad (estaban organizadas, sabían lo que les correspondía). Una renta básica sin organización popular que la defienda será erosionada en la próxima crisis fiscal. Implementarla requiere: (1) presión organizada que impida recortes, (2) financiación no dependiente de ciclos electorales, (3) indexación automática que no requiera renegociación constante.
+
 ### Federalismo libertario
 
 Cataluña 1936, Chiapas desde 1994, Rojava desde 2012: laboratorios de autogestión federada donde las comunidades locales conservan soberanía mientras coordinan a escalas mayores. Ninguno ha sido derrotado por ineficiencia; todos han sido atacados militarmente por quienes no toleran la existencia de alternativas funcionales.
 
 **Principio trasladable**: La subsidiariedad radical —decisiones en la escala más pequeña posible, coordinación solo cuando sea necesario— sigue siendo una alternativa viable al Estado-nación centralizado.
+
+**Condición de implementación**: El federalismo libertario funciona en territorios donde hay (1) base productiva propia que reduzca dependencia del exterior, (2) capacidad de defensa contra quien quiera aplastarlo, (3) tiempo para construir instituciones antes de que llegue el ataque. Los experimentos que han durado décadas comparten una característica: surgieron en momentos de crisis del poder central (guerra civil, colapso estatal, vacío de soberanía). No esperaron permiso; ocuparon el espacio disponible. Los que esperaron a que "cambiaran las condiciones" siguen esperando.
 
 ---
 
@@ -146,4 +154,98 @@ La IA es estrictamente apolínea. Esa será su demarcación respecto a lo humano
 
 ---
 
-*[Nota técnica: Análisis bajo arquetipo Flove G6 (archetype), operando en Nivel 2 MMCO (Pseudo-Time Dynamics). Desplazamiento temporal. Cuadrante Wilber: SI→SI. Fuentes primarias: T04x01 §1-4.]*
+## 6. El sujeto que recuerda: quién reabre los futuros cancelados
+
+El catálogo de futuros cancelados es solo eso —un catálogo— si no hay quien lo use. ¿Quién puede reabrir instituciones que el poder cerró?
+
+### La trampa del archivo
+
+Hay una forma de recordar que es rendición. Es la melancolía del archivero que preserva lo muerto sin intención de revivirlo. El académico que escribe sobre los commons sin cultivar uno. El historiador que narra la derrota como si fuera destino.
+
+Esa forma de recordar **le sirve al poder**. Convierte las alternativas en piezas de museo: "mira qué bonito fue, qué pena que ya no sea posible". El anacronismo productivo exige lo contrario: recordar con las manos, no solo con los ojos.
+
+### Condición de posibilidad: organización previa
+
+Ninguna idea se impone sola. El sorteo ateniense no se recupera con un paper académico; se recupera cuando hay un movimiento capaz de imponerlo. Y ningún movimiento se improvisa.
+
+> "La precariedad no genera transformación, genera agotamiento." — [03-accion-colectiva-vida-personal](../../ARCHIVO/marco/03-accion-colectiva-vida-personal.md)
+
+Los grandes procesos de cambio fueron impulsados por sujetos con posiciones sociales **relativamente estables**, capacidad de **sostener el conflicto en el tiempo**, y recursos materiales y relacionales. Sin esa base, el repertorio de futuros cancelados es literatura.
+
+### El coste de recordar: sangre concreta
+
+Proponer alternativas al orden vigente tiene un precio que el relato oficial borra. No fueron "derrotas históricas" en abstracto:
+
+- Los comuneros de 1520 fueron **decapitados** en Villalar. Sus cuerpos expuestos como advertencia.
+- Los defensores de la tierra comunal en Inglaterra fueron **deportados** a Australia o **ahorcados** por robar en sus propios bosques.
+- Los experimentos de autogestión en 1936 fueron **bombardeados** —no porque fracasaran, sino porque funcionaban demasiado bien.
+- Las comunidades autónomas en selvas y montañas siguen siendo **masacradas** cuando se niegan a entregar sus recursos.
+
+**Recordar políticamente —no solo académicamente— requiere asumir que te dispararán**:
+
+| Futuro cancelado | Quién lo defendía | Cómo fue derrotado | Qué se necesita para reabrirlo |
+|------------------|-------------------|-------------------|-------------------------------|
+| Sorteo ateniense | Demócratas radicales | Victoria de oligarquías electivas | Movimiento que no dependa de elecciones |
+| Commons medievales | Comunidades campesinas | Cercamientos con violencia estatal | Organización territorial con capacidad de resistencia |
+| Federalismo libertario | Colectivos armados y civiles | Ataques militares combinados | Autodefensa + base productiva + red de solidaridad |
+
+> "Cuando una organización no puede defender la vida de sus militantes, está condenada a desaparecer." — [12-dilemas-accion-revolucionaria](../../ARCHIVO/marco/12-dilemas-accion-revolucionaria.md)
+
+### La pregunta incómoda: ¿con qué fuerza?
+
+Los filósofos del siglo XIX que teorizaron la abolición de la propiedad concentrada y del Estado opresor no eran ingenuos. Sabían que proponer alternativas genera represión. La pregunta no era si vendrían por ellos, sino cómo resistir cuando vinieran.
+
+La respuesta que encontraron —y que sigue vigente— tiene tres capas:
+
+**Capa 1: Organización federativa**. No una única organización piramidal (fácil de decapitar), sino una red de grupos autónomos coordinados. Si cae uno, los demás persisten. La forma organizativa **es** la defensa.
+
+**Capa 2: Base productiva propia**. Quien depende del salario del enemigo no puede luchar contra él. Las comunidades que han resistido —durante décadas, no años— tienen producción propia: tierra, talleres, cooperativas. No se trata de autarquía sino de autonomía suficiente para sobrevivir el asedio.
+
+**Capa 3: Autodefensa proporcional**. No basta con ser justos; hay que poder defenderse. Esto no significa militarismo. Significa que las comunidades que sobreviven tienen capacidad de elevar el coste de atacarlas. A veces con armas, a veces con organización que hace ingobernable el territorio ocupado, a veces con redes internacionales de solidaridad que imponen costes reputacionales.
+
+### Del catálogo a la acción: el Test de Contingencia extendido
+
+El Test de Contingencia del §4 debe añadir dos preguntas más:
+
+4. **¿Con qué fuerza se sostiene la alternativa propuesta?**  
+   No basta con que una institución derrotada sea funcionalmente superior. Hace falta identificar **quién la defiende** y **con qué recursos**.
+
+5. **¿Qué represalia esperar y cómo absorberla?**  
+   El poder no tolera alternativas funcionales porque son prueba de que otro mundo es posible. La represalia vendrá. El diseño institucional debe preverla.
+
+### Aplicación al presente digital
+
+¿Qué significa esto para las instituciones digitales que queremos disputar?
+
+| Institución vigente | Alternativa propuesta | ¿Quién la defiende hoy? | Represalia esperable |
+|---------------------|----------------------|-------------------------|---------------------|
+| Plataformas privadas de datos | Cooperativas de datos, commons digitales | Activistas fragmentados, algunas cooperativas | Asfixia económica, captura regulatoria |
+| Algoritmos opacos | Auditoría pública obligatoria | Periodistas, académicos, algunas agencias | Lobbying, amenazas legales, cooptación |
+| Cadena de suministro de chips | Soberanía tecnológica regional | Algunos Estados, ningún movimiento popular | Sanciones, desabastecimiento selectivo |
+| IA centralizada | Modelos abiertos, entrenamiento distribuido | Comunidad de software libre | Desfinanciación, apropiación corporativa |
+
+**Patrón visible**: Las alternativas digitales tienen defensores, pero débiles. No hay organización federativa robusta. No hay base productiva propia (dependen de infraestructura hostil). No hay autodefensa significativa.
+
+### Lo que funciona: lecciones de los que siguen en pie
+
+Las comunidades que han mantenido futuros alternativos durante décadas —no meses, no años, décadas— comparten características:
+
+1. **Territorio**. No ideas abstractas: tierra concreta donde implementar lo que proponen. El commons digital no tiene equivalente claro, pero las redes mesh locales y los centros de datos cooperativos apuntan en esa dirección.
+
+2. **Tiempo largo**. No esperan victoria en una generación. Plantan árboles que sus nietos cosecharán. La urgencia del ciclo electoral no los gobierna.
+
+3. **Preguntando caminan**. No imponen un modelo desde arriba. Construyen soluciones desde abajo, consultando constantemente a quienes serán afectados. La democracia no es un fin a alcanzar sino un método de caminar.
+
+4. **Mandar obedeciendo**. El poder no es para acumular sino para servir. Quien manda lo hace porque la comunidad se lo ha encomendado, y puede ser revocado en cualquier momento. Esto inmuniza contra la captura por caudillos carismáticos.
+
+### Implicación para FUNDACIÓN
+
+Este libro no es un llamamiento a la acción inmediata. Es un **repertorio expandido** para quienes ya están organizados o se organizarán. Pero el repertorio sin sujeto es archivo muerto.
+
+La pregunta que atraviesa los próximos capítulos: **¿Quién tiene hoy posición, recursos y voluntad para disputar las instituciones vigentes?** No en abstracto, sino en cada dominio concreto: la regulación algorítmica, la propiedad de los datos, la cadena de suministro de chips, el régimen energético.
+
+El anacronismo productivo abre el repertorio. El resto del libro pregunta quién lo usa. Y pregunta caminando, no sentado.
+
+---
+
+*[Nota técnica: Análisis bajo arquetipo Flove G6 (archetype), operando en Nivel 2 MMCO (Pseudo-Time Dynamics). Desplazamiento temporal. Cuadrante Wilber: SI→SI. Fuentes primarias: T04x01 §1-4. Hibridación con ARCHIVO/marco/03, 12.]*

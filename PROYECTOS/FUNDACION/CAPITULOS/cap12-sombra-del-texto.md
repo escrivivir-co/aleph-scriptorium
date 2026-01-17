@@ -1,3 +1,5 @@
+SIN REFACTORIZAR VER guia_de_consolidacion.md
+
 # Capítulo 12: La sombra del texto
 
 *Desplazamiento: Meta*
@@ -130,6 +132,76 @@ Al final, quizás la respuesta más digna ante la IA sea la de Diógenes: **rech
 No porque la IA sea mala. Sino porque nadie tiene derecho a taparnos el Sol. Ni un rey, ni una corporación, ni un algoritmo.
 
 El Sol sigue ahí. La tarea es volver a verlo.
+
+---
+
+## §6. Del diagnóstico a la acción: qué hacer después de leer
+
+FUNDACIÓN ha diagnosticado. Ahora debe responder la pregunta que toda obra política debe responder: **¿y qué?**
+
+### Lo que NO proponemos
+
+| Propuesta rechazada | Por qué |
+|---------------------|---------|
+| **"Ser más consciente"** | Insuficiente. La conciencia individual no cambia sistemas. |
+| **"Votar mejor"** | Necesario pero insuficiente. Los problemas trascienden ciclos electorales. |
+| **"Desconectarse"** | Privilegio de pocos. Y no cambia el sistema para quienes no pueden. |
+| **"Esperar regulación"** | La regulación llega tarde y capturada. |
+| **"Confiar en las corporaciones"** | Historial desastroso. Incentivos incompatibles. |
+
+### Lo que SÍ proponemos: 12 acciones concretas
+
+Cada capítulo termina con una pregunta sobre el sujeto. Aquí las respuestas agregadas:
+
+| Cap | Sujeto | Acción |
+|-----|--------|--------|
+| **1** | El que recuerda | **Documenta** futuros cancelados. Crea archivos de contingencia. |
+| **2** | El que regula | **Organiza** donde trabajas. Los trabajadores tech pueden presionar desde dentro. |
+| **3** | El que prioriza | **Exige** auditoría pública de qué se computa y por qué. |
+| **4** | El que fabrica | **Apoya** políticas de soberanía industrial. Los chips son geopolítica. |
+| **5** | El que organiza | **Construye** puentes entre formas de vida (arquitectos, usuarios, infraestructura). |
+| **6** | El que reabre | **Preserva** y **distribuye** alternativas técnicas y sociales. |
+| **7** | El que disputa | **Investiga** quién es dueño de qué infraestructura. Hazlo público. |
+| **8** | El que audita | **Demanda** explicabilidad. Usa los mecanismos legales que existen (GDPR, AI Act). |
+| **9** | El que navega | **Identifica** aliados en otros nichos. Las coaliciones ganan. |
+| **10** | El que transforma | **Presiona** puntos de cuello de botella regulables. El régimen material tiene grietas. |
+| **11** | El que nombra | **Sé parte del coro**. Nombra el sacrificio. Preserva testimonios. |
+| **12** | El que actúa | **Elige UNA acción**. Empieza. |
+
+### Según tu posición
+
+No todos pueden hacer todo. Según dónde estés:
+
+| Si eres... | Prioriza... |
+|------------|-------------|
+| **Trabajador tech** | Organización sindical, whistleblowing protegido, presión interna |
+| **Académico** | Investigación de sistemas opacos, educación pública, traducción de jerga |
+| **Periodista** | Documentación de sacrificios, seguimiento de propiedad infraestructural |
+| **Artista** | Hacer visible lo invisible, rituales de catarsis colectiva |
+| **Ciudadano** | Uso de mecanismos legales (solicitudes GDPR), consumo informado, apoyo a organizaciones |
+| **Funcionario público** | Enforcement real, capacitación técnica del Estado, resistencia a captura |
+
+### La pregunta final
+
+> "¿Cómo podemos gobernar cuando ganemos si nunca hemos practicado el ejercicio del poder?" — [12-dilemas-accion-revolucionaria](../../ARCHIVO/marco/12-dilemas-accion-revolucionaria.md)
+
+FUNDACIÓN no es un programa político. Es un **ejercicio de gimnasia** para pensar el problema.
+
+La gimnasia revolucionaria (término del ARCHIVO) consiste en practicar capacidades que usarás cuando sean necesarias:
+- Capacidad de nombrar sistemas complejos
+- Capacidad de identificar aliados y enemigos
+- Capacidad de proponer y defender alternativas
+- Capacidad de sostener el conflicto en el tiempo
+
+Leer FUNDACIÓN puede ser parte de esa gimnasia. Pero leer no basta.
+
+### La última frase
+
+No hay final feliz garantizado. No hay victoria inevitable. No hay sujeto histórico esperando despertar.
+
+Hay trabajo. Hay organización. Hay persistencia.
+
+**El Sol sigue ahí. Quien quiera verlo, tendrá que apartar las sombras.**
 
 ---
 

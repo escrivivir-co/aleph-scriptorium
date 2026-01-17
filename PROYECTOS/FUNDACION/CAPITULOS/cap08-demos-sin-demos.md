@@ -7,6 +7,38 @@
 
 ---
 
+## Prólogo: La asamblea y el algoritmo
+
+*Desde un caracol zapatista, madrugada de cualquier año*
+
+---
+
+Cuando la comunidad tiene que decidir algo importante —el uso de la tierra, el castigo de una falta, la distribución del agua—, se convoca asamblea. Todos los que serán afectados tienen voz. La discusión puede durar horas. Días, a veces. Nadie decide hasta que todos entienden.
+
+Es lento. Es ineficiente. Es **democracia**.
+
+El algoritmo decide en milisegundos. Procesa más variables de las que cualquier asamblea podría considerar. No necesita consenso: tiene parámetros. No necesita explicarse: tiene outputs.
+
+Es rápido. Es eficiente. Es **otra cosa**.
+
+Los tecnólogos dirán: "la asamblea no escala". Y tienen razón. No puedes hacer una asamblea de ochocientos millones de usuarios de TikTok. Pero la pregunta que evitan es: **¿por qué deberían ochocientos millones de personas estar sometidas a un mismo sistema de decisión?**
+
+La escala es el problema, no la solución.
+
+El federalista del siglo XIX ya lo sabía: las comunidades pequeñas pueden gobernarse a sí mismas; las grandes requieren delegación, y la delegación requiere confianza, y la confianza requiere transparencia. Si no puedes ver cómo se decide, no puedes confiar. Si no puedes confiar, no estás gobernando: estás siendo gobernado.
+
+El algoritmo opaco es la forma más pura de autoridad ilegítima: **decide sin mostrar las razones, castiga sin ofrecer apelación, gobierna sin pedir consentimiento**.
+
+El anarquista clásico rechazaba toda autoridad que no pudiera justificarse. El algoritmo opaco no puede justificarse porque **no está diseñado para justificarse**. Está diseñado para funcionar. Y "funcionar" significa: producir outputs que maximicen la métrica que alguien eligió.
+
+¿Quién eligió la métrica? No tú. No la asamblea. No el demos.
+
+Este capítulo pregunta: ¿qué queda de la democracia cuando las decisiones que afectan a millones las toma un proceso que nadie puede explicar?
+
+La respuesta, adelantamos, no es "mejorar los algoritmos". Es recordar que **antes del algoritmo existía otra forma de decidir**. Más lenta. Más humana. Y que esa forma no desapareció porque fuera peor. Desapareció porque no servía a quienes querían decidir por todos.
+
+---
+
 ## §0. Transición: De la muerte de Dios a la muerte del demos
 
 El Capítulo 6 diagnosticó los "futuros cancelados": cuando la verdad deja de ser determinable, colapsan los proyectos que la presuponían. La Ilustración prometía ciudadanos informados deliberando racionalmente. Esa promesa requería **verdad accesible**.
@@ -85,6 +117,38 @@ Demos sin demos: gobierno sin pueblo que pueda gobernar.
 
 ---
 
+## §4b. Los cuerpos que son clasificados
+
+*Interludio: voces desde el otro lado del score*
+
+---
+
+Hay quienes hablan de algoritmos como si fueran matemáticas puras. Funciones que reciben inputs y producen outputs. Neutrales. Objetivos.
+
+Pero los inputs son personas. Y las personas tienen cuerpos. Y los cuerpos tienen género, color, historia.
+
+**El scoring crediticio** no es neutral: replica los sesgos de los datos con que fue entrenado. Si históricamente los bancos negaron crédito a mujeres, el algoritmo aprende que "mujer" correlaciona con "riesgo". No es prejuicio del programador. Es **prejuicio cristalizado en datos**.
+
+**El reconocimiento facial** no es neutral: los datasets de entrenamiento sobre-representan rostros blancos masculinos. Resultado: las mujeres negras son mal identificadas con tasas de error 34 veces mayores que los hombres blancos. No es error técnico. Es **racismo automatizado**.
+
+**Los sistemas de predicción policial** no son neutrales: se entrenan con datos de arrestos, no de crímenes. Los barrios más vigilados producen más arrestos. Más arrestos entrenan al algoritmo a predecir más crimen en esos barrios. El algoritmo no predice crimen: **predice vigilancia pasada**.
+
+La teórica de la reproducción social preguntaría: ¿quién carga con el costo de estos "errores"? Siempre los mismos cuerpos. Las mujeres que no acceden al crédito. Los negros que son detenidos por falsos positivos. Los pobres cuyos barrios son sobre-vigilados.
+
+El algoritmo no tiene rostro. Pero sus víctimas sí.
+
+---
+
+**La opacidad protege a quienes diseñan, no a quienes son clasificados.**
+
+Cuando Amazon descubrió que su algoritmo de contratación penalizaba currículums que mencionaban "women's" (como "women's chess club"), lo desactivó en silencio. No hubo disculpa pública. No hubo compensación a las mujeres rechazadas. La opacidad permitió el error, y la opacidad permitió ocultarlo.
+
+Cuando el sistema COMPAS fue acusado de predecir reincidencia con sesgo racial, la empresa se escudó en "secreto comercial". Los acusados no podían saber por qué el algoritmo los clasificaba como "alto riesgo". Los jueces tampoco. **El secreto comercial pesa más que el derecho a saber por qué te condenan.**
+
+La crítica feminista de la tecnología no es "anti-tecnología". Es anti-neutralidad. Es recordar que **todo sistema técnico encarna decisiones políticas**. Y que esas decisiones, cuando son opacas, las pagan los cuerpos más vulnerables.
+
+---
+
 ## §5. De la opacidad a la ética: el puente roto
 
 La opacidad algorítmica no es solo un problema técnico o político. Es el umbral hacia una nueva ética.
@@ -103,7 +167,113 @@ El puente entre bioética y tecnoética está roto porque la opacidad lo impide:
 
 La opacidad algorítmica no solo impide la democracia (demos sin demos). Impide la ética. Porque toda ética requiere **atribución de responsabilidad**, y los sistemas opacos distribuyen la responsabilidad hasta disolverla.
 
-El próximo capítulo examina cómo esta disolución de responsabilidad estructura ecosistemas enteros de poder.
+---
+
+## §6. El sujeto que audita: restaurar las condiciones del demos
+
+El diagnóstico es claro: sin explicabilidad no hay demos. Pero **exigir explicabilidad no es suficiente**. ¿Quién la exige? ¿Con qué fuerza? ¿Cómo se hace cumplir?
+
+### Tres capas de opacidad y sus resistencias
+
+| Capa | Descripción | Resistencia técnica | Resistencia política |
+|------|-------------|--------------------|--------------------|
+| **Secrecía corporativa** | El código es propiedad privada | Ingeniería inversa, auditorías | Regulación de transparencia |
+| **Complejidad técnica** | Demasiados parámetros | XAI, modelos interpretables | Formación ciudadana |
+| **Emergencia sistémica** | Nadie diseñó el comportamiento | Monitoreo continuo | Límites precautorios |
+
+La primera capa (secrecía) es **política**. No hay razón técnica para ocultarla.
+
+La segunda capa (complejidad) es **parcialmente técnica**. XAI existe pero no escala.
+
+La tercera capa (emergencia) es **estructural**. No se resuelve con transparencia.
+
+### ¿Quién puede restaurar el demos?
+
+| Actor | Capacidad de auditoría | Capacidad de enforcement | Realismo |
+|-------|----------------------|-------------------------|----------|
+| **Reguladores públicos** | Media (si contratan técnicos) | Alta | Dependiente de voluntad política |
+| **Academia** | Alta | Baja | Solo recomendaciones |
+| **Periodismo técnico** | Media | Baja | Alcance limitado |
+| **Trabajadores internos** | Alta | Baja | Whistleblowing riesgoso |
+| **Usuarios organizados** | Baja | Media (boicot) | Fragmentado |
+
+> "¿Cómo podemos gobernar cuando ganemos si nunca hemos practicado el ejercicio del poder?" — [12-dilemas-accion-revolucionaria](../../ARCHIVO/marco/12-dilemas-accion-revolucionaria.md)
+
+### Propuesta: Infraestructura de Auditoría Pública
+
+El demos necesita **órganos propios** de auditoría algorítmica:
+
+1. **Agencias públicas de auditoría algorítmica**: Con poder de inspección, sanción, y acceso al código.
+2. **Estándares de explicabilidad obligatorios**: Para sistemas con efectos sobre más de X personas.
+3. **Protección de whistleblowers técnicos**: Inmunidad para quienes denuncien sistemas opacos dañinos.
+4. **Educación algorítmica ciudadana**: No todos programan, pero todos deben poder preguntar "¿por qué?"
+
+### Lo que ya existe (y lo que falta)
+
+| Mecanismo | Existe | Falta |
+|-----------|--------|-------|
+| Auditoría académica | Sí (parcial) | Acceso al código real |
+| Regulación (AI Act UE) | Sí (2024) | Capacidad de enforcement |
+| Whistleblowing tech | Sí (casos aislados) | Protección sistemática |
+| Educación algorítmica | Mínima | Todo |
+
+### Test de Demos (4 preguntas)
+
+Para cada sistema algorítmico con poder sobre personas:
+
+1. **¿Puede el afectado saber QUÉ decidió sobre él?** (Transparencia de decisión)
+2. **¿Puede el afectado saber POR QUÉ?** (Explicabilidad)
+3. **¿Puede el afectado APELAR?** (Recurso)
+4. **¿Puede la sociedad CAMBIAR las reglas?** (Soberanía colectiva)
+
+Si las 4 respuestas son "no" → No hay demos. Hay tecnocracia opaca.
+
+### Implicación para FUNDACIÓN
+
+La opacidad algorítmica no es un accidente técnico. Es una **estrategia de poder**. Quienes diseñan sistemas opacos se benefician de que nadie pueda auditarlos.
+
+Restaurar el demos requiere construir **infraestructura de auditoría** con la misma escala que la infraestructura opaca. Esto no es un problema de apps o herramientas. Es un problema de **instituciones políticas**.
+
+---
+
+## Epílogo: Mandar obedeciendo (en la era del algoritmo)
+
+*Desde cualquier lugar donde todavía se pregunte antes de decidir*
+
+---
+
+"Mandar obedeciendo" es la fórmula que las comunidades de las montañas del sureste propusieron como alternativa al poder vertical. El que manda, obedece al pueblo que lo mandó mandar. Si deja de obedecer, deja de mandar.
+
+El algoritmo no puede mandar obedeciendo. No tiene a quién obedecer. No tiene pueblo. Tiene **usuarios**. Y los usuarios no mandan: usan.
+
+Pero la fórmula sigue siendo útil como **test**:
+
+- ¿A quién obedece este algoritmo? → A la métrica que maximiza.
+- ¿Quién definió esa métrica? → El equipo de producto.
+- ¿Quién eligió a ese equipo? → La corporación.
+- ¿Quién gobierna la corporación? → Los accionistas.
+
+Cadena de mando perfectamente clara. **Cadena de obediencia perfectamente ausente.**
+
+El demos no está en ningún eslabón. El demos es el recurso que la cadena extrae: atención, datos, comportamiento predecible.
+
+---
+
+Los cinco hilos se anudan también aquí:
+
+**Hilo 1: Toda autoridad debe justificarse.** El algoritmo opaco es autoridad sin justificación. No porque no pueda explicarse (XAI existe), sino porque no quiere. La opacidad es una elección política disfrazada de límite técnico.
+
+**Hilo 2: El costo lo pagan los cuerpos vulnerables.** El sesgo algorítmico no es aleatorio: replica y amplifica la discriminación histórica. Mujeres, negros, pobres, migrantes: los de siempre.
+
+**Hilo 3: El territorio de disputa es nuevo, pero la lógica es vieja.** Así como el obrero del siglo XIX disputaba el control de la fábrica, el usuario del XXI debe disputar el control del algoritmo. No "usar mejor" la tecnología. **Gobernarla.**
+
+**Hilo 4: Nombrar es empezar a transformar.** La alfabetización algorítmica no es saber programar. Es saber preguntar: ¿quién decide? ¿con qué datos? ¿en beneficio de quién? El pedagogo de los oprimidos diría: primero nombrar la opresión, después transformarla.
+
+**Hilo 5: La eficiencia no es neutral.** El algoritmo es más eficiente que la asamblea. También el látigo es más eficiente que el diálogo. La pregunta no es qué funciona mejor, sino **mejor para quién**. El crítico de las instituciones advertía: cuando la herramienta define el problema, el humano se vuelve recurso de la herramienta.
+
+---
+
+El capítulo siguiente examina qué ocurre cuando los algoritmos opacos se organizan en ecosistemas. Ya no decisiones aisladas: **sistemas de sistemas** que nadie diseñó pero todos habitamos. Ecosistemas políticos sin ecología.
 
 ---
 

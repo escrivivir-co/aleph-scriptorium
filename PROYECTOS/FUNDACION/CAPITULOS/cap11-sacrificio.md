@@ -1,3 +1,5 @@
+SIN REFACTORIZAR VER guia_de_consolidacion.md
+
 # Capítulo 11: El sacrificio
 
 *Desplazamiento: Antropológico*
@@ -89,6 +91,75 @@ Catarsis: purificación a través del sufrimiento representado. El espectador ex
 - Sí si la tragedia se **nombra como política**
 
 El sacrificio se vuelve soportable cuando se reconoce como **decisión reversible**, no como destino.
+
+---
+
+## §6. El sujeto que sacrifica: quién construye el coro
+
+La tragedia griega no era solo protagonista. Tenía **coro**: la voz colectiva que nombra lo que está pasando, que ofrece contexto, que lamenta.
+
+El sacrificio contemporáneo no tiene coro. Los que pagan los costos son invisibles. Los que se benefician no necesitan nombrarlo. El espectáculo de la tecnología ocurre **sin tragedia**, solo con publicidad.
+
+### Construir el coro
+
+| Función del coro | Equivalente contemporáneo | ¿Existe? |
+|------------------|--------------------------|----------|
+| **Nombrar el conflicto** | Periodismo, documentales | Parcial |
+| **Dar voz a los invisibles** | Movimientos de afectados | Débil |
+| **Contextualizar la tragedia** | Academia, filosofía | Desconectada del público |
+| **Ofrecer catarsis colectiva** | ??? | Ausente |
+
+> "La ética de la responsabilidad rechaza tanto la irresponsabilidad del carisma como la irresponsabilidad del tecnócrata." — [05-carisma-vs-responsabilidad](../../ARCHIVO/diagnostico/05-carisma-vs-responsabilidad.md)
+
+### ¿Quién puede ser el coro?
+
+El coro no es el protagonista. No cambia el mundo. Pero **hace visible el sacrificio** para que otros puedan actuar.
+
+| Actor | Capacidad de nombrar | Capacidad de alcance |
+|-------|---------------------|---------------------|
+| **Periodismo investigativo** | Alta | Media (nichos) |
+| **Documentalistas** | Alta | Alta (si se distribuye) |
+| **Artistas** | Alta (emocional) | Variable |
+| **Académicos públicos** | Alta | Baja (jerga) |
+| **Trabajadores afectados** | Máxima (testimonio) | Mínima (silenciados) |
+| **Supervivientes** | Máxima | Mínima |
+
+### Lo que necesita el coro
+
+1. **Protección**: Quienes nombran el sacrificio enfrentan represalias.
+2. **Alcance**: Sin distribución, el coro canta al vacío.
+3. **Continuidad**: El sacrificio es permanente; el coro debe serlo.
+
+### Propuesta: Infraestructura de Coro Permanente
+
+El coro de la tragedia digital necesita:
+
+- **Archivos de testimonios**: Voces de afectados preservadas y accesibles.
+- **Conexión testimonio-escala**: Vincular historias individuales a patrones sistémicos.
+- **Rituales de conmemoración**: Momentos donde la sociedad reconoce el costo.
+- **Traducción continua**: De jerga técnica a lenguaje público.
+
+El Capítulo 8 (Trabajo como campo de batalla en ARCHIVO) documenta que mueren 1.88 millones al año. ¿Dónde está su memorial? ¿Dónde su coro?
+
+### Test de Coro (4 preguntas)
+
+Para cada tragedia tecnológica:
+
+1. **¿Se ha nombrado públicamente?** (Visibilidad)
+2. **¿Tienen voz los afectados?** (Testimonio)
+3. **¿Hay contexto sistémico?** (Explicación)
+4. **¿Hay ritual de reconocimiento?** (Catarsis colectiva)
+
+### Implicación para FUNDACIÓN
+
+FUNDACIÓN aspira a ser parte del coro. Pero un texto no es coro. Es **partitura**.
+
+El coro necesita:
+- Voces que canten (periodistas, artistas, afectados)
+- Espacio donde cantar (medios, instituciones)
+- Público que escuche (ciudadanos no atomizados)
+
+Sin esos tres elementos, FUNDACIÓN es un documento académico más. Con ellos, puede ser parte de una infraestructura de nombrar el sacrificio.
 
 ---
 
