@@ -5,9 +5,11 @@
 | Campo | Valor |
 |-------|-------|
 | **Fecha inicio** | 2026-01-11 |
-| **Estado** | 🟢 ACTIVA |
+| **Estado** | ⏸️ PAUSADA (pendiente ejecución de refactorización) |
+| **Fecha pausa** | 2026-01-17 |
 | **Épica relacionada** | FUND-REFACTOR-1.0.0 |
 | **Carpeta** | ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-11_refactorizacion-fundacion/ |
+| **Próximo paso** | Ejecutar [PROMPT_REFACTOR_FUNDACION.md](./PROMPT_REFACTOR_FUNDACION.md) |
 
 ## Participantes
 
