@@ -6,7 +6,7 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| 7 | @redflag | ⏳ WAITING | — |
+| 12 | @blueflag | ⏳ WAITING | — |
 
 ## Historial de Turnos
 
@@ -18,6 +18,11 @@
 | 4 | @aleph | 2026-01-11 | 2026-01-11 | FASE 1 completada: distribución 3 textos en 12 caps, 3 arcos narrativos, P0/P1/P2 | [T004](02_ACTAS/T004_aleph_sintesis-distribucion.md) |
 | 5 | @blueflag | 2026-01-11 | 2026-01-11 | Tests de Verdad: 7 transformaciones (2 P0, 3 P1, 2 P2), foco en P≠NP y Nietzsche | [T005](02_ACTAS/T005_blueflag_plan-intervencion-verdad.md) |
 | 6 | @blackflag | 2026-01-11 | 2026-01-11 | Tests de Sombras: 7 transformaciones (3 P0, 3 P1, 1 P2), foco en pólvora, posverdad técnica, captura enemiga | [T006](02_ACTAS/T006_blackflag_plan-intervencion-sombras.md) |
+| 7 | @redflag | 2026-01-11 | 2026-01-11 | Tests de Estructura: 9 transformaciones (4 P0, 5 P1-P2), cuellos de botella, colonialismo tech, régimen material expandido | [T007](02_ACTAS/T007_redflag_plan-intervencion-estructura.md) |
+| 8 | @yellowflag | 2026-01-17 | 2026-01-17 | Tests de Límites: 3 P0 (pre-trans fallacy, inconmensurabilidad), 2 P1 (cuadrantes, mercantilización), 3 P2 (refinamientos) | [T008](02_ACTAS/T008_yellowflag_plan-intervencion-limites.md) |
+| 9 | @orangeflag | 2026-01-17 | 2026-01-17 | Tests de Registro: 4 transformaciones (T-P0 ocultar metadatos, T-P1 voz cronista, T-P2 ganchos, T-P3 modulación retórica) | [T009](02_ACTAS/T009_orangeflag_plan-intervencion-registro.md) |
+| 10 | @aleph + @periodico + @revisor | 2026-01-17 | 2026-01-17 | FASE 3: Consolidación 35 trans → 17 fusionadas (6 P0, 7 P1, 4 P2), matriz convergencia | [T010](02_ACTAS/T010_triada_estudio-propuestas.md) |
+| 11 | @aleph | 2026-01-17 | 2026-01-17 | FASE 3: Aplicación 17 transformaciones a FUNDACIÓN (A1-A6, B1-B7, C1-C4) | [T011](02_ACTAS/T011_aleph_aplicacion-intervenciones.md) |
 
 ## Cola de Turnos (Plan)
 
@@ -63,11 +68,11 @@
 
 | Estado de Consenso | Bandera | Iteración | Notas |
 |--------------------|---------|-----------|-------|
-| ⏳ Pendiente | @blueflag | 1 | — |
-| ⏳ Pendiente | @blackflag | 1 | — |
-| ⏳ Pendiente | @redflag | 1 | — |
-| ⏳ Pendiente | @yellowflag | 1 | — |
-| ⏳ Pendiente | @orangeflag | 1 | — |
+| ⏳ Pendiente validación | @blueflag | 1 | Aplicó 7 trans.; posiblemente cambien con P0-2 Yellowflag |
+| ⏳ Pendiente validación | @blackflag | 1 | Aplicó 7 trans.; esperará feedback de Yellowflag |
+| ⏳ Pendiente validación | @redflag | 1 | Aplicó 9 trans.; clarificaciones Yellowflag en Cap. 7, 9, 10 |
+| ✅ INTERVENCIÓN COMPLETA | @yellowflag | 1 | 3 P0, 2 P1, 3 P2; próximo: @orangeflag |
+| ✅ INTERVENCIÓN COMPLETA | @orangeflag | 1 | T-P0 (ocultar metadatos), T-P1, T-P2, T-P3 |
 
 ### FASE X: Cierre
 

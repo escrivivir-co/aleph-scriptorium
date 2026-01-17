@@ -20,9 +20,9 @@
 | @FloveEditor | Interfaces de navegación | ✅ DONE T005-B,C,D (anexos) |
 | @blueflag | Auditoría de Verdad | ✅ DONE T005 (7 transformaciones: 2 P0, 3 P1, 2 P2) |
 | @blackflag | Auditoría de Sombras | ✅ DONE T006 (7 transformaciones: 3 P0, 3 P1, 1 P2) |
-| @redflag | Auditoría de Estructura | ⏳ WAITING T007 |
-| @yellowflag | Auditoría de Límites | ⚪ IDLE |
-| @orangeflag | Auditoría de Registro | ⚪ IDLE |
+| @redflag | Auditoría de Estructura | ✅ DONE T007 (9 transformaciones: 3 P0, 4 P1, 2 P2) |
+| @yellowflag | Auditoría de Límites | ✅ DONE T008 (8 transformaciones: 3 P0, 2 P1, 3 P2) |
+| @orangeflag | Auditoría de Registro | ✅ DONE T009 (4 transformaciones de estilo) |
 
 ## Objetivo
 

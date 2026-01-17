@@ -69,3 +69,4 @@
 [submodule "AgentLoreSDK"]
 	path = AgentLoreSDK
 	url = https://github.com/escrivivir-co/mcp-agent-lore-sdk.git
+	branch = integration/beta/scriptorium
