@@ -1,9 +1,19 @@
 # Capítulo 11: El sacrificio
 
-*Desplazamiento: Escalar*
+*Desplazamiento: Antropológico*
 
 > **Fuente**: T04x03 (Tragedia aristotélica)  
 > **Tamiz aplicado**: T011 B3 (Sacrificio con Mecanismo)
+
+---
+
+## §0. Transición: De la especie al sacrificio
+
+El Capítulo 5 preguntaba qué somos cuando coevolucionamos con máquinas. La respuesta provisional: **simbiosis asimétrica**, no fusión equilibrada.
+
+Este capítulo pregunta: ¿qué sacrificamos para mantener esa simbiosis? Si somos "Hominoidea viralis", ¿qué órganos atrofiamos para reproducir nuestras herramientas?
+
+El sacrificio no es metáfora: es privacidad cedida, autonomía delegada, trabajos destruidos. La pregunta es si ese sacrificio es **tragedia** (inevitable) o **política** (elegida).
 
 ---
 

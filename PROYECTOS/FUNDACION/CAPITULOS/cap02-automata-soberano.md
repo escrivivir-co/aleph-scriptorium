@@ -1,215 +1,156 @@
-# Capítulo 2: El autómata soberano
+# Capítulo 2: El autómata cautivo
 
-## Actores no-humanos en la polis
+## Las máquinas que deciden por nosotros
 
 > **Arco I — Los tres desplazamientos** | Capítulo 2 de 12  
-> Función: Desplazamiento antropológico — incluir lo no-humano en el cálculo político
+> Función: Desplazamiento antropológico — desnaturalizar al agente automático
 
 ---
 
 ## Abstract
 
-El constitucionalismo clásico asume que el sujeto político es humano: vota, delibera, consiente. Pero decisiones que afectan a millones son tomadas por **algoritmos, infraestructuras, ecosistemas, patógenos**. Ninguno "decide" en sentido rousseauniano, pero todos **condicionan** el espacio de decisión de formas que ningún texto fundacional ha sabido capturar.
+El autómata **no está aquí "de por sí"**. Fue construido por corporaciones específicas, con fines específicos, para operar en condiciones específicas. No es soberano; es **cautivo** de quienes lo diseñaron, entrenaron y desplegaron.
 
-No se trata de dar "derechos a la naturaleza" (eco-romanticismo) ni de celebrar la IA (tecnofetichismo). Se trata de **diseñar instituciones que incluyan lo que no puede hablar** en el cálculo político. Este capítulo establece la segunda coordenada: el desplazamiento antropológico que reconoce agencias sin rostro humano.
+Cuando un algoritmo decide si obtienes un crédito, si tu currículum llega a un humano, si tu publicación se viraliza o desaparece, no estás enfrentando una ley de la naturaleza. Estás enfrentando una **decisión empresarial cristalizada en código**. La máquina no tiene voluntad propia; tiene la voluntad de sus creadores, congelada y escalada.
 
----
-
-## Índice
-
-1. [El sujeto político y sus límites](#1-el-sujeto-político-y-sus-límites)
-2. [Tipología de actores no-humanos](#2-tipología-de-actores-no-humanos)
-3. [El problema específico de la IA](#3-el-problema-específico-de-la-ia)
-4. [Mecanismos de representación de lo ausente](#4-mecanismos-de-representación-de-lo-ausente)
-5. [Infraestructura como bien político](#5-infraestructura-como-bien-político)
+Este capítulo establece la segunda coordenada de *Fundación*: el desplazamiento antropológico. Antes de evaluar qué pueden hacer los autómatas, debemos preguntar **quién los construyó, para qué, y a costa de quién**.
 
 ---
 
-## 1. El sujeto político y sus límites
+## 1. La pregunta que no se hace
 
-### Abstract del punto
+Cada vez que interactúas con un sistema automatizado, hay una pregunta que el sistema no puede responder: **¿Por qué existo?**
 
-Desmontar el supuesto del constitucionalismo clásico: que todo actor político es humano, racional, capaz de deliberar y consentir. Mostrar cómo este supuesto genera un punto ciego sistemático ante agencias que condicionan la política sin participar en ella.
+No me refiero a por qué funciona técnicamente. Me refiero a por qué fue construido, quién tomó esa decisión, qué problema pretendía resolver, y para quién. Estas preguntas no están en el código. Están en las salas de juntas, en los planes de negocio, en las decisiones de inversión que precedieron a la primera línea de código.
 
-### Subíndice
+El autómata es **ontológicamente dependiente**. No surge de sí mismo como surge un árbol de una semilla. Surge de instituciones humanas con intereses, presupuestos y plazos. Olvidar esto es cometer el error fundamental de la era digital: confundir el producto con la naturaleza.
 
-- 1.1 El sujeto rousseauniano: voto, deliberación, consentimiento
-- 1.2 Lo que queda fuera: agencias sin voz
-- 1.3 Tres posiciones insuficientes
-  - Antropocentrismo jurídico: solo los humanos son sujetos de derecho
-  - Eco-romanticismo: la naturaleza tiene derechos intrínsecos
-  - Tecnofetichismo: la IA resolverá los problemas
+Proponemos analizar todo autómata desde **tres dominios**:
 
-### Plantilla de redacción
+### Dominio ontológico: ¿Qué es?
 
-```
-[Apertura: imagen de decisión tomada por agente no-humano que afecta a humanos]
+Un modelo de lenguaje grande (LLM) es una función matemática que predice la siguiente palabra más probable dado un contexto. No "entiende" en ningún sentido humanamente reconocible. Procesa patrones estadísticos extraídos de billones de palabras escritas por humanos.
 
-[Desarrollo: los límites del sujeto político clásico]
+Un sistema de recomendación es una matriz de preferencias inferidas que maximiza una métrica definida por sus operadores —generalmente, tiempo de permanencia en plataforma o probabilidad de compra.
 
-[Crítica de las tres posiciones insuficientes]
+Un algoritmo de scoring crediticio es un modelo de regresión que correlaciona variables demográficas y conductuales con probabilidad de impago, calibrado sobre datos históricos que incluyen todas las injusticias históricas.
 
-[Transición: necesidad de una tipología]
-```
+Ninguno de estos sistemas "decide" en el sentido en que decide un juez, un médico o un ciudadano. **Calculan**. La diferencia importa porque las decisiones implican responsabilidad, y los cálculos la diluyen.
 
----
+### Dominio fenomenológico: ¿Cómo se experimenta?
 
-## 2. Tipología de actores no-humanos
+Desde el punto de vista del usuario, el autómata aparece como una **caja negra con interfaz amigable**. Escribes una pregunta; aparece una respuesta. Subes un currículum; aparece o no aparece en la bandeja de un reclutador. Solicitas un préstamo; te aprueban o te rechazan.
 
-### Abstract del punto
+La experiencia está diseñada para ocultar la complejidad. No ves los miles de parámetros ajustados, las funciones de pérdida optimizadas, los sesgos heredados de los datos de entrenamiento. Ves una respuesta limpia que parece venir de ninguna parte.
 
-Establecer una distinción operativa entre tres tipos de actores no-humanos con implicaciones políticas distintas. No todo lo no-humano es igual: sistemas técnicos autónomos, infraestructuras críticas y sistemas ecológicos plantean problemas diferentes.
+Esta fenomenología genera una ilusión de **neutralidad mecánica**. Si la máquina lo dice, debe ser objetivo. Pero la máquina no dice nada; **repite patrones que absorbió de nosotros**, magnificados y acelerados.
 
-### Subíndice
+### Dominio pragmático: ¿A quién sirve?
 
-- 2.1 Sistemas técnicos autónomos
-  - IA, algoritmos, plataformas
-  - Problema: deciden sin mandato, capturan sin ser capturables
-- 2.2 Infraestructuras críticas
-  - Redes eléctricas, internet, logística
-  - Problema: condicionan toda acción posible, son nodos de vulnerabilidad
-- 2.3 Sistemas ecológicos
-  - Clima, biodiversidad, ciclos biogeoquímicos
-  - Problema: establecen límites absolutos, no negociables
+Aquí está la pregunta que el sistema no puede responder por sí mismo: ¿quién se beneficia de su existencia?
 
-### Plantilla de redacción
+Un modelo de detección de fraude sirve a la entidad financiera, no al cliente sospechoso de fraude. Un sistema de vigilancia predictiva sirve a la policía, no a la comunidad vigilada. Un algoritmo de moderación de contenido sirve a la plataforma, no a los usuarios moderados.
 
-```
-[Tabla de tipología con ejemplos y problemas]
-
-[Desarrollo de cada tipo con casos concretos]
-
-[Por qué la distinción importa para el diseño institucional]
-
-[Transición al problema específico de la IA]
-```
+Esto no significa que estos sistemas sean malos *per se*. Significa que **no son neutrales**. Fueron construidos para resolver problemas de alguien, y ese alguien raramente eres tú.
 
 ---
 
-## 3. El problema específico de la IA
+## 2. Las tres olas de automatización
 
-### Abstract del punto
+Para entender dónde estamos, necesitamos saber de dónde venimos. La historia de la automatización no es una línea recta hacia la "inteligencia"; es una serie de transformaciones en la relación entre humanos y máquinas.
 
-La IA no es una herramienta más. Es un agente que optimiza funciones objetivo definidas por humanos, pero cuyos efectos escapan al control de quienes la desplegaron. ¿Cómo se gobierna algo que no obedece, no vota, no delibera, pero condiciona todo lo anterior?
+### Primera ola: Automatización de fuerza (siglo XIX)
 
-### Subíndice
+La máquina de vapor y el telar mecánico no pensaban. Amplificaban la fuerza física, permitiendo hacer en horas lo que antes requería días. El trabajador pasó de artesano a operador: su habilidad dejó de estar en sus manos y pasó a estar en la máquina que manejaba.
 
-- 3.1 Optimización sin mandato
-  - Funciones objetivo definidas por humanos, efectos no decididos
-  - El algoritmo de recomendación que produce polarización
-- 3.2 El problema del control
-  - No obedece, no vota, no delibera
-  - Pero condiciona quién ve qué, quién accede a qué
-- 3.3 Propuesta: trazabilidad + auditoría + responsabilidad + límites
-  - Trazabilidad obligatoria
-  - Auditoría pública
-  - Responsabilidad del desplegador
-  - Límites de escala
+**Consecuencia política**: La concentración de maquinaria generó la fábrica, y la fábrica generó el proletariado industrial. La automatización de fuerza no eliminó el trabajo; lo transformó y lo concentró bajo nuevas formas de control.
 
-### Plantilla de redacción
+### Segunda ola: Automatización de cálculo (siglo XX)
 
-```
-[Apertura: caso concreto de efecto no decidido]
+La computadora digital automatizó operaciones que antes requerían ejércitos de calculistas humanos. Tareas que llevaban semanas —nóminas, inventarios, simulaciones— se completaron en segundos.
 
-[Análisis del problema de control]
+**Consecuencia política**: El trabajo administrativo se fragmentó. Surgió una nueva capa de "trabajadores del conocimiento" que operaban las máquinas de calcular, mientras desaparecían los oficios de escritura, archivo y contabilidad manual.
 
-[Propuesta de mecanismos: no prohibir, pero hacer políticamente visible]
+### Tercera ola: Automatización de patrón (siglo XXI)
 
-[Transición a mecanismos generales]
-```
+Los modelos de aprendizaje automático automatizan la detección de patrones en datos. No siguen instrucciones explícitas; "aprenden" correlaciones de ejemplos. Esto permite automatizar tareas que antes parecían intrínsecamente humanas: reconocer rostros, traducir idiomas, generar texto coherente.
+
+**Consecuencia política**: Por primera vez, la automatización amenaza trabajos cognitivos que se creían a salvo. Pero más importante: los patrones que aprenden las máquinas **incluyen nuestros sesgos, perpetúan nuestras injusticias, y las escalan a velocidades imposibles para la corrección humana**.
 
 ---
 
-## 4. Mecanismos de representación de lo ausente
+## 3. Conductismo tecnológico
 
-### Abstract del punto
+Hay una ironía histórica en el auge del aprendizaje automático. A mediados del siglo XX, el conductismo dominaba la psicología académica. Su premisa: la mente es una caja negra; solo podemos estudiar estímulos (inputs) y respuestas (outputs). Lo que ocurre adentro es irrelevante o inaccesible.
 
-Instituciones que "hablen por" lo que no puede hablar. No metáfora: diseño concreto. Ombudsman del clima, defensor de las generaciones futuras, auditor algorítmico con poder de veto. Desarrollo de los mecanismos que permitirían incluir a los ausentes.
+El conductismo fue derrotado en psicología por la revolución cognitiva de los años 60. Se demostró que los humanos no somos cajas negras; tenemos representaciones internas, procesos mentales, intenciones que importan.
 
-### Subíndice
+Pero el conductismo **regresó disfrazado de tecnología**. Un modelo de aprendizaje profundo es, funcionalmente, un conductista perfecto: solo conoce inputs y outputs; optimiza respuestas sin "entender" nada; trata el interior como una caja negra de parámetros ajustables.
 
-- 4.1 Representación de lo ausente: el concepto
-  - No metáfora sino diseño institucional
-  - Precedentes: defensor del menor, ombudsman
-- 4.2 Ombudsman del clima y defensor de generaciones futuras
-  - Mandato, poderes, límites
-- 4.3 Auditor algorítmico con poder de veto
-  - Selección, competencias, responsabilidad
-- 4.4 Umbrales no-negociables
-  - Límites que ninguna deliberación humana puede cruzar
-  - Constitucionalizados, no sujetos a mayorías
+Cuando aplicamos estos sistemas a decisiones sobre personas, estamos **tratando a humanos como cajas negras**. El sistema de scoring crediticio no sabe por qué tienes mal historial; solo sabe que ciertas variables correlacionan con impago. No le importa si tu deuda fue por enfermedad, divorcio o despido injusto. Las razones son irrelevantes; solo importa el patrón.
 
-### Plantilla de redacción
-
-```
-[Principio general: representación sin mandato]
-
-[Diseño institucional de cada órgano]
-
-[Poderes y límites: veto suspensivo, no absoluto]
-
-[Problema: legitimidad de quien representa a quien no puede mandatar]
-```
+Este conductismo tecnológico tiene una consecuencia política devastadora: **elimina la posibilidad de justificación**. Un juez humano puede (y debe) explicar por qué te condena. Un algoritmo de riesgo solo puede decir que tu perfil estadístico coincide con perfiles que reinciden. La diferencia entre explicación y correlación es la diferencia entre ciudadanía y sujeción.
 
 ---
 
-## 5. Infraestructura como bien político
+## 4. ¿Qué es la información?
 
-### Abstract del punto
+Claude Shannon, padre de la teoría de la información, definió la información como **reducción de incertidumbre**. Un mensaje tiene más información cuanto más improbable era antes de recibirlo. "El sol saldrá mañana" es casi redundante; "mañana llueven diamantes" sería altamente informativo (aunque falso).
 
-Las redes de las que depende toda acción (energía, comunicación, transporte) no pueden ser propiedad privada sin control público sustantivo. La infraestructura condiciona la política: quien la controla tiene un poder que ninguna elección otorga.
+Esta definición es brillante para ingeniería de comunicaciones. Pero tiene un problema cuando se aplica a decisiones sobre humanos: **ignora el significado**.
 
-### Subíndice
+Para Shannon, "el gato está en el mat" y "el mat está en el gato" tienen la misma cantidad de información (mismas letras, misma improbabilidad a priori). Pero para un humano, una tiene sentido y la otra no.
 
-- 5.1 Infraestructura como condición de posibilidad
-  - Sin red no hay acción colectiva
-  - La técnica ya gobierna afectos a escala masiva
-- 5.2 El problema de la propiedad privada de infraestructura crítica
-  - Poder sin mandato, decisión sin deliberación
-- 5.3 Propuesta: control público sustantivo
-  - No necesariamente propiedad estatal
-  - Gobernanza como commons de las redes críticas
-- 5.4 Gancho hacia el capítulo 3
+Los sistemas actuales heredan esta ceguera al significado. Procesan patrones sintácticos sin acceso a la semántica. Pueden generar texto coherente sin entender qué dicen. Pueden detectar correlaciones sin comprender causas. Pueden clasificar rostros sin reconocer personas.
 
-### Plantilla de redacción
-
-```
-[Desarrollo del argumento sobre infraestructura]
-
-[Casos: cuando la infraestructura decide por nosotros]
-
-[Propuesta de gobernanza]
-
-[Gancho final: Si reconocemos actores no-humanos, debemos reconocer también daños no-humanos y límites no-negociables. Pero ¿quién tiene legitimidad para establecer esos límites cuando afectan a toda la especie? Llegamos al problema que ningún clásico resolvió: la escala.]
-```
+**Implicación política**: Cuando delegamos decisiones en sistemas ciegos al significado, delegamos a entidades que **no pueden comprender lo que está en juego**. El sistema de moderación no sabe si una imagen es arte, denuncia o pornografía; solo sabe si coincide con patrones de imágenes etiquetadas como "prohibidas".
 
 ---
 
-## Referencias del ARCHIVO
+## 5. La trampa de la eficiencia
 
-| Concepto | Documento |
-|----------|-----------|
-| La técnica como gobierno, no como instrumento neutral | [03-posverdad-gobierno-tecnico.md](../../../ARCHIVO/justificacion/03-posverdad-gobierno-tecnico.md) |
-| Captura regulatoria extendida a sistemas no-humanos | [01-seleccion-sistemica.md](../../../ARCHIVO/marco/01-seleccion-sistemica.md) |
+El argumento más común para desplegar autómatas es la **eficiencia**: procesan más rápido, cuestan menos, no se cansan. ¿Por qué pagar a humanos para hacer lo que las máquinas hacen mejor?
 
----
+Este argumento tiene varios fallos:
 
-## Conflictos a trabajar
+**Primero**: "Mejor" es relativo a una métrica. Un algoritmo puede ser mejor en maximizar clics, pero peor en servir al interés público. La eficiencia siempre es eficiencia *para algo*, y ese algo lo elige quien diseña el sistema.
 
-| Posición | Problema |
-|----------|----------|
-| Antropocentrismo jurídico | Solo los humanos son sujetos de derecho → ignora la agencia sistémica no-humana |
-| Eco-romanticismo | La naturaleza tiene derechos intrínsecos → moraliza sin diseñar |
-| Tecnofetichismo | La IA resolverá los problemas → delega la política en lo técnico |
+**Segundo**: La eficiencia a corto plazo puede ser ineficiencia a largo plazo. Un sistema de contratación que filtra currículums eficientemente puede estar eliminando sistemáticamente a candidatos atípicos que aportarían innovación. La métrica de corto plazo (tiempo de procesamiento) oculta el costo de largo plazo (homogeneización del talento).
+
+**Tercero**: Hay valores que no se pueden medir por eficiencia. La justicia no es eficiente; es laboriosa, lenta, deliberada. La democracia no es eficiente; es ruidosa, conflictiva, incierta. Automatizar estos procesos en nombre de la eficiencia puede ser eficiente en destruir lo que los hacía valiosos.
 
 ---
 
-## Decisión institucional
+## 6. El autómata como testigo
 
-El texto debe reconocer **tres tipos de actores no-humanos** con implicaciones políticas distintas:
+Proponemos una inversión de perspectiva. En lugar de preguntar "¿qué puede hacer el autómata por nosotros?", preguntemos: **"¿qué revela el autómata sobre nosotros?"**
 
-| Tipo | Ejemplos | Problema político |
-|------|----------|-------------------|
-| Sistemas técnicos autónomos | IA, algoritmos, plataformas | Deciden sin mandato, capturan sin ser capturables |
-| Infraestructuras críticas | Redes eléctricas, internet, logística | Condicionan toda acción posible, nodos de vulnerabilidad |
-| Sistemas ecológicos | Clima, biodiversidad, ciclos biogeoquímicos | Establecen límites absolutos, no negociables |
+Un modelo de lenguaje entrenado en texto de internet refleja los sesgos, prejuicios y suposiciones de internet. Cuando genera texto sexista, no está "fallando"; está **funcionando exactamente como fue diseñado**, mostrando los patrones que absorbió.
+
+Un sistema de reconocimiento facial que falla más con rostros negros no tiene un "bug"; tiene los datos de entrenamiento que le dieron, que subrepresentaban rostros negros. El fallo técnico es síntoma de fallo social.
+
+En este sentido, el autómata es un **testigo involuntario** de nuestras estructuras sociales. Absorbe el mundo como es —con sus desigualdades, exclusiones y jerarquías— y lo devuelve amplificado. Mirarlo es mirarnos a nosotros mismos, cristalizados en código.
+
+Esto no exculpa a los autómatas; los contextualiza. No son malvados ni benévolos. Son **espejos deformantes** que amplifican lo que les damos. Si no nos gusta lo que reflejan, el problema somos nosotros.
+
+---
+
+## 7. Del cautiverio a la deliberación
+
+El autómata es cautivo de sus creadores. Pero sus creadores también están cautivos de sus incentivos: maximizar beneficios, minimizar costos, escalar rápido, capturar mercados. El problema no es solo técnico; es **institucional**.
+
+Para que la automatización sirva a fines democráticos, necesitamos:
+
+**Transparencia radical**: No basta con publicar el código (que pocos entienden). Necesitamos explicaciones accesibles de qué hace el sistema, para quién, y a costa de quién. Los afectados tienen derecho a saber por qué fueron clasificados, puntuados, rechazados.
+
+**Auditoría independiente**: Los sistemas de alto impacto deben ser auditados por terceros sin conflicto de interés. No solo auditoría técnica (¿funciona?) sino auditoría política (¿a quién sirve?).
+
+**Derecho a la intervención humana**: En decisiones que afectan derechos fundamentales, debe haber siempre la posibilidad de apelar a un humano que pueda evaluar circunstancias que el sistema no puede capturar.
+
+**Deliberación sobre fines**: Antes de automatizar, preguntar: ¿queremos que esto sea automatizado? ¿Qué se pierde cuando lo hacemos? ¿Quién decide si el trade-off vale la pena?
+
+El siguiente capítulo abordará lo que ocurre cuando estos sistemas operan a **escala**: cómo las infraestructuras técnicas transforman lo que es políticamente posible, y por qué el problema no es solo quién controla las máquinas, sino qué nos hacen las máquinas por el mero hecho de existir.
+
+---
+
+*[Nota técnica: Análisis bajo arquetipo Flove SOULS (souls), operando en Nivel 0a MMCO (State Space). Desplazamiento antropológico. Fuentes primarias: T04x02 §4 (IAD/IAG/IAF), §3 (conductismo vs cognitivismo), §2 (Shannon).]*

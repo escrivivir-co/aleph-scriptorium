@@ -1,384 +1,209 @@
-# Capítulo 4: El repertorio y sus arquitecturas
+# Capítulo 4: Repertorio de arquitecturas
 
-## Herramientas para el diseño fundacional
+## Las máquinas que hacen máquinas
 
-> **Arco I — Los tres desplazamientos** | Capítulo 4 de 12  
-> Función: Despliegue del repertorio y ensamblaje en arquitecturas institucionales
+> **Arco II — Formas concretas** | Capítulo 4 de 12  
+> Función: Cartografiar las arquitecturas computacionales como formas políticas cristalizadas en silicio
 
 ---
 
 ## Abstract
 
-Los tres desplazamientos (anacronismo, no-humano, escala) abren el espacio. Pero el espacio vacío no basta: necesitamos **herramientas concretas**. La arqueología de instituciones olvidadas nos ofrece tres mecanismos que interrumpen la acumulación: **sorteo** (distribuye poder), **commons** (distribuye recursos), **límites** (confina la hybris).
+Un chip no es solo silicio dopado con impurezas. Es una **decisión geopolítica solidificada** en transistores. Cuando Taiwan Semiconductor Manufacturing Company (TSMC) fabrica el 54% de los semiconductores avanzados del mundo, cada procesador que usas lleva inscrita una configuración de poder internacional.
 
-No son modelos a copiar. Son **principios de diseño** trasladables. Este capítulo despliega el repertorio y lo ensambla en tres arquitecturas institucionales experimentales, cada una con su propia sombra: cómo fallará y cómo detectarlo.
-
----
-
-## Índice
-
-### Parte I: El repertorio
-
-1. [El sorteo: cuando elegir era aristocrático](#1-el-sorteo-cuando-elegir-era-aristocrático)
-2. [Los commons: lo que el cercamiento destruyó](#2-los-commons-lo-que-el-cercamiento-destruyó)
-3. [Los límites: lo que confinaba la hybris](#3-los-límites-lo-que-confinaba-la-hybris)
-
-### Parte II: Las arquitecturas
-
-4. [Arquitectura 1 — La asamblea de los ausentes](#4-arquitectura-1--la-asamblea-de-los-ausentes)
-5. [Arquitectura 2 — Soberanía sin territorio](#5-arquitectura-2--soberanía-sin-territorio)
-6. [Arquitectura 3 — El código y la ley](#6-arquitectura-3--el-código-y-la-ley)
-
-### Síntesis
-
-7. [Del repertorio a la arquitectura](#7-del-repertorio-a-la-arquitectura)
+Este capítulo despliega el repertorio de arquitecturas computacionales —CPU, GPU, TPU, QPU— no como evolución técnica neutral sino como **formas materiales de coherencia**. Cada arquitectura estabiliza un tipo diferente de patrón computacional, y cada una depende de una cadena de suministro que es, simultáneamente, una cadena de vulnerabilidad.
 
 ---
 
-# PARTE I: EL REPERTORIO
+## §0. Transición: Del límite lógico al límite material
+
+El capítulo anterior estableció P≠NP como límite epistémico: hay problemas fáciles de verificar pero difíciles de resolver. Ese límite es **lógico-matemático**, independiente del hardware.
+
+Este capítulo ancla ese límite en **materia**. El problema P≠NP no flota en el éter: se encarna en transistores, silicio, coltán, energía. Cada operación computacional tiene un costo físico. La intratabilidad no es solo teorema: es **factura de luz, tonelada de mineral, hectárea de refrigeración**.
 
 ---
 
-## 1. El sorteo: cuando elegir era aristocrático
+## 1. La materia que computa
 
-### Abstract del punto
+Desde la perspectiva de la física fundamental, una computadora es un sistema que mantiene **patrones de coherencia** en materia organizada. Los transistores son interruptores microscópicos que pueden estar en uno de dos estados: conduciendo o no conduciendo, 1 o 0. Pero para que ese estado sea útil, debe **persistir** el tiempo suficiente para ser leído y procesado.
 
-Durante siglos, "democracia" significó sorteo: cualquier ciudadano podía ser llamado a gobernar. La elección era el método aristocrático: seleccionar a los "mejores". Recuperar esta historia es recuperar una herramienta.
+Esta persistencia no es gratuita. Requiere:
 
-### Subíndice
+- **Energía constante** para mantener los estados
+- **Disipación de calor** para evitar que los estados se corrompan
+- **Aislamiento** de perturbaciones externas
+- **Sincronización** entre millones de transistores
 
-- 1.1 Mecanismos históricos
-  - Atenas (siglo V a.C.): la mayoría de cargos por sorteo
-  - Florencia (siglos XIV-XV): sorteo con pre-selección
-  - Venecia (siglos XIII-XVIII): alternancia sorteo/elección
-- 1.2 ¿Por qué fue abandonado?
-  - La elección como filtro aristocrático
-  - El olvido interesado
-- 1.3 Principios trasladables
-  - Cámaras por sorteo: delibera, no gobierna
-  - Jurados ciudadanos ampliados
-  - Sorteo para control: supervisión no nombrada por el supervisado
+Un procesador moderno contiene más de 10 mil millones de transistores en un centímetro cuadrado. Cada uno debe cambiar de estado miles de millones de veces por segundo, en perfecta coordinación con los demás. El hecho de que esto funcione en absoluto es un logro de ingeniería de materiales, no solo de diseño lógico.
 
-### Plantilla de redacción
-
-```
-[Apertura: la democracia que olvidamos]
-
-[Desarrollo histórico: cómo funcionaba el sorteo]
-
-[Por qué dejó de usarse: el olvido como operación]
-
-[Principios trasladables: qué podemos recuperar hoy]
-```
+**Implicación MMCO**: En el marco de niveles de emergencia ontológica, la computación ocurre en el **Nivel 4 (Matter & Fields)**. Los bits son patrones de coherencia estabilizados en materia. La información no flota libre; está **encarnada** en configuraciones físicas específicas.
 
 ---
 
-## 2. Los commons: lo que el cercamiento destruyó
+## 2. Las cuatro arquitecturas
 
-### Abstract del punto
+### CPU: Coherencia secuencial
 
-Los commons no eran caos ni tragedia. Eran sistemas de gestión colectiva con reglas precisas. Funcionaron siglos. Fueron destruidos por el cercamiento: privatización forzosa. Ostrom demostró que funcionaban.
+La Unidad Central de Procesamiento fue diseñada para ejecutar instrucciones **una tras otra**, en secuencia predecible. Es versátil: puede hacer cualquier cosa que se le programe. Pero su versatilidad tiene un costo: no puede hacer muchas cosas a la vez.
 
-### Subíndice
+La CPU opera en lo que podríamos llamar **coherencia de Nivel 2** (Pseudo-Time Dynamics en el marco MMCO): secuencia ordenada, tiempo discretizado, estados que se suceden.
 
-- 2.1 Mecanismos históricos
-  - Open fields ingleses: tierras cultivadas en común
-  - Ejidos mexicanos: tierra comunal con derechos de uso
-  - Sistemas de riego tradicionales: gestión colectiva del agua
-- 2.2 Los 8 principios de Ostrom
-  - Límites claramente definidos
-  - Coherencia entre reglas y condiciones locales
-  - Participación de los afectados
-  - Monitoreo por los propios usuarios
-  - Sanciones graduales
-  - Mecanismos de resolución de conflictos
-  - Reconocimiento de derechos de organización
-  - Anidamiento en múltiples niveles
-- 2.3 Principios trasladables
-  - Nuevos commons: datos, espectro, conocimiento, atmósfera, genoma
-  - Propiedad limitada: reconocer propiedad pero con límites
-  - Constitucionalización de comunes globales
+**Fortaleza**: Flexibilidad. Un CPU puede correr cualquier algoritmo.
+**Debilidad**: Velocidad en tareas paralelas. Procesa una cosa, luego otra, luego otra.
 
-### Plantilla de redacción
+### GPU: Coherencia paralela
 
-```
-[Apertura: la tragedia que no fue]
+La Unidad de Procesamiento Gráfico nació para renderizar imágenes —millones de píxeles que deben calcularse simultáneamente. Su arquitectura está optimizada para hacer **lo mismo a muchos datos a la vez**.
 
-[Desarrollo: cómo funcionaban los commons]
+La GPU opera en **coherencia de Nivel 1** (Block Universe en MMCO): todo el espacio de datos coexiste, se procesa en paralelo, el tiempo se aplana.
 
-[Ostrom: las condiciones del éxito]
+**Fortaleza**: Velocidad bruta en operaciones repetitivas.
+**Debilidad**: Inflexibilidad. Solo es eficiente si el problema admite paralelización.
 
-[Nuevos commons: qué necesita gestión colectiva hoy]
-```
+### TPU: Coherencia tensorial
 
----
+La Unidad de Procesamiento Tensorial fue diseñada por Google específicamente para redes neuronales. Opera con **tensores**: matrices multidimensionales que representan los pesos y activaciones de modelos de aprendizaje profundo.
 
-## 3. Los límites: lo que confinaba la hybris
+La TPU opera en **coherencia de Nivel 0a** (State Space): el espacio de todos los estados posibles del modelo, recorrido durante entrenamiento e inferencia.
 
-### Abstract del punto
+**Fortaleza**: Eficiencia extrema en multiplicación de matrices.
+**Debilidad**: Especificidad. Solo sirve para un tipo de cómputo.
 
-La acumulación ilimitada no es "natural". Todas las sociedades que duraron tenían instituciones de límite. El capitalismo es la primera formación que ideologiza la ilimitación como virtud. Recuperar los mecanismos de confinamiento.
+### QPU: Coherencia cuántica (especulativa)
 
-### Subíndice
+La Unidad de Procesamiento Cuántico usa qubits que pueden estar en **superposición** de estados. En teoría, esto permite explorar exponencialmente más soluciones simultáneamente.
 
-- 3.1 Mecanismos históricos
-  - Jubileo hebreo: cancelación periódica de deudas
-  - Potlatch: prestigio por dar, no por acumular
-  - Limitación de mandatos: cargos anuales, prohibición de reelección
-  - Leyes suntuarias: límites al gasto ostentoso
-  - Impuesto sucesorio radical (propuesta jeffersoniana)
-- 3.2 Principios de diseño del límite
-  - Periodicidad: se activa en intervalos regulares
-  - Automaticidad: no depende de voluntad política
-  - Universalidad: aplica a todos los que cruzan el umbral
-  - Visibilidad: público, conocido, anticipable
-  - Compensación: quien es limitado recibe algo a cambio
-- 3.3 Principios trasladables
-  - Topes de propiedad constitucionales
-  - Herencia limitada: impuesto sucesorio progresivo
-  - Mandatos únicos y rotación
-  - Jubileo de datos: borrado periódico obligatorio
-  - Umbrales de concentración con mecanismos automáticos
+La QPU operaría en **coherencia de Nivel 0b** (Branching Paths): superposición de posibilidades antes del colapso.
 
-### Plantilla de redacción
+**Fortaleza** (teórica): Velocidad exponencial en problemas específicos.
+**Debilidad** (práctica): Fragilidad extrema. La coherencia cuántica colapsa ante cualquier perturbación. Los QPU actuales requieren temperaturas cercanas al cero absoluto y aislamiento casi perfecto.
 
-```
-[Apertura: la hybris como problema político]
-
-[Desarrollo: instituciones de límite en la historia]
-
-[Principios de diseño: qué hace funcionar un límite]
-
-[Trasladables: límites para la acumulación contemporánea]
-```
+**Pregunta abierta**: ¿Los QPU operan realmente en Nivel 0b, o son simulaciones de Nivel 4 que explotan efectos cuánticos sin acceder al nivel ontológico subyacente?
 
 ---
 
-## Síntesis del repertorio
+## 3. La geopolítica del chip
 
-| Problema | Mecanismo olvidado | Principio trasladable |
-|----------|-------------------|----------------------|
-| Acumulación de poder | Sorteo | Cámaras por sorteo, control por sorteo |
-| Acumulación de recursos | Commons | Nuevos commons, propiedad limitada |
-| Acumulación ilimitada | Límites | Topes, herencia limitada, jubileos |
+Aquí llegamos al corazón político del capítulo. Las cuatro arquitecturas no flotan en el vacío platónico; están **fabricadas** en lugares específicos, por empresas específicas, bajo condiciones geopolíticas específicas.
 
----
+### El oligopolio del silicio
 
-# PARTE II: LAS ARQUITECTURAS
+La fabricación de chips avanzados (menos de 7 nanómetros) está controlada por un oligopolio:
 
-> **Caveat**: Las arquitecturas que siguen son propuestas experimentales, no soluciones. El texto no pretende haber resuelto el problema de la escala ni el de la representación de lo no-humano. Pretende haber nombrado el vacío y ofrecido mecanismos falsables.
+| Empresa | País/Región | Cuota de mercado (chips avanzados) |
+|---------|-------------|-----------------------------------|
+| TSMC | Taiwan | 54% |
+| Samsung | Corea del Sur | 17% |
+| Intel | Estados Unidos | 8% |
+| Otros | Varios | 21% |
 
----
+**Tres empresas controlan el 79% de la fabricación de los chips que hacen funcionar la inteligencia artificial, los smartphones, los servidores y los vehículos autónomos.**
 
-## 4. Arquitectura 1 — La asamblea de los ausentes
+### Geopolítica de rehenes
 
-### Abstract del punto
+Esta concentración crea una **geopolítica de rehenes mutuos**:
 
-Responde al Capítulo 2 (El autómata soberano): ¿cómo incluir en la deliberación política a quienes no pueden hablar? Ecosistemas, generaciones futuras, animales, infraestructuras críticas.
+**Si China toma Taiwan**: La producción global de chips avanzados se detiene. TSMC ha declarado que destruiría sus fábricas antes de dejarlas caer en manos hostiles. El 54% de la capacidad mundial desaparecería. La IA occidental entraría en coma.
 
-### Subíndice
+**Si USA sanciona a China**: Huawei y otras empresas chinas pierden acceso a chips avanzados. China tiene capacidad de fabricación propia, pero décadas de retraso tecnológico. Las sanciones de 2019-2022 ya provocaron escasez masiva.
 
-- 4.1 Diseño institucional
-  - Cámara de los ausentes: cuerpo deliberativo por sorteo
-  - Ombudsman del futuro: defensor con poder de veto sobre decisiones >50 años
-  - Auditor algorítmico: supervisión de sistemas autónomos
-  - Fideicomiso ecológico: gestión de recursos con mandato intergeneracional
-- 4.2 El problema del fideicomiso
-  - ¿Ante quién responden los fideicomisarios?
-  - Soluciones: responsabilidad ante precedentes, auditoría cruzada, sucesión por sorteo, mandato revocable
-- 4.3 Reglas de operación
-  - Sunset clauses cada 10 años
-  - Poder de veto suspensivo, no absoluto
-  - Rotación obligatoria
-  - Transparencia radical
-- 4.4 Módulo de sostenimiento material
-  - Condición de posibilidad del sorteo
-  - Compensación, protección laboral, servicios de cuidado, formación
-- 4.5 Sombra de esta arquitectura
-  - Cómo fallará: casta profesional, veto como arma de bloqueo
-  - Indicadores de fracaso
+**Si Taiwan sufre desastre natural**: Un terremoto, un tifón severo, una pandemia que cierre las fábricas —cualquier perturbación local tendría efectos globales inmediatos.
 
-### Plantilla de redacción
+### La cadena de suministro como cadena de vulnerabilidad
 
-```
-[Problema que resuelve]
+Fabricar un chip avanzado requiere:
 
-[Tabla de componentes con mecanismos y fuentes del repertorio]
+1. **Diseño** (USA, UK, Taiwan): ARM, Nvidia, AMD, Apple diseñan arquitecturas.
+2. **Litografía** (Países Bajos): ASML fabrica las únicas máquinas capaces de grabar transistores de 5nm. Una sola empresa.
+3. **Fabricación** (Taiwan, Corea): TSMC y Samsung tienen las fábricas.
+4. **Empaquetado** (China, Malaysia): Ensamblaje final.
+5. **Materias primas** (globales): Silicio ultrapuro, gases especiales, tierras raras.
 
-[Desarrollo de cada componente]
-
-[Sombra: cómo fallará y cómo detectarlo]
-```
-
-### Indicadores de fracaso
-
-1. Más del 30% de los sorteados rechaza el cargo
-2. El perfil socioeconómico de quienes aceptan se homogeneiza
-3. Más de 3 vetos consecutivos sobre el mismo tema sin propuesta alternativa en 6 meses, o ratio vetos/decisiones >25% sostenido durante 2 períodos
+**Cada eslabón es un punto de estrangulamiento potencial.** La redundancia es mínima porque la especialización extrema maximiza la eficiencia —y minimiza la resiliencia.
 
 ---
 
-## 5. Arquitectura 2 — Soberanía sin territorio
+## 4. Shannon y los límites de la información
 
-### Abstract del punto
+Claude Shannon, en 1948, definió la unidad básica de información: el **bit**. Un bit es la cantidad de información necesaria para resolver una incertidumbre entre dos opciones equiprobables. Matemáticamente:
 
-Responde al Capítulo 3 (El problema de la escala): ¿cómo tomar decisiones que afectan a toda la especie sin pretender un gobierno mundial imposible?
+$$I = \log_2(N)$$
 
-### Subíndice
+Donde $I$ es información en bits y $N$ es el número de posibilidades.
 
-- 5.1 Federación de escalas con competencias diferenciadas
-  - Local: vida cotidiana (democracia directa + sorteo)
-  - Biorregional: recursos naturales (commons + asambleas)
-  - Estatal: redistribución y derechos (representación + sorteo)
-  - Continental: coordinación económica (federación + asambleas)
-  - Planetario: límites absolutos (veto de mínimos + sorteo global)
-- 5.2 Principio de transmisión de restricciones
-  - Herencia de límites, no de mandatos
-  - Prohibiciones de umbral, no órdenes positivas
-- 5.3 Mecanismo de vetos cruzados
-  - Lo local veta lo estatal si viola subsidiariedad
-  - Lo planetario veta lo estatal si cruza umbrales de supervivencia
-- 5.4 Enforcement técnico: el problema del actor hegemónico
-  - Bonos de cumplimiento
-  - Verificación distribuida de umbrales
-  - Períodos de objeción para cambios críticos
-  - Consecuencias escalonadas
-- 5.5 Punto ciego central
-  - Oráculos: ¿quién certifica que se cruzó el umbral?
-  - Infraestructura: ¿quién opera las redes de exclusión?
-  - Jurisdicción real: ¿quién ejecuta físicamente?
-- 5.6 Sombra de esta arquitectura
-  - Cómo fallará: actor hegemónico que sale del sistema
-  - Indicadores de fracaso
+Esta fórmula tiene aplicaciones prácticas inmediatas. De las primeras veces que se puso en práctica fue para enviar la foto de un ladrón de bancos desde una ciudad a otra donde se preveía que el fugado se dirigía. La cantidad de ceros y unos necesarios para transmitir el retrato por cable telefónico —enviado como corriente que o bien circulaba a 0 voltios o a 5— tardó cuatro horas. Casi tres veces menos de lo que necesitó el ladrón para llegar por carretera; la policía lo esperaba con el retrato robot en mano.
 
-### Plantilla de redacción
+Para pintar un retrato digital necesitamos una matriz que represente el folio. Para cada píxel necesitamos saber el color. Si solo tenemos dos estados (blanco o negro), basta un bit por píxel. Pero si queremos una paleta RGB completa de 255 colores, logarítmicamente, necesitamos 8 bits por píxel para codificar esa variedad. La fórmula de Shannon permite calcular exactamente cuántos bits requiere cualquier nivel de precisión.
 
-```
-[Problema que resuelve]
+Esta definición es brillante para ingeniería de comunicaciones. Pero tiene una limitación que Shannon reconoció: **ignora el significado**. Para la teoría de la información, "el gato duerme" y "duerme gato el" tienen la misma cantidad de información (mismas letras, misma improbabilidad).
 
-[Tabla de escalas con competencias y mecanismos de legitimidad]
+### Implicación MMCO
 
-[Desarrollo del principio de transmisión de restricciones]
+En el marco de niveles ontológicos, el bit de Shannon vive en el **Nivel 4** (materia) sin acceso directo a niveles superiores donde emerge el significado. La información no es lo mismo que el conocimiento; el conocimiento requiere un agente que **interprete** la información en un contexto.
 
-[El problema del enforcement: propuesta técnica]
-
-[Punto ciego: qué no se puede resolver con diseño]
-
-[Sombra e indicadores]
-```
-
-### Indicadores de fracaso
-
-1. Un actor cruza un umbral y no hay consecuencia efectiva
-2. Los bonos se ejecutan pero el comportamiento no cambia
-3. Actores medianos abandonan el sistema porque las garantías son inasumibles
+Los modelos de lenguaje actuales operan estadísticamente en Nivel 4 (patrones en matrices de pesos) produciendo outputs que **parecen** operar en niveles superiores (semántica, pragmática). La apariencia de comprensión emerge de la escala de los patrones, no de acceso real a niveles ontológicos de significado.
 
 ---
 
-## 6. Arquitectura 3 — El código y la ley
+## 5. Búsqueda tipo A vs tipo B
 
-### Abstract del punto
+Shannon distinguió dos tipos de búsqueda en espacios de soluciones:
 
-Responde al Capítulo 2 (sistemas técnicos autónomos): los algoritmos gobiernan sin mandato. ¿Cómo someterlos a control político sin destruir su utilidad?
+**Tipo A (fuerza bruta)**: Enumerar todas las posibilidades y verificar cada una. Garantiza encontrar la solución si existe, pero el tiempo crece exponencialmente con el tamaño del problema.
 
-### Subíndice
+**Tipo B (heurística)**: Usar reglas aproximadas para podar el espacio de búsqueda. Más rápido pero sin garantías de optimalidad.
 
-- 6.1 Constitucionalismo técnico: principios
-  - Trazabilidad: explicar cada decisión que afecte derechos
-  - Auditoría pública: código accesible para auditores
-  - Responsabilidad del desplegador: quien despliega responde
-  - Límites de escala: umbral público de usuarios para revisión
-  - Derecho a la desconexión: alternativa humana en decisiones críticas
-  - Límites a la inferencia: prohibición de inferir categorías protegidas
-- 6.2 Órgano de control: Autoridad Algorítmica
-  - Selección por sorteo entre candidatos con reputación
-  - Poder de suspensión cautelar
-  - Rotación obligatoria cada 3 años
-  - Financiación por tasa sobre despliegue algorítmico
-- 6.3 El problema de la certificación
-  - ¿Quién certifica a los expertos?
-  - Solución: certificación distribuida tipo commons, peer review abierto, rotación de certificadores, reputación revocable
-- 6.4 Sunset clauses obligatorias
-  - Fecha de caducidad para todo sistema autónomo
-  - Renovación solo tras auditoría de impacto
-- 6.5 Sombra de esta arquitectura
-  - Cómo fallará: élite técnica autolegitimada, sistemas que mutan más rápido que la auditoría
-  - Indicadores de fracaso
+Los humanos hacemos casi exclusivamente búsqueda Tipo B. No enumeramos todas las jugadas posibles de ajedrez; "vemos" patrones que sugieren líneas prometedoras. Esta capacidad heurística es lo que permitía a los grandes maestros derrotar a computadoras —hasta que las computadoras tuvieron suficiente velocidad para que el Tipo A (con podas inteligentes) superara al Tipo B humano.
 
-### Plantilla de redacción
+### Implicación arquitectónica
 
-```
-[Problema que resuelve]
+- **CPU**: Diseñada para Tipo A (instrucciones secuenciales, enumera opciones)
+- **GPU**: Diseñada para Tipo A masivamente paralelo (enumera más opciones por segundo)
+- **TPU**: Diseñada para Tipo B estadístico (redes neuronales que "aprenden" heurísticas)
+- **QPU**: Potencialmente diseñada para un Tipo A que explora superposiciones
 
-[Tabla de principios y mecanismos]
-
-[Diseño de la Autoridad Algorítmica]
-
-[El problema de la certificación: solución propuesta]
-
-[Sombra e indicadores]
-```
-
-### Indicadores de fracaso
-
-1. El 80% de las auditorías las realizan menos del 5% de los auditores
-2. Los sistemas suspendidos se redespliegan con cambios cosméticos
-3. La tasa sobre despliegue se convierte en barrera que consolida monopolios
+La elección de arquitectura no es neutral: **preselecciona qué tipo de problemas pueden abordarse eficientemente**.
 
 ---
 
-## 7. Del repertorio a la arquitectura
+## 6. El perceptrón y la neurona computacional
 
-### Abstract del punto
+Frank Rosenblatt, en 1958, propuso el **perceptrón**: un modelo simplificado de neurona que recibe inputs, los pondera, los suma, y produce un output binario según si la suma supera un umbral.
 
-Síntesis final que conecta los tres desplazamientos, los tres mecanismos del repertorio y las tres arquitecturas propuestas. El capítulo cierra el Arco I y abre la pregunta que guiará el resto de *Fundación*: ¿cómo fallarán estas arquitecturas?
+El perceptrón es una aproximación de Nivel 4 (materia computando) a lo que ocurre en el cerebro biológico. Funciona para ciertos problemas (clasificación lineal) pero falla para otros (el famoso problema XOR que Minsky y Papert demostraron en 1969).
 
-### Subíndice
+Las redes neuronales modernas apilan capas de perceptrones con funciones de activación no lineales. Esta profundidad permite aproximar cualquier función continua —teorema de aproximación universal. Pero la profundidad también crea **opacidad**: no sabemos qué "aprende" cada capa.
 
-- 7.1 Tabla de síntesis
-- 7.2 El diseño no es garantía
-- 7.3 Gancho hacia los arcos siguientes
+### Transparencia vs opacidad
 
-### Plantilla de redacción
+| Modelo | Transparencia | Capacidad |
+|--------|---------------|-----------|
+| Árbol de decisión | Alta (cada decisión visible) | Limitada |
+| Regresión logística | Media (coeficientes interpretables) | Limitada |
+| Red neuronal profunda | Baja (pesos no interpretables) | Alta |
+| Transformer (GPT) | Muy baja (billones de parámetros) | Muy alta |
 
-```
-[Tabla síntesis: desplazamiento → problema → arquitectura → herramientas]
-
-[Declaración: el diseño es necesario pero no suficiente]
-
-[Gancho final: Tenemos las coordenadas, las herramientas y las arquitecturas. Pero todo diseño institucional puede ser capturado. El resto del año debe preguntar: ¿cómo fallarán estas arquitecturas? ¿Qué indicadores lo detectarán? ¿Qué sacrificamos al elegirlas?]
-```
-
-### Tabla de síntesis
-
-| Desplazamiento | Problema | Arquitectura | Herramientas combinadas |
-|----------------|----------|--------------|------------------------|
-| Antropológico (Cap 2) | Actores no-humanos | La asamblea de los ausentes | Sorteo + límites + commons |
-| Jurisdiccional (Cap 3) | Escala sin demos | Soberanía sin territorio | Commons + límites + vetos |
-| Técnico (Cap 2) | Algoritmos sin control | El código y la ley | Límites + sorteo + sunset |
+**El trade-off arquitectónico fundamental**: A mayor capacidad, menor interpretabilidad. A mayor interpretabilidad, menor capacidad. No conocemos arquitecturas que maximicen ambas.
 
 ---
 
-## Referencias del ARCHIVO
+## 7. Hacia una política de las arquitecturas
 
-### Eje Marco (herramientas activas)
+Las arquitecturas no son solo técnica; son **política cristalizada en silicio**. Elegir qué arquitectura desarrollar, fabricar y desplegar es elegir:
 
-| Concepto | Documento |
-|----------|-----------|
-| Rousseau sobre representación y alienación | [06-soberania-voluntad-general.md](../../../ARCHIVO/marco/06-soberania-voluntad-general.md) |
-| Aristóteles: la crematística introduce el infinito en la polis | [07-hybris-crematistica-infinito.md](../../../ARCHIVO/marco/07-hybris-crematistica-infinito.md) |
-| La acumulación es efecto de posición, no de mérito | [01-seleccion-sistemica.md](../../../ARCHIVO/marco/01-seleccion-sistemica.md) |
-| Por qué la coordinación es difícil y cómo diseñar para superarla | [03-accion-colectiva-vida-personal.md](../../../ARCHIVO/marco/03-accion-colectiva-vida-personal.md) |
+- Qué problemas serán computables eficientemente
+- Quién tendrá acceso al cómputo
+- Qué dependencias geopolíticas se crean
+- Qué formas de conocimiento (transparente vs opaco) se privilegian
 
-### Eje Justificación (memoria del por qué)
+**Principio de diversificación arquitectónica**: Así como la biodiversidad protege ecosistemas, la diversidad de arquitecturas computacionales protege contra puntos únicos de fallo. La concentración en GPU para IA crea vulnerabilidad sistémica.
 
-| Concepto | Documento |
-|----------|-----------|
-| Por qué las arquitecturas técnicas requieren defensas políticas | [03-posverdad-gobierno-tecnico.md](../../../ARCHIVO/justificacion/03-posverdad-gobierno-tecnico.md) |
-| No hay mundo común que restaurar; hay que construir | [04-fractura-mundo-comun.md](../../../ARCHIVO/justificacion/04-fractura-mundo-comun.md) |
+**Principio de soberanía computacional**: Los Estados que no controlan su cadena de suministro de chips no tienen soberanía digital real. Europa aprendió esto dolorosamente con la escasez de 2021; ahora invierte €43 mil millones en el European Chips Act.
 
-### Eje Diagnóstico (tono y orientación)
+**Principio de auditoría arquitectónica**: Las decisiones de qué arquitecturas usar para qué fines deben ser transparentes y auditables. No es lo mismo usar una red opaca para recomendar películas que para decidir libertades condicionales.
 
-| Concepto | Documento |
-|----------|-----------|
-| Diseñar sin garantía de éxito, evitar las cuatro trampas | [04-fe-lucida-epica.md](../../../ARCHIVO/diagnostico/04-fe-lucida-epica.md) |
+El siguiente capítulo aborda qué ocurre cuando estas arquitecturas se despliegan a escala: las **formas de vida** que emergen de la simbiosis —asimétrica— entre humanos y máquinas.
+
+---
+
+*[Nota técnica: Análisis bajo Nivel 4 MMCO (Matter & Fields). Arquitecturas como coherencias materiales. Transformación T011 B2 integrada: geopolítica del chip. Fuentes primarias: T04x02 §3 (Shannon, CPU/GPU/TPU), §2 (perceptrón).]*

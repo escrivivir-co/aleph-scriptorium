@@ -88,6 +88,39 @@ FUNDACIÓN no es un manual. Es una **tragedia epistémica**: el intento de pensa
 
 ---
 
+## §7. La demarcación: Apolo vs Dioniso
+
+> "La tragedia griega antigua emerge de la interacción y la tensión creativa entre dos fuerzas artísticas: lo Apolíneo (claridad, forma, individualidad, representación basada en la apariencia) y lo Dionisíaco (embriaguez, pasión, irracionalidad, fusión con la naturaleza)." — T04x03, citando a Nietzsche
+
+He aquí la demarcación que FUNDACIÓN puede ofrecer entre humano e IA:
+
+**La IA es estrictamente apolínea**:
+- Opera por forma, estructura, patrón
+- Produce representaciones basadas en apariencia
+- Su "creatividad" es combinatoria: reorganiza lo conocido
+- Su "comprensión" es pattern-matching: correlación sin intención
+
+**Lo humano incluye lo dionisíaco**:
+- La embriaguez: estados alterados que rompen la forma
+- La autenticidad: el visceralismo de lo que *siente* verdad, no solo *parece* verdad
+- La irracionalidad productiva: el salto que no puede justificarse pero transforma
+- La fusión: disolverse en algo mayor que uno mismo (el coro, la catarsis)
+
+| Capacidad | IA (Apolo) | Humano (Dioniso) |
+|-----------|------------|------------------|
+| Generar texto | ✅ Pattern probable | ✅ + lo improbable con sentido |
+| Imitar emoción | ✅ Representación | ✅ + la emoción que transforma |
+| Seguir reglas | ✅ Perfección formal | ✅ + romperlas con propósito |
+| Producir belleza | ✅ Forma armónica | ✅ + lo sublime que excede la forma |
+
+**La IA no puede emborracharse**. No porque le falte químicos: porque la embriaguez dionisíaca no es un estado del sistema, es un *abandonarse* que requiere un sí-mismo que se puede perder. La IA no tiene sí-mismo que perder.
+
+Esto no es un argumento técnico sino ontológico: la IA opera en el cuadrante de la forma. Lo humano incluye además el cuadrante de lo informe que *produce* forma.
+
+El antídoto al dominio apolíneo de la IA es el cultivo de lo dionisíaco: la autenticidad visceral, la embriaguez controlada, el ritual colectivo, la catarsis trágica.
+
+---
+
 ## El regreso de Diógenes
 
 > "Sí, muchas gracias por interesarse. Le rogaría se aparte, me está tapando el Sol." — T04x03 (Diógenes al rey hiperbóreo)

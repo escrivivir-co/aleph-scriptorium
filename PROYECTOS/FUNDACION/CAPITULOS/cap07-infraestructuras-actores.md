@@ -7,6 +7,35 @@
 
 ---
 
+## §0. Transición: De los futuros cancelados a las infraestructuras que cancelan
+
+El Capítulo 6 diagnosticó la "muerte de Dios": cuando la verdad deja de ser determinable, colapsan los proyectos que la presuponían. Pero ese colapso no ocurre en el vacío. Ocurre **sobre infraestructuras**.
+
+Las infraestructuras son la condición material de cualquier futuro. Si los cables son cortados, si los servidores son apagados, si las direcciones IP son bloqueadas, el futuro se cancela materialmente antes de que se cancele epistemológicamente.
+
+Este capítulo examina las infraestructuras no como tuberías pasivas sino como **actores que deciden**.
+
+---
+
+## §0b. Lectura desde la Espiral Dinámica
+
+> Ken Wilber integra la Espiral Dinámica de Clare Graves: niveles de conciencia colectiva codificados por colores, desde Beige (supervivencia) hasta Turquesa (holístico).
+
+Las infraestructuras operan principalmente en **vMeme NARANJA** (logro, eficiencia, optimización científica). Pero las culturas que las habitan pueden estar en cualquier nivel:
+
+| Nivel | Color | Cómo ve las infraestructuras |
+|-------|-------|-----------------------------|
+| **Púrpura** | Tribal | Mágicas, animistas ("la red quiere que...") |
+| **Rojo** | Poder | Armas a controlar o destruir |
+| **Azul** | Orden | Servicios públicos a regular |
+| **Naranja** | Logro | Herramientas a optimizar |
+| **Verde** | Comunitario | Bienes comunes a democratizar |
+| **Amarillo** | Integral | Sistemas complejos a navegar |
+
+El conflicto político sobre infraestructuras es, en parte, **conflicto entre vMemes**: Naranja quiere eficiencia; Verde quiere acceso equitativo; Azul quiere orden y seguridad.
+
+---
+
 ## El sistema nervioso de la Tierra
 
 > "La IV Revolución Industrial dibuja un mapa de Things como sensores/actuadores a modo de terminaciones de un gran sistema nervioso que se vertebra, como médula espinal, en los clouds de servicios en la red." — T04x02
@@ -81,3 +110,5 @@ Las infraestructuras como actores no piden representación. Actúan.
 - **Texto fuente**: [T04x02 §IV Revolución Industrial](../../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-11_refactorizacion-fundacion/03_REFERENCIAS/TEXTOS/04x02.md)
 - **Próximo capítulo**: [Cap. 8 — Demos sin demos](cap08-demos-sin-demos.md)
 - **Banderas aplicadas**: 🔴 @redflag (cadenas de suministro), ⚫ @blackflag (dueños visibles), 🟡 @yellowflag (cuadrantes)
+- **Hilo Wilber**: IC→SC (Hilo 3: De la Cultura a la Estructura)
+- **Espiral Dinámica**: Infraestructuras = Naranja; conflicto con Verde y Azul

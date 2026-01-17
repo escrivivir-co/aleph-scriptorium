@@ -7,6 +7,16 @@
 
 ---
 
+## §0. Transición: De la muerte de Dios a la muerte del demos
+
+El Capítulo 6 diagnosticó los "futuros cancelados": cuando la verdad deja de ser determinable, colapsan los proyectos que la presuponían. La Ilustración prometía ciudadanos informados deliberando racionalmente. Esa promesa requería **verdad accesible**.
+
+Este capítulo muestra la consecuencia política: si la verdad no es determinable y los algoritmos son opacos, **la democracia pierde su sustrato epistémico**. No puedes deliberar sobre lo que no puedes entender. El demos sin información es demos sin demos.
+
+Nietzsche diagnosticó la muerte de Dios. Aquí diagnosticamos la muerte del demos: gobierno sin pueblo que pueda gobernar.
+
+---
+
 ## Algoritmos opacos
 
 > "Hay una idea que distingue entre algoritmos transparentes y opacos. En los transparentes (como los árboles de decisión) es posible reseguir el impacto que tiene un parámetro en el resultado. Mientras que en los opacos (como las redes neuronales) habría un momento de pérdida de trazabilidad." — T04x02
@@ -75,8 +85,30 @@ Demos sin demos: gobierno sin pueblo que pueda gobernar.
 
 ---
 
+## §5. De la opacidad a la ética: el puente roto
+
+La opacidad algorítmica no es solo un problema técnico o político. Es el umbral hacia una nueva ética.
+
+**Bioética** nació cuando la medicina podía hacer más de lo que debía: mantener vivos cuerpos sin mente, clonar, seleccionar embriones. La pregunta era: **¿qué tratamiento merece un cuerpo humano?**
+
+**Tecnoética** emerge cuando el objeto se desdibuja. Ya no tratamos solo con cuerpos: tratamos con agentes que imitan intención, sistemas que simulan comprensión, algoritmos que *parecen* decidir. La pregunta es: **¿qué tratamiento merece un sistema que imita lo humano?**
+
+El puente entre bioética y tecnoética está roto porque la opacidad lo impide:
+
+| Bioética | Tecnoética | El problema |
+|----------|------------|-------------|
+| El paciente puede dar consentimiento informado | ¿Puede un dataset "consentir"? | No hay sujeto |
+| El médico puede explicar el tratamiento | ¿Puede el ingeniero explicar el modelo? | No hay explicabilidad |
+| Los efectos son trazables (causa → efecto) | Los efectos son emergentes (interacción → output) | No hay causalidad lineal |
+
+La opacidad algorítmica no solo impide la democracia (demos sin demos). Impide la ética. Porque toda ética requiere **atribución de responsabilidad**, y los sistemas opacos distribuyen la responsabilidad hasta disolverla.
+
+El próximo capítulo examina cómo esta disolución de responsabilidad estructura ecosistemas enteros de poder.
+
+---
+
 ## Referencia cruzada
 
 - **Texto fuente**: [T04x02 §Algoritmos transparentes y opacos](../../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-11_refactorizacion-fundacion/03_REFERENCIAS/TEXTOS/04x02.md)
 - **Próximo capítulo**: [Cap. 9 — Ecosistemas políticos](cap09-ecosistemas-politicos.md)
-- **Banderas aplicadas**: 🔵 @blueflag (XAI existe), ⚫ @blackflag (quién lucra), 🔴 @redflag (4 mecanismos coercitivos)
+- **Banderas aplicadas**: 🔵 @blueflag (XAI existe), ⚫ @blackflag (quién lucra), 🔴 @redflag (4 mecanismos coercitivos), 🟡 @yellowflag (puente bioética↔tecnoética)

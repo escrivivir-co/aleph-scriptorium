@@ -80,8 +80,25 @@ La computación cuántica promete cambiar las reglas. Pero también requiere hel
 
 ---
 
+## §Cierre: Del Bit al Átomo — Arco completado
+
+Este capítulo cierra el arco que inició en el Capítulo 3 (P≠NP) y continuó en el Capítulo 4 (arquitecturas):
+
+| Capítulo | Nivel | Pregunta |
+|----------|-------|----------|
+| **3** | Lógico | ¿Qué es computable? |
+| **4** | Arquitectónico | ¿Cómo se computa? |
+| **10** | Material | ¿Con qué se computa? |
+
+El límite P≠NP no es abstracto: se paga en TWh, se extrae en Congo, se fabrica en Taiwan. **Todo bit tiene un átomo debajo**.
+
+El siguiente capítulo pregunta: dado este régimen material, ¿qué sacrificamos para mantenerlo funcionando?
+
+---
+
 ## Referencia cruzada
 
 - **Texto fuente**: [T04x01 §Hardware y Software](../../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-11_refactorizacion-fundacion/03_REFERENCIAS/TEXTOS/04X01.md), [T04x02 §CPU/GPU/TPU](../../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-11_refactorizacion-fundacion/03_REFERENCIAS/TEXTOS/04x02.md)
 - **Próximo capítulo**: [Cap. 11 — El sacrificio](cap11-sacrificio.md)
 - **Banderas aplicadas**: 🔴 @redflag (5 capas, cuellos de botella), 🟡 @yellowflag (cuadrantes de agencia)
+- **Hilo Wilber**: IC (Exterior-Colectivo) — cierre arco "Del Bit al Átomo"
