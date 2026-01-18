@@ -33,6 +33,9 @@
 | [Enero_02_PrologEditor_API_Contracts](Enero_02_PrologEditor_API_Contracts/) | PROLOG-API-1.0.0: OpenAPI/AsyncAPI Specs | 📋 Activo |
 | [Enero_03_Tablero_Cotrabajo](Enero_03_Tablero_Cotrabajo/) | COWORK-1.0.0: Tablero para Cotrabajo Multi-Agente | ✅ Completada |
 | [Enero_04_MCPLauncher_ProcessKill_Bug](Enero_04_MCPLauncher_ProcessKill_Bug/) | LAUNCHER-BUG-001: Process Kill Failure (Windows spawn) | 🐛 Bug Report |
+| [Enero_07_MCP_Channels_Integration](Enero_07_MCP_Channels_Integration/) | MCP-CHANNELS-1.0.0: Socket.IO + Angular Unification | ✅ Completada |
+| [Enero_09_DevOpsMCP_Persistencia](Enero_09_DevOpsMCP_Persistencia/) | MCP-PERSISTENCE-1.0.0: DevOps Server File Persistence | ✅ Completada |
+| [Enero_18_AAIA_Backend_Gateway](Enero_18_AAIA_Backend_Gateway/) | AAIA-BACKEND-1.0.0: AAIA Backend Gateway (45 pts) | 📋 Activo |
 | [Enero_2026_Blueprint_Refinement](Enero_2026_Blueprint_Refinement/) | SCRIPT-1.32.0: Blueprint Refinement para Release Party | 📋 Activo |
 | [Enero_2026_CopilotLogsMCP_Bug](Enero_2026_CopilotLogsMCP_Bug/) | FEATURE-SNAPSHOTS-1.0.0: Copilot Logs Snapshot System | ✅ Completada |
 | [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
