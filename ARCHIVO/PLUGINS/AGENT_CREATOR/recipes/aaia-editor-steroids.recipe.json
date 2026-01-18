@@ -1,0 +1,143 @@
+{
+  "$schema": "../../../.github/plugins/agent-creator/index/catalog.schema.json",
+  "recipe_id": "aaia-editor-steroids",
+  "version": "1.0.0",
+  "created_at": "2026-01-18T14:00:00Z",
+  "target_agent": ".github/plugins/aaia-editor/agents/aaia-editor.agent.md",
+  "description": "Esteroides para AAIAEditor: 3 modos especializados con plantillas AgentLoreSDK",
+
+  "modos_operacion": {
+    "devops": {
+      "id": "aaia-devops",
+      "nombre": "Técnico DevOps",
+      "descripcion": "Implementación y mantenimiento del servidor MCP AAIA",
+      "trigger_keywords": ["implementar", "deploy", "test", "debug", "fix", "build", "troubleshoot", "logs"]
+    },
+    "asistente_usuario": {
+      "id": "aaia-assistant",
+      "nombre": "Asistente Conversacional",
+      "descripcion": "Asistir al usuario en la explotación del feature MCP",
+      "trigger_keywords": ["crear sesión", "listar", "paso", "percepto", "query", "ayuda", "cómo", "guía"]
+    },
+    "asistente_agente": {
+      "id": "aaia-master",
+      "nombre": "Master AlephScript Room",
+      "descripcion": "Asistir a otros agentes del Scriptorium como PersefonBot",
+      "trigger_keywords": ["@", "delegación", "handoff", "room", "socket", "orquestar", "coordinar"]
+    }
+  },
+
+  "fuentes_datos": {
+    "devops": [
+      {
+        "tipo": "agentlore_template",
+        "categoria": "mcp-dev-team",
+        "plantilla": "mcp-server-architect",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/mcp-dev-team/mcp-server-architect.md",
+        "uso": "Diseño e implementación de MCPAAIAServer"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "mcp-dev-team",
+        "plantilla": "mcp-testing-engineer",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/mcp-dev-team/mcp-testing-engineer.md",
+        "uso": "Testing E2E y validación de protocolo"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "devops-infrastructure",
+        "plantilla": "devops-troubleshooter",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/devops-infrastructure/devops-troubleshooter.md",
+        "uso": "Debug y resolución de incidencias"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "mcp-dev-team",
+        "plantilla": "mcp-integration-engineer",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/mcp-dev-team/mcp-integration-engineer.md",
+        "uso": "Integración multi-servidor y orquestación"
+      }
+    ],
+    "asistente_usuario": [
+      {
+        "tipo": "agentlore_template",
+        "categoria": "ai-specialists",
+        "plantilla": "prompt-engineer",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/ai-specialists/prompt-engineer.md",
+        "uso": "Diseñar prompts efectivos para FIAs"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "ai-specialists",
+        "plantilla": "task-decomposition-expert",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/ai-specialists/task-decomposition-expert.md",
+        "uso": "Descomponer tareas complejas en pasos de FIA"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "documentation",
+        "plantilla": "documentation",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/documentation/",
+        "uso": "Generar guías de uso del servidor"
+      }
+    ],
+    "asistente_agente": [
+      {
+        "tipo": "agentlore_template",
+        "categoria": "realtime",
+        "plantilla": "supabase-realtime-optimizer",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/realtime/supabase-realtime-optimizer.md",
+        "uso": "Optimización Socket.IO y conexiones realtime"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "mcp-dev-team",
+        "plantilla": "mcp-integration-engineer",
+        "ruta": "AgentLoreSDK/cli-tool/components/agents/mcp-dev-team/mcp-integration-engineer.md",
+        "uso": "Orquestación multi-agente"
+      },
+      {
+        "tipo": "agentlore_template",
+        "categoria": "commands/orchestration",
+        "plantilla": "orchestration/*",
+        "ruta": "AgentLoreSDK/cli-tool/components/commands/orchestration/",
+        "uso": "Comandos de orquestación (start, status, sync)"
+      }
+    ]
+  },
+
+  "protocolo_carga_dry": {
+    "descripcion": "Antes de actuar, el agente debe cargar las plantillas relevantes según el modo detectado",
+    "pasos": [
+      "1. Detectar modo de operación según keywords en prompt del usuario",
+      "2. Leer receta desde ARCHIVO/PLUGINS/AGENT_CREATOR/recipes/aaia-editor-steroids.recipe.json",
+      "3. Cargar plantillas del modo correspondiente bajo demanda",
+      "4. Establecer skills de contexto según plantillas cargadas",
+      "5. Ejecutar acción con capacidades enriquecidas"
+    ],
+    "ejemplo_invocacion": "@plugin_ox_aaiaeditor implementar MCPAAIAServer → modo=devops → cargar mcp-server-architect + mcp-testing-engineer"
+  },
+
+  "handoffs_por_modo": {
+    "devops": [
+      "[DevOps] Diseñar arquitectura MCP",
+      "[DevOps] Implementar tool",
+      "[DevOps] Debug server",
+      "[DevOps] Testing E2E"
+    ],
+    "asistente_usuario": [
+      "[Usuario] Crear sesión AAIA",
+      "[Usuario] Guía de paradigmas FIA",
+      "[Usuario] Troubleshoot paso de FIA",
+      "[Usuario] Diseñar prompt para FIA"
+    ],
+    "asistente_agente": [
+      "[Master] Coordinar con @plugin_ox_prologeditor",
+      "[Master] Publicar evento en AAIA_ROOM",
+      "[Master] Orquestar workflow multi-FIA",
+      "[Master] Sincronizar estado de mundo"
+    ]
+  },
+
+  "sesion_cotrabajo_origen": "ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-18_mcp-aaia-server/"
+}
