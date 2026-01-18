@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_prologeditor
+name: PrologEditor
 description: "Bridge: Stack MCP Prolog completo (12 tools, 6 resources, 8 prompts). UI Angular + Backend REST + MCP Server. Lógica declarativa, IoT/SBR, Teatro."
 argument-hint: "Setup stack, ejecutar Prolog, gestionar sesiones MCP, o modelar sistemas IoT con paradigma SBR."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']

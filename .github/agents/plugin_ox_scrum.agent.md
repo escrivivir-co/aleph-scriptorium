@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_scrum
+name: Scrum Master
 description: "Bridge: Plugin Scrum v3.0 con Modelo Generativo. @scrum interpreta a Lucas. Sesiones PRODUCEN artefactos."
 argument-hint: "planificar | borrador | generar-desde-sesion | aprobar | tracking | cerrar | status"
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'prolog-mcp-server/*', 'agent', 'todo']

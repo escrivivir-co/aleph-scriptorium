@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_ghpages
+name: GHPages
 description: "Bridge: conecta VS Code con agentes del plugin GH-Pages. Ver .github/plugins/gh-pages/agents/"
 argument-hint: "Publica contenido en GitHub Pages (fusionar o reemplazar) o inicializa el sitio."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']

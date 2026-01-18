@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_blocklyeditor
+name: Blockly Editor
 description: "Bridge: conecta VS Code con el plugin Blockly Editor. Ver .github/plugins/blockly-editor/agents/"
 argument-hint: "Invoca agentes de Blockly Editor: abrir editor, crear rutina, guardar, asignar paleta"
 tools: ['agent']

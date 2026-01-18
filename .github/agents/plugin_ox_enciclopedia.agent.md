@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_enciclopedia
+name: Enciclopedia
 description: "Bridge: conecta VS Code con agentes del plugin Enciclopedia. Ver .github/plugins/enciclopedia/agents/"
 argument-hint: "Consulta la biblioteca de tomos enciclopédicos o busca por período/tema."
 tools: ['agent']

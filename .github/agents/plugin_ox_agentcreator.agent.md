@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_agentcreator
+name: AgentCreator
 description: "Bridge: conecta VS Code con agentes del plugin Agent Creator. Ver .github/plugins/agent-creator/agents/"
 argument-hint: "Crea agentes especializados combinando agentes base con fuentes de datos de DISCO/ARCHIVO."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'playwright/*', 'agent', 'todo']

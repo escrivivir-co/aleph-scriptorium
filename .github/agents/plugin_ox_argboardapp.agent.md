@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_argboardapp
+name: ARGBoardApp
 description: "Bridge: conecta VS Code con el plugin ArgBoardApp. Obras de navegación interactiva wiki-racer."
 argument-hint: "Invoca capacidades de ArgBoardApp: crear obra, configurar mapa, ejecutar partida."
 tools: ['agent']

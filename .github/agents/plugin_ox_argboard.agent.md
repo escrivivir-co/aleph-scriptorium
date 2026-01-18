@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_argboard
+name: ARGBoard
 description: "Bridge: conecta VS Code con agentes del plugin ARG Board. Ver .github/plugins/arg-board/agents/"
 argument-hint: "Invoca agentes del Teatro ARG (Arrakis, BOE, Decoherence...) o consulta el índice."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']

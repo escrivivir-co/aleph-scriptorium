@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_typedprompting
+name: TypedPrompt Editor
 description: "Bridge: conecta VS Code con agentes de TypedPrompting. Ver .github/plugins/typed-prompting/"
 argument-hint: "Invoca agentes del plugin TypedPrompting: diseñar ontologías, validar mensajes, instalar reglas"
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']

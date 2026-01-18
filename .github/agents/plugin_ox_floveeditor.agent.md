@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_floveeditor
+name: FloveEditor
 description: "Bridge: conecta VS Code con FloveEditor, sus 3 submódulos, 7 schemas extraídos y 54 FloveApps funcionales."
 argument-hint: "Diseña, exporta, valida ontologías, consulta schemas fuzzy, explora FloveApps o razona con lógica gradual."
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'agent', 'todo']

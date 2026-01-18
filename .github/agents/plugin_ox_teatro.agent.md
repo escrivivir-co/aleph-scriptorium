@@ -1,5 +1,5 @@
 ---
-name: plugin_ox_teatro
+name: Dramaturgo
 description: "Bridge: conecta VS Code con el plugin Teatro Interactivo. Orquesta ARG_BOARD, AGENT_CREATOR y GH-PAGES para experiencias transmedia."
 argument-hint: "Acciones: generar <tema>, instalar <id>, ejecutar <id>, cartelera, crear-personaje"
 tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'AlephAlpha/*', 'prolog-mcp-server/*', 'copilot-logs-mcp-server/*', 'playwright/*', 'agent', 'todo']
