@@ -197,7 +197,36 @@ private registerAsMaster(): void {
 - ✅ Patrón MCPPrologServer analizado
 - ✅ Implementación en socketio.service.ts
 - ✅ Puerto corregido 3000→3010
-- ⏳ Test E2E con MCPAAIAServer
+- ✅ Test E2E con MCPAAIAServer (Fallback OK)
+
+## 8. Resolución Final: Namespaces y Launcher Config
+
+### Problema de Visibilidad Master (Namespace Mismatch)
+
+A pesar de registrarse como MASTER, el backend no recibía peticiones del frontend.
+
+**Causa**:
+- **Frontend**: Usa `AlephScriptClient` que conecta por defecto al namespace `/runtime`.
+- **Backend**: Conectaba a la raíz `/` (default).
+- `SocketServer` mantiene el registro de rooms/masters, pero los sockets no pueden comunicarse entre namespaces diferentes via `to()`.
+
+**Solución**:
+- Actualizada configuración de Backend (`socketio.url`) para incluir `/runtime`.
+- Resultado: Backend y Frontend comparten namespace. Logs confirman recepción de `GET_LIST_OF_THREADS`.
+
+### Integración MCPLauncher
+
+Se añadió el servidor AAIA al catálogo del Launcher para gestión unificada.
+
+**Cambios en mcp-mesh-sdk**:
+1. `app.config.ts`: Añadido `aaia-mcp-server`.
+2. Habilitado fallback en Backend: Si `MCPAAIAServer` (puerto 3007) no responde, el Backend sirve un catálogo estático para UI.
+
+### Estado Final
+
+- ✅ Backend es MASTER visible de `ENGINE_THREADS` en namespace `/runtime`.
+- ✅ Frontend recibe catálogo (fallback o real).
+- ✅ MCPAAIAServer gestionable desde MCPLauncher.
 
 ---
 

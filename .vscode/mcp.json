@@ -28,6 +28,10 @@
       "type": "http",
       "url": "http://localhost:3100"
     },
+    "aaia-mcp-server": {
+      "type": "http",
+      "url": "http://localhost:3007"
+    },
 	  "AlephAlpha": {
       "type": "http",
       "url": "http://localhost:3066"
