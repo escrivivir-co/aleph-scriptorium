@@ -1,0 +1,891 @@
+openapi: 3.1.0
+info:
+  title: DevOpsServer REST API
+  description: |
+    REST API for DevOpsServer MCP - Automation and management hub.
+    
+    ## Architecture
+    
+    The DevOps Server provides CRUD operations for prompts/resources,
+    server control, and integrates with the Socket.IO mesh for
+    distributed capability management.
+    
+    ```
+    ┌─────────────────────────────────────────────────────────────────┐
+    │                   DevOpsServer (Port 3003)                       │
+    ├─────────────────────────────────────────────────────────────────┤
+    │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  │
+    │  │ ContentManager  │  │ CRUDToolsManager│  │ CoreComponents  │  │
+    │  │ (Prompts/Res)   │  │  (10 CRUD ops)  │  │  (4 sys tools)  │  │
+    │  └─────────────────┘  └─────────────────┘  └─────────────────┘  │
+    │                              │                                   │
+    │  ┌───────────────────────────▼───────────────────────────────┐  │
+    │  │                      PLUGINS                               │  │
+    │  │  ┌─────────────────┐        ┌─────────────────────────┐   │  │
+    │  │  │ XPlus1Control   │        │ DevOpsRoomPlugin        │   │  │
+    │  │  │ (6 tools)       │        │ (3 tools + mesh)        │   │  │
+    │  │  └─────────────────┘        └─────────────────────────┘   │  │
+    │  └───────────────────────────────────────────────────────────┘  │
+    └─────────────────────────────────────────────────────────────────┘
+    ```
+    
+    ## Plugins
+    
+    - **XPlus1Control**: Control remote del juego X+1 y UserSimulator
+    - **DevOpsRoom**: Integración con mesh Socket.IO para capabilities
+    
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  - url: http://localhost:3003
+    description: Local DevOps MCP Server
+  - url: http://{host}:3003
+    description: Dynamic host
+    variables:
+      host:
+        default: localhost
+
+tags:
+  - name: System
+    description: Core system operations (start, status, info)
+  - name: Prompts
+    description: CRUD operations for MCP prompts
+  - name: Resources
+    description: CRUD operations for MCP resources
+  - name: XPlus1
+    description: X+1 game control and UserSimulator (requires connection)
+  - name: DevOpsRoom
+    description: Socket.IO mesh integration
+  - name: Health
+    description: Health and status endpoints
+
+paths:
+  # ============================================================================
+  # SYSTEM ENDPOINTS (CoreComponentsManager)
+  # ============================================================================
+  /system/start:
+    post:
+      tags:
+        - System
+      summary: Start the system
+      description: Arrange el sistema usando npm start
+      operationId: startSystem
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                environment:
+                  type: string
+                  enum: [development, production]
+                  description: Execution environment
+                verbose:
+                  type: boolean
+                  description: Verbose output
+      responses:
+        '200':
+          description: System started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemStartResponse'
+
+  /system/status:
+    get:
+      tags:
+        - System
+      summary: Get server status
+      description: Current server status including uptime and memory usage
+      operationId: getServerStatus
+      responses:
+        '200':
+          description: Server status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerStatus'
+
+  /system/info:
+    get:
+      tags:
+        - System
+      summary: Get server info
+      description: Detailed server information including capabilities and endpoints
+      operationId: getServerInfo
+      responses:
+        '200':
+          description: Server info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerInfo'
+
+  /system/console:
+    post:
+      tags:
+        - System
+      summary: Open web console
+      description: Opens the web console in the browser
+      operationId: openWebConsole
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                host:
+                  type: string
+                  default: localhost
+                port:
+                  type: integer
+                  default: 8080
+      responses:
+        '200':
+          description: Console opened
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  url:
+                    type: string
+
+  # ============================================================================
+  # PROMPTS CRUD (CRUDToolsManager)
+  # ============================================================================
+  /prompts:
+    get:
+      tags:
+        - Prompts
+      summary: List all prompts
+      description: Retrieve all prompts with optional filtering
+      operationId: listPrompts
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Filter by category
+        - name: search
+          in: query
+          schema:
+            type: string
+          description: Search in name or description
+      responses:
+        '200':
+          description: List of prompts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptList'
+
+    post:
+      tags:
+        - Prompts
+      summary: Add a new prompt
+      description: Create a new prompt in the server
+      operationId: addPrompt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptCreate'
+      responses:
+        '201':
+          description: Prompt created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+
+  /prompts/{promptId}:
+    get:
+      tags:
+        - Prompts
+      summary: Get a prompt by ID
+      description: Retrieve a specific prompt
+      operationId: getPrompt
+      parameters:
+        - name: promptId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Prompt details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+        '404':
+          description: Prompt not found
+
+    put:
+      tags:
+        - Prompts
+      summary: Update a prompt
+      description: Edit an existing prompt
+      operationId: editPrompt
+      parameters:
+        - name: promptId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromptUpdate'
+      responses:
+        '200':
+          description: Prompt updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Prompt'
+
+    delete:
+      tags:
+        - Prompts
+      summary: Delete a prompt
+      description: Remove a prompt from the server
+      operationId: deletePrompt
+      parameters:
+        - name: promptId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Prompt deleted
+
+  # ============================================================================
+  # RESOURCES CRUD (CRUDToolsManager)
+  # ============================================================================
+  /resources:
+    get:
+      tags:
+        - Resources
+      summary: List all resources
+      description: Retrieve all resources with optional filtering
+      operationId: listResources
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of resources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceList'
+
+    post:
+      tags:
+        - Resources
+      summary: Add a new resource
+      description: Create a new resource in the server
+      operationId: addResource
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceCreate'
+      responses:
+        '201':
+          description: Resource created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+
+  /resources/{resourceId}:
+    get:
+      tags:
+        - Resources
+      summary: Get a resource by ID
+      operationId: getResource
+      parameters:
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Resource details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+
+    put:
+      tags:
+        - Resources
+      summary: Update a resource
+      operationId: editResource
+      parameters:
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceUpdate'
+      responses:
+        '200':
+          description: Resource updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+
+    delete:
+      tags:
+        - Resources
+      summary: Delete a resource
+      operationId: deleteResource
+      parameters:
+        - name: resourceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Resource deleted
+
+  # ============================================================================
+  # XPLUS1 CONTROL PLUGIN
+  # ============================================================================
+  /xplus1/simulator/personality:
+    put:
+      tags:
+        - XPlus1
+      summary: Set user personality
+      description: Change UserSimulator personality. Requires X+1 machine connection.
+      operationId: setUserPersonality
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - personality
+              properties:
+                personality:
+                  type: string
+                  enum: [cautious, balanced, risk_taker, passive]
+                reason:
+                  type: string
+      responses:
+        '200':
+          description: Personality changed
+        '503':
+          description: X+1 machine not connected
+
+  /xplus1/simulator/decision:
+    post:
+      tags:
+        - XPlus1
+      summary: Simulate user decision
+      description: Simulate a consumption decision (yes/no/clarify/auto)
+      operationId: simulateUserDecision
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                forceDecision:
+                  type: string
+                  enum: [yes, no, clarify, auto]
+                context:
+                  type: object
+                  properties:
+                    currentX:
+                      type: integer
+                    messageCount:
+                      type: integer
+                    recentReset:
+                      type: boolean
+      responses:
+        '200':
+          description: Decision simulated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DecisionResult'
+
+  /xplus1/simulator/agent:
+    post:
+      tags:
+        - XPlus1
+      summary: Select agent
+      description: Select specific agent for next message
+      operationId: simulateAgentSelection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - agentId
+              properties:
+                agentId:
+                  type: string
+                reasoning:
+                  type: string
+      responses:
+        '200':
+          description: Agent selected
+
+  /xplus1/simulator/mode:
+    put:
+      tags:
+        - XPlus1
+      summary: Control simulator mode
+      description: Enable/disable automatic mode of UserSimulator
+      operationId: controlSimulatorMode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - mode
+              properties:
+                mode:
+                  type: string
+                  enum: [on, off, toggle]
+                duration:
+                  type: integer
+                  description: Duration in ms (optional)
+      responses:
+        '200':
+          description: Mode changed
+
+  /xplus1/simulator/status:
+    get:
+      tags:
+        - XPlus1
+      summary: Get simulator status
+      description: Current UserSimulator status and statistics
+      operationId: getSimulatorStatus
+      parameters:
+        - name: includeHistory
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Simulator status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimulatorStatus'
+
+  /xplus1/game/context:
+    get:
+      tags:
+        - XPlus1
+      summary: Analyze game context
+      description: Analyze current game state for intelligent decisions
+      operationId: analyzeGameContext
+      parameters:
+        - name: includeRecommendations
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Game context analysis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameContextAnalysis'
+
+  # ============================================================================
+  # DEVOPS ROOM PLUGIN
+  # ============================================================================
+  /room/capabilities:
+    get:
+      tags:
+        - DevOpsRoom
+      summary: Get room capabilities
+      description: List capabilities exposed by DevOps Room
+      operationId: devopsRoomGetCapabilities
+      responses:
+        '200':
+          description: Room capabilities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomCapabilities'
+
+  /room/invoke:
+    post:
+      tags:
+        - DevOpsRoom
+      summary: Invoke a capability
+      description: Invoke a capability in the DevOps Room
+      operationId: devopsRoomInvoke
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - capability
+              properties:
+                capability:
+                  type: string
+                  description: Capability ID (e.g., GET_SERVER_STATUS)
+                input:
+                  type: object
+                  description: Input data for the capability
+      responses:
+        '200':
+          description: Capability response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /room/status:
+    get:
+      tags:
+        - DevOpsRoom
+      summary: Get room connection status
+      description: Status of DevOps Room Socket.IO connection
+      operationId: devopsRoomStatus
+      responses:
+        '200':
+          description: Room status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoomStatus'
+
+  # ============================================================================
+  # HEALTH
+  # ============================================================================
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Simple health check endpoint
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [healthy, degraded, unhealthy]
+                  timestamp:
+                    type: string
+                    format: date-time
+
+components:
+  schemas:
+    SystemStartResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        port:
+          type: integer
+        environment:
+          type: string
+
+    ServerStatus:
+      type: object
+      properties:
+        server:
+          type: string
+        status:
+          type: string
+          enum: [running, stopped, error]
+        uptime:
+          type: object
+          properties:
+            seconds:
+              type: number
+            formatted:
+              type: string
+        memory:
+          type: object
+          properties:
+            heapUsed:
+              type: integer
+            heapTotal:
+              type: integer
+            external:
+              type: integer
+
+    ServerInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+        tools:
+          type: integer
+        resources:
+          type: integer
+        prompts:
+          type: integer
+        plugins:
+          type: array
+          items:
+            type: string
+
+    Prompt:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        parameters:
+          type: object
+        metadata:
+          type: object
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    PromptCreate:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - content
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+        parameters:
+          type: object
+        metadata:
+          type: object
+
+    PromptUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+
+    PromptList:
+      type: object
+      properties:
+        total:
+          type: integer
+        prompts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prompt'
+
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+        mimeType:
+          type: string
+        content:
+          type: string
+        metadata:
+          type: object
+
+    ResourceCreate:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - uri
+        - mimeType
+        - content
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        uri:
+          type: string
+        mimeType:
+          type: string
+        content:
+          type: string
+        metadata:
+          type: object
+
+    ResourceUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        content:
+          type: string
+
+    ResourceList:
+      type: object
+      properties:
+        total:
+          type: integer
+        resources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+
+    SimulatorStatus:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        personality:
+          type: string
+          enum: [cautious, balanced, risk_taker, passive]
+        autoMode:
+          type: boolean
+        totalDecisions:
+          type: integer
+        lastDecision:
+          type: object
+        history:
+          type: array
+          items:
+            type: object
+
+    DecisionResult:
+      type: object
+      properties:
+        decision:
+          type: string
+          enum: [yes, no, clarify]
+        reasoning:
+          type: string
+        context:
+          type: object
+
+    GameContextAnalysis:
+      type: object
+      properties:
+        currentX:
+          type: integer
+        messageCount:
+          type: integer
+        phase:
+          type: string
+        recommendations:
+          type: array
+          items:
+            type: string
+        riskLevel:
+          type: string
+          enum: [low, medium, high]
+
+    RoomCapabilities:
+      type: object
+      properties:
+        roomId:
+          type: string
+        capabilities:
+          type: array
+          items:
+            type: string
+          example:
+            - GET_SERVER_STATUS
+            - GET_PLUGIN_LIST
+            - GET_TASK_LIST
+            - GET_AGENT_LIST
+            - GET_ROOM_MEMBERS
+
+    RoomStatus:
+      type: object
+      properties:
+        connected:
+          type: boolean
+        roomId:
+          type: string
+        isMaster:
+          type: boolean
+        socketUrl:
+          type: string
+        memberCount:
+          type: integer

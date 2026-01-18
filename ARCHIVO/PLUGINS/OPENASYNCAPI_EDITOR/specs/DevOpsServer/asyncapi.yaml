@@ -1,0 +1,535 @@
+asyncapi: 3.0.0
+info:
+  title: DevOpsServer Socket.IO Events
+  version: 1.0.0
+  description: |
+    AsyncAPI specification for DevOpsServer Socket.IO integration.
+    
+    ## Architecture
+    
+    The DevOpsServer connects to the Socket.IO mesh as a client and
+    claims MASTER role for the `devops-mcp-server_ROOM` to expose
+    its capabilities to other mesh participants.
+    
+    ```
+    ┌───────────────────────────────────────────────────────────────┐
+    │                    Socket.IO Mesh (Port 3010)                 │
+    │                         /runtime ns                           │
+    ├───────────────────────────────────────────────────────────────┤
+    │                                                               │
+    │  ┌─────────────────────┐                                     │
+    │  │ devops-mcp-server   │ ← MASTER: ProserpinaBot            │
+    │  │       _ROOM         │                                     │
+    │  │                     │   Capabilities:                     │
+    │  │                     │   - GET_SERVER_STATUS               │
+    │  │                     │   - GET_PLUGIN_LIST                 │
+    │  │                     │   - GET_TASK_LIST                   │
+    │  │                     │   - GET_AGENT_LIST                  │
+    │  │                     │   - GET_ROOM_MEMBERS                │
+    │  └─────────────────────┘                                     │
+    │                                                               │
+    └───────────────────────────────────────────────────────────────┘
+    ```
+    
+    ## Plugins
+    
+    The DevOpsRoomPlugin handles all mesh communication:
+    - Registers as client with name "ProserpinaBot"
+    - Claims MASTER role with 5 capabilities
+    - Handles GET_* requests and responds with SET_*
+    
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  mesh:
+    host: localhost:3010
+    protocol: ws
+    description: Socket.IO mesh server
+    tags:
+      - name: env:development
+
+defaultContentType: application/json
+
+channels:
+  devopsRoom:
+    address: /runtime
+    description: DevOps room in the mesh
+    messages:
+      # Registration events
+      clientRegister:
+        $ref: '#/components/messages/ProserpinaRegister'
+      makeMaster:
+        $ref: '#/components/messages/ClaimMaster'
+      # Capability events (GET/SET)
+      getServerStatus:
+        $ref: '#/components/messages/GetServerStatus'
+      setServerStatus:
+        $ref: '#/components/messages/SetServerStatus'
+      getPluginList:
+        $ref: '#/components/messages/GetPluginList'
+      setPluginList:
+        $ref: '#/components/messages/SetPluginList'
+      getTaskList:
+        $ref: '#/components/messages/GetTaskList'
+      setTaskList:
+        $ref: '#/components/messages/SetTaskList'
+      getAgentList:
+        $ref: '#/components/messages/GetAgentList'
+      setAgentList:
+        $ref: '#/components/messages/SetAgentList'
+      getRoomMembers:
+        $ref: '#/components/messages/GetRoomMembers'
+      setRoomMembers:
+        $ref: '#/components/messages/SetRoomMembers'
+      # XPlus1 game events
+      gameStateUpdate:
+        $ref: '#/components/messages/GameStateUpdate'
+      userDecision:
+        $ref: '#/components/messages/UserDecision'
+
+operations:
+  # ============================================================================
+  # REGISTRATION (DevOpsServer → Mesh)
+  # ============================================================================
+  registerAsProserpinaBot:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Register as ProserpinaBot
+    description: |
+      First step when connecting. DevOpsServer registers as "ProserpinaBot"
+      with a unique session identifier.
+    messages:
+      - $ref: '#/components/messages/ProserpinaRegister'
+
+  claimMasterRole:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Claim MASTER role
+    description: |
+      After registration, claim MASTER role for devops-mcp-server_ROOM
+      with the 5 available capabilities.
+    messages:
+      - $ref: '#/components/messages/ClaimMaster'
+
+  # ============================================================================
+  # CAPABILITY HANDLERS (Mesh → DevOpsServer → Mesh)
+  # ============================================================================
+  handleGetServerStatus:
+    action: receive
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Handle GET_SERVER_STATUS request
+    description: Receive request for server status from mesh client
+    messages:
+      - $ref: '#/components/messages/GetServerStatus'
+
+  respondServerStatus:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Respond with SET_SERVER_STATUS
+    description: Send server status back to requesting client
+    messages:
+      - $ref: '#/components/messages/SetServerStatus'
+
+  handleGetPluginList:
+    action: receive
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Handle GET_PLUGIN_LIST request
+    messages:
+      - $ref: '#/components/messages/GetPluginList'
+
+  respondPluginList:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Respond with SET_PLUGIN_LIST
+    messages:
+      - $ref: '#/components/messages/SetPluginList'
+
+  handleGetTaskList:
+    action: receive
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Handle GET_TASK_LIST request
+    messages:
+      - $ref: '#/components/messages/GetTaskList'
+
+  respondTaskList:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Respond with SET_TASK_LIST
+    messages:
+      - $ref: '#/components/messages/SetTaskList'
+
+  handleGetAgentList:
+    action: receive
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Handle GET_AGENT_LIST request
+    messages:
+      - $ref: '#/components/messages/GetAgentList'
+
+  respondAgentList:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Respond with SET_AGENT_LIST
+    messages:
+      - $ref: '#/components/messages/SetAgentList'
+
+  handleGetRoomMembers:
+    action: receive
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Handle GET_ROOM_MEMBERS request
+    messages:
+      - $ref: '#/components/messages/GetRoomMembers'
+
+  respondRoomMembers:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Respond with SET_ROOM_MEMBERS
+    messages:
+      - $ref: '#/components/messages/SetRoomMembers'
+
+  # ============================================================================
+  # GAME EVENTS (XPlus1Control ↔ Mesh)
+  # ============================================================================
+  broadcastGameState:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Broadcast game state update
+    description: |
+      When XPlus1Control detects a game state change, broadcast to
+      all subscribers in the room.
+    messages:
+      - $ref: '#/components/messages/GameStateUpdate'
+
+  broadcastUserDecision:
+    action: send
+    channel:
+      $ref: '#/channels/devopsRoom'
+    summary: Broadcast user decision
+    description: |
+      When UserSimulator makes a decision (yes/no/clarify), broadcast
+      the event to the mesh.
+    messages:
+      - $ref: '#/components/messages/UserDecision'
+
+components:
+  messages:
+    # ============================================================================
+    # REGISTRATION MESSAGES
+    # ============================================================================
+    ProserpinaRegister:
+      name: CLIENT_REGISTER
+      title: Proserpina Bot Registration
+      summary: DevOpsServer registers as ProserpinaBot
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - usuario
+          - sesion
+        properties:
+          usuario:
+            type: string
+            const: ProserpinaBot
+            description: DevOpsServer bot name
+          sesion:
+            type: string
+            description: Unique session identifier
+            examples:
+              - ">k27f"
+
+    ClaimMaster:
+      name: MAKE_MASTER
+      title: Claim Master Role
+      summary: DevOpsServer claims MASTER for its room
+      contentType: application/json
+      payload:
+        type: object
+        required:
+          - room
+          - masterName
+          - capabilities
+        properties:
+          room:
+            type: string
+            const: devops-mcp-server_ROOM
+          masterName:
+            type: string
+            const: ProserpinaBot
+          capabilities:
+            type: array
+            items:
+              type: string
+            example:
+              - GET_SERVER_STATUS
+              - GET_PLUGIN_LIST
+              - GET_TASK_LIST
+              - GET_AGENT_LIST
+              - GET_ROOM_MEMBERS
+
+    # ============================================================================
+    # SERVER STATUS
+    # ============================================================================
+    GetServerStatus:
+      name: GET_SERVER_STATUS
+      title: Request Server Status
+      summary: Client requests DevOps server status
+      contentType: application/json
+      payload:
+        type: object
+        properties: {}
+
+    SetServerStatus:
+      name: SET_SERVER_STATUS
+      title: Server Status Response
+      summary: DevOpsServer responds with its status
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          server:
+            type: string
+          status:
+            type: string
+            enum: [running, stopped, error]
+          uptime:
+            type: object
+            properties:
+              seconds:
+                type: number
+              formatted:
+                type: string
+          memory:
+            type: object
+          tools:
+            type: integer
+          resources:
+            type: integer
+          prompts:
+            type: integer
+
+    # ============================================================================
+    # PLUGIN LIST
+    # ============================================================================
+    GetPluginList:
+      name: GET_PLUGIN_LIST
+      title: Request Plugin List
+      contentType: application/json
+      payload:
+        type: object
+        properties: {}
+
+    SetPluginList:
+      name: SET_PLUGIN_LIST
+      title: Plugin List Response
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          plugins:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                enabled:
+                  type: boolean
+                tools:
+                  type: integer
+                resources:
+                  type: integer
+            example:
+              - id: xplus1-control
+                name: X+1 Control Plugin
+                enabled: true
+                tools: 6
+                resources: 3
+              - id: devops-room
+                name: DevOps Room Plugin
+                enabled: true
+                tools: 3
+                resources: 1
+
+    # ============================================================================
+    # TASK LIST
+    # ============================================================================
+    GetTaskList:
+      name: GET_TASK_LIST
+      title: Request Task List
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          filter:
+            type: string
+            description: Optional filter
+
+    SetTaskList:
+      name: SET_TASK_LIST
+      title: Task List Response
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          tasks:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                status:
+                  type: string
+                  enum: [pending, running, completed, failed]
+
+    # ============================================================================
+    # AGENT LIST
+    # ============================================================================
+    GetAgentList:
+      name: GET_AGENT_LIST
+      title: Request Agent List
+      contentType: application/json
+      payload:
+        type: object
+        properties: {}
+
+    SetAgentList:
+      name: SET_AGENT_LIST
+      title: Agent List Response
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          agents:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                layer:
+                  type: string
+                  enum: [UI, Backend, Sistema, Meta, Plugins]
+                status:
+                  type: string
+
+    # ============================================================================
+    # ROOM MEMBERS
+    # ============================================================================
+    GetRoomMembers:
+      name: GET_ROOM_MEMBERS
+      title: Request Room Members
+      contentType: application/json
+      payload:
+        type: object
+        properties: {}
+
+    SetRoomMembers:
+      name: SET_ROOM_MEMBERS
+      title: Room Members Response
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          roomId:
+            type: string
+          masterId:
+            type: string
+          masterName:
+            type: string
+          members:
+            type: array
+            items:
+              type: object
+              properties:
+                socketId:
+                  type: string
+                name:
+                  type: string
+                role:
+                  type: string
+                  enum: [master, subscriber]
+
+    # ============================================================================
+    # GAME EVENTS
+    # ============================================================================
+    GameStateUpdate:
+      name: GAME_STATE_UPDATE
+      title: Game State Update
+      summary: Broadcast when X+1 game state changes
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          currentX:
+            type: integer
+            description: Current X value in the game
+          messageCount:
+            type: integer
+          phase:
+            type: string
+            enum: [idle, running, paused, ended]
+          agents:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                active:
+                  type: boolean
+          timestamp:
+            type: string
+            format: date-time
+
+    UserDecision:
+      name: USER_DECISION
+      title: User Decision Event
+      summary: Broadcast when UserSimulator makes a decision
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          decision:
+            type: string
+            enum: [yes, no, clarify]
+          personality:
+            type: string
+            enum: [cautious, balanced, risk_taker, passive]
+          reasoning:
+            type: string
+          context:
+            type: object
+            properties:
+              currentX:
+                type: integer
+              triggerAgent:
+                type: string
+          timestamp:
+            type: string
+            format: date-time

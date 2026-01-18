@@ -122,6 +122,36 @@
       "cataloged_at": "2026-01-09T12:00:00Z",
       "validated_at": null,
       "tags": ["mcp", "devops", "automation", "plugins", "mesh", "socketio"]
+    },
+    {
+      "id": "devops-server-openapi",
+      "project": "DevOpsServer",
+      "type": "openapi",
+      "spec_version": "3.1.0",
+      "api_version": "1.0.0",
+      "title": "DevOpsServer REST API",
+      "description": "REST API for DevOpsServer MCP - CRUD prompts/resources, XPlus1 control, DevOps Room",
+      "origin": null,
+      "local": "specs/DevOpsServer/openapi.yaml",
+      "status": "draft",
+      "cataloged_at": "2026-01-18T12:00:00Z",
+      "validated_at": null,
+      "tags": ["rest", "devops", "crud", "xplus1", "room"]
+    },
+    {
+      "id": "devops-server-asyncapi",
+      "project": "DevOpsServer",
+      "type": "asyncapi",
+      "spec_version": "3.0.0",
+      "api_version": "1.0.0",
+      "title": "DevOpsServer Socket.IO Events",
+      "description": "AsyncAPI spec for DevOpsServer mesh integration via Socket.IO MASTER-ROOM protocol",
+      "origin": null,
+      "local": "specs/DevOpsServer/asyncapi.yaml",
+      "status": "draft",
+      "cataloged_at": "2026-01-18T12:00:00Z",
+      "validated_at": null,
+      "tags": ["socketio", "mesh", "devops", "proserpina", "xplus1"]
     }
   ]
 }

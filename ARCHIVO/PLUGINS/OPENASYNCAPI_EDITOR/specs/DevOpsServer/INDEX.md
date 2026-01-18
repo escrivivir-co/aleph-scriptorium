@@ -16,6 +16,8 @@ servidor de automatización DevOps con sistema de plugins y mesh Socket.IO.
 
 | Tipo | Estándar | Propósito |
 |------|----------|-----------|
+| **OpenAPI** | OpenAPI 3.1.0 | REST API para CRUD y control |
+| **AsyncAPI** | AsyncAPI 3.0.0 | Socket.IO mesh integration |
 | **MCP Spec** | MCP 1.0 | Contrato de tools, resources y prompts |
 
 ---
@@ -24,6 +26,8 @@ servidor de automatización DevOps con sistema de plugins y mesh Socket.IO.
 
 | Archivo | Estándar | Descripción | Versión |
 |---------|----------|-------------|---------|
+| [openapi.yaml](openapi.yaml) | OpenAPI 3.1.0 | REST API (System, Prompts, Resources, XPlus1, Room) | 1.0.0 |
+| [asyncapi.yaml](asyncapi.yaml) | AsyncAPI 3.0.0 | Socket.IO events (MASTER-ROOM protocol) | 1.0.0 |
 | [mcpspec.yaml](mcpspec.yaml) | MCP 1.0 | DevOps Server (19 tools, 8 resources, 4 prompts) | 1.0.0 |
 
 ---

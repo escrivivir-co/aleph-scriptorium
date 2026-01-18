@@ -41,6 +41,19 @@
         "ble"
       ],
       "default": "apb"
+    },
+    {
+      "id": "oaeProject",
+      "type": "pickString",
+      "description": "Proyecto a visualizar (OpenAPI/AsyncAPI)",
+      "options": [
+        "AAIAServer",
+        "DevOpsServer",
+        "MCPChannels",
+        "PrologEditor",
+        "TypedPromptsEditor"
+      ],
+      "default": "PrologEditor"
     }
   ],
   "tasks": [
@@ -504,10 +517,13 @@
     {
       "label": "OAE: Start [Swagger]",
       "type": "shell",
-      "command": "npm",
+      "command": "npx",
       "args": [
-        "run",
-        "swagger-ui"
+        "@redocly/cli",
+        "preview-docs",
+        "specs/${input:oaeProject}/openapi.yaml",
+        "--port",
+        "3021"
       ],
       "options": {
         "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
@@ -528,15 +544,20 @@
       "presentation": {
         "group": "oae-stack"
       },
-      "detail": "Puerto 3021"
+      "detail": "Puerto 3021 - ${input:oaeProject}"
     },
     {
       "label": "OAE: Start [AsyncAPI]",
       "type": "shell",
-      "command": "npm",
+      "command": "npx",
       "args": [
-        "run",
-        "asyncapi-studio"
+        "@asyncapi/cli",
+        "start",
+        "studio",
+        "--file",
+        "specs/${input:oaeProject}/asyncapi.yaml",
+        "--port",
+        "3022"
       ],
       "options": {
         "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
@@ -557,7 +578,7 @@
       "presentation": {
         "group": "oae-stack"
       },
-      "detail": "Puerto 3022"
+      "detail": "Puerto 3022 - ${input:oaeProject}"
     },
     {
       "label": "OAE: Open [Swagger]",
