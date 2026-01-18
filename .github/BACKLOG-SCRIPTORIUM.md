@@ -48,7 +48,7 @@
 | ✅ | MCP-CHANNELS-1.0.0 | Socket.IO Integration + Angular Unification (55 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_07_MCP_Channels_Integration/01_backlog-borrador.md) |
 | ✅ | MCP-PERSISTENCE-1.0.0 | DevOps Server File Persistence (18 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_09_DevOpsMCP_Persistencia/01_backlog-borrador.md) |
 | ✅ | MCP-AAIA-SERVER-1.0.0 | AAIA MCP Server (FIAs + Mundos + PersefonBot) (93 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-18_mcp-aaia-server/) |
-| 📋 | AAIA-BACKEND-1.0.0 | AAIA Backend Gateway (Express + MCP + Socket.IO) (45 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_18_AAIA_Backend_Gateway/01_backlog-borrador.md) |
+| ✅ | AAIA-BACKEND-1.0.0 | AAIA Backend Gateway (Express + MCP + Socket.IO) (45 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_18_AAIA_Backend_Gateway/01_backlog-borrador.md) |
 
 ---
 
