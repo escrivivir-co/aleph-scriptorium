@@ -6,7 +6,7 @@
 
 | # | Agente | Estado | Acta |
 |---|--------|--------|------|
-| — | — | ✅ SESIÓN COMPLETADA | — |
+| 9 | @plugin_ox_aaiaeditor | ✅ Completado | [T009](02_ACTAS/T009_debugging_engine-threads-master.md) |
 
 ## Historial de Turnos
 
@@ -18,15 +18,15 @@
 | 4 | @plugin_ox_agentcreator | 14:00 | 14:30 | ✅ Esteroides AAIA: 3 modos + 10 plantillas + receta DRY | [T004](02_ACTAS/T004_agentcreator_esteroides-aaia.md) |
 | 5 | @plugin_ox_aaiaeditor | 15:00 | 16:00 | ✅ MCPAAIAServer completo: 9 tools, 3 resources, PersefonBot (48 pts) | [T005](02_ACTAS/T005_aaiaeditor_implementacion-devops.md) |
 | 6 | @scrum | 16:30 | 16:45 | ✅ Cierre épica: correcciones + backlog actualizado | [T006](02_ACTAS/T006_scrum_cierre-epica.md) |
+| 7 | @plugin_ox_aaiaeditor | — | — | ✅ TypeScript strict mode fixes | [T007](02_ACTAS/T007_aaiaeditor_typescript-fixes.md) |
+| 8 | @plugin_ox_aaiaeditor | — | — | ✅ Frontend SDK migration | [T008](02_ACTAS/T008_aaiaeditor_frontend-integration.md) |
+| 9 | @plugin_ox_aaiaeditor | 20:00 | 20:30 | ✅ ENGINE_THREADS MASTER: puerto 3010, backend registra | [T009](02_ACTAS/T009_debugging_engine-threads-master.md) |
 
 ## Cola de Espera
 
 | Posición | Agente | Prioridad | Tarea pendiente |
 |----------|--------|-----------|-----------------|
-| 1 | @plugin_ox_aaiaeditor (DevOps) | Alta | Implementar MCPAAIAServer.ts |
-| 2 | @plugin_ox_aaiaeditor (DevOps) | Alta | Implementar AAIASessionManager.ts |
-| 3 | @plugin_ox_mcppresets | Normal | Registrar preset AAIA |
-| 4 | @scrum | Normal | Actualizar backlog con progreso |
+| — | — | — | Cola vacía |
 
 ---
 
@@ -35,7 +35,7 @@
 ### Progreso Real vs Planificado
 
 ```
-PLANIFICADO (68 pts)          COMPLETADO (66 pts) ████████████████████ 97%
+PLANIFICADO (68 pts)          COMPLETADO (68 pts) ████████████████████ 100%
 ─────────────────────         ─────────────────────
 S1: Tipos base                ✅ Completo (types/aaia/index.ts)
 S2: SessionManager            ✅ Completo (AAIASessionManager.ts)
@@ -46,13 +46,24 @@ S6: PersefonBot               ✅ Completo (13 capabilities)
 S7: Launcher                  ✅ Task en tasks.json
 S8: Plugin                    ✅ Estructura + esteroides
 S9: Agent Creator             🟡 Lucas brain OK, catálogo FIA pendiente
+S10: ENGINE_THREADS           ✅ Backend MASTER de ENGINE_THREADS
 ```
 
-### Agentes Activos con Capacidades Enriquecidas
+### Turno T009: ENGINE_THREADS Master - COMPLETADO
 
-| Agente | Modo Activo | Plantillas Cargadas |
-|--------|-------------|---------------------|
-| @plugin_ox_aaiaeditor | DevOps | mcp-server-architect, mcp-testing-engineer |
+**Problema resuelto**: Frontend ahora puede conectar al Socket.IO mesh y ENGINE_THREADS tiene MASTER.
+
+**Cambios implementados**:
+1. Puerto corregido: 3000 → 3010 en 5 archivos
+2. Environment centralizado con `socketUrl`
+3. Backend registra como MASTER de ENGINE_THREADS
+
+**Archivos modificados**:
+- `AAIAGallery/backend/src/config/index.ts`
+- `AAIAGallery/frontend/src/environments/environment.ts`
+- `AAIAGallery/frontend/src/environments/environment.development.ts`
+- `AAIAGallery/frontend/src/app/services/socketio/server.service.ts`
+- `AAIAGallery/alephscript/src/FIA/engine/apps/socketio/client.ts`
 
 ### Bloqueos Conocidos
 
