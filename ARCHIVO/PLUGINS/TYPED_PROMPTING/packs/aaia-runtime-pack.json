@@ -1,0 +1,235 @@
+{
+  "$schema": "../../../.github/plugins/typed-prompting/schemas/pack.schema.json",
+  "id": "aaia-runtime-pack",
+  "name": "AAIA Runtime Pack",
+  "version": "1.0.0",
+  "description": "Schemas de validación para comunicación con MCPAAIAServer",
+  "epic": "MCP-AAIA-SERVER-1.0.0",
+  "mcpServer": {
+    "name": "aaia-mcp-server",
+    "port": 3007
+  },
+  "schemas": [
+    {
+      "id": "aaia-percepto",
+      "name": "Percepto AAIA",
+      "description": "Estímulo del entorno para FIAs",
+      "schema": {
+        "$id": "aaia-percepto",
+        "type": "object",
+        "required": ["tipo", "payload"],
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "enum": ["sensor", "evento", "comando"],
+            "description": "Tipo de percepto"
+          },
+          "fuente": {
+            "type": "string",
+            "description": "Origen del percepto"
+          },
+          "payload": {
+            "type": "object",
+            "description": "Datos del percepto",
+            "additionalProperties": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "id": "aaia-eferencia",
+      "name": "Eferencia AAIA",
+      "description": "Salida/acción de una FIA",
+      "schema": {
+        "$id": "aaia-eferencia",
+        "type": "object",
+        "required": ["tipo", "payload"],
+        "properties": {
+          "tipo": {
+            "type": "string",
+            "enum": ["accion", "dato", "evento", "noop"],
+            "description": "Tipo de eferencia"
+          },
+          "payload": {
+            "type": "object",
+            "description": "Datos de la eferencia",
+            "additionalProperties": true
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    {
+      "id": "aaia-session-request",
+      "name": "Crear Sesión AAIA",
+      "description": "Request para crear sesión",
+      "schema": {
+        "$id": "aaia-session-request",
+        "type": "object",
+        "required": ["appId"],
+        "properties": {
+          "appId": {
+            "type": "string",
+            "description": "ID de la app AAIA a cargar",
+            "examples": ["demo-logica", "demo-sbr", "lucas-mentor"]
+          }
+        }
+      }
+    },
+    {
+      "id": "aaia-step-request",
+      "name": "Step FIA Request",
+      "description": "Request para ejecutar paso de FIA",
+      "schema": {
+        "$id": "aaia-step-request",
+        "type": "object",
+        "required": ["sessionId", "fiaIndex"],
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fiaIndex": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "aaia-step-result",
+      "name": "Step FIA Result",
+      "description": "Resultado de ejecutar paso de FIA",
+      "schema": {
+        "$id": "aaia-step-result",
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "fiaIndex": {
+            "type": "integer"
+          },
+          "runState": {
+            "type": "string",
+            "enum": ["STOP", "PLAY", "PLAY_STEP", "PAUSE"]
+          },
+          "cycles": {
+            "type": "integer"
+          },
+          "eferencia": {
+            "$ref": "#/components/schemas/aaia-eferencia"
+          },
+          "executionTimeMs": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "id": "aaia-mundo-state",
+      "name": "Estado del Mundo",
+      "description": "Estado actual del mundo AAIA",
+      "schema": {
+        "$id": "aaia-mundo-state",
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "runState": {
+            "type": "string",
+            "enum": ["STOP", "PLAY", "PLAY_STEP", "PAUSE"]
+          },
+          "vivo": {
+            "type": "boolean"
+          },
+          "modelo": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fiasCount": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "id": "aaia-fia-info",
+      "name": "Info de FIA",
+      "description": "Información de una FIA",
+      "schema": {
+        "$id": "aaia-fia-info",
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "paradigma": {
+            "type": "string",
+            "enum": [
+              "logica",
+              "conexionista", 
+              "simbolica",
+              "sbc",
+              "sbr",
+              "situada",
+              "hibrido",
+              "cientifica",
+              "gramaticas",
+              "sistemas"
+            ]
+          },
+          "runState": {
+            "type": "string",
+            "enum": ["STOP", "PLAY", "PLAY_STEP", "PAUSE"]
+          },
+          "capacidades": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "id": "aaia-step-contract",
+      "name": "Contrato Step FIA",
+      "description": "Request-Response para ejecutar paso de FIA",
+      "request": "aaia-step-request",
+      "response": "aaia-step-result"
+    },
+    {
+      "id": "aaia-percepto-contract",
+      "name": "Contrato Percepto",
+      "description": "Envío de percepto al mundo",
+      "request": "aaia-percepto",
+      "response": "aaia-eferencia"
+    }
+  ],
+  "useCases": [
+    {
+      "name": "Crear sesión y operar FIA",
+      "steps": [
+        "1. Validar request con schema 'aaia-session-request'",
+        "2. Crear sesión → obtener sessionId",
+        "3. Enviar percepto validado con 'aaia-percepto'",
+        "4. Ejecutar step validado con 'aaia-step-request'",
+        "5. Recibir resultado validado con 'aaia-step-result'"
+      ]
+    }
+  ]
+}
