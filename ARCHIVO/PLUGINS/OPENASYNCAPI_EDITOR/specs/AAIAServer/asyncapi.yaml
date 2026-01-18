@@ -1,0 +1,297 @@
+asyncapi: '2.6.0'
+info:
+  title: MCP AAIA Server Events
+  version: '1.0.0'
+  description: |
+    Eventos Socket.IO del servidor MCP AAIA para comunicación en tiempo real.
+    PersefonBot actúa como MASTER de AAIA_ROOM.
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  development:
+    url: ws://localhost:3010
+    protocol: ws
+    description: Servidor Socket.IO de desarrollo
+
+channels:
+  AAIA_ROOM/fia_step:
+    description: Evento emitido cuando una FIA ejecuta un paso
+    subscribe:
+      operationId: onFIAStep
+      summary: Recibir notificación de paso de FIA
+      message:
+        $ref: '#/components/messages/FIAStepEvent'
+    publish:
+      operationId: requestFIAStep
+      summary: Solicitar paso de FIA
+      message:
+        $ref: '#/components/messages/FIAStepRequest'
+
+  AAIA_ROOM/percepto:
+    description: Evento de percepto enviado al mundo
+    subscribe:
+      operationId: onPercepto
+      summary: Recibir notificación de percepto
+      message:
+        $ref: '#/components/messages/PerceptoEvent'
+    publish:
+      operationId: sendPercepto
+      summary: Enviar percepto al mundo
+      message:
+        $ref: '#/components/messages/PerceptoRequest'
+
+  AAIA_ROOM/eferencia:
+    description: Eferencia (salida) de una FIA
+    subscribe:
+      operationId: onEferencia
+      summary: Recibir eferencia de FIA
+      message:
+        $ref: '#/components/messages/EferenciaEvent'
+
+  AAIA_ROOM/mundo_state:
+    description: Estado actualizado del mundo
+    subscribe:
+      operationId: onMundoState
+      summary: Recibir estado del mundo
+      message:
+        $ref: '#/components/messages/MundoStateEvent'
+
+  AAIA_ROOM/session_created:
+    description: Notificación de nueva sesión
+    subscribe:
+      operationId: onSessionCreated
+      summary: Recibir notificación de sesión creada
+      message:
+        $ref: '#/components/messages/SessionCreatedEvent'
+
+  AAIA_ROOM/session_destroyed:
+    description: Notificación de sesión destruida
+    subscribe:
+      operationId: onSessionDestroyed
+      summary: Recibir notificación de sesión destruida
+      message:
+        $ref: '#/components/messages/SessionDestroyedEvent'
+
+  AAIA_ROOM/join:
+    description: Unirse a la sala AAIA
+    publish:
+      operationId: joinRoom
+      summary: Solicitar unirse a la sala
+      message:
+        $ref: '#/components/messages/JoinRequest'
+
+  AAIA_ROOM/leave:
+    description: Salir de la sala AAIA
+    publish:
+      operationId: leaveRoom
+      summary: Solicitar salir de la sala
+      message:
+        $ref: '#/components/messages/LeaveRequest'
+
+components:
+  messages:
+    FIAStepEvent:
+      name: FIA_STEP
+      title: Evento de paso de FIA
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          fiaIndex:
+            type: integer
+          runState:
+            type: string
+            enum: [STOP, PLAY, PLAY_STEP, PAUSE]
+          eferencia:
+            $ref: '#/components/schemas/Eferencia'
+          timestamp:
+            type: string
+            format: date-time
+
+    FIAStepRequest:
+      name: FIA_STEP_REQUEST
+      title: Solicitud de paso de FIA
+      contentType: application/json
+      payload:
+        type: object
+        required: [sessionId, fiaIndex]
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          fiaIndex:
+            type: integer
+
+    PerceptoEvent:
+      name: PERCEPTO
+      title: Evento de percepto
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          percepto:
+            $ref: '#/components/schemas/Percepto'
+          fiasNotified:
+            type: array
+            items:
+              type: integer
+          timestamp:
+            type: string
+            format: date-time
+
+    PerceptoRequest:
+      name: PERCEPTO_REQUEST
+      title: Solicitud de envío de percepto
+      contentType: application/json
+      payload:
+        type: object
+        required: [sessionId, percepto]
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          percepto:
+            $ref: '#/components/schemas/Percepto'
+
+    EferenciaEvent:
+      name: EFERENCIA
+      title: Evento de eferencia
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          fiaIndex:
+            type: integer
+          eferencia:
+            $ref: '#/components/schemas/Eferencia'
+          timestamp:
+            type: string
+            format: date-time
+
+    MundoStateEvent:
+      name: MUNDO_STATE
+      title: Estado del mundo
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          mundo:
+            $ref: '#/components/schemas/MundoState'
+          timestamp:
+            type: string
+            format: date-time
+
+    SessionCreatedEvent:
+      name: SESSION_CREATED
+      title: Sesión creada
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          appId:
+            type: string
+          fiasCount:
+            type: integer
+          timestamp:
+            type: string
+            format: date-time
+
+    SessionDestroyedEvent:
+      name: SESSION_DESTROYED
+      title: Sesión destruida
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          sessionId:
+            type: string
+            format: uuid
+          timestamp:
+            type: string
+            format: date-time
+
+    JoinRequest:
+      name: JOIN
+      title: Solicitud de unión a sala
+      contentType: application/json
+      payload:
+        type: object
+        required: [room, mode]
+        properties:
+          room:
+            type: string
+            const: AAIA_ROOM
+          mode:
+            type: string
+            enum: [MASTER, observer]
+
+    LeaveRequest:
+      name: LEAVE
+      title: Solicitud de salida de sala
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          room:
+            type: string
+            const: AAIA_ROOM
+
+  schemas:
+    Eferencia:
+      type: object
+      properties:
+        tipo:
+          type: string
+          enum: [accion, dato, evento, noop]
+        payload:
+          type: object
+        timestamp:
+          type: string
+          format: date-time
+
+    Percepto:
+      type: object
+      required: [tipo, payload]
+      properties:
+        tipo:
+          type: string
+          enum: [sensor, evento, comando]
+        fuente:
+          type: string
+        payload:
+          type: object
+
+    MundoState:
+      type: object
+      properties:
+        nombre:
+          type: string
+        runState:
+          type: string
+          enum: [STOP, PLAY, PLAY_STEP, PAUSE]
+        vivo:
+          type: boolean
+        modelo:
+          type: object
+        fiasCount:
+          type: integer

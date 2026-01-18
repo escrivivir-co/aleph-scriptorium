@@ -1,0 +1,459 @@
+openapi: "3.0.3"
+info:
+  title: "MCP AAIA Server API"
+  version: "1.0.0"
+  description: |
+    API REST para el servidor MCP AAIA que expone el Runtime de Agentes Autónomos.
+    Permite crear sesiones con FIAs y mundos, operar ciclos cognitivos y consultar estado.
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  - url: http://localhost:3007
+    description: Servidor MCP AAIA local
+
+tags:
+  - name: Sessions
+    description: Gestión de sesiones AAIA
+  - name: FIAs
+    description: Operación de Formas de Inteligencia Artificial
+  - name: Mundo
+    description: Consulta y manipulación del mundo
+
+paths:
+  /sessions:
+    get:
+      tags: [Sessions]
+      summary: Listar sesiones activas
+      operationId: listSessions
+      responses:
+        '200':
+          description: Lista de sesiones
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionSummary'
+    
+    post:
+      tags: [Sessions]
+      summary: Crear nueva sesión
+      operationId: createSession
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: Sesión creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionMeta'
+        '400':
+          description: App ID inválido
+
+  /sessions/{sessionId}:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+    
+    get:
+      tags: [Sessions]
+      summary: Obtener detalle de sesión
+      operationId: getSession
+      responses:
+        '200':
+          description: Detalle de sesión
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionMeta'
+        '404':
+          description: Sesión no encontrada
+    
+    delete:
+      tags: [Sessions]
+      summary: Destruir sesión
+      operationId: destroySession
+      responses:
+        '204':
+          description: Sesión destruida
+        '404':
+          description: Sesión no encontrada
+
+  /sessions/{sessionId}/fias:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+    
+    get:
+      tags: [FIAs]
+      summary: Listar FIAs de la sesión
+      operationId: listFIAs
+      responses:
+        '200':
+          description: Lista de FIAs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FIAInfo'
+
+  /sessions/{sessionId}/fias/{fiaIndex}:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+      - $ref: '#/components/parameters/fiaIndex'
+    
+    get:
+      tags: [FIAs]
+      summary: Obtener info de FIA
+      operationId: getFIA
+      responses:
+        '200':
+          description: Info de FIA
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FIAInfo'
+
+  /sessions/{sessionId}/fias/{fiaIndex}/start:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+      - $ref: '#/components/parameters/fiaIndex'
+    
+    post:
+      tags: [FIAs]
+      summary: Iniciar FIA
+      operationId: startFIA
+      responses:
+        '200':
+          description: FIA iniciada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FIAStateChange'
+
+  /sessions/{sessionId}/fias/{fiaIndex}/stop:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+      - $ref: '#/components/parameters/fiaIndex'
+    
+    post:
+      tags: [FIAs]
+      summary: Detener FIA
+      operationId: stopFIA
+      responses:
+        '200':
+          description: FIA detenida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FIAStateChange'
+
+  /sessions/{sessionId}/fias/{fiaIndex}/step:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+      - $ref: '#/components/parameters/fiaIndex'
+    
+    post:
+      tags: [FIAs]
+      summary: Ejecutar paso de razonamiento
+      operationId: stepFIA
+      responses:
+        '200':
+          description: Paso ejecutado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StepResult'
+
+  /sessions/{sessionId}/fias/{fiaIndex}/eferencia:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+      - $ref: '#/components/parameters/fiaIndex'
+    
+    get:
+      tags: [FIAs]
+      summary: Obtener última eferencia
+      operationId: getEferencia
+      responses:
+        '200':
+          description: Eferencia
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Eferencia'
+
+  /sessions/{sessionId}/mundo:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+    
+    get:
+      tags: [Mundo]
+      summary: Consultar estado del mundo
+      operationId: queryMundo
+      responses:
+        '200':
+          description: Estado del mundo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MundoState'
+
+  /sessions/{sessionId}/percepto:
+    parameters:
+      - $ref: '#/components/parameters/sessionId'
+    
+    post:
+      tags: [Mundo]
+      summary: Enviar percepto al mundo
+      operationId: sendPercepto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Percepto'
+      responses:
+        '200':
+          description: Percepto enviado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerceptoResult'
+
+  /paradigmas:
+    get:
+      tags: [FIAs]
+      summary: Listar paradigmas FIA soportados
+      operationId: listParadigmas
+      responses:
+        '200':
+          description: Lista de paradigmas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Paradigma'
+
+  /apps:
+    get:
+      tags: [Sessions]
+      summary: Listar apps AAIA disponibles
+      operationId: listApps
+      responses:
+        '200':
+          description: Lista de apps
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AppInfo'
+
+components:
+  parameters:
+    sessionId:
+      name: sessionId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: ID de la sesión
+    
+    fiaIndex:
+      name: fiaIndex
+      in: path
+      required: true
+      schema:
+        type: integer
+        minimum: 0
+      description: Índice de la FIA en la sesión
+
+  schemas:
+    CreateSessionRequest:
+      type: object
+      required: [appId]
+      properties:
+        appId:
+          type: string
+          description: ID de la app a cargar
+          example: "demo-logica"
+
+    SessionSummary:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+        appId:
+          type: string
+        fiasCount:
+          type: integer
+        runState:
+          $ref: '#/components/schemas/RunState'
+        createdAt:
+          type: string
+          format: date-time
+
+    SessionMeta:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          format: uuid
+        appId:
+          type: string
+        status:
+          type: string
+          enum: [created, running, stopped, destroyed]
+        fias:
+          type: array
+          items:
+            $ref: '#/components/schemas/FIAInfo'
+        mundo:
+          $ref: '#/components/schemas/MundoState'
+        createdAt:
+          type: string
+          format: date-time
+
+    FIAInfo:
+      type: object
+      properties:
+        index:
+          type: integer
+        nombre:
+          type: string
+        paradigma:
+          type: string
+          enum: [logica, conexionista, simbolica, sbc, sbr, situada, hibrido, cientifica, gramaticas, sistemas]
+        runState:
+          $ref: '#/components/schemas/RunState'
+        capacidades:
+          type: array
+          items:
+            type: string
+        prologSessionId:
+          type: string
+          description: ID de sesión Prolog si es FIA lógica
+
+    FIAStateChange:
+      type: object
+      properties:
+        success:
+          type: boolean
+        fiaIndex:
+          type: integer
+        previousState:
+          $ref: '#/components/schemas/RunState'
+        newState:
+          $ref: '#/components/schemas/RunState'
+
+    StepResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        fiaIndex:
+          type: integer
+        runState:
+          $ref: '#/components/schemas/RunState'
+        cycles:
+          type: integer
+        eferencia:
+          $ref: '#/components/schemas/Eferencia'
+        executionTimeMs:
+          type: number
+
+    Eferencia:
+      type: object
+      properties:
+        tipo:
+          type: string
+          enum: [accion, dato, evento, noop]
+        payload:
+          type: object
+        timestamp:
+          type: string
+          format: date-time
+
+    MundoState:
+      type: object
+      properties:
+        nombre:
+          type: string
+        runState:
+          $ref: '#/components/schemas/RunState'
+        vivo:
+          type: boolean
+        modelo:
+          type: object
+          description: Estado del modelo del mundo
+        fiasCount:
+          type: integer
+
+    Percepto:
+      type: object
+      required: [tipo, payload]
+      properties:
+        tipo:
+          type: string
+          enum: [sensor, evento, comando]
+        fuente:
+          type: string
+        payload:
+          type: object
+
+    PerceptoResult:
+      type: object
+      properties:
+        success:
+          type: boolean
+        percepto:
+          $ref: '#/components/schemas/Percepto'
+        fiasNotified:
+          type: array
+          items:
+            type: integer
+
+    RunState:
+      type: string
+      enum: [STOP, PLAY, PLAY_STEP, PAUSE]
+
+    Paradigma:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        categoria:
+          type: string
+          enum: [cognitivo, conocimiento, situado, especializado]
+
+    AppInfo:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        fiasCount:
+          type: integer
+        paradigmas:
+          type: array
+          items:
+            type: string

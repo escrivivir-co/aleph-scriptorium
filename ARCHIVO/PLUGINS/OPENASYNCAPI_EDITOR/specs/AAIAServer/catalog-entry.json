@@ -1,0 +1,12 @@
+{
+  "$schema": "../catalog.schema.json",
+  "type": "asyncapi",
+  "id": "aaia-server",
+  "project": "MCPAAIAServer",
+  "version": "1.0.0",
+  "status": "draft",
+  "origin": "ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/AAIAServer/asyncapi.yaml",
+  "cataloged_at": "2026-01-18T12:00:00Z",
+  "description": "Eventos Socket.IO del servidor MCP AAIA",
+  "tags": ["aaia", "socket.io", "fia", "runtime"]
+}
