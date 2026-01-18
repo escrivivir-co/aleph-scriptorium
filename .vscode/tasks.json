@@ -178,6 +178,52 @@
       },
       "detail": "Puerto 3003 - DevOps Server con persistencia"
     },
+    {
+      "label": "MCP: Start [AAIA]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "start:aaia"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-aaia",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*AAIA MCP Server running on port 3007.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "mcp-stack"
+      },
+      "detail": "Puerto 3007 - AAIA Server (FIAs + Mundos)"
+    },
+    {
+      "label": "AIA: Open [Browser]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3007"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abrir AAIA Server"
+    },
     // ═══════════════════════════════════════════════════════════════════════
     // APB: AGENT PROLOG BRAIN (PrologEditor Stack)
     // Puertos: 8000 (Backend), 5001 (Frontend/Angular)

@@ -107,6 +107,8 @@ handoffs:
 | devops-mcp-server | 3003 | MCPGallery/mcp-mesh-sdk |
 | wiki-browser-server | 3002 | MCPGallery/mcp-mesh-sdk |
 | state-machine-server | 3004 | MCPGallery/mcp-mesh-sdk |
+| prolog-mcp-server | 3006 | MCPGallery/mcp-mesh-sdk |
+| **aaia-mcp-server** | **3007** | **AAIAGallery/as-core** |
 | launcher-server | 3050 | MCPGallery/mcp-mesh-sdk |
 
 → Ver [PLUGINS.md](../PLUGINS.md) sección "Servidores MCP" para protocolo.

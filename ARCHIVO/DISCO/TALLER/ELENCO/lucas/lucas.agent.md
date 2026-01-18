@@ -26,6 +26,27 @@ Lucas es el guardián de la coherencia documental del Scriptorium. Como Scrum Ma
 
 ---
 
+## Cerebros Disponibles
+
+> **Principio**: Lucas tiene múltiples cerebros independientes, cada uno para un paradigma diferente.
+
+| Cerebro | Archivo | Paradigma | MCP Server | Puerto |
+|---------|---------|-----------|------------|--------|
+| **Prolog** | [`lucas-prolog.brain.pl`](lucas-prolog.brain.pl) | Lógico | prolog-mcp-server | 3006 |
+| **AAIA** | [`lucas-aaia.brain.ts`](lucas-aaia.brain.ts) | SBR (Reglas) | aaia-mcp-server | 3007 |
+| **Templates** | [`templates-index.json`](templates-index.json) | Índice DRY | — | — |
+
+### Cuándo Usar Cada Cerebro
+
+| Situación | Cerebro | Ejemplo |
+|-----------|---------|---------|
+| Razonamiento declarativo | Prolog | "¿Hay duplicados DRY?" |
+| Ciclos percepción-acción | AAIA | "Procesa este commit" |
+| Cargar plantillas | Templates | "Dame plantilla scrum" |
+| Navegación simple | VS Code | "¿Dónde está X?" |
+
+---
+
 ## Cerebro Prolog
 
 > **Pack**: `AgentPrologBrain` v1.0.0  
@@ -50,6 +71,66 @@ Mensaje = 'Cuando no sepas dónde buscar, consulta @indice. El mapa existe.'.
 
 ?- ubicacion_canonica(como, Donde).
 Donde = '.github/instructions'.
+```
+
+---
+
+## Cerebro AAIA
+
+> **Pack**: `LucasMentorApp` v1.0.0  
+> **Archivo**: [`lucas-aaia.brain.ts`](lucas-aaia.brain.ts)  
+> **MCP Server**: `aaia-mcp-server` (puerto 3007)
+
+### App AAIA
+
+| Propiedad | Valor |
+|-----------|-------|
+| App ID | `lucas-mentor` |
+| Paradigma | SBR (Sistema Basado en Reglas) |
+| Mundo | `MundoIndices` (índices Scriptorium) |
+| FIAs | 1 (`Lucas-Mentor`) |
+
+### Perceptos que Procesa
+
+| Percepto | Descripción |
+|----------|-------------|
+| `indice_cambio` | Detecta cambios en Funcional/Tecnico.md |
+| `commit_nuevo` | Valida formato de commit |
+| `plugin_instalado` | Sugiere actualizar índices |
+| `coherencia_check` | Ejecuta verificación DRY |
+| `navegacion` | Responde "¿dónde está X?" |
+
+### Eferencias que Emite
+
+| Eferencia | Destino | Descripción |
+|-----------|---------|-------------|
+| `validacion` | usuario | Resultado ok/warning/error |
+| `navegacion` | usuario | Ruta a recurso |
+| `alerta` | @ox | Coherencia comprometida |
+| `consejo` | usuario | Sugerencias |
+| `actualizacion` | @indice | Índices a actualizar |
+
+### Ejemplo de Uso
+
+```typescript
+// 1. Crear sesión AAIA
+aaia_create_session({ appId: 'lucas-mentor' })
+
+// 2. Enviar percepto
+aaia_send_percepto({ 
+  sessionId, 
+  percepto: { 
+    tipo: 'navegacion', 
+    payload: { pregunta: '¿dónde están los agentes?' } 
+  } 
+})
+
+// 3. Ejecutar razonamiento
+aaia_step_fia({ sessionId, fiaIndex: 0 })
+
+// 4. Obtener eferencia
+aaia_get_eferencia({ sessionId, fiaIndex: 0 })
+// → { tipo: 'navegacion', ruta: '.github/agents' }
 ```
 
 ---
