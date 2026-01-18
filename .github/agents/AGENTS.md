@@ -127,6 +127,7 @@
 | `plugin_ox_hypergrapheditor` | hypergraph-editor | 1 agente | `@plugin_ox_hypergrapheditor` |
 | `plugin_ox_floveeditor` | flove-editor | 1 agente | `@plugin_ox_floveeditor` |
 | `plugin_ox_openasyncapieditor` | openasyncapi-editor | 1 agente | `@plugin_ox_openasyncapieditor` |
+| `plugin_ox_aaiaeditor` | aaia-editor | 1 agente | `@plugin_ox_aaiaeditor` |
 
 ### Detalle por Plugin
 
@@ -151,6 +152,7 @@
 | arg-board-app | `.github/plugins/arg-board-app/agents/` | ArgBoardApp |
 | hypergraph-editor | `.github/plugins/hypergraph-editor/agents/` | HyperGraphEditor |
 | openasyncapi-editor | `.github/plugins/openasyncapi-editor/agents/` | OpenAsyncApiEditor |
+| aaia-editor | `.github/plugins/aaia-editor/agents/` | AAIAEditor |
 
 ---
 

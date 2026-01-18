@@ -47,6 +47,7 @@
 | 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 | ✅ | MCP-CHANNELS-1.0.0 | Socket.IO Integration + Angular Unification (55 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_07_MCP_Channels_Integration/01_backlog-borrador.md) |
 | ✅ | MCP-PERSISTENCE-1.0.0 | DevOps Server File Persistence (18 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_09_DevOpsMCP_Persistencia/01_backlog-borrador.md) |
+| 🟢 | MCP-AAIA-SERVER-1.0.0 | AAIA MCP Server (FIAs + Mundos + PersefonBot) (66/68 pts = 97%) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-18_mcp-aaia-server/) |
 
 ---
 
@@ -121,6 +122,7 @@
 | 🟢 | 2026-01-05_blueprints-typed-prompt | BLUEPRINTS-TYPED-1.0.0 | En progreso | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
 | ✅ | 2026-01-04_agent-creator-claude-templates | AGENT-TEMPLATES-1.0.0 | 8 turnos, protocolo validación inscrito | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
 | ✅ | 2026-01-05_consenso-agile-scriptorium | SCRUM-REFACTOR-1.0.0 | 4 turnos, Modelo Generativo + Lucas DRY (46 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_consenso-agile-scriptorium/) |
+| 🟢 | 2026-01-18_mcp-aaia-server | MCP-AAIA-SERVER-1.0.0 | 6 turnos, MCPAAIAServer 97% (66/68 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-18_mcp-aaia-server/) |
 
 ---
 

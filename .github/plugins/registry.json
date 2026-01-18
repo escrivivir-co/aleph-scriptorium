@@ -810,6 +810,59 @@
           "agent": "OpenAsyncApiEditor"
         }
       ]
+    },
+    "aaia-editor": {
+      "name": "AAIA Editor (Runtime de Agentes)",
+      "version": "1.0.0",
+      "description": "Plugin para operar el runtime AAIA (Arquitectura de Agentes de IA Autónomos). Gestiona sesiones, mundos y FIAs (Formas de Inteligencia Artificial). Conecta con MCPAAIAServer (:3007) y AlephScript socket clients.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-01-18T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "instructions_count": 1,
+      "data_directory": "ARCHIVO/PLUGINS/AAIA_EDITOR/",
+      "bridge_agent": "plugin_ox_aaiaeditor",
+      "dependencies": [],
+      "optional_dependencies": ["typed-prompting", "prolog-editor", "openasyncapi-editor"],
+      "submodule": "AAIAGallery/as-core",
+      "epic": "MCP-AAIA-SERVER-1.0.0",
+      "mcpServer": {
+        "name": "aaia-mcp-server",
+        "port": 3007,
+        "protocol": "socket.io",
+        "runtime": "node"
+      },
+      "paradigms": [
+        "logica", "conexionista", "simbolica", "sbc", "sbr",
+        "situada", "hibrido", "cientifica", "gramaticas", "sistemas"
+      ],
+      "handoffs": [
+        {
+          "label": "Crear sesión AAIA",
+          "agent": "AAIAEditor"
+        },
+        {
+          "label": "Listar FIAs disponibles",
+          "agent": "AAIAEditor"
+        },
+        {
+          "label": "Operar FIA (step/percepto)",
+          "agent": "AAIAEditor"
+        },
+        {
+          "label": "Inspeccionar estado del mundo",
+          "agent": "AAIAEditor"
+        },
+        {
+          "label": "Documentar paradigmas IA",
+          "agent": "AAIAEditor"
+        },
+        {
+          "label": "Conectar cliente AlephScript",
+          "agent": "AAIAEditor"
+        }
+      ]
     }
   }
 }
