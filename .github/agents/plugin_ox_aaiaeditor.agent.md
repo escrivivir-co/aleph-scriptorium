@@ -2,7 +2,7 @@
 name: AAIAEditor Bridge
 description: "Bridge a plugin aaia-editor. Delega gestión de FIAs, mundos y sesiones AAIA."
 argument-hint: "Invoca plugin AAIA Editor para operar agentes autónomos"
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'launcher-server/*', 'playwright/*', 'agent', 'todo']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'launcher-server/*', 'playwright/*', 'agent', 'aaia-mcp-server/*', 'todo']
 handoffs:
   - label: Crear sesión AAIA
     agent: AAIAEditor
