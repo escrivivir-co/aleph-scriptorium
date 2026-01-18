@@ -237,6 +237,82 @@
       },
       "detail": "Abrir AAIA Server"
     },
+    {
+      "label": "AIA: Start [Backend]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "start:dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/AAIAGallery/backend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "aaia-backend",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*AAIA Backend running.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "aaia-stack"
+      },
+      "detail": "Puerto 8007 - AAIA Backend Gateway (Express)"
+    },
+    {
+      "label": "AIA: Start [Frontend]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "start"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/AAIAGallery/frontend"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "aaia-frontend",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "aaia-stack"
+      },
+      "detail": "Puerto 4200 - AAIA Frontend (Angular)"
+    },
+    {
+      "label": "AIA: Open [Frontend]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:4200"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abrir AAIA Frontend"
+    },
     // ═══════════════════════════════════════════════════════════════════════
     // APB: AGENT PROLOG BRAIN (PrologEditor Stack)
     // Puertos: 8000 (Backend), 5001 (Frontend/Angular)
