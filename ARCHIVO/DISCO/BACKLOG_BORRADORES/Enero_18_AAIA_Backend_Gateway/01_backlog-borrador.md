@@ -2,9 +2,10 @@
 
 > **Épica**: AAIA-BACKEND-1.0.0  
 > **Fecha**: 2026-01-18  
-> **Estado**: ✅ COMPLETADO (45/45 pts)  
-> **Effort estimado**: 45 pts  
-> **Sprint**: FC1
+> **Estado**: ✅ COMPLETADO (53/53 pts)  
+> **Effort estimado**: 53 pts (45 original + 8 Type Unification)  
+> **Sprint**: FC1  
+> **Última actualización**: 2026-01-18 (sesión Type Unification)
 
 ---
 
@@ -348,6 +349,65 @@ AAIAGallery/
 | 4. Quality | S09 | 5 pts | Tests, documentación |
 
 **Total**: 45 pts (~3-4 días de trabajo)
+
+---
+
+## S10: Type Unification Across SDKs (8 pts) ✅
+
+> **Sesión adicional**: 2026-01-18 (Type Unification)
+
+**Como** desarrollador  
+**Quiero** tipos unificados desde mcp-core-sdk  
+**Para** evitar duplicación y colisiones de tipos
+
+### Problema Detectado
+
+Los tipos `CreateSessionResponse`, `ListSessionsResponse` existían en:
+- `mcp-core-sdk/types/prolog` (Prolog MCP Server)
+- `mcp-core-sdk/types/aaia` (AAIA MCP Server)
+
+**Solución**: Prefijo `AAIA` para evitar colisión.
+
+### Tasks
+
+- [x] T10.1: Añadir 12 AAIA-prefixed API Response types a mcp-core-sdk/types/aaia
+- [x] T10.2: Exportar nuevos tipos desde mcp-core-sdk/browser (Angular/React)
+- [x] T10.3: Actualizar mcp-mesh-sdk para importar desde core
+- [x] T10.4: Backend: re-export desde core con backward-compat aliases
+- [x] T10.5: Frontend: aaia.model.ts importa desde browser
+- [x] T10.6: Fix component name mismatches en tests (4 archivos)
+- [x] T10.7: Fix import paths en services (2 archivos)
+- [x] T10.8: Rebuild y package mcp-core-sdk v1.3.0
+
+### Archivos Modificados
+
+| SDK | Archivo | Cambio |
+|-----|---------|--------|
+| mcp-core-sdk | `src/types/aaia/index.ts` | +12 AAIA-prefixed types |
+| mcp-core-sdk | `src/browser/index.ts` | +12 API Response exports |
+| mcp-mesh-sdk | `src/clients/AAIABackendClient.ts` | Imports from core |
+| backend | `src/types/aaia.types.ts` | Re-export + aliases |
+| backend | `src/types/api.types.ts` | Re-export + aliases |
+| frontend | `src/app/models/aaia.model.ts` | Import from browser |
+| frontend | `src/app/services/aaia.service.ts` | Fixed paths |
+| frontend | `src/app/services/socketio/sala.service.ts` | Fixed ServerService import |
+| frontend | `feature/component.spec.ts` | DynamicFormComponent |
+| frontend | `feature/routing.module.ts` | FeatureRoutingModule |
+| frontend | `feature/module.ts` | FeatureModule |
+| frontend | `inet-app.component.spec.ts` | InetAppComponent |
+| frontend | `iot-logic-engine.component.spec.ts` | IotLogicEngineComponent |
+
+### Commits
+
+| Repo | Commit | Message |
+|------|--------|---------|
+| mcp-core-sdk | `24e912e` | feat(types): AAIA API Response types + browser exports |
+| mcp-mesh-sdk | `fe3c795` | feat(aaia): AAIABackendClient + type imports from core |
+| MCPGallery | `871dff0` | chore: update submodules |
+| AAIAGallery | `33d4fb7` | feat(aaia): Type Unification + Frontend Fixes |
+| aleph-scriptorium | `5dcdfd5` | feat(aaia): Type Unification + Submodule Updates |
+
+**Total adicional**: 8 pts
 
 ---
 
