@@ -1,9 +1,9 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.6-dry  
+> **Versión**: 1.2.7-dry  
 > **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-09
+> **Actualizado**: 2026-01-19
 > **Rama en ALEPH (esta codebase)**: flavour/monada
 > **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
@@ -49,6 +49,7 @@
 | ✅ | MCP-PERSISTENCE-1.0.0 | DevOps Server File Persistence (18 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_09_DevOpsMCP_Persistencia/01_backlog-borrador.md) |
 | ✅ | MCP-AAIA-SERVER-1.0.0 | AAIA MCP Server (FIAs + Mundos + PersefonBot) (93 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-18_mcp-aaia-server/) |
 | ✅ | AAIA-BACKEND-1.0.0 | AAIA Backend Gateway (Express + MCP + Socket.IO) (45 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_18_AAIA_Backend_Gateway/01_backlog-borrador.md) |
+| ✅ | ALEPHSCRIPT-MIGRATION-1.0.0 | Migración alephscript → as-core + Backend Runtime (55 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_19_AlephScript_Migration/01_backlog-borrador.md) |
 
 ---
 
@@ -85,6 +86,7 @@
 
 | Carpeta | Foco | Estado |
 |---------|------|--------|
+| [Enero_19_AlephScript_Migration](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_19_AlephScript_Migration/) | Migración alephscript → as-core + Backend Runtime | 📋 Propuesto |
 | [Diciembre_29_TypedPrompting_ContextManager](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/) | Context Manager | ✅ Funcional |
 | [Diciembre_30_CopilotLogExporter](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/) | Copilot Log Exporter | ✅ Completado |
 | [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 (incl. Demo) | 📋 Activo |
@@ -131,11 +133,13 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Épicas cerradas (total) | 29+ |
-| Effort completado | ~215 pts |
+| Épicas cerradas (total) | 30+ |
+| Épicas activas | 1 (RELEASE-1.0.0-beta.1) |
+| Effort completado | ~270 pts |
+| Effort pendiente | ~0 pts |
 | Plugins instalados | 22 |
 | Submódulos integrados | 17 |
-| Sesiones cotrabajo | 8 |
+| Sesiones cotrabajo | 9 |
 
 ---
 
@@ -143,6 +147,8 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-19 | ✅ ALEPHSCRIPT-MIGRATION-1.0.0: Completado (55/55 pts). @fia/paradigmas + RuntimeService + Docs | @ox |
+| 2026-01-19 | ➕ Añadir ALEPHSCRIPT-MIGRATION-1.0.0 (55 pts, 3 fases: as-core + Backend Runtime + Cleanup) | @ox |
 | 2026-01-05 | ✅ Cerrar PROLOG-BUG-002 (templates reales iot-app/state-machine/simu en mcp-presets) | @scrum |
 | 2026-01-05 | ✅ Cerrar LAUNCHER-BUG-001 (killProcessTree + waitForProcessExit en MCPLauncherServer) | @scrum |
 | 2026-01-05 | ✅ Cerrar PROLOG-BUG-001 (sessionId propagation en PrologEditor frontend) | @scrum |
