@@ -278,12 +278,12 @@ FUNDACIÓN es el intento de responder con arquitectura, no con sermón.
 
 ## Fuentes
 
-- `ARCHIVO/DISCO/DEPRECATED/MarcoHeidegger-Thiel.md` — Borrador Thiel-Heidegger
-- `ARCHIVO/DISCO/DEPRECATED/EstudioMarcoHeidegger-Thiel.md` — Cartografía de los 3 Pilares
-- `ARCHIVO/marco/` — 15 ejes del corpus
+- `ARCHIVO/marco/MarcoHeidegger-Thiel/MarcoHeidegger-Thiel.md` — Comparativa Thiel-Heidegger
+- `ARCHIVO/marco/MarcoHeidegger-Thiel/EstudioMarcoHeidegger-Thiel.md` — Cartografía de los 3 Pilares (identidad, geopolítica y TESCREAL). 
+- `ARCHIVO/marco/` — ejes del corpus
 - `ARCHIVO/justificacion/` — Gramática afectiva de lo tardío
 - `ARCHIVO/diagnostico/` — Orientación ética
 
 ---
 
-*Documento generado como integración para FUNDACIÓN. Sprint FC1.*
+*Documento generado como integración para FUNDACIÓN.*
