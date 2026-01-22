@@ -141,6 +141,35 @@ Pero la tendencia técnica apunta en dirección contraria:
 
 No estoy prediciendo que esto *ocurrirá*. Estoy señalando que es *posible*. La arquitectura técnica lo permite. La pregunta es quién construye qué, y para quién.
 
+### §6b. Bitchat Nepal: federación bajo presión estatal (2024-2025)
+
+> **Nota**: Este recuadro extiende los ejemplos de federación con un caso contemporáneo de resistencia. Fuente: Plan.md (2025).
+
+Los ejemplos anteriores (Bitcoin, Wikipedia, Fediverse) muestran federación en condiciones relativamente benignas: nadie ha intentado seriamente destruirlas. Pero ¿qué pasa cuando el Estado decide que tu red descentralizada es una amenaza?
+
+**Bitchat en Nepal** ofrece un caso de estudio real:
+
+En 2024, el gobierno nepalí bloqueó el acceso a Twitter/X durante protestas ciudadanas. La justificación oficial: "desinformación". El efecto real: cortar comunicación entre manifestantes.
+
+La respuesta fue Bitchat: una aplicación de mensajería que opera sobre el protocolo AT (el mismo de Bluesky) pero diseñada para resistir censura:
+
+| Característica | Función |
+|----------------|---------|
+| **Nodos distribuidos** | No hay servidor central que bloquear |
+| **Identidad soberana (DIDs)** | Los usuarios controlan sus claves, no la plataforma |
+| **Sincronización mesh** | Los mensajes saltan entre dispositivos cercanos si internet está cortado |
+| **Código abierto** | Cualquiera puede auditar, nadie puede capturar |
+
+**El gobierno bloqueó los DNS**. Bitchat siguió funcionando porque no depende de DNS.
+
+**El gobierno presionó a ISPs**. Los usuarios activaron VPNs y nodos Tor integrados.
+
+**El gobierno amenazó a desarrolladores**. Pero los desarrolladores estaban en 5 países y el código ya era público.
+
+Resultado: las protestas se coordinaron. El bloqueo fracasó. El gobierno tuvo que ceder.
+
+**Lección para la federación**: No basta con que la arquitectura sea descentralizada. Debe ser **anti-frágil**: cada ataque debe fortalecerla en lugar de debilitarla. El bloqueo de Nepal popularizó Bitchat más que cualquier campaña de marketing.
+
 ---
 
 ## 7. Escenario 2035: Dos caminos
@@ -201,6 +230,39 @@ No convencer a Amazon de que sea altruista. **Construir alternativas** que ocupe
 **Modelos abiertos entrenados con datos diversos**: No solo código abierto (que ya existe) sino **datos abiertos** y **entrenamiento distribuido** que no dependan de ninguna corporación. Proyectos como BLOOM mostraron que es posible; necesitan escala.
 
 **Mecanismos de priorización ciudadana con dientes**: No consejos consultivos que emiten recomendaciones ignorables. Condiciones de acceso al mercado: si quieres operar en esta jurisdicción, debes dedicar X% de tu cómputo a problemas designados públicamente. Como impuestos, no como voluntariado.
+
+### §8b. Porto Alegre: 35 años de presupuesto participativo (1989-2024)
+
+> **Nota**: Este recuadro extiende los mecanismos de priorización ciudadana con un caso empírico de larga duración. Fuente: Plan.md (2025).
+
+Cuando hablamos de "priorización democrática del cómputo", suena a utopía. Pero la priorización democrática de recursos escasos **ya existe**. Y tiene nombre: presupuesto participativo.
+
+**Porto Alegre, Brasil, 1989**: Un gobierno municipal del Partido de los Trabajadores decide que los ciudadanos, no los tecnócratas, determinarán cómo gastar parte del presupuesto público. La pregunta era simple: "¿Qué necesita más tu barrio: asfalto, escuela o alcantarillado?"
+
+**El método**:
+1. Asambleas de barrio donde los vecinos identifican prioridades
+2. Delegados elegidos que negocian entre barrios
+3. Consejo municipal que integra las demandas en presupuesto real
+4. Ejecución supervisada por los mismos ciudadanos que decidieron
+
+**Los resultados tras 35 años**:
+- Cobertura de agua potable: del 75% al 98%
+- Alcantarillado: del 46% al 85%
+- Escuelas: triplicadas en barrios pobres
+- Corrupción: drásticamente reducida (los que gastan son los que vigilan)
+
+**La replicación global**:
+- 2024: más de 3.000 ciudades en 40 países usan variantes del modelo
+- Viña del Mar (Chile): 89 proyectos ciudadanos, 44 aprobados tras revisión técnica, votación híbrida (digital + presencial)
+- Barcelona (Decidim): software libre que permite presupuesto participativo a escala metropolitana
+
+**¿Por qué esto importa para la IA?**
+
+Porque demuestra que la priorización democrática a escala no es fantasía. La gente **puede** decidir qué problemas atacar cuando se le da el mecanismo. El presupuesto participativo es para recursos fiscales lo que necesitamos para recursos computacionales.
+
+La diferencia: el presupuesto de una ciudad es tangible (asfalto, escuelas). La capacidad de cómputo es abstracta (modelos, datos). El desafío es **hacer visible lo invisible**: mostrar qué problemas podrían resolverse si el cómputo se dedicara a ellos.
+
+---
 
 ### La pregunta incómoda (de nuevo)
 

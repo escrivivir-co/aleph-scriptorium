@@ -49,6 +49,104 @@ Nietzsche diagnosticó la muerte de Dios. Aquí diagnosticamos la muerte del dem
 
 ---
 
+## §0b. Recuadro: Tipos de democracia (cartografía conceptual)
+
+> **Fuente**: Plan.md (MATERIAL_FUENTE/Plan_Democracia_Digital)
+
+Antes de diagnosticar la muerte del demos, conviene recordar qué formas ha tomado:
+
+| Aspecto | Representativa | Participativa | Directa | Semidirecta |
+|---------|----------------|---------------|---------|-------------|
+| **Quién decide** | Representantes elegidos | Ciudadanía + gobierno | Todos los ciudadanos | Representantes + ciudadanía en temas clave |
+| **Frecuencia** | Ocasional (elecciones) | Continua (múltiples canales) | Muy frecuente | Regular (temas puntuales) |
+| **Mecanismos** | Parlamento, elecciones | Presupuestos participativos, asambleas | Referéndums, iniciativas populares | Referéndums + parlamento |
+| **Ventajas** | Eficiencia, estabilidad | Mayor legitimidad, inclusión | Máxima legitimidad, transparencia | Equilibrio eficiencia/participación |
+| **Desventajas** | Distancia gobernantes/gobernados | Requiere tiempo y cultura cívica | Ineficiencia, tiranía de mayoría | Posible inconsistencia |
+| **Escalabilidad** | ✓ Muy escalable | ✓ Con canales digitales | ✗ Impracticable a gran escala | ✓ Escalable (Suiza: 8.7M) |
+| **Ejemplos** | España, USA, UK | Decidim Barcelona, Porto Alegre | Suiza (parcial), Atenas antigua | Suiza (sistema completo) |
+
+### El contexto español: Del 15M a 2025
+
+La primavera de 2011 marcó un punto de inflexión. El movimiento 15M surgió como respuesta a la sensación de que el sistema político estaba atrapado en un bipartidismo incapaz de representar. Las plazas se convirtieron en centros de deliberación: **un ágora moderna que recordaba los principios de la democracia ateniense, adaptados a un país de 49 millones**.
+
+El 15M no solo denunció la falta de representación, sino la connivencia entre élites económicas y políticas. A través de asambleas y plataformas digitales, los ciudadanos discutían propuestas para una democracia más directa, transparente y participativa.
+
+Cuando las movilizaciones disminuyeron, su energía se canalizó en nuevas formaciones políticas: la "Nueva Política". Pero este proceso fragmentó la energía democratizadora inicial, produciendo un escenario de alta competitividad entre fuerzas con agendas distintas.
+
+**La paradoja 15M**: El movimiento que pedía democracia directa terminó produciendo más partidos (más representación), no menos intermediarios.
+
+### §0c. El Ruedo Ibérico: Arquetipos de correlación de fuerzas
+
+> **Fuente**: Plan.md (MATERIAL_FUENTE/Plan_Democracia_Digital)
+
+España no es solo un caso particular. Es un **laboratorio de arquetipos** que se repiten en otras latitudes. La tensión entre autoritarios y sociedad civil se puede leer como secuencia de fases:
+
+| Fase | Período | Configuración | Arquetipo universal |
+|------|---------|---------------|---------------------|
+| **Cero partidos** | 1939-1975 | Dictadura franquista | Monopolio del poder, oposición clandestina |
+| **Dos partidos** | 1978-2011 | Bipartidismo PSOE/PP | Alternancia pactada, consenso de élites |
+| **Fragmentación** | 2011-2019 | Podemos, Ciudadanos, regionalismos | Irrupción de nuevos actores, crisis de representación |
+| **Polarización extrema** | 2019-2025 | +Vox, separatismos, lawfare | Correlación inestable, bloqueo institucional |
+| **¿Reconstitución?** | 2025+ | 7+ partidos para gobernar | Negociación permanente o parálisis |
+
+**El patrón subyacente**:
+
+```
+Monopolio → Duopolio estable → Fragmentación → Polarización → ¿?
+```
+
+Este patrón se observa en:
+- Italia (DC/PCI → Berlusconi → 5 Estrellas → fragmentación)
+- Francia (PS/RPR → Macron vs Le Pen → fragmentación)
+- América Latina (bipartidismos clásicos → nuevos movimientos)
+
+**Los actores del Ruedo Ibérico 2025**:
+
+| Actor | Función | Correlato arquetípico |
+|-------|---------|----------------------|
+| **PSOE** | Centro-izquierda institucional | Partido de masas clásico adaptado |
+| **PP** | Centro-derecha institucional | Conservadurismo de orden |
+| **Vox** | Extrema derecha | Reacción autoritaria a la fragmentación |
+| **Sumar** | Izquierda postmaterialista | Coalición de nuevos movimientos |
+| **Podemos** (residual) | Izquierda rupturista | Canalización institucional del 15M |
+| **ERC, Junts, CUP** | Soberanismo catalán | Tensión centro-periferia |
+| **EH Bildu, PNV** | Soberanismo vasco | Integración negociada vs ruptura |
+| **BNG, Més, CHA...** | Regionalismos | Defensa de territorio frente a centro |
+
+**El lawfare como tecnología de reconfiguración**:
+
+La judicialización estratégica (Caso Neurona, Alberto Rodríguez, Borràs, amnistía catalana) no es accidente ni corrupción individual. Es **tecnología de alteración de correlaciones** sin pasar por elecciones:
+
+| Mecanismo | Función | Ejemplo |
+|-----------|---------|--------|
+| **Doctrina Botín** | Proteger a poderosos cuando Fiscalía no actúa | Archivo de casos con solo acusación popular |
+| **Doctrina Atutxa** | Excepcionar Botín en casos "de interés colectivo" | Permitir juicios a políticos con acusación popular |
+| **Inhabilitación** | Eliminar representantes electos | Alberto Rodríguez pierde escaño |
+| **Proceso como castigo** | Daño reputacional antes de sentencia | 3 años de Caso Neurona → archivado |
+
+> **BlackFlag**: El lawfare es arma de doble filo: quien lo usa hoy puede sufrirlo mañana. La judicialización erosiona la legitimidad del sistema judicial para todos.
+
+**¿Por qué importa este arquetipo para la IA?**
+
+Porque los algoritmos de moderación, los trending topics, el sesgo de plataformas (ver Cap. 7 §5b sobre Twitter/X) **son el nuevo terreno de correlación de fuerzas**. El lawfare digital ya existe:
+
+- Shadowbanning de cuentas políticas
+- Amplificación algorítmica de un bando
+- Demonetización de creadores críticos
+- Cierre de cuentas antes de elecciones
+
+Lo que España muestra con lawfare judicial, las plataformas pueden hacer con lawfare algorítmico. **Y sin necesidad de jueces.**
+
+### ¿Por qué importa para el diagnóstico?
+
+Porque la demanda de participación directa **permanece vigente** pero los mecanismos institucionales no la canalizan. Las plataformas digitales como Decidim Barcelona (400.000 usuarios) muestran que es técnicamente posible. Pero:
+
+> **YellowFlag**: ¿Es la democracia digital una **transcendencia** hacia formas más participativas, o una **regresión** que evade la complejidad de la deliberación presencial?
+
+La pregunta no tiene respuesta técnica. La tiene política.
+
+---
+
 ## Algoritmos opacos
 
 > "Hay una idea que distingue entre algoritmos transparentes y opacos. En los transparentes (como los árboles de decisión) es posible reseguir el impacto que tiene un parámetro en el resultado. Mientras que en los opacos (como las redes neuronales) habría un momento de pérdida de trazabilidad." — T04x02

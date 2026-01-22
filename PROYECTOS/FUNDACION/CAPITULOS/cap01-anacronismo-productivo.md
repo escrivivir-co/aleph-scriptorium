@@ -15,6 +15,8 @@ La historia no avanza en línea recta. Está llena de **bifurcaciones cerradas**
 
 Este capítulo establece la primera coordenada que distingue *Fundación* de la crítica política estándar: el anacronismo como método productivo, no como error cronológico.
 
+Los capítulos 1 a 5 constituyen una unidad. El 6 otra.
+
 ---
 
 ## 1. La ilusión de la necesidad
@@ -144,16 +146,6 @@ El siguiente capítulo aplicará esta licencia al presente más inmediato: los a
 
 ---
 
-## Anticipo: Lo apolíneo y su sombra
-
-Leibniz, Boole, Ada, Turing: todos operaban en el registro de lo **apolíneo** —forma, razón, estructura, patrón. El sistema binario es la culminación de ese impulso: reducir la realidad a 0 y 1, presencia y ausencia, claridad absoluta.
-
-Pero toda luz proyecta sombra. Al final de este libro (Capítulo 12), reencontraremos la pregunta que Nietzsche heredó de los griegos: ¿qué ocurre cuando lo apolíneo domina sin contrapeso? ¿Qué lugar queda para lo **dionisíaco** —la embriaguez, la irracionalidad productiva, lo que escapa a la forma?
-
-La IA es estrictamente apolínea. Esa será su demarcación respecto a lo humano.
-
----
-
 ## 6. El sujeto que recuerda: quién reabre los futuros cancelados
 
 El catálogo de futuros cancelados es solo eso —un catálogo— si no hay quien lo use. ¿Quién puede reabrir instituciones que el poder cerró?
@@ -249,3 +241,15 @@ El anacronismo productivo abre el repertorio. El resto del libro pregunta quién
 ---
 
 *[Nota técnica: Análisis bajo arquetipo Flove G6 (archetype), operando en Nivel 2 MMCO (Pseudo-Time Dynamics). Desplazamiento temporal. Cuadrante Wilber: SI→SI. Fuentes primarias: T04x01 §1-4. Hibridación con ARCHIVO/marco/03, 12.]*
+
+## Anticipo: Lo apolíneo y su sombra
+
+Leibniz, Boole, Ada, Turing: todos operaban en el registro de lo **apolíneo** —forma, razón, estructura, patrón. El sistema binario es la culminación de ese impulso: reducir la realidad a 0 y 1, presencia y ausencia, claridad absoluta.
+
+Pero toda luz proyecta sombra. Al final de este libro (Capítulo 12), reencontraremos la pregunta que Nietzsche heredó de los griegos: ¿qué ocurre cuando lo apolíneo domina sin contrapeso? ¿Qué lugar queda para lo **dionisíaco** —la embriaguez, la irracionalidad productiva, lo que escapa a la forma?
+
+La IA es estrictamente apolínea. Esa será su demarcación respecto a lo humano.
+
+---
+
+

@@ -205,6 +205,64 @@ Hay trabajo. Hay organización. Hay persistencia.
 
 ---
 
+## §8. Horizonte: La democracia híbrida (si la descentralización...)
+
+> **Fuente**: Plan.md (MATERIAL_FUENTE/Plan_Democracia_Digital)  
+> **Nota**: Esta sección presenta un horizonte propositivo. FUNDACIÓN no lo prescribe; lo examina críticamente.
+
+### La propuesta que circula
+
+Hay quienes proponen traducir las demandas del 15M en instituciones digitales. El modelo sería:
+
+1. **Plataforma descentralizada** de participación ciudadana, construida sobre protocolos abiertos y federados
+2. **Agentes de IA personales** asociados a identidad digital verificada (DIDs), que procesen información y representen preferencias
+3. **Auditoría automatizada** donde cada acción quede registrada en ledger público verificable
+4. **Deliberación asistida**: El "Habermas Machine" (Google DeepMind) ha demostrado capacidad para mediar deliberaciones, generando consensos que los participantes prefieren sobre mediadores humanos
+
+| Componente | Técnicamente viable | Políticamente realista |
+|------------|--------------------|-----------------------|
+| Plataforma federada | ✓ (Decidim, AT Protocol) | ? (requiere inversión pública) |
+| DIDs + identidad soberana | ✓ (estándares W3C) | ? (resistencia corporativa) |
+| Agentes IA personales | ✓ (parcial) | ⚠️ (sesgos, gaming) |
+| Auditoría descentralizada | ✓ (blockchain) | ? (escalabilidad) |
+| IA como mediador | ✓ (Habermas Machine) | ⚠️ (quién entrena al mediador) |
+
+### Lo que esta propuesta asume (y FUNDACIÓN cuestiona)
+
+| Asunción | Crítica desde FUNDACIÓN |
+|----------|------------------------|
+| Descentralización = democratización | **Cap. 7**: Las redes distribuidas también tienen dueños (quién mantiene los nodos) |
+| IA puede mediar sin sesgo | **Cap. 8**: La opacidad es decisión política, no límite técnico |
+| La infraestructura es neutral | **Cap. 10**: Cada servidor requiere coltán, energía, semiconductores |
+| La escala es resoluble | **Cap. 3**: P≠NP — hay límites computacionales irreducibles |
+
+### El punto ciego: El régimen material de la utopía
+
+La propuesta de democracia híbrida descentralizada tiene un punto ciego que FUNDACIÓN ha diagnosticado:
+
+> **Los servidores de Decidim también tienen dueños. Los chips de los agentes IA también vienen del Congo. La energía de los nodos federados también calienta el planeta.**
+
+La descentralización del software no descentraliza el hardware. Y el hardware tiene geografía, geopolítica, y cuerpos que lo producen.
+
+### Qué rescatar (con reservas)
+
+A pesar de las críticas, hay elementos valiosos:
+
+1. **Auditoría pública obligatoria**: No depende de utopía tecnológica; es regulación posible hoy
+2. **Educación algorítmica ciudadana**: Saber preguntar "¿por qué?" no requiere descentralización
+3. **Infraestructura pública digital**: Estados pueden operar nodos (alternativa a oligopolio privado)
+4. **Protección de whistleblowers técnicos**: Mecanismo institucional, no tecnológico
+
+### La pregunta que queda
+
+> "¿Cómo podemos gobernar cuando ganemos si nunca hemos practicado el ejercicio del poder?" — [12-dilemas-accion-revolucionaria](../../ARCHIVO/marco/12-dilemas-accion-revolucionaria.md)
+
+La democracia híbrida descentralizada es un horizonte. Como todo horizonte, **retrocede cuando avanzas**. Pero señala una dirección.
+
+FUNDACIÓN no prescribe ese horizonte. Lo sitúa en el mapa de lo pensable, junto a sus sombras.
+
+---
+
 ## Referencia cruzada
 
 - **Textos fuente**: Todos

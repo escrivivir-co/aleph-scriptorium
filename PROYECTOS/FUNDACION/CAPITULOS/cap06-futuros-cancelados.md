@@ -51,6 +51,63 @@ El futuro que Allende abría —socialismo por vía electoral, nacionalización 
 
 Los futuros no mueren de muerte natural. **Los matan.** Y después escriben su obituario para que parezca suicidio.
 
+### §1b. Microsoft vs FOSS: El futuro atacado porque funciona
+
+> **Fuente**: Plan.md (MATERIAL_FUENTE/Plan_Democracia_Digital) + Halloween Documents
+
+Hay futuros que no requieren balas para ser atacados. Requieren **FUD**: Fear, Uncertainty, Doubt.
+
+El software libre (FOSS: Free and Open Source Software) es un futuro que **funciona**. GNU/Linux corre en el 96% de los servidores del mundo. Android (basado en Linux) está en 3.000 millones de dispositivos. El 90% de la nube pública usa software libre. La evidencia empírica es aplastante: el modelo cooperativo de producción tecnológica **produce mejor software que el modelo propietario** en múltiples dominios.
+
+Por eso lo atacaron.
+
+**Los Halloween Documents (1998-2004)**: Memorandos internos filtrados de Microsoft que revelaron la estrategia explícita contra el software libre:
+
+| Documento | Confesión textual |
+|-----------|-------------------|
+| Halloween I | "El software open source constituye una amenaza directa y a corto plazo a los ingresos de Microsoft" |
+| Halloween II | "La calidad del software comercial puede verse alcanzada o superada por proyectos de código abierto" |
+| Halloween III | Detalla la estrategia "Embrace, Extend, Extinguish" |
+
+**Embrace, Extend, Extinguish** (Adoptar, Extender, Extinguir):
+
+1. **Embrace**: Microsoft adopta un estándar abierto (ej: HTML, Java, HTTP)
+2. **Extend**: Añade "mejoras" propietarias incompatibles con el estándar
+3. **Extinguish**: Usa su dominio de mercado para imponer sus extensiones, matando el estándar original
+
+**Ejemplos documentados**:
+- Internet Explorer vs Netscape (añadiendo tags HTML propietarios)
+- J++ vs Java (extensiones incompatibles que Sun demandó)
+- Office vs OpenDocument (OOXML diseñado para ser difícil de implementar por otros)
+
+**Steve Ballmer, CEO de Microsoft (2001)**: "La GPL [licencia del software libre] es un cáncer."
+
+No dijo "es ineficiente". No dijo "produce peor software". Dijo **cáncer**: algo que se propaga y mata al huésped.
+
+¿Por qué esa virulencia contra algo que supuestamente "no funciona"?
+
+**Porque funciona demasiado bien.** El software libre demuestra que:
+
+- Miles de personas pueden coordinarse sin jerarquía corporativa
+- El código compartido mejora más rápido que el código cerrado
+- La propiedad colectiva puede producir valor de uso superior
+- No necesitas capitalistas para producir software de calidad mundial
+
+Eso es intolerable. No por razones técnicas, sino ideológicas. El software libre **refuta el dogma** de que solo la propiedad privada y el incentivo de lucro producen innovación.
+
+> **BlackFlag**: Microsoft no ganó la guerra técnica. Perdió en servidores, perdió en móviles, perdió en nube. Pero ganó en escritorios corporativos y educativos mediante **lock-in contractual**, no superioridad técnica.
+
+**El FOSS como futuro no-cancelado**:
+
+A diferencia de la Comuna de París o Cybersyn, el software libre **sobrevivió** el ataque. ¿Por qué?
+
+1. **Descentralización**: No había líder que asesinar, servidor que bombardear, territorio que ocupar
+2. **Replicabilidad**: El código se copia infinitamente; destruir una copia no destruye las demás
+3. **Licencias virales**: La GPL obliga a que los derivados también sean libres, impidiendo la captura
+4. **Masa crítica**: Demasiada gente dependía de FOSS para que desapareciera
+
+**Lección para otros futuros**: Los futuros que se replican, descentralizan y "contaminan" (en el sentido de la GPL) son más difíciles de matar. La arquitectura **es** defensa.
+
 ---
 
 ## §2. El segundo asesinato: la memoria
@@ -203,6 +260,42 @@ No como museo. Como **red de aprendizaje mutuo**.
 - Presupuestos participativos: ~3.000 ciudades en el mundo
 - Asambleas ciudadanas: Irlanda, Francia, España, crecientemente
 - Decidim (software libre para participación): usado por +150 instituciones
+
+### §7b. El 15M: el futuro que no pudieron matar del todo
+
+> **Nota**: Este recuadro extiende el archivo de supervivientes con un caso español reciente. Fuente: Plan.md (2025).
+
+En mayo de 2011, las plazas de España se llenaron de algo que no tenía nombre. No era partido. No era sindicato. No era organización con membresía. Era **gente que había dejado de creer en las instituciones pero no había dejado de creer en la política**.
+
+El 15M experimentó con formas de democracia directa que el sistema representativo consideraba imposibles a escala:
+
+| Práctica | Cómo funcionaba | Qué demostró |
+|----------|-----------------|--------------|
+| **Asambleas en plaza** | Turnos de palabra, facilitadores rotativos, búsqueda de consenso | 30.000 personas pueden deliberar si se organizan en nodos |
+| **Comisiones temáticas** | Grupos autónomos que producían propuestas | La especialización no requiere jerarquía fija |
+| **Streaming y pads colaborativos** | Documentación en tiempo real, participación remota | La tecnología amplifica, no sustituye, la presencia |
+| **Coordinación interplazas** | Representantes revocables que "mandaban obedeciendo" | La federación horizontal es posible |
+
+**¿Por qué no lo mataron?**
+
+Lo intentaron. La narrativa dominante (2012-2015) fue: "El 15M fracasó porque no se convirtió en partido". Pero esa narrativa asume que el único éxito político es la captura del Estado.
+
+Lo que realmente pasó:
+
+1. **Podemos capturó la energía pero no la forma**. Se convirtió en partido clásico (listas, líder, disciplina de voto). Los que no querían eso se fueron.
+2. **Las mareas continuaron**. Marea Blanca (sanidad), Marea Verde (educación), PAH (vivienda) —organizaciones horizontales que resolvían problemas concretos.
+3. **Decidim nació del 15M**. El software libre de participación que hoy usan +150 instituciones fue creado por activistas del movimiento.
+4. **La práctica se sedimentó**. Una generación aprendió que las asambleas funcionan, que la horizontalidad es posible, que no necesitas permiso para organizarte.
+
+**El 15M como semilla latente**:
+
+En 2025, cuando la fragmentación política española llega al extremo (7 partidos necesarios para formar gobierno, lawfare cruzado, parálisis institucional), ¿quién recuerda que hubo un momento donde millones de personas dijeron "no nos representan" y empezaron a representarse a sí mismas?
+
+Los que estuvieron allí. Y los que aprendieron de ellos.
+
+El futuro del 15M no fue cancelado. Fue **dispersado**. Sus semillas están en cooperativas de plataforma, en software de participación, en redes de cuidados, en la memoria de quienes saben que otra forma de hacer política es posible —no porque lo leyeron, sino porque lo vivieron.
+
+---
 
 ### Lo que estos lugares saben
 

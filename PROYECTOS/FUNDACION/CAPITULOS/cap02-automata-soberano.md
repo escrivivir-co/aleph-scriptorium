@@ -270,6 +270,32 @@ No partimos de cero. Hay precedentes de organización contra el capital tecnoló
 
 **Patrón visible**: Las victorias son parciales, precarias, reversibles. Pero **existen**. El terreno no es virgen. Hay experiencia acumulada, redes, memoria de qué funciona y qué no.
 
+### §8b. El lawfare como tecnología de neutralización
+
+> **Nota**: Este recuadro extiende el análisis de vigilancia algorítmica al ámbito jurídico-institucional. Fuente: Plan.md (2025).
+
+Si el autómata vigila, el Estado puede **judicializar** lo que el algoritmo detecta. El fenómeno tiene nombre: **lawfare** —uso estratégico de procesos legales para neutralizar adversarios políticos sin necesidad de probar delitos.
+
+España ofrece casos de estudio recientes:
+
+| Caso | Mecanismo | Resultado |
+|------|-----------|-----------|
+| **Caso Neurona** (2020-2022) | Acusación de financiación irregular a Podemos basada en informes anónimos | Archivado tras 3 años. El daño reputacional ya estaba hecho. |
+| **Alberto Rodríguez** (2021) | Diputado inhabilitado por "atentado a la autoridad" (pegar una patada a un policía en 2014) | Pierde el escaño. Sentencia controvertida bajo Doctrina Atutxa. |
+| **Doctrina Botín** (2006→) | El Tribunal Supremo puede archivar casos donde la acusación es solo "popular" | Protege a poderosos cuando la Fiscalía no actúa. |
+
+**El patrón**: No hace falta condena. Basta con proceso. El ciclo mediático-judicial destruye antes de que llegue sentencia.
+
+¿Qué tiene esto que ver con el autómata? Todo:
+
+1. **Los algoritmos de moderación** son el primer filtro. Lo que el autómata detecta como "contenido problemático" puede desencadenar investigación.
+2. **El scraping de redes sociales** alimenta dosieres. Publicaciones antiguas, recontextualizadas, sirven de prueba.
+3. **La presión reputacional algorítmica** (trending topics, viralidad negativa) prepara el terreno para que la acción judicial parezca "respuesta a la indignación ciudadana".
+
+**El autómata no juzga. Pero su vigilancia alimenta a quienes sí pueden hacerlo.**
+
+---
+
 ### El problema de la velocidad: ellos corren, nosotros caminamos
 
 Hay una asimetría temporal que ningún diseño institucional resuelve fácilmente: **los modelos se actualizan en meses; la regulación tarda años**.

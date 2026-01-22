@@ -178,6 +178,132 @@ Solo que nadie les llama "activistas tecnológicos". Les llaman trabajadoras. Y 
 
 ---
 
+## §5b. El siglo XXI: de cables a algoritmos
+
+> **Fuente**: Plan.md (MATERIAL_FUENTE/Plan_Democracia_Digital)  
+> **Tamiz aplicado**: 5 Banderas (ver README-INTEGRACION.md)
+
+Las infraestructuras del siglo XXI ya no son solo cables y servidores. Son **plataformas que deciden**.
+
+### Twitter/X: La red que cambió de dueño
+
+La trayectoria de Twitter es paradigmática. Mientras la plataforma crecía como ágora digital global, su estructura centralizada permitía que un único propietario pudiera moldear los algoritmos, el alcance de los discursos y la forma de aparición del debate público.
+
+Cuando Elon Musk adquirió Twitter en 2022, no solo tomó el control de la infraestructura comunicativa más influyente del planeta, sino que lo hizo exhibiendo su convicción de que una red social puede operar como **maquinaria de poder directo**.
+
+Estudios empíricos documentan que, desde julio de 2024, el algoritmo de X amplificó sistemáticamente contenido pro-republicano:
+- +138% en visualizaciones
+- +238% en retweets  
+- +186% en likes para la cuenta de Musk
+
+**Lección**: Cuando las herramientas que organizan la conversación pública dependen de la voluntad del individuo más rico del mundo, el espacio democrático queda sometido a sesgo estructural.
+
+### OpenAI: La apertura que se cerró
+
+La crisis de OpenAI en noviembre de 2023 —la disputa Altman/consejo— no fue un accidente interno. Fue el síntoma de una tensión estructural entre dos proyectos incompatibles:
+
+| Proyecto original | Proyecto post-Microsoft |
+|-------------------|------------------------|
+| IA abierta, orientada al beneficio humanidad | Modelos rentables desplegados a escala global |
+| Prudencia, evaluación de riesgos | Aceleración para ganar carrera tecnológica |
+| Consejo con voces críticas | Consejo alineado con inversores |
+
+La restitución de Altman evidenció que incluso una entidad nacida bajo el signo de la apertura puede ser absorbida por dinámicas privativas cuando el capital corporativo obtiene suficiente influencia.
+
+> **BlackFlag**: El futuro de la IA está siendo decidido por tensiones de poder opacas, no por criterios democráticos.
+
+### LaLiga: Bloqueo como coerción masiva
+
+En febrero de 2025, LaLiga emprendió bloqueos indiscriminados de direcciones IP para combatir piratería audiovisual. Bajo el argumento de proteger derechos de emisión, se implementaron mecanismos que afectaron servicios legítimos: sitios web alojados en Cloudflare, datos privados de usuarios, infraestructura de empresas como Vercel.
+
+Este uso desproporcionado revela la facilidad con la que un agente privado con capacidad jurídica puede **reconfigurar el tráfico de la red a gran escala**, imponiendo daños colaterales sin supervisión democrática.
+
+### Bitchat en Nepal: Descentralización como resistencia
+
+En el extremo opuesto, Nepal en septiembre de 2025. Durante protestas contra la corrupción, el gobierno bloqueó 26 plataformas (Facebook, Instagram, WhatsApp, YouTube). En respuesta, las descargas de Bitchat —aplicación de mensajería descentralizada de Jack Dorsey— se dispararon de 3,344 a 48,781 (+1,400%).
+
+Bitchat opera mediante redes mesh de Bluetooth Low Energy: comunicaciones encriptadas que se retransmiten entre dispositivos, creando canales resistentes a la censura incluso durante apagones de internet.
+
+**Implicación**: Un sistema distribuido puede dar respaldo a un proceso político sin ponerlo en manos de corporación, gobierno o propietario único. **La descentralización no es capricho técnico: es principio democrático.**
+
+### Síntesis: La forma determina lo posible
+
+| Arquitectura | Tendencia estructural | Ejemplo |
+|--------------|----------------------|---------|
+| **Centralizada** | Concentración de poder, opacidad, manipulación | Twitter/X, OpenAI |
+| **Distribuida** | Pluralidad, supervisión, resiliencia | Bitchat, AT Protocol |
+
+> "La democracia contemporánea no puede reconstruirse sin repensar las infraestructuras tecnológicas que sostienen la conversación pública." — Plan.md
+
+**⚠️ Límite crítico**: Este diagnóstico es correcto pero incompleto. Falta el **régimen material**: los servidores de las redes distribuidas también requieren chips (Cap. 10), energía, y la misma cadena de coltán-Congo que las centralizadas. La descentralización no es gratuita.
+
+---
+
+### §5c. Tim Berners-Lee: La web como futuro capturado y su intento de liberación
+
+> **Fuente**: Plan.md (MATERIAL_FUENTE/Plan_Democracia_Digital)
+
+Hay un caso que condensa toda la trayectoria del siglo XXI: la World Wide Web.
+
+**Acto I: Creación (1989-1995)**
+
+Tim Berners-Lee no patentó la web. Podría haberlo hecho. Eligió no hacerlo. En el CERN, diseñó un sistema para compartir documentos científicos que acabó siendo la infraestructura de la conversación humana global. Sus principios fundacionales:
+
+| Principio | Significado |
+|-----------|-------------|
+| **Descentralización** | Sin servidor central que controle |
+| **Universalidad** | Cualquier documento accesible desde cualquier lugar |
+| **Estándares abiertos** | HTML, HTTP, URIs publicados para que cualquiera los use |
+| **Sin permisos** | Publicar sin pedir autorización |
+
+La web nació como **infraestructura mutualista**: nadie la controlaba, todos podían usarla, el valor se creaba colectivamente.
+
+**Acto II: Captura (2000-2020)**
+
+Lo que era red distribuida se convirtió en **cinco feudos**:
+
+| Feudo | Control | Qué capturó |
+|-------|---------|-------------|
+| Google | Búsqueda | La puerta de entrada a la información |
+| Facebook | Identidad social | El grafo de relaciones humanas |
+| Amazon | Comercio | La infraestructura de transacción |
+| Apple | Dispositivos | El hardware de acceso |
+| Microsoft | Productividad | Las herramientas de trabajo |
+
+El diagnóstico de Berners-Lee es contundente: "Aquello que nació como red abierta, descentralizada y universal se ha convertido en un ecosistema dominado por gigantes tecnológicos que acumulan datos, dirigen la navegación y limitan la autonomía de los usuarios."
+
+**La web actual no responde a los ideales fundacionales. La capturaron.**
+
+**Acto III: Intento de liberación (2016-presente)**
+
+Berners-Lee no se rindió. Propuso **Solid** (Social Linked Data): un protocolo donde los usuarios recuperan el control de sus datos mediante **pods personales**.
+
+| Concepto | Función |
+|----------|--------|
+| **Pod** | Contenedor personal de datos que TÚ controlas |
+| **Portabilidad** | Puedes llevar tus datos de una aplicación a otra |
+| **Permisos granulares** | Decides quién accede a qué dato |
+| **Identidad soberana** | Tu identidad no depende de ninguna plataforma |
+
+Esto conecta con los DIDs (Decentralized Identifiers) y la Self-Sovereign Identity (SSI): tecnologías que permiten probar atributos de identidad sin exponer datos innecesarios ni depender de autoridades centrales.
+
+**¿Por qué importa para FUNDACIÓN?**
+
+Porque Berners-Lee **es** el arquetipo del creador cuyo futuro fue capturado:
+
+1. Creó infraestructura para el bien común
+2. No la protegió con patentes (decisión ética)
+3. El capital la cercó y monetizó
+4. Ahora intenta liberar lo que creó
+
+Su visión coincide con Dorsey (AT Protocol) y los diseñadores de Bitchat: **sin infraestructura descentralizada no puede haber ciudadanía digital plena**.
+
+> **BlackFlag**: ¿Quién financia Solid? Inrupt, la empresa de Berners-Lee, ha recibido inversión de capital riesgo. La liberación tiene sus propios capturadores.
+
+> **YellowFlag**: ¿Es Solid una vuelta al origen (pre-capture web) o una transcendencia hacia algo nuevo? La pregunta no es técnica: es sobre si podemos deshacer lo que se hizo.
+
+---
+
 ## §5. El sujeto que disputa: gobernar lo que parece no tener dueño
 
 El análisis anterior es correcto: las infraestructuras actúan sin pedir permiso. Pero **no son fuerzas naturales**. Tienen dueños (aunque ocultos), decisiones de diseño (aunque invisibles), puntos de intervención (aunque costosos).
