@@ -51,6 +51,9 @@ Choque entre realismo político y tradición contemplativa. La distinción condi
 ### [15. Dialéctica y retórica: la arquitectura de la interlocución](15-dialectica-retorica-interlocucion.md)
 Dos modos complementarios de discurso según Aristóteles: dialéctica (examinar la solidez de posiciones) y retórica (persuadir a quien no deduce). El entimema como silogismo popular. Tres géneros del discurso: deliberativo (futuro/conveniente), judicial (pasado/justo), epidíctico (presente/bello). El estilo (léxis) como condición de eficacia: claridad, corrección, propiedad, elevación medida. Base doctrinal del agente Orangeflag.
 
+### [16. Marco ecuménico para FUNDACIÓN](16-marco-ecumenico-fundacion.md)
+Integración de estudio ultraderecha basada en los 3 Pilares del Estudio (Identidad-Soberanía, Cesiones Geoestratégicas, TESCREAL) con el corpus Scriptorium. FUNDACIÓN como espacio ecuménico donde los marcos de oposición son continentes. Cuatro continentes (Pertenencia, Negociación, Disolución Ontológica, Resistencia Articulada) + puentes arquitectónicos. Refactorización del borrador Thiel-Heidegger. Índice DRY. Conexión con los 12 sprints de FUNDACIÓN 2026.
+
 ---
 
 ## Uso en el proyecto
