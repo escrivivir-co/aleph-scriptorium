@@ -1,138 +1,170 @@
 Tesis
+-----
 
-Peter Thiel ocupa hoy una función análoga a la de Martin Heidegger en el siglo XX: no como filósofo académico, sino como operador ontológico del poder.
-Ambos articulan un diagnóstico del mundo técnico moderno que, lejos de ser neutral, reconfigura la imaginación política de las élites y legitima una salida post-liberal.
+**Peter Thiel ocupa hoy una función análoga a la de Martin Heidegger en el siglo XX: no como filósofo académico, sino como *operador ontológico* del poder.**\
+Ambos articulan un diagnóstico del mundo técnico moderno que, lejos de ser neutral, **reconfigura la imaginación política de las élites** y legitima una salida *post-liberal*.
 
-1. No es “Heidegger = nazi” / “Thiel = reaccionario”
+* * * * *
+
+1\. No es "Heidegger = nazi" / "Thiel = reaccionario"
+-----------------------------------------------------
 
 Ese paralelismo es vulgar y poco interesante. El punto serio es otro:
 
-Heidegger no fue importante por su adhesión al nazismo, sino porque dio forma filosófica a una crítica radical de la modernidad técnica que luego fertilizó tradiciones muy diversas (izquierda, derecha, ecologismo, postestructuralismo).
+-   Heidegger **no fue importante por su adhesión al nazismo**, sino porque **dio forma filosófica a una crítica radical de la modernidad técnica** que luego fertilizó tradiciones muy diversas (izquierda, derecha, ecologismo, postestructuralismo).
 
-Thiel no es relevante por ser “conservador”, sino porque da forma estratégica, operativa y financiera a una crítica radical del liberalismo tardío, que ya no se limita a think tanks sino que se implementa.
+-   Thiel **no es relevante por ser "conservador"**, sino porque **da forma estratégica, operativa y financiera a una crítica radical del liberalismo tardío**, que ya no se limita a think tanks sino que se *implementa*.
 
-👉 Ambos no describen el mundo: producen marcos de posibilidad.
+👉 Ambos **no describen el mundo: producen marcos de posibilidad**.
 
-2. Diagnóstico común: la crisis del orden liberal-técnico
-Heidegger
+* * * * *
 
-La técnica moderna (Gestell) no es un conjunto de herramientas, sino un modo de desocultamiento del ser.
+2\. Diagnóstico común: la crisis del orden liberal-técnico
+----------------------------------------------------------
 
-El liberalismo, la democracia parlamentaria y el humanismo son derivados ontológicos débiles de ese modo técnico.
+### Heidegger
 
-El sujeto moderno es un animal administrado, no un agente libre.
+-   La técnica moderna (*Gestell*) no es un conjunto de herramientas, sino un **modo de desocultamiento del ser**.
 
-Thiel
+-   El liberalismo, la democracia parlamentaria y el humanismo son **derivados ontológicos débiles** de ese modo técnico.
 
-El liberalismo democrático ha agotado su potencia histórica.
+-   El sujeto moderno es un **animal administrado**, no un agente libre.
 
-La política de masas es incompatible con el progreso tecnológico radical.
+### Thiel
 
-La competencia, la democracia y el pluralismo son ficciones estabilizadoras que bloquean la innovación decisiva.
+-   El liberalismo democrático ha agotado su potencia histórica.
 
-👉 En ambos casos: la modernidad ya no se sostiene desde dentro.
+-   La política de masas es **incompatible con el progreso tecnológico radical**.
 
-3. El punto clave: anti-neutralidad de la técnica
+-   La competencia, la democracia y el pluralismo son **ficciones estabilizadoras** que bloquean la innovación decisiva.
+
+👉 En ambos casos: **la modernidad ya no se sostiene desde dentro**.
+
+* * * * *
+
+3\. El punto clave: anti-neutralidad de la técnica
+--------------------------------------------------
 
 Aquí está el nervio heideggeriano de Thiel.
 
-Heidegger
+### Heidegger
 
-“La técnica no es neutral; determina de antemano lo que puede aparecer como real.”
+> "La técnica no es neutral; determina de antemano lo que puede aparecer como real."
 
-Thiel
+### Thiel
 
-La tecnología no es progresista per se.
+-   La tecnología **no es progresista per se**.
 
-Puede (y debe) ser selectiva, elitista, direccional.
+-   Puede (y debe) ser **selectiva, elitista, direccional**.
 
-El futuro no emerge del mercado ni del consenso, sino de decisiones soberanas encapsuladas en artefactos.
+-   El futuro no emerge del mercado ni del consenso, sino de **decisiones soberanas encapsuladas en artefactos**.
 
 Ejemplos:
 
-Palantir: soberanía algorítmica.
+-   Palantir: soberanía algorítmica.
 
-Seasteading: salida espacial del Estado.
+-   Seasteading: salida espacial del Estado.
 
-Startups como “micro-ontologías políticas”.
+-   Startups como "micro-ontologías políticas".
 
-👉 La política ya no se debate: se codifica.
+👉 **La política ya no se debate: se codifica.**
 
-4. Elitismo ontológico (no moral)
+* * * * *
 
-Ni Heidegger ni Thiel son “elitistas” en sentido social vulgar.
+4\. Elitismo ontológico (no moral)
+----------------------------------
 
-Heidegger: solo algunos están en disposición de una relación no instrumental con el ser.
+Ni Heidegger ni Thiel son "elitistas" en sentido social vulgar.
 
-Thiel: solo minorías fundadoras pueden romper el equilibrio entrópico del sistema.
+-   Heidegger: solo algunos están en disposición de una **relación no instrumental con el ser**.
+
+-   Thiel: solo minorías fundadoras pueden **romper el equilibrio entrópico del sistema**.
 
 Ambos:
 
-Desconfían del número.
+-   Desconfían del número.
 
-Desconfían del procedimiento.
+-   Desconfían del procedimiento.
 
-Desconfían del consenso.
+-   Desconfían del consenso.
 
 👉 La verdad no es democrática. El futuro tampoco.
 
-5. El lugar del “acontecimiento”
-Heidegger
+* * * * *
 
-El Ereignis: el acontecimiento que reordena el sentido.
+5\. El lugar del "acontecimiento"
+---------------------------------
 
-No se planifica, pero se prepara.
+### Heidegger
 
-Thiel
+-   El *Ereignis*: el acontecimiento que reordena el sentido.
 
-El “breakout”: innovación radical frente al estancamiento.
+-   No se planifica, pero se **prepara**.
 
-No emerge del mercado libre, sino de apuestas concentradas.
+### Thiel
 
-👉 Ambos piensan el cambio como discontinuidad, no como reforma.
+-   El "breakout": innovación radical frente al estancamiento.
 
-6. Diferencia crucial (para evitar caricaturas)
-Heidegger	Thiel
-Diagnóstico contemplativo	Diagnóstico operativo
-Filosofía del lenguaje y el ser	Ingeniería institucional y financiera
-Retirada	Intervención
-Universidad	Startup / fondo / Estado profundo
+-   No emerge del mercado libre, sino de **apuestas concentradas**.
 
-👉 Thiel es Heidegger con capacidad de ejecución.
+👉 Ambos piensan el cambio como **discontinuidad**, no como reforma.
 
-7. Por qué esto importa políticamente
+* * * * *
 
-Heidegger fue el gran filósofo de la crisis de Weimar.
+6\. Diferencia crucial (para evitar caricaturas)
+------------------------------------------------
 
-Thiel es el gran ideólogo práctico de la crisis del orden liberal global.
+| Heidegger | Thiel |
+| --- | --- |
+| Diagnóstico contemplativo | Diagnóstico operativo |
+| Filosofía del lenguaje y el ser | Ingeniería institucional y financiera |
+| Retirada | Intervención |
+| Universidad | Startup / fondo / Estado profundo |
+
+👉 **Thiel es Heidegger con capacidad de ejecución.**
+
+* * * * *
+
+7\. Por qué esto importa políticamente
+--------------------------------------
+
+-   Heidegger fue **el gran filósofo de la crisis de Weimar**.
+
+-   Thiel es **el gran ideólogo práctico de la crisis del orden liberal global**.
 
 En ambos casos:
 
-El pensamiento aparece cuando el régimen deja de ser creíble incluso para sus beneficiarios.
+-   El pensamiento aparece **cuando el régimen deja de ser creíble incluso para sus beneficiarios**.
 
-No ofrecen una utopía, sino una salida asimétrica.
+-   No ofrecen una utopía, sino una **salida asimétrica**.
 
-8. Objeciones previsibles (y cómo responder)
+* * * * *
 
-“Thiel no es filósofo”
+8\. Objeciones previsibles (y cómo responder)
+---------------------------------------------
+
+**"Thiel no es filósofo"**\
 → Heidegger hoy tampoco lo sería: la función filosófica ha migrado fuera de la academia.
 
-“Esto es exagerado”
-→ Heidegger no fue influyente por su número de lectores, sino por su posición estructural.
+**"Esto es exagerado"**\
+→ Heidegger no fue influyente por su número de lectores, sino por su **posición estructural**.
 
-“Thiel solo quiere poder”
-→ Heidegger también. La diferencia es que uno escribía Ser y tiempo y el otro escribe term sheets.
+**"Thiel solo quiere poder"**\
+→ Heidegger también. La diferencia es que uno escribía *Ser y tiempo* y el otro escribe *term sheets*.
+
+* * * * *
 
 Cierre provocador
+-----------------
 
-Si Heidegger fue el pensador que acompañó el final del liberalismo europeo,
-Peter Thiel es el pensador-practicante que acompaña el final del liberalismo global.
-No lo cita. Lo ejecuta.
+> **Si Heidegger fue el pensador que acompañó el final del liberalismo europeo,\
+> Peter Thiel es el pensador-practicante que acompaña el final del liberalismo global.\
+> No lo cita. Lo ejecuta.**
 
 Si quieres, puedo:
 
-condensarlo en 10 slides con frases aforísticas, o
+-   condensarlo en **10 slides con frases aforísticas**, o
 
-convertirlo en un paper breve con aparato crítico, o
+-   convertirlo en un **paper breve con aparato crítico**, o
 
-preparar el turno de debate con contraargumentos liberales, marxistas y schmittianos.
+-   preparar el **turno de debate con contraargumentos liberales, marxistas y schmittianos**.

@@ -1,154 +1,16 @@
-Historial
-
-[
-
-Reciente
-
-](https://www.perplexity.ai/library)
-
-[
-
-Busco en libros de historia sobre las revoluciones constitucionalistas y hay mucha información. O si
-
-](https://www.perplexity.ai/search/busco-en-libros-de-historia-so-Q8E3q6NvQRi5SvR5cI4nDw)
-
-[
-
-Intervención de EEUU en Venezuela el 3 de enero en un markdown con: - Las 5 preguntas del periodism
-
-](https://www.perplexity.ai/search/intervencion-de-eeuu-en-venezu-rSn0OsSeQfm7PQEjWETTtA)
-
-[
-
-Crea una imagen con transparencia para un logo. En grande con letra tipo Courier New (o parecida) e
-
-](https://www.perplexity.ai/search/crea-una-imagen-con-transparen-t5FU0YW2QOGgqsEUwQynzQ)
-
-[
-
-Crea una imagen con transparencia para un logo. En grande con letra tipo Courier New (o parecida) e
-
-](https://www.perplexity.ai/search/crea-una-imagen-con-transparen-YKkrzOXERjSDIc92W_Hi9A)
-
-[
-
-El usuario quiere hacer mucha IA (también edición multimedia) y poco gaming. Necesitamos una compar
-
-](https://www.perplexity.ai/search/el-usuario-quiere-hacer-mucha-c_2N6t.VQ1OZ1XIHAWfuGw)
-
-[
-
-Estoy usando la última versión de Vs Code y la extensión Github Copilot Chat. Quiero beneficiarme de
-
-](https://www.perplexity.ai/search/estoy-usando-la-ultima-version-DmmFR5IMSwW_BvDQvgP8cA)
-
-[
-
-Genera esta imagen: # Prompt de Imagen: Poesía como Ingeniería Inversa de la Historia > **Context
-
-](https://www.perplexity.ai/search/genera-esta-imagen-prompt-de-i-wgxoAjD7TsWvUMYhyHzMmA)
-
-[
-
-¿Hay un libro de Gustavo bueno "El individuo yla historia"? Si es así, puedes crear un markdown para
-
-](https://www.perplexity.ai/search/hay-un-libro-de-gustavo-bueno-glPLhTnUQt6cjGqtG9SINA)
-
-[
-
-genera esta imagen: # Prompt para Generación de Imagen: Demarcación Epistémica **Concepto**: Una
-
-](https://www.perplexity.ai/search/genera-esta-imagen-prompt-para-0HAxMjj0TqyTpLToUjFRGw)
-
-[
-
-Genera esta imagen: # Prompt para Generación de Imagen: Humanismo Extremo (Encuesta de sentido como
-
-](https://www.perplexity.ai/search/genera-esta-imagen-prompt-para-v5MPwJhhReqmbep9Jxia6Q)
-
-[
-
-Genera esta imagen: # Prompt para Generación de Imagen: El Alineamiento Institucional **Concepto*
-
-](https://www.perplexity.ai/search/genera-esta-imagen-prompt-para-giQ_za0USVOmE6BeJws6AQ)
-
-[
-
-Me interesa un análisis de 2 noticias de actualidad. Me gustaría que recabaras información y vieras
-
-](https://www.perplexity.ai/search/me-interesa-un-analisis-de-2-n-CEkLH.n1SJaGMXlKSWaErQ)
-
-[
-
-¿ha puesto una demanda assange a Nobel? o es solo noticia sin fundament?
-
-](https://www.perplexity.ai/search/ha-puesto-una-demanda-assange-op1TqMb7RMa9.4pZXOuesg)
-
-[
-
-Crea esta imagen: # Prompt para Generación de Imagen: La Paz Armada **Concepto**: Una ilustración
-
-](https://www.perplexity.ai/search/crea-esta-imagen-prompt-para-g-72vTXQvsSJyd_uhmkNdiHQ)
-
-[
-
-Tienes una transcripción de Entrevista Garcia Oliver, Paris, 29 June 1977?
-
-](https://www.perplexity.ai/search/tienes-una-transcripcion-de-en-65bv6p9ARJaTJdYeoDkgxA)
-
-[
-
-dame un informe pedagógico sobre ethereum y cómo los smart contracts pueden garantizar que el sistem
-
-](https://www.perplexity.ai/search/dame-un-informe-pedagogico-sob-QgdGdkfRTDumZb0tRcyhvA)
-
-[
-
-Genera esta imagen: "Fotografía de producto estilo e‑commerce premium: un libro de tapa dura con so
-
-](https://www.perplexity.ai/search/genera-esta-imagen-fotografia-EnK6oOv1QPmaC3s8mZ_55Q)
-
-[
-
-Puedes darme el texto de esta imagen?
-
-](https://www.perplexity.ai/search/puedes-darme-el-texto-de-esta-S2H5Y7zdQ1GyEPI37cpm_w)
-
-[
-
-haz una tabla con TODAS las erratas que encuentres en este texto porque el autor afirma que hay una
-
-](https://www.perplexity.ai/search/haz-una-tabla-con-todas-las-er-Wbp8SXgbRTmCaZyaRp_EWA)
-
-[
-
-En este texto hay una errata intencional y precavida, ¿la descubres?: Jacob Taubes, el intelec
-
-](https://www.perplexity.ai/search/en-este-texto-hay-una-errata-i-eT_lBbI8RB.N5zThXXFZMg)
-
-[
-
-Ver todo
-
-](https://www.perplexity.ai/library)
-
-[](https://www.perplexity.ai/)
-
-[](https://www.perplexity.ai/library)[](https://www.perplexity.ai/discover)[](https://www.perplexity.ai/spaces)[](https://www.perplexity.ai/finance)
-
-Cuenta
-
-Actualizar
-
-Instalar
 
 Busco en libros de historia sobre las revoluciones constitucionalistas y hay mucha información. O si busco de la republica romana igual, por poner ejemplos, puedo recomponer el árbol de familias y nombres así como sus afinidades y disputas. Además veo la linea temporal completa, etc... Te pongo un concepto del presente. Y tú montas la cartografía a partir de él. Entiendo un triple asiento o pilar. A ver qué opinas. a) Identidad-exclusión-supremacismo-soberania. Patria, familia, lengua. b) Concesiones al punto a) por cesiones a grandes intereses geoestratégicos cuando interesa. c) TESCREAL, transhumanismo o posthumanismo
 
-=======================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
-
+========
 Plantearé una cartografía histórica y analítica integral, cruzando fuentes y contextos para reproducir líneas temporales, genealogías y disputas, vinculando identidades, concesiones geoestratégicas y TESCREAL/transhumanismo.
 
-Preguntas omitidas
+Obtén una mejor respuesta
+
+¿Deseas que analice estos tres pilares como marcos teóricos generales, o enfocado en períodos/regiones específicas (p.ej., Europa moderna, Revolución Francesa, período actual)?
+
+¿El objetivo es validar tu hipótesis de los tres pilares como marco estructurante, o explorar cómo se relacionan/contradicen entre sí a lo largo de la historia?
+
+¿Qué representa TESCREAL en tu marco? ¿Lo ves como amenaza a los pilares a), alternativa a b), o como expresión contemporánea de disputas ancestrales?
 
 Terminado
 
@@ -472,4 +334,1566 @@ Referencias Sintetizadas
 
 [1-162]: Conjunto exhaustivo de fuentes sobre: construcción identitaria nacional [1-4, 20, 23], dinámicas de soberanía y cesión, teoría constitucional, integración europea, TESCREAL y transhumanismo [34-47, 98, 101, 106], redes oligárquicas [131-157], prospectiva geopolítica [116-130], tecno-feudalismo.[](https://dialnet.unirioja.es/descarga/articulo/7265539.pdf)
 
-Preparado usando Investigación profunda
+Analizaré los 3 pilares como ontología nodal, cartografiaré su marco con índice DRY y prospectaré su evolución histórica y futura.
+
+Buscando
+
+teoría identidad nacional soberanía estado exclusión
+
+revoluciones constitucionalistas historia patrones recurrentes
+
+conflicto intereses geopolíticos vs soberanía nacional
+
+Revisando fuentes
+
+[
+
+![liverpooluniversitypress.co.uk favicon](https://www.google.com/s2/favicons?sz=128&domain=liverpooluniversitypress.co.uk)
+
+MODERNISMO, FASCISMO E IDENTIDAD NACIONAL EN BRASIL: DE LA SEMANA DE ARTE MODERNO AL ESTADO NOVO DE VARGAS
+
+liverpooluniversitypress.co
+
+](http://www.liverpooluniversitypress.co.uk/doi/10.3828/revista.2025.91.293.803)
+
+[
+
+Discursos de exclusión. Intelectuales, indígenas y Estado nación en Costa Rica: una perspectiva histórica
+
+revistas.uned.ac
+
+](https://revistas.uned.ac.cr/index.php/espiga/article/view/5582)
+
+[
+
+El crimen organizado y la soberanía nacional: el rol de las fuerzas de seguridad y la intervención militar.
+
+dilemascontemporaneoseducacionpoliticayvalores
+
+](https://dilemascontemporaneoseducacionpoliticayvalores.com/index.php/dilemas/article/view/3929)
+
+[
+
+Lo sagrado como fuente de identidad nacional en el discurso público argentino del siglo XIX
+
+wuwr
+
+](https://wuwr.pl/eh/article/view/15275)
+
+[
+
+Agências de Rating e relativização da soberania nacional
+
+revistas.unijui.edu
+
+](https://www.revistas.unijui.edu.br/index.php/revistadireitoemdebate/article/view/10394)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+La incetidumbre del estado nacional en el mundo actual y los Andes de Iberoamérica: Identidad cultural y soberanía, entre las nacionalidades y lo global
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/611a92ebd561dcb10fbfb1d1b8848290a1924262)
+
+[
+
+Cine cubano de ficción de los 90: fin del control absoluto del Estado sobre la producción cinematográfica
+
+revistas.ucv.edu
+
+](https://revistas.ucv.edu.pe/index.php/espergesia/article/view/3564)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+En el Estado constitucional hay soberano (Reflexiones para una teoría jurídica de la soberanía nacional)
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/5332064385987409d4da2d1395d5d6a117b2865c)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+América Latina, a vueltas con la identidad nacional
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/30787b21b497aca0e13e8cbbf7fd2f7ddb8e5227)
+
+[
+
+Soberanía nacional e integración regional
+
+revistanorteamerica.unam
+
+](https://www.revistanorteamerica.unam.mx/index.php/nam/article/view/592)
+
+[
+
+![revistas.uniandes.edu.co favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.uniandes.edu.co)
+
+Los términos del debate contemporáneo en torno a la nación
+
+revistas.uniandes.edu
+
+](http://revistas.uniandes.edu.co/doi/pdf/10.7440/res12.2002.08)
+
+[
+
+![scielo.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.cl)
+
+Los pueblos originarios en el marco del desarrollo de sus derechos
+
+scielo
+
+](http://www.scielo.cl/pdf/eatacam/n30/art05.pdf)
+
+[
+
+![atheneadigital.net favicon](https://www.google.com/s2/favicons?sz=128&domain=atheneadigital.net)
+
+NATION, SUBJECT AND PSYCHE: THE PSYCHOLOGICAL CONSTRUCTION OF NATIONALISM
+
+atheneadigital
+
+](http://atheneadigital.net/article/download/v15-n1-garcia/1606-pdf-es)
+
+[
+
+Más allá del estado perspectivas y lineamientos para su estudio y definición
+
+seer.ufal
+
+](http://www.seer.ufal.br/index.php/latitude/article/download/119/103)
+
+[
+
+Las paradojas de la nación
+
+reis.cis
+
+](https://reis.cis.es/index.php/reis/article/download/1981/2366)
+
+[
+
+Pueblos originarios y discriminación: ¿Qué límites impone la no-discriminación a la soberanía popular?
+
+sincronia.cucsh.udg
+
+](http://sincronia.cucsh.udg.mx/pdf/77/551_574_2020a.pdf)
+
+[
+
+El conflicto interno colombiano. Identidad, solidaridad y conflicto social
+
+revintsociologia.revistas.csic
+
+](https://revintsociologia.revistas.csic.es/index.php/revintsociologia/article/download/259/272/405)
+
+[
+
+![scielo.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.cl)
+
+El sujeto como categoría de análisis de la ciudadanía
+
+scielo
+
+](http://www.scielo.cl/scielo.php?script=sci_arttext&pid=S0717-554X2016000200009&lng=en&nrm=iso&tlng=en)
+
+[
+
+![doxa.ua.es favicon](https://www.google.com/s2/favicons?sz=128&domain=doxa.ua.es)
+
+EN LOS MÁRGENES DE LA LEGITIMIDAD. EXCLUSIÓN Y ...
+
+doxa.ua
+
+](https://doxa.ua.es/article/view/1994-n15-16-en-los-margenes-de-la-legitimidad-exclusion-y-ciudad/pdf)
+
+[
+
+![revista.cortesgenerales.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revista.cortesgenerales.es)
+
+REVOLUCIÓN CONSTITUCIONAL
+
+revista.cortesgenerales
+
+](https://revista.cortesgenerales.es/rcg/article/download/1531/1504/)
+
+[
+
+![arbolinvertido.com favicon](https://www.google.com/s2/favicons?sz=128&domain=arbolinvertido.com)
+
+La geopolítica, la soberanía y nuestro problema
+
+arbolinvertido
+
+](https://arbolinvertido.com/sociedad/la-geopolitica-la-soberania-y-nuestro-problema)
+
+[
+
+En Torno a la Soberanía. Soberanía Antinomia de ...
+
+e-spacio.uned
+
+](https://e-spacio.uned.es/bitstreams/01ce7013-5093-4871-8761-28379f4800e5/download)
+
+[
+
+![pri.org.mx favicon](https://www.google.com/s2/favicons?sz=128&domain=pri.org.mx)
+
+LA REVOLUCIÓN CONSTITUCIONALISTA
+
+pri.org
+
+](https://pri.org.mx/bancoinformacion/files/archivos/pdf/20795-1-14_13_17.pdf)
+
+[
+
+![grandesalamedasblog.wordpress.com favicon](https://www.google.com/s2/favicons?sz=128&domain=grandesalamedasblog.wordpress.com)
+
+Soberanía nacional, geopolítica y cuestión militar
+
+grandesalamedasblog.wordpress
+
+](https://grandesalamedasblog.wordpress.com/2021/11/20/soberania-nacional-geopolitica-y-cuestion-militar/)
+
+[
+
+CIUDADANIA E IDENTIDAD NACIONAL Reflexiones sobre ...
+
+proyectos.cchs.csic
+
+](http://proyectos.cchs.csic.es/politicas-migratorias/sites/proyectos.cchs.csic.es.politicas-migratorias/files/Ciudadania_e_identidad_nacional_-_Traduccion.pdf)
+
+[
+
+La evolución del constitucionalismo en España
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/5110009.pdf)
+
+[
+
+![elcohetealaluna.com favicon](https://www.google.com/s2/favicons?sz=128&domain=elcohetealaluna.com)
+
+La lógica del conflicto geopolítico
+
+elcohetealaluna
+
+](https://www.elcohetealaluna.com/la-logica-de-los-conflictos-geopoliticos/)
+
+[
+
+LA IDENTIDAD NACIONAL DE LOS ESTADOS ...
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/8906909.pdf)
+
+[
+
+![cepc.gob.es favicon](https://www.google.com/s2/favicons?sz=128&domain=cepc.gob.es)
+
+La "Revolución constitucional". Breve compendio de ...
+
+cepc.gob
+
+](https://www.cepc.gob.es/publicaciones/monografias/la-revolucion-constitucional-breve-compendio-de-historia-constitucional-europea-en-perspectiva-6)
+
+[
+
+GEOPOLÍTICA Y NEGACIÓN DE SOBERANÍA: EL CASO ...
+
+indexlaw
+
+](https://www.indexlaw.org/index.php/rdb/article/download/8592/7029/29337)
+
+[
+
+![racmyp.es favicon](https://www.google.com/s2/favicons?sz=128&domain=racmyp.es)
+
+A VUELTAS CON LA SOBERANÍA ( ...
+
+racmyp
+
+](https://racmyp.es/wp-content/uploads/2023/06/A84-18.pdf)
+
+[
+
+![revista-estudios.revistas.deusto.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revista-estudios.revistas.deusto.es)
+
+Vista de Esther González Hernández, La «revolución ...
+
+revista-estudios.revistas.deusto
+
+](https://revista-estudios.revistas.deusto.es/article/view/1731/2123)
+
+[
+
+![revista.ieee.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revista.ieee.es)
+
+repensando el asunto del islote Perejil veinte años después
+
+revista.ieee
+
+](https://revista.ieee.es/article/view/4117)
+
+Explorando conexiones transhumanistas con soberanía nacional y cesión de principios geopolíticos.
+
+Buscando
+
+TESCREAL transhumanismo posthumanismo ontología
+
+supremacía transhumanista versus identidad nacional soberanía
+
+cesión intereses geopolíticos vs principios fundamentales
+
+Revisando fuentes
+
+[
+
+![e-revista.unioeste.br favicon](https://www.google.com/s2/favicons?sz=128&domain=e-revista.unioeste.br)
+
+Hacia um mundo posnihilista
+
+e-revista.unioeste
+
+](https://e-revista.unioeste.br/index.php/alamedas/article/view/35818)
+
+[
+
+![iushumani.org favicon](https://www.google.com/s2/favicons?sz=128&domain=iushumani.org)
+
+The New Gnosis and the Denial of Ontological Differences
+
+iushumani
+
+](http://www.iushumani.org/index.php/iushumani/article/download/261/319)
+
+[
+
+![atheneadigital.net favicon](https://www.google.com/s2/favicons?sz=128&domain=atheneadigital.net)
+
+Argumentos para una Sociología posthumanista y postsocial
+
+atheneadigital
+
+](https://atheneadigital.net/article/download/n19-garcia-2/745-pdf-es)
+
+[
+
+La inmanencia de "Puppet Master": hacia unos estudios sociales posthumanos
+
+nomadas.ucentral.edu
+
+](http://nomadas.ucentral.edu.co/nomadas/pdf/nomadas_47/47-7R-la-inmanencia.pdf)
+
+[
+
+![scielo.conicyt.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.conicyt.cl)
+
+Posthumanismo: más allá de antropo-técnica y nomadismo
+
+scielo.conicyt
+
+](https://scielo.conicyt.cl/pdf/cmoebio/n55/art01.pdf)
+
+[
+
+![revistas.ucm.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.ucm.es)
+
+Políticas de la definición de lo humano: más allá de un problema de igualdad
+
+revistas.ucm
+
+](https://revistas.ucm.es/index.php/LTDL/article/download/84932/4564456568320)
+
+[
+
+Consideraciones sobre el ser humano y su singularidad frente a las concepciones antropológicas actuales de carácter tecnocientífico
+
+revistas.uma
+
+](https://revistas.uma.es/index.php/naturaleza-y-libertad/article/download/10677/10853)
+
+[
+
+En búsqueda del sentido perdido desde la resistencia y la gratitud. Entrevista a Jesús Ballesteros Llompart, Catedrático Emérito de Filosofía del Derecho (Universidad de Valencia, España)
+
+revistes.ub
+
+](https://revistes.ub.edu/index.php/oximora/article/download/43195/40975)
+
+[
+
+condición tecno-ecológica. Heidegger ante los nuevos post-humanismos
+
+revistas.uarm.edu
+
+](https://revistas.uarm.edu.pe/index.php/silex/article/download/5/3)
+
+[
+
+Futuros poshumanos: tecnología, eugenesia y neoludismo
+
+formacionpermanente.uned
+
+](https://formacionpermanente.uned.es/tp_actividad/actividad/futuros-poshumanos-tecnologia-eugenesia-y-neoludismo)
+
+[
+
+![praxispatria.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=praxispatria.cl)
+
+El Transhumanismo: La Última Frontera del Liberalismo
+
+praxispatria
+
+](https://praxispatria.cl/2021/04/15/el-transhumanismo-la-ultima-frontera-del-liberalismo/)
+
+[
+
+El desafío geopolítico del enlargement de la UE hacia la ...
+
+revistarue
+
+](https://www.revistarue.eu/RUE/102025.pdf)
+
+[
+
+![17edu.org favicon](https://www.google.com/s2/favicons?sz=128&domain=17edu.org)
+
+El giro ontológico: realismo especulativo, poshumanismo y ...
+
+17edu
+
+](https://17edu.org/extension/el-giro-ontologico-realismo-especulativo-poshumanismo-y-posnaturalismo/)
+
+[
+
+![biopolitica.net favicon](https://www.google.com/s2/favicons?sz=128&domain=biopolitica.net)
+
+El TRANSHUMANISMO COMO BIOIDEOLOGÍA DEL SISTEMA ...
+
+biopolitica
+
+](https://biopolitica.net/2023/06/15/el-transhumanismo-como-bioideologia-del-sistema-capitalista-actual/)
+
+[
+
+![cidob.org favicon](https://www.google.com/s2/favicons?sz=128&domain=cidob.org)
+
+La Comunidad Política Europea, ¿primer paso para una ...
+
+cidob
+
+](https://www.cidob.org/publicaciones/comunidad-politica-europea-primer-paso-para-verdadera-europa-geopolitica)
+
+[
+
+Ontología del Robot: Posthumanismo y Transhumanismo
+
+formacionpermanente.uned
+
+](https://formacionpermanente.uned.es/tp_actividad/actividad/ontologia-del-robot-posthumanismo-y-transhumanismo)
+
+[
+
+Transhumanismo y revolución ¿Nunca fuimos humanos?
+
+nuso
+
+](https://nuso.org/articulo/316-transhumanismo-y-revolucion/)
+
+[
+
+EL CONCEPTO DE INTERÉS NACIONAL
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/4547890.pdf)
+
+[
+
+![proyectologos.org favicon](https://www.google.com/s2/favicons?sz=128&domain=proyectologos.org)
+
+Bruno Latour y el posthumanismo: De la teoría del actor- ...
+
+proyectologos
+
+](https://proyectologos.org/ponencia/bruno-latour-y-el-posthumanismo-de-la-teoria-del-actor-red-a-la-ecologia-de-las-subjetividades-tecnologicas/)
+
+[
+
+![es.wikipedia.org favicon](https://www.google.com/s2/favicons?sz=128&domain=es.wikipedia.org)
+
+Transhumanismo - Wikipedia, la enciclopedia libre
+
+es.wikipedia
+
+](https://es.wikipedia.org/wiki/Transhumanismo)
+
+[
+
+Nuevas narrativas para Ceuta y Melilla
+
+realinstitutoelcano
+
+](https://www.realinstitutoelcano.org/analisis/nuevas-narrativas-para-ceuta-y-melilla/)
+
+[
+
+Humanismo y posthumanismo en cuestión: Ontología
+
+revistas.filo.uba
+
+](http://revistas.filo.uba.ar/index.php/avatares/article/download/325/329)
+
+[
+
+![nuevarevista.net favicon](https://www.google.com/s2/favicons?sz=128&domain=nuevarevista.net)
+
+La democracia y los límites de la soberanía
+
+nuevarevista
+
+](https://www.nuevarevista.net/la-democracia-y-los-limites-de-la-soberania/)
+
+[
+
+![voxespana.es favicon](https://www.google.com/s2/favicons?sz=128&domain=voxespana.es)
+
+VOX denuncia la cesión de soberanía ante Bruselas y ...
+
+voxespana
+
+](https://www.voxespana.es/grupo_parlamentario/actividad-parlamentaria/vox-denuncia-la-cesion-de-soberania-ante-bruselas-y-exige-recuperar-el-control-de-las-fronteras-la-energia-y-la-seguridad-sanitaria-de-espana-20251028)
+
+Investigando patrones históricos de conflictos entre identidad nacional, geopolítica y revoluciones constitucionales.
+
+Buscando
+
+historia conflicto identidad nacional versus intereses geopoliticos cesion soberania
+
+arquitectura constitucional y lucha familias politicas poder territorial
+
+patrones recurrentes revoluciones constitucionales reforma radical sistema
+
+Revisando fuentes
+
+[
+
+![revistas.bibdigital.uccor.edu.ar favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.bibdigital.uccor.edu.ar)
+
+Editorial: Grupos en conflicto y territorio
+
+revistas.bibdigital.uccor.edu
+
+](http://revistas.bibdigital.uccor.edu.ar/index.php/SP/article/view/693/715)
+
+[
+
+Integración regional y nacionalismos en la Europa del siglo XXI
+
+estudiosgeograficos.revistas.csic
+
+](http://estudiosgeograficos.revistas.csic.es/index.php/estudiosgeograficos/article/download/446/446)
+
+[
+
+![adp.edu.pe favicon](https://www.google.com/s2/favicons?sz=128&domain=adp.edu.pe)
+
+Independencia y política exterior
+
+adp.edu
+
+](https://www.adp.edu.pe/revista/index.php/RPI/article/download/19/15)
+
+[
+
+El nacionalismo catalán y autonomía relativa del Estado: un análisis del proceso secesionista.
+
+dspace.palermo
+
+](https://dspace.palermo.edu/ojs/index.php/jcs/article/download/345/240)
+
+[
+
+![revista.feylibertad.org favicon](https://www.google.com/s2/favicons?sz=128&domain=revista.feylibertad.org)
+
+De narrativa a narrativas: los procesos de independencia hispanoamericanos
+
+revista.feylibertad
+
+](https://revista.feylibertad.org/index.php/revista/article/download/142/189)
+
+[
+
+revisión andinista del proceso socio histórico de la construcción nacional, la violencia política y los derechos humanos en Perú
+
+revistas.uarm.edu
+
+](https://revistas.uarm.edu.pe/index.php/silex/article/download/247/189)
+
+[
+
+Plurinacionalismo y estatalidad: el caso de Irlanda del Norte
+
+isegoria.revistas.csic
+
+](https://isegoria.revistas.csic.es/index.php/isegoria/article/download/608/609/609)
+
+[
+
+La cesión territorial como respuesta a la demanda marítima boliviana: antecedentes y posibilidades
+
+encrucijadaamericana.uahurtado
+
+](https://encrucijadaamericana.uahurtado.cl/index.php/ea/article/download/80/79)
+
+[
+
+DESCENTRALIZACIÓN CONSTITUCIONAL Y ...
+
+fundacionmgimenezabad
+
+](https://www.fundacionmgimenezabad.es/sites/default/files/Publicar/publicaciones/documentos/actas12_descentralizacion_constitucional_iberoamerica_dig.pdf)
+
+[
+
+Reforma, mutación y destrucción de la Constitución
+
+fundacionfaes
+
+](https://fundacionfaes.org/wp-content/uploads/2021/09/20180417134753reforma-mutacion-y-destruccion-de-la-constitucion.pdf)
+
+[
+
+![centrodeestudiosandaluces.es favicon](https://www.google.com/s2/favicons?sz=128&domain=centrodeestudiosandaluces.es)
+
+Reforma constitucional y nuevo paradigma del Estado social
+
+centrodeestudiosandaluces
+
+](https://www.centrodeestudiosandaluces.es/datos/publicaciones/Actualidad74.pdf)
+
+[
+
+REFORMA VS. REVOLUCIÓN
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/7265539.pdf)
+
+[
+
+![posmodernia.com favicon](https://www.google.com/s2/favicons?sz=128&domain=posmodernia.com)
+
+La rendición del 86: la disolución de España en la UE
+
+posmodernia
+
+](https://posmodernia.com/la-rendicion-del-86-la-disolucion-de-espana-en-la-ue/)
+
+[
+
+![conciertoeconomico.org favicon](https://www.google.com/s2/favicons?sz=128&domain=conciertoeconomico.org)
+
+la positivización constitucional de los
+
+conciertoeconomico
+
+](https://conciertoeconomico.org/wp-content/uploads/2024/07/UNED-2016_PENA-S_Tesis_La-positivizacion-constitucional-de-los-DDHH.pdf)
+
+[
+
+EL ORDEN CONSTITUCIONAL: REFORMAS Y ...
+
+archivos.juridicas.unam
+
+](https://archivos.juridicas.unam.mx/www/bjv/libros/12/5855/30.pdf)
+
+[
+
+![defensa.gob.es favicon](https://www.google.com/s2/favicons?sz=128&domain=defensa.gob.es)
+
+EVOLUCIÓN DEL CONCEPTO DE INTERÉS NACIONAL
+
+defensa.gob
+
+](https://www.defensa.gob.es/documents/2073105/2608685/Cap%C3%ADtulo+1.+El+concepto+de+inter%C3%A9s+nacional..pdf/a6b7ffbe-c58e-8e3b-2f7b-d4da40c3c40a?version=1.0&t=1749806132447&download=true)
+
+[
+
+![cepc.gob.es favicon](https://www.google.com/s2/favicons?sz=128&domain=cepc.gob.es)
+
+La constitución como forma de la democracia
+
+cepc.gob
+
+](https://www.cepc.gob.es/sites/default/files/2025-06/a-1229-laconstitucion-accesible-corregido-final.pdf)
+
+[
+
+Las soberanías en disputa: éconflícto de identidades o ...
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/5263828.pdf)
+
+[
+
+La mirada de Argos. Pequeño tratado constitucional ...
+
+recyt.fecyt
+
+](https://recyt.fecyt.es/index.php/AIJC/article/view/86417/63039)
+
+[
+
+![ugr.es favicon](https://www.google.com/s2/favicons?sz=128&domain=ugr.es)
+
+visión panorámica del constitucionalismo en el siglo xx
+
+ugr
+
+](https://www.ugr.es/~redce/REDCE12/articulos/02Valades.htm)
+
+Cartografíando marcos ontológicos políticos, redes semánticas de poder dinástico y tensiones humanismo-posthumanismo en soberanía.
+
+Buscando
+
+cartografia conceptual marcos ontologicos política identidad
+
+redes semanticas poder familia dinastía conflicto sucesión
+
+humanismo versus posthumanismo ontología y soberanía
+
+Revisando fuentes
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+Cartografía conceptual para navegar hacia un trabajo social comunitario emancipador
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/1a3aa079e66ea0854f04ac2e39c653fe3d5f9bbd)
+
+[
+
+Del imperio a la potencia global: un análisis histórico de las escuelas de política exterior chinas
+
+revistas.umng.edu
+
+](https://revistas.umng.edu.co/index.php/ries/article/view/7606)
+
+[
+
+![vinculategica.uanl.mx favicon](https://www.google.com/s2/favicons?sz=128&domain=vinculategica.uanl.mx)
+
+Formación e identidad de emprendedores en tiempos de crisis: aportes de un marco conceptual y metodológico
+
+vinculategica.uanl
+
+](https://vinculategica.uanl.mx/index.php/v/article/view/51)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+Construcción de la identidad política en miembros del pcp-sl que participaron del conflicto armado interno entre 1980 - 2000
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/cdba9292cd9031fcd14dbaeca618c39970e7bffe)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+La Cartografía social un instrumento para conocer y pensar la acción política el territorio desde el ámbito juvenil. Una apuesta con los jóvenes de los 29 municipios del departamento de Meta-Colombia.
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/816b425e41e4a5e878e9ecf97c947dac1ed70482)
+
+[
+
+Una lectura afectiva de la figura crítica de Calibán en el teatro de Marcos Azevedo
+
+revistas.unc.edu
+
+](http://revistas.unc.edu.ar/index.php/recial/article/view/43366)
+
+[
+
+![revistas.ucm.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.ucm.es)
+
+Investigación sobre desinformación y fake news en revistas de comunicación en español: líneas, cartografía y tendencias
+
+revistas.ucm
+
+](https://revistas.ucm.es/index.php/ESMP/article/view/102187)
+
+[
+
+Enlazando las huellas de los objetos. Una cartografía afectiva
+
+ojs.ides.org
+
+](https://ojs.ides.org.ar/index.php/Clepsidra/article/view/516)
+
+[
+
+Código de honor y culturas políticas a inicios del siglo XX argentino. Notas sobre la identidad radical
+
+revistapaginas.unr.edu
+
+](https://revistapaginas.unr.edu.ar/index.php/RevPaginas/article/view/835)
+
+[
+
+Comunicación pública de la ciencia y construcción de identidad científica en universidades públicas argentinas: reflexiones iniciales.
+
+perio.unlp.edu
+
+](https://perio.unlp.edu.ar/ojs/index.php/question/article/view/8470)
+
+[
+
+![scielo.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.cl)
+
+Fundamentos Teórico Epistemológicos de los Imaginarios Sociales
+
+scielo
+
+](http://www.scielo.cl/pdf/cmoebio/n43/art01.pdf)
+
+[
+
+Mapas para armar: de cartillas, manuales y guías de cartografía participativa
+
+revistas.uptc.edu
+
+](https://revistas.uptc.edu.co/index.php/perspectiva/article/download/13785/12092)
+
+[
+
+![scielo.br favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.br)
+
+Las luchas etnoterritoriales amazónicas y la incorporación de ontologías relacionales en el combate al extractivismo y la crisis ecológica
+
+scielo
+
+](https://www.scielo.br/j/ha/a/FpkJNLyrDHNSjGfQZXLTkjP/?format=pdf&lang=es)
+
+[
+
+![journals.openedition.org favicon](https://www.google.com/s2/favicons?sz=128&domain=journals.openedition.org)
+
+Ontologías políticas plurales en los procesos de transición sostenible
+
+journals.openedition
+
+](https://journals.openedition.org/orda/10133)
+
+[
+
+INTRODUCCIÓN. LENGUAJE Y DISCURSO: PERCEPCIONES IDENTITARIAS Y CONSTRUCCIONES DE IDENTIDAD *
+
+hispania.revistas.csic
+
+](http://hispania.revistas.csic.es/index.php/hispania/article/download/344/342)
+
+[
+
+![revista.redipe.org favicon](https://www.google.com/s2/favicons?sz=128&domain=revista.redipe.org)
+
+Reconocimiento: Ontología social y pensamiento pedagógico
+
+revista.redipe
+
+](https://revista.redipe.org/index.php/1/article/download/1702/1614)
+
+[
+
+![atheneadigital.net favicon](https://www.google.com/s2/favicons?sz=128&domain=atheneadigital.net)
+
+Preámbulo para una ontología política de la fluidez social
+
+atheneadigital
+
+](https://atheneadigital.net/article/download/n1-garcia/24-pdf-es)
+
+[
+
+![revistas.uniandes.edu.co favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.uniandes.edu.co)
+
+MÁS ALLÁ DE LA "CULTURA": ESPACIO, IDENTIDAD Y LAS POLÍTICAS DE LA DIFERENCIA
+
+revistas.uniandes.edu
+
+](http://revistas.uniandes.edu.co/doi/pdf/10.7440/antipoda7.2008.10)
+
+[
+
+Ontología socio-corporal en la filosofía de Judith Butler. ...
+
+isegoria.revistas.csic
+
+](https://isegoria.revistas.csic.es/index.php/isegoria/article/download/984/981/986)
+
+[
+
+SISTEMAS DE PARENTESCO Y ESTRUCTURAS ...
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/595373.pdf)
+
+[
+
+Introducción -- Itinerarios Posthumanistas
+
+posthuman.imf.csic
+
+](https://posthuman.imf.csic.es/es/introduccion/)
+
+[
+
+Cartografía y territorios: la espacialidad geográfica como ...
+
+revistadefilosofia
+
+](https://www.revistadefilosofia.org/index.php/ERF/article/download/684/654/1227)
+
+[
+
+Entre ejecutivos republicanos y regencias dinásticas. ...
+
+hispania.revistas.csic
+
+](https://hispania.revistas.csic.es/index.php/hispania/article/download/766/763/765)
+
+[
+
+El posthumanismo no es un humanismo
+
+e-revistas.uc3m
+
+](https://e-revistas.uc3m.es/index.php/DYL/es/article/view/5848)
+
+[
+
+La alfabetización como desafío ontológico: memorias ...
+
+revistas.unc.edu
+
+](https://revistas.unc.edu.ar/index.php/abb/article/download/40062/41627/158249)
+
+[
+
+![felsemiotica.com favicon](https://www.google.com/s2/favicons?sz=128&domain=felsemiotica.com)
+
+Castells, Manuel -- Comunicación y poder
+
+felsemiotica
+
+](https://www.felsemiotica.com/descargas/Castells-Manuel-Comunicaci%C3%B3n-y-poder.pdf)
+
+[
+
+Las concepciones ontológicas como punto de acceso a ...
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/7949381.pdf)
+
+[
+
+![journals.openedition.org favicon](https://www.google.com/s2/favicons?sz=128&domain=journals.openedition.org)
+
+Notas en torno a la complejidad identitaria en el proceso ...
+
+journals.openedition
+
+](https://journals.openedition.org/e-spania/47309)
+
+[
+
+![gredos.usal.es favicon](https://www.google.com/s2/favicons?sz=128&domain=gredos.usal.es)
+
+EL DESAFÍO DEL POSTHUMANISMO (EN RELACIÓN A ...
+
+gredos.usal
+
+](https://gredos.usal.es/bitstream/handle/10366/116244/DFLFC_EspinosaRubio_DesafioPosthumanismo.pdf;sequence=1)
+
+[
+
+![geoactivismo.org favicon](https://www.google.com/s2/favicons?sz=128&domain=geoactivismo.org)
+
+Manual_de_mapeo_2013.pdf
+
+geoactivismo
+
+](https://geoactivismo.org/wp-content/uploads/2015/11/Manual_de_mapeo_2013.pdf)
+
+[
+
+![medievalistas.es favicon](https://www.google.com/s2/favicons?sz=128&domain=medievalistas.es)
+
+PODER Y PODERES EN LA EDAD MEDIA
+
+medievalistas
+
+](https://medievalistas.es/wp-content/uploads/2021/08/poder-y-poderes_SEEM-16-WEB.pdf)
+
+[
+
+EL SESGO ANTROPOCÉNTRICO DEL HUMANISMO EN LOS ...
+
+revistas.javeriana.edu
+
+](https://revistas.javeriana.edu.co/index.php/vniphilosophica/article/view/39084/31828)
+
+Escribiendo la cartografía estructurada de los tres pilares con índice DRY y referencias clave.
+
+Prospectando escenarios futuros 2025-2040 de tensiones entre identidad nacional, tecnocracia y multipolaridad.
+
+Buscando
+
+prospectiva escenarios 2025-2040 identidad nacional versus integracion supranacional
+
+tecnocracia digital poder elites posthumanismo Silicon Valley 2026
+
+conflicto multipolar China USA Europa soberania fragmentacion
+
+Revisando fuentes
+
+[
+
+![scielo.conicyt.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.conicyt.cl)
+
+Pensar la integración regional desde los márgenes: la importancia y desafíos de la dimensión subestatal en América Latina desde la experiencia chileno-argentina
+
+scielo.conicyt
+
+](https://scielo.conicyt.cl/pdf/ssa/v19n2/0719-0948-ssa-19-02-00069.pdf)
+
+[
+
+![scielo.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.cl)
+
+Innovación, redes, recursos patrimoniales y desarrollo territorial
+
+scielo
+
+](http://www.scielo.cl/pdf/eure/v31n94/art01.pdf)
+
+[
+
+Estado nacional y derechos de los inmigrantes. Sobre la redefinición de la ciudadanía
+
+arbor.revistas.csic
+
+](https://arbor.revistas.csic.es/index.php/arbor/article/download/441/442/442)
+
+[
+
+![revistas.ucm.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.ucm.es)
+
+Modelos de desarrollo y soberanía en América Latina: una visión desde la gestión territorial
+
+revistas.ucm
+
+](https://revistas.ucm.es/index.php/GEOP/article/download/61993/4564456553716)
+
+[
+
+![revistas.uniandes.edu.co favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.uniandes.edu.co)
+
+Del Estado-nación al Estado-marca. El rol de la diplomacia pública y la marca de país en el nuevo escenario de las relaciones internacionales
+
+revistas.uniandes.edu
+
+](https://revistas.uniandes.edu.co/index.php/res/article/view/5784)
+
+[
+
+![scielo.cl favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.cl)
+
+Explorando las limitaciones del nuevoregionalismo en las políticas de la UniónEuropea: una perspectiva latinoamericana
+
+scielo
+
+](http://www.scielo.cl/pdf/eure/v33n98/art06.pdf)
+
+[
+
+España en el mundo en 2025: perspectivas y desafíos
+
+media.realinstitutoelcano
+
+](https://media.realinstitutoelcano.org/wp-content/uploads/2025/01/policy-paper-espana-en-mundo-2025-perspectivas-desafios.pdf)
+
+[
+
+![rebelion.org favicon](https://www.google.com/s2/favicons?sz=128&domain=rebelion.org)
+
+Los tecno-oligarcas colonizan Washington
+
+rebelion
+
+](https://rebelion.org/los-tecno-oligarcas-colonizan-washington/)
+
+[
+
+![kaosenlared.net favicon](https://www.google.com/s2/favicons?sz=128&domain=kaosenlared.net)
+
+El triángulo del poder: ¿Pueden EE.UU., Rusia y China ...
+
+kaosenlared
+
+](https://kaosenlared.net/el-triangulo-del-poder-pueden-ee-uu-rusia-y-china-dividir-el-mundo-sin-guerra/)
+
+[
+
+¿Cuál es el rumbo futuro de la Unión Europea? El debate ...
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/6919066.pdf)
+
+[
+
+![agendapublica.es favicon](https://www.google.com/s2/favicons?sz=128&domain=agendapublica.es)
+
+Steve Bannon: "En el 'tecnofeudalismo' eres solo un siervo ...
+
+agendapublica
+
+](https://agendapublica.es/noticia/19624/steve-bannon-tecnofeudalismo-eres-solo-siervo-digital)
+
+[
+
+![dolarbaratomag.com favicon](https://www.google.com/s2/favicons?sz=128&domain=dolarbaratomag.com)
+
+DE LA UNIPOLARIDAD A LA MULTIPOLARIDAD. LA ...
+
+dolarbaratomag
+
+](https://dolarbaratomag.com/2488/de-la-unipolaridad-a-la-multipolaridad-la-disputa-por-la-hegemonia-entre-eeuu-y-china/)
+
+[
+
+![lamoncloa.gob.es favicon](https://www.google.com/s2/favicons?sz=128&domain=lamoncloa.gob.es)
+
+España 2050. Fundamentos y propuestas para una ...
+
+lamoncloa.gob
+
+](https://www.lamoncloa.gob.es/presidente/actividades/Documents/2021/200521-Estrategia_Espana_2050.pdf)
+
+[
+
+![ctxt.es favicon](https://www.google.com/s2/favicons?sz=128&domain=ctxt.es)
+
+Los tecnoligarcas colonizan Washington
+
+ctxt
+
+](https://ctxt.es/es/20251201/Politica/51375/tecnoligarcas-libertarios-peter-thiel-palantir-eeuu-corporaciones-monarquia-enzo-girardi.htm)
+
+[
+
+![coface.es favicon](https://www.google.com/s2/favicons?sz=128&domain=coface.es)
+
+Trump 2, China y Europa: ¿qué cambios se avecinan?
+
+coface
+
+](https://www.coface.es/noticias-economia-insights/globalizacion-fragmentada-fractura-y-recomposicion-geopolitica)
+
+[
+
+![ec.europa.eu favicon](https://www.google.com/s2/favicons?sz=128&domain=ec.europa.eu)
+
+El informe sobre prospectiva estratégica de 2025 establece una
+
+ec.europa
+
+](https://ec.europa.eu/commission/presscorner/detail/es/ip_25_2036)
+
+[
+
+![youtube.com favicon](https://www.google.com/s2/favicons?sz=128&domain=youtube.com)
+
+🎙️ Technology and the post-capitalist future with Jose ...
+
+youtube
+
+](https://www.youtube.com/watch?v=lFiyu__h8fI)
+
+[
+
+Hegemonías quebradas y vasallajes emergentes
+
+realinstitutoelcano
+
+](https://www.realinstitutoelcano.org/analisis/hegemonias-quebradas-y-vasallajes-emergentes-adonde-va-el-mundo/)
+
+[
+
+![academia.edu favicon](https://www.google.com/s2/favicons?sz=128&domain=academia.edu)
+
+(PDF) Escenarios prospectivos estratégicos
+
+academia
+
+](https://www.academia.edu/20267413/Escenarios_prospectivos_estrat%C3%A9gicos)
+
+[
+
+![legrandcontinent.eu favicon](https://www.google.com/s2/favicons?sz=128&domain=legrandcontinent.eu)
+
+La nueva tecnocracia: 2025, año del neo-sansimonismo
+
+legrandcontinent
+
+](https://legrandcontinent.eu/es/2025/12/19/la-nueva-tecnocracia-2025-ano-del-neo-sansimonismo/)
+
+[
+
+![rebelion.org favicon](https://www.google.com/s2/favicons?sz=128&domain=rebelion.org)
+
+¿Reafirmación hegemónica o reparto de áreas de ...
+
+rebelion
+
+](https://rebelion.org/reafirmacion-hegemonica-o-reparto-de-areas-de-influencia/)
+
+Explorando redes dinámicas de poder familiar, oligarquías tecnológicas y reproducción generacional en elites dirigentes.
+
+Buscando
+
+redes dinamicas poder familias politicas oligarquias elites tecnologia
+
+reproduccion poder entre generaciones clases dirigentes estados
+
+cartografia poder Silicon Valley Thiel Musk oligarquia tech
+
+Revisando fuentes
+
+[
+
+![scielo.br favicon](https://www.google.com/s2/favicons?sz=128&domain=scielo.br)
+
+O poder das famílias na política: das parentelas às redes de base familiar
+
+scielo
+
+](http://www.scielo.br/scielo.php?script=sci_arttext&pid=S0103-21862024000100205&tlng=pt)
+
+[
+
+Senhores absolutos desta província: a família Monteiro de Barros e suas redes de poder em Minas Gerais na primeira metade do século XIX
+
+repositorio.ufjf
+
+](https://repositorio.ufjf.br/jspui/handle/ufjf/14084)
+
+[
+
+OLIGARQUIAS RURAIS DO SERTÃO NORDESTINO: ESTUDO DE CASO EM UM MUNICÍPIO DE PEQUENO PORTE DO SEMIÁRIDO CEARENSE
+
+revistas.ufpr
+
+](https://revistas.ufpr.br/nep/article/view/70867)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+"A arte de governar": Redes de poder e relações familiares entre os juízes almotacés na Câmara Municipal de Rio Pardo/RS, 1811 - c.1830
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/640660b0567370a1cdc486d95671e152e97a4569)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+Las élites capitalistas españolas entre dos crisis
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/2ce22f9a5e8dddc356e4830a73b33f661ffd1b69)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+Entre "a intolerância política" e a "sede ardente de mando": família, poder e facções no tempo dos cunhados José Joaquim de Andrade Neves e João Luís Gomes da Silva (c.1845 -- c.1870)
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/920aa896871d2078d64fe6819125f60699937ac5)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+Las redes sociales de la oligarquía de la villa de Valladolid, (1450-1520)
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/5e43e896227df34dbb01aebe874e36b772f3c4ff)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+A PARTICIPAÇÃO PÓS-SOCIAL NO BRASIL DO SÉCULO XXI
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/b9e7df7653107fb019aa190a895cb2966dcac5b2)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+La casa y el imperio. Globalización y hegemonía local de la oligarquía mercantil en la Vizcaya altomoderna.
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/c35cf2e3bb00a4e9b4b36ed80c70d1907223aac2)
+
+[
+
+![semanticscholar.org favicon](https://www.google.com/s2/favicons?sz=128&domain=semanticscholar.org)
+
+El trabajo y los trabajadores en Logroño entre la peste y la gran crisis castellana: 1599-1630
+
+semanticscholar
+
+](https://www.semanticscholar.org/paper/d8d54cf8f3e89ee65b2473ae28964a129cba29c9)
+
+[
+
+El nacimiento del "ciberalismo". Una genealogía crítica de la gubernamentalidad de Silicon Valley
+
+revistas.uam
+
+](https://revistas.uam.es/bajopalabra/article/download/17469/16049)
+
+[
+
+![revistas.pucp.edu.pe favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.pucp.edu.pe)
+
+Reconfiguración del Estado o influencias corruptas?: Un análisis del descalabro judicial del Callao -- Perú (2018)
+
+revistas.pucp.edu
+
+](http://revistas.pucp.edu.pe/index.php/politai/article/download/21172/20893)
+
+[
+
+Mecanismos de subjetivación y sociedades digitales autocontroladas.
+
+sincronia.cucsh.udg
+
+](http://sincronia.cucsh.udg.mx/pdf/83/70_82_2023a.pdf)
+
+[
+
+The Political Settlements Dataset: Power Configurations and Political Blocs in the Global South, 1946-2018
+
+tandfonline
+
+](https://www.tandfonline.com/doi/pdf/10.1080/03050629.2024.2352474?needAccess=true)
+
+[
+
+![revistas.ucm.es favicon](https://www.google.com/s2/favicons?sz=128&domain=revistas.ucm.es)
+
+Mecanismos de explotación en el capitalismo digital. Modelos de plusvalía en Red
+
+revistas.ucm
+
+](https://revistas.ucm.es/index.php/TEKN/article/download/69454/4564456554258)
+
+[
+
+![storage.googleapis.com favicon](https://www.google.com/s2/favicons?sz=128&domain=storage.googleapis.com)
+
+Towards a Political Economy of Weak Institutions and Strong Elites in Central America
+
+storage.googleapis
+
+](https://storage.googleapis.com/jnl-lasa-j-erlacs-files/journals/1/articles/9799/submission/proof/9799-1-20156-1-10-20141009.pdf)
+
+[
+
+Prácticas de distinción, justificación y reproducción de la elite: evidencia de los ámbitos financiero y tributario en Chile
+
+recyt.fecyt
+
+](https://recyt.fecyt.es/index.php/res/article/download/76335/61316)
+
+[
+
+![revistes.uab.cat favicon](https://www.google.com/s2/favicons?sz=128&domain=revistes.uab.cat)
+
+Las empresas familiares en la red inter-firmas: el caso de la industria suiza de máquinas y metales en el siglo XX
+
+revistes.uab
+
+](https://revistes.uab.cat/redes/article/download/v21-n2-ginalski/424-pdf-es)
+
+[
+
+EL PAPEL DE LAS REDES FAMILIARES EN ...
+
+dialnet.unirioja
+
+](https://dialnet.unirioja.es/descarga/articulo/6521234.pdf)
+
+[
+
+![elpais.com favicon](https://www.google.com/s2/favicons?sz=128&domain=elpais.com)
+
+Las generaciones del poder. | Opinión
+
+elpais
+
+](https://elpais.com/diario/2000/07/26/opinion/964562409_850215.html)
+
+[
+
+El asalto de los 'tecnoligarcas' al poder: así se está ...
+
+elconfidencial
+
+](https://www.elconfidencial.com/tecnologia/2025-01-12/elon-musk-donal-trump-peter-thiel-tecnoligarcas-marc-andreessen-inteligencia-artificial_4039156/)
+
+[
+
+![es.wikipedia.org favicon](https://www.google.com/s2/favicons?sz=128&domain=es.wikipedia.org)
+
+Teorías de la élite - Wikipedia, la enciclopedia libre
+
+es.wikipedia
+
+](https://es.wikipedia.org/wiki/Teor%C3%ADas_de_la_%C3%A9lite)
+
+[
+
+Teorías de la reproducción y la resistencia en la nueva ...
+
+cuadernospoliticos.unam
+
+](http://www.cuadernospoliticos.unam.mx/cuadernos/contenido/CP.44/cp.44.6.%20HenryAGiroux.pdf)
+
+[
+
+![legrandcontinent.eu favicon](https://www.google.com/s2/favicons?sz=128&domain=legrandcontinent.eu)
+
+De Musk a Trump: cómo la oligarquía tecno-cesarista ...
+
+legrandcontinent
+
+](https://legrandcontinent.eu/es/2025/01/20/de-musk-a-trump-como-la-oligarquia-tecno-cesarista-quiere-derrocar-la-democracia-en-america/)
+
+[
+
+El poder de las redes
+
+pensamientocritico
+
+](https://www.pensamientocritico.org/davuga0313.pdf)
+
+[
+
+![esfops.files.wordpress.com favicon](https://www.google.com/s2/favicons?sz=128&domain=esfops.files.wordpress.com)
+
+la-elite-del-poder.pdf
+
+esfops.files.wordpress
+
+](https://esfops.files.wordpress.com/2013/07/la-elite-del-poder.pdf)
+
+[
+
+![firstonline.info favicon](https://www.google.com/s2/favicons?sz=128&domain=firstonline.info)
+
+Peter Thiel y la oligarquía multimillonaria de la alta tecnología
+
+firstonline
+
+](https://www.firstonline.info/es/peter-thiel-e-loligarchia-dei-miliardari-hi-tech-chi-e-dopo-musk-la-nuova-eminenza-grigia-di-trump/)
+
+[
+
+![es.wikipedia.org favicon](https://www.google.com/s2/favicons?sz=128&domain=es.wikipedia.org)
+
+Teoría generacional de Strauss--Howe
+
+es.wikipedia
+
+](https://es.wikipedia.org/wiki/Teor%C3%ADa_generacional_de_Strauss%E2%80%93Howe)
+
+[
+
+![iri.edu.ar favicon](https://www.google.com/s2/favicons?sz=128&domain=iri.edu.ar)
+
+Trump vs. Musk: entre aranceles y motosierras
+
+iri.edu
+
+](https://www.iri.edu.ar/index.php/2025/07/14/analisis-de-coyuntura-n-55-trump-vs-musk-entre-aranceles-y-motosierras/)
+
+[
+
+![oxfamintermon.org favicon](https://www.google.com/s2/favicons?sz=128&domain=oxfamintermon.org)
+
+El fenómeno de la captura: DESENMASCARANDO el poder
+
+oxfamintermon
+
+](https://www.oxfamintermon.org/hubfs/Oxfam-Website/oi-informes/OXFAM_Intermon_Metodolog%C3%ADa_captura_2018.pdf)
+
+[
+
+![socioeducacion.files.wordpress.com favicon](https://www.google.com/s2/favicons?sz=128&domain=socioeducacion.files.wordpress.com)
+
+Pierre Bourdieu y Jean-Claude Passeron
+
+socioeducacion.files.wordpress
+
+](https://socioeducacion.files.wordpress.com/2011/05/bourdieu-pierre-la-reproduccion1.pdf)
+
+[
+
+![agendapublica.es favicon](https://www.google.com/s2/favicons?sz=128&domain=agendapublica.es)
+
+Una radiografía de la nueva oligarquía autocrática y su ...
+
+agendapublica
+
+](https://agendapublica.es/noticia/19750/radiografia-nueva-oligarquia-autocratica-su-batalla-poder)
+
+Actualizando la cartografía de los tres pilares con prospectiva futura, tensiones inter-pilares e índice DRY conceptual.
+
+Terminado
