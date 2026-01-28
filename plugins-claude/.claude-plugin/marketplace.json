@@ -1,0 +1,110 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "aleph-scriptorium",
+  "description": "Claude Code plugins for the Aleph Scriptorium ecosystem: core infrastructure, AAIA Runtime, MCP orchestration, and agent development tools",
+  "owner": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  },
+  "plugins": [
+    {
+      "name": "scriptorium-pack",
+      "description": "Core infrastructure plugin for Aleph Scriptorium with context optimization through progressive disclosure. Provides cowork sessions, MCP discovery, and Copilot flow analysis.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./scriptorium-pack",
+      "category": "productivity"
+    },
+    {
+      "name": "aaia-editor",
+      "description": "Development and consolidation plugin for AAIAGallery Runtime. Guides backend/frontend integration, MCP Server extension, and Socket.IO orchestration.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./aaia-editor",
+      "category": "development"
+    },
+    {
+      "name": "mcp-presets",
+      "description": "MCP server orchestration: manage, monitor, and configure MCP servers and presets for Aleph Scriptorium agents.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./mcp-presets",
+      "category": "development"
+    },
+    {
+      "name": "prolog-editor",
+      "description": "Prolog session management and FIA logic brain development via MCPPrologServer.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./prolog-editor",
+      "category": "development"
+    },
+    {
+      "name": "typed-prompting",
+      "description": "Schema-based message validation and typed prompt management via MCP.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./typed-prompting",
+      "category": "development"
+    },
+    {
+      "name": "agent-creator",
+      "description": "Guided agent creation for Scriptorium: templates, recipes, and taxonomy management with 708+ AgentLoreSDK templates.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./agent-creator",
+      "category": "development"
+    },
+    {
+      "name": "scrum",
+      "description": "Scrum methodology for Scriptorium: backlogs, sprints, epics, and ceremonies with modelo generativo Lucas.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./scrum",
+      "category": "productivity"
+    },
+    {
+      "name": "wire-editor",
+      "description": "Visual flow editing with Node-RED wiring and Blockly transpilation for agent workflows.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./wire-editor",
+      "category": "development"
+    },
+    {
+      "name": "openasyncapi-editor",
+      "description": "OpenAPI and AsyncAPI specification management for MCP servers with code generation.",
+      "version": "2.0.0",
+      "author": {
+        "name": "Aleph Scriptorium",
+        "email": "contact@escrivivir.co"
+      },
+      "source": "./openasyncapi-editor",
+      "category": "development"
+    }
+  ]
+}

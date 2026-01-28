@@ -1,0 +1,9 @@
+{
+  "name": "scriptorium-pack",
+  "version": "2.0.0",
+  "description": "Core instructions and workflows for Aleph Scriptorium with context bloat mitigation through progressive disclosure",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "wire-editor",
+  "version": "2.0.0",
+  "description": "Visual flow editing with Node-RED wiring and Blockly transpilation",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

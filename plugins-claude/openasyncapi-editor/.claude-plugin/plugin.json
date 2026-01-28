@@ -1,0 +1,9 @@
+{
+  "name": "openasyncapi-editor",
+  "version": "2.0.0",
+  "description": "OpenAPI and AsyncAPI specification management for MCP servers",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "mcp-presets",
+  "version": "2.0.0",
+  "description": "MCP server orchestration: manage, monitor, and configure MCP servers and presets for Aleph Scriptorium agents",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "prolog-editor",
+  "version": "2.0.0",
+  "description": "Prolog session management and FIA logic brain development via MCPPrologServer",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

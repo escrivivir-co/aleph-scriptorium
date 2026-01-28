@@ -1,0 +1,9 @@
+{
+  "name": "aaia-editor",
+  "version": "2.0.0",
+  "description": "Plugin for AAIA Runtime consolidation: backend/frontend integration, MCP Server tooling, and Socket.IO orchestration. Guides towards closing implementation gaps in AAIAGallery ecosystem.",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

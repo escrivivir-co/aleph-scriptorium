@@ -1,0 +1,9 @@
+{
+  "name": "agent-creator",
+  "version": "2.0.0",
+  "description": "Guided agent creation for Scriptorium: templates, recipes, and taxonomy management",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

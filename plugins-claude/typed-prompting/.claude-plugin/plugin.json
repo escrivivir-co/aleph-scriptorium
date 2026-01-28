@@ -1,0 +1,9 @@
+{
+  "name": "typed-prompting",
+  "version": "2.0.0",
+  "description": "Schema-based message validation and typed prompt management via MCP",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}

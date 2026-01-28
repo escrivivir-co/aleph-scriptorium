@@ -1,0 +1,9 @@
+{
+  "name": "scrum",
+  "version": "2.0.0",
+  "description": "Scrum methodology for Scriptorium: backlogs, sprints, epics, and ceremonies",
+  "author": {
+    "name": "Aleph Scriptorium",
+    "email": "contact@escrivivir.co"
+  }
+}
