@@ -39,7 +39,9 @@
 		".github/plugins/arg-board-app/prompts": true,
 		".github/plugins/wiring-app/prompts": true,
 		".github/plugins/novelist/prompts": true,
-		".github/plugins/network/prompts": true
+		".github/plugins/network/prompts": true,
+		// --- ONFALO ---
+		".github/plugins/consejo-asesor/prompts": false
 	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
@@ -69,7 +71,9 @@
 		".github/plugins/arg-board-app/instructions": true,
 		".github/plugins/wiring-app/instructions": true,
 		".github/plugins/novelist/instructions": true,
-		".github/plugins/network/instructions": true
+		".github/plugins/network/instructions": true,
+		// --- ONFALO ---
+		".github/plugins/consejo-asesor/instructions": false
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas

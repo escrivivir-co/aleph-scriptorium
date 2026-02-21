@@ -158,6 +158,7 @@ Las instrucciones específicas se cargan automáticamente según el archivo:
 | Agentes (@ox) | scriptorium-pack | ox-ontologia.instructions.md |
 | Noticias (5W+Banderas) | scriptorium-pack | periodico.instructions.md |
 | Submódulos | scriptorium-pack | submodulo-integracion.instructions.md |
+| Consejo Asesor (ONFALO) | consejo-asesor | consejo-asesor.instructions.md |
 
 Ver [plugins/scriptorium-pack/](plugins/scriptorium-pack/) para detalles.
 

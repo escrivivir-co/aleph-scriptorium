@@ -40,6 +40,14 @@ handoffs:
     agent: plugin-manager
     prompt: Instala, activa o desinstala plugins.
     send: false
+  - label: "[CONSEJO-ASESOR] Debatir con el consejo"
+    agent: plugin_ox_consejoasesor
+    prompt: "Accede al plugin Consejo Asesor (ONFALO)."
+    send: false
+  - label: "[CONSEJO-ASESOR] Pipeline relato"
+    agent: plugin_ox_consejoasesor
+    prompt: "Ejecuta pipeline de produccion de relatos."
+    send: false
   - label: 🎬 Lanzar servidores demo
     agent: Ox
     prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales.
@@ -129,6 +137,7 @@ Principales:
 - `@plugin_ox_ghpages` — Publicar en web
 - `@plugin_ox_novelist` — Edición de narrativas
 - `@plugin_ox_argboard` — Teatro ARG
+- `@plugin_ox_consejoasesor` — Consejo Asesor ONFALO (14 agentes, 7 modos, pipeline relato)
 
 ---
 

@@ -863,6 +863,62 @@
           "agent": "AAIAEditor"
         }
       ]
+    },
+    "consejo-asesor": {
+      "name": "Consejo Asesor (ONFALO)",
+      "version": "1.0.0",
+      "description": "Sistema de produccion intelectual con 14 agentes especializados (voz, antagonistas, auditores, produccion, navegacion, inteligencia) que operan en 7 modos dialecticos. Integra pipeline de meta-relato para generar relatos desde materiales brutos.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-02-21T12:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 6,
+      "instructions_count": 1,
+      "data_directory": "ARCHIVO/PLUGINS/CONSEJO_ASESOR/",
+      "user_data_directory": "ARCHIVO/DISCO/CONSEJO/",
+      "bridge_agent": "plugin_ox_consejoasesor",
+      "dependencies": [],
+      "optional_dependencies": ["novelist", "agent-creator", "enciclopedia"],
+      "source": {
+        "type": "reference",
+        "path": "/Users/morente/Desktop/THEIA_PATH/ONFALO",
+        "note": "Placeholder minimo v1.0. Migracion exhaustiva pendiente."
+      },
+      "council": {
+        "agents_total": 14,
+        "categories": ["voz", "antagonistas", "auditores", "produccion", "navegacion", "inteligencia"],
+        "modes": ["DEBATE", "AUDITORIA", "PRODUCCION", "NAVEGACION", "ESCRILEER", "OBSERVATORIO", "CORRESPONSALIA"]
+      },
+      "handoffs": [
+        {
+          "label": "Abrir Consejo Asesor",
+          "agent": "ConsejoAsesor"
+        },
+        {
+          "label": "Debatir tema con el consejo",
+          "agent": "ConsejoAsesor"
+        },
+        {
+          "label": "Auditar texto",
+          "agent": "ConsejoAsesor"
+        },
+        {
+          "label": "Producir articulo",
+          "agent": "ConsejoAsesor"
+        },
+        {
+          "label": "Corresponsalia",
+          "agent": "ConsejoAsesor"
+        },
+        {
+          "label": "Crear proyecto ONFALO",
+          "agent": "ConsejoAsesor"
+        },
+        {
+          "label": "Pipeline relato",
+          "agent": "ConsejoAsesor"
+        }
+      ]
     }
   }
 }
