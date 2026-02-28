@@ -223,6 +223,37 @@
       "detail": "Puerto 3007 - AAIA Server (FIAs + Mundos)"
     },
     {
+      "label": "MCP: Start [Firehose]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "start:firehose"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-firehose",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Firehose MCP Server running on port 3008.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "mcp-stack"
+      },
+      "detail": "Puerto 3008 - Firehose Pipeline (Bluesky + ONFALO CDR)"
+    },
+    {
       "label": "AIA: Open [Browser]",
       "type": "shell",
       "command": "cmd",

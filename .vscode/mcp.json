@@ -32,9 +32,13 @@
       "type": "http",
       "url": "http://localhost:3007"
     },
-	  "AlephAlpha": {
+	"AlephAlpha": {
       "type": "http",
       "url": "http://localhost:3066"
+    },
+    "firehose-mcp-server": {
+      "type": "http",
+      "url": "http://localhost:3008"
     }
   }
 }

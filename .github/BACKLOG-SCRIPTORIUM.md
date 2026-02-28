@@ -3,7 +3,7 @@
 > **Opportunity**: Aleph Scriptorium  
 > **Versión**: 1.2.7-dry  
 > **Sprint actual**: FC1  "flavour/monada"
-> **Actualizado**: 2026-01-19
+> **Actualizado**: 2026-02-28
 > **Rama en ALEPH (esta codebase)**: flavour/monada
 > **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
@@ -50,6 +50,7 @@
 | ✅ | MCP-AAIA-SERVER-1.0.0 | AAIA MCP Server (FIAs + Mundos + PersefonBot) (93 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-18_mcp-aaia-server/) |
 | ✅ | AAIA-BACKEND-1.0.0 | AAIA Backend Gateway (Express + MCP + Socket.IO) (45 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_18_AAIA_Backend_Gateway/01_backlog-borrador.md) |
 | ✅ | ALEPHSCRIPT-MIGRATION-1.0.0 | Migración alephscript → as-core + Backend Runtime (55 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_19_AlephScript_Migration/01_backlog-borrador.md) |
+| ✅ | FIREHOSE-MCP-1.0.0 | Firehose MCP Pipeline — Bluesky + ONFALO CDR + Node-RED (55 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Febrero_28_Firehose_MCP_Pipeline/01_backlog-borrador.md) |
 
 ---
 
@@ -133,9 +134,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Épicas cerradas (total) | 30+ |
+| Épicas cerradas (total) | 31+ |
 | Épicas activas | 1 (RELEASE-1.0.0-beta.1) |
-| Effort completado | ~270 pts |
+| Effort completado | ~325 pts |
 | Effort pendiente | ~0 pts |
 | Plugins instalados | 22 |
 | Submódulos integrados | 17 |
@@ -147,6 +148,8 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-02-28 | ✅ FIREHOSE-MCP-1.0.0: Completado (55/55 pts). MCPFirehoseServer + 4 servicios + Node-RED + Prolog rules | @aleph |
+| 2026-02-28 | ➕ Añadir FIREHOSE-MCP-1.0.0 (55 pts, 3 stories: Core + Services + Integration) | @aleph |
 | 2026-01-19 | ✅ ALEPHSCRIPT-MIGRATION-1.0.0: Completado (55/55 pts). @fia/paradigmas + RuntimeService + Docs | @ox |
 | 2026-01-19 | ➕ Añadir ALEPHSCRIPT-MIGRATION-1.0.0 (55 pts, 3 fases: as-core + Backend Runtime + Cleanup) | @ox |
 | 2026-01-05 | ✅ Cerrar PROLOG-BUG-002 (templates reales iot-app/state-machine/simu en mcp-presets) | @scrum |

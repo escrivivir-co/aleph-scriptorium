@@ -43,7 +43,6 @@
     "archive:list": "find ARCHIVO -name '*.md' -type f | wc -l | xargs echo 'Documentos en ARCHIVO:'",
     "caps:list": "find PROYECTOS/FUNDACION/CAPITULOS -name '*.md' -type f | wc -l | xargs echo 'Capítulos en progreso:'"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=22.0.0"
   },
