@@ -27,7 +27,7 @@
 | **API** | REST con Swagger documentado |
 | **Validación** | AJV (JSON Schema) + Zod |
 | **IA** | OpenAI, DeepSeek, Ollama, Anthropic |
-| **Puerto** | 5000 (desarrollo) |
+| **Puerto** | 3019 (desarrollo) |
 
 ### Entidades Principales
 

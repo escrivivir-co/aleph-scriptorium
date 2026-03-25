@@ -1,0 +1,622 @@
+# Use Cases: Agente Personaje (Teatro ARG-Board)
+# Caso de Uso: Interacción MCP/REST con el Server durante Ejecución de Obra
+# 
+# Actores: Agente Personaje (IA), MCPPrologServer, PrologEditor Backend
+# Epic: TEATRO-PROLOG-1.0.0
+# Version: 1.0.0
+# Schema: usecases/1.0.0 (Aleph Scriptorium)
+
+spec: usecases
+version: 1.0.0
+
+info:
+  title: Use Cases - Agente Personaje Teatro
+  description: |
+    Especificación de casos de uso para agentes personaje del plugin Teatro
+    que interactúan con el MCPPrologServer durante la ejecución de obras.
+    
+    ## Concepto: Agente Personaje
+    
+    Un **agente personaje** es una entidad IA que:
+    - Tiene un cerebro Prolog (.brain.pl) que define su comportamiento
+    - Participa en escenas de una obra de teatro interactivo
+    - Toma decisiones autónomas basadas en contexto
+    - Interactúa con otros personajes y con el público
+    
+    ## Arquitectura de Comunicación
+    
+    ```
+    ┌──────────────────────────────────────────────────────────────────┐
+    │                    RUNTIME DE OBRA                               │
+    ├──────────────────────────────────────────────────────────────────┤
+    │                                                                  │
+    │  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐        │
+    │  │   Teatro    │     │ Agente      │     │ Agente      │        │
+    │  │ Orquestador │     │ Personaje A │     │ Personaje B │        │
+    │  └──────┬──────┘     └──────┬──────┘     └──────┬──────┘        │
+    │         │                   │                   │                │
+    │         │    ┌──────────────┴───────────────────┘                │
+    │         │    │                                                   │
+    │         ▼    ▼                                                   │
+    │  ┌─────────────────┐                                             │
+    │  │  MCP Protocol   │ ← Tools + Resources + Prompts               │
+    │  └────────┬────────┘                                             │
+    │           │                                                      │
+    │           ▼                                                      │
+    │  ┌─────────────────┐     ┌─────────────────┐                     │
+    │  │ MCPPrologServer │────►│ SWI-Prolog      │                     │
+    │  │   (port 3006)   │     │ (swipl-stdio)   │                     │
+    │  └────────┬────────┘     └─────────────────┘                     │
+    │           │                                                      │
+    │           ▼ HTTP (sin ciclos MCP)                                │
+    │  ┌─────────────────┐                                             │
+    │  │ Backend SQLite  │ ← Persistencia de estado                    │
+    │  │   (port 8000)   │                                             │
+    │  └─────────────────┘                                             │
+    │                                                                  │
+    └──────────────────────────────────────────────────────────────────┘
+    ```
+    
+    ## Modos de Interacción
+    
+    | Modo | Protocolo | Cuándo usar |
+    |------|-----------|-------------|
+    | **MCP** | JSON-RPC via stdio | Copilot Chat, agentes IA |
+    | **REST** | HTTP | Frontend Angular, integraciones externas |
+    | **Híbrido** | MCP + REST | MCPPrologServer accede a SQLite |
+    
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+  license:
+    name: AIPL v1.0
+
+servers:
+  mcpServer:
+    host: localhost:3006
+    protocol: mcp
+    description: MCPPrologServer - Motor de razonamiento
+  
+  restBackend:
+    host: localhost:8000
+    protocol: http
+    description: PrologEditor Backend - Persistencia
+
+# ============================================================================
+# USE CASES
+# ============================================================================
+
+x-use-cases:
+  
+  # --------------------------------------------------------------------------
+  # UC-AGENT-001: Iniciar Sesión de Personaje
+  # --------------------------------------------------------------------------
+  UC-AGENT-001:
+    name: Iniciar Sesión de Personaje
+    actor: "Agente Personaje"
+    protocol: MCP
+    preconditions:
+      - MCPPrologServer activo (puerto 3006)
+      - Brain del personaje disponible (.brain.pl)
+      - Obra registrada en obras.yaml
+    trigger: "Orquestador Teatro inicia escena con personaje"
+    flow:
+      - step: 1
+        action: "Crear sesión vinculada a obra"
+        mcp_call:
+          method: tools/call
+          tool: prolog_create_session
+          arguments:
+            sessionId: "{obra}_{personaje}_{timestamp}"
+            obraId: "{obra}"
+        response:
+          success: true
+          sessionId: "itaca_lucas_1704283200"
+      
+      - step: 2
+        action: "Cargar cerebro del personaje"
+        mcp_call:
+          method: tools/call
+          tool: prolog_consult_file
+          arguments:
+            sessionId: "{sessionId}"
+            filePath: "ARCHIVO/PLUGINS/AGENT_CREATOR/templates/{personaje}.brain.pl"
+        response:
+          success: true
+          message: "brain_{personaje} loaded"
+      
+      - step: 3
+        action: "Cargar contexto de escena"
+        mcp_call:
+          method: tools/call
+          tool: prolog_assert_fact
+          arguments:
+            sessionId: "{sessionId}"
+            fact: "contexto(inicio)."
+        response:
+          success: true
+      
+      - step: 4
+        action: "Cargar estado de obra desde DB (opcional)"
+        mcp_call:
+          method: tools/call
+          tool: prolog_load_rules_from_db
+          arguments:
+            sessionId: "{sessionId}"
+            appFilter: "{obra}"
+        response:
+          success: true
+          rulesLoaded: 5
+    
+    postconditions:
+      - Sesión activa con ID único
+      - Brain cargado en Knowledge Base
+      - Contexto inicial establecido
+      - Estado persistido restaurado
+    
+    sequence_diagram: |
+      Orquestador     MCPPrologServer     SWI-Prolog     Backend
+          │                 │                 │             │
+          │──create_session─►                 │             │
+          │                 │──spawn process─►│             │
+          │◄────────────────│◄───ready────────│             │
+          │                 │                 │             │
+          │──consult_file───►                 │             │
+          │                 │──consult/1─────►│             │
+          │◄────────────────│◄───loaded───────│             │
+          │                 │                 │             │
+          │──load_rules_from_db──────────────────────────────►
+          │                 │                 │◄──HTTP GET──│
+          │◄────────────────│◄────rules───────│             │
+
+  # --------------------------------------------------------------------------
+  # UC-AGENT-002: Tomar Decisión en Escena
+  # --------------------------------------------------------------------------
+  UC-AGENT-002:
+    name: Tomar Decisión en Escena
+    actor: "Agente Personaje"
+    protocol: MCP
+    preconditions:
+      - Sesión activa (UC-AGENT-001)
+      - Contexto actual definido
+    trigger: "Orquestador solicita acción del personaje"
+    flow:
+      - step: 1
+        action: "Consultar estado actual (resource)"
+        mcp_call:
+          method: resources/read
+          uri: "prolog://sessions/current"
+        response:
+          sessionId: "{sessionId}"
+          contexto: "crisis"
+          factsCount: 15
+          rulesCount: 8
+      
+      - step: 2
+        action: "Ejecutar decidir_accion/2"
+        mcp_call:
+          method: tools/call
+          tool: prolog_query
+          arguments:
+            sessionId: "{sessionId}"
+            query: "decidir_accion({personaje}, Accion)."
+        response:
+          success: true
+          results:
+            - Accion: "verificar_indices"
+          bindings:
+            - {"Accion": "verificar_indices"}
+      
+      - step: 3
+        action: "Registrar decisión tomada"
+        mcp_call:
+          method: tools/call
+          tool: prolog_assert_fact
+          arguments:
+            sessionId: "{sessionId}"
+            fact: "decision_tomada({personaje}, verificar_indices, {timestamp})."
+      
+      - step: 4
+        action: "Retornar acción al orquestador"
+        output:
+          personaje: "{personaje}"
+          accion: "verificar_indices"
+          confianza: 1.0
+          razonamiento: "Regla regla_{personaje}(crisis, verificar_indices) activada"
+    
+    postconditions:
+      - Acción decidida
+      - Decisión registrada en KB
+      - Orquestador informado
+    
+    notes: |
+      El agente personaje NO ejecuta la acción directamente.
+      Retorna la acción al orquestador que decide cómo manifestarla
+      (texto, voz, animación, etc.)
+
+  # --------------------------------------------------------------------------
+  # UC-AGENT-003: Reaccionar a Evento Externo
+  # --------------------------------------------------------------------------
+  UC-AGENT-003:
+    name: Reaccionar a Evento Externo
+    actor: "Agente Personaje"
+    protocol: "MCP + AsyncAPI"
+    preconditions:
+      - Sesión activa
+      - Suscripción a eventos activa
+    trigger: "Evento externo (público, sensor, otro personaje)"
+    flow:
+      - step: 1
+        action: "Recibir evento (via orquestador o MQTT)"
+        event:
+          type: "accion_personaje"
+          source: "lucas"
+          action: "verificar_indices"
+          target: "mentor"
+      
+      - step: 2
+        action: "Actualizar contexto con evento"
+        mcp_call:
+          method: tools/call
+          tool: prolog_assert_fact
+          arguments:
+            sessionId: "{sessionId}"
+            fact: "evento(accion_personaje, lucas, verificar_indices)."
+      
+      - step: 3
+        action: "Re-evaluar decisión"
+        description: "El contexto cambió, volver a consultar"
+        mcp_call:
+          method: tools/call
+          tool: prolog_query
+          arguments:
+            sessionId: "{sessionId}"
+            query: "decidir_accion({personaje}, Accion)."
+        response:
+          results:
+            - Accion: "ofrecer_ayuda"
+      
+      - step: 4
+        action: "Emitir reacción"
+        output:
+          personaje: "{personaje}"
+          accion: "ofrecer_ayuda"
+          trigger: "evento(accion_personaje, lucas, verificar_indices)"
+    
+    postconditions:
+      - Evento procesado
+      - Contexto actualizado
+      - Nueva acción disponible
+
+  # --------------------------------------------------------------------------
+  # UC-AGENT-004: Interactuar con Otro Personaje
+  # --------------------------------------------------------------------------
+  UC-AGENT-004:
+    name: Interactuar con Otro Personaje
+    actor: "Agente Personaje A"
+    coactor: "Agente Personaje B"
+    protocol: MCP
+    preconditions:
+      - Ambos personajes con sesiones activas
+      - Ambos en la misma escena
+    trigger: "Personaje A decide comunicarse con B"
+    flow:
+      - step: 1
+        action: "A decide comunicar"
+        mcp_query: "decidir_accion(lucas, comunicar(mentor, consulta))."
+        result: "comunicar(mentor, consulta)"
+      
+      - step: 2
+        action: "Orquestador notifica a B"
+        event:
+          type: "comunicacion"
+          from: "lucas"
+          to: "mentor"
+          mensaje: "consulta"
+      
+      - step: 3
+        action: "B actualiza su contexto"
+        mcp_call:
+          tool: prolog_assert_fact
+          arguments:
+            sessionId: "{session_mentor}"
+            fact: "comunicacion_recibida(lucas, consulta)."
+      
+      - step: 4
+        action: "B decide respuesta"
+        mcp_query: "decidir_accion(mentor, Respuesta)."
+        result: "responder(lucas, orientacion)"
+      
+      - step: 5
+        action: "Orquestador notifica a A"
+        event:
+          type: "respuesta"
+          from: "mentor"
+          to: "lucas"
+          contenido: "orientacion"
+      
+      - step: 6
+        action: "A procesa respuesta"
+        mcp_call:
+          tool: prolog_assert_fact
+          arguments:
+            sessionId: "{session_lucas}"
+            fact: "respuesta_recibida(mentor, orientacion)."
+    
+    postconditions:
+      - Comunicación bidireccional completada
+      - Ambos contextos actualizados
+      - Interacción registrada en ambas KBs
+    
+    sequence_diagram: |
+      Lucas           Orquestador         Mentor
+        │                  │                 │
+        │──comunicar(mentor)─►              │
+        │                  │──notify────────►│
+        │                  │                 │──assert(comunicacion)
+        │                  │                 │──query(decidir_accion)
+        │                  │◄──responder─────│
+        │◄───respuesta─────│                 │
+        │──assert(respuesta)                 │
+
+  # --------------------------------------------------------------------------
+  # UC-AGENT-005: Persistir Estado para Continuidad
+  # --------------------------------------------------------------------------
+  UC-AGENT-005:
+    name: Persistir Estado para Continuidad
+    actor: "Agente Personaje"
+    protocol: "MCP → REST"
+    preconditions:
+      - Sesión activa con estado significativo
+      - Backend disponible
+    trigger: |
+      - Fin de escena
+      - Cambio importante de estado
+      - Timeout de inactividad
+    flow:
+      - step: 1
+        action: "Extraer hechos dinámicos"
+        mcp_call:
+          tool: prolog_query
+          arguments:
+            sessionId: "{sessionId}"
+            query: "findall(F, dynamic_fact(F), Facts)."
+        response:
+          Facts: ["contexto(resolucion)", "decision_tomada(lucas, x, t)"]
+      
+      - step: 2
+        action: "Serializar estado"
+        process: "Convertir hechos a reglas Prolog persistibles"
+        output: |
+          % Estado guardado: {timestamp}
+          estado_guardado({personaje}, resolucion).
+          historial_decision({personaje}, verificar_indices, {t1}).
+          historial_decision({personaje}, escalar_a_ox, {t2}).
+      
+      - step: 3
+        action: "Guardar en SQLite via MCP"
+        mcp_call:
+          tool: prolog_save_rule_to_db
+          arguments:
+            name: "estado_{personaje}_{timestamp}"
+            content: "{estado_serializado}"
+            app: "{obra}"
+        response:
+          success: true
+          id: 42
+      
+      - step: 4
+        action: "Actualizar resource de sesión"
+        note: "El resource prolog-session-state ahora refleja el guardado"
+    
+    postconditions:
+      - Estado persistido en SQLite
+      - Recuperable en sesión futura
+      - Auditable (quién, cuándo, qué)
+
+  # --------------------------------------------------------------------------
+  # UC-AGENT-006: Cerrar Sesión de Personaje
+  # --------------------------------------------------------------------------
+  UC-AGENT-006:
+    name: Cerrar Sesión de Personaje
+    actor: "Agente Personaje"
+    protocol: MCP
+    preconditions:
+      - Sesión activa
+      - Estado persistido (UC-AGENT-005) si es importante
+    trigger: "Fin de obra o salida de personaje"
+    flow:
+      - step: 1
+        action: "Verificar que no hay work pending"
+        mcp_call:
+          tool: prolog_query
+          arguments:
+            sessionId: "{sessionId}"
+            query: "pending_work(X)."
+        response:
+          results: []
+      
+      - step: 2
+        action: "Log de cierre"
+        mcp_call:
+          tool: prolog_assert_fact
+          arguments:
+            sessionId: "{sessionId}"
+            fact: "sesion_cerrada({timestamp})."
+      
+      - step: 3
+        action: "Destruir sesión"
+        mcp_call:
+          tool: prolog_destroy_session
+          arguments:
+            sessionId: "{sessionId}"
+        response:
+          success: true
+          message: "Session destroyed"
+      
+      - step: 4
+        action: "Confirmar liberación de recursos"
+        mcp_call:
+          tool: prolog_list_sessions
+        response:
+          sessions: []  # o sin la sesión destruida
+    
+    postconditions:
+      - Sesión eliminada
+      - Proceso SWI-Prolog terminado
+      - Memoria liberada
+
+# ============================================================================
+# PROMPT ORQUESTADOR: teatro_agent_session
+# ============================================================================
+
+x-prompts:
+  teatro_agent_session:
+    name: "Workflow E2E para Agente Personaje"
+    description: |
+      Este prompt guía a un agente IA para orquestar una sesión completa
+      de un personaje de teatro, desde inicio hasta cierre.
+    
+    template: |
+      ## 🎭 Sesión de Personaje: {{personaje}}
+      
+      **Obra**: {{obraId}}
+      **Contexto inicial**: {{contexto | default: 'inicio'}}
+      
+      ### Paso 1: Iniciar sesión
+      Usa `prolog_create_session` con sessionId único.
+      
+      ### Paso 2: Cargar cerebro
+      Usa `prolog_consult_file` para cargar {{personaje}}.brain.pl
+      
+      ### Paso 3: Establecer contexto
+      Usa `prolog_assert_fact` con contexto({{contexto}}).
+      
+      ### Paso 4: Consultar acción
+      Usa `prolog_query` con decidir_accion({{personaje}}, X).
+      
+      ### Paso 5: Procesar resultado
+      - Si hay acción: reportar al usuario
+      - Si no hay match: contexto desconocido, escalar
+      
+      ### Paso 6 (opcional): Persistir
+      Si la acción es significativa, guardar con `prolog_save_rule_to_db`.
+      
+      ### Paso 7: Cerrar o continuar
+      - Continuar: volver al paso 3 con nuevo contexto
+      - Cerrar: `prolog_destroy_session`
+    
+    arguments:
+      - name: personaje
+        required: true
+        description: "Nombre del personaje (lowercase)"
+      - name: obraId
+        required: true
+        description: "ID de la obra activa"
+      - name: contexto
+        required: false
+        description: "Contexto inicial (default: inicio)"
+
+# ============================================================================
+# CONTRATOS DE DATOS
+# ============================================================================
+
+components:
+  schemas:
+    
+    DecisionResult:
+      type: object
+      description: "Resultado de una decisión de personaje"
+      properties:
+        personaje:
+          type: string
+          example: "lucas"
+        accion:
+          type: string
+          example: "verificar_indices"
+        confianza:
+          type: number
+          minimum: 0
+          maximum: 1
+          example: 1.0
+        razonamiento:
+          type: string
+          example: "Regla activada por contexto 'crisis'"
+        timestamp:
+          type: string
+          format: date-time
+      required: [personaje, accion]
+    
+    EventoEscena:
+      type: object
+      description: "Evento que ocurre en una escena"
+      properties:
+        type:
+          type: string
+          enum: [accion_personaje, comunicacion, respuesta, sensor, publico]
+        source:
+          type: string
+          description: "Origen del evento"
+        target:
+          type: string
+          description: "Destino del evento (opcional)"
+        payload:
+          type: object
+          description: "Datos del evento"
+        timestamp:
+          type: string
+          format: date-time
+      required: [type, source]
+    
+    EstadoPersonaje:
+      type: object
+      description: "Estado serializado de un personaje"
+      properties:
+        personaje:
+          type: string
+        obra:
+          type: string
+        contexto_actual:
+          type: string
+        decisiones_historial:
+          type: array
+          items:
+            type: object
+            properties:
+              accion:
+                type: string
+              timestamp:
+                type: string
+        hechos_dinamicos:
+          type: array
+          items:
+            type: string
+        guardado_en:
+          type: string
+          format: date-time
+
+# ============================================================================
+# MÉTRICAS DE PERFORMANCE
+# ============================================================================
+
+x-performance-metrics:
+  
+  latencia_decision:
+    description: "Tiempo desde query hasta respuesta"
+    target: "< 100ms"
+    measurement: "Timestamp respuesta - timestamp request"
+  
+  throughput_escena:
+    description: "Decisiones por minuto por personaje"
+    target: "> 60 decisiones/min"
+    notes: "Para obras en tiempo real"
+  
+  memoria_sesion:
+    description: "Memoria consumida por sesión Prolog"
+    target: "< 50MB por personaje"
+    measurement: "RSS del proceso swipl hijo"
+  
+  persistencia_latencia:
+    description: "Tiempo de guardado a SQLite"
+    target: "< 200ms"
+    includes: "MCP call + HTTP + SQLite write"

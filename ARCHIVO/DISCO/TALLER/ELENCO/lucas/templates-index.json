@@ -1,0 +1,110 @@
+{
+  "$schema": "../../../../../../.github/plugins/agent-creator/index/catalog.schema.json",
+  "description": "Índice de plantillas para Lucas - Scrum Master del Índice",
+  "source": "AgentLoreSDK/cli-tool/components",
+  "principle": "DRY: Este índice referencia, NO duplica. Cargar bajo demanda.",
+  "updated_at": "2026-01-04",
+  "categories": {
+    "documentation": {
+      "description": "Plantillas para documentación técnica",
+      "basePath": "agents/documentation",
+      "items": [
+        {
+          "id": "api-documenter",
+          "name": "API Documenter",
+          "file": "api-documenter.md",
+          "use_case": "Documentar APIs REST/GraphQL",
+          "tools": ["Read", "Write", "Grep"]
+        },
+        {
+          "id": "changelog-generator",
+          "name": "Changelog Generator",
+          "file": "changelog-generator.md",
+          "use_case": "Generar CHANGELOG.md desde commits",
+          "tools": ["Bash", "Read", "Write"]
+        },
+        {
+          "id": "docusaurus-expert",
+          "name": "Docusaurus Expert",
+          "file": "docusaurus-expert.md",
+          "use_case": "Crear sitios de documentación",
+          "tools": ["Read", "Write", "Bash"]
+        },
+        {
+          "id": "technical-writer",
+          "name": "Technical Writer",
+          "file": "technical-writer.md",
+          "use_case": "Guías de usuario, tutoriales, READMEs",
+          "tools": ["Read", "Write", "Edit", "Grep"]
+        }
+      ]
+    },
+    "project-management": {
+      "description": "Comandos para gestión de proyectos (Scrum/Agile)",
+      "basePath": "commands/project-management",
+      "items": [
+        {
+          "id": "milestone-tracker",
+          "name": "Milestone Tracker",
+          "file": "milestone-tracker.md",
+          "use_case": "Tracking de milestones con analytics predictivo",
+          "args": "[time-period] | --sprint | --quarter | --all"
+        },
+        {
+          "id": "project-health-check",
+          "name": "Project Health Check",
+          "file": "project-health-check.md",
+          "use_case": "Análisis de salud del proyecto",
+          "args": "[evaluation-period] | --30-days | --sprint"
+        },
+        {
+          "id": "pac-create-epic",
+          "name": "PAC Create Epic",
+          "file": "pac-create-epic.md",
+          "use_case": "Crear épicas con estructura PAC",
+          "args": "[epic-name]"
+        },
+        {
+          "id": "pac-create-ticket",
+          "name": "PAC Create Ticket",
+          "file": "pac-create-ticket.md",
+          "use_case": "Crear tickets/tasks",
+          "args": "[ticket-title]"
+        },
+        {
+          "id": "pac-update-status",
+          "name": "PAC Update Status",
+          "file": "pac-update-status.md",
+          "use_case": "Actualizar estado de tickets",
+          "args": "[ticket-id] [new-status]"
+        },
+        {
+          "id": "pac-validate",
+          "name": "PAC Validate",
+          "file": "pac-validate.md",
+          "use_case": "Validar estructura de backlog",
+          "args": "--backlog | --sprint"
+        },
+        {
+          "id": "create-prd",
+          "name": "Create PRD",
+          "file": "create-prd.md",
+          "use_case": "Generar Product Requirements Document",
+          "args": "[feature-name]"
+        },
+        {
+          "id": "todo",
+          "name": "Todo Manager",
+          "file": "todo.md",
+          "use_case": "Gestionar lista de tareas pendientes",
+          "args": "[action] [task]"
+        }
+      ]
+    }
+  },
+  "quick_access": {
+    "scrum_daily": ["project-health-check", "milestone-tracker", "pac-update-status"],
+    "documentation": ["technical-writer", "changelog-generator"],
+    "planning": ["pac-create-epic", "create-prd", "pac-validate"]
+  }
+}

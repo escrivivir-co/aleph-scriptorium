@@ -2,7 +2,7 @@
 name: plugin_ox_typedprompting
 description: "Bridge: conecta VS Code con agentes de TypedPrompting. Ver .github/plugins/typed-prompting/"
 argument-hint: "Invoca agentes del plugin TypedPrompting: diseñar ontologías, validar mensajes, instalar reglas"
-tools: ['agent', 'read', 'edit', 'search']
+tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'copilot-logs-mcp-server/*', 'prolog-mcp-server/*', 'playwright/*', 'agent', 'todo']
 handoffs:
   - label: Listar capacidades de TypedPrompting
     agent: plugin_ox_typedprompting
@@ -34,7 +34,15 @@ handoffs:
     send: false
   - label: Abrir editor web
     agent: .github/plugins/typed-prompting/agents/typed-prompting.agent.md
-    prompt: "Inicia el servidor del editor visual (localhost:5000)."
+    prompt: "Inicia el servidor del editor visual (localhost:3019)."
+    send: false
+  - label: "[DevOps] Arrancar servidor TPE"
+    agent: plugin_ox_typedprompting
+    prompt: "Ejecuta VS Code Task 'TPE: Start [Server]' para arrancar TypedPromptsEditor en puerto 3019."
+    send: false
+  - label: "[DevOps] Abrir TPE en navegador"
+    agent: plugin_ox_typedprompting
+    prompt: "Ejecuta VS Code Task 'TPE: Open Browser' para abrir localhost:3019 en navegador."
     send: false
   - label: Investigar System Message subyacente
     agent: Ox
@@ -106,15 +114,38 @@ Instalación de reglas en el sistema:
 
 ## Submódulo
 
-El plugin usa el submódulo `alephscript-typed-prompting`:
+El plugin usa el submódulo `alephscript-typed-prompting` (alias `TypedPromptsEditor`):
 
 ```bash
 # Iniciar servidor de desarrollo
-cd alephscript-typed-prompting
+cd TypedPromptsEditor
 npm install
 npm run dev
-# http://localhost:5000
+# http://localhost:3019
 ```
+
+---
+
+## VS Code Tasks
+
+El Scriptorium incluye tareas preconfiguradas:
+
+| Task | Descripción | Atajo |
+|------|-------------|-------|
+| `TPE: Start [Server]` | Arranca Vite + Express en puerto 3019 | Ctrl+Shift+B → seleccionar |
+| `TPE: Open Browser` | Abre localhost:3019 en navegador | — |
+
+### Uso desde terminal
+
+```bash
+# Alternativa manual
+cd TypedPromptsEditor && npm run dev
+```
+
+### Dependencias
+
+- Node.js 18+
+- npm install (primera vez)
 
 ---
 

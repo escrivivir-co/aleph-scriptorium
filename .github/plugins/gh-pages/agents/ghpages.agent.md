@@ -318,7 +318,7 @@ Usuario: No
 |--------|-----------|
 | `scripts/setup-jekyll.sh` | Instalar Jekyll (solo primera vez) |
 | `scripts/validate-site.sh` | Compilar Jekyll sin servidor (validación rápida) |
-| `scripts/serve-site.sh` | Servidor local con hot-reload (`http://localhost:4000`) |
+| `scripts/serve-site.sh` | Servidor local con hot-reload (`http://127.0.0.1:4000/aleph-scriptorium/`) |
 
 Ver: `prompts/gh-pages-validate-local.prompt.md`
 

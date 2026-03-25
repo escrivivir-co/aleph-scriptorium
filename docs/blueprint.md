@@ -204,6 +204,118 @@ permalink: /blueprint/
 </div>
 
 <!-- ==========================================
+     SLIDE 4.5: MACHINE (Scriptorium como Máquina)
+     ========================================== -->
+<div id="machine" class="step" 
+     data-x="2500" 
+     data-y="800" 
+     data-z="0"
+     data-rotate-y="-30">
+  <h1>// Scriptorium como Máquina</h1>
+  <p>Modelo cibernético: sensores detectan, cerebros procesan, actuadores responden.</p>
+  
+  <h2>🔄 Ciclo Sensor/Actuador</h2>
+  <div class="flow-diagram compact">
+    <div class="flow-node source">SENSOR<br><small>@ox detecta</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-node process">CEREBRO<br><small>Lucas procesa</small></div>
+    <span class="flow-arrow">→</span>
+    <div class="flow-node output">ACTUADOR<br><small>notifica elenco</small></div>
+  </div>
+  
+  <div class="machine-details">
+    <div class="machine-component">
+      <h3>🔵 Aferencia</h3>
+      <p><code>recibir_senal/2</code></p>
+      <small>scriptorium/sensor/{agente}</small>
+    </div>
+    <div class="machine-component">
+      <h3>🧠 Procesamiento</h3>
+      <p><code>procesar_cambio/2</code></p>
+      <small>verificar_coherencia_antes/0</small>
+    </div>
+    <div class="machine-component">
+      <h3>🟢 Eferencia</h3>
+      <p><code>notificar/2</code></p>
+      <small>scriptorium/notificacion/{personaje}</small>
+    </div>
+  </div>
+  
+  <h2>📋 Especificaciones</h2>
+  <div class="specs-list">
+    <span class="spec-tag">AsyncAPI 3.0</span>
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor/dramaturgo-signals.asyncapi.yaml">dramaturgo-signals.asyncapi.yaml</a>
+  </div>
+  <div class="specs-list">
+    <span class="spec-tag">Prolog Brain</span>
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl">lucas-prolog.brain.pl</a>
+  </div>
+  
+  <p class="arch-note">→ Épica: DRAMATURGIA-MAQUINA-1.0.0</p>
+</div>
+
+<!-- ==========================================
+     SLIDE 4.7: VALIDATION (Capa de Validación Lógica)
+     ========================================== -->
+<div id="validation" class="step" 
+     data-x="-2500" 
+     data-y="800" 
+     data-z="0"
+     data-rotate-y="30">
+  <h1>// Capa de Validación Lógica</h1>
+  <p>Dos motores complementarios garantizan coherencia: schemas tipados + inferencia declarativa.</p>
+  
+  <div class="validation-stack">
+    <div class="validation-layer">
+      <h2>📐 TypedPrompting</h2>
+      <p>Validación bidireccional NL↔JSON para conversaciones estructuradas.</p>
+      <div class="stack-details">
+        <span class="port-badge">:3019 UI</span>
+        <span class="port-badge">:3020 MCP</span>
+        <span class="tool-count">7 tools</span>
+      </div>
+      <div class="flow-diagram compact">
+        <div class="flow-node source">Usuario<br><small>NL input</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node process">Schema<br><small>validate</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node output">JSON<br><small>structured</small></div>
+      </div>
+    </div>
+    
+    <div class="validation-layer">
+      <h2>🧠 PrologEditor</h2>
+      <p>Lógica declarativa para inteligencias situadas en personajes Teatro.</p>
+      <div class="stack-details">
+        <span class="port-badge">:5001 UI</span>
+        <span class="port-badge">:8000 API</span>
+        <span class="port-badge">:3006 MCP</span>
+        <span class="tool-count">12 tools</span>
+      </div>
+      <div class="flow-diagram compact">
+        <div class="flow-node source">Facts<br><small>KB</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node process">Query<br><small>Prolog</small></div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-node output">Solutions<br><small>inference</small></div>
+      </div>
+    </div>
+  </div>
+  
+  <h2>📋 Especificaciones OpenAPI/AsyncAPI</h2>
+  <div class="specs-list">
+    <span class="spec-tag">OpenAPI 3.0</span>
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/TypedPromptsEditor">TypedPromptsEditor API (931 líneas)</a>
+  </div>
+  <div class="specs-list">
+    <span class="spec-tag">OpenAPI 3.0</span>
+    <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/PrologEditor">PrologEditor API</a>
+  </div>
+  
+  <p class="arch-note">→ Épicas: TYPED-MCP-1.0.0, SCRIPT-2.3.0</p>
+</div>
+
+<!-- ==========================================
      SLIDE 5: HYPERGRAPH (Grafo de plugins)
      ========================================== -->
 <div id="hypergraph" class="step" 

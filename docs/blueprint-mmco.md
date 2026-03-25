@@ -217,9 +217,9 @@ permalink: /blueprint-mmco/
   </div>
   
   <div class="geometry-plugins">
-    <span class="geo-plugin-count">19 plugins</span>
-    <span class="geo-agent-count">31 agentes</span>
-    <span class="geo-submodule-count">15 submódulos</span>
+    <span class="geo-plugin-count">22 plugins</span>
+    <span class="geo-agent-count">31+ agentes</span>
+    <span class="geo-submodule-count">16 submódulos</span>
   </div>
   
   <div class="mmco-audit-banner geometry-audit">

@@ -1,0 +1,549 @@
+openapi: 3.1.0
+info:
+  title: TypedPromptsEditor API
+  description: |
+    REST API for TypedPromptsEditor - Schema validation and ontology management.
+    
+    ## Architecture (v1.0)
+    
+    ```
+    React Frontend <--HTTP--> REST Backend (3019) <--HTTP--> MCPTypedPromptServer (3020)
+    ```
+    
+    This API provides endpoints for:
+    - CRUD operations on schemas (TypeScript + JSON Schema pairs)
+    - Library management (schema collections)
+    - Message validation against schemas
+    - TypeScript to JSON Schema conversion
+    - AI configuration management
+    - Stored prompts management
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3019/api
+    description: Local development server
+
+tags:
+  - name: Schemas
+    description: TypeScript + JSON Schema management
+  - name: Libraries
+    description: Schema library management
+  - name: Validation
+    description: Message validation
+  - name: Generation
+    description: Interface generation
+  - name: AIConfig
+    description: AI provider configuration
+  - name: StoredPrompts
+    description: Saved prompts management
+
+paths:
+  /schemas:
+    get:
+      tags:
+        - Schemas
+      summary: Get all schemas
+      description: Retrieve all schemas from the database
+      operationId: getAllSchemas
+      parameters:
+        - name: libraryId
+          in: query
+          schema:
+            type: integer
+          description: Filter by library ID
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Filter by category
+      responses:
+        '200':
+          description: List of schemas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schema'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    post:
+      tags:
+        - Schemas
+      summary: Create a new schema
+      description: Create a new TypeScript + JSON Schema pair
+      operationId: createSchema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSchemaRequest'
+      responses:
+        '201':
+          description: Created schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /schemas/{id}:
+    get:
+      tags:
+        - Schemas
+      summary: Get schema by ID
+      operationId: getSchema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Schema details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    put:
+      tags:
+        - Schemas
+      summary: Update schema
+      operationId: updateSchema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSchemaRequest'
+      responses:
+        '200':
+          description: Updated schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schema'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags:
+        - Schemas
+      summary: Delete schema
+      operationId: deleteSchema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Schema deleted
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /libraries:
+    get:
+      tags:
+        - Libraries
+      summary: Get all libraries
+      operationId: getAllLibraries
+      responses:
+        '200':
+          description: List of libraries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Library'
+    
+    post:
+      tags:
+        - Libraries
+      summary: Create a new library
+      operationId: createLibrary
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLibraryRequest'
+      responses:
+        '201':
+          description: Created library
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Library'
+
+  /libraries/{id}:
+    get:
+      tags:
+        - Libraries
+      summary: Get library by ID
+      operationId: getLibrary
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Library with schemas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryWithSchemas'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    
+    delete:
+      tags:
+        - Libraries
+      summary: Delete library
+      operationId: deleteLibrary
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Library deleted
+
+  /validate:
+    post:
+      tags:
+        - Validation
+      summary: Validate message against schema
+      operationId: validateMessage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateRequest'
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationReport'
+
+  /convert:
+    post:
+      tags:
+        - Generation
+      summary: Convert TypeScript interface to JSON Schema
+      operationId: convertInterface
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateRequest'
+      responses:
+        '200':
+          description: Generated schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerateResponse'
+
+  /ai-configs:
+    get:
+      tags:
+        - AIConfig
+      summary: Get all AI configurations
+      operationId: getAIConfigs
+      responses:
+        '200':
+          description: List of AI configs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIConfig'
+
+  /stored-prompts:
+    get:
+      tags:
+        - StoredPrompts
+      summary: Get all stored prompts
+      operationId: getStoredPrompts
+      responses:
+        '200':
+          description: List of stored prompts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StoredPrompt'
+
+components:
+  schemas:
+    Schema:
+      type: object
+      required:
+        - id
+        - name
+        - typeScript
+        - jsonSchema
+      properties:
+        id:
+          type: integer
+          description: Unique identifier
+        name:
+          type: string
+          description: Schema name
+        typeScript:
+          type: string
+          description: TypeScript interface definition
+        jsonSchema:
+          type: string
+          description: JSON Schema definition
+        category:
+          type: string
+          description: Category for organization
+        labels:
+          type: array
+          items:
+            type: string
+          description: Labels for filtering
+        description:
+          type: string
+          nullable: true
+        libraryId:
+          type: integer
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+
+    CreateSchemaRequest:
+      type: object
+      required:
+        - name
+        - typeScript
+      properties:
+        name:
+          type: string
+        typeScript:
+          type: string
+        jsonSchema:
+          type: string
+          description: If not provided, will be generated from TypeScript
+        category:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        libraryId:
+          type: integer
+
+    UpdateSchemaRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        typeScript:
+          type: string
+        jsonSchema:
+          type: string
+        category:
+          type: string
+        labels:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        libraryId:
+          type: integer
+
+    Library:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+
+    LibraryWithSchemas:
+      allOf:
+        - $ref: '#/components/schemas/Library'
+        - type: object
+          properties:
+            schemas:
+              type: array
+              items:
+                $ref: '#/components/schemas/Schema'
+
+    CreateLibraryRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+
+    ValidateRequest:
+      type: object
+      required:
+        - schemaId
+        - message
+      properties:
+        schemaId:
+          type: integer
+          description: ID of schema to validate against
+        message:
+          type: string
+          description: JSON message to validate
+
+    ValidationReport:
+      type: object
+      required:
+        - valid
+        - errors
+      properties:
+        valid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+              message:
+                type: string
+
+    GenerateRequest:
+      type: object
+      required:
+        - typescript
+      properties:
+        typescript:
+          type: string
+          description: TypeScript interface to convert
+        name:
+          type: string
+          description: Name for the generated schema
+
+    GenerateResponse:
+      type: object
+      properties:
+        jsonSchema:
+          type: string
+          description: Generated JSON Schema
+
+    AIConfig:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        provider:
+          type: string
+          enum: [openai, deepseek, ollama, anthropic]
+        models:
+          type: array
+          items:
+            type: string
+        isActive:
+          type: boolean
+
+    StoredPrompt:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        content:
+          type: string
+        modelName:
+          type: string
+        type:
+          type: string
+          enum: [typing, conversation]
+        createdAt:
+          type: string
+          format: date-time
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Resource not found"
+
+    ValidationError:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Validation failed"
+
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Internal server error"

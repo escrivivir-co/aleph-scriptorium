@@ -1,0 +1,538 @@
+openapi: 3.1.0
+info:
+  title: PrologEditor API
+  description: |
+    REST API for PrologEditor - IoT Rule Engine with Prolog Backend.
+    
+    This API provides endpoints for:
+    - CRUD operations on Prolog rules
+    - Executing Prolog queries
+    - Managing SDK templates
+    - Processing IoT telemetry
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  - url: http://localhost:8000/api
+    description: Local development server
+  - url: http://{host}:8000/api
+    description: Dynamic host (Replit, Docker)
+    variables:
+      host:
+        default: localhost
+
+tags:
+  - name: Rules
+    description: Prolog rule management
+  - name: Query
+    description: Prolog query execution
+  - name: Templates
+    description: SDK template management
+  - name: Telemetry
+    description: IoT telemetry processing
+
+paths:
+  /rules:
+    get:
+      tags:
+        - Rules
+      summary: Get all rules
+      description: Retrieve all Prolog rules from the database
+      operationId: getAllRules
+      responses:
+        '200':
+          description: List of rules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rule'
+              example:
+                - id: 1
+                  name: "temperature_alert"
+                  content: "alert(X) :- temperature(X), X > 30."
+                  app: "iot-app"
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    post:
+      tags:
+        - Rules
+      summary: Create a new rule
+      description: Save a new Prolog rule to the database
+      operationId: createRule
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleInput'
+            example:
+              name: "humidity_check"
+              content: "humid(X) :- humidity(X), X > 80."
+              app: "iot-app"
+      responses:
+        '201':
+          description: Rule created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuleCreated'
+              example:
+                id: 42
+                text: "Rule successfully inserted"
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /rules/{id}:
+    get:
+      tags:
+        - Rules
+      summary: Get rules by app filter
+      description: Retrieve rules filtered by app name
+      operationId: getRulesByApp
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: App name to filter rules
+          schema:
+            type: string
+          example: "iot-app"
+      responses:
+        '200':
+          description: Filtered list of rules
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rule'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    delete:
+      tags:
+        - Rules
+      summary: Delete a rule
+      description: Remove a rule from the database by ID
+      operationId: deleteRule
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Rule ID to delete
+          schema:
+            type: integer
+          example: 42
+      responses:
+        '204':
+          description: Rule deleted successfully
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /run-rule:
+    post:
+      tags:
+        - Query
+      summary: Execute Prolog query
+      description: |
+        Execute a Prolog goal/query against the loaded knowledge base.
+        Requires a template to be loaded first via GET /template/{templateName}.
+      operationId: runQuery
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryInput'
+            examples:
+              simple:
+                summary: Simple query
+                value:
+                  text: "member(X, [1,2,3])"
+              rule:
+                summary: Rule execution
+                value:
+                  text: "alert(temp_sensor)"
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+              examples:
+                success:
+                  summary: Successful result
+                  value:
+                    status: 200
+                    payload:
+                      - result: "Success"
+                binding:
+                  summary: Variable binding
+                  value:
+                    status: 200
+                    payload:
+                      - X: 1
+                      - X: 2
+                      - X: 3
+        '500':
+          description: Query execution error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "The procedure was not found!"
+
+  /sdk-templates:
+    get:
+      tags:
+        - Templates
+      summary: List available SDK templates
+      description: Get all available Prolog SDK templates
+      operationId: getSdkTemplates
+      responses:
+        '200':
+          description: List of templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Template'
+              example:
+                - name: "iot-app"
+                  description: "IoT Application Template"
+                  files: ["app.pl", "sdk/"]
+                - name: "state-machine"
+                  description: "State Machine Template"
+                  files: ["app.pl", "plugin.ts"]
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /template/{templateName}:
+    get:
+      tags:
+        - Templates
+      summary: Get template content
+      description: |
+        Load and return the parsed content of a Prolog template.
+        This also initializes the Prolog engine with the template files.
+      operationId: getTemplateContent
+      parameters:
+        - name: templateName
+          in: path
+          required: true
+          description: Name of the template to load
+          schema:
+            type: string
+          example: "iot-app"
+      responses:
+        '200':
+          description: Template content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateContent'
+              example:
+                content: |
+                  % IoT Application
+                  :- module(iot_app, [start/0, process/1]).
+                  start :- writeln('IoT App started').
+        '404':
+          description: Template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Template not found"
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /user-app:
+    post:
+      tags:
+        - Templates
+      summary: Save user application
+      description: Save a custom Prolog application to the templates directory
+      operationId: saveUserApp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserAppInput'
+            example:
+              appName: "my-custom-app"
+              content: |
+                % Custom App
+                :- module(my_app, [run/0]).
+                run :- writeln('Hello from custom app').
+      responses:
+        '201':
+          description: App saved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              example:
+                message: "App saved successfully"
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /telemetry/process:
+    post:
+      tags:
+        - Telemetry
+      summary: Process telemetry data
+      description: |
+        Convert telemetry data to Prolog facts and apply rules.
+        Used for IoT sensor data processing.
+      operationId: processTelemetry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TelemetryInput'
+            example:
+              telemetry:
+                sensor: "temp_living_room"
+                value: 25.5
+      responses:
+        '200':
+          description: Telemetry processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelemetryResult'
+              example:
+                status: "processed"
+                alerts: []
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /telemetry/status:
+    get:
+      tags:
+        - Telemetry
+      summary: Get telemetry status
+      description: Get current status of all telemetry sources
+      operationId: getTelemetryStatus
+      responses:
+        '200':
+          description: Telemetry status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TelemetryStatus'
+              example:
+                - sensor: "light1"
+                  value: "on"
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  schemas:
+    Rule:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique rule identifier
+        name:
+          type: string
+          description: Rule name
+        content:
+          type: string
+          description: Prolog rule content
+        app:
+          type: string
+          description: Application filter
+        predicate:
+          type: string
+          description: Main predicate name
+        arity:
+          type: string
+          description: Predicate arity
+        example:
+          type: string
+          description: Example usage
+        evalCompatible:
+          type: string
+          description: Evaluation compatibility flag
+      additionalProperties: true
+      required:
+        - name
+        - content
+
+    RuleInput:
+      type: object
+      properties:
+        name:
+          type: string
+        content:
+          type: string
+        app:
+          type: string
+      additionalProperties: true
+      required:
+        - name
+        - content
+
+    RuleCreated:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of created rule
+        text:
+          type: string
+          description: Success message
+      required:
+        - id
+
+    QueryInput:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Prolog goal to execute
+      required:
+        - text
+
+    QueryResult:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP-like status code
+        payload:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+          description: Query results as array of bindings
+      required:
+        - status
+        - payload
+
+    Template:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Template identifier
+        description:
+          type: string
+          description: Human-readable description
+        files:
+          type: array
+          items:
+            type: string
+          description: Files/directories included in template
+      required:
+        - name
+
+    TemplateContent:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Parsed Prolog content
+      required:
+        - content
+
+    UserAppInput:
+      type: object
+      properties:
+        appName:
+          type: string
+          description: Application name (without extension)
+        content:
+          type: string
+          description: Prolog source code
+      required:
+        - appName
+        - content
+
+    TelemetryInput:
+      type: object
+      properties:
+        telemetry:
+          $ref: '#/components/schemas/Telemetry'
+      required:
+        - telemetry
+
+    Telemetry:
+      type: object
+      properties:
+        sensor:
+          type: string
+          description: Sensor identifier
+        value:
+          oneOf:
+            - type: number
+            - type: string
+          description: Sensor value
+      required:
+        - sensor
+        - value
+
+    TelemetryResult:
+      type: object
+      properties:
+        status:
+          type: string
+        alerts:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+      additionalProperties: true
+
+    TelemetryStatus:
+      type: object
+      properties:
+        sensor:
+          type: string
+        value:
+          oneOf:
+            - type: string
+            - type: number
+      required:
+        - sensor
+        - value
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+      required:
+        - error
+
+  responses:
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "Something went wrong!"

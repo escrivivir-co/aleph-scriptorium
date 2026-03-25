@@ -1,0 +1,7 @@
+{
+  "name": "simu",
+  "description": "Lightweight simulation loop with step/1 and evolve/3.",
+  "files": ["app.pl"],
+  "exports": ["step/1", "transition/3", "evolve/3", "run/3"],
+  "main": "simu"
+}

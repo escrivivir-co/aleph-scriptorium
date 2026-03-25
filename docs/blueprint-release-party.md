@@ -85,7 +85,7 @@ permalink: /blueprint-release-party/
     </div>
     <div class="tech-layer">
       <span class="layer-name">MCP</span>
-      <span class="layer-tech">5 servidores en red</span>
+      <span class="layer-tech">7 servidores en mesh</span>
     </div>
     <div class="tech-layer">
       <span class="layer-name">Web</span>
@@ -314,6 +314,14 @@ Respuesta: 162 tokens
       <span class="port">:3066</span>
       <span class="name">Novelist</span>
     </div>
+    <div class="mcp-server">
+      <span class="port">:3020</span>
+      <span class="name">TypedPrompt</span>
+    </div>
+    <div class="mcp-server">
+      <span class="port">:3006</span>
+      <span class="name">Prolog</span>
+    </div>
   </div>
 </div>
 
@@ -383,6 +391,8 @@ Respuesta: 162 tokens
       <div class="mcp-server"><span class="port">🤖</span><span class="name">Model :3001</span></div>
       <div class="mcp-server"><span class="port">⚡</span><span class="name">Zeus :4001</span></div>
       <div class="mcp-server"><span class="port">📝</span><span class="name">Novelist :3066</span></div>
+      <div class="mcp-server"><span class="port">✅</span><span class="name">TypedPrompt :3020</span></div>
+      <div class="mcp-server"><span class="port">🧠</span><span class="name">Prolog :3006</span></div>
     </div>
   </div>
 </div>

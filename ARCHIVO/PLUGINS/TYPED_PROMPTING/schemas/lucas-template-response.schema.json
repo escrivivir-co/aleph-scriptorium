@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aleph-scriptorium.github.io/schemas/lucas-template-response.schema.json",
+  "title": "Lucas Template Response",
+  "description": "Schema para responses de operaciones de plantillas AgentLoreSDK",
+  "type": "object",
+  "required": ["success", "intent"],
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "intent": {
+      "type": "string",
+      "enum": ["listar_plantillas", "recomendar_plantilla", "cargar_plantilla", "buscar_por_contexto"]
+    },
+    "plantillas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/plantillaItem"
+      },
+      "description": "Lista de plantillas (para listar/recomendar/buscar)"
+    },
+    "plantilla_cargada": {
+      "type": "object",
+      "description": "Plantilla cargada completa (para cargar_plantilla)",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "categoria": { "type": "string" },
+        "ruta": { 
+          "type": "string",
+          "pattern": "^AgentLoreSDK/cli-tool/components/"
+        },
+        "contenido": { 
+          "type": "string",
+          "description": "Contenido markdown de la plantilla"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "tools": { 
+              "type": "array", 
+              "items": { "type": "string" } 
+            },
+            "args": { "type": "string" },
+            "model": { "type": "string" }
+          }
+        }
+      },
+      "required": ["id", "ruta", "contenido"]
+    },
+    "prolog_query_usado": {
+      "type": "string",
+      "description": "Query Prolog ejecutado internamente"
+    },
+    "acciones_sugeridas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "accion": { "type": "string" },
+          "handoff": { "type": "string" }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": { 
+          "type": "string",
+          "enum": ["PLANTILLA_NO_ENCONTRADA", "CATEGORIA_INVALIDA", "ARCHIVO_NO_EXISTE", "PROLOG_ERROR"]
+        },
+        "message": { "type": "string" }
+      }
+    }
+  },
+  "definitions": {
+    "plantillaItem": {
+      "type": "object",
+      "required": ["id", "name", "use_case"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "categoria": { "type": "string" },
+        "use_case": { "type": "string" },
+        "ruta": { "type": "string" }
+      }
+    }
+  }
+}

@@ -34,6 +34,18 @@ mcpServers:
     source: "MCPGallery/mcp-mesh-sdk"
     startCommand: "npm run start:state"
     description: "X+1 state machine"
+  - id: "prolog-mcp-server"
+    port: 3006
+    source: "MCPGallery/mcp-mesh-sdk"
+    startCommand: "npm run start:prolog"
+    description: "Motor Prolog para agentes con cerebro declarativo (requiere SWI-Prolog)"
+
+# Packs tipados disponibles
+packs:
+  - id: "AgentPrologBrain"
+    file: "packs/AgentPrologBrain.pack.json"
+    description: "Pack para agentes que razonan con lógica Prolog"
+    mcpServer: "prolog-mcp-server"
 
 # Recursos exportados
 agents:

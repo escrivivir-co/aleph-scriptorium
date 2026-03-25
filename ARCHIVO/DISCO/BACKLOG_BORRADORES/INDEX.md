@@ -1,7 +1,7 @@
 # Índice — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`  
-> **Actualizado**: 2026-01-01  
+> **Actualizado**: 2026-01-03  
 > **Principio**: DRY — Solo referencias, detalles en cada borrador
 
 ---
@@ -16,15 +16,26 @@
 | [BLOCKLY-SDK](BLOCKLY-SDK/) | Plugin Blockly Editor | 📝 Borrador |
 | [CLI_SCRIPTORIUM](CLI_SCRIPTORIUM/) | CLI Scriptorium | 📐 FC4 |
 | [COPILOT_ENGINE](COPILOT_ENGINE/) | SCRIPT-1.31.0: CopilotEngine Analysis | ✅ Completada (30 pts) |
+| [DEMO_SCREENS](DEMO_SCREENS/) | DEMO-1.0.0: Demo Screens Hackathon | ✅ Completada |
 | [Diciembre_25_MMCO_Editor](Diciembre_25_MMCO_Editor/) | SCRIPT-1.29.0: Context Bloat Mitigation | ✅ Completada (36% reducción) |
 | [Diciembre_25_Ontologia](Diciembre_25_Ontologia/) | Ontología Formal del Scriptorium | ✅ Publicado |
 | [Diciembre_27_BlueprintMMCO_Enhancement](Diciembre_27_BlueprintMMCO_Enhancement/) | Enhancement: Navegación Blueprint MMCO | ✅ Completada |
 | [Diciembre_28_BlueprintMMCO_Phi5D](Diciembre_28_BlueprintMMCO_Phi5D/) | SCRIPT-1.30.0: Refactorización Φ 5D | ✅ Completada |
 | [Diciembre_28_Novelist_Integration](Diciembre_28_Novelist_Integration/) | Novelist-Teatro-TALLER | ✅ Implementado |
 | [Diciembre_29_Blueprint_Copilot_Cube](Diciembre_29_Blueprint_Copilot_Cube/) | SCRIPT-1.31.1: Blueprint Copilot 3D Cube | ✅ Completada |
-| [Diciembre_29_TypedPrompting_ContextManager](Diciembre_29_TypedPrompting_ContextManager/) | SCRIPT-2.1.0: TypedPrompting Context Manager | 📋 Activo |
+| [Diciembre_29_TypedPrompting_ContextManager](Diciembre_29_TypedPrompting_ContextManager/) | SCRIPT-2.1.0: TypedPrompting Context Manager | ✅ Funcional |
 | [Diciembre_30_CopilotLogExporter](Diciembre_30_CopilotLogExporter/) | SCRIPT-2.1.1: Copilot Log Exporter | ✅ Completada |
-| [RELEASE_PARTY](RELEASE_PARTY/) | 🎉 Release Party v1.0.0-beta.1 (Obra teatro + Demo + DEMO-1.0.0) | 📋 Activo |
+| [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | SCRIPT-2.2.0: Agentic Typed Logic Flow | 📝 Blueprint |
+| [Enero_02_ModelSelector_GenerateAbstract](Enero_02_ModelSelector_GenerateAbstract/) | SCRIPT-2.2.0: Model Selector para Generate Abstract | ✅ Completada |
+| [Enero_02_OpenAsyncApiEditor](Enero_02_OpenAsyncApiEditor/) | PLUGIN-OPENASYNCAPI-1.0.0: OpenAsyncAPI Editor Plugin | ✅ Completada |
+| [Enero_02_PrologAgentPack](Enero_02_PrologAgentPack/) | SCRIPT-2.3.1: PrologAgent Pack (49 pts: 3 backlogs derivados) | 📋 Activo |
+| [Enero_02_PrologMCPServer](Enero_02_PrologMCPServer/) | SCRIPT-2.3.0: Prolog MCP Server Integration | ✅ Completada |
+| [Enero_02_PrologEditor_API_Contracts](Enero_02_PrologEditor_API_Contracts/) | PROLOG-API-1.0.0: OpenAPI/AsyncAPI Specs | 📋 Activo |
+| [Enero_03_Tablero_Cotrabajo](Enero_03_Tablero_Cotrabajo/) | COWORK-1.0.0: Tablero para Cotrabajo Multi-Agente | ✅ Completada |
+| [Enero_04_MCPLauncher_ProcessKill_Bug](Enero_04_MCPLauncher_ProcessKill_Bug/) | LAUNCHER-BUG-001: Process Kill Failure (Windows spawn) | 🐛 Bug Report |
+| [Enero_2026_Blueprint_Refinement](Enero_2026_Blueprint_Refinement/) | SCRIPT-1.32.0: Blueprint Refinement para Release Party | 📋 Activo |
+| [Enero_2026_CopilotLogsMCP_Bug](Enero_2026_CopilotLogsMCP_Bug/) | FEATURE-SNAPSHOTS-1.0.0: Copilot Logs Snapshot System | ✅ Completada |
+| [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
 | [FLOVE_EDITOR](FLOVE_EDITOR/) | Plugin FloveEditor | ✅ Publicado |
 | [INDICES_COBERTURA](INDICES_COBERTURA/) | Cobertura de Índices | ✅ Publicado |
 | [IOT-SBR-LOGICA](IOT-SBR-LOGICA/) | Plugin PrologEditor + Inteligencias Situadas | 🟢 Investigado |
@@ -41,6 +52,7 @@
 | [ONTOLOGY_AGENT_EDITOR](ONTOLOGY_AGENT_EDITOR/) | OntologyAgentEditor | ✅ Publicado |
 | [PathykarAgente](PathykarAgente/) | Agente Karpathy-Like | 📝 Idea |
 | [PLUGIN_SETTINGS_OPTIMIZER](PLUGIN_SETTINGS_OPTIMIZER/) | Optimización Settings | ✅ Completada |
+| [RELEASE_PARTY](RELEASE_PARTY/) | 🎉 RELEASE-1.0.0-beta.1: Release Party (Obra teatro + Demo) | 📋 Activo |
 | [SPLASH_INDEX](SPLASH_INDEX/) | Índice SPLASH | ✅ Completada (85%) |
 | [SUBMODULOS_AH_NAMING](SUBMODULOS_AH_NAMING/) | BUG-003: Renombrar submódulos | ✅ Completada (14 submódulos) |
 | [TYPED_PROMPTING](TYPED_PROMPTING/) | Plugin TypedPrompting | ✅ Publicado |
@@ -48,7 +60,6 @@
 | [WIKI_RACER_ARG_BOARD_APP](WIKI_RACER_ARG_BOARD_APP/) | ArgBoardApp | 📝 Borrador |
 | [WIKI_RACER_HYPERGRAPH_EDITOR](WIKI_RACER_HYPERGRAPH_EDITOR/) | HyperGraphEditor | 📝 Borrador |
 | [WIKI_RACER_WIRING_APP](WIKI_RACER_WIRING_APP/) | WiringApp | 📝 Borrador |
-| [Diciembre_31_Test_0x_Destilacion](Diciembre_31_Test_0x_Destilacion/) | SCRIPT-2.2.0: Agentic Typed Logic Flow | 📝 Blueprint |
 
 ---
 
@@ -61,6 +72,7 @@
 | 📋 Activo | Trabajo en progreso este sprint |
 | 📝 Borrador | Conversación PO-SM pendiente de aprobación |
 | 🟡 Borrador | Pendiente con bloqueos |
+| � Investigado | Spike cerrado, capacidad verificada |
 | 📐 FC* | Planificado para Feature Cycle futuro |
 | 📝 Idea | Sin formalizar |
 
@@ -70,9 +82,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Total carpetas | 39 |
-| ✅ Completadas/Publicadas | 20 |
-| 📋/📝 En progreso/Borrador | 19 |
+| Total carpetas | 48 |
+| ✅ Completadas/Publicadas | 28 |
+| 📋/📝 En progreso/Borrador | 20 |
 
 ---
 

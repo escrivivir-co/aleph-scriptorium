@@ -57,29 +57,12 @@ plugins:
 navigation:
   - title: Inicio
     url: /
-  - title: Blueprint
-    url: /blueprint/
-    highlight: true
   - title: Léeme
     url: /leeme/
   - title: Ecosistema
     url: /ecosistema/
-  - title: Teatro
-    url: /teatro/
-    highlight: true
-  - title: Periódico
-    url: /periodico/
-  - title: Fundación
-    url: /fundacion/
-  - title: Archivo
-    url: /archivo/
   - title: Roadmap
     url: /roadmap/
-  - title: Acerca de
-    url: /acerca/
-  - title: GitHub
-    url: https://github.com/escrivivir-co/aleph-scriptorium
-    external: true
 
 # Defaults
 defaults:

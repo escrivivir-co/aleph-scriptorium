@@ -1,40 +1,51 @@
 ---
 id: scrum
-name: "Gestión Scrum DRY"
-version: "2.0.0"
-description: "Plugin para gestión ágil con modelo DRY: el backlog principal es un índice ligero que referencia borradores y archivados. Diseñado para mitigar context bloat."
+name: "Scrum — Interpreta a Lucas"
+version: "3.0.0"
+description: "Plugin Scrum con Modelo Generativo. El agente @scrum 'interpreta' a Lucas para expertise DRY. Las sesiones de cotrabajo PRODUCEN artefactos Scrum."
 author: "Aleph Scriptorium"
 license: "AIPL v1.0"
 
 scriptorium_version: ">=1.0.0"
-dependencies: []
+dependencies:
+  - "SCRIPT-2.4.0"  # Personaje Context Protocol
+
+# Referencia DRY a Lucas
+interpreta:
+  personaje: "lucas"
+  fuente: "ARCHIVO/DISCO/TALLER/ELENCO/lucas/"
+  brain: "lucas-prolog.brain.pl"
+  carga: "bajo-demanda"  # No cargar automáticamente
 
 agents:
   - name: "Scrum"
     file: "agents/scrum.agent.md"
-    description: "Coordinador Scrum. Gestiona índice de referencias, NO contenido detallado."
+    description: "Scrum Master que interpreta a Lucas. Implementa Modelo Generativo."
 
 prompts:
   - name: "planificar-sprint"
     file: "prompts/planificar-sprint.prompt.md"
-    description: "Iniciar conversación PO-SM en BACKLOG_BORRADORES."
+    description: "Crear carpeta en BACKLOG_BORRADORES y referencia en índice."
   - name: "crear-backlog-borrador"
     file: "prompts/crear-backlog-borrador.prompt.md"
     description: "Crear borrador detallado en DISCO."
+  - name: "generar-desde-sesion"
+    file: "prompts/generar-desde-sesion.prompt.md"
+    description: "NUEVO: Generar borrador desde sesión de cotrabajo cerrada."
   - name: "aprobar-backlog"
     file: "prompts/aprobar-backlog.prompt.md"
-    description: "Añadir referencia al índice oficial (no copiar contenido)."
+    description: "Cambiar estado en índice (📋→✅)."
   - name: "tracking-sprint"
     file: "prompts/tracking-sprint.prompt.md"
     description: "Actualizar estado en borrador activo."
   - name: "retrospectiva"
     file: "prompts/retrospectiva.prompt.md"
-    description: "Mover borrador a archivado y actualizar índice."
+    description: "Cerrar sprint, opcionalmente incluyendo sesiones."
 
 instructions:
   - name: "scrum-protocol"
     file: "instructions/scrum-protocol.instructions.md"
-    description: "Protocolo DRY: índice ligero + referencias."
+    description: "Protocolo DRY + Modelo Generativo."
 
 handoffs:
   - label: "Planificar nuevo sprint"
@@ -43,6 +54,9 @@ handoffs:
   - label: "Crear backlog borrador"
     agent: "Scrum"
     prompt: "Genera borrador detallado en DISCO (no en índice)."
+  - label: "🆕 Generar desde sesión"
+    agent: "Scrum"
+    prompt: "Genera borrador desde sesión de cotrabajo cerrada (Modelo Generativo)."
   - label: "Aprobar y referenciar"
     agent: "Scrum"
     prompt: "Añade fila de referencia al índice oficial."
@@ -52,175 +66,106 @@ handoffs:
   - label: "Cerrar sprint"
     agent: "Scrum"
     prompt: "Mueve borrador a BACKLOG_ARCHIVADOS y actualiza referencias."
+  - label: "🎭 Cargar contexto Lucas"
+    agent: "Scrum"
+    prompt: "Carga expertise de Lucas bajo demanda (brain Prolog + templates)."
 ---
 
-# Plugin: Gestión Scrum de Backlogs
+# Plugin: Scrum v3.0.0 — Modelo Generativo
 
-## Propósito
+## ⚠️ BREAKING CHANGE desde v2.0.0
 
-Este plugin implementa un **protocolo formal** para la gestión ágil de backlogs en el Scriptorium, separando claramente:
+Este plugin implementa el **Modelo Generativo** consensuado en la sesión `2026-01-05_consenso-agile-scriptorium`:
 
-1. **Fase de Edición** (DISCO): Conversaciones, borradores, iteraciones
-2. **Fase de Publicación** (Backlogs oficiales): Versión aprobada y versionada
-3. **Fase de Tracking** (Desarrollo): Actualización de estado durante ejecución
+- Las sesiones de cotrabajo **PRODUCEN** artefactos Scrum (no SE TRANSFORMAN)
+- El agente @scrum **interpreta a Lucas** en lugar de duplicar expertise
+- Nuevo comando: `generar-desde-sesion`
 
 ## Filosofía
 
-> "El backlog se cocina en DISCO, se sirve en .github/"
-
-El espacio `ARCHIVO/DISCO/` actúa como **memoria de trabajo** donde se pueden explorar ideas, iterar borradores y mantener conversaciones sin contaminar los backlogs oficiales. Solo cuando un backlog está aprobado se "publica" a los archivos canónicos.
-
-## Roles
-
-| Rol | Responsabilidad | Representado por |
-|-----|-----------------|------------------|
-| **Product Owner (PO)** | Define qué se construye, prioriza | Usuario o simulación |
-| **Scrum Master (SM)** | Facilita el proceso, protege el equipo | Agente @scrum |
-| **DevOps** | Ejecuta las tareas, reporta estado | Agente @aleph |
-
-## Flujo de Trabajo
+> "La sesión produce, el borrador recibe."
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                     PROTOCOLO SCRUM                              │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  1. PLANIFICAR                    2. EDITAR                      │
-│  ┌──────────────┐                ┌──────────────┐               │
-│  │ Conversación │ ──────────────▶│   Backlog    │               │
-│  │   PO + SM    │                │   Borrador   │               │
-│  │  (en DISCO)  │                │  (en DISCO)  │               │
-│  └──────────────┘                └──────┬───────┘               │
-│                                         │                        │
-│                                         ▼                        │
-│  4. TRACKING                     3. APROBAR                      │
-│  ┌──────────────┐                ┌──────────────┐               │
-│  │  Actualizar  │ ◀──────────────│   Publicar   │               │
-│  │   Estado     │                │   Oficial    │               │
-│  │ (en oficial) │                │ (en .github) │               │
-│  └──────┬───────┘                └──────────────┘               │
-│         │                                                        │
-│         ▼                                                        │
-│  5. CERRAR                                                       │
-│  ┌──────────────┐                                               │
-│  │ Retrospectiva│                                               │
-│  │ Foto Estado  │                                               │
-│  │  Siguiente   │                                               │
-│  └──────────────┘                                               │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────┐    PRODUCE    ┌─────────────────────┐
+│ SESIONES_COTRABAJO/ │──────────────►│ BACKLOG_BORRADORES/ │
+│ (trabajo vivo)      │               │ (planificación)     │
+│ Turno → Acta        │               │ Borrador → Epic     │
+│                     │               │ origen: sesión      │
+└─────────────────────┘               └─────────────────────┘
 ```
 
-## Casos de Uso
+## Principio DRY
 
-### UC1: Planificar Sprint
+| Dónde | Qué |
+|-------|-----|
+| `.github/BACKLOG-SCRIPTORIUM.md` | Índice de ~50 líneas con referencias |
+| `ARCHIVO/DISCO/BACKLOG_BORRADORES/` | Contenido detallado activo |
+| `ARCHIVO/DISCO/BACKLOG_ARCHIVADOS/` | Sprints cerrados |
+| `ARCHIVO/DISCO/SESIONES_COTRABAJO/` | Sesiones multi-agente |
 
-**Actor**: Usuario (como PO)  
-**Trigger**: "Quiero planificar el próximo sprint"
+## Referencia DRY a Lucas
 
-1. @scrum crea carpeta en `DISCO/{Mes}_{Año}_release/`
-2. @scrum inicia conversación simulando diálogo PO-SM
-3. Usuario aporta dirección, @scrum facilita estructura
-4. Resultado: `01_planificacion-sprintN.md`
+Este plugin **no duplica** expertise Scrum. En su lugar, "interpreta" a Lucas:
 
-### UC2: Crear Backlog Borrador
-
-**Actor**: @scrum  
-**Trigger**: Conversación de planificación completada
-
-1. @scrum extrae épicas, stories, tasks de la conversación
-2. @scrum genera `02_backlog-sprintN.md` en DISCO
-3. @scrum asigna effort points (sin cronología)
-4. Resultado: Backlog borrador listo para revisión
-
-### UC3: Aprobar y Publicar
-
-**Actor**: Usuario (como PO)  
-**Trigger**: "Aprueba este backlog"
-
-1. @scrum valida estructura del borrador
-2. @scrum identifica Opportunity afectada (Scriptorium/Fundación)
-3. @scrum integra en backlog oficial correspondiente
-4. @scrum genera commit según protocolo DevOps
-5. Resultado: Backlog oficial actualizado
-
-### UC4: Tracking de Sprint
-
-**Actor**: @aleph (DevOps)  
-**Trigger**: Task completada durante desarrollo
-
-1. @aleph notifica a @scrum de task completada
-2. @scrum actualiza estado en backlog oficial
-3. @scrum recalcula métricas (% avance, effort consumido)
-4. Resultado: Backlog sincronizado con realidad
-
-### UC5: Cerrar Sprint
-
-**Actor**: @scrum  
-**Trigger**: Sprint completado o tiempo agotado
-
-1. @scrum genera retrospectiva (qué funcionó, qué no)
-2. @scrum crea foto de estado en `ARCHIVO/FOTOS_ESTADO/`
-3. @scrum mueve backlog borrador a archivo
-4. @scrum prepara conversación para siguiente sprint
-5. Resultado: Sprint cerrado, siguiente planificado
-
-## Estructura de Datos
-
-### En DISCO (Borradores)
-
-```
-ARCHIVO/DISCO/{Mes}_{Año}_release/
-├── 01_planificacion-sprintN.md    # Conversación PO-SM
-├── 02_backlog-sprintN.md          # Backlog borrador
-├── 03_notas-*.md                  # Notas adicionales
-└── README.md                      # Índice de la release
+```yaml
+interpreta:
+  personaje: "lucas"
+  fuente: "ARCHIVO/DISCO/TALLER/ELENCO/lucas/"
+  brain: "lucas-prolog.brain.pl"
+  carga: "bajo-demanda"
 ```
 
-### En Backlogs Oficiales
+Cuando @scrum necesita expertise avanzada:
+1. Carga `lucas.agent.md` (identidad)
+2. Opcionalmente carga `lucas-prolog.brain.pl` (razonamiento)
+3. Opcionalmente carga `templates-index.json` (plantillas)
+
+## Comandos
+
+| Comando | Descripción | Nuevo |
+|---------|-------------|-------|
+| `planificar` | Crear carpeta + referencia | |
+| `borrador` | Generar backlog detallado | |
+| `generar-desde-sesion` | Producir borrador desde sesión cerrada | 🆕 |
+| `aprobar` | Cambiar estado en índice | |
+| `tracking` | Actualizar tasks en borrador | |
+| `cerrar` | Archivar sprint (opción: --incluir-sesiones) | 🔄 |
+| `status` | Mostrar métricas + sesiones activas | 🔄 |
+
+## Flujo Modelo Generativo
 
 ```
-.github/
-├── BACKLOG-SCRIPTORIUM.md         # Opportunity: Scriptorium
-└── PROYECTOS/FUNDACION/
-    └── BACKLOG-FUNDACION.md       # Opportunity: Fundación
+1. Sesión de cotrabajo (SESIONES_COTRABAJO/)
+   └── Trabajo multi-agente → Actas → Consenso
+   
+2. Cierre de sesión (tipo: Productiva)
+   └── @scrum generar-desde-sesion
+   
+3. Borrador generado (BACKLOG_BORRADORES/)
+   └── origen: {sesión}
+   └── Estructura épica/stories/tasks
+   
+4. Flujo Scrum normal
+   └── aprobar → tracking → cerrar
 ```
 
-### En Fotos de Estado
+## Tipos de Cierre de Sesión
 
-```
-ARCHIVO/FOTOS_ESTADO/
-├── 2025-12-21_Sprint0_Bootstrap.md
-├── 2025-12-22_Sprint1_Teatro.md
-└── ...
-```
+| Tipo | Produce | Acción @scrum |
+|------|---------|---------------|
+| **Exploratoria** | Nada | Solo registrar en histórico |
+| **Normativa** | Decisiones | Documentar en instrucciones |
+| **Productiva** | Borrador | `generar-desde-sesion` |
 
-## Integración con Sistema
+## Integración con SCRIPT-2.4.0
 
-| Componente | Integración |
-|------------|-------------|
-| @aleph | Recibe tasks, reporta completadas |
-| @ox | Registra @scrum en índice de agentes |
-| DEVOPS.md | Scrum sigue protocolo de commits |
-| Plugins | Puede crear tasks para cualquier plugin |
+El protocolo de "interpretar personaje" permite que @scrum:
+- Herede conocimiento de Lucas sin duplicación
+- Acceda a plantillas de AgentLoreSDK bajo demanda
+- Use razonamiento Prolog para casos complejos
 
-## Métricas Gestionadas
+---
 
-| Métrica | Descripción | Calculada por |
-|---------|-------------|---------------|
-| Effort total | Suma de puntos del sprint | @scrum |
-| Effort completado | Puntos de tasks ✅ | @scrum |
-| % Avance | Completado / Total × 100 | @scrum |
-| Velocity | Effort/iteración promedio | @scrum (histórico) |
-| Buffer consumido | Puntos de mejoras usados | @scrum |
-
-## Comandos del Agente
-
-| Comando | Acción |
-|---------|--------|
-| `planificar` | Inicia conversación PO-SM |
-| `borrador` | Genera backlog desde conversación |
-| `aprobar` | Publica backlog en oficial |
-| `tracking` | Actualiza estado de tasks |
-| `cerrar` | Retrospectiva y foto de estado |
-| `status` | Muestra métricas actuales |
+**Versión**: 3.0.0  
+**Épica origen**: SCRUM-REFACTOR-1.0.0  
+**Sesión origen**: 2026-01-05_consenso-agile-scriptorium

@@ -1,0 +1,1054 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // ═══════════════════════════════════════════════════════════════════════
+    // APB: Agent Prolog Brain Pack
+    // Stack: MCP Mesh (Launcher+Prolog) + Backend REST + Frontend Angular
+    // Puertos: 3050 (Launcher), 3006 (Prolog), 8000 (Backend), 5001 (Frontend)
+    // ═══════════════════════════════════════════════════════════════════════
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // COMPOUND: Arranque completo del stack
+    // ⚠️ NOTA: Esta task puede no funcionar correctamente en algunos entornos.
+    //    Los servicios background (isBackground:true) no esperan correctamente.
+    //    RECOMENDADO: Usar las 3 tasks individuales en terminales separadas.
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Start Full Stack",
+      "dependsOn": [
+        "APB: Start [MCP Launcher]",
+        "APB: Start [Backend]",
+        "APB: Start [Frontend]",
+        "NOV: Start [Server]"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Arranca MCP Launcher (3050) → Backend (8000) → Frontend (5001)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // INDIVIDUAL: Servicios con hot-reload
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Start [MCP Launcher]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:launcher"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+        "env": {
+          "PATH": "${env:PATH}:/usr/local/bin"
+        }
+      },
+      // Platform-specific PATH for SWI-Prolog (swipl-stdio dependency)
+      "windows": {
+        "options": {
+          "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+          "env": {
+            "PATH": "${env:PATH};C:\\Program Files\\swipl\\bin"
+          }
+        }
+      },
+      "osx": {
+        "options": {
+          "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk",
+          "env": {
+            "PATH": "${env:PATH}:/opt/homebrew/bin:/usr/local/bin"
+          }
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "apb-mcp",
+        "pattern": {
+          "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Launcher running on port 3050.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "apb-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "MCP Launcher (3050) + Prolog Server (3006)"
+    },
+
+    {
+      "label": "APB: Start [Backend]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:backend"],
+      "options": {
+        "cwd": "${workspaceFolder}/PrologEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "apb-backend",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Backend.*$",
+          "endsPattern": "^.*listening on port 8000.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "apb-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Express REST API (8000)"
+    },
+
+    {
+      "label": "APB: Start [Frontend]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:frontend"],
+      "options": {
+        "cwd": "${workspaceFolder}/PrologEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "apb-angular",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "apb-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Angular Dev Server (5001) con hot-reload"
+    },
+    {
+      "label": "NOV: Start [Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/NovelistEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "novelist-server",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*Server running on port 3066.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "demo-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Novelist MCP Server (3066)"
+    },
+    {
+      "label": "TPE: Start [Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/TypedPromptsEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typed-prompts",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*starting.*$",
+          "endsPattern": "^.*serving on port 3019.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "demo-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "TypedPromptsEditor Dev Server (3019)"
+    },
+    {
+      "label": "TPE: Start [MCP Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start:typed-prompt"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typed-prompt-mcp",
+        "pattern": {
+          "regexp": "^\\[(ERROR|error)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*running on port 3020.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "demo-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "TypedPrompt MCP Server (3020)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // OAE: OpenAsyncAPI Editor (OPENASYNCAPI_EDITOR)
+    // Stack: Swagger UI (3021) + AsyncAPI Studio (3022)
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "OAE: Start [Swagger UI]",
+      "type": "shell",
+      "command": "npx",
+      "args": ["@redocly/cli", "preview-docs", "specs/PrologEditor/openapi.yaml", "--port", "3021"],
+      "options": {
+        "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "swagger-ui",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*http://.*3021.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "oae-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Swagger UI (REST API) - http://localhost:3021"
+    },
+
+    {
+      "label": "OAE: Start [AsyncAPI Studio]",
+      "type": "shell",
+      "command": "npx",
+      "args": ["@asyncapi/cli", "start", "studio", "--file", "specs/PrologEditor/asyncapi.yaml", "--port", "3022"],
+      "options": {
+        "cwd": "${workspaceFolder}/ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "asyncapi-studio",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*http://.*3022.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "oae-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "AsyncAPI Studio - http://localhost:3022"
+    },
+
+    {
+      "label": "OAE: Open [Swagger UI]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3021"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3021"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Swagger UI en el navegador (3021)"
+    },
+
+    {
+      "label": "OAE: Open [AsyncAPI Studio]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3022"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3022"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre AsyncAPI Studio en el navegador (3022)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // NRE: Node-RED Editor (WiringEditor + WiringApp)
+    // Stack: Node-RED Editor (1880) + Dashboard UI (1880/ui) + GamifyUI (3088)
+    // Submódulos: WiringEditor, WiringAppHypergraphEditor
+    // C:\Users\aleph\.node-red\settings.js <--- Node-RED user settings  Activate projects!!!!
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "NRE: Start [Editor]",
+      "type": "shell",
+      "command": "node-red",
+      "args": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "node-red",
+        "pattern": {
+          "regexp": "^\\[(ERROR|error|warn)\\]\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Welcome to Node-RED.*$",
+          "endsPattern": "^.*Server now running at.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "nre-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Node-RED Editor - http://localhost:1880"
+    },
+
+    {
+      "label": "NRE: Start [GamifyUI]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:ui"],
+      "options": {
+        "cwd": "${workspaceFolder}/WiringEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "gamify-ui",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "nre-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "GamifyUI Angular Dev Server - http://localhost:3088"
+    },
+
+    {
+      "label": "NRE: Setup [Contribs]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/setup-node-red.sh", "--skip-global"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "scripts\\setup-node-red.cmd", "--skip-global"]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Instala node-red-dashboard + nodos AlephScript + Wiki-Racer"
+    },
+
+    {
+      "label": "NRE: Open [Editor]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:1880 2>/dev/null || xdg-open http://localhost:1880 2>/dev/null || start http://localhost:1880"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:1880"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Node-RED Editor en el navegador (1880)"
+    },
+
+    {
+      "label": "NRE: Open [Dashboard]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:1880/ui 2>/dev/null || xdg-open http://localhost:1880/ui 2>/dev/null || start http://localhost:1880/ui"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:1880/ui"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Node-RED Dashboard UI en el navegador (1880/ui)"
+    },
+
+    {
+      "label": "NRE: Open [GamifyUI]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:3088 2>/dev/null || xdg-open http://localhost:3088 2>/dev/null || start http://localhost:3088"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3088"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre GamifyUI en el navegador (3088)"
+    },
+
+    {
+      "label": "NRE: Health Check",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '🔍 Checking Node-RED services...' && (curl -s http://localhost:1880 > /dev/null && echo '✅ Node-RED Editor: http://localhost:1880' || echo '❌ Node-RED Editor: Not running') && (curl -s http://localhost:1880/ui > /dev/null && echo '✅ Node-RED Dashboard: http://localhost:1880/ui' || echo '⚠️ Node-RED Dashboard: No flows deployed')"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo Checking Node-RED services... && curl -s http://localhost:1880 >nul 2>&1 && echo [OK] Node-RED Editor: http://localhost:1880 || echo [FAIL] Node-RED Editor: Not running"
+        ]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Verifica estado de Node-RED Editor y Dashboard"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BLE: Blockly Editor (BlocklyEditor SDK)
+    // Stack: Angular 19 Editor (4200) + Runtime UI (5000)
+    // Submódulo: BlocklyEditor (blockly-alephscript-sdk)
+    // Paquetes: blockly-alephscript-blocks, blockly-gamify-ui, blockly-runtime-gamify-ui
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "BLE: Start [Editor]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:ui"],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "blockly-editor",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*Compiled successfully.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "ble-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Blockly Editor Angular 19 - http://localhost:4200"
+    },
+
+    {
+      "label": "BLE: Start [Runtime]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev:runtime-ui"],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "blockly-runtime",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Compiling.*$",
+          "endsPattern": "^.*serving.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "dedicated",
+        "group": "ble-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "Blockly Runtime UI - http://localhost:5000"
+    },
+
+    {
+      "label": "BLE: Build [All]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build:all"],
+      "options": {
+        "cwd": "${workspaceFolder}/BlocklyEditor"
+      },
+      "problemMatcher": ["$tsc"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Build completo: blocks → UI → runtime"
+    },
+
+    {
+      "label": "BLE: Setup",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/setup-blockly.sh"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "scripts\\setup-blockly.cmd"]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Instala dependencias y construye todos los paquetes Blockly"
+    },
+
+    {
+      "label": "BLE: Open [Editor]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:4200 2>/dev/null || xdg-open http://localhost:4200 2>/dev/null || start http://localhost:4200"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:4200"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Blockly Editor en el navegador (4200)"
+    },
+
+    {
+      "label": "BLE: Open [Runtime]",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "open http://localhost:5000 2>/dev/null"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:5000"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Blockly Runtime UI en el navegador (5000)"
+    },
+
+    {
+      "label": "BLE: Health Check",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '🔍 Checking Blockly services...' && (curl -s http://localhost:4200 > /dev/null && echo '✅ Blockly Editor: http://localhost:4200' || echo '❌ Blockly Editor: Not running') && (curl -s http://localhost:5000 > /dev/null && echo '✅ Blockly Runtime: http://localhost:5000' || echo '❌ Blockly Runtime: Not running')"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": [
+          "/c",
+          "echo Checking Blockly services... && curl -s http://localhost:4200 >nul 2>&1 && echo [OK] Blockly Editor: http://localhost:4200 || echo [FAIL] Blockly Editor: Not running"
+        ]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Verifica estado de Blockly Editor y Runtime"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // DEMO: Demo Servers (DEMO-1.0.0)
+    // Stack: Jekyll + MCP Mesh + Model + Zeus + Novelist
+    // Puertos: 4000 (Jekyll), 3050 (Launcher), 4001 (Model), 3012 (Zeus), 3066 (Novelist), 8080 (Novelist UI)
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "DEMO: Start Full Stack",
+      "dependsOn": [
+        "JKL: Start [Site]",
+        "APB: Start [MCP Launcher]",
+        "MCP: Start [Model]",
+        "ZEUS: Start [UI]",
+        "NOV: Start [Server]",
+        "NOV: Start [UI]"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "detail": "Arranca todos los servidores de la demo (6 terminales)"
+    },
+    {
+      "label": "JKL: Start [Site]",
+      "type": "shell",
+      "command": "./scripts/serve-site.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "jekyll",
+        "pattern": {
+          "regexp": "^.*Server address: http://127.0.0.1:4000/.*$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Generating...$",
+          "endsPattern": "^.*Server running... press ctrl-c to stop.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "demo-stack"
+      },
+      "detail": "Jekyll Docs Site (4000)"
+    },
+    {
+      "label": "MCP: Start [Model]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-model-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-model",
+        "pattern": {
+          "regexp": "^.*listening on port 4001.*$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*listening on port 4001.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "demo-stack"
+      },
+      "detail": "MCP Model Service (4001)"
+    },
+    {
+      "label": "ZEUS: Start [UI]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/zeus"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "zeus",
+        "pattern": {
+          "regexp": "^.*listening on port 3012.*$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*listening on port 3012.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "demo-stack"
+      },
+      "detail": "Zeus UI (3012)"
+    },
+    {
+      "label": "NOV: Start [UI]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "docs:serve"],
+      "options": {
+        "cwd": "${workspaceFolder}/NovelistEditor"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "novelist-ui",
+        "pattern": {
+          "regexp": "^.*Serving HTTP on 0.0.0.0 port 8080.*$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Serving HTTP.*$",
+          "endsPattern": "^.*Serving HTTP on 0.0.0.0 port 8080.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "demo-stack"
+      },
+      "detail": "Novelist UI (8080)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // UTILITY: Health checks y diagnóstico
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Health Check",
+      "type": "shell",
+      "command": "bash",
+      "args": ["./scripts/apb-health-check.sh"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Verifica prerequisitos (swipl) + estado de los 4 servicios"
+    },
+
+    {
+      "label": "APB: Check Prerequisites",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "bash ./scripts/apb-health-check.sh 2>&1 | head -30"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      },
+      "detail": "Solo verifica prerequisitos (swipl en PATH) - rápido"
+    },
+
+    {
+      "label": "APB: Test Query",
+      "type": "shell",
+      "command": "curl",
+      "args": [
+        "-s", "-X", "POST",
+        "http://localhost:8000/api/run-rule",
+        "-H", "Content-Type: application/json",
+        "-d", "{\"rule\":\"member(X, [1,2,3])\"}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Ejecuta query Prolog de prueba via Backend"
+    },
+
+    {
+      "label": "APB: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:5001"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:5001"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre PrologEditor Frontend en el navegador (5001)"
+    },
+
+    {
+      "label": "TPE: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3019"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3019"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre TypedPromptsEditor en el navegador (3019)"
+    },
+
+    {
+      "label": "JKL: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:4000/aleph-scriptorium/"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:4000/aleph-scriptorium/"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Jekyll Docs Site en el navegador (4000)"
+    },
+
+    {
+      "label": "ZEUS: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:3012"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:3012"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Zeus UI en el navegador (3012)"
+    },
+
+    {
+      "label": "NOV: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:8080"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:8080"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre Novelist UI en el navegador (8080)"
+    },
+
+    {
+      "label": "APB: Stop All",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo 'Stopping APB services...' && (pkill -f 'MCPLauncherServer' 2>/dev/null || true) && (pkill -f 'MCPPrologServer' 2>/dev/null || true) && (pkill -f 'ng serve' 2>/dev/null || true) && (pkill -f 'PrologEditor.*app.js' 2>/dev/null || true) && echo '✅ All APB services stopped'"
+      ],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "taskkill /F /IM node.exe /FI \"WINDOWTITLE eq APB*\" 2>nul & echo Services stopped"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Detiene todos los procesos del stack APB"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // INS: MCP Inspector (SCRIPT-2.5.0)
+    // UI: 6274, Proxy: 6277
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "INS: Start [Inspector]",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-inspector",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting MCP inspector.*$",
+          "endsPattern": "^.*MCP Inspector.*running.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "inspector-stack",
+        "showReuseMessage": false,
+        "clear": true
+      },
+      "detail": "MCP Inspector UI (6274) + Proxy (6277)"
+    },
+    {
+      "label": "INS: Start",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-inspector-sdk",
+        "env": {
+          "DANGEROUSLY_OMIT_AUTH": "true"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-inspector-dev",
+        "pattern": {
+          "regexp": "^Error:\\s+(.*)$",
+          "message": 1
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*ready in.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "inspector-stack"
+      },
+      "detail": "MCP Inspector"
+    },
+    {
+      "label": "INS: Open Browser",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "start http://localhost:6274"],
+      "windows": {
+        "command": "cmd",
+        "args": ["/c", "start", "http://localhost:6274"]
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abre MCP Inspector en el navegador (6274)"
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BUILD: Compilación del stack
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      "label": "APB: Build Chain",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo '🔨 Building MCP Core SDK...' && cd ${workspaceFolder}/MCPGallery/mcp-core-sdk && npm run build && echo '🔨 Building MCP Mesh SDK...' && cd ../mcp-mesh-sdk && npm run build && echo '🔨 Building Backend...' && cd ../../PrologEditor/backend && npm run build 2>/dev/null || echo '(no build script)' && echo '🔨 Building Frontend...' && cd ../frontend && npm run build && echo '✅ Build chain complete'"
+      ],
+      "problemMatcher": ["$tsc"],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "build",
+      "detail": "Build completo: core-sdk → mesh-sdk → backend → frontend"
+    }
+  ]
+}

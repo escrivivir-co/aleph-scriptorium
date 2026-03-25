@@ -485,7 +485,55 @@ class PromptRegistry {
     </span>
   </div>
   
-  <div class="nav-hint">↑ Volver a vista general</div>
+  <div class="nav-hint">↓ Ver validación estructurada</div>
+</div>
+
+<!-- ==========================================
+     SLIDE 4.2: VALIDATION (TypedPrompt)
+     Coordenadas: (8000, 1400, 0)
+     BLUEPRINTS-TYPED-1.0.0: Validación NL↔JSON
+     ========================================== -->
+<div id="assembly-validation" class="step copilot-step" 
+     data-x="8000" 
+     data-y="1400" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 4 · Validación</span>
+    <span class="copilot-title">TypedPrompt: NL↔JSON</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p>Antes de enviar al LLM, <strong>TypedPromptEditor</strong> valida que el mensaje cumpla con el schema esperado.</p>
+  </div>
+  
+  <div class="validation-flow">
+    <div class="validation-step">
+      <span class="step-icon">📝</span>
+      <span class="step-label">L0: Prompt NL</span>
+      <span class="step-desc">"@aleph escribe borrador"</span>
+    </div>
+    <div class="validation-arrow">↓ TypedPromptServer :3020</div>
+    <div class="validation-step">
+      <span class="step-icon">📋</span>
+      <span class="step-label">L1: Schema JSON</span>
+      <span class="step-desc">{ action: "write", topic: "..." }</span>
+    </div>
+    <div class="validation-arrow">↓ validate_schema</div>
+    <div class="validation-step validated">
+      <span class="step-icon">✅</span>
+      <span class="step-label">L2: Validado</span>
+      <span class="step-desc">AJV/Zod pass → enviar a LLM</span>
+    </div>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">🔗</span>
+    <span class="note-text">
+      Ver flujo completo: <a href="/blueprint-logic-flow/">Agentic Typed Logic Flow</a> (L0→L3)
+    </span>
+  </div>
+  
+  <div class="nav-hint">↑ Volver a mensaje ensamblado</div>
 </div>
 
 <!-- ==========================================
@@ -645,6 +693,333 @@ class PromptRegistry {
     <span class="journey-arrow">→</span>
     <span class="journey-node current">✓</span>
   </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↓</span>
+    <span>Ver Self-Reflection: cuando la respuesta genera feedback</span>
+  </div>
+</div>
+
+<!-- ==========================================
+     SUBCUBO: SELF-REFLECTION (Y=700)
+     SCRIPT-1.32.0 - El ciclo que cierra el bucle
+     Coordenadas: X=12000-16400, Y=700, Z=0
+     ========================================== -->
+
+<!-- ==========================================
+     SLIDE 6.1: REFLECT INTRO
+     Coordenadas: (12000, 700, 0)
+     Idea fuerza: Los agentes usan LLMs para auto-psicoanalizarse
+     ========================================== -->
+<div id="reflect-intro" class="step copilot-step" 
+     data-x="12000" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 6.1</span>
+    <span class="copilot-title">Self-Reflection: El Bucle que Cierra</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p><strong>Pero la respuesta no es el final.</strong> Los agentes del IDE no solo usan LLMs para <em>ser ellos mismos</em> (su identidad viene del system message), sino también para <strong>auto-psicoanalizarse</strong>.</p>
+  </div>
+  
+  <div class="interface-cards">
+    <div class="interface-card">
+      <span class="card-icon">🤖</span>
+      <span class="card-name">Identidad</span>
+      <span class="card-desc">System Message</span>
+    </div>
+    <div class="interface-card">
+      <span class="card-icon">🔄</span>
+      <span class="card-name">Reflexión</span>
+      <span class="card-desc">Copilot Logs</span>
+    </div>
+    <div class="interface-card">
+      <span class="card-icon">📸</span>
+      <span class="card-name">Memoria</span>
+      <span class="card-desc">Snapshots</span>
+    </div>
+    <div class="interface-card">
+      <span class="card-icon">📊</span>
+      <span class="card-name">Métricas</span>
+      <span class="card-desc">Health Score</span>
+    </div>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">💡</span>
+    <span class="note-text">
+      <strong>El problema:</strong> CopilotEngine olvida después de ~100 requests (FIFO). 
+      <strong>La solución:</strong> Si no podemos cambiar cómo olvida, cambiamos cómo recordamos.
+    </span>
+  </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">→</span>
+    <span>Ver Copilot Logs MCP Server</span>
+  </div>
+</div>
+
+<!-- ==========================================
+     SLIDE 6.2: COPILOT LOGS MCP
+     Coordenadas: (14000, 700, 0)
+     CIUDADANO DE PRIMERA CATEGORÍA del blueprint
+     ========================================== -->
+<div id="reflect-logs" class="step copilot-step" 
+     data-x="14000" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 6.2 · ⭐ Core</span>
+    <span class="copilot-title">Copilot Logs MCP Server</span>
+  </div>
+  
+  <div class="scriptorium-note" style="margin-bottom: 1rem;">
+    <span class="note-icon">⭐</span>
+    <span class="note-text">
+      <strong>Ciudadano de primera categoría.</strong> Este servidor permite que los agentes se <em>auto-psicoanalicen</em>: observen su comportamiento, detecten antipatrones y mejoren.
+    </span>
+  </div>
+  
+  <div class="model-comparison">
+    <div class="model-card claude">
+      <span class="model-icon">📸</span>
+      <span class="model-name">Snapshots</span>
+      <ul class="model-features">
+        <li><code>capture_snapshot</code></li>
+        <li><code>list_snapshots</code></li>
+        <li><code>get_snapshot</code></li>
+        <li><code>delete_snapshot</code></li>
+      </ul>
+    </div>
+    <div class="model-card gpt">
+      <span class="model-icon">📊</span>
+      <span class="model-name">Análisis</span>
+      <ul class="model-features">
+        <li><code>get_usage_metrics</code></li>
+        <li><code>analyze_session</code></li>
+        <li><code>configure_cache</code></li>
+        <li><code>get_request</code></li>
+      </ul>
+    </div>
+    <div class="model-card gemini">
+      <span class="model-icon">📝</span>
+      <span class="model-name">Exportar</span>
+      <ul class="model-features">
+        <li><code>export_conversation</code></li>
+        <li><code>generate_abstract</code></li>
+        <li><code>search_requests</code></li>
+        <li><code>list_requests</code></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="code-context">
+    <div class="file-tab">📄 <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.vscode/mcp.json">.vscode/mcp.json</a></div>
+    <pre class="code-block"><code>"copilot-logs-mcp-server": {
+  "type": "http",
+  "url": "<span class="highlight-match">http://localhost:3100</span>"
+}</code></pre>
+  </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">→</span>
+    <span>Ver estructura de Snapshots</span>
+  </div>
+</div>
+
+<!-- ==========================================
+     SLIDE 6.3: SNAPSHOTS
+     Coordenadas: (14800, 700, 0)
+     ========================================== -->
+<div id="reflect-snapshots" class="step copilot-step" 
+     data-x="14800" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 6.3</span>
+    <span class="copilot-title">Snapshots: Memoria Persistente</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p>Los snapshots convierten conversaciones efímeras en <strong>conocimiento archivado</strong>. Estructura real del workspace:</p>
+  </div>
+  
+  <div class="tag-structure">
+    <div class="tag-card root">
+      <span class="tag-name"><a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/COPILOT_SNAPSHOTS">📁 COPILOT_SNAPSHOTS/</a></span>
+      <div class="tag-children">
+        <span class="tag-leaf">📄 INDEX.md</span>
+        <span class="tag-leaf">📄 ABSTRACT.md <em>(LLM-generated)</em></span>
+        <div class="tag-card">
+          <span class="tag-name">📁 {nombre-snapshot}/</span>
+          <div class="tag-children">
+            <span class="tag-leaf">requests.json</span>
+            <span class="tag-leaf">metadata.json</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="code-context">
+    <div class="file-tab">📸 Ejemplo de invocación</div>
+    <pre class="code-block"><code>mcp_copilot-logs-_capture_snapshot({
+  name: "<span class="highlight-match">analisis-copilot-engine</span>",
+  description: "Sesión de investigación",
+  linkedBacklog: "SCRIPT-1.31.0"
+})</code></pre>
+  </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">→</span>
+    <span>Ver Métricas de Salud</span>
+  </div>
+</div>
+
+<!-- ==========================================
+     SLIDE 6.4: MÉTRICAS
+     Coordenadas: (15600, 700, 0)
+     ========================================== -->
+<div id="reflect-metrics" class="step copilot-step" 
+     data-x="15600" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 6.4</span>
+    <span class="copilot-title">Métricas de Salud</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p><code>get_usage_metrics()</code> devuelve el estado de salud de la sesión actual:</p>
+  </div>
+  
+  <div class="interface-cards">
+    <div class="interface-card">
+      <span class="card-icon" style="font-size: 1.5rem;">72</span>
+      <span class="card-name">Health Score</span>
+      <span class="card-desc">✅ ≥70 Óptimo</span>
+    </div>
+    <div class="interface-card">
+      <span class="card-icon" style="font-size: 1.5rem;">28%</span>
+      <span class="card-name">Cache Hit</span>
+      <span class="card-desc">⚠️ &lt;30% Mejorar</span>
+    </div>
+    <div class="interface-card">
+      <span class="card-icon" style="font-size: 1.5rem;">4.2s</span>
+      <span class="card-name">Avg Response</span>
+      <span class="card-desc">✅ &lt;5s Rápido</span>
+    </div>
+  </div>
+  
+  <div class="model-comparison" style="margin-top: 1rem;">
+    <div class="model-card claude" style="flex: 1;">
+      <span class="model-icon">🔴</span>
+      <span class="model-name">Antipatrones</span>
+      <ul class="model-features">
+        <li><code>AP-01</code> Lecturas redundantes</li>
+        <li><code>AP-02</code> Diagnóstico por prueba y error</li>
+        <li><code>AP-03</code> Respuestas verbosas</li>
+        <li><code>AP-04</code> Exploración sin caché</li>
+      </ul>
+    </div>
+    <div class="model-card gpt" style="flex: 1;">
+      <span class="model-icon">✅</span>
+      <span class="model-name">Buenas Prácticas</span>
+      <ul class="model-features">
+        <li><code>BP-01</code> Consultar @indice primero</li>
+        <li><code>BP-02</code> Índices DRY estables</li>
+        <li><code>BP-03</code> Bloqueo preventivo</li>
+        <li><code>BP-04</code> Snapshots frecuentes</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">📖</span>
+    <span class="note-text">
+      Ver <a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md">auto-reflexion.instructions.md</a> para arquetipos completos.
+    </span>
+  </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">→</span>
+    <span>Ver el Bucle Completo</span>
+  </div>
+</div>
+
+<!-- ==========================================
+     SLIDE 6.5: BUCLE COMPLETO
+     Coordenadas: (16400, 700, 0)
+     ========================================== -->
+<div id="reflect-loop" class="step copilot-step" 
+     data-x="16400" 
+     data-y="700" 
+     data-z="0">
+  <div class="copilot-header">
+    <span class="copilot-phase">Fase 6.5</span>
+    <span class="copilot-title">El Bucle de Auto-Reflexión</span>
+  </div>
+  
+  <div class="copilot-explanation">
+    <p><em>"El sistema que documenta cómo piensa puede pensar mejor."</em></p>
+  </div>
+  
+  <div class="journey-preview">
+    <span class="journey-node">🗣️ Chat</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-node">📸 Snapshot</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-node">📁 ARCHIVO</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-node">🔍 Consultar</span>
+    <span class="journey-arrow">→</span>
+    <span class="journey-node current">🔄 Mejor Chat</span>
+  </div>
+  
+  <div class="model-comparison">
+    <div class="model-card claude">
+      <span class="model-icon">🐂</span>
+      <span class="model-name"><a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/agents/ox.agent.md">@ox</a></span>
+      <ul class="model-features">
+        <li>Auditoría técnica</li>
+        <li>Diagnóstico de gaps</li>
+        <li><code>analyze_session()</code></li>
+      </ul>
+    </div>
+    <div class="model-card gpt">
+      <span class="model-icon">📇</span>
+      <span class="model-name"><a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/agents/indice.agent.md">@indice</a></span>
+      <ul class="model-features">
+        <li>Navegación DRY</li>
+        <li>Funcional.md / Tecnico.md</li>
+        <li>Evitar lecturas redundantes</li>
+      </ul>
+    </div>
+    <div class="model-card gemini">
+      <span class="model-icon">📋</span>
+      <span class="model-name"><a href="https://github.com/escrivivir-co/aleph-scriptorium/blob/main/.github/plugins/scrum/agents/Scrum.agent.md">@scrum</a></span>
+      <ul class="model-features">
+        <li>Tracking de proceso</li>
+        <li>Snapshots de cierre</li>
+        <li>Backlog updates</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="scriptorium-note">
+    <span class="note-icon">⭐</span>
+    <span class="note-text">
+      <strong>Gobernanza Tripartita:</strong> Tres agentes coordinan la auto-reflexión. 
+      Cada snapshot enriquece las futuras sesiones.
+    </span>
+  </div>
+  
+  <div class="depth-hint">
+    <span class="arrow">↑</span>
+    <span>Volver a Output</span>
+  </div>
 </div>
 
 <!-- ==========================================
@@ -689,15 +1064,20 @@ class PromptRegistry {
         <span class="step-num">6</span>
         <span class="step-name">Output</span>
       </div>
+      <div class="journey-step reflection">
+        <span class="step-num">🔄</span>
+        <span class="step-name">Reflect</span>
+      </div>
     </div>
     
     <div class="key-insights">
       <h3>💡 Insights Clave</h3>
       <ul>
-        <li><strong>Tus instrucciones importan:</strong> Se suman al system message, no lo reemplazan</li>
-        <li><strong>El modelo importa:</strong> Claude y GPT reciben instrucciones diferentes</li>
+        <li><strong>Identidad vía LLM:</strong> Los agentes locales "son" a través del system message que les define</li>
+        <li><strong>Auto-psicoanálisis:</strong> Copilot Logs MCP permite que los agentes observen su propio comportamiento</li>
         <li><strong>El contexto importa:</strong> Los <code>applyTo</code> inyectan instrucciones según el archivo</li>
-        <li><strong>Navegación 3D:</strong> Usa ↑↓ para explorar detalles técnicos en cada fase</li>
+        <li><strong>Memoria persistente:</strong> Snapshots convierten conversaciones efímeras en conocimiento archivado</li>
+        <li><strong>Navegación 3D:</strong> Usa ↑↓ para explorar detalles técnicos. El subcubo Self-Reflection está en Y=700</li>
       </ul>
     </div>
     

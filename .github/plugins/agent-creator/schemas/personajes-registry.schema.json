@@ -1,0 +1,115 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Índice de Personajes Creados (Agent-Creator)",
+  "description": "Registro centralizado de metadatos para todos los personajes creados por Agent-Creator. Usado por protocolo de reconstrucción de contexto.",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Versión del schema",
+      "default": "1.0.0"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp de última actualización"
+    },
+    "indexed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp de último indexado automático"
+    },
+    "personajes": {
+      "type": "array",
+      "description": "Lista de personajes creados",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "agent_file", "origen", "sources"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identificador único (kebab-case)",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre largo del personaje (con emoji y rol)"
+          },
+          "agent_file": {
+            "type": "string",
+            "description": "Ruta al archivo principal del agente (from root)"
+          },
+          "origen": {
+            "type": "string",
+            "enum": ["agent-creator", "manual"],
+            "description": "Cómo fue creado el personaje"
+          },
+          "sources": {
+            "type": "object",
+            "description": "Fuentes de conocimiento disponibles",
+            "properties": {
+              "brain_prolog": {
+                "type": "object",
+                "properties": {
+                  "exists": {"type": "boolean"},
+                  "file": {"type": "string"},
+                  "pack": {"type": "string"},
+                  "predicates": {"type": "integer"},
+                  "size_kb": {"type": "number"}
+                }
+              },
+              "templates_index": {
+                "type": "object",
+                "properties": {
+                  "exists": {"type": "boolean"},
+                  "file": {"type": "string"},
+                  "count": {"type": "integer"},
+                  "categories": {"type": "array", "items": {"type": "string"}},
+                  "size_kb": {"type": "number"}
+                }
+              },
+              "fia": {
+                "type": "object",
+                "properties": {
+                  "exists": {"type": "boolean"},
+                  "reason": {"type": "string"}
+                }
+              },
+              "blockly": {
+                "type": "object",
+                "properties": {
+                  "exists": {"type": "boolean"},
+                  "reason": {"type": "string"}
+                }
+              },
+              "teatro_roles": {
+                "type": "object",
+                "properties": {
+                  "exists": {"type": "boolean"},
+                  "obras": {"type": "array", "items": {"type": "string"}},
+                  "estadio_preferido": {"type": "integer"}
+                }
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "created_at": {"type": "string", "format": "date-time"},
+              "last_used_in_session": {"type": "string", "format": "date-time"},
+              "complexity": {
+                "type": "string",
+                "enum": ["simple", "medium", "complex"]
+              },
+              "recommended_for": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Casos de uso recomendados"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

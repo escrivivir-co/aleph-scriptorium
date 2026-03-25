@@ -1,0 +1,13 @@
+{
+  "id": "2026-01-01_21-10_test-2",
+  "name": "TEST 2",
+  "description": "Viendo si va",
+  "createdAt": "2026-01-01T20:10:49.009Z",
+  "requestCount": 1,
+  "models": [],
+  "linkedBacklog": "FEATURE-SNAPSHOTS-1.0.0",
+  "totalTokens": {
+    "prompt": 0,
+    "completion": 0
+  }
+}

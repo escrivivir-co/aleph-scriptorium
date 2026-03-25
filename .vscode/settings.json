@@ -16,6 +16,8 @@
 	// Por defecto, VS Code solo detecta .github/prompts/
 	"chat.promptFilesLocations": {
 		".github/prompts": true,
+		// --- Core plugins ---
+		".github/plugins/scriptorium-pack/prompts": true,
 		".github/plugins/arg-board/prompts": true,
 		".github/plugins/agent-creator/prompts": true,
 		".github/plugins/teatro/prompts": true,
@@ -24,16 +26,27 @@
 		".github/plugins/enciclopedia/prompts": true,
 		".github/plugins/gh-pages/prompts": true,
 		".github/plugins/mcp-presets/prompts": true,
-		".github/plugins/typed-prompting/prompts": false,
-		".github/plugins/n8n-editor/prompts": false,
-		".github/plugins/flove-editor/prompts": false,
-		".github/plugins/scriptorium-pack/prompts": true
+		".github/plugins/openasyncapi-editor/prompts": true,
+		// --- Editor plugins ---
+		".github/plugins/prolog-editor/prompts": true,
+		".github/plugins/blockly-editor/prompts": true,
+		".github/plugins/wire-editor/prompts": true,
+		".github/plugins/hypergraph-editor/prompts": true,
+		".github/plugins/flove-editor/prompts": true,
+		".github/plugins/n8n-editor/prompts": true,
+		".github/plugins/typed-prompting/prompts": true,
+		// --- App plugins ---
+		".github/plugins/arg-board-app/prompts": true,
+		".github/plugins/wiring-app/prompts": true,
+		".github/plugins/novelist/prompts": true,
+		".github/plugins/network/prompts": true
 	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
 	// Por defecto, VS Code solo detecta .github/instructions/
 	"chat.instructionsFilesLocations": {
 		".github/instructions": true,
+		// --- Core plugins ---
 		".github/plugins/scriptorium-pack/instructions": true,
 		".github/plugins/arg-board/instructions": true,
 		".github/plugins/agent-creator/instructions": true,
@@ -43,9 +56,20 @@
 		".github/plugins/enciclopedia/instructions": true,
 		".github/plugins/gh-pages/instructions": true,
 		".github/plugins/mcp-presets/instructions": true,
-		".github/plugins/typed-prompting/instructions": false,
-		".github/plugins/n8n-editor/instructions": false,
-		".github/plugins/flove-editor/instructions": false
+		".github/plugins/openasyncapi-editor/instructions": true,
+		// --- Editor plugins ---
+		".github/plugins/prolog-editor/instructions": true,
+		".github/plugins/blockly-editor/instructions": true,
+		".github/plugins/wire-editor/instructions": true,
+		".github/plugins/hypergraph-editor/instructions": true,
+		".github/plugins/flove-editor/instructions": true,
+		".github/plugins/n8n-editor/instructions": true,
+		".github/plugins/typed-prompting/instructions": true,
+		// --- App plugins ---
+		".github/plugins/arg-board-app/instructions": true,
+		".github/plugins/wiring-app/instructions": true,
+		".github/plugins/novelist/instructions": true,
+		".github/plugins/network/instructions": true
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas

@@ -1,7 +1,7 @@
 # Fichas Detalladas — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX_ABSTRACT.md`  
-> **Actualizado**: 2025-12-30  
+> **Actualizado**: 2026-01-03  
 > **Propósito**: Fichas con abstract, palabras clave, titulares e ideas fuerza de cada borrador  
 > **Navegación rápida**: → [INDEX.md](INDEX.md)
 
@@ -1044,3 +1044,33 @@ prolog, iot, sbr, logica, aferencia, eferencia, sensores, actuadores, mqtt, inte
 - [04_referencias_enciclopedia.md — Referencias Enciclopedia](IOT-SBR-LOGICA/04_referencias_enciclopedia.md)
 - [05_peticion_referencias.md — Petición Referencias](IOT-SBR-LOGICA/05_peticion_referencias.md)
 - [06_carpeta_enciclopedia.md — Carpeta Enciclopedia](IOT-SBR-LOGICA/06_carpeta_enciclopedia.md)
+
+## Enero_02_OpenAsyncApiEditor
+
+**Abstract**
+
+**Fecha**: 2026-01-02 — **Sprint**: FC1 — **Épica**: PLUGIN-OPENASYNCAPI-1.0.0 — **Estado**: ✅ Completada
+
+Plugin para gestionar el catálogo de especificaciones OpenAPI y AsyncAPI del Scriptorium. Incluye catalogación centralizada, guías de instalación de UIs (Swagger, AsyncAPI Studio) y generación de código cliente/servidor.
+
+**Palabras clave**
+
+openapi, asyncapi, editor, plugin, swagger, catalog, codegen, api
+
+**Titulares**
+
+- PLUGIN-OPENASYNCAPI-1.0.0: OpenAsyncAPI Editor Plugin
+- Catálogo centralizado de especificaciones API
+- Generación de código desde specs
+- Guías de instalación de UIs locales
+
+**Ideas fuerza**
+
+- **Documentación unificada**: Todas las APIs del ecosistema en un catálogo
+- **Onboarding acelerado**: Guías paso a paso para UIs locales
+- **Automatización**: Generación de código desde specs
+- **Consistencia**: Validación centralizada
+
+**Archivos**
+
+- [01_backlog-borrador.md — Épica: OpenAsyncAPI Editor Plugin](Enero_02_OpenAsyncApiEditor/01_backlog-borrador.md)

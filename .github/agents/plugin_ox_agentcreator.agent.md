@@ -32,6 +32,10 @@ handoffs:
     agent: plugin_ox_agentcreator
     prompt: Lista todos los agentes creados con sus fuentes y despliegues en ARG.
     send: false
+  - label: "[AgentLoreSDK] Añadir plantillas a agente"
+    agent: plugin_ox_agentcreator
+    prompt: "PROTOCOLO: Usa editar-agente.prompt.md para conectar plantillas de AgentLoreSDK como FUENTES DE DATOS, NO embeber contenido."
+    send: false
 ---
 
 # Plugin Ox: Agent Creator
@@ -40,6 +44,117 @@ handoffs:
 
 > Agente bridge que conecta VS Code con `.github/plugins/agent-creator/agents/`.
 > El plugin Agent Creator crea agentes especializados combinando agentes base con fuentes de datos.
+
+---
+
+## ⚠️ PROTOCOLO: Agregar Plantillas de AgentLoreSDK
+
+> **IMPORTANTE**: Las plantillas de AgentLoreSDK son **FUENTES DE DATOS**, no contenido para copiar/pegar.
+
+### ❌ MAL (Anti-patrón)
+
+```markdown
+## Capacidades Literarias (Nuevas)
+
+### 1. Technical Writer
+**Capacidades:**
+- Redactar guías paso a paso...
+- Crear tutoriales...
+[copiando contenido de la plantilla]
+```
+
+**Por qué está mal:**
+- Viola DRY (duplica contenido)
+- No usa el sistema de recetas
+- No permite actualización automática
+- Bloat innecesario en el agente
+
+### ✅ BIEN (Protocolo correcto)
+
+**Paso 1: Detección Proactiva DRY**
+```
+1. Leer `.github/plugins/agent-creator/index/catalog.json`
+2. Detectar categorías relevantes según keywords del usuario
+3. MOSTRAR opciones (no preguntar "¿quieres ver?")
+```
+
+**Paso 2: Usuario elige**
+```
+💡 Tengo plantillas de AgentLoreSDK relevantes:
+
+| # | Categoría | Items | Dominio |
+|---|-----------|-------|---------|
+| 1 | documentation | 4 | Escritura técnica |
+| 2 | podcast-creator-team | 11 | Investigación, copywriting |
+
+¿Cuáles exploramos? (1/2/skip)
+```
+
+**Paso 3: Conectar como FUENTE (no embeber)**
+```yaml
+# En la receta del agente (recipes/{agente}.recipe.json):
+{
+  "fuentes_datos": [
+    {
+      "tipo": "agentlore_template",
+      "categoria": "documentation",
+      "plantillas": ["technical-writer"],
+      "ruta_base": "AgentLoreSDK/cli-tool/components/agents/documentation/"
+    }
+  ]
+}
+```
+
+**Paso 4: Referencia DRY en el agente**
+```markdown
+## Plantillas Conectadas (AgentLoreSDK)
+
+| Plantilla | Ruta | Uso |
+|-----------|------|-----|
+| technical-writer | `AgentLoreSDK/.../documentation/technical-writer.md` | Redacción clara |
+
+> **Carga bajo demanda**: Usar handoff "[Templates] Cargar plantilla por ID"
+```
+
+---
+
+## Flujo Completo: Añadir Plantillas
+
+```
+Usuario: "Quiero añadir plantillas de escritura a Lucas"
+           │
+           ▼
+┌──────────────────────────────────────────────────────────┐
+│ 1. DETECTAR (catalog.json)                               │
+│    Keywords: "escritura", "literatura" → documentation,  │
+│              podcast-creator-team                        │
+└──────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌──────────────────────────────────────────────────────────┐
+│ 2. MOSTRAR PROACTIVAMENTE (no preguntar)                 │
+│    "Tengo 4 plantillas en documentation, 11 en podcast"  │
+└──────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌──────────────────────────────────────────────────────────┐
+│ 3. USUARIO ELIGE (1/2/skip o plantillas específicas)     │
+└──────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌──────────────────────────────────────────────────────────┐
+│ 4. ACTUALIZAR RECETA (recipes/lucas.recipe.json)         │
+│    Añadir fuentes_datos con tipo "agentlore_template"    │
+└──────────────────────────────────────────────────────────┘
+           │
+           ▼
+┌──────────────────────────────────────────────────────────┐
+│ 5. ACTUALIZAR AGENTE (solo referencias DRY)              │
+│    - Tabla de plantillas conectadas                      │
+│    - Handoffs para cargar bajo demanda                   │
+│    - NO copiar contenido de plantillas                   │
+└──────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -56,6 +171,7 @@ handoffs:
 | Nombre | Base | Fuente | Despliegue ARG |
 |--------|------|--------|----------------|
 | `tarotista` | @yellowflag | `DISCO/Foro_t8941392/` | hola_mundo/tarotista |
+| `lucas` | @aleph + @ox | `ARCHIVO/DEVOPS/` | itaca-digital/mentor |
 
 ---
 
@@ -65,6 +181,7 @@ handoffs:
 - **Editar**: Añade conocimiento a agentes existentes
 - **Fusionar**: Combina múltiples agentes
 - **Desplegar**: Convierte agentes en personajes ARG
+- **Conectar plantillas**: AgentLoreSDK como fuentes (NO embeber)
 
 ---
 
@@ -74,6 +191,7 @@ handoffs:
 |--------|-------------|
 | **FORO-SCRAPER** | Solicitar scraping de fuentes adicionales |
 | **ARG-BOARD** | Desplegar agentes como personajes en obras |
+| **AgentLoreSDK** | Plantillas como fuentes de datos (catalog.json) |
 
 ---
 
@@ -83,3 +201,6 @@ handoffs:
 - **Agentes**: `.github/plugins/agent-creator/agents/`
 - **Agentes creados**: `ARCHIVO/PLUGINS/AGENT_CREATOR/agents/created/`
 - **Recetas**: `ARCHIVO/PLUGINS/AGENT_CREATOR/recipes/`
+- **Catálogo AgentLoreSDK**: `.github/plugins/agent-creator/index/catalog.json`
+- **Prompt crear**: `.github/plugins/agent-creator/prompts/crear-agente.prompt.md`
+- **Prompt editar**: `.github/plugins/agent-creator/prompts/editar-agente.prompt.md`

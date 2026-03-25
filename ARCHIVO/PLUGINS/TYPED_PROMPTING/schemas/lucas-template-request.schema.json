@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aleph-scriptorium.github.io/schemas/lucas-template-request.schema.json",
+  "title": "Lucas Template Request",
+  "description": "Schema para requests de carga de plantillas AgentLoreSDK vía Lucas",
+  "type": "object",
+  "required": ["intent"],
+  "properties": {
+    "intent": {
+      "type": "string",
+      "enum": [
+        "listar_plantillas",
+        "recomendar_plantilla",
+        "cargar_plantilla",
+        "buscar_por_contexto"
+      ],
+      "description": "Tipo de operación sobre plantillas"
+    },
+    "categoria": {
+      "type": "string",
+      "enum": ["documentation", "project-management"],
+      "description": "Categoría de plantilla (requerido para listar_plantillas)"
+    },
+    "contexto": {
+      "type": "string",
+      "enum": ["scrum_daily", "documentation", "planning"],
+      "description": "Contexto de trabajo para recomendación (requerido para recomendar_plantilla)"
+    },
+    "plantilla_id": {
+      "type": "string",
+      "description": "ID de plantilla a cargar (requerido para cargar_plantilla)",
+      "examples": ["technical-writer", "milestone-tracker", "pac-create-epic"]
+    },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Keywords para búsqueda por contexto"
+    },
+    "sessionId": {
+      "type": "string",
+      "default": "lucas-session",
+      "description": "ID de sesión Prolog"
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "intent": { "const": "listar_plantillas" } } },
+      "then": { "required": ["categoria"] }
+    },
+    {
+      "if": { "properties": { "intent": { "const": "recomendar_plantilla" } } },
+      "then": { "required": ["contexto"] }
+    },
+    {
+      "if": { "properties": { "intent": { "const": "cargar_plantilla" } } },
+      "then": { "required": ["plantilla_id"] }
+    }
+  ]
+}

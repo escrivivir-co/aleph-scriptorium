@@ -1,11 +1,16 @@
 source "https://rubygems.org"
 
-# Configuración para Ruby 3.0.1+ (via rbenv)
+# Configuración para Ruby 3.0.1+ (via rbenv o RubyInstaller)
 ruby ">= 3.0.0"
 
 gem "jekyll", "~> 4.3.0"
 gem "jekyll-seo-tag", "~> 2.8"
 gem "webrick", "~> 1.8"
+
+# Gemas requeridas para Ruby 3.4+ (ya no son default gems)
+gem "csv"
+gem "logger"
+gem "base64"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"

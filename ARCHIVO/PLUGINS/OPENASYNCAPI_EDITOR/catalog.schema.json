@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OpenAsyncAPI Catalog Schema",
+  "description": "Schema for the API specifications catalog",
+  "type": "object",
+  "required": ["version", "updated_at", "specs"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "specs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Spec"
+      }
+    }
+  },
+  "definitions": {
+    "Spec": {
+      "type": "object",
+      "required": ["id", "project", "type", "spec_version", "api_version", "title", "origin", "status", "cataloged_at"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Unique identifier in kebab-case"
+        },
+        "project": {
+          "type": "string",
+          "description": "Source project name"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["openapi", "asyncapi"],
+          "description": "Specification type"
+        },
+        "spec_version": {
+          "type": "string",
+          "description": "Version of the spec format (e.g., 3.1.0 for OpenAPI)"
+        },
+        "api_version": {
+          "type": "string",
+          "description": "Version of the API itself"
+        },
+        "title": {
+          "type": "string",
+          "description": "API title from spec"
+        },
+        "description": {
+          "type": "string",
+          "description": "API description"
+        },
+        "origin": {
+          "type": "string",
+          "description": "Original path in repository"
+        },
+        "local": {
+          "type": ["string", "null"],
+          "description": "Local copy path in plugin data directory"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["draft", "validated", "deprecated", "error"],
+          "description": "Validation status"
+        },
+        "cataloged_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "validated_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Descriptive tags for filtering"
+        }
+      }
+    }
+  }
+}

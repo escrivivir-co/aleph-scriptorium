@@ -1,14 +1,77 @@
 ---
 name: WiringApp Context
 description: "Contexto y reglas para el plugin WiringApp (flows tipo wiki-racer)"
-applyTo: "ARCHIVO/PLUGINS/WIRING_APP/**/*.json, wiki-racer/**/*"
+applyTo: "ARCHIVO/PLUGINS/WIRING_APP/**/*.json, WiringAppHypergraphEditor/**/*"
 ---
 
 # Instrucciones: WiringApp
 
+> **Fuente de verdad**: `ARCHIVO/PLUGINS/WIRING_APP/` y `WiringAppHypergraphEditor/`
+> **Submódulo**: `WiringAppHypergraphEditor` (wiki-racer)
+> **Dependencia**: `wire-editor` (primero setup Node-RED)
+
 ## Contexto
 
 WiringApp extiende WireEditor con templates y patrones para flows de juegos de navegación, usando wiki-racer como ejemplo canónico.
+
+---
+
+## Fases de Trabajo del Agente
+
+El agente @wiring-app complementa a @wire-editor:
+
+### Fase 1: Prerequisitos
+
+| Handoff | Descripción |
+|---------|-------------|
+| `@wiring-app verificar wire-editor` | Confirma que Node-RED está instalado |
+| `@wiring-app instalar wiki-racer` | Instala nodo game |
+
+**Instalación del nodo wiki-racer**:
+```bash
+cd ~/.node-red
+npm install /path/to/WiringAppHypergraphEditor/node-red-contrib-wikir-racer
+```
+
+### Fase 2: Templates
+
+| Handoff | Descripción |
+|---------|-------------|
+| `@wiring-app cargar template` | Importa flow.json de wiki-racer |
+| `@wiring-app listar templates` | Muestra templates disponibles |
+
+### Fase 3: Edición
+
+| Handoff | Descripción |
+|---------|-------------|
+| `@wiring-app crear juego {nombre}` | Nuevo flow basado en template |
+| `@wiring-app modificar estados` | Edita máquina de estados |
+
+### Fase 4: Ejecución
+
+| Handoff | Descripción |
+|---------|-------------|
+| `@wiring-app iniciar partida` | Despliega y ejecuta flow |
+| `@wiring-app abrir dashboard` | Abre UI del juego en 1880/ui |
+
+---
+
+## Estructura del Submódulo
+
+```
+WiringAppHypergraphEditor/
+├── node-red-contrib-wikir-racer/   # Nodo para Node-RED
+│   ├── flow.json                   # Template completo (1680 líneas)
+│   ├── game.js                     # Implementación del nodo
+│   ├── game.html                   # UI del nodo en editor
+│   └── package.json                # Registro del nodo
+├── src/                            # Motor lógica FIA
+│   ├── estado.ts                   # Máquina de estados
+│   └── index.ts                    # Entry point
+└── CRIPTA/                         # Datos persistidos de partidas
+```
+
+---
 
 ## Estructura del Flow Wiki-Racer
 

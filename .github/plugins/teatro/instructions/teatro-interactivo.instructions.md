@@ -129,6 +129,85 @@ La visualización 3D organiza los 12 estadios en 4 anillos concéntricos:
 
 ---
 
+## Integración con MCP Prolog (TEATRO-PROLOG-1.0.0)
+
+> **Épica**: TEATRO-PROLOG-1.0.0 (FC1)
+
+Las obras pueden incluir **packs Prolog** que definen el comportamiento lógico de sus personajes.
+
+### Propiedad mcpPacks en YAML de Obra
+
+```yaml
+id: itaca_digital
+titulo: "Ítaca Digital"
+# ... otros campos ...
+
+# Integración Prolog (opcional)
+mcpPacks:
+  - ObraItacaDigital    # Referencia a pack en ARCHIVO/PLUGINS/TEATRO/packs/
+```
+
+### Schema de Pack
+
+Los packs siguen el schema `obra-pack.schema.json`:
+
+```json
+{
+  "id": "ObraItacaDigital",
+  "version": "1.0.0",
+  "obraId": "itaca_digital",
+  "mcpServer": "prolog-mcp-server",
+  "personajes": [
+    {
+      "name": "lucas",
+      "brainFile": "brains/lucas.brain.pl",
+      "agentRef": "@indice"
+    }
+  ]
+}
+```
+
+### Flujo de Ejecución con Prolog
+
+```
+1. Teatro.ejecutar(obra_id)
+   │
+2. Cargar mcpPacks declarados
+   │
+3. Para cada personaje con brainFile:
+   │   └── prolog_consult_file(brainFile)
+   │
+4. En cada turno/estadio:
+   │   └── prolog_query("decidir_accion(personaje, A)")
+   │
+5. Acción retornada → Teatro ejecuta handoff correspondiente
+```
+
+### Prompt MCP: teatro_agent_session
+
+El prompt `teatro_agent_session` en MCPPrologServer orquesta el workflow completo:
+
+```
+@mcp teatro_agent_session obraId=itaca_digital agentName=lucas
+```
+
+Este prompt:
+1. Crea/reutiliza sesión Prolog
+2. Carga cerebro del personaje
+3. Ejecuta query de decisión
+4. Retorna acción recomendada
+
+### Ubicaciones de Archivos
+
+| Recurso | Ubicación |
+|---------|-----------|
+| Schema de pack | `ARCHIVO/PLUGINS/TEATRO/schemas/obra-pack.schema.json` |
+| Packs de obra | `ARCHIVO/PLUGINS/TEATRO/packs/*.pack.json` |
+| Cerebros Prolog | `ARCHIVO/PLUGINS/TEATRO/packs/brains/*.brain.pl` |
+| Template cerebro | `ARCHIVO/PLUGINS/AGENT_CREATOR/templates/brain.pl.template` |
+
+---
+
 ## Integración con ARG_BOARD
 
 ### Estados de Obra
@@ -179,6 +258,71 @@ Cuando el personaje_guia de una obra no existe en actores.json, Teatro invoca AG
 3. AGENT_CREATOR genera receta y agente
 4. Teatro registra actor en actores.json
 5. Continúa instalación de obra
+
+---
+
+## Integración con AgentLoreSDK (Plantillas)
+
+> **Épica**: AGENT-TEMPLATES-1.0.0
+
+Los personajes pueden tener **plantillas AgentLoreSDK** asignadas para carga bajo demanda.
+
+### Configuración en obras.json
+
+Cuando un actor tiene plantillas, se declara en `actores_config`:
+
+```json
+{
+  "actores": ["lucas", "tarotista"],
+  "actores_config": {
+    "lucas": {
+      "templates_enabled": true,
+      "templates_index": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/templates-index.json",
+      "templates_categories": ["documentation", "project-management"],
+      "brain_file": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl"
+    }
+  }
+}
+```
+
+### Flujo de Carga de Plantillas
+
+```
+1. Teatro.ejecutar(obra_id, escena_id)
+   │
+2. Verificar actores de la escena
+   │
+3. Para cada actor con templates_enabled:
+   │   └── Cargar templates_index.json en sesión Prolog
+   │
+4. Query de contexto:
+   │   └── prolog_query("plantilla_recomendada(Contexto, P)")
+   │
+5. Si hay plantilla recomendada:
+   │   └── prolog_query("cargar_plantilla(P, Ruta)")
+   │   └── read_file(Ruta) → Contenido de plantilla
+   │
+6. Actor usa contenido para su acción
+```
+
+### TypedPrompt Schemas para Plantillas
+
+| Schema | Uso |
+|--------|-----|
+| `lucas-template-request.schema.json` | Request de carga de plantilla |
+| `lucas-template-response.schema.json` | Response con plantilla cargada |
+
+### Ubicación de Índices por Personaje
+
+| Personaje | Índice de Plantillas |
+|-----------|---------------------|
+| Lucas | `ARCHIVO/DISCO/TALLER/ELENCO/lucas/templates-index.json` |
+
+### Catálogo Global
+
+El catálogo global de AgentLoreSDK está en:
+- **Índice**: `.github/plugins/agent-creator/index/catalog.json`
+- **Submódulo**: `AgentLoreSDK/cli-tool/components/`
 
 ---
 

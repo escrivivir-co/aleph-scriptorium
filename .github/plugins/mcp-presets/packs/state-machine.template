@@ -1,0 +1,7 @@
+{
+  "name": "state-machine",
+  "description": "Finite state machine skeleton with transition/3, state/1 and guardable next_state/3.",
+  "files": ["app.pl"],
+  "exports": ["state/1", "start_state/1", "final_state/1", "transition/3", "can_transition/3", "next_state/3"],
+  "main": "state-machine"
+}

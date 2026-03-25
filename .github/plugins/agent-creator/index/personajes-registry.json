@@ -1,0 +1,50 @@
+{
+  "$schema": ".github/plugins/agent-creator/schemas/personajes-registry.schema.json",
+  "version": "1.0.0",
+  "updated_at": "2026-01-05T12:00:00Z",
+  "indexed_at": "2026-01-05T12:00:00Z",
+  "description": "Registro de personajes creados por Agent-Creator. Actualizado automáticamente por scripts/sync-personajes-registry.sh",
+  "personajes": [
+    {
+      "id": "lucas",
+      "nombre": "Lucas — Scrum Master del Índice",
+      "agent_file": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas.agent.md",
+      "origen": "agent-creator",
+      "sources": {
+        "brain_prolog": {
+          "exists": true,
+          "file": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/lucas-prolog.brain.pl",
+          "pack": "AgentPrologBrain v1.0.0",
+          "predicates": 50,
+          "size_kb": 12
+        },
+        "templates_index": {
+          "exists": true,
+          "file": "ARCHIVO/DISCO/TALLER/ELENCO/lucas/templates-index.json",
+          "count": 12,
+          "categories": ["documentation", "project-management"],
+          "size_kb": 5
+        },
+        "fia": {
+          "exists": false,
+          "reason": "No definida aún"
+        },
+        "blockly": {
+          "exists": false,
+          "reason": "No definida aún"
+        },
+        "teatro_roles": {
+          "exists": true,
+          "obras": ["hola-mundo", "camino-tarotista", "itaca-digital"],
+          "estadio_preferido": 11
+        }
+      },
+      "meta": {
+        "created_at": "2026-01-03T00:00:00Z",
+        "last_used_in_session": "2026-01-05T10:00:00Z",
+        "complexity": "medium",
+        "recommended_for": ["scrum", "coherencia", "teatro", "validacion"]
+      }
+    }
+  ]
+}

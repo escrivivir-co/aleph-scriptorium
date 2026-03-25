@@ -1,15 +1,16 @@
 # Backlog — Aleph Scriptorium
 
 > **Opportunity**: Aleph Scriptorium  
-> **Versión**: 1.2.3-dry  
-> **Sprint actual**: PRE  
-> **Actualizado**: 2026-01-01
-
+> **Versión**: 1.2.5-dry  
+> **Sprint actual**: FC1  "flavour/monada"
+> **Actualizado**: 2026-01-05
+> **Rama en ALEPH (esta codebase)**: flavour/monada
+> **Rama en submodulos (de esta codebase)**: integration/beta/scriptorium
 ---
 
 ## CICLOS de FEATURES
 - PRE	- diciembre 25
-- FC1  - trimestre 1 2026
+- FC1  - trimestre 1 2026 <------
 - FC2  - trimestre 2 2026
 - FC3  - trimestre 3 2026
 - FC4  - trimestre 4 2026
@@ -23,24 +24,43 @@
 
 ---
 
-## Sprint Activo: PRE
+## Sprint Activo: FC1
+
+| Estado | Épica | Nombre | Referencia |
+|--------|-------|--------|------------|
+| ✅ | SCRIPT-2.2.0 | Model Selector para Generate Abstract | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_ModelSelector_GenerateAbstract/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.3.0 | Prolog MCP Server Integration (FC1 ✅) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologMCPServer/01_backlog-borrador.md) |
+| ✅ | SCRIPT-2.3.1 | PrologAgent Pack (AGENT_CREATOR + TypedPrompting) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/01_backlog-borrador.md) |
+| ✅ | PROLOG-API-1.0.0 | PrologEditor API Contracts (OpenAPI/AsyncAPI) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologEditor_API_Contracts/01_backlog-borrador.md) |
+| ✅ | PLUGIN-OPENASYNCAPI-1.0.0 | OpenAsyncAPI Editor Plugin | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_OpenAsyncApiEditor/01_backlog-borrador.md) |
+| ✅ | PROLOG-CLIENT-GEN-1.0.0 | OpenAPI Client Gen para MCPPrologServer | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/03_backlog-openapi-client-gen.md) |
+| ✅ | PROLOG-PROMPTS-1.0.0 | MCP Prompts Completion (8 prompts + 3 resources) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/04_backlog-prompts-completion.md) |
+| ✅ | PROLOG-UI-2.0.0 | PrologEditor UI Refactor (7/7 tools) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/02_backlog-ui-refactor.md) |
+| ✅ | PROLOG-DRY-1.0.0 | Tipado DRY completo (12/12 frontend) | [guía](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/guia-arquitectura-mcp-stack.md) |
+| ✅ | TEATRO-PROLOG-1.0.0 | Integración Teatro + Prolog (13 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/05_backlog-teatro-prolog-integration.md) |
+| ✅ | COWORK-1.0.0 | Tablero para Cotrabajo Multi-Agente (21 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/01_backlog-borrador.md) |
+| ✅ | DRAMATURGIA-MAQUINA-1.0.0 | Scriptorium como Máquina (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
+| ✅ | TYPED-MCP-1.0.0 | MCPTypedPromptEditor Refactor (34 pts) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/TYPED_PROMPTING/04_backlog-mcp-refactor.md) |
+| ✅ | BLUEPRINTS-TYPED-1.0.0 | TypedPrompt + OpenAsyncAPI docs showcase (22 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
+| ✅ | AGENT-TEMPLATES-1.0.0 | AgentLoreSDK Templates en Agent Creator (13 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| ✅ | SCRUM-REFACTOR-1.0.0 | Plugin Scrum: Modelo Generativo + Lucas DRY (46 pts) ⚠️ BREAKING | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/SCRUM_REFACTOR/01_backlog-borrador.md) |
+| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
+
+---
+
+## Sprint Cerrado: PRE
 
 | Estado | Épica | Nombre | Referencia |
 |--------|-------|--------|------------|
 | ✅ | SCRIPT-2.1.0 | TypedPrompting Context Manager | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_29_TypedPrompting_ContextManager/01_backlog-borrador.md) |
 | ✅ | SCRIPT-2.1.1 | Copilot Log Exporter MCP | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_30_CopilotLogExporter/01_backlog-borrador.md) |
 | ✅ | SCRIPT-1.31.0 | CopilotEngine Analysis | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/COPILOT_ENGINE/01_backlog-borrador.md) |
-| 📋 | RELEASE-1.0.0-beta.1 | Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-release-party.md) |
 | ✅ | DEMO-1.0.0 | Demo Screens Hackathon | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/01_backlog-borrador.md) |
 | 🟢 | IOT-SBR-LOGICA | PrologEditor: Inteligencias Situadas | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) |
 | 📋 | SCRIPT-2.2.0 | Agentic Typed Logic Flow | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) |
-
----
-
-## Sprint Cerrado: <-->
-
-| Estado | Épica | Nombre | Referencia |
-|--------|-------|--------|------------|
+| ✅ | FEATURE-SNAPSHOTS-1.0.0 | Copilot Logs Snapshot System | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/01_backlog-borrador.md) |
+| ✅ | SCRIPT-1.29.0 | Auto-Reflexión: Gobernanza Tripartita | [instrucción](../plugins/scriptorium-pack/instructions/auto-reflexion.instructions.md) |
+| 📋 | SCRIPT-1.32.0 | Blueprint Refinement para Release Party | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_Blueprint_Refinement/01_backlog-borrador.md) |
 
 ---
 
@@ -48,6 +68,10 @@
 
 | Épica | Nombre | Referencia |
 |-------|--------|------------|
+| LAUNCHER-BUG-001 | MCPLauncher Process Kill Failure (Windows spawn) | [borrador](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_04_MCPLauncher_ProcessKill_Bug/01_backlog-borrador.md) |
+| PROLOG-BUG-001 | Session Isolation (assert_fact sin sessionId) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
+| PROLOG-BUG-002 | MCP Templates 404 (catalog OK, content fails) | [acta-ox-final](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/02_ACTAS/acta-ox-final.md) |
+
 
 ---
 
@@ -62,6 +86,10 @@
 | [RELEASE_PARTY](../ARCHIVO/DISCO/BACKLOG_BORRADORES/RELEASE_PARTY/) | Release Party v1.0.0-beta.1 (incl. Demo) | 📋 Activo |
 | [IOT-SBR-LOGICA](../ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/) | PrologEditor + Inteligencias Situadas | 🟢 Investigado |
 | [Diciembre_31_Test_0x_Destilacion](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_31_Test_0x_Destilacion/) | Agentic Typed Logic Flow | 📝 Blueprint |
+| [Enero_2026_LogicaAgentes](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_LogicaAgentes/) | IOT-SBR + SCRIPT-2.2.0: Conversaciones | 📋 Activo |
+| [Enero_02_PrologAgentPack](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_02_PrologAgentPack/) | PrologAgent Pack: AGENT_CREATOR + TypedPrompting | ✅ Completado |
+| [Enero_03_Tablero_Cotrabajo](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_03_Tablero_Cotrabajo/) | Tablero para Cotrabajo Multi-Agente | ✅ Completado |
+| [Enero_2026_CopilotLogsMCP_Bug](../ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_2026_CopilotLogsMCP_Bug/) | Copilot Logs Snapshot System | 🟢 Aprobado |
 
 → Para índice completo: [BACKLOG_BORRADORES/INDEX.md](../ARCHIVO/DISCO/BACKLOG_BORRADORES/INDEX.md)
 
@@ -76,14 +104,33 @@
 
 ---
 
+## Sesiones de Cotrabajo
+
+> **Protocolo DRY**: Las sesiones de cotrabajo son épicas de trabajo colaborativo multi-agente.  
+> Solo se registran referencias. El contenido vive en `ARCHIVO/DISCO/SESIONES_COTRABAJO/`.
+
+| Estado | Sesión | Épica | Resultado | Referencia |
+|--------|--------|-------|-----------|------------|
+| ✅ | 2026-01-03_prolog-agent-brain-pack-refinement | COWORK-1.0.0 | Protocolo validado, 15 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-agent-brain-pack-refinement/) |
+| ✅ | 2026-01-03_prolog-e2e-testing | PROLOG-E2E-1.0.0 | E2E 88.5% (23/26), 16 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-03_prolog-e2e-testing/) |
+| ✅ | 2026-01-04_demo-ui-prologeditor | PROLOG-UI-DEMO-1.0.0 | Demo 12/12 pasos, 2 bugs detectados | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_demo-ui-prologeditor/) |
+| ✅ | 2026-01-04_dramaturgia-scriptorium-maquina | DRAMATURGIA-MAQUINA-1.0.0 | Backlog 13 pts (5 stories, 13 tasks), 6 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_dramaturgia-scriptorium-maquina/) |
+| ✅ | 2026-01-04_typed-mcp-test-session | TYPED-MCP-1.0.0 | Tests 83% (5/6 auto), 8 turnos | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_typed-mcp-test-session/) |
+| 🟢 | 2026-01-05_blueprints-typed-prompt | BLUEPRINTS-TYPED-1.0.0 | En progreso | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_blueprints-typed-prompt/) |
+| ✅ | 2026-01-04_agent-creator-claude-templates | AGENT-TEMPLATES-1.0.0 | 8 turnos, protocolo validación inscrito | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-04_agent-creator-claude-templates/) |
+| ✅ | 2026-01-05_consenso-agile-scriptorium | SCRUM-REFACTOR-1.0.0 | 4 turnos, Modelo Generativo + Lucas DRY (46 pts) | [sesión](../ARCHIVO/DISCO/SESIONES_COTRABAJO/2026-01-05_consenso-agile-scriptorium/) |
+
+---
+
 ## Métricas Acumuladas
 
 | Métrica | Valor |
 |---------|-------|
-| Épicas cerradas (total) | 24+ |
-| Effort completado | ~150 pts |
-| Plugins instalados | 19 |
-| Submódulos integrados | 16 |
+| Épicas cerradas (total) | 29+ |
+| Effort completado | ~215 pts |
+| Plugins instalados | 22 |
+| Submódulos integrados | 17 |
+| Sesiones cotrabajo | 8 |
 
 ---
 
@@ -91,16 +138,17 @@
 
 | Fecha | Cambio | Autor |
 |-------|--------|-------|
+| 2026-01-05 | ✅ Cerrar PROLOG-BUG-002 (templates reales iot-app/state-machine/simu en mcp-presets) | @scrum |
+| 2026-01-05 | ✅ Cerrar LAUNCHER-BUG-001 (killProcessTree + waitForProcessExit en MCPLauncherServer) | @scrum |
+| 2026-01-05 | ✅ Cerrar PROLOG-BUG-001 (sessionId propagation en PrologEditor frontend) | @scrum |
+| 2026-01-05 | ✅ Completar SCRUM-REFACTOR-1.0.0 (Plugin Scrum v3.0.0 Modelo Generativo) | @aleph |
+| 2026-01-05 | ✅ Cerrar sesión consenso-agile-scriptorium → SCRUM-REFACTOR-1.0.0 (46 pts) | @aleph |
+| 2026-01-05 | ➕ Añadir SCRUM-REFACTOR-1.0.0 (Modelo Generativo + Lucas DRY) ⚠️ BREAKING | @aleph |
+| 2026-01-04 | 🐛 Registrar LAUNCHER-BUG-001 (Process Kill Windows spawn) | @ox |
+| 2026-01-04 | ✅ Cerrar sesión PROLOG-UI-DEMO-1.0.0 (12/12 pasos, 2 bugs) | @scrum |
+| 2026-01-04 | ✅ Cerrar sesión PROLOG-E2E-1.0.0 (88.5%, 16 turnos) | @scrum |
 | 2026-01-01 | ➕ Añadir SCRIPT-2.2.0 Agentic Typed Logic Flow (blueprint arquitectónico) | @scrum |
 | 2026-01-01 | 🟢 Actualizar IOT-SBR-LOGICA a estado Investigado (capacidad EXISTE) | @scrum |
 | 2026-01-01 | 📝 Actualizar bridge @plugin_ox_prologeditor con conocimiento estructural | @scrum |
 | 2025-12-30 | 🧹 Limpiar INDEX.md (895→70 líneas, DRY) | @scrum |
-| 2025-12-30 | ✅ Cerrar BUG-003 SUBMODULOS_AH_NAMING (14 submódulos renombrados) | @scrum |
-| 2025-12-30 | ✅ Cerrar SCRIPT-1.31.0 CopilotEngine Analysis (30 pts) | @scrum |
-| 2025-12-29 | 🔄 Refinamiento SCRIPT-2.1.0 con PO, Lucas, @ox, @indice, @aleph | @scrum |
-| 2025-12-29 | ➕ Añadir SCRIPT-2.1.0 TypedPrompting Context Manager | @scrum |
-| 2025-12-29 | ✅ Cerrar SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
-| 2025-12-29 | ➕ Añadir SCRIPT-1.31.1 Blueprint Copilot 3D Cube | @scrum |
-| 2025-12-29 | ➕ Añadir SCRIPT-1.31.0 CopilotEngine | @scrum |
-| 2025-12-29 | ✅ Cerrar SCRIPT-1.29.0 (36% reducción) | @scrum |
-| 2025-12-28 | 🔄 Migrar a protocolo DRY (v1.1.0) | @scrum |
+

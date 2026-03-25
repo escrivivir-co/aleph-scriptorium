@@ -1,0 +1,389 @@
+# =============================================================================
+# AsyncAPI Specification: Scriptorium Sensor/Actuator Signals
+# =============================================================================
+# Epic: DRAMATURGIA-MAQUINA-1.0.0
+# Story: S01 - Spec AsyncAPI señales Ox→Lucas
+# Version: 1.0.0
+# 
+# Este spec define los canales de comunicación para el modelo
+# "Scriptorium como Máquina" donde:
+#   - @ox actúa como SENSOR (detecta estados del sistema)
+#   - Lucas actúa como ACTUADOR (procesa y notifica al elenco)
+#
+# Protocolo: MQTT (compatible con el broker existente)
+# =============================================================================
+
+asyncapi: 3.0.0
+info:
+  title: Scriptorium Sensor/Actuator Signals
+  version: 1.0.0
+  description: |
+    AsyncAPI specification for the Scriptorium-as-Machine model.
+    
+    ## Arquitectura
+    
+    ```
+    ┌─────────────┐     signal      ┌─────────────┐    notify     ┌─────────────┐
+    │   SENSOR    │ ───────────────▶│   CEREBRO   │──────────────▶│  ELENCO     │
+    │    (@ox)    │                 │   (Lucas)   │               │ (personajes)│
+    └─────────────┘                 └─────────────┘               └─────────────┘
+         │                               │                              │
+         │ recibir_senal/2               │ procesar_cambio/2           │
+         │                               │ verificar_coherencia/0      │
+         │                               │                              │
+         ▼                               ▼                              ▼
+    sensor/{agente}              estado/{sesion}               notificacion/{personaje}
+    ```
+    
+    ## Flujo de Datos
+    
+    1. **Aferencia**: @ox publica señal en `scriptorium/sensor/{agente}`
+    2. **Procesamiento**: Lucas recibe, valida DRY, actualiza estado
+    3. **Eferencia**: Lucas publica en `scriptorium/notificacion/{personaje}`
+    
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: AIPL v1.0
+    url: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md
+
+servers:
+  mosquitto:
+    host: localhost:1883
+    protocol: mqtt
+    description: Local Mosquitto MQTT broker
+  
+  websocket:
+    host: localhost:9001
+    protocol: ws
+    description: MQTT over WebSocket (for UI clients)
+
+defaultContentType: application/json
+
+# =============================================================================
+# CHANNELS
+# =============================================================================
+
+channels:
+  # ---------------------------------------------------------------------------
+  # T01.1: Sensor Channel — @ox publica aquí
+  # ---------------------------------------------------------------------------
+  sensorSignal:
+    address: scriptorium/sensor/{agente}
+    description: |
+      Canal donde los sensores (@ox, otros agentes) publican señales de estado.
+      Lucas se suscribe a este canal para recibir aferencia.
+    parameters:
+      agente:
+        description: ID del agente sensor (e.g., "ox", "indice", "scrum")
+    messages:
+      signal:
+        $ref: '#/components/messages/SensorSignal'
+
+  # ---------------------------------------------------------------------------
+  # T01.1: Estado Channel — Lucas publica actualizaciones
+  # ---------------------------------------------------------------------------
+  estadoSesion:
+    address: scriptorium/estado/{sesion}
+    description: |
+      Canal donde Lucas publica el estado actual de la sesión.
+      Otros agentes pueden suscribirse para conocer el estado.
+    parameters:
+      sesion:
+        description: ID de la sesión Teatro (e.g., "itaca-digital-session")
+    messages:
+      estado:
+        $ref: '#/components/messages/EstadoUpdate'
+
+  # ---------------------------------------------------------------------------
+  # T01.1: Notificación Channel — Lucas notifica al elenco
+  # ---------------------------------------------------------------------------
+  notificacionPersonaje:
+    address: scriptorium/notificacion/{personaje}
+    description: |
+      Canal donde Lucas (actuador) notifica a personajes del elenco.
+      Cada personaje se suscribe a su canal específico.
+    parameters:
+      personaje:
+        description: ID del personaje destino (e.g., "penelope", "orfeo", "viajero")
+    messages:
+      notificacion:
+        $ref: '#/components/messages/ActuatorNotification'
+
+  # ---------------------------------------------------------------------------
+  # T01.1: Alerta DRY — Canal de emergencia
+  # ---------------------------------------------------------------------------
+  alertaDry:
+    address: scriptorium/alerta/dry
+    description: |
+      Canal de alerta cuando la verificación DRY falla.
+      Lucas publica aquí si detecta incoherencia documental.
+    messages:
+      alerta:
+        $ref: '#/components/messages/DryAlert'
+
+# =============================================================================
+# OPERATIONS
+# =============================================================================
+
+operations:
+  # ---------------------------------------------------------------------------
+  # Operaciones del Sensor (@ox)
+  # ---------------------------------------------------------------------------
+  publishSensorSignal:
+    action: send
+    channel:
+      $ref: '#/channels/sensorSignal'
+    summary: Sensor publica señal de estado
+    description: |
+      @ox (u otro sensor) publica una señal cuando detecta un cambio de estado
+      en el sistema. Esta señal es recibida por Lucas (cerebro).
+    messages:
+      - $ref: '#/channels/sensorSignal/messages/signal'
+
+  # ---------------------------------------------------------------------------
+  # Operaciones del Cerebro (Lucas)
+  # ---------------------------------------------------------------------------
+  receiveSensorSignal:
+    action: receive
+    channel:
+      $ref: '#/channels/sensorSignal'
+    summary: Lucas recibe señal de sensor
+    description: |
+      Lucas se suscribe al canal de sensores y ejecuta `recibir_senal/2`
+      cuando llega una señal. Esto dispara el ciclo de procesamiento.
+
+  publishEstadoUpdate:
+    action: send
+    channel:
+      $ref: '#/channels/estadoSesion'
+    summary: Lucas publica actualización de estado
+    description: |
+      Después de procesar una señal, Lucas publica el nuevo estado
+      de la sesión para que otros agentes puedan consultarlo.
+
+  publishNotification:
+    action: send
+    channel:
+      $ref: '#/channels/notificacionPersonaje'
+    summary: Lucas notifica a personaje
+    description: |
+      Lucas ejecuta `notificar/2` para informar a cada personaje
+      suscriptor sobre el cambio de estado.
+
+  # ---------------------------------------------------------------------------
+  # Operaciones del Elenco (personajes)
+  # ---------------------------------------------------------------------------
+  receiveNotification:
+    action: receive
+    channel:
+      $ref: '#/channels/notificacionPersonaje'
+    summary: Personaje recibe notificación
+    description: |
+      Cada personaje del elenco (penelope, orfeo, viajero) se suscribe
+      a su canal y recibe notificaciones de Lucas.
+
+# =============================================================================
+# COMPONENTS
+# =============================================================================
+
+components:
+  messages:
+    # -------------------------------------------------------------------------
+    # T01.2: SensorSignal — Mensaje de aferencia
+    # -------------------------------------------------------------------------
+    SensorSignal:
+      name: SensorSignal
+      title: Señal de Sensor
+      summary: Señal publicada por un sensor cuando detecta cambio de estado
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SensorSignalPayload'
+      examples:
+        - name: Estado parado
+          payload:
+            agente: "ox"
+            estado: "parado"
+            timestamp: "2026-01-04T17:30:00Z"
+            contexto:
+              motivo: "Error en índice DRY"
+              severidad: "warning"
+        - name: Estado operativo
+          payload:
+            agente: "ox"
+            estado: "operativo"
+            timestamp: "2026-01-04T17:35:00Z"
+            contexto:
+              motivo: "Índices sincronizados"
+              severidad: "info"
+
+    # -------------------------------------------------------------------------
+    # T01.2: EstadoUpdate — Estado actual de sesión
+    # -------------------------------------------------------------------------
+    EstadoUpdate:
+      name: EstadoUpdate
+      title: Actualización de Estado
+      summary: Estado actual de la sesión publicado por Lucas
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/EstadoUpdatePayload'
+
+    # -------------------------------------------------------------------------
+    # T01.2: ActuatorNotification — Notificación a personaje
+    # -------------------------------------------------------------------------
+    ActuatorNotification:
+      name: ActuatorNotification
+      title: Notificación de Actuador
+      summary: Notificación enviada por Lucas a un personaje del elenco
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ActuatorNotificationPayload'
+      examples:
+        - name: Notificar parada
+          payload:
+            origen: "lucas"
+            destino: "penelope"
+            mensaje: "Estado actualizado: parado"
+            timestamp: "2026-01-04T17:30:05Z"
+            accion_sugerida: "pausar_tejido"
+
+    # -------------------------------------------------------------------------
+    # T01.2: DryAlert — Alerta de coherencia
+    # -------------------------------------------------------------------------
+    DryAlert:
+      name: DryAlert
+      title: Alerta DRY
+      summary: Alerta cuando la verificación de coherencia falla
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DryAlertPayload'
+
+  schemas:
+    # -------------------------------------------------------------------------
+    # Schemas de Payload
+    # -------------------------------------------------------------------------
+    SensorSignalPayload:
+      type: object
+      required:
+        - agente
+        - estado
+        - timestamp
+      properties:
+        agente:
+          type: string
+          description: ID del agente sensor
+          examples: ["ox", "indice", "scrum"]
+        estado:
+          type: string
+          description: Nuevo estado detectado
+          enum:
+            - operativo
+            - parado
+            - degradado
+            - mantenimiento
+        timestamp:
+          type: string
+          format: date-time
+          description: Momento de la detección
+        contexto:
+          type: object
+          properties:
+            motivo:
+              type: string
+              description: Razón del cambio de estado
+            severidad:
+              type: string
+              enum: [info, warning, critical]
+            datos_adicionales:
+              type: object
+              additionalProperties: true
+
+    EstadoUpdatePayload:
+      type: object
+      required:
+        - sesion
+        - estado
+        - timestamp
+      properties:
+        sesion:
+          type: string
+          description: ID de la sesión Teatro
+        estado:
+          type: string
+          description: Estado actual
+        estado_anterior:
+          type: string
+          description: Estado previo al cambio
+        timestamp:
+          type: string
+          format: date-time
+        coherencia_dry:
+          type: boolean
+          description: Si pasó verificación DRY
+
+    ActuatorNotificationPayload:
+      type: object
+      required:
+        - origen
+        - destino
+        - mensaje
+        - timestamp
+      properties:
+        origen:
+          type: string
+          description: ID del actuador (siempre "lucas")
+          const: "lucas"
+        destino:
+          type: string
+          description: ID del personaje destino
+        mensaje:
+          type: string
+          description: Contenido de la notificación
+        timestamp:
+          type: string
+          format: date-time
+        accion_sugerida:
+          type: string
+          description: Acción que el personaje podría tomar
+
+    DryAlertPayload:
+      type: object
+      required:
+        - tipo
+        - descripcion
+        - timestamp
+      properties:
+        tipo:
+          type: string
+          enum:
+            - duplicado_detectado
+            - indice_desactualizado
+            - referencia_rota
+        descripcion:
+          type: string
+          description: Detalle del problema de coherencia
+        archivo_afectado:
+          type: string
+          description: Ruta del archivo con problema
+        timestamp:
+          type: string
+          format: date-time
+        bloqueante:
+          type: boolean
+          description: Si bloquea el cambio de estado
+          default: true
+
+# =============================================================================
+# TAGS
+# =============================================================================
+
+tags:
+  - name: sensor
+    description: Operaciones de sensores (aferencia)
+  - name: actuator
+    description: Operaciones de actuadores (eferencia)
+  - name: estado
+    description: Gestión de estado de sesión
+  - name: dry
+    description: Verificación de coherencia documental

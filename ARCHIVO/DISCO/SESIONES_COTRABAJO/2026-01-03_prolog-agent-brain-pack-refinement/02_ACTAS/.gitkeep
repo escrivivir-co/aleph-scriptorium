@@ -1,0 +1,10 @@
+# Carpeta de Actas
+
+Este directorio contendrá las actas de cada turno.
+
+Formato de nombres: `T{NNN}_{agente}_{tema}.md`
+
+Ejemplos:
+- T001_aleph-lucas_convocatoria.md
+- T002_ox_diagnostico-tecnico.md
+- T003_indice_validacion-dry.md

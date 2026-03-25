@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aleph-scriptorium.github.io/schemas/pack.schema.json",
+  "title": "MCP Pack Schema",
+  "description": "Schema para packs tipados de herramientas MCP del Scriptorium",
+  "type": "object",
+  "required": ["id", "name", "version", "mcpServer", "tools"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Referencia al schema"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+      "description": "Identificador único del pack (PascalCase recomendado)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Nombre legible del pack"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+",
+      "description": "Versión semántica"
+    },
+    "description": {
+      "type": "string",
+      "description": "Descripción del propósito del pack"
+    },
+    "author": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "mcpServer": {
+      "type": "object",
+      "required": ["id", "port"],
+      "properties": {
+        "id": { "type": "string" },
+        "port": { "type": "integer", "minimum": 1024, "maximum": 65535 },
+        "source": { "type": "string", "description": "Ruta al submódulo" },
+        "startCommand": { "type": "string" }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "inputSchema": {
+            "type": "object",
+            "description": "JSON Schema de los parámetros"
+          }
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["uri", "name"],
+        "properties": {
+          "uri": { "type": "string", "format": "uri-reference" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "mimeType": { "type": "string" }
+        }
+      }
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "template"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "template": { "type": "string" },
+          "arguments": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "contextTriggers": {
+      "type": "object",
+      "description": "Cuándo activar este pack automáticamente",
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "filePatterns": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "domains": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "examples": {
+      "type": "object",
+      "description": "Ejemplos de uso del pack"
+    }
+  }
+}

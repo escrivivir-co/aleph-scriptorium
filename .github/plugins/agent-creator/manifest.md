@@ -37,10 +37,18 @@ prompts:
   - name: "desplegar-en-arg"
     file: "prompts/desplegar-en-arg.prompt.md"
     description: "Despliega un agente como personaje en una obra del Teatro ARG"
+  - name: "validar-agente"
+    file: "prompts/validar-agente.prompt.md"
+    description: "Protocolo de validación en 3 fases para agentes creados"
+  - name: "analizar-alineamiento"
+    file: "prompts/analizar-alineamiento.prompt.md"
+    description: "Análisis de alineamiento (Fase C) con scoring y veredicto"
 
 instructions:
   - name: "agent-creator"
     file: "instructions/agent-creator.instructions.md"
+  - name: "validacion-agente"
+    file: "instructions/validacion-agente.instructions.md"
 
 # Integración con Aleph
 handoffs:
@@ -59,6 +67,12 @@ handoffs:
   - label: "Desplegar en Teatro ARG"
     agent: "AgentCreator"
     prompt: "Despliega un agente creado como personaje en una obra del Teatro ARG (requiere plugin ARG_BOARD)."
+  - label: "Validar agente creado"
+    agent: "AgentCreator"
+    prompt: "Ejecuta protocolo de validación en 3 fases para verificar alineamiento del agente con sus fuentes."
+  - label: "Analizar alineamiento"
+    agent: "Aleph"
+    prompt: "Analiza cuestionario completado y emite veredicto de alineamiento (Fase C del protocolo)."
 ---
 
 # Plugin: Agent Creator

@@ -79,7 +79,7 @@ permalink: /blueprint-po/
     </div>
     <div class="tech-layer">
       <span class="layer-name">MCP</span>
-      <span class="layer-tech">5 servidores (Zeus, Launcher, Model...)</span>
+      <span class="layer-tech">7 servidores (mesh SDK)</span>
     </div>
     <div class="tech-layer">
       <span class="layer-name">Web</span>
@@ -308,6 +308,18 @@ permalink: /blueprint-po/
       <span class="port">:3004</span>
       <span class="name">State Machine</span>
     </div>
+    <div class="mcp-server">
+      <span class="port">:3020</span>
+      <span class="name">TypedPrompt</span>
+    </div>
+    <div class="mcp-server">
+      <span class="port">:3006</span>
+      <span class="name">Prolog</span>
+    </div>
+    <div class="mcp-server">
+      <span class="port">:3003</span>
+      <span class="name">DevOps</span>
+    </div>
   </div>
 </div>
 
@@ -535,6 +547,209 @@ permalink: /blueprint-po/
     <div class="timeline-item">FC1: +3 editores visuales</div>
     <div class="timeline-item">FC2: +2 integraciones</div>
   </div>
+  
+  <div class="depth-hint">↓ Ver Logic Flow Demo</div>
+</div>
+
+<!-- ==========================================
+     PASO 5.5: LOGIC FLOW DEMO (Subcubo)
+     Ciclo: Edición → Servidor → Pack → Escena
+     Features: IOT-SBR-LOGICA + SCRIPT-2.2.0
+     ========================================== -->
+
+<!-- 5.5.1: Intro Logic Flow -->
+<div id="logic-intro" class="step showcase-step po-step" 
+     data-x="12000" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role po">🎤 PO</span>
+    <span class="showcase-context">Logic Flow · Intro</span>
+  </div>
+  
+  <h2>Demo: Logic Flow Completo</h2>
+  
+  <div class="flow-intro">
+    <p><strong>El ciclo que une dos mundos:</strong></p>
+    <div class="flow-chain">
+      <span class="flow-node">📝 Edición</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">🔌 Servidor</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">📦 Pack</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">🎭 Escena</span>
+    </div>
+    <p class="flow-tagline">Desde escribir una regla Prolog hasta que un títere la invoca en vivo</p>
+  </div>
+  
+  <div class="nav-hints">
+    <span>↑ Volver a Plugins</span>
+    <span>→ Paso 1: Edición</span>
+  </div>
+</div>
+
+<!-- 5.5.2: Edición Prolog -->
+<div id="logic-edit" class="step showcase-step ox-step" 
+     data-x="13200" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role ox">🐂 Ox</span>
+    <span class="showcase-context">Logic Flow · Edición</span>
+  </div>
+  
+  <h2>1️⃣ Editar Regla Prolog</h2>
+  
+  <div class="code-example">
+    <div class="code-header">arrakis.pl</div>
+    <pre><code>% Regla: agua es crítica si población > 1000
+recurso_critico(agua) :- 
+    poblacion(P), P > 1000.
+
+% Hecho
+poblacion(1500).</code></pre>
+  </div>
+  
+  <p class="step-note">Plugin: <code>@plugin_ox_prologeditor</code></p>
+</div>
+
+<!-- 5.5.3: Servidor MCP -->
+<div id="logic-server" class="step showcase-step aleph-step" 
+     data-x="14400" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role aleph">ℵ Aleph</span>
+    <span class="showcase-context">Logic Flow · Servidor</span>
+  </div>
+  
+  <h2>2️⃣ Exponer como MCP</h2>
+  
+  <div class="server-info">
+    <div class="server-card">
+      <div class="server-name">prolog-mcp-server</div>
+      <div class="server-port">Puerto 3006</div>
+    </div>
+    <div class="server-tools">
+      <span class="tool">query_prolog</span>
+      <span class="tool">assert_fact</span>
+      <span class="tool">consult_kb</span>
+    </div>
+  </div>
+  
+  <p class="step-note">LauncherServer registra en la mesh</p>
+</div>
+
+<!-- 5.5.4: Pack Tipado -->
+<div id="logic-pack" class="step showcase-step sm-step" 
+     data-x="15600" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role sm">📋 SM</span>
+    <span class="showcase-context">Logic Flow · Pack</span>
+  </div>
+  
+  <h2>3️⃣ Crear Pack Tipado</h2>
+  
+  <div class="pack-preview">
+    <div class="pack-name">AgentPrologBrain.pack.json</div>
+    <div class="pack-contents">
+      <div class="pack-section">
+        <span class="label">tools:</span>
+        <span class="items">query_prolog, assert_fact</span>
+      </div>
+      <div class="pack-section">
+        <span class="label">resources:</span>
+        <span class="items">knowledge_base</span>
+      </div>
+      <div class="pack-section">
+        <span class="label">prompts:</span>
+        <span class="items">razonamiento_sbr</span>
+      </div>
+    </div>
+  </div>
+  
+  <p class="step-note">Contrato entre agente y herramientas</p>
+</div>
+
+<!-- 5.5.5: Escena Teatro -->
+<div id="logic-scene" class="step showcase-step po-step" 
+     data-x="16800" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role po">🎤 PO</span>
+    <span class="showcase-context">Logic Flow · Escena</span>
+  </div>
+  
+  <h2>4️⃣ Títere en Escena</h2>
+  
+  <div class="scene-preview">
+    <div class="scene-header">
+      <span class="obra">🎭 Obra: Duna</span>
+      <span class="escena">Consejo de Agua</span>
+    </div>
+    <div class="scene-dialogue">
+      <div class="turn">
+        <span class="actor">@arrakis:</span>
+        <span class="action">Invoca <code>query_prolog("recurso_critico(X)")</code></span>
+      </div>
+      <div class="turn result">
+        <span class="actor">MCP:</span>
+        <span class="response">X = agua</span>
+      </div>
+      <div class="turn">
+        <span class="actor">@arrakis:</span>
+        <span class="dialogue">"El agua es recurso crítico. Protejamos los pozos."</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5.5.6: Resumen Ciclo -->
+<div id="logic-summary" class="step showcase-step ox-step" 
+     data-x="18000" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role ox">🐂 Ox</span>
+    <span class="showcase-context">Logic Flow · Resumen</span>
+  </div>
+  
+  <h2>El Ciclo Completo</h2>
+  
+  <div class="cycle-diagram">
+    <div class="cycle-layer">
+      <span class="layer-label">L0</span>
+      <span class="layer-name">Infraestructura</span>
+      <span class="layer-items">PrologServer, FIA Catalog</span>
+    </div>
+    <div class="cycle-arrow">↓ Exponer</div>
+    <div class="cycle-layer">
+      <span class="layer-label">L1</span>
+      <span class="layer-name">Servidores MCP</span>
+      <span class="layer-items">prolog-mcp, aaia-mcp</span>
+    </div>
+    <div class="cycle-arrow">↓ Tipar</div>
+    <div class="cycle-layer">
+      <span class="layer-label">L2</span>
+      <span class="layer-name">Packs</span>
+      <span class="layer-items">AgentPrologBrain, AgentFIACreator</span>
+    </div>
+    <div class="cycle-arrow">↓ Consumir</div>
+    <div class="cycle-layer">
+      <span class="layer-label">L3</span>
+      <span class="layer-name">Teatro/ARG</span>
+      <span class="layer-items">Títeres en escena</span>
+    </div>
+  </div>
+  
+  <div class="nav-hints">
+    <span>↑ Volver a Plugins</span>
+    <span>→ Blueprints 3D</span>
+  </div>
 </div>
 
 <!-- ==========================================
@@ -713,6 +928,211 @@ permalink: /blueprint-po/
     <div class="quarter">Q2: Editores visuales</div>
     <div class="quarter">Q3: Fundación caps 1-6</div>
     <div class="quarter">Q4: Fundación caps 7-12</div>
+  </div>
+  
+  <div class="depth-hint">↓ Ver Self-Reflection Demo</div>
+</div>
+
+<!-- ==========================================
+     PASO 7.5: SELF-REFLECTION DEMO (Subcubo)
+     Ciclo: Bug → Investigación → Bloqueo → Oportunidad
+     Feature: FEATURE-SNAPSHOTS-1.0.0
+     
+     Narrativa doble:
+     a) Snapshots como auto-reflexión del sistema
+     b) Proceso Agile que transforma blockers en features
+     ========================================== -->
+
+<!-- 7.5.1: Intro Self-Reflection -->
+<div id="reflect-intro" class="step showcase-step po-step" 
+     data-x="18000" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role po">🎤 PO</span>
+    <span class="showcase-context">Self-Reflection · Intro</span>
+  </div>
+  
+  <h2>Demo: El Sistema que Se Observa</h2>
+  
+  <div class="flow-intro">
+    <p><strong>De blocker a oportunidad:</strong></p>
+    <div class="flow-chain">
+      <span class="flow-node">🐛 Bug</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">🔍 Investigar</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">🛑 Bloqueo</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-node">💡 Feature</span>
+    </div>
+    <p class="flow-tagline">Cuando CopilotEngine olvida, el Scriptorium aprende a recordar</p>
+  </div>
+  
+  <div class="nav-hints">
+    <span>↑ Volver a Ecosistema</span>
+    <span>→ Paso 1: El Bug</span>
+  </div>
+</div>
+
+<!-- 7.5.2: El Bug -->
+<div id="reflect-bug" class="step showcase-step ox-step" 
+     data-x="19200" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role ox">🐂 Ox</span>
+    <span class="showcase-context">Self-Reflection · Bug</span>
+  </div>
+  
+  <h2>1️⃣ El Bug Revelador</h2>
+  
+  <div class="code-example">
+    <div class="code-header">CopilotEngine/requestLoggerImpl.ts</div>
+    <pre><code>// Límite de memoria: solo 100 requests
+if (_entries.length > maxEntries) {
+    _entries.shift(); // 👈 FIFO: borra el más antiguo
+}</code></pre>
+  </div>
+  
+  <div class="bug-insight">
+    <p>💡 <strong>Root cause:</strong> Las conversaciones desaparecen después de ~100 requests</p>
+  </div>
+  
+  <p class="step-note">No es un bug, es una decisión de diseño upstream</p>
+</div>
+
+<!-- 7.5.3: El Bloqueo Preventivo -->
+<div id="reflect-block" class="step showcase-step aleph-step" 
+     data-x="20400" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role aleph">ℵ Aleph</span>
+    <span class="showcase-context">Self-Reflection · Bloqueo</span>
+  </div>
+  
+  <h2>2️⃣ Stop the Line</h2>
+  
+  <div class="block-info">
+    <div class="block-trigger">
+      <span class="icon">🚨</span>
+      <span class="text">PO detecta patrón de riesgo: "entusiasmo sin verificación"</span>
+    </div>
+    <div class="block-action">
+      <span class="icon">🐂</span>
+      <span class="text">Ox audita: <strong>7 gaps técnicos</strong> entre plan y realidad</span>
+    </div>
+    <div class="block-result">
+      <span class="icon">✅</span>
+      <span class="text">Nuevo gate: <strong>Definition of Ready</strong> con auditoría Ox-Indice</span>
+    </div>
+  </div>
+  
+  <p class="step-note">El conflicto es una feature, no un fallo</p>
+</div>
+
+<!-- 7.5.4: La Solución -->
+<div id="reflect-solution" class="step showcase-step sm-step" 
+     data-x="21600" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role sm">📋 SM</span>
+    <span class="showcase-context">Self-Reflection · Solución</span>
+  </div>
+  
+  <h2>3️⃣ Snapshots: Memoria Persistente</h2>
+  
+  <div class="solution-preview">
+    <div class="solution-what">
+      <span class="label">Qué:</span>
+      <span class="value">Capturar conversaciones permanentemente</span>
+    </div>
+    <div class="solution-where">
+      <span class="label">Dónde:</span>
+      <span class="value"><code>ARCHIVO/DISCO/COPILOT_SNAPSHOTS/</code></span>
+    </div>
+    <div class="solution-how">
+      <span class="label">Cómo:</span>
+      <span class="value">16 tools MCP + Panel UI + INDEX.md + ABSTRACT.md</span>
+    </div>
+  </div>
+  
+  <p class="step-note">Si no podemos cambiar cómo olvida, cambiamos cómo recordamos</p>
+</div>
+
+<!-- 7.5.5: El Fix en Acción -->
+<div id="reflect-fix" class="step showcase-step po-step" 
+     data-x="22800" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role po">🎤 PO</span>
+    <span class="showcase-context">Self-Reflection · Fix</span>
+  </div>
+  
+  <h2>4️⃣ El Fix que Validó Todo</h2>
+  
+  <div class="fix-demo">
+    <div class="fix-before">
+      <span class="label">❌ Antes:</span>
+      <span class="code">id = "latest" → cache.skip()</span>
+    </div>
+    <div class="fix-after">
+      <span class="label">✅ Después:</span>
+      <span class="code">id = `req_${Date.now()}` → cache.store()</span>
+    </div>
+    <div class="fix-test">
+      <span class="tool">mcp_copilot-logs-_capture_snapshot</span>
+      <span class="result">✅ Funciona</span>
+    </div>
+  </div>
+  
+  <p class="step-note">Commit: <code>e8ea888</code> en VsCodeExtension</p>
+</div>
+
+<!-- 7.5.6: El Bucle Completo -->
+<div id="reflect-summary" class="step showcase-step ox-step" 
+     data-x="24000" 
+     data-y="1600" 
+     data-z="0">
+  <div class="showcase-header">
+    <span class="showcase-role ox">🐂 Ox</span>
+    <span class="showcase-context">Self-Reflection · Cierre</span>
+  </div>
+  
+  <h2>El Bucle de Auto-Reflexión</h2>
+  
+  <div class="cycle-diagram">
+    <div class="cycle-layer">
+      <span class="layer-label">🗣️</span>
+      <span class="layer-name">Conversación</span>
+      <span class="layer-items">Usuario ↔ Copilot Chat</span>
+    </div>
+    <div class="cycle-arrow">↓ Capturar</div>
+    <div class="cycle-layer">
+      <span class="layer-label">📸</span>
+      <span class="layer-name">Snapshot</span>
+      <span class="layer-items">requests.json + metadata</span>
+    </div>
+    <div class="cycle-arrow">↓ Archivar</div>
+    <div class="cycle-layer">
+      <span class="layer-label">📁</span>
+      <span class="layer-name">ARCHIVO</span>
+      <span class="layer-items">INDEX.md + ABSTRACT.md (LLM)</span>
+    </div>
+    <div class="cycle-arrow">↓ Consultar</div>
+    <div class="cycle-layer">
+      <span class="layer-label">🔄</span>
+      <span class="layer-name">Mejor Conversación</span>
+      <span class="layer-items">Contexto recuperado → Nuevo ciclo</span>
+    </div>
+  </div>
+  
+  <div class="nav-hints">
+    <span>↑ Volver a Ecosistema</span>
+    <span>→ Extensibilidad</span>
   </div>
 </div>
 

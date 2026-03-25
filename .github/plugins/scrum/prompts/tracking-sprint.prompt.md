@@ -1,14 +1,18 @@
-# Prompt: Tracking de Sprint (DRY)
+# Prompt: Tracking de Sprint (Modelo Generativo)
 
-> **Plugin**: Scrum v2.0  
-> **Comando**: `@scrum tracking`  
-> **Modelo**: DRY (actualizar en BORRADOR, no en índice)
+> **Plugin**: Scrum v3.0.0  
+> **Comando**: `@scrum tracking` o `@scrum status`  
+> **Modelo**: Generativo + DRY (actualizar en BORRADOR, incluir sesiones)
 
 ---
 
 ## Objetivo
 
-Actualizar estado de tasks **EN EL ARCHIVO DE BORRADOR**, no en el índice oficial.
+Actualizar estado de tasks **EN EL ARCHIVO DE BORRADOR** + mostrar sesiones activas.
+
+**v3.0**: El comando `status` incluye sesiones de cotrabajo en progreso.
+
+---
 
 ## Modos de uso
 
@@ -29,6 +33,14 @@ Actualizar estado de tasks **EN EL ARCHIVO DE BORRADOR**, no en el índice ofici
 ```
 @scrum tracking T030 bloqueada: falta acceso a API
 ```
+
+### Modo 4: Status completo (v3.0)
+
+```
+@scrum status
+```
+
+Incluye: épicas activas + sesiones de cotrabajo.
 
 ---
 
@@ -59,7 +71,7 @@ Cambiar el estado en la tabla de tasks del borrador:
 | 🔄 En progreso | ✅ Completada | ✅ |
 | * | ⛔ Bloqueada | ⛔ |
 
-#### Paso 3: Recalcular métricas
+### Paso 3: Recalcular métricas
 
 ```python
 effort_completado = sum(task.effort for task in tasks if task.estado == '✅')
@@ -79,7 +91,7 @@ Actualizar tabla de métricas:
 | % Avance | {avance}% |
 ```
 
-#### Paso 4: Generar commit (si significativo)
+### Paso 4: Generar commit (si significativo)
 
 Criterios para commit:
 - ≥5 tasks actualizadas
@@ -97,17 +109,64 @@ refs #{ID-épica}
 
 ---
 
-### Sincronización completa
+## Status Completo (v3.0)
 
-#### Paso 1: Leer estado actual
+### Paso 1: Recopilar información
+
+```
+1. Leer backlog oficial → épicas activas
+2. Leer SESIONES_COTRABAJO/ → sesiones abiertas
+3. Calcular métricas reales
+```
+
+### Paso 2: Reportar estado
+
+```
+Sprint FC1: flavour/monada
+═════════════════════════════════════════════════
+Épicas activas: {N}
+
+📋 Épicas
+├─ ✅ Completadas: {N}/{M} 
+├─ 🔄 En progreso: {N}
+└─ 📋 Pendientes: {N}
+
+🎭 Sesiones de Cotrabajo (v3.0)
+├─ 🔄 Activas: {N}
+│   ├─ {nombre-sesion-1}: Turno {X}, desde {fecha}
+│   └─ {nombre-sesion-2}: Turno {Y}, desde {fecha}
+└─ ⏸️ Pausadas: {N}
+
+📊 Métricas
+├─ Effort completado: {X} pts ({Y}%)
+├─ Sesiones cerradas como Productiva: {N}
+└─ Borradores generados desde sesiones: {N}
+```
+
+### Paso 3: Detectar sesiones productivas pendientes
+
+```
+⚠️ Sesiones cerradas sin generar borrador:
+- {sesion-1}: Cerrada PRODUCTIVA el {fecha}, sin épica
+- {sesion-2}: Cerrada PRODUCTIVA el {fecha}, sin épica
+
+¿Generar borradores con @scrum generar-desde-sesion?
+```
+
+---
+
+## Sincronización completa
+
+### Paso 1: Leer estado actual
 
 ```
 1. Leer backlog oficial
 2. Extraer todas las tasks del sprint activo
-3. Calcular métricas reales
+3. Leer todas las sesiones de cotrabajo
+4. Calcular métricas reales
 ```
 
-#### Paso 2: Comparar con métricas declaradas
+### Paso 2: Comparar con métricas declaradas
 
 ```
 Si métricas_calculadas != métricas_declaradas:
@@ -115,24 +174,12 @@ Si métricas_calculadas != métricas_declaradas:
     Reportar discrepancia
 ```
 
-#### Paso 3: Reportar estado
+### Paso 3: Verificar trazabilidad de sesiones (v3.0)
 
 ```
-Sprint 2: Capítulo Uno
-═══════════════════════
-Iteración actual: I2 (Borrador)
-
-Estado de tasks:
-├─ ✅ Completadas: 12/52 (23 pts)
-├─ 🔄 En progreso: 4 (8 pts)
-├─ ⏳ Pendientes: 35 (64 pts)
-└─ ⛔ Bloqueadas: 1 (5 pts)
-
-Avance: 23%
-Buffer: 5/30 pts consumidos
-
-Bloqueos activos:
-- T030: Falta acceso a API (desde hace 2 días)
+Para cada sesión cerrada como PRODUCTIVA:
+    Si no existe borrador con origen = sesión:
+        Reportar "Sesión productiva sin borrador generado"
 ```
 
 ---
@@ -148,54 +195,74 @@ Si se añaden tasks no planificadas:
 
 Tasks añadidas desde aprobación:
 - T053: Nueva feature (3 pts)
-- T054: Fix urgente (2 pts)
 
-Effort adicional: 5 pts
-Buffer restante: 25 pts → 20 pts
-
-¿Aceptar cambio?
+Acciones:
+1. Documentar en borrador
+2. Ajustar estimaciones
+3. Si viene de sesión: actualizar origen
 ```
 
-### Bloqueos prolongados
-
-Si una task lleva ≥3 días bloqueada:
+### Bloqueos persistentes
 
 ```
-⚠️ Bloqueo prolongado
+⚠️ Bloqueo sin resolver > 3 días
 
-T030: Falta acceso a API
-Bloqueada desde: 2025-12-20 (3 días)
+Task: T030
+Motivo: Falta acceso a API
+Desde: {fecha}
 
-Opciones:
+Acciones sugeridas:
 1. Escalar a PO
-2. Mover a siguiente sprint
-3. Cancelar task
+2. Buscar alternativa
+3. Reasignar
 ```
 
-### Desviación de avance
-
-Si el avance real está ≥20% por debajo del esperado:
+### Sesiones estancadas (v3.0)
 
 ```
-⚠️ Desviación de avance
+⚠️ Sesión estancada > 24h sin actividad
 
-Avance esperado (por iteración): 50%
-Avance real: 25%
-Desviación: -25%
+Sesión: {nombre}
+Último turno: {fecha}
+Participantes: {lista}
 
-Recomendación: Revisar prioridades o reducir scope
+Acciones:
+1. Retomar con @{agente}
+2. Cerrar como Exploratoria
+3. Documentar bloqueo
 ```
 
 ---
 
-## Salida esperada
+## Convenciones de Estado
 
-1. Backlog oficial actualizado
-2. Métricas recalculadas
-3. Reporte de estado al usuario
-4. Commit si aplica
-5. Alertas de anomalías si detectadas
+### Épicas
 
-## Siguiente paso
+| Emoji | Significado |
+|-------|-------------|
+| 📋 | Backlog (planificada, no iniciada) |
+| 🔄 | En desarrollo |
+| ✅ | Completada |
+| ⛔ | Bloqueada |
 
-Continuar desarrollo → `@scrum tracking` cuando haya cambios → `@scrum cerrar` al final.
+### Sesiones (v3.0)
+
+| Emoji | Significado |
+|-------|-------------|
+| 🔄 | En progreso |
+| ⏸️ | Pausada |
+| ✅ | Cerrada - Exploratoria |
+| ✅ | Cerrada - Normativa |
+| ✅ | Cerrada - Productiva |
+
+---
+
+## Resumen del Modelo Generativo
+
+| Operación | Qué toca | Modelo |
+|-----------|----------|--------|
+| Tracking tasks | Solo borrador | DRY |
+| Status épicas | Leer índice | DRY |
+| Status sesiones | Leer SESIONES_COTRABAJO | v3.0 |
+| Detectar productivas pendientes | Cross-reference | v3.0 |
+| Verificar trazabilidad | origen.referencia | v3.0 |

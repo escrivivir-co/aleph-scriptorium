@@ -38,6 +38,15 @@ handoffs:
     agent: Ox
     prompt: "Consulta el índice de agentes o diagnostica el sistema."
     send: false
+  # Integración Prolog (TEATRO-PROLOG-1.0.0)
+  - label: Razonar con personaje (Prolog)
+    agent: Teatro
+    prompt: "Invoca MCPPrologServer para que un personaje razone usando su cerebro .brain.pl. Requiere: nombre del personaje y obra activa. Usa prompt teatro_agent_session."
+    send: false
+  - label: Cargar pack de obra (Prolog)
+    agent: Teatro
+    prompt: "Carga el pack Prolog de una obra (mcpPacks en YAML). Consulta todos los .brain.pl de los personajes en MCPPrologServer."
+    send: false
 ---
 
 # Agente: Teatro (Orquestador Transmedia)

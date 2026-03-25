@@ -1,0 +1,7 @@
+{
+  "name": "iot-app",
+  "description": "IoT sensors + thresholds with alert/1 and remediation hooks.",
+  "files": ["app.pl"],
+  "exports": ["sensor/2", "threshold/2", "alert/1", "anomaly/2", "remediate/2"],
+  "main": "iot-app"
+}

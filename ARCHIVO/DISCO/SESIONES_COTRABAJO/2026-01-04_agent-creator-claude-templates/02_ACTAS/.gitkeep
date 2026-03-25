@@ -1,0 +1,7 @@
+# Carpeta de Actas
+
+Esta carpeta contiene las actas de cada turno de la sesión de cotrabajo.
+
+Formato de nombre: `T{NNN}_{agente}_{tema}.md`
+
+Ejemplo: `T001_scrum_backlog-inicial.md`

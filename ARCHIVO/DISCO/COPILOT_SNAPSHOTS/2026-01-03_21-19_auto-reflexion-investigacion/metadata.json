@@ -1,0 +1,13 @@
+{
+  "id": "2026-01-03_21-19_auto-reflexion-investigacion",
+  "name": "auto-reflexion-investigacion",
+  "description": "Investigación de herramientas copilot-logs para auto-reflexión cross-window. Hallazgo: logs son per-window, no globales.",
+  "createdAt": "2026-01-03T20:19:28.138Z",
+  "requestCount": 1,
+  "models": [],
+  "linkedBacklog": "COWORK-1.0.0",
+  "totalTokens": {
+    "prompt": 0,
+    "completion": 0
+  }
+}

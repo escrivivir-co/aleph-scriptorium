@@ -1,7 +1,7 @@
 ---
 name: Web Scraper (Foros y Blogs)
 description: Instrucciones para el plugin de scraping de foros y blogs con MCP Playwright.
-applyTo: "ARCHIVO/DISCO/**/*.md, ARCHIVO/PLUGINS/FORO_SCRAPER/**/*"
+applyTo: "ARCHIVO/PLUGINS/FORO_SCRAPER/**/*"
 ---
 
 # Instrucciones: Plugin Web Scraper
