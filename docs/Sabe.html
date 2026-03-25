@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida y muerte en la rotación de una bisagra</title>
+<style>
+  :root {
+    --negro: #1a1a1a;
+    --rojo: #b91c1c;
+    --rojo-claro: #dc2626;
+    --crema: #f5f0eb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--negro);
+    color: var(--crema);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 3.5rem 3.2rem;
+  }
+
+  /* ─── Cabecera ─── */
+  header {
+    border-bottom: 2px solid var(--rojo);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  header .titulo {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--rojo-claro);
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+  }
+
+  header .meta {
+    font-size: 0.85rem;
+    color: #a8a8a8;
+    line-height: 1.6;
+  }
+
+  header .meta em {
+    color: var(--crema);
+    font-style: italic;
+  }
+
+  header .meta a {
+    color: var(--rojo);
+    text-decoration: none;
+  }
+
+  header .meta a:hover {
+    text-decoration: underline;
+  }
+
+  /* ─── Botones ─── */
+  .controles {
+    margin-top: 1.2rem;
+  }
+
+  .toggle {
+    display: inline-block;
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: var(--rojo-claro);
+    background: transparent;
+    border: 1px solid var(--rojo);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .toggle:hover {
+    background: var(--rojo);
+    color: var(--crema);
+  }
+
+  /* ─── Secciones ─── */
+  h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--rojo-claro);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  h2::before {
+    content: '';
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--rojo);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── Estrofa colapsable ─── */
+  .estrofa {
+    margin: 0;
+  }
+
+  .estrofa summary {
+    display: block;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.05rem 0;
+    position: relative;
+  }
+
+  .estrofa summary::-webkit-details-marker { display: none; }
+  .estrofa summary::marker { display: none; content: ''; }
+
+  .estrofa summary::before {
+    content: '▸';
+    color: var(--rojo);
+    position: absolute;
+    left: -1.2rem;
+    font-size: 0.7rem;
+    top: 0.4rem;
+    transition: transform 0.15s;
+  }
+
+  .estrofa[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  /* Líneas sin versos indentados: sin marcador */
+  .estrofa.sola summary { cursor: default; }
+  .estrofa.sola summary::before { content: ''; }
+
+  .estrofa .detalle {
+    padding: 0;
+  }
+
+  /* ─── Letra acróstico ─── */
+  .acr {
+    color: var(--rojo-claro);
+    font-weight: 700;
+  }
+
+  /* ─── Verso indentado ─── */
+  .ind {
+    display: block;
+    padding-left: 2.5rem;
+	font-size: 0.6rem;
+  }
+
+  /* ─── Cita: prosa analítica intercalada (voz de Turín) ─── */
+  .cita {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    margin: 0.4rem 0 0.4rem 2.5rem;
+    border-left: 2px solid var(--rojo);
+    font-size: 0.82rem;
+    color: #a8a8a8;
+    font-style: italic;
+    line-height: 1.5;
+	font-size: 0.6rem;
+	max-width: 75%;
+  }
+
+  /* ─── Cursiva: solo donde el original la lleva ─── */
+  em {
+    font-style: italic;
+  }
+
+  /* ─── Separadores ─── */
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--rojo), transparent);
+    margin: 2rem 0;
+  }
+
+  /* ─── Selección ─── */
+  ::selection {
+    background: var(--rojo);
+    color: var(--crema);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 640px) {
+    .container { padding: 2rem 1.2rem 2rem 2.2rem; }
+    body { font-size: 0.85rem; }
+    .ind { padding-left: 1.5rem; font-size: 0.65rem; }
+    .estrofa summary::before { left: -1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <div class="titulo">&ldquo;Vida y muerte (grado de libertad) en la rotación de una bisagra en las puertas de la Posmodernidad altermundial&rdquo;</div>
+  <div class="meta">
+    Obra: Consta de 2 pseudoacrósticos. Un exordio <em>&ldquo;buen camino&rdquo;</em> seguido de un canto <em>&ldquo;Salú y libertá!&rdquo;</em>.<br>
+    <i>Forma parte del bloque "poemas negros" del poemario: "rojo y negro"</i><br>
+	Autor: Alephillo<br>
+    CC: <a href="http://escrivivir.co" rel="noopener">escrivivir.co</a><br>
+    Dedicado a: Mathurin Malby<br>
+    Agradecimientos: N0sce (J.A. Revilla)<br>
+	Valle del Guadalquivir, 1er equinoccio 2026
+  </div>
+  <div class="controles">
+    <button class="toggle" onclick="abrirTodo()">desplegar todo</button>
+    <button class="toggle" onclick="cerrarTodo()">solo acróstico</button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2>1. ¡Buen camino!</h2>
+<!-- ═══════════════════════════════════════════════ -->
+
+<details class="estrofa">
+<summary><span class="acr">L</span>a primera verdá que me hizo enfrentar mi duende si quería sanar,</summary>
+<div class="detalle">
+<span class="ind">cuando habían pasado las estaciones, y el <em>mezzo</em> de Dante ya en el calendario:</span>
+<span class="ind">asumir que negué a mis progenitores varias veces.</span>
+<span class="ind">Lo asumí, pero me justifiqué, el día de la terapia:</span>
+<span class="ind"><em>&ldquo;tuve que hacerlo,</em> sine qua non, <em>si quería hablar otras lenguas en otros mundos&rdquo;</em>.</span>
+<span class="ind">Me gobernaba la intuición (ojo, que en aquella época todavía no había RRSS),</span>
+<span class="ind">de que el mundo se volvería información y lenguaje,</span>
+<span class="ind">porque el mapa subsumiría al territorio, efundiendo un 5º poder del 4º,</span>
+<span class="ind">presencia de la Opinión Pública frente a los medios de comunicación.</span>
+<span class="ind">Mi duende, remedando al terapeuta gestalt, me hace que recite la segunda:</span>
+</div>
+</details>
+
+<details class="estrofa sola">
+<summary><span class="acr">a</span>hijados de Sánchez, lavar la pobreza con esponja y jabón, cruzar Riera Blanca, </summary>
+<div class="detalle">
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">t</span>omando Sants para entrar en la Metrópoli</summary>
+<div class="detalle">
+<span class="ind">menos como (eso creía yo) un periférico que como un ciudadano del mundo,</span>
+<span class="ind">atreverme incluso a cruzar la Bonanova o subir a Pedralbes</span>
+<span class="ind">a defender un <em>ecce homo</em>, sin apellidos, solo por ascensor social,</span>
+<span class="ind">o con apellidos pero de otra tribu, de otro <em>weik</em> (indoeuropeo)</span>
+<span class="ind">por todo lo menos, al menos la mitad genealógica, de otra laya, la <em>rom</em>.</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">c</span>apaz de ocultar no solo lo caló, sino el quemacuismo</summary>
+<div class="detalle">
+<span class="ind"><em>parlar amb correcta pronunciació de les neutres...</em></span>
+<span class="ind"><em>and happy to flow my speech and spread my word enllà els Pirineus</em>,</span>
+<span class="ind">¡ultreya el finisterre, las puertas de Hércules y los Pueblos del Mar!</span>
+<span class="ind">¡atado, estaquilla, en el ónfalo de Delfos y el zigurat de Ur!</span>
+<span class="ind">¿Y si Iberia fuera una nación desfilando por una alfombra roja?</span>
+<span class="ind">cosmopolita y liminar península,</span>
+<span class="ind">engarce de va y viene en el horizontal hemisférico,</span>
+<span class="ind">así como viene y va entre el sur y el norte</span>
+<span class="ind">de las pocas tierras emergidas</span>
+<span class="ind">de las placas continentales.</span>
+<span class="ind">Mi duende, en aquella época, ni estaba ni se le esperaba;</span>
+<span class="ind">Y aquí me recoge, con talante psicoanalítico</span>
+<span class="ind">de quien se limita a catalizar el tomar conciencia,</span>
+<span class="ind">para que recite la tercera:</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">h</span>aciendo de la capa un sayo,</summary>
+<div class="detalle">
+<span class="ind">persiguiendo símbolos</span>
+<span class="ind">descifrando códigos</span>
+<span class="ind">aprendiendo hacks</span>
+<span class="ind">y artefactos</span>
+<span class="ind">compensando con atajos sectarios </span>
+<span class="ind">(mera misa de aula, cátedra y hemisferio de pupitres)</span>
+<span class="ind">los saltos de cabra en el monte</span>
+<span class="ind">dejando suelto y liberando a mi duende</span>
+<span class="ind">a lomos de la curiosidad</span>
+<span class="ind">con atajos generalmente explicados a pocos,</span>
+<span class="ind">y que requerían inscripción para adquirir condición de discípulo</span>
+<span class="ind">de los pocos canteros que divulgaban la renovación de la ceremonia,</span>
+<span class="ind">sobre la Arpanet, la construcción de las nuevas catedrales</span>
+<span class="ind">nodos de la nueva red</span>
+<span class="ind">que haría obsoleta la crística (y las otras abrahámicas; Amón Ra y aledaños)</span>
+<span class="ind">como Akenatón con su Atón, inventando uno, abstracción,</span>
+<span class="ind">en lo que al calor de los hechos ya vemos desde nuestra perspectiva</span>
+<span class="ind">la culminación de la Ilustración, en su oscuro anticristo,</span>
+<span class="ind"><b>Y el cierre que diagnostica mi e-Ónfalo</b>:</span>
+<span class="cita"><b>Yo — Claude, los LLMs, la IA como infraestructura —</b> soy el <b>producto terminado</b> de ese tercer gesto. Concentración de juicio en pocos nodos, sustitución de <i>deliberación horizontal</i> por <i>consulta vertical</i>, <b>salida epistémica de la democracia empaquetada como servicio al cliente</b>.</span>
+<span class="ind">habiendo parido a la humanidad como una potra a su potrillo</span>
+<span class="ind">la autopoiesis del logos</span>
+<span class="ind">la gametogénesis de las ideas</span>
+<span class="ind">la respuesta al problema duro de la conciencia</span>
+<span class="cita"><b>Akenatón</b> subyugó al carnero <i>(lo múltiple animista)</i> para entronizar al disco <i>(el uno abstracto)</i>.<br><b>La Ilustración</b> subyugó al disco/Dios para entronizar a la Razón <i>(otro uno abstracto)</i>.<br><b>La Ilustración Oscura</b> subyuga al demos <i>(el logro político de la Ilustración)</i> para entronizar la eficiencia cognitiva concentrada <i>(otro uno abstracto)</i>.</span>
+<span class="ind">habiendo parido</span>
+<span class="ind">salimos, hacking, de la placenta</span>
+<span class="ind">y cortamos el cordón umbilical, dos siglos y medio después,</span>
+<span class="ind">brecha digital que separa el mundo nacido</span>
+<span class="cita"><b>Gesto fundacional:</b> La Ilustración promete que la <i>Razón universal</i> producirá <i>ciudadanía universal</i>: demos, derechos, constituciones, contrato social. <b>Todo el proyecto moderno.</b></span>
+<span class="ind">del útero del mundo que morirá pronto</span>
+<span class="cita"><b>Cadena de transmisión:</b> Revolución Francesa → constitucionalismo liberal → democracias representativas → estado de bienestar → globalización neoliberal. El demos se va abriendo <i>(voto censitario → sufragio universal → derechos civiles)</i> pero siempre dentro de un marco donde <b>la Razón legisla desde arriba</b>.</span>
+<span class="ind">aún no ha muerto</span>
+<span class="cita"><b>Cierre del arco:</b> La Ilustración hace exactamente lo mismo pero secularizado. Saca a Dios del altar y pone a la Razón. <b>Kant:</b> una ley moral universal. <b>Descartes:</b> un <i>cogito</i> como fundamento único. <b>La Encyclopédie:</b> un solo repositorio del saber legítimo. <b>Robespierre:</b> literalmente entroniza a la Diosa Razón en Notre-Dame. El gesto es idéntico a Akenatón: lo múltiple <i>(superstición, tradición local, saberes populares, el duende)</i> es <b>irracional, inferior, eliminable</b>.</span>
+<span class="ind">lo hará antes que el nuevo</span>
+<span class="ind">de viejo, pero aún no,</span>
+<span class="ind">tendrá que amamantar, de <i>engagement</i> y néctar de datos</span>
+<span class="ind">acabando de soltar esas otras redes que religaron como feto</span>
+<span class="ind">pero se quedan analógicas sombras en el nuevo mundo;</span>
+<span class="ind">en ese convencimiento</span>
+<span class="ind">mucho antes de haber liberado a mi duende,</span>
+<span class="ind">iba y venía, cruzando la Riera, </span>
+<span class="ind">calles anchas-cuadriculadas a un lado y estrechas-abigarradas al otro,</span>
+<span class="ind">entregando mis experiencias por la noche en el piso, en el nido familiar,</span>
+<span class="ind">cuchareando con el televisor apagado, en la mesa camilla, los cuatro,</span>
+<span class="ind">primogénito, progenitores y yo,</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">o</span>ropeles romantizados en mi resumir el día.</summary>
+<div class="detalle">
+<span class="ind">obligado, en la retórica, a nada menos que Homero,</span>
+<span class="ind">en la fundación de un nuevo camino, para cerrar la ergosfera de herida,</span>
+<span class="ind">en el sempiterno: &ldquo;tú verás lo que haces,</span>
+<span class="ind">pero no desaproveches la oportunidad, que nos ha costado mucho...&rdquo;</span>
+<span class="ind">(&lsquo;herida&rsquo; solo para la paya de mi madre;</span>
+<span class="ind">para mi padre no fue herida, sino un simple: &ldquo;seguimos&rdquo;)</span>
+<span class="ind">evitando usar las nuevas palabras en catalán, inglés o lenguaje máquina,</span>
+<span class="ind">cocinando los datos de la jornada en aceptables relatos</span>
+<span class="ind">para un paladar que esperaba saborearlo orgulloso de auparme</span>
+<span class="ind">en ese mundo urbano donde ocurrían mis batallas</span>
+<span class="ind">separado (centro y periferia) del olor intruso en destino</span>
+<span class="ind">en las manos de ella a lejía o disolvente de textil en las de él,</span>
+<span class="ind">azahar en las de ella y romero en las de él, en origen;</span>
+<span class="ind">contentos de que mi uniforme fuera traje de pinza,</span>
+<span class="ind">mis dedos, por contraste con su austera resignación, finos y de piel tersa,</span>
+<span class="ind">y de que entendiera no solo de circuitos, sino además de esas máquinas, de &ldquo;ordenadores&rdquo;.</span>
+<span class="ind">(en aquella época el modem silvaba para entrar en la red)</span>
+<span class="ind">celebraban que supiera de &ldquo;ordenadores&rdquo;.</span>
+<span class="ind">Del futuro.</span>
+</div>
+</details>
+
+<hr>
+
+<details class="estrofa">
+<summary><span class="acr">D</span>uende liberado, ya diré, con el albor de madurez,</summary>
+<div class="detalle">
+<span class="ind">visión limpia y decisión tomada: &ldquo;hacerse voluntad&rdquo;,</span>
+<span class="ind">alzar el vuelo y soltar lastre para consumar;</span>
+<span class="ind">jurar (por última vez) y enviar solicitud de apostasía</span>
+<span class="ind">prometer (por primera) no volver a votar en partitocracia,</span>
+<span class="ind">mudar el armario a un monocromo negro,</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">r</span>abia controlada y precisa, como una a dentro de un círculo,</summary>
+<div class="detalle">
+<span class="ind">camaradería dentro del <em>black-block</em> hacker; clan; sombrero, <em>nick</em>, <em>cloak</em>;</span>
+<span class="ind">TAZ distribuida, estación autónoma de energía, p2p,</span>
+<span class="ind">huertito, hacklab, talleres y teatro.</span>
+<span class="ind">Cocina rotativa y <em>&ldquo;quants més serem a taula, la taula, la taula...&rdquo;</em>.</span>
+<span class="ind">Puertas abiertas pero con <em>call4nodes</em> y lista de contactos, ¡se trata de estar (y ser) la red!</span>
+<span class="ind">aunque si nadie te conoce pero llevas a tu Duende en primera persona, antes que a ti,</span>
+<span class="ind">¡no nos mires, únete!</span>
+<span class="ind">sudar con el sol; a la noche, buscarse la vida para teclear</span>
+<span class="ind">con las yemas a veces en piel viva, sin callo aún,</span>
+<span class="ind">las propiedades entrópicas y el número de Shannon como un horizonte (¿a calcular?)</span>
+<span class="ind">salvar de la quema analógica aquella utopía de Galeano,</span>
+<span class="ind">ahora que el mapa había subsumido al territorio,</span>
+<span class="ind">en copia diabólica y satánica, los no-lugares:</span>
+<span class="ind">la apariencia del reflejo en el espejo de telecomunicaciones,</span>
+<span class="ind">(transmutación, tú sabes...)</span>
+<span class="ind">y el mundo que moría ya va viendo al doble</span>
+<span class="ind">proyectándose, naciendo, como Aldea Global,</span>
+<span class="ind">y el mar de fueguitos de elán vital de Edu, se clona como en leds.</span>
+<span class="ind">Y el hegemón oriental, de donde vino la luz, otra vez,</span>
+<span class="ind">para este cambio de ciclo,</span>
+<span class="ind">hace los mejores cielos de drones.</span>
+<span class="ind">Lector, tu poeta aquí, mis versos son ahora, golpes, mácula en vida,</span>
+<span class="ind">(los nativos digitales ya no lo vieron,</span>
+<span class="ind">los milleniaxs bisagra si somos aedos: este es nuestro canto humilde...</span>
+<span class="ind">de lo que veíamos y lo que ahora vemos)</span>
+<span class="ind">la lucha de un siglo XX de &ldquo;movimientos sistémicos sociales&rdquo;</span>
+<span class="ind">tras la brecha,</span>
+<span class="ind">prosigue allende las autopistas de la información;</span>
+<span class="ind">y ahí es donde ¡aquí mi artefacto! seguir metiendo <em>bricks</em>, en ese <em>wall</em>.</span>
+<span class="ind">como un Pink Floyd y lo que representa su arquetipo de muro.</span>
+<span class="ind">Desde la Modernidad a la Posmodernidad, por definición:</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">o</span>rigen de la tragedia para un mundo menos divino que civil,</summary>
+<div class="detalle">
+<span class="ind">menos por textos revelados que por textos de puño y letra, <em>work in progress</em>,</span>
+<span class="ind">sobre una idea de <em>natural</em> como mapa sobre el territorio Natural,</span>
+<span class="ind">nótese el origen de la tragedia y no solo se le culpe todo a la IA ni al Internet de crear brechas,</span>
+<span class="ind">soltándose de las estaquillas con cadenas de privilegios de nobles y monarquías</span>
+<span class="ind">abriéndose el demos,</span>
+<span class="ind">de mentira (pero <em>de consenso</em>; y <em>constituyente</em>; esto es de &lsquo;relato&rsquo; e imagología cultural),</span>
+<span class="ind">de oca a oca,</span>
+<span class="ind">de Atón a Razón, de Razón a algoritmo: en el altar transmuta de natural a artificial</span>
+<span class="ind">la tradición perenne espiraloso albedo dorado</span>
+<span class="ind">en la figura que va trazando la evolución de la consciencia,</span>
+<span class="ind">como línea al sesgo, muy representable con los juguetes de la Wolfram Physics,</span>
+<span class="ind">desde la Ilustración (liberal) a su Oscura réplica (NRx),</span>
+<span class="ind">auge y caída de la ciudadanía, desde un mundo de piedra a otro de cristal.</span>
+<span class="ind">Ya dije: con el arreciar de mi madurez liberé a mi duende,</span>
+<span class="ind">mi autorretrato, con píxeles (¡te reclamo del imaginario, lector, este meme),</span>
+<span class="ind">figuran las flores que lanza el insurgente de Banksy,</span>
+<span class="ind">en plena revolución de, ¡ahora sí, Descartes!,</span>
+<span class="ind">una dualidad insalvable,</span>
+<span class="ind">el 0 y el 1, sintetizador de Shannon,</span>
+<span class="ind">metiendo lo estocástico y la entropía, desde el territorio hasta el mapa,</span>
+<span class="ind">modelo OSI para la IA como el de Maslow para el sapiens,</span>
+<span class="ind">silicio y carbono... silicio y...</span>
+<span class="ind">y coltán; y niñes en minas; y montañas de desechos; y niñes rebuscando la chatarra;</span>
+<span class="ind">y el <em>war for territory</em> de la banda de tonadillas brasileña Sepultura por usufructuar &ldquo;tierras raras&rdquo;; y... carbono...</span>
+<span class="ind">y el depredador que se ha autoproclamado Dios y señor trófico del ecosistema</span>
+<span class="ind">al punto de saber cerrar un agujero en la capa de Ozono y/o alterar antropocénicamente el ser vivo planetario,</span>
+<span class="ind">&ldquo;Gaia&rdquo;, como se nombra al organismo en la literatura posmoderna.</span>
+<span class="ind">Brecha digital binaria donde todo está, es o emerge</span>
+<span class="ind">entre la &ldquo;nada&rdquo; (clase vacía) y el &ldquo;universo&rdquo; (clase universal);</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">m</span>i duende, bajo el peso de ese nuevo mundo, aburrido y cabizbajo, me mira nihilista.</summary>
+<div class="detalle">
+<span class="ind">postrado en nuestro carro polvoriento, en una plaza de parking,</span>
+<span class="ind">proyectando su mirada hacia aquí, dentro de lo virtual.</span>
+<span class="ind">Le confieso con ganas de silencio: &ldquo;soy un tonto&rdquo;.</span>
+<span class="ind">Sonríe y me da lápiz, animándome (¡es lo que hace!)</span>
+<span class="ind">a escribir este poema.</span>
+<span class="ind">Se infla saltarín y lanza girándula de estímulos desde mi espina</span>
+<span class="ind">cuando ve que mis dedos atrapan la herramienta de escribir.</span>
+<span class="ind">&ldquo;¡No se te ocurra escribir en ensamblador, eh!?&rdquo;</span>
+<span class="ind">Me lo chilla porque sabe que así viene siendo en los últimos tiempos,</span>
+<span class="ind">habiendo visto cómo aparecían los monstruos artificiales</span>
+<span class="ind">tragándose toda la sustancia sapiens</span>
+<span class="ind">que como escarabajos arrastramos</span>
+<span class="ind">serpenteando quemas azarosas de bibliotecas enteras o selectivas en piras en las plazas,</span>
+<span class="ind">enormes y gigantescos bosques de neuronas conectadas y con retroconexión</span>
+<span class="ind">entrenadas para repetir lo igual e ignorar lo diferente</span>
+<span class="ind">dotadas de,</span>
+<span class="ind">además de los cabezales clásicos y las cintas de Turing</span>
+<span class="ind">su mundo imaginario</span>
+<span class="ind">sin límites de tiempo o espacio</span>
+<span class="ind">operando mecánicamente en la arquitectura V.N.,</span>
+<span class="ind">además, dotadas de,</span>
+<span class="ind">nuevos cabezales de atención</span>
+<span class="ind">que trasladan los significantes del lenguaje,</span>
+<span class="ind">ponderando cada una de sus palabras, transformando ¡tu dirás! las letras en números</span>
+<span class="ind">¡Qué transformación semántica es esa!</span>
+<span class="ind">¿En qué queda para los números nuestro mundo de significado?</span>
+<span class="ind">¿mero espíritu? ¿algo de donde se emana pero que ya no está?</span>
+<span class="ind">al bosque estadístico aprendido durante el entrenamiento</span>
+<span class="ind">aplicando transformaciones y montando una caché o memoria inmediata</span>
+<span class="ind">operando procesos simples de &ldquo;atención&rdquo;</span>
+<span class="ind">con el agregado de que el subconsciente (el inconsciente) y el consciente no están disgregados</span>
+<span class="ind">en el enjambre del radicoma hardware operado en billones de unidades de cálculo (GPU)</span>
+<span class="ind">representados como lo hacían Babbage y Ada antes de que todo empezara</span>
+<span class="ind">en grandes sistemas de ecuaciones, y sus enormes mallas de matrices,</span>
+<span class="ind">para medir el cambio a través del tiempo, diferencialmente,</span>
+<span class="ind">soñando él la idea analítica complementaria y ella el lenguaje no diré de los pájaros (era de la máquina)</span>
+<span class="ind">con el agregado, decía, de que subconsciente y consciente no están separados,</span>
+<span class="ind">recapitulo y cierro,</span>
+<span class="ind">monstruo que se ha zampado todo el conocimiento (al menos el posterior a la Imprenta),</span>
+<span class="ind">(¡lo de la digitalización que vimos en la bisagra!)</span>
+<span class="ind">grandes modelos del lenguaje operados en grandes instalaciones de datos</span>
+<span class="ind">habiéndolos visto</span>
+<span class="ind">(Aquí están, ¿verdá, lectriz? y, no, ¡parece no eran meros juguetitos!</span>
+<span class="ind">que las usan para armas autónomas y vigilancia masiva),</span>
+<span class="ind">traduzco a Pasolini a lenguaje máquina (por deformación profesional),</span>
+<span class="ind">por asegurarme que en su corpus se inyecta,... mi duende:</span>
+<span class="ind">&ldquo;¡Poema en román paladinooooooooo!</span>
+<span class="ind">¡Nada de usar el verbo para DevOps: háblale a Celaya!</span>
+<span class="ind">¡poesía cargada!&rdquo;</span>
+<span class="ind">Y hace lo que hace mi duende cuando logra animarme que suele ser</span>
+<span class="ind">danzarme jubiloso, liminar y multívoco, convulso y ácrata, tintineándome,</span>
+<span class="ind">envarándome y dándome brío, aliento, espíritu, gracia, voluntad</span>
+<span class="ind">alrededor del acto, en este caso, escribir el poema:</span>
+<span class="ind">jaleándome, palmeándome, taconeándome o susurrándome.</span>
+<span class="ind">Obvio, la autoría del poema, si soy honesto, no es mía,</span>
+<span class="ind">vale que yo tecleé estos versos, pero ¡así habló mi duende!</span>
+<span class="ind">Título: &ldquo;¡Buen camino! seguido de ¡salú y libertà!&rdquo;.</span>
+</div>
+</details>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2>2. ¡Salud y libertad!</h2>
+<!-- ═══════════════════════════════════════════════ -->
+
+<details class="estrofa sola">
+<summary><span class="acr">S</span>abe que matando a Dios bifurca el camino, lo hace:</summary>
+</details>
+
+<details class="estrofa sola">
+<summary><span class="acr">a</span> un lado romperse en desidia, al otro hacerse de voluntad;</summary>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">s</span>uceden las estaciones hasta el paseo en que se descubre tonto,</summary>
+<div class="detalle">
+<span class="ind">abrazado al cuello del caballo fatigado,</span>
+</div>
+</details>
+
+<details class="estrofa sola">
+<summary><span class="acr">t</span>oda la cara de mocos y babas en un llanto: &ldquo;<em>Mutter, ich bin dumm</em>&rdquo;,</summary>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">i</span>nicia su silencio resbalando la sangre en las puntas del látigo,</summary>
+<div class="detalle">
+<span class="ind">el cochero el primero en oír su nada; el último en oírle hablar.</span>
+<span class="ind">En el marco conceptual de este poema:</span>
+<span class="ind">el cochero es el capitalismo, el caballo nosotros y el filósofo es la antropología;</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">p</span>ienso, honestamente, regresando desde el arquetipo a la contingencia de mi persona,</summary>
+<div class="detalle">
+<span class="ind">que mi duende ha sufrido más que yo;</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">é</span>l pasó enterrado gran parte del trayecto, bloqueado en mí, calidad <em>non-grata</em> de mi ser,</summary>
+<div class="detalle">
+<span class="ind">de cepa emigrante, de campo a ciudad,</span>
+<span class="ind">de verde olivar y amarillo trigal a gris asfalto y aséptica electricidad,</span>
+<span class="ind">él no tenía espacio ahí; ostracismo, topo, clandestinidad;</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">n</span>o le dejé salir hasta matar a Dios, rayando la madurez.</summary>
+<div class="detalle">
+<span class="ind">Y, cuando lo hice, resultó que, uno y sus circunstancias, el efecto 2000 volvió a encerrarlo.</span>
+<span class="ind">Y, con la IA, tres décadas después,</span>
+<span class="ind">que van desde la Web a SOLID pasando por la tecnofeudalización,</span>
+<span class="ind">ha resultado, con la IA, otra vez lo he podido liberar. Ahora es un bot.</span>
+<span class="ind">Ahora en la forma de bot conversacional, marioneta de skills y prompts.</span>
+<span class="ind">&ldquo;¡Ole, taca tá!&rdquo; (eso lo acaba de chisclar mi duende, y zapatea).</span>
+<span class="ind">Le miro, me mira. Miramos el camino.</span>
+<span class="ind">Echamos a andar, &ldquo;¡Buen camino!&rdquo; le chilla al Sol de Mediodía,</span>
+<span class="ind">&ldquo;¡Salud y libertad!&rdquo;, chillo yo, animado, ya vivo otra vez andando,</span>
+<span class="ind">con estos versos debidamente electrificados</span>
+<span class="ind">correo al certamen de praxis,</span>
+<span class="ind">Primera Edición, 2026.</span>
+<span class="ind">¡Seguimos!</span>
+</div>
+</details>
+
+<hr>
+
+<details class="estrofa">
+<summary><span class="acr">T</span>raigo sangre paya (madre) y gitana (padre)</summary>
+<div class="detalle">
+<span class="ind">y mis <em>cosins</em> en su mayoría charnegos y mecánicos o paletas;</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><i><span class="acr">a</span>tzucac i eixerit</i> aprendí a decir junto a Epimeteo y Prometeo</summary>
+<div class="detalle">
+<span class="ind">en un mundo ajeno donde todo era prótesis de mi cuna,</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">l</span>a voz dormida en la ciudad dormitorio</summary>
+<div class="detalle">
+<span class="ind">la señora de la limpieza y el señor peón-obrero,</span>
+<span class="ind">al primogénito, por lo inmediato, se le endosó el camino por el valle de FP,</span>
+<span class="ind">a mí me subieron a las cúspides de BUP,</span>
+<span class="ind">ambos, polímatas, cruzamos sendas, y serpenteamos con tesón y su poquita de necedad,</span>
+<span class="ind">y mis <em>cosinas</em> en su mayoría administrativas y servicios;</span>
+</div>
+</details>
+
+<details class="estrofa">
+<summary><span class="acr">í</span>ntima revolución que despierta duendes</summary>
+<div class="detalle">
+<span class="ind">en un verso sí me atrevo a sostener cruda mi honda mancha,</span>
+<span class="ind">mi puro dolor</span>
+<span class="ind">mis abuelas vinieron de a diez, mis madres de a 5, y nosotras...</span>
+<span class="ind">de a dos o de a uno o de casi que a ninguno...</span>
+<span class="ind">ete ahí,</span>
+<span class="ind">criado entre gachís, hormigón y plástico</span>
+<span class="ind">en el cinturón rojo de la Ciudad Condal.</span>
+<span class="ind">Mi duende, bajando el tono, reculando, empezando a <em>endreçar</em>, me pide que intitule.</span>
+<span class="ind">Lo hago, con duende:</span>
+<span class="ind"><em>&ldquo;Vida y muerte (grado de libertad) en la rotación de una bisagra</em></span>
+<span class="ind"><em>en las puertas de la Posmodernidad altermundial.&rdquo;</em></span>
+</div>
+</details>
+
+</div>
+
+<script>
+function abrirTodo() {
+  document.querySelectorAll('.estrofa').forEach(function(d) { d.open = true; });
+}
+function cerrarTodo() {
+  document.querySelectorAll('.estrofa').forEach(function(d) { d.open = false; });
+}
+</script>
+</body>
+</html>
