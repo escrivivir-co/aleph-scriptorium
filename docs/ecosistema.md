@@ -41,6 +41,7 @@ Repositorios externos integrados que proporcionan capacidades especializadas.
 |-----------|---------|
 | [VsCodeExtension](../VsCodeExtension/) | Extensión Arrakis (Hacker Panels) |
 | [CopilotEngine](../CopilotEngine/) | Análisis del motor conversacional |
+| [ClaudeEngine](../ClaudeEngine/) | Motor Claude Code (Anthropic, filtración 2026-03-31) · [→ docs](/aleph-scriptorium/claude-engine/) |
 | [OnthologyEditor](../OnthologyEditor/) | Modelado de dominios (Flove, MMCO) |
 | [AAIAGallery](../AAIAGallery/) | Galería de agentes AlephScript |
 | [AgentLoreSDK](../AgentLoreSDK/) | Plantillas de agentes (637+ items) |

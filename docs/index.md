@@ -46,6 +46,16 @@ permalink: /
     <span class="card-title">Copilot</span>
     <span class="card-desc">Diapos "Self-Reflection"</span>
   </a>
+  <a href="{{ site.baseurl }}/claude-engine/" class="nav-card">
+    <span class="card-icon">⚡</span>
+    <span class="card-title">ClaudeEngine</span>
+    <span class="card-desc">Arquitectura + Pipeline del motor Claude Code</span>
+  </a>
+  <a href="{{ site.baseurl }}/blueprint-claude-engine/" class="nav-card nav-card-featured">
+    <span class="card-icon">⚡</span>
+    <span class="card-title">ClaudeEngine Pipeline</span>
+    <span class="card-desc">Diapos "Pipeline Walkthrough"</span>
+  </a>
   <a href="{{ site.baseurl }}/demo/" class="nav-card nav-card-featured">
     <span class="card-icon">🎬</span>
     <span class="card-title">Directorio</span>
