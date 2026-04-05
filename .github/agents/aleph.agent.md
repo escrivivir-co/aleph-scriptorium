@@ -138,6 +138,7 @@ Principales:
 - `@plugin_ox_novelist` — Edición de narrativas
 - `@plugin_ox_argboard` — Teatro ARG
 - `@plugin_ox_consejoasesor` — Consejo Asesor ONFALO (14 agentes, 7 modos, pipeline relato)
+- `@plugin_ox_bothubsdk` — SDK bots Telegram + protocolo IACM inter-agente
 
 ---
 

@@ -17,7 +17,7 @@
 | ⚙️ Meta | 3 | Gestión del propio sistema |
 | 🔌 Plugins | 18+ | Agentes añadidos por plugins |
 
-**Total agentes**: 31+ (core + bridges)
+**Total agentes**: 32+ (core + bridges)
 
 ---
 
@@ -54,7 +54,7 @@
         │ ← invocan vía bridges
         ▼
 ┌───────────────────────────────────────────────────────────────────┐
-│                      🔌 PLUGIN BRIDGES (18)                       │
+│                      🔌 PLUGIN BRIDGES (19)                       │
 └───────────────────────────────────────────────────────────────────┘
 ```
 
@@ -128,6 +128,7 @@
 | `plugin_ox_floveeditor` | flove-editor | 1 agente | `@plugin_ox_floveeditor` |
 | `plugin_ox_openasyncapieditor` | openasyncapi-editor | 1 agente | `@plugin_ox_openasyncapieditor` |
 | `plugin_ox_aaiaeditor` | aaia-editor | 1 agente | `@plugin_ox_aaiaeditor` |
+| `plugin_ox_bothubsdk` | bot-hub-sdk | 1 agente | `@plugin_ox_bothubsdk` |
 
 ### Detalle por Plugin
 
@@ -153,6 +154,7 @@
 | hypergraph-editor | `.github/plugins/hypergraph-editor/agents/` | HyperGraphEditor |
 | openasyncapi-editor | `.github/plugins/openasyncapi-editor/agents/` | OpenAsyncApiEditor |
 | aaia-editor | `.github/plugins/aaia-editor/agents/` | AAIAEditor |
+| bot-hub-sdk | `.github/plugins/bot-hub-sdk/agents/` | BotHubSDK |
 
 ---
 
