@@ -69,3 +69,6 @@
 [submodule "AgentLoreSDK"]
 	path = AgentLoreSDK
 	url = https://github.com/escrivivir-co/mcp-agent-lore-sdk.git
+[submodule "BotHubSDK"]
+	path = BotHubSDK
+	url = https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk
