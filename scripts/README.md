@@ -9,7 +9,7 @@
 
 | Script | Propósito |
 |--------|-----------|
-| `setup-workspace.sh` | Inicializa VS Code settings y los 15 submódulos |
+| `setup-workspace.sh` | Inicializa VS Code settings y los 19 submódulos |
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
@@ -32,7 +32,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `chat.instructionsFilesLocations`: detecta instructions de plugins
    - `chat.useNestedAgentsMdFiles`: busca agentes anidados
    
-2. **Sincroniza los 15 submódulos** con rama `integration/beta/scriptorium`:
+2. **Sincroniza los 19 submódulos** con rama `integration/beta/scriptorium`:
    - `VsCodeExtension` — Extensión VS Code / Arrakis Theater
    - `MCPGallery` — Zeus MCP Presets (UI web)
    - `VibeCodingSuite` — VibeCoding Connector / Matrix Theater
@@ -48,6 +48,10 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `WorkflowEditor` — Editor visual de workflows (n8n connector)
    - `WiringAppHypergraphEditor` — Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
    - `OnthologyEditor` — Editor de ontologías (Flove Template)
+   - `CopilotEngine` — Copilot Chat Engine (fork)
+   - `StateMachine` — State Machine MCP Driver
+   - `AgentLoreSDK` — Agent Lore SDK (plantillas de agentes)
+   - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
 
 ### Output esperado
 
@@ -69,10 +73,14 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: TypedPromptsEditor
 [setup] Configurando submódulo: WorkflowEditor
 [setup] Configurando submódulo: WiringAppHypergraphEditor
-[setup] Configurando submódulo: OnthologyEditor
-[setup] ✔ Setup completado (15 submódulos)
+[setup] Configurando subódulo: OnthologyEditor
+[setup] Configurando submódulo: CopilotEngine
+[setup] Configurando submódulo: StateMachine
+[setup] Configurando submódulo: AgentLoreSDK
+[setup] Configurando submódulo: BotHubSDK
+[setup] ✔ Setup completado (19 submódulos)
 
-Submódulos configurados (15):
+Submódulos configurados (19):
   - VsCodeExtension: Extensión VS Code / Arrakis Theater
   - MCPGallery: Zeus MCP Presets (UI web)
   - VibeCodingSuite: VibeCoding Connector / Matrix Theater
@@ -88,6 +96,10 @@ Submódulos configurados (15):
   - WorkflowEditor: Editor visual de workflows (n8n connector)
   - WiringAppHypergraphEditor: Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
   - OnthologyEditor: Editor de ontologías (Flove Template)
+  - CopilotEngine: Copilot Chat Engine (fork)
+  - StateMachine: State Machine MCP Driver
+  - AgentLoreSDK: Agent Lore SDK (plantillas de agentes)
+  - BotHubSDK: SDK bots Telegram + protocolo IACM inter-agente
 ```
 
 ---

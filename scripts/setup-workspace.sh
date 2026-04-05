@@ -66,6 +66,9 @@ SUBMODULE_STATE_MACHINE_URL="https://github.com/escrivivir-co/state-machine-mcp-
 SUBMODULE_AGENT_LORE_SDK_DIR="$ROOT_DIR/AgentLoreSDK"
 SUBMODULE_AGENT_LORE_SDK_URL="https://github.com/escrivivir-co/mcp-agent-lore-sdk.git"
 
+SUBMODULE_BOT_HUB_SDK_DIR="$ROOT_DIR/BotHubSDK"
+SUBMODULE_BOT_HUB_SDK_URL="https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk.git"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -93,7 +96,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/prompts": true,
     ".github/plugins/arg-board-app/prompts": true,
     ".github/plugins/hypergraph-editor/prompts": true,
-    ".github/plugins/flove-editor/prompts": true
+    ".github/plugins/flove-editor/prompts": true,
+    ".github/plugins/bot-hub-sdk/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -115,7 +119,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/instructions": true,
     ".github/plugins/arg-board-app/instructions": true,
     ".github/plugins/hypergraph-editor/instructions": true,
-    ".github/plugins/flove-editor/instructions": true
+    ".github/plugins/flove-editor/instructions": true,
+    ".github/plugins/bot-hub-sdk/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -210,6 +215,7 @@ setup_submodule "$SUBMODULE_ONTHOLOGY_EDITOR_DIR" "$SUBMODULE_ONTHOLOGY_EDITOR_U
 setup_submodule "$SUBMODULE_COPILOT_ENGINE_DIR" "$SUBMODULE_COPILOT_ENGINE_URL" "CopilotEngine"
 setup_submodule "$SUBMODULE_STATE_MACHINE_DIR" "$SUBMODULE_STATE_MACHINE_URL" "StateMachine"
 setup_submodule "$SUBMODULE_AGENT_LORE_SDK_DIR" "$SUBMODULE_AGENT_LORE_SDK_URL" "AgentLoreSDK"
+setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
 
 # 4) Inicializar submódulos anidados de OnthologyEditor (metamodel, MMCO, FloveDocs)
 echo "[setup] ─────────────────────────────────────────"
@@ -226,7 +232,7 @@ else
   echo "[setup] Aviso: OnthologyEditor no inicializado, saltando submódulos anidados"
 fi
 
-echo "[setup] ✔ Setup completado (18 submódulos + 3 anidados en OnthologyEditor)"
+echo "[setup] ✔ Setup completado (19 submódulos + 3 anidados en OnthologyEditor)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"

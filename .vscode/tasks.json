@@ -254,6 +254,48 @@
       "detail": "Puerto 3008 - Firehose Pipeline (Bluesky + ONFALO CDR)"
     },
     {
+      "label": "BHS: Start [Server]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "start:bothub"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/MCPGallery/mcp-mesh-sdk"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mcp-bothub",
+        "pattern": {
+          "regexp": "^(Error|TypeError|SyntaxError):\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Starting.*$",
+          "endsPattern": "^.*BotHub MCP Server running on port 3010.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "mcp-stack"
+      },
+      "detail": "Puerto 3010 - BotHub MCP Server (BotHubSDK + IACM)"
+    },
+    {
+      "label": "BHS: Open [Browser]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3010"
+      ],
+      "detail": "Abrir BotHub MCP Server health endpoint"
+    },
+    {
       "label": "AIA: Open [Browser]",
       "type": "shell",
       "command": "cmd",
