@@ -295,6 +295,64 @@
       ],
       "detail": "Abrir BotHub MCP Server health endpoint"
     },
+    // ═══════════════════════════════════════════════════════════════════════
+    // BHS: BOTHUB SDK
+    // Ejemplos: console-app headless + dashboard TUI
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "BHS: Setup [Examples]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "examples:install"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BotHubSDK"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Instalar dependencias de console-app, dashboard e iacm-demo"
+    },
+    {
+      "label": "BHS: Start [Console]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BotHubSDK"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "group": "bhs-stack"
+      },
+      "detail": "BotHubSDK console-app headless (build:sdk + ejemplo)"
+    },
+    {
+      "label": "BHS: Start [Dashboard]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "dev:dashboard"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BotHubSDK"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "group": "bhs-stack"
+      },
+      "detail": "BotHubSDK dashboard TUI (build:sdk + ejemplo interactivo)"
+    },
     {
       "label": "AIA: Open [Browser]",
       "type": "shell",
