@@ -54,10 +54,6 @@
 	path = WiringAppHypergraphEditor
 	url = https://github.com/escrivivir-co/wiki-racer.git
 	branch = integration/beta/scriptorium
-[submodule "OnthologyEditor"]
-	path = OnthologyEditor
-	url = https://github.com/escrivivir-co/alephscript-onthology-editor.git
-	branch = integration/beta/scriptorium
 [submodule "CopilotEngine"]
 	path = CopilotEngine
 	url = https://github.com/escrivivir-co/vscode-copilot-chat
@@ -72,3 +68,4 @@
 [submodule "BotHubSDK"]
 	path = BotHubSDK
 	url = https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk
+	branch = integration/beta/scriptorium
