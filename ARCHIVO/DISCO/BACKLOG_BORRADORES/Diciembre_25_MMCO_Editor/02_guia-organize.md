@@ -15,7 +15,7 @@
 | **G** | Generate Structured Pathways | Elegir CoT/ToT/Graph según complejidad |
 | **A** | Analyze Using Selected Technique | Aplicar pattern a la story |
 | **N** | Navigate Documentation Efficiently | Consulta secuencial o paralela |
-| **I** | Integrate Multiple Components | Combinar Metamodel + MMCO + Flove |
+| **I** | Integrate Multiple Components | Combinar Metamodel + MMCO + FVE |
 | **Z** | Validate Application Quality | Verificar contra templates formales |
 | **E** | Enhance Through Ontological Grounding | Producir XML/JSON validables |
 
@@ -93,7 +93,7 @@ Cada bandera opera con una técnica diferente **y en un nivel MMCO distinto**:
 | 🟡 Yellowflag | 2 (Pseudo-tiempo) | Φ_límites | **ToT Multi-Path** | Exploración de límites y condiciones |
 | 🟠 Orangeflag | 3 (Espacio-tiempo) | Φ_registro | **Self-Consistency** | Validación de registro desde múltiples audiencias |
 
-**Propiedad de Inconmensurabilidad** (Feedback Talaia/Flove/LOW):
+**Propiedad de Inconmensurabilidad** (Feedback Talaia/FVE/LOW):
 - Los niveles MMCO representan **etapas de emergencia** distintas
 - Φ_verdad (epistemología) ≠ Φ_poder (política) ≠ Φ_material (economía)
 - La suma lineal `Σ(w·Φ)` pierde información de estructura ontológica

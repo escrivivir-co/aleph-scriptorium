@@ -1,14 +1,14 @@
-# Planificación Plugin FloveEditor: Conversación PO-SM
+# Planificación Plugin FVEEditor: Conversación PO-SM
 
 > **Fecha**: 2025-01-02  
 > **Participantes**: Product Owner (PO), Scrum Master (SM)  
-> **Contexto**: Exploración de ontología Flove.org y diseño de plugin
+> **Contexto**: Exploración de ontología FVE.org y diseño de plugin
 
 ---
 
 ## Apertura
 
-**SM**: Buenas. Tras una sesión de scraping e investigación, he recopilado información sustancial sobre el ecosistema **Flove**. Te presento los hallazgos:
+**SM**: Buenas. Tras una sesión de scraping e investigación, he recopilado información sustancial sobre el ecosistema **FVE**. Te presento los hallazgos:
 
 ### Fuentes exploradas
 
@@ -17,11 +17,11 @@
 | lowai.org | Redirige a demos.flove.org | ✅ Explorado |
 | flove.org | Sitio principal | ✅ Explorado |
 | demos.flove.org/whole | Tabla de ontología completa | ✅ Capturado |
-| Codeberg FloveDocs/Main | Repositorio de documentación | ✅ Explorado |
+| Codeberg FVEDocs/Main | Repositorio de documentación | ✅ Explorado |
 
 ### Hallazgos clave
 
-**Filosofía central**: Flove = "Love" → Abordaje lovecéntrico/biocéntrico de todos los campos del conocimiento.
+**Filosofía central**: FVE = "Love" → Abordaje lovecéntrico/biocéntrico de todos los campos del conocimiento.
 
 **Paradigma base**: **Confluentism** — "Simplexity InEvolution"
 - Frase resumen: *"Un bipolo que se fractaliza involuto en todo"*
@@ -90,8 +90,8 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 ### Demos disponibles (Codeberg)
 
 - `Demos25.10.zip` (última versión, Oct 2025)
-- `FloveSlides25.12.pdf` (Presentaciones actualizadas Dic 2025)
-- `FloveTables25.12.pdf` (Tablas de taxonomía actualizadas)
+- `FVESlides25.12.pdf` (Presentaciones actualizadas Dic 2025)
+- `FVETables25.12.pdf` (Tablas de taxonomía actualizadas)
 
 **PO**: Perfecto. Veo un sistema rico para crear lógica simbólica. ¿Cómo lo conectamos con AGENT_CREATOR?
 
@@ -99,18 +99,18 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 
 ## Definición del Objetivo
 
-**SM**: Propongo crear el plugin **FloveEditor** con estas características:
+**SM**: Propongo crear el plugin **FVEEditor** con estas características:
 
 ### Objetivo SMART
 
-> **Crear un editor de lógica basado en la ontología Flove que permita:**
+> **Crear un editor de lógica basado en la ontología FVE que permita:**
 > - Definir reglas usando los paradigmas (Confluentism, PsicoSquare, etc.)
 > - Generar código/JSON exportable para agentes
 > - Integrarse con AGENT_CREATOR como fuente de "alma lógica"
 
 ### Modelo de trabajo
 
-| Concepto Flove | Traducción en Scriptorium |
+| Concepto FVE | Traducción en Scriptorium |
 |----------------|---------------------------|
 | Paradigm | Base de razonamiento del agente |
 | App | Capacidad/habilidad específica |
@@ -121,7 +121,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 
 ---
 
-## Justificación: Flove vs. Paradigmas Existentes
+## Justificación: FVE vs. Paradigmas Existentes
 
 **SM**: Excelente pregunta. Comparación:
 
@@ -134,7 +134,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 | SBC/SBR | Casos/reglas explícitas | Rigidez |
 | Híbrido | Combinación | Complejidad de integración |
 
-### Flove (propuesta)
+### FVE (propuesta)
 
 | Aspecto | Aporte diferencial |
 |---------|-------------------|
@@ -148,7 +148,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 
 1. **Agentes con "brújula moral"**: Decisiones que consideren "bienestar" no solo "eficiencia"
 2. **Razonamiento holístico**: Conectar física con psicología, economía con biología
-3. **Lógica difusa nativa**: Los paradigmas Flove son inherentemente graduales
+3. **Lógica difusa nativa**: Los paradigmas FVE son inherentemente graduales
 4. **Personajes con "alma"**: Para Teatro ARG, personajes con cosmovisión coherente
 
 **PO**: Entendido. Es complementario a as-gym, no sustitutivo. Apruebo el enfoque. ¿Qué épicas propones?
@@ -159,16 +159,16 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 
 **SM**: Propongo 3 épicas para un primer Feature Cycle:
 
-### Épica 1: Fuente de Datos FloveOnto (SCRIPT-1.20.0)
+### Épica 1: Fuente de Datos FVEOnto (SCRIPT-1.20.0)
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Objetivo** | Capturar y estructurar la ontología Flove como JSON Schema |
+| **Objetivo** | Capturar y estructurar la ontología FVE como JSON Schema |
 | **Entregables** | `flove-ontology.schema.json`, documentación de campos |
 | **Effort estimado** | 8 pts |
 | **Prioridad** | P0 (bloquea todo lo demás) |
 
-### Épica 2: Plugin FloveEditor (SCRIPT-1.21.0)
+### Épica 2: Plugin FVEEditor (SCRIPT-1.21.0)
 
 | Aspecto | Detalle |
 |---------|---------|
@@ -182,7 +182,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 | Aspecto | Detalle |
 |---------|---------|
 | **Objetivo** | Campo `floveParadigm` en recipes, validación, generación |
-| **Entregables** | Flujo completo de creación de agente con lógica Flove |
+| **Entregables** | Flujo completo de creación de agente con lógica FVE |
 | **Effort estimado** | 8 pts |
 | **Prioridad** | P1 |
 
@@ -196,7 +196,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 
 | Riesgo | Probabilidad | Impacto | Mitigación |
 |--------|--------------|---------|------------|
-| Ontología Flove incompleta en fuentes | Media | Alto | Usar FloveTables25.12.pdf como fuente de verdad |
+| Ontología FVE incompleta en fuentes | Media | Alto | Usar FVETables25.12.pdf como fuente de verdad |
 | Conflicto semántico con as-gym | Baja | Medio | Prefijo `flove_` en todos los IDs |
 | Complejidad de 10 campos excesiva | Media | Medio | Empezar con 3 campos (Psico, Socio, MathyLogic) |
 | Demos.flove.org inestable | Alta | Bajo | Copiar contenido a ARCHIVO/PLUGINS/FLOVE_EDITOR/ |
@@ -224,7 +224,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 ├───────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌─────────────────┐    ┌─────────────────┐                   │
-│  │ FloveOntology   │───▶│   FloveEditor   │                   │
+│  │ FVEOntology   │───▶│   FVEEditor   │                   │
 │  │ (JSON Schema)   │    │   (Agent)       │                   │
 │  └─────────────────┘    └────────┬────────┘                   │
 │                                  │                             │
@@ -239,7 +239,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 │                                  ▼                             │
 │                         ┌─────────────────┐                   │
 │                         │  Agente con     │                   │
-│                         │  "alma Flove"   │                   │
+│                         │  "alma FVE"   │                   │
 │                         └─────────────────┘                   │
 │                                                                 │
 └───────────────────────────────────────────────────────────────┘
@@ -251,7 +251,7 @@ Metaphysics → Teleology → Theology → MathyLogic → Physics → Chemistry 
 
 **SM**: Resumen ejecutivo:
 
-1. **Ontología Flove** capturada de 4 fuentes (flove.org, demos.flove.org, Codeberg)
+1. **Ontología FVE** capturada de 4 fuentes (flove.org, demos.flove.org, Codeberg)
 2. **10 campos × 4 capas** de taxonomía disponibles
 3. **3 épicas** definidas para Feature Cycle 1 (29 pts total)
 4. **Complementario** a as-gym, enfoque biocéntrico/holístico

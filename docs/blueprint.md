@@ -412,11 +412,6 @@ permalink: /blueprint/
         <span class="plugin-name">n8n Editor</span>
         <span class="plugin-desc">Workflows</span>
       </div>
-      <div class="plugin-card" title="Flove Editor - Ontologías Confluentism">
-        <span class="plugin-icon">🧬</span>
-        <span class="plugin-name">Flove</span>
-        <span class="plugin-desc">Ontologías</span>
-      </div>
     </div>
     
     <div class="plugin-row center-row">

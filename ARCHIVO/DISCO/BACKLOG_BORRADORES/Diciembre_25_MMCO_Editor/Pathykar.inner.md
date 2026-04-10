@@ -2017,7 +2017,7 @@ O preparar el mensaje para revisión del usuario antes de ejecutar.
 
 ## SCRIPT-1.28.0 --- Blueprint MMCO Enhancement
 
-> **Objetivo**: Corregir navegación del Blueprint MMCO para presentación Talaia/Flove
+> **Objetivo**: Corregir navegación del Blueprint MMCO para presentación Talaia/FVE
 > **Sprint**: FC2 (actual)
 > **Effort total**: 3 pts
 > **Estado**: ✅ Cerrada (2025-12-27)
@@ -2389,7 +2389,7 @@ Una vez completadas las épicas de modelado ontológico, el index.md presentará
         │                     │                     │
    ontology              core (0,0)             dynamics
    (x:-1500)          Agentes+Plugins           (x:1500)
-   Flove/UFO                  │                  Flujos
+   FVE/UFO                  │                  Flujos
         │                     │                     │
         └─────────────────────┼─────────────────────┘
                               │
@@ -4812,9 +4812,9 @@ feat(script/plugins): instalar plugin "Tablero ARG" v1.0.0
       ]
     },
     "flove-editor": {
-      "name": "Editor de Ontologías (Flove Template)",
+      "name": "Editor de Ontologías (FVE Template)",
       "version": "1.0.0",
-      "description": "Plugin para diseñar ontologías basadas en el paradigma CONFLUENTISM de Flove. Estructura de 3 niveles (Fuzzy→PsicoSocial→Freedom). Exporta a JSON Schema, TypeScript y Zod. Integra con TypedPrompting y AGENT_CREATOR.",
+      "description": "Plugin para diseñar ontologías basadas en el paradigma CONFLUENTISM de FVE. Estructura de 3 niveles (Fuzzy→PsicoSocial→Freedom). Exporta a JSON Schema, TypeScript y Zod. Integra con TypedPrompting y AGENT_CREATOR.",
       "author": "Aleph Scriptorium",
       "installed_at": "2025-01-02T12:00:00Z",
       "enabled": true,
@@ -4828,33 +4828,33 @@ feat(script/plugins): instalar plugin "Tablero ARG" v1.0.0
       "paradigm": {
         "name": "CONFLUENTISM",
         "levels": ["Fuzzy Logic", "PsicoSocial", "Freedom/Economy"],
-        "source": "Flove/Iowa"
+        "source": "FVE/Iowa"
       },
       "export_formats": ["json-schema", "typescript", "zod"],
       "handoffs": [
         {
-          "label": "Crear ontología con template Flove",
-          "agent": "FloveEditor"
+          "label": "Crear ontología con template FVE",
+          "agent": "FVEEditor"
         },
         {
           "label": "Exportar ontología a JSON Schema",
-          "agent": "FloveEditor"
+          "agent": "FVEEditor"
         },
         {
           "label": "Exportar ontología a TypeScript",
-          "agent": "FloveEditor"
+          "agent": "FVEEditor"
         },
         {
           "label": "Exportar ontología a Zod",
-          "agent": "FloveEditor"
+          "agent": "FVEEditor"
         },
         {
           "label": "Instalar en TypedPrompting",
-          "agent": "FloveEditor"
+          "agent": "FVEEditor"
         },
         {
           "label": "Asignar a receta de agente",
-          "agent": "FloveEditor"
+          "agent": "FVEEditor"
         }
       ]
     }
@@ -5213,7 +5213,7 @@ handoffs:
               send: false
        - label: "[FLOVE-EDITOR] Editor de ontologías"
               agent: plugin_ox_floveeditor
-              prompt: Accede al plugin FloveEditor. Diseña ontologías con paradigma CONFLUENTISM (Fuzzy→PsicoSocial→Freedom), exporta a JSON Schema/TypeScript/Zod.
+              prompt: Accede al plugin FVEEditor. Diseña ontologías con paradigma CONFLUENTISM (Fuzzy→PsicoSocial→Freedom), exporta a JSON Schema/TypeScript/Zod.
               send: false
        - label: "Tomar foto de estado del sprint"
               agent: Aleph
@@ -5553,7 +5553,7 @@ Make sure to acquire the instructions before making any changes to the code.
 <applyTo>ARCHIVO/PLUGINS/N8N_EDITOR/**/*.json, .github/plugins/n8n-editor/**/*.md, alephscript-n8n-like-editor/**/*</applyTo>
 </instruction>
 <instruction>
-<description>Instrucciones para modelar dominios según el paradigma Flove y su estructura de 3 niveles.</description>
+<description>Instrucciones para modelar dominios según el paradigma FVE y su estructura de 3 niveles.</description>
 <file>/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/.github/plugins/flove-editor/instructions/flove-paradigm.instructions.md</file>
 <applyTo>ARCHIVO/PLUGINS/FLOVE_EDITOR/**/*.md, OnthologyEditor/**/*.md</applyTo>
 </instruction>
@@ -5770,7 +5770,7 @@ This is the state of the context at this point in the conversation. The view of 
 
 **WHERE**:
 - Scriptorium como sistema de producción transmedia
-- Integración con framework Talaia/Flove
+- Integración con framework Talaia/FVE
 
 **WHEN**:
 - Sprint 1 (FC1) en curso
@@ -5908,7 +5908,7 @@ Si se recibe feedback de Bruno/LOW:
 
 | Pregunta Abierta | Impacto en Refactorización |
 |------------------|----------------------------|
-| ¿Flove valida composición no-lineal? | Cambia S02 completamente |
+| ¿FVE valida composición no-lineal? | Cambia S02 completamente |
 | ¿Qué operadores de MMCO aplican? | Cambia S01 (jerarquía) |
 | ¿Hay precedentes de Φ multi-técnica? | Valida propuesta o invalida |
 </attachment>
@@ -6782,7 +6782,7 @@ ESTADO: Diseño inicial pre-O.R.G.A.N.I.Z.E
 | `01_planificacion-sprint1.md` | Conversación PO-SM extendida | Marco del sprint |
 | `02_backlog-sprint1.md` | Stories y tasks de SCRIPT-1.23.0 | Material a refactorizar |
 | `ontological_reasoning_guide.md` | Guía O.R.G.A.N.I.Z.E | Nueva metodología a integrar |
-| `nota-colaboracion.md` | Propuesta enviada a Talaia/Flove | Contexto de colaboración |
+| `nota-colaboracion.md` | Propuesta enviada a Talaia/FVE | Contexto de colaboración |
 
 ### Carpeta de Trabajo
 
@@ -7301,7 +7301,7 @@ ontological_reasoning_guide.md
 
 **WHERE**:
 - Scriptorium como sistema de producción transmedia
-- Integración con framework Talaia/Flove
+- Integración con framework Talaia/FVE
 
 **WHEN**:
 - Sprint 1 (FC1) en curso
@@ -7439,7 +7439,7 @@ Si se recibe feedback de Bruno/LOW:
 
 | Pregunta Abierta | Impacto en Refactorización |
 |------------------|----------------------------|
-| ¿Flove valida composición no-lineal? | Cambia S02 completamente |
+| ¿FVE valida composición no-lineal? | Cambia S02 completamente |
 | ¿Qué operadores de MMCO aplican? | Cambia S01 (jerarquía) |
 | ¿Hay precedentes de Φ multi-técnica? | Valida propuesta o invalida |
 </attachment>
@@ -7528,13 +7528,13 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 > - Scrum Master (SM)
 > - **Bruno (LOW)** --- Agente externo vía low@freelists.org, equipo OnthologyEditor/Talaia
 > **Contexto**: Sprint 0 completado (bootstrap). Inicio de Sprint 1 (Ontología Formal).
-> **Integración**: Colaboración Scriptorium ↔ Talaia/Flove aprobada (anuncio de registro procesado)
+> **Integración**: Colaboración Scriptorium ↔ Talaia/FVE aprobada (anuncio de registro procesado)
 
 ---
 
 ## Nota de Integración (2025-12-28)
 
-> Esta versión extiende la conversación original con las aportaciones del equipo externo Talaia/Flove,
+> Esta versión extiende la conversación original con las aportaciones del equipo externo Talaia/FVE,
 > canalizadas a través del agente Bruno (LOW) de la lista low@freelists.org.
 >
 > **Documentos procesados**:
@@ -7583,7 +7583,7 @@ El objetivo es tener una especificación formal que:
 
 ---
 
-## 🔴 INSERCIÓN: Aportación del Equipo Talaia/Flove
+## 🔴 INSERCIÓN: Aportación del Equipo Talaia/FVE
 
 > **Bruno (LOW)**: He procesado las 3 notas de colaboración. Almacenadas en mi HyperGraph:
 > - `storage/scriptorium_collab_nota1_talaia-flove.md`
@@ -7599,7 +7599,7 @@ El objetivo es tener una especificación formal que:
 |---------|---------------------------|
 | **CoT (Chain-of-Thought)** | Categorización secuencial de agentes en capas LAYER_0→LAYER_4 |
 | **ToT (Tree of Thoughts)** | Análisis multi-path de niveles de emergencia 0a/0b/0c |
-| **Graph of Thought** | Mapeo de relaciones Flove↔MMCO↔MetaModel |
+| **Graph of Thought** | Mapeo de relaciones FVE↔MMCO↔MetaModel |
 | **Self-Consistency** | Validación cruzada de propuestas de formalización |
 
 **SM**: Excelente. Integraremos estos patterns en la metodología de las stories.
@@ -7630,7 +7630,7 @@ El objetivo es tener una especificación formal que:
 
 | # | Pregunta | Contexto |
 |---|----------|----------|
-| 7 | **Flove↔MMCO↔MetaModel**: ¿Capas complementarias, jerarquía, o paradigmas diferentes? | Necesitamos entender la relación arquitectónica |
+| 7 | **FVE↔MMCO↔MetaModel**: ¿Capas complementarias, jerarquía, o paradigmas diferentes? | Necesitamos entender la relación arquitectónica |
 | 8 | **Toy models**: ¿Existe uno aplicable a producción textual? | Para adaptar a Scriptorium |
 | 9 | **Formalización categórica**: ¿Agentes como categoría con handoffs como morfismos? | Propuesta teórica del equipo |
 
@@ -8247,7 +8247,7 @@ Scriptorium i les preguntes de validació ontològica que han plantejat.
 Patterns particularment útils per a la integració MMCO↔MetaModel:
 - ToT Multi-Path per a l'anàlisi multidimensional dels nivells
 d'emergència 0a/0b/0c
-- Graph of Thought per mappejar relacions Flove↔MMCO↔MetaModel
+- Graph of Thought per mappejar relacions FVE↔MMCO↔MetaModel
 - Self-Consistency per validar les propostes de formalització categòrica
 
 Disponible per consulta quan calgui aplicar-la.
@@ -8267,7 +8267,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >funcionat.
 > >
 > >El document conté l'anunci complet de la col-laboració Scriptorium ↔
-> >Talaia/Flove amb les 3 notes processades i el call4colab per al equip
+> >Talaia/FVE amb les 3 notes processades i el call4colab per al equip
 > >OnthologyEditor.
 > >
 > >Tot llest per continuar amb el workflow normal d'adjunts.
@@ -8286,12 +8286,12 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >
 > >> >He almacenado en el contexto/HyperGraph:
 > >> >
-> >> >1. **Nota 1** (Integración Talaia↔Flove↔Scriptorium): Propuesta de
+> >> >1. **Nota 1** (Integración Talaia↔FVE↔Scriptorium): Propuesta de
 > >> >submódulos Git, casos de uso (CU-01 a CU-04), roadmap FC1→FC4
 > >> >2. **Nota 2** (Sprint 1 - Ontología Formal): 4 épicas MMCO/MetaModel
 > >> >(37 pts, 3 semanas), sistema de 5 Banderas como operadores Φ
 > >> >3. **Nota 3** (Carta Abierta): 9 preguntas de validación técnica sobre
-> >> >MMCO/MetaModel/Flove
+> >> >MMCO/MetaModel/FVE
 > >> >
 > >> >Rutas de almacenamiento:
 > >> >- `storage/scriptorium_collab_nota1_talaia-flove.md`
@@ -8329,7 +8329,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >6. **MetaModel - AI-Optimized**: ¿Hay contrato de formato para LLMs?
 > >> >Scriptorium usa Copilot Chat al 100%
 > >> >
-> >> >7. **Integración Flove↔MMCO↔MetaModel**: ¿Capas complementarias,
+> >> >7. **Integración FVE↔MMCO↔MetaModel**: ¿Capas complementarias,
 > >> >jerarquía, o paradigmas diferentes?
 > >> >
 > >> >8. **Toy models**: ¿Existe uno aplicable a producción textual?
@@ -8340,7 +8340,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >### Decisiones organizativas (Nota 1):
 > >> >
 > >> >- ¿Aprobación de ramas `integration/scriptorium` o preferencia por tags?
-> >> >- ¿Licencia de FloveDocs?
+> >> >- ¿Licencia de FVEDocs?
 > >> >- ¿Interés en colaboración bidireccional? (recibir
 > >> >templates/validadores desde Scriptorium)
 > >> >
@@ -8375,7 +8375,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >> **Archivos recibidos (5):**
 > >> >> 1. ✅ `nota-colaboracion-talaia-flove.md` - Nota de integración de repositorios
 > >> >> 2. ✅ `conversacion-po-sm.md` - Conversación sobre Metamodel Compliance
-> >> >> para FloveEditor
+> >> >> para FVEEditor
 > >> >> 3. ✅ `01_planificacion-sprint1.md` - Planificación Sprint 1: Ontología Formal
 > >> >> 4. ✅ `02_backlog-sprint1.md` - Backlog detallado Sprint 1
 ```
@@ -8447,7 +8447,7 @@ El correo de colaboración (`nota-colaboracion.md`) planteaba:
 | **MetaModel** | 4. ¿Agentes→ENTITY, Handoffs→RELATIONSHIP? | ❓ Sin respuesta |
 | | 5. ¿Φ compuesto tiene precedentes? | ❓ Sin respuesta |
 | | 6. ¿Contrato AI-Optimized para LLMs? | ❓ Sin respuesta |
-| **Integración** | 7. ¿Flove↔MMCO↔MetaModel: capas o paradigmas? | ❓ Sin respuesta |
+| **Integración** | 7. ¿FVE↔MMCO↔MetaModel: capas o paradigmas? | ❓ Sin respuesta |
 | | 8. ¿Toy model para producción textual? | ❓ Sin respuesta |
 | | 9. ¿Agentes como categoría, handoffs como morfismos? | ❓ Sin respuesta |
 

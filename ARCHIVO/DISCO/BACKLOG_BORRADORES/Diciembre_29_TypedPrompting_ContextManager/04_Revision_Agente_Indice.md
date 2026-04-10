@@ -100,7 +100,7 @@ Diciembre_27_BlueprintMMCO_Enhancement
 
 | **Coste** | Bajo (solo coordenadas CSS/impress.js) |
 
-| **Beneficio** | Alto --- Blueprint navegable para presentaciones Talaia/Flove |
+| **Beneficio** | Alto --- Blueprint navegable para presentaciones Talaia/FVE |
 
 | **Impacto** | Comunicación externa: sin esto, no hay demo funcional |
 
@@ -5504,7 +5504,7 @@ Make sure to acquire the instructions before making any changes to the code.
 
 <instruction>
 
-<description>Instrucciones para modelar dominios según el paradigma Flove y su estructura de 3 niveles.</description>
+<description>Instrucciones para modelar dominios según el paradigma FVE y su estructura de 3 niveles.</description>
 
 <file>/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/.github/plugins/flove-editor/instructions/flove-paradigm.instructions.md</file>
 
@@ -5882,7 +5882,7 @@ This is the state of the context at this point in the conversation. The view of 
 
 | [Diciembre_25_Ontologia](#diciembre_25_ontologia) | FC1: Ontología Formal del Scriptorium | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [02_backlog-sprint1.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_Ontologia/02_backlog-sprint1.md) |
 
-| [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FloveEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
+| [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FVEEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
 
 | [INDICES_COBERTURA](#indices_cobertura) | Conversación PO-SM: Cobertura y Homogeneización de Índices | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA/conversacion-po-sm.md) |
 
@@ -5894,7 +5894,7 @@ This is the state of the context at this point in the conversation. The view of 
 
 | [MCP-PRESETS-SITE](#mcp-presets-site) | Conversación PO-SM: Plugin MCP-PRESETS | ✅ APROBADO Y PUBLICADO | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MCP-PRESETS-SITE/conversacion-po-sm.md) |
 
-| [METAMODEL_COMPLIANCE](#metamodel_compliance) | Conversación PO-SM: Metamodel Compliance para FloveEditor | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md) |
+| [METAMODEL_COMPLIANCE](#metamodel_compliance) | Conversación PO-SM: Metamodel Compliance para FVEEditor | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md) |
 
 | [MMCO](#mmco) | Conversación PO-SM: MMCO (OCMF) | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/conversacion-po-sm.md) |
 
@@ -5906,7 +5906,7 @@ This is the state of the context at this point in the conversation. The view of 
 
 | [NODE-RED-SDK](#node-red-sdk) | Conversación PO-SM: Node-RED AlephScript SDK | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/NODE-RED-SDK/conversacion-po-sm.md) |
 
-| [ONTHOLOGY_EDITOR](#onthology_editor) | Conversación PO-SM: OnthologyEditor (Flove Template) | 📋 BORRADOR --- Pendiente aprobación | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md) |
+| [ONTHOLOGY_EDITOR](#onthology_editor) | Conversación PO-SM: OnthologyEditor (FVE Template) | 📋 BORRADOR --- Pendiente aprobación | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md) |
 
 | [ONTOLOGY_AGENT_EDITOR](#ontology_agent_editor) | Conversación PO-SM: OntologyAgentEditor | ✅ Aprobado (publicado en BACKLOG-SCRIPTORIUM.md) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTOLOGY_AGENT_EDITOR/conversacion-po-sm.md) |
 
@@ -6096,9 +6096,9 @@ flove, editor, planificación, plugin, floveeditor, conversación, script
 
 **Titulares**
 
-- Planificación Plugin FloveEditor: Conversación PO-SM
+- Planificación Plugin FVEEditor: Conversación PO-SM
 
-- Backlog Borrador: SCRIPT-1.20.0 --- FloveEditor
+- Backlog Borrador: SCRIPT-1.20.0 --- FVEEditor
 
 - Épicas
 
@@ -6110,9 +6110,9 @@ flove, editor, planificación, plugin, floveeditor, conversación, script
 
 **Archivos**
 
-- [01_conversacion-po-sm.md --- Planificación Plugin FloveEditor: Conversación PO-SM](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md)
+- [01_conversacion-po-sm.md --- Planificación Plugin FVEEditor: Conversación PO-SM](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md)
 
-- [02_backlog-borrador.md --- Backlog Borrador: SCRIPT-1.20.0 --- FloveEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/02_backlog-borrador.md)
+- [02_backlog-borrador.md --- Backlog Borrador: SCRIPT-1.20.0 --- FVEEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/02_backlog-borrador.md)
 
 ## INDICES_COBERTURA
 
@@ -6290,11 +6290,11 @@ metamodel, compliance, conversación, floveeditor, script, nota, colaboración, 
 
 **Titulares**
 
-- Conversación PO-SM: Metamodel Compliance para FloveEditor
+- Conversación PO-SM: Metamodel Compliance para FVEEditor
 
-- Backlog Borrador: SCRIPT-1.21.0 --- Metamodel Compliance para FloveEditor
+- Backlog Borrador: SCRIPT-1.21.0 --- Metamodel Compliance para FVEEditor
 
-- Nota de Colaboración: Integración Metamodel + MMCO + FloveDocs
+- Nota de Colaboración: Integración Metamodel + MMCO + FVEDocs
 
 - Decisiones
 
@@ -6304,11 +6304,11 @@ metamodel, compliance, conversación, floveeditor, script, nota, colaboración, 
 
 **Archivos**
 
-- [conversacion-po-sm.md --- Conversación PO-SM: Metamodel Compliance para FloveEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md)
+- [conversacion-po-sm.md --- Conversación PO-SM: Metamodel Compliance para FVEEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md)
 
-- [01_backlog-borrador.md --- Backlog Borrador: SCRIPT-1.21.0 --- Metamodel Compliance para FloveEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/01_backlog-borrador.md)
+- [01_backlog-borrador.md --- Backlog Borrador: SCRIPT-1.21.0 --- Metamodel Compliance para FVEEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/01_backlog-borrador.md)
 
-- [nota-colaboracion-talaia-flove.md --- Nota de Colaboración: Integración Metamodel + MMCO + FloveDocs](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/nota-colaboracion-talaia-flove.md)
+- [nota-colaboracion-talaia-flove.md --- Nota de Colaboración: Integración Metamodel + MMCO + FVEDocs](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/nota-colaboracion-talaia-flove.md)
 
 ## MMCO
 
@@ -6440,9 +6440,9 @@ onthology, editor, conversación, onthologyeditor, flove, template, plugin
 
 **Titulares**
 
-- Conversación PO-SM: OnthologyEditor (Flove Template)
+- Conversación PO-SM: OnthologyEditor (FVE Template)
 
-- Backlog Borrador: OnthologyEditor (Plugin Flove-Editor)
+- Backlog Borrador: OnthologyEditor (Plugin FVE-Editor)
 
 - Próximos Pasos
 
@@ -6454,9 +6454,9 @@ onthology, editor, conversación, onthologyeditor, flove, template, plugin
 
 **Archivos**
 
-- [conversacion-po-sm.md --- Conversación PO-SM: OnthologyEditor (Flove Template)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md)
+- [conversacion-po-sm.md --- Conversación PO-SM: OnthologyEditor (FVE Template)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md)
 
-- [01_backlog-borrador.md --- Backlog Borrador: OnthologyEditor (Plugin Flove-Editor)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/01_backlog-borrador.md)
+- [01_backlog-borrador.md --- Backlog Borrador: OnthologyEditor (Plugin FVE-Editor)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/01_backlog-borrador.md)
 
 ## ONTOLOGY_AGENT_EDITOR
 
@@ -8196,13 +8196,13 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 
 > **Participantes**: Product Owner (PO), Scrum Master (SM)
 
-> **Contexto**: Blueprint MMCO tiene problemas críticos de navegación antes de presentación Talaia/Flove
+> **Contexto**: Blueprint MMCO tiene problemas críticos de navegación antes de presentación Talaia/FVE
 
 ---
 
 ## Apertura
 
-**SM**: El Blueprint MMCO (SCRIPT-1.27.0) fue implementado según el modelo de 7 niveles de emergencia MMCO. Sin embargo, hay un problema crítico de usabilidad que impide su uso en la presentación con Talaia y Flove.
+**SM**: El Blueprint MMCO (SCRIPT-1.27.0) fue implementado según el modelo de 7 niveles de emergencia MMCO. Sin embargo, hay un problema crítico de usabilidad que impide su uso en la presentación con Talaia y FVE.
 
 **PO**: ¿Cuál es el problema exactamente?
 
@@ -8214,7 +8214,7 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 
 3\. **Causa raíz**: El concepto de "eje Z = nivel de emergencia" era conceptualmente correcto pero visualmente inviable. Impress.js necesita separación en X/Y para que las diapositivas no se superpongan.
 
-**PO**: Entendido. Necesitamos esto funcionando para la reunión con Talaia/Flove. ¿Cuál es la solución?
+**PO**: Entendido. Necesitamos esto funcionando para la reunión con Talaia/FVE. ¿Cuál es la solución?
 
 ---
 
@@ -8222,7 +8222,7 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 
 **SM**: Propongo un enhancement con objetivo SMART:
 
-> **Objetivo**: Refactorizar las coordenadas del Blueprint MMCO para que las 8 diapositivas sean navegables sin superposición, manteniendo la narrativa de "jerarquía de emergencia" MMCO, listo para presentación Talaia/Flove.
+> **Objetivo**: Refactorizar las coordenadas del Blueprint MMCO para que las 8 diapositivas sean navegables sin superposición, manteniendo la narrativa de "jerarquía de emergencia" MMCO, listo para presentación Talaia/FVE.
 
 **PO**: Aprobado. ¿Qué arquitectura propones?
 
@@ -8480,7 +8480,7 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 
 | [Diciembre_25_Ontologia](#diciembre_25_ontologia) | FC1: Ontología Formal del Scriptorium | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [02_backlog-sprint1.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_25_Ontologia/02_backlog-sprint1.md) |
 
-| [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FloveEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
+| [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FVEEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
 
 | [INDICES_COBERTURA](#indices_cobertura) | Conversación PO-SM: Cobertura y Homogeneización de Índices | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA/conversacion-po-sm.md) |
 
@@ -8492,7 +8492,7 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 
 | [MCP-PRESETS-SITE](#mcp-presets-site) | Conversación PO-SM: Plugin MCP-PRESETS | ✅ APROBADO Y PUBLICADO | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MCP-PRESETS-SITE/conversacion-po-sm.md) |
 
-| [METAMODEL_COMPLIANCE](#metamodel_compliance) | Conversación PO-SM: Metamodel Compliance para FloveEditor | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md) |
+| [METAMODEL_COMPLIANCE](#metamodel_compliance) | Conversación PO-SM: Metamodel Compliance para FVEEditor | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md) |
 
 | [MMCO](#mmco) | Conversación PO-SM: MMCO (OCMF) | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/conversacion-po-sm.md) |
 
@@ -8504,7 +8504,7 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 
 | [NODE-RED-SDK](#node-red-sdk) | Conversación PO-SM: Node-RED AlephScript SDK | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/NODE-RED-SDK/conversacion-po-sm.md) |
 
-| [ONTHOLOGY_EDITOR](#onthology_editor) | Conversación PO-SM: OnthologyEditor (Flove Template) | 📋 BORRADOR --- Pendiente aprobación | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md) |
+| [ONTHOLOGY_EDITOR](#onthology_editor) | Conversación PO-SM: OnthologyEditor (FVE Template) | 📋 BORRADOR --- Pendiente aprobación | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md) |
 
 | [ONTOLOGY_AGENT_EDITOR](#ontology_agent_editor) | Conversación PO-SM: OntologyAgentEditor | ✅ Aprobado (publicado en BACKLOG-SCRIPTORIUM.md) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTOLOGY_AGENT_EDITOR/conversacion-po-sm.md) |
 
@@ -9096,7 +9096,7 @@ Basándome en la "foto virtual" del estado actual:
 
 | **Coste** | Bajo (solo coordenadas CSS/impress.js) |
 
-| **Beneficio** | Alto --- Blueprint navegable para presentaciones Talaia/Flove |
+| **Beneficio** | Alto --- Blueprint navegable para presentaciones Talaia/FVE |
 
 | **Impacto** | Comunicación externa: sin esto, no hay demo funcional |
 

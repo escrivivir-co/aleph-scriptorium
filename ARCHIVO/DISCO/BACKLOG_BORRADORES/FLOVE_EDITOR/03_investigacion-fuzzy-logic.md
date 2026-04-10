@@ -1,15 +1,15 @@
-# Informe de Investigación: Fuzzy Logic en el Paradigma Flove
+# Informe de Investigación: Fuzzy Logic en el Paradigma FVE
 
-> **Épica**: SCRIPT-1.20.0 (FloveEditor)  
+> **Épica**: SCRIPT-1.20.0 (FVEEditor)  
 > **Fecha**: 2026-01-09  
 > **Autor**: Lucas (Scrum Master del Índice)  
-> **Fuentes**: `OnthologyEditor/FloveDocs/`, `OnthologyEditor/metamodel/metamodel.md`
+> **Fuentes**: `OnthologyEditor/FVEDocs/`, `OnthologyEditor/metamodel/metamodel.md`
 
 ---
 
 ## 1. Resumen Ejecutivo
 
-Este informe investiga el **Nivel 1: Fuzzy Logic** del paradigma CONFLUENTISM de Flove, analizando sus tres operaciones fundamentales (RELATE, EXPLAIN, VIEW) y su integración con el metamodelo ontológico. La investigación revela que Fuzzy Logic en Flove NO es solo lógica difusa matemática, sino una **filosofía de gradientes** aplicada a relaciones, explicaciones y visualizaciones.
+Este informe investiga el **Nivel 1: Fuzzy Logic** del paradigma CONFLUENTISM de FVE, analizando sus tres operaciones fundamentales (RELATE, EXPLAIN, VIEW) y su integración con el metamodelo ontológico. La investigación revela que Fuzzy Logic en FVE NO es solo lógica difusa matemática, sino una **filosofía de gradientes** aplicada a relaciones, explicaciones y visualizaciones.
 
 ---
 
@@ -20,7 +20,7 @@ Este informe investiga el **Nivel 1: Fuzzy Logic** del paradigma CONFLUENTISM de
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    CONFLUENTISM                              │
-│               (Fuzzy Logic + Love = Flove)                   │
+│               (Fuzzy Logic + Love = FVE)                   │
 ├─────────────────────────────────────────────────────────────┤
 │  NIVEL 1: FUZZY LOGIC ◄─── Este informe                     │
 │  ┌─────────┐    ┌─────────┐    ┌─────────┐                  │
@@ -43,9 +43,9 @@ Este informe investiga el **Nivel 1: Fuzzy Logic** del paradigma CONFLUENTISM de
 
 ### 2.2 Filosofía Central
 
-> "All is connected" — del archivo `Hello` en FloveDocs
+> "All is connected" — del archivo `Hello` en FVEDocs
 
-Flove propone un **relacionismo integral holístico** donde la realidad no es binaria sino gradual. El nombre "Flove" es un acrónimo de **Fuzzy Logic + Love**, indicando que:
+FVE propone un **relacionismo integral holístico** donde la realidad no es binaria sino gradual. El nombre "FVE" es un acrónimo de **Fuzzy Logic + Love**, indicando que:
 
 - **Fuzzy**: Los conceptos no son TRUE/FALSE sino grados (0.0 a 1.0)
 - **Love**: Las conexiones emocionales y sociales son modelables
@@ -89,7 +89,7 @@ relate:
         grado: 0.3  # Conocido casual
 ```
 
-#### Apps Flove que implementan RELATE
+#### Apps FVE que implementan RELATE
 
 | App | Dominio | Uso de RELATE |
 |-----|---------|---------------|
@@ -136,7 +136,7 @@ explain:
         ajuste: +0.1  # Los lazos familiares intensifican
 ```
 
-#### Apps Flove que implementan EXPLAIN
+#### Apps FVE que implementan EXPLAIN
 
 | App | Dominio | Uso de EXPLAIN |
 |-----|---------|----------------|
@@ -183,7 +183,7 @@ view:
         peso: 0.4
 ```
 
-#### Apps Flove que implementan VIEW
+#### Apps FVE que implementan VIEW
 
 | App | Dominio | Uso de VIEW |
 |-----|---------|-------------|
@@ -209,7 +209,7 @@ UNCERTAINTY_MODELING: {
 
 ### 4.2 Funciones de Membresía
 
-En lógica difusa clásica, la función de membresía μ: X → [0,1] define el grado de pertenencia. En Flove:
+En lógica difusa clásica, la función de membresía μ: X → [0,1] define el grado de pertenencia. En FVE:
 
 ```
 μ_amigo(x) = {
@@ -223,7 +223,7 @@ En lógica difusa clásica, la función de membresía μ: X → [0,1] define el 
 
 ### 4.3 Operadores Difusos
 
-| Operador | Clásico | Flove |
+| Operador | Clásico | FVE |
 |----------|---------|-------|
 | AND | min(a,b) | min(a,b) |
 | OR | max(a,b) | max(a,b) |
@@ -300,7 +300,7 @@ El nivel Fuzzy Logic puede exportarse como JSON Schema con:
 
 ### 6.3 Uso en AGENT_CREATOR
 
-Un agente creado con FloveEditor tendría:
+Un agente creado con FVEEditor tendría:
 
 ```yaml
 ontologia:
@@ -318,17 +318,17 @@ ontologia:
 
 ---
 
-## 7. Recursos FloveDocs Relevantes
+## 7. Recursos FVEDocs Relevantes
 
 ### 7.1 Inventario de Recursos
 
 | Recurso | Ubicación | Relevancia Fuzzy |
 |---------|-----------|------------------|
-| **FloveSlides25.12.pdf** | `FloveDocs/` | 🔴 Alta - Presenta el paradigma |
-| **FloveTables25.12.ods** | `FloveDocs/` | 🔴 Alta - Tablas de estructura |
-| **Demos25.10.zip** | `FloveDocs/Demos/` | 🟡 Media - Ejemplos interactivos |
-| **cosmosystems25.9.mp4** | `FloveDocs/Presentations/` | 🟢 Baja - Contexto filosófico |
-| **PAPERS25.10.zip** | `FloveDocs/` | 🔴 Alta - Fundamentación académica |
+| **FVESlides25.12.pdf** | `FVEDocs/` | 🔴 Alta - Presenta el paradigma |
+| **FVETables25.12.ods** | `FVEDocs/` | 🔴 Alta - Tablas de estructura |
+| **Demos25.10.zip** | `FVEDocs/Demos/` | 🟡 Media - Ejemplos interactivos |
+| **cosmosystems25.9.mp4** | `FVEDocs/Presentations/` | 🟢 Baja - Contexto filosófico |
+| **PAPERS25.10.zip** | `FVEDocs/` | 🔴 Alta - Fundamentación académica |
 
 ### 7.2 Gaps Identificados
 
@@ -345,8 +345,8 @@ ontologia:
 ### 8.1 Prioridad Alta
 
 1. **Crear `flove-ontology.schema.yaml`**: Schema formal del Nivel 1
-2. **Parsear FloveTables25.12.ods**: Extraer estructura de datos
-3. **Implementar FloveParser.ts**: Lector de ontologías YAML
+2. **Parsear FVETables25.12.ods**: Extraer estructura de datos
+3. **Implementar FVEParser.ts**: Lector de ontologías YAML
 
 ### 8.2 Prioridad Media
 
@@ -365,20 +365,20 @@ ontologia:
 
 ### 9.1 Hallazgos Clave
 
-1. **Fuzzy Logic en Flove es filosófico, no solo matemático**: Se aplica a relaciones humanas, no solo a control difuso.
+1. **Fuzzy Logic en FVE es filosófico, no solo matemático**: Se aplica a relaciones humanas, no solo a control difuso.
 
 2. **Los tres operadores forman un pipeline**: RELATE → EXPLAIN → VIEW, donde cada paso refina el anterior.
 
 3. **El metamodel ya tiene estructura compatible**: Las dimensiones SEMANTIC y EPISTEMIC mapean bien a Fuzzy Logic.
 
-4. **Hay recursos ricos pero no indexados**: FloveDocs tiene PDFs y demos valiosos sin parsear.
+4. **Hay recursos ricos pero no indexados**: FVEDocs tiene PDFs y demos valiosos sin parsear.
 
 ### 9.2 Próximos Pasos Sugeridos
 
 | Paso | Story Relacionada | Esfuerzo |
 |------|-------------------|----------|
-| Crear schema YAML de ontología Flove | S02-T006 | 1 pt |
-| Parsear FloveTables25.12.ods | Nueva | 2 pts |
+| Crear schema YAML de ontología FVE | S02-T006 | 1 pt |
+| Parsear FVETables25.12.ods | Nueva | 2 pts |
 | Implementar ejemplos RELATE/EXPLAIN/VIEW | Nueva | 1 pt |
 
 ---
@@ -391,11 +391,11 @@ ontologia:
 - [metamodel.md](../../../OnthologyEditor/metamodel/metamodel.md) (609 líneas)
 - [README-SCRIPTORIUM.md](../../../OnthologyEditor/README-SCRIPTORIUM.md)
 
-### Externas (FloveDocs)
+### Externas (FVEDocs)
 
 - Sitio web: https://flove.org
 - Demos: https://demos.flove.org
-- Documentación: https://codeberg.org/FloveDocs/Main
+- Documentación: https://codeberg.org/FVEDocs/Main
 
 ---
 

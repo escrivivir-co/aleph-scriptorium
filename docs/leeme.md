@@ -337,9 +337,7 @@ Configuración: `.vscode/mcp.json`
 
 | Paradigma | Ubicación | Propósito |
 |-----------|-----------|-----------|
-| [Flove](OnthologyEditor/FloveDocs/) | Taxonomías triádicas | Conceptualización |
-| [MMCO](OnthologyEditor/MMCO/) | Modelado de realidad | Simulación |
-| [Metamodel](OnthologyEditor/metamodel/) | Estructuras formales | Especificación |
+
 
 ---
 

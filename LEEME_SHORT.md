@@ -330,9 +330,7 @@ Configuración: `.vscode/mcp.json`
 
 | Paradigma | Ubicación | Propósito |
 |-----------|-----------|-----------|
-| [Flove](OnthologyEditor/FloveDocs/) | Taxonomías triádicas | Conceptualización |
-| [MMCO](OnthologyEditor/MMCO/) | Modelado de realidad | Simulación |
-| [Metamodel](OnthologyEditor/metamodel/) | Estructuras formales | Especificación |
+
 
 ---
 
@@ -387,43 +385,6 @@ Los ScriptoriumPacks pueden exportarse a editores especializados con paletas tip
 
 ### 5. Pipeline de Compilación
 
-```
-┌────────────────────────────────────────────────────────────────────┐
-│                    SCRIPTORIUM BRAINS PIPELINE                     │
-├────────────────────────────────────────────────────────────────────┤
-│                                                                    │
-│  OnthologyEditor ──→ TypedPrompting ──→ MCPPresets                 │
-│        │                   │                 │                     │
-│        ▼                   ▼                 ▼                     │
-│  ┌──────────┐       ┌───────────┐     ┌───────────┐                │
-│  │  FLOVE   │       │  Schemas  │     │  Presets  │                │
-│  │  MMCO    │       │  .json    │     │  .yaml    │                │
-│  └──────────┘       └───────────┘     └───────────┘                │
-│                            │                 │                     │
-│              ┌─────────────┴─────────────────┘                     │
-│              ▼                                                     │
-│  ┌─────────────────────────────────────────────────┐               │
-│  │              EDITORES DE LÓGICA                 │               │
-│  ├─────────────────────────────────────────────────┤               │
-│  │ BlocklyEditor │ PrologEditor │ WiringEditor     │               │
-│  │      ↓              ↓              ↓            │               │
-│  │   Bloques      Predicados      Flujos           │               │
-│  └─────────────────────────────────────────────────┘               │
-│                            │                                       │
-│                            ▼                                       │
-│              ┌─────────────────────────┐                           │
-│              │  ScriptoriumBrainsPacks │                           │
-│              └────────────┬────────────┘                           │
-│                           │                                        │
-│         ┌─────────────────┼─────────────────┐                      │
-│         ▼                 ▼                 ▼                      │
-│  ┌────────────┐   ┌────────────┐   ┌────────────┐                  │
-│  │AgentCreator│   │ ARG Board  │   │  Novelist  │                  │
-│  │ Personajes │   │   Apps     │   │ Narrativa  │                  │
-│  └────────────┘   └────────────┘   └────────────┘                  │
-│                                                                    │
-└────────────────────────────────────────────────────────────────────┘
-```
 
 **Flujos de compilación**:
 - **Editor → Runtime**: Blockly genera código ejecutable en 2 UIs: a) editor, b) runtime manager

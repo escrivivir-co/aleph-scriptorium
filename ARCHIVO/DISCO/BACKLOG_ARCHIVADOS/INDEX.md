@@ -47,7 +47,7 @@ BACKLOG_ARCHIVADOS/
 | SCRIPT-1.16.0 | Índice SPLASH | ✅ 100% |
 | SCRIPT-1.17.0 | Índice README | ✅ 100% |
 | SCRIPT-1.18.0 | Cobertura Índices | ✅ 100% |
-| SCRIPT-1.22.0 | Agentes FloveEditor | ✅ 100% |
+| SCRIPT-1.22.0 | Agentes FVEEditor | ✅ 100% |
 
 → Ver [Sprint1/README.md](Sprint1/README.md) para detalles completos
 

@@ -1,4 +1,4 @@
-# Conversación PO-SM: OnthologyEditor (Flove Template)
+# Conversación PO-SM: OnthologyEditor (FVE Template)
 
 > **Submódulo**: #15 OnthologyEditor  
 > **Plugin**: flove-editor  
@@ -9,7 +9,7 @@
 
 ## Contexto de la Sesión
 
-**Scrum Master (@scrum)**: El Product Owner ha solicitado crear un nuevo submódulo para edición de ontologías basado en el paradigma Flove. Necesitamos analizar la propuesta y planificar la integración.
+**Scrum Master (@scrum)**: El Product Owner ha solicitado crear un nuevo submódulo para edición de ontologías basado en el paradigma FVE. Necesitamos analizar la propuesta y planificar la integración.
 
 ---
 
@@ -19,13 +19,13 @@
 
 El objetivo es crear un **editor de ontologías** que permita:
 
-1. **Diseñar ontologías** siguiendo el paradigma CONFLUENTISM de Flove
+1. **Diseñar ontologías** siguiendo el paradigma CONFLUENTISM de FVE
 2. **Exportar schemas** en formatos estándar (JSON Schema, TypeScript, Zod)
 3. **Integrar** con plugins existentes (TypedPrompting, AGENT_CREATOR, MCP-Presets)
 
-### Paradigma Flove
+### Paradigma FVE
 
-Flove (Fuzzy Logic + Love) propone una estructura de 3 niveles:
+FVE (Fuzzy Logic + Love) propone una estructura de 3 niveles:
 
 ```
 Nivel 1: FUZZY LOGIC
@@ -44,10 +44,10 @@ Nivel 3: FREEDOM/ECONOMY
 
 ### Recursos Disponibles
 
-- **FloveDocs**: https://codeberg.org/FloveDocs/Main (108 commits, 924 MiB)
-- **Presentaciones**: FloveSlides25.12.pdf
-- **Tablas técnicas**: FloveTables25.12.ods
-- **Apps de referencia**: 15+ aplicaciones Flove
+- **FVEDocs**: https://codeberg.org/FVEDocs/Main (108 commits, 924 MiB)
+- **Presentaciones**: FVESlides25.12.pdf
+- **Tablas técnicas**: FVETables25.12.ods
+- **Apps de referencia**: 15+ aplicaciones FVE
 
 ---
 
@@ -61,13 +61,13 @@ Vamos a analizar la viabilidad técnica.
 
 ```
 OnthologyEditor/                    # Submódulo
-├── README-SCRIPTORIUM.md           # Análisis Flove ✅
+├── README-SCRIPTORIUM.md           # Análisis FVE ✅
 ├── README.md                       # Básico ✅
 ├── package.json                    # Configuración ✅
 └── src/                            # Código (pendiente)
     ├── core/
-    │   ├── FloveOntology.ts
-    │   └── FloveParser.ts
+    │   ├── FVEOntology.ts
+    │   └── FVEParser.ts
     ├── exporters/
     │   ├── JsonSchemaExporter.ts
     │   ├── TypeScriptExporter.ts
@@ -139,8 +139,8 @@ Si la velocidad del equipo es ~10 pts/semana:
 
 | Riesgo | Probabilidad | Impacto | Mitigación |
 |--------|--------------|---------|------------|
-| Paradigma Flove muy abstracto | Media | Alto | Crear ejemplos concretos |
-| FloveDocs incompleta | Baja | Medio | Documentar desde presentaciones |
+| Paradigma FVE muy abstracto | Media | Alto | Crear ejemplos concretos |
+| FVEDocs incompleta | Baja | Medio | Documentar desde presentaciones |
 | Conflicto con TypedPrompting | Baja | Alto | Definir contratos claros |
 | Scope creep (UI compleja) | Alta | Medio | MVP sin UI visual |
 
@@ -155,7 +155,7 @@ Resumo las decisiones tomadas:
 1. **MVP sin UI visual**: El editor será conversacional (prompts), no visual
 2. **JSON Schema primero**: Es el formato más estándar y soportado
 3. **Integración progresiva**: Primero TypedPrompting, luego AGENT_CREATOR
-4. **FloveDocs como referencia**: No clonar, solo documentar análisis
+4. **FVEDocs como referencia**: No clonar, solo documentar análisis
 
 ### Próximos Pasos
 

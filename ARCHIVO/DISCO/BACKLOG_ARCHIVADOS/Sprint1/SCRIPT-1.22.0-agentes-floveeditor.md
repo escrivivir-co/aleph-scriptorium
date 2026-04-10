@@ -1,4 +1,4 @@
-# Épica Archivada: SCRIPT-1.22.0 — Agentes Especializados FloveEditor
+# Épica Archivada: SCRIPT-1.22.0 — Agentes Especializados FVEEditor
 
 > **Estado**: ✅ Completada (100%)  
 > **Sprint**: 1 (Feature Cycle 1)  
@@ -9,7 +9,7 @@
 
 ## Objetivo
 
-Crear arquitectura de agentes DRY para el plugin FloveEditor: un orquestador "Ox" que coordina 3 agentes especializados (uno por submódulo: FloveDocs, Metamodel, MMCO), todos operando como índices que guían a las fuentes sin duplicar contenido.
+Crear arquitectura de agentes DRY para el plugin FVEEditor: un orquestador "Ox" que coordina 3 agentes especializados (uno por submódulo: FVEDocs, Metamodel, MMCO), todos operando como índices que guían a las fuentes sin duplicar contenido.
 
 ---
 
@@ -24,7 +24,7 @@ Crear arquitectura de agentes DRY para el plugin FloveEditor: un orquestador "Ox
 │                            ▼                                     │
 │                   ┌─────────────────┐                            │
 │                   │  flove-ox.agent │  ← Orquestador             │
-│                   │  (Flove Ox)     │    Mapea Flove↔UFO↔MMCO    │
+│                   │  (FVE Ox)     │    Mapea FVE↔UFO↔MMCO    │
 │                   └────────┬────────┘                            │
 │                            │                                     │
 │        ┌───────────────────┼───────────────────┐                │
@@ -42,17 +42,17 @@ Crear arquitectura de agentes DRY para el plugin FloveEditor: un orquestador "Ox
 
 ## Stories Completadas
 
-### S01 — Agente Orquestador (Flove Ox) ✅
+### S01 — Agente Orquestador (FVE Ox) ✅
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T001 | Crear `flove-ox.agent.md` con índice JSON | ✅ |
 | T002 | Definir handoffs a los 3 submódulos | ✅ |
-| T003 | Crear mapeo Flove↔UFO | ✅ |
-| T004 | Crear mapeo Flove↔MMCO | ✅ |
+| T003 | Crear mapeo FVE↔UFO | ✅ |
+| T004 | Crear mapeo FVE↔MMCO | ✅ |
 | T005 | Documentar taxonomía visual | ✅ |
 
-### S02 — Agente FloveDocs ✅
+### S02 — Agente FVEDocs ✅
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
@@ -95,9 +95,9 @@ Crear arquitectura de agentes DRY para el plugin FloveEditor: un orquestador "Ox
 
 ## Mapeos Conceptuales
 
-### Flove → UFO
+### FVE → UFO
 
-| Concepto Flove | Concepto UFO | Capa |
+| Concepto FVE | Concepto UFO | Capa |
 |----------------|--------------|------|
 | 10 Fields | Endurants | 1-2 |
 | 6 Paradigms | Perdurants | 1-2 |
@@ -105,9 +105,9 @@ Crear arquitectura de agentes DRY para el plugin FloveEditor: un orquestador "Ox
 | Fuzzy Logic | Meta-level | 0-1 |
 | CONFLUENTISM | Ontological Patterns | 2 |
 
-### Flove → MMCO
+### FVE → MMCO
 
-| Paradigma Flove | Nivel OCMF |
+| Paradigma FVE | Nivel OCMF |
 |-----------------|------------|
 | Fuzzy Logic | L0-L1 |
 | Fields (10) | L2-L3 |

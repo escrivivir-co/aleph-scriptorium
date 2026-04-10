@@ -15,7 +15,7 @@
 >
 > | Épica | Estado | Entregables |
 > |-------|--------|-------------|
-> | SCRIPT-1.20.0 FloveEditor | 30% | Template CONFLUENTISM, exportadores |
+> | SCRIPT-1.20.0 FVEEditor | 30% | Template CONFLUENTISM, exportadores |
 > | SCRIPT-1.21.0 Metamodel | 35% | Validación UFO, principios FAIR |
 > | SCRIPT-1.22.0 Agentes | **100%** | 5 agentes especializados |
 > | SCRIPT-1.23.0 MMCO | 16% | Pipeline coherencia φ |
@@ -40,7 +40,7 @@
 > `crear-agente.prompt.md` no pregunta por paradigma ontológico.
 >
 > **Gap 3: Validación**  
-> No hay handoff desde AgentCreator hacia FloveEditor para validar.
+> No hay handoff desde AgentCreator hacia FVEEditor para validar.
 
 ---
 
@@ -119,8 +119,8 @@
 > Desde la perspectiva de la ontología del sistema:
 >
 > **Lo que ya tenemos bien:**
-> - 5 agentes FloveEditor funcionando (SCRIPT-1.22.0 ✅)
-> - Mapeos Flove↔UFO↔MMCO documentados
+> - 5 agentes FVEEditor funcionando (SCRIPT-1.22.0 ✅)
+> - Mapeos FVE↔UFO↔MMCO documentados
 >
 > **Lo que falta integrar:**
 > - AGENT_CREATOR no conoce estos agentes
@@ -147,7 +147,7 @@
 > - Añadir bloque `ontology` opcional
 > - Validar con AJV o Zod
 >
-> **Story 2: Handoffs AgentCreator → FloveOx**
+> **Story 2: Handoffs AgentCreator → FVEOx**
 > - Nuevo handoff "Asignar paradigma ontológico"
 > - Nuevo handoff "Validar coherencia ontológica"
 >

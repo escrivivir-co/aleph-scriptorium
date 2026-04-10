@@ -244,7 +244,7 @@ Read [](file:///c%3A/Users/aleph/OASIS/aleph-scriptorium/.github/agents/AGENTS.m
 
 Searched for text `plugin_ox_network` (`c:\\Users\\aleph\\OASIS\\aleph-scriptorium\\.github\\agents\\AGENTS.md`), no results
 
-Ran terminal command:  grep -n "plugin_ox\|AAIAEditor\|AgentCreator\|ARGBoard\|Scraper\|Enciclopedia\|GHPages\|Blockly\|Novelist\|Network\|PrologEditor\|TypedPrompt\|WireEditor\|WiringApp\|N8N\|FloveEditor\|HyperGraph\|Zeus\|MCPPresets" /c/Users/aleph/OASIS/aleph-scriptorium/.github/agents/AGENTS.md | head -50
+Ran terminal command:  grep -n "plugin_ox\|AAIAEditor\|AgentCreator\|ARGBoard\|Scraper\|Enciclopedia\|GHPages\|Blockly\|Novelist\|Network\|PrologEditor\|TypedPrompt\|WireEditor\|WiringApp\|N8N\|FVEEditor\|HyperGraph\|Zeus\|MCPPresets" /c/Users/aleph/OASIS/aleph-scriptorium/.github/agents/AGENTS.md | head -50
 
 Read [](file:///c%3A/Users/aleph/OASIS/aleph-scriptorium/.github/agents/AGENTS.md#105-105), lines 105 to 175
 

@@ -9,7 +9,7 @@
 
 ## Objetivo
 
-Extender el plugin **AGENT_CREATOR** para que los agentes creados puedan tener "alma ontológica": un paradigma formal (CONFLUENTISM/UFO/custom) validado por los agentes de FloveEditor y con métrica de coherencia MMCO.
+Extender el plugin **AGENT_CREATOR** para que los agentes creados puedan tener "alma ontológica": un paradigma formal (CONFLUENTISM/UFO/custom) validado por los agentes de FVEEditor y con métrica de coherencia MMCO.
 
 ---
 
@@ -129,7 +129,7 @@ Añadir bloque opcional `ontology` al schema de recetas de agentes.
 
 ### Descripción
 
-Crear handoffs que conecten AgentCreator con FloveOx y viceversa.
+Crear handoffs que conecten AgentCreator con FVEOx y viceversa.
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
@@ -148,7 +148,7 @@ Crear handoffs que conecten AgentCreator con FloveOx y viceversa.
   agent: plugin_ox_floveeditor
   prompt: |
     El usuario está creando un agente y quiere asignarle un paradigma ontológico.
-    Muestra opciones: CONFLUENTISM (Flove), UFO puro, o custom.
+    Muestra opciones: CONFLUENTISM (FVE), UFO puro, o custom.
     Retorna selección para inyectar en recipe.ontology.
   send: false
 
@@ -166,7 +166,7 @@ Crear handoffs que conecten AgentCreator con FloveOx y viceversa.
 - label: Crear agente desde ontología
   agent: plugin_ox_agentcreator
   prompt: |
-    El usuario ha diseñado una ontología con FloveEditor.
+    El usuario ha diseñado una ontología con FVEEditor.
     Quiere crear un agente que use esta ontología como "alma".
     Invocar flujo de creación con paradigma pre-seleccionado.
   send: false
@@ -207,7 +207,7 @@ Modificar `crear-agente.prompt.md` para incluir paso opcional de paradigma.
 | Opción | Descripción |
 |--------|-------------|
 | **Sin ontología** | El agente opera sin validación formal |
-| **CONFLUENTISM** | Paradigma Flove (Fuzzy→PsicoSocial→Freedom) |
+| **CONFLUENTISM** | Paradigma FVE (Fuzzy→PsicoSocial→Freedom) |
 | **UFO** | Unified Foundational Ontology (5 capas) |
 | **Custom** | Definir ontología propia |
 
@@ -303,7 +303,7 @@ Documentar la integración y cerrar stories pendientes de épicas relacionadas.
 
 | Dependencia | Estado | Impacto |
 |-------------|--------|---------|
-| SCRIPT-1.20.0 (FloveEditor) | 30% | S07 se cierra con esta épica |
+| SCRIPT-1.20.0 (FVEEditor) | 30% | S07 se cierra con esta épica |
 | SCRIPT-1.21.0 (Metamodel) | 35% | Validación UFO disponible |
 | SCRIPT-1.22.0 (Agentes) | **100%** | 5 agentes ontológicos listos |
 | SCRIPT-1.23.0 (MMCO) | 16% | Métrica φ parcialmente disponible |

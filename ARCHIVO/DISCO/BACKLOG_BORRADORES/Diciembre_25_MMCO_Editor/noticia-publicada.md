@@ -28,7 +28,7 @@ Sistema de 5 Banderas (@blueflag, @blackflag, @redflag, @yellowflag, @orangeflag
 ### WHERE (¿Dónde?)
 
 - Scriptorium como sistema de producción transmedia
-- Integración con framework Talaia/Flove
+- Integración con framework Talaia/FVE
 
 ### WHEN (¿Cuándo?)
 
@@ -130,7 +130,7 @@ Sistema de 5 Banderas (@blueflag, @blackflag, @redflag, @yellowflag, @orangeflag
 
 **Técnica**: ToT Multi-Path
 
-> **Marco MMCO (Feedback Talaia/Flove/LOW)**: Cada bandera opera en un nivel de emergencia diferente. La composición NO es lineal.
+> **Marco MMCO (Feedback Talaia/FVE/LOW)**: Cada bandera opera en un nivel de emergencia diferente. La composición NO es lineal.
 
 **Caracterización MMCO de las 5 Banderas**:
 

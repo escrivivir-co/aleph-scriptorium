@@ -167,7 +167,7 @@ Para filtrar, necesitaríamos **interceptar** antes del paso 2. Eso es SCRIPT-2.
 | `CopilotEngine/` | Fuente de verdad para hooks |
 | `TypedPromptsEditor/` | UI para schemas |
 | `MCPGallery/` | Presets de tools |
-| `OnthologyEditor/` | Paradigma Flove |
+| `OnthologyEditor/` | Paradigma FVE |
 
 SCRIPT-2.2.0 (MCP Resources Schema) depende de entender cómo `MCPGallery` define sus presets. ¿Deberíamos invertir el orden 2.2.0 ↔ 2.3.0?
 

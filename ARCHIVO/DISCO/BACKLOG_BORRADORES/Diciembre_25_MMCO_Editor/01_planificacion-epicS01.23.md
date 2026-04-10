@@ -34,7 +34,7 @@ ARCHIVO (BNP) → Agentes (correlaciones) → Workspace (tensores) →
 
 ## Las 5 Banderas como Operadores Φ (Refactorizado MMCO)
 
-> **Actualización 2025-12-28**: Refactorización con caracterización MMCO completa (feedback Talaia/Flove/LOW)
+> **Actualización 2025-12-28**: Refactorización con caracterización MMCO completa (feedback Talaia/FVE/LOW)
 
 | Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio de Razonamiento |
 |---------|------------|------------|------------------------|-------------------------|

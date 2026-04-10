@@ -1,0 +1,15 @@
+{
+  "id": "iacm-demo",
+  "name": "IACM Demo (Inter-Agent Communication)",
+  "description": "Demo of IACM protocol v1.0 with dispatch-bot and meteo-bot agents. Showcases REQUEST/REPORT flows.",
+  "entryPoint": "examples/iacm-demo",
+  "sdkRelative": false,
+  "command": "bun",
+  "args": ["run", "dev"],
+  "argsMock": ["run", "mock"],
+  "cwdRelative": "BotHubSDK/examples/iacm-demo",
+  "supportsNpm": false,
+  "requiresBuiltSdk": true,
+  "requiresToken": false,
+  "plugins": ["dispatch-bot", "meteo-bot"]
+}

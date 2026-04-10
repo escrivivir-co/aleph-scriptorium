@@ -39,7 +39,7 @@
 | [Enero_2026_Blueprint_Refinement](Enero_2026_Blueprint_Refinement/) | SCRIPT-1.32.0: Blueprint Refinement para Release Party | 📋 Activo |
 | [Enero_2026_CopilotLogsMCP_Bug](Enero_2026_CopilotLogsMCP_Bug/) | FEATURE-SNAPSHOTS-1.0.0: Copilot Logs Snapshot System | ✅ Completada |
 | [Enero_2026_LogicaAgentes](Enero_2026_LogicaAgentes/) | IOT-SBR-LOGICA + SCRIPT-2.2.0: Conversaciones PrologEditor | 📋 Activo |
-| [FLOVE_EDITOR](FLOVE_EDITOR/) | Plugin FloveEditor | ✅ Publicado |
+| [FLOVE_EDITOR](FLOVE_EDITOR/) | Plugin FVEEditor | ✅ Publicado |
 | [INDICES_COBERTURA](INDICES_COBERTURA/) | Cobertura de Índices | ✅ Publicado |
 | [IOT-SBR-LOGICA](IOT-SBR-LOGICA/) | Plugin PrologEditor + Inteligencias Situadas | 🟢 Investigado |
 | [KICK-ALEPH](KICK-ALEPH/) | Kick Streaming Bridge | 📋 Borrador |
@@ -51,7 +51,7 @@
 | [NETWORK-SDK](NETWORK-SDK/) | Plugin Network (P2P) | 🟡 Borrador |
 | [NEW_GH_PAGES_INDEX](NEW_GH_PAGES_INDEX/) | Blueprint Visual Index | ✅ Publicado |
 | [NODE-RED-SDK](NODE-RED-SDK/) | Plugin WireEditor | 📝 Borrador |
-| [ONTHOLOGY_EDITOR](ONTHOLOGY_EDITOR/) | OnthologyEditor (Flove) | 📋 Borrador |
+| [ONTHOLOGY_EDITOR](ONTHOLOGY_EDITOR/) | OnthologyEditor (FVE) | 📋 Borrador |
 | [ONTOLOGY_AGENT_EDITOR](ONTOLOGY_AGENT_EDITOR/) | OntologyAgentEditor | ✅ Publicado |
 | [PathykarAgente](PathykarAgente/) | Agente Karpathy-Like | 📝 Idea |
 | [PLUGIN_SETTINGS_OPTIMIZER](PLUGIN_SETTINGS_OPTIMIZER/) | Optimización Settings | ✅ Completada |

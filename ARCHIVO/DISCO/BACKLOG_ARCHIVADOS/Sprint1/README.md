@@ -24,7 +24,7 @@
 | SCRIPT-1.16.0 | Índice SPLASH | ✅ 100% | [indice-splash.md](indice-splash.md) |
 | SCRIPT-1.17.0 | Índice README | ✅ 100% | [indice-readme.md](indice-readme.md) |
 | SCRIPT-1.18.0 | Cobertura Índices | ✅ 100% | [cobertura-indices.md](cobertura-indices.md) |
-| SCRIPT-1.22.0 | Agentes FloveEditor | ✅ 100% | [agentes-floveeditor.md](agentes-floveeditor.md) |
+| SCRIPT-1.22.0 | Agentes FVEEditor | ✅ 100% | [agentes-floveeditor.md](agentes-floveeditor.md) |
 
 ---
 

@@ -157,15 +157,6 @@ permalink: /roadmap/
     </div>
   </a>
 
-  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR" class="card">
-    <div class="card-header">✅ Publicado | SCRIPT-1.20.0</div>
-    <h3 class="card-title">Plugin FloveEditor</h3>
-    <div class="card-body">Editor de ontologías basado en paradigma CONFLUENTISM de Flove. Exporta a JSON Schema, TypeScript, Zod. 3 niveles: Fuzzy→PsicoSocial→Freedom.</div>
-    <div class="card-footer">
-      <span class="tag">flove</span><span class="tag">ontología</span><span class="tag">editor</span>
-    </div>
-  </a>
-
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA" class="card">
     <div class="card-header">✅ Aprobado | SCRIPT-1.18.0</div>
     <h3 class="card-title">Cobertura de Índices</h3>
@@ -211,24 +202,6 @@ permalink: /roadmap/
     </div>
   </a>
 
-  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE" class="card">
-    <div class="card-header">✅ Publicado | SCRIPT-1.21.0</div>
-    <h3 class="card-title">Metamodel Compliance</h3>
-    <div class="card-body">Integración Metamodel + MMCO + FloveDocs. Especificación formal para validar que plugins cumplen con la ontología del Scriptorium.</div>
-    <div class="card-footer">
-      <span class="tag">metamodel</span><span class="tag">compliance</span><span class="tag">formal</span>
-    </div>
-  </a>
-
-  <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO" class="card">
-    <div class="card-header">✅ Publicado | SCRIPT-1.23.0</div>
-    <h3 class="card-title">Integración MMCO (OCMF)</h3>
-    <div class="card-body">Métricas de Coherencia Multimodal Ontológica. Framework para medir coherencia en partidas ARG y producción editorial. Bridge: flove-editor.</div>
-    <div class="card-footer">
-      <span class="tag">mmco</span><span class="tag">coherencia</span><span class="tag">métricas</span>
-    </div>
-  </a>
-
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/N8N-EDITOR" class="card">
     <div class="card-header">📝 Borrador | SCRIPT-1.14.0</div>
     <h3 class="card-title">Plugin N8N Editor</h3>
@@ -258,8 +231,8 @@ permalink: /roadmap/
 
   <a href="https://github.com/escrivivir-co/aleph-scriptorium/tree/main/ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR" class="card">
     <div class="card-header">📋 Borrador</div>
-    <h3 class="card-title">OnthologyEditor (Flove Template)</h3>
-    <div class="card-body">Submódulo principal de ontologías. Template Flove para modelar dominios con paradigma CONFLUENTISM. Base para FloveEditor.</div>
+    <h3 class="card-title">OnthologyEditor (FVE Template)</h3>
+    <div class="card-body">Submódulo principal de ontologías. Template FVE para modelar dominios con paradigma CONFLUENTISM. Base para FVEEditor.</div>
     <div class="card-footer">
       <span class="tag">ontología</span><span class="tag">flove</span><span class="tag">template</span>
     </div>

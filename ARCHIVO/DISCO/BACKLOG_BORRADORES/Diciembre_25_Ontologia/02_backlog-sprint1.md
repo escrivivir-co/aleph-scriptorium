@@ -237,7 +237,7 @@
 **Effort**: 13 puntos (refactorizado de 8 original)  
 **Estado**: 🔄 Refactorizado como Validación Paradigmática (2025-12-28)
 
-> **⚠️ REFACTORIZADO (Feedback Talaia/Flove/LOW)**: Esta iteración pasó de "formalización" a "validación paradigmática". La fórmula lineal Φ_editor = Σ(w·Φ_bandera) fue descartada por inconmensurabilidad entre espacios de razonamiento.
+> **⚠️ REFACTORIZADO (Feedback Talaia/FVE/LOW)**: Esta iteración pasó de "formalización" a "validación paradigmática". La fórmula lineal Φ_editor = Σ(w·Φ_bandera) fue descartada por inconmensurabilidad entre espacios de razonamiento.
 
 ### Concepto Central (Actualizado)
 

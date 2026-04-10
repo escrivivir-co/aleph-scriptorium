@@ -32,7 +32,6 @@
 		".github/plugins/blockly-editor/prompts": true,
 		".github/plugins/wire-editor/prompts": true,
 		".github/plugins/hypergraph-editor/prompts": true,
-		".github/plugins/flove-editor/prompts": true,
 		".github/plugins/n8n-editor/prompts": true,
 		".github/plugins/typed-prompting/prompts": true,
 		// --- App plugins ---
@@ -64,7 +63,6 @@
 		".github/plugins/blockly-editor/instructions": true,
 		".github/plugins/wire-editor/instructions": true,
 		".github/plugins/hypergraph-editor/instructions": true,
-		".github/plugins/flove-editor/instructions": true,
 		".github/plugins/n8n-editor/instructions": true,
 		".github/plugins/typed-prompting/instructions": true,
 		// --- App plugins ---

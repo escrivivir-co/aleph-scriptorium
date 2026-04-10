@@ -2,13 +2,13 @@
 
 > **Fecha**: 2025-12-27
 > **Participantes**: Product Owner (PO), Scrum Master (SM)
-> **Contexto**: Blueprint MMCO tiene problemas críticos de navegación antes de presentación Talaia/Flove
+> **Contexto**: Blueprint MMCO tiene problemas críticos de navegación antes de presentación Talaia/FVE
 
 ---
 
 ## Apertura
 
-**SM**: El Blueprint MMCO (SCRIPT-1.27.0) fue implementado según el modelo de 7 niveles de emergencia MMCO. Sin embargo, hay un problema crítico de usabilidad que impide su uso en la presentación con Talaia y Flove.
+**SM**: El Blueprint MMCO (SCRIPT-1.27.0) fue implementado según el modelo de 7 niveles de emergencia MMCO. Sin embargo, hay un problema crítico de usabilidad que impide su uso en la presentación con Talaia y FVE.
 
 **PO**: ¿Cuál es el problema exactamente?
 
@@ -18,7 +18,7 @@
 2. **Comparativa**: El Blueprint UX sí funciona correctamente porque usa coordenadas dispersas (X=-1500, X=1500, Y=1500, etc.)
 3. **Causa raíz**: El concepto de "eje Z = nivel de emergencia" era conceptualmente correcto pero visualmente inviable. Impress.js necesita separación en X/Y para que las diapositivas no se superpongan.
 
-**PO**: Entendido. Necesitamos esto funcionando para la reunión con Talaia/Flove. ¿Cuál es la solución?
+**PO**: Entendido. Necesitamos esto funcionando para la reunión con Talaia/FVE. ¿Cuál es la solución?
 
 ---
 
@@ -26,7 +26,7 @@
 
 **SM**: Propongo un enhancement con objetivo SMART:
 
-> **Objetivo**: Refactorizar las coordenadas del Blueprint MMCO para que las 8 diapositivas sean navegables sin superposición, manteniendo la narrativa de "jerarquía de emergencia" MMCO, listo para presentación Talaia/Flove.
+> **Objetivo**: Refactorizar las coordenadas del Blueprint MMCO para que las 8 diapositivas sean navegables sin superposición, manteniendo la narrativa de "jerarquía de emergencia" MMCO, listo para presentación Talaia/FVE.
 
 **PO**: Aprobado. ¿Qué arquitectura propones?
 
@@ -110,7 +110,7 @@
 - **Problema**: Blueprint MMCO inusable por superposición de slides
 - **Solución**: Refactorizar coordenadas a layout lineal vertical
 - **Effort**: 3 puntos
-- **Prioridad**: P0 (bloquea presentación Talaia/Flove)
+- **Prioridad**: P0 (bloquea presentación Talaia/FVE)
 
 **PO**: Aprobado. Generar backlog borrador.
 

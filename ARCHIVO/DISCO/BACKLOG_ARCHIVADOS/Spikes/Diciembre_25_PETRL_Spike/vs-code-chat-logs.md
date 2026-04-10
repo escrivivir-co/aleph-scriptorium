@@ -2223,7 +2223,7 @@ EXTERNO → INSTALADO (disabled) ↔ ENABLED → REMOVED
 
 ## SCRIPT-1.28.0 — Blueprint MMCO Enhancement
 
-> **Objetivo**: Corregir navegación del Blueprint MMCO para presentación Talaia/Flove  
+> **Objetivo**: Corregir navegación del Blueprint MMCO para presentación Talaia/FVE  
 > **Sprint**: FC2 (actual)  
 > **Effort total**: 3 pts  
 > **Estado**: ✅ Cerrada (2025-12-27)  
@@ -2670,7 +2670,7 @@ Una vez completadas las épicas de modelado ontológico, el index.md presentará
         │                     │                     │
    ontology              core (0,0)             dynamics
    (x:-1500)          Agentes+Plugins           (x:1500)
-   Flove/UFO                  │                  Flujos
+   FVE/UFO                  │                  Flujos
         │                     │                     │
         └─────────────────────┼─────────────────────┘
                               │
@@ -3783,7 +3783,7 @@ Make sure to acquire the instructions before making any changes to the code.
 <applyTo>ARCHIVO/PLUGINS/N8N_EDITOR/**/*.json, .github/plugins/n8n-editor/**/*.md, alephscript-n8n-like-editor/**/*</applyTo>
 </instruction>
 <instruction>
-<description>Instrucciones para modelar dominios según el paradigma Flove y su estructura de 3 niveles.</description>
+<description>Instrucciones para modelar dominios según el paradigma FVE y su estructura de 3 niveles.</description>
 <file>/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/.github/plugins/flove-editor/instructions/flove-paradigm.instructions.md</file>
 <applyTo>ARCHIVO/PLUGINS/FLOVE_EDITOR/**/*.md, OnthologyEditor/**/*.md</applyTo>
 </instruction>

@@ -1,4 +1,4 @@
-# 🧠 Síntesis: ¿Qué es Flove y qué hemos extraído?
+# 🧠 Síntesis: ¿Qué es FVE y qué hemos extraído?
 
 > **Documento de trabajo** — Lucas (Scrum Master) + PO  
 > **Fecha**: 2026-01-09  
@@ -95,7 +95,7 @@ Prime  Channel         System          Sense
 
 ---
 
-## 3. ❓ Preguntas para los autores de FloveDocs
+## 3. ❓ Preguntas para los autores de FVEDocs
 
 ### 3.1 Sobre la Escala Gradual
 
@@ -134,7 +134,7 @@ Prime  Channel         System          Sense
 
 ### 4.1 TypedPrompting Pack: `flove-ontology`
 
-**Qué**: Un pack de schemas para validar conversaciones "Flove-style"
+**Qué**: Un pack de schemas para validar conversaciones "FVE-style"
 
 ```yaml
 # Ejemplo de schema para TypedPrompt
@@ -157,7 +157,7 @@ schemas:
 ```
 
 **Esfuerzo**: 5 pts (reusar TypedPromptsEditor)
-**Valor**: Permite "pensar en Flove" desde cualquier conversación
+**Valor**: Permite "pensar en FVE" desde cualquier conversación
 
 ### 4.2 FuzzyPrologEditor: Fork de PrologEditor
 
@@ -175,9 +175,9 @@ relates(love, attraction, antonym, 0.86).
 **Esfuerzo**: 13 pts (fork + adaptar UI + nuevo backend fuzzy)
 **Valor**: Crear "Fuzzy Brains" para personajes del Teatro
 
-### 4.3 FloveBlocks: Extensión de BlocklyEditor
+### 4.3 FVEBlocks: Extensión de BlocklyEditor
 
-**Qué**: Bloques visuales para componer secuencias Flove
+**Qué**: Bloques visuales para componer secuencias FVE
 
 ```
 ┌─────────────────────────────────────────┐
@@ -203,9 +203,9 @@ relates(love, attraction, antonym, 0.86).
 ```
 
 **Esfuerzo**: 21 pts (definir bloques + generador de código)
-**Valor**: No-code para crear flujos Flove
+**Valor**: No-code para crear flujos FVE
 
-### 4.4 FloveGraph: Integración con HypergraphEditor
+### 4.4 FVEGraph: Integración con HypergraphEditor
 
 **Qué**: Visualizar la ontología como grafo navegable
 
@@ -219,9 +219,9 @@ relates(love, attraction, antonym, 0.86).
 | Integración | Esfuerzo | Valor | Dependencias | Prioridad |
 |-------------|----------|-------|--------------|-----------|
 | TypedPrompting Pack | 5 pts | Alto | TypedPromptsEditor ✅ | **1** |
-| FloveGraph (viz) | 8 pts | Medio | HypergraphEditor ✅ | **2** |
+| FVEGraph (viz) | 8 pts | Medio | HypergraphEditor ✅ | **2** |
 | FuzzyPrologEditor | 13 pts | Alto | PrologEditor ✅, investigación fuzzy | 3 |
-| FloveBlocks | 21 pts | Alto | BlocklyEditor ✅, definir DSL | 4 |
+| FVEBlocks | 21 pts | Alto | BlocklyEditor ✅, definir DSL | 4 |
 
 ---
 
@@ -232,9 +232,9 @@ relates(love, attraction, antonym, 0.86).
 - Registrar en TypedPromptsEditor
 - Test con conversación de ejemplo
 
-### Sprint 2: FloveGraph
+### Sprint 2: FVEGraph
 - Importar ontología a HypergraphEditor
-- Crear "obra" Flove para wiki-racer
+- Crear "obra" FVE para wiki-racer
 - Navegar TAO/YIN/YANG visualmente
 
 ### Sprint 3: FuzzyPrologEditor (Investigación)
@@ -242,23 +242,23 @@ relates(love, attraction, antonym, 0.86).
 - Definir sintaxis de hechos graduales
 - Prototipo de interfaz
 
-### Sprint 4: FloveBlocks
-- Diseñar DSL visual para Flove
+### Sprint 4: FVEBlocks
+- Diseñar DSL visual para FVE
 - Implementar bloques RELATE/EXPLAIN/VIEW
 - Generador de código (¿a Prolog fuzzy?)
 
 ---
 
-## 7. 📧 Borrador de Email para FloveDocs
+## 7. 📧 Borrador de Email para FVEDocs
 
 ```
-Asunto: Questions about Flove paradigm for integration project
+Asunto: Questions about FVE paradigm for integration project
 
-Hello Flove team,
+Hello FVE team,
 
-We are working on integrating the Flove paradigm into an AI writing 
+We are working on integrating the FVE paradigm into an AI writing 
 assistant (Aleph Scriptorium). We've extracted and analyzed content 
-from FloveDocs and have some questions:
+from FVEDocs and have some questions:
 
 1. GRADUAL SCALE: Is the 7-level scale (0.14, 0.29...) based on 1/7 
    fractions? What's the reasoning behind 7 levels specifically?
@@ -273,9 +273,9 @@ from FloveDocs and have some questions:
    7=glands...) meant to be literal or metaphorical?
 
 We're particularly interested in creating:
-- Validation schemas for "Flove-style" conversations
+- Validation schemas for "FVE-style" conversations
 - A fuzzy logic variant of our Prolog knowledge base editor
-- Visual blocks for composing Flove sequences
+- Visual blocks for composing FVE sequences
 
 Any guidance would be greatly appreciated!
 
@@ -285,4 +285,4 @@ Best regards,
 
 ---
 
-**Siguiente paso**: ¿Empezamos con el TypedPrompting Pack (5 pts) o prefieres esperar respuesta de FloveDocs?
+**Siguiente paso**: ¿Empezamos con el TypedPrompting Pack (5 pts) o prefieres esperar respuesta de FVEDocs?

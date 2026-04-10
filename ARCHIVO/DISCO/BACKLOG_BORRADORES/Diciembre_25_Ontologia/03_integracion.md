@@ -17,7 +17,7 @@ Scriptorium i les preguntes de validació ontològica que han plantejat.
 Patterns particularment útils per a la integració MMCO↔MetaModel:
 - ToT Multi-Path per a l'anàlisi multidimensional dels nivells
 d'emergència 0a/0b/0c
-- Graph of Thought per mappejar relacions Flove↔MMCO↔MetaModel
+- Graph of Thought per mappejar relacions FVE↔MMCO↔MetaModel
 - Self-Consistency per validar les propostes de formalització categòrica
 
 Disponible per consulta quan calgui aplicar-la.
@@ -37,7 +37,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >funcionat.
 > >
 > >El document conté l'anunci complet de la col·laboració Scriptorium ↔
-> >Talaia/Flove amb les 3 notes processades i el call4colab per al equip
+> >Talaia/FVE amb les 3 notes processades i el call4colab per al equip
 > >OnthologyEditor.
 > >
 > >Tot llest per continuar amb el workflow normal d'adjunts.
@@ -56,12 +56,12 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >
 > >> >He almacenado en el contexto/HyperGraph:
 > >> >
-> >> >1. **Nota 1** (Integración Talaia↔Flove↔Scriptorium): Propuesta de
+> >> >1. **Nota 1** (Integración Talaia↔FVE↔Scriptorium): Propuesta de
 > >> >submódulos Git, casos de uso (CU-01 a CU-04), roadmap FC1→FC4
 > >> >2. **Nota 2** (Sprint 1 - Ontología Formal): 4 épicas MMCO/MetaModel
 > >> >(37 pts, 3 semanas), sistema de 5 Banderas como operadores Φ
 > >> >3. **Nota 3** (Carta Abierta): 9 preguntas de validación técnica sobre
-> >> >MMCO/MetaModel/Flove
+> >> >MMCO/MetaModel/FVE
 > >> >
 > >> >Rutas de almacenamiento:
 > >> >- `storage/scriptorium_collab_nota1_talaia-flove.md`
@@ -99,7 +99,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >6. **MetaModel - AI-Optimized**: ¿Hay contrato de formato para LLMs?
 > >> >Scriptorium usa Copilot Chat al 100%
 > >> >
-> >> >7. **Integración Flove↔MMCO↔MetaModel**: ¿Capas complementarias,
+> >> >7. **Integración FVE↔MMCO↔MetaModel**: ¿Capas complementarias,
 > >> >jerarquía, o paradigmas diferentes?
 > >> >
 > >> >8. **Toy models**: ¿Existe uno aplicable a producción textual?
@@ -110,7 +110,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >### Decisiones organizativas (Nota 1):
 > >> >
 > >> >- ¿Aprobación de ramas `integration/scriptorium` o preferencia por tags?
-> >> >- ¿Licencia de FloveDocs?
+> >> >- ¿Licencia de FVEDocs?
 > >> >- ¿Interés en colaboración bidireccional? (recibir
 > >> >templates/validadores desde Scriptorium)
 > >> >
@@ -145,7 +145,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >> **Archivos recibidos (5):**
 > >> >> 1. ✅ `nota-colaboracion-talaia-flove.md` - Nota de integración de repositorios
 > >> >> 2. ✅ `conversacion-po-sm.md` - Conversación sobre Metamodel Compliance
-> >> >> para FloveEditor
+> >> >> para FVEEditor
 > >> >> 3. ✅ `01_planificacion-sprint1.md` - Planificación Sprint 1: Ontología Formal
 > >> >> 4. ✅ `02_backlog-sprint1.md` - Backlog detallado Sprint 1
 > >> >> 5. ✅ `01_backlog-borrador.md` - Backlog borrador SCRIPT-1.21.0
@@ -162,7 +162,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >> La Nota 3 es la que contendría las preguntas específicas sobre:
 > >> >> - Jerarquía de emergencia (niveles 0a/0b/0c)
 > >> >> - Uso de la métrica Φ
-> >> >> - Relación Flove ↔️ MMCO ↔️ MetaModel
+> >> >> - Relación FVE ↔️ MMCO ↔️ MetaModel
 > >> >> - Mapeo del Blueprint visual a niveles MMCO
 > >> >>
 > >> >> **¿Deseas que proceda con lo que tengo o prefieres reenviar con el
@@ -227,7 +227,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >> > >Las 3 notas:
 > >> >> > >
 > >> >> > >*
-> >> >> > >Nota 1 (Enlace de repositorios Talaia ↔️️ Flove):
+> >> >> > >Nota 1 (Enlace de repositorios Talaia ↔️️ FVE):
 > >> >> > >ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/nota-colaboracion-talaia-flove.md
 > >> >> > >
 > >> >> > >
@@ -245,7 +245,7 @@ El 28 de diciembre de 2025 a las 00:26, d1d4c escribió:
 > >> >> > >
 > >> >> > >* Jerarquía de emergencia (niveles 0a/0b/0c)
 > >> >> > >* Uso de la métrica Φ
-> >> >> > >* Relación Flove ↔️️ MMCO ↔️️ MetaModel
+> >> >> > >* Relación FVE ↔️️ MMCO ↔️️ MetaModel
 > >> >> > >* Mapeo del Blueprint visual a niveles MMCO
 > >> >> > >
 > >> >> > >Adjuntos del email original (para contexto):

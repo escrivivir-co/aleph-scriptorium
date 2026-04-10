@@ -9,7 +9,7 @@
 
 ## Apertura
 
-**SM (Scrum Master)**: El PO ha propuesto refactorizar el `index.md` de GH-Pages para presentar el Scriptorium como un **blueprint visual** una vez se completen las épicas de modelado ontológico (FloveEditor, OntologyEditor, MetaModel Compliance, MMCO).
+**SM (Scrum Master)**: El PO ha propuesto refactorizar el `index.md` de GH-Pages para presentar el Scriptorium como un **blueprint visual** una vez se completen las épicas de modelado ontológico (FVEEditor, OntologyEditor, MetaModel Compliance, MMCO).
 
 La idea es que el index deje de ser una landing page convencional y pase a ser una **presentación interactiva navegable** que muestre:
 1. El **MetaModel** del Scriptorium como sistema de producción transmedia
@@ -72,7 +72,7 @@ El nuevo index.md será una **presentación impress.js** embebida que permita:
 │                                                                         │
 │    ┌────────────┐     ┌────────────┐     ┌────────────┐                │
 │    │  ONTOLOGÍA │────▶│  DINÁMICAS │────▶│  PRODUCTOS │                │
-│    │   (Flove)  │     │   (Flujos) │     │ (Transmedia)│               │
+│    │   (FVE)  │     │   (Flujos) │     │ (Transmedia)│               │
 │    └────────────┘     └────────────┘     └────────────┘                │
 │          │                  │                  │                        │
 │          ▼                  ▼                  ▼                        │
@@ -146,7 +146,7 @@ mermaid:
 |-------|-----|-----------|------------------|
 | 1 | `overview` | Vista panorámica del MetaModel | (0, 0, 3000) |
 | 2 | `core` | Núcleo: Agentes + Plugins + BOE | (0, 0, 0) |
-| 3 | `ontology` | Capa ontológica (Flove/UFO/MMCO) | (-1500, 0, 0) |
+| 3 | `ontology` | Capa ontológica (FVE/UFO/MMCO) | (-1500, 0, 0) |
 | 4 | `dynamics` | Flujos de producción | (1500, 0, 0) |
 | 5 | `hypergraph` | Hypergraph interactivo | (0, 1500, 0) |
 | 6 | `products` | Productos transmedia (Teatro, Periódico) | (0, -1500, 0) |
@@ -199,7 +199,7 @@ Para usuarios sin JavaScript, mantener versión estática con:
 
 | Épica | Dependencia | Tipo |
 |-------|-------------|------|
-| FLOVE_EDITOR | Ontología Flove documentada | Blanda |
+| FLOVE_EDITOR | Ontología FVE documentada | Blanda |
 | METAMODEL_COMPLIANCE | Capas UFO definidas | Blanda |
 | MMCO | Métricas de coherencia | Blanda |
 | HYPERGRAPH_EDITOR | Motor de hipergrafos | Blanda |

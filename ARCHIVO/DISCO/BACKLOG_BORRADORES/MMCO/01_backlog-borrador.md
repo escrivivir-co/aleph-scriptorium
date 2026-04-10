@@ -14,7 +14,7 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 
 | Pilar | Épica | Estado |
 |-------|-------|--------|
-| FloveDocs | SCRIPT-1.20.0 | ✅ Completada |
+| FVEDocs | SCRIPT-1.20.0 | ✅ Completada |
 | Metamodel | SCRIPT-1.21.0 | 🔄 En progreso |
 | **MMCO** | **SCRIPT-1.23.0** | 📝 Este backlog |
 
@@ -45,8 +45,8 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
 | T000 | Crear conversación PO-SM con inventario técnico | ✅ |
-| T001 | Enriquecer sesión con agentes expertos (FloveOx, Metamodel, MMCO, FloveEditor) | ✅ |
-| T002 | Documentar mapeos Flove↔UFO↔MMCO en conversación | ✅ |
+| T001 | Enriquecer sesión con agentes expertos (FVEOx, Metamodel, MMCO, FVEEditor) | ✅ |
+| T002 | Documentar mapeos FVE↔UFO↔MMCO en conversación | ✅ |
 | T003 | Crear backlog borrador con 5 stories | ✅ |
 | T004 | Añadir épica al BACKLOG-SCRIPTORIUM.md | ⏳ |
 
@@ -79,7 +79,7 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 
 **Definition of Done**:
 - [ ] Catálogo de toy models con descripción y runtime
-- [ ] XMLs mapeados a conceptos Flove
+- [ ] XMLs mapeados a conceptos FVE
 - [ ] Schema adapter.json documentado
 - [ ] Carpeta MMCO creada en ARCHIVO
 
@@ -94,11 +94,11 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 
 | Task ID | Descripción | Estado |
 |---------|-------------|--------|
-| T010 | Aplicar plantilla ENTITY a campos Flove (10 fields) | ⏳ |
-| T011 | Aplicar plantilla RELATIONSHIP a relaciones Flove (RELATE/VIEW/EXPLAIN) | ⏳ |
-| T012 | Aplicar plantilla PROCESS a dinámicas Flove (FREE/MAKING) | ⏳ |
+| T010 | Aplicar plantilla ENTITY a campos FVE (10 fields) | ⏳ |
+| T011 | Aplicar plantilla RELATIONSHIP a relaciones FVE (RELATE/VIEW/EXPLAIN) | ⏳ |
+| T012 | Aplicar plantilla PROCESS a dinámicas FVE (FREE/MAKING) | ⏳ |
 | T013 | Añadir metadatos FAIR mínimos al adapter | ⏳ |
-| T014 | Registrar gaps de mapeo Flove↔UFO en documento separado | ⏳ |
+| T014 | Registrar gaps de mapeo FVE↔UFO en documento separado | ⏳ |
 
 **Definition of Done**:
 - [ ] 3 plantillas UFO aplicadas
@@ -185,7 +185,7 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 |-------------|--------|-------|
 | OnthologyEditor/MMCO | ✅ Instalado | Submódulo nested |
 | Plugin flove-editor | ✅ Operativo | v1.0.0 |
-| Agentes MMCO | ✅ Creados | FloveOx, Metamodel, MMCO, FloveDocs |
+| Agentes MMCO | ✅ Creados | FVEOx, Metamodel, MMCO, FVEDocs |
 | SCRIPT-1.21.0 (Metamodel) | 🔄 En progreso | Pre-requisito para UFO |
 | Python (NumPy) | ⚠️ Externo | Para phi_mmco.py |
 
@@ -197,7 +197,7 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 |--------|--------------|---------|------------|
 | Dependencias Python (NumPy) | Media | Medio | Modo offline sin métrica + README requisitos |
 | Complejidad adapter | Media | Bajo | Empezar con subset de XMLs |
-| Gaps Flove↔UFO | Baja | Medio | Documentar en cada FC |
+| Gaps FVE↔UFO | Baja | Medio | Documentar en cada FC |
 | Licencia AGPL (toy models) | Baja | Alto | Mantener AGPL si redistribuye |
 
 ---
@@ -233,10 +233,10 @@ Integración del submódulo MMCO (Meta-Model of Coherent Ontology) como tercer p
 | Conversación PO-SM | `ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/conversacion-po-sm.md` |
 | Submódulo MMCO | `OnthologyEditor/MMCO/` |
 | Agente MMCO | `.github/plugins/flove-editor/agents/mmco.agent.md` |
-| Agente FloveOx | `.github/plugins/flove-editor/agents/flove-ox.agent.md` |
+| Agente FVEOx | `.github/plugins/flove-editor/agents/flove-ox.agent.md` |
 | Bridge principal | `.github/agents/plugin_ox_floveeditor.agent.md` |
 | Épica Metamodel | `ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/` |
-| Épica FloveEditor | SCRIPT-1.20.0 en BACKLOG-SCRIPTORIUM.md |
+| Épica FVEEditor | SCRIPT-1.20.0 en BACKLOG-SCRIPTORIUM.md |
 
 ---
 

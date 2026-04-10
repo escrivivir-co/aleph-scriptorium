@@ -354,6 +354,25 @@
       "detail": "BotHubSDK dashboard TUI (build:sdk + ejemplo interactivo)"
     },
     {
+      "label": "BHS: Start [IACM Demo]",
+      "type": "shell",
+      "command": "bun",
+      "args": [
+        "run",
+        "mock"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BotHubSDK/examples/iacm-demo"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "group": "bhs-stack"
+      },
+      "detail": "BotHubSDK IACM demo (protocolo inter-agente, mock mode)"
+    },
+    {
       "label": "AIA: Open [Browser]",
       "type": "shell",
       "command": "cmd",

@@ -1,4 +1,4 @@
-# Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FloveEditor
+# Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FVEEditor
 
 **Estado**: ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26)
 
@@ -19,7 +19,7 @@ Integrar el metamodel de Talaia Digital como framework de auditoría para asegur
 
 | ID | Nombre | Opportunity | Effort | Prioridad |
 |----|--------|-------------|--------|-----------|
-| SCRIPT-1.21.0 | Metamodel Compliance para FloveEditor | Scriptorium | 21 pts | P1 |
+| SCRIPT-1.21.0 | Metamodel Compliance para FVEEditor | Scriptorium | 21 pts | P1 |
 
 ---
 
@@ -29,7 +29,7 @@ Integrar el metamodel de Talaia Digital como framework de auditoría para asegur
 
 1. Instalar submódulo metamodel dentro de OnthologyEditor
 2. Diseñar arquitectura de integración
-3. Crear documento de mapeo Flove ↔ UFO
+3. Crear documento de mapeo FVE ↔ UFO
 4. Inicializar documentación de compliance
 
 ---
@@ -74,10 +74,10 @@ Diseñar cómo el metamodel se integrará con OnthologyEditor y flove-editor.
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T008 | Crear `OnthologyEditor/docs/ARCHITECTURE.md` con diseño de integración | 1.5 | ⏳ |
-| T009 | Documentar las 5 capas del metamodel y cómo mapean a Flove | 1 | ⏳ |
+| T009 | Documentar las 5 capas del metamodel y cómo mapean a FVE | 1 | ⏳ |
 | T010 | Diseñar estructura de carpetas `src/compliance/` | 0.5 | ⏳ |
 | T011 | Identificar puntos de extensión en flove-editor para validación | 1 | ⏳ |
-| T012 | Crear diagrama de flujo: Ontología Flove → Validación UFO → Exportación | 1 | ⏳ |
+| T012 | Crear diagrama de flujo: Ontología FVE → Validación UFO → Exportación | 1 | ⏳ |
 
 **Definition of Done**:
 - [ ] ARCHITECTURE.md explica el diseño completo
@@ -86,21 +86,21 @@ Diseñar cómo el metamodel se integrará con OnthologyEditor y flove-editor.
 
 ---
 
-### SCRIPT-1.21.0-S03: Mapeo Conceptual Flove ↔ UFO
+### SCRIPT-1.21.0-S03: Mapeo Conceptual FVE ↔ UFO
 **Effort**: 5 pts  
 **Prioridad**: Must  
 **Estado**: ⏳ Pendiente
 
 #### Descripción
 
-Crear documento de mapeo entre el paradigma CONFLUENTISM (Flove) y la Unified Foundational Ontology (UFO).
+Crear documento de mapeo entre el paradigma CONFLUENTISM (FVE) y la Unified Foundational Ontology (UFO).
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T013 | Estudiar estructura UFO del metamodel (Endurants, Perdurants, Momentos) | 1 | ⏳ |
-| T014 | Mapear los 10 campos de Flove a conceptos UFO | 1 | ⏳ |
-| T015 | Mapear los 6 paradigmas de Flove a patrones ontológicos | 1 | ⏳ |
-| T016 | Mapear las 15 apps de Flove a modos/cualidades UFO | 1 | ⏳ |
+| T014 | Mapear los 10 campos de FVE a conceptos UFO | 1 | ⏳ |
+| T015 | Mapear los 6 paradigmas de FVE a patrones ontológicos | 1 | ⏳ |
+| T016 | Mapear las 15 apps de FVE a modos/cualidades UFO | 1 | ⏳ |
 | T017 | Crear `ARCHIVO/PLUGINS/FLOVE_EDITOR/mapeo-flove-ufo.md` | 1 | ⏳ |
 
 **Definition of Done**:
@@ -123,7 +123,7 @@ Actualizar el plugin flove-editor con referencias al metamodel y preparar para v
 |---------|-------------|--------|--------|
 | T018 | Añadir sección "Compliance" en `manifest.md` | 0.5 | ⏳ |
 | T019 | Actualizar `flove-paradigm.instructions.md` con referencias UFO | 0.5 | ⏳ |
-| T020 | Añadir handoff "Validar contra UFO" en agente FloveEditor | 0.5 | ⏳ |
+| T020 | Añadir handoff "Validar contra UFO" en agente FVEEditor | 0.5 | ⏳ |
 | T021 | Actualizar `registry.json` con campo `compliance.metamodel` | 0.5 | ⏳ |
 | T022 | Incrementar versión a 0.2.0 | 0.5 | ⏳ |
 | T023 | Crear `prompts/validar-ufo.prompt.md` (stub para FC2) | 0.5 | ⏳ |
@@ -155,7 +155,7 @@ Completar documentación y publicar épica en backlog principal.
 
 > **DRY**: Ver `ARCHIVO/DISCO/Diciembre_25_MMCO_Editor/PromptCraft.md` para metodología completa
 
-Una vez completado el mapeo Flove ↔ UFO (S03), el siguiente paso es generar **system prompts** para agentes que operen con ontologías certificadas.
+Una vez completado el mapeo FVE ↔ UFO (S03), el siguiente paso es generar **system prompts** para agentes que operen con ontologías certificadas.
 
 ### Integración con SCRIPT-1.23.0 (MMCO Editor Transmedia)
 

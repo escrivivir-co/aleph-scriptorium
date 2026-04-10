@@ -41,7 +41,6 @@ Repositorios externos integrados que proporcionan capacidades especializadas.
 |-----------|---------|
 | [VsCodeExtension](../VsCodeExtension/) | Extensión Arrakis (Hacker Panels) |
 | [CopilotEngine](../CopilotEngine/) | Análisis del motor conversacional |
-| [OnthologyEditor](../OnthologyEditor/) | Modelado de dominios (Flove, MMCO) |
 | [AAIAGallery](../AAIAGallery/) | Galería de agentes AlephScript |
 | [AgentLoreSDK](../AgentLoreSDK/) | Plantillas de agentes (637+ items) |
 | [StateMachine](../StateMachine/) | Máquinas de estados |
@@ -91,7 +90,6 @@ Plugins completamente funcionales:
 | Wiring App | `@plugin_ox_wiringapp` | WiringAppHypergraphEditor |
 | ARG Board App | `@plugin_ox_argboardapp` | wiki-racer states |
 | HyperGraph Editor | `@plugin_ox_hypergrapheditor` | Navegador de grafos |
-| Flove Editor | `@plugin_ox_floveeditor` | OnthologyEditor/Flove |
 
 ---
 

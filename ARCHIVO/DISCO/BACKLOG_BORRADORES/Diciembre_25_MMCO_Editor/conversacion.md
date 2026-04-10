@@ -132,7 +132,7 @@
 
 **WHERE**: 
 - Scriptorium como sistema de producción transmedia
-- Integración con framework Talaia/Flove
+- Integración con framework Talaia/FVE
 
 **WHEN**: 
 - Sprint 1 (FC1) en curso
@@ -305,7 +305,7 @@ El correo de colaboración (`nota-colaboracion.md`) planteaba:
 | **MetaModel** | 4. ¿Agentes→ENTITY, Handoffs→RELATIONSHIP? | ❓ Sin respuesta |
 | | 5. ¿Φ compuesto tiene precedentes? | ❓ Sin respuesta |
 | | 6. ¿Contrato AI-Optimized para LLMs? | ❓ Sin respuesta |
-| **Integración** | 7. ¿Flove↔MMCO↔MetaModel: capas o paradigmas? | ❓ Sin respuesta |
+| **Integración** | 7. ¿FVE↔MMCO↔MetaModel: capas o paradigmas? | ❓ Sin respuesta |
 | | 8. ¿Toy model para producción textual? | ❓ Sin respuesta |
 | | 9. ¿Agentes como categoría, handoffs como morfismos? | ❓ Sin respuesta |
 
@@ -609,6 +609,6 @@ Si se recibe feedback de Bruno/LOW:
 
 | Pregunta Abierta | Impacto en Refactorización |
 |------------------|----------------------------|
-| ¿Flove valida composición no-lineal? | Cambia S02 completamente |
+| ¿FVE valida composición no-lineal? | Cambia S02 completamente |
 | ¿Qué operadores de MMCO aplican? | Cambia S01 (jerarquía) |
 | ¿Hay precedentes de Φ multi-técnica? | Valida propuesta o invalida |

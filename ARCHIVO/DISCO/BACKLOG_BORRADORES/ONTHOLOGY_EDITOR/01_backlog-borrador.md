@@ -1,4 +1,4 @@
-# Backlog Borrador: OnthologyEditor (Plugin Flove-Editor)
+# Backlog Borrador: OnthologyEditor (Plugin FVE-Editor)
 
 > **Estado**: 📋 BORRADOR — Pendiente aprobación  
 > **Submódulo**: #15 OnthologyEditor  
@@ -7,9 +7,9 @@
 
 ---
 
-## Épica: SCRIPT-1.20.0 — Editor de Ontologías (Flove Template)
+## Épica: SCRIPT-1.20.0 — Editor de Ontologías (FVE Template)
 
-**Objetivo**: Crear un editor de ontologías basado en el paradigma CONFLUENTISM de Flove que permita diseñar, exportar e integrar ontologías con los plugins existentes del Scriptorium.
+**Objetivo**: Crear un editor de ontologías basado en el paradigma CONFLUENTISM de FVE que permita diseñar, exportar e integrar ontologías con los plugins existentes del Scriptorium.
 
 **Estado**: 🆕 Borrador
 
@@ -30,12 +30,12 @@ Los agentes del Scriptorium necesitan **contratos de comunicación** formales, p
 ### La solución
 
 Un editor de ontologías que:
-1. Use el paradigma **CONFLUENTISM** de Flove como template
+1. Use el paradigma **CONFLUENTISM** de FVE como template
 2. Guíe el diseño con estructura de 3 niveles (Fuzzy→PsicoSocial→Freedom)
 3. Exporte a formatos estándar (JSON Schema, TypeScript, Zod)
 4. Se integre con TypedPrompting y AGENT_CREATOR
 
-### Paradigma Flove
+### Paradigma FVE
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -64,7 +64,7 @@ Un editor de ontologías que:
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T001 | Crear submódulo OnthologyEditor | 0.5 | ✅ |
-| T002 | Crear README-SCRIPTORIUM.md con análisis Flove | 0.5 | ✅ |
+| T002 | Crear README-SCRIPTORIUM.md con análisis FVE | 0.5 | ✅ |
 | T003 | Crear README.md básico | 0.25 | ✅ |
 | T004 | Crear package.json | 0.25 | ✅ |
 | T005 | Crear estructura plugin .github/plugins/flove-editor/ | 0.5 | ✅ |
@@ -80,13 +80,13 @@ Un editor de ontologías que:
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T006 | Definir schema YAML de ontología Flove | 1 | ⏳ |
-| T007 | Crear FloveOntology.ts (modelo de datos) | 1 | ⏳ |
-| T008 | Crear FloveParser.ts (lector YAML) | 1 | ⏳ |
-| T009 | Crear FloveValidator.ts (validación de estructura) | 1 | ⏳ |
+| T006 | Definir schema YAML de ontología FVE | 1 | ⏳ |
+| T007 | Crear FVEOntology.ts (modelo de datos) | 1 | ⏳ |
+| T008 | Crear FVEParser.ts (lector YAML) | 1 | ⏳ |
+| T009 | Crear FVEValidator.ts (validación de estructura) | 1 | ⏳ |
 | T010 | Tests unitarios del parser | 1 | ⏳ |
 
-**Definition of Done**: Parser lee y valida ontologías YAML con estructura Flove.
+**Definition of Done**: Parser lee y valida ontologías YAML con estructura FVE.
 
 ---
 
@@ -98,7 +98,7 @@ Un editor de ontologías que:
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T011 | Crear JsonSchemaExporter.ts | 1 | ⏳ |
-| T012 | Mapear niveles Flove a $defs JSON Schema | 1 | ⏳ |
+| T012 | Mapear niveles FVE a $defs JSON Schema | 1 | ⏳ |
 | T013 | Tests de exportación | 0.5 | ⏳ |
 | T014 | Documentar formato de salida | 0.5 | ⏳ |
 
@@ -114,7 +114,7 @@ Un editor de ontologías que:
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T015 | Crear TypeScriptExporter.ts | 1 | ⏳ |
-| T016 | Generar interfaces por nivel Flove | 1 | ⏳ |
+| T016 | Generar interfaces por nivel FVE | 1 | ⏳ |
 | T017 | Tests de exportación | 0.5 | ⏳ |
 | T018 | Documentar formato de salida | 0.5 | ⏳ |
 
@@ -144,7 +144,7 @@ Un editor de ontologías que:
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T022 | Crear handoff FloveEditor → TypedPrompting | 0.5 | ⏳ |
+| T022 | Crear handoff FVEEditor → TypedPrompting | 0.5 | ⏳ |
 | T023 | Implementar instalación automática de schema | 1 | ⏳ |
 | T024 | Documentar flujo de integración | 0.5 | ⏳ |
 | T025 | Test end-to-end | 1 | ⏳ |
@@ -161,22 +161,22 @@ Un editor de ontologías que:
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T026 | Integrar pipeline O.R.G.A.N.I.Z.E → P.R.O.M.P.T en FloveEditor | 0.5 | 📋 |
+| T026 | Integrar pipeline O.R.G.A.N.I.Z.E → P.R.O.M.P.T en FVEEditor | 0.5 | 📋 |
 | T027 | Crear handoff "Generar system prompt" desde ontología | 0.5 | 📋 |
 | T028 | Implementar anti-enshittification checklist en exportador | 0.5 | 📋 |
 | T029 | Documentar flujo Ontología → Agente | 0.5 | 📋 |
 
-**Concepto**: Una vez definida una ontología Flove, el usuario debería poder generar automáticamente un `.agent.md` con:
+**Concepto**: Una vez definida una ontología FVE, el usuario debería poder generar automáticamente un `.agent.md` con:
 - System prompt basado en P.R.O.M.P.T
 - Técnica de razonamiento seleccionada por O.R.G.A.N.I.Z.E según complejidad
 - Validación anti-enshittification incluida
 
 **Pipeline propuesto**:
 ```
-Ontología YAML (Flove)
+Ontología YAML (FVE)
         │
         ▼
-FloveParser.ts → FloveValidator.ts
+FVEParser.ts → FVEValidator.ts
         │
         ▼
 O.R.G.A.N.I.Z.E (clasificar complejidad)
@@ -208,7 +208,7 @@ AgentExporter.ts → .agent.md
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T026 | Crear handoff FloveEditor → AGENT_CREATOR | 0.5 | ⏳ |
+| T026 | Crear handoff FVEEditor → AGENT_CREATOR | 0.5 | ⏳ |
 | T027 | Añadir campo ontology a recipe.json schema | 1 | ⏳ |
 | T028 | Documentar asignación de ontologías a agentes | 0.5 | ⏳ |
 | T029 | Test end-to-end | 1 | ⏳ |
@@ -272,7 +272,7 @@ AgentExporter.ts → .agent.md
 | Plugin flove-editor | ✅ Estructura | Manifest, agente, prompts |
 | TypedPrompting | ✅ Operativo | Target de integración |
 | AGENT_CREATOR | ✅ Operativo | Target de integración |
-| FloveDocs | 📚 Referencia | No clonado, solo análisis |
+| FVEDocs | 📚 Referencia | No clonado, solo análisis |
 
 ---
 
@@ -280,8 +280,8 @@ AgentExporter.ts → .agent.md
 
 | Riesgo | Probabilidad | Impacto | Mitigación |
 |--------|--------------|---------|------------|
-| Paradigma Flove demasiado abstracto | Media | Alto | Crear ejemplos concretos primero |
-| FloveDocs incompleta | Baja | Medio | Documentar desde presentaciones |
+| Paradigma FVE demasiado abstracto | Media | Alto | Crear ejemplos concretos primero |
+| FVEDocs incompleta | Baja | Medio | Documentar desde presentaciones |
 | Scope creep (UI visual) | Alta | Medio | MVP conversacional, sin UI |
 
 ---

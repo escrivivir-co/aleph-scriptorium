@@ -1,0 +1,14 @@
+{
+  "id": "console-app",
+  "name": "Console App (Headless)",
+  "description": "Headless bot demo with RabbitBot plugin. Telegram polling or mock mode.",
+  "entryPoint": "examples/console-app",
+  "npmScript": "dev",
+  "sdkRelative": true,
+  "command": "npm",
+  "args": ["run", "dev"],
+  "cwdRelative": "BotHubSDK",
+  "supportsMock": true,
+  "requiresToken": false,
+  "plugins": ["rb (RabbitBot)"]
+}

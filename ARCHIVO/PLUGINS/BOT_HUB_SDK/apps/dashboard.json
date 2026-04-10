@@ -1,0 +1,16 @@
+{
+  "id": "dashboard",
+  "name": "Dashboard (Interactive TUI)",
+  "description": "Interactive TUI dashboard with RabbitBot, SpiderBot, HorseBot plugins. Ink/React terminal UI.",
+  "entryPoint": "examples/dashboard",
+  "npmScript": "dev:dashboard",
+  "sdkRelative": true,
+  "command": "npm",
+  "args": ["run", "dev:dashboard"],
+  "cwdRelative": "BotHubSDK",
+  "supportsVerbose": true,
+  "npmScriptVerbose": "dev:dashboard:verbose",
+  "supportsmock": true,
+  "requiresToken": false,
+  "plugins": ["rb (RabbitBot)", "sp (SpiderBot)", "hr (HorseBot / IACM)"]
+}

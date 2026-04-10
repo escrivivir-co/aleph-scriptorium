@@ -202,7 +202,7 @@ Implementar un **gestor de contexto dinámico** basado en TypedPrompting que red
 | `CopilotEngine/` | Referencia para hooks (no modificar) |
 | `TypedPromptsEditor/` | UI para validar schemas |
 | `MCPGallery/` | Fuente de presets |
-| `OnthologyEditor/` | Paradigma Flove (futuro) |
+| `OnthologyEditor/` | Paradigma FVE (futuro) |
 
 ---
 

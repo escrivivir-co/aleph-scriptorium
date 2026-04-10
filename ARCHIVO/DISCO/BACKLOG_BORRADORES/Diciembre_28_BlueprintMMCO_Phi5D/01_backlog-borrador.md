@@ -359,7 +359,7 @@ Verificar con Playwright:
 |------|-------------|--------|
 | **Dura** | SCRIPT-1.23.0 (caracterización MMCO) | ✅ Aprobada |
 | **Blanda** | SCRIPT-1.28.0 (fix navegación) | ✅ Completada |
-| **Blanda** | Feedback Talaia/Flove | ⏳ Deseable |
+| **Blanda** | Feedback Talaia/FVE | ⏳ Deseable |
 
 ---
 

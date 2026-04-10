@@ -185,8 +185,8 @@ flove, editor, planificación, plugin, floveeditor, conversación, script
 
 **Titulares**
 
-- Planificación Plugin FloveEditor: Conversación PO-SM
-- Backlog Borrador: SCRIPT-1.20.0 — FloveEditor
+- Planificación Plugin FVEEditor: Conversación PO-SM
+- Backlog Borrador: SCRIPT-1.20.0 — FVEEditor
 - Épicas
 - Riesgos
 
@@ -196,8 +196,8 @@ flove, editor, planificación, plugin, floveeditor, conversación, script
 
 **Archivos**
 
-- [01_conversacion-po-sm.md — Planificación Plugin FloveEditor: Conversación PO-SM](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md)
-- [02_backlog-borrador.md — Backlog Borrador: SCRIPT-1.20.0 — FloveEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/02_backlog-borrador.md)
+- [01_conversacion-po-sm.md — Planificación Plugin FVEEditor: Conversación PO-SM](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md)
+- [02_backlog-borrador.md — Backlog Borrador: SCRIPT-1.20.0 — FVEEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/02_backlog-borrador.md)
 
 ## INDICES_COBERTURA
 
@@ -348,9 +348,9 @@ metamodel, compliance, conversación, floveeditor, script, nota, colaboración, 
 
 **Titulares**
 
-- Conversación PO-SM: Metamodel Compliance para FloveEditor
-- Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FloveEditor
-- Nota de Colaboración: Integración Metamodel + MMCO + FloveDocs
+- Conversación PO-SM: Metamodel Compliance para FVEEditor
+- Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FVEEditor
+- Nota de Colaboración: Integración Metamodel + MMCO + FVEDocs
 - Decisiones
 
 **Ideas fuerza**
@@ -359,9 +359,9 @@ metamodel, compliance, conversación, floveeditor, script, nota, colaboración, 
 
 **Archivos**
 
-- [conversacion-po-sm.md — Conversación PO-SM: Metamodel Compliance para FloveEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md)
-- [01_backlog-borrador.md — Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FloveEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/01_backlog-borrador.md)
-- [nota-colaboracion-talaia-flove.md — Nota de Colaboración: Integración Metamodel + MMCO + FloveDocs](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/nota-colaboracion-talaia-flove.md)
+- [conversacion-po-sm.md — Conversación PO-SM: Metamodel Compliance para FVEEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md)
+- [01_backlog-borrador.md — Backlog Borrador: SCRIPT-1.21.0 — Metamodel Compliance para FVEEditor](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/01_backlog-borrador.md)
+- [nota-colaboracion-talaia-flove.md — Nota de Colaboración: Integración Metamodel + MMCO + FVEDocs](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/nota-colaboracion-talaia-flove.md)
 
 ## MMCO
 
@@ -474,8 +474,8 @@ onthology, editor, conversación, onthologyeditor, flove, template, plugin
 
 **Titulares**
 
-- Conversación PO-SM: OnthologyEditor (Flove Template)
-- Backlog Borrador: OnthologyEditor (Plugin Flove-Editor)
+- Conversación PO-SM: OnthologyEditor (FVE Template)
+- Backlog Borrador: OnthologyEditor (Plugin FVE-Editor)
 - Próximos Pasos
 - Riesgos
 
@@ -485,8 +485,8 @@ onthology, editor, conversación, onthologyeditor, flove, template, plugin
 
 **Archivos**
 
-- [conversacion-po-sm.md — Conversación PO-SM: OnthologyEditor (Flove Template)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md)
-- [01_backlog-borrador.md — Backlog Borrador: OnthologyEditor (Plugin Flove-Editor)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/01_backlog-borrador.md)
+- [conversacion-po-sm.md — Conversación PO-SM: OnthologyEditor (FVE Template)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md)
+- [01_backlog-borrador.md — Backlog Borrador: OnthologyEditor (Plugin FVE-Editor)](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/01_backlog-borrador.md)
 
 ## ONTOLOGY_AGENT_EDITOR
 

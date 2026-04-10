@@ -29,7 +29,7 @@ El Blueprint MMCO es una **visualización impress.js** que mapea el Scriptorium 
 |-------|-----|-----------|
 | **OCMF** | Framework teórico fuente | `ocmf_overview.md` |
 | **Scriptorium** | Instanciación aplicada | `blueprint-mmco.md` |
-| **Talaia/Flove** | Validadores externos | Pendiente feedback |
+| **Talaia/FVE** | Validadores externos | Pendiente feedback |
 
 ### WHAT: ¿Qué contiene el Blueprint?
 
@@ -73,7 +73,7 @@ Z=+3000  [#overview]    ← Vista panorámica (scale=6)
 
 **Motivo oficial**: Visualizar el Scriptorium según el framework OCMF de Talaia.
 
-**Motivo real**: Preparar presentación a Talaia/Flove para validación de la aplicación.
+**Motivo real**: Preparar presentación a Talaia/FVE para validación de la aplicación.
 
 ---
 
@@ -202,7 +202,7 @@ Z=+3000  [#overview]    ← Vista panorámica (scale=6)
 
 **Test de Autoría**:
 - ¿Quién tiene autoridad sobre el mapeo?
-- El Scriptorium adoptó OCMF sin validación de Talaia/Flove
+- El Scriptorium adoptó OCMF sin validación de Talaia/FVE
 - **Veredicto**: ⚠️ Riesgo de "captura del framework" — interpretación no autorizada
 
 **Test de Divergencia**:
@@ -243,7 +243,7 @@ Z=+3000  [#overview]    ← Vista panorámica (scale=6)
 
 **Test de Auditorio**:
 - ¿Para quién es este Blueprint?
-- Talaia/Flove (validación) vs. Usuarios del Scriptorium (orientación)
+- Talaia/FVE (validación) vs. Usuarios del Scriptorium (orientación)
 - **Veredicto**: ⚠️ Audiencias diferentes, mismo documento
 
 **Test de Registro**:
@@ -290,10 +290,10 @@ Z=+3000  [#overview]    ← Vista panorámica (scale=6)
 |-----|-------------|---------|
 | **G1** | Φ_editor sin definición formal | Nivel 4 incompleto |
 | **G2** | Composición de Φ_banderas sin operador | Validación de coherencia |
-| **G3** | Divergencias con OCMF no documentadas | Colaboración Talaia/Flove |
+| **G3** | Divergencias con OCMF no documentadas | Colaboración Talaia/FVE |
 | **G4** | Nivel 0b visualizado con métrica | Fidelidad conceptual |
 
-### 9 Preguntas Abiertas para Talaia/Flove
+### 9 Preguntas Abiertas para Talaia/FVE
 
 (Recuperadas de `nota-colaboracion.md`, pendientes de respuesta)
 
@@ -305,7 +305,7 @@ Z=+3000  [#overview]    ← Vista panorámica (scale=6)
 | 4 | ¿Agentes→ENTITY, Handoffs→RELATIONSHIP es correcto? | Afecta slide #correlations |
 | 5 | ¿Φ compuesto tiene precedentes en OCMF? | Define G1 |
 | 6 | ¿Hay contrato AI-Optimized para LLMs? | Integración Copilot |
-| 7 | ¿Flove↔MMCO↔MetaModel: capas o paradigmas? | Arquitectura general |
+| 7 | ¿FVE↔MMCO↔MetaModel: capas o paradigmas? | Arquitectura general |
 | 8 | ¿Toy model aplicable a producción textual? | Validación empírica |
 | 9 | ¿Agentes como categoría, handoffs como morfismos? | Formalización matemática |
 
@@ -343,7 +343,7 @@ Z=+3000  [#overview]    ← Vista panorámica (scale=6)
 | "El Blueprint representa fielmente el OCMF" | ❌ Falso — ~78% fidelidad |
 | "Los 7 niveles están correctamente mapeados" | ⚠️ Parcial — Niveles 1-3 excelentes, 0x y 4 problemáticos |
 | "Φ_editor es computable" | ❌ Falso — No hay definición |
-| "El Scriptorium ha validado su adopción del OCMF" | ❌ Falso — Pendiente feedback Talaia/Flove |
+| "El Scriptorium ha validado su adopción del OCMF" | ❌ Falso — Pendiente feedback Talaia/FVE |
 
 ---
 

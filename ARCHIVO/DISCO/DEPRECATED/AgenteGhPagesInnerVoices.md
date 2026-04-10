@@ -2635,7 +2635,7 @@ Make sure to acquire the instructions before making any changes to the code.
 <applyTo>ARCHIVO/PLUGINS/N8N_EDITOR/**/*.json, .github/plugins/n8n-editor/**/*.md, alephscript-n8n-like-editor/**/*</applyTo>
 </instruction>
 <instruction>
-<description>Instrucciones para modelar dominios según el paradigma Flove y su estructura de 3 niveles.</description>
+<description>Instrucciones para modelar dominios según el paradigma FVE y su estructura de 3 niveles.</description>
 <file>/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/.github/plugins/flove-editor/instructions/flove-paradigm.instructions.md</file>
 <applyTo>ARCHIVO/PLUGINS/FLOVE_EDITOR/**/*.md, OnthologyEditor/**/*.md</applyTo>
 </instruction>
@@ -7020,19 +7020,19 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/DISCO/BACKLOG
 | [Diciembre_28_BlueprintMMCO_Phi5D](#diciembre_28_blueprintmmco_phi5d) | SCRIPT-1.30.0: Refactorización Φ 5D | ✅ Completada (f698ac5) | [01_backlog-borrador.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_BlueprintMMCO_Phi5D/01_backlog-borrador.md) |
 | [Diciembre_28_Novelist_Integration](#diciembre_28_novelist_integration) | SCRIPT-1.30.0: Novelist-Teatro-TALLER | ✅ Implementado (FC3) | [backlog-novelist-integration.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/Diciembre_28_Novelist_Integration/backlog-novelist-integration.md) |
 | [PathykarAgente](#pathykaragente) | Agente Karpathy-Like (scraping X/épocas) | 📝 Idea (sin formalizar) | [data.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/PathykarAgente/data.md) |
-| [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FloveEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
+| [FLOVE_EDITOR](#flove_editor) | Planificación Plugin FVEEditor: Conversación PO-SM | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [01_conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/FLOVE_EDITOR/01_conversacion-po-sm.md) |
 | [INDICES_COBERTURA](#indices_cobertura) | Conversación PO-SM: Cobertura y Homogeneización de Índices | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/INDICES_COBERTURA/conversacion-po-sm.md) |
 | [IOT-SBR-LOGICA](#iot-sbr-logica) | Conversación PO-SM: Plugin PrologEditor | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/IOT-SBR-LOGICA/conversacion-po-sm.md) |
 | [KICK-ALEPH](#kick-aleph) | Conversación PO-SM: Kick Aleph (Streaming Bridge) | 📋 Borrador | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/KICK-ALEPH/conversacion-po-sm.md) |
 | [MCP-NOVELIST](#mcp-novelist) | Conversación PO-SM: MCP Novelist | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MCP-NOVELIST/conversacion-po-sm.md) |
 | [MCP-PRESETS-SITE](#mcp-presets-site) | Conversación PO-SM: Plugin MCP-PRESETS | ✅ APROBADO Y PUBLICADO | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MCP-PRESETS-SITE/conversacion-po-sm.md) |
-| [METAMODEL_COMPLIANCE](#metamodel_compliance) | Conversación PO-SM: Metamodel Compliance para FloveEditor | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md) |
+| [METAMODEL_COMPLIANCE](#metamodel_compliance) | Conversación PO-SM: Metamodel Compliance para FVEEditor | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/METAMODEL_COMPLIANCE/conversacion-po-sm.md) |
 | [MMCO](#mmco) | Conversación PO-SM: MMCO (OCMF) | ✅ Publicado en BACKLOG-SCRIPTORIUM.md (consolidado 2025-12-26) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/MMCO/conversacion-po-sm.md) |
 | [N8N-EDITOR](#n8n-editor) | Conversación PO-SM: N8N Editor | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/N8N-EDITOR/conversacion-po-sm.md) |
 | [NETWORK-SDK](#network-sdk) | Conversación PO-SM: Plugin Network (Oasis/Scuttlebutt) | 🟡 BORRADOR (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/NETWORK-SDK/conversacion-po-sm.md) |
 | [NEW_GH_PAGES_INDEX](#new_gh_pages_index) | SCRIPT-1.25.0: Blueprint Visual Index | ✅ Aprobado y publicado en BACKLOG-SCRIPTORIUM.md (2025-12-27) | [01_backlog-borrador.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/NEW_GH_PAGES_INDEX/01_backlog-borrador.md) |
 | [NODE-RED-SDK](#node-red-sdk) | Conversación PO-SM: Node-RED AlephScript SDK | 📝 Borrador (pendiente aprobación) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/NODE-RED-SDK/conversacion-po-sm.md) |
-| [ONTHOLOGY_EDITOR](#onthology_editor) | Conversación PO-SM: OnthologyEditor (Flove Template) | 📋 BORRADOR — Pendiente aprobación | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md) |
+| [ONTHOLOGY_EDITOR](#onthology_editor) | Conversación PO-SM: OnthologyEditor (FVE Template) | 📋 BORRADOR — Pendiente aprobación | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTHOLOGY_EDITOR/conversacion-po-sm.md) |
 | [ONTOLOGY_AGENT_EDITOR](#ontology_agent_editor) | Conversación PO-SM: OntologyAgentEditor | ✅ Aprobado (publicado en BACKLOG-SCRIPTORIUM.md) | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/ONTOLOGY_AGENT_EDITOR/conversacion-po-sm.md) |
 | [PLUGIN_SETTINGS_OPTIMIZER](#plugin_settings_optimizer) | Planificación: Conversación PO-SM — Optimización Settings de Plugins | ✅ Completada y publicada | [conversacion-po-sm.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/PLUGIN_SETTINGS_OPTIMIZER/conversacion-po-sm.md) |
 | [SPLASH_INDEX](#splash_index) | Backlog Borrador: SCRIPT-1.16.0 — Índice SPLASH y Vinculación GH-Pages | ✅ Completada (85% - minor pending) | [01_backlog-borrador.md](ARCHIVO/DISCO/BACKLOG_BORRADORES/SPLASH_INDEX/01_backlog-borrador.md) |

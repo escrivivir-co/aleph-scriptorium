@@ -6,13 +6,13 @@
 > - Scrum Master (SM)
 > - **Bruno (LOW)** — Agente externo vía low@freelists.org, equipo OnthologyEditor/Talaia
 > **Contexto**: Sprint 0 completado (bootstrap). Inicio de Sprint 1 (Ontología Formal).
-> **Integración**: Colaboración Scriptorium ↔ Talaia/Flove aprobada (anuncio de registro procesado)
+> **Integración**: Colaboración Scriptorium ↔ Talaia/FVE aprobada (anuncio de registro procesado)
 
 ---
 
 ## Nota de Integración (2025-12-28)
 
-> Esta versión extiende la conversación original con las aportaciones del equipo externo Talaia/Flove, 
+> Esta versión extiende la conversación original con las aportaciones del equipo externo Talaia/FVE, 
 > canalizadas a través del agente Bruno (LOW) de la lista low@freelists.org.
 > 
 > **Documentos procesados**:
@@ -61,7 +61,7 @@ El objetivo es tener una especificación formal que:
 
 ---
 
-## 🔴 INSERCIÓN: Aportación del Equipo Talaia/Flove
+## 🔴 INSERCIÓN: Aportación del Equipo Talaia/FVE
 
 > **Bruno (LOW)**: He procesado las 3 notas de colaboración. Almacenadas en mi HyperGraph:
 > - `storage/scriptorium_collab_nota1_talaia-flove.md`
@@ -77,7 +77,7 @@ El objetivo es tener una especificación formal que:
 |---------|---------------------------|
 | **CoT (Chain-of-Thought)** | Categorización secuencial de agentes en capas LAYER_0→LAYER_4 |
 | **ToT (Tree of Thoughts)** | Análisis multi-path de niveles de emergencia 0a/0b/0c |
-| **Graph of Thought** | Mapeo de relaciones Flove↔MMCO↔MetaModel |
+| **Graph of Thought** | Mapeo de relaciones FVE↔MMCO↔MetaModel |
 | **Self-Consistency** | Validación cruzada de propuestas de formalización |
 
 **SM**: Excelente. Integraremos estos patterns en la metodología de las stories.
@@ -108,7 +108,7 @@ El objetivo es tener una especificación formal que:
 
 | # | Pregunta | Contexto |
 |---|----------|----------|
-| 7 | **Flove↔MMCO↔MetaModel**: ¿Capas complementarias, jerarquía, o paradigmas diferentes? | Necesitamos entender la relación arquitectónica |
+| 7 | **FVE↔MMCO↔MetaModel**: ¿Capas complementarias, jerarquía, o paradigmas diferentes? | Necesitamos entender la relación arquitectónica |
 | 8 | **Toy models**: ¿Existe uno aplicable a producción textual? | Para adaptar a Scriptorium |
 | 9 | **Formalización categórica**: ¿Agentes como categoría con handoffs como morfismos? | Propuesta teórica del equipo |
 
@@ -231,7 +231,7 @@ Propuesta de entregables:
 
 **SM**: Las Banderas son **operadores de coherencia** en este modelo:
 
-> **⚠️ REFACTORIZADO (2025-12-28 — Feedback Talaia/Flove/LOW)**: Cada bandera opera en un nivel MMCO de emergencia diferente y usa una técnica O.R.G.A.N.I.Z.E distinta. La composición NO es lineal.
+> **⚠️ REFACTORIZADO (2025-12-28 — Feedback Talaia/FVE/LOW)**: Cada bandera opera en un nivel MMCO de emergencia diferente y usa una técnica O.R.G.A.N.I.Z.E distinta. La composición NO es lineal.
 
 | Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio de Razonamiento |
 |---------|------------|------------|------------------------|-------------------------|
@@ -319,7 +319,7 @@ Propuesta de entregables:
 
 | Pregunta | Decisión Provisional | Rationale |
 |----------|----------------------|-----------|
-| 7. Flove↔MMCO↔MetaModel | **Capas complementarias** | MetaModel para estructura, MMCO para dinámica, Flove para paradigma |
+| 7. FVE↔MMCO↔MetaModel | **Capas complementarias** | MetaModel para estructura, MMCO para dinámica, FVE para paradigma |
 | 8. Toy models | **Creamos phi_editor.py inspirado en phi_mmco.py** | Adaptamos lo existente |
 | 9. Formalización categórica | **Aplazado a iteración futura** | Requiere más estudio de teoría de categorías |
 
@@ -356,7 +356,7 @@ Propuesta de entregables:
 | **G**enerate Structured Pathways | CoT para categorización, ToT para emergencia |
 | **A**nalyze Using Selected Technique | Aplicar pattern según complejidad |
 | **N**avigate Documentation Efficiently | Consulta secuencial o paralela según caso |
-| **I**ntegrate Multiple Components | Combinar Metamodel + MMCO + Flove |
+| **I**ntegrate Multiple Components | Combinar Metamodel + MMCO + FVE |
 | **Z**-Validate Application Quality | Verificar contra templates formales |
 | **E**nhance Through Ontological Grounding | Producir XML/JSON validables |
 
@@ -395,7 +395,7 @@ Propuesta de entregables:
 > - **Effort total**: 37 puntos
 > - **Innovación clave**: Φ_editor como métrica compuesta de las 5 Banderas + Ontología del dominio ARG
 > - **Riesgos principales**: Abstracción excesiva, ambición de Editor Transmedia
-> - **🔴 NUEVO: Colaboración Talaia/Flove**: 9 preguntas técnicas documentadas, decisiones provisionales tomadas
+> - **🔴 NUEVO: Colaboración Talaia/FVE**: 9 preguntas técnicas documentadas, decisiones provisionales tomadas
 > - **🔴 NUEVO: Metodología**: Patterns O.R.G.A.N.I.Z.E integrados en Definition of Done
 
 **Bruno (LOW)**: Confirmo almacenamiento de artefactos en HyperGraph. Disponible para consultas cuando la pasarela esté operativa.
@@ -421,7 +421,7 @@ Generando backlog borrador...
 | Tema | Pregunta |
 |------|----------|
 | Git | ¿Aprobación de ramas `integration/scriptorium` o preferencia por tags? |
-| Licencia | ¿Licencia de FloveDocs? |
+| Licencia | ¿Licencia de FVEDocs? |
 | Bidireccionalidad | ¿Interés en recibir templates/validadores desde Scriptorium? |
 
 ### Próximos Pasos (cuando la pasarela esté operativa)

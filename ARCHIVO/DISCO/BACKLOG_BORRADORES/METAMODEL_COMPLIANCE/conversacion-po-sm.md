@@ -1,4 +1,4 @@
-# Conversación PO-SM: Metamodel Compliance para FloveEditor
+# Conversación PO-SM: Metamodel Compliance para FVEEditor
 
 > **Fecha**: 2025-01-03
 > **Submódulo target**: `OnthologyEditor`
@@ -41,7 +41,7 @@ El metamodel ofrece:
 | Componente | Estado | Notas |
 |------------|--------|-------|
 | `README.md` | ✅ Básico | Instrucciones npm |
-| `README-SCRIPTORIUM.md` | ✅ Detallado | Análisis Flove/CONFLUENTISM |
+| `README-SCRIPTORIUM.md` | ✅ Detallado | Análisis FVE/CONFLUENTISM |
 | `src/templates/flove/` | ⏳ Planificado | No implementado |
 | `src/editor/` | ⏳ Planificado | No implementado |
 | `src/exporters/` | ⏳ Planificado | No implementado |
@@ -86,13 +86,13 @@ El metamodel ofrece:
 
 ### Casos de Uso Objetivo
 
-1. **UC1: Validar Ontología Flove contra UFO**
+1. **UC1: Validar Ontología FVE contra UFO**
    - Usuario crea ontología con flove-editor
    - Sistema valida contra patrones UFO (Endurants, Perdurants)
    - Reporte de compliance con sugerencias
 
 2. **UC2: Exportar a Formatos Estándar**
-   - Desde ontología Flove
+   - Desde ontología FVE
    - Exportar a OWL, JSON-LD, RDF/Turtle
    - Con metadatos FAIR
 
@@ -103,7 +103,7 @@ El metamodel ofrece:
 
 ### Criterios de Éxito
 
-- [ ] Ontologías Flove pasan validación UFO básica
+- [ ] Ontologías FVE pasan validación UFO básica
 - [ ] Exportadores generan formatos interoperables
 - [ ] Documentación de compliance disponible
 - [ ] Metamodel integrado como referencia navegable
@@ -136,13 +136,13 @@ El metamodel ofrece:
 - Permite validar enfoque antes de invertir más
 - Alinea con capacidad del equipo
 
-### D3: Mapeo Flove ↔ UFO
+### D3: Mapeo FVE ↔ UFO
 
-**Decisión**: Crear documento de mapeo conceptual entre paradigma CONFLUENTISM (Flove) y ontología fundacional UFO.
+**Decisión**: Crear documento de mapeo conceptual entre paradigma CONFLUENTISM (FVE) y ontología fundacional UFO.
 
 **Mapeo preliminar**:
 
-| Concepto Flove | Concepto UFO | Notas |
+| Concepto FVE | Concepto UFO | Notas |
 |----------------|--------------|-------|
 | Field (10 campos) | Endurant | Entidades persistentes |
 | Paradigm (transiciones) | Perdurant | Eventos/procesos |
@@ -156,7 +156,7 @@ El metamodel ofrece:
 | Métrica | Target | Mínimo | Estado |
 |---------|--------|--------|--------|
 | Submódulo integrado | ✅ | ✅ | ⏳ |
-| Documento de mapeo Flove↔UFO | ✅ | ✅ | ⏳ |
+| Documento de mapeo FVE↔UFO | ✅ | ✅ | ⏳ |
 | Plantillas UFO básicas | 5 | 3 | ⏳ |
 | Validador funcional | ✅ | - | ⏳ |
 | Exportador OWL/JSON-LD | 2 | 1 | ⏳ |
@@ -167,7 +167,7 @@ El metamodel ofrece:
 
 **SM**: Con estas decisiones, propongo generar el backlog borrador para Feature Cycle 1 con foco en:
 1. Instalación del submódulo metamodel dentro de OnthologyEditor
-2. Creación del documento de mapeo Flove ↔ UFO
+2. Creación del documento de mapeo FVE ↔ UFO
 3. Actualización de flove-editor con referencias al metamodel
 
 **PO**: Aprobado. Proceder con backlog borrador para FC1.

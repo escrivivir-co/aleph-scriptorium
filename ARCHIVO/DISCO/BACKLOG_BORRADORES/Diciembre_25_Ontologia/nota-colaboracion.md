@@ -94,7 +94,7 @@ Esta es la aplicación más ambiciosa: modelar cómo el Scriptorium *produce* co
 
 **Innovación propuesta**: Tenemos 5 agentes "Bandera" que auditan diferentes dimensiones de coherencia.
 
-> **Actualización 2025-12-28**: Refactorización con caracterización MMCO completa (feedback Talaia/Flove/LOW)
+> **Actualización 2025-12-28**: Refactorización con caracterización MMCO completa (feedback Talaia/FVE/LOW)
 
 | Bandera | Nivel MMCO | Operador Φ | Técnica O.R.G.A.N.I.Z.E | Espacio |
 |---------|------------|------------|------------------------|---------|

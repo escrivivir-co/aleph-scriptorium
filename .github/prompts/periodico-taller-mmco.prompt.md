@@ -33,7 +33,7 @@ ESTADO: Diseño inicial pre-O.R.G.A.N.I.Z.E
 | `01_planificacion-sprint1.md` | Conversación PO-SM extendida | Marco del sprint |
 | `02_backlog-sprint1.md` | Stories y tasks de SCRIPT-1.23.0 | Material a refactorizar |
 | `ontological_reasoning_guide.md` | Guía O.R.G.A.N.I.Z.E | Nueva metodología a integrar |
-| `nota-colaboracion.md` | Propuesta enviada a Talaia/Flove | Contexto de colaboración |
+| `nota-colaboracion.md` | Propuesta enviada a Talaia/FVE | Contexto de colaboración |
 
 ### Carpeta de Trabajo
 

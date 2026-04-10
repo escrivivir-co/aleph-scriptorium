@@ -1,8 +1,8 @@
-# Reporte de Extracción: OnthologyEditor/FloveDocs → DATA
+# Reporte de Extracción: OnthologyEditor/FVEDocs → DATA
 
 > **Fecha**: 2026-01-09  
 > **Agente**: Lucas (Scrum Master del Índice)  
-> **Épica relacionada**: SCRIPT-1.20.0 (Fuente de Datos FloveOnto)
+> **Épica relacionada**: SCRIPT-1.20.0 (Fuente de Datos FVEOnto)
 
 ---
 
@@ -23,10 +23,10 @@ OnthologyEditor/DATA/
 ├── index/
 │   └── 00_INDEX.md          ◄── Índice maestro
 ├── pdfs/                    ◄── 6 PDFs extraídos
-│   ├── FloveSlides25.12.txt (216KB)
-│   ├── FloveSlides25.10.2.txt (552KB)
-│   ├── FloveTables25.12.txt (55KB) ★ CRITICAL
-│   ├── FloveTables25.10.txt (94KB)
+│   ├── FVESlides25.12.txt (216KB)
+│   ├── FVESlides25.10.2.txt (552KB)
+│   ├── FVETables25.12.txt (55KB) ★ CRITICAL
+│   ├── FVETables25.10.txt (94KB)
 │   ├── Confluentisms25.10.txt (3387 líneas)
 │   └── Keys25.9.txt (42 líneas)
 ├── markdown/                ◄── 5 ODTs convertidos
@@ -82,7 +82,7 @@ La carpeta `Demos25.10/Demos/Fuzzy/` contiene implementación HTML de las tres o
 ### 3.3 Paper Base: Confluentism
 
 De `01_Confluentism.md`:
-> "Confluentism: Fuzzy Logic + Love = Flove"
+> "Confluentism: Fuzzy Logic + Love = FVE"
 > "dynamic bipolarity that fractalizes from physics to sociology"
 
 Los 3 niveles del paradigma:
@@ -106,7 +106,7 @@ Los 3 niveles del paradigma:
 
 | Task ID | Descripción | Effort est. |
 |---------|-------------|-------------|
-| T_DATA_001 | Parsear FloveTables → schema YAML | 2 pts |
+| T_DATA_001 | Parsear FVETables → schema YAML | 2 pts |
 | T_DATA_002 | Convertir demos HTML → ejemplos YAML | 3 pts |
 | T_DATA_003 | Extraer axiomas de Confluentism.md | 1 pt |
 
@@ -114,9 +114,9 @@ Los 3 niveles del paradigma:
 
 ## 5. Próximos Pasos
 
-1. **Inmediato**: Parsear `FloveTables25.12.txt` para crear `flove-ontology.schema.yaml`
+1. **Inmediato**: Parsear `FVETables25.12.txt` para crear `flove-ontology.schema.yaml`
 2. **Corto plazo**: Convertir demos HTML a ejemplos YAML de RELATE/EXPLAIN/VIEW
-3. **Medio plazo**: Integrar schema en FloveEditor plugin
+3. **Medio plazo**: Integrar schema en FVEEditor plugin
 
 ---
 

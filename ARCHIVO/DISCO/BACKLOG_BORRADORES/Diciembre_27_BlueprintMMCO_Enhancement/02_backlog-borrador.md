@@ -4,7 +4,7 @@
 > **Feature Cycle**: 2
 > **Estado**: 📝 Borrador (pendiente aprobación)
 > **Effort total**: 3 puntos
-> **Prioridad**: P0 (Crítico — bloquea presentación Talaia/Flove)
+> **Prioridad**: P0 (Crítico — bloquea presentación Talaia/FVE)
 
 ---
 

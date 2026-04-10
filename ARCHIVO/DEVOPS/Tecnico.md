@@ -238,7 +238,6 @@ applyTo: "**/*.md"  # Glob de archivos
 | wiring-app | 1.0.0 | wiki-racer | plugin_ox_wiringapp |
 | arg-board-app | 1.0.0 | wiki-racer | plugin_ox_argboardapp |
 | hypergraph-editor | 1.0.0 | wiki-racer | plugin_ox_hypergrapheditor |
-| flove-editor | 1.0.0 | OnthologyEditor | plugin_ox_floveeditor |
 
 ### 3.3. Estructura de un Plugin
 
@@ -296,7 +295,6 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 | kick-aleph-crono-bot | integration/beta/scriptorium | — | Node.js |
 | mcp-novelist | integration/beta/scriptorium | novelist | Node.js |
 | node-red-alephscript-sdk | integration/beta/scriptorium | wire-editor | Node-RED |
-| OnthologyEditor | integration/beta/scriptorium | flove-editor | TypeScript |
 | vscode-alephscript-extension | integration/beta/scriptorium | — | TypeScript |
 | wiki-racer | integration/beta/scriptorium | wiring-app, arg-board-app, hypergraph-editor | TypeScript |
 

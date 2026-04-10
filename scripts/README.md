@@ -47,7 +47,6 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `TypedPromptsEditor` — TypedPrompting (Ontologías NL↔JSON)
    - `WorkflowEditor` — Editor visual de workflows (n8n connector)
    - `WiringAppHypergraphEditor` — Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
-   - `OnthologyEditor` — Editor de ontologías (Flove Template)
    - `CopilotEngine` — Copilot Chat Engine (fork)
    - `StateMachine` — State Machine MCP Driver
    - `AgentLoreSDK` — Agent Lore SDK (plantillas de agentes)
@@ -73,7 +72,6 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: TypedPromptsEditor
 [setup] Configurando submódulo: WorkflowEditor
 [setup] Configurando submódulo: WiringAppHypergraphEditor
-[setup] Configurando subódulo: OnthologyEditor
 [setup] Configurando submódulo: CopilotEngine
 [setup] Configurando submódulo: StateMachine
 [setup] Configurando submódulo: AgentLoreSDK
@@ -95,7 +93,6 @@ Submódulos configurados (19):
   - TypedPromptsEditor: TypedPrompting (Ontologías NL↔JSON)
   - WorkflowEditor: Editor visual de workflows (n8n connector)
   - WiringAppHypergraphEditor: Motor de navegación (WiringApp, ArgBoardApp, HyperGraphEditor)
-  - OnthologyEditor: Editor de ontologías (Flove Template)
   - CopilotEngine: Copilot Chat Engine (fork)
   - StateMachine: State Machine MCP Driver
   - AgentLoreSDK: Agent Lore SDK (plantillas de agentes)

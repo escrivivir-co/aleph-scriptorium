@@ -324,7 +324,6 @@
 | @plugin_ox_wiringapp | WiringApp | 1 agente |
 | @plugin_ox_argboardapp | ArgBoardApp | 1 agente |
 | @plugin_ox_hypergrapheditor | HyperGraphEditor | 1 agente |
-| @plugin_ox_floveeditor | Flove Editor | 1 agente |
 
 ---
 

@@ -1,7 +1,7 @@
-# Nota de Colaboración: Integración Metamodel + MMCO + FloveDocs
+# Nota de Colaboración: Integración Metamodel + MMCO + FVEDocs
 
 > **De**: ALEPH Scriptorium (escrivivir-co)  
-> **Para**: Talaia Digital (metamodel, MMCO) y FloveDocs  
+> **Para**: Talaia Digital (metamodel, MMCO) y FVEDocs  
 > **Fecha**: 2025-01-03  
 > **Asunto**: Integración como submódulos y propuesta de colaboración
 
@@ -15,7 +15,7 @@
 | **OnthologyEditor** (submódulo) | https://github.com/escrivivir-co/alephscript-onthology-editor | `integration/beta/scriptorium` | AIPL v1.0 |
 | **metamodel** | https://codeberg.org/talaiadigital/metamodel | `main` | CC BY-SA 4.0 |
 | **MMCO** | https://codeberg.org/talaiadigital/MMCO | `master` | AGPL-3.0 |
-| **FloveDocs** | https://codeberg.org/FloveDocs/Main | `main` | Por confirmar |
+| **FVEDocs** | https://codeberg.org/FVEDocs/Main | `main` | Por confirmar |
 
 ---
 
@@ -28,7 +28,7 @@ aleph-scriptorium/                           ← Repo principal
 └── OnthologyEditor/                         ← Submódulo #15
     ├── metamodel/    ← codeberg.org/talaiadigital/metamodel (main)
     ├── MMCO/         ← codeberg.org/talaiadigital/MMCO (master)
-    └── FloveDocs/    ← codeberg.org/FloveDocs/Main (main)
+    └── FVEDocs/    ← codeberg.org/FVEDocs/Main (main)
 ```
 
 ### Contexto del proyecto
@@ -39,7 +39,7 @@ aleph-scriptorium/                           ← Repo principal
 - **Plugins extensibles** (~19) para capacidades específicas
 - **Teatro interactivo** para experiencias transmedia (impress.js + monomito de 12 etapas)
 
-El plugin **FloveEditor** permite diseñar ontologías basadas en el paradigma CONFLUENTISM con exportación a JSON Schema, TypeScript y Zod.
+El plugin **FVEEditor** permite diseñar ontologías basadas en el paradigma CONFLUENTISM con exportación a JSON Schema, TypeScript y Zod.
 
 ### Por qué vuestros repos
 
@@ -47,7 +47,7 @@ El plugin **FloveEditor** permite diseñar ontologías basadas en el paradigma C
 |------|------------------------|
 | **metamodel** | Framework de 5 capas para validación UFO + principios FAIR |
 | **MMCO** | Fundamento teórico (BNP, emergencia de 7 niveles) para ontologías profundas |
-| **FloveDocs** | Taxonomía canónica de Flove (10 Fields, 6 Paradigms, 15+ Apps) |
+| **FVEDocs** | Taxonomía canónica de FVE (10 Fields, 6 Paradigms, 15+ Apps) |
 
 ---
 
@@ -55,8 +55,8 @@ El plugin **FloveEditor** permite diseñar ontologías basadas en el paradigma C
 
 ### Objetivo inmediato (Feature Cycle 1)
 
-1. **Arquitectura de integración**: Documentar cómo el metamodel audita ontologías creadas con FloveEditor
-2. **Mapeo Flove ↔ UFO**: Traducir los 10 campos de Flove a conceptos UFO (Endurants, Perdurants, Modes)
+1. **Arquitectura de integración**: Documentar cómo el metamodel audita ontologías creadas con FVEEditor
+2. **Mapeo FVE ↔ UFO**: Traducir los 10 campos de FVE a conceptos UFO (Endurants, Perdurants, Modes)
 3. **Templates de validación**: Crear plantillas que verifiquen cumplimiento de estructura metamodel
 
 ### Roadmap posterior
@@ -71,7 +71,7 @@ El plugin **FloveEditor** permite diseñar ontologías basadas en el paradigma C
 
 - **metamodel**: Referencia estructural (CC BY-SA 4.0 compatible)
 - **MMCO**: Referencia teórica (respetando AGPL-3.0, sin copiar código)
-- **FloveDocs**: Fuente canónica de la taxonomía Flove
+- **FVEDocs**: Fuente canónica de la taxonomía FVE
 
 ---
 
@@ -85,7 +85,7 @@ Proponemos crear ramas de integración en vuestros repos para facilitar versiona
 |------|----------------|-----------|
 | metamodel | `integration/scriptorium` | Sincronizar versiones estables para nuestro uso |
 | MMCO | `integration/scriptorium` | Idem, tracking de cambios relevantes |
-| FloveDocs | `release/v2025.12` | Tag de la versión que usamos (diciembre 2025) |
+| FVEDocs | `release/v2025.12` | Tag de la versión que usamos (diciembre 2025) |
 
 ### Flujo de trabajo
 
@@ -126,7 +126,7 @@ Si preferís no crear ramas adicionales, podemos:
 | **OnthologyEditor** | AIPL v1.0 | Permisiva | No | Base |
 | **metamodel** | CC BY-SA 4.0 | Creative Commons | ShareAlike | ✅ Sí |
 | **MMCO** | AGPL-3.0 | Open Source | Fuerte | ⚠️ Condicional |
-| **FloveDocs** | Por confirmar | — | — | Pendiente |
+| **FVEDocs** | Por confirmar | — | — | Pendiente |
 
 ### Estrategia de Combinación
 
@@ -138,7 +138,7 @@ Si preferís no crear ramas adicionales, podemos:
 │  │         OnthologyEditor (AIPL v1.0)                       │   │
 │  │                                                           │   │
 │  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────────┐   │   │
-│  │  │ metamodel   │  │    MMCO     │  │   FloveDocs     │   │   │
+│  │  │ metamodel   │  │    MMCO     │  │   FVEDocs     │   │   │
 │  │  │ CC BY-SA 4.0│  │  AGPL-3.0   │  │  Por confirmar  │   │   │
 │  │  │             │  │             │  │                 │   │   │
 │  │  │ USO:        │  │ USO:        │  │ USO:            │   │   │
@@ -162,7 +162,7 @@ Si preferís no crear ramas adicionales, podemos:
    - Si integramos código: módulo separado bajo AGPL-3.0
    - Documentación del concepto BNP sin derivación de código
 
-3. **FloveDocs**:
+3. **FVEDocs**:
    - Uso de tablas/diagramas como referencia documental
    - Pendiente confirmar licencia específica
 
@@ -194,13 +194,13 @@ Si preferís no crear ramas adicionales, podemos:
 
 **Flujo**: Ontología validada → Seleccionar formato → Exportar con metadatos FAIR
 
-### CU-04: Consultar taxonomía Flove
+### CU-04: Consultar taxonomía FVE
 
 > **Como** diseñador de ontologías  
-> **Quiero** consultar la taxonomía canónica de Flove  
+> **Quiero** consultar la taxonomía canónica de FVE  
 > **Para** usar campos/paradigmas predefinidos
 
-**Flujo**: Abrir FloveDocs → Navegar Fields/Paradigms/Apps → Importar a mi ontología
+**Flujo**: Abrir FVEDocs → Navegar Fields/Paradigms/Apps → Importar a mi ontología
 
 ---
 
@@ -219,7 +219,7 @@ Si preferís no crear ramas adicionales, podemos:
 
 1. ¿Os parece bien la estructura de integración propuesta?
 2. ¿Preferís ramas `integration/scriptorium` o tags versionados?
-3. **FloveDocs**: ¿Cuál es la licencia aplicable?
+3. **FVEDocs**: ¿Cuál es la licencia aplicable?
 4. ¿Tenéis interés en colaboración bidireccional (ej: recibir nuestros templates de validación)?
 5. **MMCO (2025-12-28)**: ¿Es correcta nuestra caracterización de Φ como vector 5D con banderas en diferentes niveles de emergencia MMCO? Ver [SCRIPT-1.23.0 refactorizada](../Diciembre_25_MMCO_Editor/02_guia-organize.md)
 

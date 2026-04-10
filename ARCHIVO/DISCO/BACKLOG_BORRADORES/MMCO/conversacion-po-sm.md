@@ -10,20 +10,20 @@
 - **PO (Product Owner)**: Define objetivos y alcance de integración MMCO ↔ Scriptorium
 - **SM (Scrum Master)**: Media entre PO y agentes, asegura protocolo y trazabilidad
 - **Agentes expertos** (vía `plugin_ox_floveeditor`):
-  - `FloveOx` (orquestador): índice y mapeos Flove↔UFO↔MMCO
-  - `FloveDocs`: documentación conceptual Flove
+  - `FVEOx` (orquestador): índice y mapeos FVE↔UFO↔MMCO
+  - `FVEDocs`: documentación conceptual FVE
   - `Metamodel`: validación UFO/FAIR
   - `MMCO`: coherencia OCMF (7 niveles, toy models)
-  - `FloveEditor`: diseñador de ontologías + exportadores
+  - `FVEEditor`: diseñador de ontologías + exportadores
 
 > Handoff operativo: desde VS Code invocar `@plugin_ox_floveeditor` y usar los handoffs a cada agente.
 
 ---
 
 ## Objetivo de la sesión
-Integrar el submódulo MMCO (OCMF) como pilar de coherencia para ontologías Flove, definiendo:
+Integrar el submódulo MMCO (OCMF) como pilar de coherencia para ontologías FVE, definiendo:
 1) qué parte del MMCO consumimos (toy models, XML ontologies, niveles),
-2) cómo se valida una ontología Flove contra OCMF,
+2) cómo se valida una ontología FVE contra OCMF,
 3) qué adapters y prompts se requieren en el plugin flove-editor,
 4) cómo queda la trazabilidad en Scriptorium.
 
@@ -43,20 +43,20 @@ Integrar el submódulo MMCO (OCMF) como pilar de coherencia para ontologías Flo
 ## Conversación
 
 ### PO
-Queremos que las ontologías Flove diseñadas con `FloveEditor` pasen por un filtro de coherencia MMCO. Debe existir una métrica (inicio: `phi_mmco.py`) y plantillas para mapear campos/paradigmas Flove a niveles OCMF.
+Queremos que las ontologías FVE diseñadas con `FVEEditor` pasen por un filtro de coherencia MMCO. Debe existir una métrica (inicio: `phi_mmco.py`) y plantillas para mapear campos/paradigmas FVE a niveles OCMF.
 
 ### SM
 De acuerdo. Usaremos los agentes para casar piezas:
-- `FloveOx`: nos da el mapeo Flove↔UFO y el pre-mapeo Flove↔MMCO.
+- `FVEOx`: nos da el mapeo FVE↔UFO y el pre-mapeo FVE↔MMCO.
 - `Metamodel`: asegura que el nivel fundacional (UFO) está satisfecho.
 - `MMCO`: aplica niveles OCMF y métricas (phi_mmco) a la ontología.
-- `FloveEditor`: provee exportadores (JSON Schema/TS/Zod) y punto de integración.
+- `FVEEditor`: provee exportadores (JSON Schema/TS/Zod) y punto de integración.
 
-### FloveOx (oráculo)
+### FVEOx (oráculo)
 Sugerencia de mapeo:
-- Campos Flove (10) → Endurants/Perdurants (UFO) → Entidades OCMF
-- Paradigmas Flove (6) → Dinámicas/Procesos (UFO) → Meta-dynamics OCMF
-- Apps Flove (15+) → Modes/Qualities (UFO) → Coherence/Matter-as-concept OCMF
+- Campos FVE (10) → Endurants/Perdurants (UFO) → Entidades OCMF
+- Paradigmas FVE (6) → Dinámicas/Procesos (UFO) → Meta-dynamics OCMF
+- Apps FVE (15+) → Modes/Qualities (UFO) → Coherence/Matter-as-concept OCMF
 
 ### Metamodel (UFO)
 Requisito: antes de pasar a OCMF, la ontología debe cumplir con UFO (plantillas ENTITY/RELATIONSHIP/PROCESS) y metadatos FAIR.
@@ -67,7 +67,7 @@ Propuesta técnica:
 - Métrica `phi_mmco`: ejecutar `coherence_metric/phi_mmco.py` con inputs derivados del schema para obtener un score inicial.
 - Reporte: producir `mmco_report.md` con niveles de coherencia y recomendaciones.
 
-### FloveEditor
+### FVEEditor
 Exponer 3 handoffs nuevos:
 1) "Validar contra UFO+OCMF" → pipeline completo,
 2) "Generar adapter OCMF" → solo conversión schema→ocmf,
@@ -78,9 +78,9 @@ Exponer 3 handoffs nuevos:
 ## Gaps identificados
 | Gap | Descripción | Prioridad |
 |-----|-------------|-----------|
-| G1 | Definir JSON intermedio `ocmf-adapter.json` desde schema Flove | Must |
+| G1 | Definir JSON intermedio `ocmf-adapter.json` desde schema FVE | Must |
 | G2 | Wire de ejecución seguro para `phi_mmco.py` (dependencias) | Must |
-| G3 | Plantillas UFO aplicadas a Flove (ENTITY/RELATIONSHIP/PROCESS) | Must |
+| G3 | Plantillas UFO aplicadas a FVE (ENTITY/RELATIONSHIP/PROCESS) | Must |
 | G4 | Documentar niveles OCMF y criterios por tipo | Should |
 | G5 | Integración de reportes en `ARCHIVO/PLUGINS/FLOVE_EDITOR/` | Should |
 
@@ -90,7 +90,7 @@ Exponer 3 handoffs nuevos:
 | Riesgo | Probabilidad | Impacto | Mitigación |
 |--------|--------------|---------|------------|
 | Dependencias Python/Julia (toy models) | Media | Medio | Modo "métrica mínima" + README de requisitos |
-| Desalineación Flove↔UFO | Baja | Alto | Validar con `Metamodel` antes de OCMF |
+| Desalineación FVE↔UFO | Baja | Alto | Validar con `Metamodel` antes de OCMF |
 | Complejidad de adapters | Media | Medio | Empezar con `coherence.xml` y crecer |
 
 ---
@@ -106,11 +106,11 @@ Exponer 3 handoffs nuevos:
 > Fecha: 2025-12-26  
 > SM hace de intérprete entre PO y los agentes de `@plugin_ox_floveeditor`
 
-### SM → @FloveOx
+### SM → @FVEOx
 
-**SM**: "FloveOx, necesitamos confirmar el mapeo Flove↔MMCO antes de diseñar el adapter. ¿Cuál es la estructura de dependencias entre submódulos?"
+**SM**: "FVEOx, necesitamos confirmar el mapeo FVE↔MMCO antes de diseñar el adapter. ¿Cuál es la estructura de dependencias entre submódulos?"
 
-**FloveOx (oráculo)**:
+**FVEOx (oráculo)**:
 ```
        ┌───────────────────────────────────────┐
        │        USUARIO (Scriptorium)          │
@@ -124,21 +124,21 @@ Exponer 3 handoffs nuevos:
                          │
                          ▼
             ┌────────────────────────┐
-            │       @FloveOx         │
+            │       @FVEOx         │
             │   Oráculo coordinador  │
             └────────────┬───────────┘
                          │
        ┌─────────────────┼─────────────────┐
        ▼                 ▼                 ▼
 ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-│ @FloveDocs   │ │ @Metamodel   │ │   @MMCO      │
+│ @FVEDocs   │ │ @Metamodel   │ │   @MMCO      │
 │ (Paradigma)  │ │ (UFO/FAIR)   │ │ (Coherencia) │
 └──────────────┘ └──────────────┘ └──────────────┘
        │                 │                 │
        └─────────────────┼─────────────────┘
                          ▼
             ┌────────────────────────┐
-            │     @FloveEditor       │
+            │     @FVEEditor       │
             │  Diseñador ontologías  │
             │  (Exporta JSON/TS/Zod) │
             └────────────────────────┘
@@ -146,10 +146,10 @@ Exponer 3 handoffs nuevos:
 
 El flujo de validación para MMCO sería:
 
-1. **FloveEditor** genera `schema.json` desde ontología del usuario
+1. **FVEEditor** genera `schema.json` desde ontología del usuario
 2. **Metamodel** valida UFO (pre-requisito)
 3. **MMCO** recibe schema validado + ejecuta `ocmf-adapter` + `phi_mmco.py`
-4. **FloveOx** consolida resultados y devuelve reporte
+4. **FVEOx** consolida resultados y devuelve reporte
 
 ### SM → @Metamodel
 
@@ -159,8 +159,8 @@ El flujo de validación para MMCO sería:
 
 | Plantilla | Archivo | Aplicación |
 |-----------|---------|------------|
-| `ENTITY` | `templates/entity.md` | Cada Field Flove → Endurant UFO |
-| `RELATIONSHIP` | `templates/relationship.md` | Relaciones Flove (RELATE/VIEW/EXPLAIN) |
+| `ENTITY` | `templates/entity.md` | Cada Field FVE → Endurant UFO |
+| `RELATIONSHIP` | `templates/relationship.md` | Relaciones FVE (RELATE/VIEW/EXPLAIN) |
 | `PROCESS` | `templates/process.md` | Paradigmas dinámicos (FREE/MAKING) |
 
 Además, metadatos FAIR mínimos:
@@ -227,11 +227,11 @@ phi_score = compute_phi(state_vector, adjacency)
 #   0.7-1.0: Alta coherencia (ontología estable)
 ```
 
-### SM → @FloveEditor
+### SM → @FVEEditor
 
-**SM**: "FloveEditor, ¿cómo integras estos nuevos handoffs en tu flujo?"
+**SM**: "FVEEditor, ¿cómo integras estos nuevos handoffs en tu flujo?"
 
-**FloveEditor**:
+**FVEEditor**:
 
 Propongo 3 nuevos handoffs:
 
@@ -255,7 +255,7 @@ ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/
 
 **SM**: "PO, los agentes confirman:
 
-1. **Dependencias claras**: FloveDocs (paradigma) → Metamodel (validación) → MMCO (coherencia)
+1. **Dependencias claras**: FVEDocs (paradigma) → Metamodel (validación) → MMCO (coherencia)
 2. **Adapter definido**: `ocmf-adapter.json` como formato intermedio
 3. **Métrica cuantificable**: `phi_mmco` genera score 0-1 para coherencia
 4. **Trazabilidad**: Resultados en `ARCHIVO/PLUGINS/FLOVE_EDITOR/MMCO/{ontology_id}/`

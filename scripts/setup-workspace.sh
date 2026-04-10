@@ -54,9 +54,6 @@ SUBMODULE_N8N_EDITOR_URL="https://github.com/escrivivir-co/alephscript-n8n-like-
 SUBMODULE_WIKI_RACER_DIR="$ROOT_DIR/WiringAppHypergraphEditor"
 SUBMODULE_WIKI_RACER_URL="https://github.com/escrivivir-co/wiki-racer.git"
 
-SUBMODULE_ONTHOLOGY_EDITOR_DIR="$ROOT_DIR/OnthologyEditor"
-SUBMODULE_ONTHOLOGY_EDITOR_URL="https://github.com/escrivivir-co/alephscript-onthology-editor.git"
-
 SUBMODULE_COPILOT_ENGINE_DIR="$ROOT_DIR/CopilotEngine"
 SUBMODULE_COPILOT_ENGINE_URL="https://github.com/escrivivir-co/vscode-copilot-chat.git"
 
@@ -96,7 +93,6 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/prompts": true,
     ".github/plugins/arg-board-app/prompts": true,
     ".github/plugins/hypergraph-editor/prompts": true,
-    ".github/plugins/flove-editor/prompts": true,
     ".github/plugins/bot-hub-sdk/prompts": true
   },
   "chat.instructionsFilesLocations": {
@@ -119,7 +115,6 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/instructions": true,
     ".github/plugins/arg-board-app/instructions": true,
     ".github/plugins/hypergraph-editor/instructions": true,
-    ".github/plugins/flove-editor/instructions": true,
     ".github/plugins/bot-hub-sdk/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
@@ -211,28 +206,11 @@ setup_submodule "$SUBMODULE_PROLOG_SBR_DIR" "$SUBMODULE_PROLOG_SBR_URL" "PrologE
 setup_submodule "$SUBMODULE_TYPED_PROMPTING_DIR" "$SUBMODULE_TYPED_PROMPTING_URL" "TypedPromptsEditor"
 setup_submodule "$SUBMODULE_N8N_EDITOR_DIR" "$SUBMODULE_N8N_EDITOR_URL" "WorkflowEditor"
 setup_submodule "$SUBMODULE_WIKI_RACER_DIR" "$SUBMODULE_WIKI_RACER_URL" "WiringAppHypergraphEditor"
-setup_submodule "$SUBMODULE_ONTHOLOGY_EDITOR_DIR" "$SUBMODULE_ONTHOLOGY_EDITOR_URL" "OnthologyEditor"
 setup_submodule "$SUBMODULE_COPILOT_ENGINE_DIR" "$SUBMODULE_COPILOT_ENGINE_URL" "CopilotEngine"
 setup_submodule "$SUBMODULE_STATE_MACHINE_DIR" "$SUBMODULE_STATE_MACHINE_URL" "StateMachine"
 setup_submodule "$SUBMODULE_AGENT_LORE_SDK_DIR" "$SUBMODULE_AGENT_LORE_SDK_URL" "AgentLoreSDK"
 setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
 
-# 4) Inicializar submódulos anidados de OnthologyEditor (metamodel, MMCO, FloveDocs)
-echo "[setup] ─────────────────────────────────────────"
-echo "[setup] Inicializando submódulos anidados de OnthologyEditor"
-echo "[setup] ─────────────────────────────────────────"
-if [[ -d "$SUBMODULE_ONTHOLOGY_EDITOR_DIR/.git" ]] || [[ -f "$SUBMODULE_ONTHOLOGY_EDITOR_DIR/.git" ]]; then
-  pushd "$SUBMODULE_ONTHOLOGY_EDITOR_DIR" >/dev/null
-  git submodule sync
-  git submodule update --init --recursive
-  echo "[setup] Submódulos anidados de OnthologyEditor:"
-  git submodule status
-  popd >/dev/null
-else
-  echo "[setup] Aviso: OnthologyEditor no inicializado, saltando submódulos anidados"
-fi
-
-echo "[setup] ✔ Setup completado (19 submódulos + 3 anidados en OnthologyEditor)"
 echo
 echo "Siguientes pasos sugeridos:"
 echo "  1) Reinicia VS Code para cargar prompts/instructions de plugins"
@@ -250,9 +228,7 @@ echo "     cd TypedPromptsEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd WorkflowEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd WiringAppHypergraphEditor && git push -u origin $INTEGRATION_BRANCH"
 echo
-echo "     cd OnthologyEditor && git push -u origin $INTEGRATION_BRANCH"
-echo
-echo "Submódulos configurados (18):"
+echo "Submódulos configurados:"
 echo "  - VsCodeExtension: Extensión VS Code / Arrakis Theater"
 echo "  - MCPGallery: Zeus MCP Presets (UI web)"
 echo "  - VibeCodingSuite: VibeCoding Connector / Matrix Theater"
@@ -267,8 +243,7 @@ echo "  - PrologEditor: Editor de Lógica Prolog (SWI-Prolog)"
 echo "  - TypedPromptsEditor: TypedPrompting (Ontologías NL↔JSON)"
 echo "  - WorkflowEditor: Editor visual de workflows (n8n connector)"
 echo "  - WiringAppHypergraphEditor: Motor de navegación wiki-racer (WiringApp, ArgBoardApp, HyperGraphEditor)"
-echo "  - OnthologyEditor: Editor de ontologías (Flove Template)"
-echo "     └── Submódulos anidados: metamodel (UFO), MMCO (BNP), FloveDocs (taxonomía)"
 echo "  - CopilotEngine: Fuente VS Code Copilot Chat (System Messaging ReadOnly)"
 echo "  - StateMachine: Gamification UI multi-platform (Console, HTML5, Blockly, ThreeJS)"
 echo "  - AgentLoreSDK: Catálogo de plantillas para Agent Creator (637+ templates)"
+echo "  - BotHubSDK: SDK plugin-based para bots Telegram + protocolo IACM v1.0"

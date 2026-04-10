@@ -20,7 +20,7 @@ Refactorizar `docs/index.md` para presentar el Aleph Scriptorium como un **bluep
 
 ## Justificación
 
-El index actual es una landing page convencional. Una vez completadas las épicas de modelado ontológico (FloveEditor, OntologyEditor, MetaModel Compliance, MMCO), tendremos:
+El index actual es una landing page convencional. Una vez completadas las épicas de modelado ontológico (FVEEditor, OntologyEditor, MetaModel Compliance, MMCO), tendremos:
 
 - **Ontología formal** del Scriptorium
 - **Métricas de coherencia** (phi_mmco)
@@ -89,7 +89,7 @@ Esto permite presentar el Scriptorium no como una lista de features, sino como u
     ┌──────▼──────┐                ┌───────▼───────┐               ┌───────▼──────┐
     │  ontology   │                │     core      │               │   dynamics   │
     │   (x:-1500) │◀───────────────│   (x:0,y:0)   │───────────────▶│   (x:1500)   │
-    │  Flove/UFO  │                │ Agentes+Plugin│               │    Flujos    │
+    │  FVE/UFO  │                │ Agentes+Plugin│               │    Flujos    │
     └─────────────┘                └───────┬───────┘               └──────────────┘
                                            │
            ┌───────────────────────────────┼───────────────────────────────┐
@@ -107,7 +107,7 @@ Esto permite presentar el Scriptorium no como una lista de features, sino como u
 |-------|--------|-----------|----------|
 | `overview` | Aleph Scriptorium | Logo + tagline + flecha "explorar" | — |
 | `core` | Núcleo del Sistema | Agentes (31) + Plugins (19) + BOE | Mermaid: componentes |
-| `ontology` | Capa Ontológica | Flove → UFO → MMCO | Mermaid: capas |
+| `ontology` | Capa Ontológica | FVE → UFO → MMCO | Mermaid: capas |
 | `dynamics` | Flujos de Producción | DISCO → Producción → Publicación | Mermaid: flowchart |
 | `hypergraph` | Configuración de Posibilidad | Nodos interconectados | Canvas/SVG interactivo |
 | `products` | Productos Transmedia | Teatro, Periódico, Fundación | Grid de cards |
@@ -127,7 +127,7 @@ graph TB
     end
     
     subgraph ONTO["Capa Ontológica"]
-        FLOVE[Flove Paradigm]
+        FLOVE[FVE Paradigm]
         UFO[UFO Foundational]
         MMCO[MMCO Coherence]
         FLOVE --> UFO --> MMCO

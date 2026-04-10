@@ -1,4 +1,4 @@
-# Backlog Borrador: SCRIPT-1.20.0 — FloveEditor
+# Backlog Borrador: SCRIPT-1.20.0 — FVEEditor
 
 > **Sprint**: Feature Cycle 1  
 > **Fecha inicio**: 2025-01-02  
@@ -9,7 +9,7 @@
 
 ## Contexto
 
-Este backlog define la creación del plugin **FloveEditor** para integrar la ontología Flove.org en el ecosistema ALEPH Scriptorium. La ontología Flove ofrece un marco biocéntrico/holístico complementario a los paradigmas FIA existentes en as-gym.
+Este backlog define la creación del plugin **FVEEditor** para integrar la ontología FVE.org en el ecosistema ALEPH Scriptorium. La ontología FVE ofrece un marco biocéntrico/holístico complementario a los paradigmas FIA existentes en as-gym.
 
 ### Fuentes de ontología
 
@@ -17,8 +17,8 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 |--------|-----------|--------|
 | demos.flove.org/whole | Tabla de taxonomía completa | ✅ Capturada |
 | flove.org | Filosofía y paradigmas | ✅ Explorada |
-| Codeberg FloveDocs/Main | Documentación técnica | ✅ Explorada |
-| FloveTables25.12.pdf | Tablas actualizadas (Dic 2025) | ⏳ Pendiente download |
+| Codeberg FVEDocs/Main | Documentación técnica | ✅ Explorada |
+| FVETables25.12.pdf | Tablas actualizadas (Dic 2025) | ⏳ Pendiente download |
 
 ---
 
@@ -26,8 +26,8 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 | ID | Nombre | Opportunity | Effort | Prioridad |
 |----|--------|-------------|--------|-----------|
-| SCRIPT-1.20.0 | Fuente de Datos FloveOnto | Scriptorium | 8 pts | P0 |
-| SCRIPT-1.21.0 | Plugin FloveEditor | Scriptorium | 13 pts | P1 |
+| SCRIPT-1.20.0 | Fuente de Datos FVEOnto | Scriptorium | 8 pts | P0 |
+| SCRIPT-1.21.0 | Plugin FVEEditor | Scriptorium | 13 pts | P1 |
 | SCRIPT-1.22.0 | Integración AGENT_CREATOR | Scriptorium | 8 pts | P1 |
 
 ---
@@ -51,9 +51,9 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 ---
 
-## Iteración 1: Fuente de Datos FloveOnto (SCRIPT-1.20.0)
+## Iteración 1: Fuente de Datos FVEOnto (SCRIPT-1.20.0)
 
-**Objetivo**: Capturar y estructurar la ontología Flove como JSON Schema  
+**Objetivo**: Capturar y estructurar la ontología FVE como JSON Schema  
 **Effort**: 8 puntos (30% del ciclo)
 
 ### Stories
@@ -78,9 +78,9 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
 | T005 | Diseñar estructura base del schema | 1 | ⏳ |
-| T006 | Definir tipo `FloveField` (10 campos) | 1 | ⏳ |
-| T007 | Definir tipo `FloveParadigm` (6 paradigmas core) | 1 | ⏳ |
-| T008 | Definir tipo `FloveApp` (7 aplicaciones) | 1 | ⏳ |
+| T006 | Definir tipo `FVEField` (10 campos) | 1 | ⏳ |
+| T007 | Definir tipo `FVEParadigm` (6 paradigmas core) | 1 | ⏳ |
+| T008 | Definir tipo `FVEApp` (7 aplicaciones) | 1 | ⏳ |
 | T009 | Crear `flove-ontology.schema.json` completo | 1 | ⏳ |
 
 **Definition of Done**: Schema JSON válido que pasa validación AJV.
@@ -97,7 +97,7 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 ---
 
-## Iteración 2: Plugin FloveEditor Core (SCRIPT-1.21.0)
+## Iteración 2: Plugin FVEEditor Core (SCRIPT-1.21.0)
 
 **Objetivo**: Crear estructura completa del plugin siguiendo protocolo PLUGINS.md  
 **Effort**: 13 puntos (45% del ciclo)
@@ -118,7 +118,7 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 ---
 
-#### SCRIPT-1.21.0-S02: Agente FloveEditor
+#### SCRIPT-1.21.0-S02: Agente FVEEditor
 **Effort**: 5 pts
 
 | Task ID | Descripción | Effort | Estado |
@@ -162,7 +162,7 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 ## Iteración 3: Integración con AGENT_CREATOR (SCRIPT-1.22.0)
 
-**Objetivo**: Habilitar creación de agentes con "alma Flove"  
+**Objetivo**: Habilitar creación de agentes con "alma FVE"  
 **Effort**: 8 puntos (25% del ciclo)
 
 ### Stories
@@ -177,20 +177,20 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 | T026 | Añadir campo `floveApps` (array de apps) | 0.5 | ⏳ |
 | T027 | Documentar nuevos campos en AGENT_CREATOR/README.md | 1 | ⏳ |
 
-**Definition of Done**: Schema de recipes acepta campos Flove.
+**Definition of Done**: Schema de recipes acepta campos FVE.
 
 ---
 
-#### SCRIPT-1.22.0-S02: Flujo de Creación con Flove
+#### SCRIPT-1.22.0-S02: Flujo de Creación con FVE
 **Effort**: 3 pts
 
 | Task ID | Descripción | Effort | Estado |
 |---------|-------------|--------|--------|
-| T028 | Modificar `crear-agente.prompt.md` para ofrecer opción Flove | 1 | ⏳ |
-| T029 | Crear paso de selección de paradigma Flove | 1 | ⏳ |
+| T028 | Modificar `crear-agente.prompt.md` para ofrecer opción FVE | 1 | ⏳ |
+| T029 | Crear paso de selección de paradigma FVE | 1 | ⏳ |
 | T030 | Integrar validación contra `flove-ontology.schema.json` | 1 | ⏳ |
 
-**Definition of Done**: Flujo de creación incluye opción Flove.
+**Definition of Done**: Flujo de creación incluye opción FVE.
 
 ---
 
@@ -236,7 +236,7 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 |-------------|--------|-------|
 | Plugin AGENT_CREATOR | ✅ Instalado | Base para integración |
 | demos.flove.org | ⚠️ Inestable | Usar copia local |
-| Codeberg FloveDocs | ✅ Disponible | Backup de ontología |
+| Codeberg FVEDocs | ✅ Disponible | Backup de ontología |
 | Plugin TypedPrompting | ⏳ Opcional | Para validación JSON |
 
 ---
@@ -245,7 +245,7 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 | Riesgo | Probabilidad | Impacto | Mitigación |
 |--------|--------------|---------|------------|
-| Ontología Flove cambia | Media | Medio | Versionar schema con fecha |
+| Ontología FVE cambia | Media | Medio | Versionar schema con fecha |
 | demos.flove.org offline | Alta | Bajo | Copia en ARCHIVO/PLUGINS/ |
 | Conflicto con as-gym | Baja | Medio | Namespace `flove_` |
 | Complejidad excesiva | Media | Alto | Empezar con 3 campos |
@@ -256,11 +256,11 @@ Este backlog define la creación del plugin **FloveEditor** para integrar la ont
 
 | Handoff | Target |
 |---------|--------|
-| `[FLOVE-EDITOR] Crear regla lógica` | FloveEditor |
-| `[FLOVE-EDITOR] Explorar paradigma` | FloveEditor |
-| `[FLOVE-EDITOR] Asignar campo ontológico` | FloveEditor |
-| `[FLOVE-EDITOR] Exportar lógica` | FloveEditor |
-| `[FLOVE-EDITOR] Validar coherencia Flove` | FloveEditor |
+| `[FLOVE-EDITOR] Crear regla lógica` | FVEEditor |
+| `[FLOVE-EDITOR] Explorar paradigma` | FVEEditor |
+| `[FLOVE-EDITOR] Asignar campo ontológico` | FVEEditor |
+| `[FLOVE-EDITOR] Exportar lógica` | FVEEditor |
+| `[FLOVE-EDITOR] Validar coherencia FVE` | FVEEditor |
 
 ---
 

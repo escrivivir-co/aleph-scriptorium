@@ -125,7 +125,6 @@
 | `plugin_ox_wiringapp` | wiring-app | 1 agente | `@plugin_ox_wiringapp` |
 | `plugin_ox_argboardapp` | arg-board-app | 1 agente | `@plugin_ox_argboardapp` |
 | `plugin_ox_hypergrapheditor` | hypergraph-editor | 1 agente | `@plugin_ox_hypergrapheditor` |
-| `plugin_ox_floveeditor` | flove-editor | 1 agente | `@plugin_ox_floveeditor` |
 | `plugin_ox_openasyncapieditor` | openasyncapi-editor | 1 agente | `@plugin_ox_openasyncapieditor` |
 | `plugin_ox_aaiaeditor` | aaia-editor | 1 agente | `@plugin_ox_aaiaeditor` |
 | `plugin_ox_bothubsdk` | bot-hub-sdk | 1 agente | `@plugin_ox_bothubsdk` |
