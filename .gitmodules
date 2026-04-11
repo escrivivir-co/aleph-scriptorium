@@ -69,3 +69,6 @@
 	path = BotHubSDK
 	url = https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk
 	branch = integration/beta/scriptorium
+[submodule "UISDKThreejs"]
+	path = UISDKThreejs
+	url = https://github.com/escrivivir-co/threejs-gamify-ui
