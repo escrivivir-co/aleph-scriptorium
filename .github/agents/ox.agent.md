@@ -129,7 +129,7 @@ handoffs:
 | Backend | @blueflag, @blackflag, @redflag, @yellowflag, @orangeflag | 🔵⚫🔴🟡🟠 |
 | Sistema | @vestibulo, @cartaspuerta | ⚪ |
 | Meta | @ox, @pluginmanager, @indice | ⚙️ |
-| Plugins | 19 bridges → delegan a plugins | 🔌 |
+| Plugins | bridges → delegan a plugins | 🔌 |
 
 ---
 

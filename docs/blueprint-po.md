@@ -45,7 +45,7 @@ permalink: /blueprint-po/
     <div class="value-props">
       <div class="prop">📚 Proyectos extensos</div>
       <div class="prop">🤖 31 agentes especializados</div>
-      <div class="prop">🔌 19 plugins activos</div>
+      <div class="prop">🔌 X plugins activos</div>
     </div>
   </div>
   
@@ -543,7 +543,7 @@ permalink: /blueprint-po/
   <h2>Plugins por Sprint</h2>
   
   <div class="plugin-timeline">
-    <div class="timeline-item">Sprint PRE: 19 plugins base</div>
+    <div class="timeline-item">Sprint PRE: X plugins base</div>
     <div class="timeline-item">FC1: +3 editores visuales</div>
     <div class="timeline-item">FC2: +2 integraciones</div>
   </div>

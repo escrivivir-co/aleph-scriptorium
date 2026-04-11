@@ -26,7 +26,7 @@ La sesión BLUEPRINTS-TYPED-1.0.0 cumplió su objetivo original (13/15 pts). Sin
 | Blueprint | Líneas clave | Gap identificado |
 |-----------|--------------|------------------|
 | `blueprint-release-party.md` | 296-318, 380-385 | Grid MCP tiene 5 servers, faltan TypedPrompt (:3020) y Prolog (:3006) |
-| `blueprint-mmco.md` | 219-222 | Dice "19 plugins, 31 agentes" — actualizar a 22 plugins |
+| `blueprint-mmco.md` | 219-222 | Dice "X plugins, 31 agentes" — actualizar a 22 plugins |
 | `blueprint-po.md` | 75-90 | Stack técnico dice "5 servidores MCP" — actualizar |
 
 #### Blueprint a Crear (1)

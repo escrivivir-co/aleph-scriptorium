@@ -25,7 +25,7 @@
 
 | Línea | Antes | Después |
 |-------|-------|---------|
-| 220 | 19 plugins | 22 plugins |
+| 220 | X plugins | 22 plugins |
 | 221 | 31 agentes | 31+ agentes |
 | 222 | 15 submódulos | 16 submódulos |
 

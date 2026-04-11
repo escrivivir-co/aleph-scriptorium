@@ -103,7 +103,7 @@ Desde la perspectiva de arquitecto que busca impedimentos, esto es lo que veo:
 
 #### Impediment 1: Sobrecarga de Plugins — El Museo de lo No Usado
 
-**Diagnóstico**: 19 plugins es un número impresionante. Pero:
+**Diagnóstico**: X plugins es un número impresionante. Pero:
 - ¿Cuántos se usan activamente? Probablemente 3-4
 - **Settings.json en estado "todo desactivado"** por defecto indica problema
 - Los usuarios nuevos ven un menú de 25+ opciones y se paralizan
@@ -127,7 +127,7 @@ Desde la perspectiva de arquitecto que busca impedimentos, esto es lo que veo:
 
 **Diagnóstico**: El README actual tiene:
 - 31 agentes mencionados
-- 19 plugins listados  
+- X plugins listados  
 - 14 submódulos referenciados
 - Quick Start de 5 líneas que no explica nada
 

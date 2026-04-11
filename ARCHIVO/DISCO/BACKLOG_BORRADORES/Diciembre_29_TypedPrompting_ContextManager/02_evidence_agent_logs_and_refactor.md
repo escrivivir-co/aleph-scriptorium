@@ -402,7 +402,7 @@ Ya podemos integrar MCPGallery con TypedPrompting:
 El problema actual es que `settings.json` lista TODAS las ubicaciones:
 
 ```json
-// .vscode/settings.json ACTUAL (19 plugins × 3 dirs = 57 entradas)
+// .vscode/settings.json ACTUAL (X plugins × 3 dirs = 57 entradas)
 {
   "chat.instructionsFilesLocations": {
     ".github/plugins/arg-board/instructions": true,

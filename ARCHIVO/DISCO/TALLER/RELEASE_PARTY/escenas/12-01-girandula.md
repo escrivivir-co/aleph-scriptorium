@@ -109,7 +109,7 @@ Ahora, en red.
      
      ALEPH SCRIPTORIUM v1.0.0-beta.1
      
-     31 agentes • 19 plugins • 16 submódulos
+     31 agentes • X plugins • 16 submódulos
      
      El taller donde la IA trabaja para ti.
      

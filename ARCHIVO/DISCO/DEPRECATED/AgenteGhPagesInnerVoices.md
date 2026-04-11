@@ -8726,7 +8726,7 @@ permalink: /blueprint/
   <p class="tagline">Un procesador de textos aumentado: tú mandas, los agentes producen.</p>
   
   <div class="metrics-small">
-    <span>19 plugins</span> · <span>31 agentes</span> · <span>15 submódulos</span>
+    <span>X plugins</span> · <span>31 agentes</span> · <span>15 submódulos</span>
   </div>
   
   <div class="categories-cloud">
@@ -8920,7 +8920,7 @@ File: `/Users/morente/Desktop/NUEVA_BASE/SCRIPTORIUM/ALEPH/docs/index.md`. Lines
   <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
     <span class="card-icon">🧬</span>
     <span class="card-title">Ecosistema</span>
-    <span class="card-desc">16 submódulos · 19 plugins · 31 agentes</span>
+    <span class="card-desc">16 submódulos · X plugins · 31 agentes</span>
   </a>
   <a href="{{ site.baseurl }}/teatro/" class="nav-card">
     <span class="card-icon">🎭</span>

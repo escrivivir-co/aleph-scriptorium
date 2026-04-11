@@ -104,7 +104,7 @@ Eres el hilo conductor. Presentas cada paso y das paso a los especialistas.
 | 2. Problema | "Copilot pierde contexto, sin metodología" |
 | 3. Solución | "Ox + Aleph + Plugins" |
 | 4. Demo agentes | "@ox ¿qué agente uso para X?" |
-| 5. Demo plugins | "19 plugins, extensible" |
+| 5. Demo plugins | "X plugins, extensible" |
 | 6. Blueprints | "Presentaciones 3D interactivas" |
 | 7. Ecosistema | "16 submódulos, todo integrado" |
 | 8. Extensibilidad | "Crea tus propios agentes y plugins" |

@@ -9,7 +9,7 @@
 
 | Script | Propósito |
 |--------|-----------|
-| `setup-workspace.sh` | Inicializa VS Code settings y los 19 submódulos |
+| `setup-workspace.sh` | Inicializa VS Code settings y los submódulos |
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
@@ -32,7 +32,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `chat.instructionsFilesLocations`: detecta instructions de plugins
    - `chat.useNestedAgentsMdFiles`: busca agentes anidados
    
-2. **Sincroniza los 19 submódulos** con rama `integration/beta/scriptorium`:
+2. **Sincroniza los submódulos** con rama `integration/beta/scriptorium`:
    - `VsCodeExtension` — Extensión VS Code / Arrakis Theater
    - `MCPGallery` — Zeus MCP Presets (UI web)
    - `VibeCodingSuite` — VibeCoding Connector / Matrix Theater
@@ -76,9 +76,9 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: StateMachine
 [setup] Configurando submódulo: AgentLoreSDK
 [setup] Configurando submódulo: BotHubSDK
-[setup] ✔ Setup completado (19 submódulos)
+[setup] ✔ Setup completado 
 
-Submódulos configurados (19):
+Submódulos configurados:
   - VsCodeExtension: Extensión VS Code / Arrakis Theater
   - MCPGallery: Zeus MCP Presets (UI web)
   - VibeCodingSuite: VibeCoding Connector / Matrix Theater

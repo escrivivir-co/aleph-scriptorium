@@ -60,7 +60,7 @@ Ahora tengo... herramientas. Metodología. Aliados.
 31 agentes para ayudarte.
 
 **ALEPH**:  
-19 plugins para extender.
+X plugins para extender.
 
 **PO**:  
 Y un sistema que aprende contigo.

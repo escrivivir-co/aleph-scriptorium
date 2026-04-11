@@ -7274,7 +7274,7 @@ cd aleph-scriptorium && code .
 
 ```
 
-.github/          # 31 agentes - 19 plugins - prompts - instructions
+.github/          # 31 agentes - X plugins - prompts - instructions
 
 ARCHIVO/          # Base doctrinal (marco, diagnóstico, justificación)
 
@@ -7664,7 +7664,7 @@ Desde la perspectiva de arquitecto que busca impedimentos, esto es lo que veo:
 
 #### Impediment 1: Sobrecarga de Plugins --- El Museo de lo No Usado
 
-**Diagnóstico**: 19 plugins es un número impresionante. Pero:
+**Diagnóstico**: X plugins es un número impresionante. Pero:
 
 - ¿Cuántos se usan activamente? Probablemente 3-4
 

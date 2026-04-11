@@ -103,7 +103,7 @@ permalink: /blueprint/
 | 2 | `core` | 0,0,0 | Arquitectura (4 capas) |
 | 3 | `ontology` | x:-1500, rotate-y:15 | Taxonomía 31 agentes |
 | 4 | `dynamics` | x:1500, rotate-y:-15 | 3 flujos (Periódico, Teatro, Scrum) |
-| 5 | `hypergraph` | y:1500, rotate-x:-15 | 19 plugins showcase |
+| 5 | `hypergraph` | y:1500, rotate-x:-15 | X plugins showcase |
 | 6 | `products` | y:-1500, rotate-x:15 | 4 productos (ARCHIVO/ como fuente) |
 | 7 | `cta` | z:-1500, rotate-z:5 | FOSS Project + CTAs |
 

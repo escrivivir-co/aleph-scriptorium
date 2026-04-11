@@ -40,7 +40,7 @@ Donde el horror vacui... se cura.
 **PO**:  
 Y mucho más.  
 31 agentes especializados.  
-19 plugins instalados.  
+X plugins instalados.  
 16 submódulos integrados.  
 Y un problema que necesita resolverse.
 

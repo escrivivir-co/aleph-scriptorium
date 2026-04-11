@@ -20,7 +20,7 @@ permalink: /blueprint/
   <p class="tagline">Un procesador de textos aumentado: tú mandas, los agentes producen.</p>
   
   <div class="metrics-small">
-    <span>19 plugins</span> · <span>31 agentes</span> · <span>15 submódulos</span>
+    <span>X plugins</span> · <span>31 agentes</span> · <span>15 submódulos</span>
   </div>
   
   <div class="categories-cloud">
@@ -324,7 +324,7 @@ permalink: /blueprint/
      data-z="0"
      data-rotate-x="-15">
   <h1>// Ecosistema de Plugins</h1>
-  <p>19 plugins interconectados. Cada uno extiende una capacidad específica.</p>
+  <p>X plugins interconectados. Cada uno extiende una capacidad específica.</p>
   
   <div class="plugins-showcase">
     <div class="plugin-row">

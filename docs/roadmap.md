@@ -534,7 +534,7 @@ permalink: /roadmap/
       <p class="foto-summary">Primer release alpha del editor Itaca. Estado preview, rama de integración activa. Integración inicial de submódulos, plugins y agentes principales.</p>
       <div class="foto-metrics">
         <span class="metric">🤖 31+ agentes core</span>
-        <span class="metric">📦 19 plugins</span>
+        <span class="metric">📦 X plugins</span>
         <span class="metric">🔌 14 submódulos</span>
         <span class="metric">🟡 Estado: preview</span>
       </div>
@@ -577,7 +577,7 @@ permalink: /roadmap/
       <div class="foto-dual">
         <div class="foto-lens lens-positive">
           <strong>🟢 Gafas Positivas:</strong><br>
-          63 agentes · 19 plugins · Blueprint MMCO · 25+ conversaciones PO-SM
+          63 agentes · X plugins · Blueprint MMCO · 25+ conversaciones PO-SM
         </div>
         <div class="foto-lens lens-negative">
           <strong>🔴 Gafas Negativas:</strong><br>
