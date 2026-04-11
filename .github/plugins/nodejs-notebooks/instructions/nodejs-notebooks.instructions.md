@@ -44,6 +44,10 @@ Los notebooks son archivos JSON con un array `cells`. Cada celda tiene tres camp
 - `typescript` — Para código tipado, interfaces, clases
 - `markdown` — Documentación, títulos, tablas, instrucciones
 
+> ⚠️ **ANTI-PATRÓN CRÍTICO**: NUNCA usar `"language": "python"`. Este es un notebook Node.js.
+> El valor `"python"` hace que la extensión `donjayamanne.typescript-notebook` no reconozca las celdas.
+> **Regla de detección**: si el source empieza con `#` → `"markdown"`, cualquier otro código → `"javascript"`.
+
 ### Reglas de Serialización JSON
 
 Cada línea en el array `source` es un string independiente:
