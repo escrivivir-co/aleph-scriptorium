@@ -40,7 +40,9 @@
 		".github/plugins/novelist/prompts": true,
 		".github/plugins/network/prompts": true,
 		// --- ONFALO ---
-		".github/plugins/consejo-asesor/prompts": false
+		".github/plugins/consejo-asesor/prompts": false,
+		// --- REPL / Notebooks ---
+		".github/plugins/nodejs-notebooks/prompts": true
 	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
@@ -71,7 +73,9 @@
 		".github/plugins/novelist/instructions": true,
 		".github/plugins/network/instructions": true,
 		// --- ONFALO ---
-		".github/plugins/consejo-asesor/instructions": false
+		".github/plugins/consejo-asesor/instructions": false,
+		// --- REPL / Notebooks ---
+		".github/plugins/nodejs-notebooks/instructions": true
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas

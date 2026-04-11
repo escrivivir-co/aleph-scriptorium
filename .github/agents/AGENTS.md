@@ -128,6 +128,7 @@
 | `plugin_ox_openasyncapieditor` | openasyncapi-editor | 1 agente | `@plugin_ox_openasyncapieditor` |
 | `plugin_ox_aaiaeditor` | aaia-editor | 1 agente | `@plugin_ox_aaiaeditor` |
 | `plugin_ox_bothubsdk` | bot-hub-sdk | 1 agente | `@plugin_ox_bothubsdk` |
+| `plugin_ox_nodejsnotebooks` | nodejs-notebooks | 1 agente | `@plugin_ox_nodejsnotebooks` |
 
 ### Detalle por Plugin
 
@@ -154,6 +155,7 @@
 | openasyncapi-editor | `.github/plugins/openasyncapi-editor/agents/` | OpenAsyncApiEditor |
 | aaia-editor | `.github/plugins/aaia-editor/agents/` | AAIAEditor |
 | bot-hub-sdk | `.github/plugins/bot-hub-sdk/agents/` | BotHubSDK |
+| nodejs-notebooks | `.github/plugins/nodejs-notebooks/agents/` | NodejsNotebooks |
 
 ---
 

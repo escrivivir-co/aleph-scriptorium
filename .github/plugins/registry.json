@@ -915,6 +915,54 @@
           "agent": "BotHubSDK"
         }
       ]
+    },
+    "nodejs-notebooks": {
+      "name": "Node.js Notebooks (REPL Expert)",
+      "version": "1.0.0",
+      "description": "Plugin experto en la extensión Node.js Notebooks (REPL) de Don Jayamanne. Genera notebooks interactivos .nnb para MCPGallery, BotHubSDK, panel de control de tasks y diagnóstico de stack. Templates pre-generados incluidos.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-04-11T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 5,
+      "instructions_count": 1,
+      "data_directory": "ARCHIVO/PLUGINS/NODEJS_NOTEBOOKS/",
+      "bridge_agent": "plugin_ox_nodejsnotebooks",
+      "dependencies": [],
+      "optional_dependencies": ["bot-hub-sdk", "mcp-presets", "prolog-editor"],
+      "epic": "SCRIPT-2.6.0",
+      "vsCodeExtension": {
+        "id": "donjayamanne.typescript-notebook",
+        "name": "Node.js Notebooks (REPL)",
+        "publisher": "Don Jayamanne",
+        "install_cmd": "code --install-extension donjayamanne.typescript-notebook"
+      },
+      "templates": [
+        "ARCHIVO/PLUGINS/NODEJS_NOTEBOOKS/quickstart.nnb",
+        "ARCHIVO/PLUGINS/NODEJS_NOTEBOOKS/panel-control.nnb"
+      ],
+      "handoffs": [
+        {
+          "label": "Crear Notebook",
+          "agent": "NodejsNotebooks"
+        },
+        {
+          "label": "Panel de Control (Tasks)",
+          "agent": "NodejsNotebooks"
+        },
+        {
+          "label": "Demo MCPGallery",
+          "agent": "NodejsNotebooks"
+        },
+        {
+          "label": "Demo BotHubSDK",
+          "agent": "NodejsNotebooks"
+        },
+        {
+          "label": "Diagnóstico Stack",
+          "agent": "NodejsNotebooks"
+        }
+      ]
     }
   }
 }

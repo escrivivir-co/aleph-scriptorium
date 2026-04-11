@@ -1,0 +1,282 @@
+{
+  "cells": [
+    {
+      "language": "markdown",
+      "source": [
+        "# Panel de Control — Aleph Scriptorium\n",
+        "\n",
+        "> **Plugin**: nodejs-notebooks | **Generado desde**: .vscode/tasks.json\n",
+        "\n",
+        "Dashboard interactivo de todos los servicios del Scriptorium, agrupados por stack.\n",
+        "\n",
+        "## Como usar\n",
+        "1. **Ejecutar Celda 2** (Utilidades + SERVICES) primero\n",
+        "2. **Ejecutar Celda 3** (Dashboard Rapido) para estado global\n",
+        "3. **Ejecutar secciones individuales** para detalle por stack\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Utilidades + Mapa de Servicios\n",
+        "\n",
+        "Ejecutar esta celda primero — define healthCheck, checkStack, checkAllServices y el mapa completo SERVICES.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "// === PANEL DE CONTROL — ALEPH SCRIPTORIUM ===\n",
+        "const WORKSPACE = process.env.WORKSPACE_FOLDER ?? require(\"path\").resolve(\".\");\n",
+        "\n",
+        "const SERVICES = {\n",
+        "  MCP: [\n",
+        "    { name: \"Launcher\",  port: 3050, detail: \"MCP Mesh entry point\",   task: \"MCP: Start [Launcher]\" },\n",
+        "    { name: \"Model\",     port: 4001, detail: \"Preset Service REST\",     task: \"MCP: Start [Model]\" },\n",
+        "    { name: \"DevOps\",    port: 3003, detail: \"DevOps MCP Server\",       task: \"MCP: Start [DevOps]\" },\n",
+        "    { name: \"AAIA\",      port: 3007, detail: \"Agentes Autonomos\",       task: \"MCP: Start [AAIA]\" },\n",
+        "    { name: \"Firehose\",  port: 3008, detail: \"Pipeline Bluesky/ONFALO\", task: \"MCP: Start [Firehose]\" },\n",
+        "  ],\n",
+        "  BHS: [\n",
+        "    { name: \"BotHub\",    port: 3010, detail: \"Telegram Bot Hub MCP\",    task: \"BHS: Start [Server]\" },\n",
+        "  ],\n",
+        "  AIA: [\n",
+        "    { name: \"Backend\",   port: 8007, detail: \"AAIA Gateway Express\",    task: \"AIA: Start [Backend]\" },\n",
+        "    { name: \"Frontend\",  port: 4200, detail: \"Angular SPA\",             task: \"AIA: Start [Frontend]\" },\n",
+        "  ],\n",
+        "  APB: [\n",
+        "    { name: \"Service\",   port: 8000, detail: \"SWI-Prolog REST API\",     task: \"APB: Start [Service]\" },\n",
+        "    { name: \"App\",       port: 5001, detail: \"PrologEditor Angular\",    task: \"APB: Start [App]\" },\n",
+        "  ],\n",
+        "  NOV: [\n",
+        "    { name: \"Server\",    port: 3066, detail: \"Novelist MCP Server\",     task: \"NOV: Start [Server]\" },\n",
+        "    { name: \"UI\",        port: 8080, detail: \"Novelist Docs/UI\",        task: \"NOV: Start [UI]\" },\n",
+        "  ],\n",
+        "  TPE: [\n",
+        "    { name: \"Server\",    port: 3019, detail: \"TypedPrompts Editor\",     task: \"TPE: Start [Server]\" },\n",
+        "    { name: \"MCP\",       port: 3020, detail: \"TypedPrompts MCP Server\", task: \"TPE: Start [MCP]\" },\n",
+        "  ],\n",
+        "  OAE: [\n",
+        "    { name: \"Swagger\",   port: 3021, detail: \"OpenAPI / Redocly\",       task: \"OAE: Start [Swagger]\" },\n",
+        "    { name: \"AsyncAPI\",  port: 3022, detail: \"AsyncAPI Studio\",         task: \"OAE: Start [AsyncAPI]\" },\n",
+        "  ],\n",
+        "  NRE: [\n",
+        "    { name: \"Editor\",    port: 1880, detail: \"Node-RED Flow Editor\",    task: \"NRE: Start [Editor]\" },\n",
+        "    { name: \"GamifyUI\",  port: 3088, detail: \"Node-RED Gamify UI\",      task: \"NRE: Start [GamifyUI]\" },\n",
+        "  ],\n",
+        "  BLE: [\n",
+        "    { name: \"Editor\",    port: 4200, detail: \"Blockly Angular Editor\",  task: \"BLE: Start [Editor]\" },\n",
+        "    { name: \"Runtime\",   port: 5000, detail: \"Blockly Runtime\",         task: \"BLE: Start [Runtime]\" },\n",
+        "  ],\n",
+        "  JKL: [\n",
+        "    { name: \"Site\",      port: 4000, detail: \"Jekyll Docs Site\",        task: \"JKL: Start [Site]\" },\n",
+        "  ],\n",
+        "  ZEU: [\n",
+        "    { name: \"UI\",        port: 3012, detail: \"Zeus MCP Gallery UI\",     task: \"ZEU: Start [UI]\" },\n",
+        "  ],\n",
+        "  CHS: [\n",
+        "    { name: \"Server\",    port: 3000, detail: \"Socket.IO Server\",        task: \"CHS: Start [Server]\" },\n",
+        "    { name: \"AdminUI\",   port: 3100, detail: \"Socket.IO Admin UI\",      task: \"CHS: Start [AdminUI]\" },\n",
+        "  ],\n",
+        "  INS: [\n",
+        "    { name: \"Inspector\", port: 6274, detail: \"MCP Inspector\",           task: \"INS: Start [Inspector]\" },\n",
+        "  ],\n",
+        "};\n",
+        "\n",
+        "async function healthCheck(port, urlPath = \"/\", timeout = 2000) {\n",
+        "  const ctrl = new AbortController();\n",
+        "  const t = setTimeout(() => ctrl.abort(), timeout);\n",
+        "  try {\n",
+        "    const r = await fetch(\"http://localhost:\" + port + urlPath, { signal: ctrl.signal });\n",
+        "    clearTimeout(t);\n",
+        "    return { port, ok: r.ok, status: r.status };\n",
+        "  } catch (e) {\n",
+        "    clearTimeout(t);\n",
+        "    return { port, ok: false, status: 0, error: e.name };\n",
+        "  }\n",
+        "}\n",
+        "\n",
+        "async function checkStack(stackKey) {\n",
+        "  const svcs = SERVICES[stackKey] || [];\n",
+        "  const results = await Promise.all(svcs.map(async s => {\n",
+        "    const h = await healthCheck(s.port);\n",
+        "    return { stack: stackKey, service: s.name, port: s.port, estado: h.ok ? \"ONLINE\" : \"OFFLINE\", detail: s.detail, task: h.ok ? \"\" : s.task };\n",
+        "  }));\n",
+        "  console.table(results);\n",
+        "  return results;\n",
+        "}\n",
+        "\n",
+        "async function checkAllServices() {\n",
+        "  const all = [];\n",
+        "  for (const key of Object.keys(SERVICES)) {\n",
+        "    const r = await checkStack(key);\n",
+        "    all.push(...r);\n",
+        "  }\n",
+        "  return all;\n",
+        "}\n",
+        "\n",
+        "const totalServices = Object.values(SERVICES).flat().length;\n",
+        "console.log(\"Panel cargado. \" + Object.keys(SERVICES).length + \" stacks, \" + totalServices + \" servicios registrados.\");\n",
+        "console.log(\"Ejecutar la siguiente celda para el dashboard completo.\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Dashboard Rapido\n",
+        "\n",
+        "Verifica todos los servicios en paralelo y muestra un resumen global.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "// === Dashboard Rapido: Todos los servicios ===\n",
+        "console.log(\"Verificando todos los servicios...\");\n",
+        "const t0 = Date.now();\n",
+        "\n",
+        "const allResults = await checkAllServices();\n",
+        "\n",
+        "const online  = allResults.filter(r => r.estado === \"ONLINE\").length;\n",
+        "const offline = allResults.filter(r => r.estado === \"OFFLINE\").length;\n",
+        "const total   = allResults.length;\n",
+        "\n",
+        "console.log(\"Tiempo: \" + (Date.now() - t0) + \"ms\");\n",
+        "console.log(\"Global: \" + online + \"/\" + total + \" online (\" + Math.round(online/total*100) + \"%) | \" + offline + \" offline\");\n",
+        "\n",
+        "if (offline > 0) {\n",
+        "  const offlineStacks = [...new Set(allResults.filter(r => r.estado === \"OFFLINE\").map(r => r.stack))];\n",
+        "  console.log(\"Stacks con servicios offline: \" + offlineStacks.join(\", \"));\n",
+        "}\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "---\n",
+        "## MCP Stack (Launcher, Model, DevOps, AAIA, Firehose)\n",
+        "\n",
+        "Core del Scriptorium. El Launcher (3050) es el entry point de la mesh MCP.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "await checkStack(\"MCP\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## BHS Stack (BotHub MCP Server)\n",
+        "\n",
+        "Servidor MCP para el SDK de bots de Telegram. Expone 14 tools.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "await checkStack(\"BHS\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## APB Stack (PrologEditor + Frontend)\n",
+        "\n",
+        "Editor Prolog con backend SWI-Prolog REST (8000) y frontend Angular (5001).\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "await checkStack(\"APB\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## NOV Stack (Novelist Server + UI)\n",
+        "\n",
+        "Servidor MCP para escritura narrativa con memoria a largo plazo.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "await checkStack(\"NOV\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## ZEU Stack (Zeus MCP Gallery UI)\n",
+        "\n",
+        "Interfaz web para gestionar presets MCP del Scriptorium.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "await checkStack(\"ZEU\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Stacks Adicionales (AIA, TPE, OAE, NRE, BLE, JKL, CHS, INS)\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "const additionalStacks = [\"AIA\", \"TPE\", \"OAE\", \"NRE\", \"BLE\", \"JKL\", \"CHS\", \"INS\"];\n",
+        "const allAdditional = [];\n",
+        "for (const key of additionalStacks) {\n",
+        "  console.log(\"--- \" + key + \" ---\");\n",
+        "  const r = await checkStack(key);\n",
+        "  allAdditional.push(...r);\n",
+        "}\n",
+        "const addOnline = allAdditional.filter(r => r.estado === \"ONLINE\").length;\n",
+        "console.log(\"Stacks adicionales: \" + addOnline + \"/\" + allAdditional.length + \" online\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Referencias\n",
+        "\n",
+        "| Recurso | URL / Ruta |\n",
+        "|---------|----------|\n",
+        "| Zeus UI | http://localhost:3012 |\n",
+        "| MCP Inspector | http://localhost:6274 |\n",
+        "| Jekyll Docs | http://localhost:4000/aleph-scriptorium/ |\n",
+        "| Node-RED | http://localhost:1880 |\n",
+        "| PrologEditor | http://localhost:5001 |\n",
+        "| tasks.json | .vscode/tasks.json |\n",
+        "| Registry | .github/plugins/registry.json |\n",
+        "\n",
+        "### Para regenerar este panel: @NodejsNotebooks /panel-control-tasks\n",
+        "### Para diagnostico exhaustivo: @NodejsNotebooks /diagnostico-stack\n"
+      ],
+      "outputs": []
+    }
+  ]
+}

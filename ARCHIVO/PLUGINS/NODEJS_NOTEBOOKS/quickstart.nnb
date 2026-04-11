@@ -1,0 +1,232 @@
+{
+  "cells": [
+    {
+      "language": "markdown",
+      "source": [
+        "# Quickstart — Node.js Notebooks en el Scriptorium\n",
+        "\n",
+        "> **Plugin**: nodejs-notebooks | **Extensión**: Node.js Notebooks (REPL) by Don Jayamanne\n",
+        "\n",
+        "Bienvenido al entorno de programación interactiva del Scriptorium.\n",
+        "\n",
+        "## Cómo usar\n",
+        "1. Ejecutar las celdas de **arriba a abajo** (Shift+Enter o botón play)\n",
+        "2. Las variables y funciones **persisten entre celdas** durante la sesión\n",
+        "3. La celda de utilidades (celda 2) debe ejecutarse **siempre primero**\n",
+        "\n",
+        "## Servicios principales\n",
+        "| Stack | Puerto | Descripción |\n",
+        "|-------|--------|-------------|\n",
+        "| MCP Launcher | 3050 | MCP Mesh entry point |\n",
+        "| Zeus UI | 3012 | MCP Gallery UI |\n",
+        "| Prolog | 8000 | SWI-Prolog REST API |\n",
+        "| Novelist | 3066 | Novelist MCP Server |\n",
+        "| Jekyll | 4000 | Docs Site |\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Utilidades Base\n",
+        "\n",
+        "Ejecutar esta celda primero — define funciones reutilizables en todas las celdas siguientes.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "// === UTILIDADES BASE — Ejecutar primero ===\n",
+        "const path = require(\"path\");\n",
+        "const fs   = require(\"fs\");\n",
+        "\n",
+        "const WORKSPACE = process.env.WORKSPACE_FOLDER ?? path.resolve(\".\");\n",
+        "\n",
+        "async function healthCheck(port, urlPath = \"/\", timeout = 2000) {\n",
+        "  const ctrl = new AbortController();\n",
+        "  const t = setTimeout(() => ctrl.abort(), timeout);\n",
+        "  try {\n",
+        "    const r = await fetch(\"http://localhost:\" + port + urlPath, { signal: ctrl.signal });\n",
+        "    clearTimeout(t);\n",
+        "    return { port, ok: r.ok, status: r.status };\n",
+        "  } catch (e) {\n",
+        "    clearTimeout(t);\n",
+        "    return { port, ok: false, status: 0, error: e.name };\n",
+        "  }\n",
+        "}\n",
+        "\n",
+        "async function mcpRequest(port, method, params = {}) {\n",
+        "  const check = await healthCheck(port);\n",
+        "  if (!check.ok) {\n",
+        "    console.warn(\"Puerto \" + port + \" no disponible. Omitiendo \" + method);\n",
+        "    return null;\n",
+        "  }\n",
+        "  const res = await fetch(\"http://localhost:\" + port + \"/mcp\", {\n",
+        "    method: \"POST\",\n",
+        "    headers: { \"Content-Type\": \"application/json\" },\n",
+        "    body: JSON.stringify({ jsonrpc: \"2.0\", method, params, id: Date.now() })\n",
+        "  });\n",
+        "  return res.json();\n",
+        "}\n",
+        "\n",
+        "console.log(\"Utilidades cargadas.\");\n",
+        "console.log(\"  Node.js:\", process.version);\n",
+        "console.log(\"  WORKSPACE:\", WORKSPACE);\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Health Check de Servicios Principales\n",
+        "\n",
+        "Verifica qué servicios del Scriptorium están activos en este momento.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "// === Health Check: Servicios Core ===\n",
+        "const CORE_SERVICES = [\n",
+        "  { stack: \"MCP\", name: \"Launcher\", port: 3050 },\n",
+        "  { stack: \"MCP\", name: \"Model\",    port: 4001 },\n",
+        "  { stack: \"ZEU\", name: \"Zeus UI\",  port: 3012 },\n",
+        "  { stack: \"APB\", name: \"Prolog\",   port: 8000 },\n",
+        "  { stack: \"NOV\", name: \"Novelist\", port: 3066 },\n",
+        "  { stack: \"JKL\", name: \"Jekyll\",   port: 4000 },\n",
+        "  { stack: \"INS\", name: \"Inspector\",port: 6274 },\n",
+        "];\n",
+        "\n",
+        "const results = await Promise.all(\n",
+        "  CORE_SERVICES.map(async s => {\n",
+        "    const h = await healthCheck(s.port);\n",
+        "    return { stack: s.stack, service: s.name, port: s.port, estado: h.ok ? \"ONLINE\" : \"OFFLINE\", http: h.status || \"-\" };\n",
+        "  })\n",
+        ");\n",
+        "\n",
+        "console.table(results);\n",
+        "const online = results.filter(r => r.estado === \"ONLINE\").length;\n",
+        "console.log(online + \"/\" + results.length + \" servicios activos\");\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Llamar a un MCP Tool\n",
+        "\n",
+        "Los servidores MCP usan el protocolo **JSON-RPC 2.0**. Patrón estándar para explorar tools, resources y prompts.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "// === MCP Tool Call: Listar tools del Launcher ===\n",
+        "// Requiere Launcher en puerto 3050 (Task: MCP: Start [Launcher])\n",
+        "\n",
+        "const tools = await mcpRequest(3050, \"tools/list\");\n",
+        "\n",
+        "if (tools) {\n",
+        "  const toolList = tools?.result?.tools ?? [];\n",
+        "  console.log(toolList.length + \" tools disponibles en Launcher (3050):\");\n",
+        "  console.table(\n",
+        "    toolList.slice(0, 15).map(t => ({\n",
+        "      name: t.name,\n",
+        "      description: (t.description ?? \"\").slice(0, 70)\n",
+        "    }))\n",
+        "  );\n",
+        "  if (toolList.length > 15) console.log(\"... y \" + (toolList.length - 15) + \" mas.\");\n",
+        "}\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Leer el Workspace\n",
+        "\n",
+        "El REPL tiene acceso completo al sistema de archivos. Útil para inspeccionar configuraciones.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "// === Leer tasks.json (JSONC — con comentarios) ===\n",
+        "const tasksPath = path.join(WORKSPACE, \".vscode\", \"tasks.json\");\n",
+        "\n",
+        "if (fs.existsSync(tasksPath)) {\n",
+        "  const raw = fs.readFileSync(tasksPath, \"utf-8\");\n",
+        "  const clean = raw.replace(/\\/\\/[^\\n]*/g, \"\").replace(/\\/\\*[\\s\\S]*?\\*\\//g, \"\");\n",
+        "  const config = JSON.parse(clean);\n",
+        "  const labels = (config.tasks ?? []).map(t => t.label).filter(Boolean);\n",
+        "  console.log(labels.length + \" tasks en .vscode/tasks.json:\");\n",
+        "  const grouped = {};\n",
+        "  for (const label of labels) {\n",
+        "    const prefix = label.split(\":\")[0];\n",
+        "    if (!grouped[prefix]) grouped[prefix] = [];\n",
+        "    grouped[prefix].push(label);\n",
+        "  }\n",
+        "  console.table(\n",
+        "    Object.entries(grouped).map(([prefix, tasks]) => ({\n",
+        "      grupo: prefix, count: tasks.length, ejemplos: tasks.slice(0, 2).join(\", \")\n",
+        "    }))\n",
+        "  );\n",
+        "} else { console.warn(\"tasks.json no encontrado en:\", tasksPath); }\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Ejecutar Comandos del Sistema\n",
+        "\n",
+        "Acceso a child_process para ejecutar comandos de terminal desde el REPL.\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "javascript",
+      "source": [
+        "const { execSync } = require(\"child_process\");\n",
+        "\n",
+        "function runCmd(cmd) {\n",
+        "  try { return execSync(cmd, { stdio: \"pipe\", cwd: WORKSPACE }).toString().trim(); }\n",
+        "  catch (e) { return \"Error: \" + e.message.split(\"\n\")[0]; }\n",
+        "}\n",
+        "\n",
+        "const info = [\n",
+        "  { comando: \"node --version\", resultado: runCmd(\"node --version\") },\n",
+        "  { comando: \"npm --version\",  resultado: runCmd(\"npm --version\") },\n",
+        "  { comando: \"git log --oneline -1\", resultado: runCmd(\"git log --oneline -1\") },\n",
+        "];\n",
+        "console.table(info);\n"
+      ],
+      "outputs": []
+    },
+    {
+      "language": "markdown",
+      "source": [
+        "## Proximos Pasos\n",
+        "\n",
+        "### Notebooks disponibles\n",
+        "| Notebook | Descripcion |\n",
+        "|----------|-------------|\n",
+        "| panel-control.nnb | Dashboard completo de todos los servicios |\n",
+        "\n",
+        "### Prompts para generar mas notebooks\n",
+        "| Prompt | Descripcion |\n",
+        "|--------|-------------|\n",
+        "| /panel-control-tasks | Regenerar panel de control desde tasks.json |\n",
+        "| /demo-mcp-gallery | Notebook de exploracion MCPGallery |\n",
+        "| /demo-bothub-sdk | Notebook de demo BotHubSDK + IACM |\n",
+        "| /diagnostico-stack | Diagnostico exhaustivo del stack completo |\n",
+        "| /crear-notebook | Crear un notebook personalizado |\n"
+      ],
+      "outputs": []
+    }
+  ]
+}
