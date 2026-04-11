@@ -1,0 +1,123 @@
+{
+    "cells": [
+        {
+            "language": "python",
+            "source": [
+                "# Socket Mesh Monitor — Demo SDK\n\n> **Plugin**: nodejs-notebooks | **SDK**: `@alephscript/mcp-core-sdk` (file:.tgz) | **Puerto**: 3099\n\nNotebook para crear un servidor `SocketIoMeshLogics`, monitorizar sus rutas REST\ny registrar un cliente `AlephScriptClient` como master de un room con capabilities.\n\n## Rutas REST del mesh\n\n| Ruta | Método | Descripción |\n|------|--------|-------------|\n| `/` | GET | Info del servidor |\n| `/mesh` | GET | Estado completo |\n| `/mesh/health` | GET | Uptime, rooms activas, sockets conectados |\n| `/mesh/rooms` | GET | Rooms con master y capabilities |\n| `/mesh/capabilities` | GET | Todas las capabilities del mesh |\n| `/mesh/invoke/:room` | POST | Invocar capability en un room |\n\n## Orden de ejecución\n\n**Ejecutar celdas de arriba a abajo (Shift+Enter).** Las variables persisten entre celdas."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 1 — Configurar entorno\n\nDefine rutas, puerto y la función `getRoute()`. **Ejecutar siempre primero.**"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// === SETUP — ejecutar primero ===\nconst path = require('path');\nconst fs   = require('fs');\nconst { execSync }    = require('child_process');\nconst { createRequire } = require('module');\n\nconst WORKSPACE  = process.env.WORKSPACE_FOLDER ?? path.resolve('../../../..');\nconst SDK_ROOT   = path.join(WORKSPACE, 'MCPGallery/mcp-core-sdk');\nconst TGZ        = path.join(SDK_ROOT, 'alephscript-mcp-core-sdk-1.3.0.tgz');\nconst NB_MODULES = path.join(WORKSPACE, 'ARCHIVO/PLUGINS/NODEJS_NOTEBOOKS/.nb-modules');\nconst MESH_PORT  = 3099;\n\n// Helper reutilizable para todas las celdas\nasync function getRoute(routePath, timeout = 3000) {\n  const ctrl = new AbortController();\n  const t = setTimeout(() => ctrl.abort(), timeout);\n  try {\n    const r = await fetch(`http://localhost:${MESH_PORT}${routePath}`, { signal: ctrl.signal });\n    clearTimeout(t);\n    const data = await r.json();\n    return { path: routePath, status: r.status, ok: r.ok, data };\n  } catch (e) {\n    clearTimeout(t);\n    return { path: routePath, status: 0, ok: false, error: e.message };\n  }\n}\n\nconst tgzOk = fs.existsSync(TGZ);\nconsole.log('WORKSPACE :', WORKSPACE);\nconsole.log('TGZ       :', TGZ);\nconsole.log('TGZ existe:', tgzOk ? '✅' : '❌  — ejecutar en terminal: cd MCPGallery/mcp-core-sdk && npx tsc && npm pack');\nconsole.log('NB_MODULES:', NB_MODULES);\nconsole.log('MESH_PORT :', MESH_PORT);"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 2 — Instalar SDK desde `.tgz`\n\nInstala `@alephscript/mcp-core-sdk` y sus dependencias en `.nb-modules/`.\nSi el `.tgz` no existe, compila y empaqueta el SDK automáticamente.\nSolo repite `npm install` si el SDK no está ya instalado."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Recompilar y empaquetar SDK si el .tgz no existe\nif (!fs.existsSync(TGZ)) {\n  console.log('🔨 .tgz no encontrado — compilando y empaquetando SDK...');\n  execSync('npx tsc', { cwd: SDK_ROOT, stdio: 'inherit' });\n  execSync('npm pack --pack-destination .', { cwd: SDK_ROOT, stdio: 'inherit' });\n  console.log('✅ SDK compilado y empaquetado en', TGZ);\n}\n\n// Instalar en .nb-modules solo si no existe\nconst sdkInstalled = path.join(NB_MODULES, 'node_modules', '@alephscript', 'mcp-core-sdk');\n\nif (!fs.existsSync(sdkInstalled)) {\n  console.log('📦 Instalando SDK en', NB_MODULES, '...');\n  if (!fs.existsSync(NB_MODULES)) fs.mkdirSync(NB_MODULES, { recursive: true });\n  fs.writeFileSync(\n    path.join(NB_MODULES, 'package.json'),\n    JSON.stringify({ name: 'nb-modules', version: '1.0.0', private: true }, null, 2)\n  );\n  execSync(\n    `npm install \"${TGZ}\" socket.io socket.io-client express cors`,\n    { cwd: NB_MODULES, stdio: 'inherit' }\n  );\n  console.log('✅ SDK instalado');\n} else {\n  console.log('✅ SDK ya instalado —', sdkInstalled);\n}\n\n// Require apuntando a .nb-modules (independiente del cwd del notebook)\nconst nbRequire = createRequire(path.join(NB_MODULES, 'package.json'));\nconsole.log('✅ nbRequire listo para cargar módulos desde .nb-modules');"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 3 — Arrancar el servidor mesh\n\nInstancia `SocketIoMeshLogics` (extends `SocketIoMesh`) y llama `.init(3099)`.\nEl servidor expone Express + Socket.IO en ese puerto con todas las rutas `/mesh/*`.\nEspera activamente a que responda antes de continuar."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Arrancar SocketIoMeshLogics en puerto 3099\nconst { SocketIoMeshLogics } = nbRequire('@alephscript/mcp-core-sdk');\n\nconst mesh = new SocketIoMeshLogics();\nawait mesh.init(MESH_PORT);\n\n// Polling hasta que el servidor responda (máx 3s)\nlet serverReady = false;\nfor (let i = 0; i < 15; i++) {\n  const h = await getRoute('/');\n  if (h.ok) { serverReady = true; break; }\n  await new Promise(r => setTimeout(r, 200));\n}\n\nif (serverReady) {\n  console.log(`✅ Servidor listo en http://localhost:${MESH_PORT}`);\n  const routes = ['GET /', 'GET /mesh', 'GET /mesh/health', 'GET /mesh/rooms',\n                  'GET /mesh/capabilities', 'POST /mesh/invoke/:room'];\n  routes.forEach(r => console.log(' ', r));\n} else {\n  console.error('❌ El servidor no respondió en 3s. Revisar logs.');\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 4 — Monitorizar rutas REST (estado inicial)\n\nConsulta todas las rutas del mesh antes de conectar clientes.\nRooms y capabilities deben estar vacíos en este punto."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Consultar todas las rutas del mesh\nconst ROUTES = ['/', '/mesh', '/mesh/health', '/mesh/rooms', '/mesh/capabilities'];\n\nfor (const route of ROUTES) {\n  const result = await getRoute(route);\n  const icon = result.ok ? '🟢' : '🔴';\n  console.log(`\\n${icon} GET ${route}  →  HTTP ${result.status}`);\n  if (result.ok) {\n    console.log(JSON.stringify(result.data, null, 2));\n  } else {\n    console.error('  Error:', result.error);\n  }\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 5 — Conectar un cliente al namespace `/runtime`\n\n`SocketClient` crea el socket con `autoConnect = false` para controlar el handshake.\nAl conectar, el base `SocketClient` auto-emite `CLIENT_REGISTER` y `CLIENT_SUSCRIBE`.\nLuego llamamos manualmente `subscribeRoom()` y `handleRoom()` para nuestro room específico."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Crear cliente (autoConnect=false para handshake manual)\nconst { AlephScriptClient } = nbRequire('@alephscript/mcp-core-sdk');\n\nconst client = new AlephScriptClient(\n  'NB_CLIENT',\n  `http://localhost:${MESH_PORT}`,\n  '/runtime',\n  false  // controlamos la conexión manualmente\n);\n\n// Escuchar eventos para saber cuándo está conectado\nlet clientConnected = false;\nclient.io.on('connect',    () => { clientConnected = true;  console.log('🔌 Socket conectado, id:', client.io.id); });\nclient.io.on('disconnect', () => { clientConnected = false; console.log('🔌 Socket desconectado'); });\n\n// Iniciar conexión\nclient.io.connect();\n\n// Esperar confirmación de conexión (máx 3s)\nfor (let i = 0; i < 15; i++) {\n  if (clientConnected) break;\n  await new Promise(r => setTimeout(r, 200));\n}\n\nif (!clientConnected) {\n  console.error('❌ El cliente no pudo conectarse. ¿El servidor del Paso 3 está activo?');\n} else {\n  // Registrar y unirse al room\n  client.register(client.register_data);\n  await new Promise(r => setTimeout(r, 200));\n\n  client.subscribeRoom('NB_DEMO_ROOM');\n  await new Promise(r => setTimeout(r, 200));\n\n  console.log(`✅ Cliente \"${client.name}\" conectado y unido a NB_DEMO_ROOM`);\n}"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 6 — Anunciarse como master con capabilities\n\n`handleRoom()` emite `ROOM_MESSAGE { event: 'MAKE_MASTER', room, data: { features } }`.\nEl servidor lo procesa en `SocketServer.declareMasterOfARoom()` (actualiza `rooms` map)\ny en `SocketIoMeshLogics.registerRoomMaster()` (guarda capabilities para la API REST).\nDespués `/mesh/rooms` y `/mesh/capabilities` deben reflejar el cambio."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Anunciarse como master del room con capabilities\nclient.handleRoom(['PING', 'ECHO', 'STATUS'], 'NB_DEMO_ROOM');\nawait new Promise(r => setTimeout(r, 500));\n\n// Re-consultar el mesh para ver el room registrado\nconst rooms = await getRoute('/mesh/rooms');\nconst caps  = await getRoute('/mesh/capabilities');\n\nconsole.log('\\n=== /mesh/rooms (tras MAKE_MASTER) ===');\nconsole.log(JSON.stringify(rooms.data, null, 2));\n\nconsole.log('\\n=== /mesh/capabilities ===');\nconsole.log(JSON.stringify(caps.data, null, 2));\n\nconst health = await getRoute('/mesh/health');\nconsole.log('\\n=== /mesh/health ===');\nconsole.table([health.data]);"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Paso 7 — Invocar una capability vía REST\n\n`POST /mesh/invoke/:room` llama a `invokeCapability()` en el servidor.\nSi la capability existe, emite `GET_PING` al namespace `/runtime` apuntando al room.\nEl master del room (`NB_CLIENT`) recibiría el evento. Aquí lo escuchamos en el cliente.\n\nTambién probamos invocar una capability no registrada para ver el error 400."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Escuchar el evento que el servidor emitirá al invocar la capability\nclient.io.on('GET_PING', (payload) => {\n  console.log('📨 NB_CLIENT recibió GET_PING:', JSON.stringify(payload));\n  // En producción, el master respondería:\n  // client.room('SET_PING', { result: 'pong', ts: Date.now() }, 'NB_DEMO_ROOM');\n});\n\n// Invocar PING (capability registrada)\nconst res1 = await fetch(\n  `http://localhost:${MESH_PORT}/mesh/invoke/NB_DEMO_ROOM`,\n  {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ capability: 'PING', payload: { from: 'notebook', ts: Date.now() } })\n  }\n);\nconst data1 = await res1.json();\nconsole.log(`\\nPOST /mesh/invoke/NB_DEMO_ROOM { capability: 'PING' }  →  HTTP ${res1.status}`);\nconsole.log(JSON.stringify(data1, null, 2));\n\nawait new Promise(r => setTimeout(r, 300)); // dar tiempo al evento GET_PING\n\n// Invocar UNKNOWN (capability no registrada → 400)\nconst res2 = await fetch(\n  `http://localhost:${MESH_PORT}/mesh/invoke/NB_DEMO_ROOM`,\n  {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify({ capability: 'UNKNOWN' })\n  }\n);\nconst data2 = await res2.json();\nconsole.log(`\\nPOST /mesh/invoke/NB_DEMO_ROOM { capability: 'UNKNOWN' }  →  HTTP ${res2.status}`);\nconsole.log(JSON.stringify(data2, null, 2));"
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "## Cleanup — Cerrar cliente y servidor\n\nDesconectar el cliente Socket.IO y cerrar el servidor HTTP + Socket.IO.\nDespués de esta celda el puerto 3099 queda libre."
+            ],
+            "outputs": []
+        },
+        {
+            "language": "python",
+            "source": [
+                "// Desconectar cliente\ntry {\n  client.disconnect();\n  console.log('🔌 Cliente desconectado');\n} catch (e) {\n  console.log('(Cliente ya desconectado)');\n}\n\n// Cerrar Socket.IO (cierra todas las conexiones)\nawait new Promise((resolve) => {\n  try {\n    mesh.as.io.close(() => {\n      console.log('🛑 Socket.IO cerrado');\n      resolve();\n    });\n  } catch (e) {\n    console.log('(Socket.IO ya cerrado)');\n    resolve();\n  }\n});\n\n// Cerrar servidor HTTP\nawait new Promise((resolve, reject) => {\n  mesh.server.close((err) => {\n    if (err) { console.error('Error cerrando servidor:', err.message); reject(err); }\n    else { console.log('🛑 Servidor HTTP cerrado'); resolve(); }\n  });\n});\n\nconsole.log(`\\n✅ Cleanup completo. Puerto ${MESH_PORT} liberado.`);"
+            ],
+            "outputs": []
+        }
+    ]
+}
