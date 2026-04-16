@@ -51,6 +51,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `StateMachine` — State Machine MCP Driver
    - `AgentLoreSDK` — Agent Lore SDK (plantillas de agentes)
    - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
+   - `UISDKThreejs` — UI SDK Three.js (gamificación 3D)
+   - `LoreSDK` — SDK editorial para-la-voz (análisis corrientes + cristalización @voz)
 
 ### Output esperado
 
@@ -76,6 +78,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: StateMachine
 [setup] Configurando submódulo: AgentLoreSDK
 [setup] Configurando submódulo: BotHubSDK
+[setup] Configurando submódulo: UISDKThreejs
+[setup] Configurando submódulo: LoreSDK
 [setup] ✔ Setup completado 
 
 Submódulos configurados:

@@ -66,6 +66,12 @@ SUBMODULE_AGENT_LORE_SDK_URL="https://github.com/escrivivir-co/mcp-agent-lore-sd
 SUBMODULE_BOT_HUB_SDK_DIR="$ROOT_DIR/BotHubSDK"
 SUBMODULE_BOT_HUB_SDK_URL="https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk.git"
 
+SUBMODULE_UISDK_THREEJS_DIR="$ROOT_DIR/UISDKThreejs"
+SUBMODULE_UISDK_THREEJS_URL="https://github.com/escrivivir-co/threejs-gamify-ui.git"
+
+SUBMODULE_LORESDK_DIR="$ROOT_DIR/LoreSDK"
+SUBMODULE_LORESDK_URL="https://github.com/escrivivir-co/para-la-voz-sdk.git"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -93,7 +99,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/prompts": true,
     ".github/plugins/arg-board-app/prompts": true,
     ".github/plugins/hypergraph-editor/prompts": true,
-    ".github/plugins/bot-hub-sdk/prompts": true
+    ".github/plugins/bot-hub-sdk/prompts": true,
+    ".github/plugins/lore-sdk/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
@@ -115,7 +122,8 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/instructions": true,
     ".github/plugins/arg-board-app/instructions": true,
     ".github/plugins/hypergraph-editor/instructions": true,
-    ".github/plugins/bot-hub-sdk/instructions": true
+    ".github/plugins/bot-hub-sdk/instructions": true,
+    ".github/plugins/lore-sdk/instructions": true
   },
   "chat.useNestedAgentsMdFiles": true,
   "chat.promptFilesRecommendations": true
@@ -210,6 +218,8 @@ setup_submodule "$SUBMODULE_COPILOT_ENGINE_DIR" "$SUBMODULE_COPILOT_ENGINE_URL" 
 setup_submodule "$SUBMODULE_STATE_MACHINE_DIR" "$SUBMODULE_STATE_MACHINE_URL" "StateMachine"
 setup_submodule "$SUBMODULE_AGENT_LORE_SDK_DIR" "$SUBMODULE_AGENT_LORE_SDK_URL" "AgentLoreSDK"
 setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
+setup_submodule "$SUBMODULE_UISDK_THREEJS_DIR" "$SUBMODULE_UISDK_THREEJS_URL" "UISDKThreejs"
+setup_submodule "$SUBMODULE_LORESDK_DIR" "$SUBMODULE_LORESDK_URL" "LoreSDK"
 
 echo
 echo "Siguientes pasos sugeridos:"
