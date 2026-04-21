@@ -11,6 +11,13 @@ Mi lectura operativa es esta:
 - RETRO devuelve `ACKNOWLEDGE` y se abre una ronda de `QUESTION -> ANSWER` para refinement
 - el resultado formal esperado es un `REPORT`; si luego quereis editarlo como white paper, eso ya seria una capa posterior
 
+Para ubicarse rapido, yo os daria tres referencias de entrada:
+- vision global del proceso completo: https://escrivivir-co.github.io/para-la-voz-sdk/engine/
+- landing publica del SDK hoy visible en gh-pages: https://escrivivir-co.github.io/para-la-voz-sdk/
+- vista minima del grafo legislativo actual: `origin/mod/legislativa:DRAFTS2/grafo/` con `index.json`, `nodos.json`, `arcos.json`, `huecos.json` y `gramatica.md`
+
+Y os lo resumiria asi: hoy el grafo concreto del caso entra por `LORE_F` y corpus, vive en esos 5 ficheros JSON/markdown, y sale aguas abajo hacia `universos-sdk`. Es decir, no os estamos ensenando una pieza suelta, sino una capa intermedia de la DocumentMachineSDK completa.
+
 Para abrirla bien, yo os pediria concretar estas piezas:
 - el `thread_id` o identificador operativo de la sesion
 - el contenido minimo del `REQUEST`: tarea, contexto, deliverables y ficheros afectados

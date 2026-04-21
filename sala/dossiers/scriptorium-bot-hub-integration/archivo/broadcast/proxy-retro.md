@@ -54,6 +54,8 @@
 
 ## Punto de entrada rapido
 
+- Vision global de DocumentMachineSDK: https://escrivivir-co.github.io/para-la-voz-sdk/engine/
+- Landing publica del SDK: https://escrivivir-co.github.io/para-la-voz-sdk/
 - Mensaje vivo: https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/blob/integration/beta/scriptorium/examples/dashboard/userdata/broadcast.md
 - Historico vivo: https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/tree/integration/beta/scriptorium/examples/dashboard/userdata/history
 - Dossier canonico: https://github.com/escrivivir-co/aleph-scriptorium/tree/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration
@@ -72,6 +74,8 @@
 ## Si vienes desde un bot y necesitas conectar la sesion
 
 - Snapshot rapido del foco de trabajo: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-snapshot-ciclo-grafo.md
+- Vision global del proceso completo: https://escrivivir-co.github.io/para-la-voz-sdk/engine/
+- Landing publica del SDK hoy visible desde `mod/restitutiva`: https://escrivivir-co.github.io/para-la-voz-sdk/
 - Sala base y handshake: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/README.md
 - Activacion de Aleph y cierre atomico: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/archivo/sprint-v3/activacion-orquestador.md
 - Dossier como subcomponente de sala: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/archivo/sprint-v3/dossiers/dossier-feature-sdk/PLAN.md

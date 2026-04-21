@@ -4,6 +4,12 @@
 > No sustituye a `DOC_FACT`, a la evidencia detallada ni a los PLANes SDK.
 > Comprime en una sola vista el foco de trabajo para d1d4c y para su bot.
 
+## 0. Entrada titular para ubicarse rapido
+
+- Vision global de la DocumentMachineSDK y del proceso completo: https://escrivivir-co.github.io/para-la-voz-sdk/engine/
+- Landing publica del SDK activo: https://escrivivir-co.github.io/para-la-voz-sdk/
+- Esa landing publica hoy el mod vivo de `mod/restitutiva`; aunque RETRO no sea su destinatario natural, sirve para ver la DocumentMachineSDK como producto completo y ubicar donde cae el grafo dentro del proceso.
+
 ## 1. Sobre que vamos a trabajar
 
 - `grafo-sdk` = contrato generico del grafo en `main`: schema minimo, scaffold, convencion de ubicacion y encaje del slot grafista dentro del SDK.
@@ -29,6 +35,19 @@ lore-db-sdk -> corpus-sdk -> grafo-sdk -> universos-sdk -> cortos-sdk
 | `grafo-sdk` | `main` | contrato portable en diseno | revisar schema generico, forma minima del grafo y criterios de plausibilidad |
 | `grafo-legalista-sdk` | `mod/legislativa` | grafo operativo del caso | revisar como ese grafo concreto hereda el estandar y como se operaria sobre sus huecos y ramas |
 
+### Vista rapida tipo `ls -la` del grafo legislativo
+
+```text
+origin/mod/legislativa:DRAFTS2/grafo/
+	arcos.json        7711 B
+	gramatica.md      5819 B
+	huecos.json       2208 B
+	index.json         719 B
+	nodos.json        9282 B
+```
+
+Esos son los 5 ficheros nucleares que hoy maneja el slot grafista en el mod.
+
 ## 4. Por que hablamos de herramienta rudimentaria
 
 - En `main` el grafo sigue siendo contrato y scaffold, no pipeline cerrado.
@@ -41,6 +60,23 @@ lore-db-sdk -> corpus-sdk -> grafo-sdk -> universos-sdk -> cortos-sdk
 - Slot grafista: operativo
 - Estado del grafo: `27 nodos`, `35 arcos`, `7 huecos`, `4 ramas definidas`, `1 rama instanciada`
 - Gramatica: JSON v1.0
+
+### Snapshot rapido de `grafo-legalista-sdk`
+
+```text
+LORE_F-rev-044.md + CORPUS_PREVIEW-rev-045.md + LORE_F-02_ARTEFACTO.md
+				-> DRAFTS2/grafo/{index,nodos,arcos,huecos}.json
+				-> LORE_F-02_UNIVERSO.md
+				-> DRAFTS2/universo/
+```
+
+- Caso: `Zoowoman / caso Feo`
+- `index.json` referencia de entrada: `DRAFTS2/CORPUS_PREVIEW-rev-045.md`
+- hilo factual de entrada: `DRAFTS2/LORE_F-rev-044.md`
+- artefacto de entrada: `DRAFTS2/LORE_F-02_ARTEFACTO.md`
+- salida inmediata del grafo: `DRAFTS2/LORE_F-02_UNIVERSO.md`
+- desglose de nodos en `index.json`: `15 estado`, `5 bifurcacion`, `7 rama`
+- huecos: `7` totales, `2` abiertos, `5` resueltos
 
 ## 6. Peticion concreta a RETRO
 

@@ -9,11 +9,18 @@ RETRO parse operativo:
 - ese foco entra en un ciclo mayor: `lore-db-sdk -> corpus-sdk -> grafo-sdk -> universos-sdk -> cortos-sdk`
 - el artefacto de protocolo que se espera de RETRO es un `REPORT`, no necesariamente un white paper
 
+Entradas rapidas para ubicar la maquina completa:
+- vision global del proceso DocumentMachineSDK: https://escrivivir-co.github.io/para-la-voz-sdk/engine/
+- landing publica actual del SDK: https://escrivivir-co.github.io/para-la-voz-sdk/
+- esa landing hoy refleja `mod/restitutiva`; el grafo operativo que se quiere discutir sigue en `mod/legislativa`
+
 Snapshot minimo para Squawk:
 - `grafo-sdk` = contrato portable en `main`: schema minimo, scaffold y slot grafista previsto
 - `grafo-legalista-sdk` = nombre funcional usado en este dossier para la adaptacion del caso; en DocumentMachineSDK su pieza canonica equivalente se nombra `grafo-legislativa` y vive operativamente en `mod/legislativa`
 - upstream del grafo = `lore-db-sdk` + `corpus-sdk`
 - downstream del grafo = `universos-sdk`
+- vista minima del arbol operativo: `origin/mod/legislativa:DRAFTS2/grafo/` -> `index.json`, `nodos.json`, `arcos.json`, `huecos.json`, `gramatica.md`
+- caso y refs de entrada: `Zoowoman / caso Feo`, `LORE_F-rev-044.md`, `CORPUS_PREVIEW-rev-045.md`, `LORE_F-02_ARTEFACTO.md`
 - estado factual del grafo operativo actual = `27 nodos`, `35 arcos`, `7 huecos`, `4 ramas definidas`, `1 rama instanciada`, JSON v1.0
 - apoyo DRY completo = `retro-snapshot-ciclo-grafo.md`
 
