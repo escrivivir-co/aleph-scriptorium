@@ -63,6 +63,12 @@ SUBMODULE_STATE_MACHINE_URL="https://github.com/escrivivir-co/state-machine-mcp-
 SUBMODULE_AGENT_LORE_SDK_DIR="$ROOT_DIR/AgentLoreSDK"
 SUBMODULE_AGENT_LORE_SDK_URL="https://github.com/escrivivir-co/mcp-agent-lore-sdk.git"
 
+SUBMODULE_UI_SDK_THREEJS_DIR="$ROOT_DIR/UISDKThreejs"
+SUBMODULE_UI_SDK_THREEJS_URL="https://github.com/escrivivir-co/threejs-gamify-ui.git"
+
+SUBMODULE_DOCUMENT_MACHINE_SDK_DIR="$ROOT_DIR/DocumentMachineSDK"
+SUBMODULE_DOCUMENT_MACHINE_SDK_URL="https://github.com/escrivivir-co/para-la-voz-sdk.git"
+
 SUBMODULE_BOT_HUB_SDK_DIR="$ROOT_DIR/BotHubSDK"
 SUBMODULE_BOT_HUB_SDK_URL="https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk.git"
 
@@ -209,6 +215,8 @@ setup_submodule "$SUBMODULE_WIKI_RACER_DIR" "$SUBMODULE_WIKI_RACER_URL" "WiringA
 setup_submodule "$SUBMODULE_COPILOT_ENGINE_DIR" "$SUBMODULE_COPILOT_ENGINE_URL" "CopilotEngine"
 setup_submodule "$SUBMODULE_STATE_MACHINE_DIR" "$SUBMODULE_STATE_MACHINE_URL" "StateMachine"
 setup_submodule "$SUBMODULE_AGENT_LORE_SDK_DIR" "$SUBMODULE_AGENT_LORE_SDK_URL" "AgentLoreSDK"
+setup_submodule "$SUBMODULE_UI_SDK_THREEJS_DIR" "$SUBMODULE_UI_SDK_THREEJS_URL" "UISDKThreejs"
+setup_submodule "$SUBMODULE_DOCUMENT_MACHINE_SDK_DIR" "$SUBMODULE_DOCUMENT_MACHINE_SDK_URL" "DocumentMachineSDK"
 setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
 
 echo
@@ -227,6 +235,8 @@ echo "     cd PrologEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd TypedPromptsEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd WorkflowEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd WiringAppHypergraphEditor && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd UISDKThreejs && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd DocumentMachineSDK && git push -u origin $INTEGRATION_BRANCH"
 echo
 echo "Submódulos configurados:"
 echo "  - VsCodeExtension: Extensión VS Code / Arrakis Theater"
@@ -246,4 +256,6 @@ echo "  - WiringAppHypergraphEditor: Motor de navegación wiki-racer (WiringApp,
 echo "  - CopilotEngine: Fuente VS Code Copilot Chat (System Messaging ReadOnly)"
 echo "  - StateMachine: Gamification UI multi-platform (Console, HTML5, Blockly, ThreeJS)"
 echo "  - AgentLoreSDK: Catálogo de plantillas para Agent Creator (637+ templates)"
+echo "  - UISDKThreejs: UI ThreeJS gamificada para demos y canvas interactivo"
+echo "  - DocumentMachineSDK: SDK agéntico de análisis documental y cristalización de voz"
 echo "  - BotHubSDK: SDK plugin-based para bots Telegram + protocolo IACM v1.0"

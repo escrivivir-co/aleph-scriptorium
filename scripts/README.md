@@ -50,6 +50,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `CopilotEngine` — Copilot Chat Engine (fork)
    - `StateMachine` — State Machine MCP Driver
    - `AgentLoreSDK` — Agent Lore SDK (plantillas de agentes)
+    - `UISDKThreejs` — UI ThreeJS gamificada para demos y canvas interactivo
+    - `DocumentMachineSDK` — SDK agéntico de análisis documental y cristalización de voz
    - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
 
 ### Output esperado
@@ -75,6 +77,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: CopilotEngine
 [setup] Configurando submódulo: StateMachine
 [setup] Configurando submódulo: AgentLoreSDK
+[setup] Configurando submódulo: UISDKThreejs
+[setup] Configurando submódulo: DocumentMachineSDK
 [setup] Configurando submódulo: BotHubSDK
 [setup] ✔ Setup completado 
 
@@ -96,6 +100,8 @@ Submódulos configurados:
   - CopilotEngine: Copilot Chat Engine (fork)
   - StateMachine: State Machine MCP Driver
   - AgentLoreSDK: Agent Lore SDK (plantillas de agentes)
+  - UISDKThreejs: UI ThreeJS gamificada para demos y canvas interactivo
+  - DocumentMachineSDK: SDK agéntico de análisis documental y cristalización de voz
   - BotHubSDK: SDK bots Telegram + protocolo IACM inter-agente
 ```
 

@@ -72,3 +72,7 @@
 [submodule "UISDKThreejs"]
 	path = UISDKThreejs
 	url = https://github.com/escrivivir-co/threejs-gamify-ui
+[submodule "DocumentMachineSDK"]
+	path = DocumentMachineSDK
+	url = https://github.com/escrivivir-co/para-la-voz-sdk.git
+	branch = integration/beta/scriptorium

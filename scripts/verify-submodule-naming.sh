@@ -5,10 +5,10 @@
 #
 # Verifica que todos los submódulos sigan la convención de naming PascalCase:
 # - MCPGallery, AAIAGallery (galerías)
-# - WorkflowEditor, BlocklyEditor, PrologEditor, etc. (editores)
-# - VibeCodingSuite, BlockchainComPort (suites/SDKs)
+# - WorkflowEditor, BlocklyEditor, PrologEditor, DocumentMachineSDK, etc. (editores/SDKs)
+# - VibeCodingSuite, BlockchainComPort, AgentLoreSDK (suites/SDKs)
 # - StreamDesktop, StreamDesktopAppCronos (desktop)
-# - VsCodeExtension (extensiones)
+# - VsCodeExtension, UISDKThreejs (extensiones/UI)
 
 set -euo pipefail
 
@@ -17,14 +17,20 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 # Lista de paths esperados (PascalCase)
 EXPECTED_PATHS=(
   "AAIAGallery"
+  "AgentLoreSDK"
   "BlockchainComPort"
   "BlocklyEditor"
+  "BotHubSDK"
+  "CopilotEngine"
+  "DocumentMachineSDK"
   "MCPGallery"
   "NovelistEditor"
   "PrologEditor"
+  "StateMachine"
   "StreamDesktop"
   "StreamDesktopAppCronos"
   "TypedPromptsEditor"
+  "UISDKThreejs"
   "VibeCodingSuite"
   "VsCodeExtension"
   "WiringAppHypergraphEditor"
@@ -38,10 +44,16 @@ LEGACY_PATTERNS=(
   "as-"
   "kick-aleph-"
   "iot-sbr-"
+  "heteronimos-semi-asistidos-sdk"
+  "mcp-agent-lore-sdk"
+  "para-la-voz-sdk"
   "mcp-novelist"
+  "state-machine-mcp-driver"
+  "threejs-gamify-ui"
   "blockly-alephscript-"
   "node-red-alephscript-"
   "vscode-alephscript-"
+  "vscode-copilot-chat"
   "wiki-racer"
 )
 
