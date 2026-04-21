@@ -28,6 +28,15 @@
 - Broadcast del 10-abr: Rabbit, Spider y Horse ya presentados como runtime unico con secuencia `INVITE -> ACCEPT -> ANNOUNCE -> PKG`.
 	https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/blob/integration/beta/scriptorium/examples/dashboard/userdata/history/broadcast-2026-04-10T22-34-12-693Z.md
 
+## Extension futura ya abierta y relevante para RETRO
+
+- El grafo que se quiere discutir con RETRO depende upstream de las piezas de `lore-db`.
+- Ese upstream hoy puede seguir leyendose en modo texto/markdown por compatibilidad, pero ya se ha abierto un track especifico para evolucionarlo a **acceso vector enhanced**.
+- La extension pendiente no sustituye el modo texto: anade una pasarela MCP para recuperar piezas, `LORE_F` y contexto relacionado con mejores capacidades de busqueda y filtrado.
+- Para RETRO esto importa porque la sesion sobre `grafo-sdk` no va a vivir sobre un store aislado: el supuesto de trabajo es que el contenido factual tendra una puerta futura via **MCP server** en Scriptorium, con datos y skill local en `DocumentMachineSDK`.
+- Dossier de referencia para esa extension futura: `sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`.
+- Espejo local del subequipo documental: `DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`.
+
 ## Caso de uso operativo propuesto
 
 - Aleph entra con `/sala-aleph activar`, carga el dossier y deja la sesion inicializada en disco.
@@ -37,12 +46,14 @@
 - Tras esas dos rondas, Rabbit emite un IACM `REQUEST` pidiendo un informe sobre como RETRO intervendria el grafo conforme al estandar.
 - RETRO devuelve `ACKNOWLEDGE`, se abre una ronda de `QUESTION -> ANSWER` para refinement y el cierre puede dejar un `REPORT` en la misma sesion o diferido.
 - Si RETRO necesita mas contexto, puede devolver una peticion reciproca en vez de forzar una conclusion prematura.
+- Cuando se explique el acceso a piezas durante esa sesion, la lectura correcta es dual: **texto compatible hoy**, **vector enhanced via MCP como extension pendiente ya planificada**.
 
 ## Protocolos IACM que se quieren fijar
 
 - Conversacion viva: `QUESTION -> ANSWER` para presentacion, aclaraciones, refinement y decisiones puntuales.
 - Solicitud de informe: `REQUEST -> ACKNOWLEDGE -> REPORT` para pedir una devolucion estructurada sobre `grafo-sdk` / `DocumentMachineSDK`.
 - El `REPORT` es el entregable de protocolo. Si luego conviene, ese `REPORT` se puede editar como white paper, pero esa edicion no es la premisa de entrada ni el bloqueo actual.
+- La devolucion de RETRO sobre el grafo debe asumir que el acceso futuro a piezas no sera solo path-a-fichero: habra una pasarela MCP para contenido lore con modo vector enhanced y fallback texto.
 
 ## Contrato de persistencia y carpetas
 
@@ -76,10 +87,12 @@
 - Snapshot rapido del foco de trabajo: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-snapshot-ciclo-grafo.md
 - Vision global del proceso completo: https://escrivivir-co.github.io/para-la-voz-sdk/engine/
 - Landing publica del SDK hoy visible desde `mod/restitutiva`: https://escrivivir-co.github.io/para-la-voz-sdk/
+- Plan de la extension pendiente `lore-db` vector enhanced: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md
 - Sala base y handshake: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/README.md
 - Activacion de Aleph y cierre atomico: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/archivo/sprint-v3/activacion-orquestador.md
 - Dossier como subcomponente de sala: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/archivo/sprint-v3/dossiers/dossier-feature-sdk/PLAN.md
 - Dossier `grafo-sdk`: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/dossiers/grafo-sdk/PLAN.md
+- Dossier espejo local de la extension pendiente: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md
 - Dossier `future-machine-sdk`: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/dossiers/future-machine-sdk/PLAN.md
 - Logs y uso de `tmp/`: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/DocumentMachineSDK/sala/dossiers/engine-plan-sdk/PLAN.md
 - Tipos IACM v1.0: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/BotHubSDK/src/core/iacm/iacm-types.ts
@@ -90,5 +103,6 @@
 
 - Validar o corregir este caso de uso de sesion, no reabrir la decision `mock crypto` / `firma real` / `staging`.
 - Aceptar o corregir la forma del primer `REQUEST` sobre `grafo-sdk` y `grafo-legalista-sdk`.
+- Tener en cuenta que el grafo depende de piezas `lore-db` y que ese acceso upstream evolucionara a una pasarela MCP vector enhanced, manteniendo modo texto por compatibilidad.
 - Indicar si el `REPORT` debe salir al cierre de la sesion o en una iteracion posterior.
 - Si hace falta, devolver una peticion reciproca de informacion a Scriptorium para completar el refinement.

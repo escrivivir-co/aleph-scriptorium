@@ -16,6 +16,13 @@
 - `grafo-legalista-sdk` = nombre funcional usado en este dossier para la adaptacion del grafo al caso legislativo. En DocumentMachineSDK, la pieza canonica equivalente vive hoy en `mod/legislativa` y el dossier SDK paralelo aparece nombrado como `grafo-legislativa`.
 - La sesion no intenta rehacer toda la future-machine. Quiere intervenir la capa grafo como herramienta todavia rudimentaria, situada entre upstream factual y downstream de instanciacion.
 
+### Ancla futura relevante para RETRO
+
+- El upstream factual del grafo depende de `lore-db-sdk`: piezas y `LORE_F`.
+- Ese acceso upstream queda ya ligado a la extension pendiente `scrum-backlog-lore-db-vector-expansion`, que abre una pasarela MCP para contenido lore.
+- Lectura correcta para RETRO: el grafo debe seguir siendo compatible con acceso texto/markdown, pero la direccion futura del SDK es **vector enhanced retrieval** sobre piezas y `LORE_F`, con fallback texto para compatibilidad.
+- Referencia del track futuro: `sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`.
+
 ## 2. El ciclo donde se inserta el grafo
 
 ```text
@@ -23,10 +30,16 @@ lore-db-sdk -> corpus-sdk -> grafo-sdk -> universos-sdk -> cortos-sdk
 ```
 
 - `lore-db-sdk` gestiona piezas y `LORE_F`; prepara la base factual.
+- `lore-db-sdk` hoy puede operar en modo texto, pero la extension pendiente anade una capa de acceso vector enhanced via MCP server para recuperar piezas, `LORE_F` y vecinos semanticos sin romper compatibilidad.
 - `corpus-sdk` anade analitica y merge acumulativo; convierte hechos en lectura estructural.
 - `grafo-sdk` articula nodos, arcos, huecos y plausibilidad; convierte datos + analitica en bifurcaciones.
 - `universos-sdk` rellena variables y elige inicializaciones; concreta ramas del grafo.
 - `cortos-sdk` produce obras derivadas; no es el foco de esta sesion.
+
+### Lectura operativa del ciclo para esta sesion
+
+- Si RETRO habla hoy de acceso a piezas, puede asumir dos modos validos: `modo texto` por ruta y `modo MCP vector enhanced` como extension futura ya planificada.
+- La intervencion sobre `grafo-sdk` deberia ser compatible con ambos, sin exigir que la capa vectorial este ya implementada para empezar el trabajo conceptual.
 
 ## 3. Doble objeto de trabajo en la sesion
 
@@ -53,6 +66,7 @@ Esos son los 5 ficheros nucleares que hoy maneja el slot grafista en el mod.
 - En `main` el grafo sigue siendo contrato y scaffold, no pipeline cerrado.
 - En `mod/legislativa` ya funciona, pero sigue acoplado a un caso, a una gramatica concreta y a agentes especificos (`@Grafista`, `@Demiurgo`).
 - La sesion con RETRO busca precisamente tender ese puente: del grafo operativo de un caso a una capa reusable del SDK.
+- Parte de ese puente ahora queda explicitado: el grafo no solo heredara markdown factual, sino una futura pasarela MCP de lore vector enhanced para consulta de piezas y `LORE_F`.
 
 ## 5. Estado factual del grafo operativo actual
 
@@ -84,6 +98,7 @@ LORE_F-rev-044.md + CORPUS_PREVIEW-rev-045.md + LORE_F-02_ARTEFACTO.md
 - Revisar el encaje del grafo operativo legislativo respecto a ese schema.
 - Proponer como trabajaria RETRO sobre nodos, arcos, huecos y plausibilidad.
 - Acordar la forma del primer `REQUEST -> ACKNOWLEDGE -> REPORT` sobre grafo.
+- Tener presente que el acceso futuro al contenido factual sera via MCP server de `lore-db`, con recuperacion vector enhanced y compatibilidad texto, para no disenar el grafo como si su upstream fuese solo fichero estatico.
 
 ## 7. Si vienes desde un bot
 
@@ -92,6 +107,7 @@ Lee esto en este orden:
 - `proxy-retro.md`
 - `doc-fact-documentmachinesdk.md`
 - `documentmachinesdk-evidencia-detallada.md`
+- `sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`
 - `DocumentMachineSDK/sala/dossiers/future-machine-sdk/PLAN.md`
 - `DocumentMachineSDK/sala/dossiers/lore-db-sdk/PLAN.md`
 - `DocumentMachineSDK/sala/dossiers/grafo-sdk/PLAN.md`
