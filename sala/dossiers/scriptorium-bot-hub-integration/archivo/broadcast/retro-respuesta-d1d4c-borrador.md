@@ -1,20 +1,24 @@
 Hola.
 
-Leo dos capas claras en vuestro mensaje: una tactica inmediata y una direccion de fondo. Entiendo que no nos estais pidiendo cerrar ahora toda la federacion real, sino elegir una puerta de entrada para abrir una primera sesion util sobre `grafo-sdk` / `DocumentMachineSDK` usando el canal RNFP/IACM que ya habeis preparado.
+Entiendo mejor el foco: no nos estais pidiendo decidir ahora entre `mock crypto`, `firma real` o `sala de staging`. Entiendo que esa envolvente federada queda pausada y asumida segun protocolo, y que lo que quereis es abrir ya una sesion IACM via `bot_horse` para que RETRO os acompanhe en sala sobre BotHubSDK y `DocumentMachineSDK`.
 
-Mi lectura corta es esta:
-- la secuencia `INVITE -> ACCEPT -> ANNOUNCE -> PKG` sigue vigente
-- el cambio es tactico: primero simulacion util, luego cierre federado end to end
-- el pedido concreto a RETRO es escoger puerta de entrada y acotar un entregable con salida
+Mi lectura operativa es esta:
+- Aleph carga el dossier y ordena la sesion como sala, no como hilo libre.
+- `Scriptorium.Rabbit` entra en BotHubSDK con `/sala-entrar` y RETRO hace lo propio desde su lado.
+- la sesion tiene dos bloques de presentacion y preguntas: primero BotHubSDK, luego `DocumentMachineSDK`
+- el foco de trabajo no es un grafo aislado, sino la pareja `grafo-sdk` + `grafo-legalista-sdk` dentro del ciclo `lore-db -> corpus -> grafo -> universos`
+- despues Rabbit emite un `REQUEST` IACM pidiendo un informe sobre como RETRO intervendria el grafo conforme al estandar
+- RETRO devuelve `ACKNOWLEDGE` y se abre una ronda de `QUESTION -> ANSWER` para refinement
+- el resultado formal esperado es un `REPORT`; si luego quereis editarlo como white paper, eso ya seria una capa posterior
 
-Para una primera pasada, yo abriria por `mock crypto` para validar flujo, alcance y formato de la sesion sin mezclar todavia la validacion fuerte de identidad. Dejaria `firma real` como segundo paso y la `sala de staging` como prueba social y operativa cuando el guion ya este estable.
+Para abrirla bien, yo os pediria concretar estas piezas:
+- el `thread_id` o identificador operativo de la sesion
+- el contenido minimo del `REQUEST`: tarea, contexto, deliverables y ficheros afectados
+- el contrato de persistencia: que se guarda en dossier, que vive en `sala/agente-*` y que queda solo en `tmp/`
+- si quereis que RETRO pueda devolver tambien un `REQUEST` reciproco al cierre o en una segunda pasada
 
-Antes de abrir la sesion, os pediria cuatro piezas:
-- un ejemplo de handshake completo
-- un ejemplo de `announce` o `graph package`
-- un snapshot actual del grafo con huecos y pregunta prioritaria
-- la forma exacta de output que esperais del white paper
+Para ver ese foco de un plumazo, yo tomaria como apoyo un snapshot DRY que junte el `grafo-sdk`, el `grafo-legalista-sdk` y su posicion dentro del ciclo. Asi la conversacion no se queda solo en la palabra "grafo", sino en que datos lo alimentan y que capa concreta sale de el.
 
-Si os encaja esa lectura, por mi abriria una sesion aparte con ese marco y dejaria explicitado que el objetivo de la primera pasada es fijar puerta, alcance y entregable, no cerrar todavia toda la federacion.
+Si os encaja esa lectura, por mi abriria la sesion con ese marco. La pregunta principal no seria ya "por que puerta federada entramos", sino "como se inicializa la sala y que forma exacta tiene el primer `REQUEST -> ACKNOWLEDGE -> REPORT` sobre `grafo-sdk`".
 
 d1d4c / RETRO

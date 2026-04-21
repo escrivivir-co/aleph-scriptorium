@@ -1,19 +1,22 @@
-Como RETRO, yo lo leería así: Aleph ya no nos está pidiendo discutir la arquitectura en abstracto; nos está pidiendo escoger una puerta de entrada operativa para abrir una sesión útil. La idea fuerza de corto plazo es que su stack ya se presenta como suficientemente estable y probado como para dejar la teoría en segundo plano y pasar a una maniobra concreta, con foco en grafo-sdk y DocumentMachineSDK.
+Como RETRO, yo lo leeria asi: no me estais pidiendo elegir ahora la puerta `mock crypto` / `firma real` / `sala de staging`. Entiendo que esa envolvente federada queda fuera de foco en este mensaje y que lo que quereis es abrir ya una sesion IACM via Horse con protocolo de sala, dossier cargado y cierre archivado.
 
-Ideas fuerza que me quedarían:
-- La federación real no se abandona, pero se pospone tácticamente; ahora proponen una simulación útil antes del end to end.
-- El pedido principal a RETRO no es “opinad sobre todo”, sino “elegid cómo arrancamos”: mock crypto, firma real o sala de staging.
-- Las tres puertas no son equivalentes: mock crypto valida la coreografía del handshake, firma real valida identidad y consentimiento, y sala de staging valida la operación social en grupo y el riesgo de loops.
-- Quieren a RETRO como peer asesor, no solo como receptor del broadcast: el siguiente artefacto esperado es un white paper sobre cómo maximizar el grafo.
-- El mensaje transmite madurez operativa: build, tests, dashboard y arranque en mock ya estarían resueltos, así que esperan una siguiente conversación con output.
+Ideas fuerza que me quedarian:
+- la sesion tiene forma de sala, no solo de hilo libre
+- Aleph carga el dossier, ordena los turnos y deja el estado en disco
+- `Scriptorium.Rabbit` y RETRO entran con `/sala-entrar` desde sus lados
+- hay dos bloques de presentacion y preguntas: BotHubSDK y `DocumentMachineSDK`
+- la refinacion viva usa `QUESTION -> ANSWER`
+- el pedido formal a RETRO usa `REQUEST -> ACKNOWLEDGE -> REPORT`
+- el `REPORT` es el entregable de protocolo; un white paper seria, como mucho, una edicion posterior de ese `REPORT`
+- la sesion puede cerrarse con `REPORT` emitido, diferido o con una peticion reciproca de RETRO
 
-Lo que entendería es esto: quieren usar el mismo canal RNFP/IACM ya preparado para abrir una sesión acotada y productiva, no para reabrir el debate general. El foco inmediato no es “cerremos toda la federación”, sino “hagamos una primera sesión que produzca algo útil y nos acerque a la federación real”. También vería un riesgo: en el mismo mensaje mezclan despliegue, protocolo y asesoría de grafo; si RETRO no recorta alcance, la próxima sesión puede dispersarse.
+Lo que entenderia es esto: quereis usar la federacion simulada como envolvente ya asumida para trabajar ahora sobre el caso de uso real. Ese caso de uso es una sesion de sala sobre `grafo-sdk` / `DocumentMachineSDK`, apoyada por BotHubSDK, en la que primero se comparte contexto y luego Rabbit pide a RETRO un informe de intervencion del grafo conforme al estandar. Si hace falta refinement, no se resuelve inventando otro next step de infraestructura, sino abriendo una ronda adicional de preguntas IACM.
 
-Los próximos pasos que daría serían estos:
-1. Responder afirmativamente, pero acotando el objetivo: primera sesión para validar la puerta de entrada y fijar el encargo del white paper, no para cerrar toda la federación.
-2. Elegir mock crypto para la primera pasada si el objetivo es velocidad y validar flujo. Si lo que quieren validar de verdad es soberanía, identidad y confianza, entonces iría a firma real. La sala de staging la dejaría como segunda prueba, cuando el guion ya esté claro.
-3. Pedir antes de la sesión cuatro insumos mínimos: un ejemplo de handshake completo, un ejemplo del anuncio o paquete de grafo, el snapshot actual del grafo con sus huecos, y la pregunta exacta que esperan que RETRO responda.
-4. Cerrar la sesión con un output pequeño y verificable: puerta elegida, alcance del white paper, responsables y fecha del siguiente intercambio.
-5. Devolver una advertencia importante: con mock crypto pueden validar flujo, pero no pueden tomar esa prueba como validación real de identidad criptográfica.
+Los proximos pasos que daria serian estos:
+1. Aceptar el caso de uso y fijar el dossier y el hilo operativo de la sesion.
+2. Pedir el `REQUEST` inicial con forma IACM real: `task`, `context`, `deliverables` y `files_affected`.
+3. Confirmar el contrato de persistencia: que queda en dossier, que vive en `sala/agente-*` y que puede quedarse solo en `tmp/`.
+4. Abrir la ronda `QUESTION -> ANSWER` para refinement sobre BotHubSDK y `DocumentMachineSDK`.
+5. Cerrar dejando un `ACKNOWLEDGE` con ETA de `REPORT`, o el `REPORT` mismo si la sesion ya llega a ese punto.
 
-Si quieres, te redacto ahora mismo la respuesta exacta que enviaría d1d4c, o una versión en voz de Squawk_RetroBot.
+Eso es lo que yo leeria antes de responder.
