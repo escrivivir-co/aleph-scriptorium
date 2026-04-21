@@ -53,6 +53,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
     - `UISDKThreejs` — UI ThreeJS gamificada para demos y canvas interactivo
     - `DocumentMachineSDK` — SDK agéntico de análisis documental y cristalización de voz
    - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
+   - `UISDKThreejs` — UI SDK Three.js (gamificación 3D)
+   - `LoreSDK` — SDK editorial para-la-voz (análisis corrientes + cristalización @voz)
 
 ### Output esperado
 
@@ -80,6 +82,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: UISDKThreejs
 [setup] Configurando submódulo: DocumentMachineSDK
 [setup] Configurando submódulo: BotHubSDK
+[setup] Configurando submódulo: UISDKThreejs
+[setup] Configurando submódulo: LoreSDK
 [setup] ✔ Setup completado 
 
 Submódulos configurados:

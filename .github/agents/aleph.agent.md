@@ -48,6 +48,10 @@ handoffs:
     agent: plugin_ox_consejoasesor
     prompt: "Ejecuta pipeline de produccion de relatos."
     send: false
+  - label: "[LORE] Crear o alimentar una Voz editorial"
+    agent: plugin_ox_loresdk
+    prompt: "Accede al SDK editorial para-la-voz. Crear voces, alimentar corpus, publicar catálogos."
+    send: false
   - label: 🎬 Lanzar servidores demo
     agent: Ox
     prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales.
@@ -140,6 +144,7 @@ Principales:
 - `@plugin_ox_consejoasesor` — Consejo Asesor ONFALO (14 agentes, 7 modos, pipeline relato)
 - `@plugin_ox_bothubsdk` — SDK bots Telegram + protocolo IACM inter-agente
 - `@plugin_ox_nodejsnotebooks` — Notebooks interactivos .nnb (MCPGallery, BotHubSDK, panel control)
+- `@plugin_ox_loresdk` — SDK editorial para-la-voz (análisis corrientes + cristalización @voz)
 
 ---
 

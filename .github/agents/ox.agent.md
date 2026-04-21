@@ -92,6 +92,10 @@ handoffs:
     agent: Ox
     prompt: Analiza un bridge específico para detectar si está dilapidando tokens o fuera de scope.
     send: false
+  - label: Invocar bridge LoreSDK
+    agent: plugin_ox_loresdk
+    prompt: Accede al plugin LoreSDK para análisis editorial y cristalización de Voces desde corpus ideológico.
+    send: false
 ---
 
 # Agente: Ox (Oráculo del Scriptorium)

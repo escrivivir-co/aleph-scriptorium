@@ -963,6 +963,45 @@
           "agent": "NodejsNotebooks"
         }
       ]
+    },
+    "lore-sdk": {
+      "name": "LoreSDK — SDK Editorial para Voces",
+      "version": "1.0.0",
+      "description": "SDK editorial para análisis de corrientes ideológicas y cristalización de Voces generativas. Patrón main→mod. 4 agentes core (@bartleby, @archivero, @cristalizador, @portal-editorial) + @voz (mod). Corpus acumulativo, nick por corriente, catálogo Jekyll.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-04-16T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 3,
+      "data_directory": "ARCHIVO/PLUGINS/LORE_SDK/",
+      "bridge_agent": "plugin_ox_loresdk",
+      "dependencies": [],
+      "optional_dependencies": ["consejo-asesor", "gh-pages", "agent-creator"],
+      "submodule": "LoreSDK",
+      "submodule_url": "https://github.com/escrivivir-co/para-la-voz-sdk.git",
+      "submodule_branch": "main",
+      "handoffs": [
+        {
+          "label": "Crear nueva Voz",
+          "agent": "LoreSDK"
+        },
+        {
+          "label": "Alimentar corpus",
+          "agent": "LoreSDK"
+        },
+        {
+          "label": "Generar poema",
+          "agent": "LoreSDK"
+        },
+        {
+          "label": "Publicar catálogo",
+          "agent": "LoreSDK"
+        },
+        {
+          "label": "Ver estado del corpus",
+          "agent": "LoreSDK"
+        }
+      ]
     }
   }
 }

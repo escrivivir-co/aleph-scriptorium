@@ -76,3 +76,7 @@
 	path = DocumentMachineSDK
 	url = https://github.com/escrivivir-co/para-la-voz-sdk.git
 	branch = integration/beta/scriptorium
+[submodule "LoreSDK"]
+	path = LoreSDK
+	url = https://github.com/escrivivir-co/para-la-voz-sdk.git
+	branch = main
