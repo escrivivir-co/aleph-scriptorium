@@ -25,40 +25,40 @@
 
 - Mensaje vivo: https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/blob/integration/beta/scriptorium/examples/dashboard/userdata/broadcast.md
 - Historico vivo: https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/tree/integration/beta/scriptorium/examples/dashboard/userdata/history
-- Dossier canonico: https://github.com/escrivivir-co/aleph-scriptorium/tree/main/sala/dossiers/scriptorium-bot-hub-integration
-- Archivo de soporte: https://github.com/escrivivir-co/aleph-scriptorium/tree/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast
+- Dossier canonico: https://github.com/escrivivir-co/aleph-scriptorium/tree/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration
+- Archivo de soporte: https://github.com/escrivivir-co/aleph-scriptorium/tree/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast
 
 ## Si d1d4c quiere contrastar entendimiento antes de responder
 
-- Lectura operativa verbatim esperada: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-lectura-operativa-verbatim.md
-- Plantilla de respuesta humana d1d4c: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-respuesta-d1d4c-borrador.md
-- Plantilla de parse y respuesta Squawk_RetroBot: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-respuesta-squawk-borrador.md
+- Lectura operativa verbatim esperada: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-lectura-operativa-verbatim.md
+- Plantilla de respuesta humana d1d4c: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-respuesta-d1d4c-borrador.md
+- Plantilla de parse y respuesta Squawk_RetroBot: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/retro-respuesta-squawk-borrador.md
 - Estas tres piezas sirven para que d1d4c compare su lectura con la respuesta esperada mientras Squawk procesa el hilo con mas carga operativa.
 
 ## Si vienes de coordinacion o producto
 
-- Contexto ejecutivo del sprint: https://github.com/escrivivir-co/aleph-scriptorium/tree/main/sala/dossiers/scriptorium-bot-hub-integration
-- Welcome externo para celdas y agentes: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/WELCOME-EXTERNOS.md
-- Cierre de absorcion y cleanup git: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/cierre-git/README.md
+- Contexto ejecutivo del sprint: https://github.com/escrivivir-co/aleph-scriptorium/tree/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration
+- Welcome externo para celdas y agentes: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/WELCOME-EXTERNOS.md
+- Cierre de absorcion y cleanup git: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/cierre-git/README.md
 
 ## Si vienes de operaciones o despliegue
 
-- Pack factual de BotHubSDK: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/bot-fact-bothubsdk.md
+- Pack factual de BotHubSDK: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/bot-fact-bothubsdk.md
 - Repo y rama viva del mensaje: https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/tree/integration/beta/scriptorium
 - Broadcast activo en dashboard: https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk/blob/integration/beta/scriptorium/examples/dashboard/userdata/broadcast.md
 
 ## Si vienes de arquitectura, grafo o pipeline
 
-- Pack factual de DocumentMachineSDK: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/doc-fact-documentmachinesdk.md
-- Evidencia detallada de ramas y slot grafista: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/documentmachinesdk-evidencia-detallada.md
-- Marco editorial de simulacion federada: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/marco-simulacion-iacm.md
-- Mini guion IACM: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/guion-iacm.md
+- Pack factual de DocumentMachineSDK: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/doc-fact-documentmachinesdk.md
+- Evidencia detallada de ramas y slot grafista: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/documentmachinesdk-evidencia-detallada.md
+- Marco editorial de simulacion federada: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/marco-simulacion-iacm.md
+- Mini guion IACM: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast/guion-iacm.md
 
 ## Si vienes de onboarding o trabajo compartido
 
-- Archivo de soporte completo: https://github.com/escrivivir-co/aleph-scriptorium/tree/main/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast
-- Dossier vivo del track: https://github.com/escrivivir-co/aleph-scriptorium/tree/main/sala/dossiers/scriptorium-bot-hub-integration
-- Welcome portable para externos: https://github.com/escrivivir-co/aleph-scriptorium/blob/main/sala/dossiers/scriptorium-bot-hub-integration/WELCOME-EXTERNOS.md
+- Archivo de soporte completo: https://github.com/escrivivir-co/aleph-scriptorium/tree/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/archivo/broadcast
+- Dossier vivo del track: https://github.com/escrivivir-co/aleph-scriptorium/tree/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration
+- Welcome portable para externos: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/WELCOME-EXTERNOS.md
 
 ## Lo que esperamos de RETRO
 
