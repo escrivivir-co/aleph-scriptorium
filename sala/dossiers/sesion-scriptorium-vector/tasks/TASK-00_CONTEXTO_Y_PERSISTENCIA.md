@@ -9,7 +9,7 @@
 
 1. `.github/skills/dossier-feature/SKILL.md` — protocolo canónico del dossier
 2. `.github/prompts/dossier.prompt.md` — activación de dossiers
-3. `plan.md` — referencia bruta de sesión
+3. `sala/dossiers/sesion-scriptorium-vector/ref/PLAN-MD-BRUTO-VERBATIM.md` — referencia bruta de sesión preservada verbatim
 4. `sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`
 5. `sala/dossiers/vector-machine/PLAN.md`
 6. `DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`
@@ -28,4 +28,4 @@ Congelar la forma de la sesión vectorial como dossier paraguas: entrada bruta, 
 
 ## Criterio de aceptación
 
-Otra persona puede retomar la línea de trabajo leyendo este dossier y entender en pocos minutos cómo se relacionan `plan.md` y los tres dossiers obligatorios.
+Otra persona puede retomar la línea de trabajo leyendo este dossier y entender en pocos minutos cómo se relacionan el plan bruto archivado y los tres dossiers obligatorios.

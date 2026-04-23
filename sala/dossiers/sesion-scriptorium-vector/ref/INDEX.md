@@ -5,7 +5,7 @@
 
 ## 1. Referencia bruta de origen
 
-- `plan.md` — árbol-grafo, intención del PO y contexto bruto de la línea de trabajo.
+- `sala/dossiers/sesion-scriptorium-vector/ref/PLAN-MD-BRUTO-VERBATIM.md` — copia literal del antiguo plan de raíz, preservada como ancla de entrada y trazabilidad.
 
 ## 2. Dossiers obligatorios del ecosistema
 

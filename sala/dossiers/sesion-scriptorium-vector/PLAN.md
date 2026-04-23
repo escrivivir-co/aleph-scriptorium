@@ -6,23 +6,23 @@
 
 ## 1. Contexto
 
-Este dossier existe para absorber el `PLAN.md` bruto de la raíz como referencia de sesión y convertirlo en una capa de enlace persistente entre los frentes ya abiertos. No es un cuarto dossier técnico de implementación, ni sustituye los dossiers ya vivos; su trabajo es unirlos, fijar ownership y dejar una puerta de reentrada limpia para que otra ventana, otro Aleph o un futuro `Ox.Cristalizador` retomen el tema sin depender de la conversación.
+Este dossier existe para absorber el antiguo `plan.md` bruto de la raíz, ya archivado verbatim en `ref/PLAN-MD-BRUTO-VERBATIM.md`, y convertirlo en una capa de enlace persistente entre los frentes ya abiertos. No es un cuarto dossier técnico de implementación, ni sustituye los dossiers ya vivos; su trabajo es unirlos, fijar ownership y dejar una puerta de reentrada limpia para que otra ventana, otro Aleph o un futuro `Ox.Cristalizador` retomen el tema sin depender de la conversación.
 
 La necesidad concreta es doble:
 
-- el `plan.md` raíz contiene el árbol-grafo y la intención general de la sesión, pero sigue siendo material en bruto y mezcla varios niveles de decisión;
+- el plan bruto archivado en `ref/PLAN-MD-BRUTO-VERBATIM.md` contiene el árbol-grafo y la intención general de la sesión, pero sigue siendo material en bruto y mezcla varios niveles de decisión;
 - el trabajo ya cristalizado vive repartido entre el dossier scrum compartido de Scriptorium, el dossier técnico `vector-machine` y el espejo local de `DocumentMachineSDK`.
 
 La estrategia correcta aquí no es fusionar esos dossiers en uno nuevo. Eso duplicaría backlog y diluiría ownership. La estrategia correcta es un **dossier paraguas de sesión** que:
 
-- trate `plan.md` como fuente bruta de entrada;
+- trate `ref/PLAN-MD-BRUTO-VERBATIM.md` como fuente bruta de entrada;
 - declare qué dossiers son obligatorios para esta línea de trabajo;
 - establezca la relación entre ellos;
 - deje claro cuál es el siguiente punto de decisión para la próxima sesión.
 
 ## Contexto compartido
 
-- `plan.md`
+- `sala/dossiers/sesion-scriptorium-vector/ref/PLAN-MD-BRUTO-VERBATIM.md`
 - `sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`
 - `sala/dossiers/vector-machine/PLAN.md`
 - `DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/PLAN.md`
@@ -33,7 +33,7 @@ La estrategia correcta aquí no es fusionar esos dossiers en uno nuevo. Eso dupl
 
 ## 2. Anclas
 
-- `plan.md` es una referencia bruta de sesión, no la fuente canónica final de ejecución.
+- `ref/PLAN-MD-BRUTO-VERBATIM.md` es la preservación literal del plan bruto de sesión, no la fuente canónica final de ejecución.
 - `sala/dossiers/scrum-backlog-lore-db-vector-expansion/` sigue siendo el frente scrum compartido del vector lore-db en Scriptorium.
 - `sala/dossiers/vector-machine/` sigue siendo el frente técnico de autopista, plugin y frontera MCP para `VectorMachineSDK`.
 - `DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/` sigue siendo el frente local del subequipo documental.
@@ -54,14 +54,14 @@ La estrategia correcta aquí no es fusionar esos dossiers en uno nuevo. Eso dupl
 
 `sesion-scriptorium-vector` cumple cuatro funciones:
 
-- registrar que `plan.md` es la entrada bruta de la línea de trabajo;
+- registrar que `ref/PLAN-MD-BRUTO-VERBATIM.md` es la entrada bruta de la línea de trabajo;
 - fijar qué dossiers del ecosistema deben leerse juntos para esta sesión;
 - dejar explícito el reparto de ownership entre Scriptorium y `DocumentMachineSDK`;
 - preparar el handoff de retoma para que la próxima decisión no vuelva a ser “¿dónde estaba todo esto?”.
 
 ### 4.2 Mapa de ownership
 
-- **`plan.md`**: árbol bruto, intención del PO y contexto conversacional de alto nivel.
+- **`ref/PLAN-MD-BRUTO-VERBATIM.md`**: copia literal del plan bruto, preservada como archivo de entrada y trazabilidad.
 - **`sala/dossiers/scrum-backlog-lore-db-vector-expansion/`**: refinement scrum del frente compartido de lore-db vector en Scriptorium.
 - **`sala/dossiers/vector-machine/`**: autopista técnica de `VectorMachineSDK`, plugin `vector-machine` y futura frontera MCP.
 - **`DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/`**: refinement local del frente documental y de skill/layout en `DocumentMachineSDK`.
@@ -87,14 +87,14 @@ Sí recomendaría, y este dossier ya lo encarna, una capa paraguas mínima que s
 
 - índice de reentrada;
 - contrato de ownership;
-- puente entre `plan.md` y los dossiers vivos;
+- puente entre el plan bruto archivado y los dossiers vivos;
 - punto de partida para abrir futuros dossiers derivados cuando el siguiente ciclo lo pida.
 
 ### [GPT-5.4] 4.5 Refactor orientativo del punto D — diseño de dossiers
 
-El punto D del `plan.md` ya puede leerse con más resolución, sin fijar todavía decisiones cerradas sobre cuántos dossiers hijos habrá ni en qué orden se abrirán. La orientación útil hoy es esta:
+El punto D del plan bruto archivado ya puede leerse con más resolución, sin fijar todavía decisiones cerradas sobre cuántos dossiers hijos habrá ni en qué orden se abrirán. La orientación útil hoy es esta:
 
-- **Dossier paraguas de sesión**: `sala/dossiers/sesion-scriptorium-vector/` ya cumple el rol de `D1`. Su trabajo no es implementar ni refinar todos los detalles, sino absorber el `plan.md` bruto, enlazar el ecosistema vivo y dejar reentrada limpia.
+- **Dossier paraguas de sesión**: `sala/dossiers/sesion-scriptorium-vector/` ya cumple el rol de `D1`. Su trabajo no es implementar ni refinar todos los detalles, sino absorber el plan bruto archivado, enlazar el ecosistema vivo y dejar reentrada limpia.
 - **Dossier técnico de stack y autopista**: `sala/dossiers/vector-machine/` ya cubre cómo es `vector-machine`, qué vive en `VectorMachineSDK`, qué vive en el plugin y dónde está la futura frontera MCP.
 - **Dossier scrum compartido en Scriptorium**: `sala/dossiers/scrum-backlog-lore-db-vector-expansion/` sigue siendo la pieza adecuada para tratar el refinement transversal del frente lore-db/vector cuando la conversación se mueva a backlog compartido.
 - **Dossier local en DocumentMachineSDK**: `DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/` ya expresa cómo necesita el frente documental su conexión con la vector-machine desde el lado `lore-sdk`, skill y layout local.

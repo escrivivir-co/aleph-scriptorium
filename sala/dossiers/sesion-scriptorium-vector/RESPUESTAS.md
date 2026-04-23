@@ -6,7 +6,7 @@
 ## Punto 1 — Este dossier trabaja sobre el PLAN bruto
 
 - **Respuesta del usuario:** el nuevo dossier final debe servir para trabajar sobre `PLAN.MD`, tomado como referencia en bruto.
-- **Efecto operativo:** `plan.md` pasa a ser ancla de entrada del dossier paraguas y deja de ser la única pieza que sostiene la sesión.
+- **Efecto operativo:** el plan bruto queda preservado verbatim en `ref/PLAN-MD-BRUTO-VERBATIM.md`, que pasa a ser ancla de entrada del dossier paraguas y sustituye a la copia de la raíz.
 
 ## Punto 2 — El ecosistema obligatorio de dossiers ya existe
 
@@ -20,5 +20,5 @@
 
 ## Punto 4 — Refactor orientativo del punto D y preferencia de orquestación
 
-- **Respuesta del usuario:** el punto D del `plan.md` debe reescribirse con más orientación sobre el ecosistema de dossiers, sin fijar decisiones todavía; además conviene dejar nota preferencial de que el orquestador de diseño sea `Ox.Cristalizador.Dosier`.
+- **Respuesta del usuario:** el punto D del plan bruto debe reescribirse con más orientación sobre el ecosistema de dossiers, sin fijar decisiones todavía; además conviene dejar nota preferencial de que el orquestador de diseño sea `Ox.Cristalizador.Dosier`.
 - **Efecto operativo:** `PLAN.md` se amplía con una lectura orientativa de `D1` y `D2`, mapeando los dossiers ya existentes y las posibles familias derivadas; `activacion.prompt.md` y `ref/INDEX.md` reflejan la preferencia operativa por `Ox.Cristalizador.Dosier` como orquestador de diseño.

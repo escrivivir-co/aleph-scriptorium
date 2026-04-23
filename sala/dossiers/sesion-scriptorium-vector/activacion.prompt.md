@@ -4,7 +4,7 @@
 
 ## Contexto mínimo
 
-Este dossier paraguas absorbe el `plan.md` bruto de la raíz y enlaza los tres dossiers vivos que hoy sostienen la línea vectorial: el scrum compartido de Scriptorium, el frente técnico `vector-machine` y el frente local de `DocumentMachineSDK`.
+Este dossier paraguas absorbe el plan bruto archivado en `ref/PLAN-MD-BRUTO-VERBATIM.md` y enlaza los tres dossiers vivos que hoy sostienen la línea vectorial: el scrum compartido de Scriptorium, el frente técnico `vector-machine` y el frente local de `DocumentMachineSDK`.
 
 ## Estado actual
 

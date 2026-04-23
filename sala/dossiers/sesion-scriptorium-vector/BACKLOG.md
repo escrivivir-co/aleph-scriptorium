@@ -4,7 +4,7 @@
 
 ## Contexto compartido
 
-- Referencia bruta de sesión: `plan.md`
+- Referencia bruta de sesión: `sala/dossiers/sesion-scriptorium-vector/ref/PLAN-MD-BRUTO-VERBATIM.md`
 - Dossier scrum compartido: `sala/dossiers/scrum-backlog-lore-db-vector-expansion/`
 - Dossier técnico de autopista: `sala/dossiers/vector-machine/`
 - Dossier local DocumentMachineSDK: `DocumentMachineSDK/sala/dossiers/scrum-backlog-lore-db-vector-expansion/`
@@ -25,6 +25,6 @@ Este dossier no duplica el backlog de los dossiers hijos. Solo coordina la sesi�
 
 ## Criterio de cierre del feature
 
-- [ ] `plan.md` queda absorbido como referencia de sesión y no como backlog operativo ambiguo.
+- [ ] El plan bruto archivado en `ref/PLAN-MD-BRUTO-VERBATIM.md` queda absorbido como referencia de sesión y no como backlog operativo ambiguo.
 - [ ] La relación entre los tres dossiers obligatorios del ecosistema queda explícita y sin solapamientos.
 - [ ] La próxima sesión puede retomarse sabiendo cuál es el siguiente frente prioritario.
