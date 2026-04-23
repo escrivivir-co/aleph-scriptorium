@@ -1,7 +1,7 @@
 # Datos Runtime: LoreSDK
 
 **Plugin**: `lore-sdk`  
-**Submódulo**: `LoreSDK` (para-la-voz-sdk)  
+**Submódulo**: `DocumentMachineSDK` (para-la-voz-sdk)  
 **Bridge**: `@plugin_ox_loresdk`
 
 ---
@@ -11,7 +11,7 @@
 Esta carpeta almacena datos **generados durante la ejecución** del plugin LoreSDK.  
 El código del plugin está en `.github/plugins/lore-sdk/` (inmutable).
 
-Los datos del corpus (editoriales, análisis, poemas) viven directamente en el submódulo `LoreSDK/`.
+Los datos del corpus (editoriales, análisis, poemas) viven directamente en el submódulo `DocumentMachineSDK/`.
 
 ## Archivos Gestionados
 
@@ -25,7 +25,7 @@ Los datos del corpus (editoriales, análisis, poemas) viven directamente en el s
 - **Código del plugin**: `.github/plugins/lore-sdk/` (kebab-case)
 - **Bridge**: `.github/agents/plugin_ox_loresdk.agent.md`
 - **Datos runtime**: `ARCHIVO/PLUGINS/LORE_SDK/` (SCREAMING_SNAKE_CASE)
-- **Datos del corpus**: `LoreSDK/corpus/` (en el submódulo directamente)
+- **Datos del corpus**: `DocumentMachineSDK/corpus/` (en el submódulo directamente)
 
 ---
 
@@ -33,4 +33,4 @@ Los datos del corpus (editoriales, análisis, poemas) viven directamente en el s
 
 - Plugin manifest: `.github/plugins/lore-sdk/manifest.md`
 - Bridge: `.github/agents/plugin_ox_loresdk.agent.md`
-- Submódulo: `LoreSDK/README-SCRIPTORIUM.md`
+- Submódulo: `DocumentMachineSDK/README-SCRIPTORIUM.md`

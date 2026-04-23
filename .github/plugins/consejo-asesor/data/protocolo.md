@@ -1,6 +1,6 @@
 # Protocolo del Consejo Asesor (Simplificado)
 
-> Version simplificada para el plugin. Protocolo completo en ONFALO: `/Users/morente/Desktop/THEIA_PATH/ONFALO/PLUGIN_SCRIPTORIUM/consejo-asesor/consejo/protocolo.md`
+> Version simplificada para el plugin. Protocolo completo en ONFALO: `onfalo-asesor-sdk/PLUGIN_SCRIPTORIUM/consejo-asesor/consejo/protocolo.md`
 
 ## Principio rector
 

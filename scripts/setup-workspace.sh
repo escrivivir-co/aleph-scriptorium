@@ -72,11 +72,11 @@ SUBMODULE_DOCUMENT_MACHINE_SDK_URL="https://github.com/escrivivir-co/para-la-voz
 SUBMODULE_BOT_HUB_SDK_DIR="$ROOT_DIR/BotHubSDK"
 SUBMODULE_BOT_HUB_SDK_URL="https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk.git"
 
-SUBMODULE_UISDK_THREEJS_DIR="$ROOT_DIR/UISDKThreejs"
-SUBMODULE_UISDK_THREEJS_URL="https://github.com/escrivivir-co/threejs-gamify-ui.git"
+SUBMODULE_UI_SDK_THREEJS_DIR="$ROOT_DIR/UISDKThreejs"
+SUBMODULE_UI_SDK_THREEJS_URL="https://github.com/escrivivir-co/threejs-gamify-ui.git"
 
-SUBMODULE_LORESDK_DIR="$ROOT_DIR/LoreSDK"
-SUBMODULE_LORESDK_URL="https://github.com/escrivivir-co/para-la-voz-sdk.git"
+SUBMODULE_ONFALO_ASESOR_SDK_DIR="$ROOT_DIR/onfalo-asesor-sdk"
+SUBMODULE_ONFALO_ASESOR_SDK_URL="https://github.com/escrivivir-co/onfalo-asesor-sdk.git"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -91,6 +91,7 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/enciclopedia/prompts": true,
     ".github/plugins/gh-pages/prompts": true,
     ".github/plugins/foro-scraper/prompts": true,
+    ".github/plugins/consejo-asesor/prompts": true,
     ".github/plugins/agent-creator/prompts": true,
     ".github/plugins/teatro/prompts": true,
     ".github/plugins/scrum/prompts": true,
@@ -114,6 +115,7 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/enciclopedia/instructions": true,
     ".github/plugins/gh-pages/instructions": true,
     ".github/plugins/foro-scraper/instructions": true,
+    ".github/plugins/consejo-asesor/instructions": true,
     ".github/plugins/agent-creator/instructions": true,
     ".github/plugins/teatro/instructions": true,
     ".github/plugins/scrum/instructions": true,
@@ -226,8 +228,7 @@ setup_submodule "$SUBMODULE_AGENT_LORE_SDK_DIR" "$SUBMODULE_AGENT_LORE_SDK_URL" 
 setup_submodule "$SUBMODULE_UI_SDK_THREEJS_DIR" "$SUBMODULE_UI_SDK_THREEJS_URL" "UISDKThreejs"
 setup_submodule "$SUBMODULE_DOCUMENT_MACHINE_SDK_DIR" "$SUBMODULE_DOCUMENT_MACHINE_SDK_URL" "DocumentMachineSDK"
 setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
-setup_submodule "$SUBMODULE_UISDK_THREEJS_DIR" "$SUBMODULE_UISDK_THREEJS_URL" "UISDKThreejs"
-setup_submodule "$SUBMODULE_LORESDK_DIR" "$SUBMODULE_LORESDK_URL" "LoreSDK"
+setup_submodule "$SUBMODULE_ONFALO_ASESOR_SDK_DIR" "$SUBMODULE_ONFALO_ASESOR_SDK_URL" "onfalo-asesor-sdk"
 
 echo
 echo "Siguientes pasos sugeridos:"
@@ -247,6 +248,8 @@ echo "     cd WorkflowEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd WiringAppHypergraphEditor && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd UISDKThreejs && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd DocumentMachineSDK && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd BotHubSDK && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd onfalo-asesor-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo
 echo "Submódulos configurados:"
 echo "  - VsCodeExtension: Extensión VS Code / Arrakis Theater"
@@ -267,5 +270,6 @@ echo "  - CopilotEngine: Fuente VS Code Copilot Chat (System Messaging ReadOnly)
 echo "  - StateMachine: Gamification UI multi-platform (Console, HTML5, Blockly, ThreeJS)"
 echo "  - AgentLoreSDK: Catálogo de plantillas para Agent Creator (637+ templates)"
 echo "  - UISDKThreejs: UI ThreeJS gamificada para demos y canvas interactivo"
-echo "  - DocumentMachineSDK: SDK agéntico de análisis documental y cristalización de voz"
 echo "  - BotHubSDK: SDK plugin-based para bots Telegram + protocolo IACM v1.0"
+echo "  - DocumentMachineSDK: SDK editorial/documental para-la-voz (análisis de corrientes + cristalización de voz)"
+echo "  - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada como submódulo)"

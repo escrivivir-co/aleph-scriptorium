@@ -1,7 +1,7 @@
 ---
 name: Alimentar Corpus
 description: "Ciclo completo de alimentación del corpus: /feed → /diff-corpus → /merge-corpus"
-applyTo: "LoreSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
+applyTo: "DocumentMachineSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
 ---
 
 # Prompt: Alimentar Corpus
@@ -20,7 +20,7 @@ Procesar un nuevo editorial y enriquecer el corpus acumulativo del mod activo. E
 
 ### Paso 1: Preparación
 
-1. Verificar que existe un mod activo (leer `LoreSDK/proyecto.config.md`)
+1. Verificar que existe un mod activo (leer `DocumentMachineSDK/proyecto.config.md`)
 2. Guardar el editorial en `corpus/editoriales/[YYYY-MM-DD_slug].md`
 3. Confirmar que `corpus/corpus.md` existe (si no, ejecutar primero `/crear-voz`)
 

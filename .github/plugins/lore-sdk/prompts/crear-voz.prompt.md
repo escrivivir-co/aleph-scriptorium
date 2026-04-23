@@ -1,7 +1,7 @@
 ---
 name: Crear Voz
 description: "Scaffold de nueva Voz (mod): corriente ideológica → corpus inicial → análisis → cristalización de @voz"
-applyTo: "LoreSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
+applyTo: "DocumentMachineSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
 ---
 
 # Prompt: Crear Voz
@@ -22,13 +22,13 @@ El usuario debe proporcionar:
 
 ### Fase 0: Preparación
 
-1. Leer `LoreSDK/proyecto.config.template.md` para entender la estructura
+1. Leer `DocumentMachineSDK/proyecto.config.template.md` para entender la estructura
 2. Verificar que el mod no existe ya en el submódulo
 3. Confirmar con el usuario los datos de input
 
 ### Fase 1: Crear Estructura del Mod
 
-Crear en el submódulo `LoreSDK/`:
+Crear en el submódulo `DocumentMachineSDK/`:
 
 ```
 proyecto.config.md          ← rellenar template con datos del usuario
@@ -99,8 +99,8 @@ Próximos pasos:
 
 ## Notas Técnicas
 
-- **Rama**: El mod se crea en la rama `main` del submódulo LoreSDK (excepción documentada)
-- **Patrón**: main → mod es unidireccional — nunca PR de mod a main
+- **Rama**: El trabajo del Scriptorium ocurre sobre `integration/beta/scriptorium` en `DocumentMachineSDK`
+- **Patrón**: `main → mod` sigue siendo la referencia editorial interna del SDK, pero la integración del monorepo vive en la rama estándar del Scriptorium
 - **Subsumption**: @portal-editorial se activa automáticamente para adaptar el lenguaje al perfil del lector
 - **Nick**: Una vez identificado en el primer editorial, el nick se confirma acumulativamente
 

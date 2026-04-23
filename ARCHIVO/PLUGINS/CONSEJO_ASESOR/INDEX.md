@@ -35,4 +35,4 @@ DEBATE, AUDITORIA, PRODUCCION, NAVEGACION, ESCRILEER, OBSERVATORIO, CORRESPONSAL
 
 Plugin: `.github/plugins/consejo-asesor/`
 Claude Code: `plugins-claude/consejo-asesor/`
-ONFALO: `/Users/morente/Desktop/THEIA_PATH/ONFALO`
+ONFALO: `onfalo-asesor-sdk`

@@ -11,6 +11,7 @@ optional_dependencies:
   - novelist
   - agent-creator
   - enciclopedia
+submodule: "onfalo-asesor-sdk"
 agents:
   - name: "ConsejoAsesor"
     file: "agents/consejo-asesor.agent.md"
@@ -52,9 +53,9 @@ handoffs:
     agent: "ConsejoAsesor"
     prompt: "Ejecuta pipeline: laboratorio -> fichas -> relato"
 source:
-  type: "reference"
-  path: "/Users/morente/Desktop/THEIA_PATH/ONFALO"
-  note: "Placeholder minimo v1.0. Migracion exhaustiva de agentes ONFALO pendiente."
+  type: "submodule"
+  path: "onfalo-asesor-sdk"
+  note: "Submódulo privado integrado localmente; la migración exhaustiva de agentes ONFALO sigue pendiente."
 ---
 
 # Consejo Asesor (ONFALO)

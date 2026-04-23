@@ -1,7 +1,7 @@
 ---
 name: LoreSDK — SDK Editorial
 description: "Punto de entrada para el SDK editorial para-la-voz: crear Voces, alimentar corpus, generar poemas, publicar."
-applyTo: "LoreSDK/**/*.md"
+applyTo: "DocumentMachineSDK/**/*.md"
 ---
 
 # Prompt: LoreSDK — SDK Editorial para Voces
@@ -73,7 +73,7 @@ Flujo: `/publicar-catalogo` → revisión → `published: true` → commit → i
 
 ## Contexto actual
 
-El submódulo `LoreSDK` tiene un mod activo:
+El submódulo `DocumentMachineSDK` tiene un mod activo:
 - **Mod**: `restitutiva`
 - **Corpus**: Magazine PARA LA VOZ (marxismo-leninismo ortodoxo, variante restitutivista)
 - **Nick**: `restitutiva` ×4 confirmado

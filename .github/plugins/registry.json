@@ -833,9 +833,9 @@
       "dependencies": [],
       "optional_dependencies": ["novelist", "agent-creator", "enciclopedia"],
       "source": {
-        "type": "reference",
-        "path": "/Users/morente/Desktop/THEIA_PATH/ONFALO",
-        "note": "Placeholder minimo v1.0. Migracion exhaustiva pendiente."
+        "type": "submodule",
+        "path": "onfalo-asesor-sdk",
+        "note": "Submódulo privado integrado localmente; migración exhaustiva pendiente."
       },
       "council": {
         "agents_total": 14,
@@ -977,9 +977,9 @@
       "bridge_agent": "plugin_ox_loresdk",
       "dependencies": [],
       "optional_dependencies": ["consejo-asesor", "gh-pages", "agent-creator"],
-      "submodule": "LoreSDK",
+      "submodule": "DocumentMachineSDK",
       "submodule_url": "https://github.com/escrivivir-co/para-la-voz-sdk.git",
-      "submodule_branch": "main",
+      "submodule_branch": "integration/beta/scriptorium",
       "handoffs": [
         {
           "label": "Crear nueva Voz",

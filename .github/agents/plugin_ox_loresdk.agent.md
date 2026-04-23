@@ -18,7 +18,7 @@ handoffs:
     send: false
   - label: Generar poema
     agent: LoreSDK
-    prompt: "Genera un poema usando @voz en el mod activo. Lee LoreSDK/mod/agents/voz.agent.md."
+    prompt: "Genera un poema usando @voz en el mod activo. Lee DocumentMachineSDK/mod/agents/voz.agent.md."
     send: false
   - label: Ver estado del corpus
     agent: LoreSDK
@@ -46,11 +46,11 @@ handoffs:
 
 | Agente | En submódulo | Descripción |
 |--------|-------------|-------------|
-| `@bartleby` | `LoreSDK/.github/agents/bartleby.agent.md` | Analista de editoriales |
-| `@archivero` | `LoreSDK/.github/agents/archivero.agent.md` | Gestor del corpus |
-| `@cristalizador` | `LoreSDK/.github/agents/cristalizador.agent.md` | Diseñador de artefactos mod/ |
-| `@portal-editorial` | `LoreSDK/.github/agents/portal-editorial.agent.md` | Interfaz adaptativa |
-| `@voz` (mod) | `LoreSDK/mod/agents/voz.agent.md` | Generador poético |
+| `@bartleby` | `DocumentMachineSDK/.github/agents/bartleby.agent.md` | Analista de editoriales |
+| `@archivero` | `DocumentMachineSDK/.github/agents/archivero.agent.md` | Gestor del corpus |
+| `@cristalizador` | `DocumentMachineSDK/.github/agents/cristalizador.agent.md` | Diseñador de artefactos mod/ |
+| `@portal-editorial` | `DocumentMachineSDK/.github/agents/portal-editorial.agent.md` | Interfaz adaptativa |
+| `@voz` (mod) | `DocumentMachineSDK/mod/agents/voz.agent.md` | Generador poético |
 
 ## Casos de Uso
 
@@ -86,6 +86,6 @@ handoffs:
 
 - Manifest: `.github/plugins/lore-sdk/manifest.md`
 - Agentes: `.github/plugins/lore-sdk/agents/`
-- Submódulo: `LoreSDK/`
+- Submódulo: `DocumentMachineSDK/`
 - Datos runtime: `ARCHIVO/PLUGINS/LORE_SDK/`
 - Backlog: `ARCHIVO/DISCO/BACKLOG_BORRADORES/LORE-SDK/`

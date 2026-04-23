@@ -3,7 +3,7 @@
 ## Ruta
 
 ```
-/Users/morente/Desktop/THEIA_PATH/ONFALO
+onfalo-asesor-sdk
 ```
 
 ## Contenidos de referencia para migracion futura
@@ -23,4 +23,4 @@
 
 ## Nota de diseno
 
-Este plugin es un **placeholder minimo** (v1.0.0) que emula la estructura del consejo-asesor de ONFALO con la informacion necesaria para operar los 7 modos y el pipeline de relato. Una migracion exhaustiva en el futuro traera las definiciones completas de los 14 agentes (con sus 8 secciones canonicas), los protocolos detallados de corresponsalia y lectura-viva, y las notas/referencias del metarelato.
+Este plugin es un **placeholder minimo** (v1.0.0) que emula la estructura del consejo-asesor de ONFALO con la informacion necesaria para operar los 7 modos y el pipeline de relato. Una migracion exhaustiva en el futuro traera las definiciones completas de los 14 agentes (con sus 8 secciones canonicas), los protocolos detallados de corresponsalia y lectura-viva, y las notas/referencias del metarelato a partir del submódulo local `onfalo-asesor-sdk`.

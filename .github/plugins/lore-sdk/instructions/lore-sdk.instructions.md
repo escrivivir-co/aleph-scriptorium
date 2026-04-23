@@ -1,7 +1,7 @@
 ---
 name: LoreSDK (instrucciones)
 description: "Reglas de integración del SDK editorial para-la-voz con el Scriptorium."
-applyTo: "LoreSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
+applyTo: "DocumentMachineSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
 ---
 
 # Instrucciones: Plugin LoreSDK
@@ -43,12 +43,12 @@ En **outputs públicos** (poemas, catálogo web, comunicaciones editoriales):
 - ✅ El corpus habla; la tecnología es invisible
 - Internamente (en el pipeline del Scriptorium) sí se puede mencionar tecnología
 
-### 5. Rama main (excepción documentada)
+### 5. Rama de integración del Scriptorium
 
-- El submódulo `LoreSDK` usa la rama `main` (no la convención estándar `integration/beta/scriptorium`)
-- Razón: el SDK está diseñado para que `main` sea la rama de protocolo puro
+- El submódulo `DocumentMachineSDK` sigue la convención estándar `integration/beta/scriptorium`
+- Dentro del repo, el patrón editorial `main → mod` sigue siendo la referencia de trabajo del SDK
 - Los mods se gestionan en ramas separadas dentro del submódulo
-- El `setup-workspace.sh` del Scriptorium lo configura correctamente
+- El `setup-workspace.sh` del Scriptorium prepara la rama de integración local cuando haga falta
 
 ### 6. Backlog de integración
 
@@ -62,14 +62,14 @@ En **outputs públicos** (poemas, catálogo web, comunicaciones editoriales):
 
 | Archivo | Propósito | Modificado por |
 |---------|-----------|----------------|
-| `LoreSDK/corpus/corpus.md` | Mapa acumulativo del corpus | Solo @archivero |
-| `LoreSDK/corpus/editoriales/*.md` | Editoriales fuente | Solo lectura (datos) |
-| `LoreSDK/corpus/analisis/*.analisis.md` | Informes de @bartleby | Solo @bartleby |
-| `LoreSDK/mod/agents/voz.agent.md` | Agente @voz cristalizado | Solo @cristalizador |
-| `LoreSDK/mod/instructions/*.instructions.md` | Instrucciones del mod | Solo @cristalizador |
-| `LoreSDK/mod/prompts/poema.prompt.md` | Flujo de generación | Solo @cristalizador |
-| `LoreSDK/proyecto.config.md` | Configuración del mod activo | Usuario + @cristalizador |
-| `LoreSDK/docs/_poemas/*.md` | Catálogo de poemas | @voz (creación) + usuario (publicación) |
+| `DocumentMachineSDK/corpus/corpus.md` | Mapa acumulativo del corpus | Solo @archivero |
+| `DocumentMachineSDK/corpus/editoriales/*.md` | Editoriales fuente | Solo lectura (datos) |
+| `DocumentMachineSDK/corpus/analisis/*.analisis.md` | Informes de @bartleby | Solo @bartleby |
+| `DocumentMachineSDK/mod/agents/voz.agent.md` | Agente @voz cristalizado | Solo @cristalizador |
+| `DocumentMachineSDK/mod/instructions/*.instructions.md` | Instrucciones del mod | Solo @cristalizador |
+| `DocumentMachineSDK/mod/prompts/poema.prompt.md` | Flujo de generación | Solo @cristalizador |
+| `DocumentMachineSDK/proyecto.config.md` | Configuración del mod activo | Usuario + @cristalizador |
+| `DocumentMachineSDK/docs/_poemas/*.md` | Catálogo de poemas | @voz (creación) + usuario (publicación) |
 
 ---
 

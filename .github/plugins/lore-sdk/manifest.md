@@ -13,7 +13,7 @@ optional_dependencies:
   - gh-pages
   - agent-creator
 
-submodule: "LoreSDK"
+submodule: "DocumentMachineSDK"
 
 agents:
   - name: "LoreSDK"
@@ -90,10 +90,10 @@ main (SDK puro)         mod/[nick] (lore + datos)
 
 ## Integración con Submódulo
 
-- **Submódulo**: `LoreSDK`
+- **Submódulo**: `DocumentMachineSDK`
 - **Repo**: `https://github.com/escrivivir-co/para-la-voz-sdk.git`
-- **Rama**: `main` (excepción documentada: SDK usa main como rama de protocolo puro)
-- **README integración**: `LoreSDK/README-SCRIPTORIUM.md`
+- **Rama**: `integration/beta/scriptorium`
+- **README integración**: `DocumentMachineSDK/README-SCRIPTORIUM.md`
 
 ---
 

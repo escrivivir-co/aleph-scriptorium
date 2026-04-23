@@ -104,4 +104,4 @@ O directamente:
 - **Agentes**: `.github/plugins/consejo-asesor/agents/`
 - **Datos plugin**: `ARCHIVO/PLUGINS/CONSEJO_ASESOR/`
 - **Datos usuario**: `ARCHIVO/DISCO/CONSEJO/`
-- **Fuente ONFALO**: `/Users/morente/Desktop/THEIA_PATH/ONFALO`
+- **Fuente ONFALO**: `onfalo-asesor-sdk/`

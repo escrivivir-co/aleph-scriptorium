@@ -1,6 +1,6 @@
 # Catalogo de Agentes del Consejo Asesor
 
-> Placeholder minimo. Para la definicion completa de cada agente, consultar la fuente ONFALO en `/Users/morente/Desktop/THEIA_PATH/ONFALO/PLUGIN_SCRIPTORIUM/consejo-asesor/agentes/`.
+> Placeholder minimo. Para la definicion completa de cada agente, consultar la fuente ONFALO en `onfalo-asesor-sdk/PLUGIN_SCRIPTORIUM/consejo-asesor/agentes/`.
 
 ## Los 14 agentes
 

@@ -2,11 +2,11 @@
 
 ## Instalación
 
-Plugin instalado como submódulo `LoreSDK` en el Scriptorium.
+Plugin instalado como submódulo `DocumentMachineSDK` en el Scriptorium.
 
 ```bash
 # Ya instalado via:
-git submodule add -b main https://github.com/escrivivir-co/para-la-voz-sdk.git LoreSDK
+git submodule add -b integration/beta/scriptorium https://github.com/escrivivir-co/para-la-voz-sdk.git DocumentMachineSDK
 ```
 
 ## Configuración
@@ -17,7 +17,7 @@ git submodule add -b main https://github.com/escrivivir-co/para-la-voz-sdk.git L
 |-----------|---------|-------------|
 | GitHub Copilot Chat | Última | `code --install-extension GitHub.copilot-chat` |
 | Git | ≥2.28 | Incluido en sistema |
-| Jekyll (para Pages) | Ruby 3.0+ | `bundle install` en `LoreSDK/docs/` |
+| Jekyll (para Pages) | Ruby 3.0+ | `bundle install` en `DocumentMachineSDK/docs/` |
 
 ### Variables de entorno
 
@@ -78,7 +78,7 @@ Plugin LoreSDK (Scriptorium)
 │
 ├── ARCHIVO/PLUGINS/LORE_SDK/          ← Runtime data
 │
-└── LoreSDK/                           ← Submódulo (para-la-voz-sdk)
+└── DocumentMachineSDK/                ← Submódulo (para-la-voz-sdk)
     ├── .github/agents/ (4 core)
     ├── .github/prompts/ (6 commands)
     ├── corpus/
@@ -96,7 +96,7 @@ El submódulo ya incluye un mod activo (`mod/restitutiva`) con:
 
 ## Referencias
 
-- Submódulo: `LoreSDK/README-SCRIPTORIUM.md`
+- Submódulo: `DocumentMachineSDK/README-SCRIPTORIUM.md`
 - Manifest: `manifest.md`
 - Bridge: `.github/agents/plugin_ox_loresdk.agent.md`
 - Origen: `onfalo-asesor-sdk/PROYECTOS/BARTLEBY-MOVIDO.md`

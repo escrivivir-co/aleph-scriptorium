@@ -29,4 +29,4 @@ Plugin que integra el sistema de consejo-asesor de ONFALO: 14 agentes intelectua
 
 ## Fuente
 
-Basado en el sistema de consejo-asesor de ONFALO (`/Users/morente/Desktop/THEIA_PATH/ONFALO`).
+Basado en el sistema de consejo-asesor de ONFALO (`onfalo-asesor-sdk`).

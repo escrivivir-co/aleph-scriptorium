@@ -1,7 +1,7 @@
 ---
 name: Publicar Catálogo
 description: "Jekyll: borradores → publicados → commit → GitHub Pages"
-applyTo: "LoreSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
+applyTo: "DocumentMachineSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
 ---
 
 # Prompt: Publicar Catálogo
@@ -20,7 +20,7 @@ Publicar el catálogo de poemas del mod activo en Jekyll GitHub Pages.
 
 ### Paso 1: Inventario
 
-1. Leer `LoreSDK/docs/_poemas/` — listar todos los archivos `.md`
+1. Leer `DocumentMachineSDK/docs/_poemas/` — listar todos los archivos `.md`
 2. Para cada poema, mostrar:
    - Título (del front matter `title:`)
    - Fecha (del nombre de archivo `YYYY-MM-DD-slug.md`)
@@ -65,7 +65,7 @@ Publicar el catálogo de poemas del mod activo en Jekyll GitHub Pages.
    Para publicar en GitHub Pages:
    
    Opción A (automática): Si tienes CI/CD configurado:
-   git push origin main
+   git push origin integration/beta/scriptorium
    → GitHub Actions se encarga del deploy
    
    Opción B (manual via plugin gh-pages):

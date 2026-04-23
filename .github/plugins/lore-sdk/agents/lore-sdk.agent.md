@@ -14,7 +14,7 @@ handoffs:
     send: false
   - label: Generar poema
     agent: LoreSDK
-    prompt: "Invoca /poema en el mod activo. Lee LoreSDK/mod/prompts/poema.prompt.md para el flujo de 14 pasos."
+    prompt: "Invoca /poema en el mod activo. Lee DocumentMachineSDK/mod/prompts/poema.prompt.md para el flujo de 14 pasos."
     send: false
   - label: Ver estado del corpus
     agent: LoreSDK
@@ -36,7 +36,7 @@ handoffs:
 
 **Rol**: Bridge + Orquestador del SDK  
 **Capa**: 🔌 Plugins  
-**Submódulo**: `LoreSDK` (para-la-voz-sdk)
+**Submódulo**: `DocumentMachineSDK` (para-la-voz-sdk)
 
 ---
 
@@ -123,10 +123,10 @@ Crear estructura:
 
 | Archivo | Propósito |
 |---------|-----------|
-| `LoreSDK/proyecto.config.template.md` | Plantilla para nuevos mods |
-| `LoreSDK/proyecto.config.md` | Configuración del mod activo |
-| `LoreSDK/corpus/corpus.md` | Mapa acumulativo del corpus |
-| `LoreSDK/mod/agents/voz.agent.md` | Ejemplo de @voz cristalizada |
-| `LoreSDK/mod/instructions/voz-restitutiva.instructions.md` | Ejemplo de 6 marcas del nick |
-| `LoreSDK/README.md` | Documentación completa del SDK |
-| `LoreSDK/README-SCRIPTORIUM.md` | Integración con Scriptorium |
+| `DocumentMachineSDK/proyecto.config.template.md` | Plantilla para nuevos mods |
+| `DocumentMachineSDK/proyecto.config.md` | Configuración del mod activo |
+| `DocumentMachineSDK/corpus/corpus.md` | Mapa acumulativo del corpus |
+| `DocumentMachineSDK/mod/agents/voz.agent.md` | Ejemplo de @voz cristalizada |
+| `DocumentMachineSDK/mod/instructions/voz-restitutiva.instructions.md` | Ejemplo de 6 marcas del nick |
+| `DocumentMachineSDK/README.md` | Documentación completa del SDK |
+| `DocumentMachineSDK/README-SCRIPTORIUM.md` | Integración con Scriptorium |
