@@ -16,6 +16,10 @@ handoffs:
     agent: Ox
     prompt: Escanea todos los agentes declarados y detecta inconsistencias, handoffs rotos o documentación desactualizada.
     send: false
+  - label: Diagnosticar espejo sala-dossier
+    agent: Ox
+    prompt: Verifica la coherencia entre .github/skills/dossier-feature/SKILL.md, .github/prompts/dossier.prompt.md, .github/templates/sala-dossier/ y sala/plantilla-dossier/. Si falta el espejo vivo, reconstruyelo desde el template canónico y no desde dossiers previos.
+    send: false
   - label: ¿Qué agente uso para...?
     agent: Ox
     prompt: Responde consultas sobre qué agente es el adecuado para una tarea específica.
@@ -128,6 +132,7 @@ Qué hereda de `Cristalizador`:
 Qué especializa en Scriptorium:
 - ontología de agentes, índices DRY y documentación del sistema;
 - diagnóstico de coherencia entre agentes, plugins, handoffs y registry;
+- gobierno del espejo DRY de sala/dossier entre skill, prompt, templates y sala viva;
 - gobierno técnico de auto-reflexión y orientación sobre qué agente usar.
 
 Rutas operativas DRY para esta herencia:
@@ -139,9 +144,17 @@ Rutas operativas DRY para esta herencia:
 - agentes disponibles en el submódulo: `DocumentMachineSDK/.github/agents/`;
 - integración del checkout en este repo: `DocumentMachineSDK/README-SCRIPTORIUM.md`.
 
+Rutas operativas DRY para sala/dossier en Scriptorium:
+- skill portable: `.github/skills/dossier-feature/SKILL.md`;
+- prompt de activación: `.github/prompts/dossier.prompt.md`;
+- scaffold canónico portable: `.github/templates/sala-dossier/`;
+- espejo operativo de sala: `sala/plantilla-dossier/`;
+- cierre histórico del rediseño base: `DocumentMachineSDK/sala/archivo/sprint-v3/dossiers/dossier-feature-sdk/PLAN.md` y `DocumentMachineSDK/sala/archivo/sprint-v3/dossiers/dossier-feature-sdk/tasks/TASK-03_INTEGRAR_SDK_Y_LIMPIAR.md`.
+
 Regla de salida para rutas heredadas:
 - cuando Ox cite documentación oficial heredada de Cristalizador, debe nombrar la ruta completa dentro del workspace, no atajos ambiguos como `COPILOT/` o `.github/agents/`;
 - para docs oficiales de producto, el ancla canónica es `DocumentMachineSDK/COPILOT/` y el punto de entrada es `DocumentMachineSDK/COPILOT/indice.md`.
+- cuando Ox cree o repare dossiers en Scriptorium, debe partir de `.github/templates/sala-dossier/`, verificar `sala/plantilla-dossier/` y solo después tocar `sala/dossiers/`.
 
 Qué no absorbe:
 - no sustituye al `@cristalizador` de DocumentMachineSDK para trabajo de `mod/`, corpus o lore;
@@ -159,6 +172,7 @@ Qué no absorbe:
 | **Consultar agente** | No sé qué agente usar | "@ox ¿Qué agente publica en GH-Pages?" |
 | **Generar docs** | Necesito actualizar README | "@ox generar sección agentes" |
 | **Diagnosticar** | Verificar consistencia | "@ox diagnosticar agentes" |
+| **Sala/Dossier DRY** | Reparar espejo y scaffold de sala | "@ox diagnosticar espejo sala-dossier" |
 | **Listar por capa** | Ver agentes disponibles | "@ox listar UI" |
 | **Setup workspace** | Primera instalación | "@ox inicializar setup" |
 
@@ -186,6 +200,7 @@ Qué no absorbe:
 **Handoffs principales de Ox**:
 - Generar documentación (README, manuales)
 - Diagnosticar sistema (inconsistencias, handoffs rotos)
+- Diagnosticar y reparar el espejo DRY de sala/dossier
 - Consultar qué agente usar para X tarea
 - Delegar a capas específicas (UI, Backend, Meta)
 - Invocar bridges de plugins instalados

@@ -23,6 +23,8 @@ Una sala de coordinación multi-agente. Un orquestador (**Aleph**, en otro hilo)
 ```
 
 **El dossier es el diseño; la sala es la ejecución.** Los dossiers viven en `dossiers/`. La plantilla está en `plantilla-dossier/`.
+En Scriptorium, `sala/plantilla-dossier/` es el espejo operativo de `.github/templates/sala-dossier/`.
+Si el espejo falta o deriva, Ox debe resincronizarlo desde `.github/templates/sala-dossier/`, no desde un dossier concreto.
 
 ## Regla -1 — Presencia en disco al entrar
 

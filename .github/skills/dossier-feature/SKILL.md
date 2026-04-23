@@ -42,6 +42,26 @@ El scaffold rico y portable que cualquier rama puede heredar sin reabrir arqueol
     └── TASK-{N}_{NOMBRE}.md  ← brief completo de cada task
 ```
 
+## Rutas canónicas del espejo en Scriptorium
+
+En Scriptorium, la capa `dossier-feature` se apoya en cuatro superficies con roles distintos:
+
+- `.github/skills/dossier-feature/SKILL.md` — protocolo portable y reglas DRY.
+- `.github/prompts/dossier.prompt.md` — activación operativa de `/dossier`.
+- `.github/templates/sala-dossier/` — scaffold canónico portable.
+- `sala/plantilla-dossier/` — espejo operativo que consume la sala viva.
+
+Anclas históricas para entender por qué esta relación existe:
+
+- `DocumentMachineSDK/sala/archivo/sprint-v3/dossiers/dossier-feature-sdk/PLAN.md`
+- `DocumentMachineSDK/sala/archivo/sprint-v3/dossiers/dossier-feature-sdk/tasks/TASK-03_INTEGRAR_SDK_Y_LIMPIAR.md`
+
+Regla DRY de reconstrucción:
+
+- no inferir el scaffold desde dossiers ya escritos salvo para rescatar contexto o decisiones del feature;
+- si `sala/plantilla-dossier/` falta o deriva, resincronizarlo desde `.github/templates/sala-dossier/`;
+- usar el archivo histórico de `DocumentMachineSDK` como justificación y memoria de cierre, no como fuente operativa primaria.
+
 ### Plantilla PLAN.md
 
 ```markdown

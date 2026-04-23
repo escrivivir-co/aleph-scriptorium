@@ -24,6 +24,10 @@ El protocolo de diseño vive en `.github/skills/dossier-feature/SKILL.md`. Léel
 
 Usa herramientas reales para copiar `{{SALA_DIR}}/plantilla-dossier/` a `{{SALA_DIR}}/dossiers/{nombre}/`.
 
+Antes de copiar, verifica que `{{SALA_DIR}}/plantilla-dossier/` exista y refleje `.github/templates/sala-dossier/`.
+Si falta o está incompleto, reconstruyelo primero desde `.github/templates/sala-dossier/`.
+No derives el scaffold desde dossiers previos salvo para extraer anclas o contexto específico del feature.
+
 Conserva el scaffold rico y los nombres canónicos:
 
 ```text
