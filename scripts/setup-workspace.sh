@@ -105,6 +105,7 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/prompts": true,
     ".github/plugins/novelist/prompts": true,
     ".github/plugins/network/prompts": true,
+    ".github/plugins/lore-sdk/prompts": true,
     ".github/plugins/consejo-asesor/prompts": false,
     ".github/plugins/nodejs-notebooks/prompts": true
   },
@@ -130,6 +131,7 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/wiring-app/instructions": true,
     ".github/plugins/novelist/instructions": true,
     ".github/plugins/network/instructions": true,
+    ".github/plugins/lore-sdk/instructions": true,
     ".github/plugins/consejo-asesor/instructions": false,
     ".github/plugins/nodejs-notebooks/instructions": true
   },

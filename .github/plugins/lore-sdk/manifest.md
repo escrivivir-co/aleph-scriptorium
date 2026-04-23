@@ -39,13 +39,19 @@ instructions:
 handoffs:
   - label: "Crear nueva Voz"
     agent: "LoreSDK"
-    prompt: "Scaffolding de nueva Voz (mod): corriente ideológica → corpus inicial → @cristalizador → @voz."
+    prompt: "Scaffolding de un lore/mod derivado del SDK: plantilla → corpus → /feed → /diff-corpus → /merge-corpus → /design."
   - label: "Alimentar corpus"
     agent: "LoreSDK"
     prompt: "Ciclo completo de alimentación: /feed → /diff-corpus → /merge-corpus."
+  - label: "Ver estado del corpus"
+    agent: "LoreSDK"
+    prompt: "Ejecuta /status si existe un corpus activo; si no, informa que el checkout actual es SDK puro."
+  - label: "Generar poema"
+    agent: "LoreSDK"
+    prompt: "Antes de generar poema, verifica si existe un lore activo con @voz cristalizada."
   - label: "Publicar catálogo"
     agent: "LoreSDK"
-    prompt: "Publica el catálogo de poemas en Jekyll GitHub Pages."
+    prompt: "Publica el catálogo de poemas solo si el lore activo ya tiene docs/_poemas/."
 ---
 
 # Plugin: LoreSDK — SDK Editorial para Voces
