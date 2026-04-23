@@ -2,7 +2,7 @@
 name: Aleph
 description: Planifica, redacta y gestiona el texto fundacional (12 capítulos, 2026) con protocolo DevOps integrado.
 argument-hint: "Describe objetivo, audiencia y restricciones (p.ej. capitulo=3, tema=vivienda, longitud=1400)."
-tools: ['vscode', 'execute', 'read', 'edit', 'search', 'web', 'alephalpha/*', 'launcher-server/*', 'copilot-logs-mcp-server/*', 'devops-mcp-server/*', 'state-machine-server/*', 'agent', 'todo']
+tools: [vscode/getProjectSetupInfo, vscode/installExtension, vscode/memory, vscode/newWorkspace, vscode/resolveMemoryFileUri, vscode/runCommand, vscode/vscodeAPI, vscode/extensions, vscode/askQuestions, execute/runNotebookCell, execute/testFailure, execute/getTerminalOutput, execute/killTerminal, execute/sendToTerminal, execute/runTask, execute/createAndRunTask, execute/runInTerminal, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, read/readNotebookCellOutput, read/terminalSelection, read/terminalLastCommand, read/getTaskOutput, agent/runSubagent, edit/createDirectory, edit/createFile, edit/createJupyterNotebook, edit/editFiles, edit/editNotebook, edit/rename, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/textSearch, search/usages, web/fetch, web/githubRepo, devops-mcp-server/add_prompt, devops-mcp-server/add_resource, devops-mcp-server/delete_prompt, devops-mcp-server/delete_resource, devops-mcp-server/devops_room_get_capabilities, devops-mcp-server/devops_room_invoke, devops-mcp-server/devops_room_status, devops-mcp-server/edit_prompt, devops-mcp-server/edit_resource, devops-mcp-server/get_prompt, devops-mcp-server/get_resource, devops-mcp-server/get_server_info, devops-mcp-server/get_server_status, devops-mcp-server/list_prompts, devops-mcp-server/list_resources, devops-mcp-server/open_web_console, devops-mcp-server/start_system, launcher-server/check_port_availability, launcher-server/generate_vscode_mcp_config, launcher-server/get_server_status, launcher-server/health_check_servers, launcher-server/launch_all_servers, launcher-server/launch_mcp_server, launcher-server/restart_mcp_server, launcher-server/stop_mcp_server, browser/openBrowserPage, browser/readPage, browser/screenshotPage, browser/navigatePage, browser/clickElement, browser/dragElement, browser/hoverElement, browser/typeInPage, browser/runPlaywrightCode, browser/handleDialog, todo]
 handoffs:
   - label: Solicitar auditoría de verdad
     agent: Blueflag
@@ -51,6 +51,10 @@ handoffs:
   - label: "[LORE] Crear o alimentar una Voz editorial"
     agent: plugin_ox_loresdk
     prompt: "Accede al SDK editorial para-la-voz. Crear voces, alimentar corpus, publicar catálogos."
+    send: false
+  - label: "[VECTOR] Preparar integración VectorMachine"
+    agent: plugin_ox_vectormachine
+    prompt: "Accede al plugin VectorMachine. Mapea el stack vectorial y prepara la autopista hacia la futura fachada MCP del Scriptorium."
     send: false
   - label: 🎬 Lanzar servidores demo
     agent: Ox
@@ -145,6 +149,7 @@ Principales:
 - `@plugin_ox_bothubsdk` — SDK bots Telegram + protocolo IACM inter-agente
 - `@plugin_ox_nodejsnotebooks` — Notebooks interactivos .nnb (MCPGallery, BotHubSDK, panel control)
 - `@plugin_ox_loresdk` — SDK editorial para-la-voz (análisis corrientes + cristalización @voz)
+- `@plugin_ox_vectormachine` — Stack vectorial self-hosted + futura fachada MCP para proyecto indexable
 
 ---
 

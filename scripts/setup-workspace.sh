@@ -75,6 +75,10 @@ SUBMODULE_BOT_HUB_SDK_URL="https://github.com/escrivivir-co/heteronimos-semi-asi
 SUBMODULE_ONFALO_ASESOR_SDK_DIR="$ROOT_DIR/onfalo-asesor-sdk"
 SUBMODULE_ONFALO_ASESOR_SDK_URL="https://github.com/escrivivir-co/onfalo-asesor-sdk.git"
 
+SUBMODULE_VECTOR_MACHINE_SDK_DIR="$ROOT_DIR/VectorMachineSDK"
+SUBMODULE_VECTOR_MACHINE_SDK_URL="https://github.com/escrivivir-co/aleph-deep-wiki.git"
+SUBMODULE_VECTOR_MACHINE_SDK_BRANCH="dev/001"
+
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
 
@@ -106,6 +110,7 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/novelist/prompts": true,
     ".github/plugins/network/prompts": true,
     ".github/plugins/lore-sdk/prompts": true,
+    ".github/plugins/vector-machine/prompts": true,
     ".github/plugins/consejo-asesor/prompts": false,
     ".github/plugins/nodejs-notebooks/prompts": true
   },
@@ -132,6 +137,7 @@ cat > "$SETTINGS_FILE" <<'JSON'
     ".github/plugins/novelist/instructions": true,
     ".github/plugins/network/instructions": true,
     ".github/plugins/lore-sdk/instructions": true,
+    ".github/plugins/vector-machine/instructions": true,
     ".github/plugins/consejo-asesor/instructions": false,
     ".github/plugins/nodejs-notebooks/instructions": true
   },
@@ -165,6 +171,7 @@ setup_submodule() {
   local SUBMODULE_DIR="$1"
   local SUBMODULE_URL="$2"
   local SUBMODULE_NAME="$3"
+  local SUBMODULE_BASE_BRANCH="${4:-}"
 
   echo "[setup] ─────────────────────────────────────────"
   echo "[setup] Configurando submódulo: $SUBMODULE_NAME"
@@ -188,12 +195,18 @@ setup_submodule() {
     # Obtener remotos
     git fetch --all --tags || true
 
-    # Detectar rama base (preferir dev/astilleros o dev/astillador, si no main)
-    BASE_BRANCH="main"
-    if git show-ref --verify --quiet refs/remotes/origin/dev/astilleros; then
-      BASE_BRANCH="dev/astilleros"
-    elif git show-ref --verify --quiet refs/remotes/origin/dev/astillador; then
-      BASE_BRANCH="dev/astillador"
+    # Detectar rama base (permitir override por submódulo; si no, autodetección)
+    if [[ -n "$SUBMODULE_BASE_BRANCH" ]]; then
+      BASE_BRANCH="$SUBMODULE_BASE_BRANCH"
+    else
+      BASE_BRANCH="main"
+      if git show-ref --verify --quiet refs/remotes/origin/dev/astilleros; then
+        BASE_BRANCH="dev/astilleros"
+      elif git show-ref --verify --quiet refs/remotes/origin/dev/astillador; then
+        BASE_BRANCH="dev/astillador"
+      elif git show-ref --verify --quiet refs/remotes/origin/dev/001; then
+        BASE_BRANCH="dev/001"
+      fi
     fi
 
     # Crear la rama si no existe; si existe, sólo cambiar
@@ -229,7 +242,7 @@ popd >/dev/null
 setup_submodule "$SUBMODULE_EXTENSION_DIR" "$SUBMODULE_EXTENSION_URL" "VsCodeExtension"
 setup_submodule "$SUBMODULE_MCP_PRESETS_DIR" "$SUBMODULE_MCP_PRESETS_URL" "MCPGallery"
 setup_submodule "$SUBMODULE_AS_UTILS_SDK_DIR" "$SUBMODULE_AS_UTILS_SDK_URL" "VibeCodingSuite"
-setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL" "AAIAGallery"
+setup_submodule "$SUBMODULE_AS_GYM_DIR" "$SUBMODULE_AS_GYM_URL" "AAIAGallery" "$SUBMODULE_AS_GYM_BRANCH"
 setup_submodule "$SUBMODULE_NETWORK_SDK_DIR" "$SUBMODULE_NETWORK_SDK_URL" "BlockchainComPort"
 setup_submodule "$SUBMODULE_KICK_ALEPH_BOT_DIR" "$SUBMODULE_KICK_ALEPH_BOT_URL" "StreamDesktop"
 setup_submodule "$SUBMODULE_KICK_CRONO_BOT_DIR" "$SUBMODULE_KICK_CRONO_BOT_URL" "StreamDesktopAppCronos"
@@ -247,6 +260,7 @@ setup_submodule "$SUBMODULE_UI_SDK_THREEJS_DIR" "$SUBMODULE_UI_SDK_THREEJS_URL" 
 setup_submodule "$SUBMODULE_DOCUMENT_MACHINE_SDK_DIR" "$SUBMODULE_DOCUMENT_MACHINE_SDK_URL" "DocumentMachineSDK"
 setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
 setup_submodule "$SUBMODULE_ONFALO_ASESOR_SDK_DIR" "$SUBMODULE_ONFALO_ASESOR_SDK_URL" "onfalo-asesor-sdk"
+setup_submodule "$SUBMODULE_VECTOR_MACHINE_SDK_DIR" "$SUBMODULE_VECTOR_MACHINE_SDK_URL" "VectorMachineSDK" "$SUBMODULE_VECTOR_MACHINE_SDK_BRANCH"
 
 echo
 echo "Siguientes pasos sugeridos:"
@@ -268,6 +282,7 @@ echo "     cd UISDKThreejs && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd DocumentMachineSDK && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd BotHubSDK && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd onfalo-asesor-sdk && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd VectorMachineSDK && git push -u origin $INTEGRATION_BRANCH"
 echo
 echo "Submódulos configurados:"
 echo "  - VsCodeExtension: Extensión VS Code / Arrakis Theater"
@@ -291,3 +306,4 @@ echo "  - UISDKThreejs: UI ThreeJS gamificada para demos y canvas interactivo"
 echo "  - BotHubSDK: SDK plugin-based para bots Telegram + protocolo IACM v1.0"
 echo "  - DocumentMachineSDK: SDK editorial/documental para-la-voz (análisis de corrientes + cristalización de voz)"
 echo "  - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada como submódulo)"
+echo "  - VectorMachineSDK: Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)"

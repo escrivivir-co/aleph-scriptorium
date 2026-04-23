@@ -40,6 +40,7 @@
 		".github/plugins/novelist/prompts": true,
 		".github/plugins/network/prompts": true,
 		".github/plugins/lore-sdk/prompts": true,
+		".github/plugins/vector-machine/prompts": true,
 		// --- ONFALO ---
 		".github/plugins/consejo-asesor/prompts": false,
 		// --- REPL / Notebooks ---
@@ -74,6 +75,7 @@
 		".github/plugins/novelist/instructions": true,
 		".github/plugins/network/instructions": true,
 		".github/plugins/lore-sdk/instructions": true,
+		".github/plugins/vector-machine/instructions": true,
 		// --- ONFALO ---
 		".github/plugins/consejo-asesor/instructions": false,
 		// --- REPL / Notebooks ---

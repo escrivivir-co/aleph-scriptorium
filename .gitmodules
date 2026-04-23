@@ -80,3 +80,7 @@
 	path = onfalo-asesor-sdk
 	url = https://github.com/escrivivir-co/onfalo-asesor-sdk.git
 	branch = integration/beta/scriptorium
+[submodule "VectorMachineSDK"]
+	path = VectorMachineSDK
+	url = https://github.com/escrivivir-co/aleph-deep-wiki.git
+	branch = integration/beta/scriptorium

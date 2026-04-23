@@ -2,7 +2,7 @@
 
 > **Agente responsable**: @aleph  
 > **Propósito**: Mapa de navegación para usuarios del sistema  
-> **Última actualización**: 2026-01-07  
+> **Última actualización**: 2026-04-23  
 > **Estado**: 🌿 Actualizado (MCP-CHANNELS-1.0.0 indexado)
 
 ---
@@ -88,12 +88,13 @@
 | Foro Scraper | Foros y blogs externos | @plugin_ox_foroscraper |
 | MCP-Presets | Herramientas MCP | @plugin_ox_mcppresets |
 
-### 3.4.b. Consejo Y SDK Editorial
+### 3.4.b. Consejo, SDK Editorial y Vectorización
 
 | Plugin | Qué hace | Agente |
 |--------|-----------|--------|
 | Consejo Asesor (ONFALO) | Debate, auditoría, producción y pipeline relato desde el submódulo privado ONFALO | @plugin_ox_consejoasesor |
 | LoreSDK | SDK documental/editorial para `feed`, `diff`, `merge`, `design` y `status`; `@voz` y catálogo solo con lore activo | @plugin_ox_loresdk |
+| VectorMachine | Prepara la integración del stack vectorial `VectorMachineSDK` y la futura fachada MCP del Scriptorium para proyecto indexable | @plugin_ox_vectormachine |
 
 ### 3.5. Copilot Logs (MCP Server)
 
@@ -309,7 +310,7 @@
 
 ### 4.5. Capa Plugins (Bridges)
 
-> **19 bridges** en `.github/agents/plugin_ox_*.agent.md`
+> Bridges en `.github/agents/plugin_ox_*.agent.md`
 
 | Bridge | Plugin | Agentes internos |
 |--------|--------|------------------|
@@ -331,6 +332,9 @@
 | @plugin_ox_wiringapp | WiringApp | 1 agente |
 | @plugin_ox_argboardapp | ArgBoardApp | 1 agente |
 | @plugin_ox_hypergrapheditor | HyperGraphEditor | 1 agente |
+| @plugin_ox_consejoasesor | Consejo Asesor | 1 agente bridge |
+| @plugin_ox_loresdk | LoreSDK | 1 agente bridge |
+| @plugin_ox_vectormachine | VectorMachine | 1 agente |
 
 ---
 

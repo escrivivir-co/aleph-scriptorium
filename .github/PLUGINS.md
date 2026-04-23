@@ -102,6 +102,7 @@ mcpServers:
 | `@plugin_ox_openasyncapieditor` | OpenAsyncAPI Editor | 1 agente | — |
 | `@plugin_ox_consejoasesor` | Consejo Asesor (ONFALO) | 1 agente bridge | — |
 | `@plugin_ox_loresdk` | LoreSDK | 1 agente bridge | — |
+| `@plugin_ox_vectormachine` | VectorMachine | 1 agente | futura fachada MCP vía MCPGallery/mcp-mesh-sdk |
 
 ---
 

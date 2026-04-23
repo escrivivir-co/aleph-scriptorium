@@ -54,6 +54,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
   - `DocumentMachineSDK` — SDK editorial/documental para-la-voz
    - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
   - `onfalo-asesor-sdk` — Consejo Asesor ONFALO (fuente privada integrada)
+  - `VectorMachineSDK` — Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)
 
 ### Output esperado
 
@@ -82,6 +83,7 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: DocumentMachineSDK
 [setup] Configurando submódulo: BotHubSDK
 [setup] Configurando submódulo: onfalo-asesor-sdk
+[setup] Configurando submódulo: VectorMachineSDK
 [setup] ✔ Setup completado 
 
 Submódulos configurados:
@@ -106,6 +108,7 @@ Submódulos configurados:
   - BotHubSDK: SDK bots Telegram + protocolo IACM inter-agente
   - DocumentMachineSDK: SDK editorial/documental para-la-voz
   - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada)
+  - VectorMachineSDK: Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)
 ```
 
 ---

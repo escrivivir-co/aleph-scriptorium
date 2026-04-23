@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-12-28T20:00:00Z",
+  "last_updated": "2026-04-23T00:00:00Z",
   "plugins": {
     "scriptorium-pack": {
       "name": "ScriptoriumPack (Core Instructions)",
@@ -1000,6 +1000,33 @@
         {
           "label": "Ver estado del corpus",
           "agent": "LoreSDK"
+        }
+      ]
+    },
+    "vector-machine": {
+      "name": "VectorMachine — Stack Vectorial vía MCP",
+      "version": "1.0.0",
+      "description": "Plugin de integración para VectorMachineSDK. Deja preparada la autopista entre la stack vectorial self-hosted y una futura fachada MCP propia sobre MCPGallery/mcp-mesh-sdk.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-04-23T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 2,
+      "data_directory": "ARCHIVO/PLUGINS/VECTOR_MACHINE/",
+      "bridge_agent": "plugin_ox_vectormachine",
+      "dependencies": [],
+      "optional_dependencies": ["mcp-presets", "lore-sdk"],
+      "submodule": "VectorMachineSDK",
+      "submodule_url": "https://github.com/escrivivir-co/aleph-deep-wiki.git",
+      "submodule_branch": "integration/beta/scriptorium",
+      "handoffs": [
+        {
+          "label": "Mapear stack VectorMachineSDK",
+          "agent": "VectorMachine"
+        },
+        {
+          "label": "Preparar fachada MCP",
+          "agent": "VectorMachine"
         }
       ]
     }

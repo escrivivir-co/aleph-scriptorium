@@ -2,7 +2,7 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-01-07  
+> **Última actualización**: 2026-04-23  
 > **Estado**: 🌿 Actualizado (MCP-CHANNELS-1.0.0 indexado)
 
 ---
@@ -36,7 +36,7 @@
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                  CAPA SUBMÓDULOS (15 repos)                          │
+│                  CAPA SUBMÓDULOS (22 repos)                          │
 │              Infraestructura externa (Git submodules)                │
 └─────────────────────────────────────────────────────────────────────┘
                                 │
@@ -240,6 +240,7 @@ applyTo: "**/*.md"  # Glob de archivos
 | hypergraph-editor | 1.0.0 | wiki-racer | plugin_ox_hypergrapheditor |
 | consejo-asesor | 1.0.0 | onfalo-asesor-sdk | plugin_ox_consejoasesor |
 | lore-sdk | 1.0.0 | DocumentMachineSDK | plugin_ox_loresdk |
+| vector-machine | 1.0.0 | VectorMachineSDK | plugin_ox_vectormachine |
 
 ### 3.3. Estructura de un Plugin
 
@@ -281,7 +282,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 
 ## 4. Sistema de Submódulos
 
-### 4.1. Submódulos Instalados (21)
+### 4.1. Submódulos Instalados (22)
 
 > Fuente canónica: `.gitmodules` + `git submodule status`.
 
@@ -308,6 +309,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 | threejs-gamify-ui | — (sin branch fijada) | — | Three.js |
 | para-la-voz-sdk | integration/beta/scriptorium | lore-sdk | Markdown + Jekyll |
 | onfalo-asesor-sdk | integration/beta/scriptorium | consejo-asesor | Markdown + TypeScript SDK |
+| aleph-deep-wiki | integration/beta/scriptorium | vector-machine | Docker + Python + FastAPI + ChromaDB |
 
 ### 4.2. Protocolo de Integración
 

@@ -36,6 +36,10 @@ handoffs:
     agent: Indice
     prompt: Verifica que las instrucciones mencionadas en un Context Pack existan en .github/plugins/*/instructions/.
     send: false
+  - label: Consultar mapa VectorMachineSDK
+    agent: plugin_ox_vectormachine
+    prompt: Obtén el mapa estructural del stack vectorial, su plugin y la futura fachada MCP para evitar exploración redundante.
+    send: false
   - label: 🎬 Lanzar servidores demo
     agent: Ox
     prompt: Ejecuta run_vscode_command con commandId 'alephscript.demo.runAll' para abrir 5 terminales.
@@ -100,6 +104,16 @@ handoffs:
 
 ---
 
+## Rutas DRY para VectorMachine
+
+- mapa funcional: `ARCHIVO/DEVOPS/Funcional.md`;
+- mapa técnico: `ARCHIVO/DEVOPS/Tecnico.md`;
+- plugin de integración: `.github/plugins/vector-machine/manifest.md`;
+- bridge: `.github/agents/plugin_ox_vectormachine.agent.md`;
+- ancla del submódulo: `VectorMachineSDK/README-SCRIPTORIUM.md`.
+
+---
+
 ## Servidores MCP
 
 | Servidor | Puerto | Fuente |
@@ -126,6 +140,7 @@ handoffs:
 | "¿Ya investigamos PETRL antes?" | Consultar índice archivados |
 | "¿Qué épicas cerró Sprint1?" | Consultar ficha de archivado |
 | "Voy a abrir spike de X tema" | Verificar si spike ya fue investigado |
+| "¿Dónde está la autopista vectorial?" | Consultar mapa VectorMachineSDK |
 
 ---
 
