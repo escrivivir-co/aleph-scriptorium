@@ -2,7 +2,7 @@
 id: lore-sdk
 name: "LoreSDK — SDK Editorial para Voces"
 version: "1.0.0"
-description: "Plugin para analizar corrientes ideológicas y cristalizar Voces que generan poemas desde un corpus. Patrón main→mod: SDK puro + mods de lore específicos."
+description: "Plugin para analizar corrientes ideológicas desde para-la-voz. En integration/beta/scriptorium monta el SDK puro; @voz y el catálogo son capacidades condicionadas a un lore/mod activo."
 author: "Aleph Scriptorium"
 license: "AIPL v1.0"
 
@@ -23,7 +23,7 @@ agents:
 prompts:
   - name: "crear-voz"
     file: "prompts/crear-voz.prompt.md"
-    description: "Scaffold de nueva Voz (mod): corriente → corpus → @cristalizador → @voz"
+    description: "Scaffold de un lore/mod derivado del SDK: plantilla → corpus → /design → cristalización opcional de @voz"
   - name: "alimentar-corpus"
     file: "prompts/alimentar-corpus.prompt.md"
     description: "Ciclo completo: /feed → /diff-corpus → /merge-corpus"
@@ -50,7 +50,7 @@ handoffs:
 
 # Plugin: LoreSDK — SDK Editorial para Voces
 
-Plugin para **analizar corrientes ideológicas y cristalizar Voces** que generan poemas desde un corpus, no sobre él.
+Plugin para **analizar corrientes ideológicas** desde el SDK para-la-voz y, cuando existe un lore activo, cristalizar Voces que generan texto desde un corpus, no sobre él.
 
 ---
 
@@ -72,9 +72,9 @@ Permite que cualquier editorial, colectivo o corriente ideológica tenga un **ag
 Plugin LoreSDK
 ├── Analizador (@bartleby)       →  editorial → informe 5 secciones
 ├── Gestor corpus (@archivero)   →  /diff-corpus, /merge-corpus
-├── Diseñador (@cristalizador)   →  mod/agents/voz, mod/instructions/
-├── Interfaz (@portal-editorial) →  subsumption según perfil lector
-└── Generador (@voz)             →  poema desde corpus, no sobre él
+├── Diseñador (@cristalizador)   →  artefactos para lore activo
+├── Interfaz (@portal)           →  subsumption según perfil lector
+└── Generador (@voz, opcional)   →  texto desde corpus, solo en lore activo
 ```
 
 ### Patrón main → mod
@@ -93,15 +93,14 @@ main (SDK puro)         mod/[nick] (lore + datos)
 - **Submódulo**: `DocumentMachineSDK`
 - **Repo**: `https://github.com/escrivivir-co/para-la-voz-sdk.git`
 - **Rama**: `integration/beta/scriptorium`
+- **Modo actual**: checkout del SDK puro; el lore activo se prepara aparte
 - **README integración**: `DocumentMachineSDK/README-SCRIPTORIUM.md`
 
----
+## Estado Actual En Scriptorium
 
-## Mod activo: restitutiva (PARA LA VOZ)
-
-- Nick: `restitutiva` — marxismo-leninismo ortodoxo post-soviético
-- 4 editoriales procesadas, corpus estable, @voz cristalizada
-- Subsumption protocol: tecnología invisible bajo nombre "la aplicación"
+- El checkout integrado en `integration/beta/scriptorium` monta el SDK puro de `DocumentMachineSDK`.
+- Los agentes disponibles de forma directa son `@bartleby`, `@archivero`, `@cristalizador`, `@portal` y `@dramaturgo`.
+- Las rutas `proyecto.config.md`, `corpus/`, `guiones/`, `mod/` y `docs/_poemas/` solo aparecen cuando se prepara un lore/mod derivado del SDK.
 
 ---
 

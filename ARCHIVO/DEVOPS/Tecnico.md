@@ -238,6 +238,8 @@ applyTo: "**/*.md"  # Glob de archivos
 | wiring-app | 1.0.0 | wiki-racer | plugin_ox_wiringapp |
 | arg-board-app | 1.0.0 | wiki-racer | plugin_ox_argboardapp |
 | hypergraph-editor | 1.0.0 | wiki-racer | plugin_ox_hypergrapheditor |
+| consejo-asesor | 1.0.0 | onfalo-asesor-sdk | plugin_ox_consejoasesor |
+| lore-sdk | 1.0.0 | DocumentMachineSDK | plugin_ox_loresdk |
 
 ### 3.3. Estructura de un Plugin
 
@@ -279,24 +281,33 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 
 ## 4. Sistema de Submódulos
 
-### 4.1. Submódulos Instalados (17)
+### 4.1. Submódulos Instalados (21)
+
+> Fuente canónica: `.gitmodules` + `git submodule status`.
 
 | Submódulo | Rama | Plugin asociado | Runtime |
 |-----------|------|-----------------|---------|
-| alephscript-mcp-presets-site | dev/astillador | mcp-presets | Next.js |
-| alephscript-n8n-like-editor | integration/beta/scriptorium | n8n-editor | Angular 18 |
-| alephscript-network-sdk | integration/beta/scriptorium | network | Docker |
-| alephscript-typed-prompting | integration/beta/scriptorium | typed-prompting | Vite |
+| vscode-alephscript-extension | integration/beta/scriptorium | — | TypeScript |
+| alephscript-mcp-presets-site | integration/beta/scriptorium | mcp-presets | Next.js |
+| as-utils-sdk | integration/beta/scriptorium | — | Node.js |
 | as-gym | integration/beta/scriptorium | — | TypeScript |
-| as-utils-sdk | feature/astillero | — | Node.js |
-| blockly-alephscript-sdk | integration/beta/scriptorium | blockly-editor | Angular |
-| iot-sbr-logica-para-bots | integration/beta/scriptorium | prolog-editor | SWI-Prolog |
+| alephscript-network-sdk | integration/beta/scriptorium | network | Docker |
 | kick-aleph-bot | integration/beta/scriptorium | — | Node.js |
 | kick-aleph-crono-bot | integration/beta/scriptorium | — | Node.js |
 | mcp-novelist | integration/beta/scriptorium | novelist | Node.js |
+| blockly-alephscript-sdk | integration/beta/scriptorium | blockly-editor | Angular |
 | node-red-alephscript-sdk | integration/beta/scriptorium | wire-editor | Node-RED |
-| vscode-alephscript-extension | integration/beta/scriptorium | — | TypeScript |
+| iot-sbr-logica-para-bots | integration/beta/scriptorium | prolog-editor | SWI-Prolog |
+| alephscript-typed-prompting | integration/beta/scriptorium | typed-prompting | Vite |
+| alephscript-n8n-like-editor | integration/beta/scriptorium | n8n-editor | Angular 18 |
 | wiki-racer | integration/beta/scriptorium | wiring-app, arg-board-app, hypergraph-editor | TypeScript |
+| vscode-copilot-chat | integration/beta/scriptorium | — | TypeScript |
+| state-machine-mcp-driver | integration/beta/scriptorium | — | TypeScript |
+| mcp-agent-lore-sdk | — (sin branch fijada) | — | Markdown + templates |
+| heteronimos-semi-asistidos-sdk | integration/beta/scriptorium | bot-hub-sdk | TypeScript |
+| threejs-gamify-ui | — (sin branch fijada) | — | Three.js |
+| para-la-voz-sdk | integration/beta/scriptorium | lore-sdk | Markdown + Jekyll |
+| onfalo-asesor-sdk | integration/beta/scriptorium | consejo-asesor | Markdown + TypeScript SDK |
 
 ### 4.2. Protocolo de Integración
 

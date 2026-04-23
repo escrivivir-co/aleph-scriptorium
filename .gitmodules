@@ -76,8 +76,6 @@
 	path = DocumentMachineSDK
 	url = https://github.com/escrivivir-co/para-la-voz-sdk.git
 	branch = integration/beta/scriptorium
-	url = https://github.com/escrivivir-co/para-la-voz-sdk.git
-	branch = integration/beta/scriptorium
 [submodule "onfalo-asesor-sdk"]
 	path = onfalo-asesor-sdk
 	url = https://github.com/escrivivir-co/onfalo-asesor-sdk.git

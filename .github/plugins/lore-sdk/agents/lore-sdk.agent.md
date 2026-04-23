@@ -1,12 +1,12 @@
 ---
 name: LoreSDK
-description: "Orquesta el SDK editorial para-la-voz: análisis de corrientes ideológicas, cristalización de Voces, generación poética desde corpus. Delega a @bartleby, @archivero, @cristalizador, @portal-editorial y @voz."
-argument-hint: "Indica qué quieres hacer: 'crear voz nueva', 'alimentar corpus con [editorial]', 'generar poema', 'ver estado', 'publicar catálogo'."
+description: "Orquesta el SDK documental/editorial para-la-voz. En el checkout integration/beta/scriptorium trabaja sobre el SDK puro y delega a @bartleby, @archivero, @cristalizador y @portal; @voz y el catálogo solo existen cuando hay un lore activo."
+argument-hint: "Indica qué quieres hacer: 'crear voz nueva', 'alimentar corpus con [editorial]', 'ver estado', 'design', 'generar poema [si hay lore activo]' o 'publicar catálogo [si existe docs/_poemas]'."
 tools: ['vscode', 'read', 'edit', 'search', 'agent']
 handoffs:
   - label: Crear nueva Voz (mod)
     agent: LoreSDK
-    prompt: "Scaffolding de nueva Voz: corriente ideológica → corpus inicial → /feed → /design → @voz cristalizada."
+    prompt: "Scaffolding de un lore/mod derivado del SDK: plantilla → corpus → /feed → /diff-corpus → /merge-corpus → /design. No asumas que ya existen proyecto.config.md, mod/ o docs/_poemas/."
     send: false
   - label: Alimentar corpus existente
     agent: LoreSDK
@@ -14,15 +14,15 @@ handoffs:
     send: false
   - label: Generar poema
     agent: LoreSDK
-    prompt: "Invoca /poema en el mod activo. Lee DocumentMachineSDK/mod/prompts/poema.prompt.md para el flujo de 14 pasos."
+    prompt: "Antes de intentar un poema, verifica si existen proyecto.config.md, mod/agents/voz.agent.md y docs/_poemas/ en DocumentMachineSDK. Si faltan, informa que el checkout actual es SDK puro y que la capacidad poética requiere un lore activo."
     send: false
   - label: Ver estado del corpus
     agent: LoreSDK
-    prompt: "Ejecuta /status en el mod activo. Muestra nick confirmado, editoriales procesadas, emergencias activas."
+    prompt: "Ejecuta /status si existe un corpus activo. Si el lore todavía no fue inicializado, informa que solo está disponible el SDK puro y orienta al scaffold del lore."
     send: false
   - label: Publicar catálogo Jekyll
     agent: LoreSDK
-    prompt: "Publica el catálogo de poemas: borradores → publicados → commit → GitHub Pages."
+    prompt: "Verifica antes si hay lore activo y docs/_poemas/. Si no existen, informa que el catálogo Jekyll es una capacidad condicional del lore derivado, no del SDK puro."
     send: false
   - label: Consultar @ox
     agent: Ox
@@ -44,9 +44,9 @@ handoffs:
 
 1. **Orientar al usuario** en los flujos del SDK
 2. **Delegar a agentes internos** del submódulo según la tarea
-3. **Gestionar el contexto del mod activo** (leer `proyecto.config.md`, `corpus/corpus.md`)
-4. **Cristalizar nuevas Voces** guiando el proceso @bartleby → @archivero → @cristalizador
-5. **Respetar el subsumption protocol**: nunca mencionar IA/LLM/prompt en outputs públicos
+3. **Gestionar el contexto del lore activo si existe**; si no existe, operar explícitamente en modo SDK puro
+4. **Cristalizar nuevas Voces** guiando el proceso @bartleby → @archivero → @cristalizador cuando el lore ya tiene scaffold
+5. **Respetar el subsumption protocol**: nunca mencionar IA/LLM/prompt en outputs públicos del lore activo
 
 ---
 
@@ -57,8 +57,8 @@ handoffs:
 | `@bartleby` | `.github/agents/bartleby.agent.md` | Analizar nuevo editorial (/feed) |
 | `@archivero` | `.github/agents/archivero.agent.md` | Gestionar corpus (/diff-corpus, /merge-corpus, /status) |
 | `@cristalizador` | `.github/agents/cristalizador.agent.md` | Diseñar artefactos del mod (/design) |
-| `@portal-editorial` | `.github/agents/portal-editorial.agent.md` | Adaptar interfaz al perfil de lector |
-| `@voz` (mod) | `mod/agents/voz.agent.md` | Generar poemas desde el corpus |
+| `@portal` | `.github/agents/portal.agent.md` | Interfaz adaptativa del SDK puro |
+| `@voz` (lore activo) | `mod/agents/voz.agent.md` | Generar textos desde el corpus cuando el lore ya fue cristalizado |
 
 ---
 
@@ -72,7 +72,12 @@ handoffs:
 | `/merge-corpus` | @archivero | Integrar hallazgos aprobados |
 | `/design` | @cristalizador | Proponer artefactos para mod/ |
 | `/status` | @archivero | Estado del corpus y nick |
-| `/poema` | @voz | Generar poema desde corpus |
+| `/universo` | @dramaturgo | Expandir universos plausibles desde el corpus |
+
+## Capacidades Condicionadas En Lore Activo
+
+- `@voz` y la publicación de catálogo solo existen cuando el lore activo ya tiene `proyecto.config.md`, `corpus/`, `mod/` y `docs/_poemas/`.
+- En el checkout `integration/beta/scriptorium` del Scriptorium, `DocumentMachineSDK` se monta por defecto como SDK puro.
 
 ---
 
@@ -124,9 +129,10 @@ Crear estructura:
 | Archivo | Propósito |
 |---------|-----------|
 | `DocumentMachineSDK/proyecto.config.template.md` | Plantilla para nuevos mods |
-| `DocumentMachineSDK/proyecto.config.md` | Configuración del mod activo |
-| `DocumentMachineSDK/corpus/corpus.md` | Mapa acumulativo del corpus |
-| `DocumentMachineSDK/mod/agents/voz.agent.md` | Ejemplo de @voz cristalizada |
-| `DocumentMachineSDK/mod/instructions/voz-restitutiva.instructions.md` | Ejemplo de 6 marcas del nick |
+| `DocumentMachineSDK/.github/agents/portal.agent.md` | Interfaz adaptativa disponible en el SDK puro |
+| `DocumentMachineSDK/.github/prompts/status.prompt.md` | Estado del corpus cuando existe lore activo |
+| `DocumentMachineSDK/proyecto.config.md` | Configuración del lore activo (solo si existe) |
+| `DocumentMachineSDK/corpus/corpus.md` | Mapa acumulativo del corpus (solo si existe lore activo) |
+| `DocumentMachineSDK/mod/agents/voz.agent.md` | Artefacto de @voz cristalizada (solo si existe lore activo) |
 | `DocumentMachineSDK/README.md` | Documentación completa del SDK |
 | `DocumentMachineSDK/README-SCRIPTORIUM.md` | Integración con Scriptorium |

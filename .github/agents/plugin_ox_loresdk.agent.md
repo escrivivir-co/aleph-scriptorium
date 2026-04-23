@@ -1,7 +1,7 @@
 ---
 name: plugin_ox_loresdk
-description: "Bridge: conecta VS Code con agentes del SDK editorial para-la-voz. Analiza corrientes ideológicas, cristaliza Voces y genera poemas desde corpus. Ver .github/plugins/lore-sdk/agents/"
-argument-hint: "crear-voz | alimentar-corpus [editorial] | generar-poema [tensión] | publicar-catalogo | status | abrir-mod [nombre]"
+description: "Bridge: conecta VS Code con el SDK documental/editorial para-la-voz. En integration/beta/scriptorium opera sobre el SDK puro (feed, diff, merge, design, status) y solo usa @voz o catálogo cuando existe un lore activo."
+argument-hint: "crear-voz | alimentar-corpus [editorial] | status | design | generar-poema [si hay lore activo] | publicar-catalogo [si hay docs/_poemas]"
 tools: ['agent']
 handoffs:
   - label: Listar capacidades del LoreSDK
@@ -10,7 +10,7 @@ handoffs:
     send: false
   - label: Crear nueva Voz
     agent: LoreSDK
-    prompt: "Scaffolding de nueva Voz (mod): corriente ideológica → corpus → @cristalizador → @voz."
+    prompt: "Prepara un lore/mod derivado del SDK: plantilla → corpus → /feed → /diff-corpus → /merge-corpus → /design. No asumas que el checkout actual ya tiene mod/, proyecto.config.md o @voz."
     send: false
   - label: Alimentar corpus
     agent: LoreSDK
@@ -18,15 +18,15 @@ handoffs:
     send: false
   - label: Generar poema
     agent: LoreSDK
-    prompt: "Genera un poema usando @voz en el mod activo. Lee DocumentMachineSDK/mod/agents/voz.agent.md."
+    prompt: "Antes de generar poema, verifica si existen DocumentMachineSDK/proyecto.config.md, DocumentMachineSDK/mod/agents/voz.agent.md y DocumentMachineSDK/docs/_poemas/. Si faltan, explica que el checkout actual es SDK puro y que primero hay que preparar un lore activo."
     send: false
   - label: Ver estado del corpus
     agent: LoreSDK
-    prompt: "Ejecuta /status en el mod activo."
+    prompt: "Ejecuta /status si existe un corpus activo. Si no existe lore inicializado, informa que el checkout actual expone solo el SDK puro."
     send: false
   - label: Publicar catálogo
     agent: LoreSDK
-    prompt: "Publica poemas en Jekyll GitHub Pages."
+    prompt: "Antes de publicar catálogo, verifica si existe DocumentMachineSDK/docs/_poemas/ y si hay un lore activo. Si no, informa que la publicación web es una capacidad condicional del lore derivado, no del SDK puro."
     send: false
 ---
 
@@ -49,8 +49,8 @@ handoffs:
 | `@bartleby` | `DocumentMachineSDK/.github/agents/bartleby.agent.md` | Analista de editoriales |
 | `@archivero` | `DocumentMachineSDK/.github/agents/archivero.agent.md` | Gestor del corpus |
 | `@cristalizador` | `DocumentMachineSDK/.github/agents/cristalizador.agent.md` | Diseñador de artefactos mod/ |
-| `@portal-editorial` | `DocumentMachineSDK/.github/agents/portal-editorial.agent.md` | Interfaz adaptativa |
-| `@voz` (mod) | `DocumentMachineSDK/mod/agents/voz.agent.md` | Generador poético |
+| `@portal` | `DocumentMachineSDK/.github/agents/portal.agent.md` | Interfaz adaptativa del SDK puro |
+| `@voz` (lore activo) | `DocumentMachineSDK/mod/agents/voz.agent.md` | Generador desde corpus, solo si el lore/mod ya fue preparado |
 
 ## Casos de Uso
 
@@ -73,14 +73,14 @@ handoffs:
 
 → @bartleby analiza → @archivero integra → corpus.md actualizado
 
-### Generar poema
+### Generar poema (solo con lore activo)
 
 ```
 @plugin_ox_loresdk
 > Generar poema
 ```
 
-→ @voz usa corpus.md para crear poema desde tensiones estructurales
+→ Si existe `@voz`, usa corpus.md para crear texto desde las tensiones estructurales; si no existe, el bridge debe indicar que el checkout actual sigue en modo SDK puro
 
 ## Referencia
 

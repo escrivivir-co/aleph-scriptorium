@@ -72,9 +72,6 @@ SUBMODULE_DOCUMENT_MACHINE_SDK_URL="https://github.com/escrivivir-co/para-la-voz
 SUBMODULE_BOT_HUB_SDK_DIR="$ROOT_DIR/BotHubSDK"
 SUBMODULE_BOT_HUB_SDK_URL="https://github.com/escrivivir-co/heteronimos-semi-asistidos-sdk.git"
 
-SUBMODULE_UI_SDK_THREEJS_DIR="$ROOT_DIR/UISDKThreejs"
-SUBMODULE_UI_SDK_THREEJS_URL="https://github.com/escrivivir-co/threejs-gamify-ui.git"
-
 SUBMODULE_ONFALO_ASESOR_SDK_DIR="$ROOT_DIR/onfalo-asesor-sdk"
 SUBMODULE_ONFALO_ASESOR_SDK_URL="https://github.com/escrivivir-co/onfalo-asesor-sdk.git"
 
@@ -85,56 +82,75 @@ echo "[setup] Raíz: $ROOT_DIR"
 mkdir -p "$VSCODE_DIR"
 cat > "$SETTINGS_FILE" <<'JSON'
 {
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "chat.promptFilesLocations": {
     ".github/prompts": true,
+    ".github/plugins/scriptorium-pack/prompts": true,
     ".github/plugins/arg-board/prompts": true,
-    ".github/plugins/enciclopedia/prompts": true,
-    ".github/plugins/gh-pages/prompts": true,
-    ".github/plugins/foro-scraper/prompts": true,
-    ".github/plugins/consejo-asesor/prompts": true,
     ".github/plugins/agent-creator/prompts": true,
     ".github/plugins/teatro/prompts": true,
     ".github/plugins/scrum/prompts": true,
+    ".github/plugins/foro-scraper/prompts": true,
+    ".github/plugins/enciclopedia/prompts": true,
+    ".github/plugins/gh-pages/prompts": true,
     ".github/plugins/mcp-presets/prompts": true,
-    ".github/plugins/network/prompts": true,
-    ".github/plugins/novelist/prompts": true,
+    ".github/plugins/openasyncapi-editor/prompts": true,
+    ".github/plugins/prolog-editor/prompts": true,
     ".github/plugins/blockly-editor/prompts": true,
     ".github/plugins/wire-editor/prompts": true,
-    ".github/plugins/prolog-editor/prompts": true,
-    ".github/plugins/typed-prompting/prompts": true,
-    ".github/plugins/n8n-editor/prompts": true,
-    ".github/plugins/wiring-app/prompts": true,
-    ".github/plugins/arg-board-app/prompts": true,
     ".github/plugins/hypergraph-editor/prompts": true,
-    ".github/plugins/bot-hub-sdk/prompts": true,
-    ".github/plugins/lore-sdk/prompts": true
+    ".github/plugins/n8n-editor/prompts": true,
+    ".github/plugins/typed-prompting/prompts": true,
+    ".github/plugins/arg-board-app/prompts": true,
+    ".github/plugins/wiring-app/prompts": true,
+    ".github/plugins/novelist/prompts": true,
+    ".github/plugins/network/prompts": true,
+    ".github/plugins/consejo-asesor/prompts": false,
+    ".github/plugins/nodejs-notebooks/prompts": true
   },
   "chat.instructionsFilesLocations": {
     ".github/instructions": true,
+    ".github/plugins/scriptorium-pack/instructions": true,
     ".github/plugins/arg-board/instructions": true,
-    ".github/plugins/enciclopedia/instructions": true,
-    ".github/plugins/gh-pages/instructions": true,
-    ".github/plugins/foro-scraper/instructions": true,
-    ".github/plugins/consejo-asesor/instructions": true,
     ".github/plugins/agent-creator/instructions": true,
     ".github/plugins/teatro/instructions": true,
     ".github/plugins/scrum/instructions": true,
+    ".github/plugins/foro-scraper/instructions": true,
+    ".github/plugins/enciclopedia/instructions": true,
+    ".github/plugins/gh-pages/instructions": true,
     ".github/plugins/mcp-presets/instructions": true,
-    ".github/plugins/network/instructions": true,
-    ".github/plugins/novelist/instructions": true,
+    ".github/plugins/openasyncapi-editor/instructions": true,
+    ".github/plugins/prolog-editor/instructions": true,
     ".github/plugins/blockly-editor/instructions": true,
     ".github/plugins/wire-editor/instructions": true,
-    ".github/plugins/prolog-editor/instructions": true,
-    ".github/plugins/typed-prompting/instructions": true,
-    ".github/plugins/n8n-editor/instructions": true,
-    ".github/plugins/wiring-app/instructions": true,
-    ".github/plugins/arg-board-app/instructions": true,
     ".github/plugins/hypergraph-editor/instructions": true,
-    ".github/plugins/bot-hub-sdk/instructions": true,
-    ".github/plugins/lore-sdk/instructions": true
+    ".github/plugins/n8n-editor/instructions": true,
+    ".github/plugins/typed-prompting/instructions": true,
+    ".github/plugins/arg-board-app/instructions": true,
+    ".github/plugins/wiring-app/instructions": true,
+    ".github/plugins/novelist/instructions": true,
+    ".github/plugins/network/instructions": true,
+    ".github/plugins/consejo-asesor/instructions": false,
+    ".github/plugins/nodejs-notebooks/instructions": true
   },
-  "chat.useNestedAgentsMdFiles": true,
-  "chat.promptFilesRecommendations": true
+  "chat.useNestedAgentsMdFiles": false,
+  "chat.useAgentsMdFile": false,
+  "chat.promptFilesRecommendations": {
+    ".github/plugins/scriptorium-pack/prompts": true
+  },
+  "files.associations": {
+    "*.md": "markdown"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "docs/_site": true,
+    "docs/vendor": true
+  },
+  "search.exclude": {
+    "docs/_site": true,
+    "docs/vendor": true
+  }
 }
 JSON
 

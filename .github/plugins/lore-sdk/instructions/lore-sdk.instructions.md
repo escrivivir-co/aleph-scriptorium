@@ -8,7 +8,7 @@ applyTo: "DocumentMachineSDK/**/*.md, ARCHIVO/PLUGINS/LORE_SDK/**/*"
 
 ## Contexto
 
-El LoreSDK es un **SDK editorial** que analiza corrientes ideológicas y cristaliza Voces generativas. Opera mediante el patrón `main → mod`: el SDK puro vive en `main` y cada corriente analizada tiene su propio `mod/` con corpus, artefactos cristalizados y configuración.
+El LoreSDK es un **SDK editorial** que analiza corrientes ideológicas y cristaliza Voces generativas. Opera mediante el patrón `main → mod`: el SDK puro vive en `main` y cada corriente analizada tiene su propio `mod/` con corpus, artefactos cristalizados y configuración. En el Scriptorium, `DocumentMachineSDK` se monta sobre `integration/beta/scriptorium` como checkout del SDK puro; las rutas de lore (`corpus/`, `guiones/`, `mod/`, `proyecto.config.md`, `docs/_poemas/`) solo existen cuando se prepara un lore/mod activo.
 
 ---
 
@@ -62,14 +62,16 @@ En **outputs públicos** (poemas, catálogo web, comunicaciones editoriales):
 
 | Archivo | Propósito | Modificado por |
 |---------|-----------|----------------|
-| `DocumentMachineSDK/corpus/corpus.md` | Mapa acumulativo del corpus | Solo @archivero |
-| `DocumentMachineSDK/corpus/editoriales/*.md` | Editoriales fuente | Solo lectura (datos) |
-| `DocumentMachineSDK/corpus/analisis/*.analisis.md` | Informes de @bartleby | Solo @bartleby |
-| `DocumentMachineSDK/mod/agents/voz.agent.md` | Agente @voz cristalizado | Solo @cristalizador |
-| `DocumentMachineSDK/mod/instructions/*.instructions.md` | Instrucciones del mod | Solo @cristalizador |
-| `DocumentMachineSDK/mod/prompts/poema.prompt.md` | Flujo de generación | Solo @cristalizador |
-| `DocumentMachineSDK/proyecto.config.md` | Configuración del mod activo | Usuario + @cristalizador |
-| `DocumentMachineSDK/docs/_poemas/*.md` | Catálogo de poemas | @voz (creación) + usuario (publicación) |
+| `DocumentMachineSDK/proyecto.config.template.md` | Plantilla base para un lore/mod | Usuario |
+| `DocumentMachineSDK/.github/agents/portal.agent.md` | Interfaz adaptativa disponible en el SDK puro | Upstream del SDK |
+| `DocumentMachineSDK/corpus/corpus.md` | Mapa acumulativo del corpus (solo si existe lore activo) | Solo @archivero |
+| `DocumentMachineSDK/corpus/editoriales/*.md` | Editoriales fuente (solo si existe lore activo) | Solo lectura (datos) |
+| `DocumentMachineSDK/corpus/analisis/*.analisis.md` | Informes de @bartleby (solo si existe lore activo) | Solo @bartleby |
+| `DocumentMachineSDK/mod/agents/voz.agent.md` | Agente @voz cristalizado (solo si existe lore activo) | Solo @cristalizador |
+| `DocumentMachineSDK/mod/instructions/*.instructions.md` | Instrucciones del lore (solo si existe lore activo) | Solo @cristalizador |
+| `DocumentMachineSDK/mod/prompts/poema.prompt.md` | Flujo de generación (solo si existe lore activo) | Solo @cristalizador |
+| `DocumentMachineSDK/proyecto.config.md` | Configuración del lore activo (solo si existe) | Usuario + @cristalizador |
+| `DocumentMachineSDK/docs/_poemas/*.md` | Catálogo de poemas (solo si existe lore activo) | @voz (creación) + usuario (publicación) |
 
 ---
 

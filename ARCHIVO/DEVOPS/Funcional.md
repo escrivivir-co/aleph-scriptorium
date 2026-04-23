@@ -88,6 +88,13 @@
 | Foro Scraper | Foros y blogs externos | @plugin_ox_foroscraper |
 | MCP-Presets | Herramientas MCP | @plugin_ox_mcppresets |
 
+### 3.4.b. Consejo Y SDK Editorial
+
+| Plugin | Qué hace | Agente |
+|--------|-----------|--------|
+| Consejo Asesor (ONFALO) | Debate, auditoría, producción y pipeline relato desde el submódulo privado ONFALO | @plugin_ox_consejoasesor |
+| LoreSDK | SDK documental/editorial para `feed`, `diff`, `merge`, `design` y `status`; `@voz` y catálogo solo con lore activo | @plugin_ox_loresdk |
+
 ### 3.5. Copilot Logs (MCP Server)
 
 > **Feature**: FEATURE-SNAPSHOTS-1.0.0

@@ -50,11 +50,9 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `CopilotEngine` — Copilot Chat Engine (fork)
    - `StateMachine` — State Machine MCP Driver
    - `AgentLoreSDK` — Agent Lore SDK (plantillas de agentes)
-    - `UISDKThreejs` — UI ThreeJS gamificada para demos y canvas interactivo
-    - `DocumentMachineSDK` — SDK agéntico de análisis documental y cristalización de voz
+  - `UISDKThreejs` — UI ThreeJS gamificada para demos y canvas interactivo
+  - `DocumentMachineSDK` — SDK editorial/documental para-la-voz
    - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
-   - `UISDKThreejs` — UI SDK Three.js (gamificación 3D)
-  - `DocumentMachineSDK` — SDK editorial para-la-voz (plugin LoreSDK)
   - `onfalo-asesor-sdk` — Consejo Asesor ONFALO (fuente privada integrada)
 
 ### Output esperado
@@ -83,8 +81,6 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: UISDKThreejs
 [setup] Configurando submódulo: DocumentMachineSDK
 [setup] Configurando submódulo: BotHubSDK
-[setup] Configurando submódulo: UISDKThreejs
-[setup] Configurando submódulo: DocumentMachineSDK
 [setup] Configurando submódulo: onfalo-asesor-sdk
 [setup] ✔ Setup completado 
 
@@ -107,9 +103,8 @@ Submódulos configurados:
   - StateMachine: State Machine MCP Driver
   - AgentLoreSDK: Agent Lore SDK (plantillas de agentes)
   - UISDKThreejs: UI ThreeJS gamificada para demos y canvas interactivo
-  - DocumentMachineSDK: SDK agéntico de análisis documental y cristalización de voz
   - BotHubSDK: SDK bots Telegram + protocolo IACM inter-agente
-  - DocumentMachineSDK: SDK editorial para-la-voz (plugin LoreSDK)
+  - DocumentMachineSDK: SDK editorial/documental para-la-voz
   - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada)
 ```
 

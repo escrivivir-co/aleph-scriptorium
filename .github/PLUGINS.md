@@ -100,6 +100,8 @@ mcpServers:
 | `@plugin_ox_mcppresets` | MCP Presets | 1 agente | 6 servers (mesh) |
 | `@plugin_ox_typedprompting` | TypedPrompting | 1 agente | 1 server (3020) |
 | `@plugin_ox_openasyncapieditor` | OpenAsyncAPI Editor | 1 agente | — |
+| `@plugin_ox_consejoasesor` | Consejo Asesor (ONFALO) | 1 agente bridge | — |
+| `@plugin_ox_loresdk` | LoreSDK | 1 agente bridge | — |
 
 ---
 

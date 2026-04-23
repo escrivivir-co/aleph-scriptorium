@@ -51,13 +51,13 @@ No expone servicios HTTP. Opera completamente en el chat de Copilot.
 > Nuevo editorial de 2026-03-01: [texto]
 ```
 
-### Generar poema
+### Generar poema (solo con lore activo)
 
 ```
 @voz genera un poema sobre la tensión entre arte y propaganda
 ```
 
-### Publicar catálogo
+### Publicar catálogo (solo con lore activo)
 
 ```
 /publicar-catalogo
@@ -79,20 +79,21 @@ Plugin LoreSDK (Scriptorium)
 ├── ARCHIVO/PLUGINS/LORE_SDK/          ← Runtime data
 │
 └── DocumentMachineSDK/                ← Submódulo (para-la-voz-sdk)
-    ├── .github/agents/ (4 core)
-    ├── .github/prompts/ (6 commands)
-    ├── corpus/
-    ├── mod/
-    └── docs/
+    ├── .github/agents/ (SDK puro)
+    ├── .github/prompts/ (feed, diff, merge, design, status, universo)
+    ├── proyecto.config.template.md
+    └── docs/                         ← infraestructura base; el catálogo aparece con un lore activo
 ```
 
-## Mod Activo: restitutiva
+## Estado Actual En Scriptorium
 
-El submódulo ya incluye un mod activo (`mod/restitutiva`) con:
-- 4 editoriales procesadas del magazine PARA LA VOZ
-- Nick `restitutiva` confirmado ×4
-- `@voz` cristalizada y operativa
-- Catálogo Jekyll configurado en `docs/`
+El checkout integrado en `integration/beta/scriptorium` monta el SDK puro. No trae por defecto:
+- `proyecto.config.md`
+- `corpus/`
+- `mod/agents/voz.agent.md`
+- `docs/_poemas/`
+
+Esos artefactos aparecen cuando se prepara un lore/mod derivado del SDK.
 
 ## Referencias
 

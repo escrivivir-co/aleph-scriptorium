@@ -967,7 +967,7 @@
     "lore-sdk": {
       "name": "LoreSDK — SDK Editorial para Voces",
       "version": "1.0.0",
-      "description": "SDK editorial para análisis de corrientes ideológicas y cristalización de Voces generativas. Patrón main→mod. 4 agentes core (@bartleby, @archivero, @cristalizador, @portal-editorial) + @voz (mod). Corpus acumulativo, nick por corriente, catálogo Jekyll.",
+      "description": "SDK documental/editorial para análisis de corrientes ideológicas. En integration/beta/scriptorium monta el SDK puro con @bartleby, @archivero, @cristalizador, @portal y @dramaturgo; @voz y el catálogo son capacidades condicionadas a un lore/mod activo.",
       "author": "Aleph Scriptorium",
       "installed_at": "2026-04-16T00:00:00Z",
       "enabled": true,

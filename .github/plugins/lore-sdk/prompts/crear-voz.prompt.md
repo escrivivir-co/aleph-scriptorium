@@ -101,7 +101,7 @@ Próximos pasos:
 
 - **Rama**: El trabajo del Scriptorium ocurre sobre `integration/beta/scriptorium` en `DocumentMachineSDK`
 - **Patrón**: `main → mod` sigue siendo la referencia editorial interna del SDK, pero la integración del monorepo vive en la rama estándar del Scriptorium
-- **Subsumption**: @portal-editorial se activa automáticamente para adaptar el lenguaje al perfil del lector
+- **Subsumption**: @portal se activa automáticamente para adaptar el lenguaje al perfil del lector
 - **Nick**: Una vez identificado en el primer editorial, el nick se confirma acumulativamente
 
 ## Ejemplo

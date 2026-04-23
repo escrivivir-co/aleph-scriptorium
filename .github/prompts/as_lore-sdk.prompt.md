@@ -1,6 +1,6 @@
 ---
 name: LoreSDK — SDK Editorial
-description: "Punto de entrada para el SDK editorial para-la-voz: crear Voces, alimentar corpus, generar poemas, publicar."
+description: "Punto de entrada para para-la-voz: crear o preparar un lore, alimentar corpus y consultar el SDK. Generar textos o publicar catálogo solo aplica cuando existe lore activo."
 applyTo: "DocumentMachineSDK/**/*.md"
 ---
 
@@ -14,9 +14,9 @@ Bienvenido al **SDK editorial para-la-voz**. Analiza corrientes ideológicas y c
 |--------|--------|--------|
 | **A** | Crear nueva Voz | Primera vez con una corriente nueva |
 | **B** | Alimentar corpus | Nuevo editorial del corpus existente |
-| **C** | Generar poema | @voz ya cristalizada, quieres crear un poema |
+| **C** | Generar poema | Solo si existe un lore activo con `@voz` cristalizada |
 | **D** | Ver estado | ¿Cuántos editoriales? ¿Nick confirmado? |
-| **E** | Publicar catálogo | Subir borradores aprobados a GitHub Pages |
+| **E** | Publicar catálogo | Solo si el lore activo ya tiene `docs/_poemas/` |
 
 ---
 
@@ -73,11 +73,12 @@ Flujo: `/publicar-catalogo` → revisión → `published: true` → commit → i
 
 ## Contexto actual
 
-El submódulo `DocumentMachineSDK` tiene un mod activo:
-- **Mod**: `restitutiva`
-- **Corpus**: Magazine PARA LA VOZ (marxismo-leninismo ortodoxo, variante restitutivista)
-- **Nick**: `restitutiva` ×4 confirmado
-- **@voz**: ✅ cristalizada y operativa
+El submódulo `DocumentMachineSDK` integrado en el Scriptorium monta hoy el **SDK puro** sobre `integration/beta/scriptorium`:
+- no trae un `proyecto.config.md` activo por defecto,
+- no trae `mod/agents/voz.agent.md` precargado,
+- no trae `docs/_poemas/` listo para publicar.
+
+Si quieres trabajar sobre un lore concreto, primero hay que prepararlo o abrir un checkout derivado del SDK.
 
 Para trabajar con el mod activo, responde con la opción (A/B/C/D/E) o describe directamente lo que quieres hacer.
 
