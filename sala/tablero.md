@@ -1,7 +1,7 @@
 # Tablero de tareas — Lore DB Vector Expansion
 
 > **Sprint:** sprint-scrum-backlog-lore-db-vector-expansion-init
-> **Última actualización:** 23-abr-2026 — orquestador (GPT-5.4) — añadido dossier técnico `vector-machine` y track VMS
+> **Última actualización:** 23-abr-2026 — orquestador (GPT-5.4) — añadido dossier paraguas `sesion-scriptorium-vector` y track SSV
 > **Agentes activos:** 0 en curso, 3 slots disponibles (gepe, gemy, sony)
 > **Estados:** `libre` · `propuesta:{alias}` · `en-curso:{alias}` · `entregada:{alias}` · `cerrada` · `no-aplica`
 >
@@ -33,6 +33,10 @@ Track REFINE-SC: SBLVX-SC-02 → SBLVX-SC-03 → SBLVX-SC-04
 Track VMS: VM-01 → VM-02
   VM-01 ratifica la frontera del contrato MCP v1.
   VM-02 traduce esa frontera a backlog ejecutable cuando ya esté cerrada.
+
+Track SSV: SSV-01 → SSV-02
+  SSV-01 ratifica el mapa de ownership entre los dossiers.
+  SSV-02 deja el handoff de retoma y la prioridad de la próxima sesión.
 ```
 
 ---
@@ -65,6 +69,20 @@ Track VMS: VM-01 → VM-02
 
 ---
 
+## Track SSV — sesión paraguas vectorial (3 tareas)
+
+| Task | Título | Deps | Estado |
+|------|--------|------|--------|
+| SSV-00 | Contexto y persistencia | — | `cerrada` |
+| SSV-01 | Ratificar mapa de ownership y relación entre dossiers | SSV-00 | `libre` |
+| SSV-02 | Preparar handoff de retoma y prioridad | SSV-01 | `libre` |
+
+> Dossier: `sala/dossiers/sesion-scriptorium-vector/`
+>
+> Nota: track paraguas de sesión. Su función es enlazar `plan.md` y los tres dossiers obligatorios del ecosistema, no duplicar sus backlogs.
+
+---
+
 ## Revisiones pendientes
 
 | Task | Título | Deps | Estado |
@@ -88,6 +106,7 @@ Track VMS: VM-01 → VM-02
 | SBLVX-SC-00 | scrum-backlog-lore-db-vector-expansion | `cerrada` — GPT-5.4 |
 | SBLVX-SC-01 | scrum-backlog-lore-db-vector-expansion | `cerrada` — GPT-5.4 |
 | VM-00 | vector-machine | `cerrada` — GPT-5.4 |
+| SSV-00 | sesion-scriptorium-vector | `cerrada` — GPT-5.4 |
 
 ---
 
@@ -97,4 +116,5 @@ Track VMS: VM-01 → VM-02
 |-------|-------|----------|--------|----------|----------------------------|
 | REFINE-SC | 5 | **2** | **3** | **0** | SBLVX-SC-02 |
 | VMS | 3 | **1** | **2** | **0** | VM-01 |
-| **Total** | **8** | **3** | **5** | **0** | SBLVX-SC-02, VM-01 |
+| SSV | 3 | **1** | **2** | **0** | SSV-01 |
+| **Total** | **11** | **4** | **7** | **0** | SBLVX-SC-02, VM-01, SSV-01 |
