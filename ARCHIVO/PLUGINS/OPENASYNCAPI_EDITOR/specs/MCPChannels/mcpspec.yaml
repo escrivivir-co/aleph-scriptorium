@@ -1,9 +1,13 @@
+# yaml-language-server: $schema=../../mcpspec.schema.json
 # MCP Specification for MCPChannels Mesh
 # Version: 1.0.0
 # This spec defines MCP tools that could expose mesh capabilities
 
-mcpVersion: "1.0"
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
+mcpVersion: "1.0.0"
 info:
+  title: MCPChannels Mesh
   name: MCPChannels Mesh
   version: 1.0.0
   description: |
@@ -14,6 +18,15 @@ servers:
   mesh:
     url: http://localhost:3010
     description: Socket.IO Mesh Server
+
+capabilities:
+  tools:
+    listChanged: false
+  resources:
+    subscribe: false
+    listChanged: false
+  prompts:
+    listChanged: false
 
 tools:
   - name: mesh_list_rooms

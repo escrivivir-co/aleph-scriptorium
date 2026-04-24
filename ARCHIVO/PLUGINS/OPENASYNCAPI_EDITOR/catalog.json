@@ -1,7 +1,7 @@
 {
   "$schema": "./catalog.schema.json",
   "version": "1.2.0",
-  "updated_at": "2026-01-09T12:00:00Z",
+  "updated_at": "2026-04-24T18:00:00Z",
   "specs": [
     {
       "id": "prolog-editor-openapi",
@@ -37,7 +37,8 @@
       "id": "prolog-editor-mcpspec",
       "project": "PrologEditor",
       "type": "mcpspec",
-      "spec_version": "1.0",
+      "spec_version": "1.0.0",
+      "protocol_version": "2025-11-25",
       "api_version": "2.0.0",
       "title": "MCPPrologServer",
       "description": "MCP Server for Prolog reasoning engine (12 tools, 6 resources, 8 prompts)",
@@ -82,7 +83,8 @@
       "id": "mcp-channels-mcpspec",
       "project": "MCPChannels",
       "type": "mcpspec",
-      "spec_version": "1.0",
+      "spec_version": "1.0.0",
+      "protocol_version": "2025-11-25",
       "api_version": "1.0.0",
       "title": "MCPChannels MCP Tools",
       "description": "MCP tools for mesh discovery and capability invocation",
@@ -98,6 +100,7 @@
       "project": "TypedPromptsEditor",
       "type": "mcpspec",
       "spec_version": "1.0.0",
+      "protocol_version": "2025-11-25",
       "api_version": "1.0.0",
       "title": "MCPTypedPromptServer",
       "description": "MCP Server for schema validation and ontology management",
@@ -113,6 +116,7 @@
       "project": "DevOpsServer",
       "type": "mcpspec",
       "spec_version": "1.0.0",
+      "protocol_version": "2025-11-25",
       "api_version": "1.0.0",
       "title": "DevOpsServer MCP",
       "description": "MCP Server for DevOps automation (19 tools, 8 resources, 4 prompts, 2 plugins)",
@@ -152,6 +156,37 @@
       "cataloged_at": "2026-01-18T12:00:00Z",
       "validated_at": null,
       "tags": ["socketio", "mesh", "devops", "proserpina", "xplus1"]
+    },
+    {
+      "id": "vector-machine-sdk-hnsw-openapi",
+      "project": "VectorMachineSDK-HNSW",
+      "type": "openapi",
+      "spec_version": "3.1.0",
+      "api_version": "1.0.0",
+      "title": "VectorMachineSDK-HNSW REST API",
+      "description": "Draft REST API spec for the current VectorMachineSDK FastAPI query surface over the Chroma-backed vector store.",
+      "origin": "VectorMachineSDK/V1/qa/app.py",
+      "local": "specs/VectorMachineSDK-HNSW/openapi.yaml",
+      "status": "draft",
+      "cataloged_at": "2026-04-24T12:00:00Z",
+      "validated_at": null,
+      "tags": ["rest", "rag", "chroma", "hnsw", "vector-search"]
+    },
+    {
+      "id": "vector-machine-sdk-mcp-mcpspec",
+      "project": "VectorMachineSDK-MCP",
+      "type": "mcpspec",
+      "spec_version": "1.0.0",
+      "protocol_version": "2025-11-25",
+      "api_version": "1.0.0",
+      "title": "MCPVectorMachineServer",
+      "description": "Draft MCP server spec for the projected generic multi-tenant VectorMachine gateway in Scriptorium.",
+      "origin": "sala/dossiers/scrum-backlog-lore-db-vector-expansion/sesion-2026-04-24/candidato-scope-scriptorium.md",
+      "local": "specs/VectorMachineSDK-MCP/mcpspec.yaml",
+      "status": "draft",
+      "cataloged_at": "2026-04-24T12:00:00Z",
+      "validated_at": null,
+      "tags": ["mcp", "rag", "vector-machine", "multi-tenant", "indexing"]
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "OpenAsyncAPI Catalog Schema",
-  "description": "Schema for the API specifications catalog",
+  "title": "OpenAsyncAPI + MCP Catalog Schema",
+  "description": "Schema for the OpenAPI, AsyncAPI, and MCPSpec catalog used by OpenAsyncAPI Editor",
   "type": "object",
   "required": ["version", "updated_at", "specs"],
   "properties": {
@@ -37,11 +37,15 @@
         "type": {
           "type": "string",
           "enum": ["openapi", "asyncapi", "mcpspec"],
-          "description": "Specification type (OpenAPI, AsyncAPI, or MCP Server Spec)"
+          "description": "Specification type (OpenAPI, AsyncAPI, or repository-local MCPSpec descriptor)"
         },
         "spec_version": {
           "type": "string",
-          "description": "Version of the spec format (e.g., 3.1.0 for OpenAPI)"
+          "description": "Version of the format or local descriptor edition (e.g., 3.1.0 for OpenAPI, 1.0.0 for local MCPSpec descriptors)"
+        },
+        "protocol_version": {
+          "type": ["string", "null"],
+          "description": "Official protocol release identifier when the source specification uses protocol-version semantics (e.g., MCP 2025-11-25)"
         },
         "api_version": {
           "type": "string",
@@ -56,7 +60,7 @@
           "description": "API description"
         },
         "origin": {
-          "type": "string",
+          "type": ["string", "null"],
           "description": "Original path in repository"
         },
         "local": {

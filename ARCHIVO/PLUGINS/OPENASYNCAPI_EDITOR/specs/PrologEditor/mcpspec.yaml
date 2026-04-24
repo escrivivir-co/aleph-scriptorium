@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=../../mcpspec.schema.json
 # Model Context Protocol Specification
 # MCPPrologServer - Prolog Reasoning Engine for Agentic Workflows
 # 
@@ -5,6 +6,8 @@
 # Server: MCPGallery/mcp-mesh-sdk/src/MCPPrologServer.ts
 # Version: 2.0.0 (PROLOG-DRY-1.0.0)
 
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
 name: mcp-prolog-server
 version: 2.0.0
 description: |
@@ -23,6 +26,8 @@ description: |
   1. **Agentes Ox**: Setup y gestión de sesiones Prolog
   2. **Dramaturgos**: Escribir cerebros .brain.pl para personajes
   3. **Agentes Teatro**: Razonamiento en tiempo real durante obras
+
+mcpVersion: "1.0.0"
 
 transport:
   type: stdio

@@ -2,7 +2,7 @@
 id: openasyncapi-editor
 name: "OpenAsyncAPI Editor"
 version: "1.0.0"
-description: "Plugin para gestionar catálogo de especificaciones OpenAPI y AsyncAPI del Scriptorium. Incluye guías de instalación de UIs (Swagger, AsyncAPI Studio) y generación de código cliente/servidor."
+description: "Plugin para gestionar catálogo de especificaciones OpenAPI, AsyncAPI y MCPSpec del Scriptorium. Incluye viewers para OpenAPI/AsyncAPI, canon local para superficies MCP y generación de código donde aplica."
 author: "Aleph Scriptorium"
 license: "AIPL v1.0"
 
@@ -13,7 +13,7 @@ optional_dependencies: ["prolog-editor", "typed-prompting"]
 agents:
   - name: "OpenAsyncApiEditor"
     file: "agents/openasyncapi-editor.agent.md"
-    description: "Gestor de especificaciones API. Cataloga, visualiza, edita y genera código desde OpenAPI/AsyncAPI."
+    description: "Gestor de especificaciones API y MCP. Cataloga, valida, documenta y genera código desde OpenAPI/AsyncAPI/MCPSpec."
 
 prompts:
   - name: "catalogar-spec"
@@ -56,6 +56,9 @@ handoffs:
   - label: "Abrir AsyncAPI Studio"
     agent: "OpenAsyncApiEditor"
     prompt: "Guía para visualizar spec AsyncAPI en Studio."
+  - label: "Canonizar MCPSpec"
+    agent: "OpenAsyncApiEditor"
+    prompt: "Revisa y canoniza una mcpspec.yaml alineándola con la spec oficial MCP y el SDK."
   - label: "Generar cliente TypeScript"
     agent: "OpenAsyncApiEditor"
     prompt: "Genera código cliente TypeScript desde spec."
@@ -78,16 +81,19 @@ tools_cli:
   - name: "redoc-cli"
     description: "Generador de documentación estática alternativo"
     install: "npm install -g @redocly/cli"
+  - name: "@modelcontextprotocol/inspector"
+    description: "Inspector interactivo para validar un servidor MCP vivo y contrastarlo con su MCPSpec"
+    install: "npm install -g @modelcontextprotocol/inspector"
 ---
 
 # Plugin: OpenAsyncAPI Editor
 
-> **Resumen**: Gestión centralizada de especificaciones OpenAPI y AsyncAPI para el ecosistema Aleph Scriptorium.
+> **Resumen**: Gestión centralizada de especificaciones OpenAPI, AsyncAPI y MCPSpec para el ecosistema Aleph Scriptorium.
 
 ## Casos de Uso
 
 1. **Catalogar**: Mantener inventario de todas las APIs del Scriptorium
-2. **Visualizar**: UIs locales para explorar especificaciones
+2. **Visualizar**: UIs locales para OpenAPI/AsyncAPI y validación runtime para MCP
 3. **Editar**: Asistencia para modificar/extender specs
 4. **Generar**: Crear clientes y stubs de servidor
 
@@ -122,8 +128,9 @@ ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/
 
 ## UIs Disponibles
 
-| UI | Puerto | Tipo | Spec |
-|----|--------|------|------|
+| UI / Tool | Puerto | Tipo | Spec |
+|-----------|--------|------|------|
 | Swagger UI | 8080 | Web | OpenAPI |
 | AsyncAPI Studio | 3210 | Web | AsyncAPI |
 | Redoc | estático | HTML | OpenAPI |
+| MCP Inspector | variable | Runtime UI | MCPSpec / servidor MCP |

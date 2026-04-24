@@ -1,0 +1,316 @@
+# yaml-language-server: $schema=../../mcpspec.schema.json
+# MCP Server Specification: MCPVectorMachineServer
+# Draft v1 initialized from Scriptorium scope notes (2026-04-24)
+# Source context: sala/dossiers/scrum-backlog-lore-db-vector-expansion/sesion-2026-04-24/candidato-scope-scriptorium.md
+
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
+mcpVersion: "1.0.0"
+
+info:
+  title: MCPVectorMachineServer
+  description: |
+    Draft MCP server specification for the generic VectorMachine gateway projected in Scriptorium.
+
+    ## Scope
+
+    This contract represents the planned `MCPVectorMachineServer` described for the active
+    vector-expansion sprint. The server is conceived as a multi-tenant RAG façade over
+    `VectorMachineSDK`, delegating:
+
+    - indexing to the SDK ETL layer;
+    - semantic query execution to the FastAPI Q&A backend;
+    - stack diagnostics to health endpoints and helper scripts.
+
+    ## Current intent
+
+    - one generic project-registration model: `{owner}/{project}`;
+    - full reindex jobs only in v1;
+    - synchronous query + health tools;
+    - standardized error envelopes for MCP clients.
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+
+server:
+  port: 3010
+  transport: streamable-http
+  baseClass: BaseMCPServer
+  config: DEFAULT_VECTOR_MACHINE_MCP_SERVER_CONFIG
+  qaBackendUrl: http://localhost:5000
+  etlEntrypoint: VectorMachineSDK/V1/etl/etl.py
+
+capabilities:
+  tools: true
+  resources: false
+  prompts: false
+  healthChecks: true
+
+tools:
+  - name: register_project
+    description: Register an indexable project namespace and source path.
+    inputSchema:
+      type: object
+      required:
+        - owner
+        - project
+        - path
+      properties:
+        owner:
+          type: string
+          description: Owner or tenant namespace
+        project:
+          type: string
+          description: Project identifier inside the owner namespace
+        path:
+          type: string
+          description: Local filesystem path to the source corpus
+    outputSchema:
+      $ref: '#/components/ProjectRegistrationResponse'
+
+  - name: list_projects
+    description: List all registered projects with metadata.
+    inputSchema:
+      type: object
+      properties: {}
+    outputSchema:
+      type: object
+      properties:
+        success:
+          type: boolean
+        projects:
+          type: array
+          items:
+            $ref: '#/components/ProjectSummary'
+        error:
+          $ref: '#/components/ErrorEnvelope'
+
+  - name: unregister_project
+    description: Remove a registered project and its associated collection.
+    inputSchema:
+      type: object
+      required:
+        - owner
+        - project
+      properties:
+        owner:
+          type: string
+        project:
+          type: string
+    outputSchema:
+      type: object
+      properties:
+        success:
+          type: boolean
+        id:
+          type: string
+        status:
+          type: string
+          example: deleted
+        error:
+          $ref: '#/components/ErrorEnvelope'
+
+  - name: index_project
+    description: Queue a full reindex job for a registered project.
+    inputSchema:
+      type: object
+      required:
+        - owner
+        - project
+      properties:
+        owner:
+          type: string
+        project:
+          type: string
+    outputSchema:
+      type: object
+      properties:
+        success:
+          type: boolean
+        job_id:
+          type: string
+        status:
+          type: string
+          enum: [queued]
+        error:
+          $ref: '#/components/ErrorEnvelope'
+
+  - name: get_index_status
+    description: Poll the state of a queued or running indexing job.
+    inputSchema:
+      type: object
+      required:
+        - job_id
+      properties:
+        job_id:
+          type: string
+    outputSchema:
+      $ref: '#/components/IndexStatusResponse'
+
+  - name: query_project
+    description: Execute semantic search plus RAG over a registered project.
+    inputSchema:
+      type: object
+      required:
+        - owner
+        - project
+        - query
+      properties:
+        owner:
+          type: string
+        project:
+          type: string
+        query:
+          type: string
+        top_k:
+          type: integer
+          minimum: 1
+          default: 5
+    outputSchema:
+      $ref: '#/components/QueryProjectResponse'
+
+  - name: health_stack
+    description: Report the health of the underlying VectorMachine stack.
+    inputSchema:
+      type: object
+      properties: {}
+    outputSchema:
+      $ref: '#/components/HealthStackResponse'
+
+components:
+  ProjectRegistrationResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+      id:
+        type: string
+        description: Canonical namespace in the form owner/project
+      status:
+        type: string
+        example: registered
+      error:
+        $ref: '#/components/ErrorEnvelope'
+
+  ProjectSummary:
+    type: object
+    properties:
+      id:
+        type: string
+      owner:
+        type: string
+      project:
+        type: string
+      path:
+        type: string
+      status:
+        type: string
+        example: registered
+      lastIndexedAt:
+        type: string
+        description: ISO-8601 timestamp when available
+
+  IndexStatusResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+      job_id:
+        type: string
+      status:
+        type: string
+        enum: [queued, running, completed, failed]
+      progress:
+        type: number
+        minimum: 0
+        maximum: 100
+      error:
+        $ref: '#/components/ErrorEnvelope'
+
+  QueryProjectResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+      answer:
+        type: string
+      sources:
+        type: array
+        items:
+          $ref: '#/components/QuerySource'
+      trace:
+        type: object
+        properties:
+          owner:
+            type: string
+          project:
+            type: string
+          top_k:
+            type: integer
+          backend:
+            type: string
+            example: VectorMachineSDK/V1/qa/app.py
+      error:
+        $ref: '#/components/ErrorEnvelope'
+
+  QuerySource:
+    type: object
+    properties:
+      file:
+        type: string
+      repo:
+        type: string
+      relevance:
+        type: string
+
+  HealthStackResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+      status:
+        type: string
+        enum: [healthy, degraded, unhealthy]
+      services:
+        type: object
+        properties:
+          qa:
+            type: string
+            enum: [up, down]
+          chroma:
+            type: string
+            enum: [up, down]
+          ollama:
+            type: string
+            enum: [up, down]
+      error:
+        $ref: '#/components/ErrorEnvelope'
+
+  ErrorEnvelope:
+    type: object
+    properties:
+      code:
+        type: string
+        enum:
+          - STACK_DOWN
+          - PROJECT_NOT_FOUND
+          - PROJECT_ALREADY_EXISTS
+          - INDEX_IN_PROGRESS
+          - EMBED_FAILED
+          - LLM_TIMEOUT
+          - UPSTREAM_ERROR
+      message:
+        type: string
+      hint:
+        type: string
+
+metadata:
+  author: Aleph Scriptorium
+  license: AIPL v1.0
+  repository: https://github.com/escrivivir-co/aleph-scriptorium
+  epic: SBLVX-VMI-v1
+  relatedSources:
+    - sala/dossiers/scrum-backlog-lore-db-vector-expansion/sesion-2026-04-24/candidato-scope-scriptorium.md
+    - VectorMachineSDK/V1/qa/app.py
+    - VectorMachineSDK/V1/etl/etl.py

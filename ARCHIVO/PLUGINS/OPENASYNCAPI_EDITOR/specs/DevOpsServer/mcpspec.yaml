@@ -1,7 +1,10 @@
+# yaml-language-server: $schema=../../mcpspec.schema.json
 # MCP Server Specification: DevOpsServer
 # Port: 3003
 # Epic: MCP-CHANNELS-1.0.0, SCRIPT-2.3.0
 
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
 mcpVersion: "1.0.0"
 
 info:
@@ -49,7 +52,7 @@ tools:
         verbose:
           type: boolean
           description: "Salida detallada"
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -70,7 +73,7 @@ tools:
         port:
           type: integer
           default: 8080
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -85,7 +88,7 @@ tools:
     inputSchema:
       type: object
       properties: {}
-    output:
+    outputSchema:
       type: object
       properties:
         server:
@@ -105,7 +108,7 @@ tools:
     inputSchema:
       type: object
       properties: {}
-    output:
+    outputSchema:
       type: object
       properties:
         name:
@@ -130,7 +133,7 @@ tools:
         search:
           type: string
           description: "Buscar en nombre o descripción"
-    output:
+    outputSchema:
       type: object
       properties:
         total:

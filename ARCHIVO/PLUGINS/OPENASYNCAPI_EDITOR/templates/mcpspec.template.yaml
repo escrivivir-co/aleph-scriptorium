@@ -1,0 +1,100 @@
+# yaml-language-server: $schema=../mcpspec.schema.json
+# Canon template for new MCP specs in OpenAsyncAPI Editor.
+# This is a Scriptorium-local descriptor aligned with official MCP primitives.
+
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
+mcpVersion: "1.0.0"
+
+info:
+  title: ExampleServer MCP
+  version: 1.0.0
+  description: |
+    MCP surface for ExampleServer.
+
+implementation:
+  name: example-server
+  title: Example Server
+  version: 1.0.0
+  description: Example MCP server implementation
+  websiteUrl: https://example.com
+
+server:
+  transport: streamable-http
+  port: 3000
+  command: null
+  args: []
+  env: {}
+
+capabilities:
+  tools:
+    listChanged: false
+  resources:
+    subscribe: false
+    listChanged: false
+  prompts:
+    listChanged: false
+
+expectedClientCapabilities:
+  sampling: false
+  roots: false
+  elicitation: false
+  tasks: false
+
+tools:
+  - name: example.get_status
+    title: Example Status
+    description: Return current status information.
+    inputSchema:
+      type: object
+      additionalProperties: false
+      properties: {}
+    outputSchema:
+      type: object
+      properties:
+        status:
+          type: string
+        updatedAt:
+          type: string
+      required: [status]
+    annotations:
+      readOnlyHint: true
+      destructiveHint: false
+      idempotentHint: true
+      openWorldHint: false
+    execution:
+      taskSupport: forbidden
+
+resources:
+  - uri: example://status
+    name: example-status
+    title: Example Status Resource
+    description: Current server status resource.
+    mimeType: application/json
+    annotations:
+      audience: [assistant]
+      priority: 0.8
+
+resourceTemplates: []
+
+prompts:
+  - name: example_prompt
+    title: Example Prompt
+    description: Guide for using the example server.
+    arguments:
+      - name: topic
+        title: Topic
+        description: Topic to focus on.
+        required: true
+
+components: {}
+
+metadata:
+  owner: Aleph Scriptorium
+  source: docs or implementation path
+
+x-scriptorium:
+  runtime:
+    inspectorHint: "Use MCP Inspector against the running server to contrast runtime vs descriptor"
+  debt:
+    - If runtime still emits JSON text blocks only, keep outputSchema as target contract and track structuredContent migration separately.

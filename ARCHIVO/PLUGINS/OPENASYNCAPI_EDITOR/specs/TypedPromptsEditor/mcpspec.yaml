@@ -1,7 +1,10 @@
+# yaml-language-server: $schema=../../mcpspec.schema.json
 # MCP Server Specification: MCPTypedPromptServer
 # Port: 3020
 # Epic: TYPED-MCP-1.0.0
 
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
 mcpVersion: "1.0.0"
 
 info:
@@ -39,10 +42,10 @@ tools:
         schemaId:
           type: integer
           description: ID of the schema to validate against
-        message:
+    outputSchema:
           type: string
           description: JSON message to validate
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -67,7 +70,7 @@ tools:
         name:
           type: string
           description: Name for the generated schema
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -88,7 +91,7 @@ tools:
         category:
           type: string
           description: Filter by category
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -110,7 +113,7 @@ tools:
         schemaId:
           type: integer
           description: ID of the schema to retrieve
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -144,7 +147,7 @@ tools:
         libraryId:
           type: integer
           description: Library to add schema to
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -159,7 +162,7 @@ tools:
     inputSchema:
       type: object
       properties: {}
-    output:
+    outputSchema:
       type: object
       properties:
         success:
@@ -189,7 +192,7 @@ tools:
           items:
             type: string
           description: Constraints to consider
-    output:
+    outputSchema:
       type: object
       properties:
         success:

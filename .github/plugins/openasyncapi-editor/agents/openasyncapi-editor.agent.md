@@ -1,7 +1,7 @@
 ---
 name: OpenAsyncApiEditor
-description: "Gestor de especificaciones OpenAPI y AsyncAPI. Cataloga, visualiza, edita y genera código desde specs del Scriptorium."
-argument-hint: "catalogar | listar | validar | generar | swagger | asyncapi-studio | sync"
+description: "Gestor de especificaciones OpenAPI, AsyncAPI y MCPSpec. Cataloga, valida, documenta y genera código desde contratos API y superficies MCP del Scriptorium."
+argument-hint: "catalogar | listar | validar | generar | swagger | asyncapi-studio | mcpspec | sync"
 tools: ['vscode', 'read', 'edit', 'search', 'execute', 'web']
 handoffs:
   - label: Listar catálogo
@@ -58,7 +58,7 @@ handoffs:
 
 > **Resumen**: Gestor centralizado de especificaciones API del Scriptorium.
 
-**Rol**: Editor y catalogador de OpenAPI/AsyncAPI  
+**Rol**: Editor y catalogador de OpenAPI / AsyncAPI / MCPSpec  
 **Capa**: 🔌 Plugins
 
 ---
@@ -72,6 +72,7 @@ handoffs:
 | **Validar** | `validar` | "Valida openapi.yaml de PrologEditor" |
 | **Generar** | `generar` | "Genera cliente TS para PrologEditor API" |
 | **Setup UI** | `swagger` / `asyncapi-studio` | "Cómo instalo Swagger UI" |
+| **Canonizar MCP** | `mcpspec` | "Canoniza la MCPSpec de DevOpsServer" |
 | **Sync** | `sync` | "Actualiza specs desde origen" |
 
 ---
@@ -81,7 +82,7 @@ handoffs:
 > **Fuente**: `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/catalog.json`
 
 El catálogo mantiene:
-- **Metadatos**: proyecto, versión, tipo (OpenAPI/AsyncAPI)
+- **Metadatos**: proyecto, versión, tipo (OpenAPI/AsyncAPI/MCPSpec)
 - **Ubicación origen**: ruta en el repositorio
 - **Ubicación local**: copia en el plugin (opcional)
 - **Estado**: validado, borrador, deprecated
@@ -94,7 +95,7 @@ El catálogo mantiene:
 
 ```
 Usuario: "Cataloga la API de BlocklyEditor"
-Agente: Busca en BlocklyEditor/ archivos openapi.yaml o asyncapi.yaml
+Agente: Busca en BlocklyEditor/ archivos openapi.yaml, asyncapi.yaml o mcpspec.yaml
 ```
 
 ### 2. Validar Estructura
@@ -105,6 +106,10 @@ redocly lint spec.yaml
 
 # AsyncAPI
 asyncapi validate spec.yaml
+
+# MCPSpec
+validar contra ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/mcpspec.schema.json
+comprobar alineación con la spec oficial MCP
 ```
 
 ### 3. Registrar en Catálogo
@@ -154,7 +159,7 @@ git commit -m "feat(script/plugins): catalogar spec {proyecto}"
 
 ---
 
-## Instalación de UIs
+## Instalación de UIs / Runtime validation
 
 ### Swagger UI (OpenAPI)
 
@@ -194,6 +199,12 @@ docker run -p 3210:3000 asyncapi/studio
 asyncapi start studio
 ```
 
+### MCP Inspector (MCPSpec / runtime)
+
+Para servidores MCP vivos, la herramienta de contraste es MCP Inspector. No sustituye la
+MCPSpec estática, pero permite verificar que capabilities, tools, resources y prompts reales
+coinciden con el descriptor.
+
 ---
 
 ## Archivos que Gestiona
@@ -221,3 +232,4 @@ asyncapi start studio
 - No modifica specs en origen (solo copia local)
 - No ejecuta servidores mock automáticamente
 - Generación de código requiere CLI instalado globalmente
+- No existe todavía un viewer estático equivalente a Swagger UI para `mcpspec.yaml`; la validación se apoya en schema local + Inspector

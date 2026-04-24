@@ -1,0 +1,265 @@
+openapi: 3.1.0
+info:
+  title: VectorMachineSDK-HNSW REST API
+  description: |
+    Draft OpenAPI specification for the current VectorMachineSDK query surface.
+
+    ## Scope
+
+    This contract is initialized from the FastAPI service implemented in
+    `VectorMachineSDK/V1/qa/app.py`.
+
+    It documents the current runtime endpoints used for:
+    - service discovery and health checks;
+    - listing indexed repositories;
+    - retrieval-augmented question answering over the Chroma-backed vector store.
+
+    ## Notes
+
+    - The public name includes `HNSW` to identify the intended vector-search profile.
+    - The current implementation uses ChromaDB as the vector backend.
+    - This spec is intentionally minimal and starts in `draft` status.
+  version: 1.0.0
+  contact:
+    name: Aleph Scriptorium
+    url: https://escrivivir-co.github.io/aleph-scriptorium/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:5000
+    description: Local FastAPI Q&A service
+
+tags:
+  - name: System
+    description: Service discovery and health endpoints
+  - name: Repositories
+    description: Indexed repository inventory
+  - name: Query
+    description: Retrieval-augmented query operations
+
+paths:
+  /:
+    get:
+      tags:
+        - System
+      summary: Get service root information
+      operationId: getRootInfo
+      responses:
+        '200':
+          description: Service metadata and exposed endpoints
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RootResponse'
+
+  /health:
+    get:
+      tags:
+        - System
+      summary: Get stack health
+      operationId: getHealth
+      responses:
+        '200':
+          description: Health snapshot for the API and its dependencies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /repos:
+    get:
+      tags:
+        - Repositories
+      summary: List indexed repositories
+      operationId: listRepositories
+      responses:
+        '200':
+          description: Indexed repositories known by the vector store
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RepositoriesResponse'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /ask:
+    post:
+      tags:
+        - Query
+      summary: Ask a question over indexed repositories
+      description: Execute a RAG query over indexed code/document chunks.
+      operationId: askQuestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AskRequest'
+      responses:
+        '200':
+          description: Answer with supporting sources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AskResponse'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+components:
+  schemas:
+    RootResponse:
+      type: object
+      required:
+        - message
+        - status
+        - endpoints
+      properties:
+        message:
+          type: string
+          example: DeepWiki Q&A API
+        status:
+          type: string
+          example: running
+        endpoints:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            ask: POST /ask - Hacer una pregunta
+            repos: GET /repos - Listar repositorios indexados
+            health: GET /health - Estado del servicio
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        chroma:
+          type: object
+          properties:
+            connected:
+              type: boolean
+            documents:
+              type: integer
+              minimum: 0
+        ollama:
+          type: object
+          properties:
+            connected:
+              type: boolean
+        error:
+          type: string
+          description: Present when the service is unhealthy
+
+    RepositorySummary:
+      type: object
+      required:
+        - name
+        - url
+        - files
+        - chunks
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+        chunks:
+          type: integer
+          minimum: 0
+
+    RepositoriesResponse:
+      type: object
+      required:
+        - repositories
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepositorySummary'
+
+    AskRequest:
+      type: object
+      required:
+        - question
+      properties:
+        question:
+          type: string
+          description: Natural-language query to answer from indexed content
+        repo_filter:
+          type: string
+          description: Restrict the query to a specific repository namespace
+          nullable: true
+        max_results:
+          type: integer
+          minimum: 1
+          default: 5
+        model:
+          type: string
+          default: gpt-oss:20b
+          description: Ollama model used for answer generation
+
+    Source:
+      type: object
+      required:
+        - file
+        - repo
+        - relevance
+      properties:
+        file:
+          type: string
+        repo:
+          type: string
+        relevance:
+          type: string
+          description: Percentage-like score returned by the current implementation
+          example: 91.4%
+
+    AskResponse:
+      type: object
+      required:
+        - answer
+        - sources
+      properties:
+        answer:
+          type: string
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/Source'
+        repo_filter:
+          type: string
+          nullable: true
+
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+        message:
+          type: string
+
+  responses:
+    NotFound:
+      description: Requested data or relevant context was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+
+    InternalError:
+      description: Unexpected backend failure
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'

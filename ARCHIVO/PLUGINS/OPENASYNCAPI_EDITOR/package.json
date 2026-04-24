@@ -1,7 +1,7 @@
 {
   "name": "@scriptorium/openasyncapi-editor-tools",
   "version": "1.0.0",
-  "description": "CLI tools para visualizar y generar código desde specs OpenAPI/AsyncAPI",
+  "description": "Herramientas y convenciones para gestionar OpenAPI, AsyncAPI y MCPSpec dentro del Scriptorium",
   "private": true,
   "scripts": {
     "swagger-ui": "redocly preview-docs specs/PrologEditor/openapi.yaml --port 3021",

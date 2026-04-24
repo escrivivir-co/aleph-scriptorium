@@ -6,13 +6,13 @@ description: "Añadir nueva especificación al catálogo del Scriptorium."
 
 # Catalogar Especificación API
 
-Quiero añadir una nueva especificación OpenAPI o AsyncAPI al catálogo del Scriptorium.
+Quiero añadir una nueva especificación OpenAPI, AsyncAPI o MCPSpec al catálogo del Scriptorium.
 
 ## Información a proporcionar
 
 1. **Proyecto**: ¿De qué proyecto es la API?
 2. **Ruta**: ¿Dónde está el archivo de especificación?
-3. **Tipo**: ¿Es OpenAPI o AsyncAPI?
+3. **Tipo**: ¿Es OpenAPI, AsyncAPI o MCPSpec?
 
 ## Proceso
 
@@ -21,6 +21,8 @@ Quiero añadir una nueva especificación OpenAPI o AsyncAPI al catálogo del Scr
 3. Generar ID único para el catálogo
 4. Opcionalmente copiar a `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/`
 5. Registrar en `catalog.json`
+6. Si aplica a OpenAPI/AsyncAPI, actualizar el input `oaeProject` en `.vscode\tasks.json`
+7. Si es MCPSpec, registrar también `protocol_version` cuando se conozca la release oficial MCP usada como referencia
 
 ## Ejemplo
 

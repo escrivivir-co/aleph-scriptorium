@@ -1,250 +1,263 @@
 ---
-description: "Protocolo de gestión del catálogo de especificaciones OpenAPI y AsyncAPI."
-applyTo: "ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/**/*.yaml, ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/catalog.json"
+description: "Protocolo de gestión del catálogo de especificaciones OpenAPI, AsyncAPI y MCPSpec."
+applyTo: "ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/**/*.yaml, ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/catalog.json, ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/mcpspec.schema.json"
 ---
 
-# Instrucciones: Protocolo OpenAsyncAPI
+# Instrucciones: Protocolo OpenAsyncAPI + MCPSpec
 
-> Activación contextual: al trabajar con especificaciones API o catálogo.
+> Activación contextual: al trabajar con catálogo, specs API o contratos MCP del plugin.
 
 ---
 
-## 1. Estructura del Catálogo
+## 1. Estructura canónica del plugin
 
 ```
 ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/
-├── catalog.json              # Índice maestro
-├── specs/                    # Copias locales
+├── catalog.json              # Índice maestro de OpenAPI / AsyncAPI / MCPSpec
+├── catalog.schema.json       # Schema del catálogo
+├── mcpspec.schema.json       # Canon local para descriptores MCP del Scriptorium
+├── specs/
 │   ├── {proyecto}/
 │   │   ├── openapi.yaml
-│   │   └── asyncapi.yaml
+│   │   ├── asyncapi.yaml
+│   │   └── mcpspec.yaml
 │   └── ...
-├── generated/                # Código generado
+├── generated/
 │   └── {proyecto}/
 │       └── {lenguaje}/
-└── docs/                     # Documentación estática
+└── docs/
     └── {proyecto}/
         └── index.html
 ```
 
 ---
 
-## 2. Schema de catalog.json
+## 2. Regla conceptual clave
 
-```json
-{
-  "$schema": "catalog.schema.json",
-  "version": "1.0.0",
-  "updated_at": "2026-01-02T12:00:00Z",
-  "specs": [
-    {
-      "id": "unique-id",
-      "project": "NombreProyecto",
-      "type": "openapi | asyncapi",
-      "spec_version": "3.1.0 | 3.0.0",
-      "api_version": "1.0.0",
-      "title": "Título de la API",
-      "description": "Descripción breve",
-      "origin": "ruta/relativa/desde/workspace",
-      "local": "specs/proyecto/file.yaml",
-      "status": "draft | validated | deprecated",
-      "cataloged_at": "ISO8601",
-      "validated_at": "ISO8601 | null",
-      "tags": ["iot", "rest", "mqtt"]
-    }
-  ]
-}
-```
+`mcpspec.yaml` es un **descriptor local canónico** para la superficie MCP de un servidor.
+
+No sustituye la schema oficial de MCP ni pretende ser el formato wire del protocolo. Su papel
+es documentar, de forma comparable a OpenAPI/AsyncAPI:
+
+- primitives MCP (`tools`, `resources`, `resourceTemplates`, `prompts`)
+- `capabilities` negociadas por el servidor
+- expectativas del cliente (`sampling`, `roots`, `elicitation`, `tasks`) cuando importan
+- datos de runtime y metadatos editoriales
 
 ---
 
-## 3. Flujo de Catalogación
+## 3. Schema de `catalog.json`
 
-### Paso 1: Detectar Spec
+Cada entrada del catálogo puede ser `openapi`, `asyncapi` o `mcpspec`.
 
-```
+Campos relevantes:
+
+- `spec_version`: versión del formato o edición local del descriptor
+- `protocol_version`: opcional; útil para specs cuyo ancla semántica es la release del protocolo
+  (por ejemplo MCP `2025-11-25`)
+- `api_version`: versión del servidor/API documentado
+- `origin`: puede ser `null` si la spec nace o vive canónicamente dentro del plugin
+
+---
+
+## 4. Flujo de catalogación
+
+### Paso 1: Detectar spec
+
 Buscar en proyecto:
-- **/openapi.yaml, **/openapi.json
-- **/asyncapi.yaml, **/asyncapi.json
-- **/swagger.yaml, **/swagger.json
-```
 
-### Paso 2: Extraer Metadatos
+- `**/openapi.yaml`, `**/openapi.json`
+- `**/asyncapi.yaml`, `**/asyncapi.json`
+- `**/swagger.yaml`, `**/swagger.json`
+- `**/mcpspec.yaml`
 
-```yaml
-# De OpenAPI
-info:
-  title: → catalog.title
-  version: → catalog.api_version
-  description: → catalog.description
+### Paso 2: Extraer metadatos
 
-# De AsyncAPI
-info:
-  title: → catalog.title
-  version: → catalog.api_version
-```
+#### OpenAPI / AsyncAPI
+
+- `info.title` → `catalog.title`
+- `info.version` → `catalog.api_version`
+- `info.description` → `catalog.description`
+
+#### MCPSpec
+
+- `info.title` o `implementation.title` o `implementation.name` → `catalog.title`
+- `info.version` → `catalog.api_version`
+- `protocolVersion` → `catalog.protocol_version`
+- `info.description` → `catalog.description`
+- `mcpVersion` o edición local → `catalog.spec_version`
 
 ### Paso 3: Generar ID
 
 ```
 {proyecto}-{tipo}
-# Ejemplo: prolog-editor-openapi, prolog-editor-asyncapi
 ```
 
-### Paso 4: Copiar a Local (Opcional)
+Ejemplos:
 
-```bash
-cp origen/openapi.yaml ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/proyecto/
-```
+- `prolog-editor-openapi`
+- `prolog-editor-asyncapi`
+- `prolog-editor-mcpspec`
+
+### Paso 4: Copiar a local (opcional)
+
+Si la spec vive fuera del plugin, copiar a `specs/{proyecto}/`.
 
 ### Paso 5: Validar
 
-```bash
-# OpenAPI 3.x
-redocly lint specs/proyecto/openapi.yaml
-
-# AsyncAPI 3.x
-asyncapi validate specs/proyecto/asyncapi.yaml
-```
+Validar según el tipo de spec.
 
 ### Paso 6: Registrar
 
-Añadir entrada a `catalog.json` con status `validated` o `draft`.
+Añadir entrada a `catalog.json` con estado `draft`, `validated`, `deprecated` o `error`.
 
 ---
 
-## 4. Estados de Spec
-
-| Estado | Significado | Acción |
-|--------|-------------|--------|
-| `draft` | No validada | Requiere validación |
-| `validated` | Pasó linting | Lista para uso |
-| `deprecated` | Obsoleta | Marcar para limpieza |
-| `error` | Fallo de validación | Revisar errores |
-
----
-
-## 5. Validación
+## 5. Validación por tipo
 
 ### OpenAPI
 
-| Tool | Comando | Nivel |
-|------|---------|-------|
-| redocly | `redocly lint spec.yaml` | Estricto |
-| spectral | `spectral lint spec.yaml` | Personalizable |
-| openapi-generator | `openapi-generator-cli validate -i spec.yaml` | Básico |
+| Tool | Uso |
+|------|-----|
+| `redocly lint` | lint principal |
+| `openapi-generator-cli validate` | validación básica adicional |
+| `spectral lint` | reglas personalizadas |
 
 ### AsyncAPI
 
-| Tool | Comando | Nivel |
-|------|---------|-------|
-| asyncapi-cli | `asyncapi validate spec.yaml` | Oficial |
+| Tool | Uso |
+|------|-----|
+| `asyncapi validate` | validación oficial |
 
-### Errores Comunes
+### MCPSpec
 
-| Error | Causa | Solución |
-|-------|-------|----------|
-| `schema-validation-error` | Schema inválido | Revisar $ref y tipos |
-| `no-server-description` | Server sin desc | Añadir description |
-| `operation-operationId` | Falta operationId | Añadir a cada operación |
+La validación tiene dos capas.
+
+#### Capa estática
+
+1. Validar contra `mcpspec.schema.json`
+2. Comprobar alineación editorial con la spec oficial MCP:
+   - `outputSchema` preferido sobre `output`
+   - `resourceTemplates` cuando existan URIs parametrizadas
+   - `expectedClientCapabilities` para features cliente
+   - `annotations` oficiales sin mezclar extensiones locales en el núcleo normativo
+
+#### Capa de runtime
+
+Si el servidor es ejecutable:
+
+1. arrancarlo
+2. abrir MCP Inspector
+3. verificar `initialize`, capabilities reales, tools/resources/prompts y errores de ejecución
 
 ---
 
-## 6. Generación de Código
+## 6. Canon local para `mcpspec.yaml`
 
-### Plantilla de Comando
-
-```bash
-# OpenAPI → Cliente TypeScript
-openapi-generator-cli generate \
-  -i ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/specs/{proyecto}/openapi.yaml \
-  -g typescript-fetch \
-  -o ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/generated/{proyecto}/typescript-client \
-  --additional-properties=npmName=@scriptorium/{proyecto}-client
-
-# AsyncAPI → Servidor Node.js
-asyncapi generate fromTemplate \
-  specs/{proyecto}/asyncapi.yaml \
-  @asyncapi/nodejs-template \
-  -o generated/{proyecto}/nodejs-server
-```
-
-### Configuración por Defecto
+### Top-level recomendado
 
 ```yaml
-# .openapi-generator-config.yaml
-npmName: "@scriptorium/{proyecto}-client"
-supportsES6: true
-withInterfaces: true
+kind: scriptorium-mcpspec
+protocolVersion: "2025-11-25"
+mcpVersion: "1.0.0"
+info: {}
+implementation: {}
+server: {}
+capabilities: {}
+expectedClientCapabilities: {}
+tools: []
+resources: []
+resourceTemplates: []
+prompts: []
+components: {}
+metadata: {}
+x-scriptorium: {}
 ```
+
+### Reglas de modelado
+
+1. `capabilities` representa **capabilities del servidor**.
+2. `sampling`, `roots` y `elicitation` viven en `expectedClientCapabilities`, no en `capabilities`.
+3. Tools usan `inputSchema` y, si aplica, `outputSchema`.
+4. Resources usan `uri` como identificador estable y `mimeType` explícito cuando se conozca.
+5. Prompts documentan argumentos con `name`, `title`, `description`, `required`.
+6. Extensiones del Scriptorium van en `metadata` o `x-scriptorium`.
+
+### Compatibilidad legacy
+
+Se toleran temporalmente:
+
+- flags booleanos en `capabilities`
+- alias `output`
+- anotaciones locales incrustadas en el descriptor
+
+Pero el objetivo es migrar gradualmente al canon anterior.
+
+Para nuevas specs, partir de:
+
+- `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/templates/mcpspec.template.yaml`
+
+Y usar como guía editorial viva:
+
+- `ARCHIVO/PLUGINS/OPENASYNCAPI_EDITOR/docs/mcpspec-canon.md`
 
 ---
 
-## 7. Sincronización
+## 7. Generación de código
 
-### Desde Origen
+### OpenAPI / AsyncAPI
 
-Cuando la spec origen cambia:
+Mantener el flujo actual de generación con:
 
-```bash
-# 1. Detectar cambio (manual o CI)
-diff origen/openapi.yaml specs/proyecto/openapi.yaml
+- `openapi-generator-cli`
+- `@asyncapi/cli`
 
-# 2. Actualizar copia local
-cp origen/openapi.yaml specs/proyecto/
+### MCPSpec
 
-# 3. Re-validar
-redocly lint specs/proyecto/openapi.yaml
+No existe un equivalente universal a `openapi-generator` para MCP.
 
-# 4. Actualizar catalog.json
-# - Incrementar api_version si corresponde
-# - Actualizar validated_at
-```
+Cuando la fuente principal es `mcpspec.yaml`, el camino recomendado es:
 
-### Periodicidad Recomendada
-
-| Frecuencia | Trigger |
-|------------|---------|
-| Por commit | CI/CD en origen |
-| Semanal | Revisión manual |
-| Por release | Bump de versión |
+1. usar `@modelcontextprotocol/sdk` para cliente/servidor MCP;
+2. usar helpers MCP del SDK de Anthropic cuando el consumidor sea Claude/API de mensajes;
+3. usar Inspector para validación de runtime;
+4. tratar la MCPSpec como fuente de verdad documental y de contratos, no como input de codegen universal.
 
 ---
 
-## 8. Publicación de Docs
+## 8. Publicación y visualización
 
-### Swagger UI Estático
+### OpenAPI
 
-```bash
-# Generar HTML
-redocly build-docs specs/proyecto/openapi.yaml -o docs/proyecto/index.html
-```
+- Redoc / Swagger UI
 
-### Integrar en GH-Pages
+### AsyncAPI
 
-```yaml
-# docs/_data/apis.yml
-apis:
-  - name: PrologEditor
-    openapi: /apis/prolog-editor/openapi.html
-    asyncapi: /apis/prolog-editor/asyncapi.html
-```
+- AsyncAPI Studio
+
+### MCPSpec
+
+- documentación estática basada en el propio YAML y referencias del plugin
+- validación interactiva con MCP Inspector
+
+Hoy no hay un viewer estático equivalente a Swagger UI para `mcpspec.yaml` dentro del plugin; la
+paridad se logra combinando **schema local + documentación + Inspector**.
 
 ---
 
-## 9. Commit Convention
+## 9. Commit convention
 
 ```bash
-# Catalogar nueva
+# Catalogar nueva spec
 feat(script/plugins): catalogar spec {proyecto} v{version}
 
-# Actualizar existente
+# Sincronizar existente
 fix(script/plugins): sync spec {proyecto} desde origen
 
-# Generar código
-feat(script/plugins): generar cliente {lenguaje} para {proyecto}
+# Canonizar MCPSpec
+docs(script/plugins): canonizar mcpspec de {proyecto}
 
-# Documentación
+# Publicar documentación
 docs(script/plugins): publicar docs API {proyecto}
 ```
 
@@ -252,16 +265,9 @@ docs(script/plugins): publicar docs API {proyecto}
 
 ## 10. Integración con TypedPrompting
 
-Las specs pueden usarse como fuente para schemas de TypedPrompting:
+Las specs pueden seguir alimentando a TypedPrompting:
 
-```typescript
-// Extraer schema de componente OpenAPI
-const schema = spec.components.schemas.Rule;
-
-// Convertir a TypedPrompt
-{
-  "name": "Rule",
-  "schema": schema,
-  "examples": [/* desde spec.paths.*.examples */]
-}
-```
+- OpenAPI: desde `components.schemas`
+- AsyncAPI: desde payload schemas
+- MCPSpec: desde `tools[*].inputSchema`, `tools[*].outputSchema`, `prompts[*].arguments` y
+  componentes reutilizables definidos en `components`
