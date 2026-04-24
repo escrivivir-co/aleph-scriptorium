@@ -9,8 +9,9 @@ docs/Gemfile.lock
 docs/.jekyll-cache
 **/node_modules/**/*
 ARCHIVO/DISCO/BACKLOG_BORRADORES/Enero_09_Viem_Web3_Integration/5BMh70FGI-uTx5XLY5qeRgozT5C3DYOkipTWKzR3l4U.json
-.gitignore
 
 # APPS
 APPS/ARRAKIS/dist/**
 APPS/ARRAKIS/package-lock.json
+ARCHIVO/PLUGINS/VECTOR_MACHINE/STORAGE/chroma.sqlite3
+ARCHIVO/PLUGINS/VECTOR_MACHINE/STORAGE/**

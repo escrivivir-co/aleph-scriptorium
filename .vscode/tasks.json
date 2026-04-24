@@ -51,7 +51,9 @@
         "DevOpsServer",
         "MCPChannels",
         "PrologEditor",
-        "TypedPromptsEditor"
+        "TypedPromptsEditor",
+        "VectorMachineSDK-MCP",
+        "VectorMachineSDK-HNSW"
       ],
       "default": "PrologEditor"
     }
@@ -1360,6 +1362,23 @@
         "reveal": "never"
       },
       "detail": "Abrir Inspector"
+    },
+    // ═══════════════════════════════════════════════════════════════════════
+    // VMS: VECTOR MACHINE SDK
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "VMS: Start [Chroma MCP]",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "start.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/VectorMachineSDK"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "detail": "Arrancar chroma-mcp en VectorMachineSDK"
     },
     // ═══════════════════════════════════════════════════════════════════════
     // DMO: DEMO (Compound tasks para demos)
