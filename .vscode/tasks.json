@@ -1367,7 +1367,7 @@
     // VMS: VECTOR MACHINE SDK
     // ═══════════════════════════════════════════════════════════════════════
     {
-      "label": "VMS: Start [Chroma MCP]",
+      "label": "VMS: Start [Chroma]",
       "type": "shell",
       "command": "bash",
       "args": [
@@ -1378,7 +1378,20 @@
       },
       "isBackground": true,
       "problemMatcher": [],
-      "detail": "Arrancar chroma-mcp en VectorMachineSDK"
+      "detail": "Chroma HTTP Server — http://localhost:8000 (necesario para notebooks .nnb TS)"
+    },
+    {
+      "label": "VMS: Install [Deps]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "install"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/VectorMachineSDK"
+      },
+      "problemMatcher": [],
+      "detail": "Instalar chromadb JS SDK (requerido para notebooks .nnb)"
     },
     // ═══════════════════════════════════════════════════════════════════════
     // DMO: DEMO (Compound tasks para demos)
