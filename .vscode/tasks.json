@@ -1393,6 +1393,34 @@
       "problemMatcher": [],
       "detail": "Instalar chromadb JS SDK (requerido para notebooks .nnb)"
     },
+    {
+      "label": "VMS: Run [Console App]",
+      "type": "shell",
+      "command": "bun",
+      "args": [
+        "run",
+        "src/main.ts",
+        "--pretty"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/VectorMachineSDK/apps/vector-console"
+      },
+      "problemMatcher": [],
+      "detail": "Vector Machine Console — heartbeat + listCollectionNames (non-interactive)"
+    },
+    {
+      "label": "VMS: Install [Console App]",
+      "type": "shell",
+      "command": "bun",
+      "args": [
+        "install"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/VectorMachineSDK/apps/vector-console"
+      },
+      "problemMatcher": [],
+      "detail": "Instalar deps de la console app (bun + file: link a mcp-core-sdk)"
+    },
     // ═══════════════════════════════════════════════════════════════════════
     // DMO: DEMO (Compound tasks para demos)
     // ═══════════════════════════════════════════════════════════════════════
