@@ -54,6 +54,6 @@ handoffs:
 
 - Manifest: `.github/plugins/vector-machine/manifest.md`
 - Agentes: `.github/plugins/vector-machine/agents/`
-- Submódulo: `VectorMachineSDK/`
+- Submódulos: `VectorMachineSDK/` · `VectorMachineUI/`
 - Runtime: `ARCHIVO/PLUGINS/VECTOR_MACHINE/`
 - Mesh MCP: `MCPGallery/mcp-mesh-sdk/README-SCRIPTORIUM.md`

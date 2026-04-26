@@ -1,7 +1,7 @@
 # Índice — BACKLOG_BORRADORES
 
 > **Ubicación**: `ARCHIVO/DISCO/BACKLOG_BORRADORES/`  
-> **Actualizado**: 2026-01-03  
+> **Actualizado**: 2026-04-26  
 > **Principio**: DRY — Solo referencias, detalles en cada borrador
 
 ---
@@ -59,6 +59,7 @@
 | [SPLASH_INDEX](SPLASH_INDEX/) | Índice SPLASH | ✅ Completada (85%) |
 | [SUBMODULOS_AH_NAMING](SUBMODULOS_AH_NAMING/) | BUG-003: Renombrar submódulos | ✅ Completada (14 submódulos) |
 | [TYPED_PROMPTING](TYPED_PROMPTING/) | Plugin TypedPrompting | ✅ Publicado |
+| [VECTOR_MACHINE_UI](VECTOR_MACHINE_UI/) | Extracción de VectorMachineUI como submódulo raíz + indexación DRY | 📝 Borrador |
 | [VS-CODE-EXTENSION](VS-CODE-EXTENSION/) | Extensión VS Code | 📋 Borrador |
 | [WIKI_RACER_ARG_BOARD_APP](WIKI_RACER_ARG_BOARD_APP/) | ArgBoardApp | 📝 Borrador |
 | [WIKI_RACER_HYPERGRAPH_EDITOR](WIKI_RACER_HYPERGRAPH_EDITOR/) | HyperGraphEditor | 📝 Borrador |
@@ -85,9 +86,9 @@
 
 | Métrica | Valor |
 |---------|-------|
-| Total carpetas | 48 |
+| Total carpetas | 49 |
 | ✅ Completadas/Publicadas | 28 |
-| 📋/📝 En progreso/Borrador | 20 |
+| 📋/📝 En progreso/Borrador | 21 |
 
 ---
 

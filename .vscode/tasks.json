@@ -1422,6 +1422,57 @@
       "detail": "Instalar deps de la console app (bun + file: link a mcp-core-sdk)"
     },
     // ═══════════════════════════════════════════════════════════════════════
+    // VMS: VECTOR MACHINE UI
+    // Puerto: 3001
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "VMS: Install [Deps]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "install"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/VectorMachineUI"
+      },
+      "problemMatcher": [],
+      "detail": "Instalar dependencias del admin UI Chroma (Next.js)"
+    },
+    {
+      "label": "VMS: Start [App]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "dev"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/VectorMachineUI"
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "group": "VMS-stack"
+      },
+      "detail": "Puerto 3001 - Admin UI Chroma"
+    },
+    {
+      "label": "VMS: Open [Browser]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:3001"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abrir VectorMachineUI"
+    },
+    // ═══════════════════════════════════════════════════════════════════════
     // DMO: DEMO (Compound tasks para demos)
     // ═══════════════════════════════════════════════════════════════════════
     {

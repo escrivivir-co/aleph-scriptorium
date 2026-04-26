@@ -110,7 +110,8 @@ handoffs:
 - mapa técnico: `ARCHIVO/DEVOPS/Tecnico.md`;
 - plugin de integración: `.github/plugins/vector-machine/manifest.md`;
 - bridge: `.github/agents/plugin_ox_vectormachine.agent.md`;
-- ancla del submódulo: `VectorMachineSDK/README-SCRIPTORIUM.md`.
+- ancla del submódulo core: `VectorMachineSDK/README-SCRIPTORIUM.md`;
+- UI admin auxiliar: `VectorMachineUI/README-SCRIPTORIUM.md`.
 
 ---
 

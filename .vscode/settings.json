@@ -41,6 +41,9 @@
 		".github/plugins/network/prompts": true,
 		".github/plugins/lore-sdk/prompts": true,
 		".github/plugins/vector-machine/prompts": true,
+		"VectorMachineSDK/.github/prompts": true,
+
+		
 		// --- ONFALO ---
 		".github/plugins/consejo-asesor/prompts": false,
 		// --- REPL / Notebooks ---

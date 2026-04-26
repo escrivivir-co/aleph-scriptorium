@@ -1,7 +1,7 @@
 # Datos Runtime: VectorMachine
 
 **Plugin**: `vector-machine`  
-**Submódulo**: `VectorMachineSDK`  
+**Submódulos**: `VectorMachineSDK`, `VectorMachineUI`  
 **Bridge**: `@plugin_ox_vectormachine`
 
 ---
@@ -23,10 +23,11 @@ En v1 se reserva para:
 - **Código del plugin**: `.github/plugins/vector-machine/` (kebab-case)
 - **Bridge**: `.github/agents/plugin_ox_vectormachine.agent.md`
 - **Datos runtime**: `ARCHIVO/PLUGINS/VECTOR_MACHINE/` (SCREAMING_SNAKE_CASE)
-- **Base operativa**: `VectorMachineSDK/` (submódulo)
+- **Base operativa core**: `VectorMachineSDK/` (submódulo)
+- **UI operativa auxiliar**: `VectorMachineUI/` (submódulo)
 
 ## Referencias
 
 - Plugin manifest: `.github/plugins/vector-machine/manifest.md`
 - Bridge: `.github/agents/plugin_ox_vectormachine.agent.md`
-- Submódulo: `VectorMachineSDK/README-SCRIPTORIUM.md`
+- Submódulos: `VectorMachineSDK/README-SCRIPTORIUM.md`, `VectorMachineUI/README-SCRIPTORIUM.md`

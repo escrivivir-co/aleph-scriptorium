@@ -165,6 +165,15 @@ El [scriptorium-pack](.github/plugins/scriptorium-pack/) viene preinstalado. A p
 
 Con el tiempo, tu instalación refleja tu forma de trabajar.
 
+#### Submódulos avanzados del stack vectorial
+
+> ⚠️ **Solo usuarios avanzados**: estos submódulos requieren nociones de Git, Chroma y flujos de notebooks para operarlos con seguridad.
+
+| Submódulo | Propósito | Requiere |
+|-----------|-----------|----------|
+| [VectorMachineSDK](../VectorMachineSDK/README-SCRIPTORIUM.md) | Núcleo vectorial self-hosted (DeepWiki + Chroma + notebooks) | Git, Node.js, Chroma, notebooks |
+| [VectorMachineUI](../VectorMachineUI/README-SCRIPTORIUM.md) | Admin UI Next.js para inspección y query semántica sobre colecciones Chroma | Git, Node.js, Chroma HTTP, cache compartida |
+
 #### Arquitectura DRY
 
 Dos principios organizan el contenido:
@@ -296,6 +305,7 @@ El sistema de [Tasks](https://code.visualstudio.com/docs/debugtest/tasks) permit
 | **OAE** (OpenAsyncAPI) | `OAE:` | 3021, 3022 | Swagger UI + AsyncAPI Studio |
 | **NRE** (Node-RED) | `NRE:` | 1880, 3088 | Editor + GamifyUI |
 | **BLE** (Blockly) | `BLE:` | 4200, 5000 | Editor + Runtime |
+| **VUI** (VectorMachineUI) | `VUI:` | 3001 | Admin UI Next.js para Chroma |
 | **NOV** (Novelist) | `NOV:` | 3066, 8080 | MCP Server + UI |
 | **DEMO** | `DEMO:` | Varios | Stack completo para demostraciones |
 | **INS** (Inspector) | `INS:` | 6274, 6277 | MCP Inspector UI + Proxy |

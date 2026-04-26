@@ -84,3 +84,7 @@
 	path = VectorMachineSDK
 	url = https://github.com/escrivivir-co/aleph-deep-wiki.git
 	branch = integration/beta/scriptorium
+[submodule "VectorMachineUI"]
+	path = VectorMachineUI
+	url = https://github.com/escrivivir-co/vm-sdk-chromadb-admin.git
+	branch = integration/beta/scriptorium

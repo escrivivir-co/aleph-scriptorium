@@ -52,9 +52,10 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
    - `AgentLoreSDK` — Agent Lore SDK (plantillas de agentes)
   - `UISDKThreejs` — UI ThreeJS gamificada para demos y canvas interactivo
   - `DocumentMachineSDK` — SDK editorial/documental para-la-voz
-   - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
+  - `BotHubSDK` — SDK bots Telegram + protocolo IACM inter-agente
   - `onfalo-asesor-sdk` — Consejo Asesor ONFALO (fuente privada integrada)
   - `VectorMachineSDK` — Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)
+  - `VectorMachineUI` — Admin UI Next.js para colecciones Chroma del stack vectorial
 
 ### Output esperado
 
@@ -84,7 +85,8 @@ Inicializa el workspace completo con discovery de plugins y submódulos:
 [setup] Configurando submódulo: BotHubSDK
 [setup] Configurando submódulo: onfalo-asesor-sdk
 [setup] Configurando submódulo: VectorMachineSDK
-[setup] ✔ Setup completado 
+[setup] Configurando submódulo: VectorMachineUI
+[setup] ✔ Setup completado (23 submódulos)
 
 Submódulos configurados:
   - VsCodeExtension: Extensión VS Code / Arrakis Theater
@@ -109,6 +111,7 @@ Submódulos configurados:
   - DocumentMachineSDK: SDK editorial/documental para-la-voz
   - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada)
   - VectorMachineSDK: Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)
+  - VectorMachineUI: Admin UI Next.js para colecciones Chroma del stack vectorial
 ```
 
 ---

@@ -11,6 +11,8 @@ VSCODE_DIR="$ROOT_DIR/.vscode"
 SETTINGS_FILE="$VSCODE_DIR/settings.json"
 INTEGRATION_BRANCH="integration/beta/scriptorium"
 
+# Submódulos del proyecto (23 en total)
+
 SUBMODULE_EXTENSION_DIR="$ROOT_DIR/VsCodeExtension"
 SUBMODULE_EXTENSION_URL="https://github.com/escrivivir-co/vscode-alephscript-extension.git"
 
@@ -78,6 +80,9 @@ SUBMODULE_ONFALO_ASESOR_SDK_URL="https://github.com/escrivivir-co/onfalo-asesor-
 SUBMODULE_VECTOR_MACHINE_SDK_DIR="$ROOT_DIR/VectorMachineSDK"
 SUBMODULE_VECTOR_MACHINE_SDK_URL="https://github.com/escrivivir-co/aleph-deep-wiki.git"
 SUBMODULE_VECTOR_MACHINE_SDK_BRANCH="dev/001"
+
+SUBMODULE_VECTOR_MACHINE_UI_DIR="$ROOT_DIR/VectorMachineUI"
+SUBMODULE_VECTOR_MACHINE_UI_URL="https://github.com/escrivivir-co/vm-sdk-chromadb-admin.git"
 
 echo "[setup] Aleph Scriptorium — inicialización del workspace"
 echo "[setup] Raíz: $ROOT_DIR"
@@ -261,6 +266,9 @@ setup_submodule "$SUBMODULE_DOCUMENT_MACHINE_SDK_DIR" "$SUBMODULE_DOCUMENT_MACHI
 setup_submodule "$SUBMODULE_BOT_HUB_SDK_DIR" "$SUBMODULE_BOT_HUB_SDK_URL" "BotHubSDK"
 setup_submodule "$SUBMODULE_ONFALO_ASESOR_SDK_DIR" "$SUBMODULE_ONFALO_ASESOR_SDK_URL" "onfalo-asesor-sdk"
 setup_submodule "$SUBMODULE_VECTOR_MACHINE_SDK_DIR" "$SUBMODULE_VECTOR_MACHINE_SDK_URL" "VectorMachineSDK" "$SUBMODULE_VECTOR_MACHINE_SDK_BRANCH"
+setup_submodule "$SUBMODULE_VECTOR_MACHINE_UI_DIR" "$SUBMODULE_VECTOR_MACHINE_UI_URL" "VectorMachineUI"
+
+echo "[setup] ✔ Setup completado (23 submódulos)"
 
 echo
 echo "Siguientes pasos sugeridos:"
@@ -283,6 +291,7 @@ echo "     cd DocumentMachineSDK && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd BotHubSDK && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd onfalo-asesor-sdk && git push -u origin $INTEGRATION_BRANCH"
 echo "     cd VectorMachineSDK && git push -u origin $INTEGRATION_BRANCH"
+echo "     cd VectorMachineUI && git push -u origin $INTEGRATION_BRANCH"
 echo
 echo "Submódulos configurados:"
 echo "  - VsCodeExtension: Extensión VS Code / Arrakis Theater"
@@ -307,3 +316,4 @@ echo "  - BotHubSDK: SDK plugin-based para bots Telegram + protocolo IACM v1.0"
 echo "  - DocumentMachineSDK: SDK editorial/documental para-la-voz (análisis de corrientes + cristalización de voz)"
 echo "  - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada como submódulo)"
 echo "  - VectorMachineSDK: Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)"
+echo "  - VectorMachineUI: Admin UI Next.js para colecciones Chroma del stack vectorial"

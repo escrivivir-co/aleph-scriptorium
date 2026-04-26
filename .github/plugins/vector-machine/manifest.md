@@ -2,7 +2,7 @@
 id: vector-machine
 name: "VectorMachine — Stack Vectorial vía MCP"
 version: "1.0.0"
-description: "Plugin de integración para VectorMachineSDK. Prepara la autopista entre la stack vectorial self-hosted y una futura fachada MCP propia sobre MCPGallery/mcp-mesh-sdk."
+description: "Plugin de integración para VectorMachineSDK y VectorMachineUI. Prepara la autopista entre la stack vectorial self-hosted, su admin UI Chroma y una futura fachada MCP propia sobre MCPGallery/mcp-mesh-sdk."
 author: "Aleph Scriptorium"
 license: "AIPL v1.0"
 
@@ -58,19 +58,22 @@ Este plugin no presupone agentes remotos ni un servidor MCP ya existente en el s
 ## Capacidades v1
 
 - Registrar la codebase de `VectorMachineSDK` como submódulo integrado;
+- reconocer `VectorMachineUI` como admin UI operativa del stack vectorial;
 - documentar el encaje con `MCPGallery/mcp-mesh-sdk`;
 - ofrecer un agente y prompts de diseño para el siguiente ciclo técnico;
 - dejar rutas DRY y discovery del plugin listos en el workspace.
 
 ## Integración con el submódulo
 
-- **Submódulo**: `VectorMachineSDK`
+- **Submódulo core**: `VectorMachineSDK`
+- **Submódulo auxiliar**: `VectorMachineUI`
 - **Repo remoto**: `https://github.com/escrivivir-co/aleph-deep-wiki.git`
 - **Rama de integración local**: `integration/beta/scriptorium`
-- **Anchor técnico**: `VectorMachineSDK/README-SCRIPTORIUM.md`
+- **Anchors técnicos**: `VectorMachineSDK/README-SCRIPTORIUM.md`, `VectorMachineUI/README-SCRIPTORIUM.md`
 
 ## Referencias
 
 - Bridge: `.github/agents/plugin_ox_vectormachine.agent.md`
 - Runtime: `ARCHIVO/PLUGINS/VECTOR_MACHINE/README.md`
 - Mesh MCP: `MCPGallery/mcp-mesh-sdk/README-SCRIPTORIUM.md`
+- Admin UI: `VectorMachineUI/README-SCRIPTORIUM.md`

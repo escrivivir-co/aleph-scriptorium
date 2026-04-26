@@ -2,8 +2,8 @@
 
 > **Agente responsable**: @ox  
 > **Propósito**: Mapa de arquitectura para equipo Scrum y mantenedores  
-> **Última actualización**: 2026-04-23  
-> **Estado**: 🌿 Actualizado (MCP-CHANNELS-1.0.0 indexado)
+> **Última actualización**: 2026-04-26  
+> **Estado**: 🌿 Actualizado (VectorMachineUI indexado)
 
 ---
 
@@ -36,7 +36,7 @@
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                  CAPA SUBMÓDULOS (22 repos)                          │
+│                  CAPA SUBMÓDULOS (23 repos)                          │
 │              Infraestructura externa (Git submodules)                │
 └─────────────────────────────────────────────────────────────────────┘
                                 │
@@ -240,7 +240,7 @@ applyTo: "**/*.md"  # Glob de archivos
 | hypergraph-editor | 1.0.0 | wiki-racer | plugin_ox_hypergrapheditor |
 | consejo-asesor | 1.0.0 | onfalo-asesor-sdk | plugin_ox_consejoasesor |
 | lore-sdk | 1.0.0 | DocumentMachineSDK | plugin_ox_loresdk |
-| vector-machine | 1.0.0 | VectorMachineSDK | plugin_ox_vectormachine |
+| vector-machine | 1.0.0 | VectorMachineSDK (+ VectorMachineUI) | plugin_ox_vectormachine |
 
 ### 3.3. Estructura de un Plugin
 
@@ -282,7 +282,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 
 ## 4. Sistema de Submódulos
 
-### 4.1. Submódulos Instalados (22)
+### 4.1. Submódulos Instalados (23)
 
 > Fuente canónica: `.gitmodules` + `git submodule status`.
 
@@ -310,6 +310,7 @@ ARCHIVO/PLUGINS/{ID}/        # DATOS (mutable)
 | para-la-voz-sdk | integration/beta/scriptorium | lore-sdk | Markdown + Jekyll |
 | onfalo-asesor-sdk | integration/beta/scriptorium | consejo-asesor | Markdown + TypeScript SDK |
 | aleph-deep-wiki | integration/beta/scriptorium | vector-machine | Docker + Python + FastAPI + ChromaDB |
+| vm-sdk-chromadb-admin | integration/beta/scriptorium | vector-machine (auxiliar) | Next.js + React + TypeScript + ChromaDB UI |
 
 ### 4.2. Protocolo de Integración
 
@@ -546,6 +547,7 @@ bundle exec jekyll serve --livereload
 | mcp-novelist | 3066 | MCP server |
 | node-red-alephscript-sdk | 1880 | Node-RED |
 | alephscript-network-sdk | — | Docker compose |
+| vm-sdk-chromadb-admin | 3001 | Next.js admin UI |
 
 ### 9.1. MCP Mesh Servers (MCPGallery)
 
