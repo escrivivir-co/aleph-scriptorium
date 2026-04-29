@@ -68,7 +68,7 @@ ARCHIVO/DISCO/WIRING/
 
 ---
 
-## Catálogo de Nodos (13)
+## Catálogo de Nodos (20 + 1)
 
 ### Bot (2 nodos)
 
@@ -107,6 +107,18 @@ ARCHIVO/DISCO/WIRING/
 | **DashboardNode** | Contenedor de dashboard | Crear panel de control |
 | **UIWidgetNode** | Widget genérico | Mostrar información |
 | **FormNode** | Formulario | Capturar input del usuario |
+
+### Escribiente (7 nodos)
+
+| Nodo | Descripción | Cuándo usar |
+|------|-------------|-------------|
+| **alephscript-escribiente-config** | Config central del pipeline | Cuando el flow necesita defaults de paths, modelo o colas |
+| **alephscript-escribiente-precheck** | Validador del entorno whisper | Antes de abrir sesión y fijar chunkSec |
+| **alephscript-escribiente-session** | Gestor de sesiones | Para abrir, consultar o marcar cierre de sesiones |
+| **alephscript-escribiente-chunker** | Troceador / emisor de jobs | Para subir MP3 o encolar blobs de micrófono |
+| **alephscript-escribiente-transcriber** | Watcher de resultados | Para recoger OUTBOX y materializar textos |
+| **alephscript-escribiente-session-closer** | Cierre exportable | Para consolidar texto e informe final |
+| **alephscript-escribiente-dashboard-recorder** | Widget de captura | Cuando el usuario necesita micrófono, upload MP3 y feedback live |
 
 ---
 

@@ -1,0 +1,8 @@
+*
+!.gitignore
+!INBOX/
+!OUTBOX/
+INBOX/*
+!INBOX/.gitkeep
+OUTBOX/*
+!OUTBOX/.gitkeep

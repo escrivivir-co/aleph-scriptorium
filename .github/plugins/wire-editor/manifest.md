@@ -16,6 +16,8 @@ submodule: "node-red-alephscript-sdk"
 submodule_packages:
   - name: "node-red-contrib-alephscript"
     description: "13 nodos custom para bots, canales, orquestación y dashboard"
+  - name: "node-red-contrib-alephscript-escribiente"
+    description: "7 nodos custom para transcripción audio→whisper con dashboard, sesiones y cierre exportable"
   - name: "node-red-gamify-ui"
     description: "UI Angular 17+ con patrón GamificationUI"
 
@@ -116,11 +118,15 @@ Crear pequeñas UIs Dashboard para configurar plugins y submodules del Scriptori
 ### UC4: Analogía Blockly ↔ Node-RED
 Establecer puente conceptual entre lógica de personajes (Blockly) y flujos de datos (Node-RED).
 
+### UC5: Sesiones de transcripción Escribiente
+Capturar audio desde micrófono o MP3, segmentarlo por tramos, transcribir con Whisper y cerrar una sesión con artefactos exportables.
+
 ## Submódulo Fuente
 
 - **Repositorio**: `node-red-alephscript-sdk`
 - **Paquetes**:
   - `node-red-contrib-alephscript`: 13 nodos TypeScript
+  - `node-red-contrib-alephscript-escribiente`: 7 nodos TypeScript para audio→whisper
   - `node-red-gamify-ui`: UI Angular para gamificación
 - **Stack**: TypeScript, Node.js 18+, Socket.IO 4.7.2, Angular 17+
 
@@ -140,7 +146,7 @@ ARCHIVO/DISCO/WIRING/
     └── nodes/
 ```
 
-## Nodos Disponibles (13)
+## Nodos Disponibles (20)
 
 | Categoría | Nodos | Descripción |
 |-----------|-------|-------------|
@@ -149,6 +155,7 @@ ARCHIVO/DISCO/WIRING/
 | **Format** | FormatNode, MessageParserNode, ResponseBuilderNode | Transformación de mensajes |
 | **Orchestration** | FlowControlNode, StateManagerNode | Control de flujo y estado |
 | **Dashboard** | DashboardNode, UIWidgetNode, FormNode | Interfaces de usuario |
+| **Escribiente** | escribiente-config, escribiente-precheck, escribiente-session, escribiente-chunker, escribiente-transcriber, escribiente-session-closer, escribiente-dashboard-recorder | Transcripción por sesiones y cierre exportable |
 
 ## Protocolo de Feeds
 

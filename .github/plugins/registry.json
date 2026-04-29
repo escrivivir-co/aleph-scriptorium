@@ -196,13 +196,22 @@
       "submodule": "node-red-alephscript-sdk",
       "node_red": {
         "default_port": 1880,
-        "nodes_count": 13,
+        "nodes_count": 20,
         "nodes_by_category": {
           "bot": ["aleph-kick-bot-in", "aleph-kick-bot-out"],
           "channel": ["aleph-channel-filter", "aleph-channel-merge", "aleph-channel-split"],
           "format": ["aleph-message-format", "aleph-json-transform", "aleph-template"],
           "orchestration": ["aleph-flow-control", "aleph-state-manager"],
-          "dashboard": ["aleph-widget-config", "aleph-dashboard-layout", "aleph-live-view"]
+          "dashboard": ["aleph-widget-config", "aleph-dashboard-layout", "aleph-live-view", "alephscript-escribiente-dashboard-recorder"],
+          "escribiente": [
+            "alephscript-escribiente-config",
+            "alephscript-escribiente-precheck",
+            "alephscript-escribiente-session",
+            "alephscript-escribiente-chunker",
+            "alephscript-escribiente-transcriber",
+            "alephscript-escribiente-session-closer",
+            "alephscript-escribiente-dashboard-recorder"
+          ]
         }
       },
       "handoffs": [
@@ -224,6 +233,55 @@
         },
         {
           "label": "Conectar feed asíncrono",
+          "agent": "WireEditor"
+        }
+      ]
+    },
+    "escribiente": {
+      "name": "Escribiente (Audio → Whisper)",
+      "version": "0.1.0",
+      "description": "Plugin de transcripción por sesiones sobre Node-RED + faster-whisper. Gestiona precheck, chunking, colas INBOX/OUTBOX y cierres exportables.",
+      "author": "Aleph Scriptorium",
+      "installed_at": "2026-04-29T00:00:00Z",
+      "enabled": true,
+      "agents_count": 1,
+      "prompts_count": 0,
+      "instructions_count": 1,
+      "data_directory": "ARCHIVO/PLUGINS/ESCRIBIENTE/",
+      "bridge_agent": "plugin_ox_wireeditor",
+      "dependencies": ["wire-editor"],
+      "optional_dependencies": ["lore-sdk"],
+      "submodule": "node-red-alephscript-sdk",
+      "node_red": {
+        "default_port": 1880,
+        "nodes_count": 7,
+        "nodes_by_category": {
+          "config": ["alephscript-escribiente-config"],
+          "processing": [
+            "alephscript-escribiente-precheck",
+            "alephscript-escribiente-session",
+            "alephscript-escribiente-chunker",
+            "alephscript-escribiente-transcriber",
+            "alephscript-escribiente-session-closer"
+          ],
+          "dashboard": ["alephscript-escribiente-dashboard-recorder"]
+        }
+      },
+      "storage": {
+        "sessions_root": "ARCHIVO/PLUGINS/DOCUMENT_MACHINE/STORAGE/TRANSCRIPTIONS/",
+        "queue_root": "ARCHIVO/PLUGINS/DOCUMENT_MACHINE/STORAGE/ESCRIBIENTE_QUEUE/"
+      },
+      "handoffs": [
+        {
+          "label": "Diseñar flow de transcripción",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Ejecutar precheck",
+          "agent": "WireEditor"
+        },
+        {
+          "label": "Cerrar sesión exportable",
           "agent": "WireEditor"
         }
       ]

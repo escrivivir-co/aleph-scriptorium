@@ -45,7 +45,7 @@ scripts\setup-node-red.cmd
 | Handoff | Descripción |
 |---------|-------------|
 | `@wire-editor instalar dashboard` | Instala node-red-dashboard |
-| `@wire-editor instalar alephscript` | Instala 13 nodos AlephScript |
+| `@wire-editor instalar alephscript` | Instala packs AlephScript (base + Escribiente) |
 | `@wire-editor verificar nodos` | Lista nodos instalados |
 
 **Contribs del Scriptorium**:
@@ -53,6 +53,7 @@ scripts\setup-node-red.cmd
 | Paquete | Nodos | Ruta |
 |---------|-------|------|
 | node-red-contrib-alephscript | 13 | `WiringEditor/packages/node-red-contrib-alephscript` |
+| node-red-contrib-alephscript-escribiente | 7 | `WiringEditor/packages/node-red-contrib-alephscript-escribiente` |
 | node-red-contrib-wiki-racer | 1 | `WiringAppHypergraphEditor/node-red-contrib-wikir-racer` |
 | node-red-dashboard | ~30 | npm registry |
 
@@ -336,7 +337,7 @@ Evento externo → ChannelNode → FlowControlNode (rate limit)
 
 ---
 
-## Nodos AlephScript (14 total)
+## Nodos AlephScript (21 total)
 
 ### De WiringEditor (13 nodos)
 
@@ -355,6 +356,18 @@ Evento externo → ChannelNode → FlowControlNode (rate limit)
 | alephscript-bot-registry | Dashboard | Registro de bots |
 | alephscript-room-tester | Dashboard | Tester de rooms |
 | alephscript-stream-monitor | Dashboard | Monitor de streams |
+
+### Pack Escribiente (7 nodos)
+
+| Nodo | Categoría | Descripción |
+|------|-----------|-------------|
+| alephscript-escribiente-config | Config | Defaults de paths, modelo, device y colas |
+| alephscript-escribiente-precheck | Processing | Valida GPU, ffmpeg y recomendaciones de chunk/model |
+| alephscript-escribiente-session | Processing | Abre/cierra sesiones con `manifest.json` |
+| alephscript-escribiente-chunker | Processing | Trocea MP3 o encola chunks de micrófono |
+| alephscript-escribiente-transcriber | Processing | Watcher de `OUTBOX/` que materializa `text/*.json|txt` |
+| alephscript-escribiente-session-closer | Processing | Genera `full.txt`, `informe.md` y `export.zip` |
+| alephscript-escribiente-dashboard-recorder | Dashboard | Widget con mic, upload mp3, cronómetro y estado por tramo |
 
 ### De WiringApp (1 nodo)
 

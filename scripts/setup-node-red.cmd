@@ -4,8 +4,10 @@ REM Node-RED Setup Script for Aleph Scriptorium (Windows)
 REM ═══════════════════════════════════════════════════════════════════════════
 REM 
 REM Este script instala Node-RED y los nodos custom del Scriptorium:
-REM - node-red-dashboard (UI base)
+REM - node-red-dashboard (legacy UI)
+REM - @flowfuse/node-red-dashboard (Dashboard 2)
 REM - node-red-contrib-alephscript (13 nodos)
+REM - node-red-contrib-alephscript-escribiente (7 nodos)
 REM - node-red-contrib-wiki-racer (1 nodo)
 REM
 REM Uso:
@@ -130,15 +132,15 @@ echo %GREEN%✓ Directorio: %NODE_RED_DIR%%NC%
 echo.
 
 REM ─────────────────────────────────────────────────────────────────────────────
-REM Paso 3: Instalar node-red-dashboard
+REM Paso 3: Instalar dashboards Node-RED (legacy + v2)
 REM ─────────────────────────────────────────────────────────────────────────────
 if "%CONTRIB_ONLY%"=="false" (
-    echo %YELLOW%🎨 Paso 3: Instalando node-red-dashboard...%NC%
+    echo %YELLOW%🎨 Paso 3: Instalando dashboards Node-RED (legacy + Dashboard 2)...%NC%
     
     cd /d "%NODE_RED_DIR%"
-    echo   -^> npm install node-red-dashboard
-    call npm install node-red-dashboard
-    echo %GREEN%✓ node-red-dashboard instalado%NC%
+    echo   -^> npm install node-red-dashboard @flowfuse/node-red-dashboard
+    call npm install node-red-dashboard @flowfuse/node-red-dashboard
+    echo %GREEN%✓ node-red-dashboard y @flowfuse/node-red-dashboard instalados%NC%
 ) else (
     echo %YELLOW%⏭️  Paso 3: Saltando dashboard (--contrib-only)%NC%
 )
@@ -148,7 +150,7 @@ echo.
 REM ─────────────────────────────────────────────────────────────────────────────
 REM Paso 4: Build node-red-contrib-alephscript
 REM ─────────────────────────────────────────────────────────────────────────────
-echo %YELLOW%🔨 Paso 4: Compilando node-red-contrib-alephscript...%NC%
+echo %YELLOW%🔨 Paso 4: Compilando node-red-contrib-alephscript + escribiente...%NC%
 
 cd /d "%WIRING_EDITOR_DIR%"
 
@@ -168,7 +170,16 @@ if not exist "node_modules" (
 echo   -^> npm run build:full
 call npm run build:full 2>nul || call npm run build
 
-echo %GREEN%✓ node-red-contrib-alephscript compilado%NC%
+cd /d "%WIRING_EDITOR_DIR%\packages\node-red-contrib-alephscript-escribiente"
+if not exist "node_modules" (
+    echo   -^> npm install (escribiente)
+    call npm install
+)
+
+echo   -^> npm run build:full [escribiente]
+call npm run build:full 2>nul || call npm run build
+
+echo %GREEN%✓ node-red-contrib-alephscript y escribiente compilados%NC%
 
 echo.
 
@@ -184,6 +195,17 @@ echo   -^> npm install "%CONTRIB_PATH%"
 call npm install "%CONTRIB_PATH%"
 
 echo %GREEN%✓ 13 nodos AlephScript instalados%NC%
+
+echo.
+echo %YELLOW%📝 Paso 5b: Instalando node-red-contrib-alephscript-escribiente (7 nodos)...%NC%
+
+cd /d "%NODE_RED_DIR%"
+set "ESCRIBIENTE_PATH=%WIRING_EDITOR_DIR%\packages\node-red-contrib-alephscript-escribiente"
+
+echo   -^> npm install "%ESCRIBIENTE_PATH%"
+call npm install "%ESCRIBIENTE_PATH%"
+
+echo %GREEN%✓ 7 nodos Escribiente instalados%NC%
 
 echo.
 
@@ -223,9 +245,11 @@ echo.
 echo   4. O usa las tasks de VS Code:
 echo      %GREEN%Ctrl+Shift+P -^> Tasks: Run Task -^> NRE: Start [Editor]%NC%
 echo.
-echo 📦 %YELLOW%Nodos instalados (14 total):%NC%
-echo   - node-red-dashboard (UI widgets)
+echo 📦 %YELLOW%Nodos instalados (21 total):%NC%
+echo   - node-red-dashboard (legacy UI widgets)
+echo   - @flowfuse/node-red-dashboard (Dashboard 2)
 echo   - node-red-contrib-alephscript (13 nodos)
+echo   - node-red-contrib-alephscript-escribiente (7 nodos)
 echo   - node-red-contrib-wiki-racer (1 nodo)
 echo.
 

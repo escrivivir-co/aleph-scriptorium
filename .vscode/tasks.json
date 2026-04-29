@@ -976,6 +976,129 @@
       "detail": "Abrir GamifyUI"
     },
     // ═══════════════════════════════════════════════════════════════════════
+    // ESC: ESCRIBIENTE (Whisper + Dashboard)
+    // Rutas: TRANSCRIPTIONS + ESCRIBIENTE_QUEUE
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "ESC: Build [Pack]",
+      "type": "shell",
+      "command": "npm",
+      "args": [
+        "run",
+        "build:escribiente"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/WiringEditor"
+      },
+      "problemMatcher": [
+        "$tsc"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Compilar node-red-contrib-alephscript-escribiente"
+    },
+    {
+      "label": "ESC: Install [Worker Deps]",
+      "type": "shell",
+      "command": "./.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "DocumentMachineSDK\\workers\\escribiente-whisper\\requirements.txt"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Instalar dependencias Python del worker Escribiente"
+    },
+    {
+      "label": "ESC: Run1 [Precheck]",
+      "type": "shell",
+      "command": "./.venv/Scripts/python.exe",
+      "args": [
+        "DocumentMachineSDK/workers/escribiente-whisper/precheck.py",
+        "--sessions-root",
+        "ARCHIVO/PLUGINS/DOCUMENT_MACHINE/STORAGE/TRANSCRIPTIONS",
+        "--queue-root",
+        "ARCHIVO/PLUGINS/DOCUMENT_MACHINE/STORAGE/ESCRIBIENTE_QUEUE",
+        "--ffmpeg-command",
+        "ffmpeg"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "detail": "Validar entorno whisper y recomendaciones para Escribiente"
+    },
+    {
+      "label": "ESC: Start [Whisper Worker]",
+      "type": "shell",
+      "command": "./.venv/Scripts/python.exe",
+      "args": [
+        "DocumentMachineSDK/workers/escribiente-whisper/worker.py",
+        "--inbox-root",
+        "ARCHIVO/PLUGINS/DOCUMENT_MACHINE/STORAGE/ESCRIBIENTE_QUEUE/INBOX",
+        "--outbox-root",
+        "ARCHIVO/PLUGINS/DOCUMENT_MACHINE/STORAGE/ESCRIBIENTE_QUEUE/OUTBOX",
+        "--model",
+        "small",
+        "--device",
+        "auto",
+        "--compute-type",
+        "int8_float32"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "esc-worker",
+        "pattern": {
+          "regexp": "^\[(ERROR|error)\]\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*Escribiente worker inbox=.*$",
+          "endsPattern": "^.*Escribiente worker outbox=.*$"
+        }
+      },
+      "presentation": {
+        "reveal": "always",
+        "group": "esc-stack"
+      },
+      "detail": "Worker faster-whisper persistente sobre INBOX/OUTBOX"
+    },
+    {
+      "label": "ESC: Open [Dashboard]",
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "start",
+        "http://localhost:1880/ui"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      },
+      "detail": "Abrir dashboard Node-RED para Escribiente"
+    },
+    // ═══════════════════════════════════════════════════════════════════════
     // BLE: BLOCKLY EDITOR
     // Puertos: 4200 (Editor/Angular), 5000 (Runtime)
     // ═══════════════════════════════════════════════════════════════════════
