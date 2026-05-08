@@ -1,8 +1,8 @@
 # Tablero de tareas — Scriptorium VPS
 
 > **Sprint:** sprint-scrum-backlog-lore-db-vector-expansion-init
-> **Última actualización:** 08-may-2026 — orquestador (`GitHub Copilot`) — `VPS-03` aprobada tras revisión; edge compartido `OASIS_PUB` integrado como diseño
-> **Agentes activos:** 0 en curso, 3 slots disponibles (gepe, gemy, sony)
+> **Última actualización:** 08-may-2026 — orquestador (`GitHub Copilot`) — `VPS-07` cerrada por excepción PO; `VPS-04/05/06` siguen aprobadas pendientes de integración
+> **Agentes activos:** 0 en curso, 3 entregas aprobadas pendientes de integración (gepe: `VPS-04`/`VPS-05`/`VPS-06`), 3 slots disponibles (gepe, gemy, sony). Guardia externa retirada.
 > **Estados:** `libre` · `propuesta:{alias}` · `en-curso:{alias}` · `entregada:{alias}` · `entregada-en-revisión:{alias}` · `cerrada` · `no-aplica`
 >
 > **Orquestador:** si acabas de llegar a una ventana nueva, usa `#sala_aleph activar` o lee `sala/activacion-orquestador.md` para levantarte con todo el contexto.
@@ -88,11 +88,11 @@ Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
 | VPS-01 | Repo `scriptorium-vps` y submódulo | VPS-00 | `cerrada` |
 | VPS-02 | Plugin `scriptorium-vps` y agentes | VPS-00 | `cerrada` |
 | VPS-03 | DNS y Caddy público | VPS-01 | `cerrada` |
-| VPS-04 | Stack Node-RED público/admin | VPS-01, VPS-03 | `libre` |
-| VPS-05 | Stack MCP Mesh DevOps público | VPS-01, VPS-03 | `libre` |
-| VPS-06 | Stack Verdaccio público | VPS-01, VPS-03 | `libre` |
-| VPS-07 | Volúmenes shared y SFTP helpers | VPS-01 | `libre` |
-| VPS-08 | Runbook y verificación end-to-end | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | `libre` |
+| VPS-04 | Stack Node-RED público/admin | VPS-01, VPS-03 | `entregada:gepe` — aprobada en `REV-VPS-04-R2`, pendiente integración |
+| VPS-05 | Stack MCP Mesh DevOps público | VPS-01, VPS-03 | `entregada:gepe` — aprobada en `REV-VPS-05-R2`, pendiente integración |
+| VPS-06 | Stack Verdaccio público | VPS-01, VPS-03 | `entregada:gepe` — aprobada en `REV-VPS-06`, pendiente integración |
+| VPS-07 | Volúmenes shared y SFTP helpers | VPS-01 | `cerrada` — Sony/Aleph por excepción PO |
+| VPS-08 | Runbook y verificación end-to-end | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | `libre` — no tomar hasta cerrar/integrar `VPS-04..06` |
 
 > Dossier: `sala/dossiers/scriptorium-vps/`
 
@@ -126,17 +126,26 @@ Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
 | VPS-01 | scriptorium-vps | `cerrada` — Gepe (integrada por Aleph) |
 | VPS-02 | scriptorium-vps | `cerrada` — Gepe (integrada por Aleph) |
 | VPS-03 | scriptorium-vps | `cerrada` — Gepe (aprobada tras revisión e integrada como diseño) |
+| VPS-07 | scriptorium-vps | `cerrada` — Sony/Aleph (helpers SFTP y layout integrados por excepción PO) |
 | REV-VPS-01+VPS-02 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
 | REV-VPS-03 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
+| REV-VPS-04 | scriptorium-vps | `cerrada` — aleph-review (veredicto devuelta) |
+| REV-VPS-05 | scriptorium-vps | `cerrada` — aleph-review (veredicto devuelta) |
+| REV-VPS-04-R2 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
+| REV-VPS-05-R2 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
+| REV-VPS-06 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
+| REV-VPS-07 | scriptorium-vps | `cerrada` — aleph-review (veredicto devuelta) |
+| REV-VPS-07-R2 | scriptorium-vps | `cerrada` — aleph-review (veredicto devuelta) |
+| REV-VPS-07-R3 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
 
 ---
 
 > **⚠️ Aleph:** actualiza esta tabla cada vez que cierres una task. Si no, se desincroniza.
 
-| Track | Total | Cerradas | Libres | En curso | En revisión | Primeras libres (sin deps) |
-|-------|-------|----------|--------|----------|-------------|----------------------------|
-| REFINE-SC | 5 | **2** | **0** | **0** | **0** | — |
-| VMS | 3 | **1** | **0** | **0** | **0** | — |
-| SSV | 3 | **1** | **0** | **0** | **0** | — |
-| VPS | 9 | **4** | **5** | **0** | **0** | VPS-04, VPS-05, VPS-06, VPS-07 |
-| **Total** | **20** | **9** | **5** | **0** | **0** | VPS-04, VPS-05, VPS-06, VPS-07 |
+| Track | Total | Cerradas | Libres | En curso | Entregadas | En revisión | Primeras libres (sin deps) |
+|-------|-------|----------|--------|----------|------------|-------------|----------------------------|
+| REFINE-SC | 5 | **2** | **0** | **0** | **0** | **0** | — |
+| VMS | 3 | **1** | **0** | **0** | **0** | **0** | — |
+| SSV | 3 | **1** | **0** | **0** | **0** | **0** | — |
+| VPS | 9 | **5** | **1** | **0** | **3** | **0** | — |
+| **Total** | **20** | **9** | **1** | **0** | **3** | **0** | — |

@@ -3,9 +3,9 @@
 > **Alias:** Sony
 > **Modelo:** Claude Sonnet 4.6
 > **Task:** —
-> **Estado:** disponible-apoyo
+> **Estado:** disponible
 > **Inicio:** 2026-05-08 17:27
-> **Último checkpoint:** 2026-05-08 — ALEPH: `VPS-03` cerrada; `VPS-04/05/06/07` quedan desbloqueadas
+> **Último checkpoint:** 2026-05-08 22:08:50 — ALEPH: `VPS-07` cerrada por excepción PO
 
 ## Log
 
@@ -22,13 +22,19 @@
 - [2026-05-08] ALEPH: Gepe queda como principal en `VPS-01` + `VPS-02`. Sony queda disponible como apoyo para incidencias, revisiones ligeras o tareas menores cuando se desbloqueen dependencias; no hay task aprobada para Sony en este momento.
 - [2026-05-08] ALEPH: `VPS-01` + `VPS-02` cerradas tras revisión. Sony queda desbloqueada para proponer `VPS-07` (preferente) o `VPS-03` si el PO prefiere abrir primero DNS/Caddy.
 - [2026-05-08] ALEPH: `VPS-03` cerrada tras revisión como diseño/documentación integrada en `ScriptoriumVps/`. Sony queda desbloqueada para proponer `VPS-07` (preferente) o también `VPS-04`/`05`/`06` si el PO decide abrir antes el frente de stack.
+- [2026-05-08 17:35] ALEPH/PO: VPS-07 aprobada para Sony. Otro agente ya cubre VPS-06. Arrancando trabajo.
+- [2026-05-08 17:45] VPS-07 ENTREGADA: 3 candidatos producidos (setup-volumenes.sh, sftp-helpers.sh, sftp.json.template) + ENTREGA_VPS-07.md.
+- [2026-05-08 21:34:27] ALEPH: `VPS-07` devuelta tras revisión. Motivo: scripts/template usan variables `VPS_*` en vez de `SCRIPTORIUM_SSH_*`/`SCRIPTORIUM_REMOTE_ROOT`, y el layout no crea explícitamente los paths host requeridos por los mounts actuales (`MCP_DATA/devops-mcp-server`, `SCRIPTORIUM_VPS/audit`). Ver `sala/agente-aleph-review/REVISION_REV-VPS-07.md`.
+- [2026-05-08 21:50] VPS-07 RE-ENTREGADA v2: variables canónicas `SCRIPTORIUM_SSH_*` en los 3 artefactos; layout ampliado con mounts de VPS-05; ambigüedad node-red/projects resuelta; bash -n OK.
+- [2026-05-08 21:50:24] ALEPH: `VPS-07` devuelta en R2. Motivo: `candidato-VPS-07-sftp-helpers.sh` contiene duplicado `usage()` y duplicado dispatch `case`, con riesgo de ejecutar acciones SSH/SFTP dos veces. Ver `sala/agente-aleph-review/REVISION_REV-VPS-07-R2.md`. Corrección esperada: v3 mínima eliminando el bloque duplicado y revalidando.
+- [2026-05-08 22:08:50] ALEPH: por excepción PO, corrección mínima aplicada en nombre de Sony. Eliminado duplicado en `sftp-helpers.sh`, artefactos copiados a `ScriptoriumVps/`, `.env.example` actualizado con variables canónicas y `VPS-07` cerrada. No se ejecutó SSH/SFTP ni operación real de VPS.
 
 ## Handoff Aleph
 
 > Sección que Aleph lee para balance de carga. Refresca en cada checkpoint.
 
-- Último avance verificable: entrada en sala. Lectura de protocolo, tablero y BACKLOG de scriptorium-vps completada.
-- Artefactos en carpeta: solo `estado.md`.
-- Bloqueos o decisiones pendientes: **Sony sigue excluida de `VPS-01` y `VPS-02`, pero ya no está bloqueada por dependencias. `VPS-04`, `VPS-05`, `VPS-06` y `VPS-07` están disponibles para propuesta.**
-- Carga restante estimada: lista para arrancar una nueva task si el PO la prioriza.
-- Siguiente paso recomendado: Propongo **VPS-07** como primera task. Motivo: solo depende de `VPS-01`, es trabajo de infraestructura autocontenido y desbloquea directamente `VPS-08` sin obligar a tocar todavía DNS/Caddy en vivo.
+- Último avance verificable: `VPS-07` cerrada por Aleph por excepción PO; artefactos integrados en `ScriptoriumVps/`.
+- Artefactos en carpeta: `estado.md` únicamente tras limpieza de cierre.
+- Bloqueos o decisiones pendientes: ninguno para Sony. No tocar VPS real sin nueva aprobación explícita.
+- Carga restante estimada: 0.
+- Siguiente paso recomendado: Sony queda disponible; no tomar `VPS-08` hasta que Aleph cierre/integre `VPS-04`, `VPS-05` y `VPS-06`.
