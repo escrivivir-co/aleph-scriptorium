@@ -1,8 +1,8 @@
 # TASK-07 — Volúmenes shared y SFTP helpers
 
-> **Estado:** libre  
-> **Agente recomendado:** `vps-ops`  
-> **Dependencias:** VPS-01  
+> **Estado:** cerrada
+> **Agente recomendado:** `vps-ops`
+> **Dependencias:** VPS-01
 > **Entrega esperada:** layout `/srv/scriptorium/` + helpers SFTP + `.gitkeep`
 
 ## Lee primero

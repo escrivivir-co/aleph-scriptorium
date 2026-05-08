@@ -1,8 +1,8 @@
 # TASK-05 — Stack MCP Mesh DevOps público
 
-> **Estado:** libre  
-> **Agente recomendado:** `vps-ops`  
-> **Dependencias:** VPS-01, VPS-03  
+> **Estado:** cerrada
+> **Agente recomendado:** `vps-ops`
+> **Dependencias:** VPS-01, VPS-03
 > **Entrega esperada:** `MCPDevOpsServer` público por Streamable HTTP + Bearer, validado con `mcp-inspector-sdk`
 
 ## Lee primero

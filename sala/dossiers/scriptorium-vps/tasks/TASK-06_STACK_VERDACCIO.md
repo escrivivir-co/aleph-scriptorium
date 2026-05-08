@@ -1,8 +1,8 @@
 # TASK-06 — Stack Verdaccio público
 
-> **Estado:** libre  
-> **Agente recomendado:** `verdaccio-keeper`  
-> **Dependencias:** VPS-01, VPS-03  
+> **Estado:** cerrada
+> **Agente recomendado:** `verdaccio-keeper`
+> **Dependencias:** VPS-01, VPS-03
 > **Entrega esperada:** Verdaccio público para paquetes `@alephscript/*`
 
 ## Lee primero

@@ -9,8 +9,8 @@ Este dossier convierte el MINI-PLAN de la sesión Denis en un track ejecutable p
 
 ## Estado actual
 
-- Último avance: `VPS-03` cerrada como diseño/documentación; edge compartido con `OASIS_PUB` fijado e integrado en `ScriptoriumVps/`.
-- Próximas tasks libres: `VPS-04`, `VPS-05`, `VPS-06`, `VPS-07`.
+- Último avance: `VPS-04`, `VPS-05` y `VPS-06` integradas en `ScriptoriumVps/` como patrones locales; `VPS-07` ya estaba cerrada por excepción PO.
+- Próximas tasks libres: `VPS-08`.
 - Decisiones PO pendientes: ninguna bloqueante.
 - Regla de seguridad vigente: cualquier operación real sobre DNS/Gandi/VPS/Docker remoto requiere ventana controlada de Aleph y aprobación explícita del PO justo antes de operar.
 

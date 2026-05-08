@@ -1,8 +1,8 @@
 # TASK-04 — Stack Node-RED (contenedor único)
 
-> **Estado:** libre  
-> **Agente recomendado:** `nodered-curator`  
-> **Dependencias:** VPS-01, VPS-03  
+> **Estado:** cerrada
+> **Agente recomendado:** `nodered-curator`
+> **Dependencias:** VPS-01, VPS-03
 > **Entrega esperada:** stack Docker Node-RED con Dashboard clásico + Dashboard 2 y projects monorepo
 
 > **⚠️ Refactor aplicado** (2026-05-08): diseño anterior usaba dos contenedores separados para público/admin. Se unifica en un solo `nodered`; el público ve `/red` en read-only y la escritura la controla `adminAuth`.

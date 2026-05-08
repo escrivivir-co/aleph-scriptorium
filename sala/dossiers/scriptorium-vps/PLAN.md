@@ -31,6 +31,9 @@ Cualquier agente que tome una task debe leer primero:
 - MCP Launcher / presets ya tienen persistencia en `ARCHIVO/PLUGINS/MCP_PRESETS/`.
 - La herramienta oficial de validación MCP es `MCPGallery/mcp-inspector-sdk`.
 - Node-RED projects se modela como monorepo.
+- `BlockchainComPort/OASIS_PUB/` ya existe como despliegue Gandi/VPS vivo para `pub.escrivivir.co`.
+- `BlockchainComPort/OASIS_PUB/caddy/Caddyfile` y `docker-compose.pub.yml` son anclas protegidas: su Caddy `pub-web` ya ocupa `80/443`.
+- `BlockchainComPort/GANDI_DEVOPS_FOLDER/` es carpeta segura deny-by-default para SSH, snapshots, inventarios y secretos operativos.
 
 ## 3. Restricciones
 
@@ -39,6 +42,10 @@ Cualquier agente que tome una task debe leer primero:
 - No guardar secretos reales en el repo ni en el dossier.
 - Todo `.env` debe tener variante `.env.example` con placeholders.
 - Los contenedores no exponen puertos directos al host salvo Caddy `80/443`.
+- En producción no se levanta un segundo Caddy para `ScriptoriumVps` si comparte VPS con `OASIS_PUB`.
+- La integración pública se hace añadiendo hosts/snippets candidatos al Caddy existente de `OASIS_PUB`, previa revisión de Aleph/PO.
+- DNS real, Docker remoto, SSH/SCP, Gandi y VPS vivo requieren validación expresa del PO antes de operar.
+- No tocar `pub.escrivivir.co`, `escrivivir.co` raíz ni registros Bluesky/`_atproto` salvo decisión explícita posterior.
 - `ARCHIVO/` y `ARCHIVO/DISCO/` del VPS arrancan como carpetas vacías con `.gitkeep`.
 - Los datos del plugin nuevo se separan en `ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/`.
 
@@ -55,10 +62,16 @@ Cualquier agente que tome una task debe leer primero:
 | Agentes plugin | Confirmada | Incluir agentes de gestión y esqueletos de agentes del plan anterior para trabajo futuro. |
 | Contribs Node-RED | Confirmada | No precargar `node-red-contrib-alephscript-escribiente` de forma especial; tratarlo como el resto de contribs del monorepo. |
 | Node-RED pedagógico single-instance | Confirmada | Un solo `nodered`; el público ve `/red` en modo read-only y dashboards; sólo admin autenticado escribe/deploya. |
+| Caddy edge de producción | Confirmada | Usar integración respetuosa en el Caddy existente de `BlockchainComPort/OASIS_PUB`; no desplegar segundo Caddy en el VPS compartido. |
+| Red edge Docker | Confirmada para MVP | Conectar servicios `ScriptoriumVps` al edge existente mediante la red Compose de `OASIS_PUB` (`oasis_pub_net`; nombre externo esperado `oasis-pub-scriptorium_oasis_pub_net`) y aliases estables; no publicar puertos internos. |
 
 ### [GitHub Copilot] Adenda — Node-RED pedagógico single-instance (2026-05-08)
 
 El diseño vigente no oculta el editor al público. `scriptorium.escrivivir.co` expone el editor/flujos Node-RED en modo read-only para uso pedagógico, además de `/ui` y `/dashboard`. La autorización de escritura vive en `adminAuth`: público/anónimo con `permissions: "read"`; admin con `permissions: "*"`. Caddy actúa como frontal TLS/hardening y puede añadir una capa extra en `admin.scriptorium.escrivivir.co`, sin ocultar `/red` en el host público.
+
+### [GitHub Copilot] Adenda — Caddy existente de OASIS_PUB como edge (2026-05-08)
+
+Decisión PO: se descartan tanto el VPS/host separado como un edge Caddy unificado nuevo. Para el MVP, la opción canónica es integrar `scriptorium.escrivivir.co`, `admin.scriptorium.escrivivir.co`, `mcp.scriptorium.escrivivir.co` y `npm.scriptorium.escrivivir.co` en el Caddy existente de `BlockchainComPort/OASIS_PUB/`. `ScriptoriumVps` puede conservar un Caddyfile de patrón para desarrollo o documentación, pero en producción compartida no debe levantar otro contenedor que ocupe `80/443`. La conexión entre ese Caddy y los servicios nuevos se modela mediante la red Compose existente de `OASIS_PUB`: clave `oasis_pub_net` dentro de `docker-compose.pub.yml`, nombre externo esperado `oasis-pub-scriptorium_oasis_pub_net` al consumirla desde otro compose, y aliases internos (`scriptorium-nodered`, `scriptorium-mcp-devops`, `scriptorium-verdaccio`).
 
 ## 5. Propuesta
 
@@ -128,6 +141,8 @@ ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/
 
 ### 5.3 DNS público
 
+Los DNS de `ScriptoriumVps` son aditivos. No sustituyen `pub.escrivivir.co`, no tocan el dominio raíz `escrivivir.co` y no modifican registros de Bluesky/`_atproto`.
+
 | Host | Servicio |
 |---|---|
 | `scriptorium.escrivivir.co` | Editor/flujos Node-RED públicos en read-only + dashboards `/ui` y `/dashboard` |
@@ -144,7 +159,16 @@ ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/
    - `projects.enabled=true` con `projectsDir=/data/projects`.
 2. `mcp-devops` con `MCPDevOpsServer` público por Streamable HTTP + Bearer.
 3. `verdaccio` público con auth y storage persistente.
-4. `caddy` como único frontend público.
+4. `caddy` sólo como patrón local/standalone. En producción compartida, el único frontend público es `pub-web` de `BlockchainComPort/OASIS_PUB`; `VPS-03` entrega snippets candidatos para integrarlo allí.
+
+Convivencia de red para producción compartida:
+
+- `pub-web` de `OASIS_PUB` sigue siendo dueño de `80/443`.
+- Los servicios `nodered`, `mcp-devops` y `verdaccio` no publican puertos al host.
+- Esos servicios se conectan a la red Compose existente de `OASIS_PUB` con aliases estables. Desde `ScriptoriumVps`, la red debe declararse como externa apuntando al nombre real esperado `oasis-pub-scriptorium_oasis_pub_net`:
+    - `scriptorium-nodered` → `nodered:1880`
+    - `scriptorium-mcp-devops` → `mcp-devops:3003`
+    - `scriptorium-verdaccio` → `verdaccio:4873`
 
 ### 5.5 Volúmenes VPS
 
@@ -152,10 +176,10 @@ ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/
 /srv/scriptorium/
 ├── ARCHIVO/.gitkeep
 ├── ARCHIVO/DISCO/.gitkeep
-├── caddy/data/
-├── caddy/config/
 └── verdaccio/storage/
 ```
+
+`/srv/scriptorium/caddy/*` queda reservado sólo para perfil standalone/local. En producción compartida, certificados y estado de Caddy permanecen en los volúmenes ya definidos por `OASIS_PUB`.
 
 Montajes de datos Scriptorium:
 

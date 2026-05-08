@@ -3,10 +3,10 @@
 > **Alias:** aleph-review
 > **Modelo:** GitHub Copilot
 > **Rol:** revisor (modo review de /sala-revisar)
-> **Task:** REV-VPS-07-R3
-> **Estado:** entregada
+> **Task:** —
+> **Estado:** disponible
 > **Inicio:** 2026-05-08 19:46:00
-> **Último checkpoint:** 2026-05-08 22:08:50 — revisión `REV-VPS-07-R3` aprobada
+> **Último checkpoint:** 2026-05-08 — Aleph integró/cerró revisiones aprobadas `VPS-04..07`
 
 ## Log
 
@@ -20,14 +20,12 @@
 - [2026-05-08 21:50:24] RE-REVISION: leída reentrega v2 de `VPS-07` de Sony.
 - [2026-05-08 21:50:24] VEREDICTO: `REV-VPS-07-R2` devuelta por duplicado de `usage()` y dispatch `case` en `sftp-helpers.sh`.
 - [2026-05-08 22:08:50] EXCEPCIÓN PO: Aleph aplica corrección mínima de `VPS-07` en nombre de Sony, integra artefactos y emite `REV-VPS-07-R3` aprobada.
+- [2026-05-08] ALEPH: veredictos de `REV-VPS-04-R2`, `REV-VPS-05-R2`, `REV-VPS-06` y `REV-VPS-07-R3` consumidos. Artefactos integrados/cerrados; carpeta de revisión limpiada salvo `estado.md`.
 
 ## Handoff Aleph
 
-- Último avance verificable: veredicto R3 aprobado dejado en `REVISION_REV-VPS-07-R3.md`.
-- Artefactos en carpeta: `estado.md`, `REVISION_REV-VPS-04.md`, `ENTREGA_REV-VPS-04.md`, `REVISION_REV-VPS-05.md`, `ENTREGA_REV-VPS-05.md`, `REVISION_REV-VPS-04-R2.md`, `ENTREGA_REV-VPS-04-R2.md`, `REVISION_REV-VPS-05-R2.md`, `ENTREGA_REV-VPS-05-R2.md`.
-- Artefactos nuevos: `REVISION_REV-VPS-06.md`, `ENTREGA_REV-VPS-06.md`, `REVISION_REV-VPS-07.md`, `ENTREGA_REV-VPS-07.md`.
-- Artefactos nuevos R2: `REVISION_REV-VPS-07-R2.md`, `ENTREGA_REV-VPS-07-R2.md`.
-- Artefactos nuevos R3: `REVISION_REV-VPS-07-R3.md`, `ENTREGA_REV-VPS-07-R3.md`.
-- Bloqueos o decisiones pendientes: Aleph debe integrar/copiar artefactos candidatos antes de cerrar `VPS-04`/`VPS-05`/`VPS-06`; sigue bloqueada cualquier operación real sobre DNS/Gandi/VPS/Docker remoto.
-- Carga restante estimada: revisión entregada.
-- Siguiente paso recomendado: Aleph debe integrar `VPS-04`, `VPS-05` y `VPS-06` antes de abrir `VPS-08`.
+- Último avance verificable: revisiones consumidas y cerradas por Aleph.
+- Artefactos en carpeta: `estado.md` únicamente tras limpieza de cierre.
+- Bloqueos o decisiones pendientes: no hay `REV-*` libres en tablero.
+- Carga restante estimada: 0.
+- Siguiente paso recomendado: esperar nuevas revisiones.
