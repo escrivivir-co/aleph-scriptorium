@@ -19,6 +19,7 @@ Cerrar el lote con un runbook reproducible y pruebas de vida para los cuatro hos
 
 - Crear `scripts/deploy.sh`.
 - Crear `scripts/verify.sh`.
+- Crear sección de **ventana controlada** antes de cualquier mutación real del VPS.
 - Crear checks parciales:
   - `verify-dns.sh`
   - `verify-caddy.sh`
@@ -31,6 +32,14 @@ Cerrar el lote con un runbook reproducible y pruebas de vida para los cuatro hos
   - revisar logs
   - rotar tokens
   - validar permisos SFTP
+- Documentar preflight obligatorio antes de operar en vivo:
+  - objetivo de la ventana
+  - comandos exactos
+  - rutas/servicios afectados
+  - rollback
+  - backup/snapshot esperado
+  - variables/llaves usadas desde entorno local no versionado
+  - criterio de éxito y condición de abortar
 
 ## Informe operativo
 
@@ -54,10 +63,13 @@ Cerrar el lote con un runbook reproducible y pruebas de vida para los cuatro hos
    - Evidencias de verificación.
    - Estado final por host.
    - Pendientes no bloqueantes.
+  - Checklist de ventana controlada para operaciones reales.
 
 ## Criterio de aceptación
 
 - `scripts/verify.sh` ejecuta todas las verificaciones posibles.
 - El README del submódulo explica deploy y rollback mínimo.
+- El runbook separa claramente verificaciones de solo lectura de operaciones mutantes.
+- Ninguna mutación remota queda documentada como automática: todas requieren aprobación PO en ventana controlada.
 - Hay evidencia de validación con `mcp-inspector-sdk`.
 - El dossier puede cerrarse sin decisiones PO pendientes.

@@ -90,3 +90,27 @@
 **Decisión:** Las llaves reales y rutas locales de operador no se guardan ni se hardcodean en la codebase. Los scripts deben leer variables de entorno configurables (`SCRIPTORIUM_SSH_KEY_PATH`, `SCRIPTORIUM_SSH_USER`, `SCRIPTORIUM_SSH_HOST`, `SCRIPTORIUM_SSH_PORT`, `SCRIPTORIUM_REMOTE_ROOT`) y publicar sólo `.env.example`/templates con placeholders.
 
 **Efecto operativo:** `TASK-03_DNS_Y_CADDY.md`, `TASK-07_VOLUMENES_Y_SFTP.md` y `TASK-08_RUNBOOK_Y_VERIFICACION.md` deben evitar rutas absolutas personales en ficheros versionados. En ejecución local, Aleph puede usar una ruta externa al repo indicada por el PO mediante `.env` no versionado o variables de sesión. Si hace falta Docker o acceso real al VPS, Aleph debe avisar antes de operar.
+
+---
+
+## Integración con Caddy existente de OASIS_PUB
+
+**Decisión:** Para el VPS compartido se elige la opción 2: integración respetuosa en el Caddy existente de `BlockchainComPort/OASIS_PUB`. Se descarta abrir un VPS/host separado para este MVP y también se descarta crear un edge Caddy nuevo/unificado que reemplace al actual.
+
+**Efecto operativo:** `TASK-03_DNS_Y_CADDY.md` debe entregar snippets candidatos para `BlockchainComPort/OASIS_PUB/caddy/Caddyfile` y no un despliegue real de otro Caddy en producción. `ScriptoriumVps/PATTERN-DOCKER/caddy/Caddyfile` puede existir como patrón local/standalone, pero el compose productivo compartido no debe publicar `80/443` ni competir con `pub-web` de `OASIS_PUB`.
+
+---
+
+## Red Docker edge para servicios Scriptorium
+
+**Decisión:** La conexión entre el Caddy existente de `OASIS_PUB` y los servicios nuevos se modela con la red Compose existente de `OASIS_PUB` para el MVP: clave interna `oasis_pub_net` y nombre externo esperado `oasis-pub-scriptorium_oasis_pub_net` al consumirla desde `ScriptoriumVps`, usando aliases internos estables: `scriptorium-nodered`, `scriptorium-mcp-devops` y `scriptorium-verdaccio`.
+
+**Efecto operativo:** `VPS-03` debe documentar la topología y no publicar puertos internos (`1880`, `3003`, `4873`) al host. Si el candidato necesita consumir la red desde otro compose, debe usar `external: true` con `name: oasis-pub-scriptorium_oasis_pub_net` o justificar una alternativa. Cualquier cambio real en `OASIS_PUB/docker-compose.pub.yml`, `OASIS_PUB/caddy/Caddyfile`, Docker remoto o DNS/Gandi queda bloqueado hasta validación expresa del PO.
+
+---
+
+## Operación controlada sobre VPS vivo
+
+**Decisión:** Cualquier operación real sobre el VPS vivo debe ejecutarse en una ventana controlada por Aleph, con aprobación explícita del PO justo antes de operar. Esto incluye DNS/Gandi, SSH/SCP/SFTP, `docker compose`, edición del Caddy real, reinicios, copia de secretos, apertura de puertos y cualquier cambio que afecte a `OASIS_PUB` o a servicios públicos.
+
+**Efecto operativo:** Las tasks `VPS-04` a `VPS-08` pueden producir candidatos, scripts, runbooks y verificaciones de solo lectura sin nueva aprobación, pero no pueden ejecutar mutaciones remotas. Antes de tocar el VPS, Aleph debe presentar: objetivo, comandos exactos, rollback, rutas afectadas, backup/snapshot esperado, variables/llaves usadas desde entorno local no versionado y criterio de éxito. El PO debe responder afirmativamente y de forma explícita para abrir la ventana.
