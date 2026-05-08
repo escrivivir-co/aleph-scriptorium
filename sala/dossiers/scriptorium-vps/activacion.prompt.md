@@ -9,8 +9,8 @@ Este dossier convierte el MINI-PLAN de la sesión Denis en un track ejecutable p
 
 ## Estado actual
 
-- Último avance: `VPS-01` + `VPS-02` cerradas; submódulo/plugin/runtime inicial integrados localmente.
-- Próximas tasks libres: `VPS-03`, `VPS-07`.
+- Último avance: `VPS-03` cerrada como diseño/documentación; edge compartido con `OASIS_PUB` fijado e integrado en `ScriptoriumVps/`.
+- Próximas tasks libres: `VPS-04`, `VPS-05`, `VPS-06`, `VPS-07`.
 - Decisiones PO pendientes: ninguna bloqueante.
 
 ## Instrucción de entrada

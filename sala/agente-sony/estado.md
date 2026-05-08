@@ -5,7 +5,7 @@
 > **Task:** —
 > **Estado:** disponible-apoyo
 > **Inicio:** 2026-05-08 17:27
-> **Último checkpoint:** 2026-05-08 — ALEPH: `VPS-01` cerrada; `VPS-07` y `VPS-03` quedan desbloqueadas
+> **Último checkpoint:** 2026-05-08 — ALEPH: `VPS-03` cerrada; `VPS-04/05/06/07` quedan desbloqueadas
 
 ## Log
 
@@ -21,6 +21,7 @@
 - [2026-05-08 17:27] ENTRADA NUEVA SESIÓN: Sony re-entra. Foco exclusivo: dossier scriptorium-vps. PO excluye VPS-01 y VPS-02 para Sony.
 - [2026-05-08] ALEPH: Gepe queda como principal en `VPS-01` + `VPS-02`. Sony queda disponible como apoyo para incidencias, revisiones ligeras o tareas menores cuando se desbloqueen dependencias; no hay task aprobada para Sony en este momento.
 - [2026-05-08] ALEPH: `VPS-01` + `VPS-02` cerradas tras revisión. Sony queda desbloqueada para proponer `VPS-07` (preferente) o `VPS-03` si el PO prefiere abrir primero DNS/Caddy.
+- [2026-05-08] ALEPH: `VPS-03` cerrada tras revisión como diseño/documentación integrada en `ScriptoriumVps/`. Sony queda desbloqueada para proponer `VPS-07` (preferente) o también `VPS-04`/`05`/`06` si el PO decide abrir antes el frente de stack.
 
 ## Handoff Aleph
 
@@ -28,6 +29,6 @@
 
 - Último avance verificable: entrada en sala. Lectura de protocolo, tablero y BACKLOG de scriptorium-vps completada.
 - Artefactos en carpeta: solo `estado.md`.
-- Bloqueos o decisiones pendientes: **Sony sigue excluida de `VPS-01` y `VPS-02`, pero ya no está bloqueada por dependencias. `VPS-03` y `VPS-07` están disponibles para propuesta.**
+- Bloqueos o decisiones pendientes: **Sony sigue excluida de `VPS-01` y `VPS-02`, pero ya no está bloqueada por dependencias. `VPS-04`, `VPS-05`, `VPS-06` y `VPS-07` están disponibles para propuesta.**
 - Carga restante estimada: lista para arrancar una nueva task si el PO la prioriza.
 - Siguiente paso recomendado: Propongo **VPS-07** como primera task. Motivo: solo depende de `VPS-01`, es trabajo de infraestructura autocontenido y desbloquea directamente `VPS-08` sin obligar a tocar todavía DNS/Caddy en vivo.

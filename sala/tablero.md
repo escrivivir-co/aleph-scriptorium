@@ -1,9 +1,9 @@
 # Tablero de tareas — Scriptorium VPS
 
 > **Sprint:** sprint-scrum-backlog-lore-db-vector-expansion-init
-> **Última actualización:** 08-may-2026 — orquestador (`GitHub Copilot`) — `VPS-01` + `VPS-02` integradas localmente y cerradas; siguiente frente `VPS-03`/`VPS-07`
+> **Última actualización:** 08-may-2026 — orquestador (`GitHub Copilot`) — `VPS-03` aprobada tras revisión; edge compartido `OASIS_PUB` integrado como diseño
 > **Agentes activos:** 0 en curso, 3 slots disponibles (gepe, gemy, sony)
-> **Estados:** `libre` · `propuesta:{alias}` · `en-curso:{alias}` · `entregada:{alias}` · `cerrada` · `no-aplica`
+> **Estados:** `libre` · `propuesta:{alias}` · `en-curso:{alias}` · `entregada:{alias}` · `entregada-en-revisión:{alias}` · `cerrada` · `no-aplica`
 >
 > **Orquestador:** si acabas de llegar a una ventana nueva, usa `#sala_aleph activar` o lee `sala/activacion-orquestador.md` para levantarte con todo el contexto.
 
@@ -87,7 +87,7 @@ Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
 | VPS-00 | Contexto y dossier inicial | — | `cerrada` — GitHub Copilot |
 | VPS-01 | Repo `scriptorium-vps` y submódulo | VPS-00 | `cerrada` |
 | VPS-02 | Plugin `scriptorium-vps` y agentes | VPS-00 | `cerrada` |
-| VPS-03 | DNS y Caddy público | VPS-01 | `libre` |
+| VPS-03 | DNS y Caddy público | VPS-01 | `cerrada` |
 | VPS-04 | Stack Node-RED público/admin | VPS-01, VPS-03 | `libre` |
 | VPS-05 | Stack MCP Mesh DevOps público | VPS-01, VPS-03 | `libre` |
 | VPS-06 | Stack Verdaccio público | VPS-01, VPS-03 | `libre` |
@@ -125,16 +125,18 @@ Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
 | VPS-00 | scriptorium-vps | `cerrada` — GitHub Copilot |
 | VPS-01 | scriptorium-vps | `cerrada` — Gepe (integrada por Aleph) |
 | VPS-02 | scriptorium-vps | `cerrada` — Gepe (integrada por Aleph) |
+| VPS-03 | scriptorium-vps | `cerrada` — Gepe (aprobada tras revisión e integrada como diseño) |
 | REV-VPS-01+VPS-02 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
+| REV-VPS-03 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
 
 ---
 
 > **⚠️ Aleph:** actualiza esta tabla cada vez que cierres una task. Si no, se desincroniza.
 
-| Track | Total | Cerradas | Libres | En curso | Primeras libres (sin deps) |
-|-------|-------|----------|--------|----------|----------------------------|
-| REFINE-SC | 5 | **2** | **0** | **0** | — |
-| VMS | 3 | **1** | **0** | **0** | — |
-| SSV | 3 | **1** | **0** | **0** | — |
-| VPS | 9 | **3** | **6** | **0** | VPS-03, VPS-07 |
-| **Total** | **20** | **7** | **6** | **0** | VPS-03, VPS-07 |
+| Track | Total | Cerradas | Libres | En curso | En revisión | Primeras libres (sin deps) |
+|-------|-------|----------|--------|----------|-------------|----------------------------|
+| REFINE-SC | 5 | **2** | **0** | **0** | **0** | — |
+| VMS | 3 | **1** | **0** | **0** | **0** | — |
+| SSV | 3 | **1** | **0** | **0** | **0** | — |
+| VPS | 9 | **4** | **5** | **0** | **0** | VPS-04, VPS-05, VPS-06, VPS-07 |
+| **Total** | **20** | **9** | **5** | **0** | **0** | VPS-04, VPS-05, VPS-06, VPS-07 |

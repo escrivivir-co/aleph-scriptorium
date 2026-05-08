@@ -1,6 +1,6 @@
 # Backlog — Scriptorium VPS
 
-> **Última actualización:** 2026-05-08 — `GitHub Copilot`
+> **Última actualización:** 2026-05-08 — `GitHub Copilot` — `VPS-03` cerrada como diseño edge integrado en `OASIS_PUB`
 
 ## Contexto compartido
 
@@ -22,7 +22,7 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 | VPS-00 | cerrada | `GitHub Copilot` | — | Dossier inicial creado | [TASK-00](./tasks/TASK-00_CONTEXTO_Y_DOSSIER.md) |
 | VPS-01 | cerrada | `Gepe` | VPS-00 | Repo `scriptorium-vps` + submódulo integrado localmente | [TASK-01](./tasks/TASK-01_REPO_Y_SUBMODULE.md) |
 | VPS-02 | cerrada | `Gepe` | VPS-00 | Plugin `scriptorium-vps` + agentes esqueleto integrados | [TASK-02](./tasks/TASK-02_PLUGIN_Y_AGENTES.md) |
-| VPS-03 | libre | — | VPS-01 | DNS + Caddy para 4 hosts | [TASK-03](./tasks/TASK-03_DNS_Y_CADDY.md) |
+| VPS-03 | cerrada | `Gepe` | VPS-01 | DNS esperado + edge compartido `OASIS_PUB` documentados e integrados como diseño | [TASK-03](./tasks/TASK-03_DNS_Y_CADDY.md) |
 | VPS-04 | libre | — | VPS-01, VPS-03 | Stack Node-RED single-instance pedagógico | [TASK-04](./tasks/TASK-04_STACK_NODERED.md) |
 | VPS-05 | libre | — | VPS-01, VPS-03 | Stack MCP DevOps público | [TASK-05](./tasks/TASK-05_STACK_MCP_MESH_DEVOPS.md) |
 | VPS-06 | libre | — | VPS-01, VPS-03 | Stack Verdaccio público | [TASK-06](./tasks/TASK-06_STACK_VERDACCIO.md) |
@@ -34,7 +34,7 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 - [x] `ScriptoriumVps` existe como submódulo registrado en `.gitmodules`.
 - [x] `.github/plugins/scriptorium-vps/` existe con manifest, instructions y agentes previstos.
 - [x] `ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/` existe con `.gitkeep` y subcarpetas mínimas.
-- [ ] `scriptorium.escrivivir.co`, `admin.scriptorium.escrivivir.co`, `mcp.scriptorium.escrivivir.co` y `npm.scriptorium.escrivivir.co` tienen verificación documentada.
+- [x] `scriptorium.escrivivir.co`, `admin.scriptorium.escrivivir.co`, `mcp.scriptorium.escrivivir.co` y `npm.scriptorium.escrivivir.co` tienen verificación documentada.
 - [ ] Node-RED arranca como contenedor único `nodered` con editor `/red` público read-only, Dashboard clásico y Dashboard 2 inicializados.
 - [ ] Admin autenticado puede editar/deployar projects; público anónimo sólo puede leer flujos y dashboards.
 - [ ] MCP DevOps responde por Streamable HTTP + Bearer y se valida con `mcp-inspector-sdk`.
