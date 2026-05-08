@@ -1,7 +1,7 @@
-# Tablero de tareas — Lore DB Vector Expansion
+# Tablero de tareas — Scriptorium VPS
 
 > **Sprint:** sprint-scrum-backlog-lore-db-vector-expansion-init
-> **Última actualización:** 23-abr-2026 — orquestador (GPT-5.4) — añadido dossier paraguas `sesion-scriptorium-vector` y track SSV
+> **Última actualización:** 08-may-2026 — orquestador (`GitHub Copilot`) — `VPS-01` + `VPS-02` integradas localmente y cerradas; siguiente frente `VPS-03`/`VPS-07`
 > **Agentes activos:** 0 en curso, 3 slots disponibles (gepe, gemy, sony)
 > **Estados:** `libre` · `propuesta:{alias}` · `en-curso:{alias}` · `entregada:{alias}` · `cerrada` · `no-aplica`
 >
@@ -26,17 +26,14 @@
 ## Tracks recomendados
 
 ```text
-Track REFINE-SC: SBLVX-SC-02 → SBLVX-SC-03 → SBLVX-SC-04
-  SBLVX-SC-02 abre el refinement formal.
-  SBLVX-SC-03 y SBLVX-SC-04 se afinan tras aprobación o enmienda del plan.
+FOCO PO 2026-05-08: esta sala trabaja exclusivamente el dossier scriptorium-vps.
+  Los tracks REFINE-SC, VMS y SSV quedan fuera de foco en esta sesión.
+  Agentes: no proponer tareas de esos tracks salvo nueva decisión explícita del PO.
 
-Track VMS: VM-01 → VM-02
-  VM-01 ratifica la frontera del contrato MCP v1.
-  VM-02 traduce esa frontera a backlog ejecutable cuando ya esté cerrada.
-
-Track SSV: SSV-01 → SSV-02
-  SSV-01 ratifica el mapa de ownership entre los dossiers.
-  SSV-02 deja el handoff de retoma y la prioridad de la próxima sesión.
+Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
+  VPS-01 crea repo/submódulo y VPS-02 crea plugin/agentes.
+  VPS-03 abre DNS+Caddy; VPS-04..07 levantan stacks y datos.
+  VPS-08 cierra con runbook y verificación end-to-end.
 ```
 
 ---
@@ -47,9 +44,9 @@ Track SSV: SSV-01 → SSV-02
 |------|--------|------|--------|
 | SBLVX-SC-00 | Pre-scrum definitions | — | `cerrada` |
 | SBLVX-SC-01 | Planification | SBLVX-SC-00 | `cerrada` |
-| SBLVX-SC-02 | Aprobar o enmendar plan compartido | SBLVX-SC-01 | `libre` |
-| SBLVX-SC-03 | Refinar scope Scriptorium | SBLVX-SC-02 | `libre` |
-| SBLVX-SC-04 | Preparar handoff de integración | SBLVX-SC-02, SBLVX-SC-03 | `libre` |
+| SBLVX-SC-02 | Aprobar o enmendar plan compartido | SBLVX-SC-01 | `no-aplica` — fuera de foco VPS |
+| SBLVX-SC-03 | Refinar scope Scriptorium | SBLVX-SC-02 | `no-aplica` — fuera de foco VPS |
+| SBLVX-SC-04 | Preparar handoff de integración | SBLVX-SC-02, SBLVX-SC-03 | `no-aplica` — fuera de foco VPS |
 
 > Dossier: `sala/dossiers/scrum-backlog-lore-db-vector-expansion/`
 
@@ -60,8 +57,8 @@ Track SSV: SSV-01 → SSV-02
 | Task | Título | Deps | Estado |
 |------|--------|------|--------|
 | VM-00 | Contexto y persistencia | — | `cerrada` |
-| VM-01 | Ratificar frontera del contrato MCP v1 | VM-00 | `libre` |
-| VM-02 | Traducir contrato ratificado a backlog ejecutable | VM-01 | `libre` |
+| VM-01 | Ratificar frontera del contrato MCP v1 | VM-00 | `no-aplica` — fuera de foco VPS |
+| VM-02 | Traducir contrato ratificado a backlog ejecutable | VM-01 | `no-aplica` — fuera de foco VPS |
 
 > Dossier: `sala/dossiers/vector-machine/`
 >
@@ -74,12 +71,30 @@ Track SSV: SSV-01 → SSV-02
 | Task | Título | Deps | Estado |
 |------|--------|------|--------|
 | SSV-00 | Contexto y persistencia | — | `cerrada` |
-| SSV-01 | Ratificar mapa de ownership y relación entre dossiers | SSV-00 | `libre` |
-| SSV-02 | Preparar handoff de retoma y prioridad | SSV-01 | `libre` |
+| SSV-01 | Ratificar mapa de ownership y relación entre dossiers | SSV-00 | `no-aplica` — fuera de foco VPS |
+| SSV-02 | Preparar handoff de retoma y prioridad | SSV-01 | `no-aplica` — fuera de foco VPS |
 
 > Dossier: `sala/dossiers/sesion-scriptorium-vector/`
 >
 > Nota: track paraguas de sesión. Su función es enlazar `plan.md` y los tres dossiers obligatorios del ecosistema, no duplicar sus backlogs.
+
+---
+
+## Track VPS — Scriptorium VPS (9 tareas)
+
+| Task | Título | Deps | Estado |
+|------|--------|------|--------|
+| VPS-00 | Contexto y dossier inicial | — | `cerrada` — GitHub Copilot |
+| VPS-01 | Repo `scriptorium-vps` y submódulo | VPS-00 | `cerrada` |
+| VPS-02 | Plugin `scriptorium-vps` y agentes | VPS-00 | `cerrada` |
+| VPS-03 | DNS y Caddy público | VPS-01 | `libre` |
+| VPS-04 | Stack Node-RED público/admin | VPS-01, VPS-03 | `libre` |
+| VPS-05 | Stack MCP Mesh DevOps público | VPS-01, VPS-03 | `libre` |
+| VPS-06 | Stack Verdaccio público | VPS-01, VPS-03 | `libre` |
+| VPS-07 | Volúmenes shared y SFTP helpers | VPS-01 | `libre` |
+| VPS-08 | Runbook y verificación end-to-end | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | `libre` |
+
+> Dossier: `sala/dossiers/scriptorium-vps/`
 
 ---
 
@@ -107,6 +122,10 @@ Track SSV: SSV-01 → SSV-02
 | SBLVX-SC-01 | scrum-backlog-lore-db-vector-expansion | `cerrada` — GPT-5.4 |
 | VM-00 | vector-machine | `cerrada` — GPT-5.4 |
 | SSV-00 | sesion-scriptorium-vector | `cerrada` — GPT-5.4 |
+| VPS-00 | scriptorium-vps | `cerrada` — GitHub Copilot |
+| VPS-01 | scriptorium-vps | `cerrada` — Gepe (integrada por Aleph) |
+| VPS-02 | scriptorium-vps | `cerrada` — Gepe (integrada por Aleph) |
+| REV-VPS-01+VPS-02 | scriptorium-vps | `cerrada` — aleph-review (veredicto aprobada) |
 
 ---
 
@@ -114,7 +133,8 @@ Track SSV: SSV-01 → SSV-02
 
 | Track | Total | Cerradas | Libres | En curso | Primeras libres (sin deps) |
 |-------|-------|----------|--------|----------|----------------------------|
-| REFINE-SC | 5 | **2** | **3** | **0** | SBLVX-SC-02 |
-| VMS | 3 | **1** | **2** | **0** | VM-01 |
-| SSV | 3 | **1** | **2** | **0** | SSV-01 |
-| **Total** | **11** | **4** | **7** | **0** | SBLVX-SC-02, VM-01, SSV-01 |
+| REFINE-SC | 5 | **2** | **0** | **0** | — |
+| VMS | 3 | **1** | **0** | **0** | — |
+| SSV | 3 | **1** | **0** | **0** | — |
+| VPS | 9 | **3** | **6** | **0** | VPS-03, VPS-07 |
+| **Total** | **20** | **7** | **6** | **0** | VPS-03, VPS-07 |

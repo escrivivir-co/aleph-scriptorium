@@ -88,3 +88,7 @@
 	path = VectorMachineUI
 	url = https://github.com/escrivivir-co/vm-sdk-chromadb-admin.git
 	branch = integration/beta/scriptorium
+[submodule "scriptorium-vps"]
+	path = ScriptoriumVps
+	url = https://github.com/escrivivir-co/scriptorium-vps.git
+	branch = integration/beta/scriptorium
