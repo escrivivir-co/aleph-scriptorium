@@ -1,6 +1,6 @@
 # Backlog — Scriptorium VPS
 
-> **Última actualización:** 2026-05-08 — `GitHub Copilot` — `VPS-04/05/06` integradas y cerradas; `VPS-08` queda libre
+> **Última actualización:** 2026-05-09 — `GitHub Copilot` — `VPS-08` iniciada por Aleph con operación controlada
 
 ## Contexto compartido
 
@@ -27,7 +27,7 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 | VPS-05 | cerrada | `Gepe` | VPS-01, VPS-03 | Stack MCP DevOps público integrado como gateway Streamable HTTP + Bearer | [TASK-05](./tasks/TASK-05_STACK_MCP_MESH_DEVOPS.md) |
 | VPS-06 | cerrada | `Gepe` | VPS-01, VPS-03 | Stack Verdaccio público integrado como patrón registry + pipeline dry-run | [TASK-06](./tasks/TASK-06_STACK_VERDACCIO.md) |
 | VPS-07 | cerrada | `Sony/Aleph` | VPS-01 | Volúmenes `.gitkeep` + SFTP helpers integrados por excepción PO | [TASK-07](./tasks/TASK-07_VOLUMENES_Y_SFTP.md) |
-| VPS-08 | libre | — | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | Runbook + verificación end-to-end | [TASK-08](./tasks/TASK-08_RUNBOOK_Y_VERIFICACION.md) |
+| VPS-08 | en-curso | `Aleph` | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | Runbook + verificación end-to-end con ventana controlada | [TASK-08](./tasks/TASK-08_RUNBOOK_Y_VERIFICACION.md) |
 
 ## Criterio de cierre del feature
 

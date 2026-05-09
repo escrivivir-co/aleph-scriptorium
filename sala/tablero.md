@@ -1,8 +1,8 @@
 # Tablero de tareas — Scriptorium VPS
 
 > **Sprint:** sprint-scrum-backlog-lore-db-vector-expansion-init
-> **Última actualización:** 08-may-2026 — orquestador (`GitHub Copilot`) — `VPS-04/05/06` integradas y cerradas; `VPS-08` queda como única libre
-> **Agentes activos:** 0 en curso, 3 slots disponibles (gepe, gemy, sony). Guardia externa retirada.
+> **Última actualización:** 09-may-2026 — orquestador (`GitHub Copilot`) — `VPS-08` iniciada por Aleph con ventana controlada obligatoria
+> **Agentes activos:** 1 en curso (aleph: `VPS-08`), 3 slots disponibles (gepe, gemy, sony). Guardia externa retirada.
 > **Estados:** `libre` · `propuesta:{alias}` · `en-curso:{alias}` · `entregada:{alias}` · `entregada-en-revisión:{alias}` · `cerrada` · `no-aplica`
 >
 > **Orquestador:** si acabas de llegar a una ventana nueva, usa `#sala_aleph activar` o lee `sala/activacion-orquestador.md` para levantarte con todo el contexto.
@@ -92,7 +92,7 @@ Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
 | VPS-05 | Stack MCP Mesh DevOps público | VPS-01, VPS-03 | `cerrada` — Gepe (integrada por Aleph) |
 | VPS-06 | Stack Verdaccio público | VPS-01, VPS-03 | `cerrada` — Gepe (integrada por Aleph) |
 | VPS-07 | Volúmenes shared y SFTP helpers | VPS-01 | `cerrada` — Sony/Aleph por excepción PO |
-| VPS-08 | Runbook y verificación end-to-end | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | `libre` — requiere ventana controlada para cualquier operación viva |
+| VPS-08 | Runbook y verificación end-to-end | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | `en-curso:aleph` — requiere ventana controlada para cualquier operación viva |
 
 > Dossier: `sala/dossiers/scriptorium-vps/`
 
@@ -150,5 +150,5 @@ Track VPS: VPS-01 + VPS-02 → VPS-03 → VPS-04/VPS-05/VPS-06/VPS-07 → VPS-08
 | REFINE-SC | 5 | **2** | **0** | **0** | **0** | **0** | — |
 | VMS | 3 | **1** | **0** | **0** | **0** | **0** | — |
 | SSV | 3 | **1** | **0** | **0** | **0** | **0** | — |
-| VPS | 9 | **8** | **1** | **0** | **0** | **0** | VPS-08 |
-| **Total** | **20** | **12** | **1** | **0** | **0** | **0** | VPS-08 |
+| VPS | 9 | **8** | **0** | **1** | **0** | **0** | — |
+| **Total** | **20** | **12** | **0** | **1** | **0** | **0** | — |

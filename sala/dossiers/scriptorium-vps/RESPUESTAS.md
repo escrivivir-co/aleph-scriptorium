@@ -114,3 +114,20 @@
 **Decisión:** Cualquier operación real sobre el VPS vivo debe ejecutarse en una ventana controlada por Aleph, con aprobación explícita del PO justo antes de operar. Esto incluye DNS/Gandi, SSH/SCP/SFTP, `docker compose`, edición del Caddy real, reinicios, copia de secretos, apertura de puertos y cualquier cambio que afecte a `OASIS_PUB` o a servicios públicos.
 
 **Efecto operativo:** Las tasks `VPS-04` a `VPS-08` pueden producir candidatos, scripts, runbooks y verificaciones de solo lectura sin nueva aprobación, pero no pueden ejecutar mutaciones remotas. Antes de tocar el VPS, Aleph debe presentar: objetivo, comandos exactos, rollback, rutas afectadas, backup/snapshot esperado, variables/llaves usadas desde entorno local no versionado y criterio de éxito. El PO debe responder afirmativamente y de forma explícita para abrir la ventana.
+
+---
+
+## DNS real Scriptorium creado
+
+**Decisión/acción PO:** El PO ha creado los registros A reales para los cuatro hosts Scriptorium apuntando al VPS compartido `92.243.24.163`.
+
+| Tipo | Host | Valor |
+|------|------|-------|
+| A | `scriptorium.escrivivir.co` | `92.243.24.163` |
+| A | `admin.scriptorium.escrivivir.co` | `92.243.24.163` |
+| A | `mcp.scriptorium.escrivivir.co` | `92.243.24.163` |
+| A | `npm.scriptorium.escrivivir.co` | `92.243.24.163` |
+
+**Verificación Aleph 2026-05-09:** resolución DNS local confirmada para los cuatro hosts contra `92.243.24.163`.
+
+**Efecto operativo:** El bloqueo de DNS para `VPS-08` queda levantado. Sigue vigente la ventana controlada obligatoria para SSH/SCP/SFTP, Docker remoto, edición/restart de Caddy real, alta de secretos, publicación npm real y cualquier mutación sobre el VPS vivo.

@@ -1,6 +1,6 @@
 # TASK-08 — Runbook y verificación end-to-end
 
-> **Estado:** libre  
+> **Estado:** en-curso
 > **Agente recomendado:** `vps-ops`  
 > **Dependencias:** VPS-03, VPS-04, VPS-05, VPS-06, VPS-07  
 > **Entrega esperada:** runbook deploy/verify para todo el lote
@@ -42,6 +42,19 @@ Cerrar el lote con un runbook reproducible y pruebas de vida para los cuatro hos
   - criterio de éxito y condición de abortar
 
 ## Informe operativo
+
+### Evidencia DNS actual — 2026-05-09
+
+El PO creó los registros A reales y Aleph verificó resolución local:
+
+| Host | Tipo | Valor verificado |
+|---|---|---|
+| `scriptorium.escrivivir.co` | A | `92.243.24.163` |
+| `admin.scriptorium.escrivivir.co` | A | `92.243.24.163` |
+| `mcp.scriptorium.escrivivir.co` | A | `92.243.24.163` |
+| `npm.scriptorium.escrivivir.co` | A | `92.243.24.163` |
+
+Nota: esto levanta el bloqueo DNS, pero no autoriza por sí solo SSH/Docker/Caddy real. Cualquier mutación del VPS sigue requiriendo ventana controlada.
 
 ### Criterios “estamos vivos”
 
