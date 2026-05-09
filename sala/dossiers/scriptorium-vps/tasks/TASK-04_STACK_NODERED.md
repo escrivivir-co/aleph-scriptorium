@@ -37,6 +37,39 @@ Provisionar una única instancia Node-RED que sirva editor/flujos públicos en m
 
 ## Informe operativo
 
+### Adenda — Rooms MVP validado (2026-05-09)
+
+El stack Node-RED single-instance quedó validado en operación real con un primer caso pedagógico completo de Dashboard 2:
+
+- package publicado: `node-red-dashboard-2-alephscript-rooms@0.1.0`;
+- flow candidato: `ScriptoriumVps/node-red-projects/rooms-mvp-candidate.flow.json`;
+- ruta pública activa: `https://scriptorium.escrivivir.co/dashboard/rooms`;
+- comprobaciones HTTP en ventana controlada:
+  - `/ui/` → `200`
+  - `/dashboard/` → `200`
+  - `/dashboard/rooms` → `200`
+  - `admin.scriptorium.escrivivir.co/red/` → `200`
+- runtime Rooms del MVP en modo `managed-port`, dentro del contenedor Node-RED, con 3 dummy agents en `ROOMS_LAB` y `GET_SERVER_STATE` operativo.
+
+Trazabilidad funcional consolidada:
+
+- `alephscript-rooms-server` monitoriza el runtime y emite `SET_SERVER_STATE`;
+- `alephscript-rooms-agent-dummy` crea/gestiona agentes `AlephScriptClient` de laboratorio;
+- `alephscript-rooms-dashboard` expone namespaces, rooms, usuarios, sockets, dummy lab y log.
+
+### Caveat actual de persistencia
+
+La validación operativa fue satisfactoria, pero el endurecimiento del stack Node-RED queda como hilo abierto del runbook:
+
+- los contribs del MVP se instalaron en el contenedor vivo bajo `/data`;
+- el flow activo se materializó en `/data/flows.json`;
+- esto es suficiente para una validación en producción controlada y reinicio del contenedor, pero no garantiza persistencia total tras una recreación/rebuild completa.
+
+Handoff:
+
+- `TASK-09` queda cerrada y no debe seguir usándose como runbook vivo;
+- cualquier siguiente paso de hardening/persistencia debe continuar desde `RUNBOOK.md` y este `TASK-04`.
+
 ### Containers
 
 | Container | Upstream Caddy | Roles | Volumen projects | Notas |

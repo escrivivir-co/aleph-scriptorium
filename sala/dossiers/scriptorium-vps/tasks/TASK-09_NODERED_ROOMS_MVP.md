@@ -1,9 +1,30 @@
 # TASK-09 — Node-RED Rooms MVP
 
-> **Estado:** propuesta — lista para partir en implementación
+> **Estado:** cerrada — MVP implementada y validada en VPS el 2026-05-09
 > **Agente recomendado:** `nodered-curator`
 > **Dependencias:** VPS-04, VPS-06, VPS-08
 > **Entrega esperada:** contrib Dashboard 2 + flow template para observar/inicializar Rooms con `@alephscript/mcp-core-sdk`
+
+> **Trazabilidad viva:** esta task queda como documento de diseño/histórico. La trazabilidad técnica operativa se consolida en `tasks/TASK-04_STACK_NODERED.md` y el hilo dev/ops vigente se devuelve a `ScriptoriumVps/RUNBOOK.md`.
+
+## Cierre operativo — 2026-05-09
+
+Resultado real de implementación/ventana controlada:
+
+- package publicado en Verdaccio: `node-red-dashboard-2-alephscript-rooms@0.1.0`;
+- flow candidato activado en Node-RED a partir de `ScriptoriumVps/node-red-projects/rooms-mvp-candidate.flow.json`;
+- endpoints verificados:
+   - `https://scriptorium.escrivivir.co/ui/` → `200`
+   - `https://scriptorium.escrivivir.co/dashboard/` → `200`
+   - `https://scriptorium.escrivivir.co/dashboard/rooms` → `200`
+   - `https://admin.scriptorium.escrivivir.co/red/` → `200`
+- UI validada con `managed-port`, `GET_SERVER_STATE`, 3 dummy agents conectados y room `ROOMS_LAB` visible.
+
+Salvedad abierta para el hilo runbook:
+
+- la activación actual del MVP sobrevive al reinicio del contenedor, pero todavía no está endurecida frente a recreación completa del contenedor porque los paquetes del MVP se instalaron dentro de `/data` y el flow activo reside en `/data/flows.json`.
+
+Con esto, `TASK-09` queda cerrada y congelada como referencia de decisión/diseño. Cualquier hardening posterior debe continuar desde `TASK-04` + `RUNBOOK`.
 
 ## Lee primero
 
