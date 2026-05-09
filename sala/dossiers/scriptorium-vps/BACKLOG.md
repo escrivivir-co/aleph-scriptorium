@@ -27,7 +27,7 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 | VPS-05 | cerrada | `Gepe` | VPS-01, VPS-03 | Stack MCP DevOps público integrado como gateway Streamable HTTP + Bearer | [TASK-05](./tasks/TASK-05_STACK_MCP_MESH_DEVOPS.md) |
 | VPS-06 | cerrada | `Gepe` | VPS-01, VPS-03 | Stack Verdaccio público integrado como patrón registry + pipeline dry-run | [TASK-06](./tasks/TASK-06_STACK_VERDACCIO.md) |
 | VPS-07 | cerrada | `Sony/Aleph` | VPS-01 | Volúmenes `.gitkeep` + SFTP helpers integrados por excepción PO | [TASK-07](./tasks/TASK-07_VOLUMENES_Y_SFTP.md) |
-| VPS-08 | en-curso | `Aleph` | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | Runbook + verificación end-to-end con ventana controlada | [TASK-08](./tasks/TASK-08_RUNBOOK_Y_VERIFICACION.md) |
+| VPS-08 | en-curso | `Aleph` | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | Base desplegada 2026-05-09; pendiente MCP activo + flujos Node-RED | [TASK-08](./tasks/TASK-08_RUNBOOK_Y_VERIFICACION.md) |
 
 ## Criterio de cierre del feature
 
@@ -35,8 +35,10 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 - [x] `.github/plugins/scriptorium-vps/` existe con manifest, instructions y agentes previstos.
 - [x] `ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/` existe con `.gitkeep` y subcarpetas mínimas.
 - [x] `scriptorium.escrivivir.co`, `admin.scriptorium.escrivivir.co`, `mcp.scriptorium.escrivivir.co` y `npm.scriptorium.escrivivir.co` tienen verificación documentada.
-- [ ] Node-RED arranca como contenedor único `nodered` con editor `/red` público read-only, Dashboard clásico y Dashboard 2 inicializados.
-- [ ] Admin autenticado puede editar/deployar projects; público anónimo sólo puede leer flujos y dashboards.
-- [ ] MCP DevOps responde por Streamable HTTP + Bearer y se valida con `mcp-inspector-sdk`.
-- [ ] Verdaccio público acepta auth y publica/instala al menos un paquete `@alephscript/*` de prueba.
-- [x] Los volúmenes compartidos usan UID:GID `1000:1000` por defecto.
+- [x] Node-RED arranca como contenedor único `nodered` — desplegado 2026-05-09 en VPS.
+- [ ] Node-RED: flujos importados; `/red` público read-only verificado; `/ui` y `/dashboard` operativos. _(pendiente)_
+- [ ] Admin autenticado puede editar/deployar projects; público anónimo sólo puede leer flujos y dashboards. _(pendiente validar con sesión real)_
+- [ ] MCP DevOps responde por Streamable HTTP + Bearer y se valida con `mcp-inspector-sdk`. _(bloqueado: requiere publicar paquetes en Verdaccio y activar `--profile mcp`)_
+- [x] Verdaccio público acepta auth y publica/instala al menos un paquete `@alephscript/*` de prueba — `@alephscript/mcp-core-sdk@1.3.0` publicado 2026-05-09.
+- [x] Los volúmenes compartidos usan UID:GID `1000:1000` por defecto — verificado en `/srv/oasis/scriptorium`.
+- [x] `/srv/scriptorium/` legado eliminado 2026-05-09 (estaba vacío, sin mounts ni contenedores).

@@ -1,8 +1,8 @@
 # Ventana controlada — VPS-08 producción
 
-> **Fecha:** 2026-05-09
-> **Modelo:** GitHub Copilot
-> **Estado:** pendiente de aprobación explícita PO
+> **Fecha:** 2026-05-09  
+> **Modelo:** GitHub Copilot  
+> **Estado:** ejecutada — base operativa desplegada 2026-05-09
 
 ## Objetivo
 
@@ -180,3 +180,57 @@ ssh -i /c/Users/aleph/OASIS/alephscript-network-sdk/GANDI_DEVOPS_FOLDER/.ssh/gan
 ## Aprobación requerida
 
 Pendiente de respuesta explícita del PO antes de ejecutar cualquier fase SSH/SCP/Docker/Caddy.
+
+---
+
+## Informe de ejecución — 2026-05-09
+
+### Estado real del VPS al inicio de la ventana
+
+| Elemento | Estado encontrado |
+|---|---|
+| `/opt/aleph-scriptorium` | Ya clonado, rama `integration/beta/scriptorium`, commit `92103ce` |
+| `ScriptoriumVps/.env` | Ya instalado (600, 2124 bytes) con CRLF Windows — corregido con `sed` in-place |
+| `/tmp/OASIS_PUB.Caddyfile.snippet` | Ya presente en el VPS |
+| Contenedores Scriptorium | Ninguno corriendo al inicio |
+| `/srv/oasis/scriptorium` | No existía |
+
+### Ejecución por fases
+
+| Fase | Resultado | Nota |
+|---|---|---|
+| 1 — Lectura remota | ✅ | SSH OK; layout `/opt` y `/srv/oasis` confirmados; Caddy solo tenía `pub.escrivivir.co` |
+| 2 — Artefactos | ✅ (ya estaban) | `.env` y snippet ya subidos en sesión anterior |
+| 3 — Preflight | ✅ | `deploy.sh preflight` OK tras fix CRLF del `.env` |
+| 4 — Volúmenes + deploy | ✅ | `/srv/oasis/scriptorium` creado; `nodered` y `verdaccio` arriba |
+| 5 — Caddy aditivo | ✅ | Backup creado, snippet appendeado, `caddy reload` OK, certs ACME provisionados ~30s |
+| 6 — Verificación | ✅/⚠️ | Ver tabla de resultados |
+
+### Hallazgo de red Docker
+
+Los contenedores Scriptorium se conectaron automáticamente a `oasis-pub-scriptorium_oasis_pub_net` con los aliases correctos (`scriptorium-nodered`, `scriptorium-verdaccio`) gracias al diseño de `docker-compose.yml`. No fue necesaria intervención manual de red.
+
+El contenedor `oasis-pub-scriptorium` preexistente en Docker es el Node-RED heredado del stack OASIS_PUB (puerto 8008), **no** nuestro despliegue.
+
+### Tabla de verificación final
+
+| Bloque | Check | Resultado |
+|---|---|---|
+| DNS | 4 hosts → `92.243.24.163` | ✅ |
+| `pub.escrivivir.co` control | HTTP/2 200 | ✅ sin impacto |
+| `scriptorium.escrivivir.co/healthz` | `scriptorium public edge ok` | ✅ |
+| `admin.scriptorium.escrivivir.co/healthz` | `scriptorium admin edge ok` | ✅ |
+| `npm.scriptorium.escrivivir.co/healthz` | `scriptorium npm edge ok` | ✅ |
+| Node-RED admin `/red/` | HTTP 200 | ✅ |
+| Node-RED público `/red/`, `/ui/` | HTTP 404 | ⚠️ sin flujos importados aún |
+| Verdaccio `npm ping` | PONG 182ms | ✅ |
+| MCP DevOps `/mcp` | 502 | ⚠️ perfil `mcp` no activado (previsto) |
+| Volúmenes `/srv/oasis/scriptorium` | `debian:debian 755`, layout correcto | ✅ |
+
+### Pendientes no bloqueantes
+
+- **Node-RED flujos/dashboards**: `/ui/` y `/dashboard/` devuelven 404 hasta importar flujos y nodos dashboard. Requiere decisión PO sobre flujos iniciales.
+- **MCP DevOps**: `mcp.scriptorium.escrivivir.co` → 502. El servicio `mcp-devops` no se levanta hasta publicar paquetes `@alephscript/*` en Verdaccio y activar `--profile mcp`.
+- **`mcp.scriptorium.escrivivir.co/healthz`**: devuelve 200 (Caddy responde el healthz propio) pero el upstream MCP está caído.
+- **`/srv/scriptorium/`** (disco arranque): sigue existiendo como error de ruta anterior; pendiente migrar/archivar.
+- **`verify-volumes.sh` local**: el script fuente el `.env` y pisa la variable de entorno; pendiente corregir lógica de precedencia.
