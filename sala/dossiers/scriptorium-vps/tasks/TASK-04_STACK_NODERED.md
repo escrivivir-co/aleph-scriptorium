@@ -65,6 +65,8 @@ La validación operativa fue satisfactoria, pero el endurecimiento del stack Nod
 - el flow activo se materializó en `/data/flows.json`;
 - esto es suficiente para una validación en producción controlada y reinicio del contenedor, pero no garantiza persistencia total tras una recreación/rebuild completa.
 
+> **Actualización 2026-05-09 — deuda saldada en `R10-02A.0`:** `/data` ya es bind mount al volumen Gandi `scriptorium-oasis-pub-volumen` (`/srv/oasis/scriptorium/node-red/data`), con backup full en `/srv/oasis/scriptorium/backups/nodered-data-20260509T190657Z/` y compose previo en `docker-compose.yml.before-r10-02A0-20260509T190657Z`. Sub-binds `/data/projects`, `/data/ARCHIVO` y `/data/ARCHIVO/DISCO` se superponen correctamente. md5 de `flows.json`/`package.json`/`package-lock.json`/`settings.js` idénticos al pre-cambio. Cierre detallado en `TASK-10_PUB_ROOMS_FEDERATED.md` §`R10-02A.0`. **Atención:** el patch se aplicó solo en el VPS; el compose del repo upstream queda pendiente de sincronizar antes de cualquier `git pull` en `/opt/aleph-scriptorium`.
+
 Handoff:
 
 - `TASK-09` queda cerrada y no debe seguir usándose como runbook vivo;

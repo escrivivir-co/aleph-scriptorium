@@ -14,6 +14,18 @@
 		},
 		{
 			"path": "../../../BlockchainComPort"
+		},
+		{
+			"path": "../../../ARCHIVO/DEVOPS/SESION_DENIS"
+		},
+		{
+			"path": "../../../WiringEditor"
+		},
+		{
+			"path": "../../../AAIAGallery"
+		},
+		{
+			"path": "../../../BotHubSDK"
 		}
 	],
 	"settings": {}

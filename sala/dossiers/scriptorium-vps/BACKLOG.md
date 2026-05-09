@@ -1,6 +1,6 @@
 # Backlog — Scriptorium VPS
 
-> **Última actualización:** 2026-05-09 — `GitHub Copilot` — `VPS-09` cerrada y handoff devuelto al hilo del RUNBOOK
+> **Última actualización:** 2026-05-09 — `GitHub Copilot` — `VPS-10` refinada con ruta SDK `1.4.0` para auth/bind/healthz + `SPIKE-10` OASIS identity
 
 ## Contexto compartido
 
@@ -29,6 +29,8 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 | VPS-07 | cerrada | `Sony/Aleph` | VPS-01 | Volúmenes `.gitkeep` + SFTP helpers integrados por excepción PO | [TASK-07](./tasks/TASK-07_VOLUMENES_Y_SFTP.md) |
 | VPS-08 | en-curso | `Aleph` | VPS-03, VPS-04, VPS-05, VPS-06, VPS-07 | Base desplegada 2026-05-09; Rooms MVP activo; pendiente endurecer persistencia Node-RED + MCP activo | [TASK-08](./tasks/TASK-08_RUNBOOK_Y_VERIFICACION.md) |
 | VPS-09 | cerrada | `nodered-curator` | VPS-04, VPS-06, VPS-08 | Rooms MVP implementada: contrib Dashboard 2 + flow activo + validación pública en `/dashboard/rooms` | [TASK-09](./tasks/TASK-09_NODERED_ROOMS_MVP.md) |
+| VPS-10 | propuesta | `nodered-curator` + `vps-ops` | VPS-03, VPS-04, VPS-06, VPS-08, VPS-09 | Pub.Rooms federado: `rooms.scriptorium.escrivivir.co` + SDK `1.4.0` (auth/bind/healthz) + bootstrap clientes Node-RED | [TASK-10](./tasks/TASK-10_PUB_ROOMS_FEDERATED.md) |
+| SPIKE-10 | abierto | por asignar | VPS-10, `dossier-layer2-bridge` | Spike OASIS/SSB identity para Pub.Rooms (gran plan) | [SPIKE-10](./tasks/SUBTASKS/SPIKE-10-OASIS-IDENTITY.md) |
 
 ## Criterio de cierre del feature
 
@@ -43,5 +45,7 @@ No se duplican reglas de `.github/`, `sala/` ni de los plugins.
 - [ ] MCP DevOps responde por Streamable HTTP + Bearer y se valida con `mcp-inspector-sdk`. _(bloqueado: requiere publicar paquetes en Verdaccio y activar `--profile mcp`)_
 - [x] Verdaccio público acepta auth y publica/instala al menos un paquete `@alephscript/*` de prueba — `@alephscript/mcp-core-sdk@1.3.0` publicado 2026-05-09.
 - [x] Rooms MVP en Node-RED: package Dashboard 2, flow template y server/agentes dummy usando `@alephscript/mcp-core-sdk`. _(VPS-09 cerrada 2026-05-09; el endurecimiento de persistencia vuelve al hilo del RUNBOOK)_
+- [ ] Pub.Rooms federado: `rooms.scriptorium.escrivivir.co` activo, server público con shared secret y bootstrap reproducible. _(propuesto en VPS-10; DNS A ya aplicado 2026-05-09)_
+- [ ] OASIS/SSB identity para Pub.Rooms documentada y decidida. _(spike SPIKE-10; gran plan `dossier-layer2-bridge`)_
 - [x] Los volúmenes compartidos usan UID:GID `1000:1000` por defecto — verificado en `/srv/oasis/scriptorium`.
 - [x] `/srv/scriptorium/` legado eliminado 2026-05-09 (estaba vacío, sin mounts ni contenedores).

@@ -1,9 +1,73 @@
 # TASK-03 — DNS y Caddy público integrado en OASIS_PUB
 
-> **Estado:** cerrada
+> **Estado:** cerrada — vigente con adendas
 > **Agente recomendado:** `Gepe` (`vps-ops`)
 > **Dependencias:** VPS-01
 > **Entrega esperada:** DNS esperado + snippets candidatos para integrar 4 hosts en el Caddy existente de `OASIS_PUB`
+
+## Adendas vigentes (2026-05-09)
+
+> Las secciones originales se conservan abajo como histórico de decisión. La fuente de verdad sobre el estado actual de la infraestructura es esta adenda.
+
+### Estado real DNS/TLS
+
+Al 2026-05-09 los 4 hosts originales **están aplicados** en Gandi, resuelven a `92.243.24.163` y responden por el Caddy edge `pub-web` con TLS válido:
+
+- `scriptorium.escrivivir.co`
+- `admin.scriptorium.escrivivir.co`
+- `mcp.scriptorium.escrivivir.co`
+- `npm.scriptorium.escrivivir.co`
+
+Añadido **nuevo host** (TASK-10):
+
+- `rooms.scriptorium.escrivivir.co` — registro `A 92.243.24.163` aplicado el 2026-05-09; upstream `scriptorium-rooms:3010` (alias de red en `oasis-pub-scriptorium_oasis_pub_net`, hoy resuelto al contenedor `scriptorium-vps-nodered-1` con bind `0.0.0.0:3010`).
+
+### Inventario de hosts vigente
+
+| Host | Upstream interno | Uso |
+|---|---|---|
+| `scriptorium.escrivivir.co` | `scriptorium-nodered:1880` | Editor `/red` read-only + dashboards `/ui` y `/dashboard`. |
+| `admin.scriptorium.escrivivir.co` | `scriptorium-nodered:1880` | Editor/admin completo, `basic_auth` Caddy opcional. |
+| `mcp.scriptorium.escrivivir.co` | `scriptorium-mcp-devops:3003` | MCP DevOps Streamable HTTP + Bearer (profile `mcp`). |
+| `npm.scriptorium.escrivivir.co` | `scriptorium-verdaccio:4873` | Registry npm público Verdaccio. |
+| `rooms.scriptorium.escrivivir.co` | `scriptorium-rooms:3010` | Pub.Rooms federado (TASK-10), WebSocket Socket.IO. |
+
+### Snippet Caddy adicional para `rooms.`
+
+A añadir al final de `BlockchainComPort/OASIS_PUB/caddy/Caddyfile` (no modifica los bloques existentes):
+
+```caddyfile
+rooms.scriptorium.escrivivir.co {
+    encode zstd gzip
+    @ws {
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+    reverse_proxy scriptorium-rooms:3010
+}
+```
+
+### Contrato operativo de mutación del Caddyfile
+
+Cualquier cambio en el Caddy edge de `OASIS_PUB` debe seguir, sin excepción:
+
+1. Backup con timestamp del Caddyfile previo.
+2. `docker compose -f docker-compose.pub.yml config` para validar el compose.
+3. `docker exec pub-web caddy validate --config /etc/caddy/Caddyfile` para validar la sintaxis.
+4. `docker exec pub-web caddy reload --config /etc/caddy/Caddyfile` para aplicar sin downtime.
+5. Si la validación falla, restaurar el Caddyfile previo y volver a recargar.
+6. **Prohibido** `docker restart pub-web` con cambios no validados.
+
+Objetivo: garantizar que `pub.escrivivir.co` y los hosts ya activos no sufren downtime durante el cambio.
+
+### Tasks hijas y handoff
+
+- El detalle vivo del bloque `rooms.` y de las decisiones de auth/colocación está en `tasks/TASK-10_PUB_ROOMS_FEDERATED.md`.
+- Cualquier host nuevo bajo `*.scriptorium.escrivivir.co` debe abrir su propia task hija (o adenda) que respete este contrato y añada únicamente bloques nuevos al Caddyfile.
+
+---
+
+## Cuerpo histórico (cerrado)
 
 ## Lee primero
 
