@@ -83,6 +83,162 @@
       "detail": "⚠️ Compound tasks pueden fallar. Usar tasks individuales si hay problemas."
     },
     // ═══════════════════════════════════════════════════════════════════════
+    // OPS: VPS LIGHT OPS (OASIS_PUB + ScriptoriumVps)
+    // Read-only checks y accesos rápidos. No despliegan, no reinician, no mutan.
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "OPS: VPS Check Alive [Public]",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "scripts/check_alive.sh",
+        "--public"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ScriptoriumVps"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "group": "ops-vps"
+      },
+      "detail": "Read-only: pub/scriptorium/admin/mcp/npm/rooms endpoints públicos"
+    },
+    {
+      "label": "OPS: VPS Check Alive [Remote]",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "SCRIPTORIUM_ALLOW_REMOTE_READ=YES_READ_VPS bash scripts/check_alive.sh --remote"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ScriptoriumVps"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "group": "ops-vps"
+      },
+      "detail": "Read-only SSH: docker ps + health interno. Usa ScriptoriumVps/.env local."
+    },
+    {
+      "label": "OPS: VPS Check Alive [All]",
+      "dependsOn": [
+        "OPS: VPS Check Alive [Public]",
+        "OPS: VPS Check Alive [Remote]"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "group": "ops-vps"
+      },
+      "detail": "Read-only: endpoints públicos + estado remoto interno"
+    },
+    {
+      "label": "OPS: OASIS_PUB Status [Docker]",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "scripts/status.sh"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/BlockchainComPort/OASIS_PUB"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "group": "ops-vps"
+      },
+      "detail": "Read-only: docker compose ps del PUB/OASIS local según .env"
+    },
+    {
+      "label": "OPS: Open [Pub]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://pub.escrivivir.co"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir pub.escrivivir.co"
+    },
+    {
+      "label": "OPS: Open [Scriptorium]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://scriptorium.escrivivir.co/red/"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir Node-RED público read-only"
+    },
+    {
+      "label": "OPS: Open [Admin]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://admin.scriptorium.escrivivir.co/red/"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir Node-RED admin"
+    },
+    {
+      "label": "OPS: Open [Rooms Health]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://rooms.scriptorium.escrivivir.co/healthz"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir health público de Pub.Rooms"
+    },
+    {
+      "label": "OPS: Open [Rooms Dashboard]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://scriptorium.escrivivir.co/dashboard/rooms"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir dashboard Rooms owner"
+    },
+    {
+      "label": "OPS: Open [NPM]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://npm.scriptorium.escrivivir.co"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir Verdaccio público"
+    },
+    {
+      "label": "OPS: Open [MCP Health]",
+      "type": "shell",
+      "command": "cmd",
+      "args": ["/c", "start", "https://mcp.scriptorium.escrivivir.co/healthz"],
+      "problemMatcher": [],
+      "presentation": { "reveal": "never" },
+      "detail": "Abrir health MCP DevOps"
+    },
+    {
+      "label": "OPS: Open [All Public URLs]",
+      "dependsOn": [
+        "OPS: Open [Pub]",
+        "OPS: Open [Scriptorium]",
+        "OPS: Open [Admin]",
+        "OPS: Open [Rooms Health]",
+        "OPS: Open [Rooms Dashboard]",
+        "OPS: Open [NPM]",
+        "OPS: Open [MCP Health]"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "detail": "Abrir URLs públicas principales del VPS"
+    },
+    // ═══════════════════════════════════════════════════════════════════════
     // MCP: MCP SERVERS (Mesh + Core)
     // Puertos: 3050 (Launcher), 3006 (Prolog), 4001 (Model), 3020 (TypedPrompt)
     // ═══════════════════════════════════════════════════════════════════════
