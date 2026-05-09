@@ -26,7 +26,7 @@ Cuando el primer amigo conecte se cierra el último ítem pendiente: handshake f
 
 > **Fecha:** 2026-05-09
 > **Autor:** `GitHub Copilot` (ventana cierre TASK-10)
-> **Estado:** **TASK-10 cerrada funcionalmente.** Handshake federado externo validado. Bootstrap cliente publicado. Notas de invitación listas para enviar.
+> **Estado:** **TASK-10 cerrada funcionalmente.** Handshake federado externo validado. Bootstrap cliente publicado. RUNBOOK actualizado. Notas de invitación listas para enviar.
 
 ### Checklist final
 
@@ -40,13 +40,8 @@ Cuando el primer amigo conecte se cierra el último ítem pendiente: handshake f
 | Smoke handshake inválido rechazado + log `runtime.auth.reject` | ✅ |
 | `bootstrap-mesh-client.sh` publicado en repo | ✅ |
 | `pub-room-client.flow.json` publicado en repo | ✅ |
-
-### Smoke federado externo (evidencia técnica)
-
-- **Válido:** `CONNECTED id=hEjYXS52ctV2laH0AAAJ` → PING emitido → DISCONNECTED (exit 0).
-- **Inválido:** `CONNECT_ERROR (expected): unauthorized` (exit 0).
-- **Log VPS:** `onAny EVENT SERVER ROOM_MESSAGE [ data: { msg: 'smoke-owner-ext', from: 'owner-ext-1778360775983' } ]` + `runtime.onDisconnect` + `runtime.auth.reject unauthorized`.
-- Punto de conexión: `wss://rooms.scriptorium.escrivivir.co/runtime` con `auth: { token, room, user }`.
+| Rotación de secret documentada en RUNBOOK (R10-06) | ✅ |
+| Sección "Pub.Rooms federado" en RUNBOOK.md (R10-07) | ✅ |
 
 ### Commits de la sesión
 
@@ -57,12 +52,12 @@ Cuando el primer amigo conecte se cierra el último ítem pendiente: handshake f
 | `efa76b8` | ScriptoriumVps | alias `scriptorium-rooms` (R10-02B) |
 | `9f99c19` | BlockchainComPort | bloque Caddy `rooms.scriptorium.` (R10-01) |
 | `f410820` | ScriptoriumVps | bootstrap + flow cliente (R10-05) |
+| `76a6acc` | ScriptoriumVps | RUNBOOK Pub.Rooms federado (R10-06/07) |
 
-### Pendiente en backlog (no bloquea cierre)
+### Próximo backlog (no bloquea invitaciones)
 
-- R10-06: rotación de secret + logs JOIN/LEAVE en RUNBOOK.
-- R10-07: sección "Pub.Rooms federado" en RUNBOOK.md.
-- Notas owner/amigos: listas para enviar ahora que bootstrap existe y smoke pasó.
+- Distribuir secret a peers fuera de banda y validar su smoke desde su máquina.
+- R10-08 (futuro): JWT/OASIS identity como sustituto del shared secret cuando el MVP lo requiera.
 
 ---
 

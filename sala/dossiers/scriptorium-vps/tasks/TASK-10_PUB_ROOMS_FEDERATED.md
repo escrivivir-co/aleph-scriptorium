@@ -867,6 +867,14 @@ Aceptación:
 
 - `RUNBOOK.md` describe cómo rotar el secret sin tirar el resto del stack.
 
+#### R10-06 — cerrado (2026-05-09)
+
+Cubierto en `RUNBOOK.md § Pub.Rooms federado → Rotación del shared secret`:
+
+- procedimiento `python3 -c "import secrets; print(secrets.token_urlsafe(32))"` + actualización del JSON + hot-reload de flows vía API admin.
+- rooms activas: solo `ROOMS_LAB` (allow-list implícita en el secret por room).
+- auditoría: `docker logs --since 10m scriptorium-vps-nodered-1 | grep -E "auth|JOIN|DISCONNECT|reject"`.
+
 ### R10-07 — Actualizar RUNBOOK
 
 - Añadir sección "Pub.Rooms federado":
@@ -878,6 +886,23 @@ Aceptación:
 Aceptación:
 
 - el RUNBOOK permite a un PO retomar la operación sin abrir esta task.
+
+#### R10-07 — cerrado (2026-05-09)
+
+Sección `## Pub.Rooms federado` añadida a `ScriptoriumVps/RUNBOOK.md` con:
+
+- verificación rápida edge + upstream (`curl /healthz`, `wget` desde `pub-web`, `curl` intra-contenedor).
+- bootstrap cliente paso a paso (script + modo env no interactivo).
+- rotación de secret con procedimiento concreto.
+- smoke rápido Node.js desde cualquier máquina.
+- límites del sistema (sin JWT, sin registro abierto, sin WebRTC).
+
+También corregido en `RUNBOOK.md § Caddy/OASIS_PUB`:
+
+- `docker compose restart pub-web` → `caddy reload --config /dev/stdin --adapter caddyfile` (contrato ya exigido en TASK-10 pero no reflejado en el RUNBOOK hasta ahora).
+- Nota sobre bind mount single-file e inode (lección de R10-01).
+
+Commit: `ScriptoriumVps/RUNBOOK.md` en `integration/beta/scriptorium`.
 
 ## No objetivos
 

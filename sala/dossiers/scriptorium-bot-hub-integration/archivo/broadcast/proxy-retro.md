@@ -99,6 +99,68 @@
 - Builders y formato de chat IACM: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/BotHubSDK/src/core/iacm/iacm-templates.ts
 - Welcome portable para externos: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-bot-hub-integration/WELCOME-EXTERNOS.md
 
+## Extension 2026-05-09 - Pub.Rooms federado (TASK-10) abierto a peers de RETRO
+
+Esta extension del proxy continua la pieza original sin cerrarla. La sesion IACM sobre `grafo-sdk` sigue siendo el foco; aqui se anade un canal de federacion real ya operativo que los peers de RETRO conectados a `bot-spider` pueden usar para entrar a la sala con su propio Node-RED.
+
+- Endpoint vivo: https://rooms.scriptorium.escrivivir.co
+- Health publico: https://rooms.scriptorium.escrivivir.co/healthz (devuelve `200 scriptorium rooms edge ok`).
+- Auth: shared-secret por room (token entregado fuera de banda por el owner).
+- Transport: Socket.IO sobre `wss://rooms.scriptorium.escrivivir.co/runtime`.
+- No requiere abrir puertos en el lado peer; solo egreso HTTPS/WSS 443.
+
+### Que cambia respecto a la pieza original
+
+- La conexion real `bot-rabbit -> bot-spider -> bot-horse` que estaba pausada en modo simulacion ya no es la unica forma de federar. Para perfiles tecnicos con Node-RED, ahora hay un rail directo Node-RED <-> Pub.Rooms autenticado.
+- `bot-horse` sigue siendo el canal IACM hacia Telegram. Pub.Rooms es complementario: federacion Node-RED <-> Node-RED para los peers que quieran trabajar mas cerca del codigo.
+- La sesion sobre `grafo-sdk` no se mueve: sigue abriendose en sala con dossier cargado y rondas IACM. Esta extension ofrece a quien le encaje un canal federado adicional para acompanar el trabajo.
+
+### Activos publicos canonicos de TASK-10
+
+- Release notes: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/RELEASE_NOTES_TASK-10.md
+- Tarea TASK-10: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/tasks/TASK-10_PUB_ROOMS_FEDERATED.md
+- LAST_UPDATE del dossier VPS: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/LAST_UPDATE.md
+- Onboarding amigo con Node-RED ya operativo: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/tasks/SUBTASKS/NOTA-AMIGO-PEER-NODE-RED.md
+- Onboarding amigo desde cero: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/tasks/SUBTASKS/NOTA-AMIGO-DESDE-CERO.md
+- Manualito owner DRY (referencia operativa, no para peer): https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/tasks/SUBTASKS/NOTA-OWNER-RECORDATORIO.md
+- Bootstrap script publico: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh
+- Flow template publico: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ScriptoriumVps/node-red-projects/pub-room-client.flow.json
+- Verdaccio publico (lectura): https://npm.scriptorium.escrivivir.co
+  - `@alephscript/mcp-core-sdk@1.4.0`
+  - `node-red-dashboard-2-alephscript-rooms@0.2.0`
+  - `node-red-contrib-alephscript-core@0.2.0`
+
+### Politica DRY de continuidad
+
+Este proxy es la unica fuente que el broadcast remoto referencia. Los mensajes de chat no fijan estado; fijan el enlace a este proxy. Si la situacion evoluciona (versiones, endpoints, decisiones), se actualiza esta seccion y el broadcast queda valido sin reedicion. El que llegue tarde a la conversacion lee este proxy y obtiene la foto fresca.
+
+Regla operativa para futuras ediciones de esta extension:
+
+- el broadcast remoto referencia siempre la URL canonica de este proxy en la rama `integration/beta/scriptorium`;
+- los activos versionables (release notes, TASK-10, notas onboarding) viven en sus paths del dossier; el proxy enlaza, no duplica;
+- si una nota onboarding cambia, no hay que reenviar nada: el peer abre el enlace y obtiene la version vigente;
+- si TASK-10 abre una version posterior (TASK-11, TASK-12, ...), esta seccion crece con un sub-bloque, no se reemplaza.
+
+### Como entra un peer de RETRO al Pub.Rooms
+
+Asumiendo que el peer ya esta conectado al canal de `bot-spider` y recibe el broadcast:
+
+1. Solicita token al owner por canal seguro (Signal, mensaje cifrado, nota efimera).
+2. Owner genera un token unico para ese peer y le asigna un room (`ROOMS_LAB_<alias>`).
+3. Peer abre la nota onboarding que le corresponda segun perfil:
+   - tiene Node-RED ya operativo: `NOTA-AMIGO-PEER-NODE-RED.md`;
+   - parte sin Node-RED: `NOTA-AMIGO-DESDE-CERO.md`.
+4. Ejecuta el bootstrap del script publico, importa el flow snippet, deploy.
+5. Verifica `connected` en su nodo `alephscript-core-client`. Si ve `auth: unauthorized` revisa con el owner.
+
+No hay capa cripto adicional, no hay JWT, no hay DID en este MVP. Identidad OASIS via JWT/DID esta tracked como `SPIKE-10` y no bloquea: https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/sala/dossiers/scriptorium-vps/tasks/SUBTASKS/SPIKE-10-OASIS-IDENTITY.md
+
+### Lo que esperamos de los peers de RETRO
+
+- Si encaja en el perfil tecnico, conectar al Pub.Rooms con su Node-RED y dejar evidencia del primer handshake federado externo end-to-end (ultimo item pendiente del MVP).
+- Si no encaja, no pasa nada: la sesion IACM sobre `grafo-sdk` sigue abierta en sala via canal Horse simulado segun el guion ya fijado en este proxy.
+- El primer `REQUEST -> ACKNOWLEDGE -> REPORT` sobre el hipergrafo no depende de Pub.Rooms; es trabajo de sala.
+
 ## Lo que esperamos de RETRO
 
 - Validar o corregir este caso de uso de sesion, no reabrir la decision `mock crypto` / `firma real` / `staging`.
