@@ -142,6 +142,46 @@
       "detail": "Read-only: endpoints públicos + estado remoto interno"
     },
     {
+      "label": "OPS: VPS Check Idle [Emergency 5s]",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "SCRIPTORIUM_ALLOW_REMOTE_READ=YES_READ_VPS bash scripts/check_idle.sh --remote --seconds 5"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ScriptoriumVps"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "group": "ops-vps"
+      },
+      "detail": "Read-only: veredicto rápido OK_IDLE / REVISAR / PARAR_TODO"
+    },
+    {
+      "label": "OPS: VPS Check Idle [Snapshot 20s]",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "SCRIPTORIUM_ALLOW_REMOTE_READ=YES_READ_VPS bash scripts/check_idle.sh --remote --seconds 20"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ScriptoriumVps"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true,
+        "group": "ops-vps"
+      },
+      "detail": "Read-only: CPU/RAM/disco/red/health/logs recientes durante 20s"
+    },
+    {
       "label": "OPS: OASIS_PUB Status [Docker]",
       "type": "shell",
       "command": "bash",
