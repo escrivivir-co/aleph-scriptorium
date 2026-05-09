@@ -1,24 +1,26 @@
-## TASK-10 — release infra cerrada · pendiente solo handshake federado externo (2026-05-09)
+## TASK-10 cerrada · TASK-11 abierta — enviar y esperar peer real (2026-05-09)
 
 > **Fecha:** 2026-05-09
-> **Autor:** `GitHub Copilot` (cierre de coordinación)
-> **Estado:** infra cerrada · entregables públicos listos · siguiente turno = primera invitación operativa.
+> **Autor:** `GitHub Copilot` (cierre editorial post-RUNBOOK)
+> **Estado:** TASK-10 cerrada funcionalmente; dossier queda en modo **enviar invitaciones y esperar reanudar con peer real**.
 
 Activos anclados:
 
 - **Release notes:** [`RELEASE_NOTES_TASK-10.md`](RELEASE_NOTES_TASK-10.md).
+- **Siguiente task:** [`TASK-11_PEER_REAL_HANDOFF.md`](tasks/TASK-11_PEER_REAL_HANDOFF.md).
 - **Notas de onboarding** en `tasks/SUBTASKS/`:
   - owner: [`NOTA-OWNER-RECORDATORIO.md`](tasks/SUBTASKS/NOTA-OWNER-RECORDATORIO.md);
   - amigo con Node-RED ya operativo: [`NOTA-AMIGO-PEER-NODE-RED.md`](tasks/SUBTASKS/NOTA-AMIGO-PEER-NODE-RED.md);
   - amigo desde cero: [`NOTA-AMIGO-DESDE-CERO.md`](tasks/SUBTASKS/NOTA-AMIGO-DESDE-CERO.md).
 
-Pendientes antes de mandar invitaciones:
+Estado de envío:
 
-1. Aterrizar `ScriptoriumVps/scripts/bootstrap-mesh-client.sh` en disco/repo (las dos notas de amigos lo enlazan en `https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh`).
-2. Owner ejecuta el manualito de [`NOTA-OWNER-RECORDATORIO.md`](tasks/SUBTASKS/NOTA-OWNER-RECORDATORIO.md) desde su segunda máquina con Node-RED y completa la checklist DRY de validación.
-3. Owner reparte tokens fuera de banda y manda las dos notas correspondientes.
+1. `bootstrap-mesh-client.sh` existe y está publicado en `ScriptoriumVps/scripts/`.
+2. `pub-room-client.flow.json` existe y usa sustitución `$(ROOMS_SECRET)`, `$(ROOMS_ROOM)`, `$(ROOMS_USER)`.
+3. Las notas de amigos se han alineado con el comportamiento real del script (env vars + import manual del flow, sin flags `--profile`).
+4. Owner puede repartir tokens fuera de banda y mandar notas.
 
-Cuando el primer amigo conecte se cierra el último ítem pendiente: handshake federado externo end-to-end vía `wss://rooms.scriptorium.escrivivir.co/runtime`.
+Cuando el primer peer real conecte, no reabre TASK-10: se registra en TASK-11 como evidencia de adopción real y se decide si escalar shared-secret hacia JWT/OASIS identity.
 
 ---
 

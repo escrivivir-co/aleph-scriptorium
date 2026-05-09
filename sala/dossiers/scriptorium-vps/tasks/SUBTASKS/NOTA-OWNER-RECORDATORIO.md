@@ -89,13 +89,14 @@ Hazlo una vez tú mismo desde **tu otra máquina con Node-RED** (la que el PO ya
 - [ ] `curl -I https://rooms.scriptorium.escrivivir.co/healthz` → `200 OK`.
 - [ ] Tienes un token tuyo de prueba en `rooms-secrets.json` (entrada `ROOMS_LAB`).
 - [ ] Has hecho deploy del flow tras editar secrets.
-- [ ] En tu Node-RED local instalas:
+- [ ] Ejecutas el bootstrap público con variables de entorno, por ejemplo:
+      ```bash
+      curl -fsSL https://raw.githubusercontent.com/escrivivir-co/scriptorium-vps/integration/beta/scriptorium/scripts/bootstrap-mesh-client.sh \
+        | ROOMS_USER="owner" ROOMS_ROOM="ROOMS_LAB" ROOMS_SECRET="<tu-token>" bash
       ```
-      npm i node-red-contrib-alephscript-core@^0.2.0 \
-            --registry https://npm.scriptorium.escrivivir.co
-      ```
-- [ ] Configuras un `alephscript-core-config` apuntando a `https://rooms.scriptorium.escrivivir.co` con namespace `/runtime`, `authToken=<tu token>`, `authRoom=ROOMS_LAB`, `authUser=owner`.
-- [ ] Un nodo `alephscript-core-client` se conecta y termina en status `connected`.
+- [ ] Arrancas Node-RED con `source ~/.node-red/.env.rooms && node-red`.
+- [ ] Importas `~/.node-red/flows_pub-room-client.json` y haces deploy.
+- [ ] El nodo `alephscript-core-client` se conecta y termina en status `connected`.
 - [ ] Smoke negativo: cambias el token a basura, redeployas; el nodo termina en `auth: unauthorized` y emite `msg.topic='auth_error'`.
 - [ ] Restauras tu token bueno y vuelves a ver `connected`.
 
@@ -107,14 +108,15 @@ El script reproducible que dan tus dos notas a los amigos vive aquí (rama públ
 
 `https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh`
 
-> **Importante:** si todavía no existe en disco/repo, créalo (o pídele al agente que lo cree) **antes** de mandar las invitaciones. Las notas de los amigos asumen que esa URL responde.
+> **Estado 2026-05-09:** existe y está publicado. También existe el flow template `ScriptoriumVps/node-red-projects/pub-room-client.flow.json`.
 
 Lo que hace el script en sus máquinas:
 
 - valida prerequisitos (node ≥ 18, npm, curl);
 - instala los dos contribs desde Verdaccio público;
 - coloca un flow template para `pub-room-client`;
-- pide token y nombre de room al ejecutar y los inyecta como env de Node-RED.
+- pide token y nombre de room al ejecutar si no vienen por env;
+- escribe `~/.node-red/.env.rooms` (`600`) y el flow usa `$(ROOMS_SECRET)`, `$(ROOMS_ROOM)`, `$(ROOMS_USER)`.
 
 ## Si algo se rompe
 

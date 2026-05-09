@@ -64,6 +64,13 @@ Cualquier agente que tome una task debe leer primero:
 | Node-RED pedagógico single-instance | Confirmada | Un solo `nodered`; el público ve `/red` en modo read-only y dashboards; sólo admin autenticado escribe/deploya. |
 | Caddy edge de producción | Confirmada | Usar integración respetuosa en el Caddy existente de `BlockchainComPort/OASIS_PUB`; no desplegar segundo Caddy en el VPS compartido. |
 | Red edge Docker | Confirmada para MVP | Conectar servicios `ScriptoriumVps` al edge existente mediante la red Compose de `OASIS_PUB` (`oasis_pub_net`; nombre externo esperado `oasis-pub-scriptorium_oasis_pub_net`) y aliases estables; no publicar puertos internos. |
+| Pub.Rooms federado | Cerrada TASK-10 | `rooms.scriptorium.escrivivir.co` operativo con shared-secret, bootstrap cliente y smoke externo técnico. El dossier queda en modo enviar invitaciones y esperar peer real (`TASK-11`). |
+
+### [GitHub Copilot] Adenda — TASK-10 cerrada, espera peer real (2026-05-09)
+
+`TASK-10_PUB_ROOMS_FEDERATED.md` queda cerrada funcionalmente: el runtime Rooms está publicado en `rooms.scriptorium.escrivivir.co`, el edge Caddy usa el `pub-web` existente de `OASIS_PUB`, los paquetes `@alephscript/mcp-core-sdk@1.4.0`, `node-red-dashboard-2-alephscript-rooms@0.2.0` y `node-red-contrib-alephscript-core@0.2.0` están publicados en Verdaccio, y existe bootstrap reproducible para clientes Node-RED.
+
+El estado operativo posterior no es seguir tocando infraestructura: es **enviar invitaciones y esperar reanudar con peer real**. Ese seguimiento vive en `tasks/TASK-11_PEER_REAL_HANDOFF.md`.
 
 ### [GitHub Copilot] Adenda — Node-RED pedagógico single-instance (2026-05-08)
 
@@ -149,6 +156,7 @@ Los DNS de `ScriptoriumVps` son aditivos. No sustituyen `pub.escrivivir.co`, no 
 | `admin.scriptorium.escrivivir.co` | Node-RED admin con projects |
 | `mcp.scriptorium.escrivivir.co` | MCP DevOps Streamable HTTP + Bearer |
 | `npm.scriptorium.escrivivir.co` | Verdaccio público |
+| `rooms.scriptorium.escrivivir.co` | Pub.Rooms federado: Socket.IO `wss://.../runtime` con shared-secret |
 
 ### 5.4 Stacks Docker
 
@@ -169,6 +177,7 @@ Convivencia de red para producción compartida:
     - `scriptorium-nodered` → `nodered:1880`
     - `scriptorium-mcp-devops` → `mcp-devops:3003`
     - `scriptorium-verdaccio` → `verdaccio:4873`
+    - `scriptorium-rooms` → `nodered:3010` (runtime Rooms interno; `3010` no se publica al host)
 
 ### 5.5 Volúmenes VPS
 

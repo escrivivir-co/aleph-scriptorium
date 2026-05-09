@@ -1,9 +1,9 @@
 # TASK-10 — Pub.Rooms federado (Layer 2 público + clientes Node-RED)
 
-> **Estado:** propuesta refinada — preflight técnico resuelto en diseño, pendiente implementación coordinada
+> **Estado:** cerrada funcionalmente — Pub.Rooms federado operativo; seguimiento post-MVP en TASK-11
 > **Agente recomendado:** `nodered-curator` + `vps-ops`
 > **Dependencias:** VPS-03, VPS-04, VPS-06, VPS-08, VPS-09
-> **Entrega esperada:** server Rooms expuesto en `rooms.scriptorium.escrivivir.co`, auth MVP por shared room secret, y bootstrap reproducible para que un Node-RED local (owner, amigo o mesh) entre como cliente
+> **Entrega:** server Rooms expuesto en `rooms.scriptorium.escrivivir.co`, auth MVP por shared room secret, bootstrap reproducible para Node-RED local, smoke federado externo técnico validado. Reanudación con peer real: `TASK-11_PEER_REAL_HANDOFF.md`.
 
 ## Lee primero
 

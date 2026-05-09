@@ -141,3 +141,17 @@
 **Ruta canónica:** `SCRIPTORIUM_REMOTE_ROOT=/srv/oasis/scriptorium`.
 
 **Efecto operativo:** Cualquier compose, helper SFTP, verificador o runbook que antes apuntara a `/srv/scriptorium` debe corregirse a `/srv/oasis/scriptorium`. La ruta `/srv/scriptorium` creada durante el primer intento de `VPS-08` queda clasificada como error de bootstrap y debe migrarse/archivarse antes de continuar el despliegue.
+
+---
+
+## Pub.Rooms federado cerrado y paso a peer real
+
+**Decisión/acción PO:** `TASK-10` queda cerrada funcionalmente. El estado del dossier pasa a **enviar invitaciones y esperar reanudar con peer real**.
+
+**Efecto operativo:**
+
+- `VPS-10` pasa a `cerrada` en `BACKLOG.md`.
+- Se abre `VPS-11` / `TASK-11_PEER_REAL_HANDOFF.md` para registrar el primer peer real, fricción de onboarding y decisiones de hardening.
+- No se reabre infraestructura (`Caddy`, DNS, Docker, paquetes) sin incidencia concreta o peer real.
+- Los tokens siguen distribuyéndose fuera de banda; la rotación del token MCP DevOps queda pospuesta para el cierre/hardening posterior, no como bloqueo del envío.
+- La identidad fuerte OASIS/SSB/JWT sigue trackeada en `SPIKE-10`, no bloquea invitaciones.

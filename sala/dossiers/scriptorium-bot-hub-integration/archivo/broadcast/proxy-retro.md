@@ -157,7 +157,7 @@ No hay capa cripto adicional, no hay JWT, no hay DID en este MVP. Identidad OASI
 
 ### Lo que esperamos de los peers de RETRO
 
-- Si encaja en el perfil tecnico, conectar al Pub.Rooms con su Node-RED y dejar evidencia del primer handshake federado externo end-to-end (ultimo item pendiente del MVP).
+- Si encaja en el perfil tecnico, conectar al Pub.Rooms con su Node-RED y dejar evidencia de peer real. TASK-10 ya esta cerrado tecnicamente; esa evidencia reanuda TASK-11.
 - Si no encaja, no pasa nada: la sesion IACM sobre `grafo-sdk` sigue abierta en sala via canal Horse simulado segun el guion ya fijado en este proxy.
 - El primer `REQUEST -> ACKNOWLEDGE -> REPORT` sobre el hipergrafo no depende de Pub.Rooms; es trabajo de sala.
 

@@ -22,33 +22,43 @@ TU_NOMBRE    = <<TU_ALIAS_LEGIBLE>>           # ej. amigo-b
 
 **Nunca** pongas el token en un commit ni en un chat público.
 
-## Paso 1 — bootstrap (una sola línea)
+## Paso 1 — instalar Node-RED si partes de cero
+
+Si `node-red` no existe todavía:
 
 ```bash
-curl -fsSL \
-  https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh \
-  | bash -s -- \
-    --profile fresh \
-    --rooms-url https://rooms.scriptorium.escrivivir.co \
-    --room "$TU_ROOM" \
-    --token "$TU_TOKEN" \
-    --user "$TU_NOMBRE"
+npm install -g node-red
+```
+
+## Paso 2 — bootstrap Pub.Rooms
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/escrivivir-co/scriptorium-vps/integration/beta/scriptorium/scripts/bootstrap-mesh-client.sh \
+   | ROOMS_USER="$TU_NOMBRE" ROOMS_ROOM="$TU_ROOM" ROOMS_SECRET="$TU_TOKEN" bash
 ```
 
 > Si prefieres descargarlo y revisarlo antes de ejecutarlo (recomendado): [`bootstrap-mesh-client.sh`](https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh).
 
-Lo que hace en perfil `fresh`:
+Lo que hace el script:
 
-1. Valida o instala Node-RED localmente (`npm i -g node-red` si no lo tienes).
-2. Crea `~/.node-red` con un `settings.js` mínimo y env vars para la auth.
-3. Instala desde el Verdaccio público:
-   - `node-red-contrib-alephscript-core@^0.2.0`.
-4. Te coloca un `flows.json` precargado con un cliente Rooms que apunta a `https://rooms.scriptorium.escrivivir.co`, namespace `/runtime`, room y user del bootstrap, y token leído de env (no escrito en el flow).
-5. Arranca Node-RED en `http://localhost:1880`.
+1. Valida `node ≥ 18` y avisa si `node-red` no está en PATH.
+2. Crea/usa `~/.node-red` y hace backup si ya había contenido.
+3. Instala desde el Verdaccio público `node-red-contrib-alephscript-core@^0.2.0` y `node-red-dashboard-2-alephscript-rooms@^0.2.0`.
+4. Copia `~/.node-red/flows_pub-room-client.json` con un cliente Rooms que apunta a `https://rooms.scriptorium.escrivivir.co`, namespace `/runtime`.
+5. Escribe `~/.node-red/.env.rooms` (`600`) con tu user, room y token. El flow usa `$(ROOMS_USER)`, `$(ROOMS_ROOM)`, `$(ROOMS_SECRET)`; el token no va en el JSON.
 
-## Paso 2 — comprobar que estás dentro
+Arranca Node-RED así:
 
-1. Abre `http://localhost:1880`.
+```bash
+source ~/.node-red/.env.rooms
+node-red
+```
+
+Luego abre `http://localhost:1880/red/` e importa `~/.node-red/flows_pub-room-client.json`.
+
+## Paso 3 — comprobar que estás dentro
+
+1. Abre `http://localhost:1880/red/`.
 2. El nodo `alephscript-core-client` debe verse en verde con texto `connected`.
 3. Atajo de salud sin abrir el editor:
    ```bash
@@ -58,7 +68,7 @@ Lo que hace en perfil `fresh`:
 
 Si tu cliente queda en `auth: unauthorized`, es token o room mal copiado: avisa al owner.
 
-## Paso 3 — primera interacción
+## Paso 4 — primera interacción
 
 Hay un nodo `inject` precableado para mandar un `HELLO` al room. Pulsa el botón de `inject` y el owner verá tu cliente. A partir de ahí, puedes editar libremente el flow para mandar y recibir lo que quieras dentro del room.
 
@@ -72,10 +82,11 @@ Hay un nodo `inject` precableado para mandar un `HELLO` al room. Pulsa el botón
 | `connect_error: timeout` | red sin salida 443 | habilitar HTTPS saliente |
 | el contrib no aparece en la paleta | install fallido | `cd ~/.node-red && npm i node-red-contrib-alephscript-core@^0.2.0 --registry https://npm.scriptorium.escrivivir.co` y reiniciar |
 | Verdaccio pide credenciales | no debería: la lectura es pública | comprobar la URL del registry exacta |
+| el nodo queda sin credenciales | arrancaste Node-RED sin env | `source ~/.node-red/.env.rooms && node-red`, luego redeploy |
 
 ## Higiene
 
-- El token vive solo en env (`~/.node-red/.alephscript-rooms.env` con perms `600`). El bootstrap se asegura de las perms.
+- El token vive en `~/.node-red/.env.rooms` con permisos `600`. El bootstrap se asegura de las perms.
 - El flow **no contiene** el token en claro.
 - Para retirarte: `rm -rf ~/.node-red` y `npm un -g node-red` (cuidado: borra todos tus flows si reusabas Node-RED, en perfil `fresh` no debería haber nada más).
 

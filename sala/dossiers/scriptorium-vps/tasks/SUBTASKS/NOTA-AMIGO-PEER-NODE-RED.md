@@ -28,34 +28,32 @@ TU_NOMBRE    = <<TU_ALIAS_LEGIBLE>>           # ej. amigo-a
 Desde tu máquina con Node-RED parado o vivo (es indistinto):
 
 ```bash
-curl -fsSL \
-  https://raw.githubusercontent.com/escrivivir-co/aleph-scriptorium/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh \
-  | bash -s -- \
-    --profile peer \
-    --rooms-url https://rooms.scriptorium.escrivivir.co \
-    --room "$TU_ROOM" \
-    --token "$TU_TOKEN" \
-    --user "$TU_NOMBRE"
+curl -fsSL https://raw.githubusercontent.com/escrivivir-co/scriptorium-vps/integration/beta/scriptorium/scripts/bootstrap-mesh-client.sh \
+  | ROOMS_USER="$TU_NOMBRE" ROOMS_ROOM="$TU_ROOM" ROOMS_SECRET="$TU_TOKEN" bash
 ```
 
 > Si prefieres descargarlo y revisarlo antes de ejecutarlo (recomendado): [`bootstrap-mesh-client.sh`](https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ScriptoriumVps/scripts/bootstrap-mesh-client.sh).
 
-Lo que hace en perfil `peer`:
+Lo que hace el script:
 
 1. Valida `node ≥ 18` y `npm`.
 2. Detecta tu directorio de Node-RED (`~/.node-red` por defecto) y respeta tu instalación.
-3. Instala desde el Verdaccio público:
+3. Hace backup timestampeado de `~/.node-red` si ya contiene datos.
+4. Instala desde el Verdaccio público:
    - `node-red-contrib-alephscript-core@^0.2.0`
-   - sólo `core`, no `dashboard-2-rooms` (no necesitas servidor en tu lado).
-4. Te genera un `flow-snippet.peer.json` con:
-   - un `alephscript-core-config` ya apuntando a `https://rooms.scriptorium.escrivivir.co`, namespace `/runtime`;
-   - `authToken`, `authRoom`, `authUser` inyectados como variables de entorno (no se guardan en el flow);
-   - un `alephscript-core-client` listo para deploy.
+   - `node-red-dashboard-2-alephscript-rooms@^0.2.0` (no arrancas server en tu lado; queda instalado por compatibilidad de paleta/flow).
+5. Copia `flows_pub-room-client.json` a `~/.node-red/`.
+6. Escribe `~/.node-red/.env.rooms` (`600`) con tu user, room y token. El flow usa `$(ROOMS_USER)`, `$(ROOMS_ROOM)`, `$(ROOMS_SECRET)`, así que el token no va en el JSON.
 
-## Paso 2 — importar el snippet y deploy
+## Paso 2 — arrancar Node-RED con env, importar y deploy
+
+```bash
+source ~/.node-red/.env.rooms
+node-red
+```
 
 1. Abre tu Node-RED admin.
-2. Menú → Import → pega el `flow-snippet.peer.json` que dejó el bootstrap.
+2. Menú → Import → importa `~/.node-red/flows_pub-room-client.json`.
 3. Deploy.
 
 El nodo `alephscript-core-client` debería terminar en status verde `connected`. Si ves `auth: unauthorized` significa token o room incorrectos: revisa con el owner.
@@ -79,11 +77,12 @@ curl -I https://rooms.scriptorium.escrivivir.co/healthz
 | `connect_error: timeout` | red local sin egreso 443 | habilitar HTTPS saliente |
 | nodo en gris infinito | versión vieja del contrib | `npm i node-red-contrib-alephscript-core@^0.2.0 --registry https://npm.scriptorium.escrivivir.co` y reiniciar Node-RED |
 | el SDK pide credenciales para Verdaccio | no debería: la lectura es pública | comprobar que estás usando exactamente esa URL de registry |
+| sigue sin auth tras importar | arrancaste Node-RED sin env | `source ~/.node-red/.env.rooms && node-red`, luego redeploy |
 
 ## Higiene
 
 - El token es solo tuyo: si crees que se filtró, dile al owner para rotártelo.
-- El bootstrap **no escribe el token en disco** dentro del flow; vive en env de Node-RED.
+- El bootstrap **no escribe el token dentro del flow**; lo guarda en `~/.node-red/.env.rooms` con permisos `600` para que lo cargues al arrancar Node-RED.
 - Para retirarte: borra el flow importado y `npm uninstall node-red-contrib-alephscript-core`.
 
 ## Más contexto si quieres saber dónde te estás conectando
