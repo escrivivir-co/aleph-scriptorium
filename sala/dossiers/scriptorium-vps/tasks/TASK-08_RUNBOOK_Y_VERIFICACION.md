@@ -56,6 +56,18 @@ El PO creó los registros A reales y Aleph verificó resolución local:
 
 Nota: esto levanta el bloqueo DNS, pero no autoriza por sí solo SSH/Docker/Caddy real. Cualquier mutación del VPS sigue requiriendo ventana controlada.
 
+### Corrección root de datos — 2026-05-09
+
+El PO confirma que el root productivo de datos Scriptorium debe estar en el volumen Gandi `scriptorium-oasis-pub-volumen` montado en `/srv/oasis`, no en el disco de arranque `vps-boot`.
+
+Ruta canónica para `VPS-08`:
+
+```text
+SCRIPTORIUM_REMOTE_ROOT=/srv/oasis/scriptorium
+```
+
+El layout temporal creado previamente en `/srv/scriptorium` pesa ~76K y debe migrarse/archivarse; no se seguirá usando como origen de mounts.
+
 ### Criterios “estamos vivos”
 
 | Bloque | Prueba | Resultado esperado |

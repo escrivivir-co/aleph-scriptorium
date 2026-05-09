@@ -173,13 +173,13 @@ Convivencia de red para producción compartida:
 ### 5.5 Volúmenes VPS
 
 ```text
-/srv/scriptorium/
+/srv/oasis/scriptorium/
 ├── ARCHIVO/.gitkeep
 ├── ARCHIVO/DISCO/.gitkeep
 └── verdaccio/storage/
 ```
 
-`/srv/scriptorium/caddy/*` queda reservado sólo para perfil standalone/local. En producción compartida, certificados y estado de Caddy permanecen en los volúmenes ya definidos por `OASIS_PUB`.
+`/srv/oasis/scriptorium/caddy/*` queda reservado sólo para perfil standalone/local. En producción compartida, certificados y estado de Caddy permanecen en los volúmenes ya definidos por `OASIS_PUB`.
 
 Montajes de datos Scriptorium:
 

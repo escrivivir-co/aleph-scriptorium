@@ -23,7 +23,7 @@ Levantar un registry npm público para que los Dockerfiles del VPS puedan instal
 - Configurar auth `htpasswd` y tokens npm para CI.
 - Usar scope `@alephscript/*`.
 - Configurar proxy upstream a `https://registry.npmjs.org`.
-- Persistir storage en `/srv/scriptorium/verdaccio/storage`.
+- Persistir storage en `/srv/oasis/scriptorium/verdaccio/storage`.
 - Crear `.npmrc.example`.
 - Preparar pipeline de publicación desde MCPGallery/WiringEditor.
 
@@ -65,4 +65,4 @@ Por tanto, los paquetes internos deben publicar/instalar desde:
 - `npm.scriptorium.escrivivir.co` responde con Verdaccio.
 - Auth requerida para publish.
 - `npm install @alephscript/mcp-core-sdk --registry ...` funciona tras publicación.
-- El storage persiste en `/srv/scriptorium/verdaccio/storage`.
+- El storage persiste en `/srv/oasis/scriptorium/verdaccio/storage`.

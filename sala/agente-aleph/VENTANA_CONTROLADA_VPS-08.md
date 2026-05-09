@@ -31,7 +31,17 @@ Remotas:
 - `/opt/aleph-scriptorium/ScriptoriumVps/.env` — copia del `.env` local.
 - `/opt/oasis-scriptorium/BlockchainComPort/OASIS_PUB/caddy/Caddyfile` — append aditivo del snippet Scriptorium si no existe.
 - `/opt/oasis-scriptorium/OASIS_PUB/caddy/Caddyfile` — ruta real detectada en el VPS para Caddy del pub existente.
-- `/srv/scriptorium/` — volúmenes Scriptorium.
+- `/srv/oasis/scriptorium/` — volúmenes Scriptorium dentro del volumen de datos Gandi `scriptorium-oasis-pub-volumen` montado en `/srv/oasis`.
+- `/srv/scriptorium/` — root creado inicialmente por error en el disco `vps-boot`; debe migrarse/archivarse y dejar de usarse.
+
+## Corrección volumen de datos (2026-05-09)
+
+El PO confirma que el VPS tiene dos discos:
+
+- `vps-boot` — 25 GB, disco de arranque.
+- `scriptorium-oasis-pub-volumen` — 40 GB, disco de datos montado en `/srv/oasis`.
+
+Por tanto, `SCRIPTORIUM_REMOTE_ROOT` debe ser `/srv/oasis/scriptorium`. El layout creado previamente en `/srv/scriptorium` queda marcado como error de ruta; no debe recibir nuevos mounts ni datos.
 
 ## Hallazgo fase 1 lectura
 
@@ -86,6 +96,8 @@ ssh -i /c/Users/aleph/OASIS/alephscript-network-sdk/GANDI_DEVOPS_FOLDER/.ssh/gan
 ```
 
 ## Comandos exactos — fase 4 volúmenes y servicios Scriptorium
+
+Fase 4 arranca sólo el bootstrap base: `nodered` limpio y `verdaccio`. `mcp-devops` queda bajo profile `mcp` y se activará después de publicar/normalizar paquetes en Verdaccio.
 
 ```bash
 ssh -i /c/Users/aleph/OASIS/alephscript-network-sdk/GANDI_DEVOPS_FOLDER/.ssh/gandi_pub_ed25519 \

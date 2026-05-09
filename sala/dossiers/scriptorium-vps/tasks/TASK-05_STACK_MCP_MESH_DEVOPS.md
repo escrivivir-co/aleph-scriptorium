@@ -27,10 +27,10 @@ Exponer solo DevOpsServer como primer MCP público del VPS, con transporte compa
   - `devops:write-definitions`
   - `devops:delete-definitions`
 - Montar persistencia existente:
-  - host: `/srv/scriptorium/ARCHIVO/PLUGINS/MCP_DATA/devops-mcp-server`
+  - host: `/srv/oasis/scriptorium/ARCHIVO/PLUGINS/MCP_DATA/devops-mcp-server`
   - container: `/workspace/devops-data`
 - Registrar auditoría en:
-  - `/srv/scriptorium/ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/audit/`
+  - `/srv/oasis/scriptorium/ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/audit/`
 
 ## Informe operativo
 

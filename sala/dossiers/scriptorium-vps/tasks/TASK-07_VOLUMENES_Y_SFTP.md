@@ -3,7 +3,7 @@
 > **Estado:** cerrada
 > **Agente recomendado:** `vps-ops`
 > **Dependencias:** VPS-01
-> **Entrega esperada:** layout `/srv/scriptorium/` + helpers SFTP + `.gitkeep`
+> **Entrega esperada:** layout `/srv/oasis/scriptorium/` + helpers SFTP + `.gitkeep`
 
 ## Lee primero
 
@@ -19,11 +19,11 @@ Preparar las carpetas compartidas del VPS con permisos previsibles y helpers par
 ## Cambios requeridos
 
 - Crear layout VPS:
-  - `/srv/scriptorium/ARCHIVO/.gitkeep`
-  - `/srv/scriptorium/ARCHIVO/DISCO/.gitkeep`
-  - `/srv/scriptorium/verdaccio/storage/`
-  - `/srv/scriptorium/caddy/data/`
-  - `/srv/scriptorium/caddy/config/`
+  - `/srv/oasis/scriptorium/ARCHIVO/.gitkeep`
+  - `/srv/oasis/scriptorium/ARCHIVO/DISCO/.gitkeep`
+  - `/srv/oasis/scriptorium/verdaccio/storage/`
+  - `/srv/oasis/scriptorium/caddy/data/`
+  - `/srv/oasis/scriptorium/caddy/config/`
 - Crear layout de datos plugin en repo Scriptorium:
   - `ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/.gitkeep`
   - `ARCHIVO/PLUGINS/SCRIPTORIUM_VPS/deployments/.gitkeep`
@@ -41,7 +41,7 @@ Preparar las carpetas compartidas del VPS con permisos previsibles y helpers par
 ```env
 SCRIPTORIUM_UID=1000
 SCRIPTORIUM_GID=1000
-SCRIPTORIUM_DATA_ROOT=/srv/scriptorium
+SCRIPTORIUM_DATA_ROOT=/srv/oasis/scriptorium
 ```
 
 ### Nota Node-RED single-instance

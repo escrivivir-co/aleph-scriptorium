@@ -131,3 +131,13 @@
 **Verificación Aleph 2026-05-09:** resolución DNS local confirmada para los cuatro hosts contra `92.243.24.163`.
 
 **Efecto operativo:** El bloqueo de DNS para `VPS-08` queda levantado. Sigue vigente la ventana controlada obligatoria para SSH/SCP/SFTP, Docker remoto, edición/restart de Caddy real, alta de secretos, publicación npm real y cualquier mutación sobre el VPS vivo.
+
+---
+
+## Root de datos Scriptorium en volumen Gandi
+
+**Decisión/acción PO:** Los datos persistentes de Scriptorium no deben ir en el disco de arranque `vps-boot` de 25 GB. Deben ubicarse dentro del volumen de datos `scriptorium-oasis-pub-volumen` de 40 GB, montado en `/srv/oasis`.
+
+**Ruta canónica:** `SCRIPTORIUM_REMOTE_ROOT=/srv/oasis/scriptorium`.
+
+**Efecto operativo:** Cualquier compose, helper SFTP, verificador o runbook que antes apuntara a `/srv/scriptorium` debe corregirse a `/srv/oasis/scriptorium`. La ruta `/srv/scriptorium` creada durante el primer intento de `VPS-08` queda clasificada como error de bootstrap y debe migrarse/archivarse antes de continuar el despliegue.
