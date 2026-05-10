@@ -1,0 +1,10 @@
+{% comment %}
+Fallback TOC include.
+Evita que el build falle si alguna página activa `toc: true` sin tener un generador de índice instalado.
+{% endcomment %}
+{% assign toc_source = include.html | default: content %}
+{% if toc_source contains '<h2' or toc_source contains '<h3' %}
+<ul class="toc-list toc-list--fallback">
+  <li><a href="#top">Inicio de la página</a></li>
+</ul>
+{% endif %}

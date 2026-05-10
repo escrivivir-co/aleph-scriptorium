@@ -35,8 +35,6 @@ collections:
 
 # Configuración de posts (periodico)
 permalink: /:year/:month/:day/:title/
-paginate: 10
-paginate_path: "/periodico/page:num/"
 
 # Build
 markdown: kramdown

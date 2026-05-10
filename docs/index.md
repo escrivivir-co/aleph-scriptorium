@@ -15,9 +15,6 @@ permalink: /
 
 Stack agéntico sobre MCP + VS Code + GitHub Copilot Chat + Blockchain/RTC net, diseñado para producción de material transmedia.
 
-> **Web**: [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/)  
-> **Guía**: [{{ site.baseurl }}/leeme/]({{ site.baseurl }}/leeme/) · **Ecosistema**: [{{ site.baseurl }}/ecosistema/]({{ site.baseurl }}/ecosistema/) · **Backlog/Roadmap**: [{{ site.baseurl }}/roadmap/]({{ site.baseurl }}/roadmap/)
->
 > | Subdominio | Servicio |
 > |---|---|
 > | **[pub.escrivivir.co](https://pub.escrivivir.co)** | **Oasis SSB Pub · invites, PUB KEY, CONNECT** |
@@ -34,113 +31,6 @@ Stack agéntico sobre MCP + VS Code + GitHub Copilot Chat + Blockchain/RTC net, 
 > | **[npm.scriptorium.escrivivir.co](https://npm.scriptorium.escrivivir.co)** | **Verdaccio · registry `@alephscript/*`** |
 
 ---
-
-## Layers (1 y 2)
-
-<table>
-<tr>
-<td width="50%">
-
-[![pub.escrivivir.co — Oasis SSB Pub]({{ site.baseurl }}/assets/img/pub-subdominios/pub-escrivivir-co.png)](https://pub.escrivivir.co)
-
-**[pub.escrivivir.co](https://pub.escrivivir.co)** · Nodo de replicación Oasis/SSB. Invites, PUB KEY y CONNECT para unirte a la red.
-
-</td>
-<td width="50%">
-
-[![rooms.scriptorium.escrivivir.co — Node-RED mesh peer]({{ site.baseurl }}/assets/img/pub-subdominios/rooms-scriptorium-escrivivir-co.png)](https://pub.escrivivir.co/scriptorium/)
-
-**[rooms.scriptorium.escrivivir.co](https://rooms.scriptorium.escrivivir.co)** · Mesh peer Node-RED. Fedérate con un bootstrap de un comando.
-
-Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/WiringEditor/NOD-RED-FED-NOTES/NOTA-AMIGO-DESDE-CERO.md) · [Con Node-RED ya operativo](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/WiringEditor/NOD-RED-FED-NOTES/NOTA-AMIGO-PEER-NODE-RED.md) · [Owner / recordatorio](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/WiringEditor/NOD-RED-FED-NOTES/NOTA-OWNER-RECORDATORIO.md)
-
-</td>
-</tr>
-</table>
-
-<!-- NAVEGACIÓN PRINCIPAL (sincronizada con _config.yml) -->
-<nav class="home-nav">
-  <a href="{{ site.baseurl }}/network/" class="nav-card nav-card-featured">
-    <span class="card-icon">🌐</span>
-    <span class="card-title">Network</span>
-    <span class="card-desc">PUB · Rooms · directorio técnico</span>
-  </a>
-  <a href="{{ site.baseurl }}/scriptorium-v1/" class="nav-card">
-    <span class="card-icon">🗃️</span>
-    <span class="card-title">Scriptorium v1</span>
-    <span class="card-desc">Índice archivado</span>
-  </a>
-  <a href="{{ site.baseurl }}/archivo/" class="nav-card">
-    <span class="card-icon">🗄️</span>
-    <span class="card-title">Scriptorium</span>
-    <span class="card-desc">Escritorio, Escritura, Escribir, Escritor</span>
-  </a>
-  <a href="{{ site.baseurl }}/blueprint/" class="nav-card nav-card-featured">
-    <span class="card-icon">📐</span>
-    <span class="card-title">Mapa</span>
-    <span class="card-desc">Diapos "arch map"</span>
-  </a>
-  <a href="{{ site.baseurl }}/blueprint-mmco/" class="nav-card">
-    <span class="card-icon">🧬</span>
-    <span class="card-title">MMCO</span>
-    <span class="card-desc">Diapos MetaModel</span>
-  </a>
-  <a href="{{ site.baseurl }}/blueprint-copilot/" class="nav-card">
-    <span class="card-icon">🧠</span>
-    <span class="card-title">Copilot</span>
-    <span class="card-desc">Diapos "Self-Reflection"</span>
-  </a>
-  <a href="{{ site.baseurl }}/demo/" class="nav-card nav-card-featured">
-    <span class="card-icon">🎬</span>
-    <span class="card-title">Directorio</span>
-    <span class="card-desc">Galería de control</span>
-  </a>
-  <a href="{{ site.baseurl }}/blueprint-logic-flow/" class="nav-card nav-card-featured">
-    <span class="card-icon">🔗</span>
-    <span class="card-title">Feature: Brains</span>
-    <span class="card-desc">Diapos "Stack Prolog"</span>
-  </a>
-  <a href="{{ site.baseurl }}/blueprint-typed-prompting/" class="nav-card nav-card-featured">
-    <span class="card-icon">🧩</span>
-    <span class="card-title">Feature: Tipado</span>
-    <span class="card-desc">Diapos "TypedPromting"</span>
-  </a>  
-  <a href="{{ site.baseurl }}/blueprint-po/" class="nav-card nav-card-featured">
-    <span class="card-icon">🎤</span>
-    <span class="card-title">Showcase</span>
-    <span class="card-desc">Diapos "Product Owner"</span>
-  </a>  
-  <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
-    <span class="card-icon">🧬</span>
-    <span class="card-title">Ecosistema</span>
-    <span class="card-desc"> submódulos · plugins · agentes</span>
-  </a>
-  <a href="{{ site.baseurl }}/periodico/" class="nav-card">
-    <span class="card-icon">📰</span>
-    <span class="card-title">Portal</span>
-    <span class="card-desc">Trasnmedia</span>
-  </a>
-  <a href="{{ site.baseurl }}/teatro/" class="nav-card">
-    <span class="card-icon">🎭</span>
-    <span class="card-title">Salas</span>
-    <span class="card-desc">Trasnmedia</span>
-  </a>
-  <a href="{{ site.baseurl }}/fundacion/" class="nav-card">
-    <span class="card-icon">📜</span>
-    <span class="card-title">Lienzo</span>
-    <span class="card-desc">"Fundación" es donde tú escribes</span>
-  </a>
-  <a href="{{ site.baseurl }}/roadmap/" class="nav-card">
-    <span class="card-icon">🗺️</span>
-    <span class="card-title">Roadmap</span>
-    <span class="card-desc">De Aleph a Euler</span>
-  </a>
-  <a href="{{ site.baseurl }}/blueprint-logic-flow/" class="nav-card nav-card-featured">
-    <span class="card-icon">🔗</span>
-    <span class="card-title">Lucas</span>
-    <span class="card-desc">1er agente con ScriptoriumBrain</span>
-  </a>
-</nav>
 
 <!-- CONTRIBUIR -->
 <section class="home-section">
@@ -175,7 +65,6 @@ Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/m
 <pre class="join-code">
 $ git clone https://github.com/escrivivir-co/aleph-scriptorium.git
 $ cd aleph-scriptorium && code .
-$ # En Copilot Chat: @aleph hola
 </pre>
 </section>
 
