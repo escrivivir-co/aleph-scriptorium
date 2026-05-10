@@ -1,75 +1,38 @@
 ---
 layout: default
-title: Aleph Scriptorium
-permalink: /
+title: Scriptorium v1
+description: Índice histórico archivado de la portada original del sitio
+permalink: /scriptorium-v1/
 ---
 
 <div class="home-page" markdown="1">
 
-# Aleph Scriptorium
+<section class="home-section" style="margin-top:0;padding-top:0;border-top:none;">
+<h2>// Archivo</h2>
+<p><strong>Índice histórico v1.0.0-alpha.1</strong>. Esta portada se conserva como referencia tras la reorganización del acceso principal del sitio.</p>
+<p><a href="{{ site.baseurl }}/">→ Volver al índice actual</a></p>
+</section>
 
-![Version](https://img.shields.io/badge/version-1.0.0--alpha.1--preview-blueviolet)
-[![License: AIPL](https://img.shields.io/badge/License-AIPL%20v1.0-blue.svg)](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/LICENSE.md)
-[![GitHub Pages](https://img.shields.io/badge/Web-GitHub%20Pages-success)](https://escrivivir-co.github.io/aleph-scriptorium/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/CONTRIBUTING.md)
+<!-- RELEASE BANNER -->
+<div class="release-banner">
+  <div class="release-badge">🚀 Diciembre - Enero 2025/26 - Hackathon</div>
+  <div class="release-text">
+    <img src="https://img.shields.io/badge/version-1.0.0--alpha.1--preview-blueviolet">
+    <img src="https://img.shields.io/badge/License-AIPL%20v1.0-blue.svg">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+  </div>
+</div>
 
-Stack agéntico sobre MCP + VS Code + GitHub Copilot Chat + Blockchain/RTC net, diseñado para producción de material transmedia.
-
-> **Web**: [escrivivir-co.github.io/aleph-scriptorium](https://escrivivir-co.github.io/aleph-scriptorium/)  
-> **Guía**: [{{ site.baseurl }}/leeme/]({{ site.baseurl }}/leeme/) · **Ecosistema**: [{{ site.baseurl }}/ecosistema/]({{ site.baseurl }}/ecosistema/) · **Backlog/Roadmap**: [{{ site.baseurl }}/roadmap/]({{ site.baseurl }}/roadmap/)
->
-> | Subdominio | Servicio |
-> |---|---|
-> | **[pub.escrivivir.co](https://pub.escrivivir.co)** | **Oasis SSB Pub · invites, PUB KEY, CONNECT** |
-> | &nbsp;&nbsp;└ [/scriptorium/](https://pub.escrivivir.co/scriptorium/) | Vestíbulo de salas layer2 |
-> | &nbsp;&nbsp;└ [/admin/](https://pub.escrivivir.co/admin/) | Panel local del pub |
-> | &nbsp;&nbsp;└ [/public/status](https://pub.escrivivir.co/public/status) | Estado JSON del pub |
-> | **[scriptorium.escrivivir.co](https://scriptorium.escrivivir.co/red)** | **Node-RED público (read-only) + dashboards** |
-> | &nbsp;&nbsp;└ [/red](https://scriptorium.escrivivir.co/red) | Editor Node-RED (read-only) |
-> | &nbsp;&nbsp;└ [/ui](https://scriptorium.escrivivir.co/ui) | Dashboard clásico (v1) |
-> | &nbsp;&nbsp;└ [/dashboard](https://scriptorium.escrivivir.co/dashboard) | Dashboard 2 (v2) |
-> | **[admin.scriptorium.escrivivir.co](https://admin.scriptorium.escrivivir.co)** | **Node-RED admin (editor write + projects)** |
-> | **[rooms.scriptorium.escrivivir.co](https://rooms.scriptorium.escrivivir.co)** | **Mesh peer Node-RED · Socket.IO** |
-> | **[mcp.scriptorium.escrivivir.co](https://mcp.scriptorium.escrivivir.co)** | **MCP DevOps · Streamable HTTP** |
-> | **[npm.scriptorium.escrivivir.co](https://npm.scriptorium.escrivivir.co)** | **Verdaccio · registry `@alephscript/*`** |
-
----
-
-## Layers (1 y 2)
-
-<table>
-<tr>
-<td width="50%">
-
-[![pub.escrivivir.co — Oasis SSB Pub]({{ site.baseurl }}/assets/img/pub-subdominios/pub-escrivivir-co.png)](https://pub.escrivivir.co)
-
-**[pub.escrivivir.co](https://pub.escrivivir.co)** · Nodo de replicación Oasis/SSB. Invites, PUB KEY y CONNECT para unirte a la red.
-
-</td>
-<td width="50%">
-
-[![rooms.scriptorium.escrivivir.co — Node-RED mesh peer]({{ site.baseurl }}/assets/img/pub-subdominios/rooms-scriptorium-escrivivir-co.png)](https://pub.escrivivir.co/scriptorium/)
-
-**[rooms.scriptorium.escrivivir.co](https://rooms.scriptorium.escrivivir.co)** · Mesh peer Node-RED. Fedérate con un bootstrap de un comando.
-
-Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/WiringEditor/NOD-RED-FED-NOTES/NOTA-AMIGO-DESDE-CERO.md) · [Con Node-RED ya operativo](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/WiringEditor/NOD-RED-FED-NOTES/NOTA-AMIGO-PEER-NODE-RED.md) · [Owner / recordatorio](https://github.com/escrivivir-co/aleph-scriptorium/blob/main/WiringEditor/NOD-RED-FED-NOTES/NOTA-OWNER-RECORDATORIO.md)
-
-</td>
-</tr>
-</table>
+<!-- HERO -->
+<div class="home-hero">
+  <div class="hero-symbol">ℵ</div>
+  <h1>Aleph Scriptorium</h1>
+  <p class="hero-tagline">Stack agéntico sobre MCP + VS Code + GitHub Copilot Chat, diseñado para producción de material transmedia. </p>
+  <p class="hero-prompt">El taller de escritura donde la IA trabaja para ti, no al revés.</p>
+</div>
 
 <!-- NAVEGACIÓN PRINCIPAL (sincronizada con _config.yml) -->
 <nav class="home-nav">
-  <a href="{{ site.baseurl }}/network/" class="nav-card nav-card-featured">
-    <span class="card-icon">🌐</span>
-    <span class="card-title">Network</span>
-    <span class="card-desc">PUB · Rooms · directorio técnico</span>
-  </a>
-  <a href="{{ site.baseurl }}/scriptorium-v1/" class="nav-card">
-    <span class="card-icon">🗃️</span>
-    <span class="card-title">Scriptorium v1</span>
-    <span class="card-desc">Índice archivado</span>
-  </a>
   <a href="{{ site.baseurl }}/archivo/" class="nav-card">
     <span class="card-icon">🗄️</span>
     <span class="card-title">Scriptorium</span>
@@ -78,7 +41,7 @@ Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/m
   <a href="{{ site.baseurl }}/blueprint/" class="nav-card nav-card-featured">
     <span class="card-icon">📐</span>
     <span class="card-title">Mapa</span>
-    <span class="card-desc">Diapos "arch map"</span>
+    <span class="card-desc">Diapos \"arch map\"</span>
   </a>
   <a href="{{ site.baseurl }}/blueprint-mmco/" class="nav-card">
     <span class="card-icon">🧬</span>
@@ -88,7 +51,7 @@ Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/m
   <a href="{{ site.baseurl }}/blueprint-copilot/" class="nav-card">
     <span class="card-icon">🧠</span>
     <span class="card-title">Copilot</span>
-    <span class="card-desc">Diapos "Self-Reflection"</span>
+    <span class="card-desc">Diapos \"Self-Reflection\"</span>
   </a>
   <a href="{{ site.baseurl }}/demo/" class="nav-card nav-card-featured">
     <span class="card-icon">🎬</span>
@@ -98,17 +61,17 @@ Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/m
   <a href="{{ site.baseurl }}/blueprint-logic-flow/" class="nav-card nav-card-featured">
     <span class="card-icon">🔗</span>
     <span class="card-title">Feature: Brains</span>
-    <span class="card-desc">Diapos "Stack Prolog"</span>
+    <span class="card-desc">Diapos \"Stack Prolog\"</span>
   </a>
   <a href="{{ site.baseurl }}/blueprint-typed-prompting/" class="nav-card nav-card-featured">
     <span class="card-icon">🧩</span>
     <span class="card-title">Feature: Tipado</span>
-    <span class="card-desc">Diapos "TypedPromting"</span>
+    <span class="card-desc">Diapos \"TypedPromting\"</span>
   </a>  
   <a href="{{ site.baseurl }}/blueprint-po/" class="nav-card nav-card-featured">
     <span class="card-icon">🎤</span>
     <span class="card-title">Showcase</span>
-    <span class="card-desc">Diapos "Product Owner"</span>
+    <span class="card-desc">Diapos \"Product Owner\"</span>
   </a>  
   <a href="{{ site.baseurl }}/ecosistema/" class="nav-card">
     <span class="card-icon">🧬</span>
@@ -128,7 +91,7 @@ Manuales: [Desde cero](https://github.com/escrivivir-co/aleph-scriptorium/blob/m
   <a href="{{ site.baseurl }}/fundacion/" class="nav-card">
     <span class="card-icon">📜</span>
     <span class="card-title">Lienzo</span>
-    <span class="card-desc">"Fundación" es donde tú escribes</span>
+    <span class="card-desc">\"Fundación\" es donde tú escribes</span>
   </a>
   <a href="{{ site.baseurl }}/roadmap/" class="nav-card">
     <span class="card-icon">🗺️</span>
@@ -186,7 +149,7 @@ $ # En Copilot Chat: @aleph hola
 <p><strong>Licencia AIPL v1.0</strong> (Animus Iocandi Public License)</p>
 <ul>
 <li><strong>El código como infraestructura</strong> (plantillas, agentes, instrucciones): libre para usar, modificar y distribuir. [PENDIENTE REVISIÓN LICENCIAS DE TERCEROS]</li>
-<li><strong>El contenido "Fundación"</strong>: Escrivivir.co 2025, todo izquierdos SIN derechos reservados.</li>
+<li><strong>El contenido \"Fundación\"</strong>: Escrivivir.co 2025, todo izquierdos SIN derechos reservados.</li>
 </ul>
 <p class="legal-disclaimer">
 Este repositorio es un <strong>proyecto de investigación académica</strong>. Escrivivir.co no vende productos ni servicios.
@@ -196,4 +159,3 @@ Este repositorio es un <strong>proyecto de investigación académica</strong>. E
 </section>
 
 </div>
-

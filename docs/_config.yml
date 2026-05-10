@@ -57,12 +57,16 @@ plugins:
 navigation:
   - title: Inicio
     url: /
+  - title: Network
+    url: /network/
   - title: Léeme
     url: /leeme/
   - title: Ecosistema
     url: /ecosistema/
   - title: Roadmap
     url: /roadmap/
+  - title: Scriptorium v1
+    url: /scriptorium-v1/
 
 # Defaults
 defaults:
