@@ -10,79 +10,79 @@
 	// - https://code.visualstudio.com/docs/copilot/customization/custom-instructions
 	// --- INSTRUCCIONES DE CÓDIGO ---
 	// Habilitar archivos de instrucciones personalizadas
-	"github.copilot.chat.codeGeneration.useInstructionFiles": true,
+	"github.copilot.chat.codeGeneration.useInstructionFiles": false,
 	// --- PROMPTS ADICIONALES ---
 	// Añadir carpetas de prompts de plugins a las ubicaciones de búsqueda
 	// Por defecto, VS Code solo detecta .github/prompts/
 	"chat.promptFilesLocations": {
-		".github/prompts": true,
+		".github/prompts": false,
 		// --- Core plugins ---
-		".github/plugins/scriptorium-pack/prompts": true,
-		".github/plugins/arg-board/prompts": true,
-		".github/plugins/agent-creator/prompts": true,
-		".github/plugins/teatro/prompts": true,
-		".github/plugins/scrum/prompts": true,
-		".github/plugins/foro-scraper/prompts": true,
-		".github/plugins/enciclopedia/prompts": true,
-		".github/plugins/gh-pages/prompts": true,
-		".github/plugins/mcp-presets/prompts": true,
-		".github/plugins/openasyncapi-editor/prompts": true,
+		".github/plugins/scriptorium-pack/prompts": false,
+		".github/plugins/arg-board/prompts": false,
+		".github/plugins/agent-creator/prompts": false,
+		".github/plugins/teatro/prompts": false,
+		".github/plugins/scrum/prompts": false,
+		".github/plugins/foro-scraper/prompts": false,
+		".github/plugins/enciclopedia/prompts": false,
+		".github/plugins/gh-pages/prompts": false,
+		".github/plugins/mcp-presets/prompts": false,
+		".github/plugins/openasyncapi-editor/prompts": false,
 		// --- Editor plugins ---
-		".github/plugins/prolog-editor/prompts": true,
-		".github/plugins/blockly-editor/prompts": true,
-		".github/plugins/wire-editor/prompts": true,
-		".github/plugins/hypergraph-editor/prompts": true,
-		".github/plugins/n8n-editor/prompts": true,
-		".github/plugins/typed-prompting/prompts": true,
+		".github/plugins/prolog-editor/prompts": false,
+		".github/plugins/blockly-editor/prompts": false,
+		".github/plugins/wire-editor/prompts": false,
+		".github/plugins/hypergraph-editor/prompts": false,
+		".github/plugins/n8n-editor/prompts": false,
+		".github/plugins/typed-prompting/prompts": false,
 		// --- App plugins ---
-		".github/plugins/arg-board-app/prompts": true,
-		".github/plugins/wiring-app/prompts": true,
-		".github/plugins/novelist/prompts": true,
-		".github/plugins/network/prompts": true,
-		".github/plugins/lore-sdk/prompts": true,
-		".github/plugins/vector-machine/prompts": true,
-		"VectorMachineSDK/.github/prompts": true,
+		".github/plugins/arg-board-app/prompts": false,
+		".github/plugins/wiring-app/prompts": false,
+		".github/plugins/novelist/prompts": false,
+		".github/plugins/network/prompts": false,
+		".github/plugins/lore-sdk/prompts": false,
+		".github/plugins/vector-machine/prompts": false,
+		"VectorMachineSDK/.github/prompts": false,
 
 		
 		// --- ONFALO ---
 		".github/plugins/consejo-asesor/prompts": false,
 		// --- REPL / Notebooks ---
-		".github/plugins/nodejs-notebooks/prompts": true
+		".github/plugins/nodejs-notebooks/prompts": false
 	},
 	// --- INSTRUCTIONS ADICIONALES ---
 	// Añadir carpetas de instructions de plugins
 	// Por defecto, VS Code solo detecta .github/instructions/
 	"chat.instructionsFilesLocations": {
-		".github/instructions": true,
+		".github/instructions": false,
 		// --- Core plugins ---
-		".github/plugins/scriptorium-pack/instructions": true,
-		".github/plugins/arg-board/instructions": true,
-		".github/plugins/agent-creator/instructions": true,
-		".github/plugins/teatro/instructions": true,
-		".github/plugins/scrum/instructions": true,
-		".github/plugins/foro-scraper/instructions": true,
-		".github/plugins/enciclopedia/instructions": true,
-		".github/plugins/gh-pages/instructions": true,
-		".github/plugins/mcp-presets/instructions": true,
-		".github/plugins/openasyncapi-editor/instructions": true,
+		".github/plugins/scriptorium-pack/instructions": false,
+		".github/plugins/arg-board/instructions": false,
+		".github/plugins/agent-creator/instructions": false,
+		".github/plugins/teatro/instructions": false,
+		".github/plugins/scrum/instructions": false,
+		".github/plugins/foro-scraper/instructions": false,
+		".github/plugins/enciclopedia/instructions": false,
+		".github/plugins/gh-pages/instructions": false,
+		".github/plugins/mcp-presets/instructions": false,
+		".github/plugins/openasyncapi-editor/instructions": false,
 		// --- Editor plugins ---
-		".github/plugins/prolog-editor/instructions": true,
-		".github/plugins/blockly-editor/instructions": true,
-		".github/plugins/wire-editor/instructions": true,
-		".github/plugins/hypergraph-editor/instructions": true,
-		".github/plugins/n8n-editor/instructions": true,
-		".github/plugins/typed-prompting/instructions": true,
+		".github/plugins/prolog-editor/instructions": false,
+		".github/plugins/blockly-editor/instructions": false,
+		".github/plugins/wire-editor/instructions": false,
+		".github/plugins/hypergraph-editor/instructions": false,
+		".github/plugins/n8n-editor/instructions": false,
+		".github/plugins/typed-prompting/instructions": false,
 		// --- App plugins ---
-		".github/plugins/arg-board-app/instructions": true,
-		".github/plugins/wiring-app/instructions": true,
-		".github/plugins/novelist/instructions": true,
-		".github/plugins/network/instructions": true,
-		".github/plugins/lore-sdk/instructions": true,
-		".github/plugins/vector-machine/instructions": true,
+		".github/plugins/arg-board-app/instructions": false,
+		".github/plugins/wiring-app/instructions": false,
+		".github/plugins/novelist/instructions": false,
+		".github/plugins/network/instructions": false,
+		".github/plugins/lore-sdk/instructions": false,
+		".github/plugins/vector-machine/instructions": false,
 		// --- ONFALO ---
 		".github/plugins/consejo-asesor/instructions": false,
 		// --- REPL / Notebooks ---
-		".github/plugins/nodejs-notebooks/instructions": true
+		".github/plugins/nodejs-notebooks/instructions": false
 	},
 	// --- AGENTS.MD ANIDADOS (experimental) ---
 	// Permite buscar AGENTS.md en subcarpetas
@@ -90,11 +90,11 @@
 	"chat.useNestedAgentsMdFiles": false,
 	// --- AGENTS.MD GLOBAL ---
 	// Habilitar uso del archivo AGENTS.md en la raíz
-	"chat.useAgentsMdFile": false,
+	"chat.useAgentsMdFile": true,
 	// --- RECOMENDACIONES DE PROMPTS ---
 	// Mostrar prompts recomendados al iniciar una nueva sesión de chat
 	"chat.promptFilesRecommendations": {
-		".github/plugins/scriptorium-pack/prompts": true
+		".github/plugins/scriptorium-pack/prompts": false
 	},
 	// --- JEKYLL/RUBY (para desarrollo local del sitio) ---
 	"files.associations": {
@@ -109,6 +109,8 @@
 	},
 	// --- BÚSQUEDA ---
 	"search.exclude": {
+		"**/.git": true,
+		"**/node_modules": true,		
 		"docs/_site": true,
 		"docs/vendor": true
 	}
