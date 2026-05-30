@@ -40,6 +40,8 @@
     "lint:links": "markdown-link-check ./README.md",
     "pdf:extract": "python3 -c \"import fitz; print('PyMuPDF ready')\" || pip3 install pymupdf",
     "commit:check": "git status --short",
+    "check:submodules": "bash ./scripts/update-submodules.sh --check",
+    "update:submodules": "bash ./scripts/update-submodules.sh",
     "archive:list": "find ARCHIVO -name '*.md' -type f | wc -l | xargs echo 'Documentos en ARCHIVO:'",
     "caps:list": "find PROYECTOS/FUNDACION/CAPITULOS -name '*.md' -type f | wc -l | xargs echo 'Capítulos en progreso:'"
   },
