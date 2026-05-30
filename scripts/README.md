@@ -10,6 +10,7 @@
 | Script | Propósito |
 |--------|-----------|
 | `setup-workspace.sh` | Inicializa VS Code settings y los submódulos |
+| `update-submodules.sh` | Actualiza punteros top-level a la última rama de integración |
 | `setup-jekyll.sh` | Instala Jekyll y dependencias |
 | `validate-site.sh` | Compila el sitio sin servidor |
 | `serve-site.sh` | Inicia servidor local con live reload |
@@ -112,6 +113,52 @@ Submódulos configurados:
   - onfalo-asesor-sdk: Consejo Asesor ONFALO (fuente privada integrada)
   - VectorMachineSDK: Stack vectorial self-hosted (DeepWiki + Chroma + Ollama + FastAPI)
   - VectorMachineUI: Admin UI Next.js para colecciones Chroma del stack vectorial
+```
+
+---
+
+## Actualizar Punteros de Submódulos
+
+El protocolo de instalación (`as_instalar_submodulo.prompt.md` y
+`submodulo-integracion.instructions.md`) describe cómo añadir e integrar un
+submódulo nuevo. Para el mantenimiento diario, cuando cada submódulo ya tiene
+commits en `integration/beta/scriptorium` y ALEPH debe apuntar al último commit
+de cada rama, usa:
+
+```bash
+npm run update:submodules
+```
+
+Para auditar sin mover working trees:
+
+```bash
+npm run check:submodules
+```
+
+Qué hace `update:submodules`:
+
+1. Lee los submódulos de primer nivel desde `.gitmodules`.
+2. Inicializa los que falten.
+3. Hace `fetch origin integration/beta/scriptorium`.
+4. Cambia o crea la rama local `integration/beta/scriptorium`.
+5. Hace fast-forward cuando es posible.
+6. Si la rama local diverge, crea una rama de respaldo `backup/submodule-update/...` y resetea al remoto.
+7. Imprime los paths que debes añadir con `git add` para fijar los nuevos punteros en ALEPH.
+
+Notas aprendidas de la operación manual:
+
+- ALEPH fija los gitlinks de submódulos top-level; los submódulos anidados se gobiernan dentro de su repositorio padre.
+- `BotHubSDK/reference-console-app` vive en `main`, así que no forma parte de esta actualización top-level.
+- `MCPGallery/mcp-inspector-sdk` usa una rama anidada distinta (`integration/scriptorium/beta`).
+- `onfalo-asesor-sdk/PLUGIN_COUNCIL` puede romper recorridos recursivos si su `.gitmodules` interno no declara URL para ese path.
+- `verify-submodule-naming.sh` sigue siendo el verificador de naming/registro; no avanza punteros.
+
+Después de actualizar, confirma con:
+
+```bash
+git status --short
+git add <submodulos-cambiados>
+git commit -m "chore(submodules): align integration/beta/scriptorium heads"
 ```
 
 ---
