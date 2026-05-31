@@ -43,7 +43,8 @@
     "check:submodules": "bash ./scripts/update-submodules.sh --check",
     "update:submodules": "bash ./scripts/update-submodules.sh",
     "archive:list": "find ARCHIVO -name '*.md' -type f | wc -l | xargs echo 'Documentos en ARCHIVO:'",
-    "caps:list": "find PROYECTOS/FUNDACION/CAPITULOS -name '*.md' -type f | wc -l | xargs echo 'Capítulos en progreso:'"
+    "caps:list": "find PROYECTOS/FUNDACION/CAPITULOS -name '*.md' -type f | wc -l | xargs echo 'Capítulos en progreso:'",
+	"update:submodule": "git submodule update --remote SubModuleName"
   },
   "engines": {
     "node": ">=22.0.0"
