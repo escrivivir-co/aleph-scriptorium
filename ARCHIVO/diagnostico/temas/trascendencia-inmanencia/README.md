@@ -1,8 +1,3 @@
-# Diagnóstico: estado de la cuestión y aspiraciones
-
-Este directorio contiene el diagnóstico del presente desde el cual escribe el proyecto. No es lamento ni profecía: es **brújula afectiva y política** para discernir las sendas en la niebla de las zonas grises.
-
----
 
 ## Contenidos
 
