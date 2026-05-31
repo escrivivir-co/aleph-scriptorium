@@ -30,13 +30,16 @@ Este índice recopila y describe los principales componentes del **Scriptorium**
 
 ---
 
-## 3. Servidores Públicos y Catálogo
+## 3. Servidores Públicos y Catálogos
 
-### OASIS_PUB Site Scriptorium
+### 3.1 OASIS_PUB Site Scriptorium
 - **Ruta:** `ALEPH/BlockchainComPort/OASIS_PUB/site/scriptorium`
 - **Referencia:** [README.md](file:///Users/morente/Desktop/THEIA_PATH/NUEVA_BASE/SCRIPTORIUM/ALEPH/BlockchainComPort/OASIS_PUB/site/scriptorium/README.md)
 - **Rol en el Ecosistema:** Catálogo estático del Scriptorium (accesible vía `pub.escrivivir.co/scriptorium/`). Lee el archivo `catalog.json` para listar todas las herramientas públicas disponibles y agentes con prefijos SKU (`PLG-CORE`, `SDK-UI`, etc.).
 
+### 3.2 Zeus MCP Web Interface (`mcp-presets-site`)
+- **Ruta:** `ALEPH/MCPGallery/zeus`
+- **Rol en el Ecosistema:** Interfaz web que lee las *capabilities* y herramientas de los servidores de `MCPGallery` (como `mcp-model-sdk` y `mcp-mesh-sdk`). Permite agrupar estas capacidades en *packs* o `PRESETS`. Cuando un cliente (ej. el Streamer o un agente) pide sus capacidades, recibe uno de estos *packs* generados por Zeus (por ejemplo, un preset de *Launcher* con tools reales como `launch_mcp_server` y `launch-session` para orquestar la infraestructura).
 ---
 
 ## 4. Habilidades del Motor (DocumentMachineSDK Skills)
@@ -72,4 +75,16 @@ Las *Skills* son definiciones portables y agnósticas encargadas de resolver pie
 ### 5.2 BotHubSDK (TypeScript Server)
 - **Ruta:** `ALEPH/BotHubSDK`
 - **Referencia (Ejemplo Broadcast):** [broadcast-2026-05-09T23-28-42-391Z.md](file:///Users/morente/Desktop/THEIA_PATH/NUEVA_BASE/SCRIPTORIUM/ALEPH/BotHubSDK/examples/dashboard/userdata/history/broadcast-2026-05-09T23-28-42-391Z.md)
-- **Rol en el Ecosistema:** Actúa como el servidor TypeScript que se enlaza como *peer* a la red federada de Node-RED. Un ejemplo directo son los agentes de la red RETRO (`bot-spider`), que mediante un *handshake* válido se unen al `Pub.Rooms` para habilitar comunicación bidireccional (vía WSS) sin sustituir los canales existentes (como Telegram vía `bot-horse`).
+- **Rol en el Ecosistema:** Actúa como el servidor TypeScript que se enlaza como *peer* a la red federada de Node-RED. Además, orquesta la cadena de conexión IACM estructurada en tres pasos (`bot-rabbit -> bot-spider -> bot-horse`):
+  - **a) `bot-rabbit`**: Punto de origen e ingesta local de eventos en la cadena.
+  - **b) `bot-spider`**: Nodo de agregación al que se conectan los agentes de la red RETRO. Mediante un *handshake* válido, estos peers pueden unirse a `Pub.Rooms` para habilitar comunicación bidireccional (vía WSS).
+  - **c) `bot-horse`**: Da las herramientas para dejar el canal listo. Opera como el puente definitivo del protocolo IACM hacia plataformas externas de mensajería (como Telegram), coexistiendo con la federación a Node-RED.
+
+### 5.3 Creación de Sesión y Estructura Teatral (Arrakis Theater)
+- **Roles y Contexto:** El ecosistema opera bajo la metáfora del *Arrakis Theater*, una infraestructura para sesiones *layer2*. Se compone de:
+  - **Casa Arrakis**: Opera en las sombras preparando el terreno y los snapshots.
+  - **MC (Maestro de Ceremonias)**: Conduce el flujo de la sesión.
+  - **Elenco**: Actores (desarrolladores en *LiveSharedCoding*) que actúan en pantalla.
+  - **Público**: Participa desde el chat empujando la narrativa (vía Firehose).
+- **Flujo de Inicialización (Link con 5.1 y 5.2):** A través de la infraestructura VPS (`Pub.Rooms`), el **MC** crea la room y envía la *PEER CARD* con el token (`PUBLIC_ROOM`) al Streamer. El Streamer se conecta usando este token.
+- **Protocolo AlephScript y MCP:** Tras conectar, el Streamer realiza la llamada `capabilities` del protocolo. Como respuesta, recibe los `PRESETS` (ensamblados por Zeus), los cuales le otorgan herramientas y *prompts* predefinidos (como los del servidor de *Launcher*), permitiéndole invocar comandos como `launch-session` para arrancar la maquinaria de la sesión y conectar su stream.

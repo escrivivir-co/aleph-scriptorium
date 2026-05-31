@@ -9,39 +9,102 @@
 ```mermaid
 sequenceDiagram
     autonumber
+    actor MC as MC Arrakis
     actor Streamer
     actor Entrevistado
+    actor Elenco as Elenco
+    actor Publico as Público
     
-    box Local Scriptorium
+    box Capa Local / Peer Client
     participant StreamDesktop as StreamDesktop<br/>(kick-aleph-bot)
+    participant BotHubSDK as BotHubSDK<br/>(bot-rabbit/spider/horse)
     end
     
     box VPS Teatro Arrakis (OASIS_PUB)
-    participant VPS as Nodo VPS
-    participant MediaExt as media-extraction<br/>(STT/yt-dlp/streamlink)
-    participant WiringEditor as WiringEditor<br/>(Node-RED)
+    participant PubRooms as Pub.Rooms<br/>(scriptorium-rooms)
+    participant MediaExt as media-extraction<br/>(STT/faster-whisper)
+    participant WiringEditor as WiringEditor<br/>(Node-RED Mesh)
     participant EnginePlan as engine-plan<br/>(Pipeline E2E)
     participant FuturesEng as futures-engine<br/>(Dramaturgo)
     end
 
+    Note over MC, Streamer: Inicialización del Teatro
+    MC->>PubRooms: Crea Room de sesión
+    MC->>Streamer: Envía PEER CARD (Token PUBLIC_ROOM)
+    Streamer->>PubRooms: Conecta y pide capabilities()
+    PubRooms-->>Streamer: Retorna PRESETS (desde Zeus)
+    Streamer->>PubRooms: launch-session() (Activa el flujo)
+
     Note over Streamer, StreamDesktop: Transmisión y Host
-    Streamer->>StreamDesktop: Transmite audio/video
+    Streamer->>StreamDesktop: Transmite stream base
     Entrevistado->>StreamDesktop: Audio hosteado
+    Elenco->>PubRooms: Participación Activa (LiveSharedCoding)
+    Publico->>BotHubSDK: Push narrativo (Chat / Firehose)
 
-    Note over StreamDesktop, VPS: Derivación al Teatro
-    StreamDesktop->>VPS: Stream (HLS/VOD) derivado a "Room" Teatro Arrakis
-
-    Note over VPS, MediaExt: Captura y Transcripción
-    VPS->>MediaExt: Solicitud de extracción de fragmentos
-    MediaExt->>MediaExt: Descarga y STT (faster-whisper)
-    MediaExt-->>VPS: Transcripción (tmp/media-cache/)
-
-    Note over VPS, WiringEditor: Operación de Transcripciones
-    VPS->>WiringEditor: Feed asíncrono (canales app/sys/ui)
-    WiringEditor->>EnginePlan: Diagnóstico/Simulación del flujo de datos
+    Note over StreamDesktop, PubRooms: Derivación al Teatro
+    StreamDesktop->>PubRooms: Deriva Stream (HLS/VOD) a Room de Teatro Arrakis
     
-    Note over WiringEditor, FuturesEng: Siguiente Fase (Ingesta)
-    WiringEditor->>FuturesEng: Volcado de texto para bifurcación de escenarios (futuros posibles)
+    Note over BotHubSDK, PubRooms: Federación y Mensajería
+    BotHubSDK->>PubRooms: Handshake WSS (Red RETRO y Peers)
+
+    Note over PubRooms, MediaExt: Captura y Transcripción
+    PubRooms->>MediaExt: Solicitud de extracción de media
+    MediaExt->>MediaExt: Descarga y STT (faster-whisper)
+    MediaExt-->>PubRooms: Vuelca transcripción a cache (Soporte Textual)
+
+    Note over PubRooms, WiringEditor: Operación y Orquestación
+    PubRooms->>WiringEditor: Ingesta asíncrona de transcripciones (canales RxJS)
+    WiringEditor->>EnginePlan: Inspección y diagnóstico del Pipeline "End-to-End"
+    
+    Note over WiringEditor, FuturesEng: Ingesta hacia Future Machines
+    WiringEditor->>FuturesEng: Alimentación de texto para nodos de bifurcación (escenarios)
+    
+    Note over BotHubSDK, FuturesEng: Retorno e Interfaz Externa (IACM)
+    FuturesEng-->>BotHubSDK: Escenarios diseminados (vía bot-horse a Telegram/Externos)
+```
+
+### 1.2 El Concepto de PRESET y su Asignación a Agentes
+
+El ecosistema Scriptorium no entrega todas las herramientas a todos los actores por defecto. Utiliza el concepto de **PRESET** para empaquetar capacidades específicas y asignarlas a agentes o clientes especializados, orquestado a través del plugin **`McpPresets`** y el generador **Zeus**.
+
+```mermaid
+flowchart TD
+    subgraph Infraestructura (MCPGallery)
+        Mesh[mcp-mesh-sdk<br/>Tools & Firehose]
+        Model[mcp-model-sdk<br/>Inferencia & Prompts]
+        Launcher[MCPLauncherServer<br/>Orquestación]
+    end
+
+    subgraph Zeus Web Interface (mcp-presets-site)
+        Cat[Catálogo de Capabilities]
+        Gen[Generador de PRESETS]
+        Cat --> Gen
+    end
+
+    Mesh -. "Expone Tools" .-> Cat
+    Model -. "Expone Tools" .-> Cat
+    Launcher -. "Expone Tools" .-> Cat
+
+    subgraph Plugin: McpPresets Agent
+        Import[Importación y Validación<br/>Esquema PresetModel]
+        PresetsDB[(presets/*.json)]
+        Assign[agent-assignments.json]
+        
+        Import --> PresetsDB
+        PresetsDB --> Assign
+    end
+
+    Gen == "Exporta JSON Compatible" ==> Import
+
+    subgraph Ecosistema de Agentes (AGENT_CREATOR)
+        AgentA[Agente: Tarotista<br/>Inyecta mcpPresets en Recipe]
+        AgentB[Agente: Nonsi<br/>Inyecta mcpPresets en Recipe]
+        Streamer[Cliente: Streamer<br/>Recibe Preset de Orquestación]
+    end
+
+    Assign == "Vincula Capabilities" ==> AgentA
+    Assign == "Vincula Capabilities" ==> AgentB
+    Assign == "Vincula Capabilities" ==> Streamer
 ```
 
 ---
@@ -57,7 +120,7 @@ sequenceDiagram
 
 El flujo de la **Document Machine** está diseñado como un **SDK editorial**. Su propósito es analizar corrientes de pensamiento (corpus) para acabar cristalizando una "Voz" (un agente) que produzca nuevo material (en este caso original, poemas) *desde* las reglas de ese corpus, y no hablando *sobre* él.
 
-### 4.1 Los 4 Agentes Core (SDK)
+### 3.1 Los 4 Agentes Core (SDK)
 El SDK base proporciona 4 agentes predefinidos que actúan como la maquinaria de análisis y estructuración:
 
 - **`@bartleby` (Analista):** Solo lectura. Analiza los textos de entrada (editoriales) y genera un informe estructurado en 5 secciones: linaje, taxonomía funcional, mecanismos retóricos, emergencias y ausencias estructurales.
@@ -68,7 +131,7 @@ El SDK base proporciona 4 agentes predefinidos que actúan como la maquinaria de
 A estos 4 se les suma un quinto agente que es el resultado del proceso:
 - **`@voz` (Agente Mod):** El agente generado y cristalizado que reside en la capa de la aplicación (el *mod* activo) y es el que finalmente produce contenido basándose en el corpus.
 
-### 4.2 Las Fases / El Flujo (Los 6 Comandos)
+### 3.2 Las Fases / El Flujo (Los 6 Comandos)
 El flujo está dictado por "guiones" (documentos humanos paso a paso) y una serie de comandos de Copilot que ejecutan los agentes:
 
 1. **`/guion` (Usuario):** Genera el "roadmap" de trabajo (un documento Markdown con checkboxes) a partir de una plantilla. Prepara el terreno antes de activar los agentes.
@@ -78,7 +141,7 @@ El flujo está dictado por "guiones" (documentos humanos paso a paso) y una seri
 5. **`/design` (`@cristalizador`):** Si hay suficientes textos procesados, el cristalizador analiza todo y diseña al nuevo agente (`@voz`), sus prompts y sus instrucciones.
 6. **`/status` (`@archivero`):** Comando de utilidad para saber cuántos textos se han procesado y el estado de las emergencias en el corpus.
 
-### 4.3 Estructura de Ficheros (main vs mod)
+### 3.3 Estructura de Ficheros (main vs mod)
 El SDK opera bajo un patrón estricto unidireccional: la capa pura del motor (`main`) hereda hacia la capa de datos/lore (el `mod` activo), sin ensuciar el motor.
 
 **Capa del Motor (DocumentMachineSDK - main)**
@@ -168,3 +231,173 @@ sequenceDiagram
         Rooms-->>Client: Rechazado (Unauthorized) + Log auditable
     end
 ```
+
+Además de esta federación externa, **BotHubSDK** gestiona la conexión real hacia los canales de mensajería mediante el protocolo **IACM** (`bot-rabbit -> bot-spider -> bot-horse`).
+
+- **a) `bot-rabbit`**: Actúa como el origen de la cadena local de eventos.
+- **b) `bot-spider`**: Nodo intermedio de agregación donde los *peers* de la red RETRO se conectan. Desde aquí, los *peers* pueden optar por federarse directamente a `Pub.Rooms` con su propio Node-RED.
+- **c) `bot-horse`**: Da las herramientas para dejar el canal listo. Se encarga de la exposición final del canal IACM, históricamente hacia Telegram.
+
+A continuación se ilustra este segundo grafo detallando la topología de la mensajería IACM:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Rabbit as bot-rabbit<br/>(Ingesta Local)
+    participant Spider as bot-spider<br/>(Red RETRO Peers)
+    participant Horse as bot-horse<br/>(Canal IACM)
+
+    Note over Rabbit, Spider: Cadena BotHubSDK
+    Rabbit->>Spider: Flujo de eventos
+    
+    Note over Spider: Conexión de Peers RETRO
+    
+    Note over Spider, Horse: Habilitación de Canal
+    Spider->>Horse: Enlace IACM
+    
+    Note over Horse: bot-horse da las herramientas<br/>para dejar el canal listo (ej. Telegram)
+```
+
+## 6. Diagrama de Flujo y Máquina de Estados (MCP Control)
+
+Para orquestar la creación de la sesión y los procesos continuos del ecosistema, el servidor **MCP** implementa la siguiente máquina de estados. Este diseño garantiza el control de los intervalos de conexión segura, la ingesta de transcripciones y la participación del público.
+
+### 6.1 State Machine de la Sesión
+
+```mermaid
+stateDiagram-v2
+    [*] --> RoomCreated: MC Arrakis crea la Room
+    RoomCreated --> StreamerConnected: MC envía CARD con token al Streamer
+    
+    StreamerConnected --> CapabilitiesReceived: Streamer invoca capabilities()
+    note right of CapabilitiesReceived
+        Recibe PRESETS
+        (Ensamblados por Zeus)
+    end note
+    
+    CapabilitiesReceived --> ActiveSession: Streamer invoca launch-session()
+
+    state ActiveSession {
+        direction TB
+        
+        state "Línea a) Live Connection" as LineA {
+            [*] --> IntervalSeguro
+            IntervalSeguro --> IntervalSeguro: Ping / Keep-alive real time
+        }
+        
+        state "Línea b) Transcripciones" as LineB {
+            [*] --> TranscriptionFeed
+            TranscriptionFeed --> TranscriptionFeed: Interval con soporte textual (media-extraction)
+        }
+        
+        state "Línea c) Público / Chat" as LineC {
+            [*] --> PublicFirehose
+            PublicFirehose --> PublicFirehose: Feed MCPFirehoseServer.ts (intervenciones no etiquetadas)
+        }
+    }
+
+    ActiveSession --> CycleEnded: MC Arrakis desconecta la room
+    CycleEnded --> [*]
+```
+
+### 6.2 Secuencia de la Máquina de Estados
+
+Esta secuencia complementaria detalla las tres líneas principales de comunicación que se mantienen en paralelo durante la sesión activa:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant MC as MC Arrakis
+    participant Streamer as Streamer (MCP Client)
+    participant Room as Pub.Rooms (VPS)
+    participant Transcriptions as Servicio de Transcripciones
+    participant Firehose as MCPFirehoseServer
+
+    MC->>Room: Crea sesión / Room
+    MC->>Streamer: Envía PEER CARD con Token
+    Streamer->>Room: Conecta (WSS)
+    Streamer->>Room: capabilities()
+    Room-->>Streamer: Retorna PRESETS (Zeus)
+    Streamer->>Room: launch-session()
+    
+    rect rgb(20, 40, 60)
+    Note over Streamer, Firehose: Active Session (Líneas Paralelas)
+    
+    par a) Real Time Segura
+        loop Reloj / Interval Seguro
+            Streamer->>Room: Ping / Live Status
+        end
+    and b) Feed de Transcripciones
+        loop Interval Servicio
+            Transcriptions-->>Streamer: Nuevos fragmentos (faster-whisper)
+        end
+    and c) Intervenciones del Público
+        loop Firehose
+            Firehose-->>Streamer: Eventos de chat sin etiquetar (raw feed)
+        end
+    end
+    end
+
+    MC->>Room: Desconecta Room / Finaliza Ciclo
+    Room-->>Streamer: Cierre de Sesión
+```
+
+## 7. Zeus y la Generación de PRESETS (MCPGallery)
+
+Dentro del Scriptorium, la creación y gestión de los *packs* de capacidades (los `PRESETS`) no es un proceso manual aislado, sino que recae en **Zeus** (`mcp-presets-site`). Zeus es una interfaz web que opera como el organizador del catálogo del ecosistema MCP.
+
+### 7.1 ¿Cómo Funciona Zeus?
+
+Zeus se conecta a las definiciones de los servidores activos en la galería (como `mcp-model-sdk` y `mcp-mesh-sdk`), lee las herramientas que exponen (*capabilities*) y permite al orquestador agruparlas en *packs* lógicos. Estos *packs* se almacenan en `mcp_presets.json` y se sirven a los agentes o clientes cuando hacen su llamada inicial.
+
+```mermaid
+flowchart TD
+    subgraph MCPGallery
+        ModelSDK[mcp-model-sdk<br/>(Tools & Resources)]
+        MeshSDK[mcp-mesh-sdk<br/>(Firehose & Net)]
+    end
+
+    subgraph Zeus Web Interface
+        Z1[Lectura de Capabilities]
+        Z2[Empaquetado de Tools]
+        Z3[Generación de PRESETS]
+    end
+
+    ModelSDK -->|Expone Capabilities| Z1
+    MeshSDK -->|Expone Capabilities| Z1
+    Z1 --> Z2
+    Z2 --> Z3
+
+    Z3 -->|Exporta mcp_presets.json| Client[Cliente / Streamer<br/>Solicita Handshake]
+```
+
+### 7.2 Ejemplo Real: Pack "MCP Launcher Control"
+
+Para habilitar el flujo descrito en la Sección 6, Zeus puede ensamblar un *preset* específico para el control de la sesión (como el preset real con ID `1777738351433` hallado en su configuración). En lugar de darle al Streamer acceso a todo el motor, Zeus empaqueta exclusivamente las herramientas de orquestación.
+
+Este preset contiene un *payload* real con tools provenientes de servidores como `MCPLauncherServer`:
+- `launch_mcp_server`
+- `stop_mcp_server`
+- `restart_mcp_server`
+- `launch-session`
+- `get_server_status`
+
+```mermaid
+classDiagram
+    class MCPLauncherControl {
+        <<PRESET PACK>>
+        +String id: "1777738351433"
+        +String category: "productivity"
+        +List~String~ items (Tools)
+    }
+
+    class Tools {
+        launch_mcp_server()
+        launch-session()
+        get_server_status()
+    }
+
+    MCPLauncherControl *-- Tools : Contiene
+```
+
+Gracias a **Zeus**, el Scriptorium mantiene sus servidores desacoplados, mientras que la interfaz web se encarga de crear estos "trajes a medida" (*presets*) para cada actor que entra al **Arrakis Theater**.
