@@ -69,13 +69,13 @@ El ecosistema Scriptorium no entrega todas las herramientas a todos los actores 
 
 ```mermaid
 flowchart TD
-    subgraph Infraestructura (MCPGallery)
+    subgraph Infraestructura [Infraestructura MCPGallery]
         Mesh[mcp-mesh-sdk<br/>Tools & Firehose]
         Model[mcp-model-sdk<br/>Inferencia & Prompts]
         Launcher[MCPLauncherServer<br/>Orquestación]
     end
 
-    subgraph Zeus Web Interface (mcp-presets-site)
+    subgraph Zeus [Zeus Web Interface]
         Cat[Catálogo de Capabilities]
         Gen[Generador de PRESETS]
         Cat --> Gen
@@ -85,7 +85,7 @@ flowchart TD
     Model -. "Expone Tools" .-> Cat
     Launcher -. "Expone Tools" .-> Cat
 
-    subgraph Plugin: McpPresets Agent
+    subgraph Plugin [Plugin McpPresets Agent]
         Import[Importación y Validación<br/>Esquema PresetModel]
         PresetsDB[(presets/*.json)]
         Assign[agent-assignments.json]
@@ -96,9 +96,9 @@ flowchart TD
 
     Gen == "Exporta JSON Compatible" ==> Import
 
-    subgraph Ecosistema de Agentes (AGENT_CREATOR)
-        AgentA[Agente: Tarotista<br/>Inyecta mcpPresets en Recipe]
-        AgentB[Agente: Nonsi<br/>Inyecta mcpPresets en Recipe]
+    subgraph Ecosistema [Ecosistema de Agentes]
+        AgentA[Agente: Agente/Modelo<br/>Inyecta mcpPresets en Recipe]
+        AgentB[Agente: Agente/Modelo<br/>Inyecta mcpPresets en Recipe]
         Streamer[Cliente: Streamer<br/>Recibe Preset de Orquestación]
     end
 
@@ -112,7 +112,7 @@ flowchart TD
 ## 2. Índice de Enlaces y Rutas Clave
 
 *El índice completo de referencias y rutas ha sido extraído a su propio documento para facilitar el mantenimiento.*
-👉 **[Ver Índice de Enlaces (index.md)](file:///Users/morente/Desktop/THEIA_PATH/NUEVA_BASE/SCRIPTORIUM/ALEPH/ARCHIVO/future-pipeline-engine/index.md)**
+👉 **[Ver Índice de Enlaces (index.md)](https://github.com/escrivivir-co/aleph-scriptorium/blob/integration/beta/scriptorium/ARCHIVO/future-pipeline-engine/index.md)**
 
 
 
@@ -353,14 +353,14 @@ Zeus se conecta a las definiciones de los servidores activos en la galería (com
 ```mermaid
 flowchart TD
     subgraph MCPGallery
-        ModelSDK[mcp-model-sdk<br/>(Tools & Resources)]
-        MeshSDK[mcp-mesh-sdk<br/>(Firehose & Net)]
+        ModelSDK["mcp-model-sdk<br/>(Tools & Resources)"]
+        MeshSDK["mcp-mesh-sdk<br/>(Firehose & Net)"]
     end
 
-    subgraph Zeus Web Interface
-        Z1[Lectura de Capabilities]
-        Z2[Empaquetado de Tools]
-        Z3[Generación de PRESETS]
+    subgraph Zeus [Zeus Web Interface]
+        Z1["Lectura de Capabilities"]
+        Z2["Empaquetado de Tools"]
+        Z3["Generación de PRESETS"]
     end
 
     ModelSDK -->|Expone Capabilities| Z1
@@ -368,7 +368,7 @@ flowchart TD
     Z1 --> Z2
     Z2 --> Z3
 
-    Z3 -->|Exporta mcp_presets.json| Client[Cliente / Streamer<br/>Solicita Handshake]
+    Z3 -->|"Exporta mcp_presets.json"| Client["Cliente / Streamer<br/>Solicita Handshake"]
 ```
 
 ### 7.2 Ejemplo Real: Pack "MCP Launcher Control"
