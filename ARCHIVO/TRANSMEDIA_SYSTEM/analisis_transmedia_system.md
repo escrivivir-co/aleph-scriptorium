@@ -111,22 +111,7 @@ flowchart LR
   Voz --> Obra
   Corpus --> Contexto
 ```
-
-Fallback histórico: [analisis_transmedia_system_PICS/CHARTS_02.png](analisis_transmedia_system_PICS/CHARTS_02.png)
-
 ![Fallback chart 02](analisis_transmedia_system_PICS/CHARTS_02.png)
-
-### Fases del viaje
-
-1. **Captura:** se recogen stream, chat, bots y rooms. La prioridad es no perder procedencia: quién dijo qué, dónde, cuándo y bajo qué sesión.
-2. **Soporte textual:** si hay audio/vídeo, `media-extraction` genera transcripción. Esta fase es auxiliar: permite buscar, citar y segmentar.
-3. **Normalización:** `WiringEditor`/RxJS o una capa equivalente transforma entradas heterogéneas en eventos comparables.
-4. **Crossover de skills:** el router decide qué señales van a corpus, diagnóstico, futuros, resumen, moderación o descarte.
-5. **Edición viva:** el elenco ajusta la ventana de contexto; el Equipo de Ceremonias decide hitos; Zeus cambia capacidades si hace falta.
-6. **Cristalización:** Document Machine, `futures-engine` y @voz convierten material en corpus, grafo de futuros y piezas publicables.
-7. **Reinyección:** lo publicado genera nuevas respuestas; esas respuestas vuelven como eventos, no como canon automático.
-
----
 
 ## ¿Cuna o madre del proyecto?
 
