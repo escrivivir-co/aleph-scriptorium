@@ -1,5 +1,7 @@
 # Ficha de producto: Scriptorium Skins ARG
 
+Sobreseído por: T04x06a: "Ficha de producto: Scriptorium skins ARG" https://escrivivir.co/2026/06/04/t04x06a-ficha-de-producto-scriptorium-skins-arg/
+
 <div style="display: flex; justify-content: center;">
 
 <img src="./SCRIPTORIUM-SPOT/BRANDING/SCRIPTORIUM_SKINS.png" alt="Sello Scriptorium Skins" width="220">
@@ -26,7 +28,7 @@ Es un circuito, una radicoma de pipelines para captura, normalización, selecci�
 | Dubplate | Autopoiesis de la red: nodos centrales de confianza y referencia a modo de '*famas*' | Agitpro para conectividad de '*esperanzas*'. Call4skins para '*cronopios*'. | Rollo beefs o batallas de gallos pero abriendo el campo, un poco tutifrutti: a) oposición, b) colaboración, c) chill. |
 | Custom pre-amp | Future Pipeline Engine | Orquestar, enrutar, aplicar políticas y conectar "ventanas de contexto". Estamos mirando ngRxStore + xState + graphDB + MongoDB para facil apertura al Open Web con OWL2. Crear razonadores semánticos básicos pero unir rápido las tripletas sujeto-predicado-objeto a motores que apilan capas "Aleph" para construir sistemas de lienzos transmedia cual espacios ZFC.  | No evitar que la utilidad o el uso monten atajos en la red envenenando con monolitos. O si se hace, asegurarse de incluir un 'kill switch' por design |
 | Crossover | Router semántico | Es curioso, Turing/Chomsky like, lo mucho que puede parecerse a una ristra de ADN una gramática o la definición de un autómata para máquina universal (sin límites, con Alephs, de espacio y tiempo) | No orquestar equilibradamente el append-only de las main con los volátiles de las layers superiores. |
-| Amplifier racks | `media-extraction`, `WiringEditor`, `futures-engine`, `engine-plan` | Procesar señales por función especializada. Do it your self. Comprueba las libertades GNU Linux. Muévete libre en el espacio entre SHARPs y Trads más o menos ápolítico. El principio ácrata es por definición una oposición. Verbigracia: "GNU is not Linux" | No ocultar errores bajo “magia IA”. |
+| Amplifier racks | `media-extraction`, `WiringEditor`, `futures-engine`, `engine-plan` | Procesar señales por función especializada. Do it your self. Comprueba las libertades GNU Unix. Muévete libre en el espacio entre SHARPs y Trads más o menos ápolítico. El principio ácrata es por definición una oposición. Verbigracia: "GNU is not Unix" | No ocultar errores bajo “magia IA”. |
 
 
 El movimiento GNU/Linux garantiza que los usuarios tengan el control absoluto de sus sistemas operativos a través de las 4 libertades fundamentales. A diferencia del software privativo, estas libertades son éticas y buscan promover la colaboración abierta. [[1](https://www.youtube.com/watch?v=yQUfOaGAb28&t=218), [2](https://www.gnu.org/philosophy/philosophy.es.html), [3](https://www.gnu.org/philosophy/free-sw.es.html)]
