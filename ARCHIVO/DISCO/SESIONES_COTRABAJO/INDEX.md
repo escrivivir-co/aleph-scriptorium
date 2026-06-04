@@ -1,7 +1,7 @@
 # Índice — SESIONES_COTRABAJO
 
 > **Ubicación**: `ARCHIVO/DISCO/SESIONES_COTRABAJO/`  
-> **Actualizado**: 2026-01-04  
+> **Actualizado**: 2026-06-03  
 > **Principio**: DRY — Solo referencias, detalles en cada sesión (`00_SESION.md`)  
 > **Feature**: COWORK-1.0.0
 
@@ -11,9 +11,10 @@
 
 | Sesión | Épica | Turnos | Estado |
 |--------|-------|--------|--------|
+| [2026-06-03_scriptorium-skins-spot](2026-06-03_scriptorium-skins-spot/) | SKINS-SPOT-1.0.0 | 0 | 🟢 Activa |
 | [2026-01-03_prolog-agent-brain-pack-refinement](2026-01-03_prolog-agent-brain-pack-refinement/) | PROLOG-DRY-1.0.0, TEATRO-PROLOG-1.0.0 | 15 | ✅ Cerrada |
 | [2026-01-03_prolog-e2e-testing](2026-01-03_prolog-e2e-testing/) | PROLOG-E2E-1.0.0 | 16 | ✅ Cerrada (88.5%) |
-| [2026-01-04_demo-ui-prologeditor](2026-01-04_demo-ui-prologeditor/) | DEMO-UI-1.0.0 | - | 🟢 Activa |
+| [2026-01-04_demo-ui-prologeditor](2026-01-04_demo-ui-prologeditor/) | DEMO-UI-1.0.0 | - | 🔴 Cerrada |
 | [2026-01-04_dramaturgia-scriptorium-maquina](2026-01-04_dramaturgia-scriptorium-maquina/) | DRAMATURGIA-MAQUINA-1.0.0 | 12 | ✅ Cerrada (100%) |
 
 ---
@@ -47,9 +48,9 @@ Cada carpeta sigue el protocolo `cotrabajo.instructions.md`:
 
 | Métrica | Valor |
 |---------|-------|
-| Total sesiones | 4 |
-| ✅ Cerradas | 3 |
-| 🟢 Activas | 1 |
+| Total sesiones | 5+ |
+| ✅ Cerradas | ver `00_SESION.md` de cada carpeta |
+| 🟢 Activas | 1 (`2026-06-03_scriptorium-skins-spot`) |
 
 ---
 
