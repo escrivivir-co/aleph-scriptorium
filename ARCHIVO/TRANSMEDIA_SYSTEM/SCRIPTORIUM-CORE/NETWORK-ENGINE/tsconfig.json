@@ -3,6 +3,9 @@
   "references": [
     { "path": "packages/core" },
     { "path": "packages/node" },
-    { "path": "packages/apps" }
+    { "path": "packages/mcp" },
+    { "path": "packages/mcp-runtime" },
+    { "path": "packages/apps" },
+    { "path": "packages/contract-adapters" }
   ]
 }

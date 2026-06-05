@@ -69,3 +69,7 @@ Los criterios para considerar una tarea finalizada, los estándares FOSS y las r
 El objetivo final no es producir respuestas.
 
 El objetivo final es construir progresivamente un sistema de conocimiento, diseño e implementación capaz de evolucionar durante meses o años sin perder coherencia arquitectónica.
+
+# Errores frecuentes a evitar
+
+- En este repositorio usa siempre Bun: bun install, bun run, bun x. No uses npm, npx ni npm run salvo que lo pida explícitamente.

@@ -1,6 +1,8 @@
 export function getEnv(key: string, defaultValue: string): string {
-  if (typeof process !== 'undefined' && process.env && process.env[key]) {
-    return process.env[key] as string;
+  const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env;
+  const value = env?.[key];
+  if (value) {
+    return value;
   }
   return defaultValue;
 }
