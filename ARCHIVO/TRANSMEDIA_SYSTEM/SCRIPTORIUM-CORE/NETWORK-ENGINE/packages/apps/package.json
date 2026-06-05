@@ -1,0 +1,14 @@
+{
+  "name": "@network-engine/apps",
+  "version": "1.0.0",
+  "description": "App runner and examples for Network-Engine",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@network-engine/core": "workspace:*",
+    "@network-engine/node": "workspace:*",
+    "@network-engine/aleph-lang": "workspace:*"
+  }
+}

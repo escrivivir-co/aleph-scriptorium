@@ -1,0 +1,1 @@
+Esta carpeta contiene CONTEXTO PARA DEVELOPERS Y CODERS para la visión en conjunto del monorepo ya sea para desarrollo de paquetes o desarrollo de apps. Así como para OPERATORS y la distribución o publicación o conexión al bucle CD/CI.

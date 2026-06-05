@@ -1,0 +1,11 @@
+{
+  "name": "@network-engine/mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "@network-engine/core": "workspace:*",
+    "@network-engine/node": "workspace:*",
+    "@network-engine/aleph-lang": "workspace:*"
+  }
+}

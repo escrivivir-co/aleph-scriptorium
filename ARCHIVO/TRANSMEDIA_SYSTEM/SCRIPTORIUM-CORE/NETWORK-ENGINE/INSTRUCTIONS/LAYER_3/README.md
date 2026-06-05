@@ -1,0 +1,1 @@
+Esta carpeta contiene ANALISIS FUNCIONAL de los componentes. 

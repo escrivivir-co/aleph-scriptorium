@@ -1,0 +1,35 @@
+{
+  "name": "network-engine",
+  "version": "1.0.0",
+  "description": "Plataforma para construir lenguajes. Modelador de Alephs",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf node_modules dist packages/*/node_modules packages/*/dist",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
+    "lint": "eslint \"packages/**/*.ts\"",
+    "typecheck": "tsc -b",
+    "build": "tsc -b",
+    "start": "cd packages/apps && bun run src/launcher.ts",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
+    "test:coverage": "bun test --coverage",
+    "dev": "bun test --watch",
+    "ci": "npm run typecheck && npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AIGPLv1",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "rxjs": "^7.8.2",
+    "xstate": "^5.32.0"
+  }
+}

@@ -1,0 +1,1 @@
+Esta carpeta contiene documentación y protocolos de uso de tecnologías para la codebase.

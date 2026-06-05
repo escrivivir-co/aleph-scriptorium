@@ -61,19 +61,19 @@ export interface Context {
     messages: (ERROR_MESSAGE | INFO_MESSAGE)[]
     context?: Context;
 }
-export interface CtxRegion extends Context {
+export interface CtxAleph extends Context {
     interval: IntervalBounds;
     value: NOMON_COUNT;
 }
-export interface CtxRegionDiscrete extends CtxRegion {
+export interface CtxAlephDiscrete extends CtxAleph {
 }
-export interface CtxRegionContinous extends CtxRegion {
+export interface CtxAlephContinous extends CtxAleph {
 }
 
-export interface CtxStateDiscrete extends CtxRegionDiscrete { }
-export interface CtxStateContinous extends CtxRegionContinous {
+export interface CtxStateDiscrete extends CtxAlephDiscrete { }
+export interface CtxStateContinous extends CtxAlephContinous {
 }
-export interface CtxStateContinousR extends CtxRegionContinous {
+export interface CtxStateContinousR extends CtxAlephContinous {
     domain: Rational | Irrational[] | NOMON_COUNT;
 }
 export interface CtxStateContinousRQ extends CtxStateContinousR {
@@ -99,22 +99,22 @@ export interface Operation {
 }
 
 export interface Clause {
-    ctx: CtxRegion;
-    head: (ctx?: CtxRegion) => Clause | null;
-    tail: (ctx?: CtxRegion) => CtxRegion;
+    ctx: CtxAleph;
+    head: (ctx?: CtxAleph) => Clause | null;
+    tail: (ctx?: CtxAleph) => CtxAleph;
 }
 
 export abstract class Horn implements Clause {
-    ctx: CtxRegion;
+    ctx: CtxAleph;
 
-    constructor(ctx: CtxRegion) {
+    constructor(ctx: CtxAleph) {
         this.ctx = ctx;
     }
 
-    abstract head(ctx?: CtxRegion): Horn | null;
-    abstract tail(ctx?: CtxRegion): CtxRegion;
+    abstract head(ctx?: CtxAleph): Horn | null;
+    abstract tail(ctx?: CtxAleph): CtxAleph;
 
-    getCtx(ctx?: CtxRegion): CtxRegion | null {
+    getCtx(ctx?: CtxAleph): CtxAleph | null {
         return ctx || this.ctx || null;
     }
 }
@@ -122,7 +122,7 @@ export abstract class Horn implements Clause {
 /**
 */
 
-export interface CtxParamsHornNext extends CtxRegion {
+export interface CtxParamsHornNext extends CtxAleph {
     direction: NOMON_COUNT;
     restricted: NOMON_COUNT[];
 }
@@ -339,7 +339,7 @@ export class HornNextContinousRI extends HornNextContinousR {
  * 
  */
 export interface Region {
-    state: CtxRegion;
+    state: CtxAleph;
     operations: Operation[];
 }
 export interface RegDiscrete extends Region {

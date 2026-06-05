@@ -1,0 +1,1 @@
+Esta carpeta contiene ANALISIS TÉCNICO de los componentes. Ligada a la carpeta ADR.
