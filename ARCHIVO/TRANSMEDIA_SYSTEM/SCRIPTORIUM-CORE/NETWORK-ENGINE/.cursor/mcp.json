@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "aleph-os": {
+      "url": "http://localhost:3100/mcp"
+    }
+  }
+}

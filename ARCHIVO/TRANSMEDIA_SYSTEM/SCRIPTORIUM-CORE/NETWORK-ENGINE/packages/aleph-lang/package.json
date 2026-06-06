@@ -5,6 +5,6 @@
   "main": "src/index.ts",
   "dependencies": {
     "@network-engine/core": "workspace:*",
-    "@network-engine/node": "workspace:*"
+    "@network-engine/network-engine": "workspace:*"
   }
 }

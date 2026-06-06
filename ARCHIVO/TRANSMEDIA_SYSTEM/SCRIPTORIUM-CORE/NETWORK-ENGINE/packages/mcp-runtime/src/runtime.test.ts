@@ -134,4 +134,43 @@ describe('createMCPRuntime', () => {
     ]);
     expect(events[3]).toMatchObject({ uri: 'network://palettes/demo' });
   });
+
+  it('registers launcher tools with MCP Apps UI metadata', () => {
+    const configs: Record<string, unknown>[] = [];
+    const server: MCPRuntimeServerLike = {
+      registerTool(_name, config) {
+        configs.push(config);
+      },
+    };
+
+    const runtime = createMCPRuntime({
+      projection: {
+        resources: [],
+        prompts: [],
+        tools: [
+          {
+            name: 'show-aleph-os',
+            description: 'Open UI',
+            inputSchema: { type: 'object' },
+            effect: 'custom',
+            requiresConfirmation: false,
+            idempotent: true,
+            externalEffects: [],
+            launcher: true,
+            ui: { resourceUri: 'ui://aleph-os/mcp-app.html' },
+          },
+        ],
+        sampling: [],
+      },
+    });
+
+    runtime.register(server);
+
+    expect(configs[0]).toMatchObject({
+      _meta: {
+        ui: { resourceUri: 'ui://aleph-os/mcp-app.html' },
+        'network-engine/launcher': true,
+      },
+    });
+  });
 });

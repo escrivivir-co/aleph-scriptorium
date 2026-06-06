@@ -1,10 +1,12 @@
-import { App, AppStatus, createAppId, createUniverseId, getEnv, TestEvent, testMachine, TestSemantics } from '@network-engine/core';
-import { createNodeEngine } from '@network-engine/node';
+import { App, AppStatus, createAppId, createUniverseId, TestEvent, testMachine, TestSemantics } from '@network-engine/core';
+import { createNetworkEngine, type NetworkEngineComposition } from '@network-engine/network-engine';
+import { PubSubConfig, markPublishable } from '@network-engine/pubsub';
 import * as http from 'node:http';
 
 type HelloConfig = {
   port: number;
   appName: string;
+  pubsub?: PubSubConfig;
 };
 
 export class HelloApp implements App<HelloConfig, 'hello', '1.0.0'> {
@@ -18,24 +20,31 @@ export class HelloApp implements App<HelloConfig, 'hello', '1.0.0'> {
 
   public status: AppStatus = { state: 'STOPPED' };
 
-  private engine = createNodeEngine<TestSemantics>(testMachine);
+  private composition?: NetworkEngineComposition<TestSemantics>;
   private server?: http.Server;
   private config?: HelloConfig;
 
   public init(config: HelloConfig) {
     this.config = config;
     this.status = { state: 'STOPPED' };
+    this.composition = createNetworkEngine<TestSemantics>(
+      testMachine,
+      config.pubsub
+        ? { pubsub: { config: config.pubsub, appId: this.manifest.rawId } }
+        : {},
+    );
     console.log(`[${this.manifest.name}] Initialized with config:`, config);
   }
 
   public run() {
-    if (!this.config) throw new Error('App not initialized');
+    if (!this.config || !this.composition) throw new Error('App not initialized');
 
+    const engine = this.composition.orchestrator;
     this.status = { state: 'RUNNING', startedAt: Date.now() };
 
     console.log(`=== Initializing ${this.manifest.name} ===\n`);
 
-    this.engine.selectEvent('CREATE_UNIVERSE').subscribe((event) => {
+    engine.selectEvent('CREATE_UNIVERSE').subscribe((event) => {
       console.log('>> [Stream Observer] Detected Universe Creation event!', event.payload.id);
     });
 
@@ -49,21 +58,21 @@ export class HelloApp implements App<HelloConfig, 'hello', '1.0.0'> {
       timestamp: Date.now()
     };
 
-    this.engine.dispatch(event);
+    engine.dispatch(markPublishable(event));
 
     setTimeout(() => {
       console.log('\n=== Current Machine State ===\n');
-      console.log(this.engine.currentState.value);
-      console.log(this.engine.currentState.context);
+      console.log(engine.currentState.value);
+      console.log(engine.currentState.context);
     }, 1500);
 
     this.server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
         name: this.config!.appName,
-        status: this.engine.currentState.value,
-        activeUniverse: this.engine.currentState.context.activeUniverseId,
-        factsCount: this.engine.currentState.context.facts.length
+        status: engine.currentState.value,
+        activeUniverse: engine.currentState.context.activeUniverseId,
+        factsCount: engine.currentState.context.facts.length
       }, null, 2));
     });
 
@@ -73,6 +82,7 @@ export class HelloApp implements App<HelloConfig, 'hello', '1.0.0'> {
 
     const shutdown = () => {
       console.log(`\n[${this.config!.appName}] Shutting down server...`);
+      this.composition?.pubsubBridge?.disconnect();
       if (this.server) {
         this.server.close(() => {
           this.status = { state: 'STOPPED' };

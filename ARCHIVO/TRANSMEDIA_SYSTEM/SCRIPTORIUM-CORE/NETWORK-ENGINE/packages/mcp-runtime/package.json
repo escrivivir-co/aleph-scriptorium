@@ -6,7 +6,8 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./fastify": "./src/fastify.ts"
+    "./fastify": "./src/fastify.ts",
+    "./http-edge": "./src/http-edge.ts"
   },
   "scripts": {
     "test": "bun test ./src/**/*.test.ts"

@@ -299,6 +299,7 @@ export function createMcpServerFromRuntime(
       {
         description: tool.description,
         inputSchema: z.object({}).passthrough(),
+        ...(tool.ui ? { _meta: { ui: { resourceUri: tool.ui.resourceUri } } } : {}),
       },
       async (args: Record<string, unknown>) => {
         const result = await runtime.executeTool(tool.name, args);
@@ -326,6 +327,7 @@ export function createMcpServerFromRuntime(
         name: tool.name,
         description: tool.description,
         inputSchema: tool.inputSchema,
+        ...(tool.ui ? { _meta: { ui: { resourceUri: tool.ui.resourceUri } } } : {}),
       }))
       .sort((left, right) => left.name.localeCompare(right.name)),
     ...listCache,
@@ -438,8 +440,10 @@ export function registerFastifyMCPRuntime(
           projection: options.projection,
         },
   );
+  // Reference server for registration introspection; each Streamable HTTP request gets its own instance.
   const mcpServer = createMcpServerFromRuntime(options.server, runtime);
   const discoverPayload = createDiscoverPayload(options.server, runtime);
+  const createConnectionServer = () => createMcpServerFromRuntime(options.server, runtime);
 
   fastify.post(path, async (request, reply) => {
     try {
@@ -489,8 +493,16 @@ export function registerFastifyMCPRuntime(
         return undefined;
       }
 
+      const connectionServer = createConnectionServer();
       const transport = new StreamableHTTPServerTransport();
-      await mcpServer.connect(transport as never);
+      const cleanup = () => {
+        transport.close().catch(() => {});
+        connectionServer.close().catch(() => {});
+      };
+      request.raw.on?.('close', cleanup);
+      reply.raw.on?.('close', cleanup);
+
+      await connectionServer.connect(transport as never);
       await transport.handleRequest(request.raw, reply.raw, request.body);
       return undefined;
     } catch (error) {

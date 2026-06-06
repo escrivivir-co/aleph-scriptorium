@@ -7,6 +7,57 @@
 **Tema:** migración/refactor del SDK legacy TypeScript/MCP hacia la nueva máquina Network-Engine.  
 **Entrada legacy principal:** `ARCHIVO/MPC-MESH/CODEBASE/blockly-sdk/packages/blockly-mcp-entity`.
 
+**Programa ASI:** [`DOSSIERS/conceptual-physical-alignment.md`](../../DOSSIERS/conceptual-physical-alignment.md) — Fase 9 en ejecución.
+
+---
+
+## Matriz de Trazabilidad Conceptual ↔ Física
+
+Mapeo canónico entre conceptos del OS Cognitivo (`INSTRUCTIONS`) y paquetes del monorepo (`packages/*`).
+
+> **Regla:** no todo concepto tiene paquete homónimo. `NETWORK_ENGINE` (lenguaje) ≠ `@network-engine/network-engine` (composition root). Ver [ADR 0003](../../ADR/0003-network-engine-orchestrator-package.md).
+
+### Paquetes del monorepo
+
+| Paquete | Concepto | LAYER_1 | LAYER_3 | Rol arquitectónico | Estado |
+| --- | --- | --- | --- | --- | --- |
+| `core` | CORE | [CORE.instructions.md](CORE.instructions.md) | [CORE.functional.md](../LAYER_3/CORE.functional.md) | Núcleo agnóstico: tipos, contratos, orquestador genérico | ✅ Alineado |
+| `node` | NODE | [NODE.instructions.md](NODE.instructions.md) | [NODE.functional.md](../LAYER_3/NODE.functional.md) | Runtime adapter Node/Bun | ✅ Alineado |
+| `browser` | BROWSER | [BROWSER.instructions.md](BROWSER.instructions.md) | [BROWSER.functional.md](../LAYER_3/BROWSER.functional.md) | Runtime adapter Browser | ✅ Alineado |
+| `apps` | APPS (+ MCP Apps UI `aleph-os`) | [APPS.instructions.md](APPS.instructions.md) | [APPS.functional.md](../LAYER_3/APPS.functional.md) | Demostraciones / programas del lenguaje; catálogo incluye MCP Navigator ALEPH OS ([ADR 0004](../../ADR/0004-mcp-apps-ui-projection.md)) | ✅ Alineado |
+| `pubsub` | PUBSUB | [PUBSUB.instructions.md](PUBSUB.instructions.md) | [PUBSUB.functional.md](../LAYER_3/PUBSUB.functional.md) | Transporte de eventos (Socket.IO) | ✅ Alineado |
+| `graph` | GRAPH_STORE | [GRAPHDB.instructions.md](../LAYER_0/GRAPHDB.instructions.md) | — | Adaptador in-memory de `GraphStoreProtocol` | ✅ Alineado |
+| `mcp` | MCP (proyección) | [ECOSYSTEM.md](ECOSYSTEM.md) §MCP | — | Proyección declarativa MCP desde contratos | ✅ Alineado |
+| `mcp-runtime` | MCP_RUNTIME | [MCP_RUNTIME.instructions.md](MCP_RUNTIME.instructions.md) | [MCP_RUNTIME.functional.md](../LAYER_3/MCP_RUNTIME.functional.md) | Ejecución MCP + adapter Fastify | ✅ Alineado |
+| `contract-adapters` | CONTRACT_ADAPTERS | [CONTRACT_ADAPTERS.instructions.md](CONTRACT_ADAPTERS.instructions.md) | [CONTRACT_ADAPTERS.functional.md](../LAYER_3/CONTRACT_ADAPTERS.functional.md) | Anti-corrupción: metadatos externos → `DomainContract` | ✅ Fase 5 |
+| `aleph-lang` | LANGUAGES (huésped) | [LANGUAGES.instructions.md](LANGUAGES.instructions.md) | [LANGUAGES.functional.md](../LAYER_3/LANGUAGES.functional.md) | Primer lenguaje derivado (Capa 2) materializado | ✅ Alineado |
+| `network-engine` | NETWORK_ENGINE (orquestador) | [NETWORK_ENGINE.instructions.md](NETWORK_ENGINE.instructions.md) | [NETWORK_ENGINE.functional.md](../LAYER_3/NETWORK_ENGINE.functional.md) | Composition root: ensambla core+node+pubsub+mcp-runtime+document sync | ✅ Fase 9 |
+| `mongo` | DOCUMENT_STORE (Mongo) | [MONGO.instructions.md](MONGO.instructions.md) | [MONGO.functional.md](../LAYER_3/MONGO.functional.md) | Adaptador MongoDB de `DocumentStoreProtocol` + change streams ([ADR 0005](../../ADR/0005-document-store-async-first.md)) | ✅ Fase 9 |
+| `graphql` | GRAPHQL (proyección) | [GRAPHQL.instructions.md](GRAPHQL.instructions.md) | [GRAPHQL.functional.md](../LAYER_3/GRAPHQL.functional.md) | Proyección declarativa GraphQL desde contratos ([ADR 0006](../../ADR/0006-graphql-projection.md)) | ✅ Fase 9 |
+
+### Materializaciones LAYER_0 (drivers)
+
+| LAYER_0 | Paquete | Notas |
+| --- | --- | --- |
+| [GRAPHDB.instructions.md](../LAYER_0/GRAPHDB.instructions.md) | `graph` (+ `node/GraphDbPlugin`) | Contrato en `core`; adaptadores en `graph` y `node` |
+| [MCP.instructions.md](../LAYER_0/MCP.instructions.md) | `mcp`, `mcp-runtime` | Proyección declarativa + runtime de ejecución |
+| [SOCKETIO.instructions.md](../LAYER_0/SOCKETIO.instructions.md) | `pubsub` | Hub + bridge cliente |
+| [RXJS.instructions.md](../LAYER_0/RXJS.instructions.md) | `core` (`orchestrator.ts`) | Infraestructura reactiva del núcleo |
+| [MONGODB.instructions.md](../LAYER_0/MONGODB.instructions.md) | `mongo` | Driver documental + change streams |
+| [GRAPHQL.instructions.md](../LAYER_0/GRAPHQL.instructions.md) | `graphql` | Proyección GraphQL declarativa |
+| [XSTATE.instructions.md](../LAYER_0/XSTATE.instructions.md) | `core` (`engine.ts`) | Semántica operacional del núcleo |
+| [TS.instructions.md](../LAYER_0/TS.instructions.md) | Todo el monorepo | Metalenguaje anfitrión (Capa 0) |
+
+### Conceptos sin paquete homónimo (intencional)
+
+| Concepto | Naturaleza | Artefactos |
+| --- | --- | --- |
+| NETWORK_ENGINE (lenguaje) | Metamodelo / plataforma conceptual | `LAYER_1` + `LAYER_3` NETWORK_ENGINE.* |
+| SEMANTINC (contenido ontológico) | Capa 2 operativa — ontologías hospedadas | [SEMANTINC.instructions.md](../LAYER_2/SEMANTINC.instructions.md) |
+| LANGUAGES (generalización) | Dossier conceptual de lenguajes derivados | `LAYER_1/LANGUAGES`, `LAYER_3/LANGUAGES`, `LANGUAGES/` |
+
+---
+
 Este documento transforma la intuición inicial:
 
 ```text
@@ -506,10 +557,10 @@ El objetivo es que el compilador pueda inferir:
 
 ### Fase 8 — MCP Apps/UI projection
 
-- [ ] Conservar la idea de UI genérica schema-driven.
-- [ ] Cambiar fuente de UI: `DomainContract.ui`, no `EntityMetadata` directo.
-- [ ] Permitir que una UI consuma resources antes que tools.
-- [ ] Tools de UI solo para acciones con efectos.
+- [x] Conservar la idea de UI genérica schema-driven.
+- [x] Cambiar fuente de UI: `DomainContract` + `AppLauncherContract`, no `EntityMetadata` directo ([ADR 0004](../../ADR/0004-mcp-apps-ui-projection.md)).
+- [x] Permitir que una UI consuma resources antes que tools (`packages/apps/src/catalog/aleph-os`).
+- [x] Tools de UI solo para launchers (`show-aleph-os`); sin CRUD en ALEPH OS.
 - [ ] Definir forms como prompts/protocols + mutation confirmation cuando corresponda.
 
 ### Fase 9 — Compatibilidad legacy
@@ -568,7 +619,7 @@ Orden recomendado:
 - [ ] ADR: OpenAPI como proyección del contrato.
 - [ ] ADR: Async-first repository interface.
 - [ ] ADR: Compatibilidad temporal con `EntityMCPAppsServer`.
-- [ ] ADR: MCP Apps generadas desde `DomainContract.ui`.
+- [x] ADR: MCP Apps generadas desde `DomainContract` + launchers ([ADR 0004](../../ADR/0004-mcp-apps-ui-projection.md)).
 
 ## Criterios de aceptación del refactor
 
@@ -658,7 +709,8 @@ Tras revisar Git, el informe anterior estaba incompleto: no solo se había tocad
 ### Ajustes de integración
 
 - `packages/core/src/index.ts` exporta contratos.
-- `packages/mcp/package.json` expone `./projection` sin convertir la proyección en side effect del servidor.
+- `packages/mcp/package.json` expone `@network-engine/mcp/projection` (proyección declarativa pura) y `@network-engine/mcp/server` (alias de `.` para entrypoints STDIO legacy), sin convertir la proyección en side effect del servidor.
+- `packages/core/package.json` exporta contratos desde el entrypoint principal (`.`); el subpath `./contracts` queda como candidato futuro (ver §Preguntas abiertas, resolución Q1).
 - `packages/mcp/tsconfig.json` queda referenciado y preparado para tests Bun.
 - `packages/contract-adapters/tsconfig.json` queda preparado para tests Bun.
 - `tsconfig.json` referencia `packages/mcp` y `packages/contract-adapters`.

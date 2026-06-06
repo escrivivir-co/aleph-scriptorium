@@ -1,5 +1,12 @@
 import { NetworkOrchestrator, NetworkPlugin, PluginId, PluginCapabilities, LanguageSemantics } from '@network-engine/core';
 
+export {
+  GraphDbStore,
+  GraphDbPlugin,
+  createGraphDbStore,
+  type GraphDbConfig,
+} from './graph-db';
+
 // Node-specific plugin example
 export class FileSystemPlugin<TSemantics extends LanguageSemantics<any, any>> implements NetworkPlugin<TSemantics, Record<string, unknown>> {
   public readonly id = 'node-fs-persistence' as PluginId;

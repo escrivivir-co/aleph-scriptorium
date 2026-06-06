@@ -1,8 +1,10 @@
 import { App, AppStatus, createAppId } from '@network-engine/core';
-import { AlephUniverse, createForceId } from '@network-engine/aleph-lang';
+import { AlephUniverse, createForceId, AlephSemantics } from '@network-engine/aleph-lang';
+import { PubSubConfig, createPubSubBridge, PubSubBridge } from '@network-engine/pubsub';
 
 type AlephConfig = {
   appName: string;
+  pubsub?: PubSubConfig;
 };
 
 export class AlephLangApp implements App<AlephConfig, 'aleph', '1.0.0'> {
@@ -16,10 +18,14 @@ export class AlephLangApp implements App<AlephConfig, 'aleph', '1.0.0'> {
 
   public status: AppStatus = { state: 'STOPPED' };
   private config?: AlephConfig;
+  private bridge?: PubSubBridge<AlephSemantics>;
 
   public init(config: AlephConfig) {
     this.config = config;
     this.status = { state: 'STOPPED' };
+    if (config.pubsub) {
+      this.bridge = createPubSubBridge<AlephSemantics>(config.pubsub, this.manifest.rawId);
+    }
   }
 
   public run() {
@@ -30,6 +36,10 @@ export class AlephLangApp implements App<AlephConfig, 'aleph', '1.0.0'> {
 
     // Using the Aleph-Lang DSL (Layer 2)
     const universe = new AlephUniverse('Aleph-Alpha');
+
+    if (this.bridge) {
+      this.bridge.connect(universe.orchestrator);
+    }
 
     universe.onBoundaryReached((limit) => {
       console.log(`\n[!] Boundary Reached at Dimension ${limit}. Triggering Expansion...`);
@@ -53,9 +63,10 @@ export class AlephLangApp implements App<AlephConfig, 'aleph', '1.0.0'> {
       });
       console.log('  Status:', universe.getStatus());
     }
-    
+
     setTimeout(() => {
       this.status = { state: 'STOPPED' };
+      if (this.bridge) this.bridge.disconnect();
       console.log('\n=== Run Finished ===\n');
       process.exit(0);
     }, 1000);

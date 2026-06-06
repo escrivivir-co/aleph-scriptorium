@@ -13,6 +13,14 @@
 
 # Estructura y Reglas por Archivo
 
+## `knowledge-system.ts` (KnowledgeSystem builder)
+
+**Regla:** Metamodelo puro para sistemas de conocimiento navegables que proyectan a `DomainContract`. Sin MCP SDK, filesystem, Vite, `node:*`, DOM ni UI runtime.
+
+**Exports:** `defineKnowledgeSystem`, `createKnowledgeSystemContract`, `buildKnowledgeSnapshot`, `formatKnowledgeSystemText`, `getKnowledgeResourceUris`. La materialización de handlers y HTML pertenece a `@network-engine/apps`. Ver [ADR 0009](../../ADR/0009-knowledge-system-mcp-app-builder.md).
+
+---
+
 ## `types.ts` (Contratos y Tipos)
 
 **Regla:** Solo código de tipos, interfaces y factory functions mínimas para Branded Types.

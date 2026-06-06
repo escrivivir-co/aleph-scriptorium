@@ -62,6 +62,17 @@ universe.absorbForce(forceId);
 ## 4. Reglas de Paquetería (Scaffolding)
 
 1. **Ubicación:** `packages/<nombre>-lang/`.
-2. **Dependencias:** Debe depender de `@network-engine/core` vía `workspace:*`.
+2. **Dependencias:** `@network-engine/core` y `@network-engine/network-engine` vía `workspace:*`.
 3. **Exportación (`index.ts`):** Debe exportar el DSL Wrapper, la interfaz `TSemantics` y los constructores de identificadores (Branded factories).
 4. **Validación:** El lenguaje debe compilar (`bun run typecheck`) sin inferencias fallidas hacia `any` en la factoría de la máquina.
+
+### Cableado de runtime (composition root)
+
+El DSL wrapper instancia el orquestador vía `createNetworkEngine(machine).orchestrator`, no `createNodeEngine()` directo. Ver ADR 0003.
+
+* **En el paquete `-lang`:** solo runtime de dominio (orquestador + máquina). Sin pubsub ni MCP.
+* **En apps (Capa 3):** pubsub/MCP se conectan al orquestador expuesto por el DSL — p. ej. `bridge.connect(universe.orchestrator)` en `packages/apps/src/catalog/aleph/app.ts`.
+
+Referencia: `packages/aleph-lang/src/universe.ts`.
+
+**Nota (tsconfig):** `@network-engine/network-engine` no debe ser project reference del paquete `-lang` — crearía un ciclo (`mcp → aleph-lang → network-engine → mcp`). La dependencia en `package.json` y la referencia a `core` bastan para `tsc -b`.

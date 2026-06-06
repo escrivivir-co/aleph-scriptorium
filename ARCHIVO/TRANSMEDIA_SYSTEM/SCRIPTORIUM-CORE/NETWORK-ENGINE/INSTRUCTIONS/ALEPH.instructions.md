@@ -13,29 +13,51 @@ Contiene constituciones, principios y convenciones.
   * [AGILE](LAYER_0/AGILE.instructions.md)
   * [DOD](LAYER_0/DOD.instructions.md)
   * [TS](LAYER_0/TS.instructions.md)
+  * [BUN](LAYER_0/BUN.instructions.md)
+  * [TODO_TYPES](LAYER_0/TODO_TYPES.instructions.md)
   * [RXJS](LAYER_0/RXJS.instructions.md)
   * [XSTATE](LAYER_0/XSTATE.instructions.md)
   * [NODE](LAYER_0/NODE.instructions.md)
   * [MCP](LAYER_0/MCP.instructions.md)
+  * [SOCKETIO](LAYER_0/SOCKETIO.instructions.md)
+  * [GRAPHDB](LAYER_0/GRAPHDB.instructions.md)
+  * [DOCKER](LAYER_0/DOCKER.instructions.md)
+  * [MONGODB](LAYER_0/MONGODB.instructions.md)
+  * [GRAPHQL](LAYER_0/GRAPHQL.instructions.md)
 
 * **[LAYER_1](LAYER_1/README.md)**: Análisis técnico estricto de los componentes.
   * [NETWORK_ENGINE](LAYER_1/NETWORK_ENGINE.instructions.md)
+  * [ECOSYSTEM](LAYER_1/ECOSYSTEM.md)
+  * [MCP_RUNTIME](LAYER_1/MCP_RUNTIME.instructions.md)
+  * [LANGUAGES](LAYER_1/LANGUAGES.instructions.md)
   * [CORE](LAYER_1/CORE.instructions.md)
   * [NODE](LAYER_1/NODE.instructions.md)
   * [BROWSER](LAYER_1/BROWSER.instructions.md)
   * [APPS](LAYER_1/APPS.instructions.md)
+  * [PUBSUB](LAYER_1/PUBSUB.instructions.md)
+  * [CONTRACT_ADAPTERS](LAYER_1/CONTRACT_ADAPTERS.instructions.md)
+  * [DOCUMENT_STORE](LAYER_1/DOCUMENT_STORE.instructions.md)
+  * [MONGO](LAYER_1/MONGO.instructions.md)
+  * [GRAPHQL](LAYER_1/GRAPHQL.instructions.md)
 
 * **[LAYER_2](LAYER_2/README.md)**: Contexto operativo para el ecosistema.
   * [MONOREPO](LAYER_2/MONOREPO.instructions.md)
   * [APPsDEV](LAYER_2/APPsDEV.instructions.md)
+  * [SEMANTINC](LAYER_2/SEMANTINC.instructions.md)
 
 * **[LAYER_3](LAYER_3/README.md)**: Análisis funcional y metalingüístico.
   * [NETWORK_ENGINE](LAYER_3/NETWORK_ENGINE.functional.md)
+  * [MCP_RUNTIME](LAYER_3/MCP_RUNTIME.functional.md)
   * [LANGUAGES](LAYER_3/LANGUAGES.functional.md)
   * [CORE](LAYER_3/CORE.functional.md)
   * [NODE](LAYER_3/NODE.functional.md)
   * [BROWSER](LAYER_3/BROWSER.functional.md)
   * [APPS](LAYER_3/APPS.functional.md)
+  * [PUBSUB](LAYER_3/PUBSUB.functional.md)
+  * [CONTRACT_ADAPTERS](LAYER_3/CONTRACT_ADAPTERS.functional.md)
+  * [DOCUMENT_STORE](LAYER_3/DOCUMENT_STORE.functional.md)
+  * [MONGO](LAYER_3/MONGO.functional.md)
+  * [GRAPHQL](LAYER_3/GRAPHQL.functional.md)
 
 * **[LAYER_4](LAYER_4/README.md)**: Protocolos Operativos (DevOps Agent).
   * [LANGUAGES](LAYER_4/LANGUAGES.instructions.md)
@@ -44,7 +66,7 @@ Contiene constituciones, principios y convenciones.
 * [LANGUAGES](../LANGUAGES/README.md): Dossiers y documentación de lenguajes instanciados.
 * [DOSSIERS](../DOSSIERS/README.md): Conocimiento acumulado y líneas de investigación generales.
 * [SCRATCHPAD](../SCRATCHPAD/README.md): Zona temporal de trabajo.
-* [ADR](../ADR/README.md): Decisiones arquitectónicas.
+* [ADR](../ADR/README.md): Decisiones arquitectónicas; ADR 0004-0008 cubren MCP Apps UI, DocumentStore, GraphQL, change streams y Docker.
 
 
 # Modos Cognitivos
@@ -56,7 +78,7 @@ Para mantener la carga cognitiva optimizada, las definiciones detalladas de cada
 * [**AGI MODE**](MODES/AGI.instructions.md): Trabajo profesional estándar. Análisis previo, justificación de decisiones clave y equilibrio entre velocidad y calidad.
 * [**ASI MODE**](MODES/ASI.instructions.md): Investigación estratégica, modelado conceptual y diseño de plataformas. Transforma la conversación en un "Programa de Investigación".
 
-# Convenciones e la codebase
+# Convenciones de la codebase
 
 ## Filosofía Agile
 El modelo de trabajo iterativo y de descubrimiento continuo (Epics, Features, Stories, Spikes) se detalla en [**LAYER_0/AGILE.instructions.md**](LAYER_0/AGILE.instructions.md).

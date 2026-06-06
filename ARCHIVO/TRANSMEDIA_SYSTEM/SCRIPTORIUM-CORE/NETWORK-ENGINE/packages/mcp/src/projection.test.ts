@@ -61,4 +61,40 @@ describe('projectDomainToMCP', () => {
     expect(projection.tools[0]?.externalEffects).toEqual(['storage']);
     expect(projection.sampling[0]?.intent).toBe('critique-palette');
   });
+
+  it('projects app launchers as UI tools without mutation effects', () => {
+    const contract = defineDomainContract({
+      kind: 'aleph-os',
+      version: '1.0.0',
+      display: { singular: 'ALEPH OS', plural: 'ALEPH OS' },
+      schema: { type: 'object' },
+      resources: {
+        ui: {
+          kind: 'resource',
+          uriTemplate: 'ui://aleph-os/mcp-app.html',
+          name: 'ALEPH OS UI',
+          mimeType: 'text/html;profile=mcp-app',
+        },
+      },
+      prompts: {},
+      mutations: {},
+      launchers: {
+        show: {
+          name: 'show-aleph-os',
+          description: 'Open the ALEPH OS navigator',
+          uiResource: 'ui://aleph-os/mcp-app.html',
+        },
+      },
+    });
+
+    const projection = projectDomainToMCP(contract);
+
+    expect(projection.tools).toHaveLength(1);
+    expect(projection.tools[0]).toMatchObject({
+      name: 'show-aleph-os',
+      effect: 'custom',
+      launcher: true,
+      ui: { resourceUri: 'ui://aleph-os/mcp-app.html' },
+    });
+  });
 });

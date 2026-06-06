@@ -75,3 +75,23 @@ Antes de que un lenguaje pueda considerarse válido funcionalmente, debe respond
 5. **¿Podría implementarse únicamente como configuración plana en JSON?** (Si sí, no merece ser un lenguaje).
 
 La validación funcional culmina con la creación de los artefactos en `DOSSIERS/<lang-name>/` (`vision.md`, `ontology.md`, `semantics.md`).
+
+---
+
+## 6. Trazabilidad: `LANGUAGES` ↔ `aleph-lang` ↔ `SEMANTINC`
+
+> Resolución spike **U3** (Programa ASI Fase 5). Ver [`DOSSIERS/conceptual-physical-alignment.md`](../../DOSSIERS/conceptual-physical-alignment.md).
+
+| Artefacto | Nivel | Rol |
+| --- | --- | --- |
+| `LANGUAGES` (este documento + `LAYER_1/LANGUAGES`) | Conceptual (Capa 2) | Generalización: qué es un lenguaje derivado en Network-Engine |
+| `packages/aleph-lang` | Físico (huésped) | **Primera implementación** del concepto `LANGUAGES` |
+| `LAYER_2/SEMANTINC` | Operativo (contenido) | Ontologías OWL/RDF **hospedadas** por un universo — no es el lenguaje |
+
+**Separación lenguaje ↔ contenido:**
+
+* **Aleph-Lang** define leyes, primitivas y semántica de expansión de universos.
+* **SEMANTINC** define cómo se representa conocimiento ontológico *dentro* de un universo ya gobernado por un lenguaje.
+* `aleph-lang` **no absorbe** `SEMANTINC`: el contenido semántico es plugin/contenido de Capa 4, no sintaxis del lenguaje.
+
+**Hipótesis confirmada (2026-06-06):** mantener `aleph-lang` como huésped tangible y `LANGUAGES` como dossier conceptual; `SEMANTINC` permanece en `LAYER_2` como contexto operativo de ontologías.

@@ -250,6 +250,45 @@ describe('registerFastifyMCPRuntime', () => {
     expect((resourceRead as any).contents[0]?.uri).toBe('network://palettes/nebula');
   });
 
+  it('includes MCP Apps UI metadata in tools/list for launcher projections', async () => {
+    const runtime = createMCPRuntime({
+      projection: {
+        resources: [],
+        prompts: [],
+        tools: [
+          {
+            name: 'show-aleph-os',
+            description: 'Open UI',
+            inputSchema: { type: 'object' },
+            effect: 'custom',
+            requiresConfirmation: false,
+            idempotent: true,
+            externalEffects: [],
+            launcher: true,
+            ui: { resourceUri: 'ui://aleph-os/mcp-app.html' },
+          },
+        ],
+        sampling: [],
+      },
+    });
+    const mcpServer = createMcpServerFromRuntime(
+      { name: 'network-engine-test', version: '1.0.0' },
+      runtime,
+    );
+
+    const handlers = (mcpServer.server as any)._requestHandlers as Map<string, (request?: unknown) => Promise<unknown>>;
+    const toolsList = await handlers.get('tools/list')?.({
+      jsonrpc: '2.0',
+      id: 'tools-1',
+      method: 'tools/list',
+    });
+
+    expect((toolsList as any).tools[0]).toMatchObject({
+      name: 'show-aleph-os',
+      _meta: { ui: { resourceUri: 'ui://aleph-os/mcp-app.html' } },
+    });
+  });
+
   it('opens an SSE stream for subscriptions/listen and emits opted-in notifications only', async () => {
     const fastify = new FakeFastify();
     const registration = registerFastifyMCPRuntime(fastify, {

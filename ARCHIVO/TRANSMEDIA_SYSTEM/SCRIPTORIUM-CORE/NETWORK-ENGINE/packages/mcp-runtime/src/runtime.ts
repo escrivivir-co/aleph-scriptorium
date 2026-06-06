@@ -229,7 +229,9 @@ export function createMCPRuntime(options: MCPRuntimeOptions): MCPRuntime {
             idempotentHint: tool.idempotent,
           },
           _meta: {
+            ...(tool.ui ? { ui: { resourceUri: tool.ui.resourceUri } } : {}),
             'network-engine/effect': tool.effect,
+            'network-engine/launcher': tool.launcher === true,
             'network-engine/requiresConfirmation': tool.requiresConfirmation,
             'network-engine/externalEffects': tool.externalEffects,
           },

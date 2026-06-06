@@ -1,4 +1,4 @@
-import type { SemVer } from './types';
+import type { Capability, SemVer } from './types';
 
 export type URIString = `${string}://${string}`;
 export type ResourceKind = 'resource' | 'template';
@@ -87,6 +87,17 @@ export interface IdentityContract {
 }
 
 /**
+ * App Launcher Contract
+ * Opens an MCP App UI resource without implying a domain mutation.
+ */
+export interface AppLauncherContract {
+  name: string;
+  description: string;
+  uiResource: URIString;
+  inputSchema?: unknown;
+}
+
+/**
  * UI Hints
  * Presentation metadata attached to the contract, not to a concrete UI runtime.
  */
@@ -96,6 +107,16 @@ export interface UIHints {
   fieldLabels?: Readonly<Record<string, string>>;
   fieldDescriptions?: Readonly<Record<string, string>>;
   defaults?: Readonly<Record<string, unknown>>;
+}
+
+/**
+ * Storage binding — declares where the domain read-model lives.
+ * Does not imply automatic CRUD; only names the collection and capability.
+ */
+export interface StorageContract {
+  capability: Capability;
+  collection: string;
+  version: SemVer;
 }
 
 /**
@@ -114,9 +135,11 @@ export interface DomainContract<
   };
   schema: TSchema;
   identity?: IdentityContract;
+  storage?: StorageContract;
   resources: Record<string, ResourceContract>;
   prompts: Record<string, PromptContract>;
   mutations: Record<string, MutationCapability>;
+  launchers?: Record<string, AppLauncherContract>;
   sampling?: Record<string, SamplingCapability>;
   ui?: UIHints;
 }
@@ -138,3 +161,6 @@ export type PromptNameOf<TContract extends DomainContract> =
 
 export type MutationNameOf<TContract extends DomainContract> =
   TContract['mutations'][keyof TContract['mutations']]['name'];
+
+export type LauncherNameOf<TContract extends DomainContract> =
+  NonNullable<TContract['launchers']>[keyof NonNullable<TContract['launchers']>]['name'];

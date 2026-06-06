@@ -17,7 +17,11 @@
     "test:watch": "bun test --watch ./packages/*/src/**/*.test.ts",
     "test:coverage": "bun test --coverage ./packages/*/src/**/*.test.ts",
     "dev": "bun test --watch ./packages/*/src/**/*.test.ts",
-    "ci": "bun run typecheck && bun run test"
+    "ci": "bun run typecheck && bun run test",
+    "validate:traceability": "bun run scripts/validate-traceability.ts",
+    "serve:aleph-os": "bun run start aleph-os",
+    "serve:aleph-os-dynamic": "bun run start aleph-os-dynamic",
+    "build:aleph-os-ui": "bun x vite build --config packages/apps/src/catalog/aleph-os/ui/vite.config.ts"
   },
   "keywords": [],
   "author": "",
@@ -31,5 +35,8 @@
   "dependencies": {
     "rxjs": "^7.8.2",
     "xstate": "^5.32.0"
+  },
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node"
   }
 }

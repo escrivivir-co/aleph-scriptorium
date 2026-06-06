@@ -1,7 +1,14 @@
 import { Subject, Observable } from 'rxjs';
 import { filter, tap } from 'rxjs/operators';
 import { createActor, AnyActorRef, AnyStateMachine } from 'xstate';
-import { NetworkPlugin, LanguageSemantics, InferEvent } from './types';
+import {
+  LanguageSemantics,
+  InferEvent,
+  AnyNetworkPlugin,
+  Capability,
+  ServiceOf,
+  ProtocolService,
+} from './types';
 import { getEnv } from './env';
 
 // Modern TS5 Decorator to log orchestrator events
@@ -20,7 +27,7 @@ function logStream(originalMethod: any, context: ClassMethodDecoratorContext) {
  */
 export class NetworkOrchestrator<TSemantics extends LanguageSemantics<any, any>> {
   private eventBus = new Subject<InferEvent<TSemantics>>();
-  private plugins = new Set<NetworkPlugin<TSemantics, any>>();
+  private plugins = new Set<AnyNetworkPlugin<TSemantics>>();
   private stateActor: AnyActorRef;
 
   constructor(machine: AnyStateMachine) {
@@ -35,14 +42,48 @@ export class NetworkOrchestrator<TSemantics extends LanguageSemantics<any, any>>
   }
 
   @logStream
-  public registerPlugin<const T extends NetworkPlugin<TSemantics, any>>(plugin: T): void {
+  public registerPlugin<const T extends AnyNetworkPlugin<TSemantics>>(plugin: T): void {
     this.plugins.add(plugin);
     console.log(`Plugin ${plugin.id} registered.`);
+  }
+
+  /**
+   * Resuelve el servicio de protocolo provisto por algún plugin registrado para
+   * la capacidad indicada. El tipo de retorno se deriva de `CapabilityServiceRegistry`
+   * (mismo estilo de tipado fuerte que `selectEvent`/`InferEvent`), de modo que
+   * `resolve('rdf-sparql')` devuelve `GraphStoreProtocol | undefined` sin casts
+   * en el llamante. Internamente discrimina por el campo `capability`.
+   */
+  public resolve<TCapability extends Capability>(
+    capability: TCapability
+  ): ServiceOf<TCapability> | undefined {
+    for (const plugin of this.plugins) {
+      // `provides()` puede lanzar si el plugin no está instalado / su store no
+      // está listo (p.ej. `GraphDbPlugin.provides()` antes de `install`). Un
+      // plugin no listo NO debe romper la resolución del resto: lo saltamos.
+      let service: ProtocolService | undefined;
+      try {
+        service = plugin.provides?.() as ProtocolService | undefined;
+      } catch {
+        continue;
+      }
+      if (service !== undefined && service.capability === capability) {
+        return service as ServiceOf<TCapability>;
+      }
+    }
+    return undefined;
   }
 
   @logStream
   public dispatch(event: InferEvent<TSemantics>): void {
     this.eventBus.next(event);
+  }
+
+  /**
+   * Observable de todos los eventos despachados en el orchestrator.
+   */
+  public get events$(): Observable<InferEvent<TSemantics>> {
+    return this.eventBus.asObservable();
   }
 
   /**

@@ -25,6 +25,10 @@ export interface MCPPromptProjection {
   permittedMutations: NonNullable<PromptContract['permittedMutations']>;
 }
 
+export interface MCPToolUiProjection {
+  resourceUri: string;
+}
+
 export interface MCPToolProjection {
   name: string;
   description: string;
@@ -33,6 +37,8 @@ export interface MCPToolProjection {
   requiresConfirmation: boolean;
   idempotent: boolean;
   externalEffects: readonly string[];
+  launcher?: boolean;
+  ui?: MCPToolUiProjection;
 }
 
 export interface MCPSamplingProjection {
@@ -97,6 +103,23 @@ export function projectDomainToMCP(contract: DomainContract): MCPProjectionResul
       requiresConfirmation: mutation.requiresConfirmation ?? false,
       idempotent: mutation.idempotent ?? false,
       externalEffects: mutation.externalEffects ?? [],
+    });
+  }
+
+  for (const launcher of Object.values(contract.launchers ?? {})) {
+    result.tools.push({
+      name: launcher.name,
+      description: launcher.description,
+      inputSchema: launcher.inputSchema ?? {
+        type: 'object',
+        properties: {},
+      },
+      effect: 'custom',
+      requiresConfirmation: false,
+      idempotent: true,
+      externalEffects: [],
+      launcher: true,
+      ui: { resourceUri: launcher.uiResource },
     });
   }
 

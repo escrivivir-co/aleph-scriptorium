@@ -1,4 +1,4 @@
-import { createNodeEngine } from '@network-engine/node';
+import { createNetworkEngine } from '@network-engine/network-engine';
 import { AlephSemantics, AbsorbedForce, createDimension } from './types';
 import { alephMachine } from './machine';
 
@@ -8,9 +8,13 @@ import { alephMachine } from './machine';
  * para interactuar con el lenguaje Aleph, tal y como se definió en grammar.md.
  */
 export class AlephUniverse {
-  private engine = createNodeEngine<AlephSemantics>(alephMachine);
+  private engine = createNetworkEngine<AlephSemantics>(alephMachine).orchestrator;
 
   constructor(public readonly name: string) {}
+
+  public get orchestrator() {
+    return this.engine;
+  }
 
   // ==========================================
   // FLUENT API (Grammar)

@@ -2,10 +2,14 @@
   "files": [],
   "references": [
     { "path": "packages/core" },
+    { "path": "packages/graph" },
     { "path": "packages/node" },
+    { "path": "packages/mongo" },
+    { "path": "packages/graphql" },
     { "path": "packages/mcp" },
     { "path": "packages/mcp-runtime" },
     { "path": "packages/apps" },
-    { "path": "packages/contract-adapters" }
+    { "path": "packages/contract-adapters" },
+    { "path": "packages/network-engine" }
   ]
 }

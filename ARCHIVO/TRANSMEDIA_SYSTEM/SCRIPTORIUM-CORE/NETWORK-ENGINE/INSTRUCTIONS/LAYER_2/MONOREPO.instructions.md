@@ -1,4 +1,4 @@
-# Monorepo Operator
+﻿# Monorepo Operator
 
 ## Para qué sirve este documento
 
@@ -15,6 +15,7 @@ NETWORK-ENGINE/                    ← raíz del monorepo
 │
 ├── packages/                      ← código fuente (npm workspaces)
 │   ├── core/                      ← @network-engine/core
+│   ├── graph/                     ← @network-engine/graph
 │   ├── node/                      ← @network-engine/node
 │   ├── browser/                   ← @network-engine/browser
 │   └── apps/                      ← @network-engine/apps
@@ -59,13 +60,31 @@ Sin dependencias de runtime.
 
 ---
 
+## @network-engine/graph
+
+Adaptador in-memory de referencia del `GraphStoreProtocol` (cero dependencias de runtime).
+
+```
+packages/graph/src/
+├── index.ts          ← barrel (InMemoryGraphStore, GraphStorePlugin, createInMemoryGraphStore)
+├── in-memory-store.ts ← triple-store indexado SPO/POS/OSP
+├── plugin.ts         ← GraphStorePlugin (ciclo de vida install/provides)
+├── sparql.ts         ← evaluador SPARQL SELECT (subconjunto)
+└── keys.ts           ← helpers de serialización de términos
+```
+
+Depende de: `@network-engine/core`
+
+---
+
 ## @network-engine/node
 
 Adaptador para Node.js.
 
 ```
 packages/node/src/
-└── index.ts          ← FileSystemPlugin + createNodeEngine()
+├── index.ts          ← FileSystemPlugin + createNodeEngine()
+└── graph-db.ts       ← GraphDbStore / GraphDbPlugin (adaptador HTTP a Ontotext GraphDB)
 ```
 
 Depende de: `@network-engine/core`
@@ -104,16 +123,19 @@ Depende de: `@network-engine/core`, `@network-engine/node`
             │     core     │  ← sin dependencias externas de runtime
             └──────┬───────┘
                    │
-        ┌──────────┼──────────┐
-        │          │          │
-   ┌────▼───┐ ┌───▼────┐ ┌───▼─────┐
-   │  node  │ │browser │ │  ...    │
-   └────┬───┘ └────────┘ └─────────┘
+        ┌──────────┼──────────┬──────────┐
+        │          │          │          │
+   ┌────▼───┐ ┌───▼────┐ ┌───▼───┐ ┌───▼─────┐
+   │  node  │ │browser │ │ graph │ │  ...    │
+   └────┬───┘ └────────┘ └───────┘ └─────────┘
         │
    ┌────▼───┐
    │  apps  │  ← consume core + adaptadores
    └────────┘
 ```
+
+`@network-engine/graph` — adaptador in-memory (`InMemoryGraphStore`/`GraphStorePlugin`); cero deps de runtime.  
+`@network-engine/node` — incluye `GraphDbPlugin`/`GraphDbStore` (adaptador HTTP → Ontotext GraphDB).
 
 ---
 
@@ -123,14 +145,14 @@ Desde la raíz del monorepo:
 
 | Comando | Qué hace |
 |---|---|
-| `npm run build` | `tsc -b` (build incremental de todo el monorepo) |
-| `npm run typecheck` | `tsc -b` (verificación de tipos) |
-| `npm test` | `bun test` (ejecuta todos los tests) |
-| `npm run test:watch` | `bun test --watch` |
-| `npm run test:coverage` | `bun test --coverage` |
-| `npm start` | lanza el App Launcher (`packages/apps/src/launcher.ts`) |
-| `npm run ci` | typecheck + test |
-| `npm run clean` | limpia node_modules y dist de todos los packages |
+| `bun run build` | `tsc -b` (build incremental de todo el monorepo) |
+| `bun run typecheck` | `tsc -b` (verificación de tipos) |
+| `bun test` | ejecuta todos los tests |
+| `bun run test:watch` | `bun test --watch` |
+| `bun run test:coverage` | `bun test --coverage` |
+| `bun run start` | lanza el App Launcher (`packages/apps/src/launcher.ts`) |
+| `bun run ci` | typecheck + test |
+| `bun run clean` | limpia node_modules y dist de todos los packages |
 
 ---
 

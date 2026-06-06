@@ -75,3 +75,24 @@ Debemos utilizar las características modernas de TypeScript para explorar:
 
 * **Frontera:** Son formatos de serialización o huéspedes.
 * **Restricción:** Nunca deben convertirse en el centro arquitectónico ni acoplarse al núcleo de procesamiento primario.
+
+---
+
+# Paquete físico `@network-engine/network-engine` (composition root)
+
+> **ADR:** [0003-network-engine-orchestrator-package.md](../../ADR/0003-network-engine-orchestrator-package.md)
+
+El **lenguaje** Network-Engine (este documento) no es el paquete homónimo.
+
+`@network-engine/network-engine` es el **composition root** del laboratorio TypeScript: ensambla sin lógica de dominio:
+
+```text
+createNetworkEngine(machine, config?)
+  ├─ createNodeEngine()      → @network-engine/node → @network-engine/core
+  ├─ createSocketIOBridge()  → @network-engine/pubsub   (slot opcional)
+  └─ createMCPRuntime()      → @network-engine/mcp-runtime (slot opcional)
+```
+
+**Regla de guarda:** si el código propuesto pertenece a `core`, a un adapter o a un lenguaje derivado, no va en este paquete. El orquestador solo conecta.
+
+API pública: `createNetworkEngine()` en `packages/network-engine/src/composition.ts`.

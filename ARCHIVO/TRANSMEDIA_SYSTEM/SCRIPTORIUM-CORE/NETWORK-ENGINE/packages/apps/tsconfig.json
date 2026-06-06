@@ -6,8 +6,13 @@
     "types": ["node", "bun"]
   },
   "include": ["src/**/*"],
+  "exclude": ["src/catalog/aleph-os/ui/**"],
   "references": [
     { "path": "../core" },
-    { "path": "../node" }
+    { "path": "../network-engine" },
+    { "path": "../node" },
+    { "path": "../graph" },
+    { "path": "../mcp" },
+    { "path": "../mcp-runtime" }
   ]
 }

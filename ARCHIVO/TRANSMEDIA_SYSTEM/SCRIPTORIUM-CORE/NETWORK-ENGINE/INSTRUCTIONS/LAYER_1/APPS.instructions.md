@@ -68,4 +68,25 @@ Las apps no se auto-ejecutan directamente. Se exponen como módulos y se registr
 
 □ La instanciación del engine se realiza importando un Factory de un adaptador, nunca usando `new NetworkOrchestrator()` directamente.
 
-□ Ejecuta `npm run typecheck` en el workspace sin errores.
+□ Ejecuta `bun run typecheck` en el workspace sin errores.
+
+---
+
+# MCP Apps UI (Fase 8)
+
+Las MCP Apps interactivas se proyectan desde `DomainContract`, no desde wiring manual del SDK.
+
+## Cadena canónica
+
+1. `DomainContract` en el catálogo de la app (ej. `packages/apps/src/catalog/aleph-os/aleph-os.contract.ts`).
+2. `projectDomainToMCP()` (`@network-engine/mcp`) — incluye `AppLauncherContract` → tool con `_meta.ui.resourceUri`.
+3. `createMCPRuntime()` + `createMcpHttpEdge()` (`@network-engine/mcp-runtime/http-edge`).
+4. Resource UI (`text/html;profile=mcp-app`) servido por `readResource`.
+
+## Referencia
+
+- Primera materialización: catálogo `aleph-os` en `@network-engine/apps` — arranque con `bun run start aleph-os` o `bun run serve:aleph-os`.
+- Variante dinámica: catálogo `aleph-os-dynamic` — deriva snapshot desde índices Markdown y arranca con `bun run start aleph-os-dynamic` o `bun run serve:aleph-os-dynamic`.
+- Infraestructura reusable: `packages/apps/src/knowledge-system/handlers.ts`; el builder/modelo puro vive en `@network-engine/core` según ADR 0009.
+- ADR: [`ADR/0004-mcp-apps-ui-projection.md`](../../ADR/0004-mcp-apps-ui-projection.md).
+- ADR: [`ADR/0009-knowledge-system-mcp-app-builder.md`](../../ADR/0009-knowledge-system-mcp-app-builder.md).

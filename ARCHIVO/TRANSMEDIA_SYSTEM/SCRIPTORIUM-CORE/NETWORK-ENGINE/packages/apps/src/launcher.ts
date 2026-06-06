@@ -41,7 +41,7 @@ async function bootstrap() {
   const app = descriptor.app as any;
   const config = await descriptor.provideConfig();
   
-  app.init(config);
+  await app.init(config);
   await app.run();
 }
 

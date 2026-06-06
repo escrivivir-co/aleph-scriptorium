@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>ALEPH Agent Operating System</title>
+  </head>
+  <body>
+    <main class="main">
+      <header class="header">
+        <h1 class="title">ALEPH</h1>
+        <p class="subtitle">Agent Operating System</p>
+      </header>
+
+      <section class="panel mission-panel" data-section="mission">
+        <h2 class="panel-title">Misión</h2>
+        <p id="mission-text" class="mission-text">Loading…</p>
+        <p id="markdown-first" class="markdown-first"></p>
+      </section>
+
+      <section class="panel" data-section="modes">
+        <h2 class="panel-title">Modos cognitivos</h2>
+        <p class="panel-hint">El agente debe operar en uno de estos modos.</p>
+        <div id="modes-grid" class="modes-grid"></div>
+      </section>
+
+      <section class="panel" data-section="layers">
+        <h2 class="panel-title">INSTRUCTIONS</h2>
+        <p class="panel-hint">Jerarquía Markdown-First del workspace.</p>
+        <div id="layers-list" class="layers-list"></div>
+      </section>
+
+      <section class="panel" data-section="storage">
+        <h2 class="panel-title">STORAGE</h2>
+        <div id="storage-list" class="storage-list"></div>
+      </section>
+
+      <footer class="footer">
+        <button id="refresh-btn" type="button">Refresh snapshot</button>
+        <span id="focus-badge" class="focus-badge">focus: overview</span>
+      </footer>
+    </main>
+    <script type="module" src="./mcp-app.ts"></script>
+  </body>
+</html>
