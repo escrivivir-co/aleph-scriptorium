@@ -8,8 +8,12 @@
     { "path": "packages/graphql" },
     { "path": "packages/mcp" },
     { "path": "packages/mcp-runtime" },
-    { "path": "packages/apps" },
     { "path": "packages/contract-adapters" },
-    { "path": "packages/network-engine" }
+    { "path": "packages/network-engine" },
+    { "path": "LANGUAGES/aleph-lang/package" },
+    { "path": "LANGUAGES/aleph-lang/app" },
+    { "path": "LANGUAGES/compose-lang/package" },
+    { "path": "LANGUAGES/compose-lang/app" },
+    { "path": "packages/apps" }
   ]
 }

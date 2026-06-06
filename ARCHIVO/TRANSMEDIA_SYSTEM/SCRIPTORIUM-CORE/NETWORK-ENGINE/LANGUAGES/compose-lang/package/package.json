@@ -1,0 +1,10 @@
+{
+  "name": "@network-engine/compose-lang",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@network-engine/core": "workspace:*",
+    "@network-engine/network-engine": "workspace:*"
+  }
+}

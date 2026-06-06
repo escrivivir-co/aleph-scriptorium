@@ -15,8 +15,42 @@
         "typescript": "^6.0.3",
       },
     },
-    "packages/aleph-lang": {
+    "LANGUAGES/aleph-lang/app": {
+      "name": "@network-engine/aleph-lang-app",
+      "version": "1.0.0",
+      "dependencies": {
+        "@network-engine/aleph-lang": "workspace:*",
+        "@network-engine/core": "workspace:*",
+        "@network-engine/pubsub": "workspace:*",
+      },
+    },
+    "LANGUAGES/aleph-lang/package": {
       "name": "@network-engine/aleph-lang",
+      "version": "1.0.0",
+      "dependencies": {
+        "@network-engine/core": "workspace:*",
+        "@network-engine/network-engine": "workspace:*",
+      },
+    },
+    "LANGUAGES/compose-lang/app": {
+      "name": "@network-engine/compose-lang-app",
+      "version": "1.0.0",
+      "dependencies": {
+        "@network-engine/compose-lang": "workspace:*",
+        "@network-engine/core": "workspace:*",
+        "@network-engine/mcp": "workspace:*",
+        "@network-engine/mcp-runtime": "workspace:*",
+        "@network-engine/network-engine": "workspace:*",
+      },
+      "devDependencies": {
+        "@modelcontextprotocol/ext-apps": "^1.7.0",
+        "@modelcontextprotocol/sdk": "^1.29.0",
+        "vite": "^6.0.0",
+        "vite-plugin-singlefile": "^2.3.0",
+      },
+    },
+    "LANGUAGES/compose-lang/package": {
+      "name": "@network-engine/compose-lang",
       "version": "1.0.0",
       "dependencies": {
         "@network-engine/core": "workspace:*",
@@ -27,7 +61,8 @@
       "name": "@network-engine/apps",
       "version": "1.0.0",
       "dependencies": {
-        "@network-engine/aleph-lang": "workspace:*",
+        "@network-engine/aleph-lang-app": "workspace:*",
+        "@network-engine/compose-lang-app": "workspace:*",
         "@network-engine/core": "workspace:*",
         "@network-engine/graph": "workspace:*",
         "@network-engine/mcp": "workspace:*",
@@ -212,11 +247,17 @@
 
     "@mongodb-js/saslprep": ["@mongodb-js/saslprep@1.4.11", "", { "dependencies": { "sparse-bitfield": "^3.0.3" } }, "sha512-o9rAHc0IpIjuPSxRutWpE1F62x7n+4mVS4rCNHkzhIUMQcc18bb6xEq5wd2NdN0WjepIyXIppRshYI2kQDOZVA=="],
 
-    "@network-engine/aleph-lang": ["@network-engine/aleph-lang@workspace:packages/aleph-lang"],
+    "@network-engine/aleph-lang": ["@network-engine/aleph-lang@workspace:LANGUAGES/aleph-lang/package"],
+
+    "@network-engine/aleph-lang-app": ["@network-engine/aleph-lang-app@workspace:LANGUAGES/aleph-lang/app"],
 
     "@network-engine/apps": ["@network-engine/apps@workspace:packages/apps"],
 
     "@network-engine/browser": ["@network-engine/browser@workspace:packages/browser"],
+
+    "@network-engine/compose-lang": ["@network-engine/compose-lang@workspace:LANGUAGES/compose-lang/package"],
+
+    "@network-engine/compose-lang-app": ["@network-engine/compose-lang-app@workspace:LANGUAGES/compose-lang/app"],
 
     "@network-engine/contract-adapters": ["@network-engine/contract-adapters@workspace:packages/contract-adapters"],
 

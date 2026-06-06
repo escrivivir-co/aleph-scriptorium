@@ -34,7 +34,6 @@ export class AlephLangApp implements App<AlephConfig, 'aleph', '1.0.0'> {
 
     console.log(`\n=== Bootstrapping [${this.manifest.name}] ===\n`);
 
-    // Using the Aleph-Lang DSL (Layer 2)
     const universe = new AlephUniverse('Aleph-Alpha');
 
     if (this.bridge) {
@@ -51,9 +50,6 @@ export class AlephLangApp implements App<AlephConfig, 'aleph', '1.0.0'> {
       console.log('Status Post-Expansion:', universe.getStatus());
     });
 
-    // Simulating force impacts that will eventually trigger boundary
-    // Dim 1 max is 5 forces, after which integrity drops by 10 per force.
-    // So 10 more forces (15 total) will drop integrity to 0, triggering critical state.
     for (let i = 1; i <= 16; i++) {
       console.log(`Absorbing Force ${i}...`);
       universe.absorbForce({

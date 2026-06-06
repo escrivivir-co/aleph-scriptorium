@@ -1,0 +1,11 @@
+{
+  "name": "@network-engine/aleph-lang-app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@network-engine/aleph-lang": "workspace:*",
+    "@network-engine/core": "workspace:*",
+    "@network-engine/pubsub": "workspace:*"
+  }
+}

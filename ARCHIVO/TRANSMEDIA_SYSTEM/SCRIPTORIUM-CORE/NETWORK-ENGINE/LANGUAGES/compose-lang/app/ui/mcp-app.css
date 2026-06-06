@@ -1,0 +1,106 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.4;
+}
+
+.main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.subtitle,
+.clock-label {
+  margin: 0.25rem 0 0;
+  opacity: 0.8;
+}
+
+.panel {
+  border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.panel-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.topology-graph {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-node {
+  border: 1px solid color-mix(in srgb, CanvasText 30%, transparent);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  min-width: 120px;
+}
+
+.service-node .badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+
+.badge-defined { background: #8884; }
+.badge-starting { background: #fa04; }
+.badge-waitingHealth { background: #ff04; }
+.badge-healthy { background: #0a04; }
+.badge-failed { background: #f004; }
+.badge-stopping { background: #f804; }
+.badge-stopped { background: #4444; }
+
+.deps {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin: 0.25rem 0 0;
+}
+
+.phrases-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.phrases-list li {
+  margin-bottom: 0.35rem;
+}
+
+.phrases-list button {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.inspector {
+  margin: 0;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#tick-slider {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}

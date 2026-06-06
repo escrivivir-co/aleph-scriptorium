@@ -13,6 +13,8 @@
     { "path": "../node" },
     { "path": "../graph" },
     { "path": "../mcp" },
-    { "path": "../mcp-runtime" }
+    { "path": "../mcp-runtime" },
+    { "path": "../../LANGUAGES/aleph-lang/app" },
+    { "path": "../../LANGUAGES/compose-lang/app" }
   ]
 }

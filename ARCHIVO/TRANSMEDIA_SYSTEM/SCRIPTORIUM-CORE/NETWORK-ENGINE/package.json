@@ -4,7 +4,9 @@
   "description": "Plataforma para construir lenguajes. Modelador de Alephs",
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "LANGUAGES/*/package",
+    "LANGUAGES/*/app"
   ],
   "scripts": {
     "clean": "rm -rf node_modules dist packages/*/node_modules packages/*/dist",
@@ -13,15 +15,18 @@
     "typecheck": "bun x tsc -b",
     "build": "bun x tsc -b",
     "start": "cd packages/apps && bun run src/launcher.ts",
-    "test": "bun test ./packages/*/src/**/*.test.ts",
-    "test:watch": "bun test --watch ./packages/*/src/**/*.test.ts",
-    "test:coverage": "bun test --coverage ./packages/*/src/**/*.test.ts",
-    "dev": "bun test --watch ./packages/*/src/**/*.test.ts",
+    "test": "bun test ././packages/*/src/**/*.test.ts ././LANGUAGES/*/package/src/**/*.test.ts ././LANGUAGES/*/app/src/**/*.test.ts",
+    "test:watch": "bun test --watch ././packages/*/src/**/*.test.ts ././LANGUAGES/*/package/src/**/*.test.ts ././LANGUAGES/*/app/src/**/*.test.ts",
+    "test:coverage": "bun test --coverage ././packages/*/src/**/*.test.ts ././LANGUAGES/*/package/src/**/*.test.ts ././LANGUAGES/*/app/src/**/*.test.ts",
+    "dev": "bun test --watch ././packages/*/src/**/*.test.ts ././LANGUAGES/*/package/src/**/*.test.ts ././LANGUAGES/*/app/src/**/*.test.ts",
     "ci": "bun run typecheck && bun run test",
     "validate:traceability": "bun run scripts/validate-traceability.ts",
+    "serve:compose": "bun run start compose",
+    "serve:compose-lang": "bun run start compose-lang",
     "serve:aleph-os": "bun run start aleph-os",
     "serve:aleph-os-dynamic": "bun run start aleph-os-dynamic",
-    "build:aleph-os-ui": "bun x vite build --config packages/apps/src/catalog/aleph-os/ui/vite.config.ts"
+    "build:aleph-os-ui": "bun x vite build --config packages/apps/src/catalog/aleph-os/ui/vite.config.ts",
+    "build:compose-lang-ui": "bun x vite build --config LANGUAGES/compose-lang/app/ui/vite.config.ts"
   },
   "keywords": [],
   "author": "",

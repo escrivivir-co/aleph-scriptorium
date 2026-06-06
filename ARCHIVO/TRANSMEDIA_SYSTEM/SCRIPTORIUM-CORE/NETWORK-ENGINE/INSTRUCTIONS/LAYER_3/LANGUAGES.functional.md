@@ -74,7 +74,7 @@ Antes de que un lenguaje pueda considerarse válido funcionalmente, debe respond
 4. **¿Qué capacidades nuevas habilita?**
 5. **¿Podría implementarse únicamente como configuración plana en JSON?** (Si sí, no merece ser un lenguaje).
 
-La validación funcional culmina con la creación de los artefactos en `DOSSIERS/<lang-name>/` (`vision.md`, `ontology.md`, `semantics.md`).
+La validación funcional culmina con la creación de los artefactos en `LANGUAGES/<lang-name>/definition/` (`vision.md`, `ontology.md`, `semantics.md`, `grammar.md`, `roadmap.md`, `implementation_plan.md`).
 
 ---
 
@@ -85,7 +85,9 @@ La validación funcional culmina con la creación de los artefactos en `DOSSIERS
 | Artefacto | Nivel | Rol |
 | --- | --- | --- |
 | `LANGUAGES` (este documento + `LAYER_1/LANGUAGES`) | Conceptual (Capa 2) | Generalización: qué es un lenguaje derivado en Network-Engine |
-| `packages/aleph-lang` | Físico (huésped) | **Primera implementación** del concepto `LANGUAGES` |
+| `LANGUAGES/aleph-lang/package` (`@network-engine/aleph-lang`) | Físico (huésped) | **Primera implementación** del concepto `LANGUAGES` |
+| `LANGUAGES/aleph-lang/definition` | Conceptual (dossiers) | Fuente de verdad funcional del lenguaje |
+| `LANGUAGES/aleph-lang/app` (`@network-engine/aleph-lang-app`) | Operativo (app/MCP) | Descriptor consumible por el host de apps |
 | `LAYER_2/SEMANTINC` | Operativo (contenido) | Ontologías OWL/RDF **hospedadas** por un universo — no es el lenguaje |
 
 **Separación lenguaje ↔ contenido:**

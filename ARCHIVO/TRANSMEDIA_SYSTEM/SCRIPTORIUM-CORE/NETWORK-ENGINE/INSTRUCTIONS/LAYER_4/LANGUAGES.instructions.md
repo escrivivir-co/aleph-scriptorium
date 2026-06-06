@@ -22,7 +22,7 @@ Ante la petición de crear un nuevo lenguaje, el agente debe activar el **LANGUA
 2. Lee `LAYER_3/LANGUAGES.functional.md` para asimilar el objetivo conceptual.
 
 ### Fase B: Generación de Dossiers
-3. Diseña el lenguaje respondiendo a las fases conceptuales y crea los siguientes 5 archivos físicos en el directorio `LANGUAGES/<nombre-del-lenguaje>/`:
+3. Diseña el lenguaje respondiendo a las fases conceptuales y crea los siguientes 5 archivos físicos en el directorio `LANGUAGES/<nombre-del-lenguaje>/definition/`:
    * `vision.md` (Identidad y Frontera)
    * `ontology.md` (Máximo 5 conceptos primitivos)
    * `semantics.md` (Estados, Eventos, Reglas, Contexto)
@@ -30,12 +30,12 @@ Ante la petición de crear un nuevo lenguaje, el agente debe activar el **LANGUA
    * `roadmap.md` (Plan de mapeo hacia runtime)
 
 ### Fase C: Aprobación Formal (Inception Review)
-4. Crea un artefacto `implementation_plan.md` que sirva como puerta de aprobación.
+4. Crea un artefacto `LANGUAGES/<nombre-del-lenguaje>/definition/implementation_plan.md` que sirva como puerta de aprobación.
 5. En ese plan, responde explícitamente a las **5 Preguntas Obligatorias (P1-P5)** dictadas en `LAYER_3`.
 6. Solicita feedback del usuario (`RequestFeedback: true`). **DETÉN LA EJECUCIÓN**.
 
 ### Fase D: Scaffolding y Desarrollo
 7. Únicamente tras recibir la aprobación afirmativa del usuario, lee `LAYER_1/LANGUAGES.instructions.md` para cargar las restricciones técnicas.
-8. Genera el directorio `packages/<nombre-del-lenguaje>/` y sus archivos (`package.json`, `tsconfig.json`, `src/types.ts`, `src/index.ts`, etc.) cumpliendo escrupulosamente con el Type-Level Programming y los Phantom Types.
-9. Registra una aplicación de prueba en el launcher (`packages/apps/src/`) para validar el DSL.
+8. Genera el directorio `LANGUAGES/<nombre-del-lenguaje>/package/` y sus archivos (`package.json`, `tsconfig.json`, `src/types.ts`, `src/index.ts`, etc.) cumpliendo escrupulosamente con el Type-Level Programming y los Phantom Types.
+9. Si el lenguaje necesita app, UI o servidor MCP, créala en `LANGUAGES/<nombre-del-lenguaje>/app/` (nombre `@network-engine/<nombre>-app`) y registra su descriptor en el catálogo host (`packages/apps/src/catalog/index.ts`).
 10. Ejecuta las verificaciones de compilación (`bun run typecheck`) y cierra el ciclo de desarrollo.

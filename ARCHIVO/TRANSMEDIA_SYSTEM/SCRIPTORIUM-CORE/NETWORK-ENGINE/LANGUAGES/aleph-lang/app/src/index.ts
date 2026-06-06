@@ -1,6 +1,10 @@
-import { getEnv } from '@network-engine/core';
+import { App, ExtractAppConfig, getEnv } from '@network-engine/core';
 import { alephApp } from './app';
-import { AppDescriptor } from '../types';
+
+export interface AppDescriptor<TApp extends App<any, any, any>> {
+  app: TApp;
+  provideConfig: () => ExtractAppConfig<TApp> | Promise<ExtractAppConfig<TApp>>;
+}
 
 export const alephDescriptor: AppDescriptor<typeof alephApp> = {
   app: alephApp,
@@ -9,3 +13,5 @@ export const alephDescriptor: AppDescriptor<typeof alephApp> = {
     pubsub: { hubUrl: 'http://localhost:3001', namespace: '/aleph' }
   })
 };
+
+export { alephApp } from './app';

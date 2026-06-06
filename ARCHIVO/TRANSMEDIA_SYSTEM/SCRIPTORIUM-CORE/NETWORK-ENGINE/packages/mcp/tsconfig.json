@@ -9,6 +9,6 @@
   "references": [
     { "path": "../core" },
     { "path": "../node" },
-    { "path": "../aleph-lang" }
+    { "path": "../../LANGUAGES/aleph-lang/package" }
   ]
 }

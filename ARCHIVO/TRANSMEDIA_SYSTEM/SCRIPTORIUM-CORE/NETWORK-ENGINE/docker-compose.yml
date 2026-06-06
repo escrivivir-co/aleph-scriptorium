@@ -41,5 +41,15 @@ services:
       mongo:
         condition: service_healthy
 
+  node-red:
+    image: nodered/node-red:latest
+    ports:
+      - '1880:1880'
+    environment:
+      - TZ=UTC
+    volumes:
+      - node_red_data:/data
+
 volumes:
   mongo_data:
+  node_red_data:

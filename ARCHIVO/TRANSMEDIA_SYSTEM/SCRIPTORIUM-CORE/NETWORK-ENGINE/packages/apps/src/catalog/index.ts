@@ -1,5 +1,6 @@
 import { helloDescriptor } from './hello';
-import { alephDescriptor } from './aleph';
+import { alephDescriptor } from '@network-engine/aleph-lang-app';
+import { composeDescriptor } from '@network-engine/compose-lang-app';
 import { alephOsDescriptor } from './aleph-os';
 import { alephOsDynamicDescriptor } from './aleph-os-dynamic';
 import { hubDescriptor } from './hub';
@@ -8,6 +9,8 @@ import { graphDescriptor } from './graph';
 export const catalog = {
   hello: helloDescriptor,
   aleph: alephDescriptor,
+  compose: composeDescriptor,
+  'compose-lang': composeDescriptor,
   'aleph-os': alephOsDescriptor,
   'aleph-os-dynamic': alephOsDynamicDescriptor,
   hub: hubDescriptor,
@@ -17,5 +20,4 @@ export const catalog = {
 export type AppCatalog = typeof catalog;
 export type CatalogKeys = keyof AppCatalog;
 
-// Export individual descriptors and types if needed by the host
 export * from './types';
