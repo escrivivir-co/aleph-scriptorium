@@ -5,7 +5,8 @@
 import type { AnyEvent } from '@network-engine/core';
 import { defineDomainContract } from '@network-engine/core';
 import { createInMemoryDocumentStore } from '@network-engine/mongo';
-import { createGraphQLRuntime, startGraphQLServer } from './index';
+import { createGraphQLRuntime } from '@network-engine/graphql';
+import { startGraphQLServer } from '@network-engine/edge-graphql';
 
 const contract = defineDomainContract({
   kind: 'network-engine',

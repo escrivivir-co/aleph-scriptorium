@@ -1,6 +1,7 @@
 import { App, AppStatus, createAppId } from '@network-engine/core';
 import { AlephUniverse, createForceId, AlephSemantics } from '@network-engine/aleph-lang';
-import { PubSubConfig, createPubSubBridge, PubSubBridge } from '@network-engine/pubsub';
+import { PubSubConfig } from '@network-engine/pubsub';
+import { createPubSubBridge, PubSubBridge } from '@network-engine/edge-pubsub';
 
 type AlephConfig = {
   appName: string;

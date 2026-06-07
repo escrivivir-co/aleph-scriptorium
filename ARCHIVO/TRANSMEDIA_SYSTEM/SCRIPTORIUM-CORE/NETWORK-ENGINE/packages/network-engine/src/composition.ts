@@ -3,7 +3,7 @@ import type { DomainContract, InferEvent, LanguageSemantics } from '@network-eng
 import { NetworkOrchestrator } from '@network-engine/core';
 import { createNodeEngine } from '@network-engine/node';
 import type { PubSubConfig } from '@network-engine/pubsub';
-import { createPubSubBridge, type PubSubBridge } from '@network-engine/pubsub';
+import { createPubSubBridge, type PubSubBridge } from '@network-engine/edge-pubsub';
 import type { MCPProjectionResult } from '@network-engine/mcp/projection';
 import {
   createMCPRuntime,

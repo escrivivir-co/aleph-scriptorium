@@ -1,7 +1,8 @@
 import path from 'node:path';
 import { App, AppStatus, createAppId } from '@network-engine/core';
 import { projectDomainToMCP } from '@network-engine/mcp/projection';
-import { createMcpHttpEdge, type McpHttpEdge } from '@network-engine/mcp-runtime/http-edge';
+import { mountMcpRoute } from '@network-engine/edge-mcp';
+import { createRestServer, type RestServer } from '@network-engine/edge-rest';
 import { createAlephOsDynamicContract } from './contract';
 import { createAlephOsDynamicHandlers } from './handlers';
 import { resolveAlephOsDynamicDefinition } from './resolve-definition';
@@ -23,7 +24,7 @@ export class AlephOsDynamicMcpApp implements App<AlephOsDynamicConfig, 'aleph-os
 
   public status: AppStatus = { state: 'STOPPED' };
   private config?: AlephOsDynamicConfig;
-  private edge?: McpHttpEdge;
+  private edge?: RestServer;
 
   public async init(config: AlephOsDynamicConfig): Promise<void> {
     this.config = config;
@@ -31,20 +32,17 @@ export class AlephOsDynamicMcpApp implements App<AlephOsDynamicConfig, 'aleph-os
     const projection = projectDomainToMCP(createAlephOsDynamicContract(definition));
     const handlers = createAlephOsDynamicHandlers(UI_DIST_DIR);
 
-    this.edge = createMcpHttpEdge({
-      port: config.port,
-      register: {
-        projection,
-        server: {
-          name: 'ALEPH Agent Operating System (Dynamic)',
-          version: '1.0.0',
-          instructions:
-            'Read aleph://os-dynamic/overview and template resources before invoking show-aleph-os-dynamic.',
-        },
-        handlers,
+    this.edge = createRestServer();
+    mountMcpRoute(this.edge, {
+      projection,
+      server: {
+        name: 'ALEPH Agent Operating System (Dynamic)',
+        version: '1.0.0',
+        instructions:
+          'Read aleph://os-dynamic/overview and template resources before invoking show-aleph-os-dynamic.',
       },
+      handlers,
     });
-
     console.log(`[AlephOsDynamicMcpApp] Initialized with port ${config.port}`);
   }
 
@@ -55,16 +53,11 @@ export class AlephOsDynamicMcpApp implements App<AlephOsDynamicConfig, 'aleph-os
     const shutdown = async (signal: string) => {
       if (shuttingDown) return;
       shuttingDown = true;
-      console.log(`\n[AlephOsDynamicMcpApp] Shutting down (${signal})...`);
-
+      console.log(`\n[AlephOSDynamicApp] Shutting down (${signal})...`);
       try {
         await this.edge?.close();
         delete this.edge;
         this.status = { state: 'STOPPED' };
-        console.log('[AlephOsDynamicMcpApp] Server stopped.');
-      } catch (error) {
-        console.error('[AlephOsDynamicMcpApp] Error during shutdown:', error);
-        process.exitCode = 1;
       } finally {
         process.exit(process.exitCode ?? 0);
       }
@@ -73,9 +66,9 @@ export class AlephOsDynamicMcpApp implements App<AlephOsDynamicConfig, 'aleph-os
     process.once('SIGINT', () => void shutdown('SIGINT'));
     process.once('SIGTERM', () => void shutdown('SIGTERM'));
 
-    const { port } = await this.edge.listen();
+    const { port } = await this.edge.listen({ port: this.config.port });
     this.status = { state: 'RUNNING', startedAt: Date.now() };
-    console.log(`[AlephOsDynamicMcpApp] MCP listening on http://localhost:${port}/mcp`);
+    console.log(`[AlephOSDynamicApp] MCP listening on http://localhost:${port}/mcp`);
   }
 
   public isRunning(): this is App<AlephOsDynamicConfig, 'aleph-os-dynamic', '1.0.0'> & {

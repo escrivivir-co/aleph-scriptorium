@@ -1,5 +1,5 @@
 import { App, AppStatus, createAppId } from '@network-engine/core';
-import { createPubSubHub, PubSubHub } from '@network-engine/pubsub';
+import { createPubSubHub, PubSubHub } from '@network-engine/edge-pubsub';
 
 export type HubConfig = {
   port: number;

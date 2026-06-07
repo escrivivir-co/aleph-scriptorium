@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { App, AppStatus, createAppId } from '@network-engine/core';
-import { createMcpHttpEdge, type McpHttpEdge } from '@network-engine/mcp-runtime/http-edge';
+import { mountMcpRoute } from '@network-engine/edge-mcp';
+import { createRestServer, type RestServer } from '@network-engine/edge-rest';
 import { createComposeHandlers, createComposeProjection } from './handlers';
 
 export type ComposeLangConfig = {
@@ -22,7 +23,7 @@ export class ComposeLangMcpApp implements App<ComposeLangConfig, 'compose', '1.0
 
   public status: AppStatus = { state: 'STOPPED' };
   private config?: ComposeLangConfig;
-  private edge?: McpHttpEdge;
+  private edge?: RestServer;
 
   public async init(config: ComposeLangConfig): Promise<void> {
     this.config = config;
@@ -30,18 +31,16 @@ export class ComposeLangMcpApp implements App<ComposeLangConfig, 'compose', '1.0
     const projection = createComposeProjection(cwd);
     const handlers = createComposeHandlers(cwd, UI_DIST_DIR);
 
-    this.edge = createMcpHttpEdge({
-      port: config.port,
-      register: {
-        projection,
-        server: {
-          name: 'Compose Stack Digital Twin',
-          version: '1.0.0',
-          instructions:
-            'Read compose://stack/network-engine resources and runtime/*. Use compose-simulate-* tools or show-compose-stack for the interactive UI. No real Docker execution.',
-        },
-        handlers,
+    this.edge = createRestServer();
+    mountMcpRoute(this.edge, {
+      projection,
+      server: {
+        name: 'Compose Stack Digital Twin',
+        version: '1.0.0',
+        instructions:
+          'Read compose://stack/network-engine resources and runtime/*. Use compose-simulate-* tools or show-compose-stack for the interactive UI. No real Docker execution.',
       },
+      handlers,
     });
   }
 
@@ -65,7 +64,7 @@ export class ComposeLangMcpApp implements App<ComposeLangConfig, 'compose', '1.0
     process.once('SIGINT', () => void shutdown('SIGINT'));
     process.once('SIGTERM', () => void shutdown('SIGTERM'));
 
-    const { port } = await this.edge.listen();
+    const { port } = await this.edge.listen({ port: this.config.port });
     this.status = { state: 'RUNNING', startedAt: Date.now() };
     console.log(`[ComposeLangMcpApp] MCP listening on http://localhost:${port}/mcp`);
   }

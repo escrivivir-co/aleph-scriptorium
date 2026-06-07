@@ -1,8 +1,8 @@
 import { io, Socket } from 'socket.io-client';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { NetworkTransportEvent, PubSubConfig, isPublishable } from './types';
 import { NetworkOrchestrator, LanguageSemantics, InferEvent } from '@network-engine/core';
+import { PubSubConfig, NetworkTransportEvent, isPublishable } from '@network-engine/pubsub';
 
 export class PubSubBridge<TSemantics extends LanguageSemantics<any, any>> {
   private socket: Socket;

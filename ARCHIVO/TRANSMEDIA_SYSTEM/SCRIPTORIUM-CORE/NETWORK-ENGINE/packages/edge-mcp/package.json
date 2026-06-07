@@ -1,0 +1,18 @@
+{
+  "name": "@network-engine/edge-mcp",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "bun test ./src/**/*.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "@network-engine/edge-rest": "workspace:*",
+    "@network-engine/mcp-runtime": "workspace:*"
+  }
+}

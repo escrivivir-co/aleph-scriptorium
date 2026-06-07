@@ -2,7 +2,7 @@ import { describe, expect, it } from 'bun:test';
 import { firstValueFrom, take, toArray } from 'rxjs';
 import type { MCPProjectionResult } from '@network-engine/mcp/projection';
 import { createActorToolHandler } from './actor-bridge';
-import { createMCPRuntime, type MCPRuntimeServerLike } from './runtime';
+import { createMCPRuntime, type MCPRuntimeServerLike } from './runtime/index';
 
 class FakeServer implements MCPRuntimeServerLike {
   tools = new Map<string, (args: unknown) => Promise<unknown>>();

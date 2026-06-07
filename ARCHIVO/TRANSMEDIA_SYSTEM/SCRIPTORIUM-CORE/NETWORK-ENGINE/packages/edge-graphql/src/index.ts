@@ -2,7 +2,7 @@
  * Minimal Bun HTTP server for GraphQL projection gateway (Docker / dev).
  */
 
-import type { GraphQLRuntime } from './runtime';
+import type { GraphQLRuntime } from '@network-engine/graphql';
 
 export interface GraphQLServerOptions {
   runtime: GraphQLRuntime;

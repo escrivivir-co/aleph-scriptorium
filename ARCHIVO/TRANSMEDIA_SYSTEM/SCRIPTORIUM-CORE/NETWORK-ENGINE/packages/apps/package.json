@@ -13,9 +13,12 @@
     "@network-engine/aleph-lang-app": "workspace:*",
     "@network-engine/compose-lang-app": "workspace:*",
     "@network-engine/pubsub": "workspace:*",
-    "@network-engine/graph": "workspace:*",
+    "@network-engine/graphdb": "workspace:*",
+    "@network-engine/edge-graphdb": "workspace:*",
     "@network-engine/mcp": "workspace:*",
-    "@network-engine/mcp-runtime": "workspace:*"
+    "@network-engine/mcp-runtime": "workspace:*",
+    "@network-engine/edge-mcp": "workspace:*",
+    "@network-engine/edge-pubsub": "workspace:*"
   },
   "devDependencies": {
     "@modelcontextprotocol/ext-apps": "^1.7.0",
