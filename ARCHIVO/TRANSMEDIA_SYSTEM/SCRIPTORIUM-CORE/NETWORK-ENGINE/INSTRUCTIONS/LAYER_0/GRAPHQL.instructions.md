@@ -21,7 +21,7 @@ Only explicitly declared contract fields are projected — **no automatic CRUD**
 | --- | --- |
 | Pure projection | `@network-engine/graphql/projection` → `projectDomainToGraphQL` |
 | Runtime adapter | `@network-engine/graphql` → `createGraphQLRuntime` |
-| HTTP gateway (Docker) | `@network-engine/graphql/server` → `startGraphQLServer` |
+| HTTP gateway (Docker) | `@network-engine/edge-graphql` → `startGraphQLServer` (entrypoint: `packages/apps/gateway`) |
 
 ## Guard rails
 

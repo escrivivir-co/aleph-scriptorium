@@ -24,7 +24,7 @@ DomainContract
 @network-engine/mcp (proyección declarativa)
 ```
 
-No define dominio propio. No registra en `McpServer`. No importa Fastify ni MCP SDK.
+No define dominio propio. No registra en `McpServer`. No importa `edge-rest`, `edge-mcp` ni MCP SDK.
 
 ## Límites de capa
 
@@ -36,7 +36,7 @@ Permitido:
 
 Prohibido:
 
-* importar `@network-engine/mcp-runtime`, Fastify o MCP SDK;
+* importar `@network-engine/mcp-runtime`, paquetes `edge-*` o MCP SDK;
 * almacenar estado o ejecutar efectos de persistencia;
 * nombrar APIs públicas con marcas legacy (`blockly`, `entity-mcp`, etc.);
 * subsumir este paquete dentro de `core` (violaría la regla de dependencias unidireccionales).

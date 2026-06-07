@@ -1,5 +1,5 @@
 /**
- * `@network-engine/graph` — adaptador in-memory (cero deps de runtime) del
+ * `@network-engine/graphdb` — adaptador in-memory (cero deps de runtime) del
  * `GraphStoreProtocol` definido en `@network-engine/core` (Capa 1).
  */
 

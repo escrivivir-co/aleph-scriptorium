@@ -29,6 +29,7 @@ Contiene constituciones, principios y convenciones.
   * [NETWORK_ENGINE](LAYER_1/NETWORK_ENGINE.instructions.md)
   * [ECOSYSTEM](LAYER_1/ECOSYSTEM.md)
   * [MCP_RUNTIME](LAYER_1/MCP_RUNTIME.instructions.md)
+  * [EDGE](LAYER_1/EDGE.instructions.md)
   * [LANGUAGES](LAYER_1/LANGUAGES.instructions.md)
   * [CORE](LAYER_1/CORE.instructions.md)
   * [NODE](LAYER_1/NODE.instructions.md)
@@ -48,6 +49,7 @@ Contiene constituciones, principios y convenciones.
 * **[LAYER_3](LAYER_3/README.md)**: Análisis funcional y metalingüístico.
   * [NETWORK_ENGINE](LAYER_3/NETWORK_ENGINE.functional.md)
   * [MCP_RUNTIME](LAYER_3/MCP_RUNTIME.functional.md)
+  * [EDGE](LAYER_3/EDGE.functional.md)
   * [LANGUAGES](LAYER_3/LANGUAGES.functional.md)
   * [CORE](LAYER_3/CORE.functional.md)
   * [NODE](LAYER_3/NODE.functional.md)
@@ -66,7 +68,7 @@ Contiene constituciones, principios y convenciones.
 * [LANGUAGES](../LANGUAGES/README.md): Dossiers y documentación de lenguajes instanciados.
 * [DOSSIERS](../DOSSIERS/README.md): Conocimiento acumulado y líneas de investigación generales.
 * [SCRATCHPAD](../SCRATCHPAD/README.md): Zona temporal de trabajo.
-* [ADR](../ADR/README.md): Decisiones arquitectónicas; ADR 0004-0008 cubren MCP Apps UI, DocumentStore, GraphQL, change streams y Docker.
+* [ADR](../ADR/README.md): Decisiones arquitectónicas; ADR 0004-0009 cubren MCP Apps UI, DocumentStore, GraphQL, change streams, Docker y KnowledgeSystem builder.
 
 
 # Modos Cognitivos

@@ -5,6 +5,7 @@
   "type": "module",
   "workspaces": [
     "packages/*",
+    "packages/apps/gateway",
     "LANGUAGES/*/package",
     "LANGUAGES/*/app"
   ],

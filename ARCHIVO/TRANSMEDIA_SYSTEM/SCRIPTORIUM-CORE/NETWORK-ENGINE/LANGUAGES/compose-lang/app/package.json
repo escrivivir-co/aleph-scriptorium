@@ -9,6 +9,7 @@
     "@network-engine/mcp": "workspace:*",
     "@network-engine/mcp-runtime": "workspace:*",
     "@network-engine/edge-mcp": "workspace:*",
+    "@network-engine/edge-rest": "workspace:*",
     "@network-engine/network-engine": "workspace:*"
   },
   "devDependencies": {

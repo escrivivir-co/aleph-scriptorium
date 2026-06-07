@@ -1,17 +1,18 @@
-{
-  "extends": "../../../tsconfig.base.json",
-  "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src",
-    "types": ["node", "bun"]
-  },
-  "include": ["src/**/*"],
-  "references": [
-    { "path": "../../core" },
-    { "path": "../../mongo" },
-    { "path": "../../graphql" },
-    { "path": "../../edge-graphql" },
-    { "path": "../../mcp-runtime" },
-    { "path": "../../edge-mcp" }
-  ]
-}
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "types": ["node", "bun"]
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../../core" },
+    { "path": "../../mongo" },
+    { "path": "../../graphql" },
+    { "path": "../../edge-graphql" },
+    { "path": "../../network-engine" },
+    { "path": "../../graphdb" },
+    { "path": "../../edge-graphdb" }
+  ]
+}

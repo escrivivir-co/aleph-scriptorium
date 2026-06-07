@@ -1,8 +1,10 @@
 # MCP Runtime Functional Analysis
 
+> **Borde HTTP:** el transporte (Streamable HTTP, `server/discover`, `subscriptions/listen`) vive en [`@network-engine/edge-mcp`](../LAYER_1/EDGE.instructions.md). Este runtime es **transport-neutral**.
+
 ## Propósito funcional
 
-`@network-engine/mcp-runtime` convierte contratos de dominio en una superficie viva de contexto MCP.
+`@network-engine/mcp-runtime` convierte contratos de dominio en una superficie viva de contexto MCP, **independiente del transporte**.
 
 Su función no es ejecutar CRUD.
 
@@ -28,7 +30,7 @@ Funcionalmente actúa como:
 - expositor de protocolos;
 - mediador de mutaciones;
 - puente de observabilidad;
-- borde de interoperabilidad con hosts MCP.
+- superficie de contexto neutral que un borde (`edge-mcp`) expone a hosts MCP.
 
 No actúa como:
 
@@ -36,6 +38,7 @@ No actúa como:
 - storage;
 - motor de workflow;
 - UI;
+- transporte HTTP (eso es `@network-engine/edge-mcp` sobre `@network-engine/edge-rest`);
 - router REST;
 - clase base vertical de aplicaciones.
 
@@ -149,6 +152,8 @@ Interpretación:
 
 ## Función de `subscriptions/listen`
 
+> **Ubicación física:** el shim HTTP/SSE de `subscriptions/listen` vive en `@network-engine/edge-mcp` (`mountMcpRoute`), no en `mcp-runtime`. El runtime solo emite los eventos RxJS que el borde traduce a notificaciones MCP.
+
 `subscriptions/listen` no es un bus general.
 
 Funcionalmente representa:
@@ -251,7 +256,7 @@ Prohibido:
 - usar `GET /mcp/discover` como discover normativo;
 - depender de sesiones implícitas;
 - mezclar UI Apps con runtime base;
-- poner lógica de aprobación dentro del adapter Fastify.
+- poner lógica de aprobación dentro del borde HTTP (`edge-mcp`).
 
 ## Cierre funcional actual
 
@@ -262,7 +267,7 @@ El runtime inicial ya cumple:
 - emite eventos observables;
 - soporta discover moderno;
 - soporta cache hints;
-- soporta `subscriptions/listen` mediante shim temporal;
+- emite eventos que `edge-mcp` traduce a `subscriptions/listen` (shim temporal en el borde);
 - mantiene core limpio.
 
 ## Próxima frontera funcional
@@ -271,6 +276,6 @@ Antes de añadir nuevas features, conviene formalizar:
 
 1. Cómo un read model vivo dispara `notifyResourceUpdated(uri)`.
 2. Cómo una mutación aceptada produce cambios de lista o resource update.
-3. Cómo un actor XState decide publicar notifications sin acoplarse al HTTP edge.
+3. Cómo un actor XState decide publicar notifications sin acoplarse a `edge-mcp`.
 4. Cómo MCP Apps consumirán Resources antes de Tools.
 5. Cómo retirar el shim cuando el SDK alcance el draft.

@@ -97,3 +97,5 @@ La validación funcional culmina con la creación de los artefactos en `LANGUAGE
 * `aleph-lang` **no absorbe** `SEMANTINC`: el contenido semántico es plugin/contenido de Capa 4, no sintaxis del lenguaje.
 
 **Hipótesis confirmada (2026-06-06):** mantener `aleph-lang` como huésped tangible y `LANGUAGES` como dossier conceptual; `SEMANTINC` permanece en `LAYER_2` como contexto operativo de ontologías.
+
+> **Ubicación física (2026-06-07):** `@network-engine/aleph-lang` vive en `LANGUAGES/aleph-lang/package` (y su app en `LANGUAGES/aleph-lang/app`). Ya **no** existe bajo `packages/`: un commit previo eliminó `packages/aleph-lang`. El host `packages/apps` y `@network-engine/mcp` lo consumen vía workspace (`@network-engine/aleph-lang` / `@network-engine/aleph-lang-app`).

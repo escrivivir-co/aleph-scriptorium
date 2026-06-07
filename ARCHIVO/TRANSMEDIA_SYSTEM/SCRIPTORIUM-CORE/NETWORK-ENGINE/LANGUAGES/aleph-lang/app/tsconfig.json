@@ -9,6 +9,7 @@
   "references": [
     { "path": "../../../packages/core" },
     { "path": "../package" },
-    { "path": "../../../packages/pubsub" }
+    { "path": "../../../packages/pubsub" },
+    { "path": "../../../packages/edge-pubsub" }
   ]
 }

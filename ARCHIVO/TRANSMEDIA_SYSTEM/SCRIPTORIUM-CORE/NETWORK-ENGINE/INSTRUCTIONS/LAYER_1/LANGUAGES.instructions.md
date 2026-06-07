@@ -79,4 +79,4 @@ Referencia: `LANGUAGES/aleph-lang/package/src/universe.ts`.
 
 Si el lenguaje expone app o MCP, vive en `LANGUAGES/<nombre>/app/` con nombre `@network-engine/<nombre>-app`. El host (`packages/apps`) importa el descriptor exportado; no aloja lógica de lenguaje bajo `packages/apps/src/catalog/<nombre>`.
 
-**Nota (tsconfig):** `@network-engine/network-engine` no debe ser project reference del paquete `-lang` — crearía un ciclo (`mcp → aleph-lang → network-engine → mcp`). La dependencia en `package.json` y la referencia a `core` bastan para `tsc -b`.
+**Nota (tsconfig):** el paquete `-lang` vive en `LANGUAGES/<nombre>/package` (ya **no** existe `packages/aleph-lang`). `@network-engine/network-engine` no debe ser project reference de ese paquete `-lang` — crearía un ciclo (`mcp → aleph-lang → network-engine → mcp`). La dependencia en `package.json` y la referencia a `core` bastan para `tsc -b`.

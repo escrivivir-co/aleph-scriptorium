@@ -13,9 +13,9 @@ Two layers, mirroring `@network-engine/mcp`:
 
 | Subpath | Symbol |
 | --- | --- |
-| `@network-engine/graphql` | `createGraphQLRuntime`, `startGraphQLServer` |
+| `@network-engine/graphql` | `createGraphQLRuntime` |
 | `@network-engine/graphql/projection` | `projectDomainToGraphQL` |
-| `@network-engine/graphql/server` | `startGraphQLServer` |
+| `@network-engine/edge-graphql` | `startGraphQLServer` (borde HTTP Bun; ver [EDGE.instructions.md](EDGE.instructions.md)) |
 
 ## Resource-first rule
 

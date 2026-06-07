@@ -7,6 +7,8 @@
   },
   "include": ["src/**/*"],
   "references": [
+    { "path": "../edge-rest" },
+    { "path": "../mcp" },
     { "path": "../mcp-runtime" }
   ]
 }

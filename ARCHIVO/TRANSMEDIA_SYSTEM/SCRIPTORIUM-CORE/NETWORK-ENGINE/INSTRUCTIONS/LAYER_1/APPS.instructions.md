@@ -6,7 +6,7 @@
 
 *   **Obligatorio:** Consumir `@network-engine/core` vía `workspace:*`.
 *   **Permitido:** Consumir adaptadores de runtime (`@network-engine/node`, `@network-engine/browser`).
-*   **Permitido:** Dependencias de infraestructura final (ej. `express`, bases de datos, librerías de UI) exclusivas para levantar la app.
+*   **Permitido:** Dependencias de infraestructura final (ej. `@network-engine/edge-rest` para HTTP, bases de datos, librerías de UI) exclusivas para levantar la app.
 *   **Prohibido:** Exportar abstracciones de negocio desde `apps` hacia otros paquetes. Las apps no tienen consumidores (excepto el propio ejecutor).
 *   **Prohibido:** Replicar la lógica de inicialización del `NetworkOrchestrator` de forma manual. Siempre deben usar las fábricas de los adaptadores (ej. `createNodeEngine()`).
 
@@ -41,13 +41,27 @@ export class MiApp implements App<Config, 'mi-app', '1.0.0'> {
 }
 ```
 
-## 2. El Patrón Registry (Launcher)
+## 2. El Patrón Catálogo (Launcher)
 
-Las apps no se auto-ejecutan directamente. Se exponen como módulos y se registran en el `launcher.ts`.
+Las apps no se auto-ejecutan. Cada una vive en una carpeta bajo `packages/apps/src/catalog/<id>/` (o en `LANGUAGES/<lang>/app/` para lenguajes derivados) y se registra en el catálogo tipado.
 
-*   El launcher mantiene una tupla `const apps = [...] as const;` con todas las apps disponibles.
-*   El launcher infiere un `AppRegistry` tipado a partir de esta tupla.
-*   El launcher es el único que intercepta `process.argv` y ejecuta el ciclo `init()` -> `run()`.
+*   `AppDescriptor` (`catalog/types.ts`) empareja la instancia `App` con `provideConfig()`.
+*   `catalog/index.ts` exporta el objeto `catalog` con todas las claves disponibles.
+*   `launcher.ts` es genérico: resuelve `catalog[appName]`, llama `provideConfig()`, luego `init()` → `run()`. No contiene ramas por app ni `AppRegistry` manual.
+
+### Inventario del catálogo
+
+| Clave | Origen | Borde |
+| --- | --- | --- |
+| `hello` | `catalog/hello/` | Legacy `node:http` + `pubsub` |
+| `aleph` | `@network-engine/aleph-lang-app` | `edge-pubsub` (bridge) |
+| `compose` / `compose-lang` | `@network-engine/compose-lang-app` | `edge-rest` + `edge-mcp` |
+| `aleph-os` | `catalog/aleph-os/` | `edge-rest` + `edge-mcp` |
+| `aleph-os-dynamic` | `catalog/aleph-os-dynamic/` | `edge-rest` + `edge-mcp` |
+| `hub` | `catalog/hub/` | `edge-pubsub` (hub Socket.IO) |
+| `graph` | `catalog/graph/` | `graphdb` (demo in-memory, sin HTTP) |
+
+Ver [EDGE.instructions.md](EDGE.instructions.md) y [EDGE.functional.md](../LAYER_3/EDGE.functional.md) para la frontera transporte/runtime.
 
 ---
 
@@ -55,8 +69,9 @@ Las apps no se auto-ejecutan directamente. Se exponen como módulos y se registr
 
 ## Al añadir una nueva App
 *   Asegurar que el `rawId` es único y es un string literal (usar `as const`).
-*   Registrarla explícitamente en el array `apps` y en el objeto `registry` del `launcher.ts`.
-*   No modificar las reglas del `launcher.ts` sin un rediseño mayor acordado (afecta a todas las apps).
+*   Crear carpeta `catalog/<id>/` con `app.ts` + descriptor en `index.ts`.
+*   Registrar la entrada en `catalog/index.ts` y declarar deps/refs en `package.json` + `tsconfig.json` de `apps`.
+*   No modificar la lógica genérica de `launcher.ts` salvo rediseño acordado.
 
 ---
 
@@ -80,8 +95,12 @@ Las MCP Apps interactivas se proyectan desde `DomainContract`, no desde wiring m
 
 1. `DomainContract` en el catálogo de la app (ej. `packages/apps/src/catalog/aleph-os/aleph-os.contract.ts`).
 2. `projectDomainToMCP()` (`@network-engine/mcp`) — incluye `AppLauncherContract` → tool con `_meta.ui.resourceUri`.
-3. `createMCPRuntime()` + `createMcpHttpEdge()` (`@network-engine/mcp-runtime/http-edge`).
+3. `createRestServer()` (`@network-engine/edge-rest`) + `mountMcpRoute()` (`@network-engine/edge-mcp`) — `mountMcpRoute` invoca internamente `createMCPRuntime()` + `createMcpServerFromRuntime()` de `@network-engine/mcp-runtime` y monta `POST /mcp` sobre el `RestServer`. Ver [EDGE.instructions.md](EDGE.instructions.md).
 4. Resource UI (`text/html;profile=mcp-app`) servido por `readResource`.
+
+El borde HTTP ya no se importa desde `@network-engine/mcp-runtime/http-edge` (export eliminado): el runtime MCP es transport-neutral y el transporte vive en la familia `edge-*`. Patrón real en [`packages/apps/src/catalog/aleph-os/app.ts`](../../packages/apps/src/catalog/aleph-os/app.ts) y [`packages/apps/src/catalog/aleph-os-dynamic/app.ts`](../../packages/apps/src/catalog/aleph-os-dynamic/app.ts).
+
+**Nota:** el entrypoint operacional extraído de `node` vive ahora en `packages/apps/gateway` (`@network-engine/gateway`), un gateway GraphQL mínimo para Docker que usa `startGraphQLServer()` de `@network-engine/edge-graphql`; no comparte el wiring MCP de los catálogos `aleph-os*`.
 
 ## Referencia
 

@@ -6,6 +6,7 @@
   "dependencies": {
     "@network-engine/aleph-lang": "workspace:*",
     "@network-engine/core": "workspace:*",
-    "@network-engine/pubsub": "workspace:*"
+    "@network-engine/pubsub": "workspace:*",
+    "@network-engine/edge-pubsub": "workspace:*"
   }
 }

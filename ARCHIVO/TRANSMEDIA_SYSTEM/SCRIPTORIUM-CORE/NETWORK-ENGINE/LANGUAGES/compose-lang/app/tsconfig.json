@@ -11,6 +11,8 @@
     { "path": "../../../packages/mcp" },
     { "path": "../../../packages/mcp-runtime" },
     { "path": "../../../packages/network-engine" },
+    { "path": "../../../packages/edge-rest" },
+    { "path": "../../../packages/edge-mcp" },
     { "path": "../package" }
   ]
 }

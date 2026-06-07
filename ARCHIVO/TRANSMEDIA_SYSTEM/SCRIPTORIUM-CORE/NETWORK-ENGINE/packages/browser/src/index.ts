@@ -1,7 +1,7 @@
-import { NetworkOrchestrator, NetworkPlugin, PluginId, PluginCapabilities, getEnv } from '@network-engine/core';
+import { NetworkOrchestrator, NetworkPlugin, PluginId, PluginCapabilities, getEnv, LanguageSemantics } from '@network-engine/core';
 
 // Browser-specific plugin example
-export class LocalStoragePlugin implements NetworkPlugin {
+export class LocalStoragePlugin<TSemantics extends LanguageSemantics<any, any>> implements NetworkPlugin<TSemantics, Record<string, unknown>> {
   public readonly id = 'browser-localstorage' as PluginId;
   public readonly capabilities: PluginCapabilities = {
     canInfer: false,
@@ -23,8 +23,8 @@ export class LocalStoragePlugin implements NetworkPlugin {
 }
 
 // Browser factory function
-export function createBrowserEngine(): NetworkOrchestrator {
-  const engine = new NetworkOrchestrator();
+export function createBrowserEngine<TSemantics extends LanguageSemantics<any, any>>(machine: any): NetworkOrchestrator<TSemantics> {
+  const engine = new NetworkOrchestrator<TSemantics>(machine);
   const storagePlugin = new LocalStoragePlugin();
 
   storagePlugin.install({ prefix: 'aleph_' });

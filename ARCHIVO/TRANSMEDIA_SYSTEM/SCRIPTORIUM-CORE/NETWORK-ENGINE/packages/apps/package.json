@@ -9,15 +9,14 @@
   "dependencies": {
     "@network-engine/core": "workspace:*",
     "@network-engine/network-engine": "workspace:*",
-    "@network-engine/node": "workspace:*",
     "@network-engine/aleph-lang-app": "workspace:*",
     "@network-engine/compose-lang-app": "workspace:*",
     "@network-engine/pubsub": "workspace:*",
     "@network-engine/graphdb": "workspace:*",
-    "@network-engine/edge-graphdb": "workspace:*",
     "@network-engine/mcp": "workspace:*",
     "@network-engine/mcp-runtime": "workspace:*",
     "@network-engine/edge-mcp": "workspace:*",
+    "@network-engine/edge-rest": "workspace:*",
     "@network-engine/edge-pubsub": "workspace:*"
   },
   "devDependencies": {

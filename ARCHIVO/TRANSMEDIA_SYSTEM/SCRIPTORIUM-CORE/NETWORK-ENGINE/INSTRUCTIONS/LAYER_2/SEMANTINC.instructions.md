@@ -101,7 +101,7 @@ Por la regla DRY conceptual de la meta-constitución (todo repetido >2 veces es 
 
 Según [LAYER_2/MONOREPO.instructions.md](INSTRUCTIONS/LAYER_2/MONOREPO.instructions.md):
 
--   Nuevo `packages/graph/` con su `package.json`, `tsconfig.json` (extiende `tsconfig.base.json`), `src/index.ts` y `.env` propio.
+-   Nuevo `packages/graphdb/` con su `package.json`, `tsconfig.json` (extiende `tsconfig.base.json`), `src/index.ts` y `.env` propio.
 
 -   Project references en `tsconfig.json` raíz y en `node`/`apps` que dependan del grafo.
 
@@ -143,9 +143,9 @@ The `shared-tests` todo is done. Here's the full report:
 
 Files created/modified:
 
--   `packages/graph/src/graph-store.test.ts` --- new, 558-line contract test suite
--   `packages/graph/tsconfig.json` --- added `"bun"` to `types[]`, added `../node` to project references
--   `packages/graph/package.json` --- added `@network-engine/node` as `devDependency`
+-   `packages/graphdb/src/graph-store.test.ts` --- new, 558-line contract test suite
+-   `packages/graphdb/tsconfig.json` --- added `"bun"` to `types[]`, added `../node` to project references
+-   `packages/graphdb/package.json` --- added `@network-engine/node` as `devDependency`
 
 Test cases (26 per run, 52 total across src + compiled dist):
 
@@ -178,7 +178,7 @@ Fase 3 --- Tests, demo y documentación (tres agentes paralelos)
 Code Review --- GraphDB (RDF/SPARQL) Integration
 ==============================================
 
-Build state confirmed (read-only): `bun run typecheck` → exit 0 (`tsc -b` clean). `bun test packages/graph` → 50 pass, 2 skip, 0 fail. So everything compiles and the existing tests are green --- but several of the findings below are precisely things the green tests do *not* exercise.
+Build state confirmed (read-only): `bun run typecheck` → exit 0 (`tsc -b` clean). `bun test packages/graphdb` → 50 pass, 2 skip, 0 fail. So everything compiles and the existing tests are green --- but several of the findings below are precisely things the green tests do *not* exercise.
 
 * * * * *
 
@@ -230,7 +230,7 @@ MAJOR
 
 ### M1. The "shared contract suite" never runs against the GraphDB adapter --- substitutability is asserted, not proven
 
-`packages/graph/src/graph-store.test.ts`
+`packages/graphdb/src/graph-store.test.ts`
 
 The file header and `runContractSuite`'s doc claim "passing the same suite against two adapters demonstrates substitutability," but the suite is only ever invoked once:
 
@@ -242,7 +242,7 @@ runContractSuite('InMemoryGraphStore --- contract',  ()  =>  createInMemoryGraph
 
 ### M2. In-memory SPARQL guard rejects valid IRIs containing reserved keywords
 
-`packages/graph/src/sparql.ts`
+`packages/graphdb/src/sparql.ts`
 
 sparql.tsLines 221-233
 
@@ -293,9 +293,9 @@ The neutrality is partially achieved and partially undermined:
 MINOR
 -----
 
--   M-build hygiene / tests double-run. `tsc -b` compiles `*.test.ts` into `dist/` (graph `tsconfig.json` `include: ["src/**/*"]` has no test exclusion), and the committed `dist/` is present. `bun test packages/graph` consequently ran the suite twice (`dist/graph-store.test.js` *and* `src/graph-store.test.ts`). The root `test` script globs only `src/**/*.test.ts` so CI is unaffected, but tests shouldn't be emitted/shipped and `dist/` shouldn't be in the tree.
+-   M-build hygiene / tests double-run. `tsc -b` compiles `*.test.ts` into `dist/` (graph `tsconfig.json` `include: ["src/**/*"]` has no test exclusion), and the committed `dist/` is present. `bun test packages/graphdb` consequently ran the suite twice (`dist/graph-store.test.js` *and* `src/graph-store.test.ts`). The root `test` script globs only `src/**/*.test.ts` so CI is unaffected, but tests shouldn't be emitted/shipped and `dist/` shouldn't be in the tree.
 -   ESM inconsistency. `packages/node/package.json` lacks `"type": "module"` while `core`, `graph`, and root all declare it. Works under Bun today but is inconsistent with the stated ESM convention (MONOREPO 163).
--   Test placement couples `graph → node`. The GraphDB tests live in `packages/graph` and import `@network-engine/node` (graph's `package.json` devDependency + `tsconfig` reference to `../node`). The zero-dep reference adapter now has a dev-time edge to the HTTP adapter purely for test co-location; these tests arguably belong in `packages/node`.
+-   Test placement couples `graphdb → node`. The GraphDB tests live in `packages/graphdb` and import `@network-engine/node` (graphdb's `package.json` devDependency + `tsconfig` reference to `../node`). The zero-dep reference adapter now has a dev-time edge to the HTTP adapter purely for test co-location; these tests arguably belong in `packages/node`.
 -   `termKey` collision comment is overstated. `keys.ts` line 6--7 claims `\u0001`/`\u0002` are "imposible en ... lexical forms RDF bien formadas." RDF 1.1 literal lexical forms *can* contain U+0001/U+0002. In practice the scheme is still effectively injective (kind prefix `N/B/L/D`, fixed separator count, and datatype IRIs being control-char-free), so I could not construct a real collision --- but the justification as written is factually wrong and should be corrected or the keys length-prefixed.
 -   `RDF_LANG_STRING` mis-documented. `rdf.ts` line 79 comments it as "Datatype por defecto de un literal ... sin tipo explícito ni lang," but the default is `xsd:string` (line 100) and `rdf:langString` is used for lang literals (103). Misleading comment.
 -   `SelectVars`/`runQuery` typing is real but only partially enforced. The `SELECT⊆WHERE` check (W2) is genuinely enforced for literal terms via `const` type params, but is bypassable: passing a value typed as plain `string` into `triple(...)` makes `VarNameOf<string>` infer `string`, widening `W` and silently satisfying `BuildArgs` for any projection. Likewise `query`'s literal-inference overload degrades to `never`→open record for any non-literal string. Acceptable degradations, but worth knowing the guarantees aren't airtight. Also `SelectVars`'s recursive template parsing runs per literal query string at type-check time --- fine for short queries (it parses only the projection slice), but a pathological literal could stress the recursion limit.

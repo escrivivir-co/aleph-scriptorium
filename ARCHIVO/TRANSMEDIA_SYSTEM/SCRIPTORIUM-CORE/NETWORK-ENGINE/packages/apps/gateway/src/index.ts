@@ -1,55 +1,59 @@
 /**
- * Docker entrypoint — minimal GraphQL gateway with in-memory or Mongo store.
+ * Docker entrypoint — GraphQL gateway with Mongo (or in-memory) + GraphDB materialization.
  */
 
-import type { AnyEvent } from '@network-engine/core';
-import { defineDomainContract } from '@network-engine/core';
-import { createInMemoryDocumentStore } from '@network-engine/mongo';
+import { createNetworkEngine } from '@network-engine/network-engine';
 import { createGraphQLRuntime } from '@network-engine/graphql';
 import { startGraphQLServer } from '@network-engine/edge-graphql';
+import { bootstrapGateway } from './bootstrap';
+import { gatewayContract } from './contract';
+import { wireUpsertEffects } from './effects';
+import { wireGraphMaterialization } from './graph-sync';
+import { DEFAULT_ENTITY_BASE_IRI } from './materialize';
+import { gatewayMachine } from './machine';
 
-const contract = defineDomainContract({
-  kind: 'network-engine',
-  version: '1.0.0',
-  display: { singular: 'Entity', plural: 'Entities' },
-  schema: { type: 'object' },
+const COLLECTION = 'entities';
+
+const { store, graphPlugin } = await bootstrapGateway();
+
+const { orchestrator } = createNetworkEngine(gatewayMachine, {
   storage: {
-    capability: 'document-store',
-    collection: 'entities',
-    version: '1.0.0',
-  },
-  resources: {
-    collection: {
-      kind: 'resource',
-      uriTemplate: 'network://entities',
-      name: 'Entities',
-      mimeType: 'application/json',
-    },
-  },
-  prompts: {},
-  mutations: {
-    upsert: {
-      name: 'upsert_entity',
-      description: 'Upsert an entity document',
-      effect: 'upsert',
+    store,
+    contract: gatewayContract,
+    collection: COLLECTION,
+    mappers: {
+      mapDocumentChange: (change) => ({
+        type: 'ENTITY_CHANGED',
+        payload: { id: change.id, kind: change.kind },
+        timestamp: change.ts,
+      }),
+      mapToolRequest: (req) => ({
+        type: 'UPSERT_ENTITY',
+        payload: { input: req.args },
+        timestamp: Date.now(),
+      }),
     },
   },
 });
 
-const store = createInMemoryDocumentStore();
+orchestrator.registerPlugin(graphPlugin);
+wireUpsertEffects(orchestrator, { store, collection: COLLECTION });
+wireGraphMaterialization(store, orchestrator.resolve('rdf-sparql'), {
+  collection: COLLECTION,
+  baseIri: DEFAULT_ENTITY_BASE_IRI,
+});
 
 const runtime = createGraphQLRuntime({
-  contract,
+  contract: gatewayContract,
   context: {
-    contract,
+    contract: gatewayContract,
     store,
-    dispatch: () => {},
-    mapToolRequest: (req) =>
-      ({
-        type: 'GRAPHQL_MUTATION',
-        payload: { tool: req.tool.name, args: req.args },
-        timestamp: Date.now(),
-      }) as AnyEvent,
+    dispatch: orchestrator.dispatch.bind(orchestrator),
+    mapToolRequest: (req) => ({
+      type: 'UPSERT_ENTITY',
+      payload: { input: req.args },
+      timestamp: Date.now(),
+    }),
   },
 });
 

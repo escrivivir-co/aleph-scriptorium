@@ -21,6 +21,7 @@
       "dependencies": {
         "@network-engine/aleph-lang": "workspace:*",
         "@network-engine/core": "workspace:*",
+        "@network-engine/edge-pubsub": "workspace:*",
         "@network-engine/pubsub": "workspace:*",
       },
     },
@@ -39,6 +40,7 @@
         "@network-engine/compose-lang": "workspace:*",
         "@network-engine/core": "workspace:*",
         "@network-engine/edge-mcp": "workspace:*",
+        "@network-engine/edge-rest": "workspace:*",
         "@network-engine/mcp": "workspace:*",
         "@network-engine/mcp-runtime": "workspace:*",
         "@network-engine/network-engine": "workspace:*",
@@ -65,14 +67,13 @@
         "@network-engine/aleph-lang-app": "workspace:*",
         "@network-engine/compose-lang-app": "workspace:*",
         "@network-engine/core": "workspace:*",
-        "@network-engine/edge-graphdb": "workspace:*",
         "@network-engine/edge-mcp": "workspace:*",
         "@network-engine/edge-pubsub": "workspace:*",
+        "@network-engine/edge-rest": "workspace:*",
         "@network-engine/graphdb": "workspace:*",
         "@network-engine/mcp": "workspace:*",
         "@network-engine/mcp-runtime": "workspace:*",
         "@network-engine/network-engine": "workspace:*",
-        "@network-engine/node": "workspace:*",
         "@network-engine/pubsub": "workspace:*",
       },
       "devDependencies": {
@@ -82,9 +83,25 @@
         "vite-plugin-singlefile": "^2.3.0",
       },
     },
+    "packages/apps/gateway": {
+      "name": "@network-engine/gateway",
+      "version": "1.0.0",
+      "dependencies": {
+        "@network-engine/core": "workspace:*",
+        "@network-engine/edge-graphdb": "workspace:*",
+        "@network-engine/edge-graphql": "workspace:*",
+        "@network-engine/graphdb": "workspace:*",
+        "@network-engine/graphql": "workspace:*",
+        "@network-engine/mongo": "workspace:*",
+        "@network-engine/network-engine": "workspace:*",
+      },
+    },
     "packages/browser": {
       "name": "@network-engine/browser",
       "version": "1.0.0",
+      "dependencies": {
+        "@network-engine/core": "workspace:*",
+      },
     },
     "packages/contract-adapters": {
       "name": "@network-engine/contract-adapters",
@@ -124,6 +141,7 @@
       "dependencies": {
         "@modelcontextprotocol/sdk": "1.29.0",
         "@network-engine/edge-rest": "workspace:*",
+        "@network-engine/mcp": "workspace:*",
         "@network-engine/mcp-runtime": "workspace:*",
       },
     },
@@ -333,6 +351,8 @@
     "@network-engine/edge-pubsub": ["@network-engine/edge-pubsub@workspace:packages/edge-pubsub"],
 
     "@network-engine/edge-rest": ["@network-engine/edge-rest@workspace:packages/edge-rest"],
+
+    "@network-engine/gateway": ["@network-engine/gateway@workspace:packages/apps/gateway"],
 
     "@network-engine/graphdb": ["@network-engine/graphdb@workspace:packages/graphdb"],
 

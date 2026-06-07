@@ -22,7 +22,7 @@ Tres servicios principales:
 | --- | --- | --- | --- |
 | `mongo` | `mongo:7` | 27017 | Replica-set single-node; init `rs.initiate()` |
 | `graphdb` | `ontotext/graphdb:10.6.0` | 7200 | Repositorio SPARQL para `GraphDbPlugin` |
-| `graphql` | build local (`oven/bun`) | 4000 | Gateway GraphQL desde `@network-engine/graphql` |
+| `graphql` | build local (`oven/bun`) | 4000 | Gateway GraphQL desde `packages/apps/gateway` (`@network-engine/gateway`) usando `startGraphQLServer` de `@network-engine/edge-graphql` |
 
 Servicios opcionales (hub pubsub 3001, aleph-os MCP 3100) quedan fuera del compose mínimo; pueden añadirse en fases posteriores.
 

@@ -36,9 +36,13 @@ services:
     environment:
       MONGO_URI: mongodb://mongo:27017/?replicaSet=rs0
       MONGO_DATABASE: network_engine
+      GRAPHDB_ENDPOINT: http://graphdb:7200
+      GRAPHDB_REPOSITORY: network-engine
       GRAPHQL_PORT: '4000'
     depends_on:
       mongo:
+        condition: service_healthy
+      graphdb:
         condition: service_healthy
 
   node-red:

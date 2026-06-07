@@ -10,11 +10,13 @@
   "references": [
     { "path": "../core" },
     { "path": "../network-engine" },
-    { "path": "../node" },
     { "path": "../graphdb" },
-    { "path": "../edge-graphdb" },
+    { "path": "../pubsub" },
     { "path": "../mcp" },
     { "path": "../mcp-runtime" },
+    { "path": "../edge-rest" },
+    { "path": "../edge-mcp" },
+    { "path": "../edge-pubsub" },
     { "path": "../../LANGUAGES/aleph-lang/app" },
     { "path": "../../LANGUAGES/compose-lang/app" }
   ]

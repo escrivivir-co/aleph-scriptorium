@@ -50,7 +50,7 @@ No está permitido:
 Caso vigente:
 
 - `@modelcontextprotocol/sdk@1.29.0` no expone todavía helpers/schemas draft para `subscriptions/listen`.
-- `@network-engine/mcp-runtime/fastify` puede interceptar temporalmente `subscriptions/listen` según `ADR/0001-mcp-runtime-subscriptions-shim.md`.
+- `@network-engine/edge-mcp` (`mountMcpRoute`) intercepta temporalmente `subscriptions/listen` según `ADR/0001-mcp-runtime-subscriptions-shim.md`.
 - El shim debe retirarse cuando el SDK soporte oficialmente `SubscriptionsListenRequestSchema` y `SubscriptionsAcknowledgedNotificationSchema`.
 
 ## Docs

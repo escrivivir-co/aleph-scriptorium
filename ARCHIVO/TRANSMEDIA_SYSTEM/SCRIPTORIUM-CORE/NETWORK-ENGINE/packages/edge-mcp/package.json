@@ -13,6 +13,7 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.29.0",
     "@network-engine/edge-rest": "workspace:*",
+    "@network-engine/mcp": "workspace:*",
     "@network-engine/mcp-runtime": "workspace:*"
   }
 }

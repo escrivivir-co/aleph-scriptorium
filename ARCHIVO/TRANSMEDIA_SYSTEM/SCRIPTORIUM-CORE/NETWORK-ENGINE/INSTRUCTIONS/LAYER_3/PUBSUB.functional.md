@@ -6,7 +6,7 @@ Cada app en Network-Engine nace como un universo aislado.
 
 Su `eventBus` (RxJS) transporta señales internas. Su `stateActor` (XState) evoluciona contexto local. Pero todo ocurre en soledad. Ningún evento traspasa las paredes del proceso.
 
-El paquete `@network-engine/pubsub` rompe ese aislamiento. Permite que los universos se escuchen, se observen y reaccionen entre sí.
+Los contratos en `@network-engine/pubsub` y el borde Socket.IO en `@network-engine/edge-pubsub` rompen ese aislamiento. Permiten que los universos se escuchen, se observen y reaccionen entre sí. Ver [EDGE.functional.md](EDGE.functional.md).
 
 ---
 
@@ -26,9 +26,9 @@ Con PubSub, la plataforma cierra su modelo de comunicación:
 
 | Protocolo | Audiencia | Patrón | Dirección |
 |---|---|---|---|
-| **REST** (Fastify) | Clientes HTTP externos | Request/Response | Síncrono |
+| **REST** (`edge-rest`) | Clientes HTTP externos | Request/Response | Síncrono |
 | **MCP** (Streamable HTTP) | Agentes AI, IDEs | Request/Response + SSE | Semi-asíncrono |
-| **PubSub** (Socket.IO) | Apps internas del cluster | Event-Driven | Asíncrono bidireccional |
+| **PubSub** (`edge-pubsub` / Socket.IO) | Apps internas del cluster | Event-Driven | Asíncrono bidireccional |
 
 Cada vértice del triángulo tiene su razón de existir. REST expone datos. MCP expone capacidades cognitivas. PubSub habilita la vida colectiva del ecosistema.
 

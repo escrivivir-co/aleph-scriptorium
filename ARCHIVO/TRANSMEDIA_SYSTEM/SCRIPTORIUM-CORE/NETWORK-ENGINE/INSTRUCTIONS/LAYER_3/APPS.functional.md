@@ -12,7 +12,7 @@ Funcionalmente, las aplicaciones son pruebas (en el sentido matemático y de sof
 
 Si Network-Engine permite crear lenguajes, entonces las "Apps" son expresiones escritas en esos lenguajes.
 
-*   **App de Ejemplo (HelloApp):** Demuestra que el universo puede arrancar y un observador puede interactuar.
+*   **App de Ejemplo (HelloApp):** En `packages/apps/src/catalog/hello/` — demuestra que el universo puede arrancar y un observador puede interactuar (patrón legacy `node:http`, no edge).
 *   **Simuladores Específicos:** Una app podría representar un intento de evaluar forzamientos (forcing) sobre un modelo transitivo numerable de ZFC.
 *   **Redes de Ontologías:** Otra app podría mapear grafos de conocimiento RDF a las reglas de inferencia del engine.
 
@@ -38,8 +38,27 @@ Una MCP App no es un servidor ad hoc: es la materialización de un `DomainContra
 
 `packages/apps/src/catalog/aleph-os` demuestra el patrón Resource-first: el agente puede leer `aleph://os/overview` antes de invocar `show-aleph-os`. Ver [ADR 0004](../../ADR/0004-mcp-apps-ui-projection.md).
 
+El servidor que expone esa proyección por HTTP no lo aporta la app: es el borde de transporte de la familia `edge-*` (`createRestServer` + `mountMcpRoute`). La app solo declara el contrato y los handlers. Ver [EDGE.functional.md](EDGE.functional.md).
+
 ## Knowledge Systems navegables
 
 Las apps que exponen documentación navegable deben consumir el builder puro `KnowledgeSystem` de `@network-engine/core` y mantener en `apps` solo la materialización runtime: lectura de HTML, parser Markdown cuando aplique, handlers MCP y registro de catálogo.
 
 `aleph-os` queda como origen estático compatible (`aleph://os/*`, `show-aleph-os`). `aleph-os-dynamic` prueba la derivación desde índices Markdown con namespace propio (`aleph://os-dynamic/*`, `show-aleph-os-dynamic`). Ver [ADR 0009](../../ADR/0009-knowledge-system-mcp-app-builder.md).
+
+---
+
+# Taxonomía del catálogo
+
+| Tipo | Claves | Función |
+| --- | --- | --- |
+| **Demo** | `hello`, `graph` | Pruebas mínimas de arranque y stores (sin MCP completo) |
+| **Lenguaje** | `aleph`, `compose`, `compose-lang` | Materializaciones de Capa 2 bajo `LANGUAGES/*/app` |
+| **MCP Navigator** | `aleph-os`, `aleph-os-dynamic` | Proyección Resource-first del OS cognitivo |
+| **Infra** | `hub` | Hub Socket.IO para federación local |
+
+---
+
+# Gateway operacional (`@network-engine/gateway`)
+
+Funcionalmente, el gateway es el **entrypoint Docker** para exponer la proyección GraphQL de un `DomainContract` sin acoplarla a una app de catálogo interactiva. Vive en `packages/apps/gateway` y usa `startGraphQLServer()` de `@network-engine/edge-graphql` sobre un runtime creado con `createGraphQLRuntime()` de `@network-engine/graphql`. No expone MCP; los catálogos `aleph-os*` montan su propio borde vía `edge-rest` + `edge-mcp`. Ver [ADR 0008](../../ADR/0008-docker-topology.md) y [EDGE.functional.md](EDGE.functional.md).

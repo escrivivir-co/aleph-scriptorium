@@ -7,7 +7,8 @@ Esta carpeta contiene ANALISIS TÉCNICO de los componentes. Ligada a la carpeta 
 - `BROWSER.instructions.md`: análisis técnico del runtime Browser.
 - `APPS.instructions.md`: análisis técnico de Apps/UI (incl. MCP Apps `aleph-os`, variante `aleph-os-dynamic`, [ADR 0004](../../ADR/0004-mcp-apps-ui-projection.md), [ADR 0009](../../ADR/0009-knowledge-system-mcp-app-builder.md)).
 - `LANGUAGES.instructions.md`: análisis técnico de lenguajes derivados.
-- `MCP_RUNTIME.instructions.md`: análisis técnico de `@network-engine/mcp-runtime`.
+- `MCP_RUNTIME.instructions.md`: análisis técnico de `@network-engine/mcp-runtime` (transport-neutral).
+- `EDGE.instructions.md`: análisis técnico de la familia `@network-engine/edge-*` (borde HTTP/MCP/GraphQL/GraphDB/PubSub).
 - `PUBSUB.instructions.md`: análisis técnico de `@network-engine/pubsub`.
 - `CONTRACT_ADAPTERS.instructions.md`: análisis técnico de `@network-engine/contract-adapters`.
 - `DOCUMENT_STORE.instructions.md`: `DocumentStoreProtocol` async-first ([ADR 0005](../../ADR/0005-document-store-async-first.md)).

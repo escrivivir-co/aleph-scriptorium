@@ -21,6 +21,7 @@
     { "path": "LANGUAGES/aleph-lang/app" },
     { "path": "LANGUAGES/compose-lang/package" },
     { "path": "LANGUAGES/compose-lang/app" },
-    { "path": "packages/apps" }
+    { "path": "packages/apps" },
+    { "path": "packages/apps/gateway" }
   ]
 }
