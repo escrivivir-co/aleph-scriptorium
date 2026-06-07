@@ -1,7 +1,8 @@
 import path from 'node:path';
 import { App, AppStatus, createAppId } from '@network-engine/core';
 import { projectDomainToMCP } from '@network-engine/mcp/projection';
-import { createMcpHttpEdge, type McpHttpEdge } from '@network-engine/mcp-runtime/http-edge';
+import { mountMcpRoute } from '@network-engine/edge-mcp';
+import { createRestServer, type RestServer } from '@network-engine/edge-rest';
 import { alephOsContract } from './aleph-os.contract';
 import { createAlephOsHandlers } from './handlers';
 
@@ -22,24 +23,22 @@ export class AlephOsMcpApp implements App<AlephOsConfig, 'aleph-os', '1.0.0'> {
 
   public status: AppStatus = { state: 'STOPPED' };
   private config?: AlephOsConfig;
-  private edge?: McpHttpEdge;
+  private edge?: RestServer;
 
   public async init(config: AlephOsConfig): Promise<void> {
     this.config = config;
     const projection = projectDomainToMCP(alephOsContract);
     const handlers = createAlephOsHandlers(DIST_DIR);
 
-    this.edge = createMcpHttpEdge({
-      port: config.port,
-      register: {
-        projection,
-        server: {
-          name: 'ALEPH Agent Operating System',
-          version: '1.0.0',
-          instructions: 'Read aleph://os/overview and template resources before invoking show-aleph-os.',
-        },
-        handlers,
+    this.edge = createRestServer();
+    mountMcpRoute(this.edge, {
+      projection,
+      server: {
+        name: 'ALEPH Agent Operating System',
+        version: '1.0.0',
+        instructions: 'Read aleph://os/overview and template resources before invoking show-aleph-os.',
       },
+      handlers,
     });
 
     console.log(`[AlephOsMcpApp] Initialized with port ${config.port}`);
@@ -70,7 +69,7 @@ export class AlephOsMcpApp implements App<AlephOsConfig, 'aleph-os', '1.0.0'> {
     process.once('SIGINT', () => void shutdown('SIGINT'));
     process.once('SIGTERM', () => void shutdown('SIGTERM'));
 
-    const { port } = await this.edge.listen();
+    const { port } = await this.edge.listen({ port: this.config.port });
     this.status = { state: 'RUNNING', startedAt: Date.now() };
     console.log(`[AlephOsMcpApp] MCP listening on http://localhost:${port}/mcp`);
   }

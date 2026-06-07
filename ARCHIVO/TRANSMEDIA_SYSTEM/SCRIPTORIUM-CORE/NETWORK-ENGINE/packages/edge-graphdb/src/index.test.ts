@@ -40,8 +40,8 @@ import {
   NetworkOrchestrator,
 } from '@network-engine/core';
 import { createMachine } from 'xstate';
-import { InMemoryGraphStore, GraphStorePlugin, createInMemoryGraphStore } from './index';
-import { GraphDbStore } from '@network-engine/node';
+import { InMemoryGraphStore, GraphStorePlugin, createInMemoryGraphStore } from '@network-engine/graphdb';
+import { GraphDbStore } from './index';
 
 // ============================================================================
 // Utility: collect all emissions from an Observable into a Promise<T[]>

@@ -1,3 +1,4 @@
+export * from './bridge';
 import { Server } from 'socket.io';
 
 export interface HubConfig {

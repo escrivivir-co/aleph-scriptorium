@@ -10,4 +10,3 @@ export {
   type GraphQLRuntimeContext,
   type GraphQLRuntimeOptions,
 } from './runtime';
-export { startGraphQLServer, type GraphQLServerOptions } from './server';

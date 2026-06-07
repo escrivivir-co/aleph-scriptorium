@@ -18,7 +18,7 @@ import {
   type GraphStoreProtocol,
 } from '@network-engine/core';
 import { createNetworkEngine } from '@network-engine/network-engine';
-import { GraphStorePlugin } from '@network-engine/graph';
+import { GraphStorePlugin } from '@network-engine/graphdb';
 import { tap, toArray } from 'rxjs/operators';
 
 // ---------------------------------------------------------------------------

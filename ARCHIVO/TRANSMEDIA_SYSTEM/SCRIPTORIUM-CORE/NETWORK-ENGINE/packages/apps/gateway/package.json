@@ -1,0 +1,18 @@
+{
+  "name": "@network-engine/gateway",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@network-engine/core": "workspace:*",
+    "@network-engine/mongo": "workspace:*",
+    "@network-engine/graphql": "workspace:*",
+    "@network-engine/edge-graphql": "workspace:*",
+    "@network-engine/mcp-runtime": "workspace:*",
+    "@network-engine/edge-mcp": "workspace:*"
+  }
+}
