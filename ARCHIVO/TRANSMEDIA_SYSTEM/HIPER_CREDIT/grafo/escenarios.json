@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "artefacto": "HIPER_CREDIT",
+    "tipo": "grafo-escenarios",
+    "motor": "grifo-lang",
+    "status": "DRAFT"
+  },
+  "nodos": [
+    {
+      "id": "ESC-00",
+      "nivel": "T=0",
+      "etiqueta": "Baseline — grifo abierto",
+      "cita": "[base.md:b:reajuste-precio]",
+      "fork": "⊢",
+      "policy": "baseline",
+      "plausibilidad": "alta"
+    },
+    {
+      "id": "ESC-01",
+      "nivel": "T+1",
+      "etiqueta": "Borrego Whip — plazo ≤10 años",
+      "cita": "[base.md:b:borrego]",
+      "fork": "⊢",
+      "policy": "borrego_whip",
+      "plausibilidad": "baja"
+    },
+    {
+      "id": "ESC-02",
+      "nivel": "T+1",
+      "etiqueta": "Supply cap — tope precio/alquiler",
+      "cita": "[base.md:a:supply-side]",
+      "fork": "⊬",
+      "policy": "supply_cap",
+      "plausibilidad": "media"
+    },
+    {
+      "id": "ESC-03",
+      "nivel": "T+1",
+      "etiqueta": "Blackstone capture",
+      "cita": "[base.md:c:post-2008]",
+      "fork": "⊘",
+      "policy": "blackstone_capture",
+      "plausibilidad": "alta"
+    },
+    {
+      "id": "ESC-04",
+      "nivel": "T+1",
+      "etiqueta": "Híbrido Whip + Temple",
+      "cita": "[dossier-hipercredit/03]",
+      "fork": "⊢",
+      "policy": "whip_with_temple",
+      "plausibilidad": "media"
+    },
+    {
+      "id": "ESC-05",
+      "nivel": "T+1",
+      "etiqueta": "Solo Rain — relato sin shock",
+      "cita": "[mapa-financializacion]",
+      "fork": "≈",
+      "policy": "rain_only",
+      "plausibilidad": "alta"
+    }
+  ],
+  "arcos": [
+    { "from": "ESC-00", "to": "ESC-01", "plausibilidad": "baja", "operador": "⊢" },
+    { "from": "ESC-00", "to": "ESC-02", "plausibilidad": "media", "operador": "⊬" },
+    { "from": "ESC-01", "to": "ESC-03", "plausibilidad": "alta", "operador": "⊘", "nota": "Riesgo Marx" },
+    { "from": "ESC-01", "to": "ESC-04", "plausibilidad": "media", "operador": "⊢" },
+    { "from": "ESC-00", "to": "ESC-05", "plausibilidad": "alta", "operador": "≈" }
+  ]
+}

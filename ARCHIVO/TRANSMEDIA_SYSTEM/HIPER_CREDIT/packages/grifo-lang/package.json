@@ -1,0 +1,17 @@
+{
+  "name": "grifo-lang",
+  "version": "0.1.0",
+  "description": "Spike Capa 2: primitivas Temple/Faucet/Effort/Rain/Whip + Horn + simulación vivienda Borrego",
+  "type": "module",
+  "main": "src/index.ts",
+  "bin": {
+    "grifo-lang": "./src/cli.ts"
+  },
+  "scripts": {
+    "simulate": "bun run src/cli.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
