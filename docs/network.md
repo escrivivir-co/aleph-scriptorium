@@ -177,7 +177,7 @@ permalink: /network/
       <tbody>
         <tr>
           <td><a href="https://pub.escrivivir.co">pub.escrivivir.co</a></td>
-          <td>Oasis / SSB v0.7.4 · SHS · :8008</td>
+          <td>Oasis / SSB v0.8.3 · ciclo 6 · SHS · :8008</td>
           <td>Landing pública, invites, CONNECT, estado y vestíbulo</td>
         </tr>
         <tr>
