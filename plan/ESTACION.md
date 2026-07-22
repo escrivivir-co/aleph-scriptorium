@@ -14,13 +14,18 @@ vive en `@alephscript/skills-scriptorium` (skills `vigilancia` +
 
 ## Espejo skills
 
+| dato | valor |
+| ---- | ----- |
+| paquete | `@alephscript/skills-scriptorium@0.7.0` |
+| registry | `https://npm.scriptorium.escrivivir.co` |
+| comando | `npm run skills:sync` → `alephscript-skills-sync --runtime claude` |
+| destino | `.claude/skills/` (trackeado — espejo auditable commiteado) |
+| por qué legal | desviación auditable de scriptorium; no canon gitignore (z); PORT · no unificar a la fuerza |
+
 ```text
 npm install
 npm run skills:sync
 ```
-
-`@alephscript/skills-scriptorium@0.7.0` · registry
-`https://npm.scriptorium.escrivivir.co` · bin `alephscript-skills-sync`.
 
 ## Watcher
 
